@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 <meta name="theme-color" content="#b05c6e" />
-<meta name="description" content="نقاء — عناية ومكياج. متجر عُماني. توصيل لكل السلطنة." />
+<meta name="description" content="نقاء — عناية ومكياج. توصيل عُمان. طلب واتساب." />
 <title>نقاء · عناية ومكياج | www.naqa.om</title>
 <style>
 :root{
@@ -16,7 +16,7 @@
 html{scroll-behavior:smooth}
 body{margin:0;background:var(--bg);color:var(--fg);
   font-family:"Noto Kufi Arabic","Segoe UI",Tahoma,system-ui,sans-serif;line-height:1.6;
-  padding-bottom:72px}
+  padding-bottom:88px}
 a{color:inherit;text-decoration:none}
 button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
 img{max-width:100%;display:block}
@@ -38,140 +38,146 @@ header{position:sticky;top:0;z-index:60;background:rgba(253,248,246,.94);
   border:1px solid var(--line);font-weight:800;flex-shrink:0}
 .icon-btn{width:42px;height:42px;border-radius:12px;background:#fff;border:1px solid var(--line);
   display:grid;place-items:center;position:relative;flex-shrink:0}
-.icon-btn .badge{position:absolute;top:-4px;left:-4px;min-width:18px;height:18px;padding:0 5px;
+.icon-btn .badge{position:absolute;top:-4px;inset-inline-start:-4px;min-width:18px;height:18px;padding:0 5px;
   border-radius:999px;background:var(--rose-deep);color:#fff;font-size:.7rem;font-weight:700;
   display:grid;place-items:center}
-.nav-cats{display:flex;gap:6px;overflow-x:auto;padding:10px 0 12px;-webkit-overflow-scrolling:touch;scroll-snap-type:x proximity}
+.nav-cats{display:flex;gap:6px;overflow-x:auto;padding:10px 0 12px;-webkit-overflow-scrolling:touch}
 .nav-cats::-webkit-scrollbar{display:none}
 .nav-cats a{flex-shrink:0;padding:8px 14px;border-radius:999px;background:#fff;
-  border:1px solid var(--line);font-size:.88rem;font-weight:600;color:var(--muted);scroll-snap-align:start}
+  border:1px solid var(--line);font-size:.88rem;font-weight:600;color:var(--muted)}
 .nav-cats a.on{background:var(--rose-deep);color:#fff;border-color:var(--rose-deep)}
 
-.hero{margin:18px 0 8px;padding:28px 22px;border-radius:var(--r);background:
+.hero{margin:18px 0 8px;padding:24px 20px;border-radius:var(--r);background:
   linear-gradient(135deg,#fff 0%,#f8ebe8 55%,#f3e0d8 100%);
-  border:1px solid var(--line);box-shadow:var(--shadow);display:grid;gap:10px}
-.hero h1{margin:0;font-size:clamp(1.5rem,4vw,2.1rem);font-weight:800;line-height:1.25}
+  border:1px solid var(--line);box-shadow:var(--shadow)}
+.hero h1{margin:0 0 8px;font-size:clamp(1.4rem,4vw,2rem);font-weight:800}
 .hero h1 em{font-style:normal;color:var(--rose-deep)}
-.hero p{margin:0;color:var(--muted);max-width:42em;font-size:.98rem}
-.hero-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;
-  padding:12px 18px;border-radius:999px;font-weight:700;font-size:.95rem}
+.hero p{margin:0;color:var(--muted);font-size:.95rem}
+.pills{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px}
+.pill{padding:6px 12px;border-radius:999px;background:rgba(176,92,110,.1);
+  color:var(--rose-deep);font-size:.8rem;font-weight:700}
+.hero-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 18px;
+  border-radius:999px;font-weight:700;font-size:.95rem}
 .btn-primary{background:var(--rose-deep);color:#fff}
 .btn-ghost{background:#fff;border:1px solid var(--line)}
-.pills{display:flex;flex-wrap:wrap;gap:8px}
-.pill{padding:6px 12px;border-radius:999px;background:rgba(176,92,110,.1);color:var(--rose-deep);font-size:.8rem;font-weight:700}
 
-.section-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin:22px 0 12px}
+.section-head{display:flex;align-items:baseline;justify-content:space-between;margin:22px 0 12px}
 .section-head h2{margin:0;font-size:1.2rem;font-weight:800}
 .section-head span{color:var(--muted);font-size:.85rem}
 .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
 @media(min-width:700px){.grid{grid-template-columns:repeat(3,1fr);gap:16px}}
 @media(min-width:1000px){.grid{grid-template-columns:repeat(4,1fr)}}
-
 .card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);
   overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column;
-  content-visibility:auto;contain-intrinsic-size:280px 380px}
-.card-visual{position:relative;aspect-ratio:1;background:#fff;overflow:hidden;cursor:pointer}
+  content-visibility:auto;contain-intrinsic-size:320px 420px}
+.card-visual{aspect-ratio:1;background:#fff;position:relative;overflow:hidden}
 .card-visual img{width:100%;height:100%;object-fit:contain;background:#fff}
-.card-ar-tag{position:absolute;left:8px;right:8px;bottom:8px;padding:6px 8px;border-radius:10px;
-  background:rgba(31,26,23,.78);color:#fff;font-size:.68rem;font-weight:700;line-height:1.35;
-  text-align:center;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
-  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-html[lang="en"] .card-ar-tag{display:none}
-.card-body{padding:12px;display:flex;flex-direction:column;gap:4px;flex:1}
+.ar-band{position:absolute;left:0;right:0;bottom:0;padding:8px 10px;
+  background:linear-gradient(transparent,rgba(20,12,10,.72));color:#fff;
+  font-size:.72rem;font-weight:700;line-height:1.35;text-align:start;
+  pointer-events:none}
+html[lang="en"] .ar-band{display:none}
+.card-body{padding:12px;display:flex;flex-direction:column;gap:6px;flex:1}
 .card-brand{font-size:.72rem;color:var(--muted);font-weight:600}
-.card-name{font-weight:700;font-size:.92rem;line-height:1.35;min-height:2.5em;text-align:start;width:100%}
-.card-desc{color:var(--muted);font-size:.75rem;line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.card-name{font-weight:700;font-size:.92rem;line-height:1.35;text-align:start;width:100%}
+.card-desc{color:var(--muted);font-size:.75rem;line-height:1.4;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .card-code{font-size:.68rem;color:var(--muted);font-family:ui-monospace,monospace}
-.card-price{font-weight:800;color:var(--rose-deep);margin-top:4px;font-size:1.02rem}
-.card-actions{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:8px}
-.card-actions .quick{padding:9px;border-radius:12px;border:1px solid var(--line);font-weight:700;font-size:.78rem;background:#fff}
-.card-actions .add{padding:9px;border-radius:12px;background:var(--fg);color:#fff;font-weight:700;font-size:.78rem}
+.card-price{font-weight:800;color:var(--rose-deep);font-size:1.05rem}
+.card-actions{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:auto}
+.card-actions button{padding:10px 8px;border-radius:12px;font-weight:700;font-size:.8rem}
+.btn-add{background:var(--fg);color:#fff}
+.btn-qv{background:#fff;border:1px solid var(--line);color:var(--fg)}
+.btn-open{grid-column:1/-1;background:rgba(176,92,110,.1);color:var(--rose-deep);padding:8px;border-radius:12px;font-weight:700;font-size:.8rem}
 .empty{padding:40px 16px;text-align:center;color:var(--muted)}
 
-/* sticky cart bar on product list */
-.cart-bar{position:fixed;bottom:0;left:0;right:0;z-index:55;padding:10px 16px calc(10px + env(safe-area-inset-bottom));
-  background:rgba(253,248,246,.96);border-top:1px solid var(--line);backdrop-filter:blur(10px);
-  -webkit-backdrop-filter:blur(10px);display:flex;gap:10px;align-items:center;justify-content:space-between}
-.cart-bar.hidden{display:none}
-.cart-bar .info{font-weight:700;font-size:.9rem}
-.cart-bar .info span{color:var(--muted);font-weight:600;font-size:.8rem}
-.cart-bar .go{padding:12px 16px;border-radius:999px;background:var(--rose-deep);color:#fff;font-weight:800}
+/* sticky cart bar */
+.cart-bar{position:fixed;bottom:0;left:0;right:0;z-index:70;
+  background:rgba(255,255,255,.96);border-top:1px solid var(--line);
+  -webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
+  padding:10px 16px calc(10px + env(safe-area-inset-bottom));
+  display:flex;align-items:center;gap:12px;box-shadow:0 -8px 24px rgba(50,30,25,.08)}
+.cart-bar .info{flex:1;min-width:0}
+.cart-bar .info strong{display:block;font-size:.95rem}
+.cart-bar .info span{color:var(--muted);font-size:.8rem}
+.cart-bar .go{padding:12px 16px;border-radius:14px;background:var(--rose-deep);color:#fff;font-weight:800;white-space:nowrap}
+.cart-bar.empty-bar{opacity:.92}
+.cart-bar.empty-bar .go{background:var(--fg)}
 
 .overlay{position:fixed;inset:0;background:rgba(20,12,10,.35);z-index:80;opacity:0;pointer-events:none;transition:opacity .2s}
 .overlay.show{opacity:1;pointer-events:auto}
-.drawer{position:fixed;top:0;bottom:0;left:0;width:min(400px,92vw);background:#fff;z-index:90;
-  transform:translateX(-105%);transition:transform .25s ease;display:flex;flex-direction:column;box-shadow:var(--shadow)}
-html[dir="ltr"] .drawer{left:auto;right:0;transform:translateX(105%)}
-.drawer.show,html[dir="ltr"] .drawer.show{transform:translateX(0)}
+.drawer{position:fixed;top:0;bottom:0;inset-inline-start:0;width:min(400px,92vw);background:#fff;
+  z-index:90;transform:translateX(-105%);transition:transform .25s ease;display:flex;flex-direction:column}
+html[dir="ltr"] .drawer{transform:translateX(-105%)}
+html[dir="rtl"] .drawer{transform:translateX(105%)}
+.drawer.show{transform:translateX(0)!important}
 .drawer-head{display:flex;align-items:center;justify-content:space-between;padding:16px;border-bottom:1px solid var(--line)}
-.drawer-head h3{margin:0}
 .drawer-body{flex:1;overflow:auto;padding:12px 16px;-webkit-overflow-scrolling:touch}
 .cart-item{display:grid;grid-template-columns:56px 1fr auto;gap:10px;align-items:center;padding:12px 0;border-bottom:1px solid var(--line)}
 .cart-item .thumb{width:56px;height:56px;border-radius:12px;overflow:hidden;background:#fff}
 .cart-item .thumb img{width:100%;height:100%;object-fit:contain}
-.cart-item .meta strong{display:block;font-size:.9rem}
-.cart-item .meta span{color:var(--muted);font-size:.8rem}
 .qty{display:flex;align-items:center;gap:6px}
 .qty button{width:28px;height:28px;border-radius:8px;background:var(--bg);border:1px solid var(--line);font-weight:700}
 .rm{color:var(--rose-deep);font-size:.8rem;font-weight:700;margin-top:4px}
 .drawer-foot{padding:14px 16px 20px;border-top:1px solid var(--line)}
 .total-row{display:flex;justify-content:space-between;font-weight:800;margin-bottom:12px}
-.total-row span:last-child{color:var(--rose-deep);font-size:1.15rem}
+.total-row span:last-child{color:var(--rose-deep)}
 .checkout{width:100%;padding:14px;border-radius:14px;background:#25D366;color:#fff;font-weight:800}
 .cart-empty{padding:40px 10px;text-align:center;color:var(--muted)}
 
-footer{margin-top:40px;padding:28px 0 100px;border-top:1px solid var(--line);color:var(--muted);font-size:.9rem}
+footer{margin-top:40px;padding:28px 0 24px;border-top:1px solid var(--line);color:var(--muted);font-size:.9rem}
 .foot-grid{display:grid;gap:18px}
 @media(min-width:700px){.foot-grid{grid-template-columns:2fr 1fr 1fr}}
-footer h4{margin:0 0 8px;color:var(--fg)}
 .foot-brand{font-weight:800;color:var(--fg);font-size:1.15rem}
 .foot-brand span{color:var(--rose-deep)}
-.wa-float{position:fixed;bottom:76px;left:16px;z-index:50;width:52px;height:52px;border-radius:50%;
-  background:#25D366;color:#fff;display:grid;place-items:center;box-shadow:0 8px 24px rgba(37,211,102,.4);font-size:1.45rem}
-html[dir="ltr"] .wa-float{left:auto;right:16px}
+.wa-float{position:fixed;bottom:86px;inset-inline-start:16px;z-index:65;width:52px;height:52px;
+  border-radius:50%;background:#25D366;color:#fff;display:grid;place-items:center;
+  box-shadow:0 8px 24px rgba(37,211,102,.4);font-size:1.45rem}
 
-/* full product / quick view */
-.sheet{position:fixed;inset:0;z-index:100;background:rgba(20,12,10,.45);display:none;align-items:stretch;justify-content:center}
-.sheet.show{display:flex}
-.sheet-card{background:#fff;width:min(680px,100%);height:100%;overflow:auto;padding:0 0 40px;-webkit-overflow-scrolling:touch;overscroll-behavior:contain}
-.sheet-pad{padding:12px 16px 0}
+/* product sheet + quick view */
+.sheet{position:fixed;inset:0;z-index:100;background:rgba(20,12,10,.45);display:none}
+.sheet.show{display:block}
+.sheet-card{position:absolute;inset:0;background:#fff;overflow:auto;-webkit-overflow-scrolling:touch;
+  padding:14px 16px 48px;max-width:680px;margin:0 auto;left:0;right:0}
+.qv .sheet-card{inset:auto 0 0 0;max-height:82vh;border-radius:20px 20px 0 0;padding-bottom:28px}
 .swipe-hint{font-size:.75rem;color:var(--muted);margin:0 0 8px;font-weight:600}
-.text-back{font-weight:800;color:var(--rose-deep);margin-bottom:8px;font-size:.95rem}
+.text-back{font-weight:800;color:var(--rose-deep);margin-bottom:10px;font-size:1rem}
 
-/* carousel full width */
-.carousel{position:relative;width:100%;background:#f3eeea;touch-action:pan-y}
-.carousel-track{display:flex;transition:transform .28s ease;will-change:transform}
-.carousel-track.dragging{transition:none}
-.carousel-slide{min-width:100%;height:min(78vw,460px);display:grid;place-items:center;background:#fff;position:relative}
-.carousel-slide img{width:100%;height:100%;object-fit:contain;cursor:zoom-in;background:#fff}
-.carousel-ar{position:absolute;left:12px;right:12px;bottom:12px;padding:10px 12px;border-radius:12px;
-  background:rgba(31,26,23,.8);color:#fff;font-size:.85rem;font-weight:700;text-align:center;line-height:1.4}
-html[lang="en"] .carousel-ar{display:none}
-.carousel-dots{display:flex;justify-content:center;gap:6px;padding:10px 0 4px}
-.carousel-dots button{width:8px;height:8px;border-radius:999px;background:#d9cfc8}
-.carousel-dots button.on{background:var(--rose-deep);width:18px}
-.carousel-nav{position:absolute;top:50%;transform:translateY(-50%);width:36px;height:36px;border-radius:999px;
+/* FULL carousel */
+.carousel{position:relative;background:#f6f1ed;border-radius:18px;overflow:hidden}
+.carousel-track{display:flex;width:100%;height:min(78vw,460px);overflow-x:auto;scroll-snap-type:x mandatory;
+  -webkit-overflow-scrolling:touch;scrollbar-width:none;touch-action:pan-x}
+.carousel-track::-webkit-scrollbar{display:none}
+.carousel-slide{flex:0 0 100%;width:100%;height:100%;scroll-snap-align:center;display:grid;place-items:center;position:relative;background:#fff}
+.carousel-slide img{width:100%;height:100%;object-fit:contain;cursor:zoom-in}
+.carousel-nav{position:absolute;top:50%;transform:translateY(-50%);width:36px;height:36px;border-radius:50%;
   background:rgba(255,255,255,.92);border:1px solid var(--line);font-weight:800;z-index:2}
-.carousel-nav.prev{inset-inline-start:10px}
-.carousel-nav.next{inset-inline-end:10px}
+.carousel-nav.prev{inset-inline-start:8px}
+.carousel-nav.next{inset-inline-end:8px}
+.carousel-dots{display:flex;justify-content:center;gap:6px;padding:10px 0 4px}
+.carousel-dots button{width:8px;height:8px;border-radius:50%;background:#d9cfc8}
+.carousel-dots button.on{background:var(--rose-deep);width:18px;border-radius:999px}
+.carousel-count{position:absolute;top:10px;inset-inline-end:10px;background:rgba(0,0,0,.55);color:#fff;
+  font-size:.75rem;font-weight:700;padding:4px 8px;border-radius:999px;z-index:2}
+.thumbs{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:10px}
+.thumbs button{aspect-ratio:1;border-radius:12px;overflow:hidden;border:2px solid transparent;padding:0;background:#fff}
+.thumbs button.on{border-color:var(--rose-deep)}
+.thumbs img{width:100%;height:100%;object-fit:contain}
 
 .block-h{margin:16px 0 6px;font-size:1rem}
 .long{margin:0;line-height:1.75}
 .sku-line{margin-top:8px;font-size:.85rem;color:var(--muted);font-family:ui-monospace,monospace}
-.skin-pill{display:inline-block;margin-top:8px;padding:6px 12px;border-radius:999px;background:rgba(176,92,110,.1);color:var(--rose-deep);font-size:.8rem;font-weight:700}
-.sug-row{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;padding:0 16px}
+.skin-pill{display:inline-block;margin-top:8px;padding:6px 12px;border-radius:999px;
+  background:rgba(176,92,110,.1);color:var(--rose-deep);font-size:.8rem;font-weight:700}
+.sug-row{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
 .sug{background:#fff;border:1px solid var(--line);border-radius:14px;padding:8px;text-align:start}
 .sug-vis{display:block;height:100px;border-radius:10px;overflow:hidden;background:#fff}
 .sug-vis img{width:100%;height:100px;object-fit:contain}
-.sug-name{display:block;font-size:.78rem;font-weight:700;margin-top:6px;line-height:1.35}
-.sug-price{display:block;color:var(--rose-deep);font-weight:800;font-size:.85rem}
-.sheet .card-add{margin:12px 16px 0;width:calc(100% - 32px);padding:12px;border-radius:12px;background:var(--fg);color:#fff;font-weight:700}
-.sheet-body{padding:0 16px}
-
-/* quick view smaller sheet */
-.sheet.quick .sheet-card{height:auto;max-height:88vh;align-self:flex-end;border-radius:20px 20px 0 0;width:min(560px,100%)}
-.sheet.quick .carousel-slide{height:min(58vw,320px)}
+.sug-name{display:block;font-size:.78rem;font-weight:700;margin-top:6px}
+.sug-price{color:var(--rose-deep);font-weight:800;font-size:.85rem}
+.sheet-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:14px}
+.sheet-actions .card-add{grid-column:1/-1;padding:12px;border-radius:12px;background:var(--fg);color:#fff;font-weight:700}
 
 .lightbox{position:fixed;inset:0;z-index:120;background:rgba(10,8,6,.94);display:none;align-items:center;justify-content:center;padding:12px}
 .lightbox.show{display:flex}
@@ -184,13 +190,18 @@ html[lang="en"] .carousel-ar{display:none}
   <div class="wrap top">
     <a class="logo" href="#top">
       <div class="logo-mark">ن</div>
-      <div class="logo-text"><strong id="logoName">نقاء</strong><span id="logoTag">عناية ومكياج</span></div>
+      <div class="logo-text">
+        <strong id="logoName">نقاء</strong>
+        <span id="logoTag">عناية ومكياج</span>
+      </div>
     </a>
-    <div class="search"><span aria-hidden="true">⌕</span>
+    <div class="search">
+      <span aria-hidden="true">⌕</span>
       <input id="search" type="search" placeholder="ابحثي..." enterkeyhint="search" />
     </div>
     <button class="lang-btn" id="langBtn" type="button">EN</button>
-    <button class="icon-btn" id="cartBtn" type="button" aria-label="cart">🛒
+    <button class="icon-btn" id="cartBtn" type="button" aria-label="cart">
+      🛒
       <span class="badge" id="cartBadge" hidden>0</span>
     </button>
   </div>
@@ -216,10 +227,10 @@ html[lang="en"] .carousel-ar{display:none}
       <span class="pill" id="pillWa">طلب واتساب</span>
     </div>
     <h1 id="heroTitle">نقاء — <em>عناية ومكياج</em></h1>
-    <p id="heroText"></p>
+    <p id="heroText">منتجات بصورها الحقيقية. مرّري الصور، نظرة سريعة، أو ادخلي للتفاصيل. السلة ظاهرة دائماً أسفل الشاشة.</p>
     <div class="hero-actions">
       <a class="btn btn-primary" id="btnShop" href="#products">تسوّقي الآن</a>
-      <a class="btn btn-ghost" id="waHero" href="#" target="_blank" rel="noopener">واتساب</a>
+      <a class="btn btn-ghost" id="waHero" href="#" target="_blank" rel="noopener">واتساب نقاء</a>
     </div>
   </section>
   <div class="section-head">
@@ -234,82 +245,92 @@ html[lang="en"] .carousel-ar{display:none}
   <div class="wrap foot-grid">
     <div>
       <div class="foot-brand">ن<span>قاء</span></div>
-      <p id="footBlurb" style="margin:8px 0 0"></p>
+      <p id="footBlurb" style="margin:8px 0 0">عناية ومكياج · متجر عُماني<br/>www.naqa.om</p>
     </div>
     <div>
       <h4 id="footContact">تواصلي</h4>
-      <a id="waFooter" href="#" target="_blank" rel="noopener"></a><br/>
+      <a id="waFooter" href="#" target="_blank" rel="noopener">واتساب الطلبات</a><br/>
       <a href="mailto:hello@naqa.om">hello@naqa.om</a>
     </div>
     <div>
       <h4 id="footShop">التسوق</h4>
-      <a href="#" data-cat-jump="عناية" id="jumpCare"></a><br/>
-      <a href="#" data-cat-jump="مكياج" id="jumpFace"></a><br/>
-      <a href="#" data-cat-jump="عطور" id="jumpScent"></a><br/>
-      <a href="#" data-cat-jump="شعر" id="jumpHair"></a>
+      <a href="#" data-cat-jump="عناية" id="jumpCare">عناية</a><br/>
+      <a href="#" data-cat-jump="مكياج" id="jumpFace">مكياج</a><br/>
+      <a href="#" data-cat-jump="شعر" id="jumpHair">شعر</a>
     </div>
   </div>
-  <div class="wrap" style="margin-top:18px;font-size:.8rem">© <span id="yr"></span> <span id="copyLine"></span></div>
+  <div class="wrap" style="margin-top:18px;font-size:.8rem">
+    © <span id="yr"></span> <span id="copyLine">نقاء · Naqa · عُمان</span>
+  </div>
 </footer>
 
-<div class="cart-bar hidden" id="cartBar">
-  <div class="info" id="cartBarInfo"></div>
-  <button class="go" id="cartBarBtn" type="button"></button>
+<div class="cart-bar empty-bar" id="cartBar">
+  <div class="info">
+    <strong id="barTitle">السلة فاضية</strong>
+    <span id="barSub">أضيفي منتجات من القائمة</span>
+  </div>
+  <button class="go" id="barGo" type="button">السلة</button>
 </div>
 
 <a class="wa-float" id="waFloat" href="#" target="_blank" rel="noopener">💬</a>
 <div class="overlay" id="overlay"></div>
 <aside class="drawer" id="drawer">
-  <div class="drawer-head"><h3 id="cartTitle"></h3><button class="icon-btn" id="closeCart">✕</button></div>
+  <div class="drawer-head">
+    <h3 id="cartTitle">السلة</h3>
+    <button class="icon-btn" id="closeCart" type="button">✕</button>
+  </div>
   <div class="drawer-body" id="cartBody"></div>
   <div class="drawer-foot">
-    <div class="total-row"><span id="totalLabel"></span><span id="cartTotal"></span></div>
-    <button class="checkout" id="checkoutBtn" type="button"></button>
+    <div class="total-row"><span id="totalLabel">المجموع</span><span id="cartTotal">0.000 ر.ع</span></div>
+    <button class="checkout" id="checkoutBtn" type="button">إتمام الطلب عبر واتساب</button>
   </div>
 </aside>
 
 <div class="sheet" id="sheet"><div class="sheet-card" id="sheetCard"></div></div>
-<div class="lightbox" id="lightbox"><button class="lightbox-close" id="lbClose" type="button">✕</button><img id="lbImg" alt=""></div>
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lbClose" type="button">✕</button>
+  <img id="lbImg" alt="">
+</div>
 
 <script src="products.js"></script>
 <script>
 const WA_NUMBER="96879088349", CURRENCY="ر.ع", SITE="www.naqa.om";
-const products=(window.NAQA_PRODUCTS||[]).map(p=>({imgs:[],...p}));
+const products=(window.NAQA_PRODUCTS||[]).map(p=>Object.assign({imgs:[]},p));
 const $=s=>document.querySelector(s);
 let lang="ar"; try{lang=localStorage.getItem("naqa_lang")||"ar"}catch(e){}
-let cart=[]; try{cart=JSON.parse(localStorage.getItem("naqa_cart")||"[]"); if(!Array.isArray(cart))cart=[]}catch(e){cart=[]}
-let query="", currentCat="all", openProductId=null, galleryIndex=0, mode="full";
+let cart=[]; try{cart=JSON.parse(localStorage.getItem("naqa_cart")||"[]"); if(!Array.isArray(cart)) cart=[]}catch(e){cart=[]}
+let query="", currentCat="all", openProductId=null, galleryIndex=0, sheetMode="full";
 
 const ui={
  ar:{
-  search:"ابحثي عن منتج أو ماركة أو SKU...", all:"الكل", care:"عناية", face:"مكياج", eyes:"عيون", lips:"شفاه", scent:"عطور", tools:"أدوات", hair:"شعر",
-  shop:"تسوّقي الآن", wa:"واتساب نقاء", products:"المنتجات", count:n=>n+" منتج", empty:"ما في نتائج.",
-  cart:"السلة", emptyCart:"السلة فاضية", total:"المجموع", checkout:"إتمام الطلب عبر واتساب",
-  add:"أضيفي", quick:"نظرة سريعة", open:"افتحي", del:"حذف", noSku:"SKU غير متوفر",
+  search:"ابحثي عن منتج أو ماركة أو SKU...",
+  all:"الكل", care:"عناية", face:"مكياج", eyes:"عيون", lips:"شفاه", scent:"عطور", tools:"أدوات", hair:"شعر",
+  shop:"تسوّقي الآن", wa:"واتساب نقاء", products:"المنتجات", count:n=>n+" منتج", empty:"ما في نتائج",
+  cart:"السلة", emptyCart:"السلة فاضية<br/>أضيفي من القائمة", total:"المجموع", checkout:"إتمام الطلب عبر واتساب",
+  add:"أضيفي", qv:"نظرة سريعة", open:"التفاصيل", del:"حذف", noSku:"SKU غير متوفر",
   heroTitle:"نقاء — ", heroEm:"عناية ومكياج",
-  hero:"اختاري منتجاً: نظرة سريعة أو صفحة كاملة. مرّري صور المنتج يميناً ويساراً. السلة ظاهرة تحت وأنتِ تتسوقين.",
+  hero:"صور حقيقية، تمرير بين ٥ صور، نظرة سريعة من غير ما تدخلي كامل، والسلة ثابتة تحت. الطلب بواتساب جاهز.",
   alertEmpty:"السلة فاضية", greet:"السلام عليكم، أبغى أطلب من نقاء",
   ship:"توصيل عُمان", order:"طلب واتساب", contact:"تواصلي", shopH:"التسوق", orders:"واتساب الطلبات",
-  skin:"عناية البشرة", scentL:"عطور", faceL:"مكياج", hairL:"شعر", blurb:"عناية ومكياج · متجر عُماني",
-  copy:"نقاء · Naqa · عُمان — جميع الحقوق محفوظة", about:"عن المنتج", how:"طريقة الاستعمال", skinT:"يناسب",
-  also:"قد يعجبكِ أيضاً", back:"رجوع", sku:"SKU", logo:"نقاء", tag:"عناية ومكياج",
-  swipe:"اسحبي من الطرف اليسار للرجوع · مرّري الصور", openImg:"اضغطي للتكبير",
-  barItems:n=>n+" في السلة", barGo:"عرض السلة", barCheckout:"إتمام الطلب"
+  skin:"عناية", faceL:"مكياج", hairL:"شعر", blurb:"عناية ومكياج · متجر عُماني", copy:"نقاء · Naqa · عُمان",
+  about:"عن المنتج", how:"طريقة الاستعمال", skinT:"يناسب", also:"قد يعجبكِ أيضاً", back:"رجوع",
+  sku:"SKU", logo:"نقاء", tag:"عناية ومكياج", swipe:"اسحبي من اليسار لليمين للرجوع · مرّري الصور يمين/يسار",
+  openImg:"اضغطي الصورة للتكبير", barEmpty:"السلة فاضية", barHint:"أضيفي منتجات من القائمة", barItems:n=>n+" منتج في السلة", barOpen:"افتحي السلة", barCheckout:"إتمام الطلب"
  },
  en:{
-  search:"Search product, brand, or SKU...", all:"All", care:"Skincare", face:"Makeup", eyes:"Eyes", lips:"Lips", scent:"Fragrance", tools:"Tools", hair:"Hair",
-  shop:"Shop now", wa:"WhatsApp Naqa", products:"Products", count:n=>n+" products", empty:"No results.",
-  cart:"Cart", emptyCart:"Your cart is empty", total:"Total", checkout:"Checkout on WhatsApp",
-  add:"Add", quick:"Quick view", open:"Open", del:"Remove", noSku:"SKU unavailable",
+  search:"Search product, brand, or SKU...",
+  all:"All", care:"Skincare", face:"Makeup", eyes:"Eyes", lips:"Lips", scent:"Fragrance", tools:"Tools", hair:"Hair",
+  shop:"Shop now", wa:"WhatsApp Naqa", products:"Products", count:n=>n+" products", empty:"No results",
+  cart:"Cart", emptyCart:"Your cart is empty<br/>Add from the list", total:"Total", checkout:"Checkout on WhatsApp",
+  add:"Add", qv:"Quick view", open:"Details", del:"Remove", noSku:"SKU unavailable",
   heroTitle:"Naqa — ", heroEm:"Care & Makeup",
-  hero:"Pick a product: quick view or full page. Swipe photos sideways. The cart bar stays while you shop.",
+  hero:"Real photos, swipe across up to 5 images, quick view without full page, cart always at the bottom. Checkout is a ready WhatsApp message.",
   alertEmpty:"Cart is empty", greet:"Hello, I want to order from Naqa",
   ship:"Oman delivery", order:"WhatsApp order", contact:"Contact", shopH:"Shop", orders:"Order on WhatsApp",
-  skin:"Skincare", scentL:"Fragrance", faceL:"Makeup", hairL:"Hair", blurb:"Care and makeup · Oman store",
-  copy:"Naqa · Oman — all rights reserved", about:"About", how:"How to use", skinT:"Best for",
-  also:"You may also like", back:"Back", sku:"SKU", logo:"Naqa", tag:"Care & Makeup",
-  swipe:"Swipe from left edge to go back · swipe photos", openImg:"Tap to enlarge",
-  barItems:n=>n+" in cart", barGo:"View cart", barCheckout:"Checkout"
+  skin:"Skincare", faceL:"Makeup", hairL:"Hair", blurb:"Care and makeup · Oman store", copy:"Naqa · Oman",
+  about:"About", how:"How to use", skinT:"Best for", also:"You may also like", back:"Back",
+  sku:"SKU", logo:"Naqa", tag:"Care & Makeup", swipe:"Swipe left-edge to go back · swipe images sideways",
+  openImg:"Tap image to enlarge", barEmpty:"Cart is empty", barHint:"Add products from the list", barItems:n=>n+" items in cart", barOpen:"Open cart", barCheckout:"Checkout"
  }
 };
 const catLabel={all:"all","عناية":"care","مكياج":"face","عيون":"eyes","شفاه":"lips","عطور":"scent","أدوات":"tools","شعر":"hair"};
@@ -322,10 +343,10 @@ const pskin=p=>lang==="en"?(p.skinEn||p.skinAr||""):(p.skinAr||p.skinEn||"");
 const pimgs=p=>(Array.isArray(p.imgs)?p.imgs:[]).filter(Boolean).slice(0,5);
 function saveCart(){try{localStorage.setItem("naqa_cart",JSON.stringify(cart))}catch(e){}}
 
-function visual(p,i){
-  const imgs=pimgs(p); const src=imgs[i||0];
-  if(!src) return p.em||"✨";
-  return '<img src="'+src+'" alt="'+pname(p)+'" loading="lazy" decoding="async" onerror="this.style.opacity=.2">';
+function visual(p, idx){
+  const imgs=pimgs(p); const i=idx||0;
+  if(imgs[i]) return '<img src="'+imgs[i]+'" alt="'+pname(p)+'" loading="lazy" decoding="async">';
+  return '<span style="font-size:2rem;display:grid;place-items:center;height:100%">'+ (p.em||'✨') +'</span>';
 }
 
 function applyLang(){
@@ -350,21 +371,19 @@ function applyLang(){
   $("#footShop").textContent=T("shopH");
   $("#jumpCare").textContent=T("skin");
   $("#jumpFace").textContent=T("faceL");
-  $("#jumpScent").textContent=T("scentL");
   $("#jumpHair").textContent=T("hairL");
   $("#copyLine").textContent=T("copy");
   $("#waFooter").textContent=T("orders");
   $("#footBlurb").innerHTML=T("blurb")+"<br/>www.naqa.om";
-  $("#cartBarBtn").textContent=T("barGo");
 }
 
 function render(){
   applyLang();
   const q=query.toLowerCase();
   const list=products.filter(p=>{
-    const ok=currentCat==="all"||p.cat===currentCat;
+    const catOk=currentCat==="all"||p.cat===currentCat;
     const blob=[p.nameAr,p.nameEn,p.brand,p.sku,p.descAr,p.descEn].join(" ").toLowerCase();
-    return ok && (!q || blob.includes(q));
+    return catOk && (!q || blob.includes(q));
   });
   $("#countLabel").textContent=T("count")(list.length);
   $("#empty").hidden=list.length>0;
@@ -373,7 +392,7 @@ function render(){
     <article class="card" data-id="${p.id}">
       <div class="card-visual" data-open="${p.id}">
         ${visual(p,0)}
-        <div class="card-ar-tag">${p.nameAr||pname(p)}</div>
+        <div class="ar-band">${p.nameAr||""}</div>
       </div>
       <div class="card-body">
         <div class="card-brand">${p.brand} · ${T(catLabel[p.cat]||"all")}</div>
@@ -382,54 +401,91 @@ function render(){
         <div class="card-code">${T("sku")}: ${p.sku||T("noSku")}</div>
         <div class="card-price">${money(p.price)}</div>
         <div class="card-actions">
-          <button class="quick" data-quick="${p.id}" type="button">${T("quick")}</button>
-          <button class="add" data-add="${p.id}" type="button">${T("add")}</button>
+          <button class="btn-qv" data-qv="${p.id}" type="button">${T("qv")}</button>
+          <button class="btn-add" data-add="${p.id}" type="button">${T("add")}</button>
+          <button class="btn-open" data-open="${p.id}" type="button">${T("open")}</button>
         </div>
       </div>
     </article>`).join("");
   renderCart();
-  if(openProductId) openProduct(openProductId, mode, false);
+  if(openProductId) openSheet(openProductId, sheetMode, false);
 }
 
 function carouselHTML(p, start){
-  let imgs=pimgs(p);
-  if(!imgs.length) imgs=[""];
-  while(imgs.length<4) imgs.push(imgs[imgs.length-1]||"");
-  imgs=imgs.slice(0,5);
+  const imgs=pimgs(p); while(imgs.length<1) imgs.push("");
   const slides=imgs.map((src,i)=>`
     <div class="carousel-slide" data-i="${i}">
-      ${src?`<img src="${src}" alt="${pname(p)}" data-full="${src}" loading="${i? 'lazy':'eager'}">`:(p.em||"✨")}
-      <div class="carousel-ar">${p.nameAr||pname(p)}</div>
+      ${src?`<img src="${src}" alt="${pname(p)}" data-full="${src}" loading="${i? 'lazy':'eager'}">`:(p.em||'✨')}
+      <div class="ar-band">${p.nameAr||""}</div>
     </div>`).join("");
-  const dots=imgs.map((_,i)=>`<button type="button" data-dot="${i}" class="${i===start?'on':''}"></button>`).join("");
+  const dots=imgs.map((_,i)=>`<button type="button" class="${i===start?'on':''}" data-dot="${i}"></button>`).join("");
+  const thumbs=imgs.slice(0,5).map((src,i)=>`
+    <button type="button" class="${i===start?'on':''}" data-dot="${i}">
+      ${src?`<img src="${src}" alt="" loading="lazy">`:(p.em||'✨')}
+    </button>`).join("");
   return `
-    <div class="carousel" id="carousel" data-n="${imgs.length}">
-      <button class="carousel-nav prev" type="button" data-nav="-1" aria-label="prev">‹</button>
-      <button class="carousel-nav next" type="button" data-nav="1" aria-label="next">›</button>
-      <div class="carousel-track" id="carTrack" style="transform:translateX(${document.documentElement.dir==='rtl'? '' : '-'}${start*100}%)">${slides}</div>
-      <div class="carousel-dots">${dots}</div>
-    </div>`;
+    <div class="carousel" id="car">
+      <div class="carousel-count"><span id="carIdx">${start+1}</span> / ${imgs.length}</div>
+      <button class="carousel-nav prev" type="button" data-nav="-1">‹</button>
+      <button class="carousel-nav next" type="button" data-nav="1">›</button>
+      <div class="carousel-track" id="carTrack">${slides}</div>
+    </div>
+    <div class="carousel-dots" id="carDots">${dots}</div>
+    <div class="thumbs" id="carThumbs">${thumbs}</div>`;
 }
 
-function setCarousel(i){
-  const car=$("#carousel"); if(!car) return;
-  const n=+car.dataset.n||1;
-  galleryIndex=((i%n)+n)%n;
-  const track=$("#carTrack");
-  const rtl=document.documentElement.dir==="rtl";
-  // In RTL flex, first slide is on the right; translateX positive moves leftward content...
-  // Use percentage relative to track: simpler approach - always LTR track
-  track.style.direction="ltr";
-  track.style.transform=`translateX(-${galleryIndex*100}%)`;
-  car.querySelectorAll("[data-dot]").forEach(d=>d.classList.toggle("on", +d.dataset.dot===galleryIndex));
+function bindCarousel(p){
+  const track=$("#carTrack"); if(!track) return;
+  const imgs=pimgs(p); const n=Math.max(imgs.length,1);
+  const setIdx=(i)=>{
+    galleryIndex=((i%n)+n)%n;
+    const slide=track.children[galleryIndex];
+    if(slide) track.scrollTo({left:slide.offsetLeft, behavior:"smooth"});
+    document.querySelectorAll("#carDots button, #carThumbs button").forEach((b,idx)=>{
+      b.classList.toggle("on", idx===galleryIndex);
+    });
+    const el=$("#carIdx"); if(el) el.textContent=String(galleryIndex+1);
+  };
+  // init position without animation
+  requestAnimationFrame(()=>{
+    const slide=track.children[galleryIndex];
+    if(slide) track.scrollLeft=slide.offsetLeft;
+  });
+  track.addEventListener("scroll", ()=>{
+    const w=track.clientWidth||1;
+    const i=Math.round(track.scrollLeft/w);
+    if(i!==galleryIndex && i>=0 && i<n){
+      galleryIndex=i;
+      document.querySelectorAll("#carDots button, #carThumbs button").forEach((b,idx)=>b.classList.toggle("on", idx===galleryIndex));
+      const el=$("#carIdx"); if(el) el.textContent=String(galleryIndex+1);
+    }
+  }, {passive:true});
+  // loop: when scroll ends past last, jump to first after delay via nav
+  $("#sheetCard").onclick=null;
+  document.getElementById("sheetCard").addEventListener("click", function onSheet(e){
+    const nav=e.target.closest("[data-nav]");
+    if(nav){ setIdx(galleryIndex + (+nav.dataset.nav)); return; }
+    const dot=e.target.closest("[data-dot]");
+    if(dot){ setIdx(+dot.dataset.dot); return; }
+    const full=e.target.closest("[data-full]");
+    if(full){ openLightbox(full.dataset.full || full.getAttribute("src")); return; }
+    const add=e.target.closest("[data-add]");
+    if(add){ addToCart(+add.dataset.add); return; }
+    const open=e.target.closest("[data-open]");
+    if(open){ openSheet(+open.dataset.open, "full"); return; }
+    if(e.target.id==="closeSheet" || e.target.closest("#closeSheet")){
+      closeSheet(); return;
+    }
+  });
+  // expose setIdx for loop buttons already via data-nav wrapping
+  window.__naqaSetImg=setIdx;
 }
 
-function openProduct(id, m="full", reset=true){
+function openSheet(id, mode, reset){
   const p=products.find(x=>x.id===id); if(!p) return;
-  openProductId=id; mode=m;
-  if(reset) galleryIndex=0;
-  const sheet=$("#sheet");
-  sheet.classList.toggle("quick", m==="quick");
+  openProductId=id; sheetMode=mode||"full";
+  if(reset!==false) galleryIndex=0;
+  const imgs=pimgs(p);
   const sug=products.filter(x=>x.cat===p.cat && x.id!==p.id).slice(0,4);
   const cards=sug.map(s=>`
     <button class="sug" data-open="${s.id}" type="button">
@@ -437,68 +493,38 @@ function openProduct(id, m="full", reset=true){
       <span class="sug-name">${pname(s)}</span>
       <span class="sug-price">${money(s.price)}</span>
     </button>`).join("");
+  const qv=sheetMode==="qv";
+  $("#sheet").classList.toggle("qv", qv);
   $("#sheetCard").innerHTML=`
-    <div class="sheet-pad">
-      <p class="swipe-hint">${T("swipe")} · ${T("openImg")}</p>
-      <button class="text-back" id="closeSheet" type="button">‹ ${T("back")}</button>
-    </div>
+    <p class="swipe-hint">${T("swipe")}</p>
+    <button class="text-back" id="closeSheet" type="button">‹ ${T("back")}</button>
     ${carouselHTML(p, galleryIndex)}
-    <div class="sheet-body">
-      <div class="card-brand" style="margin-top:10px">${p.brand} · ${T(catLabel[p.cat]||"all")}</div>
-      <h3 style="margin:6px 0 4px">${pname(p)}</h3>
-      <div class="card-price">${money(p.price)}</div>
-      <div class="sku-line">${T("sku")}: ${p.sku||T("noSku")}</div>
-      <span class="skin-pill">${T("skinT")}: ${pskin(p)}</span>
+    <div class="card-brand" style="margin-top:12px">${p.brand} · ${T(catLabel[p.cat]||"all")}</div>
+    <h3 style="margin:6px 0 4px">${pname(p)}</h3>
+    <div class="card-price">${money(p.price)}</div>
+    <div class="sku-line">${T("sku")}: ${p.sku || T("noSku")}</div>
+    <span class="skin-pill">${T("skinT")}: ${pskin(p)}</span>
+    ${qv? `<p class="long" style="margin-top:12px">${pdesc(p)}</p>` : `
       <h4 class="block-h">${T("about")}</h4>
       <p class="long">${pdesc(p)}</p>
-      ${m==="full"?`<h4 class="block-h">${T("how")}</h4><p class="long">${puse(p)}</p>`:""}
-    </div>
-    <button class="card-add" data-add="${p.id}" type="button">${T("add")}</button>
-    ${m==="full"?`<h4 class="block-h" style="padding:0 16px">${T("also")}</h4><div class="sug-row">${cards}</div>`:
-      `<div class="sheet-pad"><button class="btn btn-ghost" data-open-full="${p.id}" type="button" style="width:100%;border:1px solid var(--line);margin-top:8px">${T("open")}</button></div>`}
-  `;
-  sheet.classList.add("show");
+      <h4 class="block-h">${T("how")}</h4>
+      <p class="long">${puse(p)}</p>
+      <h4 class="block-h">${T("also")}</h4>
+      <div class="sug-row">${cards}</div>
+    `}
+    <div class="sheet-actions">
+      <button class="btn-add card-add" data-add="${p.id}" type="button">${T("add")}</button>
+      ${qv? `<button class="btn-open" data-open="${p.id}" type="button">${T("open")}</button>`:""}
+    </div>`;
+  $("#sheet").classList.add("show");
   $("#sheetCard").scrollTop=0;
-  setCarousel(galleryIndex);
-  $("#closeSheet").onclick=closeSheet;
-  bindCarousel();
-  try{ if(m==="full") history.pushState({naqa:"product",id},""); }catch(e){}
-}
-
-function bindCarousel(){
-  const car=$("#carousel"); if(!car) return;
-  car.querySelectorAll("[data-nav]").forEach(b=>b.onclick=()=>setCarousel(galleryIndex+(+b.dataset.nav)));
-  car.querySelectorAll("[data-dot]").forEach(b=>b.onclick=()=>setCarousel(+b.dataset.dot));
-  // swipe photos
-  let x0=null,y0=null,dx=0;
-  const track=$("#carTrack");
-  track.addEventListener("touchstart",e=>{
-    const t=e.changedTouches[0]; x0=t.clientX; y0=t.clientY; dx=0; track.classList.add("dragging");
-  },{passive:true});
-  track.addEventListener("touchmove",e=>{
-    if(x0==null) return;
-    const t=e.changedTouches[0];
-    if(Math.abs(t.clientY-y0)>Math.abs(t.clientX-x0)+8) return;
-    dx=t.clientX-x0;
-    const base=-galleryIndex*car.offsetWidth;
-    track.style.transform=`translateX(${base+dx}px)`;
-  },{passive:true});
-  track.addEventListener("touchend",()=>{
-    track.classList.remove("dragging");
-    if(Math.abs(dx)>40){ setCarousel(galleryIndex+(dx<0?1:-1)); }
-    else setCarousel(galleryIndex);
-    x0=null; dx=0;
-  },{passive:true});
-  // tap image to lightbox
-  car.addEventListener("click",e=>{
-    const img=e.target.closest("img[data-full]");
-    if(img) openLightbox(img.dataset.full||img.src);
-  });
+  bindCarousel(p);
+  try{ if(!history.state || history.state.naqa!=="product") history.pushState({naqa:"product",id},""); }catch(e){}
 }
 
 function closeSheet(){
   $("#sheet").classList.remove("show");
-  $("#sheet").classList.remove("quick");
+  $("#sheet").classList.remove("qv");
   openProductId=null;
   const card=$("#sheetCard");
   if(card){ card.style.transform=""; card.style.transition=""; }
@@ -514,16 +540,34 @@ function closeLightbox(){
   $("#lbImg").removeAttribute("src");
 }
 
+function addToCart(id){
+  const p=products.find(x=>x.id===id); if(!p) return;
+  const row=cart.find(x=>x.id===id);
+  if(row) row.qty++; else cart.push({id:p.id, brand:p.brand, price:p.price, sku:p.sku, qty:1});
+  saveCart(); renderCart();
+}
+
 function renderCart(){
   const n=cart.reduce((s,i)=>s+i.qty,0);
+  const total=cart.reduce((s,i)=>s+i.price*i.qty,0);
   const badge=$("#cartBadge");
-  if(n){badge.hidden=false; badge.textContent=n;} else badge.hidden=true;
+  if(n){ badge.hidden=false; badge.textContent=n; } else badge.hidden=true;
   const bar=$("#cartBar");
-  if(n){ bar.classList.remove("hidden"); $("#cartBarInfo").innerHTML=T("barItems")(n)+"<br><span>"+money(cart.reduce((s,i)=>s+i.price*i.qty,0))+"</span>"; }
-  else bar.classList.add("hidden");
+  if(n){
+    bar.classList.remove("empty-bar");
+    $("#barTitle").textContent=T("barItems")(n);
+    $("#barSub").textContent=money(total);
+    $("#barGo").textContent=T("barCheckout");
+  } else {
+    bar.classList.add("empty-bar");
+    $("#barTitle").textContent=T("barEmpty");
+    $("#barSub").textContent=T("barHint");
+    $("#barGo").textContent=T("barOpen");
+  }
   if(!cart.length){
     $("#cartBody").innerHTML=`<div class="cart-empty">${T("emptyCart")}</div>`;
-    $("#cartTotal").textContent=money(0); return;
+    $("#cartTotal").textContent=money(0);
+    return;
   }
   $("#cartBody").innerHTML=cart.map(i=>{
     const p=products.find(x=>x.id===i.id)||i;
@@ -533,95 +577,90 @@ function renderCart(){
         <strong>${pname(p)}</strong>
         <span>${money(i.price)} · ${p.brand||""}</span>
         <div class="sku-line">${T("sku")}: ${p.sku||"—"}</div>
-        <button class="rm" data-rm="${i.id}">${T("del")}</button>
+        <button class="rm" data-rm="${i.id}" type="button">${T("del")}</button>
       </div>
       <div class="qty">
-        <button data-dec="${i.id}">−</button><b>${i.qty}</b><button data-inc="${i.id}">+</button>
+        <button data-dec="${i.id}" type="button">−</button>
+        <b>${i.qty}</b>
+        <button data-inc="${i.id}" type="button">+</button>
       </div>
     </div>`;
   }).join("");
-  $("#cartTotal").textContent=money(cart.reduce((s,i)=>s+i.price*i.qty,0));
+  $("#cartTotal").textContent=money(total);
 }
 
-function addToCart(id){
-  const p=products.find(x=>x.id===id); if(!p) return;
-  const row=cart.find(x=>x.id===id);
-  if(row) row.qty++; else cart.push({id:p.id,brand:p.brand,price:p.price,sku:p.sku,qty:1});
-  saveCart(); renderCart();
-}
-function openCart(){$("#overlay").classList.add("show"); $("#drawer").classList.add("show")}
-function closeCart(){$("#overlay").classList.remove("show"); $("#drawer").classList.remove("show")}
+function openCart(){ $("#overlay").classList.add("show"); $("#drawer").classList.add("show"); }
+function closeCart(){ $("#overlay").classList.remove("show"); $("#drawer").classList.remove("show"); }
 
-$("#grid").addEventListener("click",e=>{
-  const add=e.target.closest("[data-add]"); if(add){addToCart(+add.dataset.add); return}
-  const q=e.target.closest("[data-quick]"); if(q){openProduct(+q.dataset.quick,"quick"); return}
-  const o=e.target.closest("[data-open]"); if(o){openProduct(+o.dataset.open,"full"); return}
+$("#grid").addEventListener("click", e=>{
+  const add=e.target.closest("[data-add]"); if(add){ addToCart(+add.dataset.add); return; }
+  const qv=e.target.closest("[data-qv]"); if(qv){ openSheet(+qv.dataset.qv, "qv"); return; }
+  const open=e.target.closest("[data-open]"); if(open){ openSheet(+open.dataset.open, "full"); return; }
 });
-$("#sheet").addEventListener("click",e=>{
-  if(e.target.id==="sheet"){closeSheet(); return}
-  const add=e.target.closest("[data-add]"); if(add){addToCart(+add.dataset.add); return}
-  const full=e.target.closest("[data-open-full]"); if(full){openProduct(+full.dataset.openFull,"full"); return}
-  const o=e.target.closest("[data-open]"); if(o && e.target.closest("#sheetCard")){openProduct(+o.dataset.open,"full"); return}
-});
-$("#cartBody").addEventListener("click",e=>{
+$("#cartBody").addEventListener("click", e=>{
   const inc=e.target.closest("[data-inc]"); const dec=e.target.closest("[data-dec]"); const rm=e.target.closest("[data-rm]");
-  if(inc){const it=cart.find(i=>i.id===+inc.dataset.inc); if(it)it.qty++; saveCart(); renderCart()}
-  if(dec){const it=cart.find(i=>i.id===+dec.dataset.dec); if(it){it.qty--; if(it.qty<=0)cart=cart.filter(x=>x.id!==it.id)} saveCart(); renderCart()}
-  if(rm){cart=cart.filter(i=>i.id!==+rm.dataset.rm); saveCart(); renderCart()}
+  if(inc){ const it=cart.find(i=>i.id===+inc.dataset.inc); if(it) it.qty++; saveCart(); renderCart(); }
+  if(dec){ const it=cart.find(i=>i.id===+dec.dataset.dec); if(it){ it.qty--; if(it.qty<=0) cart=cart.filter(x=>x.id!==it.id);} saveCart(); renderCart(); }
+  if(rm){ cart=cart.filter(x=>x.id!==+rm.dataset.rm); saveCart(); renderCart(); }
 });
 $("#cartBtn").onclick=openCart;
-$("#cartBarBtn").onclick=openCart;
 $("#closeCart").onclick=closeCart;
 $("#overlay").onclick=closeCart;
-$("#search").addEventListener("input",e=>{query=e.target.value.trim(); render()});
-$("#langBtn").onclick=()=>{lang=lang==="ar"?"en":"ar"; try{localStorage.setItem("naqa_lang",lang)}catch(e){} render()};
-$("#cats").addEventListener("click",e=>{
-  const a=e.target.closest("[data-cat]"); if(!a)return; e.preventDefault();
+$("#barGo").onclick=()=>{ if(cart.length) openCart(); else openCart(); };
+$("#search").addEventListener("input", e=>{ query=e.target.value.trim(); render(); });
+$("#langBtn").onclick=()=>{ lang=lang==="ar"?"en":"ar"; try{localStorage.setItem("naqa_lang",lang)}catch(e){} render(); };
+$("#cats").addEventListener("click", e=>{
+  const a=e.target.closest("[data-cat]"); if(!a) return; e.preventDefault();
   document.querySelectorAll("#cats a").forEach(x=>x.classList.remove("on")); a.classList.add("on");
   currentCat=a.dataset.cat; render(); $("#products").scrollIntoView({behavior:"smooth"});
 });
-document.querySelectorAll("[data-cat-jump]").forEach(el=>el.addEventListener("click",e=>{
-  e.preventDefault(); currentCat=el.dataset.catJump;
-  document.querySelectorAll("#cats a").forEach(x=>x.classList.toggle("on", x.dataset.cat===currentCat));
-  render(); $("#products").scrollIntoView({behavior:"smooth"});
-}));
+document.querySelectorAll("[data-cat-jump]").forEach(el=>{
+  el.addEventListener("click", e=>{
+    e.preventDefault(); currentCat=el.dataset.catJump;
+    document.querySelectorAll("#cats a").forEach(x=>x.classList.toggle("on", x.dataset.cat===currentCat));
+    render(); $("#products").scrollIntoView({behavior:"smooth"});
+  });
+});
 $("#checkoutBtn").onclick=()=>{
-  if(!cart.length){alert(T("alertEmpty")); return}
-  const lines=cart.map(i=>{const p=products.find(x=>x.id===i.id)||i;
-    return "• "+pname(p)+" × "+i.qty+" = "+money(i.price*i.qty)+" ["+T("sku")+" "+(p.sku||"—")+"]"}).join("\n");
+  if(!cart.length){ alert(T("alertEmpty")); return; }
+  const lines=cart.map(i=>{
+    const p=products.find(x=>x.id===i.id)||i;
+    return "• "+pname(p)+" × "+i.qty+" = "+money(i.price*i.qty)+" ["+T("sku")+" "+(p.sku||"—")+"]";
+  }).join("\n");
   const total=cart.reduce((s,i)=>s+i.price*i.qty,0);
   const msg=T("greet")+" ("+SITE+"):\n\n"+lines+"\n\n"+T("total")+": "+money(total);
   window.open("https://wa.me/"+WA_NUMBER+"?text="+encodeURIComponent(msg),"_blank");
 };
 $("#lbClose").onclick=closeLightbox;
-$("#lightbox").addEventListener("click",e=>{if(e.target.id==="lightbox"||e.target.id==="lbClose")closeLightbox()});
+$("#lightbox").addEventListener("click", e=>{ if(e.target.id==="lightbox"||e.target.id==="lbClose") closeLightbox(); });
 
-// edge swipe back (left → right)
+/* edge swipe back */
 (function(){
   let x0=null,y0=null,tracking=false;
   const sheet=$("#sheet"), card=$("#sheetCard");
-  sheet.addEventListener("touchstart",e=>{
-    if(!sheet.classList.contains("show")||$("#lightbox").classList.contains("show"))return;
-    const t=e.changedTouches[0]; if(t.clientX>32){x0=null;return}
+  sheet.addEventListener("touchstart", e=>{
+    if(!sheet.classList.contains("show") || $("#lightbox").classList.contains("show")) return;
+    const t=e.changedTouches[0];
+    if(t.clientX>32){x0=null;return;}
     x0=t.clientX; y0=t.clientY; tracking=true; card.style.transition="none";
   },{passive:true});
-  sheet.addEventListener("touchmove",e=>{
-    if(!tracking||x0==null)return;
+  sheet.addEventListener("touchmove", e=>{
+    if(!tracking||x0==null) return;
     const t=e.changedTouches[0]; const dx=t.clientX-x0; const dy=Math.abs(t.clientY-y0);
-    if(dy>48 && Math.abs(dx)<24){tracking=false; card.style.transform=""; return}
+    if(dy>48 && Math.abs(dx)<24){tracking=false; card.style.transform=""; return;}
     if(dx>0) card.style.transform="translateX("+Math.min(dx,140)+"px)";
   },{passive:true});
-  sheet.addEventListener("touchend",e=>{
-    if(!tracking||x0==null)return;
+  sheet.addEventListener("touchend", e=>{
+    if(!tracking||x0==null) return;
     const dx=e.changedTouches[0].clientX-x0; tracking=false; x0=null;
     card.style.transition="transform .22s ease";
     if(dx>72) closeSheet(); else card.style.transform="";
   },{passive:true});
 })();
 
-window.addEventListener("popstate",()=>{
-  if($("#lightbox").classList.contains("show")){closeLightbox(); return}
-  if($("#sheet").classList.contains("show")){closeSheet(); return}
+window.addEventListener("popstate", ()=>{
+  if($("#lightbox").classList.contains("show")){ closeLightbox(); return; }
+  if($("#sheet").classList.contains("show")){ closeSheet(); return; }
 });
 
 function boot(){
@@ -630,7 +669,7 @@ function boot(){
     const wa="https://wa.me/"+WA_NUMBER;
     $("#waFooter").href=wa; $("#waFloat").href=wa; $("#waHero").href=wa;
     $("#yr").textContent=new Date().getFullYear();
-    try{history.replaceState({naqa:"home"},"")}catch(e){}
+    try{history.replaceState({naqa:"home"},"");}catch(e){}
     render();
   }catch(err){
     const b=document.createElement("div");
@@ -639,7 +678,7 @@ function boot(){
     document.body.prepend(b);
   }
 }
-if(document.readyState==="loading") document.addEventListener("DOMContentLoaded",boot); else boot();
+if(document.readyState==="loading") document.addEventListener("DOMContentLoaded", boot); else boot();
 </script>
 </body>
 </html>

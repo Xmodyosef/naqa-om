@@ -29,3 +29,7 @@
 - رقم واتساب → `js/config.js`
 - شكل/ألوان → `css/naqa.css`
 - نظرة سريعة / سحب → `js/sheet.js` و `js/app.js`
+
+## هيكل الملفات
+
+انظر [docs/STRUCTURE.md](docs/STRUCTURE.md) و [docs/ADMIN.md](docs/ADMIN.md).

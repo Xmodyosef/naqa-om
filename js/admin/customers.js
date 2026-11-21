@@ -33,17 +33,22 @@
     }
     var head =
       '<div class="panel"><h2>العملاء (' + Object.keys(map).length + ')</h2>'
-      + '<p class="note">مجمّعين من الطلبات — بحث بالاسم أو الجوال أو المنطقة.</p>'
+      + '<p class="note">مجمّعين من الطلبات — بحث ونسخ وواتساب.</p>'
       + '<input id="custQ" type="search" placeholder="ابحثي عن زبونة…" value="' + A.esc(A._customerQuery || "") + '" style="width:100%;border:1px solid #efe4df;border-radius:12px;padding:12px;margin-top:8px" />'
+      + '<div class="status-bar" style="margin-top:8px">'
+      + '<button type="button" class="mini" id="copyCustomers">نسخ قائمة العملاء</button>'
+      + '<button type="button" class="mini" id="waCustomers" style="background:#25D366;color:#fff">واتساب القائمة</button>'
+      + '</div>'
+      + '<p class="status" id="custStatus"></p>'
       + '</div>';
     if (!Object.keys(map).length) {
       box.innerHTML = head + '<p class="note">ما في عملاء بعد. أول طلب غير ملغي يظهر هنا.</p>';
-      bindCustSearch();
+      bindCust();
       return;
     }
     if (!list.length) {
       box.innerHTML = head + '<p class="note">ما في نتائج للبحث.</p>';
-      bindCustSearch();
+      bindCust();
       return;
     }
     box.innerHTML = head + list.map(function (c) {
@@ -56,21 +61,31 @@
         + (phoneDigits ? ('<a class="mini" style="background:#25D366;color:#fff;text-decoration:none" href="https://wa.me/968' + A.esc(phoneDigits) + '" target="_blank" rel="noopener">واتساب</a>') : "")
         + "</div>";
     }).join("");
-    bindCustSearch();
+    bindCust();
   };
-  function bindCustSearch() {
+  function bindCust() {
     var el = document.getElementById("custQ");
-    if (!el || el._bound) return;
-    el._bound = true;
-    el.addEventListener("input", function () {
-      A._customerQuery = el.value;
-      A.paintCustomers();
-      var again = document.getElementById("custQ");
-      if (again) {
-        again.focus();
-        var len = again.value.length;
-        try { again.setSelectionRange(len, len); } catch (e) {}
-      }
-    });
+    if (el && !el._bound) {
+      el._bound = true;
+      el.addEventListener("input", function () {
+        A._customerQuery = el.value;
+        A.paintCustomers();
+        var again = document.getElementById("custQ");
+        if (again) {
+          again.focus();
+          try { again.setSelectionRange(again.value.length, again.value.length); } catch (e) {}
+        }
+      });
+    }
+    var cc = document.getElementById("copyCustomers");
+    if (cc && !cc._bound) {
+      cc._bound = true;
+      cc.onclick = function () { A.copyText(A.buildCustomersReport(), "custStatus"); };
+    }
+    var wc = document.getElementById("waCustomers");
+    if (wc && !wc._bound) {
+      wc._bound = true;
+      wc.onclick = function () { A.waShareText(A.buildCustomersReport()); };
+    }
   }
 })(window);

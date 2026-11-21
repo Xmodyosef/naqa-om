@@ -24,6 +24,20 @@
     } catch (e) {}
     A.orders.forEach(function (o) { o.status = A.normalizeStatus(o.status); });
     A.paintStatusBar();
+    var tools = document.getElementById("ordersTools");
+    if (tools && !tools._ready) {
+      tools._ready = true;
+      tools.innerHTML =
+        '<button type="button" class="mini" id="copyAllOrders">نسخ كل الطلبات</button>'
+        + '<button type="button" class="mini" id="copyNewOrders">نسخ الجديدة فقط</button>'
+        + '<button type="button" class="mini" id="waOrdersReport" style="background:#25D366;color:#fff">واتساب الملخص</button>';
+      tools.addEventListener("click", function (e) {
+        var t = e.target;
+        if (t.id === "copyAllOrders") A.copyText(A.buildOrdersReport("all"), "orderStatus");
+        if (t.id === "copyNewOrders") A.copyText(A.buildOrdersReport("new"), "orderStatus");
+        if (t.id === "waOrdersReport") A.waShareText(A.buildOrdersReport(A.orderFilter === "all" ? "new" : A.orderFilter));
+      });
+    }
     var box = document.getElementById("ordersList");
     if (!box) return;
     var list = A.orders.filter(function (o) {

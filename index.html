@@ -77,7 +77,21 @@ header{position:sticky;top:0;z-index:60;background:rgba(253,248,246,.94);
   overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column;
   content-visibility:auto;contain-intrinsic-size:320px 420px}
 .card-visual{aspect-ratio:1;background:#fff;position:relative;overflow:hidden}
-.card-visual img{width:100%;height:100%;object-fit:contain;background:#fff}
+.card-visual img{width:100%;height:100%;object-fit:contain;background:#faf7f5;padding:12px;box-sizing:border-box}
+
+.tag-off{position:absolute;top:10px;inset-inline-start:10px;z-index:3;background:#b05c6e;color:#fff;font-weight:800;font-size:.72rem;padding:4px 9px;border-radius:999px;pointer-events:none}
+.tag-hot{position:absolute;top:10px;inset-inline-end:10px;z-index:3;background:#1f1a17;color:#fff;font-weight:800;font-size:.68rem;padding:4px 9px;border-radius:999px;pointer-events:none}
+.shelf{margin:8px 0 22px}
+.shelf-head{display:flex;align-items:center;justify-content:space-between;margin:0 0 10px;gap:8px}
+.shelf-head h3{margin:0;font-size:1.05rem;font-weight:800}
+.shelf-head button{background:none;border:none;color:var(--rose-deep);font-weight:800;font-size:.88rem;cursor:pointer;font-family:inherit}
+.shelf-row{display:flex;gap:12px;overflow-x:auto;padding:2px 2px 12px;-webkit-overflow-scrolling:touch;scroll-snap-type:x mandatory}
+.shelf-row::-webkit-scrollbar{height:4px}
+.shelf-row .card{min-width:210px;max-width:210px;scroll-snap-align:start;flex-shrink:0}
+.brand-logo{width:32px;height:32px;border-radius:10px;object-fit:contain;background:#fff;border:1px solid var(--line);padding:2px}
+.brand-mono{width:32px;height:32px;border-radius:10px;display:inline-grid;place-items:center;background:linear-gradient(135deg,#f3e2e6,#fff);color:var(--rose-deep);font-weight:800;font-size:.72rem;border:1px solid var(--line)}
+.carousel-track img,.lightbox img{image-rendering:auto}
+
 .price-badge{position:absolute;bottom:8px;inset-inline-start:8px;z-index:3;
   background:rgba(31,26,23,.9);color:#fff;font-weight:800;font-size:.78rem;
   padding:5px 10px;border-radius:999px;pointer-events:none}
@@ -258,6 +272,7 @@ footer{margin-top:40px;padding:28px 0 24px;border-top:1px solid var(--line);colo
       <a class="btn btn-ghost" id="waHero" href="#" target="_blank" rel="noopener">واتساب نقاء</a>
     </div>
   </section>
+  <div id="shelves"></div>
   <div class="section-head">
     <h2 id="products">المنتجات</h2>
     <div class="section-tools">
@@ -326,7 +341,7 @@ footer{margin-top:40px;padding:28px 0 24px;border-top:1px solid var(--line);colo
   <img id="lbImg" alt="">
 </div>
 
-<script src="products.js?v=20261121e"></script>
+<script src="products.js?v=20261121f"></script>
 <script>
 const WA_NUMBER="96879088349", CURRENCY="ر.ع", SITE="www.naqa.om";
 
@@ -335,8 +350,14 @@ const BRAND_DOMAIN={
 };
 function brandMark(brand){
   const d=BRAND_DOMAIN[brand]||"";
-  const img=d?'<img class="brand-logo" alt="" src="https://www.google.com/s2/favicons?domain='+encodeURIComponent(d)+String.fromCharCode(38)+'sz=128" onerror="this.remove()">':'';
-  return '<button type="button" class="brand-link" data-brand="'+esc(brand)+'">'+img+'<span>'+esc(brand)+'</span></button>';
+  const initials=String(brand||"?").replace(/[^A-Za-z\u0600-\u06FF0-9]/g,"").slice(0,2).toUpperCase()||"•";
+  let mark;
+  if(d){
+    mark='<img class="brand-logo" alt="" width="32" height="32" loading="lazy" src="https://www.google.com/s2/favicons?domain='+encodeURIComponent(d)+String.fromCharCode(38)+'sz=256" onerror="this.replaceWith(Object.assign(document.createElement(\'span\'),{className:\'brand-mono\',textContent:this.dataset.i}))" data-i="'+esc(initials)+'">';
+  } else {
+    mark='<span class="brand-mono" aria-hidden="true">'+esc(initials)+'</span>';
+  }
+  return '<button type="button" class="brand-link" data-brand="'+esc(brand)+'">'+mark+'<span>'+esc(brand)+'</span></button>';
 }
 function routeHash(){ return decodeURIComponent((location.hash||"").replace(/^#/,"")); }
 function applyRoute(){
@@ -396,8 +417,8 @@ const ui={
   ship:"توصيل عُمان", order:"طلب واتساب", contact:"تواصلي", shopH:"التسوق", orders:"واتساب الطلبات",
   skin:"عناية", faceL:"وجه", hairL:"شعر", blurb:"عناية ومكياج · متجر عُماني", copy:"نقاء · Naqa · عُمان",
   about:"عن المنتج", how:"طريقة الاستعمال", skinT:"يناسب", also:"قد يعجبكِ أيضاً", same:"باقي منتجات الماركة", back:"رجوع",
-  sku:"SKU", logo:"نقاء", tag:"عناية ومكياج", shipBar:"توصيل داخل عُمان · الطلب عبر واتساب", sortNew:"الأحدث", sortLow:"الأقل سعراً", sortHigh:"الأعلى سعراً", sortOff:"الأعلى خصماً", swipe:"اسحبي من اليسار لليمين للرجوع · مرّري الصور يمين/يسار",
-  openImg:"اضغطي الصورة للتكبير", barEmpty:"السلة فاضية", barHint:"أضيفي منتجات من القائمة", barItems:n=>n+" منتج في السلة", barOpen:"افتحي السلة", barCheckout:"إتمام الطلب"
+  sku:"SKU", logo:"نقاء", tag:"عناية ومكياج", shipBar:"خصم ٣٠٪ · عروض نهاية السنة · توصيل عُمان", sortNew:"الأحدث", sortLow:"الأقل سعراً", sortHigh:"الأعلى سعراً", sortOff:"الأعلى خصماً", swipe:"اسحبي من اليسار لليمين للرجوع · مرّري الصور يمين/يسار",
+  openImg:"اضغطي الصورة للتكبير", barEmpty:"السلة فاضية", barHint:"أضيفي منتجات من القائمة", barItems:n=>n+" منتج في السلة", barOpen:"افتحي السلة", barCheckout:"إتمام الطلب", hot:"الأكثر مبيعاً", year:"عروض نهاية السنة", viewAll:"عرض الكل", offTag:n=>"−"+n+"%"
  },
  en:{
   search:"Search...",
@@ -411,8 +432,8 @@ const ui={
   ship:"Oman delivery", order:"WhatsApp order", contact:"Contact", shopH:"Shop", orders:"Order on WhatsApp",
   skin:"Skincare", faceL:"Face", hairL:"Hair", blurb:"Care and makeup · Oman store", copy:"Naqa · Oman",
   about:"About", how:"How to use", skinT:"Best for", also:"You may also like", same:"More from this brand", back:"Back",
-  sku:"SKU", logo:"Naqa", tag:"Care & Makeup", shipBar:"Delivery across Oman · order on WhatsApp", sortNew:"Newest", sortLow:"Lowest price", sortHigh:"Highest price", sortOff:"Biggest discount", swipe:"Swipe left-edge to go back · swipe images sideways",
-  openImg:"Tap image to enlarge", barEmpty:"Cart is empty", barHint:"Add products from the list", barItems:n=>n+" items in cart", barOpen:"Open cart", barCheckout:"Checkout"
+  sku:"SKU", logo:"Naqa", tag:"Care & Makeup", shipBar:"30% off · Year-end deals · Oman delivery", sortNew:"Newest", sortLow:"Lowest price", sortHigh:"Highest price", sortOff:"Biggest discount", swipe:"Swipe left-edge to go back · swipe images sideways",
+  openImg:"Tap image to enlarge", barEmpty:"Cart is empty", barHint:"Add products from the list", barItems:n=>n+" items in cart", barOpen:"Open cart", barCheckout:"Checkout", hot:"Best sellers", year:"Year-end deals", viewAll:"View all", offTag:n=>"−"+n+"%"
  }
 };
 const catLabel={all:"all","عناية":"care","وجه":"face","عيون":"eyes","حواجب":"brows","شفاه":"lips","عطور":"scent","أدوات":"tools","شعر":"hair"};
@@ -438,8 +459,53 @@ function priceHTML(p){
 
 function visual(p, idx){
   const imgs=pimgs(p); const i=idx||0;
-  if(imgs[i]) return '<img src="'+imgs[i]+'" alt="'+pname(p)+'" loading="lazy" decoding="async">';
+  if(imgs[i]){
+    const pri=i===0?' loading="lazy" decoding="async"':' loading="lazy" decoding="async"';
+    return '<img src="'+imgs[i]+'" alt="'+esc(pname(p))+'"'+pri+'>';
+  }
   return '<span style="font-size:2rem;display:grid;place-items:center;height:100%">'+ (p.em||'✨') +'</span>';
+}
+function cardHTML(p){
+  const pct=offPct(p);
+  const tags=(pct?'<span class="tag-off">'+esc(T("offTag")(pct))+'</span>':'')+(p.hot?'<span class="tag-hot">'+esc(T("hot"))+'</span>':'');
+  const qty=(cart.find(c=>c.id===p.id)||{}).qty;
+  return '<article class="card" data-id="'+p.id+'">'
+    +'<div class="card-visual" data-open="'+p.id+'">'
+    +'<span class="card-cart-chip'+(qty?' show':'')+'" data-chip="'+p.id+'">'+(qty?('×'+qty):'')+'</span>'
+    +tags+visual(p,0)+'</div>'
+    +'<div class="card-body">'
+    +brandMark(p.brand)
+    +'<div class="card-brand">'+esc(T(catLabel[p.cat]||"all"))+'</div>'
+    +'<button class="card-name" data-open="'+p.id+'" type="button">'+esc(pname(p))+'</button>'
+    +'<div class="card-desc">'+esc(pdesc(p))+'</div>'
+    +'<div class="card-code">'+T("sku")+': '+(p.sku||T("noSku"))+'</div>'
+    +priceHTML(p)
+    +'<div class="card-actions">'
+    +'<button class="btn-qv" data-qv="'+p.id+'" type="button">'+T("qv")+'</button>'
+    +'<button class="btn-add" data-add="'+p.id+'" type="button">'+T("add")+'</button>'
+    +'<button class="btn-open" data-open="'+p.id+'" type="button">'+T("open")+'</button>'
+    +'</div></div></article>';
+}
+function renderShelves(){
+  const box=$("#shelves");
+  if(!box) return;
+  const show=!query && currentCat==="all" && !currentBrand;
+  if(!show){ box.innerHTML=""; box.hidden=true; return; }
+  box.hidden=false;
+  const hot=products.filter(p=>p.hot).slice(0,12);
+  const year=products.filter(p=>p.was>p.price).sort((a,b)=>offPct(b)-offPct(a)).slice(0,16);
+  let html="";
+  if(hot.length){
+    html+='<section class="shelf"><div class="shelf-head"><h3 id="hotTitle">'+T("hot")+'</h3>'
+      +'<button type="button" data-shelf="hot">'+T("viewAll")+'</button></div>'
+      +'<div class="shelf-row">'+hot.map(cardHTML).join("")+'</div></section>';
+  }
+  if(year.length){
+    html+='<section class="shelf"><div class="shelf-head"><h3 id="yearTitle">'+T("year")+'</h3>'
+      +'<button type="button" data-shelf="year">'+T("viewAll")+'</button></div>'
+      +'<div class="shelf-row">'+year.map(cardHTML).join("")+'</div></section>';
+  }
+  box.innerHTML=html;
 }
 
 function applyLang(){
@@ -503,26 +569,8 @@ function render(){
   $("#countLabel").textContent=T("count")(list.length);
   $("#empty").hidden=list.length>0;
   $("#empty").textContent=T("empty");
-  $("#grid").innerHTML=list.map(p=>`
-    <article class="card" data-id="${p.id}">
-      <div class="card-visual" data-open="${p.id}">
-        <span class="card-cart-chip${(cart.find(c=>c.id===p.id)||{}).qty?' show':''}" data-chip="${p.id}">${(cart.find(c=>c.id===p.id)||{}).qty?('×'+(cart.find(c=>c.id===p.id).qty)):''}</span>
-        ${visual(p,0)}
-      </div>
-      <div class="card-body">
-        ${brandMark(p.brand)}
-        <div class="card-brand">${T(catLabel[p.cat]||"all")}</div>
-        <button class="card-name" data-open="${p.id}" type="button">${esc(pname(p))}</button>
-        <div class="card-desc">${esc(pdesc(p))}</div>
-        <div class="card-code">${T("sku")}: ${p.sku||T("noSku")}</div>
-        ${priceHTML(p)}
-        <div class="card-actions">
-          <button class="btn-qv" data-qv="${p.id}" type="button">${T("qv")}</button>
-          <button class="btn-add" data-add="${p.id}" type="button">${T("add")}</button>
-          <button class="btn-open" data-open="${p.id}" type="button">${T("open")}</button>
-        </div>
-      </div>
-    </article>`).join("");
+  $("#grid").innerHTML=list.map(cardHTML).join("");
+  renderShelves();
   renderCart();
   if(openProductId) openSheet(openProductId, sheetMode, false);
 }
@@ -819,10 +867,14 @@ function renderCart(){
 function openCart(){ $("#overlay").classList.add("show"); $("#drawer").classList.add("show"); }
 function closeCart(){ $("#overlay").classList.remove("show"); $("#drawer").classList.remove("show"); }
 
-$("#grid").addEventListener("click", e=>{
+function onCatalogClick(e){
   const add=e.target.closest("[data-add]"); if(add){ addToCart(+add.dataset.add); return; }
   const qv=e.target.closest("[data-qv]"); if(qv){ openSheet(+qv.dataset.qv, "qv"); return; }
   const open=e.target.closest("[data-open]"); if(open){ openSheet(+open.dataset.open, "full"); return; }
+}
+$("#grid").addEventListener("click", onCatalogClick);
+document.addEventListener("click", e=>{
+  if(e.target.closest("#shelves")) onCatalogClick(e);
 });
 $("#cartBody").addEventListener("click", e=>{
   const inc=e.target.closest("[data-inc]"); const dec=e.target.closest("[data-dec]"); const rm=e.target.closest("[data-rm]");
@@ -838,6 +890,16 @@ $("#search").addEventListener("input", e=>{ query=e.target.value.trim(); render(
 $("#sortSel").addEventListener("change", e=>{ currentSort=e.target.value; render(); });
 
 document.addEventListener("click", e=>{
+  const sh=e.target.closest("[data-shelf]");
+  if(sh){
+    e.preventDefault();
+    if(sh.dataset.shelf==="year"){ currentSort="off"; currentCat="all"; currentBrand=""; query=""; const search=$("#search"); if(search) search.value=""; const sel=$("#sortSel"); if(sel) sel.value="off"; }
+    if(sh.dataset.shelf==="hot"){ currentSort="new"; currentCat="all"; currentBrand=""; query=""; const search=$("#search"); if(search) search.value=""; }
+    document.querySelectorAll("#cats a").forEach(x=>x.classList.toggle("on", x.dataset.cat==="all"));
+    render();
+    const prod=$("#products"); if(prod) prod.scrollIntoView({behavior:"smooth"});
+    return;
+  }
   const b=e.target.closest("[data-brand]");
   if(!b || !b.dataset.brand) return;
   e.preventDefault();

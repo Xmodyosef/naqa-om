@@ -587,6 +587,67 @@ $("#checkoutBtn").onclick = () => {
 };
 
 
+
+function openLightbox(src){
+  if (!src) return;
+  const lb = document.getElementById("lightbox");
+  const img = document.getElementById("lbImg");
+  if (!lb || !img) return;
+  img.src = src;
+  lb.classList.add("show");
+  lb.setAttribute("aria-hidden","false");
+}
+function closeLightbox(){
+  const lb = document.getElementById("lightbox");
+  if (!lb) return;
+  lb.classList.remove("show");
+  lb.setAttribute("aria-hidden","true");
+  const img = document.getElementById("lbImg");
+  if (img) img.removeAttribute("src");
+}
+(function setupSwipeBack(){
+  let x0=null, y0=null, tracking=false;
+  const sheet = document.getElementById("sheet");
+  const card = document.getElementById("sheetCard");
+  if (!sheet || !card) return;
+  function closeSheet(){
+    sheet.classList.remove("show");
+    openProductId = null;
+    card.style.transform = "";
+    card.style.transition = "";
+  }
+  window.__naqaCloseSheet = closeSheet;
+  sheet.addEventListener("touchstart", e => {
+    if (!sheet.classList.contains("show")) return;
+    if (document.getElementById("lightbox")?.classList.contains("show")) return;
+    const touch = e.changedTouches[0];
+    if (touch.clientX > 32) { x0=null; return; }
+    x0 = touch.clientX; y0 = touch.clientY; tracking = true;
+    card.style.transition = "none";
+  }, {passive:true});
+  sheet.addEventListener("touchmove", e => {
+    if (!tracking || x0==null) return;
+    const touch = e.changedTouches[0];
+    const dx = touch.clientX - x0;
+    const dy = Math.abs(touch.clientY - y0);
+    if (dy > 48 && Math.abs(dx) < 24) { tracking=false; card.style.transform=""; return; }
+    if (dx > 0) card.style.transform = "translateX(" + Math.min(dx, 140) + "px)";
+  }, {passive:true});
+  sheet.addEventListener("touchend", e => {
+    if (!tracking || x0==null) return;
+    const touch = e.changedTouches[0];
+    const dx = touch.clientX - x0;
+    tracking=false; x0=null;
+    card.style.transition = "transform .22s ease";
+    if (dx > 72) closeSheet();
+    else card.style.transform = "";
+  }, {passive:true});
+})();
+document.getElementById("lbClose")?.addEventListener("click", closeLightbox);
+document.getElementById("lightbox")?.addEventListener("click", e => {
+  if (e.target.id === "lightbox" || e.target.id === "lbClose") closeLightbox();
+});
+
 // Browser/Safari back closes product if open
 window.addEventListener("popstate", () => {
   if (document.getElementById("lightbox")?.classList.contains("show")) { closeLightbox(); history.pushState({naqa:"app"},""); return; }

@@ -5,42 +5,56 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 <meta name="theme-color" content="#1f1a17" />
 <title>لوحة تحكم نقاء</title>
-<link rel="stylesheet" href="css/naqa.css?v=20261122c" />
+<link rel="stylesheet" href="css/naqa.css?v=20261122d" />
 <style>
   body{background:#f6f1ee;margin:0;font-family:system-ui,"Noto Kufi Arabic",Tahoma,sans-serif}
-  .admin-top{position:sticky;top:0;z-index:5;background:#1f1a17;color:#fff;padding:14px 16px 12px}
+  .admin-top{position:sticky;top:0;z-index:5;background:#1f1a17;color:#fff;padding:14px 16px 10px}
   .admin-top a{color:#fff;font-weight:700;font-size:.85rem}
-  .admin-top h1{font-size:1.2rem;margin:6px 0 0}
+  .admin-top h1{font-size:1.2rem;margin:6px 0 10px}
+  .tabs{display:flex;gap:8px}
+  .tabs button{flex:1;border:0;border-radius:999px;padding:10px;font-weight:800;font:inherit;background:#3a322e;color:#fff}
+  .tabs button.on{background:#b05c6e}
   .admin-wrap{max-width:720px;margin:0 auto;padding:14px 14px 100px}
-  .pin-card,.row,.edit-card{background:#fff;border:1px solid #efe4df;border-radius:16px;padding:14px;margin:10px 0}
-  .pin-card input,.token input,.edit-card input,.edit-card textarea,.edit-card select,#q{width:100%;border:1px solid #efe4df;border-radius:12px;padding:12px;font:inherit;box-sizing:border-box}
+  .pin-card,.row,.edit-card,.order,.wa-box,.manual{background:#fff;border:1px solid #efe4df;border-radius:16px;padding:14px;margin:10px 0}
+  .pin-card input,.token input,.edit-card input,.edit-card textarea,.edit-card select,#q,.manual input,.manual textarea,.manual select{width:100%;border:1px solid #efe4df;border-radius:12px;padding:12px;font:inherit;box-sizing:border-box}
   .row{display:grid;grid-template-columns:64px 1fr auto;gap:10px;align-items:center}
   .row img,.ph{width:64px;height:64px;object-fit:contain;border-radius:12px;background:#f6f1ee}
-  .row strong{display:block;font-size:.9rem;line-height:1.35}
-  .row small{display:block;color:#8a7f78;font-size:.75rem;margin-top:2px}
-  .edit-btn,.primary,.back,.savebar button,.pin-card button{background:#b05c6e;color:#fff;border:0;border-radius:999px;padding:10px 14px;font-weight:800;font:inherit}
-  .edit-btn{padding:8px 12px;font-size:.8rem}
+  .row strong,.order strong{display:block;font-size:.9rem;line-height:1.35}
+  .row small,.order small,.muted{display:block;color:#8a7f78;font-size:.75rem;margin-top:2px}
+  .edit-btn,.primary,.back,.savebar button,.pin-card button,.mini{background:#b05c6e;color:#fff;border:0;border-radius:999px;padding:10px 14px;font-weight:800;font:inherit}
+  .edit-btn,.mini{padding:8px 12px;font-size:.8rem}
   .back{background:#fff;color:#1f1a17;border:1px solid #efe4df;margin-bottom:8px}
   .savebar{position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:1px solid #efe4df;padding:10px 14px;display:flex;gap:8px;z-index:6}
   .savebar button{flex:1}
   .ghost{background:#fff!important;color:#1f1a17!important;border:1px solid #efe4df!important}
   .note{font-size:.82rem;color:#8a7f78;line-height:1.5}
-  .ok,.status{color:#14532d;font-weight:800;min-height:1.2em}
-  #listView[hidden],#editView[hidden],#tools[hidden],#pin[hidden],#savebar[hidden]{display:none!important}
-  .edit-card label{display:block;margin:10px 0;font-size:.78rem;font-weight:800;color:#8a7f78}
-  .edit-card textarea{resize:vertical;min-height:72px}
+  .status{color:#14532d;font-weight:800;min-height:1.2em}
+  [hidden]{display:none!important}
+  .edit-card label,.manual label{display:block;margin:10px 0;font-size:.78rem;font-weight:800;color:#8a7f78}
+  .edit-card textarea,.manual textarea{resize:vertical;min-height:72px}
   .grid2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
   .grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
   @media (max-width:520px){.grid3{grid-template-columns:1fr}}
   .preview img,.ph.big{width:100%;height:180px;object-fit:contain;border-radius:14px;background:#f6f1ee}
   .hide-row{display:flex!important;align-items:center;gap:8px;color:#1f1a17!important;font-size:.9rem!important}
   .primary{width:100%;margin-top:8px;padding:14px}
+  .wa-box a{display:inline-block;margin-top:8px;background:#25D366;color:#fff;text-decoration:none;padding:10px 14px;border-radius:999px;font-weight:800}
+  .badge{display:inline-block;padding:4px 8px;border-radius:999px;font-size:.72rem;font-weight:800;background:#efe4df}
+  .badge.new{background:#ffe8a3}.badge.prep{background:#cde7ff}.badge.done{background:#d8f5d0}.badge.cancel{background:#ffd0d0}
+  .order .actions{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+  .order a{color:#b05c6e;font-weight:700;font-size:.82rem;word-break:break-all}
+  .items{margin:8px 0 0;padding:0;list-style:none}
+  .items li{border-top:1px solid #efe4df;padding:8px 0;font-size:.85rem}
 </style>
 </head>
 <body>
 <div class="admin-top">
   <a href="index.html">رجوع للمتجر</a>
   <h1>لوحة تحكم نقاء</h1>
+  <div class="tabs" id="tabs" hidden>
+    <button type="button" class="on" data-tab="products">المنتجات</button>
+    <button type="button" data-tab="orders">الطلبات</button>
+  </div>
 </div>
 <div class="admin-wrap">
   <div class="pin-card" id="pin">
@@ -50,25 +64,57 @@
     <p class="note" id="pinMsg"></p>
   </div>
   <div id="tools" hidden>
-    <div id="listView">
-      <input id="q" type="search" placeholder="ابحثي بالاسم أو SKU أو الماركة" />
-      <p class="note">مهم: من القائمة اضغطي زر «تعديل كامل» على المنتج. داخل الصفحة تطلع الكمية والصور والوصف والاستعمال والاسم والماركة.</p>
-      <p class="status" id="status"></p>
-      <div class="token" style="margin:8px 0"><input id="token" type="password" placeholder="رمز GitHub للنشر للكل (اختياري)" autocomplete="off" /></div>
-      <div id="list"></div>
+    <div id="productsTab">
+      <div id="listView">
+        <input id="q" type="search" placeholder="ابحثي بالاسم أو SKU أو الماركة" />
+        <p class="note">اضغطي «تعديل كامل» للكمية والصور والوصف والاستعمال.</p>
+        <p class="status" id="status"></p>
+        <div class="token" style="margin:8px 0"><input id="token" type="password" placeholder="رمز GitHub للنشر (اختياري)" autocomplete="off" /></div>
+        <div id="list"></div>
+      </div>
+      <div id="editView" hidden></div>
     </div>
-    <div id="editView" hidden></div>
+    <div id="ordersTab" hidden>
+      <div class="wa-box">
+        <strong>الطلبات الحية توصل واتساب</strong>
+        <p class="note">كل طلب من الزبونة يفتح واتساب برقم الطلب وروابط المنتجات. من هنا تديرين السجل والحالة.</p>
+        <a id="waOrders" href="#" target="_blank" rel="noopener">فتح واتساب الطلبات</a>
+      </div>
+      <div class="manual">
+        <strong>سجّلي طلب يدوي</strong>
+        <label>رقم الطلب<input id="m_id" placeholder="NQ-..."></label>
+        <div class="grid2">
+          <label>الاسم<input id="m_name"></label>
+          <label>الجوال<input id="m_phone" inputmode="tel"></label>
+        </div>
+        <label>الولاية / المنطقة<input id="m_area"></label>
+        <label>المجموع ر.ع<input id="m_total" type="number" step="0.001" min="0"></label>
+        <label>تفاصيل المنتجات<textarea id="m_items" rows="3" placeholder="منتج × كمية"></textarea></label>
+        <label>الحالة
+          <select id="m_status">
+            <option value="new">جديد</option>
+            <option value="prep">قيد التجهيز</option>
+            <option value="done">تم</option>
+            <option value="cancel">ملغي</option>
+          </select>
+        </label>
+        <button type="button" class="primary" id="m_save">أضيفي للسجل</button>
+      </div>
+      <p class="status" id="orderStatus"></p>
+      <div id="ordersList"></div>
+    </div>
   </div>
 </div>
 <div class="savebar" id="savebar" hidden>
   <button id="saveLocal" type="button">حفظ على جهازي</button>
   <button id="publish" class="ghost" type="button">نشر للكل</button>
 </div>
-<script src="products.js?v=20261122c"></script>
-<script src="data/products-care.js?v=20261122c"></script>
-<script src="data/products-makeup.js?v=20261122c"></script>
-<script src="data/products-hair.js?v=20261122c"></script>
-<script src="data/products-more.js?v=20261122c"></script>
-<script src="js/admin.js?v=20261122c"></script>
+<script src="js/config.js?v=20261122d"></script>
+<script src="products.js?v=20261122d"></script>
+<script src="data/products-care.js?v=20261122d"></script>
+<script src="data/products-makeup.js?v=20261122d"></script>
+<script src="data/products-hair.js?v=20261122d"></script>
+<script src="data/products-more.js?v=20261122d"></script>
+<script src="js/admin.js?v=20261122d"></script>
 </body>
 </html>

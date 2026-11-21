@@ -92,7 +92,30 @@ function sendCheckout(){
   }).join("\n\n");
   const total=cart.reduce((s,i)=>s+i.price*i.qty,0);
   const orderNo=(typeof makeOrderNo==="function")?makeOrderNo():("NQ-"+Date.now());
-  try{ localStorage.setItem("naqa_last_order", orderNo); }catch(e){}
+  const items=cart.map(i=>{
+    const p=products.find(x=>x.id===i.id)||i;
+    return {
+      id:p.id, name:pname(p), nameAr:p.nameAr||"", nameEn:p.nameEn||"",
+      brand:p.brand||"", sku:p.sku||"", qty:i.qty, price:i.price,
+      line:i.price*i.qty, link:(typeof productLink==="function")?productLink(p.id):""
+    };
+  });
+  const order={
+    id:orderNo, at:new Date().toISOString(), status:"new",
+    name:name, phone:phone, area:gov, note:note,
+    total:total, currency:"OMR", items:items, lang:lang
+  };
+  try{
+    localStorage.setItem("naqa_last_order", orderNo);
+    localStorage.setItem("naqa_last_order_full", JSON.stringify(order));
+    var all=[];
+    try{ all=JSON.parse(localStorage.getItem("naqa_orders")||"[]"); if(!Array.isArray(all)) all=[]; }catch(e){ all=[]; }
+    all.unshift(order);
+    localStorage.setItem("naqa_orders", JSON.stringify(all.slice(0,100)));
+  }catch(e){}
+  if(typeof window.NAQA_ORDERS_HOOK==="function"){
+    try{ window.NAQA_ORDERS_HOOK(order); }catch(e){}
+  }
   const msg = lang==="en"
     ? ("Hello, I want to order from Naqa:\nOrder: "+orderNo+"\nName: "+name+"\nPhone: "+phone+"\nArea: "+gov+"\nNote: "+note+"\n\n"+lines+"\n\nTotal: "+money(total))
     : ("السلام عليكم، أبغى أطلب من نقاء:\nرقم الطلب: "+orderNo+"\nالاسم: "+name+"\nالجوال: "+phone+"\nالمنطقة: "+gov+"\nملاحظة: "+note+"\n\n"+lines+"\n\nالمجموع: "+money(total));

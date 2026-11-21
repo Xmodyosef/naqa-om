@@ -1,10 +1,11 @@
 /* cart logic + drawer UI */
-function addToCart(id, qty){
+function addToCart(id, qty, quiet){
   const p=products.find(x=>x.id===id); if(!p) return;
   const n=Math.max(1, Math.min(20, parseInt(qty,10)||1));
   const row=cart.find(x=>x.id===id);
   if(row) row.qty+=n; else cart.push({id:p.id, brand:p.brand, price:p.price, sku:p.sku, qty:n});
   saveCart(); renderCart();
+  if(!quiet && typeof toast==="function") toast(lang==="en"?"Added to cart":"انضاف للسلة");
 }
 
 function renderCart(){
@@ -58,6 +59,7 @@ function closeCart(){ $("#overlay").classList.remove("show"); $("#drawer").class
 
 function openCheckout(){
   if(typeof applyLang==="function") applyLang();
+  const done=$("#orderDone"); if(done){ done.hidden=true; done.innerHTML=""; }
   const m=$("#checkoutModal"); if(m) m.classList.add("show");
 }
 function closeCheckout(){
@@ -73,9 +75,17 @@ function sendCheckout(){
     return "• "+pname(p)+" × "+i.qty+" = "+money(i.price*i.qty);
   }).join("\n");
   const total=cart.reduce((s,i)=>s+i.price*i.qty,0);
+  const orderNo=(typeof makeOrderNo==="function")?makeOrderNo():("NQ-"+Date.now());
+  try{ localStorage.setItem("naqa_last_order", orderNo); }catch(e){}
   const msg = lang==="en"
-    ? ("Hello, I want to order from Naqa:\nName: "+name+"\nPhone: "+phone+"\nArea: "+gov+"\nNote: "+note+"\n\n"+lines+"\n\nTotal: "+money(total))
-    : ("السلام عليكم، أبغى أطلب من نقاء:\nالاسم: "+name+"\nالجوال: "+phone+"\nالمنطقة: "+gov+"\nملاحظة: "+note+"\n\n"+lines+"\n\nالمجموع: "+money(total));
+    ? ("Hello, I want to order from Naqa:\nOrder: "+orderNo+"\nName: "+name+"\nPhone: "+phone+"\nArea: "+gov+"\nNote: "+note+"\n\n"+lines+"\n\nTotal: "+money(total))
+    : ("السلام عليكم، أبغى أطلب من نقاء:\nرقم الطلب: "+orderNo+"\nالاسم: "+name+"\nالجوال: "+phone+"\nالمنطقة: "+gov+"\nملاحظة: "+note+"\n\n"+lines+"\n\nالمجموع: "+money(total));
   window.open("https://wa.me/"+WA_NUMBER+"?text="+encodeURIComponent(msg), "_blank");
-  closeCheckout();
+  const done=$("#orderDone");
+  if(done){
+    done.hidden=false;
+    done.innerHTML=(lang==="en"
+      ? ("Your order number is <b>"+orderNo+"</b>. Keep it. WhatsApp should open now.")
+      : ("رقم طلبك <b>"+orderNo+"</b>. احفظيه. واتساب يفتح الحين."));
+  }
 }

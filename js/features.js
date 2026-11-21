@@ -27,6 +27,7 @@ function toggleWish(id) {
   var n = wishlist.length, wb = $("#wishBadge");
   if (wb) { wb.hidden = !n; wb.textContent = n; }
   var hb = $("#wishBtn"); if (hb) hb.classList.toggle("on", !!wishView);
+  if (typeof toast === "function") toast(isWish(id) ? (lang === "en" ? "Saved" : "انحفظ") : (lang === "en" ? "Removed from saved" : "انشال من المحفوظات"));
   if (wishView && typeof render === "function") render();
 }
 
@@ -119,7 +120,8 @@ function renderBundles() {
 
 function addBundle(id) {
   var b = BUNDLES.find(function (x) { return x.id === id; }); if (!b) return;
-  buildBundleItems(b).forEach(function (p) { addToCart(p.id, 1); });
+  buildBundleItems(b).forEach(function (p) { addToCart(p.id, 1, true); });
+  if (typeof toast === "function") toast(lang === "en" ? "Set added" : "انضافت الباقة");
   openCart();
 }
 
@@ -207,7 +209,9 @@ function paintQuiz() {
       if (best === "makeup") return p.cat === "وجه" || p.cat === "شفاه" || p.cat === "عيون";
       return p.concerns && p.concerns.indexOf(best) >= 0;
     }).slice(0, 6);
+    var routine = (typeof routineHTML === "function") ? routineHTML(best) : "";
     body.innerHTML = '<div class="quiz-result"><h3>' + title + "</h3><p>" + sub + "</p>"
+      + routine
       + '<div class="quiz-rec">' + rec.map(function (p) {
         return '<button type="button" class="quiz-p" data-open="' + p.id + '">'
           + visual(p, 0) + "<span>" + esc(pname(p)) + "</span><b>" + money(p.price) + "</b></button>";
@@ -264,6 +268,26 @@ document.addEventListener("click", function (e) {
     closeQuiz();
     var prod = $("#products");
     if (prod) prod.scrollIntoView({ behavior: "smooth" });
+    return;
+  }
+  var idsBtn = e.target.closest("[data-add-ids]");
+  if (idsBtn) {
+    idsBtn.getAttribute("data-add-ids").split(",").forEach(function (id) {
+      if (id) addToCart(+id, 1, true);
+    });
+    if (typeof toast === "function") toast(lang === "en" ? "Routine added" : "انضاف الروتين");
+    return;
+  }
+  var step = e.target.closest(".routine [data-open]");
+  if (step) {
+    closeQuiz();
+    if (typeof openSheet === "function") openSheet(+step.getAttribute("data-open"), "full");
+    return;
+  }
+  var price = e.target.closest("#priceBar [data-price]");
+  if (price) {
+    currentPrice = price.getAttribute("data-price") || "all";
+    render();
     return;
   }
   var chip = e.target.closest("#concernBar [data-concern]");

@@ -170,6 +170,8 @@ async function openSheet(id, mode, reset){
     ${qv? "" : carouselHTML(p, galleryIndex)}
     <div class="sku-line">${T("sku")}: ${esc(p.sku || T("noSku"))}</div>
     <span class="skin-pill">${T("skinT")}: ${esc(pskin(p))}</span>
+    ${typeof shadeHTML==="function"?shadeHTML(p):""}
+    ${typeof ingHTML==="function"?ingHTML(p):""}
     ${qv? `<p class="long" style="margin-top:12px">${brandMark(p.brand)} — ${esc(pdesc(p))}</p>` : `
       <h4 class="block-h">${T("about")}</h4>
       <p class="long">${brandMark(p.brand)} — ${esc(pdesc(p))}</p>

@@ -151,8 +151,9 @@ function render(){
     const concernOk=!currentConcern || (p.concerns&&p.concerns.indexOf(currentConcern)>=0);
     const viewingWish=(typeof wishView!=="undefined" && wishView);
     const wishOk=!viewingWish || (typeof isWish==="function" && isWish(p.id));
+    const okPrice=typeof priceOk!=="function" || priceOk(p);
     const blob=[p.nameAr,p.nameEn,p.brand,p.sku,p.descAr,p.descEn].join(" ").toLowerCase();
-    return catOk && brandOk && concernOk && wishOk && (!q || blob.includes(q));
+    return catOk && brandOk && concernOk && wishOk && okPrice && (!q || blob.includes(q));
   });
   const offOf=p=>(p.was&&p.was>p.price)?(1-p.price/p.was):0;
   list.sort((a,b)=>{
@@ -180,6 +181,7 @@ function render(){
   $("#empty").textContent=soon
     ? (lang==="en"?"This section is coming soon. The other sections are ready.":"هذا القسم قريباً. باقي الأقسام فيها منتجات.")
     : ((typeof wishView!=="undefined" && wishView && !list.length)?T("wishEmpty"):T("empty"));
+  if(typeof renderPriceBar==="function") renderPriceBar();
   $("#grid").innerHTML=list.map(cardHTML).join("");
   renderShelves();
   if(typeof renderBrandsGrid==="function") renderBrandsGrid();

@@ -78,7 +78,11 @@ function applyLang(){
   document.documentElement.lang=lang==="en"?"en":"ar";
   document.documentElement.dir=lang==="en"?"ltr":"rtl";
   $("#search").placeholder=T("search");
-  document.querySelectorAll("#cats a").forEach(a=>{a.textContent=T(catLabel[a.dataset.cat]||"all")});
+  document.querySelectorAll("#cats a").forEach(a=>{
+    const base=T(catLabel[a.dataset.cat]||"all");
+    const n=a.dataset.cat==="all"?products.length:products.filter(x=>x.cat===a.dataset.cat).length;
+    a.textContent=n?base:(base+" · "+(lang==="en"?"Soon":"قريباً"));
+  });
   $("#heroTitle").innerHTML=T("heroTitle")+"<em>"+T("heroEm")+"</em>";
   $("#heroText").textContent=T("hero");
   $("#btnShop").textContent=T("shop");
@@ -171,7 +175,11 @@ function render(){
   } else { bar.hidden=true; bar.innerHTML=""; }
   $("#countLabel").textContent=T("count")(list.length);
   $("#empty").hidden=list.length>0;
-  $("#empty").textContent=(typeof wishView!=="undefined" && wishView && !list.length)?T("wishEmpty"):T("empty");
+  const catTotal=currentCat==="all"?products.length:products.filter(x=>x.cat===currentCat).length;
+  const soon=currentCat!=="all" && catTotal===0;
+  $("#empty").textContent=soon
+    ? (lang==="en"?"This section is coming soon. The other sections are ready.":"هذا القسم قريباً. باقي الأقسام فيها منتجات.")
+    : ((typeof wishView!=="undefined" && wishView && !list.length)?T("wishEmpty"):T("empty"));
   $("#grid").innerHTML=list.map(cardHTML).join("");
   renderShelves();
   if(typeof renderBrandsGrid==="function") renderBrandsGrid();

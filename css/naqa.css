@@ -81,8 +81,8 @@ body{padding-bottom:120px}
 .shelf-row{display:flex;gap:12px;overflow-x:auto;padding:2px 2px 12px;-webkit-overflow-scrolling:touch;scroll-snap-type:x mandatory}
 .shelf-row::-webkit-scrollbar{height:4px}
 .shelf-row .card{min-width:210px;max-width:210px;scroll-snap-align:start;flex-shrink:0}
-.brand-logo{width:32px;height:32px;border-radius:10px;object-fit:contain;background:#fff;border:1px solid var(--line);padding:2px}
-.brand-mono{width:32px;height:32px;border-radius:10px;display:inline-grid;place-items:center;background:linear-gradient(135deg,#f3e2e6,#fff);color:var(--rose-deep);font-weight:800;font-size:.72rem;border:1px solid var(--line)}
+.brand-logo{width:40px;height:40px;border-radius:10px;object-fit:contain;background:#fff;border:1px solid var(--line);padding:3px;box-sizing:border-box}
+ .brand-mono{width:40px;height:40px;border-radius:10px;display:inline-grid;place-items:center;background:linear-gradient(135deg,#f3e2e6,#fff);color:var(--rose-deep);font-weight:800;font-size:.72rem;border:1px solid var(--line)}
 .carousel-track img,.lightbox img{image-rendering:auto}
 
 .price-badge{position:absolute;bottom:8px;inset-inline-start:8px;z-index:3;
@@ -91,7 +91,7 @@ body{padding-bottom:120px}
 html[lang="en"] .price-badge{display:none}
 .brand-link{display:inline-flex;align-items:center;gap:8px;color:var(--rose-deep);font-weight:800;text-decoration:none;font-size:.9rem}
 .brand-link span{text-decoration:underline;text-underline-offset:3px}
-.brand-logo{width:28px;height:28px;border-radius:8px;object-fit:contain;background:#fff;border:1px solid var(--line)}
+.brand-logo{width:40px;height:40px;border-radius:10px;object-fit:contain;background:#fff;border:1px solid var(--line);padding:3px;box-sizing:border-box}
 .card-brand.brand-link{font-size:.78rem}
 .qty-pick{display:flex;align-items:center;gap:8px;margin:10px 0 4px}
 .qty-pick span{font-weight:800;margin-inline-end:6px}

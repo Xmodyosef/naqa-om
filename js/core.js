@@ -1,10 +1,14 @@
 /* core: brand, route, state, i18n */
 function brandMark(brand){
-  const d=BRAND_DOMAIN[brand]||"";
   const initials=String(brand||"?").replace(/[^A-Za-z\u0600-\u06FF0-9]/g,"").slice(0,2).toUpperCase()||"•";
+  const local=(typeof BRAND_LOGO!=="undefined" && BRAND_LOGO[brand])?BRAND_LOGO[brand]:"";
+  const d=BRAND_DOMAIN[brand]||"";
+  const q=String.fromCharCode(39); // single quote for onerror attrs
   let mark;
-  if(d){
-    mark='<img class="brand-logo" alt="" width="32" height="32" loading="lazy" src="https://www.google.com/s2/favicons?domain='+encodeURIComponent(d)+String.fromCharCode(38)+'sz=256" onerror="this.replaceWith(Object.assign(document.createElement(\'span\'),{className:\'brand-mono\',textContent:this.dataset.i}))" data-i="'+esc(initials)+'">';
+  if(local){
+    mark='<img class="brand-logo" alt="'+esc(brand)+'" width="40" height="40" loading="lazy" src="'+local+'" data-i="'+esc(initials)+'" onerror="this.replaceWith(Object.assign(document.createElement('+q+'span'+q+'),{className:'+q+'brand-mono'+q+',textContent:this.dataset.i}))">';
+  } else if(d){
+    mark='<img class="brand-logo" alt="'+esc(brand)+'" width="40" height="40" loading="lazy" src="https://www.google.com/s2/favicons?domain='+encodeURIComponent(d)+String.fromCharCode(38)+'sz=256" data-i="'+esc(initials)+'" onerror="this.replaceWith(Object.assign(document.createElement('+q+'span'+q+'),{className:'+q+'brand-mono'+q+',textContent:this.dataset.i}))">';
   } else {
     mark='<span class="brand-mono" aria-hidden="true">'+esc(initials)+'</span>';
   }

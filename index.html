@@ -172,9 +172,24 @@ footer{margin-top:40px;padding:28px 0 24px;border-top:1px solid var(--line);colo
 .sheet.show{display:block}
 .sheet-card{position:absolute;inset:0;background:#fff;overflow:auto;-webkit-overflow-scrolling:touch;
   padding:14px 16px 48px;max-width:680px;margin:0 auto;left:0;right:0}
-.qv .sheet-card{inset:auto 0 0 0;max-height:82vh;border-radius:20px 20px 0 0;padding-bottom:28px}
-.swipe-hint{font-size:.75rem;color:var(--muted);margin:0 0 8px;font-weight:600}
+.qv .sheet-card{inset:auto 0 0 0;max-height:92vh;border-radius:22px 22px 0 0;padding:8px 16px 36px;overflow:auto}
+.swipe-hint{font-size:.75rem;color:var(--muted);margin:0 0 8px;font-weight:600;text-align:center}
 .text-back{font-weight:800;color:var(--rose-deep);margin-bottom:10px;font-size:1rem}
+.sheet-handle{width:44px;height:5px;border-radius:99px;background:#d5cbc4;margin:4px auto 10px}
+.qv .carousel{margin:0 0 10px}
+.qv .carousel-track,.qv .carousel-slide{height:min(78vw,420px)!important}
+.qv .carousel-slide img{width:100%;height:100%;object-fit:contain;object-position:center;padding:10px;box-sizing:border-box;background:#faf7f5}
+.banner{position:relative;border-radius:18px;overflow:hidden;margin:0 0 12px;min-height:120px;display:flex;align-items:center;padding:16px 14px;gap:12px}
+.banner-hot{background:linear-gradient(120deg,#1f1a17 0%,#3d2a28 55%,#b05c6e 100%);color:#fff}
+.banner-year{background:linear-gradient(120deg,#b05c6e 0%,#d98a9a 45%,#f3d4c2 100%);color:#1f1a17}
+.banner-copy{flex:1;min-width:0;z-index:1}
+.banner-copy b{display:block;font-size:1.15rem;font-weight:800;line-height:1.25}
+.banner-copy span{display:block;margin-top:4px;font-size:.82rem;opacity:.92;font-weight:600}
+.banner-thumbs{display:flex;gap:6px;flex-shrink:0}
+.banner-thumbs img,.banner-thumbs span.em{width:52px;height:52px;border-radius:12px;object-fit:contain;background:#fff;border:2px solid rgba(255,255,255,.55);padding:3px;box-sizing:border-box}
+.banner-year .banner-thumbs img{border-color:rgba(31,26,23,.12)}
+.banner-badge{display:inline-block;margin-top:8px;background:rgba(255,255,255,.2);padding:4px 10px;border-radius:999px;font-size:.75rem;font-weight:800}
+.banner-year .banner-badge{background:#1f1a17;color:#fff}
 
 /* FULL carousel */
 .carousel{position:relative;background:#fff;border-radius:18px;overflow:hidden;border:1px solid var(--line)}
@@ -201,7 +216,7 @@ footer{margin-top:40px;padding:28px 0 24px;border-top:1px solid var(--line);colo
   font-size:.72rem;font-weight:800;padding:4px 8px;border-radius:999px;z-index:2;display:none}
 .card-cart-chip.show{display:inline-block}
 .card-visual{position:relative}
-.qv .carousel-track,.qv .carousel-slide{height:min(62vw,340px)}
+.qv .carousel-track,.qv .carousel-slide{height:min(78vw,420px)}
 .qv .thumbs{display:none}
 
 .block-h{margin:16px 0 6px;font-size:1rem}
@@ -344,7 +359,7 @@ footer{margin-top:40px;padding:28px 0 24px;border-top:1px solid var(--line);colo
   <img id="lbImg" alt="">
 </div>
 
-<script src="products.js?v=20261121g"></script>
+<script src="products.js?v=20261121h"></script>
 <script>
 const WA_NUMBER="96879088349", CURRENCY="ر.ع", SITE="www.naqa.om";
 
@@ -420,7 +435,7 @@ const ui={
   ship:"توصيل عُمان", order:"طلب واتساب", contact:"تواصلي", shopH:"التسوق", orders:"واتساب الطلبات",
   skin:"عناية", faceL:"وجه", hairL:"شعر", blurb:"عناية ومكياج · متجر عُماني", copy:"نقاء · Naqa · عُمان",
   about:"عن المنتج", how:"طريقة الاستعمال", skinT:"يناسب", also:"قد يعجبكِ أيضاً", same:"باقي منتجات الماركة", back:"رجوع",
-  sku:"SKU", logo:"نقاء", tag:"عناية ومكياج", shipBar:"خصم ٣٠٪ على منتجات مختارة · توصيل عُمان", shipFree:"توصيل مجاني للطلبات فوق ٣٠ ر.ع", sortNew:"الأحدث", sortLow:"الأقل سعراً", sortHigh:"الأعلى سعراً", sortOff:"الأعلى خصماً", swipe:"اسحبي من اليسار لليمين للرجوع · مرّري الصور يمين/يسار",
+  sku:"SKU", logo:"نقاء", tag:"عناية ومكياج", shipBar:"خصم ٣٠٪ على منتجات مختارة · توصيل عُمان", shipFree:"توصيل مجاني للطلبات فوق ٣٠ ر.ع", sortNew:"الأحدث", sortLow:"الأقل سعراً", sortHigh:"الأعلى سعراً", sortOff:"الأعلى خصماً", swipe:"اسحبي للأسفل للإغلاق · أو من الحافة اليمنى/اليسرى", swipeFull:"اسحبي من الحافة للرجوع · مرّري الصور", banHotSub:"مختارات الزبائن · ماركات عليها طلب", banYearSub:"خصم ٣٠٪ على منتجات مختارة لفترة محدودة",
   openImg:"اضغطي الصورة للتكبير", barEmpty:"السلة فاضية", barHint:"أضيفي منتجات من القائمة", barItems:n=>n+" منتج في السلة", barOpen:"افتحي السلة", barCheckout:"إتمام الطلب", hot:"الأكثر مبيعاً", year:"عروض نهاية السنة", viewAll:"عرض الكل", offTag:n=>"−"+n+"%"
  },
  en:{
@@ -435,7 +450,7 @@ const ui={
   ship:"Oman delivery", order:"WhatsApp order", contact:"Contact", shopH:"Shop", orders:"Order on WhatsApp",
   skin:"Skincare", faceL:"Face", hairL:"Hair", blurb:"Care and makeup · Oman store", copy:"Naqa · Oman",
   about:"About", how:"How to use", skinT:"Best for", also:"You may also like", same:"More from this brand", back:"Back",
-  sku:"SKU", logo:"Naqa", tag:"Care & Makeup", shipBar:"30% off selected items · Oman delivery", shipFree:"Free delivery on orders over 30 OMR", sortNew:"Newest", sortLow:"Lowest price", sortHigh:"Highest price", sortOff:"Biggest discount", swipe:"Swipe left-edge to go back · swipe images sideways",
+  sku:"SKU", logo:"Naqa", tag:"Care & Makeup", shipBar:"30% off selected items · Oman delivery", shipFree:"Free delivery on orders over 30 OMR", sortNew:"Newest", sortLow:"Lowest price", sortHigh:"Highest price", sortOff:"Biggest discount", swipe:"Swipe down to close · or from the edge", swipeFull:"Swipe from the edge to go back · swipe photos", banHotSub:"Customer favorites · in-demand brands", banYearSub:"30% off selected items for a limited time",
   openImg:"Tap image to enlarge", barEmpty:"Cart is empty", barHint:"Add products from the list", barItems:n=>n+" items in cart", barOpen:"Open cart", barCheckout:"Checkout", hot:"Best sellers", year:"Year-end deals", viewAll:"View all", offTag:n=>"−"+n+"%"
  }
 };
@@ -489,6 +504,17 @@ function cardHTML(p){
     +'<button class="btn-open" data-open="'+p.id+'" type="button">'+T("open")+'</button>'
     +'</div></div></article>';
 }
+function shelfBanner(kind, list){
+  const thumbs=list.slice(0,4).map(p=>{
+    const imgs=pimgs(p);
+    if(imgs[0]) return '<img src="'+imgs[0]+'" alt="" loading="lazy">';
+    return '<span class="em">'+(p.em||"✨")+'</span>';
+  }).join("");
+  if(kind==="hot"){
+    return '<div class="banner banner-hot" data-shelf="hot"><div class="banner-copy"><b>'+T("hot")+'</b><span>'+T("banHotSub")+'</span><span class="banner-badge">★ '+(lang==='ar'?'مختارات':'Top picks')+'</span></div><div class="banner-thumbs">'+thumbs+'</div></div>';
+  }
+  return '<div class="banner banner-year" data-shelf="year"><div class="banner-copy"><b>'+T("year")+'</b><span>'+T("banYearSub")+'</span><span class="banner-badge">−30%</span></div><div class="banner-thumbs">'+thumbs+'</div></div>';
+}
 function renderShelves(){
   const box=$("#shelves");
   if(!box) return;
@@ -499,12 +525,14 @@ function renderShelves(){
   const year=products.filter(p=>p.was>p.price).sort((a,b)=>offPct(b)-offPct(a)).slice(0,16);
   let html="";
   if(hot.length){
-    html+='<section class="shelf"><div class="shelf-head"><h3 id="hotTitle">'+T("hot")+'</h3>'
+    html+='<section class="shelf">'+shelfBanner("hot", hot)
+      +'<div class="shelf-head"><h3 id="hotTitle">'+T("hot")+'</h3>'
       +'<button type="button" data-shelf="hot">'+T("viewAll")+'</button></div>'
       +'<div class="shelf-row">'+hot.map(cardHTML).join("")+'</div></section>';
   }
   if(year.length){
-    html+='<section class="shelf"><div class="shelf-head"><h3 id="yearTitle">'+T("year")+'</h3>'
+    html+='<section class="shelf">'+shelfBanner("year", year)
+      +'<div class="shelf-head"><h3 id="yearTitle">'+T("year")+'</h3>'
       +'<button type="button" data-shelf="year">'+T("viewAll")+'</button></div>'
       +'<div class="shelf-row">'+year.map(cardHTML).join("")+'</div></section>';
   }
@@ -765,14 +793,17 @@ async function openSheet(id, mode, reset){
     </button>`).join("");
   const qv=sheetMode==="qv";
   $("#sheet").classList.toggle("qv", qv);
+  const hint=qv?T("swipe"):T("swipeFull");
   $("#sheetCard").innerHTML=`
-    <p class="swipe-hint">${T("swipe")}</p>
+    <div class="sheet-handle" aria-hidden="true"></div>
+    <p class="swipe-hint">${hint}</p>
+    ${qv? carouselHTML(p, galleryIndex) : ""}
     <button class="text-back" id="closeSheet" type="button">‹ ${T("back")}</button>
     ${brandMark(p.brand)}
     <h3 style="margin:4px 0 2px">${esc(pname(p))}</h3>
     ${priceHTML(p)}
     <div class="qty-pick"><span>${T("qty")}</span><button type="button" data-q="-1">−</button><b id="pickQty">1</b><button type="button" data-q="1">+</button></div>
-    ${carouselHTML(p, galleryIndex)}
+    ${qv? "" : carouselHTML(p, galleryIndex)}
     <div class="sku-line">${T("sku")}: ${esc(p.sku || T("noSku"))}</div>
     <span class="skin-pill">${T("skinT")}: ${esc(pskin(p))}</span>
     ${qv? `<p class="long" style="margin-top:12px">${brandMark(p.brand)} — ${esc(pdesc(p))}</p>` : `
@@ -792,7 +823,7 @@ async function openSheet(id, mode, reset){
   bindCarousel(p);
   document.title=pname(p)+" · Naqa";
   try{
-    if(routeHash()!=="p/"+id) history.pushState({naqa:"product",id}, "", "#p/"+id);
+    if(!qv && routeHash()!=="p/"+id) history.pushState({naqa:"product",id}, "", "#p/"+id);
   }catch(e){}
 }
 
@@ -946,28 +977,55 @@ $("#checkoutBtn").onclick=()=>{
 $("#lbClose").onclick=closeLightbox;
 $("#lightbox").addEventListener("click", e=>{ if(e.target.id==="lightbox"||e.target.id==="lbClose") closeLightbox(); });
 
-/* edge swipe back */
+/* edge swipe + pull-down to close (quick view) */
 (function(){
-  let x0=null,y0=null,tracking=false;
+  let x0=null,y0=null,mode=null; // edge | pull
   const sheet=$("#sheet"), card=$("#sheetCard");
+  const reset=()=>{ mode=null; x0=null; y0=null; };
   sheet.addEventListener("touchstart", e=>{
     if(!sheet.classList.contains("show") || $("#lightbox").classList.contains("show")) return;
     const t=e.changedTouches[0];
-    if(t.clientX>32){x0=null;return;}
-    x0=t.clientX; y0=t.clientY; tracking=true; card.style.transition="none";
+    const qv=sheet.classList.contains("qv");
+    const top=card.getBoundingClientRect().top;
+    // pull-down: sheet scrolled to top, touch near handle / top area, or any qv pull when scrollTop<=2
+    if(card.scrollTop<=2 && (qv || t.clientY < top+72)){
+      x0=t.clientX; y0=t.clientY; mode="pull"; card.style.transition="none"; return;
+    }
+    // edge swipe (RTL: left edge still works for LTR; also allow right edge 32px)
+    const edge=t.clientX<=28 || t.clientX>=(window.innerWidth-28);
+    if(edge){ x0=t.clientX; y0=t.clientY; mode="edge"; card.style.transition="none"; return; }
+    reset();
   },{passive:true});
   sheet.addEventListener("touchmove", e=>{
-    if(!tracking||x0==null) return;
-    const t=e.changedTouches[0]; const dx=t.clientX-x0; const dy=Math.abs(t.clientY-y0);
-    if(dy>48 && Math.abs(dx)<24){tracking=false; card.style.transform=""; return;}
-    if(dx>0) card.style.transform="translateX("+Math.min(dx,140)+"px)";
+    if(!mode||x0==null) return;
+    const t=e.changedTouches[0];
+    const dx=t.clientX-x0, dy=t.clientY-y0;
+    if(mode==="pull"){
+      if(Math.abs(dx)>Math.abs(dy)+12){ mode=null; card.style.transform=""; return; }
+      if(dy>0) card.style.transform="translateY("+Math.min(dy,220)+"px)";
+      return;
+    }
+    // edge
+    if(Math.abs(dy)>48 && Math.abs(dx)<24){ mode=null; card.style.transform=""; return; }
+    const dir = dx; // positive = right
+    if(Math.abs(dir)>0) card.style.transform="translateX("+(dir>0?Math.min(dir,160):Math.max(dir,-160))+"px)";
   },{passive:true});
   sheet.addEventListener("touchend", e=>{
-    if(!tracking||x0==null) return;
-    const dx=e.changedTouches[0].clientX-x0; tracking=false; x0=null;
+    if(!mode||x0==null) return;
+    const t=e.changedTouches[0];
+    const dx=t.clientX-x0, dy=t.clientY-y0;
+    const was=mode; reset();
     card.style.transition="transform .22s ease";
-    if(dx>72) closeSheet(); else card.style.transform="";
+    if(was==="pull"){
+      if(dy>90) closeSheet(); else card.style.transform="";
+      return;
+    }
+    if(Math.abs(dx)>72) closeSheet(); else card.style.transform="";
   },{passive:true});
+  // tap dimmed backdrop closes qv
+  sheet.addEventListener("click", e=>{
+    if(e.target===sheet && sheet.classList.contains("qv")) closeSheet();
+  });
 })();
 
 window.addEventListener("popstate", ()=>{

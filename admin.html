@@ -5,28 +5,36 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 <meta name="theme-color" content="#1f1a17" />
 <title>لوحة تحكم نقاء</title>
-<link rel="stylesheet" href="css/naqa.css?v=20261122a" />
+<link rel="stylesheet" href="css/naqa.css?v=20261122b" />
 <style>
-  body{background:#f6f1ee}
+  body{background:#f6f1ee;margin:0;font-family:system-ui,"Noto Kufi Arabic",Tahoma,sans-serif}
   .admin-top{position:sticky;top:0;z-index:5;background:#1f1a17;color:#fff;padding:14px 16px 12px}
   .admin-top a{color:#fff;font-weight:700;font-size:.85rem}
-  .admin-top h1{font-size:1.25rem;margin:6px 0 0}
-  .admin-wrap{max-width:720px;margin:0 auto;padding:14px 14px 90px}
-  .pin-card,.row{background:#fff;border:1px solid #efe4df;border-radius:16px;padding:14px;margin:10px 0}
-  .pin-card input,.row input[type="number"],.token input{width:100%;border:1px solid #efe4df;border-radius:12px;padding:12px;font:inherit}
-  .row{display:grid;grid-template-columns:64px 1fr;gap:10px;align-items:center}
+  .admin-top h1{font-size:1.2rem;margin:6px 0 0}
+  .admin-wrap{max-width:720px;margin:0 auto;padding:14px 14px 100px}
+  .pin-card,.row,.edit-card{background:#fff;border:1px solid #efe4df;border-radius:16px;padding:14px;margin:10px 0}
+  .pin-card input,.token input,.edit-card input,.edit-card textarea,.edit-card select,#q{width:100%;border:1px solid #efe4df;border-radius:12px;padding:12px;font:inherit;box-sizing:border-box}
+  .row{display:grid;grid-template-columns:64px 1fr auto;gap:10px;align-items:center}
   .row img,.ph{width:64px;height:64px;object-fit:contain;border-radius:12px;background:#f6f1ee}
-  .row strong{display:block;font-size:.92rem;line-height:1.35}
-  .row small{color:#8a7f78}
-  .row .ed{grid-column:1 / -1;display:flex;gap:8px;align-items:center}
-  .row .ed label{flex:1;font-size:.75rem;color:#8a7f78;font-weight:700}
-  .hide{display:flex;align-items:center;gap:6px;font-weight:800;font-size:.85rem;white-space:nowrap}
-  .savebar{position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:1px solid #efe4df;padding:10px 14px;display:flex;gap:8px}
-  .savebar button,.pin-card button{flex:1;background:#b05c6e;color:#fff;border:0;border-radius:999px;padding:12px;font-weight:800;font:inherit}
+  .row strong{display:block;font-size:.9rem;line-height:1.35}
+  .row small{display:block;color:#8a7f78;font-size:.75rem;margin-top:2px}
+  .edit-btn,.primary,.back,.savebar button,.pin-card button{background:#b05c6e;color:#fff;border:0;border-radius:999px;padding:10px 14px;font-weight:800;font:inherit}
+  .edit-btn{padding:8px 12px;font-size:.8rem}
+  .back{background:#fff;color:#1f1a17;border:1px solid #efe4df;margin-bottom:8px}
+  .savebar{position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:1px solid #efe4df;padding:10px 14px;display:flex;gap:8px;z-index:6}
+  .savebar button{flex:1}
   .ghost{background:#fff!important;color:#1f1a17!important;border:1px solid #efe4df!important}
   .note{font-size:.82rem;color:#8a7f78;line-height:1.5}
-  .ok{color:#14532d;font-weight:800}
-  #list[hidden],#pin[hidden],#tools[hidden]{display:none}
+  .ok,.status{color:#14532d;font-weight:800;min-height:1.2em}
+  #listView[hidden],#editView[hidden],#tools[hidden],#pin[hidden],#savebar[hidden]{display:none!important}
+  .edit-card label{display:block;margin:10px 0;font-size:.78rem;font-weight:800;color:#8a7f78}
+  .edit-card textarea{resize:vertical;min-height:72px}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+  @media (max-width:520px){.grid3{grid-template-columns:1fr}}
+  .preview img,.ph.big{width:100%;height:180px;object-fit:contain;border-radius:14px;background:#f6f1ee}
+  .hide-row{display:flex!important;align-items:center;gap:8px;color:#1f1a17!important;font-size:.9rem!important}
+  .primary{width:100%;margin-top:8px;padding:14px}
 </style>
 </head>
 <body>
@@ -36,30 +44,31 @@
 </div>
 <div class="admin-wrap">
   <div class="pin-card" id="pin">
-    <p>رمز الدخول تحفظينه على هذا الآيفون. أول مرة تختارينه.</p>
+    <p>رمز الدخول يتحفظ على هذا الآيفون. أول مرة تختارينه.</p>
     <input id="pinInput" inputmode="numeric" maxlength="6" placeholder="٤ أرقام أو أكثر" />
     <button id="pinGo" type="button" style="margin-top:10px;width:100%">دخول</button>
     <p class="note" id="pinMsg"></p>
   </div>
   <div id="tools" hidden>
-    <input id="q" type="search" placeholder="ابحثي بالاسم أو SKU" style="width:100%;border:1px solid #efe4df;border-radius:999px;padding:12px 14px;font:inherit" />
-    <p class="note">تغيير السعر أو الإخفاء ينحفظ على جهازك فوراً. «نشر للكل» يحدّث المتجر لكل الزباين بعد ما تحطين رمز GitHub مرة واحدة.</p>
-    <p class="ok" id="status"></p>
-    <div class="token">
-      <input id="token" type="password" placeholder="رمز GitHub للنشر (اختياري)" autocomplete="off" />
+    <div id="listView">
+      <input id="q" type="search" placeholder="ابحثي بالاسم أو SKU أو الماركة" />
+      <p class="note">اضغطي «تعديل» على أي منتج: كمية، صور، وصف، استعمال، أسعار، إخفاء.</p>
+      <p class="status" id="status"></p>
+      <div class="token" style="margin:8px 0"><input id="token" type="password" placeholder="رمز GitHub للنشر للكل (اختياري)" autocomplete="off" /></div>
+      <div id="list"></div>
     </div>
-    <div id="list"></div>
+    <div id="editView" hidden></div>
   </div>
 </div>
 <div class="savebar" id="savebar" hidden>
   <button id="saveLocal" type="button">حفظ على جهازي</button>
   <button id="publish" class="ghost" type="button">نشر للكل</button>
 </div>
-<script src="products.js?v=20261122a"></script>
-<script src="data/products-care.js?v=20261122a"></script>
-<script src="data/products-makeup.js?v=20261122a"></script>
-<script src="data/products-hair.js?v=20261122a"></script>
-<script src="data/products-more.js?v=20261122a"></script>
-<script src="js/admin.js?v=20261122a"></script>
+<script src="products.js?v=20261122b"></script>
+<script src="data/products-care.js?v=20261122b"></script>
+<script src="data/products-makeup.js?v=20261122b"></script>
+<script src="data/products-hair.js?v=20261122b"></script>
+<script src="data/products-more.js?v=20261122b"></script>
+<script src="js/admin.js?v=20261122b"></script>
 </body>
 </html>

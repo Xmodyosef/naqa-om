@@ -19,8 +19,9 @@ function visual(p, idx){
 }
 function cardHTML(p){
   const pct=offPct(p);
-  const tags=(pct?'<span class="tag-off">'+esc(T("offTag")(pct))+'</span>':'')+(p.hot?'<span class="tag-hot">'+esc(T("hot"))+'</span>':'');
+  const tags=(pct?'<span class="tag-off">'+esc(T("offTag")(pct))+'</span>':'')+(p.hot?'<span class="tag-hot">'+esc(T("hot"))+'</span>':'')+(p.stock!=null && Number(p.stock)<=0?'<span class="tag-out">'+(lang==="en"?"Out of stock":"نفد")+'</span>':'');
   const qty=(cart.find(c=>c.id===p.id)||{}).qty;
+  const out=p.stock!=null && Number(p.stock)<=0;
   return '<article class="card" data-id="'+p.id+'">'
     +'<div class="card-visual" data-open="'+p.id+'">'
     +'<button type="button" class="wish-btn'+(typeof isWish==='function'&&isWish(p.id)?' on':'')+'" data-wish="'+p.id+'" aria-label="wishlist">♥</button>'
@@ -31,11 +32,11 @@ function cardHTML(p){
     +'<div class="card-brand">'+esc(T(catLabel[p.cat]||"all"))+'</div>'
     +'<button class="card-name" data-open="'+p.id+'" type="button">'+esc(pname(p))+'</button>'
     +'<div class="card-desc">'+esc(pdesc(p))+'</div>'
-    +'<div class="card-code">'+T("sku")+': '+(p.sku||T("noSku"))+'</div>'
+    +'<div class="card-code">'+T("sku")+': '+(p.sku||T("noSku"))+(p.stock!=null?(' · '+(lang==="en"?"Stock ":"المخزون ")+p.stock):'')+'</div>'
     +priceHTML(p)
     +'<div class="card-actions">'
     +'<button class="btn-qv" data-qv="'+p.id+'" type="button">'+T("qv")+'</button>'
-    +'<button class="btn-add" data-add="'+p.id+'" type="button">'+T("add")+'</button>'
+    +'<button class="btn-add" data-add="'+p.id+'" type="button"'+(out?' disabled':'')+'>'+(out?(lang==="en"?"Out":"نفد"):T("add"))+'</button>'
     +'<button class="btn-open" data-open="'+p.id+'" type="button">'+T("open")+'</button>'
     +'</div></div></article>';
 }

@@ -3,52 +3,131 @@ var KEY = "naqa_overrides";
 var PIN = "naqa_admin_pin";
 var TOKEN = "naqa_gh_token";
 var overrides = {};
+var editingId = null;
+var CATS = ["عناية", "وجه", "عيون", "حواجب", "شفاه", "عطور", "أدوات", "شعر"];
 try { overrides = JSON.parse(localStorage.getItem(KEY) || "{}"); } catch (e) { overrides = {}; }
 
 function esc(v) {
-  return String(v == null ? "" : v).split("&").join("&amp;").split("<").join("&lt;").split('"').join("&quot;");
+  return String(v == null ? "" : v).split("&").join("&" + "amp;").split("<").join("&" + "lt;").split('"').join("&" + "quot;");
 }
-function rowOf(p) {
+function merged(p) {
   var o = overrides[p.id] || overrides[String(p.id)] || {};
-  return {
-    price: o.price != null && o.price !== "" ? o.price : p.price,
-    was: o.was != null ? o.was : (p.was || ""),
-    hidden: !!(o.hidden != null ? o.hidden : p.hidden)
-  };
+  var m = Object.assign({}, p, o);
+  if (o.imgs && o.imgs.length) m.imgs = o.imgs;
+  if (m.stock == null || m.stock === "") m.stock = "";
+  if (m.was == null) m.was = "";
+  return m;
 }
-function readForm() {
-  document.querySelectorAll("[data-id]").forEach(function (box) {
-    var id = box.getAttribute("data-id");
-    var price = box.querySelector("[data-f=price]").value;
-    var was = box.querySelector("[data-f=was]").value;
-    var hidden = box.querySelector("[data-f=hidden]").checked;
-    var next = {};
-    if (price !== "") next.price = Number(price);
-    if (was !== "") next.was = Number(was);
-    if (hidden) next.hidden = true;
-    if (Object.keys(next).length) overrides[id] = next;
-    else delete overrides[id];
-  });
+function val(id) {
+  var el = document.getElementById(id);
+  return el ? el.value : "";
 }
-function paint(q) {
+function paintList(q) {
+  editingId = null;
+  document.getElementById("listView").hidden = false;
+  document.getElementById("editView").hidden = true;
+  document.getElementById("savebar").hidden = false;
   q = (q || "").toLowerCase();
   var html = products.filter(function (p) {
-    var blob = [p.nameAr, p.nameEn, p.brand, p.sku, p.id].join(" ").toLowerCase();
+    var m = merged(p);
+    var blob = [m.nameAr, m.nameEn, m.brand, m.sku, p.id].join(" ").toLowerCase();
     return !q || blob.indexOf(q) >= 0;
   }).map(function (p) {
-    var o = rowOf(p);
-    var img = (p.imgs && p.imgs[0]) || "";
+    var m = merged(p);
+    var img = (m.imgs && m.imgs[0]) || "";
     var thumb = img ? '<img src="' + esc(img) + '" alt="">' : '<div class="ph"></div>';
-    return '<article class="row" data-id="' + p.id + '">' + thumb
-      + '<div><strong>' + esc(p.nameAr || p.nameEn) + '</strong><small>' + esc(p.brand || "") + ' · SKU ' + esc(p.sku || "—") + '</small></div>'
-      + '<div class="ed"><label>السعر<input data-f="price" type="number" min="0" step="0.001" value="' + esc(o.price) + '"></label>'
-      + '<label>قبل الخصم<input data-f="was" type="number" min="0" step="0.001" value="' + esc(o.was) + '"></label>'
-      + '<label class="hide"><input data-f="hidden" type="checkbox"' + (o.hidden ? " checked" : "") + '> إخفاء</label></div></article>';
+    var stock = m.stock === "" || m.stock == null ? "—" : m.stock;
+    var hid = m.hidden ? " · مخفي" : "";
+    return '<article class="row" data-open="' + p.id + '">' + thumb
+      + '<div><strong>' + esc(m.nameAr || m.nameEn) + '</strong>'
+      + '<small>' + esc(m.brand || "") + ' · ' + esc(m.cat || "") + ' · SKU ' + esc(m.sku || "—") + '</small>'
+      + '<small>السعر ' + esc(m.price) + ' · المخزون ' + esc(stock) + hid + '</small></div>'
+      + '<button type="button" class="edit-btn" data-open="' + p.id + '">تعديل</button></article>';
   }).join("");
   document.getElementById("list").innerHTML = html || '<p class="note">ما في نتائج</p>';
 }
+function openEdit(id) {
+  var p = products.find(function (x) { return x.id == id; });
+  if (!p) return;
+  editingId = p.id;
+  var m = merged(p);
+  document.getElementById("listView").hidden = true;
+  document.getElementById("editView").hidden = false;
+  document.getElementById("savebar").hidden = false;
+  var catOpts = CATS.map(function (c) {
+    return '<option value="' + esc(c) + '"' + (m.cat === c ? " selected" : "") + ">" + esc(c) + "</option>";
+  }).join("");
+  var imgs = (m.imgs || []).join("\n");
+  document.getElementById("editView").innerHTML =
+    '<button type="button" class="back" id="backList">← رجوع للقائمة</button>'
+    + '<div class="edit-card">'
+    + '<div class="preview">' + ((m.imgs && m.imgs[0]) ? '<img src="' + esc(m.imgs[0]) + '" alt="">' : '<div class="ph big"></div>') + '</div>'
+    + '<label>الاسم عربي<textarea id="f_nameAr" rows="2">' + esc(m.nameAr || "") + '</textarea></label>'
+    + '<label>الاسم English<textarea id="f_nameEn" rows="2">' + esc(m.nameEn || "") + '</textarea></label>'
+    + '<div class="grid2">'
+    + '<label>الماركة<input id="f_brand" type="text" value="' + esc(m.brand || "") + '"></label>'
+    + '<label>التصنيف<select id="f_cat">' + catOpts + '</select></label>'
+    + '</div>'
+    + '<label>SKU<input id="f_sku" type="text" value="' + esc(m.sku || "") + '"></label>'
+    + '<div class="grid3">'
+    + '<label>السعر ر.ع<input id="f_price" type="number" min="0" step="0.001" value="' + esc(m.price) + '"></label>'
+    + '<label>قبل الخصم<input id="f_was" type="number" min="0" step="0.001" value="' + esc(m.was) + '"></label>'
+    + '<label>الكمية / المخزون<input id="f_stock" type="number" min="0" step="1" value="' + esc(m.stock) + '" placeholder="فارغ = بدون حد"></label>'
+    + '</div>'
+    + '<label class="hide-row"><input id="f_hidden" type="checkbox"' + (m.hidden ? " checked" : "") + '> إخفاء المنتج من المتجر</label>'
+    + '<label>الوصف عربي<textarea id="f_descAr" rows="4">' + esc(m.descAr || "") + '</textarea></label>'
+    + '<label>الوصف English<textarea id="f_descEn" rows="4">' + esc(m.descEn || "") + '</textarea></label>'
+    + '<label>طريقة الاستعمال عربي<textarea id="f_useAr" rows="4">' + esc(m.useAr || "") + '</textarea></label>'
+    + '<label>طريقة الاستعمال English<textarea id="f_useEn" rows="4">' + esc(m.useEn || "") + '</textarea></label>'
+    + '<label>يناسب (عربي)<input id="f_skinAr" type="text" value="' + esc(m.skinAr || "") + '"></label>'
+    + '<label>Best for (English)<input id="f_skinEn" type="text" value="' + esc(m.skinEn || "") + '"></label>'
+    + '<label>روابط الصور (سطر لكل صورة، حتى ٥)<textarea id="f_imgs" rows="5" placeholder="https://...">' + esc(imgs) + '</textarea></label>'
+    + '<p class="note">الصق روابط الصور الجاهزة. كل سطر صورة واحدة.</p>'
+    + '<button type="button" class="primary" id="saveEdit">حفظ هذا المنتج</button>'
+    + '</div>';
+  document.getElementById("backList").onclick = function () { paintList(document.getElementById("q").value.trim()); };
+  document.getElementById("saveEdit").onclick = function () { saveEdit(); };
+}
+function saveEdit() {
+  if (editingId == null) return;
+  var next = {
+    nameAr: val("f_nameAr"),
+    nameEn: val("f_nameEn"),
+    brand: val("f_brand"),
+    cat: val("f_cat"),
+    sku: val("f_sku"),
+    price: val("f_price") === "" ? undefined : Number(val("f_price")),
+    was: val("f_was") === "" ? undefined : Number(val("f_was")),
+    stock: val("f_stock") === "" ? undefined : Number(val("f_stock")),
+    descAr: val("f_descAr"),
+    descEn: val("f_descEn"),
+    useAr: val("f_useAr"),
+    useEn: val("f_useEn"),
+    skinAr: val("f_skinAr"),
+    skinEn: val("f_skinEn"),
+    imgs: val("f_imgs").split(/\n+/).map(function (s) { return s.trim(); }).filter(Boolean).slice(0, 5),
+    hidden: !!(document.getElementById("f_hidden") && document.getElementById("f_hidden").checked)
+  };
+  // drop empty optional numbers
+  if (next.price == null || isNaN(next.price)) delete next.price;
+  if (next.was == null || isNaN(next.was)) delete next.was;
+  if (next.stock == null || isNaN(next.stock)) delete next.stock;
+  if (!next.imgs.length) delete next.imgs;
+  if (!next.hidden) delete next.hidden;
+  // remove empty strings that match original? keep all non-empty for clarity
+  Object.keys(next).forEach(function (k) {
+    if (next[k] === "" || next[k] === undefined) delete next[k];
+  });
+  if (Object.keys(next).length) overrides[editingId] = next;
+  else delete overrides[editingId];
+  localStorage.setItem(KEY, JSON.stringify(overrides));
+  document.getElementById("status").textContent = "انحفظ المنتج. اضغطي «حفظ على جهازي» أو «نشر للكل» لما تخلصين.";
+  paintList(document.getElementById("q").value.trim());
+}
 function saveLocal() {
-  readForm();
+  if (editingId != null && document.getElementById("editView") && !document.getElementById("editView").hidden) {
+    saveEdit();
+  }
   localStorage.setItem(KEY, JSON.stringify(overrides));
   document.getElementById("status").textContent = "انحفظ على هذا الآيفون. الزباين الثانية ما تشوف التغيير إلا بعد النشر.";
 }
@@ -56,7 +135,9 @@ function utf8b64(text) {
   return btoa(unescape(encodeURIComponent(text)));
 }
 function publish() {
-  readForm();
+  if (editingId != null && document.getElementById("editView") && !document.getElementById("editView").hidden) {
+    saveEdit();
+  }
   localStorage.setItem(KEY, JSON.stringify(overrides));
   var token = document.getElementById("token").value.trim() || localStorage.getItem(TOKEN) || "";
   var status = document.getElementById("status");
@@ -92,7 +173,7 @@ function openAdmin() {
   document.getElementById("savebar").hidden = false;
   var saved = localStorage.getItem(TOKEN);
   if (saved) document.getElementById("token").value = saved;
-  paint("");
+  paintList("");
 }
 document.getElementById("pinGo").onclick = function () {
   var typed = document.getElementById("pinInput").value.trim();
@@ -104,8 +185,12 @@ document.getElementById("pinGo").onclick = function () {
   else msg.textContent = "الرمز غير صحيح.";
 };
 document.getElementById("q").addEventListener("input", function (e) {
-  readForm();
-  paint(e.target.value.trim());
+  paintList(e.target.value.trim());
+});
+document.getElementById("list").addEventListener("click", function (e) {
+  var btn = e.target.closest("[data-open]");
+  if (!btn) return;
+  openEdit(+btn.getAttribute("data-open"));
 });
 document.getElementById("saveLocal").onclick = saveLocal;
 document.getElementById("publish").onclick = publish;

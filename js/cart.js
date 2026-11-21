@@ -1,7 +1,20 @@
 /* cart logic + drawer UI */
 function addToCart(id, qty, quiet){
   const p=products.find(x=>x.id===id); if(!p) return;
-  const n=Math.max(1, Math.min(20, parseInt(qty,10)||1));
+  if(p.stock!=null && Number(p.stock)<=0){
+    if(!quiet && typeof toast==="function") toast(lang==="en"?"Out of stock":"نفد المخزون");
+    return;
+  }
+  let n=Math.max(1, Math.min(20, parseInt(qty,10)||1));
+  if(p.stock!=null){
+    const have=(cart.find(x=>x.id===id)||{}).qty||0;
+    const left=Math.max(0, Number(p.stock)-have);
+    if(left<=0){
+      if(!quiet && typeof toast==="function") toast(lang==="en"?"Out of stock":"نفد المخزون");
+      return;
+    }
+    n=Math.min(n, left);
+  }
   const row=cart.find(x=>x.id===id);
   if(row) row.qty+=n; else cart.push({id:p.id, brand:p.brand, price:p.price, sku:p.sku, qty:n});
   saveCart(); renderCart();

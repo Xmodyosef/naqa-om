@@ -183,7 +183,7 @@ async function openSheet(id, mode, reset){
     `}
     <div class="sheet-actions">
       <button class="btn-wish-sheet ${typeof isWish==="function"&&isWish(p.id)?"on":""}" data-wish="${p.id}" type="button">♥ ${lang==="en"?"Save":"حفظ"}</button>
-      <button class="btn-add card-add" data-add="${p.id}" type="button">${T("add")}</button>
+      <button class="btn-add card-add" data-add="${p.id}" ${(p.stock!=null && Number(p.stock)<=0)?"disabled":""} type="button">${(p.stock!=null && Number(p.stock)<=0)?(lang==="en"?"Out of stock":"نفد"):T("add")}</button>
       ${qv? `<button class="btn-open" data-open="${p.id}" type="button">${T("open")}</button>`:""}
     </div>`;
   $("#sheet").classList.add("show");

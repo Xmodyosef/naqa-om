@@ -57,7 +57,12 @@ function mergeOverrides(map){
     if(!o) return;
     if(o.price!=null && o.price!=="") p.price=Number(o.price);
     if(o.was!=null && o.was!=="") p.was=Number(o.was);
+    if(o.stock!=null && o.stock!=="") p.stock=Number(o.stock);
     if(o.hidden!=null) p.hidden=!!o.hidden;
+    ["nameAr","nameEn","descAr","descEn","useAr","useEn","skinAr","skinEn","brand","cat","sku","em"].forEach(function(k){
+      if(o[k]!=null && o[k]!=="") p[k]=o[k];
+    });
+    if(Array.isArray(o.imgs) && o.imgs.length) p.imgs=o.imgs.filter(Boolean).slice(0,5);
   });
 }
 try{

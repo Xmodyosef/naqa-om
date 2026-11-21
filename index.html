@@ -73,11 +73,15 @@ header{position:sticky;top:0;z-index:60;background:rgba(253,248,246,.94);
   content-visibility:auto;contain-intrinsic-size:320px 420px}
 .card-visual{aspect-ratio:1;background:#fff;position:relative;overflow:hidden}
 .card-visual img{width:100%;height:100%;object-fit:contain;background:#fff}
-.ar-band{position:absolute;left:0;right:0;bottom:0;padding:8px 10px;
-  background:linear-gradient(transparent,rgba(20,12,10,.72));color:#fff;
-  font-size:.72rem;font-weight:700;line-height:1.35;text-align:start;
-  pointer-events:none}
-html[lang="en"] .ar-band{display:none}
+.price-badge{position:absolute;bottom:8px;inset-inline-start:8px;z-index:3;
+  background:rgba(31,26,23,.9);color:#fff;font-weight:800;font-size:.78rem;
+  padding:5px 10px;border-radius:999px;pointer-events:none}
+html[lang="en"] .price-badge{display:none}
+.brand-link{color:var(--rose-deep);font-weight:800;text-decoration:underline;text-underline-offset:3px;font-size:.85rem}
+.card-brand.brand-link{font-size:.78rem;text-align:start}
+.brand-bar{display:flex;align-items:center;gap:8px;margin:0 0 12px}
+.brand-bar[hidden]{display:none}
+.brand-chip{background:#fff;border:1px solid var(--line);border-radius:999px;padding:8px 14px;font-weight:800;color:var(--rose-deep)}
 .card-body{padding:12px;display:flex;flex-direction:column;gap:6px;flex:1}
 .card-brand{font-size:.72rem;color:var(--muted);font-weight:600}
 .card-name{font-weight:700;font-size:.92rem;line-height:1.35;text-align:start;width:100%}
@@ -244,6 +248,7 @@ footer{margin-top:40px;padding:28px 0 24px;border-top:1px solid var(--line);colo
     <h2 id="products">المنتجات</h2>
     <span id="countLabel">0</span>
   </div>
+  <div class="brand-bar" id="brandBar" hidden></div>
   <div class="grid" id="grid"></div>
   <div class="empty" id="empty" hidden></div>
 </main>
@@ -299,18 +304,27 @@ footer{margin-top:40px;padding:28px 0 24px;border-top:1px solid var(--line);colo
   <img id="lbImg" alt="">
 </div>
 
-<script src="products.js"></script>
+<script src="products.js?v=20261121d"></script>
 <script>
 const WA_NUMBER="96879088349", CURRENCY="ر.ع", SITE="www.naqa.om";
 const products=(window.NAQA_PRODUCTS||[]).map(p=>Object.assign({imgs:[]},p));
 const $=s=>document.querySelector(s);
+
+function esc(v){
+  return String(v==null?"":v)
+    .split("&").join("&"+"amp;")
+    .split("<").join("&"+"lt;")
+    .split(">").join("&"+"gt;")
+    .split('"').join("&"+"quot;")
+    .split("'").join("&"+"#39;");
+}
 let lang="ar"; try{lang=localStorage.getItem("naqa_lang")||"ar"}catch(e){}
 let cart=[]; try{cart=JSON.parse(localStorage.getItem("naqa_cart")||"[]"); if(!Array.isArray(cart)) cart=[]}catch(e){cart=[]}
-let query="", currentCat="all", openProductId=null, galleryIndex=0, sheetMode="full";
+let query="", currentCat="all", currentBrand="", openProductId=null, galleryIndex=0, sheetMode="full";
 
 const ui={
  ar:{
-  search:"ابحثي عن منتج أو ماركة أو SKU...",
+  search:"ابحثي...",
   all:"الكل", care:"عناية", face:"مكياج", eyes:"عيون", lips:"شفاه", scent:"عطور", tools:"أدوات", hair:"شعر",
   shop:"تسوّقي الآن", wa:"واتساب نقاء", products:"المنتجات", count:n=>n+" منتج", empty:"ما في نتائج",
   cart:"السلة", emptyCart:"السلة فاضية<br/>أضيفي من القائمة", total:"المجموع", checkout:"إتمام الطلب عبر واتساب",
@@ -320,12 +334,12 @@ const ui={
   alertEmpty:"السلة فاضية", greet:"السلام عليكم، أبغى أطلب من نقاء",
   ship:"توصيل عُمان", order:"طلب واتساب", contact:"تواصلي", shopH:"التسوق", orders:"واتساب الطلبات",
   skin:"عناية", faceL:"مكياج", hairL:"شعر", blurb:"عناية ومكياج · متجر عُماني", copy:"نقاء · Naqa · عُمان",
-  about:"عن المنتج", how:"طريقة الاستعمال", skinT:"يناسب", also:"قد يعجبكِ أيضاً", back:"رجوع",
+  about:"عن المنتج", how:"طريقة الاستعمال", skinT:"يناسب", also:"قد يعجبكِ أيضاً", same:"باقي منتجات الماركة", back:"رجوع",
   sku:"SKU", logo:"نقاء", tag:"عناية ومكياج", swipe:"اسحبي من اليسار لليمين للرجوع · مرّري الصور يمين/يسار",
   openImg:"اضغطي الصورة للتكبير", barEmpty:"السلة فاضية", barHint:"أضيفي منتجات من القائمة", barItems:n=>n+" منتج في السلة", barOpen:"افتحي السلة", barCheckout:"إتمام الطلب"
  },
  en:{
-  search:"Search product, brand, or SKU...",
+  search:"Search...",
   all:"All", care:"Skincare", face:"Makeup", eyes:"Eyes", lips:"Lips", scent:"Fragrance", tools:"Tools", hair:"Hair",
   shop:"Shop now", wa:"WhatsApp Naqa", products:"Products", count:n=>n+" products", empty:"No results",
   cart:"Cart", emptyCart:"Your cart is empty<br/>Add from the list", total:"Total", checkout:"Checkout on WhatsApp",
@@ -335,7 +349,7 @@ const ui={
   alertEmpty:"Cart is empty", greet:"Hello, I want to order from Naqa",
   ship:"Oman delivery", order:"WhatsApp order", contact:"Contact", shopH:"Shop", orders:"Order on WhatsApp",
   skin:"Skincare", faceL:"Makeup", hairL:"Hair", blurb:"Care and makeup · Oman store", copy:"Naqa · Oman",
-  about:"About", how:"How to use", skinT:"Best for", also:"You may also like", back:"Back",
+  about:"About", how:"How to use", skinT:"Best for", also:"You may also like", same:"More from this brand", back:"Back",
   sku:"SKU", logo:"Naqa", tag:"Care & Makeup", swipe:"Swipe left-edge to go back · swipe images sideways",
   openImg:"Tap image to enlarge", barEmpty:"Cart is empty", barHint:"Add products from the list", barItems:n=>n+" items in cart", barOpen:"Open cart", barCheckout:"Checkout"
  }
@@ -389,9 +403,17 @@ function render(){
   const q=query.toLowerCase();
   const list=products.filter(p=>{
     const catOk=currentCat==="all"||p.cat===currentCat;
+    const brandOk=!currentBrand || p.brand===currentBrand;
     const blob=[p.nameAr,p.nameEn,p.brand,p.sku,p.descAr,p.descEn].join(" ").toLowerCase();
-    return catOk && (!q || blob.includes(q));
+    return catOk && brandOk && (!q || blob.includes(q));
   });
+  const bar=$("#brandBar");
+  if(currentBrand){
+    bar.hidden=false;
+    bar.innerHTML='<button type="button" class="brand-chip" id="clearBrand">'+esc(currentBrand)+' ×</button>';
+    const clear=$("#clearBrand");
+    if(clear) clear.onclick=()=>{ currentBrand=""; render(); };
+  } else { bar.hidden=true; bar.innerHTML=""; }
   $("#countLabel").textContent=T("count")(list.length);
   $("#empty").hidden=list.length>0;
   $("#empty").textContent=T("empty");
@@ -400,12 +422,13 @@ function render(){
       <div class="card-visual" data-open="${p.id}">
         <span class="card-cart-chip${(cart.find(c=>c.id===p.id)||{}).qty?' show':''}" data-chip="${p.id}">${(cart.find(c=>c.id===p.id)||{}).qty?('×'+(cart.find(c=>c.id===p.id).qty)):''}</span>
         ${visual(p,0)}
-        <div class="ar-band">${p.nameAr||""}</div>
+        <span class="price-badge">${money(p.price)}</span>
       </div>
       <div class="card-body">
-        <div class="card-brand">${p.brand} · ${T(catLabel[p.cat]||"all")}</div>
-        <button class="card-name" data-open="${p.id}" type="button">${pname(p)}</button>
-        <div class="card-desc">${pdesc(p)}</div>
+        <button class="card-brand brand-link" type="button" data-brand="${esc(p.brand)}">${esc(p.brand)}</button>
+        <div class="card-brand">${T(catLabel[p.cat]||"all")}</div>
+        <button class="card-name" data-open="${p.id}" type="button">${esc(pname(p))}</button>
+        <div class="card-desc">${esc(pdesc(p))}</div>
         <div class="card-code">${T("sku")}: ${p.sku||T("noSku")}</div>
         <div class="card-price">${money(p.price)}</div>
         <div class="card-actions">
@@ -504,15 +527,12 @@ function galleryList(p){
   return pimgs(p).slice(0,5);
 }
 
-function carouselHTML(p, start, arCardUrl){
+function carouselHTML(p, start){
   let imgs=galleryList(p);
   if(!imgs.length) imgs=[''];
-  // Prepend Arabic card as first slide when available
-  if (arCardUrl) imgs = [arCardUrl].concat(imgs).slice(0,6);
   const slides=imgs.map((src,i)=>`
     <div class="carousel-slide" data-i="${i}">
-      ${src?`<img class="${String(src).startsWith('data:')?'ar-card-img':''}" src="${src}" alt="${pname(p)}" data-full="${src}" loading="${i? 'lazy':'eager'}">`:(p.em||'✨')}
-      ${!String(src).startsWith('data:') ? `<div class="ar-band">${p.nameAr||""}</div>` : ''}
+      ${src?`<img src="${esc(src)}" alt="${esc(pname(p))}" data-full="${esc(src)}" loading="${i? 'lazy':'eager'}">`:(p.em||'✨')}
     </div>`).join("");
   const dots=imgs.map((_,i)=>`<button type="button" class="${i===start?'on':''}" data-dot="${i}"></button>`).join("");
   const thumbs=imgs.map((src,i)=>`
@@ -521,6 +541,7 @@ function carouselHTML(p, start, arCardUrl){
     </button>`).join("");
   return `
     <div class="carousel" id="car" data-count="${imgs.length}">
+      <span class="price-badge">${money(p.price)}</span>
       <div class="carousel-count"><span id="carIdx">${start+1}</span> / ${imgs.length}</div>
       <button class="carousel-nav prev" type="button" data-nav="-1" aria-label="prev">‹</button>
       <button class="carousel-nav next" type="button" data-nav="1" aria-label="next">›</button>
@@ -589,35 +610,33 @@ async function openSheet(id, mode, reset){
   const p=products.find(x=>x.id===id); if(!p) return;
   openProductId=id; sheetMode=mode||"full";
   if(reset!==false) galleryIndex=0;
-  const sug=products.filter(x=>x.cat===p.cat && x.id!==p.id).slice(0,4);
+  const sameBrand=products.filter(x=>x.brand===p.brand && x.id!==p.id);
+  const pool=sameBrand.length?sameBrand:products.filter(x=>x.cat===p.cat && x.id!==p.id);
+  const sug=pool.slice(0,4);
+  const alsoLabel=sameBrand.length?T("same"):T("also");
   const cards=sug.map(s=>`
     <button class="sug" data-open="${s.id}" type="button">
       <span class="sug-vis">${visual(s,0)}</span>
-      <span class="sug-name">${pname(s)}</span>
+      <span class="sug-name">${esc(pname(s))}</span>
       <span class="sug-price">${money(s.price)}</span>
     </button>`).join("");
   const qv=sheetMode==="qv";
   $("#sheet").classList.toggle("qv", qv);
-  // Arabic presentation card (not fake packaging — Naqa Arabic card with real photo)
-  let arUrl="";
-  if (lang==="ar") {
-    try { arUrl = await makeArCard(p); } catch(e) { arUrl=""; }
-  }
   $("#sheetCard").innerHTML=`
     <p class="swipe-hint">${T("swipe")}</p>
     <button class="text-back" id="closeSheet" type="button">‹ ${T("back")}</button>
-    ${carouselHTML(p, galleryIndex, arUrl)}
-    <div class="card-brand" style="margin-top:12px">${p.brand} · ${T(catLabel[p.cat]||"all")}</div>
-    <h3 style="margin:6px 0 4px">${pname(p)}</h3>
+    <button class="brand-link" type="button" data-brand="${esc(p.brand)}">${esc(p.brand)}</button>
+    <h3 style="margin:4px 0 2px">${esc(pname(p))}</h3>
     <div class="card-price">${money(p.price)}</div>
-    <div class="sku-line">${T("sku")}: ${p.sku || T("noSku")}</div>
-    <span class="skin-pill">${T("skinT")}: ${pskin(p)}</span>
-    ${qv? `<p class="long" style="margin-top:12px">${pdesc(p)}</p>` : `
+    ${carouselHTML(p, galleryIndex)}
+    <div class="sku-line">${T("sku")}: ${esc(p.sku || T("noSku"))}</div>
+    <span class="skin-pill">${T("skinT")}: ${esc(pskin(p))}</span>
+    ${qv? `<p class="long" style="margin-top:12px"><button class="brand-link" type="button" data-brand="${esc(p.brand)}">${esc(p.brand)}</button> — ${esc(pdesc(p))}</p>` : `
       <h4 class="block-h">${T("about")}</h4>
-      <p class="long">${pdesc(p)}</p>
+      <p class="long"><button class="brand-link" type="button" data-brand="${esc(p.brand)}">${esc(p.brand)}</button> — ${esc(pdesc(p))}</p>
       <h4 class="block-h">${T("how")}</h4>
-      <p class="long">${puse(p)}</p>
-      <h4 class="block-h">${T("also")}</h4>
+      <p class="long">${esc(puse(p))}</p>
+      <h4 class="block-h">${alsoLabel}</h4>
       <div class="sug-row">${cards}</div>
     `}
     <div class="sheet-actions">
@@ -716,15 +735,30 @@ $("#closeCart").onclick=closeCart;
 $("#overlay").onclick=closeCart;
 $("#barGo").onclick=()=>{ if(cart.length) openCart(); else openCart(); };
 $("#search").addEventListener("input", e=>{ query=e.target.value.trim(); render(); });
+
+document.addEventListener("click", e=>{
+  const b=e.target.closest("[data-brand]");
+  if(!b || !b.dataset.brand) return;
+  e.preventDefault();
+  currentBrand=b.dataset.brand;
+  currentCat="all";
+  query="";
+  const search=$("#search"); if(search) search.value="";
+  document.querySelectorAll("#cats a").forEach(x=>x.classList.toggle("on", x.dataset.cat==="all"));
+  closeSheet();
+  render();
+  const prod=$("#products"); if(prod) prod.scrollIntoView({behavior:"smooth"});
+});
+
 $("#langBtn").onclick=()=>{ lang=lang==="ar"?"en":"ar"; try{localStorage.setItem("naqa_lang",lang)}catch(e){} render(); };
 $("#cats").addEventListener("click", e=>{
   const a=e.target.closest("[data-cat]"); if(!a) return; e.preventDefault();
   document.querySelectorAll("#cats a").forEach(x=>x.classList.remove("on")); a.classList.add("on");
-  currentCat=a.dataset.cat; render(); $("#products").scrollIntoView({behavior:"smooth"});
+  currentCat=a.dataset.cat; currentBrand=""; render(); $("#products").scrollIntoView({behavior:"smooth"});
 });
 document.querySelectorAll("[data-cat-jump]").forEach(el=>{
   el.addEventListener("click", e=>{
-    e.preventDefault(); currentCat=el.dataset.catJump;
+    e.preventDefault(); currentCat=el.dataset.catJump; currentBrand="";
     document.querySelectorAll("#cats a").forEach(x=>x.classList.toggle("on", x.dataset.cat===currentCat));
     render(); $("#products").scrollIntoView({behavior:"smooth"});
   });

@@ -1,48 +1,31 @@
-# نقاء · Naqa
+# نقاء — Naqa (عُمان)
 
-**عناية ومكياج** — متجر إلكتروني عُماني.
+متجر عناية ومكياج ثابت على GitHub Pages. الطلب عبر واتساب.
 
-| | |
+## الملفات (قسمناها عشان الإصلاح يكون سهل)
+
+| ملف | وش فيه |
 |---|---|
-| الموقع | [www.naqa.om](https://www.naqa.om) |
-| GitHub Pages | https://xmodyosef.github.io/naqa-om/ |
-| واتساب | +968 7908 8349 |
-| العملة | ر.ع |
-| الواجهة | عربية RTL · صفحة واحدة · تعمل أوفلاين |
+| `index.html` | هيكل الصفحة فقط (هيدر، شبكة، سلة، فوتر) |
+| `css/naqa.css` | كل التنسيق والألوان |
+| `products.js` | بيانات المنتجات (أسعار، صور، أوصاف) |
+| `js/config.js` | رقم واتساب، العملة، دومينات الماركات |
+| `js/core.js` | الحالة، الترجمة، الماركة، التوجيه |
+| `js/render.js` | كروت المنتجات، الأقسام، الشبكة |
+| `js/sheet.js` | صفحة المنتج ونظرة سريعة والمعرض |
+| `js/cart.js` | السلة والدرج |
+| `js/app.js` | الأحداث، السحب، التشغيل |
 
-## التشغيل
+## تشغيل
 
-افتحي `index.html` في Safari أو من الرابط أعلاه.
+افتحي: https://xmodyosef.github.io/naqa-om/
 
-## الملفات
+أو محلياً أي سيرفر ثابت على المجلد.
 
-```
-naqa-om/
-├── index.html   # المتجر (34 منتج تجريبي)
-├── logo.svg
-├── CNAME        # www.naqa.om
-├── README.md
-└── STEPS.md
-```
+## تعديل سريع
 
-## قبل التعديل
-
-في `index.html`:
-```js
-const WA_NUMBER = "96879088349";
-const CURRENCY  = "ر.ع";
-// products = ...
-```
-
-## GitHub Pages
-
-1. Settings → Pages → Deploy from branch **main** / **/** (root)
-2. بعد دقيقتين: https://xmodyosef.github.io/naqa-om/
-3. ربط الدومين: CNAME → `xmodyosef.github.io`
-
-## الهوية
-
-**نقاء** · عناية ومكياج · Naqa · www.naqa.om
-
----
-© نقاء · عُمان
+- سعر أو منتج → `products.js`
+- نص عربي/إنجليزي → `js/core.js` (كائن `ui`)
+- رقم واتساب → `js/config.js`
+- شكل/ألوان → `css/naqa.css`
+- نظرة سريعة / سحب → `js/sheet.js` و `js/app.js`

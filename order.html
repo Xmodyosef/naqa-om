@@ -45,7 +45,7 @@ function loadOrder(){
     };
     return order;
   }catch(e){
-    box.innerHTML='<div class="card"><h1>الرابط غير صالح</h1><p class="muted">'+esc(e.message)+'</p><a class="btn ghost" href="admin.html">لوحة التحكم</a></div>';
+    box.innerHTML='<div class="card"><h1>رابط الطلب قديم أو مقطوع</h1><p class="muted">الرسائل كانت فيها كود طويل (eyJ…). الحين الطلب يوصل واتساب واضح: رقم الطلب + المنتجات. سجّليه من لوحة التحكم يدوياً أو من نفس الجهاز بعد الطلب.</p><a class="btn ghost" href="admin.html#orders">لوحة الطلبات</a></div>';
     return null;
   }
 }

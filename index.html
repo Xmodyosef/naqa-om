@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<meta name="theme-color" content="#b05c6e" />
+<meta name="description" content="نقاء — عناية ومكياج. متجر عُماني أصلي. توصيل لكل السلطنة. طلب واتساب." />
+<meta property="og:title" content="نقاء · عناية ومكياج" />
+<meta property="og:description" content="مكياج وعناية أصلية · توصيل عُمان · www.naqa.om" />
+<meta property="og:url" content="https://www.naqa.om" />
+<meta property="og:locale" content="ar_OM" />
+<title>نقاء · عناية ومكياج | www.naqa.om</title>
+<style>
+:root{
+  --bg:#fdf8f6; --card:#fff; --fg:#1f1a17; --muted:#8a7f78;
+  --rose:#d98a9a; --rose-deep:#b05c6e; --gold:#c9a227; --line:#efe4df;
+  --shadow:0 10px 30px rgba(50,30,25,.08); --r:18px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--fg);
+  font-family:"Noto Kufi Arabic","Segoe UI",Tahoma,system-ui,sans-serif;line-height:1.6}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+img{max-width:100%;display:block}
+.wrap{max-width:1180px;margin:0 auto;padding:0 16px}
+
+/* HEADER */
+header{position:sticky;top:0;z-index:60;background:rgba(253,248,246,.94);
+  -webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.top{display:flex;align-items:center;gap:12px;height:68px}
+.logo{display:flex;align-items:center;gap:10px;white-space:nowrap}
+.logo-mark{width:40px;height:40px;border-radius:12px;background:var(--card);
+  border:1px solid var(--line);display:grid;place-items:center;
+  font-weight:800;font-size:1.05rem;color:var(--rose-deep)}
+.logo-text{display:flex;flex-direction:column;line-height:1.15}
+.logo-text strong{font-size:1.25rem;font-weight:800;letter-spacing:-.3px}
+.logo-text span{font-size:.72rem;color:var(--muted);font-weight:600}
+.search{flex:1;display:flex;align-items:center;gap:8px;background:#fff;
+  border:1px solid var(--line);border-radius:999px;padding:9px 14px;max-width:420px;margin:0 auto}
+.search input{border:none;outline:none;width:100%;font:inherit;background:transparent;font-size:.95rem}
+.icon-btn{width:42px;height:42px;border-radius:12px;background:#fff;border:1px solid var(--line);
+  display:grid;place-items:center;position:relative;flex-shrink:0}
+.icon-btn .badge{position:absolute;top:-4px;left:-4px;min-width:18px;height:18px;padding:0 5px;
+  border-radius:999px;background:var(--rose-deep);color:#fff;font-size:.7rem;font-weight:700;
+  display:grid;place-items:center}
+.nav-cats{display:flex;gap:6px;overflow-x:auto;padding:10px 0 12px;-webkit-overflow-scrolling:touch}
+.nav-cats::-webkit-scrollbar{display:none}
+.nav-cats a{flex-shrink:0;padding:8px 14px;border-radius:999px;background:#fff;
+  border:1px solid var(--line);font-size:.88rem;font-weight:600;color:var(--muted)}
+.nav-cats a.on,.nav-cats a:hover{background:var(--rose-deep);color:#fff;border-color:var(--rose-deep)}
+
+/* HERO */
+.hero{margin:18px 0 8px;padding:28px 22px;border-radius:var(--r);background:
+  linear-gradient(135deg,#fff 0%,#f8ebe8 55%,#f3e0d8 100%);
+  border:1px solid var(--line);box-shadow:var(--shadow);display:grid;gap:10px}
+.hero h1{margin:0;font-size:clamp(1.5rem,4vw,2.1rem);font-weight:800;line-height:1.25}
+.hero h1 em{font-style:normal;color:var(--rose-deep)}
+.hero p{margin:0;color:var(--muted);max-width:36em;font-size:.98rem}
+.hero-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  padding:12px 18px;border-radius:999px;font-weight:700;font-size:.95rem}
+.btn-primary{background:var(--rose-deep);color:#fff}
+.btn-ghost{background:#fff;border:1px solid var(--line);color:var(--fg)}
+.pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
+.pill{padding:6px 12px;border-radius:999px;background:rgba(176,92,110,.1);
+  color:var(--rose-deep);font-size:.8rem;font-weight:700}
+
+/* PRODUCTS */
+.section-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;
+  margin:22px 0 12px}
+.section-head h2{margin:0;font-size:1.2rem;font-weight:800}
+.section-head span{color:var(--muted);font-size:.85rem}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+@media(min-width:700px){.grid{grid-template-columns:repeat(3,1fr);gap:16px}}
+@media(min-width:1000px){.grid{grid-template-columns:repeat(4,1fr)}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);
+  overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column}
+.card-visual{aspect-ratio:1;display:grid;place-items:center;font-size:3rem;
+  background:linear-gradient(160deg,var(--c1,#f5e6e2),var(--c2,#efe0d8))}
+.card-body{padding:12px 12px 14px;display:flex;flex-direction:column;gap:4px;flex:1}
+.card-brand{font-size:.72rem;color:var(--muted);font-weight:600}
+.card-name{font-weight:700;font-size:.95rem;line-height:1.35;min-height:2.5em}
+.card-price{font-weight:800;color:var(--rose-deep);margin-top:4px;font-size:1.05rem}
+.card-add{margin-top:10px;width:100%;padding:10px;border-radius:12px;
+  background:var(--fg);color:#fff;font-weight:700;font-size:.9rem}
+.card-add:active{opacity:.85}
+.empty{padding:40px 16px;text-align:center;color:var(--muted)}
+
+/* CART DRAWER */
+.overlay{position:fixed;inset:0;background:rgba(20,12,10,.35);z-index:80;
+  opacity:0;pointer-events:none;transition:opacity .2s}
+.overlay.show{opacity:1;pointer-events:auto}
+.drawer{position:fixed;top:0;bottom:0;left:0;width:min(400px,92vw);background:#fff;
+  z-index:90;transform:translateX(-105%);transition:transform .25s ease;
+  display:flex;flex-direction:column;box-shadow:var(--shadow)}
+.drawer.show{transform:translateX(0)}
+.drawer-head{display:flex;align-items:center;justify-content:space-between;
+  padding:16px;border-bottom:1px solid var(--line)}
+.drawer-head h3{margin:0;font-size:1.1rem}
+.drawer-body{flex:1;overflow:auto;padding:12px 16px}
+.cart-item{display:grid;grid-template-columns:56px 1fr auto;gap:10px;align-items:center;
+  padding:12px 0;border-bottom:1px solid var(--line)}
+.cart-item .thumb{width:56px;height:56px;border-radius:12px;display:grid;place-items:center;
+  font-size:1.5rem;background:linear-gradient(160deg,#f5e6e2,#efe0d8)}
+.cart-item .meta strong{display:block;font-size:.9rem}
+.cart-item .meta span{color:var(--muted);font-size:.8rem}
+.qty{display:flex;align-items:center;gap:6px}
+.qty button{width:28px;height:28px;border-radius:8px;background:var(--bg);border:1px solid var(--line);font-weight:700}
+.qty b{min-width:18px;text-align:center}
+.rm{color:var(--rose-deep);font-size:.8rem;font-weight:700;margin-top:4px}
+.drawer-foot{padding:14px 16px 20px;border-top:1px solid var(--line);background:#fff}
+.total-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;font-weight:800}
+.total-row span:last-child{color:var(--rose-deep);font-size:1.15rem}
+.checkout{width:100%;padding:14px;border-radius:14px;background:#25D366;color:#fff;
+  font-weight:800;font-size:1rem;display:flex;align-items:center;justify-content:center;gap:8px}
+
+/* FOOTER */
+footer{margin-top:40px;padding:28px 0 100px;border-top:1px solid var(--line);color:var(--muted);font-size:.9rem}
+.foot-grid{display:grid;gap:18px}
+@media(min-width:700px){.foot-grid{grid-template-columns:2fr 1fr 1fr}}
+footer h4{margin:0 0 8px;color:var(--fg);font-size:1rem}
+footer a{display:inline-block;margin:2px 0}
+.foot-brand{font-weight:800;color:var(--fg);font-size:1.15rem}
+.foot-brand span{color:var(--rose-deep)}
+
+/* WA FLOAT */
+.wa-float{position:fixed;bottom:20px;left:16px;z-index:50;width:56px;height:56px;
+  border-radius:50%;background:#25D366;color:#fff;display:grid;place-items:center;
+  box-shadow:0 8px 24px rgba(37,211,102,.4);font-size:1.6rem}
+
+/* empty cart note */
+.cart-empty{padding:40px 10px;text-align:center;color:var(--muted)}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap top">
+    <a class="logo" href="#top" aria-label="نقاء">
+      <div class="logo-mark">ن</div>
+      <div class="logo-text">
+        <strong>نقاء</strong>
+        <span>عناية ومكياج</span>
+      </div>
+    </a>
+    <div class="search" role="search">
+      <span aria-hidden="true">⌕</span>
+      <input id="search" type="search" placeholder="ابحثي عن منتج أو ماركة..." enterkeyhint="search" />
+    </div>
+    <button class="icon-btn" id="cartBtn" aria-label="السلة">
+      🛒
+      <span class="badge" id="cartBadge" hidden>0</span>
+    </button>
+  </div>
+  <div class="wrap">
+    <nav class="nav-cats" id="cats" aria-label="التصنيفات">
+      <a href="#" data-cat="all" class="on">الكل</a>
+      <a href="#" data-cat="عناية">عناية</a>
+      <a href="#" data-cat="مكياج">مكياج</a>
+      <a href="#" data-cat="عيون">عيون</a>
+      <a href="#" data-cat="شفاه">شفاه</a>
+      <a href="#" data-cat="عطور">عطور</a>
+      <a href="#" data-cat="أدوات">أدوات</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap" id="top">
+  <section class="hero">
+    <div class="pills">
+      <span class="pill">www.naqa.om</span>
+      <span class="pill">توصيل عُمان</span>
+      <span class="pill">طلب واتساب</span>
+    </div>
+    <h1>نقاء — <em>عناية ومكياج</em></h1>
+    <p>منتجات أصلية للبشرة والمكياج. اختاري، أضيفي للسلة، وأكملي الطلب برسالة واتساب جاهزة. أسعار بالريال العماني.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#products">تسوّقي الآن</a>
+      <a class="btn btn-ghost" id="waHero" href="#" target="_blank" rel="noopener">واتساب نقاء</a>
+    </div>
+  </section>
+
+  <div class="section-head">
+    <h2 id="products">المنتجات</h2>
+    <span id="countLabel">0 منتج</span>
+  </div>
+  <div class="grid" id="grid"></div>
+  <div class="empty" id="empty" hidden>ما في نتائج — جرّبي بحث أو تصنيف ثاني.</div>
+</main>
+
+<footer>
+  <div class="wrap foot-grid">
+    <div>
+      <div class="foot-brand">ن<span>قاء</span></div>
+      <p style="margin:8px 0 0">عناية ومكياج · متجر عُماني<br/>www.naqa.om</p>
+    </div>
+    <div>
+      <h4>تواصلي</h4>
+      <a id="waFooter" href="#" target="_blank" rel="noopener">واتساب الطلبات</a><br/>
+      <a href="mailto:hello@naqa.om">hello@naqa.om</a>
+    </div>
+    <div>
+      <h4>التسوق</h4>
+      <a href="#" data-cat-jump="عناية">عناية البشرة</a><br/>
+      <a href="#" data-cat-jump="مكياج">مكياج</a><br/>
+      <a href="#" data-cat-jump="عطور">عطور</a>
+    </div>
+  </div>
+  <div class="wrap" style="margin-top:18px;font-size:.8rem">
+    © <span id="yr"></span> نقاء · Naqa · عُمان — جميع الحقوق محفوظة
+  </div>
+</footer>
+
+<a class="wa-float" id="waFloat" href="#" target="_blank" rel="noopener" aria-label="واتساب">💬</a>
+
+<div class="overlay" id="overlay"></div>
+<aside class="drawer" id="drawer" aria-label="سلة التسوق">
+  <div class="drawer-head">
+    <h3>السلة</h3>
+    <button class="icon-btn" id="closeCart" aria-label="إغلاق">✕</button>
+  </div>
+  <div class="drawer-body" id="cartBody"></div>
+  <div class="drawer-foot">
+    <div class="total-row"><span>المجموع</span><span id="cartTotal">0.000 ر.ع</span></div>
+    <button class="checkout" id="checkoutBtn">إتمام الطلب عبر واتساب</button>
+  </div>
+</aside>
+
+<script>
+/* ========== الإعدادات — عدّلي هنا فقط ========== */
+const WA_NUMBER = "96879088349";   // ← رقمك بدون + وبدون مسافات (8 أرقام بعد 968)
+const CURRENCY  = "ر.ع";
+const SITE      = "www.naqa.om";
+
+const products = [
+  /* —— عناية —— */
+  {id:1,  name:"غسول رغوي لطيف",           brand:"نقاء", price:2.900, cat:"عناية", em:"🫧", c1:"#e8f4ff", c2:"#d0e8ff"},
+  {id:2,  name:"تونر مهدّئ",               brand:"نقاء", price:3.500, cat:"عناية", em:"💧", c1:"#e8f8f0", c2:"#c8eed8"},
+  {id:3,  name:"سيروم فيتامين C",          brand:"نقاء", price:4.900, cat:"عناية", em:"✨", c1:"#f8e8e0", c2:"#f0d4c8"},
+  {id:4,  name:"سيروم نياسيناميد 10%",     brand:"نقاء", price:4.500, cat:"عناية", em:"🧪", c1:"#f0eef8", c2:"#ddd8f0"},
+  {id:5,  name:"مرطب يومي خفيف",           brand:"نقاء", price:3.900, cat:"عناية", em:"🧴", c1:"#fff3e0", c2:"#ffe0b8"},
+  {id:6,  name:"مرطب ليلي مغذّي",          brand:"نقاء", price:5.200, cat:"عناية", em:"🌙", c1:"#e8e4f5", c2:"#d0c8e8"},
+  {id:7,  name:"واقي شمس SPF50",           brand:"نقاء", price:5.500, cat:"عناية", em:"🌞", c1:"#fff3d6", c2:"#ffe8b0"},
+  {id:8,  name:"ماسك طين تنقية",           brand:"نقاء", price:3.200, cat:"عناية", em:"🧖", c1:"#ebe4dc", c2:"#d8ccc0"},
+  {id:9,  name:"كريم عين للهالات",         brand:"نقاء", price:4.200, cat:"عناية", em:"👁️", c1:"#f5eef0", c2:"#e8d8e0"},
+  {id:10, name:"زيت شفاه مرطّب",           brand:"نقاء", price:1.900, cat:"عناية", em:"💋", c1:"#fde8e8", c2:"#f8d0d0"},
+  /* —— مكياج وجه —— */
+  {id:11, name:"برايمر مسام",              brand:"نقاء", price:3.900, cat:"مكياج", em:"🔲", c1:"#f0f0f4", c2:"#e0e0e8"},
+  {id:12, name:"فاونديشن مات طويل ثبات",   brand:"نقاء", price:6.900, cat:"مكياج", em:"🎨", c1:"#f5e6d8", c2:"#e8d0b8"},
+  {id:13, name:"كونسيلر تغطية كاملة",     brand:"نقاء", price:4.200, cat:"مكياج", em:"🖌️", c1:"#f0e4d8", c2:"#e0d0c0"},
+  {id:14, name:"بودرة تثبيت شفافة",        brand:"نقاء", price:3.500, cat:"مكياج", em:"💨", c1:"#f8f4f0", c2:"#ebe4dc"},
+  {id:15, name:"بلاشر كريمي",              brand:"نقاء", price:3.200, cat:"مكياج", em:"🌸", c1:"#fde4e8", c2:"#f8c8d0"},
+  {id:16, name:"هايلايتر لامع",            brand:"نقاء", price:3.800, cat:"مكياج", em:"✨", c1:"#fff8e0", c2:"#ffe8b0"},
+  {id:17, name:"كنتور كريمي",              brand:"نقاء", price:4.500, cat:"مكياج", em:"📐", c1:"#ebe0d4", c2:"#d8c8b8"},
+  {id:18, name:"مثبّت مكياج سبري",         brand:"نقاء", price:4.500, cat:"مكياج", em:"💨", c1:"#e8f0f8", c2:"#d0e0f0"},
+  /* —— عيون —— */
+  {id:19, name:"كحل أسود مقاوم للماء",     brand:"نقاء", price:1.900, cat:"عيون", em:"🖤", c1:"#e8e8ec", c2:"#d0d0d8"},
+  {id:20, name:"آيلاينر سائل دقيق",        brand:"نقاء", price:2.500, cat:"عيون", em:"✏️", c1:"#e8e8ec", c2:"#d0d0d8"},
+  {id:21, name:"ماسكارا كثافة وتطويل",     brand:"نقاء", price:3.900, cat:"عيون", em:"👁️", c1:"#e8e8ec", c2:"#d0d0d8"},
+  {id:22, name:"باليت ظلال 9 ألوان",       brand:"نقاء", price:7.500, cat:"عيون", em:"🎨", c1:"#ede4f5", c2:"#dcc8f0"},
+  {id:23, name:"قلم حواجب",                brand:"نقاء", price:2.200, cat:"عيون", em:"✍️", c1:"#e8ddd0", c2:"#d4c4b0"},
+  {id:24, name:"جل تثبيت حواجب",           brand:"نقاء", price:2.800, cat:"عيون", em:"🧴", c1:"#f0ebe4", c2:"#e0d8cc"},
+  /* —— شفاه —— */
+  {id:25, name:"ليب تينت طبيعي",           brand:"نقاء", price:2.900, cat:"شفاه", em:"👄", c1:"#fde4e8", c2:"#f8c8d0"},
+  {id:26, name:"روج كريمي مات",            brand:"نقاء", price:3.500, cat:"شفاه", em:"💋", c1:"#f8d0d8", c2:"#f0a8b8"},
+  {id:27, name:"ليب جلوس لامع",            brand:"نقاء", price:2.500, cat:"شفاه", em:"💎", c1:"#fce8f0", c2:"#f5d0e0"},
+  {id:28, name:"قلم تحديد شفاه",           brand:"نقاء", price:1.800, cat:"شفاه", em:"✏️", c1:"#f0d0d8", c2:"#e0a8b8"},
+  /* —— عطور —— */
+  {id:29, name:"عطر زهري خفيف 50مل",       brand:"نقاء", price:8.900, cat:"عطور", em:"🌸", c1:"#fce8f0", c2:"#f5d0e0"},
+  {id:30, name:"عطر مسكي ناعم 50مل",       brand:"نقاء", price:9.500, cat:"عطور", em:"🤍", c1:"#f5f0e8", c2:"#e8e0d0"},
+  /* —— أدوات —— */
+  {id:31, name:"فرش مكياج طقم 8 قطع",      brand:"نقاء", price:5.900, cat:"أدوات", em:"🖌️", c1:"#f0ebe4", c2:"#e0d8cc"},
+  {id:32, name:"إسفنجة بيوتي بلندر",       brand:"نقاء", price:2.200, cat:"أدوات", em:"💗", c1:"#fde4e8", c2:"#f8c0d0"},
+  {id:33, name:"منظف فرش",                 brand:"نقاء", price:1.500, cat:"أدوات", em:"🧼", c1:"#e8f4ff", c2:"#d0e8ff"},
+  {id:34, name:"مراية مكياج بإضاءة",       brand:"نقاء", price:6.500, cat:"أدوات", em:"🪞", c1:"#f0f0f4", c2:"#e0e0e8"},
+];
+/* ============================================ */
+
+const $ = s => document.querySelector(s);
+const money = n => n.toFixed(3) + " " + CURRENCY;
+
+let cart = [];
+try {
+  cart = JSON.parse(localStorage.getItem("naqa_cart") || "[]");
+  if (!Array.isArray(cart)) cart = [];
+} catch (e) { cart = []; }
+let query = "";
+let currentCat = "all";
+
+function saveCart(){
+  try { localStorage.setItem("naqa_cart", JSON.stringify(cart)); } catch (e) {}
+}
+
+function render(){
+  const q = query.toLowerCase();
+  const list = products.filter(p => {
+    const catOk = currentCat === "all" || p.cat === currentCat;
+    const qOk = !q || p.name.includes(query) || p.brand.includes(query) || p.cat.includes(query)
+      || p.name.toLowerCase().includes(q) || p.brand.toLowerCase().includes(q);
+    return catOk && qOk;
+  });
+  $("#countLabel").textContent = list.length + " منتج";
+  $("#empty").hidden = list.length > 0;
+  $("#grid").innerHTML = list.map(p => `
+    <article class="card">
+      <div class="card-visual" style="--c1:${p.c1};--c2:${p.c2}">${p.em}</div>
+      <div class="card-body">
+        <div class="card-brand">${p.brand} · ${p.cat}</div>
+        <div class="card-name">${p.name}</div>
+        <div class="card-price">${money(p.price)}</div>
+        <button class="card-add" data-add="${p.id}">أضيفي للسلة</button>
+      </div>
+    </article>`).join("");
+}
+
+function renderCart(){
+  const badge = $("#cartBadge");
+  const n = cart.reduce((s,i) => s + i.qty, 0);
+  if(n){ badge.hidden = false; badge.textContent = n; }
+  else badge.hidden = true;
+
+  if(!cart.length){
+    $("#cartBody").innerHTML = `<div class="cart-empty">السلة فاضية<br/>أضيفي منتجات من المتجر</div>`;
+    $("#cartTotal").textContent = money(0);
+    return;
+  }
+  $("#cartBody").innerHTML = cart.map(i => `
+    <div class="cart-item">
+      <div class="thumb">${i.em}</div>
+      <div class="meta">
+        <strong>${i.name}</strong>
+        <span>${money(i.price)} · ${i.brand}</span>
+        <button class="rm" data-rm="${i.id}">حذف</button>
+      </div>
+      <div class="qty">
+        <button data-dec="${i.id}">−</button>
+        <b>${i.qty}</b>
+        <button data-inc="${i.id}">+</button>
+      </div>
+    </div>`).join("");
+  const total = cart.reduce((s,i) => s + i.price * i.qty, 0);
+  $("#cartTotal").textContent = money(total);
+}
+
+function addToCart(id){
+  const p = products.find(x => x.id === id);
+  if(!p) return;
+  const row = cart.find(x => x.id === id);
+  if(row) row.qty++;
+  else cart.push({id:p.id, name:p.name, brand:p.brand, price:p.price, em:p.em, qty:1});
+  saveCart(); renderCart();
+}
+
+function openCart(){ $("#overlay").classList.add("show"); $("#drawer").classList.add("show"); }
+function closeCart(){ $("#overlay").classList.remove("show"); $("#drawer").classList.remove("show"); }
+
+$("#grid").addEventListener("click", e => {
+  const btn = e.target.closest("[data-add]");
+  if(btn) addToCart(+btn.dataset.add);
+});
+
+$("#cartBody").addEventListener("click", e => {
+  const inc = e.target.closest("[data-inc]");
+  const dec = e.target.closest("[data-dec]");
+  const rm  = e.target.closest("[data-rm]");
+  if(inc){
+    const item = cart.find(i => i.id === +inc.dataset.inc);
+    if(item) item.qty++;
+    saveCart(); renderCart();
+  }
+  if(dec){
+    const item = cart.find(i => i.id === +dec.dataset.dec);
+    if(item){
+      item.qty--;
+      if(item.qty <= 0) cart = cart.filter(i => i.id !== item.id);
+    }
+    saveCart(); renderCart();
+  }
+  if(rm){
+    cart = cart.filter(i => i.id !== +rm.dataset.rm);
+    saveCart(); renderCart();
+  }
+});
+
+$("#cartBtn").onclick = openCart;
+$("#closeCart").onclick = closeCart;
+$("#overlay").onclick = closeCart;
+
+$("#search").addEventListener("input", e => { query = e.target.value.trim(); render(); });
+
+$("#cats").addEventListener("click", e => {
+  const a = e.target.closest("[data-cat]");
+  if(!a) return;
+  e.preventDefault();
+  document.querySelectorAll("#cats a").forEach(x => x.classList.remove("on"));
+  a.classList.add("on");
+  currentCat = a.dataset.cat;
+  render();
+  document.getElementById("products").scrollIntoView({behavior:"smooth"});
+});
+
+document.querySelectorAll("[data-cat-jump]").forEach(el => {
+  el.addEventListener("click", e => {
+    e.preventDefault();
+    currentCat = el.dataset.catJump;
+    document.querySelectorAll("#cats a").forEach(x => x.classList.toggle("on", x.dataset.cat === currentCat));
+    render();
+    document.getElementById("products").scrollIntoView({behavior:"smooth"});
+  });
+});
+
+$("#checkoutBtn").onclick = () => {
+  if(!cart.length){ alert("السلة فاضية"); return; }
+  if(WA_NUMBER.includes("X")){ alert("ضعي رقم الواتساب في الإعدادات أعلى الملف (WA_NUMBER)"); return; }
+  const lines = cart.map(i => `• ${i.name} × ${i.qty} = ${money(i.price*i.qty)}`).join("\n");
+  const total = cart.reduce((s,i) => s + i.price*i.qty, 0);
+  const msg = `السلام عليكم، أبغى أطلب من نقاء (${SITE}):\n\n${lines}\n\nالمجموع: ${money(total)}`;
+  window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`, "_blank");
+};
+
+function boot(){
+  try {
+    const waLink = WA_NUMBER.includes("X") ? "#" : ("https://wa.me/" + WA_NUMBER);
+    const wf = document.getElementById("waFooter");
+    const wfl = document.getElementById("waFloat");
+    const wh = document.getElementById("waHero");
+    if (wf) wf.href = waLink;
+    if (wfl) wfl.href = waLink;
+    if (wh) wh.href = waLink;
+    const yr = document.getElementById("yr");
+    if (yr) yr.textContent = new Date().getFullYear();
+    render();
+    renderCart();
+  } catch (err) {
+    console.error(err);
+    var b = document.createElement("div");
+    b.style.cssText = "padding:20px;background:#fee;color:#900;font-family:sans-serif;direction:rtl";
+    b.textContent = "خطأ في تشغيل المتجر: " + (err && err.message ? err.message : err);
+    document.body.insertBefore(b, document.body.firstChild);
+  }
+}
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", boot);
+} else {
+  boot();
+}
+</script>
+</body>
+</html>

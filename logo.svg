@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" role="img" aria-label="نقاء">
+  <rect width="512" height="512" fill="#fdf8f6"/>
+  <text x="256" y="250" text-anchor="middle" font-family="Amiri, Noto Naskh Arabic, serif" font-size="120" font-weight="700" fill="#b05c6e">نقاء</text>
+  <rect x="186" y="280" width="140" height="3" rx="1.5" fill="#c9a227"/>
+  <text x="256" y="320" text-anchor="middle" font-family="Tajawal, Noto Sans Arabic, sans-serif" font-size="28" font-weight="600" fill="#8a7f78">عناية ومكياج</text>
+  <text x="256" y="360" text-anchor="middle" font-family="system-ui, sans-serif" font-size="18" font-weight="500" letter-spacing="4" fill="#a15a4a">NAQA</text>
+</svg>

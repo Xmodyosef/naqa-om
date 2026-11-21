@@ -173,7 +173,7 @@ footer a{display:inline-block;margin:2px 0}
       <span class="pill">طلب واتساب</span>
     </div>
     <h1>نقاء — <em>عناية ومكياج</em></h1>
-    <p>منتجات أصلية للبشرة والمكياج. اختاري، أضيفي للسلة، وأكملي الطلب برسالة واتساب جاهزة. أسعار بالريال العماني.</p>
+    <p>منتجات أصلية للبشرة والمكياج. اختاري، أضيفي للسلة، وأكملي الطلب برسالة واتساب جاهزة. أسعار بالريال العماني، مأخوذة من أسعار البيع الظاهرة في السوق (دار بيوتي وكابي) بتاريخ 21 نوفمبر 2026.</p>
     <div class="hero-actions">
       <a class="btn btn-primary" href="#products">تسوّقي الآن</a>
       <a class="btn btn-ghost" id="waHero" href="#" target="_blank" rel="noopener">واتساب نقاء</a>
@@ -233,46 +233,31 @@ const CURRENCY  = "ر.ع";
 const SITE      = "www.naqa.om";
 
 const products = [
-  /* —— عناية —— */
-  {id:1,  name:"غسول رغوي لطيف",           brand:"نقاء", price:2.900, cat:"عناية", em:"🫧", c1:"#e8f4ff", c2:"#d0e8ff"},
-  {id:2,  name:"تونر مهدّئ",               brand:"نقاء", price:3.500, cat:"عناية", em:"💧", c1:"#e8f8f0", c2:"#c8eed8"},
-  {id:3,  name:"سيروم فيتامين C",          brand:"نقاء", price:4.900, cat:"عناية", em:"✨", c1:"#f8e8e0", c2:"#f0d4c8"},
-  {id:4,  name:"سيروم نياسيناميد 10%",     brand:"نقاء", price:4.500, cat:"عناية", em:"🧪", c1:"#f0eef8", c2:"#ddd8f0"},
-  {id:5,  name:"مرطب يومي خفيف",           brand:"نقاء", price:3.900, cat:"عناية", em:"🧴", c1:"#fff3e0", c2:"#ffe0b8"},
-  {id:6,  name:"مرطب ليلي مغذّي",          brand:"نقاء", price:5.200, cat:"عناية", em:"🌙", c1:"#e8e4f5", c2:"#d0c8e8"},
-  {id:7,  name:"واقي شمس SPF50",           brand:"نقاء", price:5.500, cat:"عناية", em:"🌞", c1:"#fff3d6", c2:"#ffe8b0"},
-  {id:8,  name:"ماسك طين تنقية",           brand:"نقاء", price:3.200, cat:"عناية", em:"🧖", c1:"#ebe4dc", c2:"#d8ccc0"},
-  {id:9,  name:"كريم عين للهالات",         brand:"نقاء", price:4.200, cat:"عناية", em:"👁️", c1:"#f5eef0", c2:"#e8d8e0"},
-  {id:10, name:"زيت شفاه مرطّب",           brand:"نقاء", price:1.900, cat:"عناية", em:"💋", c1:"#fde8e8", c2:"#f8d0d0"},
-  /* —— مكياج وجه —— */
-  {id:11, name:"برايمر مسام",              brand:"نقاء", price:3.900, cat:"مكياج", em:"🔲", c1:"#f0f0f4", c2:"#e0e0e8"},
-  {id:12, name:"فاونديشن مات طويل ثبات",   brand:"نقاء", price:6.900, cat:"مكياج", em:"🎨", c1:"#f5e6d8", c2:"#e8d0b8"},
-  {id:13, name:"كونسيلر تغطية كاملة",     brand:"نقاء", price:4.200, cat:"مكياج", em:"🖌️", c1:"#f0e4d8", c2:"#e0d0c0"},
-  {id:14, name:"بودرة تثبيت شفافة",        brand:"نقاء", price:3.500, cat:"مكياج", em:"💨", c1:"#f8f4f0", c2:"#ebe4dc"},
-  {id:15, name:"بلاشر كريمي",              brand:"نقاء", price:3.200, cat:"مكياج", em:"🌸", c1:"#fde4e8", c2:"#f8c8d0"},
-  {id:16, name:"هايلايتر لامع",            brand:"نقاء", price:3.800, cat:"مكياج", em:"✨", c1:"#fff8e0", c2:"#ffe8b0"},
-  {id:17, name:"كنتور كريمي",              brand:"نقاء", price:4.500, cat:"مكياج", em:"📐", c1:"#ebe0d4", c2:"#d8c8b8"},
-  {id:18, name:"مثبّت مكياج سبري",         brand:"نقاء", price:4.500, cat:"مكياج", em:"💨", c1:"#e8f0f8", c2:"#d0e0f0"},
-  /* —— عيون —— */
-  {id:19, name:"كحل أسود مقاوم للماء",     brand:"نقاء", price:1.900, cat:"عيون", em:"🖤", c1:"#e8e8ec", c2:"#d0d0d8"},
-  {id:20, name:"آيلاينر سائل دقيق",        brand:"نقاء", price:2.500, cat:"عيون", em:"✏️", c1:"#e8e8ec", c2:"#d0d0d8"},
-  {id:21, name:"ماسكارا كثافة وتطويل",     brand:"نقاء", price:3.900, cat:"عيون", em:"👁️", c1:"#e8e8ec", c2:"#d0d0d8"},
-  {id:22, name:"باليت ظلال 9 ألوان",       brand:"نقاء", price:7.500, cat:"عيون", em:"🎨", c1:"#ede4f5", c2:"#dcc8f0"},
-  {id:23, name:"قلم حواجب",                brand:"نقاء", price:2.200, cat:"عيون", em:"✍️", c1:"#e8ddd0", c2:"#d4c4b0"},
-  {id:24, name:"جل تثبيت حواجب",           brand:"نقاء", price:2.800, cat:"عيون", em:"🧴", c1:"#f0ebe4", c2:"#e0d8cc"},
-  /* —— شفاه —— */
-  {id:25, name:"ليب تينت طبيعي",           brand:"نقاء", price:2.900, cat:"شفاه", em:"👄", c1:"#fde4e8", c2:"#f8c8d0"},
-  {id:26, name:"روج كريمي مات",            brand:"نقاء", price:3.500, cat:"شفاه", em:"💋", c1:"#f8d0d8", c2:"#f0a8b8"},
-  {id:27, name:"ليب جلوس لامع",            brand:"نقاء", price:2.500, cat:"شفاه", em:"💎", c1:"#fce8f0", c2:"#f5d0e0"},
-  {id:28, name:"قلم تحديد شفاه",           brand:"نقاء", price:1.800, cat:"شفاه", em:"✏️", c1:"#f0d0d8", c2:"#e0a8b8"},
-  /* —— عطور —— */
-  {id:29, name:"عطر زهري خفيف 50مل",       brand:"نقاء", price:8.900, cat:"عطور", em:"🌸", c1:"#fce8f0", c2:"#f5d0e0"},
-  {id:30, name:"عطر مسكي ناعم 50مل",       brand:"نقاء", price:9.500, cat:"عطور", em:"🤍", c1:"#f5f0e8", c2:"#e8e0d0"},
-  /* —— أدوات —— */
-  {id:31, name:"فرش مكياج طقم 8 قطع",      brand:"نقاء", price:5.900, cat:"أدوات", em:"🖌️", c1:"#f0ebe4", c2:"#e0d8cc"},
-  {id:32, name:"إسفنجة بيوتي بلندر",       brand:"نقاء", price:2.200, cat:"أدوات", em:"💗", c1:"#fde4e8", c2:"#f8c0d0"},
-  {id:33, name:"منظف فرش",                 brand:"نقاء", price:1.500, cat:"أدوات", em:"🧼", c1:"#e8f4ff", c2:"#d0e8ff"},
-  {id:34, name:"مراية مكياج بإضاءة",       brand:"نقاء", price:6.500, cat:"أدوات", em:"🪞", c1:"#f0f0f4", c2:"#e0e0e8"},
+  /* أسعار بيع ظاهرة في عُمان — دار بيوتي وكابي، 21 نوفمبر 2026. عدّليها حسب مخزونك. */
+  {id:1,  name:"سيروم نياسيناميد 10% + TXA 4% — 30مل", brand:"Anua", price:6.700, cat:"عناية", em:"💧", c1:"#fde4ea", c2:"#f8c0d0"},
+  {id:2,  name:"سيروم نياسيناميد 10% + زنك 1% — 30مل", brand:"The Ordinary", price:5.700, cat:"عناية", em:"🧪", c1:"#f0eef8", c2:"#ddd8f0"},
+  {id:3,  name:"هيالورونيك أسيد 2% + B5 — 30مل", brand:"The Ordinary", price:6.300, cat:"عناية", em:"✨", c1:"#e8f4ff", c2:"#d0e8ff"},
+  {id:4,  name:"مقشر AHA 30% + BHA 2% — 30مل", brand:"The Ordinary", price:5.700, cat:"عناية", em:"🧴", c1:"#fff3e0", c2:"#ffe0b8"},
+  {id:5,  name:"إيسنس موسين الحلزون 96% — 100مل", brand:"COSRX", price:6.800, cat:"عناية", em:"🐌", c1:"#e8f8f0", c2:"#c8eed8"},
+  {id:6,  name:"سيروم TXA + نياسيناميد — 30مل", brand:"Medicube", price:6.300, cat:"عناية", em:"💗", c1:"#fce8f0", c2:"#f5d0e0"},
+  {id:7,  name:"كريم 345 ريليف — 50مل", brand:"Dr. Althea", price:7.300, cat:"عناية", em:"🤍", c1:"#f8f4f0", c2:"#ebe4dc"},
+  {id:8,  name:"ماء ميسيلار هيدرابيو — 500مل", brand:"Bioderma", price:5.300, cat:"عناية", em:"🫧", c1:"#e8f4ff", c2:"#d0e8ff"},
+  {id:9,  name:"سيروم فيتامين سي نقي — 60مل", brand:"Purito", price:5.300, cat:"عناية", em:"🍊", c1:"#fff3d6", c2:"#ffe8b0"},
+  {id:10, name:"تونر BHA 2% لطيف — 150مل", brand:"Anua", price:7.900, cat:"عناية", em:"🌿", c1:"#e8f8f0", c2:"#c8eed8"},
+  {id:11, name:"فاونديشن كمبلكشن برو — وورم فانيلا", brand:"SHEGLAM", price:4.500, cat:"مكياج", em:"🎨", c1:"#f5e6d8", c2:"#e8d0b8"},
+  {id:12, name:"فاونديشن ديتوكس آند بروتكت — 35مل", brand:"Note", price:5.400, cat:"مكياج", em:"🧴", c1:"#f0e4d8", c2:"#e0d0c0"},
+  {id:13, name:"بودرة تثبيت هيدرو تاتش — بيبي بينك", brand:"SHEGLAM", price:3.000, cat:"مكياج", em:"💨", c1:"#fde4e8", c2:"#f8c8d0"},
+  {id:14, name:"بلاشر سائل كلر بلوم — هوت توبيك", brand:"SHEGLAM", price:2.380, cat:"مكياج", em:"🌸", c1:"#fde4e8", c2:"#f8c0d0"},
+  {id:15, name:"بلاشر بلش موف — 14جم", brand:"Revolution", price:5.950, cat:"مكياج", em:"💜", c1:"#ede4f5", c2:"#dcc8f0"},
+  {id:16, name:"ماسكارا بيج تايم فوليوم — أسود", brand:"SHEGLAM", price:2.100, cat:"عيون", em:"👁️", c1:"#e8e8ec", c2:"#d0d0d8"},
+  {id:17, name:"ماسكارا لاشلايتر مقاومة للماء — 8مل", brand:"SHEGLAM", price:2.350, cat:"عيون", em:"🖤", c1:"#ececf0", c2:"#d8d8e0"},
+  {id:18, name:"آيلاينر سائل لاين آند ديفاين — أسود", brand:"SHEGLAM", price:2.100, cat:"عيون", em:"✏️", c1:"#e8e8ec", c2:"#d0d0d8"},
+  {id:19, name:"ماسكارا آي لوف إكستريم مقاومة للماء", brand:"essence", price:1.580, cat:"عيون", em:"👀", c1:"#f0f0f4", c2:"#e0e0e8"},
+  {id:20, name:"محدد عيون سائل مقاوم للماء — أسود", brand:"essence", price:1.480, cat:"عيون", em:"🖊️", c1:"#ececf0", c2:"#d8d8e0"},
+  {id:21, name:"قلم حواجب 2 في 1 — توب", brand:"SHEGLAM", price:1.600, cat:"عيون", em:"✍️", c1:"#e8ddd0", c2:"#d4c4b0"},
+  {id:22, name:"بيبي ليبس — بينك بانش", brand:"Maybelline", price:2.250, cat:"شفاه", em:"👄", c1:"#fde4e8", c2:"#f8c8d0"},
+  {id:23, name:"أحمر شفاه ساتان — ريدز أوف وورث", brand:"L'Oréal", price:2.500, cat:"شفاه", em:"💋", c1:"#f8d0d8", c2:"#f0a8b8"},
+  {id:24, name:"مزيل ماسكارا كلين كوين", brand:"SHEGLAM", price:2.100, cat:"أدوات", em:"🧼", c1:"#e8f4ff", c2:"#d0e8ff"},
 ];
 /* ============================================ */
 

@@ -145,25 +145,32 @@ footer{margin-top:40px;padding:28px 0 24px;border-top:1px solid var(--line);colo
 .text-back{font-weight:800;color:var(--rose-deep);margin-bottom:10px;font-size:1rem}
 
 /* FULL carousel */
-.carousel{position:relative;background:#f6f1ed;border-radius:18px;overflow:hidden}
-.carousel-track{display:flex;width:100%;height:min(78vw,460px);overflow-x:auto;scroll-snap-type:x mandatory;
-  -webkit-overflow-scrolling:touch;scrollbar-width:none;touch-action:pan-x}
+.carousel{position:relative;background:#fff;border-radius:18px;overflow:hidden;border:1px solid var(--line)}
+.carousel-track{display:flex;width:100%;height:min(88vw,520px);overflow-x:auto;scroll-snap-type:x mandatory;
+  -webkit-overflow-scrolling:touch;scrollbar-width:none;touch-action:pan-x;background:#fff}
 .carousel-track::-webkit-scrollbar{display:none}
-.carousel-slide{flex:0 0 100%;width:100%;height:100%;scroll-snap-align:center;display:grid;place-items:center;position:relative;background:#fff}
-.carousel-slide img{width:100%;height:100%;object-fit:contain;cursor:zoom-in}
-.carousel-nav{position:absolute;top:50%;transform:translateY(-50%);width:36px;height:36px;border-radius:50%;
-  background:rgba(255,255,255,.92);border:1px solid var(--line);font-weight:800;z-index:2}
+.carousel-slide{flex:0 0 100%;width:100%;height:min(88vw,520px);scroll-snap-align:center;display:grid;place-items:center;position:relative;background:#fff}
+.carousel-slide img{width:100%;height:100%;object-fit:contain;cursor:zoom-in;background:#fff}
+.carousel-slide .ar-card-img{width:100%;height:100%;object-fit:contain}
+.carousel-nav{position:absolute;top:50%;transform:translateY(-50%);width:40px;height:40px;border-radius:50%;
+  background:rgba(255,255,255,.95);border:1px solid var(--line);font-weight:800;z-index:2;box-shadow:0 4px 12px rgba(0,0,0,.08)}
 .carousel-nav.prev{inset-inline-start:8px}
 .carousel-nav.next{inset-inline-end:8px}
-.carousel-dots{display:flex;justify-content:center;gap:6px;padding:10px 0 4px}
+.carousel-dots{display:flex;justify-content:center;gap:6px;padding:10px 0 2px}
 .carousel-dots button{width:8px;height:8px;border-radius:50%;background:#d9cfc8}
 .carousel-dots button.on{background:var(--rose-deep);width:18px;border-radius:999px}
 .carousel-count{position:absolute;top:10px;inset-inline-end:10px;background:rgba(0,0,0,.55);color:#fff;
   font-size:.75rem;font-weight:700;padding:4px 8px;border-radius:999px;z-index:2}
-.thumbs{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:10px}
-.thumbs button{aspect-ratio:1;border-radius:12px;overflow:hidden;border:2px solid transparent;padding:0;background:#fff}
+.thumbs{display:grid;grid-template-columns:repeat(auto-fit,minmax(52px,1fr));gap:6px;margin-top:8px;max-width:100%}
+.thumbs button{height:56px;border-radius:10px;overflow:hidden;border:2px solid transparent;padding:0;background:#fff}
 .thumbs button.on{border-color:var(--rose-deep)}
-.thumbs img{width:100%;height:100%;object-fit:contain}
+.thumbs img{width:100%;height:56px;object-fit:contain}
+.card-cart-chip{position:absolute;top:8px;inset-inline-start:8px;background:var(--rose-deep);color:#fff;
+  font-size:.72rem;font-weight:800;padding:4px 8px;border-radius:999px;z-index:2;display:none}
+.card-cart-chip.show{display:inline-block}
+.card-visual{position:relative}
+.qv .carousel-track,.qv .carousel-slide{height:min(62vw,340px)}
+.qv .thumbs{display:none}
 
 .block-h{margin:16px 0 6px;font-size:1rem}
 .long{margin:0;line-height:1.75}
@@ -391,6 +398,7 @@ function render(){
   $("#grid").innerHTML=list.map(p=>`
     <article class="card" data-id="${p.id}">
       <div class="card-visual" data-open="${p.id}">
+        <span class="card-cart-chip${(cart.find(c=>c.id===p.id)||{}).qty?' show':''}" data-chip="${p.id}">${(cart.find(c=>c.id===p.id)||{}).qty?('×'+(cart.find(c=>c.id===p.id).qty)):''}</span>
         ${visual(p,0)}
         <div class="ar-band">${p.nameAr||""}</div>
       </div>
@@ -411,23 +419,111 @@ function render(){
   if(openProductId) openSheet(openProductId, sheetMode, false);
 }
 
-function carouselHTML(p, start){
-  const imgs=pimgs(p); while(imgs.length<1) imgs.push("");
+function makeArCard(p){
+  try{
+    const c=document.createElement('canvas');
+    c.width=900; c.height=900;
+    const ctx=c.getContext('2d');
+    // bg
+    const g=ctx.createLinearGradient(0,0,900,900);
+    g.addColorStop(0,'#fdf8f6'); g.addColorStop(1,'#f0ddd6');
+    ctx.fillStyle=g; ctx.fillRect(0,0,900,900);
+    // frame
+    ctx.fillStyle='#fff';
+    roundRect(ctx,48,48,804,804,36); ctx.fill();
+    // brand bar
+    ctx.fillStyle='#b05c6e';
+    roundRect(ctx,48,48,804,110,36); ctx.fill();
+    ctx.fillStyle='#b05c6e'; ctx.fillRect(48,100,804,58);
+    ctx.fillStyle='#fff';
+    ctx.font='700 42px "Noto Kufi Arabic", Tahoma, sans-serif';
+    ctx.textAlign='center';
+    ctx.direction='rtl';
+    ctx.fillText('نقاء · عناية ومكياج', 450, 118);
+    // product name
+    ctx.fillStyle='#1f1a17';
+    ctx.font='800 36px "Noto Kufi Arabic", Tahoma, sans-serif';
+    wrapText(ctx, p.nameAr||p.nameEn||'', 450, 220, 720, 44);
+    // brand + sku
+    ctx.fillStyle='#8a7f78';
+    ctx.font='600 28px "Noto Kufi Arabic", Tahoma, sans-serif';
+    ctx.fillText((p.brand||'') + '  ·  SKU ' + (p.sku||''), 450, 360);
+    // price
+    ctx.fillStyle='#b05c6e';
+    ctx.font='800 48px "Noto Kufi Arabic", Tahoma, sans-serif';
+    ctx.fillText(Number(p.price).toFixed(3) + ' ر.ع', 450, 440);
+    // photo
+    return new Promise(resolve=>{
+      const img=new Image();
+      img.crossOrigin='anonymous';
+      img.onload=()=>{
+        const box=420; const x= (900-box)/2, y=500;
+        ctx.save();
+        roundRect(ctx,x,y,box,box-40,24); ctx.clip();
+        // contain fit
+        const r=Math.min(box/img.width, (box-40)/img.height);
+        const w=img.width*r, h=img.height*r;
+        ctx.drawImage(img, x+(box-w)/2, y+((box-40)-h)/2, w, h);
+        ctx.restore();
+        ctx.fillStyle='#8a7f78';
+        ctx.font='600 22px "Noto Kufi Arabic", Tahoma, sans-serif';
+        ctx.fillText('بطاقة عربية من نقاء — www.naqa.om', 450, 860);
+        resolve(c.toDataURL('image/jpeg', 0.85));
+      };
+      img.onerror=()=>{
+        ctx.fillStyle='#b05c6e';
+        ctx.font='800 64px serif';
+        ctx.fillText(p.em||'✨', 450, 680);
+        resolve(c.toDataURL('image/jpeg', 0.85));
+      };
+      const src=(pimgs(p)[0]||'');
+      img.src=src;
+    });
+  }catch(e){ return Promise.resolve(''); }
+}
+function roundRect(ctx,x,y,w,h,r){
+  ctx.beginPath();
+  ctx.moveTo(x+r,y); ctx.arcTo(x+w,y,x+w,y+h,r); ctx.arcTo(x+w,y+h,x,y+h,r);
+  ctx.arcTo(x,y+h,x,y,r); ctx.arcTo(x,y,x+w,y,r); ctx.closePath();
+}
+function wrapText(ctx, text, x, y, maxWidth, lineHeight){
+  const words=String(text).split(' ');
+  let line=''; let yy=y; let lines=0;
+  for (let n=0;n<words.length;n++){
+    const test=line? line+' '+words[n] : words[n];
+    if (ctx.measureText(test).width > maxWidth && line){
+      ctx.fillText(line, x, yy); line=words[n]; yy+=lineHeight; lines++;
+      if(lines>=3){ ctx.fillText(line+'…', x, yy); return; }
+    } else line=test;
+  }
+  if(line) ctx.fillText(line, x, yy);
+}
+
+function galleryList(p){
+  // up to 5 real photos only (thumbs stay small). Arabic card is separate optional first for AR.
+  return pimgs(p).slice(0,5);
+}
+
+function carouselHTML(p, start, arCardUrl){
+  let imgs=galleryList(p);
+  if(!imgs.length) imgs=[''];
+  // Prepend Arabic card as first slide when available
+  if (arCardUrl) imgs = [arCardUrl].concat(imgs).slice(0,6);
   const slides=imgs.map((src,i)=>`
     <div class="carousel-slide" data-i="${i}">
-      ${src?`<img src="${src}" alt="${pname(p)}" data-full="${src}" loading="${i? 'lazy':'eager'}">`:(p.em||'✨')}
-      <div class="ar-band">${p.nameAr||""}</div>
+      ${src?`<img class="${String(src).startsWith('data:')?'ar-card-img':''}" src="${src}" alt="${pname(p)}" data-full="${src}" loading="${i? 'lazy':'eager'}">`:(p.em||'✨')}
+      ${!String(src).startsWith('data:') ? `<div class="ar-band">${p.nameAr||""}</div>` : ''}
     </div>`).join("");
   const dots=imgs.map((_,i)=>`<button type="button" class="${i===start?'on':''}" data-dot="${i}"></button>`).join("");
-  const thumbs=imgs.slice(0,5).map((src,i)=>`
+  const thumbs=imgs.map((src,i)=>`
     <button type="button" class="${i===start?'on':''}" data-dot="${i}">
       ${src?`<img src="${src}" alt="" loading="lazy">`:(p.em||'✨')}
     </button>`).join("");
   return `
-    <div class="carousel" id="car">
+    <div class="carousel" id="car" data-count="${imgs.length}">
       <div class="carousel-count"><span id="carIdx">${start+1}</span> / ${imgs.length}</div>
-      <button class="carousel-nav prev" type="button" data-nav="-1">‹</button>
-      <button class="carousel-nav next" type="button" data-nav="1">›</button>
+      <button class="carousel-nav prev" type="button" data-nav="-1" aria-label="prev">‹</button>
+      <button class="carousel-nav next" type="button" data-nav="1" aria-label="next">›</button>
       <div class="carousel-track" id="carTrack">${slides}</div>
     </div>
     <div class="carousel-dots" id="carDots">${dots}</div>
@@ -436,33 +532,44 @@ function carouselHTML(p, start){
 
 function bindCarousel(p){
   const track=$("#carTrack"); if(!track) return;
-  const imgs=pimgs(p); const n=Math.max(imgs.length,1);
+  const car=$("#car");
+  const n=+(car && car.dataset.count) || track.children.length || 1;
   const setIdx=(i)=>{
-    galleryIndex=((i%n)+n)%n;
+    galleryIndex=((i%n)+n)%n; // LOOP
     const slide=track.children[galleryIndex];
-    if(slide) track.scrollTo({left:slide.offsetLeft, behavior:"smooth"});
+    if(slide){
+      // scrollLeft works in LTR coordinates; force LTR on track
+      track.style.direction='ltr';
+      track.scrollTo({left: slide.offsetLeft, behavior:'smooth'});
+    }
     document.querySelectorAll("#carDots button, #carThumbs button").forEach((b,idx)=>{
       b.classList.toggle("on", idx===galleryIndex);
     });
     const el=$("#carIdx"); if(el) el.textContent=String(galleryIndex+1);
   };
-  // init position without animation
+  track.style.direction='ltr';
   requestAnimationFrame(()=>{
     const slide=track.children[galleryIndex];
     if(slide) track.scrollLeft=slide.offsetLeft;
   });
+  let scrollEndTimer=null;
   track.addEventListener("scroll", ()=>{
-    const w=track.clientWidth||1;
-    const i=Math.round(track.scrollLeft/w);
-    if(i!==galleryIndex && i>=0 && i<n){
-      galleryIndex=i;
-      document.querySelectorAll("#carDots button, #carThumbs button").forEach((b,idx)=>b.classList.toggle("on", idx===galleryIndex));
-      const el=$("#carIdx"); if(el) el.textContent=String(galleryIndex+1);
-    }
+    clearTimeout(scrollEndTimer);
+    scrollEndTimer=setTimeout(()=>{
+      const w=track.clientWidth||1;
+      let i=Math.round(track.scrollLeft/w);
+      if(i<0) i=0; if(i>=n) i=n-1;
+      if(i!==galleryIndex){
+        galleryIndex=i;
+        document.querySelectorAll("#carDots button, #carThumbs button").forEach((b,idx)=>b.classList.toggle("on", idx===galleryIndex));
+        const el=$("#carIdx"); if(el) el.textContent=String(galleryIndex+1);
+      }
+    }, 40);
   }, {passive:true});
-  // loop: when scroll ends past last, jump to first after delay via nav
-  $("#sheetCard").onclick=null;
-  document.getElementById("sheetCard").addEventListener("click", function onSheet(e){
+
+  // single delegated handler for sheet card
+  const card=document.getElementById("sheetCard");
+  card.onclick = function(e){
     const nav=e.target.closest("[data-nav]");
     if(nav){ setIdx(galleryIndex + (+nav.dataset.nav)); return; }
     const dot=e.target.closest("[data-dot]");
@@ -473,19 +580,15 @@ function bindCarousel(p){
     if(add){ addToCart(+add.dataset.add); return; }
     const open=e.target.closest("[data-open]");
     if(open){ openSheet(+open.dataset.open, "full"); return; }
-    if(e.target.id==="closeSheet" || e.target.closest("#closeSheet")){
-      closeSheet(); return;
-    }
-  });
-  // expose setIdx for loop buttons already via data-nav wrapping
+    if(e.target.id==="closeSheet" || e.target.closest("#closeSheet")){ closeSheet(); return; }
+  };
   window.__naqaSetImg=setIdx;
 }
 
-function openSheet(id, mode, reset){
+async function openSheet(id, mode, reset){
   const p=products.find(x=>x.id===id); if(!p) return;
   openProductId=id; sheetMode=mode||"full";
   if(reset!==false) galleryIndex=0;
-  const imgs=pimgs(p);
   const sug=products.filter(x=>x.cat===p.cat && x.id!==p.id).slice(0,4);
   const cards=sug.map(s=>`
     <button class="sug" data-open="${s.id}" type="button">
@@ -495,10 +598,15 @@ function openSheet(id, mode, reset){
     </button>`).join("");
   const qv=sheetMode==="qv";
   $("#sheet").classList.toggle("qv", qv);
+  // Arabic presentation card (not fake packaging — Naqa Arabic card with real photo)
+  let arUrl="";
+  if (lang==="ar") {
+    try { arUrl = await makeArCard(p); } catch(e) { arUrl=""; }
+  }
   $("#sheetCard").innerHTML=`
     <p class="swipe-hint">${T("swipe")}</p>
     <button class="text-back" id="closeSheet" type="button">‹ ${T("back")}</button>
-    ${carouselHTML(p, galleryIndex)}
+    ${carouselHTML(p, galleryIndex, arUrl)}
     <div class="card-brand" style="margin-top:12px">${p.brand} · ${T(catLabel[p.cat]||"all")}</div>
     <h3 style="margin:6px 0 4px">${pname(p)}</h3>
     <div class="card-price">${money(p.price)}</div>

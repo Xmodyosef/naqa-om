@@ -145,6 +145,20 @@ footer a{display:inline-block;margin:2px 0}
 .sheet-card h3{margin:12px 0 4px;font-size:1.15rem}
 .bc{margin-top:10px}
 .bc svg{max-width:100%;height:72px}
+
+.card-hit{width:100%;text-align:inherit;padding:0}
+.card-name.card-hit{font:inherit;font-weight:700;font-size:.95rem;line-height:1.35;min-height:2.5em;text-align:start}
+.sheet{align-items:stretch;justify-content:center}
+.sheet-card{width:min(680px,100%);max-height:100%;height:100%;border-radius:0;padding:18px 16px 40px}
+.block-h{margin:16px 0 6px;font-size:1rem}
+.long{margin:0;line-height:1.7}
+.text-back{font-weight:800;color:var(--rose-deep);margin-bottom:10px}
+.sug-row{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.sug{background:#fff;border:1px solid var(--line);border-radius:14px;padding:8px;text-align:start}
+.sug-vis{display:block;height:90px;border-radius:10px;overflow:hidden;background:#faf7f5}
+.sug-vis img{width:100%;height:90px;object-fit:contain}
+.sug-name{display:block;font-size:.78rem;font-weight:700;margin-top:6px;line-height:1.35}
+.sug-price{display:block;color:var(--rose-deep);font-weight:800;font-size:.85rem}
 </style>
 </head>
 <body>
@@ -184,8 +198,8 @@ footer a{display:inline-block;margin:2px 0}
   <section class="hero">
     <div class="pills">
       <span class="pill">www.naqa.om</span>
-      <span class="pill">توصيل عُمان</span>
-      <span class="pill">طلب واتساب</span>
+      <span class="pill" id="pillShip">توصيل عُمان</span>
+      <span class="pill" id="pillWa">طلب واتساب</span>
     </div>
     <h1>نقاء — <em>عناية ومكياج</em></h1>
     <p>منتجات أصلية للبشرة والمكياج. اختاري، أضيفي للسلة، وأكملي الطلب برسالة واتساب جاهزة. أسعار بالريال العماني، مأخوذة من أسعار البيع الظاهرة في السوق (دار بيوتي وكابي) بتاريخ 21 نوفمبر 2026.</p>
@@ -207,22 +221,22 @@ footer a{display:inline-block;margin:2px 0}
   <div class="wrap foot-grid">
     <div>
       <div class="foot-brand">ن<span>قاء</span></div>
-      <p style="margin:8px 0 0">عناية ومكياج · متجر عُماني<br/>www.naqa.om</p>
+      <p id="footBlurb" style="margin:8px 0 0">عناية ومكياج · متجر عُماني<br/>www.naqa.om</p>
     </div>
     <div>
-      <h4>تواصلي</h4>
-      <a id="waFooter" href="#" target="_blank" rel="noopener">واتساب الطلبات</a><br/>
+      <h4 id="footContact">تواصلي</h4>
+      <a id="waFooter" href="#" target="_blank" rel="noopener" id="waFooterLabel">واتساب الطلبات</a><br/>
       <a href="mailto:hello@naqa.om">hello@naqa.om</a>
     </div>
     <div>
-      <h4>التسوق</h4>
-      <a href="#" data-cat-jump="عناية">عناية البشرة</a><br/>
-      <a href="#" data-cat-jump="مكياج">مكياج</a><br/>
-      <a href="#" data-cat-jump="عطور">عطور</a>
+      <h4 id="footShop">التسوق</h4>
+      <a href="#" data-cat-jump="عناية" id="jumpCare">عناية البشرة</a><br/>
+      <a href="#" data-cat-jump="مكياج" id="jumpFace">مكياج</a><br/>
+      <a href="#" data-cat-jump="عطور" id="jumpScent">عطور</a>
     </div>
   </div>
   <div class="wrap" style="margin-top:18px;font-size:.8rem">
-    © <span id="yr"></span> نقاء · Naqa · عُمان — جميع الحقوق محفوظة
+    © <span id="yr"></span> <span id="copyLine">نقاء · Naqa · عُمان — جميع الحقوق محفوظة</span>
   </div>
 </footer>
 
@@ -423,13 +437,13 @@ const ui = {
     shop:"تسوّقي الآن", wa:"واتساب نقاء", products:"المنتجات", count:n=>n+" منتج", empty:"ما في نتائج — جرّبي بحث أو تصنيف ثاني.",
     cart:"السلة", emptyCart:"السلة فاضية<br/>أضيفي منتجات من المتجر", total:"المجموع", checkout:"إتمام الطلب عبر واتساب",
     add:"أضيفي للسلة", more:"التفاصيل والباركود", del:"حذف", close:"إغلاق", noCode:"الباركود غير منشور في المصدر", heroTitle:"نقاء — ", heroEm:"عناية ومكياج",
-    hero:"منتجات أصلية للبشرة والمكياج. اختاري، أضيفي للسلة، وأكملي الطلب برسالة واتساب. الأسعار بالريال من السوق العُماني في 21 نوفمبر 2026.",
+    hero:"منتجات أصلية للبشرة والمكياج. افتحي المنتج للوصف وطريقة الاستعمال، ثم أضيفيه للسلة وأكملي الطلب بواتساب. الأسعار بالريال من السوق العُماني في 21 نوفمبر 2026.", ship:"توصيل عُمان", order:"طلب واتساب", contact:"تواصلي", shopH:"التسوق", orders:"واتساب الطلبات", skin:"عناية البشرة", scentL:"عطور", faceL:"مكياج", blurb:"عناية ومكياج · متجر عُماني", copy:"نقاء · Naqa · عُمان — جميع الحقوق محفوظة", about:"عن المنتج", how:"طريقة الاستعمال", also:"قد يعجبكِ أيضاً", back:"رجوع للمتجر",
     alertEmpty:"السلة فاضية", greet:"السلام عليكم، أبغى أطلب من نقاء" },
   en: { search:"Search a product or brand...", all:"All", care:"Skincare", face:"Makeup", eyes:"Eyes", lips:"Lips", scent:"Fragrance", tools:"Tools",
     shop:"Shop now", wa:"WhatsApp Naqa", products:"Products", count:n=>n+" products", empty:"No results. Try another search or category.",
     cart:"Cart", emptyCart:"Your cart is empty<br/>Add products from the shop", total:"Total", checkout:"Checkout on WhatsApp",
     add:"Add to cart", more:"Details and barcode", del:"Remove", close:"Close", noCode:"Barcode not published at the source", heroTitle:"Naqa — ", heroEm:"Care & Makeup",
-    hero:"Original skincare and makeup. Add to cart and send a ready WhatsApp order. Prices in Omani rial from the local market on 21 Nov 2026.",
+    hero:"Original skincare and makeup. Open a product for the full description and how to use it, then add it to the cart and send the WhatsApp order. Prices in Omani rial from the local market on 21 Nov 2026.", ship:"Oman delivery", order:"WhatsApp order", contact:"Contact", shopH:"Shop", orders:"Order on WhatsApp", skin:"Skincare", scentL:"Fragrance", faceL:"Makeup", blurb:"Care and makeup · Oman store", copy:"Naqa · Oman — all rights reserved", about:"About", how:"How to use", also:"You may also like", back:"Back to shop",
     alertEmpty:"Cart is empty", greet:"Hello, I want to order from Naqa" }
 };
 const catLabel = { "all":"all", "عناية":"care", "مكياج":"face", "عيون":"eyes", "شفاه":"lips", "عطور":"scent", "أدوات":"tools" };
@@ -437,6 +451,107 @@ function T(k){ return ui[lang][k]; }
 function pname(p){ return lang==="en" ? p.nameEn : p.nameAr; }
 function pdesc(p){ return lang==="en" ? p.descEn : p.descAr; }
 
+
+const guide = {
+1:{ar:"سيروم كوري بتركيز 10٪ نياسيناميد و4٪ ترانيكساميك أسيد. يساعد على بهتان البقع الداكنة وآثار الحبوب وتوحيد اللون من غير طبقة ثقيلة. مناسب للبشرة المختلطة والدهنية والحساسة إذا ما فيه تهيج.",
+   en:"A Korean serum with 10% niacinamide and 4% tranexamic acid. It fades the look of dark spots and acne marks and evens tone without a heavy film. Fine for combination, oily, and sensitive skin if it is not irritated.",
+   howAr:"بعد الغسول والتونر، حطي نقطتين أو ثلاث على الوجه والرقبة صباحاً ومساءً. انتظري دقيقة، ثم مرطب. الصباح لازم واقي شمس. لا تجمعينه مع مقشر قوي في نفس الليلة.",
+   howEn:"After cleanser and toner, apply two or three drops on the face and neck morning and night. Wait a minute, then moisturizer. Sunscreen is required in the morning. Do not combine it with a strong peel the same night."},
+2:{ar:"سيروم The Ordinary الكلاسيكي للمسام والإفرازات. النياسيناميد يهدّي لمعان البشرة والزنك يدعم توازنها. قوام مائي يصلح تحت المكياج.",
+   en:"The Ordinary’s classic pore and oil serum. Niacinamide softens shine and zinc supports balance. A watery texture that sits under makeup.",
+   howAr:"على بشرة نظيفة، صباحاً ومساءً، قبل المرطب. إذا بشرتك جديدة على النياسيناميد ابدئي يوماً بعد يوم. أوقفيه إذا ظهر احمرار.",
+   howEn:"On clean skin, morning and night, before moisturizer. If niacinamide is new for you, start every other day. Stop if redness appears."},
+3:{ar:"سيروم ترطيب بعدة أوزان من حمض الهيالورونيك مع فيتامين B5. يسحب الماء للبشرة ويعطي امتلاء خفيف، وهو ما يثبت الترطيب إذا ختمتيه بكريم.",
+   en:"A hydrating serum with several weights of hyaluronic acid plus vitamin B5. It draws water into the skin for a light plump look, and it lasts if you seal it with cream.",
+   howAr:"رشي وجهك بماء أو حطي السيروم على بشرة رطبة، ثم فوراً مرطب حتى ما يتبخر الماء. صباحاً ومساءً. مناسب تحت المكياج.",
+   howEn:"Mist your face or apply the serum on damp skin, then immediately seal it with moisturizer so the water does not evaporate. Morning and night. Works under makeup."},
+4:{ar:"مقشر حمضي عالي التركيز، مو مرطب يومي. يقشر الطبقة السطحية فيساعد على الملمس والبهتان، لكنه يهيّج البشرة إذا انستخدم كثير أو مع ريتينول.",
+   en:"A high-strength acid peel, not a daily moisturizer. It resurfaces texture and dullness, but it irritates skin if used too often or with retinol.",
+   howAr:"مساءً مرة في الأسبوع فقط، على بشرة جافة ونظيفة. طبقة رقيقة 8 إلى 10 دقائق ثم اشطفيه. مرطب بعدها. اليوم التالي واقي شمس، ومن غير أحماض أو ريتينول تلك الليلة. اختبريه خلف الأذن أولاً. غير مناسب للبشرة الحساسة أو المجروحة.",
+   howEn:"Evening, once a week only, on dry clean skin. A thin layer for 8 to 10 minutes, then rinse. Moisturizer after. Sunscreen the next day, and no acids or retinol that night. Patch-test behind the ear first. Not for sensitive or broken skin."},
+5:{ar:"إيسنس كوري فيه 96٪ إفراز الحلزون. يرطب ويهدّي ويلمّع البشرة من غير عطر ثقيل. خطوة وسط بين التونر والكريم.",
+   en:"A Korean essence with 96% snail secretion filtrate. It hydrates, calms, and adds a soft glow without a heavy scent. It sits between toner and cream.",
+   howAr:"بعد التونر، كمية على راحة اليد وربّتيها على الوجه حتى تمتص. ثم كريم. صباحاً ومساءً. يصلح قبل المكياج لأنه خفيف.",
+   howEn:"After toner, take some in the palm and pat it on until it absorbs. Then cream. Morning and night. Light enough before makeup."},
+6:{ar:"سيروم Medicube للبقع وآثار الحبوب: ترانيكساميك أسيد مع نياسيناميد وترطيب خفيف. من غير عطر، فيصلح للبشرة اللي تتضايق من الروائح.",
+   en:"Medicube serum for spots and acne marks: tranexamic acid with niacinamide and light hydration. Fragrance-free, so it suits skin that reacts to scent.",
+   howAr:"نقطتين صباحاً ومساءً على كامل الوجه، مع تركيز خفيف على البقعة. مرطب بعده، وواقي شمس بالنهار. النتيجة تحتاج أسابيع مو ليلة واحدة.",
+   howEn:"Two drops morning and night over the face, with a little extra on the spot. Moisturizer after, sunscreen in the daytime. Results take weeks, not one night."},
+7:{ar:"كريم مهدّئ للبشرة المرهقة أو المحمرة بعد الأحماض. قوام كريم خفيف يقفل الروتين ويعطي راحة، مو سيروم فعال.",
+   en:"A calming cream for tired or red skin after acids. A light cream texture that closes the routine and comforts the skin. It is not an active serum.",
+   howAr:"آخر خطوة صباحاً ومساءً، فوق السيروم. كمية حبة بازيلاء للوجه. إذا بتطلعين، حطي واقي شمس فوقه.",
+   howEn:"Last step morning and night, over serum. A pea-sized amount for the face. If you go out, put sunscreen on top."},
+8:{ar:"ماء ميسيلار من خط هيدرابيو للبشرة الجافة. يفك المكياج والأوساخ من غير شطف ويترك لمسة ترطيب، ومو بديل عن الغسول إذا بشرتك دهنية.",
+   en:"Micellar water from the Hydrabio line for dry skin. It lifts makeup and dirt without rinsing and leaves a hydrated feel. It is not a replacement for a cleanser if your skin is oily.",
+   howAr:"قطعة قطن مبللة، امسحي الوجه والعيون بلطف من غير فرك، صباحاً ومساءً. لا تشطفين. بعدها سيروم ومرطب. للماسكارا المقاومة للماء استخدمي مزيل مخصص.",
+   howEn:"On a cotton pad, wipe the face and eyes gently without rubbing, morning and night. Do not rinse. Then serum and moisturizer. For waterproof mascara use a dedicated remover."},
+9:{ar:"سيروم فيتامين سي من بيوريتو للإشراق والبهتان. يُستعمل بالنهار لأن الضوء هو وقت البقع، ودائماً مع واقي شمس وإلا الأثر ينعكس.",
+   en:"Purito vitamin C serum for brightness and dullness. Use it in the daytime, when spots are made, and always with sunscreen or the effect can reverse.",
+   howAr:"صباحاً بعد التنظيف، 3 إلى 4 قطرات، ثم مرطب ثم واقي شمس. احفظيه بعيداً عن الشمس والحرارة. إذا لسع قوي خففي إلى يوم بعد يوم.",
+   howEn:"In the morning after cleansing, 3 to 4 drops, then moisturizer, then sunscreen. Keep it away from sun and heat. If it stings, drop to every other day."},
+10:{ar:"تونر BHA 2٪ من أنوا لتنظيف المسام والرؤوس السوداء بلطف. حمض الساليسيليك يذوب الدهون داخل المسام، فالاستخدام اليومي يجرّف البشرة إذا هي جافة.",
+   en:"Anua’s 2% BHA toner for pores and blackheads. Salicylic acid dissolves oil inside the pore, so daily use strips skin that is already dry.",
+   howAr:"مساءً، مرتين أو ثلاث في الأسبوع، بعد الغسول وعلى بشرة جافة. قطنة أو اليد، وتجنبي العين. بعدها سيروم مرطب وكريم. الصباح واقي شمس. أوقفيه مع التقشير القوي.",
+   howEn:"At night, two or three times a week, after cleansing on dry skin. Cotton or hands, and avoid the eyes. Then a hydrating serum and cream. Sunscreen in the morning. Pause it when you use a strong peel."},
+11:{ar:"فاونديشن شيغلام كمبلكشن برو بدرجة وورم فانيلا، مطفي ويتحمل الجو. التغطية تُبنى على طبقات، والدرجة دافية تناسب بشرة متوسطة دافية.",
+   en:"SHEGLAM Complexion Pro foundation in Warm Vanilla. Matte and made for heat. Coverage builds in layers, and the shade is warm for a medium-warm complexion.",
+   howAr:"مرطب وواقي شمس أولاً، ثم نقطة في وسط الوجه ووزّعيها بإسفنجة رطبة أو فرشاة. طبقة ثانية فقط على الاحمرار. ثبّتيه ببودرة خفيفة إذا بشرتك دهنية.",
+   howEn:"Moisturizer and sunscreen first, then a dot in the center of the face and blend with a damp sponge or brush. A second layer only on redness. Set lightly with powder if your skin is oily."},
+12:{ar:"كريم أساس نوت ديتوكس آند بروتكت، 35 مل، للاستخدام اليومي بتغطية متوسطة. اسمه يعني حماية، بس واقي الشمس المستقل يبقى ضروري.",
+   en:"Note Detox and Protect foundation, 35ml, for everyday medium coverage. The name says protect, but a separate sunscreen is still necessary.",
+   howAr:"بعد العناية، كمية صغيرة ودمجيها للخارج. لا تسحبينه على بشرة ناشفة. ثبّتي منطقة الجبهة والأنف إذا الجو حار.",
+   howEn:"After skincare, use a small amount and blend outward. Do not drag it on dry skin. Set the forehead and nose if the weather is hot."},
+13:{ar:"بودرة تثبيت هيدرو تاتش بيبي بينك. تلطف اللمعان وتعطي لمسة وردية خفيفة جداً، مو بلاشر.",
+   en:"Hydro Touch setting powder in Baby Pink. It knocks back shine and leaves a very faint pink cast. It is not a blush.",
+   howAr:"بعد ما ينشف الفاونديشن، اضغطي البودرة بإسفنجة على الجبهة والأنف والذقن. لا تفركين. للعين استخدمي فرشاة نظيفة تحت العين فقط.",
+   howEn:"After foundation dries, press the powder on with a sponge over the forehead, nose, and chin. Do not rub. For the eye, use a clean brush under the eye only."},
+14:{ar:"بلاشر سائل شيغلام كلر بلوم بدرجة هوت توبيك. لون واضح يندمج ويجلس فوق الفاونديشن من غير بقع إذا حطيتيه نقطة نقطة.",
+   en:"SHEGLAM Color Bloom liquid blush in Hot Topic. A clear color that melts into foundation without patches if you place it dot by dot.",
+   howAr:"نقطة صغيرة على تفاحة الخد، ودّمجيها للأعلى باتجاه الصدغ بالإصبع أو الإسفنجة. زيدي نقطة ثانية إذا تبين أوضح. يأتي بعد الفاونديشن وقبل البودرة أو فوقها بكمية أقل.",
+   howEn:"A small dot on the apple of the cheek, blended upward toward the temple with a finger or sponge. Add a second dot if you want it stronger. It goes after foundation, before powder, or in a smaller amount on top of powder."},
+15:{ar:"بلاشر بودرة ريفوليوشن بلش موف، 14 جم. درجة بنفسجية ناعمة ترفع الوجه، وتحتاج فرشاة منفوشة عشان ما يخطط.",
+   en:"Revolution Blush Mauve powder, 14g. A soft mauve that lifts the face, and it needs a fluffy brush so it does not go on in stripes.",
+   howAr:"انفضي الفرشاة، ثم مررة خفيفة على البودرة، واكنسي من الخد باتجاه الأذن. ابدئي بأقل مما تظنين. يأتي بعد البودرة.",
+   howEn:"Tap the brush, then a light pass through the powder, and sweep from the cheek toward the ear. Start with less than you think. It goes on after powder."},
+16:{ar:"ماسكارا شيغلام بيج تايم للتكثيف، لون أسود. الفرشاة تملأ الرمش من الجذر. مو مقاومة للماء، فأسهل بالإزالة.",
+   en:"SHEGLAM Big Time volumizing mascara in black. The brush fills the lash from the root. It is not waterproof, so it is easier to remove.",
+   howAr:"مشّطي الرموش بفرشاة حواجب أولاً. من الجذر إلى الطرف بحركة زجزاج، طبقة واحدة. الطبقة الثانية بعد ما تنشف الأولى. أزيليها بمزيل عيون، مو بفرك.",
+   howEn:"Comb the lashes with a spoolie first. Zigzag from root to tip, one coat. A second coat after the first dries. Remove it with an eye remover, not by rubbing."},
+17:{ar:"ماسكارا لاشلايتر المقاومة للماء، 8 مل، مع زيت خروع وبانثينول. تثبت مع الرطوبة والدموع، وتحتاج مزيل مخصص مو ماء.",
+   en:"Lash Lighter waterproof mascara, 8ml, with castor oil and panthenol. It holds through humidity and tears, and it needs a real remover, not water.",
+   howAr:"طبقة رقيقة من الجذور. لا تعيدين الفرشاة داخل الأنبوب وهي مبلولة. للإزالة: قطنة عليها مزيل كلين كوين، اضغطي عشر ثوانٍ ثم امسحي للأسفل.",
+   howEn:"A thin coat from the roots. Do not pump the wet wand back into the tube. To remove: a cotton pad with Clean Queen remover, press for ten seconds, then wipe downward."},
+18:{ar:"آيلاينر سائل شيغلام لاين آند ديفاين، أسود ومقاوم للماء، بطرف رفيع يرسم خطاً حاداً أو رفع بسيط عند الذيل.",
+   en:"SHEGLAM Line and Define liquid eyeliner, black and waterproof, with a fine tip for a sharp line or a small wing.",
+   howAr:"ثبّتي كوعك. من منتصف الجفن إلى الخارج، ثم املئي الفراغ قرب الرمش. انتظري عشر ثوانٍ قبل الماسكارا. إذا غلط، عود قطن مع مزيل عيون.",
+   howEn:"Rest your elbow. Draw from the middle of the lid outward, then fill the gap near the lashes. Wait ten seconds before mascara. If you slip, use a cotton swab with eye remover."},
+19:{ar:"ماسكارا essence آي لوف إكستريم المقاومة للماء. تكثيف واضح بسعر يومي، والفرشاة كبيرة فتحتاج يد أخف قرب الزاوية الداخلية.",
+   en:"essence I Love Extreme waterproof mascara. Clear volume at an everyday price. The brush is large, so use a lighter hand near the inner corner.",
+   howAr:"امسحي الزائد على فوهة الأنبوب. طبقة واحدة، والزاوية الداخلية بطرف الفرشاة فقط. الإزالة بمزيل عيون مقاوم للماء.",
+   howEn:"Wipe the extra on the tube neck. One coat, and only the tip of the wand at the inner corner. Remove with a waterproof eye remover."},
+20:{ar:"محدد عيون سائل أسود من essence، مقاوم للماء، للخط الرفيع اليومي.",
+   en:"A black liquid eyeliner from essence, waterproof, for a thin everyday line.",
+   howAr:"ارسمي فوق الرموش العلوية من الداخل للخارج. للخط الرفيع خففي الضغط. جففيه قبل ما ترمشين. التصحيح بعود قطن.",
+   howEn:"Draw along the upper lashes from the inner corner out. For a thin line, use less pressure. Let it dry before you blink. Correct with a cotton swab."},
+21:{ar:"قلم حواجب شيغلام 2 في 1 بدرجة توب، مقاومة للماء. طرف يملأ الفراغات وطرف ثاني يمشّط الشعر حتى يبان طبيعي.",
+   en:"SHEGLAM 2-in-1 brow pencil in taupe, waterproof. One tip fills gaps and the other combs the hairs so it stays natural.",
+   howAr:"مشّطي الحاجب أولاً. خطوط قصيرة باتجاه الشعر، مو خط واحد سميك. امشطي مرة ثانية. ابدئي بالذيل لأنه أغمق طبيعياً.",
+   howEn:"Comb the brow first. Short strokes in the direction of the hair, not one thick line. Comb again. Start at the tail, which is naturally darker."},
+22:{ar:"بيبي ليبس ميبيلين بدرجة بينك بانش. مرطب شفاه ملون خفيف، يصلح وحده أو تحت الروج عشان ما يخط الشفايف.",
+   en:"Maybelline Baby Lips in Pink Punch. A lightly tinted balm. Wear it alone or under lipstick so the lips do not crack.",
+   howAr:"على شفاه نظيفة، مرّريه من الوسط للزوايا. أعيدي كل ما حسّيتي بجفاف. مو علاج تشقق شديد؛ إذا الشفة مجروحة استخدمي مرهم ليلاً.",
+   howEn:"On clean lips, glide from the center to the corners. Reapply when they feel dry. It is not a treatment for deep cracks; if the lip is broken, use an ointment at night."},
+23:{ar:"روج ساتان لوريال من خط ريدز أوف وورث. لون أحمر بلمعة خفيفة، تغطية متوسطة، ويثبت أحسن على شفة مقشرة ومرطبة.",
+   en:"L’Oréal satin lipstick from Reds of Worth. A red with a soft shine, medium coverage, and it holds better on a smooth, balmed lip.",
+   howAr:"مرطب خفيف وانتظري دقيقة وامسحي الزائد. الروج من القوس للخارج. منديل يضغط مرة ثم طبقة ثانية. للحدود الدقيقة استخدمي فرشاة.",
+   howEn:"A light balm, wait a minute, and blot the extra. Lipstick from the cupid’s bow outward. Press a tissue once, then a second coat. For a sharp edge use a brush."},
+24:{ar:"مزيل ماسكارا شيغلام كلين كوين. يفك الماسكارا العادية والمقاومة للماء من غير سحب الرمش. هذا المنتج نفسه باركوده منشور: 6971053495270.",
+   en:"SHEGLAM Clean Queen mascara remover. It loosens regular and waterproof mascara without pulling the lash. This product’s published barcode is 6971053495270.",
+   howAr:"قطنة مشبعة، أغلقي العين، اضغطي على الرمش 10 ثوانٍ، ثم امسحي للأسفل بلطف. كرري إذا بقي لون. بعدها اغسلي الوجه. لا تفركين.",
+   howEn:"A soaked cotton pad, eyes closed, press on the lashes for 10 seconds, then wipe downward gently. Repeat if color remains. Then wash the face. Do not rub."}
+};
+function pabout(p){ const g = guide[p.id]; return lang==="en" ? g.en : g.ar; }
+function phow(p){ const g = guide[p.id]; return lang==="en" ? g.howEn : g.howAr; }
 function eanSvg(code){
   const digits = String(code).replace(/\D/g,"");
   if (digits.length !== 12 && digits.length !== 13) return "";
@@ -495,7 +610,16 @@ function applyLang(){
   if (cb) cb.textContent = T("checkout");
   const lb = document.getElementById("langBtn");
   if (lb) lb.textContent = lang === "ar" ? "EN" : "عربي";
-  const tag = document.querySelector(".logo-text span");
+  const set = (id, key) => { const el = document.getElementById(id); if (el) el.textContent = T(key); };
+  set("pillShip","ship"); set("pillWa","order"); set("footContact","contact");
+  set("footShop","shopH"); set("jumpCare","skin"); set("jumpFace","faceL"); set("jumpScent","scentL");
+  set("copyLine","copy");
+  const wf = document.getElementById("waFooter"); if (wf) wf.textContent = T("orders");
+  const fb = document.getElementById("footBlurb");
+  if (fb) fb.innerHTML = T("blurb") + "<br/>www.naqa.om";
+  const strong = document.querySelector(".logo-text strong");
+  if (strong) strong.textContent = lang === "en" ? "Naqa" : "نقاء";
+    const tag = document.querySelector(".logo-text span");
   if (tag) tag.textContent = lang === "en" ? "Care & Makeup" : "عناية ومكياج";
 }
 
@@ -518,10 +642,10 @@ function render(){
   if (empty){ empty.hidden = list.length > 0; empty.textContent = T("empty"); }
   document.getElementById("grid").innerHTML = list.map(p => `
     <article class="card">
-      <div class="card-visual" style="--c1:${p.c1};--c2:${p.c2}">${visual(p)}</div>
+      <button class="card-visual card-hit" style="--c1:${p.c1};--c2:${p.c2}" data-open="${p.id}" type="button">${visual(p)}</button>
       <div class="card-body">
         <div class="card-brand">${p.brand} · ${T(catLabel[p.cat])}</div>
-        <div class="card-name">${pname(p)}</div>
+        <button class="card-name card-hit" data-open="${p.id}" type="button">${pname(p)}</button>
         <div class="card-desc">${pdesc(p)}</div>
         <div class="card-code">${p.barcode || T("noCode")}</div>
         <div class="card-price">${money(p.price)}</div>
@@ -535,16 +659,29 @@ function openSheet(id){
   const p = products.find(x => x.id === id);
   if (!p) return;
   const code = p.barcode ? eanSvg(p.barcode) : "<p>"+T("noCode")+"</p>";
+  const sug = products.filter(x => x.cat === p.cat && x.id !== p.id).slice(0, 4);
+  const cards = sug.map(s => `
+    <button class="sug" data-open="${s.id}" type="button">
+      <span class="sug-vis">${visual(s)}</span>
+      <span class="sug-name">${pname(s)}</span>
+      <span class="sug-price">${money(s.price)}</span>
+    </button>`).join("");
   document.getElementById("sheetCard").innerHTML = `
-    <button class="icon-btn" id="closeSheet" type="button">${T("close")}</button>
-    <div class="card-visual" style="height:240px">${visual(p)}</div>
+    <button class="text-back" id="closeSheet" type="button">${T("back")}</button>
+    <div class="card-visual" style="height:260px;border-radius:14px">${visual(p)}</div>
+    <div class="card-brand" style="margin-top:12px">${p.brand} · ${T(catLabel[p.cat])}</div>
     <h3>${pname(p)}</h3>
-    <div class="card-brand">${p.brand}</div>
-    <p>${pdesc(p)}</p>
     <div class="card-price">${money(p.price)}</div>
+    <h4 class="block-h">${T("about")}</h4>
+    <p class="long">${pabout(p)}</p>
+    <h4 class="block-h">${T("how")}</h4>
+    <p class="long">${phow(p)}</p>
     <div class="bc">${code}</div>
-    <button class="card-add" data-add="${p.id}" style="margin-top:14px">${T("add")}</button>`;
+    <button class="card-add" data-add="${p.id}" style="margin-top:14px">${T("add")}</button>
+    <h4 class="block-h">${T("also")}</h4>
+    <div class="sug-row">${cards}</div>`;
   document.getElementById("sheet").classList.add("show");
+  document.getElementById("sheetCard").scrollTop = 0;
   document.getElementById("closeSheet").onclick = () => document.getElementById("sheet").classList.remove("show");
 }
 
@@ -659,6 +796,8 @@ document.getElementById("grid").addEventListener("click", e => {
 });
 document.getElementById("sheet").addEventListener("click", e => {
   if (e.target.id === "sheet") e.currentTarget.classList.remove("show");
+  const more = e.target.closest("[data-open]");
+  if (more && e.target.closest("#sheetCard")) { openSheet(+more.dataset.open); return; }
   const add = e.target.closest("[data-add]");
   if (add) addToCart(+add.dataset.add);
 });

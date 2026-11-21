@@ -131,6 +131,20 @@ footer a{display:inline-block;margin:2px 0}
 
 /* empty cart note */
 .cart-empty{padding:40px 10px;text-align:center;color:var(--muted)}
+
+.lang-btn{height:42px;padding:0 12px;border-radius:12px;background:#fff;border:1px solid var(--line);font-weight:800;flex-shrink:0}
+.card-visual{position:relative;background:#fff}
+.card-visual img{width:100%;height:100%;object-fit:contain;background:#fff}
+.card-desc{color:var(--muted);font-size:.78rem;line-height:1.45;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.card-code{font-size:.68rem;letter-spacing:.04em;color:var(--muted);font-family:ui-monospace,monospace}
+.card-more{margin-top:6px;font-size:.78rem;font-weight:700;color:var(--rose-deep);text-align:start}
+.sheet{position:fixed;inset:0;z-index:100;background:rgba(20,12,10,.4);display:none;align-items:flex-end;justify-content:center}
+.sheet.show{display:flex}
+.sheet-card{background:#fff;width:min(520px,100%);max-height:88vh;overflow:auto;border-radius:20px 20px 0 0;padding:16px 16px 28px}
+.sheet-card img{width:100%;height:240px;object-fit:contain;background:#faf7f5;border-radius:14px}
+.sheet-card h3{margin:12px 0 4px;font-size:1.15rem}
+.bc{margin-top:10px}
+.bc svg{max-width:100%;height:72px}
 </style>
 </head>
 <body>
@@ -147,6 +161,7 @@ footer a{display:inline-block;margin:2px 0}
       <span aria-hidden="true">⌕</span>
       <input id="search" type="search" placeholder="ابحثي عن منتج أو ماركة..." enterkeyhint="search" />
     </div>
+    <button class="lang-btn" id="langBtn" type="button">EN</button>
     <button class="icon-btn" id="cartBtn" aria-label="السلة">
       🛒
       <span class="badge" id="cartBadge" hidden>0</span>
@@ -226,6 +241,10 @@ footer a{display:inline-block;margin:2px 0}
   </div>
 </aside>
 
+
+<div class="sheet" id="sheet">
+  <div class="sheet-card" id="sheetCard"></div>
+</div>
 <script>
 /* ========== الإعدادات — عدّلي هنا فقط ========== */
 const WA_NUMBER = "96879088349";   // ← رقمك بدون + وبدون مسافات (8 أرقام بعد 968)
@@ -233,36 +252,212 @@ const CURRENCY  = "ر.ع";
 const SITE      = "www.naqa.om";
 
 const products = [
-  /* أسعار بيع ظاهرة في عُمان — دار بيوتي وكابي، 21 نوفمبر 2026. عدّليها حسب مخزونك. */
-  {id:1,  name:"سيروم نياسيناميد 10% + TXA 4% — 30مل", brand:"Anua", price:6.700, cat:"عناية", em:"💧", c1:"#fde4ea", c2:"#f8c0d0"},
-  {id:2,  name:"سيروم نياسيناميد 10% + زنك 1% — 30مل", brand:"The Ordinary", price:5.700, cat:"عناية", em:"🧪", c1:"#f0eef8", c2:"#ddd8f0"},
-  {id:3,  name:"هيالورونيك أسيد 2% + B5 — 30مل", brand:"The Ordinary", price:6.300, cat:"عناية", em:"✨", c1:"#e8f4ff", c2:"#d0e8ff"},
-  {id:4,  name:"مقشر AHA 30% + BHA 2% — 30مل", brand:"The Ordinary", price:5.700, cat:"عناية", em:"🧴", c1:"#fff3e0", c2:"#ffe0b8"},
-  {id:5,  name:"إيسنس موسين الحلزون 96% — 100مل", brand:"COSRX", price:6.800, cat:"عناية", em:"🐌", c1:"#e8f8f0", c2:"#c8eed8"},
-  {id:6,  name:"سيروم TXA + نياسيناميد — 30مل", brand:"Medicube", price:6.300, cat:"عناية", em:"💗", c1:"#fce8f0", c2:"#f5d0e0"},
-  {id:7,  name:"كريم 345 ريليف — 50مل", brand:"Dr. Althea", price:7.300, cat:"عناية", em:"🤍", c1:"#f8f4f0", c2:"#ebe4dc"},
-  {id:8,  name:"ماء ميسيلار هيدرابيو — 500مل", brand:"Bioderma", price:5.300, cat:"عناية", em:"🫧", c1:"#e8f4ff", c2:"#d0e8ff"},
-  {id:9,  name:"سيروم فيتامين سي نقي — 60مل", brand:"Purito", price:5.300, cat:"عناية", em:"🍊", c1:"#fff3d6", c2:"#ffe8b0"},
-  {id:10, name:"تونر BHA 2% لطيف — 150مل", brand:"Anua", price:7.900, cat:"عناية", em:"🌿", c1:"#e8f8f0", c2:"#c8eed8"},
-  {id:11, name:"فاونديشن كمبلكشن برو — وورم فانيلا", brand:"SHEGLAM", price:4.500, cat:"مكياج", em:"🎨", c1:"#f5e6d8", c2:"#e8d0b8"},
-  {id:12, name:"فاونديشن ديتوكس آند بروتكت — 35مل", brand:"Note", price:5.400, cat:"مكياج", em:"🧴", c1:"#f0e4d8", c2:"#e0d0c0"},
-  {id:13, name:"بودرة تثبيت هيدرو تاتش — بيبي بينك", brand:"SHEGLAM", price:3.000, cat:"مكياج", em:"💨", c1:"#fde4e8", c2:"#f8c8d0"},
-  {id:14, name:"بلاشر سائل كلر بلوم — هوت توبيك", brand:"SHEGLAM", price:2.380, cat:"مكياج", em:"🌸", c1:"#fde4e8", c2:"#f8c0d0"},
-  {id:15, name:"بلاشر بلش موف — 14جم", brand:"Revolution", price:5.950, cat:"مكياج", em:"💜", c1:"#ede4f5", c2:"#dcc8f0"},
-  {id:16, name:"ماسكارا بيج تايم فوليوم — أسود", brand:"SHEGLAM", price:2.100, cat:"عيون", em:"👁️", c1:"#e8e8ec", c2:"#d0d0d8"},
-  {id:17, name:"ماسكارا لاشلايتر مقاومة للماء — 8مل", brand:"SHEGLAM", price:2.350, cat:"عيون", em:"🖤", c1:"#ececf0", c2:"#d8d8e0"},
-  {id:18, name:"آيلاينر سائل لاين آند ديفاين — أسود", brand:"SHEGLAM", price:2.100, cat:"عيون", em:"✏️", c1:"#e8e8ec", c2:"#d0d0d8"},
-  {id:19, name:"ماسكارا آي لوف إكستريم مقاومة للماء", brand:"essence", price:1.580, cat:"عيون", em:"👀", c1:"#f0f0f4", c2:"#e0e0e8"},
-  {id:20, name:"محدد عيون سائل مقاوم للماء — أسود", brand:"essence", price:1.480, cat:"عيون", em:"🖊️", c1:"#ececf0", c2:"#d8d8e0"},
-  {id:21, name:"قلم حواجب 2 في 1 — توب", brand:"SHEGLAM", price:1.600, cat:"عيون", em:"✍️", c1:"#e8ddd0", c2:"#d4c4b0"},
-  {id:22, name:"بيبي ليبس — بينك بانش", brand:"Maybelline", price:2.250, cat:"شفاه", em:"👄", c1:"#fde4e8", c2:"#f8c8d0"},
-  {id:23, name:"أحمر شفاه ساتان — ريدز أوف وورث", brand:"L'Oréal", price:2.500, cat:"شفاه", em:"💋", c1:"#f8d0d8", c2:"#f0a8b8"},
-  {id:24, name:"مزيل ماسكارا كلين كوين", brand:"SHEGLAM", price:2.100, cat:"أدوات", em:"🧼", c1:"#e8f4ff", c2:"#d0e8ff"},
+  {id:1, brand:"Anua", price:6.700, cat:"عناية", em:"💧", c1:"#fde4ea", c2:"#f8c0d0",
+    barcode:"8809640734526",
+    img:"https://darbeauty.com/cdn/shop/files/anua-niacinamide-10-txa-4-serum_8809640734526_DarBeauty.webp?width=800",
+    nameAr:"سيروم نياسيناميد 10% + TXA 4% — 30مل",
+    nameEn:"Niacinamide 10% + TXA 4% Serum — 30ml",
+    descAr:"سيروم كوري لتصحيح البقع الداكنة وتوحيد اللون. خفيف وسريع الامتصاص، مناسب للبشرة الحساسة.",
+    descEn:"Korean dark-spot serum that evens tone. Lightweight and fast-absorbing, including for sensitive skin."},
+  {id:2, brand:"The Ordinary", price:5.700, cat:"عناية", em:"🧪", c1:"#f0eef8", c2:"#ddd8f0",
+    barcode:"769915190311",
+    img:"https://darbeauty.com/cdn/shop/files/the-ordinary-niacinamide-10-zinc-1_769915190311_DarBeauty.webp?width=800",
+    nameAr:"سيروم نياسيناميد 10% + زنك 1% — 30مل",
+    nameEn:"Niacinamide 10% + Zinc 1% — 30ml",
+    descAr:"يقلل مظهر المسام والزيوت الزائدة. يُستخدم صباحاً ومساءً قبل المرطب.",
+    descEn:"Helps the look of pores and excess oil. Use morning and night before moisturizer."},
+  {id:3, brand:"The Ordinary", price:6.300, cat:"عناية", em:"✨", c1:"#e8f4ff", c2:"#d0e8ff",
+    barcode:"769915233490",
+    img:"https://darbeauty.com/cdn/shop/files/the-ordinary-hyaluronic-acid-2-b5_769915233490_DarBeauty.webp?width=800",
+    nameAr:"هيالورونيك أسيد 2% + B5 — 30مل",
+    nameEn:"Hyaluronic Acid 2% + B5 — 30ml",
+    descAr:"سيروم ترطيب بطبقات هيالورونيك وفيتامين B5. يوضع على بشرة رطبة.",
+    descEn:"Hydrating serum with hyaluronic acid and vitamin B5. Apply on damp skin."},
+  {id:4, brand:"The Ordinary", price:5.700, cat:"عناية", em:"🧴", c1:"#fff3e0", c2:"#ffe0b8",
+    barcode:"",
+    img:"https://darbeauty.com/cdn/shop/products/aordynary-mkshr-ahmad-alfoakh-aha-30-bha-2-aha-30-bha-2-peeling-solution-447609.jpg?width=800",
+    nameAr:"مقشر AHA 30% + BHA 2% — 30مل",
+    nameEn:"AHA 30% + BHA 2% Peeling — 30ml",
+    descAr:"مقشر قوي يُستخدم مساءً فقط، ليس يومياً، ومع واقي شمس في الصباح. ليس للبشرة الحساسة.",
+    descEn:"Strong peel for evening use only, not daily, with sunscreen the next morning. Not for sensitive skin."},
+  {id:5, brand:"COSRX", price:6.800, cat:"عناية", em:"🐌", c1:"#e8f8f0", c2:"#c8eed8",
+    barcode:"8809416470009",
+    img:"https://darbeauty.com/cdn/shop/files/cosrx-advanced-snail-96-mucin-power-essence_darbeauty.webp?width=800",
+    nameAr:"إيسنس موسين الحلزون 96% — 100مل",
+    nameEn:"Advanced Snail 96 Mucin Essence — 100ml",
+    descAr:"إيسنس ترطيب وإصلاح بموسين الحلزون 96%. خفيف ويوضع قبل الكريم.",
+    descEn:"Hydrating repair essence with 96% snail mucin. Lightweight, used before cream."},
+  {id:6, brand:"Medicube", price:6.300, cat:"عناية", em:"💗", c1:"#fce8f0", c2:"#f5d0e0",
+    barcode:"8800256119134",
+    img:"https://darbeauty.com/cdn/shop/files/medicube-txa-niacinamide-serum_8800256119134_DarBeauty.webp?width=800",
+    nameAr:"سيروم TXA + نياسيناميد — 30مل",
+    nameEn:"TXA Niacinamide Serum — 30ml",
+    descAr:"لتصحيح البقع وآثار الحبوب مع ترطيب. تركيبة خفيفة بلا عطر.",
+    descEn:"Dark-spot and acne-mark serum with hydration. Lightweight and fragrance-free."},
+  {id:7, brand:"Dr. Althea", price:7.300, cat:"عناية", em:"🤍", c1:"#f8f4f0", c2:"#ebe4dc",
+    barcode:"8809447256221",
+    img:"https://darbeauty.com/cdn/shop/files/dr-althea-345-relief-cream_DarBeauty.webp?width=800",
+    nameAr:"كريم 345 ريليف — 50مل",
+    nameEn:"345 Relief Cream — 50ml",
+    descAr:"كريم مهدّئ ومرطّب للبشرة المتهيجة. يُستخدم كخطوة أخيرة في الروتين.",
+    descEn:"Soothing moisturizer for irritated skin. Use as the last step of the routine."},
+  {id:8, brand:"Bioderma", price:5.300, cat:"عناية", em:"🫧", c1:"#e8f4ff", c2:"#d0e8ff",
+    barcode:"3701129800232",
+    img:"",
+    nameAr:"ماء ميسيلار هيدرابيو — 500مل",
+    nameEn:"Hydrabio Micellar Water — 500ml",
+    descAr:"ماء ميسيلار لتنظيف البشرة الجافة وترطيبها من غير شطف.",
+    descEn:"Micellar water that cleanses dry skin without rinsing."},
+  {id:9, brand:"Purito", price:5.300, cat:"عناية", em:"🍊", c1:"#fff3d6", c2:"#ffe8b0",
+    barcode:"8809563100729",
+    img:"https://darbeauty.com/cdn/shop/files/purito-pure-vitamin-c-serum_8809563100729_DarBeauty.webp?width=800",
+    nameAr:"سيروم فيتامين سي نقي — 60مل",
+    nameEn:"Pure Vitamin C Serum — 60ml",
+    descAr:"سيروم إشراق للبهتان والبقع. يُستخدم صباحاً مع واقي شمس.",
+    descEn:"Brightening serum for dullness and spots. Use in the morning with sunscreen."},
+  {id:10, brand:"Anua", price:7.900, cat:"عناية", em:"🌿", c1:"#e8f8f0", c2:"#c8eed8",
+    barcode:"8809640734519",
+    img:"https://darbeauty.com/cdn/shop/files/anua-bha-2-gentle-exfoliating-toner_8809640734519_DarBeauty.webp?width=800",
+    nameAr:"تونر BHA 2% لطيف — 150مل",
+    nameEn:"BHA 2% Gentle Toner — 150ml",
+    descAr:"تونر تقشير لطيف للمسام. ليس يومياً إذا بشرتك جافة.",
+    descEn:"Gentle pore-exfoliating toner. Not every day if your skin is dry."},
+  {id:11, brand:"SHEGLAM", price:4.500, cat:"مكياج", em:"🎨", c1:"#f5e6d8", c2:"#e8d0b8",
+    barcode:"6971053498349",
+    img:"",
+    nameAr:"فاونديشن كمبلكشن برو — وورم فانيلا",
+    nameEn:"Complexion Pro Foundation — Warm Vanilla",
+    descAr:"فاونديشن مطفي طويل الثبات بدرجة وورم فانيلا. الرقم من بطاقة المنتج في كابي.",
+    descEn:"Long-wear matte foundation in Warm Vanilla. Code taken from the Kapy product card."},
+  {id:12, brand:"Note", price:5.400, cat:"مكياج", em:"🧴", c1:"#f0e4d8", c2:"#e0d0c0",
+    barcode:"", img:"",
+    nameAr:"فاونديشن ديتوكس آند بروتكت — 35مل",
+    nameEn:"Detox and Protect Foundation — 35ml",
+    descAr:"كريم أساس بتغطية يومية. الباركود غير منشور على الصفحة التي راجعناها.",
+    descEn:"Everyday foundation. Barcode was not published on the page we checked."},
+  {id:13, brand:"SHEGLAM", price:3.000, cat:"مكياج", em:"💨", c1:"#fde4e8", c2:"#f8c8d0",
+    barcode:"", img:"",
+    nameAr:"بودرة تثبيت هيدرو تاتش — بيبي بينك",
+    nameEn:"Hydro Touch Setting Powder — Baby Pink",
+    descAr:"بودرة تثبيت خفيفة بدرجة بيبي بينك. الباركود غير مؤكد.",
+    descEn:"Light setting powder in Baby Pink. Barcode not confirmed."},
+  {id:14, brand:"SHEGLAM", price:2.380, cat:"مكياج", em:"🌸", c1:"#fde4e8", c2:"#f8c0d0",
+    barcode:"", img:"",
+    nameAr:"بلاشر سائل كلر بلوم — هوت توبيك",
+    nameEn:"Color Bloom Liquid Blush — Hot Topic",
+    descAr:"بلاشر سائل بدرجة هوت توبيك. يوضع على الخدود ويُدمج بالأصبع أو الإسفنجة.",
+    descEn:"Liquid blush in Hot Topic. Blend on the cheeks with a finger or sponge."},
+  {id:15, brand:"Revolution", price:5.950, cat:"مكياج", em:"💜", c1:"#ede4f5", c2:"#dcc8f0",
+    barcode:"", img:"",
+    nameAr:"بلاشر بلش موف — 14جم",
+    nameEn:"Blush Mauve — 14g",
+    descAr:"بلاشر بودرة بدرجة موف. الباركود غير منشور في المصدر.",
+    descEn:"Powder blush in mauve. Barcode was not listed at the source."},
+  {id:16, brand:"SHEGLAM", price:2.100, cat:"عيون", em:"👁️", c1:"#e8e8ec", c2:"#d0d0d8",
+    barcode:"6971053497229",
+    img:"",
+    nameAr:"ماسكارا بيج تايم فوليوم — أسود",
+    nameEn:"Big Time Volumizing Mascara — Black",
+    descAr:"ماسكارا تكثيف سوداء. الباركود من صفحة كابي: 6971053497229.",
+    descEn:"Black volumizing mascara. Barcode from the Kapy page: 6971053497229."},
+  {id:17, brand:"SHEGLAM", price:2.350, cat:"عيون", em:"🖤", c1:"#ececf0", c2:"#d8d8e0",
+    barcode:"6978931640524",
+    img:"https://img.zid.store/img/w=800,h=800,q=80,fit=pad,background=white/https://media.zid.store/096f2fd9-37b8-4fce-a267-52e4b6f541e1/d05da3b6-3ef3-40c9-bf0f-07658aa9165d.jpg",
+    nameAr:"ماسكارا لاشلايتر مقاومة للماء — 8مل",
+    nameEn:"Lash Lighter Waterproof Mascara — 8ml",
+    descAr:"ماسكارا تطويل وتكثيف مقاومة للماء، 8 مل، بزيت الخروع والبانثينول.",
+    descEn:"Lengthening waterproof mascara, 8ml, with castor oil and panthenol."},
+  {id:18, brand:"SHEGLAM", price:2.100, cat:"عيون", em:"✏️", c1:"#e8e8ec", c2:"#d0d0d8",
+    barcode:"6958697900520",
+    img:"https://img.zid.store/img/w=800,h=800,q=80,fit=pad,background=white/https://media.zid.store/096f2fd9-37b8-4fce-a267-52e4b6f541e1/478c446f-92c1-46ff-a461-7e17711f7d80.jpg",
+    nameAr:"آيلاينر سائل لاين آند ديفاين — أسود",
+    nameEn:"Line and Define Liquid Eyeliner — Black",
+    descAr:"محدد عيون سائل أسود مقاوم للماء بطرف دقيق.",
+    descEn:"Black waterproof liquid eyeliner with a fine tip."},
+  {id:19, brand:"essence", price:1.580, cat:"عيون", em:"👀", c1:"#f0f0f4", c2:"#e0e0e8",
+    barcode:"", img:"",
+    nameAr:"ماسكارا آي لوف إكستريم مقاومة للماء",
+    nameEn:"I Love Extreme Waterproof Mascara",
+    descAr:"ماسكارا essence مقاومة للماء للتكثيف. الباركود غير منشور.",
+    descEn:"essence waterproof volumizing mascara. Barcode not published."},
+  {id:20, brand:"essence", price:1.480, cat:"عيون", em:"🖊️", c1:"#ececf0", c2:"#d8d8e0",
+    barcode:"", img:"",
+    nameAr:"محدد عيون سائل مقاوم للماء — أسود",
+    nameEn:"Waterproof Liquid Eyeliner — Black",
+    descAr:"محدد عيون سائل أسود من essence. الباركود غير منشور.",
+    descEn:"Black liquid eyeliner by essence. Barcode not published."},
+  {id:21, brand:"SHEGLAM", price:1.600, cat:"عيون", em:"✍️", c1:"#e8ddd0", c2:"#d4c4b0",
+    barcode:"", img:"",
+    nameAr:"قلم حواجب 2 في 1 — توب",
+    nameEn:"2-in-1 Brow Pencil — Taupe",
+    descAr:"قلم حواجب مقاوم للماء بدرجة توب، مع طرف ثاني. الباركود غير مؤكد.",
+    descEn:"Waterproof taupe brow pencil with a second tip. Barcode not confirmed."},
+  {id:22, brand:"Maybelline", price:2.250, cat:"شفاه", em:"👄", c1:"#fde4e8", c2:"#f8c8d0",
+    barcode:"", img:"",
+    nameAr:"بيبي ليبس — بينك بانش",
+    nameEn:"Baby Lips — Pink Punch",
+    descAr:"مرطب شفاه ملون بدرجة بينك بانش. الباركود غير منشور في المصدر.",
+    descEn:"Tinted lip balm in Pink Punch. Barcode not listed at the source."},
+  {id:23, brand:"L'Oréal", price:2.500, cat:"شفاه", em:"💋", c1:"#f8d0d8", c2:"#f0a8b8",
+    barcode:"", img:"",
+    nameAr:"أحمر شفاه ساتان — ريدز أوف وورث",
+    nameEn:"Satin Lipstick — Reds of Worth",
+    descAr:"روج ساتان بدرجة حمراء. الباركود غير منشور.",
+    descEn:"Satin lipstick in a red shade. Barcode not published."},
+  {id:24, brand:"SHEGLAM", price:2.100, cat:"أدوات", em:"🧼", c1:"#e8f4ff", c2:"#d0e8ff",
+    barcode:"6971053495270",
+    img:"https://media.zid.store/096f2fd9-37b8-4fce-a267-52e4b6f541e1/66a7eb7b-b0e9-4c71-87b8-756dffff9dc4.jpg",
+    nameAr:"مزيل ماسكارا كلين كوين",
+    nameEn:"Clean Queen Mascara Remover",
+    descAr:"يزيل الماسكارا من غير فرك قوي. الباركود 6971053495270.",
+    descEn:"Removes mascara without hard rubbing. Barcode 6971053495270."}
 ];
 /* ============================================ */
 
 const $ = s => document.querySelector(s);
-const money = n => n.toFixed(3) + " " + CURRENCY;
+const money = n => lang === "en" ? (n.toFixed(3) + " OMR") : (n.toFixed(3) + " " + CURRENCY);
+let lang = "ar";
+try { lang = localStorage.getItem("naqa_lang") || "ar"; } catch (e) { lang = "ar"; }
+const ui = {
+  ar: { search:"ابحثي عن منتج أو ماركة...", all:"الكل", care:"عناية", face:"مكياج", eyes:"عيون", lips:"شفاه", scent:"عطور", tools:"أدوات",
+    shop:"تسوّقي الآن", wa:"واتساب نقاء", products:"المنتجات", count:n=>n+" منتج", empty:"ما في نتائج — جرّبي بحث أو تصنيف ثاني.",
+    cart:"السلة", emptyCart:"السلة فاضية<br/>أضيفي منتجات من المتجر", total:"المجموع", checkout:"إتمام الطلب عبر واتساب",
+    add:"أضيفي للسلة", more:"التفاصيل والباركود", del:"حذف", close:"إغلاق", noCode:"الباركود غير منشور في المصدر", heroTitle:"نقاء — ", heroEm:"عناية ومكياج",
+    hero:"منتجات أصلية للبشرة والمكياج. اختاري، أضيفي للسلة، وأكملي الطلب برسالة واتساب. الأسعار بالريال من السوق العُماني في 21 نوفمبر 2026.",
+    alertEmpty:"السلة فاضية", greet:"السلام عليكم، أبغى أطلب من نقاء" },
+  en: { search:"Search a product or brand...", all:"All", care:"Skincare", face:"Makeup", eyes:"Eyes", lips:"Lips", scent:"Fragrance", tools:"Tools",
+    shop:"Shop now", wa:"WhatsApp Naqa", products:"Products", count:n=>n+" products", empty:"No results. Try another search or category.",
+    cart:"Cart", emptyCart:"Your cart is empty<br/>Add products from the shop", total:"Total", checkout:"Checkout on WhatsApp",
+    add:"Add to cart", more:"Details and barcode", del:"Remove", close:"Close", noCode:"Barcode not published at the source", heroTitle:"Naqa — ", heroEm:"Care & Makeup",
+    hero:"Original skincare and makeup. Add to cart and send a ready WhatsApp order. Prices in Omani rial from the local market on 21 Nov 2026.",
+    alertEmpty:"Cart is empty", greet:"Hello, I want to order from Naqa" }
+};
+const catLabel = { "all":"all", "عناية":"care", "مكياج":"face", "عيون":"eyes", "شفاه":"lips", "عطور":"scent", "أدوات":"tools" };
+function T(k){ return ui[lang][k]; }
+function pname(p){ return lang==="en" ? p.nameEn : p.nameAr; }
+function pdesc(p){ return lang==="en" ? p.descEn : p.descAr; }
+
+function eanSvg(code){
+  const digits = String(code).replace(/\D/g,"");
+  if (digits.length !== 12 && digits.length !== 13) return "";
+  const d = digits.length === 12 ? ("0"+digits) : digits;
+  const L = ["0001101","0011001","0010011","0111101","0100011","0110001","0101111","0111011","0110111","0001011"];
+  const G = ["0100111","0110011","0011011","0100001","0011101","0111001","0000101","0010001","0001001","0010111"];
+  const R = ["1110010","1100110","1101100","1000010","1011100","1001110","1010000","1000100","1001000","1110100"];
+  const par = ["LLLLLL","LLGLGG","LLGGLG","LLGGGL","LGLLGG","LGGLLG","LGGGLL","LGLGLG","LGLGGL","LGGLGL"];
+  const ptn = par[+d[0]];
+  let bits = "101";
+  for (let i=1;i<=6;i++) bits += (ptn[i-1]==="L" ? L : G)[+d[i]];
+  bits += "01010";
+  for (let i=7;i<=12;i++) bits += R[+d[i]];
+  bits += "101";
+  const bars = [];
+  for (let i=0;i<bits.length;i++){
+    if (bits[i]==="1") bars.push('<rect x="'+i+'" y="0" width="1" height="50" fill="#1f1a17"/>');
+  }
+  return '<svg viewBox="0 0 95 62" role="img" aria-label="EAN '+d+'"><g>'+bars.join("")+'</g><text x="47" y="60" text-anchor="middle" font-size="8" font-family="ui-monospace,monospace">'+d+'</text></svg>';
+}
+
 
 let cart = [];
 try {
@@ -276,26 +471,81 @@ function saveCart(){
   try { localStorage.setItem("naqa_cart", JSON.stringify(cart)); } catch (e) {}
 }
 
+function applyLang(){
+  document.documentElement.lang = lang === "en" ? "en" : "ar";
+  document.documentElement.dir = lang === "en" ? "ltr" : "rtl";
+  const s = document.getElementById("search");
+  if (s) s.placeholder = T("search");
+  const map = { all:"all", "عناية":"care", "مكياج":"face", "عيون":"eyes", "شفاه":"lips", "عطور":"scent", "أدوات":"tools" };
+  document.querySelectorAll("#cats a").forEach(a => { a.textContent = T(map[a.dataset.cat] || "all"); });
+  const h1 = document.querySelector(".hero h1");
+  if (h1) h1.innerHTML = T("heroTitle") + "<em>" + T("heroEm") + "</em>";
+  const hp = document.querySelector(".hero p");
+  if (hp) hp.textContent = T("hero");
+  const btns = document.querySelectorAll(".hero-actions .btn");
+  if (btns[0]) btns[0].textContent = T("shop");
+  if (btns[1]) btns[1].textContent = T("wa");
+  const ph = document.getElementById("products");
+  if (ph) ph.textContent = T("products");
+  const dh = document.querySelector(".drawer-head h3");
+  if (dh) dh.textContent = T("cart");
+  const tr = document.querySelector(".total-row span");
+  if (tr) tr.textContent = T("total");
+  const cb = document.getElementById("checkoutBtn");
+  if (cb) cb.textContent = T("checkout");
+  const lb = document.getElementById("langBtn");
+  if (lb) lb.textContent = lang === "ar" ? "EN" : "عربي";
+  const tag = document.querySelector(".logo-text span");
+  if (tag) tag.textContent = lang === "en" ? "Care & Makeup" : "عناية ومكياج";
+}
+
+function visual(p){
+  if (!p.img) return p.em;
+  return '<img src="'+p.img+'" alt="'+pname(p)+'" loading="lazy" onerror="this.replaceWith(document.createTextNode(\''+p.em+'\'))">';
+}
+
 function render(){
+  applyLang();
   const q = query.toLowerCase();
   const list = products.filter(p => {
     const catOk = currentCat === "all" || p.cat === currentCat;
-    const qOk = !q || p.name.includes(query) || p.brand.includes(query) || p.cat.includes(query)
-      || p.name.toLowerCase().includes(q) || p.brand.toLowerCase().includes(q);
-    return catOk && qOk;
+    const blob = (p.nameAr+" "+p.nameEn+" "+p.brand+" "+p.barcode+" "+p.descAr+" "+p.descEn).toLowerCase();
+    return catOk && (!q || blob.includes(q));
   });
-  $("#countLabel").textContent = list.length + " منتج";
-  $("#empty").hidden = list.length > 0;
-  $("#grid").innerHTML = list.map(p => `
+  const count = document.getElementById("countLabel");
+  if (count) count.textContent = T("count")(list.length);
+  const empty = document.getElementById("empty");
+  if (empty){ empty.hidden = list.length > 0; empty.textContent = T("empty"); }
+  document.getElementById("grid").innerHTML = list.map(p => `
     <article class="card">
-      <div class="card-visual" style="--c1:${p.c1};--c2:${p.c2}">${p.em}</div>
+      <div class="card-visual" style="--c1:${p.c1};--c2:${p.c2}">${visual(p)}</div>
       <div class="card-body">
-        <div class="card-brand">${p.brand} · ${p.cat}</div>
-        <div class="card-name">${p.name}</div>
+        <div class="card-brand">${p.brand} · ${T(catLabel[p.cat])}</div>
+        <div class="card-name">${pname(p)}</div>
+        <div class="card-desc">${pdesc(p)}</div>
+        <div class="card-code">${p.barcode || T("noCode")}</div>
         <div class="card-price">${money(p.price)}</div>
-        <button class="card-add" data-add="${p.id}">أضيفي للسلة</button>
+        <button class="card-more" data-open="${p.id}">${T("more")}</button>
+        <button class="card-add" data-add="${p.id}">${T("add")}</button>
       </div>
     </article>`).join("");
+}
+
+function openSheet(id){
+  const p = products.find(x => x.id === id);
+  if (!p) return;
+  const code = p.barcode ? eanSvg(p.barcode) : "<p>"+T("noCode")+"</p>";
+  document.getElementById("sheetCard").innerHTML = `
+    <button class="icon-btn" id="closeSheet" type="button">${T("close")}</button>
+    <div class="card-visual" style="height:240px">${visual(p)}</div>
+    <h3>${pname(p)}</h3>
+    <div class="card-brand">${p.brand}</div>
+    <p>${pdesc(p)}</p>
+    <div class="card-price">${money(p.price)}</div>
+    <div class="bc">${code}</div>
+    <button class="card-add" data-add="${p.id}" style="margin-top:14px">${T("add")}</button>`;
+  document.getElementById("sheet").classList.add("show");
+  document.getElementById("closeSheet").onclick = () => document.getElementById("sheet").classList.remove("show");
 }
 
 function renderCart(){
@@ -305,7 +555,7 @@ function renderCart(){
   else badge.hidden = true;
 
   if(!cart.length){
-    $("#cartBody").innerHTML = `<div class="cart-empty">السلة فاضية<br/>أضيفي منتجات من المتجر</div>`;
+    $("#cartBody").innerHTML = `<div class="cart-empty">${T("emptyCart")}</div>`;
     $("#cartTotal").textContent = money(0);
     return;
   }
@@ -313,9 +563,9 @@ function renderCart(){
     <div class="cart-item">
       <div class="thumb">${i.em}</div>
       <div class="meta">
-        <strong>${i.name}</strong>
+        <strong>${pname(products.find(x=>x.id===i.id) || i)}</strong>
         <span>${money(i.price)} · ${i.brand}</span>
-        <button class="rm" data-rm="${i.id}">حذف</button>
+        <button class="rm" data-rm="${i.id}">${T("del")}</button>
       </div>
       <div class="qty">
         <button data-dec="${i.id}">−</button>
@@ -332,7 +582,7 @@ function addToCart(id){
   if(!p) return;
   const row = cart.find(x => x.id === id);
   if(row) row.qty++;
-  else cart.push({id:p.id, name:p.name, brand:p.brand, price:p.price, em:p.em, qty:1});
+  else cart.push({id:p.id, name:p.nameAr, brand:p.brand, price:p.price, em:p.em, qty:1});
   saveCart(); renderCart();
 }
 
@@ -395,12 +645,27 @@ document.querySelectorAll("[data-cat-jump]").forEach(el => {
 });
 
 $("#checkoutBtn").onclick = () => {
-  if(!cart.length){ alert("السلة فاضية"); return; }
+  if(!cart.length){ alert(T("alertEmpty")); return; }
   if(WA_NUMBER.includes("X")){ alert("ضعي رقم الواتساب في الإعدادات أعلى الملف (WA_NUMBER)"); return; }
-  const lines = cart.map(i => `• ${i.name} × ${i.qty} = ${money(i.price*i.qty)}`).join("\n");
+  const lines = cart.map(i => "• " + pname(products.find(x=>x.id===i.id)||i) + " × " + i.qty + " = " + money(i.price*i.qty) + ( (products.find(x=>x.id===i.id)||{}).barcode ? " ["+(products.find(x=>x.id===i.id).barcode)+"]" : "" )).join("\n");
   const total = cart.reduce((s,i) => s + i.price*i.qty, 0);
-  const msg = `السلام عليكم، أبغى أطلب من نقاء (${SITE}):\n\n${lines}\n\nالمجموع: ${money(total)}`;
+  const msg = T("greet") + " (" + SITE + "):\n\n" + lines + "\n\n" + T("total") + ": " + money(total);
   window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`, "_blank");
+};
+
+document.getElementById("grid").addEventListener("click", e => {
+  const more = e.target.closest("[data-open]");
+  if (more) openSheet(+more.dataset.open);
+});
+document.getElementById("sheet").addEventListener("click", e => {
+  if (e.target.id === "sheet") e.currentTarget.classList.remove("show");
+  const add = e.target.closest("[data-add]");
+  if (add) addToCart(+add.dataset.add);
+});
+document.getElementById("langBtn").onclick = () => {
+  lang = lang === "ar" ? "en" : "ar";
+  try { localStorage.setItem("naqa_lang", lang); } catch (e) {}
+  render(); renderCart();
 };
 
 function boot(){

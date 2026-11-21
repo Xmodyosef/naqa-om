@@ -124,7 +124,12 @@ function bindCarousel(p){
     if(full){ openLightbox(full.dataset.full || full.getAttribute("src")); return; }
     const qbtn=e.target.closest("[data-q]");
     if(qbtn){
-      pickQty=Math.max(1, Math.min(20, pickQty+(+qbtn.dataset.q||0)));
+      let maxQ=20;
+      if(openProductId!=null){
+        const pp=products.find(x=>x.id===openProductId);
+        if(pp && pp.stock!=null) maxQ=Math.max(1, Math.min(20, Number(pp.stock)));
+      }
+      pickQty=Math.max(1, Math.min(maxQ, pickQty+(+qbtn.dataset.q||0)));
       const lab=document.getElementById("pickQty");
       if(lab) lab.textContent=String(pickQty);
       return;

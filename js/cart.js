@@ -72,6 +72,7 @@ function closeCart(){ $("#overlay").classList.remove("show"); $("#drawer").class
 
 function openCheckout(){
   if(typeof applyLang==="function") applyLang();
+  else if(typeof fillAreas==="function") fillAreas();
   const done=$("#orderDone"); if(done){ done.hidden=true; done.innerHTML=""; }
   const m=$("#checkoutModal"); if(m) m.classList.add("show");
 }
@@ -83,6 +84,10 @@ function sendCheckout(){
   const phone=($("#coPhone")&&$("#coPhone").value||"").trim();
   const gov=($("#coGov")&&$("#coGov").value||"").trim();
   const note=($("#coNote")&&$("#coNote").value||"").trim();
+  if(!name){ alert(T("coNeedName")); const el=$("#coName"); if(el) el.focus(); return; }
+  const digits=phone.replace(/\D/g,"");
+  if(digits.length<8){ alert(T("coNeedPhone")); const el=$("#coPhone"); if(el) el.focus(); return; }
+  if(!gov){ alert(T("coNeedGov")); const el=$("#coGov"); if(el) el.focus(); return; }
   const lines=cart.map(i=>{
     const p=products.find(x=>x.id===i.id)||i;
     const link=(typeof productLink==="function")?productLink(p.id):"";

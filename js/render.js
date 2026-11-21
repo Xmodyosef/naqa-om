@@ -119,8 +119,10 @@ function applyLang(){
       const lab=document.querySelector('label[data-field="'+id+'"]');
       if(!lab) return;
       const ctrl=lab.querySelector("input,select,textarea");
-      lab.childNodes[0].textContent=T(key);
-      if(ctrl && key!=="coGov") ctrl.placeholder=T(key+"Ph");
+      if(!ctrl) return;
+      Array.from(lab.childNodes).forEach(function(n){ if(n.nodeType===3) n.parentNode.removeChild(n); });
+      lab.insertBefore(document.createTextNode(T(key)+" "), ctrl);
+      if(key!=="coGov" && ctrl.placeholder!==undefined) ctrl.placeholder=T(key+"Ph");
     });
     if(typeof fillAreas==="function") fillAreas();
     const cancel=$("#checkoutCancel"); if(cancel) cancel.textContent=T("coCancel");
@@ -135,6 +137,8 @@ function applyLang(){
     if(currentSort==="wish") currentSort="new";
     sel.value=currentSort;
   }
+  const qm=$("#quizModal");
+  if(qm && qm.classList.contains("show") && typeof paintQuiz==="function") paintQuiz();
 }
 
 function render(){

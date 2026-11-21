@@ -11,7 +11,16 @@ document.addEventListener("click", e=>{
 });
 $("#cartBody").addEventListener("click", e=>{
   const inc=e.target.closest("[data-inc]"); const dec=e.target.closest("[data-dec]"); const rm=e.target.closest("[data-rm]");
-  if(inc){ const it=cart.find(i=>i.id===+inc.dataset.inc); if(it) it.qty++; saveCart(); renderCart(); }
+  if(inc){
+    const it=cart.find(i=>i.id===+inc.dataset.inc);
+    if(it){
+      const p=products.find(x=>x.id===it.id);
+      if(p && p.stock!=null && it.qty>=Number(p.stock)){
+        if(typeof toast==="function") toast(T("stockLimit"));
+      } else { it.qty++; saveCart(); renderCart(); }
+    }
+    return;
+  }
   if(dec){ const it=cart.find(i=>i.id===+dec.dataset.dec); if(it){ it.qty--; if(it.qty<=0) cart=cart.filter(x=>x.id!==it.id);} saveCart(); renderCart(); }
   if(rm){ cart=cart.filter(x=>x.id!==+rm.dataset.rm); saveCart(); renderCart(); }
 });
@@ -164,6 +173,7 @@ function boot(){
     $("#waFooter").href=wa; $("#waFloat").href=wa; $("#waHero").href=wa;
     $("#yr").textContent=new Date().getFullYear();
     if(typeof featuresBoot==="function") featuresBoot();
+    if(typeof fillAreas==="function") fillAreas();
     render();
     applyRoute();
   }catch(err){

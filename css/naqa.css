@@ -81,18 +81,18 @@ body{padding-bottom:120px}
 .shelf-row{display:flex;gap:12px;overflow-x:auto;padding:2px 2px 12px;-webkit-overflow-scrolling:touch;scroll-snap-type:x mandatory}
 .shelf-row::-webkit-scrollbar{height:4px}
 .shelf-row .card{min-width:210px;max-width:210px;scroll-snap-align:start;flex-shrink:0}
-.brand-logo{width:40px;height:40px;border-radius:10px;object-fit:contain;background:#fff;border:1px solid var(--line);padding:3px;box-sizing:border-box}
- .brand-mono{width:40px;height:40px;border-radius:10px;display:inline-grid;place-items:center;background:linear-gradient(135deg,#f3e2e6,#fff);color:var(--rose-deep);font-weight:800;font-size:.72rem;border:1px solid var(--line)}
+.brand-logo{width:44px;height:44px;min-width:44px;min-height:44px;border-radius:12px;object-fit:contain;background:#fff;border:1px solid var(--line);padding:4px;box-sizing:border-box;display:block;flex-shrink:0}
+ .brand-mono{width:44px;height:44px;min-width:44px;border-radius:12px;display:inline-grid;place-items:center;background:linear-gradient(135deg,#f3e2e6,#fff);color:var(--rose-deep);font-weight:800;font-size:.75rem;border:1px solid var(--line);flex-shrink:0}
 .carousel-track img,.lightbox img{image-rendering:auto}
 
 .price-badge{position:absolute;bottom:8px;inset-inline-start:8px;z-index:3;
   background:rgba(31,26,23,.9);color:#fff;font-weight:800;font-size:.78rem;
   padding:5px 10px;border-radius:999px;pointer-events:none}
 html[lang="en"] .price-badge{display:none}
-.brand-link{display:inline-flex;align-items:center;gap:8px;color:var(--rose-deep);font-weight:800;text-decoration:none;font-size:.9rem}
+.brand-link{display:inline-flex;align-items:center;gap:8px;color:var(--rose-deep);font-weight:800;text-decoration:none;font-size:.9rem;max-width:100%}
 .brand-link span{text-decoration:underline;text-underline-offset:3px}
-.brand-logo{width:40px;height:40px;border-radius:10px;object-fit:contain;background:#fff;border:1px solid var(--line);padding:3px;box-sizing:border-box}
-.card-brand.brand-link{font-size:.78rem}
+.brand-logo{width:44px;height:44px;min-width:44px;min-height:44px;border-radius:12px;object-fit:contain;background:#fff;border:1px solid var(--line);padding:4px;box-sizing:border-box;display:block;flex-shrink:0}
+.card-brand.brand-link{display:inline-flex;align-items:center;gap:8px;color:var(--rose-deep);font-weight:800;text-decoration:none;font-size:.9rem;max-width:100%}
 .qty-pick{display:flex;align-items:center;gap:8px;margin:10px 0 4px}
 .qty-pick span{font-weight:800;margin-inline-end:6px}
 .qty-pick button{width:36px;height:36px;border-radius:10px;background:#fff;border:1px solid var(--line);font-weight:800;font-size:1.1rem}

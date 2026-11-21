@@ -148,3 +148,55 @@ function makeOrderNo() {
   function p(n) { return (n < 10 ? "0" : "") + n; }
   return "NQ-" + d.getFullYear() + p(d.getMonth() + 1) + p(d.getDate()) + "-" + Math.floor(100 + Math.random() * 900);
 }
+
+var OMAN_AREAS = [
+  { ar: "مسقط", en: "Muscat", w: [
+    ["مسقط","Muscat"],["مطرح","Muttrah"],["بوشر","Bawshar"],["السيب","Seeb"],["العامرات","Al Amarat"],["قريات","Qurayyat"]
+  ]},
+  { ar: "شمال الباطنة", en: "North Al Batinah", w: [
+    ["صحار","Sohar"],["شناص","Shinas"],["لوى","Liwa"],["صحم","Saham"],["الخابورة","Al Khaburah"],["السويق","Al Suwaiq"]
+  ]},
+  { ar: "جنوب الباطنة", en: "South Al Batinah", w: [
+    ["الرستاق","Al Rustaq"],["العوابي","Al Awabi"],["نخل","Nakhal"],["وادي المعاول","Wadi Al Maawil"],["بركاء","Barka"],["المصنعة","Al Musannah"]
+  ]},
+  { ar: "الداخلية", en: "Ad Dakhiliyah", w: [
+    ["نزوى","Nizwa"],["بهلاء","Bahla"],["منح","Manah"],["الحمراء","Al Hamra"],["أدم","Adam"],["إزكي","Izki"],["سمائل","Samail"],["بدبد","Bidbid"],["الجبل الأخضر","Jabal Al Akhdar"]
+  ]},
+  { ar: "الظاهرة", en: "Ad Dhahirah", w: [
+    ["عبري","Ibri"],["ينقل","Yanqul"],["ضنك","Dhank"]
+  ]},
+  { ar: "البريمي", en: "Al Buraimi", w: [
+    ["البريمي","Al Buraimi"],["محضة","Mahdah"],["السنينة","Al Sinainah"]
+  ]},
+  { ar: "مسندم", en: "Musandam", w: [
+    ["خصب","Khasab"],["بخا","Bukha"],["دبا","Dibba"],["مدحاء","Madha"]
+  ]},
+  { ar: "شمال الشرقية", en: "North Ash Sharqiyah", w: [
+    ["إبراء","Ibra"],["المضيبي","Al Mudhaibi"],["بدية","Bidiya"],["القابل","Al Qabil"],["وادي بني خالد","Wadi Bani Khalid"],["دماء والطائيين","Dima wa Al Tayeen"]
+  ]},
+  { ar: "جنوب الشرقية", en: "South Ash Sharqiyah", w: [
+    ["صور","Sur"],["الكامل والوافي","Al Kamil wal Wafi"],["جعلان بني بو حسن","Jalan Bani Bu Hassan"],["جعلان بني بو علي","Jalan Bani Bu Ali"],["مصيرة","Masirah"]
+  ]},
+  { ar: "الوسطى", en: "Al Wusta", w: [
+    ["هيماء","Haima"],["محوت","Mahout"],["الدقم","Duqm"],["الجازر","Al Jazer"]
+  ]},
+  { ar: "ظفار", en: "Dhofar", w: [
+    ["صلالة","Salalah"],["طاقة","Taqah"],["مرباط","Mirbat"],["ثمريت","Thumrait"],["سدح","Sadah"],["رخيوت","Rakhyut"],["ضلكوت","Dhalkut"],["مقشن","Muqshin"],["شليم وجزر الحلانيات","Shalim and the Hallaniyat Islands"],["المزيونة","Al Mazyunah"]
+  ]}
+];
+function fillAreas() {
+  var gov = $("#coGov"); if (!gov) return;
+  var cur = gov.value;
+  var html = '<option value="">' + (lang === "en" ? "— Choose —" : "— اختاري —") + "</option>";
+  OMAN_AREAS.forEach(function (g) {
+    html += '<optgroup label="' + (lang === "en" ? g.en : g.ar) + '">';
+    g.w.forEach(function (pair) {
+      var value = pair[0] + " / " + pair[1];
+      var label = lang === "en" ? pair[1] : pair[0];
+      html += '<option value="' + value + '">' + label + "</option>";
+    });
+    html += "</optgroup>";
+  });
+  gov.innerHTML = html;
+  if (cur) gov.value = cur;
+}

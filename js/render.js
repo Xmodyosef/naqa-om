@@ -121,13 +121,7 @@ function applyLang(){
       lab.childNodes[0].textContent=T(key);
       if(ctrl && key!=="coGov") ctrl.placeholder=T(key+"Ph");
     });
-    const gov=$("#coGov");
-    if(gov){
-      const cur=gov.value;
-      const list=T("govs");
-      gov.innerHTML='<option value="">'+T("coGovPh")+"</option>"+list.map(g=>'<option>'+g+"</option>").join("");
-      if(cur) gov.value=cur;
-    }
+    if(typeof fillAreas==="function") fillAreas();
     const cancel=$("#checkoutCancel"); if(cancel) cancel.textContent=T("coCancel");
     const send=$("#checkoutSend"); if(send) send.textContent=T("coSend");
   }

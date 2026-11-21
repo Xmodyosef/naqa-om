@@ -77,7 +77,7 @@ const ui={
   saved:"المحفوظات", savedOn:"إخفاء المحفوظات", wishEmpty:"ما في منتجات محفوظة. اضغطي القلب ♥ على أي منتج.",
   coTitle:"إتمام الطلب", coHint:"نجهّز رسالة واتساب ببياناتكِ والمنتجات.",
   coName:"الاسم", coNamePh:"اسمكِ", coPhone:"الجوال", coPhonePh:"9xxxxxxx",
-  coGov:"المحافظة / المنطقة", coGovPh:"— اختاري —",
+  coGov:"الولاية", coGovPh:"— اختاري —",
   coNote:"ملاحظة للطلب", coNotePh:"مبنى، أقرب معلم…",
   coCancel:"إلغاء", coSend:"إرسال واتساب",
   govs:["مسقط","ظفار","الباطنة شمال","الباطنة جنوب","الداخلية","الشرقية شمال","الشرقية جنوب","الظاهرة","البريمي","الوسطى","مسندم"]
@@ -100,7 +100,7 @@ const ui={
   saved:"Saved", savedOn:"Hide saved", wishEmpty:"Nothing saved yet. Tap the heart on a product.",
   coTitle:"Checkout", coHint:"We'll prepare a WhatsApp message with your details and products.",
   coName:"Name", coNamePh:"Your name", coPhone:"Phone", coPhonePh:"9xxxxxxx",
-  coGov:"Governorate / area", coGovPh:"— Choose —",
+  coGov:"Wilayat", coGovPh:"— Choose —",
   coNote:"Order note", coNotePh:"Building, nearest landmark…",
   coCancel:"Cancel", coSend:"Send on WhatsApp",
   govs:["Muscat","Dhofar","North Al Batinah","South Al Batinah","Ad Dakhiliyah","North Ash Sharqiyah","South Ash Sharqiyah","Ad Dhahirah","Al Buraimi","Al Wusta","Musandam"]

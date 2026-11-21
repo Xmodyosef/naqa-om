@@ -417,16 +417,19 @@ function openSheet(id, resetGallery){
       <span class="sug-price">${money(s.price)}</span>
     </button>`).join("");
 
+  const vendor = p.vendorSku ? ('<div class="sku-line">'+T("vendor")+': '+p.vendorSku+'</div>') : '';
   $("#sheetCard").innerHTML = `
-    <button class="text-back" id="closeSheet" type="button">${T("back")}</button>
+    <p class="swipe-hint">${T("swipe")} · ${T("openImg")}</p>
+    <button class="text-back" id="closeSheet" type="button">‹ ${T("back")}</button>
     <div class="gallery">
-      <div class="gallery-main">${main ? '<img id="gMain" src="'+main+'" alt="'+pname(p)+'">' : (p.em||'✨')}</div>
+      <div class="gallery-main">${main ? '<img id="gMain" src="'+main+'" alt="'+pname(p)+'" data-full="'+main+'">' : (p.em||'✨')}</div>
       <div class="gallery-thumbs">${thumbs}</div>
     </div>
     <div class="card-brand" style="margin-top:12px">${p.brand} · ${T(catLabel[p.cat]||"all")}</div>
     <h3 style="margin:6px 0 4px">${pname(p)}</h3>
     <div class="card-price">${money(p.price)}</div>
-    <div class="sku-line">${T("sku")}: ${p.sku || T("noSku")}</div>
+    <div class="sku-line">${T("sku")}: ${p.sku || p.ean || T("noSku")}</div>
+    ${vendor}
     <span class="skin-pill">${T("skinT")}: ${pskin(p)}</span>
     <h4 class="block-h">${T("about")}</h4>
     <p class="long">${pdesc(p)}</p>

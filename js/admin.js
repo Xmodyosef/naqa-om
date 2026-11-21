@@ -6,7 +6,7 @@ var overrides = {};
 try { overrides = JSON.parse(localStorage.getItem(KEY) || "{}"); } catch (e) { overrides = {}; }
 
 function esc(v) {
-  return String(v == null ? "" : v).replace(/&/g, "&").replace(/</g, "<").replace(/"/g, """);
+  return String(v == null ? "" : v).split("&").join("&amp;").split("<").join("&lt;").split('"').join("&quot;");
 }
 function rowOf(p) {
   var o = overrides[p.id] || overrides[String(p.id)] || {};
@@ -50,7 +50,7 @@ function paint(q) {
 function saveLocal() {
   readForm();
   localStorage.setItem(KEY, JSON.stringify(overrides));
-  document.getElementById("status").textContent = "انحفظ على هذا الآيفون. الزباین الثانية ما تشوف التغيير إلا بعد النشر.";
+  document.getElementById("status").textContent = "انحفظ على هذا الآيفون. الزباين الثانية ما تشوف التغيير إلا بعد النشر.";
 }
 function utf8b64(text) {
   return btoa(unescape(encodeURIComponent(text)));
@@ -61,7 +61,7 @@ function publish() {
   var token = document.getElementById("token").value.trim() || localStorage.getItem(TOKEN) || "";
   var status = document.getElementById("status");
   if (!token) {
-    status.textContent = "انحفظ على جهازك. للنشر لكل الزباين: من GitHub سوي Fine-grained token صلاحية Contents على مستودع naqa-om، والصقيه هنا مرة.";
+    status.textContent = "انحفظ على جهازك. للنشر لكل الزباين الصقي رمز GitHub بصلاحية Contents على مستودع naqa-om.";
     return;
   }
   localStorage.setItem(TOKEN, token);

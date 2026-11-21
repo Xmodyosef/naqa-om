@@ -7,7 +7,7 @@ var overrides = {};
 var orders = [];
 var editingId = null;
 var CATS = ["عناية", "وجه", "عيون", "حواجب", "شفاه", "عطور", "أدوات", "شعر"];
-var STATUS = { new: "جديد", prep: "قيد التجهيز", done: "تم", cancel: "ملغي" };
+var STATUS = { new: "جديد", prep: "قيد التجهيز", done: "جاري التوصيل", cancel: "ملغي" };
 try { overrides = JSON.parse(localStorage.getItem(KEY) || "{}"); } catch (e) { overrides = {}; }
 try { orders = JSON.parse(localStorage.getItem(ORDERS_KEY) || "[]"); if (!Array.isArray(orders)) orders = []; } catch (e) { orders = []; }
 
@@ -186,7 +186,7 @@ function paintOrders() {
       + '<div class="actions">'
       + '<button type="button" class="mini" data-st="new" data-i="' + idx + '">جديد</button>'
       + '<button type="button" class="mini" data-st="prep" data-i="' + idx + '">تجهيز</button>'
-      + '<button type="button" class="mini" data-st="done" data-i="' + idx + '">تم</button>'
+      + '<button type="button" class="mini" data-st="done" data-i="' + idx + '">جاري التوصيل</button>'
       + '<button type="button" class="mini ghost" data-st="cancel" data-i="' + idx + '">إلغاء</button>'
       + (o.phone ? ('<a class="mini" style="background:#25D366;display:inline-block" href="https://wa.me/968' + esc(String(o.phone).replace(/\D/g, "").replace(/^968/, "")) + '" target="_blank" rel="noopener">واتساب الزبونة</a>') : "")
       + '<button type="button" class="mini ghost" data-del="' + idx + '">حذف</button>'

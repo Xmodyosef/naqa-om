@@ -1,4 +1,4 @@
-/* brand logos — local media/brands */
+/* brand logos local */
 const BRAND_LOGO={
 "ACM":"media/brands/acm.png",
 "AXIS-Y":"media/brands/axis-y.png",

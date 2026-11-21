@@ -129,6 +129,8 @@ function bindCarousel(p){
       if(lab) lab.textContent=String(pickQty);
       return;
     }
+    const wish=e.target.closest("[data-wish]");
+    if(wish){ e.preventDefault(); e.stopPropagation(); if(typeof toggleWish==="function") toggleWish(+wish.dataset.wish); wish.classList.toggle("on", isWish(+wish.dataset.wish)); return; }
     const add=e.target.closest("[data-add]");
     if(add){ addToCart(+add.dataset.add, pickQty); return; }
     const open=e.target.closest("[data-open]");
@@ -161,6 +163,7 @@ async function openSheet(id, mode, reset){
     ${qv? carouselHTML(p, galleryIndex) : ""}
     <button class="text-back" id="closeSheet" type="button">‹ ${T("back")}</button>
     ${brandMark(p.brand)}
+    ${typeof reviewHTML==="function"?reviewHTML(p):""}
     <h3 style="margin:4px 0 2px">${esc(pname(p))}</h3>
     ${priceHTML(p)}
     <div class="qty-pick"><span>${T("qty")}</span><button type="button" data-q="-1">−</button><b id="pickQty">1</b><button type="button" data-q="1">+</button></div>
@@ -176,6 +179,7 @@ async function openSheet(id, mode, reset){
       <div class="sug-row">${cards}</div>
     `}
     <div class="sheet-actions">
+      <button class="btn-wish-sheet ${typeof isWish==="function"&&isWish(p.id)?"on":""}" data-wish="${p.id}" type="button">♥ ${lang==="en"?"Save":"حفظ"}</button>
       <button class="btn-add card-add" data-add="${p.id}" type="button">${T("add")}</button>
       ${qv? `<button class="btn-open" data-open="${p.id}" type="button">${T("open")}</button>`:""}
     </div>`;

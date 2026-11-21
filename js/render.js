@@ -23,6 +23,7 @@ function cardHTML(p){
   const qty=(cart.find(c=>c.id===p.id)||{}).qty;
   return '<article class="card" data-id="'+p.id+'">'
     +'<div class="card-visual" data-open="'+p.id+'">'
+    +'<button type="button" class="wish-btn'+(typeof isWish==='function'&&isWish(p.id)?' on':'')+'" data-wish="'+p.id+'" aria-label="wishlist">♥</button>'
     +'<span class="card-cart-chip'+(qty?' show':'')+'" data-chip="'+p.id+'">'+(qty?('×'+qty):'')+'</span>'
     +tags+visual(p,0)+'</div>'
     +'<div class="card-body">'
@@ -103,7 +104,10 @@ function applyLang(){
   const sf=$("#shipFree"); if(sf) sf.textContent=T("shipFree");
   const sel=$("#sortSel");
   if(sel){
-    const labels=[T("sortNew"),T("sortLow"),T("sortHigh"),T("sortOff")];
+    if(!sel.querySelector('option[value="wish"]')){
+      const o=document.createElement("option"); o.value="wish"; sel.appendChild(o);
+    }
+    const labels=[T("sortNew"),T("sortLow"),T("sortHigh"),T("sortOff"), (lang==="en"?"Wishlist":"المفضلة")];
     for(let i=0;i<sel.options.length;i++) sel.options[i].text=labels[i]||sel.options[i].text;
     sel.value=currentSort;
   }
@@ -115,28 +119,37 @@ function render(){
   const list=products.filter(p=>{
     const catOk=currentCat==="all"||p.cat===currentCat;
     const brandOk=!currentBrand || p.brand===currentBrand;
+    const concernOk=!currentConcern || (p.concerns&&p.concerns.indexOf(currentConcern)>=0);
+    const wishOk=currentSort!=="wish" || (typeof isWish==="function" && isWish(p.id));
     const blob=[p.nameAr,p.nameEn,p.brand,p.sku,p.descAr,p.descEn].join(" ").toLowerCase();
-    return catOk && brandOk && (!q || blob.includes(q));
+    return catOk && brandOk && concernOk && wishOk && (!q || blob.includes(q));
   });
   const offOf=p=>(p.was&&p.was>p.price)?(1-p.price/p.was):0;
   list.sort((a,b)=>{
     if(currentSort==="price-asc") return a.price-b.price;
     if(currentSort==="price-desc") return b.price-a.price;
     if(currentSort==="off") return offOf(b)-offOf(a)||a.price-b.price;
+    if(currentSort==="wish") return ((typeof isWish==="function"&&isWish(b.id))?0:1)-((typeof isWish==="function"&&isWish(a.id))?0:1)||b.id-a.id;
     return b.id-a.id;
   });
   const bar=$("#brandBar");
-  if(currentBrand){
-    bar.hidden=false;
-    bar.innerHTML='<button type="button" class="brand-chip" id="clearBrand">'+esc(currentBrand)+' ×</button>';
-    const clear=$("#clearBrand");
-    if(clear) clear.onclick=()=>{ currentBrand=""; render(); };
+  let chips="";
+  if(currentBrand) chips+='<button type="button" class="brand-chip" id="clearBrand">'+esc(currentBrand)+' ×</button>';
+  if(currentConcern) chips+='<button type="button" class="brand-chip" id="clearConcern">'+esc(typeof concernLabel==="function"?concernLabel(currentConcern):currentConcern)+' ×</button>';
+  if(chips){
+    bar.hidden=false; bar.innerHTML=chips;
+    const clear=$("#clearBrand"); if(clear) clear.onclick=()=>{ currentBrand=""; render(); };
+    const cc=$("#clearConcern"); if(cc) cc.onclick=()=>{ currentConcern=""; render(); };
   } else { bar.hidden=true; bar.innerHTML=""; }
   $("#countLabel").textContent=T("count")(list.length);
   $("#empty").hidden=list.length>0;
   $("#empty").textContent=T("empty");
   $("#grid").innerHTML=list.map(cardHTML).join("");
   renderShelves();
+  if(typeof renderBrandsGrid==="function") renderBrandsGrid();
+  if(typeof renderBundles==="function") renderBundles();
+  if(typeof renderConcernBar==="function") renderConcernBar();
+  if(typeof renderTrust==="function") renderTrust();
   renderCart();
   if(openProductId) openSheet(openProductId, sheetMode, false);
 }

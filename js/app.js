@@ -1,5 +1,6 @@
 /* events, gestures, boot */
 function onCatalogClick(e){
+  const wish=e.target.closest("[data-wish]"); if(wish){ e.preventDefault(); e.stopPropagation(); toggleWish(+wish.dataset.wish); return; }
   const add=e.target.closest("[data-add]"); if(add){ addToCart(+add.dataset.add); return; }
   const qv=e.target.closest("[data-qv]"); if(qv){ openSheet(+qv.dataset.qv, "qv"); return; }
   const open=e.target.closest("[data-open]"); if(open){ openSheet(+open.dataset.open, "full"); return; }
@@ -63,13 +64,7 @@ document.querySelectorAll("[data-cat-jump]").forEach(el=>{
 });
 $("#checkoutBtn").onclick=()=>{
   if(!cart.length){ alert(T("alertEmpty")); return; }
-  const lines=cart.map(i=>{
-    const p=products.find(x=>x.id===i.id)||i;
-    return "• "+pname(p)+" × "+i.qty+" = "+money(i.price*i.qty)+" ["+T("sku")+" "+(p.sku||"—")+"]";
-  }).join("\n");
-  const total=cart.reduce((s,i)=>s+i.price*i.qty,0);
-  const msg=T("greet")+" ("+SITE+"):\n\n"+lines+"\n\n"+T("total")+": "+money(total);
-  window.open("https://wa.me/"+WA_NUMBER+"?text="+encodeURIComponent(msg),"_blank");
+  openCheckout();
 };
 $("#lbClose").onclick=closeLightbox;
 $("#lightbox").addEventListener("click", e=>{ if(e.target.id==="lightbox"||e.target.id==="lbClose") closeLightbox(); });
@@ -146,6 +141,7 @@ function boot(){
     const wa="https://wa.me/"+WA_NUMBER;
     $("#waFooter").href=wa; $("#waFloat").href=wa; $("#waHero").href=wa;
     $("#yr").textContent=new Date().getFullYear();
+    if(typeof featuresBoot==="function") featuresBoot();
     render();
     applyRoute();
   }catch(err){

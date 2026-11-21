@@ -16,7 +16,11 @@ function renderCart(){
   if(n){
     bar.classList.remove("empty-bar");
     $("#barTitle").textContent=T("barItems")(n);
-    $("#barSub").textContent=money(total);
+    var need=Math.max(0, 30-total);
+    var shipNote = need>0
+      ? (lang==="en" ? ("Add "+money(need)+" for free shipping") : ("أضيفي "+money(need)+" للشحن المجاني"))
+      : (lang==="en" ? "Free shipping unlocked ✓" : "الشحن المجاني مفعّل ✓");
+    $("#barSub").textContent=money(total)+" · "+shipNote;
     $("#barGo").textContent=T("barCheckout");
   } else {
     bar.classList.add("empty-bar");

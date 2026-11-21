@@ -75,7 +75,7 @@ header{position:sticky;top:0;z-index:60;background:rgba(253,248,246,.94);
   overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column}
 .card-visual{aspect-ratio:1;display:grid;place-items:center;font-size:3rem;
   background:linear-gradient(160deg,#f5e6e2,#efe0d8);overflow:hidden;padding:0}
-.card-visual img{width:100%;height:100%;object-fit:cover;background:#fff}
+.card-visual img{width:100%;height:100%;object-fit:contain;background:#fff;pointer-events:auto;cursor:pointer}
 .card-body{padding:12px 12px 14px;display:flex;flex-direction:column;gap:4px;flex:1}
 .card-brand{font-size:.72rem;color:var(--muted);font-weight:600}
 .card-name{font-weight:700;font-size:.95rem;line-height:1.35;min-height:2.5em;text-align:start;width:100%}
@@ -135,7 +135,7 @@ html[dir="ltr"] .wa-float{left:auto;right:16px}
 .text-back{font-weight:800;color:var(--rose-deep);margin-bottom:10px}
 .gallery{display:grid;gap:8px}
 .gallery-main{height:min(52vw,320px);border-radius:16px;overflow:hidden;background:#faf7f5;display:grid;place-items:center}
-.gallery-main img{width:100%;height:100%;object-fit:cover}
+.gallery-main img{width:100%;height:100%;object-fit:contain;cursor:pointer}
 .gallery-thumbs{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
 .gallery-thumbs button{aspect-ratio:1;border-radius:12px;overflow:hidden;border:2px solid transparent;padding:0;background:#f5e6e2}
 .gallery-thumbs button.on{border-color:var(--rose-deep)}
@@ -371,7 +371,7 @@ function render(){
   $("#empty").textContent = T("empty");
   $("#grid").innerHTML = list.map(p => `
     <article class="card">
-      <button class="card-visual card-hit" data-open="${p.id}" type="button">${visual(p,0)}</button>
+      <div class="card-visual card-hit" data-open="${p.id}" role="button" tabindex="0">${visual(p,0)}</div>
       <div class="card-body">
         <div class="card-brand">${p.brand} · ${T(catLabel[p.cat]||"all")}</div>
         <button class="card-name card-hit" data-open="${p.id}" type="button">${pname(p)}</button>
@@ -477,10 +477,15 @@ function openCart(){ $("#overlay").classList.add("show"); $("#drawer").classList
 function closeCart(){ $("#overlay").classList.remove("show"); $("#drawer").classList.remove("show"); }
 
 $("#grid").addEventListener("click", e => {
-  const more = e.target.closest("[data-open]");
-  if (more){ openSheet(+more.dataset.open); return; }
   const add = e.target.closest("[data-add]");
-  if (add) addToCart(+add.dataset.add);
+  if (add){ addToCart(+add.dataset.add); e.preventDefault(); return; }
+  const more = e.target.closest("[data-open]");
+  if (more){ openSheet(+more.dataset.open); e.preventDefault(); return; }
+  const card = e.target.closest("article.card");
+  if (card){
+    const btn = card.querySelector("[data-open]");
+    if (btn){ openSheet(+btn.dataset.open); e.preventDefault(); }
+  }
 });
 
 $("#sheet").addEventListener("click", e => {
@@ -488,6 +493,13 @@ $("#sheet").addEventListener("click", e => {
   const g = e.target.closest("[data-g]");
   if (g){
     galleryIndex = +g.dataset.g;
+    if (openProductId) openSheet(openProductId, false);
+    return;
+  }
+  if (e.target.closest(".gallery-main")){
+    const p = products.find(x => x.id === openProductId);
+    const n = Math.max(pimgs(p).length, 1);
+    galleryIndex = (galleryIndex + 1) % n;
     if (openProductId) openSheet(openProductId, false);
     return;
   }

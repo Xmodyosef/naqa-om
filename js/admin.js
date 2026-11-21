@@ -41,7 +41,7 @@ function paintList(q) {
     return '<article class="row" data-open="' + p.id + '">' + thumb
       + '<div><strong>' + esc(m.nameAr || m.nameEn) + '</strong>'
       + '<small>' + esc(m.brand || "") + ' · ' + esc(m.cat || "") + ' · SKU ' + esc(m.sku || "—") + '</small>'
-      + '<small>السعر ' + esc(m.price) + ' · المخزون ' + esc(stock) + hid + '</small></div>'
+      + '<small>السعر ' + esc(m.price) + ' · المخزون ' + esc(stock) + hid + '</small><small style="color:#b05c6e;font-weight:800">اضغطي تعديل كامل: كمية · صور · وصف · استعمال</small></div>'
       + '<button type="button" class="edit-btn" data-open="' + p.id + '">تعديل</button></article>';
   }).join("");
   document.getElementById("list").innerHTML = html || '<p class="note">ما في نتائج</p>';

@@ -7,7 +7,21 @@ var overrides = {};
 var orders = [];
 var editingId = null;
 var CATS = ["عناية", "وجه", "عيون", "حواجب", "شفاه", "عطور", "أدوات", "شعر"];
-var STATUS = { new: "جديد", prep: "قيد التجهيز", done: "جاري التوصيل", cancel: "ملغي" };
+var STATUS = {
+  new: "جديد",
+  prep: "جاري التجهيز",
+  ship: "جاري التوصيل",
+  delivered: "تم التوصيل",
+  cancel: "ملغي"
+};
+var STATUS_ORDER = ["new", "prep", "ship", "delivered", "cancel"];
+var orderFilter = "all";
+function normalizeStatus(st) {
+  if (st === "done") return "ship"; // old label was جاري التوصيل under key done
+  if (STATUS[st]) return st;
+  return "new";
+}
+
 try { overrides = JSON.parse(localStorage.getItem(KEY) || "{}"); } catch (e) { overrides = {}; }
 try { orders = JSON.parse(localStorage.getItem(ORDERS_KEY) || "[]"); if (!Array.isArray(orders)) orders = []; } catch (e) { orders = []; }
 
@@ -154,28 +168,63 @@ function saveEdit() {
   document.getElementById("status").textContent = "انحفظ المنتج.";
   paintList(document.getElementById("q").value.trim());
 }
+function paintStatusBar() {
+  var bar = document.getElementById("statusBar");
+  if (!bar) return;
+  var counts = { all: orders.length };
+  STATUS_ORDER.forEach(function (k) { counts[k] = 0; });
+  orders.forEach(function (o) {
+    var st = normalizeStatus(o.status);
+    o.status = st;
+    counts[st] = (counts[st] || 0) + 1;
+  });
+  var parts = [{ id: "all", label: "الكل" }].concat(STATUS_ORDER.map(function (k) {
+    return { id: k, label: STATUS[k] };
+  }));
+  bar.innerHTML = parts.map(function (p) {
+    return '<button type="button" data-filter="' + p.id + '"' + (orderFilter === p.id ? ' class="on"' : "") + ">"
+      + p.label + " (" + (counts[p.id] || 0) + ")</button>";
+  }).join("");
+}
 function paintOrders() {
   try {
     var btn = document.querySelector('#tabs button[data-tab="orders"]');
     if (btn) btn.textContent = orders.length ? ("الطلبات (" + orders.length + ")") : "الطلبات";
   } catch (e) {}
+  // normalize legacy done -> ship
+  orders.forEach(function (o) { o.status = normalizeStatus(o.status); });
+  paintStatusBar();
   var box = document.getElementById("ordersList");
+  if (!box) return;
+  var list = orders.filter(function (o) {
+    if (orderFilter === "all") return true;
+    return normalizeStatus(o.status) === orderFilter;
+  });
   if (!orders.length) {
-    box.innerHTML = '<p class="note">ما في طلبات في السجل بعد. الطلبات الجديدة توصل واتساب، وبعدها سجّليها هنا أو جرّبي طلب من نفس الآيفون عشان يطلع تلقائي.</p>';
+    box.innerHTML = '<p class="note">ما في طلبات بعد. اطلبي من المتجر (نفس الجهاز) أو انشري سجل الطلبات بعد ما يوصلك واتساب وتحفظينه من صفحة الطلب إن وُجدت.</p>';
     return;
   }
-  box.innerHTML = orders.map(function (o, idx) {
-    var st = o.status || "new";
+  if (!list.length) {
+    box.innerHTML = '<p class="note">ما في طلبات بهالحالة. جرّبي فلتر «الكل».</p>';
+    return;
+  }
+  box.innerHTML = list.map(function (o) {
+    var st = normalizeStatus(o.status);
     var items = "";
     if (Array.isArray(o.items) && o.items.length) {
       items = '<ul class="items">' + o.items.map(function (it) {
-        return '<li><strong>' + esc(it.name || it.nameAr || "") + '</strong><small>SKU ' + esc(it.sku || "—") + ' · ×' + esc(it.qty) + ' · ' + esc(it.line != null ? it.line : it.price) + ' ر.ع</small>'
+        var thumb = it.img ? ('<img src="' + esc(it.img) + '" alt="" style="width:40px;height:40px;object-fit:contain;border-radius:8px;background:#f6f1ee;vertical-align:middle;margin-left:8px">') : "";
+        return '<li>' + thumb + '<strong>' + esc(it.name || it.nameAr || "") + '</strong><small>SKU ' + esc(it.sku || "—") + ' · ×' + esc(it.qty) + ' · ' + esc(it.line != null ? it.line : it.price) + ' ر.ع</small>'
           + (it.link ? ('<div><a href="' + esc(it.link) + '" target="_blank" rel="noopener">رابط المنتج</a></div>') : "") + "</li>";
       }).join("") + "</ul>";
     } else if (o.itemsText) {
       items = '<pre class="note" style="white-space:pre-wrap">' + esc(o.itemsText) + "</pre>";
     }
     var when = o.at ? new Date(o.at).toLocaleString("ar-OM") : "";
+    var phoneDigits = String(o.phone || "").replace(/\D/g, "").replace(/^968/, "");
+    var statusBtns = STATUS_ORDER.map(function (k) {
+      return '<button type="button" class="mini' + (st === k ? " on" : (k === "cancel" ? " ghost" : "")) + '" data-st="' + k + '" data-oid="' + esc(o.id) + '">' + STATUS[k] + "</button>";
+    }).join("");
     return '<article class="order" data-oid="' + esc(o.id) + '">'
       + '<strong>' + esc(o.id) + ' <span class="badge ' + esc(st) + '">' + esc(STATUS[st] || st) + "</span></strong>"
       + "<small>" + esc(when) + "</small>"
@@ -183,38 +232,11 @@ function paintOrders() {
       + "<small>المجموع: <b>" + esc(o.total != null ? Number(o.total).toFixed(3) : "—") + " ر.ع</b></small>"
       + (o.note ? ("<small>ملاحظة: " + esc(o.note) + "</small>") : "")
       + items
-      + '<div class="actions">'
-      + '<button type="button" class="mini" data-st="new" data-i="' + idx + '">جديد</button>'
-      + '<button type="button" class="mini" data-st="prep" data-i="' + idx + '">تجهيز</button>'
-      + '<button type="button" class="mini" data-st="done" data-i="' + idx + '">جاري التوصيل</button>'
-      + '<button type="button" class="mini ghost" data-st="cancel" data-i="' + idx + '">إلغاء</button>'
-      + (o.phone ? ('<a class="mini" style="background:#25D366;display:inline-block" href="https://wa.me/968' + esc(String(o.phone).replace(/\D/g, "").replace(/^968/, "")) + '" target="_blank" rel="noopener">واتساب الزبونة</a>') : "")
-      + '<button type="button" class="mini ghost" data-del="' + idx + '">حذف</button>'
+      + '<div class="actions">' + statusBtns
+      + (phoneDigits ? ('<a class="mini" style="background:#25D366;display:inline-block;color:#fff;text-decoration:none;text-align:center" href="https://wa.me/968' + esc(phoneDigits) + '" target="_blank" rel="noopener">واتساب الزبونة</a>') : "")
+      + '<button type="button" class="mini ghost" data-del="' + esc(o.id) + '">حذف</button>'
       + "</div></article>";
   }).join("");
-}
-function addManualOrder() {
-  var id = val("m_id").trim() || ("NQ-M-" + Date.now());
-  var order = {
-    id: id,
-    at: new Date().toISOString(),
-    status: val("m_status") || "new",
-    name: val("m_name").trim(),
-    phone: val("m_phone").trim(),
-    area: val("m_area").trim(),
-    note: "",
-    total: val("m_total") === "" ? 0 : Number(val("m_total")),
-    itemsText: val("m_items").trim(),
-    items: []
-  };
-  orders = orders.filter(function (o) { return o.id !== id; });
-  orders.unshift(order);
-  saveOrders();
-  document.getElementById("orderStatus").textContent = "انضاف الطلب " + id;
-  ["m_id", "m_name", "m_phone", "m_area", "m_total", "m_items"].forEach(function (x) {
-    var el = document.getElementById(x); if (el) el.value = "";
-  });
-  paintOrders();
 }
 function saveLocal() {
   if (editingId != null && document.getElementById("editView") && !document.getElementById("editView").hidden) saveEdit();
@@ -306,21 +328,41 @@ document.getElementById("tabs").addEventListener("click", function (e) {
 document.getElementById("ordersList").addEventListener("click", function (e) {
   var del = e.target.closest("[data-del]");
   if (del) {
-    orders.splice(+del.getAttribute("data-del"), 1);
+    var idDel = del.getAttribute("data-del");
+    orders = orders.filter(function (o) { return String(o.id) !== String(idDel); });
     saveOrders();
     paintOrders();
+    var os = document.getElementById("orderStatus");
+    if (os) os.textContent = "انحذف الطلب " + idDel;
     return;
   }
   var st = e.target.closest("[data-st]");
   if (st) {
-    var i = +st.getAttribute("data-i");
-    if (orders[i]) {
-      orders[i].status = st.getAttribute("data-st");
+    var id = st.getAttribute("data-oid");
+    var next = st.getAttribute("data-st");
+    var found = false;
+    orders.forEach(function (o) {
+      if (String(o.id) === String(id)) {
+        o.status = next;
+        found = true;
+      }
+    });
+    if (found) {
       saveOrders();
       paintOrders();
+      var os2 = document.getElementById("orderStatus");
+      if (os2) os2.textContent = "حالة " + id + " → " + (STATUS[next] || next);
     }
   }
 });
-document.getElementById("m_save").onclick = addManualOrder;
+var statusBarEl = document.getElementById("statusBar");
+if (statusBarEl) {
+  statusBarEl.addEventListener("click", function (e) {
+    var f = e.target.closest("[data-filter]");
+    if (!f) return;
+    orderFilter = f.getAttribute("data-filter") || "all";
+    paintOrders();
+  });
+}
 document.getElementById("saveLocal").onclick = saveLocal;
 document.getElementById("publish").onclick = publish;

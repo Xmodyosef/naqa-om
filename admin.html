@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 <meta name="theme-color" content="#1f1a17" />
 <title>لوحة تحكم نقاء</title>
-<link rel="stylesheet" href="css/naqa.css?v=20261122f" />
+<link rel="stylesheet" href="css/naqa.css?v=20261122i" />
 <style>
   body{background:#f6f1ee;margin:0;font-family:system-ui,"Noto Kufi Arabic",Tahoma,sans-serif}
   .admin-top{position:sticky;top:0;z-index:5;background:#1f1a17;color:#fff;padding:14px 16px 10px}
@@ -52,6 +52,12 @@
   .wa-box a{display:inline-block;margin-top:8px;background:#25D366;color:#fff;text-decoration:none;padding:10px 14px;border-radius:999px;font-weight:800}
   .badge{display:inline-block;padding:4px 8px;border-radius:999px;font-size:.72rem;font-weight:800;background:#efe4df}
   .badge.new{background:#ffe8a3}.badge.prep{background:#cde7ff}.badge.done{background:#d8f5d0}.badge.cancel{background:#ffd0d0}
+  .badge.ship{background:#cde7ff}.badge.delivered{background:#d8f5d0}.badge.prep{background:#ffe8a3}
+  .status-bar{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0}
+  .status-bar button{border:1px solid #efe4df;background:#fff;border-radius:999px;padding:8px 12px;font:inherit;font-weight:800;font-size:.78rem}
+  .status-bar button.on{background:#1f1a17;color:#fff;border-color:#1f1a17}
+  .order .actions .mini.on{outline:2px solid #b05c6e;outline-offset:1px}
+  .order .mini{touch-action:manipulation}
   .order .actions{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
   .order a{color:#b05c6e;font-weight:700;font-size:.82rem;word-break:break-all}
   .items{margin:8px 0 0;padding:0;list-style:none}
@@ -88,29 +94,10 @@
     <div id="ordersTab" hidden>
       <div class="wa-box">
         <strong>هنا خانة الطلبات</strong>
-        <p class="note">كل طلب من الزبونة يفتح واتساب برقم الطلب وروابط المنتجات. من هنا تديرين السجل والحالة.</p>
+        <p class="note">الطلبات توصل واتساب. من هنا تغيّرين الحالة: جديد · جاري التجهيز · جاري التوصيل · تم التوصيل · ملغي.</p>
         <a id="waOrders" href="#" target="_blank" rel="noopener">فتح واتساب الطلبات</a>
       </div>
-      <div class="manual">
-        <strong>سجّلي طلب يدوي</strong>
-        <label>رقم الطلب<input id="m_id" placeholder="NQ-..."></label>
-        <div class="grid2">
-          <label>الاسم<input id="m_name"></label>
-          <label>الجوال<input id="m_phone" inputmode="tel"></label>
-        </div>
-        <label>الولاية / المنطقة<input id="m_area"></label>
-        <label>المجموع ر.ع<input id="m_total" type="number" step="0.001" min="0"></label>
-        <label>تفاصيل المنتجات<textarea id="m_items" rows="3" placeholder="منتج × كمية"></textarea></label>
-        <label>الحالة
-          <select id="m_status">
-            <option value="new">جديد</option>
-            <option value="prep">قيد التجهيز</option>
-            <option value="done">جاري التوصيل</option>
-            <option value="cancel">ملغي</option>
-          </select>
-        </label>
-        <button type="button" class="primary" id="m_save">أضيفي للسجل</button>
-      </div>
+      <div class="status-bar" id="statusBar"></div>
       <p class="status" id="orderStatus"></p>
       <div id="ordersList"></div>
     </div>
@@ -120,12 +107,12 @@
   <button id="saveLocal" type="button">حفظ على جهازي</button>
   <button id="publish" class="ghost" type="button">نشر للكل</button>
 </div>
-<script src="js/config.js?v=20261122f"></script>
-<script src="products.js?v=20261122f"></script>
-<script src="data/products-care.js?v=20261122f"></script>
-<script src="data/products-makeup.js?v=20261122f"></script>
-<script src="data/products-hair.js?v=20261122f"></script>
-<script src="data/products-more.js?v=20261122f"></script>
-<script src="js/admin.js?v=20261122f"></script>
+<script src="js/config.js?v=20261122i"></script>
+<script src="products.js?v=20261122i"></script>
+<script src="data/products-care.js?v=20261122i"></script>
+<script src="data/products-makeup.js?v=20261122i"></script>
+<script src="data/products-hair.js?v=20261122i"></script>
+<script src="data/products-more.js?v=20261122i"></script>
+<script src="js/admin.js?v=20261122i"></script>
 </body>
 </html>

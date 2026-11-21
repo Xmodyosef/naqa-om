@@ -102,7 +102,8 @@ function sendCheckout(){
     return {
       id:p.id, name:pname(p), nameAr:p.nameAr||"", nameEn:p.nameEn||"",
       brand:p.brand||"", sku:p.sku||"", qty:i.qty, price:i.price,
-      line:i.price*i.qty, link:(typeof productLink==="function")?productLink(p.id):""
+      line:i.price*i.qty, link:(typeof productLink==="function")?productLink(p.id):"",
+      img:(p.imgs&&p.imgs[0])||""
     };
   });
   const order={

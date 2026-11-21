@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>طلب نقاء</title>
+<style>
+  body{margin:0;background:#f6f1ee;font-family:system-ui,"Noto Kufi Arabic",Tahoma,sans-serif;color:#1f1a17}
+  .top{background:#1f1a17;color:#fff;padding:14px 16px}
+  .top a{color:#fff;font-weight:700}
+  .wrap{max-width:720px;margin:0 auto;padding:16px 14px 40px}
+  .card{background:#fff;border:1px solid #efe4df;border-radius:16px;padding:14px;margin:10px 0}
+  .item{border-top:1px solid #efe4df;padding:10px 0}
+  .item:first-child{border-top:0}
+  .btn{display:block;width:100%;box-sizing:border-box;background:#b05c6e;color:#fff;border:0;border-radius:999px;padding:14px;font-weight:800;font:inherit;margin-top:10px;text-align:center;text-decoration:none}
+  .ghost{background:#fff;color:#1f1a17;border:1px solid #efe4df}
+  .muted{color:#8a7f78;font-size:.85rem}
+  .ok{color:#14532d;font-weight:800}
+  h1{font-size:1.2rem;margin:0 0 8px}
+</style>
+</head>
+<body>
+<div class="top"><a href="index.html">نقاء</a> · صفحة الطلب</div>
+<div class="wrap" id="box"><p class="muted">جاري فتح الطلب…</p></div>
+<script>
+function esc(v){return String(v==null?"":v).split("&").join("&"+"amp;").split("<").join("&"+"lt;").split('"').join("&"+"quot;");}
+function loadOrder(){
+  var raw=(location.hash||"").replace(/^#/,"");
+  var box=document.getElementById("box");
+  if(!raw){
+    box.innerHTML='<div class="card"><h1>ما في طلب</h1><p class="muted">افتحي الرابط من رسالة واتساب، أو من لوحة التحكم.</p><a class="btn ghost" href="admin.html">لوحة التحكم</a></div>';
+    return null;
+  }
+  try{
+    var compact=JSON.parse(decodeURIComponent(escape(atob(raw))));
+    var order={
+      id:compact.id, at:compact.at, status:"new",
+      name:compact.n||"", phone:compact.p||"", area:compact.a||"", note:compact.t||"",
+      total:compact.tot, currency:"OMR",
+      items:(compact.its||[]).map(function(x){
+        return {id:x.i, qty:x.q, price:x.pr, sku:x.s||"", nameAr:x.na||"", nameEn:x.ne||"", name:x.na||x.ne||"", line:(x.pr||0)*(x.q||0),
+          link:(function(){ var path=location.pathname||"/"; if(path.slice(-1)!=="/") path=path.replace(/[^/]*$/,""); if(path.slice(-1)!=="/") path+="/"; return location.origin+path+"#p/"+x.i; })()
+        };
+      })
+    };
+    return order;
+  }catch(e){
+    box.innerHTML='<div class="card"><h1>الرابط غير صالح</h1><p class="muted">'+esc(e.message)+'</p><a class="btn ghost" href="admin.html">لوحة التحكم</a></div>';
+    return null;
+  }
+}
+function paint(order){
+  var box=document.getElementById("box");
+  if(!order) return;
+  var items=order.items.map(function(it){
+    return '<div class="item"><strong>'+esc(it.nameAr||it.name||it.nameEn)+'</strong><div class="muted">SKU '+esc(it.sku||"—")+' · ×'+esc(it.qty)+' · '+(Number(it.line||0).toFixed(3))+' ر.ع</div>'
+      +(it.link?'<a href="'+esc(it.link)+'">فتح المنتج</a>':'')+'</div>';
+  }).join("");
+  box.innerHTML='<div class="card"><h1>طلب '+esc(order.id)+'</h1>'
+    +'<p class="muted">'+(order.at?new Date(order.at).toLocaleString("ar-OM"):"")+'</p>'
+    +'<p><b>الاسم:</b> '+esc(order.name)+'<br><b>الجوال:</b> '+esc(order.phone)+'<br><b>الولاية:</b> '+esc(order.area)+'<br><b>ملاحظة:</b> '+esc(order.note||"—")+'</p>'
+    +'<p><b>المجموع:</b> '+(Number(order.total||0).toFixed(3))+' ر.ع</p>'
+    +items
+    +'<button class="btn" type="button" id="saveBtn">احفظي الطلب في لوحة التحكم</button>'
+    +'<a class="btn ghost" href="admin.html#orders">فتح الطلبات</a>'
+    +'<p class="ok" id="msg"></p></div>';
+  document.getElementById("saveBtn").onclick=function(){
+    var all=[];
+    try{ all=JSON.parse(localStorage.getItem("naqa_orders")||"[]"); if(!Array.isArray(all)) all=[]; }catch(e){ all=[]; }
+    all=all.filter(function(o){ return o && o.id!==order.id; });
+    all.unshift(order);
+    localStorage.setItem("naqa_orders", JSON.stringify(all.slice(0,200)));
+    document.getElementById("msg").textContent="انحفظ في الطلبات على هذا الجهاز.";
+  };
+}
+paint(loadOrder());
+</script>
+</body>
+</html>

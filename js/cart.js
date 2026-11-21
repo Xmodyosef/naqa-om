@@ -116,9 +116,18 @@ function sendCheckout(){
   if(typeof window.NAQA_ORDERS_HOOK==="function"){
     try{ window.NAQA_ORDERS_HOOK(order); }catch(e){}
   }
+  var orderLink="";
+  try{
+    var path=location.pathname||"/";
+    if(path.slice(-1)!=="/") path=path.replace(/[^/]*$/,"");
+    if(path.slice(-1)!=="/") path+="/";
+    var compact={id:order.id,at:order.at,n:order.name,p:order.phone,a:order.area,t:order.note,tot:order.total,its:order.items.map(function(x){return {i:x.id,q:x.qty,pr:x.price,s:x.sku,na:x.nameAr||x.name,ne:x.nameEn||""};})};
+    var raw=btoa(unescape(encodeURIComponent(JSON.stringify(compact))));
+    orderLink=location.origin+path+"order.html#"+raw;
+  }catch(e){ orderLink=""; }
   const msg = lang==="en"
-    ? ("Hello, I want to order from Naqa:\nOrder: "+orderNo+"\nName: "+name+"\nPhone: "+phone+"\nArea: "+gov+"\nNote: "+note+"\n\n"+lines+"\n\nTotal: "+money(total))
-    : ("السلام عليكم، أبغى أطلب من نقاء:\nرقم الطلب: "+orderNo+"\nالاسم: "+name+"\nالجوال: "+phone+"\nالمنطقة: "+gov+"\nملاحظة: "+note+"\n\n"+lines+"\n\nالمجموع: "+money(total));
+    ? ("Hello, I want to order from Naqa:\nOrder: "+orderNo+"\nName: "+name+"\nPhone: "+phone+"\nArea: "+gov+"\nNote: "+note+"\n\n"+lines+"\n\nTotal: "+money(total)+(orderLink?("\n\nOrder page:\n"+orderLink):""))
+    : ("السلام عليكم، أبغى أطلب من نقاء:\nرقم الطلب: "+orderNo+"\nالاسم: "+name+"\nالجوال: "+phone+"\nالمنطقة: "+gov+"\nملاحظة: "+note+"\n\n"+lines+"\n\nالمجموع: "+money(total)+(orderLink?("\n\nصفحة الطلب:\n"+orderLink):""));
   window.open("https://wa.me/"+WA_NUMBER+"?text="+encodeURIComponent(msg), "_blank");
   const done=$("#orderDone");
   if(done){

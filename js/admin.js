@@ -155,6 +155,10 @@ function saveEdit() {
   paintList(document.getElementById("q").value.trim());
 }
 function paintOrders() {
+  try {
+    var btn = document.querySelector('#tabs button[data-tab="orders"]');
+    if (btn) btn.textContent = orders.length ? ("الطلبات (" + orders.length + ")") : "الطلبات";
+  } catch (e) {}
   var box = document.getElementById("ordersList");
   if (!orders.length) {
     box.innerHTML = '<p class="note">ما في طلبات في السجل بعد. الطلبات الجديدة توصل واتساب، وبعدها سجّليها هنا أو جرّبي طلب من نفس الآيفون عشان يطلع تلقائي.</p>';
@@ -271,7 +275,13 @@ function openAdmin() {
   document.getElementById("waOrders").href = wa;
   paintList("");
   loadRemoteOrders();
-  setTab("products");
+  var start = (location.hash || "").indexOf("orders") >= 0 ? "orders" : "products";
+  setTab(start);
+  try {
+    var n = orders.length;
+    var btn = document.querySelector('#tabs button[data-tab="orders"]');
+    if (btn) btn.textContent = n ? ("الطلبات (" + n + ")") : "الطلبات";
+  } catch (e) {}
 }
 document.getElementById("pinGo").onclick = function () {
   var typed = document.getElementById("pinInput").value.trim();

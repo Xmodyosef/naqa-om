@@ -133,13 +133,21 @@ html[dir="ltr"] .wa-float{left:auto;right:16px}
 .sheet.show{display:flex}
 .sheet-card{background:#fff;width:min(680px,100%);height:100%;max-height:100%;overflow:auto;padding:16px 16px 48px}
 .text-back{font-weight:800;color:var(--rose-deep);margin-bottom:10px}
-.gallery{display:grid;gap:8px}
-.gallery-main{height:min(52vw,320px);border-radius:16px;overflow:hidden;background:#faf7f5;display:grid;place-items:center}
-.gallery-main img{width:100%;height:100%;object-fit:contain;cursor:pointer}
+.gallery{display:grid;gap:10px;margin:0 -4px}
+.gallery-main{height:min(72vw,420px);border-radius:18px;overflow:hidden;background:#f3eeea;display:grid;place-items:center;touch-action:pan-y}
+.gallery-main img{width:100%;height:100%;object-fit:contain;cursor:zoom-in;background:#fff}
 .gallery-thumbs{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
-.gallery-thumbs button{aspect-ratio:1;border-radius:12px;overflow:hidden;border:2px solid transparent;padding:0;background:#f5e6e2}
+.gallery-thumbs button{aspect-ratio:1;border-radius:12px;overflow:hidden;border:2px solid transparent;padding:0;background:#fff}
 .gallery-thumbs button.on{border-color:var(--rose-deep)}
-.gallery-thumbs img{width:100%;height:100%;object-fit:cover}
+.gallery-thumbs img{width:100%;height:100%;object-fit:contain;background:#fff}
+.lightbox{position:fixed;inset:0;z-index:120;background:rgba(10,8,6,.92);display:none;align-items:center;justify-content:center;padding:12px;touch-action:none}
+.lightbox.show{display:flex}
+.lightbox img{max-width:100%;max-height:100%;object-fit:contain;border-radius:8px}
+.lightbox-close{position:absolute;top:14px;inset-inline-end:14px;width:42px;height:42px;border-radius:999px;background:#fff;color:#1f1a17;font-weight:800;font-size:1.1rem}
+.swipe-hint{font-size:.75rem;color:var(--muted);margin:0 0 8px;font-weight:600}
+.sheet-card{overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
+.card{content-visibility:auto;contain-intrinsic-size:280px 360px}
+
 .block-h{margin:16px 0 6px;font-size:1rem}
 .long{margin:0;line-height:1.75;color:var(--fg)}
 .sku-line{margin-top:8px;font-size:.85rem;color:var(--muted);font-family:ui-monospace,monospace}
@@ -252,6 +260,10 @@ html[dir="ltr"] .wa-float{left:auto;right:16px}
 <div class="sheet" id="sheet">
   <div class="sheet-card" id="sheetCard"></div>
 </div>
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <button class="lightbox-close" id="lbClose" type="button">✕</button>
+  <img id="lbImg" alt="">
+</div>
 
 <script src="products.js"></script>
 <script>
@@ -279,7 +291,7 @@ const ui = {
     orders:"واتساب الطلبات", skin:"عناية البشرة", scentL:"عطور", faceL:"مكياج", hairL:"شعر",
     blurb:"عناية ومكياج · متجر عُماني", copy:"نقاء · Naqa · عُمان — جميع الحقوق محفوظة",
     about:"عن المنتج", how:"طريقة الاستعمال", skinT:"يناسب", also:"قد يعجبكِ أيضاً",
-    back:"رجوع للمتجر", sku:"SKU", logo:"نقاء", tag:"عناية ومكياج"
+    back:"رجوع للمتجر", sku:"SKU", logo:"نقاء", tag:"عناية ومكياج", swipe:"اسحبي من اليسار لليمين للرجوع", openImg:"اضغطي الصورة للتكبير", vendor:"كود المورد"
   },
   en: {
     search:"Search product, brand, or SKU...",
@@ -295,7 +307,7 @@ const ui = {
     orders:"Order on WhatsApp", skin:"Skincare", scentL:"Fragrance", faceL:"Makeup", hairL:"Hair",
     blurb:"Care and makeup · Oman store", copy:"Naqa · Oman — all rights reserved",
     about:"About", how:"How to use", skinT:"Best for", also:"You may also like",
-    back:"Back to shop", sku:"SKU", logo:"Naqa", tag:"Care & Makeup"
+    back:"Back to shop", sku:"SKU", logo:"Naqa", tag:"Care & Makeup", swipe:"Swipe left → right to go back", openImg:"Tap image to enlarge", vendor:"Vendor code"
   }
 };
 
@@ -342,7 +354,7 @@ function applyLang(){
   $("#cartTitle").textContent = T("cart");
   $("#totalLabel").textContent = T("total");
   $("#checkoutBtn").textContent = T("checkout");
-  $("#langBtn").textContent = lang === "ar" ? "EN" : "عربي";
+  $("#langBtn").textContent = lang === "ar" ? "EN" : "AR";
   $("#logoName").textContent = T("logo");
   $("#logoTag").textContent = T("tag");
   $("#pillShip").textContent = T("ship");
@@ -426,8 +438,8 @@ function openSheet(id, resetGallery){
   $("#sheet").classList.add("show");
   $("#sheetCard").scrollTop = 0;
   $("#closeSheet").onclick = () => {
-    $("#sheet").classList.remove("show");
-    openProductId = null;
+    if (window.__naqaCloseSheet) window.__naqaCloseSheet();
+    else { $("#sheet").classList.remove("show"); openProductId = null; }
   };
 }
 
@@ -498,9 +510,9 @@ $("#sheet").addEventListener("click", e => {
   }
   if (e.target.closest(".gallery-main")){
     const p = products.find(x => x.id === openProductId);
-    const n = Math.max(pimgs(p).length, 1);
-    galleryIndex = (galleryIndex + 1) % n;
-    if (openProductId) openSheet(openProductId, false);
+    const imgs = pimgs(p);
+    const src = imgs[galleryIndex] || imgs[0];
+    if (src) openLightbox(src);
     return;
   }
   const more = e.target.closest("[data-open]");
@@ -572,6 +584,22 @@ $("#checkoutBtn").onclick = () => {
   const total = cart.reduce((s,i) => s + i.price * i.qty, 0);
   const msg = T("greet") + " (" + SITE + "):\n\n" + lines + "\n\n" + T("total") + ": " + money(total);
   window.open("https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent(msg), "_blank");
+};
+
+
+// Browser/Safari back closes product if open
+window.addEventListener("popstate", () => {
+  if (document.getElementById("lightbox")?.classList.contains("show")) { closeLightbox(); history.pushState({naqa:"app"},""); return; }
+  if (document.getElementById("sheet")?.classList.contains("show")) {
+    if (window.__naqaCloseSheet) window.__naqaCloseSheet();
+    return;
+  }
+});
+const _openSheet = openSheet;
+openSheet = function(id, resetGallery){
+  const was = document.getElementById("sheet").classList.contains("show");
+  _openSheet(id, resetGallery);
+  if (!was) try { history.pushState({naqa:"product", id}, ""); } catch(e) {}
 };
 
 function boot(){

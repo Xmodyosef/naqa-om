@@ -52,3 +52,21 @@
 - عطل في **الاختبار** → `js/features/quiz.js`
 - عطل في **اللوحة طلبات** → `js/admin/orders.js`
 - عطل في **منتج** → `data/products-*.js` أو `js/admin/products.js`
+
+## أنماط المتجر (CSS)
+
+| ملف | المسؤولية |
+|-----|-----------|
+| `css/store/base.css` | متغيرات، هيدر، هيرو، بطاقات، رفوف |
+| `css/store/cart-chrome.css` | شريط السلة، درج، تذييل، واتساب |
+| `css/store/sheet.css` | صفحة المنتج / نظرة سريعة / لايت بوكس |
+| `css/store/features.css` | اختبار، محفوظات، باقات، checkout extras |
+
+## العرض (render) وصفحة المنتج (sheet)
+
+| ملف | المسؤولية |
+|-----|-----------|
+| `js/render/cards.js` | HTML البطاقة والرفوف |
+| `js/render/main.js` | `applyLang` + `render()` |
+| `js/sheet/carousel.js` | سلايدر الصور الدائري |
+| `js/sheet/panel.js` | فتح/إغلاق المنتج واللايت بوكس |

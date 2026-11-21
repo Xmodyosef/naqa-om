@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 <meta name="theme-color" content="#b05c6e" />
-<meta name="description" content="نقاء — عناية ومكياج. متجر عُماني أصلي. توصيل لكل السلطنة. طلب واتساب." />
+<meta name="description" content="نقاء — عناية ومكياج. متجر عُماني. توصيل لكل السلطنة. طلب واتساب." />
 <meta property="og:title" content="نقاء · عناية ومكياج" />
 <meta property="og:description" content="مكياج وعناية أصلية · توصيل عُمان · www.naqa.om" />
 <meta property="og:url" content="https://www.naqa.om" />
@@ -25,20 +25,20 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 img{max-width:100%;display:block}
 .wrap{max-width:1180px;margin:0 auto;padding:0 16px}
 
-/* HEADER */
 header{position:sticky;top:0;z-index:60;background:rgba(253,248,246,.94);
   -webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
-.top{display:flex;align-items:center;gap:12px;height:68px}
+.top{display:flex;align-items:center;gap:10px;height:68px}
 .logo{display:flex;align-items:center;gap:10px;white-space:nowrap}
 .logo-mark{width:40px;height:40px;border-radius:12px;background:var(--card);
   border:1px solid var(--line);display:grid;place-items:center;
   font-weight:800;font-size:1.05rem;color:var(--rose-deep)}
 .logo-text{display:flex;flex-direction:column;line-height:1.15}
-.logo-text strong{font-size:1.25rem;font-weight:800;letter-spacing:-.3px}
+.logo-text strong{font-size:1.25rem;font-weight:800}
 .logo-text span{font-size:.72rem;color:var(--muted);font-weight:600}
 .search{flex:1;display:flex;align-items:center;gap:8px;background:#fff;
   border:1px solid var(--line);border-radius:999px;padding:9px 14px;max-width:420px;margin:0 auto}
 .search input{border:none;outline:none;width:100%;font:inherit;background:transparent;font-size:.95rem}
+.lang-btn{height:42px;padding:0 12px;border-radius:12px;background:#fff;border:1px solid var(--line);font-weight:800;flex-shrink:0}
 .icon-btn{width:42px;height:42px;border-radius:12px;background:#fff;border:1px solid var(--line);
   display:grid;place-items:center;position:relative;flex-shrink:0}
 .icon-btn .badge{position:absolute;top:-4px;left:-4px;min-width:18px;height:18px;padding:0 5px;
@@ -50,25 +50,22 @@ header{position:sticky;top:0;z-index:60;background:rgba(253,248,246,.94);
   border:1px solid var(--line);font-size:.88rem;font-weight:600;color:var(--muted)}
 .nav-cats a.on,.nav-cats a:hover{background:var(--rose-deep);color:#fff;border-color:var(--rose-deep)}
 
-/* HERO */
 .hero{margin:18px 0 8px;padding:28px 22px;border-radius:var(--r);background:
   linear-gradient(135deg,#fff 0%,#f8ebe8 55%,#f3e0d8 100%);
   border:1px solid var(--line);box-shadow:var(--shadow);display:grid;gap:10px}
 .hero h1{margin:0;font-size:clamp(1.5rem,4vw,2.1rem);font-weight:800;line-height:1.25}
 .hero h1 em{font-style:normal;color:var(--rose-deep)}
-.hero p{margin:0;color:var(--muted);max-width:36em;font-size:.98rem}
+.hero p{margin:0;color:var(--muted);max-width:40em;font-size:.98rem}
 .hero-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;
   padding:12px 18px;border-radius:999px;font-weight:700;font-size:.95rem}
 .btn-primary{background:var(--rose-deep);color:#fff}
 .btn-ghost{background:#fff;border:1px solid var(--line);color:var(--fg)}
-.pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
+.pills{display:flex;flex-wrap:wrap;gap:8px}
 .pill{padding:6px 12px;border-radius:999px;background:rgba(176,92,110,.1);
   color:var(--rose-deep);font-size:.8rem;font-weight:700}
 
-/* PRODUCTS */
-.section-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;
-  margin:22px 0 12px}
+.section-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin:22px 0 12px}
 .section-head h2{margin:0;font-size:1.2rem;font-weight:800}
 .section-head span{color:var(--muted);font-size:.85rem}
 .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
@@ -77,32 +74,37 @@ header{position:sticky;top:0;z-index:60;background:rgba(253,248,246,.94);
 .card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);
   overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column}
 .card-visual{aspect-ratio:1;display:grid;place-items:center;font-size:3rem;
-  background:linear-gradient(160deg,var(--c1,#f5e6e2),var(--c2,#efe0d8))}
+  background:linear-gradient(160deg,#f5e6e2,#efe0d8);overflow:hidden;padding:0}
+.card-visual img{width:100%;height:100%;object-fit:cover;background:#fff}
 .card-body{padding:12px 12px 14px;display:flex;flex-direction:column;gap:4px;flex:1}
 .card-brand{font-size:.72rem;color:var(--muted);font-weight:600}
-.card-name{font-weight:700;font-size:.95rem;line-height:1.35;min-height:2.5em}
+.card-name{font-weight:700;font-size:.95rem;line-height:1.35;min-height:2.5em;text-align:start;width:100%}
+.card-desc{color:var(--muted);font-size:.78rem;line-height:1.45;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.card-code{font-size:.68rem;letter-spacing:.03em;color:var(--muted);font-family:ui-monospace,monospace}
 .card-price{font-weight:800;color:var(--rose-deep);margin-top:4px;font-size:1.05rem}
-.card-add{margin-top:10px;width:100%;padding:10px;border-radius:12px;
+.card-more{margin-top:6px;font-size:.78rem;font-weight:700;color:var(--rose-deep);text-align:start}
+.card-add{margin-top:8px;width:100%;padding:10px;border-radius:12px;
   background:var(--fg);color:#fff;font-weight:700;font-size:.9rem}
 .card-add:active{opacity:.85}
+.card-hit{width:100%;text-align:inherit;padding:0}
 .empty{padding:40px 16px;text-align:center;color:var(--muted)}
 
-/* CART DRAWER */
 .overlay{position:fixed;inset:0;background:rgba(20,12,10,.35);z-index:80;
   opacity:0;pointer-events:none;transition:opacity .2s}
 .overlay.show{opacity:1;pointer-events:auto}
 .drawer{position:fixed;top:0;bottom:0;left:0;width:min(400px,92vw);background:#fff;
   z-index:90;transform:translateX(-105%);transition:transform .25s ease;
   display:flex;flex-direction:column;box-shadow:var(--shadow)}
-.drawer.show{transform:translateX(0)}
+html[dir="ltr"] .drawer{left:auto;right:0;transform:translateX(105%)}
+html[dir="ltr"] .drawer.show, .drawer.show{transform:translateX(0)}
 .drawer-head{display:flex;align-items:center;justify-content:space-between;
   padding:16px;border-bottom:1px solid var(--line)}
 .drawer-head h3{margin:0;font-size:1.1rem}
 .drawer-body{flex:1;overflow:auto;padding:12px 16px}
 .cart-item{display:grid;grid-template-columns:56px 1fr auto;gap:10px;align-items:center;
   padding:12px 0;border-bottom:1px solid var(--line)}
-.cart-item .thumb{width:56px;height:56px;border-radius:12px;display:grid;place-items:center;
-  font-size:1.5rem;background:linear-gradient(160deg,#f5e6e2,#efe0d8)}
+.cart-item .thumb{width:56px;height:56px;border-radius:12px;overflow:hidden;background:#f5e6e2}
+.cart-item .thumb img{width:100%;height:100%;object-fit:cover}
 .cart-item .meta strong{display:block;font-size:.9rem}
 .cart-item .meta span{color:var(--muted);font-size:.8rem}
 .qty{display:flex;align-items:center;gap:6px}
@@ -113,50 +115,40 @@ header{position:sticky;top:0;z-index:60;background:rgba(253,248,246,.94);
 .total-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;font-weight:800}
 .total-row span:last-child{color:var(--rose-deep);font-size:1.15rem}
 .checkout{width:100%;padding:14px;border-radius:14px;background:#25D366;color:#fff;
-  font-weight:800;font-size:1rem;display:flex;align-items:center;justify-content:center;gap:8px}
+  font-weight:800;font-size:1rem}
+.cart-empty{padding:40px 10px;text-align:center;color:var(--muted)}
 
-/* FOOTER */
 footer{margin-top:40px;padding:28px 0 100px;border-top:1px solid var(--line);color:var(--muted);font-size:.9rem}
 .foot-grid{display:grid;gap:18px}
 @media(min-width:700px){.foot-grid{grid-template-columns:2fr 1fr 1fr}}
 footer h4{margin:0 0 8px;color:var(--fg);font-size:1rem}
-footer a{display:inline-block;margin:2px 0}
 .foot-brand{font-weight:800;color:var(--fg);font-size:1.15rem}
 .foot-brand span{color:var(--rose-deep)}
-
-/* WA FLOAT */
 .wa-float{position:fixed;bottom:20px;left:16px;z-index:50;width:56px;height:56px;
   border-radius:50%;background:#25D366;color:#fff;display:grid;place-items:center;
   box-shadow:0 8px 24px rgba(37,211,102,.4);font-size:1.6rem}
+html[dir="ltr"] .wa-float{left:auto;right:16px}
 
-/* empty cart note */
-.cart-empty{padding:40px 10px;text-align:center;color:var(--muted)}
-
-.lang-btn{height:42px;padding:0 12px;border-radius:12px;background:#fff;border:1px solid var(--line);font-weight:800;flex-shrink:0}
-.card-visual{position:relative;background:#fff}
-.card-visual img{width:100%;height:100%;object-fit:contain;background:#fff}
-.card-desc{color:var(--muted);font-size:.78rem;line-height:1.45;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-.card-code{font-size:.68rem;letter-spacing:.04em;color:var(--muted);font-family:ui-monospace,monospace}
-.card-more{margin-top:6px;font-size:.78rem;font-weight:700;color:var(--rose-deep);text-align:start}
-.sheet{position:fixed;inset:0;z-index:100;background:rgba(20,12,10,.4);display:none;align-items:flex-end;justify-content:center}
+.sheet{position:fixed;inset:0;z-index:100;background:rgba(20,12,10,.45);display:none;align-items:stretch;justify-content:center}
 .sheet.show{display:flex}
-.sheet-card{background:#fff;width:min(520px,100%);max-height:88vh;overflow:auto;border-radius:20px 20px 0 0;padding:16px 16px 28px}
-.sheet-card img{width:100%;height:240px;object-fit:contain;background:#faf7f5;border-radius:14px}
-.sheet-card h3{margin:12px 0 4px;font-size:1.15rem}
-.bc{margin-top:10px}
-.bc svg{max-width:100%;height:72px}
-
-.card-hit{width:100%;text-align:inherit;padding:0}
-.card-name.card-hit{font:inherit;font-weight:700;font-size:.95rem;line-height:1.35;min-height:2.5em;text-align:start}
-.sheet{align-items:stretch;justify-content:center}
-.sheet-card{width:min(680px,100%);max-height:100%;height:100%;border-radius:0;padding:18px 16px 40px}
-.block-h{margin:16px 0 6px;font-size:1rem}
-.long{margin:0;line-height:1.7}
+.sheet-card{background:#fff;width:min(680px,100%);height:100%;max-height:100%;overflow:auto;padding:16px 16px 48px}
 .text-back{font-weight:800;color:var(--rose-deep);margin-bottom:10px}
+.gallery{display:grid;gap:8px}
+.gallery-main{height:min(52vw,320px);border-radius:16px;overflow:hidden;background:#faf7f5;display:grid;place-items:center}
+.gallery-main img{width:100%;height:100%;object-fit:cover}
+.gallery-thumbs{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+.gallery-thumbs button{aspect-ratio:1;border-radius:12px;overflow:hidden;border:2px solid transparent;padding:0;background:#f5e6e2}
+.gallery-thumbs button.on{border-color:var(--rose-deep)}
+.gallery-thumbs img{width:100%;height:100%;object-fit:cover}
+.block-h{margin:16px 0 6px;font-size:1rem}
+.long{margin:0;line-height:1.75;color:var(--fg)}
+.sku-line{margin-top:8px;font-size:.85rem;color:var(--muted);font-family:ui-monospace,monospace}
+.skin-pill{display:inline-block;margin-top:8px;padding:6px 12px;border-radius:999px;
+  background:rgba(176,92,110,.1);color:var(--rose-deep);font-size:.8rem;font-weight:700}
 .sug-row{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
 .sug{background:#fff;border:1px solid var(--line);border-radius:14px;padding:8px;text-align:start}
 .sug-vis{display:block;height:90px;border-radius:10px;overflow:hidden;background:#faf7f5}
-.sug-vis img{width:100%;height:90px;object-fit:contain}
+.sug-vis img{width:100%;height:90px;object-fit:cover}
 .sug-name{display:block;font-size:.78rem;font-weight:700;margin-top:6px;line-height:1.35}
 .sug-price{display:block;color:var(--rose-deep);font-weight:800;font-size:.85rem}
 </style>
@@ -167,8 +159,8 @@ footer a{display:inline-block;margin:2px 0}
     <a class="logo" href="#top" aria-label="نقاء">
       <div class="logo-mark">ن</div>
       <div class="logo-text">
-        <strong>نقاء</strong>
-        <span>عناية ومكياج</span>
+        <strong id="logoName">نقاء</strong>
+        <span id="logoTag">عناية ومكياج</span>
       </div>
     </a>
     <div class="search" role="search">
@@ -190,6 +182,7 @@ footer a{display:inline-block;margin:2px 0}
       <a href="#" data-cat="شفاه">شفاه</a>
       <a href="#" data-cat="عطور">عطور</a>
       <a href="#" data-cat="أدوات">أدوات</a>
+      <a href="#" data-cat="شعر">شعر</a>
     </nav>
   </div>
 </header>
@@ -201,10 +194,10 @@ footer a{display:inline-block;margin:2px 0}
       <span class="pill" id="pillShip">توصيل عُمان</span>
       <span class="pill" id="pillWa">طلب واتساب</span>
     </div>
-    <h1>نقاء — <em>عناية ومكياج</em></h1>
-    <p>منتجات أصلية للبشرة والمكياج. اختاري، أضيفي للسلة، وأكملي الطلب برسالة واتساب جاهزة. أسعار بالريال العماني، مأخوذة من أسعار البيع الظاهرة في السوق (دار بيوتي وكابي) بتاريخ 21 نوفمبر 2026.</p>
+    <h1 id="heroTitle">نقاء — <em>عناية ومكياج</em></h1>
+    <p id="heroText">منتجات أصلية. اضغطي على المنتج لتشوفي الصور والوصف وطريقة الاستعمال ونوع البشرة المناسب، ثم أضيفي للسلة وأكملي بواتساب.</p>
     <div class="hero-actions">
-      <a class="btn btn-primary" href="#products">تسوّقي الآن</a>
+      <a class="btn btn-primary" id="btnShop" href="#products">تسوّقي الآن</a>
       <a class="btn btn-ghost" id="waHero" href="#" target="_blank" rel="noopener">واتساب نقاء</a>
     </div>
   </section>
@@ -232,7 +225,8 @@ footer a{display:inline-block;margin:2px 0}
       <h4 id="footShop">التسوق</h4>
       <a href="#" data-cat-jump="عناية" id="jumpCare">عناية البشرة</a><br/>
       <a href="#" data-cat-jump="مكياج" id="jumpFace">مكياج</a><br/>
-      <a href="#" data-cat-jump="عطور" id="jumpScent">عطور</a>
+      <a href="#" data-cat-jump="عطور" id="jumpScent">عطور</a><br/>
+      <a href="#" data-cat-jump="شعر" id="jumpHair">شعر</a>
     </div>
   </div>
   <div class="wrap" style="margin-top:18px;font-size:.8rem">
@@ -245,334 +239,74 @@ footer a{display:inline-block;margin:2px 0}
 <div class="overlay" id="overlay"></div>
 <aside class="drawer" id="drawer" aria-label="سلة التسوق">
   <div class="drawer-head">
-    <h3>السلة</h3>
+    <h3 id="cartTitle">السلة</h3>
     <button class="icon-btn" id="closeCart" aria-label="إغلاق">✕</button>
   </div>
   <div class="drawer-body" id="cartBody"></div>
   <div class="drawer-foot">
-    <div class="total-row"><span>المجموع</span><span id="cartTotal">0.000 ر.ع</span></div>
+    <div class="total-row"><span id="totalLabel">المجموع</span><span id="cartTotal">0.000 ر.ع</span></div>
     <button class="checkout" id="checkoutBtn">إتمام الطلب عبر واتساب</button>
   </div>
 </aside>
 
-
 <div class="sheet" id="sheet">
   <div class="sheet-card" id="sheetCard"></div>
 </div>
+
+<script src="products.js"></script>
 <script>
-/* ========== الإعدادات — عدّلي هنا فقط ========== */
-const WA_NUMBER = "96879088349";   // ← رقمك بدون + وبدون مسافات (8 أرقام بعد 968)
+const WA_NUMBER = "96879088349";
 const CURRENCY  = "ر.ع";
 const SITE      = "www.naqa.om";
-
-const products = [
-  {id:1, brand:"Anua", price:6.700, cat:"عناية", em:"💧", c1:"#fde4ea", c2:"#f8c0d0",
-    barcode:"8809640734526",
-    img:"https://darbeauty.com/cdn/shop/files/anua-niacinamide-10-txa-4-serum_8809640734526_DarBeauty.webp?width=800",
-    nameAr:"سيروم نياسيناميد 10% + TXA 4% — 30مل",
-    nameEn:"Niacinamide 10% + TXA 4% Serum — 30ml",
-    descAr:"سيروم كوري لتصحيح البقع الداكنة وتوحيد اللون. خفيف وسريع الامتصاص، مناسب للبشرة الحساسة.",
-    descEn:"Korean dark-spot serum that evens tone. Lightweight and fast-absorbing, including for sensitive skin."},
-  {id:2, brand:"The Ordinary", price:5.700, cat:"عناية", em:"🧪", c1:"#f0eef8", c2:"#ddd8f0",
-    barcode:"769915190311",
-    img:"https://darbeauty.com/cdn/shop/files/the-ordinary-niacinamide-10-zinc-1_769915190311_DarBeauty.webp?width=800",
-    nameAr:"سيروم نياسيناميد 10% + زنك 1% — 30مل",
-    nameEn:"Niacinamide 10% + Zinc 1% — 30ml",
-    descAr:"يقلل مظهر المسام والزيوت الزائدة. يُستخدم صباحاً ومساءً قبل المرطب.",
-    descEn:"Helps the look of pores and excess oil. Use morning and night before moisturizer."},
-  {id:3, brand:"The Ordinary", price:6.300, cat:"عناية", em:"✨", c1:"#e8f4ff", c2:"#d0e8ff",
-    barcode:"769915233490",
-    img:"https://darbeauty.com/cdn/shop/files/the-ordinary-hyaluronic-acid-2-b5_769915233490_DarBeauty.webp?width=800",
-    nameAr:"هيالورونيك أسيد 2% + B5 — 30مل",
-    nameEn:"Hyaluronic Acid 2% + B5 — 30ml",
-    descAr:"سيروم ترطيب بطبقات هيالورونيك وفيتامين B5. يوضع على بشرة رطبة.",
-    descEn:"Hydrating serum with hyaluronic acid and vitamin B5. Apply on damp skin."},
-  {id:4, brand:"The Ordinary", price:5.700, cat:"عناية", em:"🧴", c1:"#fff3e0", c2:"#ffe0b8",
-    barcode:"",
-    img:"https://darbeauty.com/cdn/shop/products/aordynary-mkshr-ahmad-alfoakh-aha-30-bha-2-aha-30-bha-2-peeling-solution-447609.jpg?width=800",
-    nameAr:"مقشر AHA 30% + BHA 2% — 30مل",
-    nameEn:"AHA 30% + BHA 2% Peeling — 30ml",
-    descAr:"مقشر قوي يُستخدم مساءً فقط، ليس يومياً، ومع واقي شمس في الصباح. ليس للبشرة الحساسة.",
-    descEn:"Strong peel for evening use only, not daily, with sunscreen the next morning. Not for sensitive skin."},
-  {id:5, brand:"COSRX", price:6.800, cat:"عناية", em:"🐌", c1:"#e8f8f0", c2:"#c8eed8",
-    barcode:"8809416470009",
-    img:"https://darbeauty.com/cdn/shop/files/cosrx-advanced-snail-96-mucin-power-essence_darbeauty.webp?width=800",
-    nameAr:"إيسنس موسين الحلزون 96% — 100مل",
-    nameEn:"Advanced Snail 96 Mucin Essence — 100ml",
-    descAr:"إيسنس ترطيب وإصلاح بموسين الحلزون 96%. خفيف ويوضع قبل الكريم.",
-    descEn:"Hydrating repair essence with 96% snail mucin. Lightweight, used before cream."},
-  {id:6, brand:"Medicube", price:6.300, cat:"عناية", em:"💗", c1:"#fce8f0", c2:"#f5d0e0",
-    barcode:"8800256119134",
-    img:"https://darbeauty.com/cdn/shop/files/medicube-txa-niacinamide-serum_8800256119134_DarBeauty.webp?width=800",
-    nameAr:"سيروم TXA + نياسيناميد — 30مل",
-    nameEn:"TXA Niacinamide Serum — 30ml",
-    descAr:"لتصحيح البقع وآثار الحبوب مع ترطيب. تركيبة خفيفة بلا عطر.",
-    descEn:"Dark-spot and acne-mark serum with hydration. Lightweight and fragrance-free."},
-  {id:7, brand:"Dr. Althea", price:7.300, cat:"عناية", em:"🤍", c1:"#f8f4f0", c2:"#ebe4dc",
-    barcode:"8809447256221",
-    img:"https://darbeauty.com/cdn/shop/files/dr-althea-345-relief-cream_DarBeauty.webp?width=800",
-    nameAr:"كريم 345 ريليف — 50مل",
-    nameEn:"345 Relief Cream — 50ml",
-    descAr:"كريم مهدّئ ومرطّب للبشرة المتهيجة. يُستخدم كخطوة أخيرة في الروتين.",
-    descEn:"Soothing moisturizer for irritated skin. Use as the last step of the routine."},
-  {id:8, brand:"Bioderma", price:5.300, cat:"عناية", em:"🫧", c1:"#e8f4ff", c2:"#d0e8ff",
-    barcode:"3701129800232",
-    img:"",
-    nameAr:"ماء ميسيلار هيدرابيو — 500مل",
-    nameEn:"Hydrabio Micellar Water — 500ml",
-    descAr:"ماء ميسيلار لتنظيف البشرة الجافة وترطيبها من غير شطف.",
-    descEn:"Micellar water that cleanses dry skin without rinsing."},
-  {id:9, brand:"Purito", price:5.300, cat:"عناية", em:"🍊", c1:"#fff3d6", c2:"#ffe8b0",
-    barcode:"8809563100729",
-    img:"https://darbeauty.com/cdn/shop/files/purito-pure-vitamin-c-serum_8809563100729_DarBeauty.webp?width=800",
-    nameAr:"سيروم فيتامين سي نقي — 60مل",
-    nameEn:"Pure Vitamin C Serum — 60ml",
-    descAr:"سيروم إشراق للبهتان والبقع. يُستخدم صباحاً مع واقي شمس.",
-    descEn:"Brightening serum for dullness and spots. Use in the morning with sunscreen."},
-  {id:10, brand:"Anua", price:7.900, cat:"عناية", em:"🌿", c1:"#e8f8f0", c2:"#c8eed8",
-    barcode:"8809640734519",
-    img:"https://darbeauty.com/cdn/shop/files/anua-bha-2-gentle-exfoliating-toner_8809640734519_DarBeauty.webp?width=800",
-    nameAr:"تونر BHA 2% لطيف — 150مل",
-    nameEn:"BHA 2% Gentle Toner — 150ml",
-    descAr:"تونر تقشير لطيف للمسام. ليس يومياً إذا بشرتك جافة.",
-    descEn:"Gentle pore-exfoliating toner. Not every day if your skin is dry."},
-  {id:11, brand:"SHEGLAM", price:4.500, cat:"مكياج", em:"🎨", c1:"#f5e6d8", c2:"#e8d0b8",
-    barcode:"6971053498349",
-    img:"",
-    nameAr:"فاونديشن كمبلكشن برو — وورم فانيلا",
-    nameEn:"Complexion Pro Foundation — Warm Vanilla",
-    descAr:"فاونديشن مطفي طويل الثبات بدرجة وورم فانيلا. الرقم من بطاقة المنتج في كابي.",
-    descEn:"Long-wear matte foundation in Warm Vanilla. Code taken from the Kapy product card."},
-  {id:12, brand:"Note", price:5.400, cat:"مكياج", em:"🧴", c1:"#f0e4d8", c2:"#e0d0c0",
-    barcode:"", img:"",
-    nameAr:"فاونديشن ديتوكس آند بروتكت — 35مل",
-    nameEn:"Detox and Protect Foundation — 35ml",
-    descAr:"كريم أساس بتغطية يومية. الباركود غير منشور على الصفحة التي راجعناها.",
-    descEn:"Everyday foundation. Barcode was not published on the page we checked."},
-  {id:13, brand:"SHEGLAM", price:3.000, cat:"مكياج", em:"💨", c1:"#fde4e8", c2:"#f8c8d0",
-    barcode:"", img:"",
-    nameAr:"بودرة تثبيت هيدرو تاتش — بيبي بينك",
-    nameEn:"Hydro Touch Setting Powder — Baby Pink",
-    descAr:"بودرة تثبيت خفيفة بدرجة بيبي بينك. الباركود غير مؤكد.",
-    descEn:"Light setting powder in Baby Pink. Barcode not confirmed."},
-  {id:14, brand:"SHEGLAM", price:2.380, cat:"مكياج", em:"🌸", c1:"#fde4e8", c2:"#f8c0d0",
-    barcode:"", img:"",
-    nameAr:"بلاشر سائل كلر بلوم — هوت توبيك",
-    nameEn:"Color Bloom Liquid Blush — Hot Topic",
-    descAr:"بلاشر سائل بدرجة هوت توبيك. يوضع على الخدود ويُدمج بالأصبع أو الإسفنجة.",
-    descEn:"Liquid blush in Hot Topic. Blend on the cheeks with a finger or sponge."},
-  {id:15, brand:"Revolution", price:5.950, cat:"مكياج", em:"💜", c1:"#ede4f5", c2:"#dcc8f0",
-    barcode:"", img:"",
-    nameAr:"بلاشر بلش موف — 14جم",
-    nameEn:"Blush Mauve — 14g",
-    descAr:"بلاشر بودرة بدرجة موف. الباركود غير منشور في المصدر.",
-    descEn:"Powder blush in mauve. Barcode was not listed at the source."},
-  {id:16, brand:"SHEGLAM", price:2.100, cat:"عيون", em:"👁️", c1:"#e8e8ec", c2:"#d0d0d8",
-    barcode:"6971053497229",
-    img:"",
-    nameAr:"ماسكارا بيج تايم فوليوم — أسود",
-    nameEn:"Big Time Volumizing Mascara — Black",
-    descAr:"ماسكارا تكثيف سوداء. الباركود من صفحة كابي: 6971053497229.",
-    descEn:"Black volumizing mascara. Barcode from the Kapy page: 6971053497229."},
-  {id:17, brand:"SHEGLAM", price:2.350, cat:"عيون", em:"🖤", c1:"#ececf0", c2:"#d8d8e0",
-    barcode:"6978931640524",
-    img:"https://img.zid.store/img/w=800,h=800,q=80,fit=pad,background=white/https://media.zid.store/096f2fd9-37b8-4fce-a267-52e4b6f541e1/d05da3b6-3ef3-40c9-bf0f-07658aa9165d.jpg",
-    nameAr:"ماسكارا لاشلايتر مقاومة للماء — 8مل",
-    nameEn:"Lash Lighter Waterproof Mascara — 8ml",
-    descAr:"ماسكارا تطويل وتكثيف مقاومة للماء، 8 مل، بزيت الخروع والبانثينول.",
-    descEn:"Lengthening waterproof mascara, 8ml, with castor oil and panthenol."},
-  {id:18, brand:"SHEGLAM", price:2.100, cat:"عيون", em:"✏️", c1:"#e8e8ec", c2:"#d0d0d8",
-    barcode:"6958697900520",
-    img:"https://img.zid.store/img/w=800,h=800,q=80,fit=pad,background=white/https://media.zid.store/096f2fd9-37b8-4fce-a267-52e4b6f541e1/478c446f-92c1-46ff-a461-7e17711f7d80.jpg",
-    nameAr:"آيلاينر سائل لاين آند ديفاين — أسود",
-    nameEn:"Line and Define Liquid Eyeliner — Black",
-    descAr:"محدد عيون سائل أسود مقاوم للماء بطرف دقيق.",
-    descEn:"Black waterproof liquid eyeliner with a fine tip."},
-  {id:19, brand:"essence", price:1.580, cat:"عيون", em:"👀", c1:"#f0f0f4", c2:"#e0e0e8",
-    barcode:"", img:"",
-    nameAr:"ماسكارا آي لوف إكستريم مقاومة للماء",
-    nameEn:"I Love Extreme Waterproof Mascara",
-    descAr:"ماسكارا essence مقاومة للماء للتكثيف. الباركود غير منشور.",
-    descEn:"essence waterproof volumizing mascara. Barcode not published."},
-  {id:20, brand:"essence", price:1.480, cat:"عيون", em:"🖊️", c1:"#ececf0", c2:"#d8d8e0",
-    barcode:"", img:"",
-    nameAr:"محدد عيون سائل مقاوم للماء — أسود",
-    nameEn:"Waterproof Liquid Eyeliner — Black",
-    descAr:"محدد عيون سائل أسود من essence. الباركود غير منشور.",
-    descEn:"Black liquid eyeliner by essence. Barcode not published."},
-  {id:21, brand:"SHEGLAM", price:1.600, cat:"عيون", em:"✍️", c1:"#e8ddd0", c2:"#d4c4b0",
-    barcode:"", img:"",
-    nameAr:"قلم حواجب 2 في 1 — توب",
-    nameEn:"2-in-1 Brow Pencil — Taupe",
-    descAr:"قلم حواجب مقاوم للماء بدرجة توب، مع طرف ثاني. الباركود غير مؤكد.",
-    descEn:"Waterproof taupe brow pencil with a second tip. Barcode not confirmed."},
-  {id:22, brand:"Maybelline", price:2.250, cat:"شفاه", em:"👄", c1:"#fde4e8", c2:"#f8c8d0",
-    barcode:"", img:"",
-    nameAr:"بيبي ليبس — بينك بانش",
-    nameEn:"Baby Lips — Pink Punch",
-    descAr:"مرطب شفاه ملون بدرجة بينك بانش. الباركود غير منشور في المصدر.",
-    descEn:"Tinted lip balm in Pink Punch. Barcode not listed at the source."},
-  {id:23, brand:"L'Oréal", price:2.500, cat:"شفاه", em:"💋", c1:"#f8d0d8", c2:"#f0a8b8",
-    barcode:"", img:"",
-    nameAr:"أحمر شفاه ساتان — ريدز أوف وورث",
-    nameEn:"Satin Lipstick — Reds of Worth",
-    descAr:"روج ساتان بدرجة حمراء. الباركود غير منشور.",
-    descEn:"Satin lipstick in a red shade. Barcode not published."},
-  {id:24, brand:"SHEGLAM", price:2.100, cat:"أدوات", em:"🧼", c1:"#e8f4ff", c2:"#d0e8ff",
-    barcode:"6971053495270",
-    img:"https://media.zid.store/096f2fd9-37b8-4fce-a267-52e4b6f541e1/66a7eb7b-b0e9-4c71-87b8-756dffff9dc4.jpg",
-    nameAr:"مزيل ماسكارا كلين كوين",
-    nameEn:"Clean Queen Mascara Remover",
-    descAr:"يزيل الماسكارا من غير فرك قوي. الباركود 6971053495270.",
-    descEn:"Removes mascara without hard rubbing. Barcode 6971053495270."}
-];
-/* ============================================ */
+const products  = (window.NAQA_PRODUCTS || []).map(p => Object.assign({imgs:[]}, p));
 
 const $ = s => document.querySelector(s);
-const money = n => lang === "en" ? (n.toFixed(3) + " OMR") : (n.toFixed(3) + " " + CURRENCY);
 let lang = "ar";
-try { lang = localStorage.getItem("naqa_lang") || "ar"; } catch (e) { lang = "ar"; }
+try { lang = localStorage.getItem("naqa_lang") || "ar"; } catch (e) {}
+
 const ui = {
-  ar: { search:"ابحثي عن منتج أو ماركة...", all:"الكل", care:"عناية", face:"مكياج", eyes:"عيون", lips:"شفاه", scent:"عطور", tools:"أدوات",
-    shop:"تسوّقي الآن", wa:"واتساب نقاء", products:"المنتجات", count:n=>n+" منتج", empty:"ما في نتائج — جرّبي بحث أو تصنيف ثاني.",
-    cart:"السلة", emptyCart:"السلة فاضية<br/>أضيفي منتجات من المتجر", total:"المجموع", checkout:"إتمام الطلب عبر واتساب",
-    add:"أضيفي للسلة", more:"التفاصيل والباركود", del:"حذف", close:"إغلاق", noCode:"الباركود غير منشور في المصدر", heroTitle:"نقاء — ", heroEm:"عناية ومكياج",
-    hero:"منتجات أصلية للبشرة والمكياج. افتحي المنتج للوصف وطريقة الاستعمال، ثم أضيفيه للسلة وأكملي الطلب بواتساب. الأسعار بالريال من السوق العُماني في 21 نوفمبر 2026.", ship:"توصيل عُمان", order:"طلب واتساب", contact:"تواصلي", shopH:"التسوق", orders:"واتساب الطلبات", skin:"عناية البشرة", scentL:"عطور", faceL:"مكياج", blurb:"عناية ومكياج · متجر عُماني", copy:"نقاء · Naqa · عُمان — جميع الحقوق محفوظة", about:"عن المنتج", how:"طريقة الاستعمال", also:"قد يعجبكِ أيضاً", back:"رجوع للمتجر",
-    alertEmpty:"السلة فاضية", greet:"السلام عليكم، أبغى أطلب من نقاء" },
-  en: { search:"Search a product or brand...", all:"All", care:"Skincare", face:"Makeup", eyes:"Eyes", lips:"Lips", scent:"Fragrance", tools:"Tools",
-    shop:"Shop now", wa:"WhatsApp Naqa", products:"Products", count:n=>n+" products", empty:"No results. Try another search or category.",
-    cart:"Cart", emptyCart:"Your cart is empty<br/>Add products from the shop", total:"Total", checkout:"Checkout on WhatsApp",
-    add:"Add to cart", more:"Details and barcode", del:"Remove", close:"Close", noCode:"Barcode not published at the source", heroTitle:"Naqa — ", heroEm:"Care & Makeup",
-    hero:"Original skincare and makeup. Open a product for the full description and how to use it, then add it to the cart and send the WhatsApp order. Prices in Omani rial from the local market on 21 Nov 2026.", ship:"Oman delivery", order:"WhatsApp order", contact:"Contact", shopH:"Shop", orders:"Order on WhatsApp", skin:"Skincare", scentL:"Fragrance", faceL:"Makeup", blurb:"Care and makeup · Oman store", copy:"Naqa · Oman — all rights reserved", about:"About", how:"How to use", also:"You may also like", back:"Back to shop",
-    alertEmpty:"Cart is empty", greet:"Hello, I want to order from Naqa" }
-};
-const catLabel = { "all":"all", "عناية":"care", "مكياج":"face", "عيون":"eyes", "شفاه":"lips", "عطور":"scent", "أدوات":"tools" };
-function T(k){ return ui[lang][k]; }
-function pname(p){ return lang==="en" ? p.nameEn : p.nameAr; }
-function pdesc(p){ return lang==="en" ? p.descEn : p.descAr; }
-
-
-const guide = {
-1:{ar:"سيروم كوري بتركيز 10٪ نياسيناميد و4٪ ترانيكساميك أسيد. يساعد على بهتان البقع الداكنة وآثار الحبوب وتوحيد اللون من غير طبقة ثقيلة. مناسب للبشرة المختلطة والدهنية والحساسة إذا ما فيه تهيج.",
-   en:"A Korean serum with 10% niacinamide and 4% tranexamic acid. It fades the look of dark spots and acne marks and evens tone without a heavy film. Fine for combination, oily, and sensitive skin if it is not irritated.",
-   howAr:"بعد الغسول والتونر، حطي نقطتين أو ثلاث على الوجه والرقبة صباحاً ومساءً. انتظري دقيقة، ثم مرطب. الصباح لازم واقي شمس. لا تجمعينه مع مقشر قوي في نفس الليلة.",
-   howEn:"After cleanser and toner, apply two or three drops on the face and neck morning and night. Wait a minute, then moisturizer. Sunscreen is required in the morning. Do not combine it with a strong peel the same night."},
-2:{ar:"سيروم The Ordinary الكلاسيكي للمسام والإفرازات. النياسيناميد يهدّي لمعان البشرة والزنك يدعم توازنها. قوام مائي يصلح تحت المكياج.",
-   en:"The Ordinary’s classic pore and oil serum. Niacinamide softens shine and zinc supports balance. A watery texture that sits under makeup.",
-   howAr:"على بشرة نظيفة، صباحاً ومساءً، قبل المرطب. إذا بشرتك جديدة على النياسيناميد ابدئي يوماً بعد يوم. أوقفيه إذا ظهر احمرار.",
-   howEn:"On clean skin, morning and night, before moisturizer. If niacinamide is new for you, start every other day. Stop if redness appears."},
-3:{ar:"سيروم ترطيب بعدة أوزان من حمض الهيالورونيك مع فيتامين B5. يسحب الماء للبشرة ويعطي امتلاء خفيف، وهو ما يثبت الترطيب إذا ختمتيه بكريم.",
-   en:"A hydrating serum with several weights of hyaluronic acid plus vitamin B5. It draws water into the skin for a light plump look, and it lasts if you seal it with cream.",
-   howAr:"رشي وجهك بماء أو حطي السيروم على بشرة رطبة، ثم فوراً مرطب حتى ما يتبخر الماء. صباحاً ومساءً. مناسب تحت المكياج.",
-   howEn:"Mist your face or apply the serum on damp skin, then immediately seal it with moisturizer so the water does not evaporate. Morning and night. Works under makeup."},
-4:{ar:"مقشر حمضي عالي التركيز، مو مرطب يومي. يقشر الطبقة السطحية فيساعد على الملمس والبهتان، لكنه يهيّج البشرة إذا انستخدم كثير أو مع ريتينول.",
-   en:"A high-strength acid peel, not a daily moisturizer. It resurfaces texture and dullness, but it irritates skin if used too often or with retinol.",
-   howAr:"مساءً مرة في الأسبوع فقط، على بشرة جافة ونظيفة. طبقة رقيقة 8 إلى 10 دقائق ثم اشطفيه. مرطب بعدها. اليوم التالي واقي شمس، ومن غير أحماض أو ريتينول تلك الليلة. اختبريه خلف الأذن أولاً. غير مناسب للبشرة الحساسة أو المجروحة.",
-   howEn:"Evening, once a week only, on dry clean skin. A thin layer for 8 to 10 minutes, then rinse. Moisturizer after. Sunscreen the next day, and no acids or retinol that night. Patch-test behind the ear first. Not for sensitive or broken skin."},
-5:{ar:"إيسنس كوري فيه 96٪ إفراز الحلزون. يرطب ويهدّي ويلمّع البشرة من غير عطر ثقيل. خطوة وسط بين التونر والكريم.",
-   en:"A Korean essence with 96% snail secretion filtrate. It hydrates, calms, and adds a soft glow without a heavy scent. It sits between toner and cream.",
-   howAr:"بعد التونر، كمية على راحة اليد وربّتيها على الوجه حتى تمتص. ثم كريم. صباحاً ومساءً. يصلح قبل المكياج لأنه خفيف.",
-   howEn:"After toner, take some in the palm and pat it on until it absorbs. Then cream. Morning and night. Light enough before makeup."},
-6:{ar:"سيروم Medicube للبقع وآثار الحبوب: ترانيكساميك أسيد مع نياسيناميد وترطيب خفيف. من غير عطر، فيصلح للبشرة اللي تتضايق من الروائح.",
-   en:"Medicube serum for spots and acne marks: tranexamic acid with niacinamide and light hydration. Fragrance-free, so it suits skin that reacts to scent.",
-   howAr:"نقطتين صباحاً ومساءً على كامل الوجه، مع تركيز خفيف على البقعة. مرطب بعده، وواقي شمس بالنهار. النتيجة تحتاج أسابيع مو ليلة واحدة.",
-   howEn:"Two drops morning and night over the face, with a little extra on the spot. Moisturizer after, sunscreen in the daytime. Results take weeks, not one night."},
-7:{ar:"كريم مهدّئ للبشرة المرهقة أو المحمرة بعد الأحماض. قوام كريم خفيف يقفل الروتين ويعطي راحة، مو سيروم فعال.",
-   en:"A calming cream for tired or red skin after acids. A light cream texture that closes the routine and comforts the skin. It is not an active serum.",
-   howAr:"آخر خطوة صباحاً ومساءً، فوق السيروم. كمية حبة بازيلاء للوجه. إذا بتطلعين، حطي واقي شمس فوقه.",
-   howEn:"Last step morning and night, over serum. A pea-sized amount for the face. If you go out, put sunscreen on top."},
-8:{ar:"ماء ميسيلار من خط هيدرابيو للبشرة الجافة. يفك المكياج والأوساخ من غير شطف ويترك لمسة ترطيب، ومو بديل عن الغسول إذا بشرتك دهنية.",
-   en:"Micellar water from the Hydrabio line for dry skin. It lifts makeup and dirt without rinsing and leaves a hydrated feel. It is not a replacement for a cleanser if your skin is oily.",
-   howAr:"قطعة قطن مبللة، امسحي الوجه والعيون بلطف من غير فرك، صباحاً ومساءً. لا تشطفين. بعدها سيروم ومرطب. للماسكارا المقاومة للماء استخدمي مزيل مخصص.",
-   howEn:"On a cotton pad, wipe the face and eyes gently without rubbing, morning and night. Do not rinse. Then serum and moisturizer. For waterproof mascara use a dedicated remover."},
-9:{ar:"سيروم فيتامين سي من بيوريتو للإشراق والبهتان. يُستعمل بالنهار لأن الضوء هو وقت البقع، ودائماً مع واقي شمس وإلا الأثر ينعكس.",
-   en:"Purito vitamin C serum for brightness and dullness. Use it in the daytime, when spots are made, and always with sunscreen or the effect can reverse.",
-   howAr:"صباحاً بعد التنظيف، 3 إلى 4 قطرات، ثم مرطب ثم واقي شمس. احفظيه بعيداً عن الشمس والحرارة. إذا لسع قوي خففي إلى يوم بعد يوم.",
-   howEn:"In the morning after cleansing, 3 to 4 drops, then moisturizer, then sunscreen. Keep it away from sun and heat. If it stings, drop to every other day."},
-10:{ar:"تونر BHA 2٪ من أنوا لتنظيف المسام والرؤوس السوداء بلطف. حمض الساليسيليك يذوب الدهون داخل المسام، فالاستخدام اليومي يجرّف البشرة إذا هي جافة.",
-   en:"Anua’s 2% BHA toner for pores and blackheads. Salicylic acid dissolves oil inside the pore, so daily use strips skin that is already dry.",
-   howAr:"مساءً، مرتين أو ثلاث في الأسبوع، بعد الغسول وعلى بشرة جافة. قطنة أو اليد، وتجنبي العين. بعدها سيروم مرطب وكريم. الصباح واقي شمس. أوقفيه مع التقشير القوي.",
-   howEn:"At night, two or three times a week, after cleansing on dry skin. Cotton or hands, and avoid the eyes. Then a hydrating serum and cream. Sunscreen in the morning. Pause it when you use a strong peel."},
-11:{ar:"فاونديشن شيغلام كمبلكشن برو بدرجة وورم فانيلا، مطفي ويتحمل الجو. التغطية تُبنى على طبقات، والدرجة دافية تناسب بشرة متوسطة دافية.",
-   en:"SHEGLAM Complexion Pro foundation in Warm Vanilla. Matte and made for heat. Coverage builds in layers, and the shade is warm for a medium-warm complexion.",
-   howAr:"مرطب وواقي شمس أولاً، ثم نقطة في وسط الوجه ووزّعيها بإسفنجة رطبة أو فرشاة. طبقة ثانية فقط على الاحمرار. ثبّتيه ببودرة خفيفة إذا بشرتك دهنية.",
-   howEn:"Moisturizer and sunscreen first, then a dot in the center of the face and blend with a damp sponge or brush. A second layer only on redness. Set lightly with powder if your skin is oily."},
-12:{ar:"كريم أساس نوت ديتوكس آند بروتكت، 35 مل، للاستخدام اليومي بتغطية متوسطة. اسمه يعني حماية، بس واقي الشمس المستقل يبقى ضروري.",
-   en:"Note Detox and Protect foundation, 35ml, for everyday medium coverage. The name says protect, but a separate sunscreen is still necessary.",
-   howAr:"بعد العناية، كمية صغيرة ودمجيها للخارج. لا تسحبينه على بشرة ناشفة. ثبّتي منطقة الجبهة والأنف إذا الجو حار.",
-   howEn:"After skincare, use a small amount and blend outward. Do not drag it on dry skin. Set the forehead and nose if the weather is hot."},
-13:{ar:"بودرة تثبيت هيدرو تاتش بيبي بينك. تلطف اللمعان وتعطي لمسة وردية خفيفة جداً، مو بلاشر.",
-   en:"Hydro Touch setting powder in Baby Pink. It knocks back shine and leaves a very faint pink cast. It is not a blush.",
-   howAr:"بعد ما ينشف الفاونديشن، اضغطي البودرة بإسفنجة على الجبهة والأنف والذقن. لا تفركين. للعين استخدمي فرشاة نظيفة تحت العين فقط.",
-   howEn:"After foundation dries, press the powder on with a sponge over the forehead, nose, and chin. Do not rub. For the eye, use a clean brush under the eye only."},
-14:{ar:"بلاشر سائل شيغلام كلر بلوم بدرجة هوت توبيك. لون واضح يندمج ويجلس فوق الفاونديشن من غير بقع إذا حطيتيه نقطة نقطة.",
-   en:"SHEGLAM Color Bloom liquid blush in Hot Topic. A clear color that melts into foundation without patches if you place it dot by dot.",
-   howAr:"نقطة صغيرة على تفاحة الخد، ودّمجيها للأعلى باتجاه الصدغ بالإصبع أو الإسفنجة. زيدي نقطة ثانية إذا تبين أوضح. يأتي بعد الفاونديشن وقبل البودرة أو فوقها بكمية أقل.",
-   howEn:"A small dot on the apple of the cheek, blended upward toward the temple with a finger or sponge. Add a second dot if you want it stronger. It goes after foundation, before powder, or in a smaller amount on top of powder."},
-15:{ar:"بلاشر بودرة ريفوليوشن بلش موف، 14 جم. درجة بنفسجية ناعمة ترفع الوجه، وتحتاج فرشاة منفوشة عشان ما يخطط.",
-   en:"Revolution Blush Mauve powder, 14g. A soft mauve that lifts the face, and it needs a fluffy brush so it does not go on in stripes.",
-   howAr:"انفضي الفرشاة، ثم مررة خفيفة على البودرة، واكنسي من الخد باتجاه الأذن. ابدئي بأقل مما تظنين. يأتي بعد البودرة.",
-   howEn:"Tap the brush, then a light pass through the powder, and sweep from the cheek toward the ear. Start with less than you think. It goes on after powder."},
-16:{ar:"ماسكارا شيغلام بيج تايم للتكثيف، لون أسود. الفرشاة تملأ الرمش من الجذر. مو مقاومة للماء، فأسهل بالإزالة.",
-   en:"SHEGLAM Big Time volumizing mascara in black. The brush fills the lash from the root. It is not waterproof, so it is easier to remove.",
-   howAr:"مشّطي الرموش بفرشاة حواجب أولاً. من الجذر إلى الطرف بحركة زجزاج، طبقة واحدة. الطبقة الثانية بعد ما تنشف الأولى. أزيليها بمزيل عيون، مو بفرك.",
-   howEn:"Comb the lashes with a spoolie first. Zigzag from root to tip, one coat. A second coat after the first dries. Remove it with an eye remover, not by rubbing."},
-17:{ar:"ماسكارا لاشلايتر المقاومة للماء، 8 مل، مع زيت خروع وبانثينول. تثبت مع الرطوبة والدموع، وتحتاج مزيل مخصص مو ماء.",
-   en:"Lash Lighter waterproof mascara, 8ml, with castor oil and panthenol. It holds through humidity and tears, and it needs a real remover, not water.",
-   howAr:"طبقة رقيقة من الجذور. لا تعيدين الفرشاة داخل الأنبوب وهي مبلولة. للإزالة: قطنة عليها مزيل كلين كوين، اضغطي عشر ثوانٍ ثم امسحي للأسفل.",
-   howEn:"A thin coat from the roots. Do not pump the wet wand back into the tube. To remove: a cotton pad with Clean Queen remover, press for ten seconds, then wipe downward."},
-18:{ar:"آيلاينر سائل شيغلام لاين آند ديفاين، أسود ومقاوم للماء، بطرف رفيع يرسم خطاً حاداً أو رفع بسيط عند الذيل.",
-   en:"SHEGLAM Line and Define liquid eyeliner, black and waterproof, with a fine tip for a sharp line or a small wing.",
-   howAr:"ثبّتي كوعك. من منتصف الجفن إلى الخارج، ثم املئي الفراغ قرب الرمش. انتظري عشر ثوانٍ قبل الماسكارا. إذا غلط، عود قطن مع مزيل عيون.",
-   howEn:"Rest your elbow. Draw from the middle of the lid outward, then fill the gap near the lashes. Wait ten seconds before mascara. If you slip, use a cotton swab with eye remover."},
-19:{ar:"ماسكارا essence آي لوف إكستريم المقاومة للماء. تكثيف واضح بسعر يومي، والفرشاة كبيرة فتحتاج يد أخف قرب الزاوية الداخلية.",
-   en:"essence I Love Extreme waterproof mascara. Clear volume at an everyday price. The brush is large, so use a lighter hand near the inner corner.",
-   howAr:"امسحي الزائد على فوهة الأنبوب. طبقة واحدة، والزاوية الداخلية بطرف الفرشاة فقط. الإزالة بمزيل عيون مقاوم للماء.",
-   howEn:"Wipe the extra on the tube neck. One coat, and only the tip of the wand at the inner corner. Remove with a waterproof eye remover."},
-20:{ar:"محدد عيون سائل أسود من essence، مقاوم للماء، للخط الرفيع اليومي.",
-   en:"A black liquid eyeliner from essence, waterproof, for a thin everyday line.",
-   howAr:"ارسمي فوق الرموش العلوية من الداخل للخارج. للخط الرفيع خففي الضغط. جففيه قبل ما ترمشين. التصحيح بعود قطن.",
-   howEn:"Draw along the upper lashes from the inner corner out. For a thin line, use less pressure. Let it dry before you blink. Correct with a cotton swab."},
-21:{ar:"قلم حواجب شيغلام 2 في 1 بدرجة توب، مقاومة للماء. طرف يملأ الفراغات وطرف ثاني يمشّط الشعر حتى يبان طبيعي.",
-   en:"SHEGLAM 2-in-1 brow pencil in taupe, waterproof. One tip fills gaps and the other combs the hairs so it stays natural.",
-   howAr:"مشّطي الحاجب أولاً. خطوط قصيرة باتجاه الشعر، مو خط واحد سميك. امشطي مرة ثانية. ابدئي بالذيل لأنه أغمق طبيعياً.",
-   howEn:"Comb the brow first. Short strokes in the direction of the hair, not one thick line. Comb again. Start at the tail, which is naturally darker."},
-22:{ar:"بيبي ليبس ميبيلين بدرجة بينك بانش. مرطب شفاه ملون خفيف، يصلح وحده أو تحت الروج عشان ما يخط الشفايف.",
-   en:"Maybelline Baby Lips in Pink Punch. A lightly tinted balm. Wear it alone or under lipstick so the lips do not crack.",
-   howAr:"على شفاه نظيفة، مرّريه من الوسط للزوايا. أعيدي كل ما حسّيتي بجفاف. مو علاج تشقق شديد؛ إذا الشفة مجروحة استخدمي مرهم ليلاً.",
-   howEn:"On clean lips, glide from the center to the corners. Reapply when they feel dry. It is not a treatment for deep cracks; if the lip is broken, use an ointment at night."},
-23:{ar:"روج ساتان لوريال من خط ريدز أوف وورث. لون أحمر بلمعة خفيفة، تغطية متوسطة، ويثبت أحسن على شفة مقشرة ومرطبة.",
-   en:"L’Oréal satin lipstick from Reds of Worth. A red with a soft shine, medium coverage, and it holds better on a smooth, balmed lip.",
-   howAr:"مرطب خفيف وانتظري دقيقة وامسحي الزائد. الروج من القوس للخارج. منديل يضغط مرة ثم طبقة ثانية. للحدود الدقيقة استخدمي فرشاة.",
-   howEn:"A light balm, wait a minute, and blot the extra. Lipstick from the cupid’s bow outward. Press a tissue once, then a second coat. For a sharp edge use a brush."},
-24:{ar:"مزيل ماسكارا شيغلام كلين كوين. يفك الماسكارا العادية والمقاومة للماء من غير سحب الرمش. هذا المنتج نفسه باركوده منشور: 6971053495270.",
-   en:"SHEGLAM Clean Queen mascara remover. It loosens regular and waterproof mascara without pulling the lash. This product’s published barcode is 6971053495270.",
-   howAr:"قطنة مشبعة، أغلقي العين، اضغطي على الرمش 10 ثوانٍ، ثم امسحي للأسفل بلطف. كرري إذا بقي لون. بعدها اغسلي الوجه. لا تفركين.",
-   howEn:"A soaked cotton pad, eyes closed, press on the lashes for 10 seconds, then wipe downward gently. Repeat if color remains. Then wash the face. Do not rub."}
-};
-function pabout(p){ const g = guide[p.id]; return lang==="en" ? g.en : g.ar; }
-function phow(p){ const g = guide[p.id]; return lang==="en" ? g.howEn : g.howAr; }
-function eanSvg(code){
-  const digits = String(code).replace(/\D/g,"");
-  if (digits.length !== 12 && digits.length !== 13) return "";
-  const d = digits.length === 12 ? ("0"+digits) : digits;
-  const L = ["0001101","0011001","0010011","0111101","0100011","0110001","0101111","0111011","0110111","0001011"];
-  const G = ["0100111","0110011","0011011","0100001","0011101","0111001","0000101","0010001","0001001","0010111"];
-  const R = ["1110010","1100110","1101100","1000010","1011100","1001110","1010000","1000100","1001000","1110100"];
-  const par = ["LLLLLL","LLGLGG","LLGGLG","LLGGGL","LGLLGG","LGGLLG","LGGGLL","LGLGLG","LGLGGL","LGGLGL"];
-  const ptn = par[+d[0]];
-  let bits = "101";
-  for (let i=1;i<=6;i++) bits += (ptn[i-1]==="L" ? L : G)[+d[i]];
-  bits += "01010";
-  for (let i=7;i<=12;i++) bits += R[+d[i]];
-  bits += "101";
-  const bars = [];
-  for (let i=0;i<bits.length;i++){
-    if (bits[i]==="1") bars.push('<rect x="'+i+'" y="0" width="1" height="50" fill="#1f1a17"/>');
+  ar: {
+    search:"ابحثي عن منتج أو ماركة أو SKU...",
+    all:"الكل", care:"عناية", face:"مكياج", eyes:"عيون", lips:"شفاه", scent:"عطور", tools:"أدوات", hair:"شعر",
+    shop:"تسوّقي الآن", wa:"واتساب نقاء", products:"المنتجات",
+    count:n => n + " منتج", empty:"ما في نتائج — جرّبي بحث أو تصنيف ثاني.",
+    cart:"السلة", emptyCart:"السلة فاضية<br/>أضيفي منتجات من المتجر", total:"المجموع",
+    checkout:"إتمام الطلب عبر واتساب", add:"أضيفي للسلة", more:"افتحي المنتج", del:"حذف",
+    noSku:"SKU غير متوفر", heroTitle:"نقاء — ", heroEm:"عناية ومكياج",
+    hero:"مكتبة واسعة للتجربة: عناية، مكياج، عيون، شفاه، عطور، أدوات، وشعر. اضغطي على المنتج لتشوفي ٤ صور على الأقل، وصف يشرح الإحساس، طريقة الاستعمال، ونوع البشرة أو الشعر المناسب. الطلب يوصل واتساب جاهز.",
+    alertEmpty:"السلة فاضية", greet:"السلام عليكم، أبغى أطلب من نقاء",
+    ship:"توصيل عُمان", order:"طلب واتساب", contact:"تواصلي", shopH:"التسوق",
+    orders:"واتساب الطلبات", skin:"عناية البشرة", scentL:"عطور", faceL:"مكياج", hairL:"شعر",
+    blurb:"عناية ومكياج · متجر عُماني", copy:"نقاء · Naqa · عُمان — جميع الحقوق محفوظة",
+    about:"عن المنتج", how:"طريقة الاستعمال", skinT:"يناسب", also:"قد يعجبكِ أيضاً",
+    back:"رجوع للمتجر", sku:"SKU", logo:"نقاء", tag:"عناية ومكياج"
+  },
+  en: {
+    search:"Search product, brand, or SKU...",
+    all:"All", care:"Skincare", face:"Makeup", eyes:"Eyes", lips:"Lips", scent:"Fragrance", tools:"Tools", hair:"Hair",
+    shop:"Shop now", wa:"WhatsApp Naqa", products:"Products",
+    count:n => n + " products", empty:"No results. Try another search or category.",
+    cart:"Cart", emptyCart:"Your cart is empty<br/>Add products from the shop", total:"Total",
+    checkout:"Checkout on WhatsApp", add:"Add to cart", more:"Open product", del:"Remove",
+    noSku:"SKU unavailable", heroTitle:"Naqa — ", heroEm:"Care & Makeup",
+    hero:"A wide try-out catalog: skincare, makeup, eyes, lips, fragrance, tools, and hair. Open a product for at least four photos, a description that sells the feel, how to use it, and which skin or hair it suits. Checkout is a ready WhatsApp message.",
+    alertEmpty:"Cart is empty", greet:"Hello, I want to order from Naqa",
+    ship:"Oman delivery", order:"WhatsApp order", contact:"Contact", shopH:"Shop",
+    orders:"Order on WhatsApp", skin:"Skincare", scentL:"Fragrance", faceL:"Makeup", hairL:"Hair",
+    blurb:"Care and makeup · Oman store", copy:"Naqa · Oman — all rights reserved",
+    about:"About", how:"How to use", skinT:"Best for", also:"You may also like",
+    back:"Back to shop", sku:"SKU", logo:"Naqa", tag:"Care & Makeup"
   }
-  return '<svg viewBox="0 0 95 62" role="img" aria-label="EAN '+d+'"><g>'+bars.join("")+'</g><text x="47" y="60" text-anchor="middle" font-size="8" font-family="ui-monospace,monospace">'+d+'</text></svg>';
-}
+};
 
+const catLabel = { "all":"all", "عناية":"care", "مكياج":"face", "عيون":"eyes", "شفاه":"lips", "عطور":"scent", "أدوات":"tools", "شعر":"hair" };
+const T = k => ui[lang][k];
+const money = n => lang === "en" ? (Number(n).toFixed(3) + " OMR") : (Number(n).toFixed(3) + " " + CURRENCY);
+const pname = p => lang === "en" ? (p.nameEn || p.nameAr) : (p.nameAr || p.nameEn);
+const pdesc = p => lang === "en" ? (p.descEn || p.descAr || "") : (p.descAr || p.descEn || "");
+const puse  = p => lang === "en" ? (p.useEn || p.useAr || "") : (p.useAr || p.useEn || "");
+const pskin = p => lang === "en" ? (p.skinEn || p.skinAr || "") : (p.skinAr || p.skinEn || "");
+const pimgs = p => (Array.isArray(p.imgs) && p.imgs.length ? p.imgs : []).slice(0, 5);
 
 let cart = [];
 try {
@@ -581,51 +315,47 @@ try {
 } catch (e) { cart = []; }
 let query = "";
 let currentCat = "all";
+let galleryIndex = 0;
+let openProductId = null;
 
-function saveCart(){
-  try { localStorage.setItem("naqa_cart", JSON.stringify(cart)); } catch (e) {}
+function saveCart(){ try { localStorage.setItem("naqa_cart", JSON.stringify(cart)); } catch (e) {} }
+
+function visual(p, idx){
+  const imgs = pimgs(p);
+  const i = typeof idx === "number" ? idx : 0;
+  if (imgs[i]) return '<img src="'+imgs[i]+'" alt="'+pname(p)+'" loading="lazy" onerror="this.style.display=\'none\';this.parentNode.textContent=\''+ (p.em||'✨') +'\'">';
+  return p.em || "✨";
 }
 
 function applyLang(){
   document.documentElement.lang = lang === "en" ? "en" : "ar";
   document.documentElement.dir = lang === "en" ? "ltr" : "rtl";
-  const s = document.getElementById("search");
-  if (s) s.placeholder = T("search");
-  const map = { all:"all", "عناية":"care", "مكياج":"face", "عيون":"eyes", "شفاه":"lips", "عطور":"scent", "أدوات":"tools" };
-  document.querySelectorAll("#cats a").forEach(a => { a.textContent = T(map[a.dataset.cat] || "all"); });
-  const h1 = document.querySelector(".hero h1");
-  if (h1) h1.innerHTML = T("heroTitle") + "<em>" + T("heroEm") + "</em>";
-  const hp = document.querySelector(".hero p");
-  if (hp) hp.textContent = T("hero");
-  const btns = document.querySelectorAll(".hero-actions .btn");
-  if (btns[0]) btns[0].textContent = T("shop");
-  if (btns[1]) btns[1].textContent = T("wa");
-  const ph = document.getElementById("products");
-  if (ph) ph.textContent = T("products");
-  const dh = document.querySelector(".drawer-head h3");
-  if (dh) dh.textContent = T("cart");
-  const tr = document.querySelector(".total-row span");
-  if (tr) tr.textContent = T("total");
-  const cb = document.getElementById("checkoutBtn");
-  if (cb) cb.textContent = T("checkout");
-  const lb = document.getElementById("langBtn");
-  if (lb) lb.textContent = lang === "ar" ? "EN" : "عربي";
-  const set = (id, key) => { const el = document.getElementById(id); if (el) el.textContent = T(key); };
-  set("pillShip","ship"); set("pillWa","order"); set("footContact","contact");
-  set("footShop","shopH"); set("jumpCare","skin"); set("jumpFace","faceL"); set("jumpScent","scentL");
-  set("copyLine","copy");
-  const wf = document.getElementById("waFooter"); if (wf) wf.textContent = T("orders");
-  const fb = document.getElementById("footBlurb");
-  if (fb) fb.innerHTML = T("blurb") + "<br/>www.naqa.om";
-  const strong = document.querySelector(".logo-text strong");
-  if (strong) strong.textContent = lang === "en" ? "Naqa" : "نقاء";
-    const tag = document.querySelector(".logo-text span");
-  if (tag) tag.textContent = lang === "en" ? "Care & Makeup" : "عناية ومكياج";
-}
-
-function visual(p){
-  if (!p.img) return p.em;
-  return '<img src="'+p.img+'" alt="'+pname(p)+'" loading="lazy" onerror="this.replaceWith(document.createTextNode(\''+p.em+'\'))">';
+  $("#search").placeholder = T("search");
+  document.querySelectorAll("#cats a").forEach(a => {
+    a.textContent = T(catLabel[a.dataset.cat] || "all");
+  });
+  $("#heroTitle").innerHTML = T("heroTitle") + "<em>" + T("heroEm") + "</em>";
+  $("#heroText").textContent = T("hero");
+  $("#btnShop").textContent = T("shop");
+  $("#waHero").textContent = T("wa");
+  $("#products").textContent = T("products");
+  $("#cartTitle").textContent = T("cart");
+  $("#totalLabel").textContent = T("total");
+  $("#checkoutBtn").textContent = T("checkout");
+  $("#langBtn").textContent = lang === "ar" ? "EN" : "عربي";
+  $("#logoName").textContent = T("logo");
+  $("#logoTag").textContent = T("tag");
+  $("#pillShip").textContent = T("ship");
+  $("#pillWa").textContent = T("order");
+  $("#footContact").textContent = T("contact");
+  $("#footShop").textContent = T("shopH");
+  $("#jumpCare").textContent = T("skin");
+  $("#jumpFace").textContent = T("faceL");
+  $("#jumpScent").textContent = T("scentL");
+  $("#jumpHair").textContent = T("hairL");
+  $("#copyLine").textContent = T("copy");
+  $("#waFooter").textContent = T("orders");
+  $("#footBlurb").innerHTML = T("blurb") + "<br/>www.naqa.om";
 }
 
 function render(){
@@ -633,75 +363,94 @@ function render(){
   const q = query.toLowerCase();
   const list = products.filter(p => {
     const catOk = currentCat === "all" || p.cat === currentCat;
-    const blob = (p.nameAr+" "+p.nameEn+" "+p.brand+" "+p.barcode+" "+p.descAr+" "+p.descEn).toLowerCase();
+    const blob = [p.nameAr, p.nameEn, p.brand, p.sku, p.descAr, p.descEn, p.skinAr, p.skinEn].join(" ").toLowerCase();
     return catOk && (!q || blob.includes(q));
   });
-  const count = document.getElementById("countLabel");
-  if (count) count.textContent = T("count")(list.length);
-  const empty = document.getElementById("empty");
-  if (empty){ empty.hidden = list.length > 0; empty.textContent = T("empty"); }
-  document.getElementById("grid").innerHTML = list.map(p => `
+  $("#countLabel").textContent = T("count")(list.length);
+  $("#empty").hidden = list.length > 0;
+  $("#empty").textContent = T("empty");
+  $("#grid").innerHTML = list.map(p => `
     <article class="card">
-      <button class="card-visual card-hit" style="--c1:${p.c1};--c2:${p.c2}" data-open="${p.id}" type="button">${visual(p)}</button>
+      <button class="card-visual card-hit" data-open="${p.id}" type="button">${visual(p,0)}</button>
       <div class="card-body">
-        <div class="card-brand">${p.brand} · ${T(catLabel[p.cat])}</div>
+        <div class="card-brand">${p.brand} · ${T(catLabel[p.cat]||"all")}</div>
         <button class="card-name card-hit" data-open="${p.id}" type="button">${pname(p)}</button>
         <div class="card-desc">${pdesc(p)}</div>
-        <div class="card-code">${p.barcode || T("noCode")}</div>
+        <div class="card-code">${T("sku")}: ${p.sku || T("noSku")}</div>
         <div class="card-price">${money(p.price)}</div>
-        <button class="card-more" data-open="${p.id}">${T("more")}</button>
-        <button class="card-add" data-add="${p.id}">${T("add")}</button>
+        <button class="card-more" data-open="${p.id}" type="button">${T("more")}</button>
+        <button class="card-add" data-add="${p.id}" type="button">${T("add")}</button>
       </div>
     </article>`).join("");
+  if (openProductId) openSheet(openProductId, false);
 }
 
-function openSheet(id){
+function openSheet(id, resetGallery){
   const p = products.find(x => x.id === id);
   if (!p) return;
-  const code = p.barcode ? eanSvg(p.barcode) : "<p>"+T("noCode")+"</p>";
+  openProductId = id;
+  if (resetGallery !== false) galleryIndex = 0;
+  const imgs = pimgs(p);
+  while (imgs.length < 4) imgs.push(imgs[0] || "");
+  const main = imgs[galleryIndex] || imgs[0];
+  const thumbs = imgs.slice(0,5).map((src,i) => `
+    <button type="button" class="${i===galleryIndex?'on':''}" data-g="${i}">
+      ${src ? '<img src="'+src+'" alt="" loading="lazy">' : (p.em||'✨')}
+    </button>`).join("");
   const sug = products.filter(x => x.cat === p.cat && x.id !== p.id).slice(0, 4);
   const cards = sug.map(s => `
     <button class="sug" data-open="${s.id}" type="button">
-      <span class="sug-vis">${visual(s)}</span>
+      <span class="sug-vis">${visual(s,0)}</span>
       <span class="sug-name">${pname(s)}</span>
       <span class="sug-price">${money(s.price)}</span>
     </button>`).join("");
-  document.getElementById("sheetCard").innerHTML = `
+
+  $("#sheetCard").innerHTML = `
     <button class="text-back" id="closeSheet" type="button">${T("back")}</button>
-    <div class="card-visual" style="height:260px;border-radius:14px">${visual(p)}</div>
-    <div class="card-brand" style="margin-top:12px">${p.brand} · ${T(catLabel[p.cat])}</div>
-    <h3>${pname(p)}</h3>
+    <div class="gallery">
+      <div class="gallery-main">${main ? '<img id="gMain" src="'+main+'" alt="'+pname(p)+'">' : (p.em||'✨')}</div>
+      <div class="gallery-thumbs">${thumbs}</div>
+    </div>
+    <div class="card-brand" style="margin-top:12px">${p.brand} · ${T(catLabel[p.cat]||"all")}</div>
+    <h3 style="margin:6px 0 4px">${pname(p)}</h3>
     <div class="card-price">${money(p.price)}</div>
+    <div class="sku-line">${T("sku")}: ${p.sku || T("noSku")}</div>
+    <span class="skin-pill">${T("skinT")}: ${pskin(p)}</span>
     <h4 class="block-h">${T("about")}</h4>
-    <p class="long">${pabout(p)}</p>
+    <p class="long">${pdesc(p)}</p>
     <h4 class="block-h">${T("how")}</h4>
-    <p class="long">${phow(p)}</p>
-    <div class="bc">${code}</div>
-    <button class="card-add" data-add="${p.id}" style="margin-top:14px">${T("add")}</button>
+    <p class="long">${puse(p)}</p>
+    <button class="card-add" data-add="${p.id}" style="margin-top:16px" type="button">${T("add")}</button>
     <h4 class="block-h">${T("also")}</h4>
     <div class="sug-row">${cards}</div>`;
-  document.getElementById("sheet").classList.add("show");
-  document.getElementById("sheetCard").scrollTop = 0;
-  document.getElementById("closeSheet").onclick = () => document.getElementById("sheet").classList.remove("show");
+  $("#sheet").classList.add("show");
+  $("#sheetCard").scrollTop = 0;
+  $("#closeSheet").onclick = () => {
+    $("#sheet").classList.remove("show");
+    openProductId = null;
+  };
 }
 
 function renderCart(){
   const badge = $("#cartBadge");
   const n = cart.reduce((s,i) => s + i.qty, 0);
-  if(n){ badge.hidden = false; badge.textContent = n; }
+  if (n){ badge.hidden = false; badge.textContent = n; }
   else badge.hidden = true;
 
-  if(!cart.length){
+  if (!cart.length){
     $("#cartBody").innerHTML = `<div class="cart-empty">${T("emptyCart")}</div>`;
     $("#cartTotal").textContent = money(0);
     return;
   }
-  $("#cartBody").innerHTML = cart.map(i => `
+  $("#cartBody").innerHTML = cart.map(i => {
+    const p = products.find(x => x.id === i.id) || i;
+    return `
     <div class="cart-item">
-      <div class="thumb">${i.em}</div>
+      <div class="thumb">${visual(p,0)}</div>
       <div class="meta">
-        <strong>${pname(products.find(x=>x.id===i.id) || i)}</strong>
-        <span>${money(i.price)} · ${i.brand}</span>
+        <strong>${pname(p)}</strong>
+        <span>${money(i.price)} · ${i.brand || p.brand || ""}</span>
+        <div class="sku-line">${T("sku")}: ${p.sku || i.sku || "—"}</div>
         <button class="rm" data-rm="${i.id}">${T("del")}</button>
       </div>
       <div class="qty">
@@ -709,17 +458,18 @@ function renderCart(){
         <b>${i.qty}</b>
         <button data-inc="${i.id}">+</button>
       </div>
-    </div>`).join("");
+    </div>`;
+  }).join("");
   const total = cart.reduce((s,i) => s + i.price * i.qty, 0);
   $("#cartTotal").textContent = money(total);
 }
 
 function addToCart(id){
   const p = products.find(x => x.id === id);
-  if(!p) return;
+  if (!p) return;
   const row = cart.find(x => x.id === id);
-  if(row) row.qty++;
-  else cart.push({id:p.id, name:p.nameAr, brand:p.brand, price:p.price, em:p.em, qty:1});
+  if (row) row.qty++;
+  else cart.push({id:p.id, brand:p.brand, price:p.price, em:p.em, sku:p.sku, qty:1});
   saveCart(); renderCart();
 }
 
@@ -727,28 +477,44 @@ function openCart(){ $("#overlay").classList.add("show"); $("#drawer").classList
 function closeCart(){ $("#overlay").classList.remove("show"); $("#drawer").classList.remove("show"); }
 
 $("#grid").addEventListener("click", e => {
-  const btn = e.target.closest("[data-add]");
-  if(btn) addToCart(+btn.dataset.add);
+  const more = e.target.closest("[data-open]");
+  if (more){ openSheet(+more.dataset.open); return; }
+  const add = e.target.closest("[data-add]");
+  if (add) addToCart(+add.dataset.add);
+});
+
+$("#sheet").addEventListener("click", e => {
+  if (e.target.id === "sheet"){ $("#sheet").classList.remove("show"); openProductId = null; return; }
+  const g = e.target.closest("[data-g]");
+  if (g){
+    galleryIndex = +g.dataset.g;
+    if (openProductId) openSheet(openProductId, false);
+    return;
+  }
+  const more = e.target.closest("[data-open]");
+  if (more && e.target.closest("#sheetCard")){ openSheet(+more.dataset.open); return; }
+  const add = e.target.closest("[data-add]");
+  if (add) addToCart(+add.dataset.add);
 });
 
 $("#cartBody").addEventListener("click", e => {
   const inc = e.target.closest("[data-inc]");
   const dec = e.target.closest("[data-dec]");
   const rm  = e.target.closest("[data-rm]");
-  if(inc){
+  if (inc){
     const item = cart.find(i => i.id === +inc.dataset.inc);
-    if(item) item.qty++;
+    if (item) item.qty++;
     saveCart(); renderCart();
   }
-  if(dec){
+  if (dec){
     const item = cart.find(i => i.id === +dec.dataset.dec);
-    if(item){
+    if (item){
       item.qty--;
-      if(item.qty <= 0) cart = cart.filter(i => i.id !== item.id);
+      if (item.qty <= 0) cart = cart.filter(i => i.id !== item.id);
     }
     saveCart(); renderCart();
   }
-  if(rm){
+  if (rm){
     cart = cart.filter(i => i.id !== +rm.dataset.rm);
     saveCart(); renderCart();
   }
@@ -757,12 +523,16 @@ $("#cartBody").addEventListener("click", e => {
 $("#cartBtn").onclick = openCart;
 $("#closeCart").onclick = closeCart;
 $("#overlay").onclick = closeCart;
-
 $("#search").addEventListener("input", e => { query = e.target.value.trim(); render(); });
+$("#langBtn").onclick = () => {
+  lang = lang === "ar" ? "en" : "ar";
+  try { localStorage.setItem("naqa_lang", lang); } catch (e) {}
+  render(); renderCart();
+};
 
 $("#cats").addEventListener("click", e => {
   const a = e.target.closest("[data-cat]");
-  if(!a) return;
+  if (!a) return;
   e.preventDefault();
   document.querySelectorAll("#cats a").forEach(x => x.classList.remove("on"));
   a.classList.add("on");
@@ -782,57 +552,35 @@ document.querySelectorAll("[data-cat-jump]").forEach(el => {
 });
 
 $("#checkoutBtn").onclick = () => {
-  if(!cart.length){ alert(T("alertEmpty")); return; }
-  if(WA_NUMBER.includes("X")){ alert("ضعي رقم الواتساب في الإعدادات أعلى الملف (WA_NUMBER)"); return; }
-  const lines = cart.map(i => "• " + pname(products.find(x=>x.id===i.id)||i) + " × " + i.qty + " = " + money(i.price*i.qty) + ( (products.find(x=>x.id===i.id)||{}).barcode ? " ["+(products.find(x=>x.id===i.id).barcode)+"]" : "" )).join("\n");
-  const total = cart.reduce((s,i) => s + i.price*i.qty, 0);
+  if (!cart.length){ alert(T("alertEmpty")); return; }
+  const lines = cart.map(i => {
+    const p = products.find(x => x.id === i.id) || i;
+    return "• " + pname(p) + " × " + i.qty + " = " + money(i.price * i.qty) + " [" + T("sku") + " " + (p.sku || "—") + "]";
+  }).join("\n");
+  const total = cart.reduce((s,i) => s + i.price * i.qty, 0);
   const msg = T("greet") + " (" + SITE + "):\n\n" + lines + "\n\n" + T("total") + ": " + money(total);
-  window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`, "_blank");
-};
-
-document.getElementById("grid").addEventListener("click", e => {
-  const more = e.target.closest("[data-open]");
-  if (more) openSheet(+more.dataset.open);
-});
-document.getElementById("sheet").addEventListener("click", e => {
-  if (e.target.id === "sheet") e.currentTarget.classList.remove("show");
-  const more = e.target.closest("[data-open]");
-  if (more && e.target.closest("#sheetCard")) { openSheet(+more.dataset.open); return; }
-  const add = e.target.closest("[data-add]");
-  if (add) addToCart(+add.dataset.add);
-});
-document.getElementById("langBtn").onclick = () => {
-  lang = lang === "ar" ? "en" : "ar";
-  try { localStorage.setItem("naqa_lang", lang); } catch (e) {}
-  render(); renderCart();
+  window.open("https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent(msg), "_blank");
 };
 
 function boot(){
   try {
-    const waLink = WA_NUMBER.includes("X") ? "#" : ("https://wa.me/" + WA_NUMBER);
-    const wf = document.getElementById("waFooter");
-    const wfl = document.getElementById("waFloat");
-    const wh = document.getElementById("waHero");
-    if (wf) wf.href = waLink;
-    if (wfl) wfl.href = waLink;
-    if (wh) wh.href = waLink;
-    const yr = document.getElementById("yr");
-    if (yr) yr.textContent = new Date().getFullYear();
+    if (!products.length) throw new Error("products.js missing");
+    const wa = "https://wa.me/" + WA_NUMBER;
+    $("#waFooter").href = wa;
+    $("#waFloat").href = wa;
+    $("#waHero").href = wa;
+    $("#yr").textContent = new Date().getFullYear();
     render();
     renderCart();
   } catch (err) {
-    console.error(err);
-    var b = document.createElement("div");
-    b.style.cssText = "padding:20px;background:#fee;color:#900;font-family:sans-serif;direction:rtl";
-    b.textContent = "خطأ في تشغيل المتجر: " + (err && err.message ? err.message : err);
+    const b = document.createElement("div");
+    b.style.cssText = "padding:20px;background:#fee;color:#900;direction:rtl;font-family:sans-serif";
+    b.textContent = "خطأ: " + (err && err.message ? err.message : err);
     document.body.insertBefore(b, document.body.firstChild);
   }
 }
-if (document.readyState === "loading") {
-  document.addEventListener("DOMContentLoaded", boot);
-} else {
-  boot();
-}
+if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot);
+else boot();
 </script>
 </body>
 </html>

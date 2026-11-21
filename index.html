@@ -63,6 +63,8 @@ header{position:sticky;top:0;z-index:60;background:rgba(253,248,246,.94);
 .btn-ghost{background:#fff;border:1px solid var(--line)}
 
 .ship-bar{background:#1f1a17;color:#fff;text-align:center;font-size:.92rem;font-weight:700;padding:8px 14px}
+.ship-free{position:fixed;left:0;right:0;bottom:64px;z-index:48;background:#e8f5e9;color:#1b5e20;text-align:center;font-size:.88rem;font-weight:800;padding:8px 12px;border-top:1px solid #c8e6c9}
+body{padding-bottom:120px}
 .section-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:22px 0 12px}
 .section-head h2{margin:0;font-size:1.2rem;font-weight:800}
 .section-tools{display:flex;align-items:center;gap:8px}
@@ -313,6 +315,7 @@ footer{margin-top:40px;padding:28px 0 24px;border-top:1px solid var(--line);colo
   </div>
 </footer>
 
+<div class="ship-free" id="shipFree">توصيل مجاني للطلبات فوق ٣٠ ر.ع</div>
 <div class="cart-bar empty-bar" id="cartBar">
   <div class="info">
     <strong id="barTitle">السلة فاضية</strong>
@@ -341,7 +344,7 @@ footer{margin-top:40px;padding:28px 0 24px;border-top:1px solid var(--line);colo
   <img id="lbImg" alt="">
 </div>
 
-<script src="products.js?v=20261121f"></script>
+<script src="products.js?v=20261121g"></script>
 <script>
 const WA_NUMBER="96879088349", CURRENCY="ر.ع", SITE="www.naqa.om";
 
@@ -417,7 +420,7 @@ const ui={
   ship:"توصيل عُمان", order:"طلب واتساب", contact:"تواصلي", shopH:"التسوق", orders:"واتساب الطلبات",
   skin:"عناية", faceL:"وجه", hairL:"شعر", blurb:"عناية ومكياج · متجر عُماني", copy:"نقاء · Naqa · عُمان",
   about:"عن المنتج", how:"طريقة الاستعمال", skinT:"يناسب", also:"قد يعجبكِ أيضاً", same:"باقي منتجات الماركة", back:"رجوع",
-  sku:"SKU", logo:"نقاء", tag:"عناية ومكياج", shipBar:"خصم ٣٠٪ · عروض نهاية السنة · توصيل عُمان", sortNew:"الأحدث", sortLow:"الأقل سعراً", sortHigh:"الأعلى سعراً", sortOff:"الأعلى خصماً", swipe:"اسحبي من اليسار لليمين للرجوع · مرّري الصور يمين/يسار",
+  sku:"SKU", logo:"نقاء", tag:"عناية ومكياج", shipBar:"خصم ٣٠٪ على منتجات مختارة · توصيل عُمان", shipFree:"توصيل مجاني للطلبات فوق ٣٠ ر.ع", sortNew:"الأحدث", sortLow:"الأقل سعراً", sortHigh:"الأعلى سعراً", sortOff:"الأعلى خصماً", swipe:"اسحبي من اليسار لليمين للرجوع · مرّري الصور يمين/يسار",
   openImg:"اضغطي الصورة للتكبير", barEmpty:"السلة فاضية", barHint:"أضيفي منتجات من القائمة", barItems:n=>n+" منتج في السلة", barOpen:"افتحي السلة", barCheckout:"إتمام الطلب", hot:"الأكثر مبيعاً", year:"عروض نهاية السنة", viewAll:"عرض الكل", offTag:n=>"−"+n+"%"
  },
  en:{
@@ -432,7 +435,7 @@ const ui={
   ship:"Oman delivery", order:"WhatsApp order", contact:"Contact", shopH:"Shop", orders:"Order on WhatsApp",
   skin:"Skincare", faceL:"Face", hairL:"Hair", blurb:"Care and makeup · Oman store", copy:"Naqa · Oman",
   about:"About", how:"How to use", skinT:"Best for", also:"You may also like", same:"More from this brand", back:"Back",
-  sku:"SKU", logo:"Naqa", tag:"Care & Makeup", shipBar:"30% off · Year-end deals · Oman delivery", sortNew:"Newest", sortLow:"Lowest price", sortHigh:"Highest price", sortOff:"Biggest discount", swipe:"Swipe left-edge to go back · swipe images sideways",
+  sku:"SKU", logo:"Naqa", tag:"Care & Makeup", shipBar:"30% off selected items · Oman delivery", shipFree:"Free delivery on orders over 30 OMR", sortNew:"Newest", sortLow:"Lowest price", sortHigh:"Highest price", sortOff:"Biggest discount", swipe:"Swipe left-edge to go back · swipe images sideways",
   openImg:"Tap image to enlarge", barEmpty:"Cart is empty", barHint:"Add products from the list", barItems:n=>n+" items in cart", barOpen:"Open cart", barCheckout:"Checkout", hot:"Best sellers", year:"Year-end deals", viewAll:"View all", offTag:n=>"−"+n+"%"
  }
 };
@@ -535,6 +538,7 @@ function applyLang(){
   $("#waFooter").textContent=T("orders");
   $("#footBlurb").innerHTML=T("blurb")+"<br/>www.naqa.om";
   const bar=$("#shipBar"); if(bar) bar.textContent=T("shipBar");
+  const sf=$("#shipFree"); if(sf) sf.textContent=T("shipFree");
   const sel=$("#sortSel");
   if(sel){
     const labels=[T("sortNew"),T("sortLow"),T("sortHigh"),T("sortOff")];

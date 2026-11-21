@@ -156,6 +156,10 @@ window.addEventListener("scroll", ()=>{
 function boot(){
   try{
     if(!products.length) throw new Error("products.js missing");
+    fetch("data/overrides.json?v="+Date.now()).then(function(res){ return res.ok?res.json():{}; }).then(function(map){
+      if(map && typeof mergeOverrides==="function") mergeOverrides(map);
+      if(typeof render==="function") render();
+    }).catch(function(){});
     const wa="https://wa.me/"+WA_NUMBER;
     $("#waFooter").href=wa; $("#waFloat").href=wa; $("#waHero").href=wa;
     $("#yr").textContent=new Date().getFullYear();

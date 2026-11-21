@@ -140,6 +140,7 @@ function render(){
   applyLang();
   const q=query.toLowerCase();
   const list=products.filter(p=>{
+    if(p.hidden) return false;
     const catOk=currentCat==="all"||p.cat===currentCat;
     const brandOk=!currentBrand || p.brand===currentBrand;
     const concernOk=!currentConcern || (p.concerns&&p.concerns.indexOf(currentConcern)>=0);

@@ -72,8 +72,11 @@ function sendCheckout(){
   const note=($("#coNote")&&$("#coNote").value||"").trim();
   const lines=cart.map(i=>{
     const p=products.find(x=>x.id===i.id)||i;
-    return "• "+pname(p)+" × "+i.qty+" = "+money(i.price*i.qty);
-  }).join("\n");
+    const link=(typeof productLink==="function")?productLink(p.id):"";
+    return "• "+pname(p)+" × "+i.qty+" = "+money(i.price*i.qty)
+      +"\nSKU: "+(p.sku||"—")
+      +(link?("\n"+link):"");
+  }).join("\n\n");
   const total=cart.reduce((s,i)=>s+i.price*i.qty,0);
   const orderNo=(typeof makeOrderNo==="function")?makeOrderNo():("NQ-"+Date.now());
   try{ localStorage.setItem("naqa_last_order", orderNo); }catch(e){}

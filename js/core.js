@@ -44,6 +44,25 @@ function applyRoute(){
 }
 
 const products=(window.NAQA_PRODUCTS||[]).map(p=>Object.assign({imgs:[]},p));
+function productLink(id){
+  var path=location.pathname||"/";
+  if(path.slice(-1)!=="/") path=path.replace(/[^/]*$/,"");
+  if(path.slice(-1)!=="/") path+="/";
+  return location.origin+path+"#p/"+id;
+}
+function mergeOverrides(map){
+  if(!map) return;
+  products.forEach(function(p){
+    var o=map[p.id]||map[String(p.id)];
+    if(!o) return;
+    if(o.price!=null && o.price!=="") p.price=Number(o.price);
+    if(o.was!=null && o.was!=="") p.was=Number(o.was);
+    if(o.hidden!=null) p.hidden=!!o.hidden;
+  });
+}
+try{
+  mergeOverrides(JSON.parse(localStorage.getItem("naqa_overrides")||"{}"));
+}catch(e){}
 const $=s=>document.querySelector(s);
 
 function esc(v){

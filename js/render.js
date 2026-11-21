@@ -101,6 +101,31 @@ function applyLang(){
   $("#waFooter").textContent=T("orders");
   $("#footBlurb").innerHTML=T("blurb")+"<br/>www.naqa.om";
   const bar=$("#shipBar"); if(bar) bar.textContent=T("shipBar");
+  const quiz=$("#heroQuiz"); if(quiz) quiz.textContent=T("quizBtn");
+  document.title = openProductId ? (pname(products.find(x=>x.id===openProductId)||{})+" · Naqa") : T("docTitle");
+  const mark=document.querySelector(".logo-mark"); if(mark) mark.textContent = lang==="en" ? "N" : "ن";
+  const fb=$("#footBrand"); if(fb) fb.innerHTML = lang==="en" ? "Na<span>qa</span>" : "ن<span>قاء</span>";
+  const co=$("#coTitle"); if(co){
+    co.textContent=T("coTitle");
+    const hint=document.querySelector(".co-hint"); if(hint) hint.textContent=T("coHint");
+    const setLab=(id,key)=>{ const el=document.querySelector('label[data-for="'+id+'"]'); if(el){ const input=el.querySelector("input,select,textarea"); const ph=T(key+"Ph"); if(input && input.placeholder!==undefined && key!=="coGov") input.placeholder=ph; el.firstChild.textContent=T(key); } };
+    [["coName","coName"],["coPhone","coPhone"],["coGov","coGov"],["coNote","coNote"]].forEach(([id,key])=>{
+      const lab=document.querySelector('label[data-field="'+id+'"]');
+      if(!lab) return;
+      const ctrl=lab.querySelector("input,select,textarea");
+      lab.childNodes[0].textContent=T(key);
+      if(ctrl && key!=="coGov") ctrl.placeholder=T(key+"Ph");
+    });
+    const gov=$("#coGov");
+    if(gov){
+      const cur=gov.value;
+      const list=T("govs");
+      gov.innerHTML='<option value="">'+T("coGovPh")+"</option>"+list.map(g=>'<option>'+g+"</option>").join("");
+      if(cur) gov.value=cur;
+    }
+    const cancel=$("#checkoutCancel"); if(cancel) cancel.textContent=T("coCancel");
+    const send=$("#checkoutSend"); if(send) send.textContent=T("coSend");
+  }
   const sf=$("#shipFree"); if(sf) sf.textContent=T("shipFree");
   const sel=$("#sortSel");
   if(sel){

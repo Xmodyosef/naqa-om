@@ -55,3 +55,27 @@ function renderCart(){
 
 function openCart(){ $("#overlay").classList.add("show"); $("#drawer").classList.add("show"); }
 function closeCart(){ $("#overlay").classList.remove("show"); $("#drawer").classList.remove("show"); }
+
+function openCheckout(){
+  if(typeof applyLang==="function") applyLang();
+  const m=$("#checkoutModal"); if(m) m.classList.add("show");
+}
+function closeCheckout(){
+  const m=$("#checkoutModal"); if(m) m.classList.remove("show");
+}
+function sendCheckout(){
+  const name=($("#coName")&&$("#coName").value||"").trim();
+  const phone=($("#coPhone")&&$("#coPhone").value||"").trim();
+  const gov=($("#coGov")&&$("#coGov").value||"").trim();
+  const note=($("#coNote")&&$("#coNote").value||"").trim();
+  const lines=cart.map(i=>{
+    const p=products.find(x=>x.id===i.id)||i;
+    return "• "+pname(p)+" × "+i.qty+" = "+money(i.price*i.qty);
+  }).join("\n");
+  const total=cart.reduce((s,i)=>s+i.price*i.qty,0);
+  const msg = lang==="en"
+    ? ("Hello, I want to order from Naqa:\nName: "+name+"\nPhone: "+phone+"\nArea: "+gov+"\nNote: "+note+"\n\n"+lines+"\n\nTotal: "+money(total))
+    : ("السلام عليكم، أبغى أطلب من نقاء:\nالاسم: "+name+"\nالجوال: "+phone+"\nالمنطقة: "+gov+"\nملاحظة: "+note+"\n\n"+lines+"\n\nالمجموع: "+money(total));
+  window.open("https://wa.me/"+WA_NUMBER+"?text="+encodeURIComponent(msg), "_blank");
+  closeCheckout();
+}

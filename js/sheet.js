@@ -197,7 +197,7 @@ function closeSheet(fromRoute){
   $("#sheet").classList.remove("show");
   $("#sheet").classList.remove("qv");
   openProductId=null;
-  document.title="نقاء · عناية ومكياج | www.naqa.om";
+  document.title=T("docTitle");
   const card=$("#sheetCard");
   if(card){ card.style.transform=""; card.style.transition=""; }
   if(!fromRoute && routeHash().indexOf("p/")===0){

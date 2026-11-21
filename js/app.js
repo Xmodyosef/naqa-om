@@ -66,6 +66,12 @@ $("#checkoutBtn").onclick=()=>{
   if(!cart.length){ alert(T("alertEmpty")); return; }
   openCheckout();
 };
+$("#checkoutCancel").onclick=closeCheckout;
+$("#checkoutBackdrop").onclick=closeCheckout;
+$("#checkoutSend").onclick=()=>{
+  if(!cart.length){ alert(T("alertEmpty")); return; }
+  sendCheckout();
+};
 $("#lbClose").onclick=closeLightbox;
 $("#lightbox").addEventListener("click", e=>{ if(e.target.id==="lightbox"||e.target.id==="lbClose") closeLightbox(); });
 

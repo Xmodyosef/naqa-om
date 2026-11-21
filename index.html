@@ -77,8 +77,15 @@ header{position:sticky;top:0;z-index:60;background:rgba(253,248,246,.94);
   background:rgba(31,26,23,.9);color:#fff;font-weight:800;font-size:.78rem;
   padding:5px 10px;border-radius:999px;pointer-events:none}
 html[lang="en"] .price-badge{display:none}
-.brand-link{color:var(--rose-deep);font-weight:800;text-decoration:underline;text-underline-offset:3px;font-size:.85rem}
-.card-brand.brand-link{font-size:.78rem;text-align:start}
+.brand-link{display:inline-flex;align-items:center;gap:8px;color:var(--rose-deep);font-weight:800;text-decoration:none;font-size:.9rem}
+.brand-link span{text-decoration:underline;text-underline-offset:3px}
+.brand-logo{width:28px;height:28px;border-radius:8px;object-fit:contain;background:#fff;border:1px solid var(--line)}
+.card-brand.brand-link{font-size:.78rem}
+.qty-pick{display:flex;align-items:center;gap:8px;margin:10px 0 4px}
+.qty-pick span{font-weight:800;margin-inline-end:6px}
+.qty-pick button{width:36px;height:36px;border-radius:10px;background:#fff;border:1px solid var(--line);font-weight:800;font-size:1.1rem}
+.qty-pick b{min-width:24px;text-align:center}
+.price-badge{display:none}
 .brand-bar{display:flex;align-items:center;gap:8px;margin:0 0 12px}
 .brand-bar[hidden]{display:none}
 .brand-chip{background:#fff;border:1px solid var(--line);border-radius:999px;padding:8px 14px;font-weight:800;color:var(--rose-deep)}
@@ -307,6 +314,45 @@ footer{margin-top:40px;padding:28px 0 24px;border-top:1px solid var(--line);colo
 <script src="products.js?v=20261121d"></script>
 <script>
 const WA_NUMBER="96879088349", CURRENCY="ر.ع", SITE="www.naqa.om";
+
+const BRAND_DOMAIN={
+"ACM":"acm-laboratoire.com","AXIS-Y":"axis-y.com","Abib":"abib.com","Acure":"acure.com","Anua":"anua.com","Arencia":"arencia.com","Aromatica":"aromatica.com","Beauty of Joseon":"beautyofjoseon.com","Biodance":"biodance.com","Bioderma":"bioderma.com","Cantu":"cantubeauty.com","Celimax":"celimax.co.kr","Centellian24":"centellian24.com","Cetaphil":"cetaphil.com","Cosrx":"cosrx.com","Dr.Althea":"dralthea.com","EQQUALBERRY":"eqqualberry.com","Eucerin":"eucerin.com","HaruHaru":"haruharuwonder.com","ISDIN":"isdin.com","K18":"k18hair.com","L'oréal":"loreal.com","LANEIGE":"laneige.com","La Roche-Posay":"laroche-posay.com","M.Asam":"m-asam.com","MISSHA":"missha.com","Mary&May":"marynmay.com","Medicube":"medicube.com","NYX":"nyxcosmetics.com","Neutrogena":"neutrogena.com","Numbuzin":"numbuzin.com","OLAPLEX":"olaplex.com","Purito":"purito.com","SHEGLAM":"sheglam.com","SKIN1004":"skin1004.com","Schwarzkopf":"schwarzkopf.com","Shiseido":"shiseido.com","Stridex":"stridex.com","TIRTIR":"tirtir.com","TOCOBO":"tocobo.com","The Ordinary":"theordinary.com","Uriage":"uriage.com","Vaseline":"vaseline.com","essence":"essence.eu"
+};
+function brandMark(brand){
+  const d=BRAND_DOMAIN[brand]||"";
+  const img=d?'<img class="brand-logo" alt="" src="https://www.google.com/s2/favicons?domain='+encodeURIComponent(d)+String.fromCharCode(38)+'sz=128" onerror="this.remove()">':'';
+  return '<button type="button" class="brand-link" data-brand="'+esc(brand)+'">'+img+'<span>'+esc(brand)+'</span></button>';
+}
+function routeHash(){ return decodeURIComponent((location.hash||"").replace(/^#/,"")); }
+function applyRoute(){
+  const h=routeHash();
+  if(h.indexOf("p/")===0){
+    const id=+h.slice(2);
+    if(products.some(x=>x.id===id)){
+      if(openProductId!==id || !$("#sheet").classList.contains("show")) openSheet(id,"full",true);
+      return;
+    }
+  }
+  if($("#sheet").classList.contains("show")) closeSheet(true);
+  if(h.indexOf("b/")===0){
+    currentBrand=h.slice(2); currentCat="all";
+    document.querySelectorAll("#cats a").forEach(x=>x.classList.toggle("on", x.dataset.cat==="all"));
+    render();
+    const prod=$("#products"); if(prod) prod.scrollIntoView({behavior:"smooth"});
+    return;
+  }
+  if(h.indexOf("c/")===0){
+    currentCat=h.slice(2); currentBrand="";
+    document.querySelectorAll("#cats a").forEach(x=>x.classList.toggle("on", x.dataset.cat===currentCat));
+    render();
+    const prod=$("#products"); if(prod) prod.scrollIntoView({behavior:"smooth"});
+    return;
+  }
+  if(h==="shop"||h==="products"){
+    const prod=$("#products"); if(prod) prod.scrollIntoView({behavior:"smooth"});
+  }
+}
+
 const products=(window.NAQA_PRODUCTS||[]).map(p=>Object.assign({imgs:[]},p));
 const $=s=>document.querySelector(s);
 
@@ -320,7 +366,7 @@ function esc(v){
 }
 let lang="ar"; try{lang=localStorage.getItem("naqa_lang")||"ar"}catch(e){}
 let cart=[]; try{cart=JSON.parse(localStorage.getItem("naqa_cart")||"[]"); if(!Array.isArray(cart)) cart=[]}catch(e){cart=[]}
-let query="", currentCat="all", currentBrand="", openProductId=null, galleryIndex=0, sheetMode="full";
+let query="", currentCat="all", currentBrand="", openProductId=null, galleryIndex=0, sheetMode="full", pickQty=1;
 
 const ui={
  ar:{
@@ -328,7 +374,7 @@ const ui={
   all:"الكل", care:"عناية", face:"مكياج", eyes:"عيون", lips:"شفاه", scent:"عطور", tools:"أدوات", hair:"شعر",
   shop:"تسوّقي الآن", wa:"واتساب نقاء", products:"المنتجات", count:n=>n+" منتج", empty:"ما في نتائج",
   cart:"السلة", emptyCart:"السلة فاضية<br/>أضيفي من القائمة", total:"المجموع", checkout:"إتمام الطلب عبر واتساب",
-  add:"أضيفي", qv:"نظرة سريعة", open:"التفاصيل", del:"حذف", noSku:"SKU غير متوفر",
+  add:"أضيفي", qty:"الكمية", qv:"نظرة سريعة", open:"التفاصيل", del:"حذف", noSku:"SKU غير متوفر",
   heroTitle:"نقاء — ", heroEm:"عناية ومكياج",
   hero:"صور حقيقية، تمرير بين ٥ صور، نظرة سريعة من غير ما تدخلي كامل، والسلة ثابتة تحت. الطلب بواتساب جاهز.",
   alertEmpty:"السلة فاضية", greet:"السلام عليكم، أبغى أطلب من نقاء",
@@ -343,7 +389,7 @@ const ui={
   all:"All", care:"Skincare", face:"Makeup", eyes:"Eyes", lips:"Lips", scent:"Fragrance", tools:"Tools", hair:"Hair",
   shop:"Shop now", wa:"WhatsApp Naqa", products:"Products", count:n=>n+" products", empty:"No results",
   cart:"Cart", emptyCart:"Your cart is empty<br/>Add from the list", total:"Total", checkout:"Checkout on WhatsApp",
-  add:"Add", qv:"Quick view", open:"Details", del:"Remove", noSku:"SKU unavailable",
+  add:"Add", qty:"Qty", qv:"Quick view", open:"Details", del:"Remove", noSku:"SKU unavailable",
   heroTitle:"Naqa — ", heroEm:"Care & Makeup",
   hero:"Real photos, swipe across up to 5 images, quick view without full page, cart always at the bottom. Checkout is a ready WhatsApp message.",
   alertEmpty:"Cart is empty", greet:"Hello, I want to order from Naqa",
@@ -422,10 +468,9 @@ function render(){
       <div class="card-visual" data-open="${p.id}">
         <span class="card-cart-chip${(cart.find(c=>c.id===p.id)||{}).qty?' show':''}" data-chip="${p.id}">${(cart.find(c=>c.id===p.id)||{}).qty?('×'+(cart.find(c=>c.id===p.id).qty)):''}</span>
         ${visual(p,0)}
-        <span class="price-badge">${money(p.price)}</span>
       </div>
       <div class="card-body">
-        <button class="card-brand brand-link" type="button" data-brand="${esc(p.brand)}">${esc(p.brand)}</button>
+        ${brandMark(p.brand)}
         <div class="card-brand">${T(catLabel[p.cat]||"all")}</div>
         <button class="card-name" data-open="${p.id}" type="button">${esc(pname(p))}</button>
         <div class="card-desc">${esc(pdesc(p))}</div>
@@ -541,7 +586,6 @@ function carouselHTML(p, start){
     </button>`).join("");
   return `
     <div class="carousel" id="car" data-count="${imgs.length}">
-      <span class="price-badge">${money(p.price)}</span>
       <div class="carousel-count"><span id="carIdx">${start+1}</span> / ${imgs.length}</div>
       <button class="carousel-nav prev" type="button" data-nav="-1" aria-label="prev">‹</button>
       <button class="carousel-nav next" type="button" data-nav="1" aria-label="next">›</button>
@@ -597,8 +641,15 @@ function bindCarousel(p){
     if(dot){ setIdx(+dot.dataset.dot); return; }
     const full=e.target.closest("[data-full]");
     if(full){ openLightbox(full.dataset.full || full.getAttribute("src")); return; }
+    const qbtn=e.target.closest("[data-q]");
+    if(qbtn){
+      pickQty=Math.max(1, Math.min(20, pickQty+(+qbtn.dataset.q||0)));
+      const lab=document.getElementById("pickQty");
+      if(lab) lab.textContent=String(pickQty);
+      return;
+    }
     const add=e.target.closest("[data-add]");
-    if(add){ addToCart(+add.dataset.add); return; }
+    if(add){ addToCart(+add.dataset.add, pickQty); return; }
     const open=e.target.closest("[data-open]");
     if(open){ openSheet(+open.dataset.open, "full"); return; }
     if(e.target.id==="closeSheet" || e.target.closest("#closeSheet")){ closeSheet(); return; }
@@ -609,7 +660,7 @@ function bindCarousel(p){
 async function openSheet(id, mode, reset){
   const p=products.find(x=>x.id===id); if(!p) return;
   openProductId=id; sheetMode=mode||"full";
-  if(reset!==false) galleryIndex=0;
+  if(reset!==false){ galleryIndex=0; pickQty=1; }
   const sameBrand=products.filter(x=>x.brand===p.brand && x.id!==p.id);
   const pool=sameBrand.length?sameBrand:products.filter(x=>x.cat===p.cat && x.id!==p.id);
   const sug=pool.slice(0,4);
@@ -625,15 +676,16 @@ async function openSheet(id, mode, reset){
   $("#sheetCard").innerHTML=`
     <p class="swipe-hint">${T("swipe")}</p>
     <button class="text-back" id="closeSheet" type="button">‹ ${T("back")}</button>
-    <button class="brand-link" type="button" data-brand="${esc(p.brand)}">${esc(p.brand)}</button>
+    ${brandMark(p.brand)}
     <h3 style="margin:4px 0 2px">${esc(pname(p))}</h3>
     <div class="card-price">${money(p.price)}</div>
+    <div class="qty-pick"><span>${T("qty")}</span><button type="button" data-q="-1">−</button><b id="pickQty">1</b><button type="button" data-q="1">+</button></div>
     ${carouselHTML(p, galleryIndex)}
     <div class="sku-line">${T("sku")}: ${esc(p.sku || T("noSku"))}</div>
     <span class="skin-pill">${T("skinT")}: ${esc(pskin(p))}</span>
-    ${qv? `<p class="long" style="margin-top:12px"><button class="brand-link" type="button" data-brand="${esc(p.brand)}">${esc(p.brand)}</button> — ${esc(pdesc(p))}</p>` : `
+    ${qv? `<p class="long" style="margin-top:12px">${brandMark(p.brand)} — ${esc(pdesc(p))}</p>` : `
       <h4 class="block-h">${T("about")}</h4>
-      <p class="long"><button class="brand-link" type="button" data-brand="${esc(p.brand)}">${esc(p.brand)}</button> — ${esc(pdesc(p))}</p>
+      <p class="long">${brandMark(p.brand)} — ${esc(pdesc(p))}</p>
       <h4 class="block-h">${T("how")}</h4>
       <p class="long">${esc(puse(p))}</p>
       <h4 class="block-h">${alsoLabel}</h4>
@@ -646,15 +698,22 @@ async function openSheet(id, mode, reset){
   $("#sheet").classList.add("show");
   $("#sheetCard").scrollTop=0;
   bindCarousel(p);
-  try{ if(!history.state || history.state.naqa!=="product") history.pushState({naqa:"product",id},""); }catch(e){}
+  document.title=pname(p)+" · Naqa";
+  try{
+    if(routeHash()!=="p/"+id) history.pushState({naqa:"product",id}, "", "#p/"+id);
+  }catch(e){}
 }
 
-function closeSheet(){
+function closeSheet(fromRoute){
   $("#sheet").classList.remove("show");
   $("#sheet").classList.remove("qv");
   openProductId=null;
+  document.title="نقاء · عناية ومكياج | www.naqa.om";
   const card=$("#sheetCard");
   if(card){ card.style.transform=""; card.style.transition=""; }
+  if(!fromRoute && routeHash().indexOf("p/")===0){
+    try{ history.back(); }catch(e){}
+  }
 }
 
 function openLightbox(src){
@@ -667,10 +726,11 @@ function closeLightbox(){
   $("#lbImg").removeAttribute("src");
 }
 
-function addToCart(id){
+function addToCart(id, qty){
   const p=products.find(x=>x.id===id); if(!p) return;
+  const n=Math.max(1, Math.min(20, parseInt(qty,10)||1));
   const row=cart.find(x=>x.id===id);
-  if(row) row.qty++; else cart.push({id:p.id, brand:p.brand, price:p.price, sku:p.sku, qty:1});
+  if(row) row.qty+=n; else cart.push({id:p.id, brand:p.brand, price:p.price, sku:p.sku, qty:n});
   saveCart(); renderCart();
 }
 
@@ -745,7 +805,8 @@ document.addEventListener("click", e=>{
   query="";
   const search=$("#search"); if(search) search.value="";
   document.querySelectorAll("#cats a").forEach(x=>x.classList.toggle("on", x.dataset.cat==="all"));
-  closeSheet();
+  closeSheet(true);
+  try{ history.pushState({naqa:"brand"}, "", "#b/"+encodeURIComponent(currentBrand)); }catch(e){}
   render();
   const prod=$("#products"); if(prod) prod.scrollIntoView({behavior:"smooth"});
 });
@@ -754,7 +815,9 @@ $("#langBtn").onclick=()=>{ lang=lang==="ar"?"en":"ar"; try{localStorage.setItem
 $("#cats").addEventListener("click", e=>{
   const a=e.target.closest("[data-cat]"); if(!a) return; e.preventDefault();
   document.querySelectorAll("#cats a").forEach(x=>x.classList.remove("on")); a.classList.add("on");
-  currentCat=a.dataset.cat; currentBrand=""; render(); $("#products").scrollIntoView({behavior:"smooth"});
+  currentCat=a.dataset.cat; currentBrand=""; closeSheet(true);
+  try{ history.pushState({naqa:"cat"}, "", currentCat==="all"?"#shop":"#c/"+encodeURIComponent(currentCat)); }catch(e){}
+  render(); $("#products").scrollIntoView({behavior:"smooth"});
 });
 document.querySelectorAll("[data-cat-jump]").forEach(el=>{
   el.addEventListener("click", e=>{
@@ -802,8 +865,18 @@ $("#lightbox").addEventListener("click", e=>{ if(e.target.id==="lightbox"||e.tar
 
 window.addEventListener("popstate", ()=>{
   if($("#lightbox").classList.contains("show")){ closeLightbox(); return; }
-  if($("#sheet").classList.contains("show")){ closeSheet(); return; }
+  applyRoute();
 });
+window.addEventListener("hashchange", ()=>{ applyRoute(); });
+window.addEventListener("scroll", ()=>{
+  const h=routeHash();
+  if(h.indexOf("p/")===0||h.indexOf("b/")===0||h.indexOf("c/")===0) return;
+  if(window.scrollY>420){
+    if(h!=="shop"){ try{ history.replaceState({naqa:"shop"}, "", "#shop"); }catch(e){} }
+  } else if(h==="shop"){
+    try{ history.replaceState({naqa:"home"}, "", location.pathname+location.search); }catch(e){}
+  }
+}, {passive:true});
 
 function boot(){
   try{
@@ -811,8 +884,8 @@ function boot(){
     const wa="https://wa.me/"+WA_NUMBER;
     $("#waFooter").href=wa; $("#waFloat").href=wa; $("#waHero").href=wa;
     $("#yr").textContent=new Date().getFullYear();
-    try{history.replaceState({naqa:"home"},"");}catch(e){}
     render();
+    applyRoute();
   }catch(err){
     const b=document.createElement("div");
     b.style.cssText="padding:20px;background:#fee;color:#900;direction:rtl";

@@ -99,3 +99,4 @@ const puse=p=>lang==="en"?(p.useEn||p.useAr||""):(p.useAr||p.useEn||"");
 const pskin=p=>lang==="en"?(p.skinEn||p.skinAr||""):(p.skinAr||p.skinEn||"");
 const pimgs=p=>(Array.isArray(p.imgs)?p.imgs:[]).filter(Boolean).slice(0,5);
 function saveCart(){try{localStorage.setItem("naqa_cart",JSON.stringify(cart))}catch(e){}}
+function nl2br(t){return esc(t).split("\n").join("<br>");}

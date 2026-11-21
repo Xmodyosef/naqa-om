@@ -2,104 +2,65 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-<meta name="theme-color" content="#1f1a17" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>لوحة تحكم نقاء</title>
-<link rel="stylesheet" href="css/naqa.css?v=20261122i" />
-<style>
-  body{background:#f6f1ee;margin:0;font-family:system-ui,"Noto Kufi Arabic",Tahoma,sans-serif}
-  .admin-top{position:sticky;top:0;z-index:5;background:#1f1a17;color:#fff;padding:14px 16px 10px}
-  .admin-top a{color:#fff;font-weight:700;font-size:.85rem}
-  .admin-top h1{font-size:1.2rem;margin:6px 0 10px}
-  .tabs{display:flex;gap:8px}
-  .tabs button{flex:1;border:0;border-radius:999px;padding:10px;font-weight:800;font:inherit;background:#3a322e;color:#fff}
-  .tabs button.on{background:#b05c6e}
-  .admin-wrap{max-width:720px;margin:0 auto;padding:14px 14px 100px}
-  .pin-card,.row,.edit-card,.order,.wa-box,.manual{background:#fff;border:1px solid #efe4df;border-radius:16px;padding:14px;margin:10px 0}
-  .pin-card input,.token input,.edit-card input,.edit-card textarea,.edit-card select,#q,.manual input,.manual textarea,.manual select{width:100%;border:1px solid #efe4df;border-radius:12px;padding:12px;font:inherit;box-sizing:border-box}
-  .row{display:grid;grid-template-columns:64px 1fr auto;gap:10px;align-items:center}
-  .row img,.ph{width:64px;height:64px;object-fit:contain;border-radius:12px;background:#f6f1ee}
-  .row strong,.order strong{display:block;font-size:.9rem;line-height:1.35}
-  .row small,.order small,.muted{display:block;color:#8a7f78;font-size:.75rem;margin-top:2px}
-  .edit-btn,.primary,.back,.savebar button,.pin-card button,.mini{background:#b05c6e;color:#fff;border:0;border-radius:999px;padding:10px 14px;font-weight:800;font:inherit}
-  .edit-btn,.mini{padding:8px 12px;font-size:.8rem}
-  .back{background:#fff;color:#1f1a17;border:1px solid #efe4df;margin-bottom:8px}
-  .savebar{position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:1px solid #efe4df;padding:10px 14px;display:flex;gap:8px;z-index:6}
-  .savebar button{flex:1}
-  .ghost{background:#fff!important;color:#1f1a17!important;border:1px solid #efe4df!important}
-  .note{font-size:.82rem;color:#8a7f78;line-height:1.5}
-  .status{color:#14532d;font-weight:800;min-height:1.2em}
-  [hidden]{display:none!important}
-  .edit-card label,.manual label{display:block;margin:10px 0;font-size:.78rem;font-weight:800;color:#8a7f78}
-  .edit-card textarea,.manual textarea{resize:vertical;min-height:72px}
-  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-  .grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
-  @media (max-width:520px){.grid3{grid-template-columns:1fr}}
-  .preview img,.ph.big{width:100%;height:180px;object-fit:contain;border-radius:14px;background:#f6f1ee}
-  .hide-row{display:flex!important;align-items:center;gap:8px;color:#1f1a17!important;font-size:.9rem!important}
-  .primary{width:100%;margin-top:8px;padding:14px}
-  .tabs{display:flex;gap:8px;margin:0 0 12px}
-  .tab{flex:1;background:#fff;border:1px solid #efe4df;border-radius:999px;padding:12px;font-weight:800;font:inherit}
-  .tab.on{background:#1f1a17;color:#fff;border-color:#1f1a17}
-  .order-card{background:#fff;border:1px solid #efe4df;border-radius:16px;padding:14px;margin:10px 0}
-  .order-card h3{margin:0 0 6px;font-size:1rem}
-  .order-card .st{display:inline-block;padding:4px 8px;border-radius:999px;background:#efe4df;font-size:.75rem;font-weight:800}
-  .order-card .st.new{background:#fde8ec;color:#b05c6e}
-  .order-card .st.done{background:#e8f5e9;color:#14532d}
-  .order-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
-  .order-actions button,.order-actions a{flex:1;min-width:110px;text-align:center;padding:10px;border-radius:999px;border:1px solid #efe4df;background:#fff;font-weight:800;font:inherit;text-decoration:none;color:inherit}
-  #productsPane[hidden],#ordersPane[hidden],#orderForm[hidden]{display:none!important}
-  .wa-box a{display:inline-block;margin-top:8px;background:#25D366;color:#fff;text-decoration:none;padding:10px 14px;border-radius:999px;font-weight:800}
-  .badge{display:inline-block;padding:4px 8px;border-radius:999px;font-size:.72rem;font-weight:800;background:#efe4df}
-  .badge.new{background:#ffe8a3}.badge.prep{background:#cde7ff}.badge.done{background:#d8f5d0}.badge.cancel{background:#ffd0d0}
-  .badge.ship{background:#cde7ff}.badge.delivered{background:#d8f5d0}.badge.prep{background:#ffe8a3}
-  .status-bar{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0}
-  .status-bar button{border:1px solid #efe4df;background:#fff;border-radius:999px;padding:8px 12px;font:inherit;font-weight:800;font-size:.78rem}
-  .status-bar button.on{background:#1f1a17;color:#fff;border-color:#1f1a17}
-  .order .actions .mini.on{outline:2px solid #b05c6e;outline-offset:1px}
-  .order .mini{touch-action:manipulation}
-  .order .actions{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
-  .order a{color:#b05c6e;font-weight:700;font-size:.82rem;word-break:break-all}
-  .items{margin:8px 0 0;padding:0;list-style:none}
-  .items li{border-top:1px solid #efe4df;padding:8px 0;font-size:.85rem}
-</style>
+<link rel="stylesheet" href="css/admin.css?v=20261122j" />
 </head>
 <body>
 <div class="admin-top">
-  <a href="index.html">رجوع للمتجر</a>
+  <a class="store" href="index.html">← المتجر</a>
   <h1>لوحة تحكم نقاء</h1>
   <div class="tabs" id="tabs" hidden>
-    <button type="button" class="on" data-tab="products">المنتجات</button>
+    <button type="button" data-tab="home">الرئيسية</button>
     <button type="button" data-tab="orders">الطلبات</button>
+    <button type="button" data-tab="products">المنتجات</button>
+    <button type="button" data-tab="customers">العملاء</button>
+    <button type="button" data-tab="finance">المالية</button>
+    <button type="button" data-tab="settings">الإعدادات</button>
   </div>
 </div>
 <div class="admin-wrap">
   <div class="pin-card" id="pin">
-    <p>رمز الدخول يتحفظ على هذا الآيفون. أول مرة تختارينه.</p><p class="note" style="color:#b05c6e;font-weight:800">بعد الدخول: فوق تلاقين تبويبين — المنتجات والطلبات.</p>
+    <p>رمز الدخول يتحفظ على هذا الجهاز. أول مرة تختارينه.</p>
+    <p class="note">بعد الدخول: رئيسية · طلبات · منتجات · عملاء · مالية · إعدادات (هيكل زي زد / سلّة / شوبيفاي، مبسّط لنقاء).</p>
     <input id="pinInput" inputmode="numeric" maxlength="6" placeholder="٤ أرقام أو أكثر" />
-    <button id="pinGo" type="button" style="margin-top:10px;width:100%">دخول</button>
+    <button id="pinGo" type="button" style="margin-top:10px;width:100%;border:0;border-radius:12px;padding:12px;font-weight:800;background:#1f1a17;color:#fff">دخول</button>
     <p class="note" id="pinMsg"></p>
   </div>
   <div id="tools" hidden>
-    <div id="productsTab">
-      <div id="listView">
-        <input id="q" type="search" placeholder="ابحثي بالاسم أو SKU أو الماركة" />
-        <p class="note">اضغطي «تعديل كامل» للكمية والصور والوصف والاستعمال.</p>
-        <p class="status" id="status"></p>
-        <div class="token" style="margin:8px 0"><input id="token" type="password" placeholder="رمز GitHub للنشر (اختياري)" autocomplete="off" /></div>
-        <div id="list"></div>
-      </div>
-      <div id="editView" hidden></div>
+    <div id="homeTab" hidden>
+      <div id="dashBox"></div>
     </div>
     <div id="ordersTab" hidden>
       <div class="wa-box">
-        <strong>هنا خانة الطلبات</strong>
-        <p class="note">الطلبات توصل واتساب. من هنا تغيّرين الحالة: جديد · جاري التجهيز · جاري التوصيل · تم التوصيل · ملغي.</p>
+        <strong>الطلبات</strong>
+        <p class="note">حالات: جديد · جاري التجهيز · جاري التوصيل · تم التوصيل · ملغي</p>
         <a id="waOrders" href="#" target="_blank" rel="noopener">فتح واتساب الطلبات</a>
       </div>
       <div class="status-bar" id="statusBar"></div>
       <p class="status" id="orderStatus"></p>
       <div id="ordersList"></div>
+    </div>
+    <div id="productsTab" hidden>
+      <div id="listView">
+        <input id="q" type="search" placeholder="ابحثي بالاسم أو SKU أو الماركة" />
+        <p class="note">اضغطي «تعديل كامل» للكمية والصور والوصف والاستعمال.</p>
+        <p class="status" id="status"></p>
+        <div id="list"></div>
+      </div>
+      <div id="editView" hidden></div>
+    </div>
+    <div id="customersTab" hidden>
+      <div class="panel"><h2>العملاء</h2><p class="note">مجمّعين تلقائي من الطلبات.</p></div>
+      <div id="customersList"></div>
+    </div>
+    <div id="financeTab" hidden>
+      <div class="panel"><h2>المالية والتحليلات</h2></div>
+      <div id="financeBox"></div>
+    </div>
+    <div id="settingsTab" hidden>
+      <p class="status" id="settingsStatus"></p>
+      <div id="settingsBox"></div>
     </div>
   </div>
 </div>
@@ -107,12 +68,19 @@
   <button id="saveLocal" type="button">حفظ على جهازي</button>
   <button id="publish" class="ghost" type="button">نشر للكل</button>
 </div>
-<script src="js/config.js?v=20261122i"></script>
-<script src="products.js?v=20261122i"></script>
-<script src="data/products-care.js?v=20261122i"></script>
-<script src="data/products-makeup.js?v=20261122i"></script>
-<script src="data/products-hair.js?v=20261122i"></script>
-<script src="data/products-more.js?v=20261122i"></script>
-<script src="js/admin.js?v=20261122i"></script>
+<script src="js/config.js?v=20261122j"></script>
+<script src="products.js?v=20261122j"></script>
+<script src="data/products-care.js?v=20261122j"></script>
+<script src="data/products-makeup.js?v=20261122j"></script>
+<script src="data/products-hair.js?v=20261122j"></script>
+<script src="data/products-more.js?v=20261122j"></script>
+<script src="js/admin/core.js?v=20261122j"></script>
+<script src="js/admin/products.js?v=20261122j"></script>
+<script src="js/admin/orders.js?v=20261122j"></script>
+<script src="js/admin/customers.js?v=20261122j"></script>
+<script src="js/admin/finance.js?v=20261122j"></script>
+<script src="js/admin/dashboard.js?v=20261122j"></script>
+<script src="js/admin/settings.js?v=20261122j"></script>
+<script src="js/admin/app.js?v=20261122j"></script>
 </body>
 </html>

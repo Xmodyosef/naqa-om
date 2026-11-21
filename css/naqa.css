@@ -29,6 +29,7 @@ header{position:sticky;top:0;z-index:60;background:rgba(253,248,246,.94);
   border:1px solid var(--line);font-weight:800;flex-shrink:0}
 .icon-btn{width:42px;height:42px;border-radius:12px;background:#fff;border:1px solid var(--line);
   display:grid;place-items:center;position:relative;flex-shrink:0}
+.icon-btn.on{background:var(--rose-deep);color:#fff;border-color:var(--rose-deep)}
 .icon-btn .badge{position:absolute;top:-4px;inset-inline-start:-4px;min-width:18px;height:18px;padding:0 5px;
   border-radius:999px;background:var(--rose-deep);color:#fff;font-size:.7rem;font-weight:700;
   display:grid;place-items:center}

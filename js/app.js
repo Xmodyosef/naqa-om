@@ -15,6 +15,17 @@ $("#cartBody").addEventListener("click", e=>{
   if(dec){ const it=cart.find(i=>i.id===+dec.dataset.dec); if(it){ it.qty--; if(it.qty<=0) cart=cart.filter(x=>x.id!==it.id);} saveCart(); renderCart(); }
   if(rm){ cart=cart.filter(x=>x.id!==+rm.dataset.rm); saveCart(); renderCart(); }
 });
+$("#wishBtn").onclick=()=>{
+  wishView=!wishView;
+  if(wishView){
+    currentCat="all"; currentBrand=""; currentConcern=""; query="";
+    const search=$("#search"); if(search) search.value="";
+    document.querySelectorAll("#cats a").forEach(x=>x.classList.toggle("on", x.dataset.cat==="all"));
+    if(typeof closeSheet==="function") closeSheet(true);
+  }
+  render();
+  if(wishView){ const prod=$("#products"); if(prod) prod.scrollIntoView({behavior:"smooth"}); }
+};
 $("#cartBtn").onclick=openCart;
 $("#closeCart").onclick=closeCart;
 $("#overlay").onclick=closeCart;
@@ -26,8 +37,8 @@ document.addEventListener("click", e=>{
   const sh=e.target.closest("[data-shelf]");
   if(sh){
     e.preventDefault();
-    if(sh.dataset.shelf==="year"){ currentSort="off"; currentCat="all"; currentBrand=""; query=""; const search=$("#search"); if(search) search.value=""; const sel=$("#sortSel"); if(sel) sel.value="off"; }
-    if(sh.dataset.shelf==="hot"){ currentSort="new"; currentCat="all"; currentBrand=""; query=""; const search=$("#search"); if(search) search.value=""; }
+    if(sh.dataset.shelf==="year"){ currentSort="off"; currentCat="all"; currentBrand=""; query=""; wishView=false; const search=$("#search"); if(search) search.value=""; const sel=$("#sortSel"); if(sel) sel.value="off"; }
+    if(sh.dataset.shelf==="hot"){ currentSort="new"; currentCat="all"; currentBrand=""; query=""; wishView=false; const search=$("#search"); if(search) search.value=""; }
     document.querySelectorAll("#cats a").forEach(x=>x.classList.toggle("on", x.dataset.cat==="all"));
     render();
     const prod=$("#products"); if(prod) prod.scrollIntoView({behavior:"smooth"});
@@ -39,6 +50,7 @@ document.addEventListener("click", e=>{
   currentBrand=b.dataset.brand;
   currentCat="all";
   query="";
+  wishView=false;
   const search=$("#search"); if(search) search.value="";
   document.querySelectorAll("#cats a").forEach(x=>x.classList.toggle("on", x.dataset.cat==="all"));
   closeSheet(true);
@@ -51,13 +63,13 @@ $("#langBtn").onclick=()=>{ lang=lang==="ar"?"en":"ar"; try{localStorage.setItem
 $("#cats").addEventListener("click", e=>{
   const a=e.target.closest("[data-cat]"); if(!a) return; e.preventDefault();
   document.querySelectorAll("#cats a").forEach(x=>x.classList.remove("on")); a.classList.add("on");
-  currentCat=a.dataset.cat; currentBrand=""; closeSheet(true);
+  currentCat=a.dataset.cat; currentBrand=""; wishView=false; closeSheet(true);
   try{ history.pushState({naqa:"cat"}, "", currentCat==="all"?"#shop":"#c/"+encodeURIComponent(currentCat)); }catch(e){}
   render(); $("#products").scrollIntoView({behavior:"smooth"});
 });
 document.querySelectorAll("[data-cat-jump]").forEach(el=>{
   el.addEventListener("click", e=>{
-    e.preventDefault(); currentCat=el.dataset.catJump; currentBrand="";
+    e.preventDefault(); currentCat=el.dataset.catJump; currentBrand=""; wishView=false;
     document.querySelectorAll("#cats a").forEach(x=>x.classList.toggle("on", x.dataset.cat===currentCat));
     render(); $("#products").scrollIntoView({behavior:"smooth"});
   });

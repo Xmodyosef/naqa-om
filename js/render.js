@@ -53,7 +53,7 @@ function shelfBanner(kind, list){
 function renderShelves(){
   const box=$("#shelves");
   if(!box) return;
-  const show=!query && currentCat==="all" && !currentBrand;
+  const show=!query && currentCat==="all" && !currentBrand && !(typeof wishView!=="undefined" && wishView);
   if(!show){ box.innerHTML=""; box.hidden=true; return; }
   box.hidden=false;
   const hot=products.filter(p=>p.hot).slice(0,12);
@@ -83,7 +83,8 @@ function applyLang(){
   $("#heroText").textContent=T("hero");
   $("#btnShop").textContent=T("shop");
   $("#waHero").textContent=T("wa");
-  $("#products").textContent=T("products");
+  $("#products").textContent=(typeof wishView!=="undefined" && wishView)?T("saved"):T("products");
+  const hb=$("#wishBtn"); if(hb){ hb.classList.toggle("on", typeof wishView!=="undefined" && !!wishView); hb.title=(typeof wishView!=="undefined" && wishView)?T("savedOn"):T("saved"); }
   $("#cartTitle").textContent=T("cart");
   $("#totalLabel").textContent=T("total");
   $("#checkoutBtn").textContent=T("checkout");
@@ -129,11 +130,10 @@ function applyLang(){
   const sf=$("#shipFree"); if(sf) sf.textContent=T("shipFree");
   const sel=$("#sortSel");
   if(sel){
-    if(!sel.querySelector('option[value="wish"]')){
-      const o=document.createElement("option"); o.value="wish"; sel.appendChild(o);
-    }
-    const labels=[T("sortNew"),T("sortLow"),T("sortHigh"),T("sortOff"), (lang==="en"?"Wishlist":"المفضلة")];
-    for(let i=0;i<sel.options.length;i++) sel.options[i].text=labels[i]||sel.options[i].text;
+    const wishOpt=sel.querySelector('option[value="wish"]'); if(wishOpt) wishOpt.remove();
+    const labels=[T("sortNew"),T("sortLow"),T("sortHigh"),T("sortOff")];
+    for(let i=0;i<sel.options.length && i<labels.length;i++) sel.options[i].text=labels[i];
+    if(currentSort==="wish") currentSort="new";
     sel.value=currentSort;
   }
 }
@@ -145,7 +145,8 @@ function render(){
     const catOk=currentCat==="all"||p.cat===currentCat;
     const brandOk=!currentBrand || p.brand===currentBrand;
     const concernOk=!currentConcern || (p.concerns&&p.concerns.indexOf(currentConcern)>=0);
-    const wishOk=currentSort!=="wish" || (typeof isWish==="function" && isWish(p.id));
+    const viewingWish=(typeof wishView!=="undefined" && wishView);
+    const wishOk=!viewingWish || (typeof isWish==="function" && isWish(p.id));
     const blob=[p.nameAr,p.nameEn,p.brand,p.sku,p.descAr,p.descEn].join(" ").toLowerCase();
     return catOk && brandOk && concernOk && wishOk && (!q || blob.includes(q));
   });
@@ -159,16 +160,18 @@ function render(){
   });
   const bar=$("#brandBar");
   let chips="";
+  if(typeof wishView!=="undefined" && wishView) chips+='<button type="button" class="brand-chip" id="clearWish">'+T("saved")+' ×</button>';
   if(currentBrand) chips+='<button type="button" class="brand-chip" id="clearBrand">'+esc(currentBrand)+' ×</button>';
   if(currentConcern) chips+='<button type="button" class="brand-chip" id="clearConcern">'+esc(typeof concernLabel==="function"?concernLabel(currentConcern):currentConcern)+' ×</button>';
   if(chips){
     bar.hidden=false; bar.innerHTML=chips;
+    const cw=$("#clearWish"); if(cw) cw.onclick=()=>{ wishView=false; render(); };
     const clear=$("#clearBrand"); if(clear) clear.onclick=()=>{ currentBrand=""; render(); };
     const cc=$("#clearConcern"); if(cc) cc.onclick=()=>{ currentConcern=""; render(); };
   } else { bar.hidden=true; bar.innerHTML=""; }
   $("#countLabel").textContent=T("count")(list.length);
   $("#empty").hidden=list.length>0;
-  $("#empty").textContent=T("empty");
+  $("#empty").textContent=(typeof wishView!=="undefined" && wishView && !list.length)?T("wishEmpty"):T("empty");
   $("#grid").innerHTML=list.map(cardHTML).join("");
   renderShelves();
   if(typeof renderBrandsGrid==="function") renderBrandsGrid();

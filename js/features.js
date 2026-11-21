@@ -9,6 +9,7 @@ const CONCERNS = [
 ];
 
 let currentConcern = "";
+var wishView = false;
 let wishlist = [];
 try { wishlist = JSON.parse(localStorage.getItem("naqa_wish") || "[]"); if (!Array.isArray(wishlist)) wishlist = []; } catch (e) { wishlist = []; }
 let quizStep = 0, quizAns = {};
@@ -25,6 +26,8 @@ function toggleWish(id) {
   });
   var n = wishlist.length, wb = $("#wishBadge");
   if (wb) { wb.hidden = !n; wb.textContent = n; }
+  var hb = $("#wishBtn"); if (hb) hb.classList.toggle("on", !!wishView);
+  if (wishView && typeof render === "function") render();
 }
 
 function tagConcerns() {
@@ -55,7 +58,7 @@ function renderConcernBar() {
 
 function renderBrandsGrid() {
   var el = $("#brandsGrid"); if (!el) return;
-  if (query || currentCat !== "all" || currentBrand || currentConcern) { el.hidden = true; return; }
+  if (query || currentCat !== "all" || currentBrand || currentConcern || wishView) { el.hidden = true; return; }
   el.hidden = false;
   var counts = {};
   products.forEach(function (p) { counts[p.brand] = (counts[p.brand] || 0) + 1; });
@@ -88,7 +91,7 @@ function buildBundleItems(b) {
 
 function renderBundles() {
   var el = $("#bundles"); if (!el) return;
-  if (query || currentCat !== "all" || currentBrand || currentConcern) { el.hidden = true; return; }
+  if (query || currentCat !== "all" || currentBrand || currentConcern || wishView) { el.hidden = true; return; }
   el.hidden = false;
   var title = lang === "en" ? "Ready sets" : "باقات جاهزة";
   var html = '<div class="brands-head"><h3>' + title + "</h3></div><div class=\"bundle-row\">";

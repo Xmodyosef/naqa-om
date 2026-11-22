@@ -52,6 +52,10 @@ function applyLang(){
     const send=$("#checkoutSend"); if(send) send.textContent=T("coSend");
   }
   const sf=$("#shipFree"); if(sf) sf.textContent=T("shipFree");
+  const pt=$("#payTitle"); if(pt) pt.textContent=T("payTitle");
+  const pcl=$("#payCodLab"); if(pcl) pcl.textContent=T("payCod");
+  const ppl=$("#payPaidLab"); if(ppl) ppl.textContent=T("payPaid");
+  if(typeof updatePaySum==="function") updatePaySum();
   const sel=$("#sortSel");
   if(sel){
     const wishOpt=sel.querySelector('option[value="wish"]'); if(wishOpt) wishOpt.remove();

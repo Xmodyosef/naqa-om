@@ -88,6 +88,10 @@ $("#checkoutBtn").onclick=()=>{
   openCheckout();
 };
 $("#checkoutCancel").onclick=closeCheckout;
+document.querySelectorAll('input[name="payMethod"]').forEach(function(r){
+  r.addEventListener("change", function(){ if(typeof updatePaySum==="function") updatePaySum(); });
+});
+
 $("#checkoutBackdrop").onclick=closeCheckout;
 $("#checkoutSend").onclick=()=>{
   if(!cart.length){ alert(T("alertEmpty")); return; }

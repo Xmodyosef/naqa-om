@@ -6,10 +6,10 @@
 <meta name="theme-color" content="#b05c6e" />
 <meta name="description" content="نقاء — عناية ومكياج. توصيل عُمان. طلب واتساب." />
 <title>نقاء · عناية ومكياج | www.naqa.om</title>
-<link rel="stylesheet" href="css/store/base.css?v=20261122r" />
-<link rel="stylesheet" href="css/store/cart-chrome.css?v=20261122r" />
-<link rel="stylesheet" href="css/store/sheet.css?v=20261122r" />
-<link rel="stylesheet" href="css/store/features.css?v=20261122r" />
+<link rel="stylesheet" href="css/store/base.css?v=20261122s" />
+<link rel="stylesheet" href="css/store/cart-chrome.css?v=20261122s" />
+<link rel="stylesheet" href="css/store/sheet.css?v=20261122s" />
+<link rel="stylesheet" href="css/store/features.css?v=20261122s" />
 </head>
 <body>
 <div class="ship-bar" id="shipBar">توصيل داخل عُمان · الطلب عبر واتساب</div>
@@ -113,7 +113,7 @@
   </div>
 </footer>
 
-<div class="ship-free" id="shipFree">توصيل مجاني للطلبات فوق ٣٠ ر.ع</div>
+<div class="ship-free" id="shipFree">توصيل مجاني فوق ٣٠ ر.ع · دفع عند الاستلام: ٢ ر.ع تحتها</div>
 <div class="cart-bar empty-bar" id="cartBar">
   <div class="info">
     <strong id="barTitle">السلة فاضية</strong>
@@ -159,6 +159,13 @@
       </select>
     </label>
     <label data-field="coNote">ملاحظة للطلب<textarea id="coNote" rows="2" placeholder="مبنى، أقرب معلم…"></textarea></label>
+    <fieldset class="pay-box" id="payBox">
+      <legend id="payTitle">طريقة الدفع</legend>
+      <label class="pay-opt"><input type="radio" name="payMethod" id="payCod" value="cod" checked> <span id="payCodLab">دفع عند الاستلام</span></label>
+      <label class="pay-opt"><input type="radio" name="payMethod" id="payPaid" value="paid"> <span id="payPaidLab">مدفوع مسبقاً (تحويل)</span></label>
+      <p class="pay-hint" id="payHint">دفع عند الاستلام: رسوم توصيل ٢ ر.ع إذا الطلب تحت ٣٠ ر.ع</p>
+      <div class="pay-sum" id="paySum"></div>
+    </fieldset>
     <div id="orderDone" hidden></div>
     <div class="co-actions">
       <button type="button" class="btn btn-ghost" id="checkoutCancel">إلغاء</button>
@@ -166,25 +173,25 @@
     </div>
   </div>
 </div>
-<script src="products.js?v=20261122r"></script>
-<script src="data/products-care.js?v=20261122r"></script>
-<script src="data/products-makeup.js?v=20261122r"></script>
-<script src="data/products-hair.js?v=20261122r"></script>
-<script src="data/products-more.js?v=20261122r"></script>
-<script src="js/config.js?v=20261122r"></script>
-<script src="js/brands-logos.js?v=20261122r"></script>
-<script src="js/core.js?v=20261122r"></script>
-<script src="js/features/wish-concerns.js?v=20261122r"></script>
-<script src="js/features/bundles.js?v=20261122r"></script>
-<script src="js/features/quiz.js?v=20261122r"></script>
-<script src="js/features/boot.js?v=20261122r"></script>
-<script src="data/oman-areas.js?v=20261122r"></script>
-<script src="js/extras.js?v=20261122r"></script>
-<script src="js/render/cards.js?v=20261122r"></script>
-<script src="js/render/main.js?v=20261122r"></script>
-<script src="js/sheet/carousel.js?v=20261122r"></script>
-<script src="js/sheet/panel.js?v=20261122r"></script>
-<script src="js/cart.js?v=20261122r"></script>
-<script src="js/app.js?v=20261122r"></script>
+<script src="products.js?v=20261122s"></script>
+<script src="data/products-care.js?v=20261122s"></script>
+<script src="data/products-makeup.js?v=20261122s"></script>
+<script src="data/products-hair.js?v=20261122s"></script>
+<script src="data/products-more.js?v=20261122s"></script>
+<script src="js/config.js?v=20261122s"></script>
+<script src="js/brands-logos.js?v=20261122s"></script>
+<script src="js/core.js?v=20261122s"></script>
+<script src="js/features/wish-concerns.js?v=20261122s"></script>
+<script src="js/features/bundles.js?v=20261122s"></script>
+<script src="js/features/quiz.js?v=20261122s"></script>
+<script src="js/features/boot.js?v=20261122s"></script>
+<script src="data/oman-areas.js?v=20261122s"></script>
+<script src="js/extras.js?v=20261122s"></script>
+<script src="js/render/cards.js?v=20261122s"></script>
+<script src="js/render/main.js?v=20261122s"></script>
+<script src="js/sheet/carousel.js?v=20261122s"></script>
+<script src="js/sheet/panel.js?v=20261122s"></script>
+<script src="js/cart.js?v=20261122s"></script>
+<script src="js/app.js?v=20261122s"></script>
 </body>
 </html>

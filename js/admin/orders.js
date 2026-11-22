@@ -73,6 +73,10 @@
         + "<small>" + A.esc(when) + "</small>"
         + "<small>" + A.esc(o.name || "—") + " · " + A.esc(o.phone || "—") + " · " + A.esc(o.area || "—") + "</small>"
         + "<small>المجموع: <b>" + A.esc(o.total != null ? Number(o.total).toFixed(3) : "—") + " ر.ع</b></small>"
+        + "<small>الدفع: <b>" + A.esc(o.paymentLabel || (o.paid ? "مدفوع مسبقاً" : (o.payment === "cod" ? "دفع عند الاستلام" : "—"))) + "</b>"
+        + (o.subtotal != null ? (" · فرعي " + A.esc(Number(o.subtotal).toFixed(3))) : "")
+        + (o.shipping != null ? (" · توصيل " + A.esc(Number(o.shipping).toFixed(3)) + " ر.ع") : "")
+        + "</small>"
         + (o.note ? ("<small>ملاحظة: " + A.esc(o.note) + "</small>") : "")
         + items + '<div class="actions">' + statusBtns
         + (phoneDigits ? ('<a class="mini" style="background:#25D366;display:inline-block;color:#fff;text-decoration:none;text-align:center" href="https://wa.me/968' + A.esc(phoneDigits) + '" target="_blank" rel="noopener">واتساب</a>') : "")

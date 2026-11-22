@@ -59,8 +59,6 @@ function renderTrust() {
 }
 
 function reviewHTML(p) {
-  var n = 3 + (p.id % 12);
-  var stars = (p.id % 2) ? "4.5" : "5.0";
-  return '<div class="review-pill">' + (lang === "en" ? (n + " notes · " + stars + "★") : (n + " ملاحظة · " + stars + "★")) + "</div>";
+  return "";
 }
 

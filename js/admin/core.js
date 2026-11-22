@@ -52,6 +52,20 @@
   A.utf8b64 = function (text) {
     return btoa(unescape(encodeURIComponent(text)));
   };
+  A.ghPutB64 = function (path, b64, token, message) {
+    var api = "https://api.github.com/repos/Xmodyosef/naqa-om/contents/" + path;
+    var headers = { Authorization: "Bearer " + token, Accept: "application/vnd.github+json" };
+    return fetch(api, { headers: headers }).then(function (res) { return res.ok ? res.json() : {}; }).then(function (cur) {
+      return fetch(api, {
+        method: "PUT",
+        headers: Object.assign({ "Content-Type": "application/json" }, headers),
+        body: JSON.stringify({ message: message, content: b64, sha: cur.sha })
+      });
+    });
+  };
+  A.REVIEWS_KEY = "naqa_reviews";
+  try { A.reviews = JSON.parse(localStorage.getItem(A.REVIEWS_KEY) || "[]"); } catch (e) { A.reviews = []; }
+  if (!Array.isArray(A.reviews)) A.reviews = [];
   A.ghPut = function (path, content, token, message) {
     var api = "https://api.github.com/repos/Xmodyosef/naqa-om/contents/" + path;
     var headers = { Authorization: "Bearer " + token, Accept: "application/vnd.github+json" };

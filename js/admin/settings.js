@@ -7,7 +7,8 @@
     box.innerHTML =
       '<div class="panel settings">'
       + '<h2>الحساب والنشر</h2>'
-      + '<p class="note">رمز الدخول على هذا الجهاز. رمز GitHub اختياري لمشاركة overrides والطلبات بين أجهزتك.</p>'
+      + '<p class="note">رمز الدخول قفل على هذا الجهاز فقط، مو حساب سحابي.</p>'
+      + '<p class="note" style="color:#b05c6e">لا تلصقي رمز GitHub إلا وأنتِ وحدك على هذا الآيفون. الرمز يقدر يعدّل المتجر. الطلبات وأرقام الزبائن ما تننشر على الموقع.</p>'
       + '<label style="display:block;margin:8px 0;font-size:.8rem;font-weight:800;color:#8a7f78">رمز GitHub (contents:write)<input id="token" type="password" value="' + A.esc(tok) + '" autocomplete="off" placeholder="ghp_..."></label>'
       + '<p class="note">واتساب المتجر: +' + A.esc(String(w.WA_NUMBER || "96879088349")) + '</p>'
       + '<button type="button" class="primary" id="btnChangePin" style="width:100%;margin-top:8px">تغيير رمز الدخول</button>'
@@ -52,14 +53,17 @@
     localStorage.setItem(A.TOKEN, token);
     A.setMsg("status", "جاري النشر…");
     A.setMsg("settingsStatus", "جاري النشر…");
-    Promise.all([
-      A.ghPut("data/overrides.json", JSON.stringify(A.overrides, null, 2) + "\n", token, "chore: publish product overrides"),
-      A.ghPut("data/orders.json", JSON.stringify(A.orders, null, 2) + "\n", token, "chore: publish orders log")
-    ]).then(function (res) {
-      if (!res[0].ok || !res[1].ok) throw new Error("HTTP");
+    var jobs = [
+      A.ghPut("data/overrides.json", JSON.stringify(A.overrides, null, 2) + "\n", token, "chore: publish product overrides")
+    ];
+    if (A.publishReviews) jobs.push(A.publishReviews(token));
+    Promise.all(jobs).then(function (res) {
+      if (!res[0].ok || (res[1] && !res[1].ok)) throw new Error("HTTP");
       A.setMsg("status", "اننشرت المنتجات.");
-      A.setMsg("orderStatus", "اننشرت الطلبات.");
-      A.setMsg("settingsStatus", "اننشر للكل.");
+      A.setMsg("orderStatus", "الطلبات بقيت على جهازك، ما اننشرت.");
+      A.setMsg("settingsStatus", "اننشرت المنتجات والتقييمات. الطلبات ما اننشرت.");
+      var rs = document.getElementById("reviewStatus");
+      if (rs) rs.textContent = "اننشرت التقييمات المعتمدة.";
     }).catch(function (err) {
       A.setMsg("status", "فشل النشر. " + (err && err.message ? err.message : ""));
       A.setMsg("settingsStatus", "فشل النشر.");

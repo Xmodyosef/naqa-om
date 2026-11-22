@@ -57,6 +57,7 @@ async function openSheet(id, mode, reset){
       <h4 class="block-h">${T("how")}</h4>
       <p class="long steps">${typeof nl2br==="function"?nl2br(puse(p)):esc(puse(p))}</p>
       <div class="tip-box">${lang==="en"?"Tip: patch-test new actives and always pair brightening/acids with daytime SPF.":"نصيحة: اختبري المكوّنات الجديدة على منطقة صغيرة، وواقي الشمس ضروري مع التفتيح/التقشير."}</div>
+      ${typeof reviewsSection==="function"?reviewsSection(p):""}
       <h4 class="block-h">${alsoLabel}</h4>
       <div class="sug-row">${cards}</div>
     `}

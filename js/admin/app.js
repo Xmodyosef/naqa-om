@@ -1,6 +1,6 @@
 (function (w) {
   var A = w.NaqaAdmin;
-  var TABS = ["home", "orders", "products", "customers", "finance", "settings"];
+  var TABS = ["home", "orders", "products", "reviews", "customers", "finance", "settings"];
 
   A.setTab = function (tab) {
     if (TABS.indexOf(tab) < 0) tab = "home";
@@ -14,6 +14,7 @@
     if (tab === "home" && A.paintDashboard) A.paintDashboard();
     if (tab === "orders" && A.paintOrders) A.paintOrders();
     if (tab === "products" && A.paintList) A.paintList(document.getElementById("q") ? document.getElementById("q").value.trim() : "");
+    if (tab === "reviews" && A.paintReviews) A.paintReviews();
     if (tab === "customers" && A.paintCustomers) A.paintCustomers();
     if (tab === "finance" && A.paintFinance) A.paintFinance();
     if (tab === "settings" && A.paintSettings) A.paintSettings();

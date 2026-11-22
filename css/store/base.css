@@ -54,15 +54,20 @@ header{position:sticky;top:0;z-index:60;background:rgba(253,248,246,.94);
 .btn-primary{background:var(--rose-deep);color:#fff}
 .btn-ghost{background:#fff;border:1px solid var(--line)}
 
-.ship-bar{overflow:hidden;background:var(--fg,#1f1a17);color:#fff;font-size:.82rem;font-weight:700;line-height:1.2;padding:0;height:36px;display:flex;align-items:center}
-.ship-marquee{display:flex;width:max-content;direction:ltr;animation:shipScroll 42s linear infinite;will-change:transform}
-.ship-track{padding:9px 0;white-space:nowrap;flex-shrink:0;direction:rtl}
-html[dir="ltr"] .ship-track{direction:ltr}
+.ship-bar{overflow:hidden;background:var(--fg,#1f1a17);color:#fff;font-size:.82rem;font-weight:700;line-height:1;padding:0;height:36px;display:flex;align-items:center;direction:ltr}
+.ship-marquee{display:flex;flex-wrap:nowrap;align-items:center;width:max-content;gap:0;will-change:transform;animation:shipScroll var(--ship-dur,28s) linear infinite;-webkit-animation:shipScroll var(--ship-dur,28s) linear infinite}
+.ship-track{display:block;padding:0;margin:0;white-space:nowrap;flex:0 0 auto;line-height:36px}
+.ship-track[dir="rtl"]{direction:rtl}
+.ship-track[dir="ltr"]{direction:ltr}
 @keyframes shipScroll{
-  from{transform:translateX(0)}
-  to{transform:translateX(-50%)}
+  from{transform:translate3d(0,0,0)}
+  to{transform:translate3d(var(--ship-shift,-50%),0,0)}
 }
-.ship-bar:hover .ship-marquee{animation-play-state:paused}
+@-webkit-keyframes shipScroll{
+  from{-webkit-transform:translate3d(0,0,0)}
+  to{-webkit-transform:translate3d(var(--ship-shift,-50%),0,0)}
+}
+.ship-bar:hover .ship-marquee{animation-play-state:paused;-webkit-animation-play-state:paused}
 .ship-free{display:none!important}
 body{padding-bottom:24px}
 body.has-cart-bar{padding-bottom:88px}

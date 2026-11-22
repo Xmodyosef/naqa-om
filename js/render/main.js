@@ -1,3 +1,29 @@
+
+function syncShipMarquee(){
+  var bar=document.getElementById("shipBar");
+  var bar2=document.getElementById("shipBar2");
+  var mq=document.getElementById("shipMarquee");
+  var wrap=document.getElementById("shipBarWrap");
+  if(!bar||!bar2||!mq) return;
+  var phrase=(typeof T==="function"?T("shipBar"):bar.textContent)||"";
+  phrase=String(phrase).replace(/\s+/g," ").trim();
+  if(!phrase) return;
+  var dir=(typeof lang!=="undefined" && lang==="en")?"ltr":"rtl";
+  bar.setAttribute("dir", dir);
+  bar2.setAttribute("dir", dir);
+  var unit=phrase+"   ·   ";
+  bar.textContent=unit;
+  var unitW=bar.offsetWidth||1;
+  var view=(wrap&&wrap.clientWidth)||window.innerWidth||390;
+  var n=Math.max(2, Math.ceil(view/unitW)+1);
+  var text=unit.repeat(n);
+  bar.textContent=text;
+  bar2.textContent=text;
+  var shift=Math.round(bar.getBoundingClientRect().width);
+  if(shift<1) return;
+  mq.style.setProperty("--ship-shift", (-shift)+"px");
+  mq.style.setProperty("--ship-dur", Math.max(16, shift/48)+"s");
+}
 function applyLang(){
   document.documentElement.lang=lang==="en"?"en":"ar";
   document.documentElement.dir=lang==="en"?"ltr":"rtl";
@@ -33,7 +59,7 @@ function applyLang(){
   $("#copyLine").textContent=T("copy");
   $("#waFooter").textContent=T("orders");
   $("#footBlurb").innerHTML=(T("footAbout")||T("blurb")||"")+"<br/>www.naqa.om";
-  const barTxt=(T("shipBar")+"     ·     ").repeat(6); const bar=$("#shipBar"); if(bar) bar.textContent=barTxt; const bar2=$("#shipBar2"); if(bar2) bar2.textContent=barTxt;
+  if(typeof syncShipMarquee==="function") syncShipMarquee();
   const quiz=$("#heroQuiz"); if(quiz) quiz.textContent=T("quizBtn");
   document.title = openProductId ? (pname(products.find(x=>x.id===openProductId)||{})+" · Naqa") : T("docTitle");
   const mark=document.querySelector(".logo-mark"); if(mark) mark.textContent = lang==="en" ? "N" : "ن";
@@ -129,3 +155,5 @@ function galleryList(p){
   // up to 5 real photos only (thumbs stay small). Arabic card is separate optional first for AR.
   return pimgs(p).slice(0,5);
 }
+
+window.addEventListener("resize", function(){ if(window.__naqaShipResize) cancelAnimationFrame(window.__naqaShipResize); window.__naqaShipResize=requestAnimationFrame(function(){ if(typeof syncShipMarquee==="function") syncShipMarquee(); }); });

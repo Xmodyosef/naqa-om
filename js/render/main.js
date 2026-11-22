@@ -41,7 +41,7 @@ function applyLang(){
   document.documentElement.dir=lang==="en"?"ltr":"rtl";
   const sEl=$("#search"); if(sEl) sEl.placeholder=T("searchHint")||T("search");
   const sg=$("#searchGo"); if(sg) sg.textContent=T("searchBtn")||(lang==="en"?"Search":"بحث");
-  document.querySelectorAll("#cats a").forEach(a=>{
+  document.querySelectorAll("#cats [data-cat]").forEach(a=>{
     const base=T(catLabel[a.dataset.cat]||"all");
     const n=a.dataset.cat==="all"?products.length:products.filter(x=>x.cat===a.dataset.cat).length;
     a.textContent=n?base:(base+" · "+(lang==="en"?"Soon":"قريباً"));
@@ -76,6 +76,7 @@ function applyLang(){
   $("#jumpHair").textContent=T("hairL");
   $("#copyLine").textContent=T("copy");
   $("#waFooter").textContent=T("orders");
+  const footAdmin=$("#footAdmin"); if(footAdmin) footAdmin.textContent=T("admin");
   $("#footBlurb").innerHTML=(T("footAbout")||T("blurb")||"")+"<br/>www.naqa.om";
   if(typeof syncShipMarquee==="function") syncShipMarquee();
   const quiz=$("#heroQuiz"); if(quiz) quiz.textContent=T("quizBtn");
@@ -109,7 +110,10 @@ function applyLang(){
       Array.from(lab.childNodes).forEach(function(n){ if(n.nodeType===3) n.parentNode.removeChild(n); });
       lab.insertBefore(document.createTextNode(T(key)+" "), ctrl);
       if(key!=="coGov" && ctrl.placeholder!==undefined) ctrl.placeholder=T(key+"Ph");
+      ctrl.setAttribute("aria-label", T(key));
     });
+    const payCod=$("#payCod"); if(payCod) payCod.setAttribute("aria-label", T("payCod"));
+    const payPaid=$("#payPaid"); if(payPaid) payPaid.setAttribute("aria-label", T("payPaid"));
     if(typeof fillAreas==="function") fillAreas();
     const cancel=$("#checkoutCancel"); if(cancel) cancel.textContent=T("coCancel");
     const send=$("#checkoutSend"); if(send) send.textContent=T("coSend");

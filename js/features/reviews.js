@@ -44,7 +44,7 @@ function reviewsSection(p) {
   var en = typeof lang !== "undefined" && lang === "en";
   var list = reviewsFor(p);
   var cards = list.map(function (r) {
-    var photo = r.photo ? '<img class="review-photo" src="' + esc(r.photo) + '" alt="">' : "";
+    var photo = r.photo ? '<img class="review-photo" src="' + esc(r.photo) + '" alt="' + (en ? "Review photo" : "صورة التقييم") + '">' : "";
     return '<article class="review-card"><header><span>' + esc(r.name || (en ? "Customer" : "زبونة")) + '</span><span>' + "★".repeat(Math.max(1, Math.min(5, Number(r.stars) || 0))) + '</span></header><p>' + esc(reviewText(r)) + '</p>' + photo + '</article>';
   }).join("");
   var empty = list.length ? "" : '<p class="review-empty">' + (en ? "No reviews yet. Be the first." : "لا تقييمات بعد. كوني الأولى.") + "</p>";

@@ -26,7 +26,7 @@ function renderBundles() {
     var name = lang === "en" ? b.en : b.ar;
     var thumbs = items.slice(0, 3).map(function (p) {
       var imgs = pimgs(p);
-      return imgs[0] ? '<img src="' + imgs[0] + '" alt="" loading="lazy">' : "<span>" + (p.em || "✨") + "</span>";
+      return imgs[0] ? '<img src="' + imgs[0] + '" alt="' + esc(pname(p)) + '" loading="lazy">' : "<span>" + (p.em || "✨") + "</span>";
     }).join("");
     html += '<div class="bundle-card">'
       + '<div class="bundle-thumbs">' + thumbs + "</div>"

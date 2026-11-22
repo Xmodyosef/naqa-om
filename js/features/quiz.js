@@ -51,7 +51,7 @@ function applyQuizFilters(best) {
   currentCat = best === "makeup" ? "وجه" : "عناية";
   currentBrand = ""; query = "";
   var search = $("#search"); if (search) search.value = "";
-  document.querySelectorAll("#cats a").forEach(function (x) {
+  document.querySelectorAll("#cats [data-cat]").forEach(function (x) {
     x.classList.toggle("on", x.dataset.cat === currentCat);
   });
   if (typeof render === "function") render();
@@ -84,10 +84,10 @@ function paintQuiz() {
     body.innerHTML = '<div class="quiz-result"><h3>' + title + "</h3><p>" + sub + "</p>"
       + routine
       + '<div class="quiz-rec">' + rec.map(function (p) {
-        var img = (p.imgs && p.imgs[0]) ? ('<img src="'+p.imgs[0]+'" alt="" loading="lazy" decoding="async" width="120" height="90">') : (p.em || "✨");
+        var img = (p.imgs && p.imgs[0]) ? ('<img src="'+p.imgs[0]+'" alt="'+esc(pname(p))+'" loading="lazy" decoding="async" width="120" height="90">') : (p.em || "✨");
         return '<button type="button" class="quiz-p" data-open="' + p.id + '">'
           + '<span class="quiz-thumb">' + (typeof img === "string" && img.indexOf("<img")===0 ? img : ("<span class=\"quiz-em\">"+img+"</span>")) + "</span>"
-          + "<span>" + esc(pname(p)) + "</span><b>" + money(p.price) + "</b></button>";
+          + "<span" + ((p.imgs && p.imgs[0]) ? ' aria-hidden="true"' : "") + ">" + esc(pname(p)) + "</span><b>" + money(p.price) + "</b></button>";
       }).join("") + "</div>"
       + '<button type="button" class="btn btn-primary" id="quizApply">' + (lang === "en" ? "Show products" : "عرض المنتجات") + "</button>"
       + '<button type="button" class="btn btn-ghost" id="quizClose2">' + (lang === "en" ? "Close" : "إغلاق") + "</button></div>";

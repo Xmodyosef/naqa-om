@@ -31,7 +31,7 @@ function applyRoute(){
     currentCat="all"; currentBrand=""; currentConcern=""; wishView=false;
     const s=$("#search"); if(s) s.value=query;
     const clr=$("#searchClear"); if(clr) clr.hidden=!query;
-    document.querySelectorAll("#cats a").forEach(x=>x.classList.toggle("on", x.dataset.cat==="all"));
+    document.querySelectorAll("#cats [data-cat]").forEach(x=>x.classList.toggle("on", x.dataset.cat==="all"));
     render();
     const prod=$("#products"); if(prod) prod.scrollIntoView({behavior:"smooth", block:"start"});
     return;
@@ -39,7 +39,7 @@ function applyRoute(){
   if(h.indexOf("b/")===0){
     currentBrand=h.slice(2); currentCat="all"; query="";
     const s=$("#search"); if(s) s.value="";
-    document.querySelectorAll("#cats a").forEach(x=>x.classList.toggle("on", x.dataset.cat==="all"));
+    document.querySelectorAll("#cats [data-cat]").forEach(x=>x.classList.toggle("on", x.dataset.cat==="all"));
     render();
     const prod=$("#products"); if(prod) prod.scrollIntoView({behavior:"smooth"});
     return;
@@ -47,7 +47,7 @@ function applyRoute(){
   if(h.indexOf("c/")===0){
     currentCat=h.slice(2); currentBrand=""; query="";
     const s=$("#search"); if(s) s.value="";
-    document.querySelectorAll("#cats a").forEach(x=>x.classList.toggle("on", x.dataset.cat===currentCat));
+    document.querySelectorAll("#cats [data-cat]").forEach(x=>x.classList.toggle("on", x.dataset.cat===currentCat));
     render();
     const prod=$("#products"); if(prod) prod.scrollIntoView({behavior:"smooth"});
     return;
@@ -108,7 +108,7 @@ const ui={
   hero:"متجر عُماني للعناية والمكياج — نختار لكِ منتجات أصلية بعناية، بأسعار واضحة شاملة الضريبة، وتوصيل داخل السلطنة. جمال يبدأ بنقاء.",
   alertEmpty:"السلة فاضية", coNeedName:"اكتبي الاسم", coNeedPhone:"اكتبي رقم جوال صحيح", coNeedGov:"اختاري الولاية", stockLimit:"ما في كمية أكثر", greet:"السلام عليكم، أبغى أطلب من نقاء",
   ship:"توصيل عُمان", order:"طلب واتساب", contact:"تواصلي", shopH:"التسوق", orders:"واتساب الطلبات",
-  skin:"عناية", faceL:"وجه", hairL:"شعر", blurb:"عناية ومكياج · متجر عُماني", copy:"نقاء · Naqa · عُمان",
+  skin:"عناية", faceL:"وجه", hairL:"شعر", admin:"لوحة التحكم", blurb:"عناية ومكياج · متجر عُماني", copy:"نقاء · Naqa · عُمان",
   about:"عن المنتج", how:"طريقة الاستعمال", skinT:"يناسب", also:"قد يعجبكِ أيضاً", same:"باقي منتجات الماركة", back:"رجوع",
   sku:"SKU", logo:"نقاء", tag:"عناية ومكياج", footAbout:"نقاء — وجهتكِ في عُمان للعناية الأصيلة والمكياج المختار. أسعار شاملة الضريبة، وتوصيل داخل السلطنة.", shipBar:"نقاء · توصيل عُمان · تحت ٣٠: +٢ ر.ع · ٣٠+: مجاني · استلام +١.٥ · أسعار شاملة الضريبة ٥٪", shipFree:"تحت ٣٠: توصيل ٢ · ٣٠+: مجاني · استلام +١.٥", sortNew:"الأحدث", sortLow:"الأقل سعراً", sortHigh:"الأعلى سعراً", sortOff:"الأعلى خصماً", swipe:"اسحبي للأسفل للإغلاق · أو من الحافة اليمنى/اليسرى", swipeFull:"اسحبي من الحافة للرجوع · مرّري الصور", banHotSub:"مختارات الزبائن · ماركات عليها طلب", banYearSub:"خصم ٣٠٪ على منتجات مختارة لفترة محدودة",
   openImg:"اضغطي الصورة للتكبير", barEmpty:"السلة فاضية", barHint:"أضيفي منتجات من القائمة", barItems:n=>n+" منتج في السلة", barOpen:"افتحي السلة", barCheckout:"إتمام الطلب", hot:"الأكثر مبيعاً", year:"عروض نهاية السنة", viewAll:"عرض الكل", offTag:n=>"−"+n+"%",
@@ -134,7 +134,7 @@ const ui={
   hero:"An Omani beauty store for skincare and makeup — carefully chosen authentic products, clear VAT-inclusive prices, and delivery across the Sultanate. Beauty starts with purity.",
   alertEmpty:"Cart is empty", coNeedName:"Enter your name", coNeedPhone:"Enter a valid mobile number", coNeedGov:"Choose a wilayat", stockLimit:"No more stock", greet:"Hello, I want to order from Naqa",
   ship:"Oman delivery", order:"WhatsApp order", contact:"Contact", shopH:"Shop", orders:"Order on WhatsApp",
-  skin:"Skincare", faceL:"Face", hairL:"Hair", blurb:"Care and makeup · Oman store", copy:"Naqa · Oman",
+  skin:"Skincare", faceL:"Face", hairL:"Hair", admin:"Admin", blurb:"Care and makeup · Oman store", copy:"Naqa · Oman",
   about:"About", how:"How to use", skinT:"Best for", also:"You may also like", same:"More from this brand", back:"Back",
   sku:"SKU", logo:"Naqa", tag:"Care & Makeup", footAbout:"Naqa — your Omani destination for authentic care and curated makeup. VAT-inclusive prices and delivery across Oman.", shipBar:"Naqa · Oman delivery · under 30: +2 · 30+: free · COD +1.5 · prices include 5% VAT", shipFree:"Under 30: delivery 2 · 30+: free · COD +1.5", sortNew:"Newest", sortLow:"Lowest price", sortHigh:"Highest price", sortOff:"Biggest discount", swipe:"Swipe down to close · or from the edge", swipeFull:"Swipe from the edge to go back · swipe photos", banHotSub:"Customer favorites · in-demand brands", banYearSub:"30% off selected items for a limited time",
   openImg:"Tap image to enlarge", barEmpty:"Cart is empty", barHint:"Add products from the list", barItems:n=>n+" items in cart", barOpen:"Open cart", barCheckout:"Checkout", hot:"Best sellers", year:"Year-end deals", viewAll:"View all", offTag:n=>"−"+n+"%",

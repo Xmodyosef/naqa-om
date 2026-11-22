@@ -47,9 +47,9 @@ header{position:sticky;top:0;z-index:60;background:rgba(253,248,246,.94);
   display:grid;place-items:center}
 .nav-cats{display:flex;gap:6px;overflow-x:auto;padding:10px 0 12px;-webkit-overflow-scrolling:touch}
 .nav-cats::-webkit-scrollbar{display:none}
-.nav-cats a{flex-shrink:0;padding:8px 14px;border-radius:999px;background:var(--card);
+.nav-cats button{flex-shrink:0;padding:8px 14px;border-radius:999px;background:var(--card);
   border:1px solid var(--line);font-size:.88rem;font-weight:600;color:var(--muted)}
-.nav-cats a.on{background:var(--rose-deep);color:#fff;border-color:var(--rose-deep)}
+.nav-cats button.on{background:var(--rose-deep);color:#fff;border-color:var(--rose-deep)}
 
 .hero{margin:18px 0 8px;padding:24px 20px;border-radius:var(--r);background:
   linear-gradient(135deg,#fff 0%,#f8ebe8 55%,#f3e0d8 100%);
@@ -191,7 +191,7 @@ html[data-theme="night"] .search,
 html[data-theme="night"] .lang-btn,
 html[data-theme="night"] .icon-btn,
 html[data-theme="night"] .theme-btn,
-html[data-theme="night"] .nav-cats a,
+html[data-theme="night"] .nav-cats button,
 html[data-theme="night"] .btn-ghost,
 html[data-theme="night"] .sort select,
 html[data-theme="night"] .btn-qv,

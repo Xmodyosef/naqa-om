@@ -69,9 +69,10 @@ function renderBrandsGrid() {
     + '<div class="brands-row">' + brands.map(function (b) {
       var logo = (typeof BRAND_LOGO !== "undefined" && BRAND_LOGO[b]) ? BRAND_LOGO[b] : "";
       var mark = logo
-        ? '<img src="' + logo + '" alt="" loading="lazy" width="40" height="40">'
+        ? '<img src="' + logo + '" alt="' + esc(b) + '" loading="lazy" width="40" height="40">'
         : '<span class="bmono">' + esc(String(b).slice(0, 2).toUpperCase()) + "</span>";
-      return '<button type="button" class="brand-tile" data-brand="' + esc(b) + '">' + mark + "<span>" + esc(b) + "</span><i>" + counts[b] + "</i></button>";
+      var name = logo ? '<span aria-hidden="true">' + esc(b) + "</span>" : "<span>" + esc(b) + "</span>";
+      return '<button type="button" class="brand-tile" data-brand="' + esc(b) + '">' + mark + name + "<i>" + counts[b] + "</i></button>";
     }).join("") + "</div>";
 }
 

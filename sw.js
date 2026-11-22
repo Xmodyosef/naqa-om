@@ -1,11 +1,11 @@
 /* Naqa lightweight service worker — cache shell only */
-const CACHE = 'naqa-shell-v20261123ae';
+const CACHE = 'naqa-shell-v20261123af';
 const SHELL = [
   './',
   './index.html',
-  './css/store.min.css?v=20261123ae',
-  './js/store.min.js?v=20261123ae',
-  './data/products.min.js?v=20261123ae',
+  './css/store.min.css?v=20261123af',
+  './js/store.min.js?v=20261123af',
+  './data/products.min.js?v=20261123af',
   './logo.svg',
   './manifest.webmanifest',
   './media/icons/icon-192.png',

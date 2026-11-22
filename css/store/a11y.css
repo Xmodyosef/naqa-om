@@ -39,7 +39,7 @@ textarea:focus-visible,
 .btn-open:focus-visible,
 .checkout:focus-visible,
 .wish-btn:focus-visible,
-.nav-cats a:focus-visible{
+.nav-cats button:focus-visible{
   outline:3px solid var(--focus);
   outline-offset:2px;
 }
@@ -62,7 +62,7 @@ textarea:focus-visible,
   min-width:44px;min-height:44px;
 }
 .wish-btn{display:inline-grid;place-items:center}
-.nav-cats a{min-height:40px;display:inline-flex;align-items:center}
+.nav-cats button{min-height:40px;display:inline-flex;align-items:center}
 .wa-float{
   min-width:52px;min-height:52px;
   display:grid;place-items:center;
@@ -90,7 +90,7 @@ body.drawer-open header{
 }
 /* high contrast support */
 @media (forced-colors: active){
-  .btn-primary,.nav-cats a.on,.icon-btn.on{border:2px solid CanvasText}
+  .btn-primary,.nav-cats button.on,.icon-btn.on{border:2px solid CanvasText}
   :focus-visible{outline:3px solid Highlight}
 }
 

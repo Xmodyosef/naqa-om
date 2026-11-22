@@ -36,7 +36,7 @@
 <meta name="application-name" content="نقاء | Naqa" />
 
 <title>نقاء · عناية ومكياج | www.naqa.om</title>
-<link rel="stylesheet" href="css/store.min.css?v=20261123ae" />
+<link rel="stylesheet" href="css/store.min.css?v=20261123af" />
 
 <script type="application/ld+json">
 {
@@ -102,15 +102,15 @@
   </div>
   <div class="wrap">
     <nav class="nav-cats" id="cats" aria-label="تصنيفات المنتجات">
-      <a href="#" data-cat="all" class="on">الكل</a>
-      <a href="#" data-cat="عناية">عناية</a>
-      <a href="#" data-cat="وجه">وجه</a>
-      <a href="#" data-cat="شفاه">شفاه</a>
-      <a href="#" data-cat="عيون">عيون</a>
-      <a href="#" data-cat="حواجب">حواجب</a>
-      <a href="#" data-cat="عطور">عطور</a>
-      <a href="#" data-cat="أدوات">أدوات</a>
-      <a href="#" data-cat="شعر">شعر</a>
+      <button type="button" data-cat="all" class="on">الكل</button>
+      <button type="button" data-cat="عناية">عناية</button>
+      <button type="button" data-cat="وجه">وجه</button>
+      <button type="button" data-cat="شفاه">شفاه</button>
+      <button type="button" data-cat="عيون">عيون</button>
+      <button type="button" data-cat="حواجب">حواجب</button>
+      <button type="button" data-cat="عطور">عطور</button>
+      <button type="button" data-cat="أدوات">أدوات</button>
+      <button type="button" data-cat="شعر">شعر</button>
     </nav>
   </div>
 </header>
@@ -166,10 +166,10 @@
     </div>
     <div>
       <h4 id="footShop">التسوق</h4>
-      <a href="#" data-cat-jump="عناية" id="jumpCare">عناية</a><br/>
-      <a href="#" data-cat-jump="وجه" id="jumpFace">مكياج</a><br/>
-      <a href="#" data-cat-jump="شعر" id="jumpHair">شعر</a><br/>
-      <a href="admin.html">لوحة التحكم</a>
+      <button type="button" class="foot-jump" data-cat-jump="عناية" id="jumpCare">عناية</button><br/>
+      <button type="button" class="foot-jump" data-cat-jump="وجه" id="jumpFace">مكياج</button><br/>
+      <button type="button" class="foot-jump" data-cat-jump="شعر" id="jumpHair">شعر</button><br/>
+      <a href="admin.html" id="footAdmin">لوحة التحكم</a>
     </div>
   </div>
   <div class="wrap" style="margin-top:18px;font-size:.8rem">
@@ -217,18 +217,18 @@
   <div class="modal-card checkout-card">
     <h3 id="coTitle">إتمام الطلب</h3>
     <p class="co-hint">نجهّز رسالة واتساب ببياناتكِ والمنتجات.</p>
-    <label data-field="coName">الاسم<input id="coName" type="text" autocomplete="name" placeholder="اسمكِ"></label>
-    <label data-field="coPhone">الجوال<input id="coPhone" type="tel" autocomplete="tel" placeholder="9xxxxxxx"></label>
-    <label data-field="coGov">الولاية
-      <select id="coGov">
+    <label data-field="coName" for="coName">الاسم<input id="coName" type="text" autocomplete="name" placeholder="اسمكِ" aria-label="الاسم"></label>
+    <label data-field="coPhone" for="coPhone">الجوال<input id="coPhone" type="tel" autocomplete="tel" placeholder="9xxxxxxx" aria-label="الجوال"></label>
+    <label data-field="coGov" for="coGov">الولاية
+      <select id="coGov" aria-label="الولاية">
         <option value="">— اختاري —</option>
       </select>
     </label>
-    <label data-field="coNote">ملاحظة للطلب<textarea id="coNote" rows="2" placeholder="مبنى، أقرب معلم…"></textarea></label>
+    <label data-field="coNote" for="coNote">ملاحظة للطلب<textarea id="coNote" rows="2" placeholder="مبنى، أقرب معلم…" aria-label="ملاحظة للطلب"></textarea></label>
     <fieldset class="pay-box" id="payBox">
       <legend id="payTitle">طريقة الدفع</legend>
-      <label class="pay-opt"><input type="radio" name="payMethod" id="payCod" value="cod" checked> <span id="payCodLab">دفع عند الاستلام</span></label>
-      <label class="pay-opt"><input type="radio" name="payMethod" id="payPaid" value="transfer"> <span id="payPaidLab">حساب بنكي يدوي · أحوّل ثم أرسل الإيصال</span></label>
+      <label class="pay-opt" for="payCod"><input type="radio" name="payMethod" id="payCod" value="cod" checked aria-label="دفع عند الاستلام"> <span id="payCodLab">دفع عند الاستلام</span></label>
+      <label class="pay-opt" for="payPaid"><input type="radio" name="payMethod" id="payPaid" value="transfer" aria-label="حساب بنكي يدوي"> <span id="payPaidLab">حساب بنكي يدوي · أحوّل ثم أرسل الإيصال</span></label>
       <p class="pay-hint" id="payHint">تحت ٣٠ ر.ع: توصيل ٢ · من ٣٠: توصيل مجاني · الدفع عند الاستلام: +١.٥ ر.ع.</p>
       <div class="pay-sum" id="paySum"></div>
     </fieldset>
@@ -239,8 +239,8 @@
     </div>
   </div>
 </div>
-<script defer src="data/products.min.js?v=20261123ae"></script>
-<script defer src="js/store.min.js?v=20261123ae"></script>
+<script defer src="data/products.min.js?v=20261123af"></script>
+<script defer src="js/store.min.js?v=20261123af"></script>
 
 <script>
 if ('serviceWorker' in navigator) {

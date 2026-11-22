@@ -29,7 +29,7 @@ $("#wishBtn").onclick=()=>{
   if(wishView){
     currentCat="all"; currentBrand=""; currentConcern=""; query="";
     const search=$("#search"); if(search) search.value="";
-    document.querySelectorAll("#cats a").forEach(x=>x.classList.toggle("on", x.dataset.cat==="all"));
+    document.querySelectorAll("#cats [data-cat]").forEach(x=>x.classList.toggle("on", x.dataset.cat==="all"));
     if(typeof closeSheet==="function") closeSheet(true);
   }
   render();
@@ -48,7 +48,7 @@ function runSearch(fromSubmit){
     currentBrand = "";
     currentConcern = "";
     wishView = false;
-    document.querySelectorAll("#cats a").forEach(x=>x.classList.toggle("on", x.dataset.cat==="all"));
+    document.querySelectorAll("#cats [data-cat]").forEach(x=>x.classList.toggle("on", x.dataset.cat==="all"));
   }
   // Exact single match (SKU / full name) → open full product page
   if(fromSubmit && query && typeof isExactProductMatch==="function"){
@@ -115,7 +115,7 @@ document.addEventListener("click", e=>{
     e.preventDefault();
     if(sh.dataset.shelf==="year"){ currentSort="off"; currentCat="all"; currentBrand=""; query=""; wishView=false; const search=$("#search"); if(search) search.value=""; const sel=$("#sortSel"); if(sel) sel.value="off"; }
     if(sh.dataset.shelf==="hot"){ currentSort="new"; currentCat="all"; currentBrand=""; query=""; wishView=false; const search=$("#search"); if(search) search.value=""; }
-    document.querySelectorAll("#cats a").forEach(x=>x.classList.toggle("on", x.dataset.cat==="all"));
+    document.querySelectorAll("#cats [data-cat]").forEach(x=>x.classList.toggle("on", x.dataset.cat==="all"));
     render();
     const prod=$("#products"); if(prod) prod.scrollIntoView({behavior:"smooth"});
     return;
@@ -128,7 +128,7 @@ document.addEventListener("click", e=>{
   query="";
   wishView=false;
   const search=$("#search"); if(search) search.value="";
-  document.querySelectorAll("#cats a").forEach(x=>x.classList.toggle("on", x.dataset.cat==="all"));
+  document.querySelectorAll("#cats [data-cat]").forEach(x=>x.classList.toggle("on", x.dataset.cat==="all"));
   closeSheet(true);
   try{ history.pushState({naqa:"brand"}, "", "#b/"+encodeURIComponent(currentBrand)); }catch(e){}
   render();
@@ -138,7 +138,7 @@ document.addEventListener("click", e=>{
 $("#langBtn").onclick=()=>{ lang=lang==="ar"?"en":"ar"; try{localStorage.setItem("naqa_lang",lang)}catch(e){} render(); };
 $("#cats").addEventListener("click", e=>{
   const a=e.target.closest("[data-cat]"); if(!a) return; e.preventDefault();
-  document.querySelectorAll("#cats a").forEach(x=>x.classList.remove("on")); a.classList.add("on");
+  document.querySelectorAll("#cats [data-cat]").forEach(x=>x.classList.remove("on")); a.classList.add("on");
   currentCat=a.dataset.cat; currentBrand=""; wishView=false; closeSheet(true);
   try{ history.pushState({naqa:"cat"}, "", currentCat==="all"?"#shop":"#c/"+encodeURIComponent(currentCat)); }catch(e){}
   render(); $("#products").scrollIntoView({behavior:"smooth"});
@@ -146,7 +146,7 @@ $("#cats").addEventListener("click", e=>{
 document.querySelectorAll("[data-cat-jump]").forEach(el=>{
   el.addEventListener("click", e=>{
     e.preventDefault(); currentCat=el.dataset.catJump; currentBrand=""; wishView=false;
-    document.querySelectorAll("#cats a").forEach(x=>x.classList.toggle("on", x.dataset.cat===currentCat));
+    document.querySelectorAll("#cats [data-cat]").forEach(x=>x.classList.toggle("on", x.dataset.cat===currentCat));
     render(); $("#products").scrollIntoView({behavior:"smooth"});
   });
 });

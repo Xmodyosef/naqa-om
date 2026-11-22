@@ -1,0 +1,95 @@
+/* Naqa a11y — WCAG 2.1 AA helpers */
+:root{
+  /* muted was #8a7f78 (~3.5:1 on bg) → darker for body-adjacent text */
+  --muted:#5c534d;
+  --focus:#b05c6e;
+  --focus-ring:0 0 0 3px #fff, 0 0 0 6px var(--focus);
+}
+.sr-only{
+  position:absolute!important;width:1px!important;height:1px!important;
+  padding:0!important;margin:-1px!important;overflow:hidden!important;
+  clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important;
+}
+.skip-link{
+  position:absolute;inset-inline-start:12px;top:8px;z-index:200;
+  padding:10px 14px;border-radius:12px;background:var(--rose-deep,#b05c6e);color:#fff;
+  font-weight:800;text-decoration:none;transform:translateY(-120%);
+  transition:transform .15s ease;
+}
+.skip-link:focus,.skip-link:focus-visible{
+  transform:translateY(0);outline:none;box-shadow:var(--focus-ring);
+}
+:focus{outline:none}
+:focus-visible{
+  outline:3px solid var(--focus);
+  outline-offset:3px;
+}
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+.card-name:focus-visible,
+.brand-link:focus-visible,
+.icon-btn:focus-visible,
+.lang-btn:focus-visible,
+.btn:focus-visible,
+.btn-add:focus-visible,
+.btn-qv:focus-visible,
+.btn-open:focus-visible,
+.checkout:focus-visible,
+.wish-btn:focus-visible,
+.nav-cats a:focus-visible{
+  outline:3px solid var(--focus);
+  outline-offset:2px;
+}
+.search:focus-within{
+  box-shadow:0 0 0 3px rgba(176,92,110,.35);
+  border-color:var(--rose-deep,#b05c6e);
+}
+/* touch targets ≥ 44px where interactive */
+.qty-pick button,
+.qty button,
+.icon-btn,
+.lang-btn,
+.btn-qv,
+.btn-open,
+.btn-add,
+.wish-btn,
+.lightbox-close,
+.text-back,
+.rm{
+  min-width:44px;min-height:44px;
+}
+.wish-btn{display:inline-grid;place-items:center}
+.nav-cats a{min-height:40px;display:inline-flex;align-items:center}
+.wa-float{
+  min-width:52px;min-height:52px;
+  display:grid;place-items:center;
+  font-size:1.35rem;
+}
+/* live region off-screen */
+#a11yLive{
+  position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);
+}
+/* drawer/sheet when open: prevent background scroll already handled; inert-ish */
+body.sheet-open header,
+body.sheet-open .cart-bar,
+body.drawer-open header{
+  /* keep; focus managed in JS */
+}
+/* reduced motion */
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{
+    animation-duration:.01ms!important;
+    animation-iteration-count:1!important;
+    transition-duration:.01ms!important;
+    scroll-behavior:auto!important;
+  }
+  .ship-marquee,.ship-track{animation:none!important;transform:none!important}
+}
+/* high contrast support */
+@media (forced-colors: active){
+  .btn-primary,.nav-cats a.on,.icon-btn.on{border:2px solid CanvasText}
+  :focus-visible{outline:3px solid Highlight}
+}

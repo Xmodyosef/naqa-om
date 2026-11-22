@@ -41,12 +41,12 @@ async function openSheet(id, mode, reset){
     <div class="sheet-handle" aria-hidden="true"></div>
     <p class="swipe-hint">${hint}</p>
     ${qv? carouselHTML(p, galleryIndex) : ""}
-    <button class="text-back" id="closeSheet" type="button">‹ ${T("back")}</button>
+    <button class="text-back" id="closeSheet" type="button" aria-label="${T("back")}">‹ ${T("back")}</button>
     ${brandMark(p.brand)}
     ${typeof reviewHTML==="function"?reviewHTML(p):""}
-    <h3 style="margin:4px 0 2px">${esc(pname(p))}</h3>
+    <h3 id="sheetTitle" style="margin:4px 0 2px">${esc(pname(p))}</h3>
     ${priceHTML(p)}
-    <div class="qty-pick"><span>${T("qty")}</span><button type="button" data-q="-1">−</button><b id="pickQty">1</b><button type="button" data-q="1">+</button></div>
+    <div class="qty-pick" role="group" aria-label="${T("qty")}"><span id="qtyLab">${T("qty")}</span><button type="button" data-q="-1" aria-label="${lang==="en"?"Decrease quantity":"تقليل الكمية"}">−</button><b id="pickQty" aria-live="polite">1</b><button type="button" data-q="1" aria-label="${lang==="en"?"Increase quantity":"زيادة الكمية"}">+</button></div>
     ${qv? "" : carouselHTML(p, galleryIndex)}
     <span class="skin-pill">${T("skinT")}: ${esc(pskin(p))}</span>
     ${typeof shadeHTML==="function"?shadeHTML(p):""}
@@ -67,6 +67,7 @@ async function openSheet(id, mode, reset){
       ${qv? `<button class="btn-open" data-open="${p.id}" type="button">${T("open")}</button>`:""}
     </div>`;
   $("#sheet").classList.add("show");
+  const sh=$("#sheet"); if(sh){ sh.setAttribute("aria-modal","true"); sh.setAttribute("aria-labelledby","sheetTitle"); }
   lockBodyScroll();
   $("#sheetCard").scrollTop=0;
   bindCarousel(p);
@@ -78,6 +79,7 @@ async function openSheet(id, mode, reset){
 
 function closeSheet(fromRoute){
   $("#sheet").classList.remove("show");
+  const shx=$("#sheet"); if(shx) shx.setAttribute("aria-modal","false");
   $("#sheet").classList.remove("qv");
   unlockBodyScroll();
   openProductId=null;

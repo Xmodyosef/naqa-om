@@ -26,9 +26,9 @@ function cardHTML(p){
   const tags=(pct?'<span class="tag-off">'+esc(T("offTag")(pct))+'</span>':'')+(p.hot?'<span class="tag-hot">'+esc(T("hot"))+'</span>':'')+(p.stock!=null && Number(p.stock)<=0?'<span class="tag-out">'+(lang==="en"?"Out of stock":"نفد")+'</span>':'');
   const qty=(cart.find(c=>c.id===p.id)||{}).qty;
   const out=p.stock!=null && Number(p.stock)<=0;
-  return '<article class="card" data-id="'+p.id+'">'
+  return '<article class="card" data-id="'+p.id+'" aria-label="'+esc(pname(p))+'">'
     +'<div class="card-visual" data-open="'+p.id+'">'
-    +'<button type="button" class="wish-btn'+(typeof isWish==='function'&&isWish(p.id)?' on':'')+'" data-wish="'+p.id+'" aria-label="wishlist">♥</button>'
+    +'<button type="button" class="wish-btn'+(typeof isWish==='function'&&isWish(p.id)?' on':'')+'" data-wish="'+p.id+'" aria-label="'+(lang==="en"?"Save to wishlist":"حفظ في المفضلة")+'">♥</button>'
     +'<span class="card-cart-chip'+(qty?' show':'')+'" data-chip="'+p.id+'">'+(qty?('×'+qty):'')+'</span>'
     +tags+visual(p,0)+'</div>'
     +'<div class="card-body">'
@@ -47,7 +47,7 @@ function cardHTML(p){
 function shelfBanner(kind, list){
   const thumbs=list.slice(0,4).map(p=>{
     const imgs=pimgs(p);
-    if(imgs[0]) return '<img src="'+imgs[0]+'" alt="" loading="lazy">';
+    if(imgs[0]) return '<img src="'+imgs[0]+'" alt="'+esc(pname(p))+'" loading="lazy">';
     return '<span class="em">'+(p.em||"✨")+'</span>';
   }).join("");
   if(kind==="hot"){

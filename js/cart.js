@@ -149,10 +149,10 @@ function renderCart(){
         <div class="sku-line">${T("sku")}: ${p.sku||"—"}</div>
         <button class="rm" data-rm="${i.id}" type="button">${T("del")}</button>
       </div>
-      <div class="qty">
-        <button data-dec="${i.id}" type="button">−</button>
-        <b>${i.qty}</b>
-        <button data-inc="${i.id}" type="button">+</button>
+      <div class="qty" role="group" aria-label="${T("qty")}">
+        <button data-dec="${i.id}" type="button" aria-label="${lang==="en"?"Decrease":"تقليل"}">−</button>
+        <b aria-live="polite">${i.qty}</b>
+        <button data-inc="${i.id}" type="button" aria-label="${lang==="en"?"Increase":"زيادة"}">+</button>
       </div>
     </div>`;
   }).join("")+shipLine;

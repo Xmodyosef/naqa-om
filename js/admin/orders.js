@@ -76,7 +76,7 @@
         + "<small style=\"color:#9a8b84;font-size:12px\">شامل الضريبة ٥٪ · منها " + A.esc(
           o.vat != null ? Number(o.vat).toFixed(3) : (o.total != null ? (Number(o.total) * 0.05 / 1.05).toFixed(3) : "—")
         ) + " ر.ع</small>"
-        + "<small>الدفع: <b>" + A.esc(o.paymentLabel || (o.paid ? "مدفوع مسبقاً" : (o.payment === "cod" ? "دفع عند الاستلام" : "—"))) + "</b>"
+        + "<small>الدفع: <b>" + A.esc(o.paymentLabel || (o.paid ? "مدفوع" : (o.payment === "cod" ? "دفع عند الاستلام" : "—"))) + "</b>"
         + (o.subtotal != null ? (" · فرعي " + A.esc(Number(o.subtotal).toFixed(3))) : "")
         + (o.shipping != null ? (" · توصيل " + A.esc(Number(o.shipping).toFixed(3)) + " ر.ع") : "")
         + "</small>"

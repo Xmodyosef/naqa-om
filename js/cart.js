@@ -3,16 +3,7 @@
  - Delivery base: 2 OMR when subtotal < 30
  - Free delivery at 30+ (auto discount the 2)
  - COD (unpaid): +1.5 OMR cash-on-delivery fee
- - Paid in advance: remove delivery fee AND remove COD fee
- Example COD 30: 30 + 0 delivery + 1.5 COD = 31.500
- Example COD 25: 25 + 2 + 1.5 = 28.500
- Example paid 25: 25 + 0 + 0 = 25.000
-*/
-function cartSubtotal(){
-  return cart.reduce((s,i)=>s+i.price*i.qty,0);
-}
-function getPayMethod(){
-  const paid=$("#payPaid");
+ - Paid — no extra fees."#payPaid");
   if(paid && paid.checked) return "paid";
   const cod=$("#payCod");
   if(cod && cod.checked) return "cod";
@@ -61,13 +52,13 @@ function updatePaySum(){
     "<div><span>"+(T("codFee")||"رسوم الدفع عند الاستلام")+"</span><b>"+(b.codFee?money(b.codFee):freeLab)+"</b></div>"+
     "<div class=\"grand\"><span>"+(T("grandTotal")||"الإجمالي")+"</span><b>"+money(b.grand)+"</b></div>"+
     "<div class=\"vat-line\"><span>"+(T("vatOf")||"منها ضريبة ٥٪")+"</span><b>"+money(vatAmt)+"</b></div>"+
-    "<div class=\"pay-status\">"+payLab+(b.pay==="cod"?" · "+(T("payCod")||"دفع عند الاستلام"):" · "+(T("payPaid")||"مدفوع مسبقاً"))+" · "+(T("vatInc")||"شامل الضريبة ٥٪")+"</div>";
+    "<div class=\"pay-status\">"+payLab+(b.pay==="cod"?" · "+(T("payCod")||"دفع عند الاستلام"):" · "+(T("payPaid")||"مدفوع"))+" · "+(T("vatInc")||"شامل الضريبة ٥٪")+"</div>";
   const hint=$("#payHint");
   if(hint){
     if(b.pay==="paid"){
       hint.textContent=lang==="en"
-        ? "Paid in advance: delivery fee and COD fee removed."
-        : "مدفوع مسبقاً: يُخصم رسوم التوصيل ورسوم الدفع عند الاستلام.";
+        ? "Paid — no extra fees."
+        : "مدفوع — بدون رسوم إضافية.";
     } else if(b.freeShip){
       hint.textContent=lang==="en"
         ? "COD · free delivery (30+) · COD fee +1.500 OMR. Example: 30 + 1.5 = 31.5"
@@ -215,7 +206,7 @@ function sendCheckout(){
     };
   });
   const payLabel=pay==="paid"
-    ?(lang==="en"?"Paid in advance":"مدفوع مسبقاً")
+    ?(lang==="en"?"Paid":"مدفوع")
     :(lang==="en"?"Cash on delivery (unpaid)":"دفع عند الاستلام (غير مدفوع)");
   const order={
     id:orderNo, at:new Date().toISOString(), status:"new",

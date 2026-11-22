@@ -54,7 +54,20 @@ header{position:sticky;top:0;z-index:60;background:rgba(253,248,246,.94);
 .btn-primary{background:var(--rose-deep);color:#fff}
 .btn-ghost{background:#fff;border:1px solid var(--line)}
 
-.ship-bar{background:#1f1a17;color:#fff;text-align:center;font-size:.92rem;font-weight:700;padding:8px 14px}
+.ship-bar{overflow:hidden;background:var(--fg,#1f1a17);color:#fff;font-size:.82rem;font-weight:700;line-height:1.2;padding:0;height:36px;display:flex;align-items:center}
+.ship-marquee{display:flex;width:max-content;animation:shipScroll 28s linear infinite;will-change:transform}
+.ship-track{padding:9px 2.5rem;white-space:nowrap;flex-shrink:0}
+.ship-track + .ship-track{padding-inline-start:0}
+@keyframes shipScroll{
+  from{transform:translateX(0)}
+  to{transform:translateX(50%)}
+}
+html[dir="rtl"] .ship-marquee{animation-name:shipScrollRtl}
+@keyframes shipScrollRtl{
+  from{transform:translateX(0)}
+  to{transform:translateX(-50%)}
+}
+.ship-bar:hover .ship-marquee{animation-play-state:paused}
 .ship-free{display:none!important}
 body{padding-bottom:24px}
 body.has-cart-bar{padding-bottom:88px}
@@ -133,10 +146,10 @@ html[lang="en"] .price-badge{display:none}
 .cart-item .vat-note{font-size:.65rem;color:#a89890}
 .vat-line-soft{margin-top:4px;opacity:.95}
 
-.policy-card{margin-top:16px;background:rgba(255,255,255,.72);border:1px solid var(--line,#efe4df);border-radius:16px;padding:12px 14px;text-align:start}
-.policy-title{font-weight:800;font-size:.9rem;color:var(--rose-deep,#b05c6e);margin-bottom:6px}
-.policy-list{margin:0;padding-inline-start:1.1rem;color:var(--fg,#1f1a17);font-size:.84rem;line-height:1.65;font-weight:600}
-.policy-list li{margin:2px 0}
+
+
+
+
 .site-gate{position:fixed;inset:0;z-index:9999;background:linear-gradient(160deg,#fdf8f6,#f3e4df);display:flex;align-items:center;justify-content:center;padding:20px}
 .site-gate[hidden]{display:none!important}
 .site-gate-card{width:min(380px,100%);background:#fff;border-radius:20px;padding:24px 20px;box-shadow:0 16px 40px rgba(50,30,25,.12);text-align:center}

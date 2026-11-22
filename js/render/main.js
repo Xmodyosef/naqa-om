@@ -52,7 +52,12 @@ function applyLang(){
   $("#waHero").textContent=T("wa");
   const prodH=$("#products");
   if(prodH){
-    const base=(typeof wishView!=="undefined" && wishView)?T("saved"):T("products");
+    let base;
+    if(typeof wishView!=="undefined" && wishView) base=T("saved");
+    else if(query && String(query).trim()){
+      // title filled after list length known in render(); temporary
+      base=T("products");
+    } else base=T("products");
     prodH.innerHTML=base+' <span class="vat-chip">'+(T("vatInc")||"شامل الضريبة ٥٪")+'</span>';
   }
   const hb=$("#wishBtn"); if(hb){ hb.classList.toggle("on", typeof wishView!=="undefined" && !!wishView); hb.title=(typeof wishView!=="undefined" && wishView)?T("savedOn"):T("saved"); }
@@ -191,6 +196,51 @@ function productMatchesQuery(p, rawQ){
   return terms.some(function(t){ return t.length >= 2 && blob.indexOf(t) >= 0; });
 }
 
+
+function productSearchScore(p, rawQ){
+  if(!rawQ) return 0;
+  var q = String(rawQ).trim();
+  var nq = naqaNorm(q);
+  var sku = String(p.sku||"");
+  var digits = q.replace(/\D/g,"");
+  var score = 0;
+  // exact / strong SKU
+  if(sku){
+    if(sku === q || naqaNorm(sku) === nq) score += 1000;
+    else if(sku.indexOf(q) === 0 || (digits.length>=4 && sku.indexOf(digits)===0)) score += 800;
+    else if(sku.indexOf(q) >= 0 || (digits.length>=4 && sku.indexOf(digits)>=0)) score += 600;
+  }
+  var brandN = naqaNorm(p.brand);
+  if(brandN && nq){
+    if(brandN === nq) score += 500;
+    else if(brandN.indexOf(nq) === 0 || nq.indexOf(brandN) === 0) score += 350;
+    else if(brandN.indexOf(nq) >= 0 || nq.indexOf(brandN) >= 0) score += 200;
+  }
+  var nameN = naqaNorm((lang==="en"? (p.nameEn||p.nameAr) : (p.nameAr||p.nameEn))||"");
+  if(nameN && nq){
+    if(nameN === nq) score += 450;
+    else if(nameN.indexOf(nq) === 0) score += 300;
+    else if(nameN.indexOf(nq) >= 0) score += 180;
+  }
+  var terms = naqaExpandQuery(q);
+  var blob = naqaNorm([p.nameAr,p.nameEn,p.brand,p.sku,p.cat,p.descAr,p.descEn,p.useAr,p.useEn,p.skinAr,p.skinEn].join(" "));
+  terms.forEach(function(t){ if(t.length>=2 && blob.indexOf(t)>=0) score += 20; });
+  if(p.hot) score += 8;
+  if(p.was && p.was > p.price) score += 5;
+  return score;
+}
+function isExactProductMatch(p, rawQ){
+  if(!rawQ) return false;
+  var q = String(rawQ).trim();
+  var sku = String(p.sku||"");
+  if(sku && (sku === q || sku === q.replace(/\s/g,""))) return true;
+  var nq = naqaNorm(q);
+  var nameN = naqaNorm((p.nameAr||"")+" "+(p.nameEn||""));
+  // whole name equality (either lang)
+  if(naqaNorm(p.nameAr) === nq || naqaNorm(p.nameEn) === nq) return true;
+  return false;
+}
+
 function render(){
   applyLang();
   const q=query;
@@ -209,20 +259,39 @@ function render(){
   });
   const offOf=p=>(p.was&&p.was>p.price)?(1-p.price/p.was):0;
   list.sort((a,b)=>{
+    if(searching){
+      const sa=productSearchScore(a,q), sb=productSearchScore(b,q);
+      if(sb!==sa) return sb-sa;
+    }
     if(currentSort==="price-asc") return a.price-b.price;
     if(currentSort==="price-desc") return b.price-a.price;
     if(currentSort==="off") return offOf(b)-offOf(a)||a.price-b.price;
     if(currentSort==="wish") return ((typeof isWish==="function"&&isWish(b.id))?0:1)-((typeof isWish==="function"&&isWish(a.id))?0:1)||b.id-a.id;
     return b.id-a.id;
   });
+  // Search results title + clear chip
+  if(searching){
+    const prodH=$("#products");
+    if(prodH && typeof T==="function" && T("searchResults")){
+      prodH.innerHTML=esc(T("searchResults")(q, list.length))+' <span class="vat-chip">'+(T("vatInc")||"")+'</span>';
+    }
+  }
+
   const bar=$("#brandBar");
   let chips="";
   if(typeof wishView!=="undefined" && wishView) chips+='<button type="button" class="brand-chip" id="clearWish">'+T("saved")+' ×</button>';
+  if(searching) chips+='<button type="button" class="brand-chip" id="clearSearch">⌕ '+esc(q)+' ×</button>';
   if(currentBrand) chips+='<button type="button" class="brand-chip" id="clearBrand">'+esc(currentBrand)+' ×</button>';
   if(currentConcern) chips+='<button type="button" class="brand-chip" id="clearConcern">'+esc(typeof concernLabel==="function"?concernLabel(currentConcern):currentConcern)+' ×</button>';
   if(chips){
     bar.hidden=false; bar.innerHTML=chips;
     const cw=$("#clearWish"); if(cw) cw.onclick=()=>{ wishView=false; render(); };
+    const cs=$("#clearSearch"); if(cs) cs.onclick=()=>{
+      query=""; const s=$("#search"); if(s) s.value="";
+      const clr=$("#searchClear"); if(clr) clr.hidden=true;
+      try{ history.pushState({naqa:"shop"}, "", "#shop"); }catch(e){}
+      render();
+    };
     const clear=$("#clearBrand"); if(clear) clear.onclick=()=>{ currentBrand=""; render(); };
     const cc=$("#clearConcern"); if(cc) cc.onclick=()=>{ currentConcern=""; render(); };
   } else { bar.hidden=true; bar.innerHTML=""; }

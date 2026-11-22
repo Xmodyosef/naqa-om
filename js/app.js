@@ -44,33 +44,51 @@ function runSearch(fromSubmit){
   query = el ? el.value.trim() : "";
   const clr=$("#searchClear"); if(clr) clr.hidden = !query;
   if(query){
-    // reset shelf-only filters that hide results; keep wish if active
     currentCat = "all";
     currentBrand = "";
     currentConcern = "";
+    wishView = false;
     document.querySelectorAll("#cats a").forEach(x=>x.classList.toggle("on", x.dataset.cat==="all"));
+  }
+  // Exact single match (SKU / full name) → open full product page
+  if(fromSubmit && query && typeof isExactProductMatch==="function"){
+    const exact = products.filter(function(p){ return !p.hidden && isExactProductMatch(p, query); });
+    if(exact.length === 1){
+      try{ history.pushState({naqa:"q"}, "", "#q/"+encodeURIComponent(query)); }catch(e){}
+      render();
+      openSheet(exact[0].id, "full");
+      return;
+    }
   }
   render();
   if(fromSubmit){
+    try{
+      if(query) history.pushState({naqa:"q"}, "", "#q/"+encodeURIComponent(query));
+      else history.pushState({naqa:"shop"}, "", "#shop");
+    }catch(e){}
     const prod=$("#products");
     if(prod) prod.scrollIntoView({behavior:"smooth", block:"start"});
   }
 }
 const searchEl=$("#search");
+let __naqaSearchT=0;
 if(searchEl){
   searchEl.addEventListener("input", e=>{
     query=e.target.value.trim();
     const clr=$("#searchClear"); if(clr) clr.hidden = !query;
-    render();
+    // debounce live filter (smoother on iPhone)
+    clearTimeout(__naqaSearchT);
+    __naqaSearchT=setTimeout(function(){ render(); }, 160);
   });
   searchEl.addEventListener("keydown", e=>{
-    if(e.key==="Enter"){ e.preventDefault(); runSearch(true); }
+    if(e.key==="Enter"){ e.preventDefault(); clearTimeout(__naqaSearchT); runSearch(true); }
   });
 }
 const searchForm=$("#searchForm");
 if(searchForm){
   searchForm.addEventListener("submit", e=>{
     e.preventDefault();
+    clearTimeout(__naqaSearchT);
     runSearch(true);
   });
 }
@@ -80,13 +98,14 @@ if(searchClear){
     query="";
     if(searchEl) searchEl.value="";
     searchClear.hidden=true;
+    try{ history.pushState({naqa:"shop"}, "", "#shop"); }catch(e){}
     render();
     if(searchEl) searchEl.focus();
   });
 }
 const searchGo=$("#searchGo");
 if(searchGo){
-  searchGo.addEventListener("click", e=>{ e.preventDefault(); runSearch(true); });
+  searchGo.addEventListener("click", e=>{ e.preventDefault(); clearTimeout(__naqaSearchT); runSearch(true); });
 }
 $("#sortSel").addEventListener("change", e=>{ currentSort=e.target.value; render(); });
 
@@ -223,6 +242,22 @@ window.addEventListener("popstate", ()=>{
 });
 window.addEventListener("hashchange", ()=>{ applyRoute(); });
 let __naqaScrollHashT=0;
+let __naqaLastY=0;
+let __naqaChromeLocked=false;
+function naqaUpdateChrome(y){
+  // Hide search + category chips when scrolling down into products; show on scroll up / top
+  const prod=$("#products");
+  const thresh = prod ? Math.max(120, prod.offsetTop - 8) : 180;
+  const delta = y - __naqaLastY;
+  if(y < 48){
+    document.body.classList.remove("chrome-hide");
+  } else if(y > thresh + 20 && delta > 6){
+    document.body.classList.add("chrome-hide");
+  } else if(delta < -6){
+    document.body.classList.remove("chrome-hide");
+  }
+  __naqaLastY = y;
+}
 window.addEventListener("scroll", ()=>{
   // Ignore while any overlay is open
   if(document.body.classList.contains("naqa-scroll-lock") ||
@@ -233,20 +268,26 @@ window.addEventListener("scroll", ()=>{
      ($("#quizModal")&&$("#quizModal").classList.contains("show")) ||
      ($("#checkoutModal")&&$("#checkoutModal").classList.contains("show")) ||
      ($("#drawer")&&$("#drawer").classList.contains("show"))) return;
-  // throttle: avoid hammering history on every scroll frame (jank on iPhone)
+  const y=window.scrollY||0;
+  naqaUpdateChrome(y);
+  // Don't overwrite search hash #q/…
   if(__naqaScrollHashT) return;
   __naqaScrollHashT=1;
   requestAnimationFrame(function(){
     __naqaScrollHashT=0;
     const h=routeHash();
-    if(h.indexOf("p/")===0||h.indexOf("b/")===0||h.indexOf("c/")===0) return;
-    if(window.scrollY>420){
+    if(h.indexOf("p/")===0||h.indexOf("b/")===0||h.indexOf("c/")===0||h.indexOf("q/")===0) return;
+    if(y>420){
       if(h!=="shop"){ try{ history.replaceState({naqa:"shop"}, "", "#shop"); }catch(e){} }
     } else if(h==="shop"){
       try{ history.replaceState({naqa:"home"}, "", location.pathname+location.search); }catch(e){}
     }
   });
 }, {passive:true});
+// Always show chrome when focusing search
+document.addEventListener("focusin", function(e){
+  if(e.target && e.target.id==="search") document.body.classList.remove("chrome-hide");
+});
 
 
 

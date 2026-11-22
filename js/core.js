@@ -24,15 +24,29 @@ function applyRoute(){
     }
   }
   if($("#sheet").classList.contains("show")) closeSheet(true);
+  // Search results: #q/keyword
+  if(h.indexOf("q/")===0){
+    const raw=h.slice(2);
+    query=raw;
+    currentCat="all"; currentBrand=""; currentConcern=""; wishView=false;
+    const s=$("#search"); if(s) s.value=query;
+    const clr=$("#searchClear"); if(clr) clr.hidden=!query;
+    document.querySelectorAll("#cats a").forEach(x=>x.classList.toggle("on", x.dataset.cat==="all"));
+    render();
+    const prod=$("#products"); if(prod) prod.scrollIntoView({behavior:"smooth", block:"start"});
+    return;
+  }
   if(h.indexOf("b/")===0){
-    currentBrand=h.slice(2); currentCat="all";
+    currentBrand=h.slice(2); currentCat="all"; query="";
+    const s=$("#search"); if(s) s.value="";
     document.querySelectorAll("#cats a").forEach(x=>x.classList.toggle("on", x.dataset.cat==="all"));
     render();
     const prod=$("#products"); if(prod) prod.scrollIntoView({behavior:"smooth"});
     return;
   }
   if(h.indexOf("c/")===0){
-    currentCat=h.slice(2); currentBrand="";
+    currentCat=h.slice(2); currentBrand=""; query="";
+    const s=$("#search"); if(s) s.value="";
     document.querySelectorAll("#cats a").forEach(x=>x.classList.toggle("on", x.dataset.cat===currentCat));
     render();
     const prod=$("#products"); if(prod) prod.scrollIntoView({behavior:"smooth"});
@@ -84,7 +98,7 @@ let query="", currentCat="all", currentBrand="", currentSort="new", openProductI
 
 const ui={
  ar:{
-  search:"ابحثي...", searchHint:"ماركة · منتج · سكراب · SKU / باركود", searchBtn:"بحث", searchNo:"ما لقينا نتائج — جرّبي الماركة أو SKU",
+  search:"ابحثي...", searchHint:"ابحثي عن ماركة أو منتج…", searchBtn:"بحث", searchNo:"ما لقينا نتائج — جرّبي الماركة أو SKU", searchResults:function(q,n){return "نتائج «"+q+"» · "+n+" منتج";}, searchClearChip:"مسح البحث",
   all:"الكل", care:"عناية", face:"وجه", eyes:"عيون", brows:"حواجب", lips:"شفاه", scent:"عطور", tools:"أدوات", hair:"شعر",
   shop:"تسوّقي الآن", wa:"واتساب نقاء", products:"المنتجات", count:n=>n+" منتج", empty:"ما لقينا نتائج — جرّبي اسم الماركة أو SKU أو نوع (سكراب، سيروم…)",
   cart:"السلة", emptyCart:"السلة فاضية<br/>أضيفي من القائمة", total:"المجموع", checkout:"إتمام الطلب عبر واتساب",
@@ -110,7 +124,7 @@ const ui={
   govs:["مسقط","ظفار","الباطنة شمال","الباطنة جنوب","الداخلية","الشرقية شمال","الشرقية جنوب","الظاهرة","البريمي","الوسطى","مسندم"]
  },
  en:{
-  search:"Search...", searchHint:"Brand · product · scrub · SKU / barcode", searchBtn:"Search", searchNo:"No results — try a brand or SKU",
+  search:"Search...", searchHint:"Search brand or product…", searchBtn:"Search", searchNo:"No results — try a brand or SKU", searchResults:function(q,n){return "Results for “"+q+"” · "+n+" products";}, searchClearChip:"Clear search",
   all:"All", care:"Skincare", face:"Face", eyes:"Eyes", brows:"Brows", lips:"Lips", scent:"Fragrance", tools:"Tools", hair:"Hair",
   shop:"Shop now", wa:"WhatsApp Naqa", products:"Products", count:n=>n+" products", empty:"No matches — try brand name, SKU, or type (scrub, serum…)",
   cart:"Cart", emptyCart:"Your cart is empty<br/>Add from the list", total:"Total", checkout:"Checkout on WhatsApp",

@@ -11,6 +11,7 @@ function syncShipMarquee(){
   var dir=(typeof lang!=="undefined" && lang==="en")?"ltr":"rtl";
   bar.setAttribute("dir", dir);
   bar2.setAttribute("dir", dir);
+  mq.classList.toggle("is-rtl", dir==="rtl");
   var unit=phrase+"   ·   ";
   bar.textContent=unit;
   var unitW=bar.offsetWidth||1;

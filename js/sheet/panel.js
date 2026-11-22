@@ -1,3 +1,25 @@
+/* body scroll lock while sheet open */
+var __sheetScrollY=0;
+function lockBodyScroll(){
+  __sheetScrollY=window.scrollY||window.pageYOffset||0;
+  document.documentElement.classList.add("sheet-open");
+  document.body.classList.add("sheet-open");
+  document.body.style.position="fixed";
+  document.body.style.top=(-__sheetScrollY)+"px";
+  document.body.style.left="0";
+  document.body.style.right="0";
+  document.body.style.width="100%";
+}
+function unlockBodyScroll(){
+  document.documentElement.classList.remove("sheet-open");
+  document.body.classList.remove("sheet-open");
+  document.body.style.position="";
+  document.body.style.top="";
+  document.body.style.left="";
+  document.body.style.right="";
+  document.body.style.width="";
+  window.scrollTo(0, __sheetScrollY||0);
+}
 async function openSheet(id, mode, reset){
   const p=products.find(x=>x.id===id); if(!p) return;
   openProductId=id; sheetMode=mode||"full";
@@ -26,7 +48,6 @@ async function openSheet(id, mode, reset){
     ${priceHTML(p)}
     <div class="qty-pick"><span>${T("qty")}</span><button type="button" data-q="-1">−</button><b id="pickQty">1</b><button type="button" data-q="1">+</button></div>
     ${qv? "" : carouselHTML(p, galleryIndex)}
-    <div class="sku-line">${T("sku")}: ${esc(p.sku || T("noSku"))}</div>
     <span class="skin-pill">${T("skinT")}: ${esc(pskin(p))}</span>
     ${typeof shadeHTML==="function"?shadeHTML(p):""}
     ${typeof ingHTML==="function"?ingHTML(p):""}
@@ -45,6 +66,7 @@ async function openSheet(id, mode, reset){
       ${qv? `<button class="btn-open" data-open="${p.id}" type="button">${T("open")}</button>`:""}
     </div>`;
   $("#sheet").classList.add("show");
+  lockBodyScroll();
   $("#sheetCard").scrollTop=0;
   bindCarousel(p);
   document.title=pname(p)+" · Naqa";
@@ -56,6 +78,7 @@ async function openSheet(id, mode, reset){
 function closeSheet(fromRoute){
   $("#sheet").classList.remove("show");
   $("#sheet").classList.remove("qv");
+  unlockBodyScroll();
   openProductId=null;
   document.title=T("docTitle");
   const card=$("#sheetCard");

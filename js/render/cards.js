@@ -36,7 +36,7 @@ function cardHTML(p){
     +'<div class="card-brand">'+esc(T(catLabel[p.cat]||"all"))+'</div>'
     +'<button class="card-name" data-open="'+p.id+'" type="button">'+esc(pname(p))+'</button>'
     +'<div class="card-desc">'+esc(pdesc(p))+'</div>'
-    +'<div class="card-code">'+T("sku")+': '+(p.sku||T("noSku"))+(p.stock!=null?(' · '+(lang==="en"?"Stock ":"المخزون ")+p.stock):'')+'</div>'
+    +(p.stock!=null?('<div class="card-code">'+(lang==="en"?"Stock ":"المخزون ")+p.stock+'</div>'):'')
     +priceHTML(p)
     +'<div class="card-actions">'
     +'<button class="btn-qv" data-qv="'+p.id+'" type="button">'+T("qv")+'</button>'

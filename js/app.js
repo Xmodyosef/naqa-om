@@ -151,6 +151,24 @@ $("#lightbox").addEventListener("click", e=>{ if(e.target.id==="lightbox"||e.tar
   });
 })();
 
+/* sheet-open touch guard: stop background scroll under quick view */
+(function(){
+  const sheet=$("#sheet");
+  if(!sheet) return;
+  sheet.addEventListener("touchmove", function(e){
+    if(!sheet.classList.contains("show")) return;
+    const allow=e.target.closest && e.target.closest(".sheet-card, .carousel-track, .lightbox, .thumbs");
+    // if touch is on dimmed backdrop (the sheet element itself) block
+    if(e.target===sheet || !allow){
+      // still allow if inside card
+      if(!(e.target.closest && e.target.closest("#sheetCard, .sheet-card"))){
+        e.preventDefault();
+      }
+    }
+  }, {passive:false});
+})();
+
+
 window.addEventListener("popstate", ()=>{
   if($("#lightbox").classList.contains("show")){ closeLightbox(); return; }
   applyRoute();

@@ -138,6 +138,18 @@ const ui={
 };
 const catLabel={all:"all","عناية":"care","وجه":"face","عيون":"eyes","حواجب":"brows","شفاه":"lips","عطور":"scent","أدوات":"tools","شعر":"hair"};
 const T=k=>ui[lang][k];
+
+function cleanProductCopy(s){
+  if(!s) return "";
+  s=String(s);
+  s=s.replace(/\s*من نقاء\s*[—\-–]\s*أصلي،?\s*توصيل داخل عُمان،?\s*والطلب عبر واتساب\.?\s*(SKU\s*\S+\.?)/gi,"");
+  s=s.replace(/\s*From Naqa\s*[—\-–]\s*authentic,?\s*Oman delivery,?\s*order on WhatsApp\.?\s*(SKU\s*\S+\.?)/gi,"");
+  s=s.replace(/\s*والطلب عبر واتساب\.?/gi,"");
+  s=s.replace(/\s*,?\s*order on WhatsApp\.?/gi,"");
+  s=s.replace(/\s*SKU\s*[A-Za-z0-9\-]+\.?\s*$/gi,"");
+  return s.trim();
+}
+
 const money=n=>lang==="en"?(Number(n).toFixed(3)+" OMR"):(Number(n).toFixed(3)+" "+CURRENCY);
 const vatRate=()=>((typeof VAT_RATE==="number")?VAT_RATE:0.05);
 const vatOf=amount=>{const r=vatRate();const n=Number(amount)||0;return r<=0?0:n*r/(1+r);};
@@ -145,8 +157,8 @@ const exVat=amount=>(Number(amount)||0)-vatOf(amount);
 function vatNoteHTML(){return '<span class="vat-note">'+(T("vatInc")||"شامل الضريبة ٥٪")+'</span>';}
 
 const pname=p=>lang==="en"?(p.nameEn||p.nameAr):(p.nameAr||p.nameEn);
-const pdesc=p=>lang==="en"?(p.descEn||p.descAr||""):(p.descAr||p.descEn||"");
-const puse=p=>lang==="en"?(p.useEn||p.useAr||""):(p.useAr||p.useEn||"");
+const pdesc=p=>cleanProductCopy(lang==="en"?(p.descEn||p.descAr||""):(p.descAr||p.descEn||""));
+const puse=p=>cleanProductCopy(lang==="en"?(p.useEn||p.useAr||""):(p.useAr||p.useEn||""));
 const pskin=p=>lang==="en"?(p.skinEn||p.skinAr||""):(p.skinAr||p.skinEn||"");
 const pimgs=p=>(Array.isArray(p.imgs)?p.imgs:[]).filter(Boolean).slice(0,5);
 function saveCart(){try{localStorage.setItem("naqa_cart",JSON.stringify(cart))}catch(e){}}

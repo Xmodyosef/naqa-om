@@ -1,10 +1,8 @@
 /* cart logic + drawer UI + payment / delivery fee
  Rules:
- - Delivery base: 2 OMR when subtotal < 30
- - Free delivery at 30+ (auto discount the 2)
- - COD: delivery 2 under 30, free at 30+, plus 1.5 COD
- - Bank transfer: same fees until the admin confirms the transfer
- - After confirmation only: delivery and COD fee come off
+ - Delivery list: 2 OMR; free at 30+ (show list struck when waived)
+ - COD list: 1.5 OMR; only for cash on delivery; bank-account method waives (struck)
+ - Bank account = manual (no gateway): customer pays then sends proof on WhatsApp
 */
 function cartSubtotal(){
   return cart.reduce((s,i)=>s+i.price*i.qty,0);
@@ -12,7 +10,7 @@ function cartSubtotal(){
 function getPayMethod(){
   const r=document.querySelector('input[name="payMethod"]:checked');
   const v=(r && r.value) || "cod";
-  if(v==="paid" || v==="transfer") return "transfer";
+  if(v==="paid" || v==="transfer" || v==="bank") return "transfer";
   return "cod";
 }
 function feeBreakdown(subtotal, pay){
@@ -20,27 +18,26 @@ function feeBreakdown(subtotal, pay){
   const codBase=(typeof COD_FEE==="number")?COD_FEE:1.5;
   const min=(typeof FREE_SHIP_MIN==="number")?FREE_SHIP_MIN:30;
   pay=pay||getPayMethod();
-  if(pay==="paid") pay="transfer";
+  if(pay==="paid" || pay==="bank") pay="transfer";
   subtotal=subtotal!=null?subtotal:cartSubtotal();
-  let delivery=0, codFee=0;
-  // Auto free delivery at 30+ (always)
   const freeShip = subtotal >= min;
-  delivery = freeShip ? 0 : delBase;
-  if(pay==="transfer"){
-    // Bank transfer: no COD fee; delivery still auto-frees at 30+
-    codFee = 0;
-  } else {
-    // Cash on delivery
-    codFee = codBase;
-  }
+  const deliveryList = delBase;
+  const codList = codBase;
+  const delivery = freeShip ? 0 : delBase;
+  const codFee = (pay==="transfer") ? 0 : codBase;
   return {
     subtotal:subtotal,
     delivery:delivery,
     codFee:codFee,
+    deliveryList:deliveryList,
+    codList:codList,
+    deliveryWaived: freeShip,
+    codWaived: pay==="transfer",
     shipping:delivery+codFee,
     grand:subtotal+delivery+codFee,
     pay:pay,
-    freeShip:freeShip
+    freeShip:freeShip,
+    freeShipMin:min
   };
 }
 function deliveryFee(subtotal, pay){
@@ -49,38 +46,45 @@ function deliveryFee(subtotal, pay){
 function cartGrand(subtotal, pay){
   return feeBreakdown(subtotal, pay).grand;
 }
+function feeCell(listAmt, charged, waived, freeLab){
+  if(waived){
+    return '<span class="fee-was">'+money(listAmt)+'</span><span class="fee-now">'+(freeLab||"0")+'</span>';
+  }
+  return '<span class="fee-now">'+money(charged)+'</span>';
+}
 function updatePaySum(){
   const el=$("#paySum"); if(!el) return;
   const b=feeBreakdown();
-  const pending=b.pay==="transfer";
-  const payLab=pending?(T("payPending")||"بانتظار تأكيد التحويل"):(T("payStatusUnpaid")||"غير مدفوع");
+  const bank=b.pay==="transfer";
   const freeLab=lang==="en"?"Free":"مجاني";
+  const zeroLab=lang==="en"?"0.000":"٠.٠٠٠";
+  const payLab=bank?(T("payPending")||""):(T("payStatusUnpaid")||"");
   const vatAmt=typeof vatOf==="function"?vatOf(b.grand):0;
+  const shipCell=feeCell(b.deliveryList, b.delivery, b.deliveryWaived, freeLab);
+  const codCell=feeCell(b.codList, b.codFee, b.codWaived, zeroLab);
+  const shipNote=b.deliveryWaived?(' <span class="fee-tag">'+(lang==="en"?"30+ free":"٣٠+ مجاني")+'</span>'):"";
+  const codNote=b.codWaived?(' <span class="fee-tag">'+(lang==="en"?"waived (bank)":"ملغاة (حساب بنكي)")+'</span>'):"";
   el.innerHTML=
     "<div><span>"+(T("subTotal")||"المجموع الفرعي")+"</span><b>"+money(b.subtotal)+"</b></div>"+
-    "<div><span>"+(T("shipFee")||"رسوم التوصيل")+"</span><b>"+(b.delivery?money(b.delivery):freeLab)+(b.freeShip?" · ٣٠+":"")+"</b></div>"+
-    "<div><span>"+(T("codFee")||"رسوم الدفع عند الاستلام")+"</span><b>"+(b.codFee?money(b.codFee):freeLab)+"</b></div>"+
+    "<div><span>"+(T("shipFee")||"رسوم التوصيل")+shipNote+"</span><b class=\"fee-line\">"+shipCell+"</b></div>"+
+    "<div><span>"+(T("codFee")||"رسوم الدفع عند الاستلام")+codNote+"</span><b class=\"fee-line\">"+codCell+"</b></div>"+
     "<div class=\"grand\"><span>"+(T("grandTotal")||"الإجمالي")+"</span><b>"+money(b.grand)+"</b></div>"+
     "<div class=\"vat-line\"><span>"+(T("vatOf")||"منها ضريبة ٥٪")+"</span><b>"+money(vatAmt)+"</b></div>"+
-    "<div class=\"pay-status\">"+payLab+(pending?" · "+(T("payPaid")||""):" · "+(T("payCod")||""))+" · "+(T("vatInc")||"شامل الضريبة ٥٪")+"</div>";
+    "<div class=\"pay-status\">"+payLab+" · "+(bank?(T("payPaid")||""):(T("payCod")||""))+" · "+(T("vatInc")||"")+"</div>";
   const hint=$("#payHint");
   if(hint){
-    if(pending){
-      hint.textContent = lang==="en"
-        ? (b.freeShip
-          ? "Bank transfer · delivery FREE (30+) · no COD fee. Total = products only."
-          : "Bank transfer · delivery +2 under 30 · no COD fee. Free delivery auto at 30+.")
-        : (b.freeShip
-          ? "تحويل بنكي · توصيل مجاني تلقائي (٣٠+) · بدون رسوم استلام. الإجمالي = المنتجات فقط."
-          : "تحويل بنكي · توصيل +٢ تحت ٣٠ · بدون رسوم استلام. التوصيل يصير مجاني تلقائي من ٣٠.");
+    if(bank){
+      hint.textContent = T("payPendingHint") || (lang==="en"
+        ? "Pay to our bank account (manual) · no COD fee · delivery free at 30+ (shown crossed out)."
+        : "ادفعي لحسابنا البنكي يدوياً · بدون رسوم استلام · توصيل مجاني من ٣٠ (يظهر مشطوباً).");
     } else if(b.freeShip){
       hint.textContent=lang==="en"
-        ? "COD · free delivery auto (30+) · COD fee +1.500 OMR. Example: 30 + 1.5 = 31.5"
-        : "دفع عند الاستلام · توصيل مجاني تلقائي (٣٠+) · رسوم استلام +١.٥٠٠. مثال: ٣٠ + ١.٥ = ٣١.٥";
+        ? "Cash on delivery: delivery free (30+) · COD fee 1.500 OMR still applies. Example: 30 + 1.5 = 31.5"
+        : "دفع عند الاستلام: توصيل مجاني (٣٠+) · رسوم الاستلام ١.٥٠٠ ما زالت. مثال: ٣٠ + ١.٥ = ٣١.٥";
     } else {
       hint.textContent=lang==="en"
-        ? "COD · delivery +2 · COD fee +1.5. Free delivery auto when cart reaches 30. Example: 25+2+1.5=28.5"
-        : "دفع عند الاستلام · توصيل +٢ · استلام +١.٥. التوصيل ينخصم تلقائي عند ٣٠. مثال: ٢٥+٢+١.٥=٢٨.٥";
+        ? "Cash on delivery: delivery 2 + COD fee 1.5. Free delivery auto at 30+. Example: 25+2+1.5=28.5"
+        : "دفع عند الاستلام: توصيل ٢ + استلام ١.٥. التوصيل مجاني تلقائي من ٣٠. مثال: ٢٥+٢+١.٥=٢٨.٥";
     }
   }
 }
@@ -234,7 +238,7 @@ function sendCheckout(){
     };
   });
   const payLabel=pay==="transfer"
-    ?(lang==="en"?"Bank transfer · awaiting confirmation":"تحويل بنكي · بانتظار التأكيد")
+    ?(lang==="en"?"Bank account (manual) · awaiting proof of payment":"حساب بنكي يدوي · بانتظار إثبات الدفع")
     :(lang==="en"?"Cash on delivery (unpaid)":"دفع عند الاستلام (غير مدفوع)");
   const order={
     id:orderNo, at:new Date().toISOString(), status:"new",
@@ -255,15 +259,29 @@ function sendCheckout(){
   if(typeof window.NAQA_ORDERS_HOOK==="function"){
     try{ window.NAQA_ORDERS_HOOK(order); }catch(e){}
   }
-  const delLine = lang==="en"
-    ? ("Delivery: "+(delivery?money(delivery):"Free"))
-    : ("التوصيل: "+(delivery?money(delivery):"مجاني"));
-  const codLine = lang==="en"
-    ? ("COD fee: "+(codFee?money(codFee):"0"))
-    : ("رسوم الدفع عند الاستلام: "+(codFee?money(codFee):"٠"));
+  const delLine = (function(){
+    if(b.deliveryWaived){
+      return lang==="en"
+        ? ("Delivery: "+money(b.deliveryList)+" → FREE (30+)")
+        : ("التوصيل: "+money(b.deliveryList)+" ← مجاني (٣٠+)");
+    }
+    return lang==="en"
+      ? ("Delivery: "+money(delivery))
+      : ("التوصيل: "+money(delivery));
+  })();
+  const codLine = (function(){
+    if(b.codWaived){
+      return lang==="en"
+        ? ("COD fee: "+money(b.codList)+" → 0 (bank account)")
+        : ("رسوم الاستلام: "+money(b.codList)+" ← ٠ (حساب بنكي)");
+    }
+    return lang==="en"
+      ? ("COD fee: "+money(codFee))
+      : ("رسوم الدفع عند الاستلام: "+money(codFee));
+  })();
   const msg = lang==="en"
-    ? ("Hello, I want to order from Naqa:\nOrder: "+orderNo+"\nName: "+name+"\nPhone: "+phone+"\nArea: "+gov+"\nPayment: "+payLabel+"\nNote: "+note+"\n\n"+lines+"\n\nSubtotal: "+money(sub)+"\n"+delLine+"\n"+codLine+"\nTotal (incl. 5% VAT): "+money(grand)+"\nOf which VAT 5%: "+money(typeof vatOf==="function"?vatOf(grand):0)+(pay==="transfer"?("\nAfter we confirm the transfer, delivery and COD fees come off. Then total: "+money(sub)):""))
-    : ("السلام عليكم، أبغى أطلب من نقاء:\nرقم الطلب: "+orderNo+"\nالاسم: "+name+"\nالجوال: "+phone+"\nالمنطقة: "+gov+"\nالدفع: "+payLabel+"\nملاحظة: "+note+"\n\n"+lines+"\n\nالمجموع الفرعي: "+money(sub)+"\n"+delLine+"\n"+codLine+"\nالإجمالي (شامل الضريبة ٥٪): "+money(grand)+"\nمنها ضريبة ٥٪: "+money(typeof vatOf==="function"?vatOf(grand):0)+(pay==="transfer"?("\nبعد تأكيد التحويل تُحذف رسوم التوصيل والاستلام. الإجمالي وقتها: "+money(sub)):""));
+    ? ("Hello, I want to order from Naqa:\nOrder: "+orderNo+"\nName: "+name+"\nPhone: "+phone+"\nArea: "+gov+"\nPayment: "+payLabel+"\nNote: "+note+"\n\n"+lines+"\n\nSubtotal: "+money(sub)+"\n"+delLine+"\n"+codLine+"\nTotal (incl. 5% VAT): "+money(grand)+"\nOf which VAT 5%: "+money(typeof vatOf==="function"?vatOf(grand):0)+(pay==="transfer"?("\nI will pay to your bank account then send proof."):""))
+    : ("السلام عليكم، أبغى أطلب من نقاء:\nرقم الطلب: "+orderNo+"\nالاسم: "+name+"\nالجوال: "+phone+"\nالمنطقة: "+gov+"\nالدفع: "+payLabel+"\nملاحظة: "+note+"\n\n"+lines+"\n\nالمجموع الفرعي: "+money(sub)+"\n"+delLine+"\n"+codLine+"\nالإجمالي (شامل الضريبة ٥٪): "+money(grand)+"\nمنها ضريبة ٥٪: "+money(typeof vatOf==="function"?vatOf(grand):0)+(pay==="transfer"?("\nراح أحول على الحساب البنكي وأرسل إثبات الدفع."):""));
   window.open("https://wa.me/"+WA_NUMBER+"?text="+encodeURIComponent(msg), "_blank");
   const done=$("#orderDone");
   if(done){

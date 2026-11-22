@@ -55,3 +55,8 @@ footer{margin-top:40px;padding:28px 0 24px;border-top:1px solid var(--line);colo
 .cart-ship-note{margin:10px 4px 4px;padding:10px 12px;border-radius:12px;background:#faf4f1;font-size:.88rem;color:#5a4a44}
 
 .cart-bar[hidden]{display:none!important}
+
+.pay-sum .fee-line{display:inline-flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+.pay-sum .fee-was{text-decoration:line-through;opacity:.55;font-weight:600;color:var(--muted,#8a7f78)}
+.pay-sum .fee-now{font-weight:800;color:var(--rose-deep,#b05c6e)}
+.pay-sum .fee-tag{font-size:.72rem;font-weight:700;color:var(--rose-deep,#b05c6e);background:rgba(176,92,110,.1);padding:2px 7px;border-radius:999px;margin-inline-start:4px}

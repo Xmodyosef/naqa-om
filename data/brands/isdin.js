@@ -16,12 +16,12 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "واقي شمس إيسدين فوتو بروتكتور المائي ماجيك - 50مل",
   "nameEn": "ISDIN Photoprotector Water Magic SPF50 - 50ml",
-  "descAr": "واقي شمس إيسدين فوتو بروتكتور المائي ماجيك من ISDIN — لمسة ناعمة، إحساس نظيف، وروتين لا يستهلك وقتك. يبرز فيه حماية شمسية لدعم حماية يومية من أشعة الشمس. ملمس يتحمل المكياج فوقه. الحجم تقريباً 50 مل. يناسب: كل أنواع البشرة نهاراً. إن ظهر تهيّج، خفّفي الاستخدام وراجعي طبيب بشرة عند اللزوم.",
-  "descEn": "From ISDIN: ISDIN Photoprotector Water Magic SPF50. Built for a simple routine that fits a real day. It highlights sun protection to support everyday UV protection. Everyday UV care with a wearable finish. About 50 ml. Best for: after morning skincare. If irritation appears, ease off and see a dermatologist if it lasts.",
-  "useAr": "١) آخر خطوة عناية صباحاً.\n٢) كمية تكفي الوجه والرقبة (حوالي إصبعين).\n٣) انتظري دقيقة قبل المكياج.\n٤) أعيدي عند التعرض الطويل للشمس.",
-  "useEn": "1) Last skincare step in the morning.\n2) Enough for face and neck (about two fingers).\n3) Wait a minute before makeup.\n4) Reapply in long sun exposure.",
-  "skinAr": "كل أنواع البشرة نهاراً",
-  "skinEn": "after morning skincare",
+  "descAr": "واقي شمس إيسدين فوتو بروتكتور المائي ماجيك… من ISDIN. يمنحك إحساساً نظيفاً ونتيجة تُلاحظ مع الانتظام. يبرز فيه حماية شمسية لدعم حماية يومية من الأشعة. طبقة حماية يومية فوق العناية. الحجم تقريباً 50 مل. يناسب: كل أنواع البشرة — أعدي التطبيق عند التعرّض الطويل. ابدئي بكمية قليلة ثم زيدِي حسب تحمّل بشرتك.",
+  "descEn": "ISDIN Photoprotector Water Magic SPF50 from ISDIN. Clean on the skin, clearer with steady use. It leans on sun filters to support everyday UV protection. Daytime wear that stays light. About 50 ml. Best for: All skin types — reapply in prolonged sun. Start with a small amount, then adjust to what your skin likes.",
+  "useAr": "١) آخر خطوة عناية صباحاً.\n٢) كمية تغطي الوجه والرقبة (حوالي إصبعين).\n٣) انتظري دقيقة قبل المكياج.\n٤) أعيدي عند التعرّض الطويل للشمس.\n٥) راجعي تاريخ الانتهاء على العبوة قبل الفتح.",
+  "useEn": "1) Last morning skincare step.\n2) Enough for face and neck (about two fingers).\n3) Wait a minute before makeup.\n4) Reapply in prolonged sun.\n5) Check the expiry on the pack before opening.",
+  "skinAr": "كل أنواع البشرة — أعدي التطبيق عند التعرّض الطويل",
+  "skinEn": "All skin types — reapply in prolonged sun",
   "stock": 25
 }
 );

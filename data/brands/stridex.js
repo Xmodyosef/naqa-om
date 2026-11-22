@@ -17,12 +17,12 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "ستريديكس قطع قطنية للسيطرة على حب الشباب - 55قطعة",
   "nameEn": "Stridex Maximum Single-Step Acne Control - 55 Pads",
-  "descAr": "ستريديكس قطع قطنية للسيطرة على حب الشباب من Stridex — لمسة ناعمة، إحساس نظيف، وروتين لا يستهلك وقتك. مصمم ليكون خطوة واضحة داخل روتين أقصر. خطوة عناية متوازنة. الحجم تقريباً 55قطع. يناسب: معظم أنواع البشرة. النتيجة أجمل مع الانتظام وواقي الشمس عند الحاجة.",
-  "descEn": "From Stridex: Stridex Maximum Single. Built for a simple routine that fits a real day. It balances comfort with a visible, honest finish. Comfortable results with steady use. About 55 pads. Best for: watch the first week. Store away from heat and keep the cap closed.",
-  "useAr": "١) اتبّعي ترتيب روتينك: تنظيف → عناية → حماية.\n٢) كمية معتدلة أفضل من الإفراط.\n٣) راقبي البشرة أول أسبوع.\n٤) واقي شمس نهاراً دائماً مع التفتيح أو الأحماض.",
-  "useEn": "1) Keep order: cleanse → treat → protect.\n2) Moderate amount beats excess.\n3) Watch skin the first week.\n4) Daytime SPF always with brightening or acids.",
-  "skinAr": "معظم أنواع البشرة",
-  "skinEn": "watch the first week",
+  "descAr": "إذا أردتِ عناية بسيطة دون روتين طويل: ستريديكس قطع قطنية للسيطرة على حب الشباب من Stridex. بلا وعود مبالغ فيها — فقط خطوة تُشعرين بها. نتيجة تُبنى مع الانتظام. الحجم تقريباً 55 قطعة. يناسب: البشرة الدهنية والمختلطة. إن ظهر تهيّج، خفّفي الاستخدام وراجعي مختصاً عند اللزوم.",
+  "descEn": "When you want simple care without a long routine: Stridex Maximum Single-Step Acne Control by Stridex. No long list of empty claims — just a step you feel. Results that build with use. About 55 pcs. Best for: Oily and combination skin. If irritation appears, ease off and see a specialist if it lasts.",
+  "useAr": "١) اتبّعي: تنظيف → عناية → حماية.\n٢) كمية معتدلة أفضل من الإفراط.\n٣) راقبي التهيّج أول أسبوع.\n٤) أوقفي عند اللذع المستمر.\n٥) احفظي Stridex في مكان جاف بعيداً عن الشمس.",
+  "useEn": "1) Follow: cleanse → treat → protect.\n2) Moderate amount beats overdoing it.\n3) Watch for irritation the first week.\n4) Stop if stinging continues.\n5) Keep Stridex dry and away from direct sun.",
+  "skinAr": "البشرة الدهنية والمختلطة",
+  "skinEn": "Oily and combination skin",
   "stock": 25
 }
 );

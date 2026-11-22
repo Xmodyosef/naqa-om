@@ -16,12 +16,12 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "ماجيك فينيش بلسم الشفاه ام اسام - 18ج",
   "nameEn": "M.Asam Magic Finish Volume Lip Balm - 18g",
-  "descAr": "ماجيك فينيش بلسم الشفاه ام اسام (M.Asam) يمنحك خطوة عناية مركّزة، بملمس مريح ونتيجة تُلاحظ مع الانتظام. يرتكز على توازن بين الراحة والنتيجة الظاهرة. لون أو لمعان حسب النوع. الحجم تقريباً 18 ج. يناسب: استخدام يومي مريح. خزّنيه بعيداً عن الحرارة، وأغلقي الغطاء جيداً.",
-  "descEn": "A polished pick from M.Asam: M.Asam Magic Finish Volume Lip Balm. Balanced between feel and visible finish. One focused job — not a long list of empty claims. Comfortable enough for all-day wear. About 18 g. Best for: dry lips. Results look better with steady use and SPF when needed.",
-  "useAr": "١) شفاه نظيفة وجافة.\n٢) طبّقي من الوسط للخارج.\n٣) أعيدي خلال اليوم حسب الحاجة.\n٤) ليلاً: طبقة أغنى إن كان مرطباً.",
-  "useEn": "1) Clean, dry lips.\n2) Apply from the center outward.\n3) Reapply through the day as needed.\n4) At night, a richer layer if it is a balm/mask.",
-  "skinAr": "استخدام يومي مريح",
-  "skinEn": "dry lips",
+  "descAr": "عناية مركّزة في ماجيك فينيش بلسم الشفاه ام اسام (M.Asam) — بسيطة في اليد، واضحة في النتيجة. مصمّم ليكون جزءاً ثابتاً من روتين أقصر. لون أو لمعان حسب النوع. الحجم تقريباً 18 ج. يناسب: كل درجات البشرة — اختبري عند الحساسية. جرّبي كمية قليلة أولاً لتضبطي الكثافة.",
+  "descEn": "Focused care in M.Asam Magic Finish Volume Lip Balm (M.Asam) — easy in the hand, clear in the result. Made to stay in a shorter, steadier routine. Color or shine depending on the formula. About 18 g. Best for: All skin tones — patch-test if sensitive. Start with a little to control intensity.",
+  "useAr": "١) شفاه نظيفة وجافة.\n٢) طبّقي من الوسط للخارج.\n٣) أعيدي خلال اليوم حسب الحاجة.\n٤) ليلاً: مرطب أغنى إن رغبتِ.\n٥) راجعي تاريخ الانتهاء على العبوة قبل الفتح.",
+  "useEn": "1) Clean, dry lips.\n2) Apply from the center outward.\n3) Reapply through the day as needed.\n4) At night: a richer balm if you like.\n5) Check the expiry on the pack before opening.",
+  "skinAr": "كل درجات البشرة — اختبري عند الحساسية",
+  "skinEn": "All skin tones — patch-test if sensitive",
   "stock": 25
 }
 );

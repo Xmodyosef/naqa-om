@@ -17,12 +17,12 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "كريم إيبي دبل أب لترميم حاجز البشرة بالإكتوين والبانثينول - 50مل",
   "nameEn": "Epii Double Up Cream Ectoin & Panthenol - 50ml",
-  "descAr": "كريم إيبي دبل أب لترميم حاجز البشرة بالإ… من epii — اختيار يومي يريح البشرة ويعطي نتيجة واضحة بدون تعقيد. يبرز فيه بانثينول لدعم ترطيب وهدوء للبشرة. ملمس غني دون إحساس ثقيل مفرط. الحجم تقريباً 50 مل. يناسب: المختلطة في الطقس الجاف. إن ظهر تهيّج، خفّفي الاستخدام وراجعي طبيب بشرة عند اللزوم.",
-  "descEn": "Epii Double Up Cream Ectoin & Panthenol by epii — a daily step that feels kind on skin and shows a clear result without fuss. It highlights panthenol to support soothing moisture. A soft layer that finishes calmly. About 50 ml. Best for: dry and dehydrated. If irritation appears, ease off and see a dermatologist if it lasts.",
-  "useAr": "١) خذي كمية صغيرة ودفّئيها بين الأصابع.\n٢) ربّتي على البشرة حتى الامتصاص.\n٣) لا تفرطي؛ القليل المنتظم أفضل من الكثير.",
-  "useEn": "1) After serum (or right after cleansing).\n2) Pea-sized amount for the face; more for the neck.\n3) Sunscreen on top in the morning.\n4) At night, add a little on dry cheeks if needed.",
-  "skinAr": "المختلطة في الطقس الجاف",
-  "skinEn": "dry and dehydrated",
+  "descAr": "اختيار epii — كريم إيبي دبل أب لترميم حاجز البشرة بالإكتوين والبانثينول. صُمّم لروتين قصير يناسب يومك دون تعقيد. مصمّم ليكون جزءاً ثابتاً من روتين أقصر. قوام كريمي يريح الجفاف. الحجم تقريباً 50 مل. يناسب: البشرة الجافة والمحتاجة. إن ظهر تهيّج، خفّفي الاستخدام وراجعي مختصاً عند اللزوم.",
+  "descEn": "From epii — Epii Double Up Cream Ectoin & Panthenol. Made for a short routine that fits a real day. Made to stay in a shorter, steadier routine. A creamy texture that comforts dry skin. About 50 ml. Best for: Dry and dehydrated skin. If irritation appears, ease off and see a specialist if it lasts.",
+  "useAr": "١) بعد السيروم (أو بعد الغسول مباشرة).\n٢) كمية بحجم حبة البازلاء للوجه.\n٣) وزّعي حتى الامتصاص بما فيها الرقبة.\n٤) صباحاً أكملي بواقي شمس.\n٥) راجعي تاريخ الانتهاء على العبوة قبل الفتح.",
+  "useEn": "1) After serum (or right after cleansing).\n2) Pea-sized amount for the face.\n3) Smooth in, including the neck.\n4) Morning: finish with SPF.\n5) Check the expiry on the pack before opening.",
+  "skinAr": "البشرة الجافة والمحتاجة",
+  "skinEn": "Dry and dehydrated skin",
   "stock": 25
 }
 );

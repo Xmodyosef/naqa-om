@@ -17,12 +17,12 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "تونر حمض الهيالورونيك بالأرز الأسود من هارو هارو - 300مل",
   "nameEn": "HaruHaru Black Rice Hyaluronic Toner - 300ml",
-  "descAr": "تونر حمض الهيالورونيك بالأرز الأسود من ه… من HaruHaru — اختيار يومي يريح البشرة ويعطي نتيجة واضحة بدون تعقيد. يبرز فيه حمض الهيالورونيك لدعم ترطيب خفيف وامتلاء المظهر. ملمس مائي منعش. الحجم تقريباً 300 مل. يناسب: المتعطشة للترطيب. خزّنيه بعيداً عن الحرارة، وأغلقي الغطاء جيداً.",
-  "descEn": "HaruHaru Black Rice Hyaluronic Toner by HaruHaru — soft on contact, clean finish, and a routine that does not steal your morning. It highlights hyaluronic acid to support lightweight hydration and a plump look. A watery, refreshing first step. About 300 ml. Best for: oily after cleansing. Store away from heat and keep the cap closed.",
-  "useAr": "١) بعد الغسول مباشرة.\n٢) على الراحة أو القطنة — تجنّبي سحب البشرة.\n٣) لا تشطفي. أكملي بسيروم ثم مرطب.",
-  "useEn": "1) Right after cleansing.\n2) In palms or on a pad — do not drag the skin.\n3) Do not rinse. Follow with serum, then cream.",
-  "skinAr": "المتعطشة للترطيب",
-  "skinEn": "oily after cleansing",
+  "descAr": "إذا أردتِ انتعاشاً بعد الغسول دون روتين طويل: تونر حمض الهيالورونيك بالأرز الأسود من هارو هارو من HaruHaru. محوره هيالورونيك: يخدم ترطيب خفيف يدوم بلطف مع الاستخدام المنتظم. ويُكمَّل بـ مستخلص الأرز. ملمس منعش بعد الغسول. الحجم تقريباً 300 مل. يناسب: معظم الأنواع — راقبي أول أسبوع. خزّنيه بعيداً عن الحرارة وأغلقي الغطاء جيداً.",
+  "descEn": "When you want a fresh post-cleanse feel without a long routine: HaruHaru Black Rice Hyaluronic Toner by HaruHaru. Built around hyaluronic acid — helping lightweight lasting moisture with steady use. Paired with rice extract. A fresh feel right after cleansing. About 300 ml. Best for: Most skin types — watch the first week. Store away from heat and keep the cap closed.",
+  "useAr": "١) بشرة نظيفة.\n٢) مرّري التونر بلطف على الوجه.\n٣) تجنّبي محيط العين.\n٤) انتظري ثوانٍ قبل الخطوة التالية.\n٥) راجعي تاريخ الانتهاء على العبوة قبل الفتح.",
+  "useEn": "1) Clean skin.\n2) Sweep gently over the face.\n3) Avoid the eye area.\n4) Wait a few seconds before the next step.\n5) Check the expiry on the pack before opening.",
+  "skinAr": "معظم الأنواع — راقبي أول أسبوع",
+  "skinEn": "Most skin types — watch the first week",
   "stock": 25
 },
 {
@@ -41,12 +41,12 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "جل التنظيف اللطيف 5.5 بالارز الأسود من هارو هارو - 100مل",
   "nameEn": "HaruHaru Black Rice Moisture 5.5 Soft Cleansing Gel - 100ml",
-  "descAr": "عناية أنيقة من HaruHaru: جل التنظيف اللطيف 5.5 بالارز الأسود من ه…. يوازن بين الفعالية والنعومة على البشرة. يخدم هدفاً واحداً بوضوح بدل وعود كثيرة. رغوة أو زيت يزيل الشوائب بلطف. الحجم تقريباً 100 مل. يناسب: الحساسة بصيغة لطيفة. النتيجة أجمل مع الانتظام وواقي الشمس عند الحاجة.",
-  "descEn": "From HaruHaru: HaruHaru Black Rice Moisture 5.5 Soft Cleansin…. Built for a simple routine that fits a real day. One focused job — not a long list of empty claims. Cleanses and leaves skin comfortable. About 100 ml. Best for: most types morning and night. Results look better with steady use and SPF when needed.",
-  "useAr": "١) بلّلي الوجه بماء فاتر.\n٢) دلكي ٢٠–٣٠ ثانية ثم اشطفي جيداً.\n٣) جفّفي بالتربيت.\n٤) تنظيف مزدوج: الزيتي أولاً ثم الغسول إن لزم.",
-  "useEn": "1) Wet the face with lukewarm water.\n2) Massage 20–30 seconds, rinse well.\n3) Pat dry.\n4) Double cleanse: oil first, then foam if needed.",
-  "skinAr": "الحساسة بصيغة لطيفة",
-  "skinEn": "most types morning and night",
+  "descAr": "من رفوف HaruHaru: جل التنظيف اللطيف 5.5 بالارز الأسود من هارو هارو. توازن بين نعومة الاستخدام ووضوح الهدف. يبرز فيه مستخلص الأرز لدعم نعومة وإشراقة هادئة. ملمس مريح للاستخدام اليومي. الحجم تقريباً 100 مل. يناسب: البشرة الحساسة — اختبري على الرقبة أولاً. النتيجة أوضح مع الانتظام وواقي الشمس عند الحاجة.",
+  "descEn": "A HaruHaru pick: HaruHaru Black Rice Moisture 5.5 Soft Cleansing Gel. Soft to use, honest about what it does. It leans on rice extract to support softness and quiet glow. Results that build with use. About 100 ml. Best for: Sensitive skin — patch-test first. Results look better with steady use — and SPF when needed.",
+  "useAr": "١) اتبّعي: تنظيف → عناية → حماية.\n٢) كمية معتدلة أفضل من الإفراط.\n٣) راقبي التهيّج أول أسبوع.\n٤) أوقفي عند اللذع المستمر.\n٥) راجعي تاريخ الانتهاء على العبوة قبل الفتح.",
+  "useEn": "1) Follow: cleanse → treat → protect.\n2) Moderate amount beats overdoing it.\n3) Watch for irritation the first week.\n4) Stop if stinging continues.\n5) Check the expiry on the pack before opening.",
+  "skinAr": "البشرة الحساسة — اختبري على الرقبة أولاً",
+  "skinEn": "Sensitive skin — patch-test first",
   "stock": 25
 }
 );

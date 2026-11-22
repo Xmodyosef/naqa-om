@@ -17,12 +17,12 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "لوشن بيوريتو بزبدة الشيا لترطيب الجسم كوتون دريم لايت - 300مل",
   "nameEn": "Purito Luminous Moisture Shea Butter Body Lotion Cotton Dreamlight - 300ml",
-  "descAr": "لوشن بيوريتو بزبدة الشيا لترطيب الجسم كو… من Purito — لمسة ناعمة، إحساس نظيف، وروتين لا يستهلك وقتك. يبرز فيه زبدة الشيا لدعم تغذية وملمس غني. يرطّب مساحات أوسع من الجسم. الحجم تقريباً 300 مل. يناسب: معظم أنواع البشرة. النتيجة أجمل مع الانتظام وواقي الشمس عند الحاجة.",
-  "descEn": "A polished pick from Purito: Purito Luminous Moisture Shea Butter Body Loti…. Balanced between feel and visible finish. It highlights shea butter to support rich nourishment and a soft feel. Absorbs at a comfortable pace. About 300 ml. Best for: dry body skin. Store away from heat and keep the cap closed.",
-  "useAr": "١) بعد الاستحمام على بشرة رطبة قليلاً.\n٢) وزّعي من الأطراف للمركز.\n٣) أعيدي على الكوعين والساقين الجافة.\n٤) صباحاً أو مساءً حسب حاجتك.",
-  "useEn": "1) After shower on slightly damp skin.\n2) Smooth from limbs toward the center.\n3) Reapply on elbows and dry legs.\n4) Morning or night as needed.",
-  "skinAr": "معظم أنواع البشرة",
-  "skinEn": "dry body skin",
+  "descAr": "عناية مركّزة في لوشن بيوريتو بزبدة الشيا لترطيب الجسم كوتون دريم لايت (Purito) — بسيطة في اليد، واضحة في النتيجة. بلا وعود مبالغ فيها — فقط خطوة تُشعرين بها. ملمس غني دون شعور دهني مزعج. الحجم تقريباً 300 مل. يناسب: للبشرة التي تريد خطوة واضحة وبسيطة. إن ظهر تهيّج، خفّفي الاستخدام وراجعي مختصاً عند اللزوم.",
+  "descEn": "Focused care in Purito Luminous Moisture Shea Butter Body Lotion Cotton Dreamlight (Purito) — easy in the hand, clear in the result. No long list of empty claims — just a step you feel. A creamy texture that comforts dry skin. About 300 ml. Best for: For skin that wants one clear, simple step. If irritation appears, ease off and see a specialist if it lasts.",
+  "useAr": "١) على بشرة نظيفة.\n٢) دفّئي الكريم بين الأصابع ثم ربّتي.\n٣) زيدِي على الخدود الجافة ليلاً.\n٤) تجنّبي محيط العين إلا إذا كان مخصّصاً.\n٥) احفظي Purito في مكان جاف بعيداً عن الشمس.",
+  "useEn": "1) On clean skin.\n2) Warm between fingers, then press in.\n3) Extra on dry cheeks at night if needed.\n4) Avoid the eye area unless the product is meant for it.\n5) Keep Purito dry and away from direct sun.",
+  "skinAr": "للبشرة التي تريد خطوة واضحة وبسيطة",
+  "skinEn": "For skin that wants one clear, simple step",
   "stock": 25
 },
 {
@@ -41,12 +41,12 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "لوشن بيوريتو بزبدة الشيا لترطيب الجسم ميدنايت رومانس - 300مل",
   "nameEn": "Purito Luminous Moisture Shea Butter Body Lotion Midnight Romance - 300ml",
-  "descAr": "من مجموعة Purito: لوشن بيوريتو بزبدة الشيا لترطيب الجسم مي…. صُمم لروتين بسيط يناسب إيقاع يومك. يبرز فيه زبدة الشيا لدعم تغذية وملمس غني. يرطّب مساحات أوسع من الجسم. الحجم تقريباً 300 مل. يناسب: معظم أنواع البشرة. النتيجة أجمل مع الانتظام وواقي الشمس عند الحاجة.",
-  "descEn": "From Purito: Purito Luminous Moisture Shea Butter Body Loti…. Built for a simple routine that fits a real day. It highlights shea butter to support rich nourishment and a soft feel. Absorbs at a comfortable pace. About 300 ml. Best for: dry body skin. If irritation appears, ease off and see a dermatologist if it lasts.",
-  "useAr": "١) بعد الاستحمام على بشرة رطبة قليلاً.\n٢) وزّعي من الأطراف للمركز.\n٣) أعيدي على الكوعين والساقين الجافة.\n٤) صباحاً أو مساءً حسب حاجتك.",
-  "useEn": "1) After shower on slightly damp skin.\n2) Smooth from limbs toward the center.\n3) Reapply on elbows and dry legs.\n4) Morning or night as needed.",
-  "skinAr": "معظم أنواع البشرة",
-  "skinEn": "dry body skin",
+  "descAr": "اختيار Purito — لوشن بيوريتو بزبدة الشيا لترطيب الجسم ميدنايت رومانس. صُمّم لروتين قصير يناسب يومك دون تعقيد. بلا وعود مبالغ فيها — فقط خطوة تُشعرين بها. قوام كريمي يريح الجفاف. الحجم تقريباً 300 مل. يناسب: للبشرة التي تريد خطوة واضحة وبسيطة. ابدئي بكمية قليلة ثم زيدِي حسب تحمّل بشرتك.",
+  "descEn": "From Purito — Purito Luminous Moisture Shea Butter Body Lotion Midnight Romance. Made for a short routine that fits a real day. No long list of empty claims — just a step you feel. A creamy texture that comforts dry skin. About 300 ml. Best for: For skin that wants one clear, simple step. Start with a small amount, then adjust to what your skin likes.",
+  "useAr": "١) بعد السيروم (أو بعد الغسول مباشرة).\n٢) كمية بحجم حبة البازلاء للوجه.\n٣) وزّعي حتى الامتصاص بما فيها الرقبة.\n٤) صباحاً أكملي بواقي شمس.\n٥) منتج Purito: التزمي بكمية معتدلة وكرّري حسب العبوة.",
+  "useEn": "1) After serum (or right after cleansing).\n2) Pea-sized amount for the face.\n3) Smooth in, including the neck.\n4) Morning: finish with SPF.\n5) Purito tip: stay moderate and follow the pack.",
+  "skinAr": "للبشرة التي تريد خطوة واضحة وبسيطة",
+  "skinEn": "For skin that wants one clear, simple step",
   "stock": 25
 }
 );

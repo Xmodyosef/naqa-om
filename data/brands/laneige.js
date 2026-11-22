@@ -18,12 +18,12 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "قناع الشفاه المرطب الليلي بيري من لانيج - 20ج",
   "nameEn": "Laneige Lip Sleeping Mask [Berry] - 20g",
-  "descAr": "من مجموعة LANEIGE: قناع الشفاه المرطب الليلي بيري من لانيج. صُمم لروتين بسيط يناسب إيقاع يومك. مصمم ليكون خطوة واضحة داخل روتين أقصر. لون أو لمعان حسب النوع. الحجم تقريباً 20 ج. يناسب: استخدام يومي مريح. إن ظهر تهيّج، خفّفي الاستخدام وراجعي طبيب بشرة عند اللزوم.",
-  "descEn": "A polished pick from LANEIGE: Laneige Lip Sleeping Mask [Berry]. Balanced between feel and visible finish. Made as one clear step inside a shorter routine. Soft on contact. About 20 g. Best for: comfortable daily wear. If irritation appears, ease off and see a dermatologist if it lasts.",
-  "useAr": "١) شفاه نظيفة وجافة.\n٢) طبّقي من الوسط للخارج.\n٣) أعيدي خلال اليوم حسب الحاجة.\n٤) ليلاً: طبقة أغنى إن كان مرطباً.",
-  "useEn": "1) Clean, dry lips.\n2) Apply from the center outward.\n3) Reapply through the day as needed.\n4) At night, a richer layer if it is a balm/mask.",
-  "skinAr": "استخدام يومي مريح",
-  "skinEn": "comfortable daily wear",
+  "descAr": "قناع الشفاه المرطب الليلي بيري من لانيج من LANEIGE: خطوة واضحة، ملمس مريح، ونتيجة تُبنى بهدوء. بلا وعود مبالغ فيها — فقط خطوة تُشعرين بها. طبقة ليلية تغذي الشفاه. الحجم تقريباً 20 ج. يناسب: كل درجات البشرة — اختبري عند الحساسية. خزّنيه قائماً وأغلقي الغطاء جيداً.",
+  "descEn": "Laneige Lip Sleeping Mask [Berry] by LANEIGE: a clear step, a comfortable feel, and results that build quietly. No long list of empty claims — just a step you feel. Wakes up smoother. About 20 g. Best for: All skin tones — patch-test if sensitive. Store upright and keep the cap closed.",
+  "useAr": "١) شفاه نظيفة قبل النوم.\n٢) طبقة متوسطة على الشفاه.\n٣) اتركيه طوال الليل.\n٤) صباحاً: امسحي الزائد بلطف.\n٥) منتج LANEIGE: التزمي بكمية معتدلة وكرّري حسب العبوة.",
+  "useEn": "1) Clean lips before bed.\n2) A medium layer over the lips.\n3) Leave on overnight.\n4) Morning: gently wipe any excess.\n5) LANEIGE tip: stay moderate and follow the pack.",
+  "skinAr": "كل درجات البشرة — اختبري عند الحساسية",
+  "skinEn": "All skin tones — patch-test if sensitive",
   "stock": 25
 }
 );

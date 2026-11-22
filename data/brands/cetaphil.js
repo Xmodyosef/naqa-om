@@ -17,12 +17,12 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "غسول سيتافيل للبشرة العادية الى الجافة والحساسة - 237مل",
   "nameEn": "Cetaphil Gentle Skin Cleanser - 237ml",
-  "descAr": "عناية أنيقة من Cetaphil: غسول سيتافيل للبشرة العادية الى الجافة و…. يوازن بين الفعالية والنعومة على البشرة. مصمم ليكون خطوة واضحة داخل روتين أقصر. ينظّف دون أن يشدّ البشرة. الحجم تقريباً 237 مل. يناسب: الحساسة بصيغة لطيفة. إن ظهر تهيّج، خفّفي الاستخدام وراجعي طبيب بشرة عند اللزوم.",
-  "descEn": "Cetaphil Gentle Skin Cleanser by Cetaphil — a daily step that feels kind on skin and shows a clear result without fuss. Made as one clear step inside a shorter routine. A fresh reset for morning or night. About 237 ml. Best for: after heavy makeup as step one. If irritation appears, ease off and see a dermatologist if it lasts.",
-  "useAr": "١) بلّلي الوجه بماء فاتر.\n٢) دلكي ٢٠–٣٠ ثانية ثم اشطفي جيداً.\n٣) جفّفي بالتربيت.\n٤) تنظيف مزدوج: الزيتي أولاً ثم الغسول إن لزم.",
-  "useEn": "1) Wet the face with lukewarm water.\n2) Massage 20–30 seconds, rinse well.\n3) Pat dry.\n4) Double cleanse: oil first, then foam if needed.",
-  "skinAr": "الحساسة بصيغة لطيفة",
-  "skinEn": "after heavy makeup as step one",
+  "descAr": "اختيار Cetaphil — غسول سيتافيل للبشرة العادية الى الجافة والحساسة. صُمّم لروتين قصير يناسب يومك دون تعقيد. صيغة عملية تُنجز مهمة واحدة بوضوح. رغوة أو زيت يزيل الأوساخ بلطف. الحجم تقريباً 237 مل. يناسب: البشرة الحساسة — اختبري على الرقبة أولاً. إن ظهر تهيّج، خفّفي الاستخدام وراجعي مختصاً عند اللزوم.",
+  "descEn": "From Cetaphil — Cetaphil Gentle Skin Cleanser. Made for a short routine that fits a real day. A practical formula with one clear job. Rinses clean and kind. About 237 ml. Best for: Sensitive skin — patch-test first. If irritation appears, ease off and see a specialist if it lasts.",
+  "useAr": "١) بلّلي الوجه بماء فاتر.\n٢) دلكي ٢٠–٣٠ ثانية ثم اشطفي جيداً.\n٣) جفّفي بالتربيت.\n٤) التنظيف المزدوج: الزيتي أولاً ثم هذا.\n٥) إن تغيّر لون/رائحة المنتج، توقّفي عن الاستخدام.",
+  "useEn": "1) Wet the face with lukewarm water.\n2) Massage 20–30 seconds, rinse well.\n3) Pat dry.\n4) Double cleanse: oil first, then this.\n5) Stop if color or smell changes.",
+  "skinAr": "البشرة الحساسة — اختبري على الرقبة أولاً",
+  "skinEn": "Sensitive skin — patch-test first",
   "stock": 25
 }
 );

@@ -17,12 +17,12 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "جل كريم سيكا لترميم وتهدئة البشرة من توكوبو - 75مل",
   "nameEn": "Tocobo Cica Calming Gel Cream - 75ml",
-  "descAr": "جل كريم سيكا لترميم وتهدئة البشرة من توك… (TOCOBO) يمنحك خطوة عناية مركّزة، بملمس مريح ونتيجة تُلاحظ مع الانتظام. يبرز فيه خلاصة مهدّئة (سنتيلا/هارت ليف) لدعم تهدئة الاحمرار والشعور بالراحة. ملمس غني دون إحساس ثقيل مفرط. الحجم تقريباً 75 مل. يناسب: الحساسة الجافة. النتيجة أجمل مع الانتظام وواقي الشمس عند الحاجة.",
-  "descEn": "Tocobo Cica Calming Gel Cream by TOCOBO — soft on contact, clean finish, and a routine that does not steal your morning. It highlights a calming botanical (centella/heartleaf) to support calming redness and comfort. A soft layer that finishes calmly. About 75 ml. Best for: combination in dry weather. Results look better with steady use and SPF when needed.",
-  "useAr": "١) خذي كمية صغيرة ودفّئيها بين الأصابع.\n٢) ربّتي على البشرة حتى الامتصاص.\n٣) لا تفرطي؛ القليل المنتظم أفضل من الكثير.",
-  "useEn": "1) After serum (or right after cleansing).\n2) Pea-sized amount for the face; more for the neck.\n3) Sunscreen on top in the morning.\n4) At night, add a little on dry cheeks if needed.",
-  "skinAr": "الحساسة الجافة",
-  "skinEn": "combination in dry weather",
+  "descAr": "جل كريم سيكا لترميم وتهدئة البشرة من توكوبو… من TOCOBO. يمنحك إحساساً نظيفاً ونتيجة تُلاحظ مع الانتظام. يبرز فيه سنتيلا لدعم تهدئة الاحمرار والراحة. قوام كريمي يريح الجفاف. الحجم تقريباً 75 مل. يناسب: البشرة الحساسة — اختبري على الرقبة أولاً. إن ظهر تهيّج، خفّفي الاستخدام وراجعي مختصاً عند اللزوم.",
+  "descEn": "Tocobo Cica Calming Gel Cream from TOCOBO. Clean on the skin, clearer with steady use. It leans on centella to support calming redness and comfort. Seals moisture softly. About 75 ml. Best for: Sensitive skin — patch-test first. If irritation appears, ease off and see a specialist if it lasts.",
+  "useAr": "١) بعد السيروم (أو بعد الغسول مباشرة).\n٢) كمية بحجم حبة البازلاء للوجه.\n٣) وزّعي حتى الامتصاص بما فيها الرقبة.\n٤) صباحاً أكملي بواقي شمس.\n٥) منتج TOCOBO: التزمي بكمية معتدلة وكرّري حسب العبوة.",
+  "useEn": "1) After serum (or right after cleansing).\n2) Pea-sized amount for the face.\n3) Smooth in, including the neck.\n4) Morning: finish with SPF.\n5) TOCOBO tip: stay moderate and follow the pack.",
+  "skinAr": "البشرة الحساسة — اختبري على الرقبة أولاً",
+  "skinEn": "Sensitive skin — patch-test first",
   "stock": 25
 }
 );

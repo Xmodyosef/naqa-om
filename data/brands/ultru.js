@@ -16,12 +16,12 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "قناع اسفل العين هيدروجيل ام سوري فور ماي سكين للتفتيح - 60 قطعة",
   "nameEn": "I'm Sorry For My Skin Hydrogel Under-Eye Mask - 60pcs",
-  "descAr": "قناع اسفل العين هيدروجيل ام سوري فور ماي… (Ultru) يمنحك خطوة عناية مركّزة، بملمس مريح ونتيجة تُلاحظ مع الانتظام. يخدم هدفاً واحداً بوضوح بدل وعود كثيرة. مريح طوال اليوم. الحجم تقريباً 60 قطع. يناسب: الشفاه الجافة. النتيجة أجمل مع الانتظام وواقي الشمس عند الحاجة.",
-  "descEn": "I'm Sorry For My Skin Hydrogel Under by Ultru — a daily step that feels kind on skin and shows a clear result without fuss. Made as one clear step inside a shorter routine. Comfortable enough for all-day wear. About 60 pcs. Best for: comfortable daily wear. Store away from heat and keep the cap closed.",
-  "useAr": "١) شفاه نظيفة وجافة.\n٢) طبّقي من الوسط للخارج.\n٣) أعيدي خلال اليوم حسب الحاجة.\n٤) ليلاً: طبقة أغنى إن كان مرطباً.",
-  "useEn": "1) Clean, dry lips.\n2) Apply from the center outward.\n3) Reapply through the day as needed.\n4) At night, a richer layer if it is a balm/mask.",
-  "skinAr": "الشفاه الجافة",
-  "skinEn": "comfortable daily wear",
+  "descAr": "عناية مركّزة في قناع اسفل العين هيدروجيل ام سوري فور ماي سكين للتفتيح (Ultru) — بسيطة في اليد، واضحة في النتيجة. مصمّم ليكون جزءاً ثابتاً من روتين أقصر. سهولة دمج يومية. الحجم تقريباً 60 قطعة. يناسب: كل درجات البشرة — اختبري عند الحساسية. لا تشاركِي الفرشاة أو الإسفنجة مع آخرين.",
+  "descEn": "Focused care in I'm Sorry For My Skin Hydrogel Under-Eye Mask (Ultru) — easy in the hand, clear in the result. Made to stay in a shorter, steadier routine. Color that blends for everyday wear. About 60 pcs. Best for: All skin tones — patch-test if sensitive. Do not share wands or sponges.",
+  "useAr": "١) جفن نظيف وجاف.\n٢) ادمجي اللون من الرموش للأعلى.\n٣) ثبّتي ببودرة خفيفة إن لزم.\n٤) أزيلي بلطف مساءً.\n٥) منتج Ultru: التزمي بكمية معتدلة وكرّري حسب العبوة.",
+  "useEn": "1) Clean, dry lids.\n2) Blend color from the lash line up.\n3) Set with a light powder if needed.\n4) Remove gently at night.\n5) Ultru tip: stay moderate and follow the pack.",
+  "skinAr": "كل درجات البشرة — اختبري عند الحساسية",
+  "skinEn": "All skin tones — patch-test if sensitive",
   "stock": 25
 }
 );

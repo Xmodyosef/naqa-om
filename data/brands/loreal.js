@@ -17,12 +17,12 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "رذاذ تثبيت المكياج إنفاليبل من لوريال باريس حتى 36ساعة - 75مل",
   "nameEn": "L'Oréal Paris Infallible Setting Spray 36H - 75ml",
-  "descAr": "رذاذ تثبيت المكياج إنفاليبل من لوريال با… من L'oréal — لمسة ناعمة، إحساس نظيف، وروتين لا يستهلك وقتك. مصمم ليكون خطوة واضحة داخل روتين أقصر. يندمج مع البشرة بسلاسة. الحجم تقريباً 75 مل. يناسب: معظم درجات البشرة — اختبري التطابق. النتيجة أجمل مع الانتظام وواقي الشمس عند الحاجة.",
-  "descEn": "L'Oréal Paris Infallible Setting Spray 36H by L'oréal — a daily step that feels kind on skin and shows a clear result without fuss. One focused job — not a long list of empty claims. Blends smoothly into skin. About 75 ml. Best for: most skin tones — check match. If irritation appears, ease off and see a dermatologist if it lasts.",
-  "useAr": "١) على بشرة منظّفة ومرطّبة (وواقي شمس نهاراً).\n٢) طبّقي كمية قليلة ووزّعي جيداً.\n٣) ابنِي التغطية طبقات خفيفة.\n٤) ثبّتي إن احتجتِ لثبات أطول.",
-  "useEn": "1) On clean, moisturized skin (and SPF by day).\n2) Start with a little and blend well.\n3) Build coverage in thin layers.\n4) Set if you need longer wear.",
-  "skinAr": "معظم درجات البشرة — اختبري التطابق",
-  "skinEn": "most skin tones — check match",
+  "descAr": "عناية مركّزة في رذاذ تثبيت المكياج إنفاليبل من لوريال باريس حتى 36ساعة (L'oréal) — بسيطة في اليد، واضحة في النتيجة. بلا وعود مبالغ فيها — فقط خطوة تُشعرين بها. قاعدة مريحة للمكياج. الحجم تقريباً 75 مل. يناسب: كل درجات البشرة — اختبري عند الحساسية. أزيليه بلطف في نهاية اليوم.",
+  "descEn": "Focused care in L'Oréal Paris Infallible Setting Spray 36H (L'oréal) — easy in the hand, clear in the result. No long list of empty claims — just a step you feel. A comfortable base for makeup. About 75 ml. Best for: All skin tones — patch-test if sensitive. Remove gently at the end of the day.",
+  "useAr": "١) برايمر أو مرطب خفيف أولاً.\n٢) نقطة صغيرة وادمجي بالأسفنجة أو الفرشاة.\n٣) ركّزي على الوسط ثم الخارج.\n٤) لا تُكثري دفعة واحدة.\n٥) احفظي L'oréal في مكان جاف بعيداً عن الشمس.",
+  "useEn": "1) Primer or light cream first.\n2) A small dot — blend with sponge or brush.\n3) Center of the face outward.\n4) Do not pile product in one go.\n5) Keep L'oréal dry and away from direct sun.",
+  "skinAr": "كل درجات البشرة — اختبري عند الحساسية",
+  "skinEn": "All skin tones — patch-test if sensitive",
   "stock": 25
 }
 );

@@ -17,12 +17,12 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "كريم ماديكا تايم ريفيرس لإصلاح البشرة وتقليل التجاعيد من سنتيليان24 - 50مل",
   "nameEn": "Centellian24 Madeca Cream Time Reverse - 50ml",
-  "descAr": "كريم ماديكا تايم ريفيرس لإصلاح البشرة وت… من Centellian24 — اختيار يومي يريح البشرة ويعطي نتيجة واضحة بدون تعقيد. مصمم ليكون خطوة واضحة داخل روتين أقصر. طبقة ناعمة تريح الجفاف. الحجم تقريباً 50 مل. يناسب: المختلطة في الطقس الجاف. إن ظهر تهيّج، خفّفي الاستخدام وراجعي طبيب بشرة عند اللزوم.",
-  "descEn": "Centellian24 Madeca Cream Time Reverse by Centellian24 — soft on contact, clean finish, and a routine that does not steal your morning. It balances comfort with a visible, honest finish. Rich enough, not greasy on most skins. About 50 ml. Best for: most types at night. If irritation appears, ease off and see a dermatologist if it lasts.",
-  "useAr": "١) خذي كمية صغيرة ودفّئيها بين الأصابع.\n٢) ربّتي على البشرة حتى الامتصاص.\n٣) لا تفرطي؛ القليل المنتظم أفضل من الكثير.",
-  "useEn": "1) After serum (or right after cleansing).\n2) Pea-sized amount for the face; more for the neck.\n3) Sunscreen on top in the morning.\n4) At night, add a little on dry cheeks if needed.",
-  "skinAr": "المختلطة في الطقس الجاف",
-  "skinEn": "most types at night",
+  "descAr": "من رفوف Centellian24: كريم ماديكا تايم ريفيرس لإصلاح البشرة وتقليل التجاعيد من سنتيليان24. توازن بين نعومة الاستخدام ووضوح الهدف. صيغة عملية تُنجز مهمة واحدة بوضوح. يغلق الترطيب بنعومة. الحجم تقريباً 50 مل. يناسب: البشرة الجافة والمحتاجة. النتيجة أوضح مع الانتظام وواقي الشمس عند الحاجة.",
+  "descEn": "A Centellian24 pick: Centellian24 Madeca Cream Time Reverse. Soft to use, honest about what it does. A practical formula with one clear job. Rich feel without heavy grease. About 50 ml. Best for: Dry and dehydrated skin. Results look better with steady use — and SPF when needed.",
+  "useAr": "١) على بشرة نظيفة.\n٢) دفّئي الكريم بين الأصابع ثم ربّتي.\n٣) زيدِي على الخدود الجافة ليلاً.\n٤) تجنّبي محيط العين إلا إذا كان مخصّصاً.\n٥) منتج Centellian24: التزمي بكمية معتدلة وكرّري حسب العبوة.",
+  "useEn": "1) On clean skin.\n2) Warm between fingers, then press in.\n3) Extra on dry cheeks at night if needed.\n4) Avoid the eye area unless the product is meant for it.\n5) Centellian24 tip: stay moderate and follow the pack.",
+  "skinAr": "البشرة الجافة والمحتاجة",
+  "skinEn": "Dry and dehydrated skin",
   "stock": 25
 }
 );

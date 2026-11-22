@@ -17,12 +17,12 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "كريم أساس ماسك فيت ريد كوشن من تيرتير 23N رملي - 18ج",
   "nameEn": "TIRTIR Mask Fit Red Cushion Foundation 23N Sand - 18g",
-  "descAr": "من مجموعة TIRTIR: كريم أساس ماسك فيت ريد كوشن من تيرتير 23…. صُمم لروتين بسيط يناسب إيقاع يومك. يخدم هدفاً واحداً بوضوح بدل وعود كثيرة. مناسب لروتين مكياج يومي. الحجم تقريباً 18 ج. يناسب: بشرة مختلطة إلى جافة. خزّنيه بعيداً عن الحرارة، وأغلقي الغطاء جيداً.",
-  "descEn": "TIRTIR Mask Fit Red Cushion Foundation 23N Sand by TIRTIR — a daily step that feels kind on skin and shows a clear result without fuss. One focused job — not a long list of empty claims. Buildable finish for daily makeup. About 18 g. Best for: natural daily makeup. Store away from heat and keep the cap closed.",
-  "useAr": "١) على بشرة منظّفة ومرطّبة (وواقي شمس نهاراً).\n٢) طبّقي كمية قليلة ووزّعي جيداً.\n٣) ابنِي التغطية طبقات خفيفة.\n٤) ثبّتي إن احتجتِ لثبات أطول.",
-  "useEn": "1) On clean, moisturized skin (and SPF by day).\n2) Start with a little and blend well.\n3) Build coverage in thin layers.\n4) Set if you need longer wear.",
-  "skinAr": "بشرة مختلطة إلى جافة",
-  "skinEn": "natural daily makeup",
+  "descAr": "إذا أردتِ بشرة متساوية دون روتين طويل: كريم أساس ماسك فيت ريد كوشن من تيرتير 23N رملي من TIRTIR. صيغة عملية تُنجز مهمة واحدة بوضوح. قاعدة مريحة للمكياج. الحجم تقريباً 18 ج. يناسب: كل درجات البشرة — اختبري عند الحساسية. أزيليه بلطف في نهاية اليوم.",
+  "descEn": "When you want even-looking skin without a long routine: TIRTIR Mask Fit Red Cushion Foundation 23N Sand by TIRTIR. A practical formula with one clear job. Blends into skin calmly. About 18 g. Best for: All skin tones — patch-test if sensitive. Remove gently at the end of the day.",
+  "useAr": "١) برايمر أو مرطب خفيف أولاً.\n٢) نقطة صغيرة وادمجي بالأسفنجة أو الفرشاة.\n٣) ركّزي على الوسط ثم الخارج.\n٤) لا تُكثري دفعة واحدة.\n٥) منتج TIRTIR: التزمي بكمية معتدلة وكرّري حسب العبوة.",
+  "useEn": "1) Primer or light cream first.\n2) A small dot — blend with sponge or brush.\n3) Center of the face outward.\n4) Do not pile product in one go.\n5) TIRTIR tip: stay moderate and follow the pack.",
+  "skinAr": "كل درجات البشرة — اختبري عند الحساسية",
+  "skinEn": "All skin tones — patch-test if sensitive",
   "stock": 25
 },
 {
@@ -40,12 +40,12 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "كريم أساس ماسك فيت ريد كوشن من تيرتير 17N فانيليا - 18ج",
   "nameEn": "Tirtir Mask Fit Red Cushion 17n Vanilla",
-  "descAr": "من مجموعة TIRTIR: كريم أساس ماسك فيت ريد كوشن من تيرتير 17…. صُمم لروتين بسيط يناسب إيقاع يومك. يرتكز على توازن بين الراحة والنتيجة الظاهرة. تركيبة تترك أثراً مرئياً بعد الاستخدام. الحجم تقريباً 18 ج. يناسب: الحساسة — راقبي المدة. خزّنيه بعيداً عن الحرارة، وأغلقي الغطاء جيداً.",
-  "descEn": "A polished pick from TIRTIR: Tirtir Mask Fit Red Cushion 17n Vanilla. Balanced between feel and visible finish. One focused job — not a long list of empty claims. A reset step between ordinary days. About 18 g. Best for: 1–3 times weekly as tolerated. Results look better with steady use and SPF when needed.",
-  "useAr": "١) مرة إلى ثلاث أسبوعياً.\n٢) ابتعدي عن الجروح أو التهيّج.\n٣) أكملي بروتينك المعتاد بعد الإزالة.",
-  "useEn": "1) On clean skin.\n2) Even layer (or sheet as labeled) for 10–20 minutes.\n3) Remove or pat in, then moisturize.\n4) Not daily if it is clay or exfoliating.",
-  "skinAr": "الحساسة — راقبي المدة",
-  "skinEn": "1–3 times weekly as tolerated",
+  "descAr": "كريم أساس ماسك فيت ريد كوشن من تيرتير 17N فانيليا من TIRTIR: خطوة واضحة، ملمس مريح، ونتيجة تُبنى بهدوء. بلا وعود مبالغ فيها — فقط خطوة تُشعرين بها. تغطية أو لمسة حسب المنتج. الحجم تقريباً 18 ج. يناسب: كل درجات البشرة — اختبري عند الحساسية. جرّبي كمية قليلة أولاً لتضبطي الكثافة.",
+  "descEn": "Tirtir Mask Fit Red Cushion 17n Vanilla by TIRTIR: a clear step, a comfortable feel, and results that build quietly. No long list of empty claims — just a step you feel. Coverage or a sheer wash depending on the product. About 18 g. Best for: All skin tones — patch-test if sensitive. Start with a little to control intensity.",
+  "useAr": "١) على بشرة منظّفة ومرطّبة (وواقي شمس نهاراً).\n٢) كمية قليلة ووزّعي جيداً.\n٣) ابنِي التغطية طبقات.\n٤) ثبّتي حسب روتينك.\n٥) منتج TIRTIR: التزمي بكمية معتدلة وكرّري حسب العبوة.",
+  "useEn": "1) On clean, moisturized skin (and SPF by day).\n2) Start with a little and blend well.\n3) Build coverage in thin layers.\n4) Set as your routine needs.\n5) TIRTIR tip: stay moderate and follow the pack.",
+  "skinAr": "كل درجات البشرة — اختبري عند الحساسية",
+  "skinEn": "All skin tones — patch-test if sensitive",
   "stock": 25
 }
 );

@@ -18,12 +18,12 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "فازلين مرطب الشفاه الأصلي - 20ج",
   "nameEn": "Vaseline Lip Therapy Original - 20g",
-  "descAr": "فازلين مرطب الشفاه الأصلي (Vaseline) يمنحك خطوة عناية مركّزة، بملمس مريح ونتيجة تُلاحظ مع الانتظام. مصمم ليكون خطوة واضحة داخل روتين أقصر. لون أو لمعان حسب النوع. الحجم تقريباً 20 ج. يناسب: استخدام يومي مريح. إن ظهر تهيّج، خفّفي الاستخدام وراجعي طبيب بشرة عند اللزوم.",
-  "descEn": "Vaseline Lip Therapy Original by Vaseline — soft on contact, clean finish, and a routine that does not steal your morning. It balances comfort with a visible, honest finish. Tint or shine depending on the formula. About 20 g. Best for: all lip tones. Store away from heat and keep the cap closed.",
-  "useAr": "١) شفاه نظيفة وجافة.\n٢) طبّقي من الوسط للخارج.\n٣) أعيدي خلال اليوم حسب الحاجة.\n٤) ليلاً: طبقة أغنى إن كان مرطباً.",
-  "useEn": "1) Clean, dry lips.\n2) Apply from the center outward.\n3) Reapply through the day as needed.\n4) At night, a richer layer if it is a balm/mask.",
-  "skinAr": "استخدام يومي مريح",
-  "skinEn": "all lip tones",
+  "descAr": "اختيار Vaseline — فازلين مرطب الشفاه الأصلي. صُمّم لروتين قصير يناسب يومك دون تعقيد. صيغة عملية تُنجز مهمة واحدة بوضوح. ملمس ناعم على الشفاه. الحجم تقريباً 20 ج. يناسب: كل درجات البشرة — اختبري عند الحساسية. أزيليه بلطف في نهاية اليوم.",
+  "descEn": "From Vaseline — Vaseline Lip Therapy Original. Made for a short routine that fits a real day. A practical formula with one clear job. Color or shine depending on the formula. About 20 g. Best for: All skin tones — patch-test if sensitive. Remove gently at the end of the day.",
+  "useAr": "١) شفاه نظيفة وجافة.\n٢) طبّقي من الوسط للخارج.\n٣) أعيدي خلال اليوم حسب الحاجة.\n٤) ليلاً: مرطب أغنى إن رغبتِ.\n٥) راجعي تاريخ الانتهاء على العبوة قبل الفتح.",
+  "useEn": "1) Clean, dry lips.\n2) Apply from the center outward.\n3) Reapply through the day as needed.\n4) At night: a richer balm if you like.\n5) Check the expiry on the pack before opening.",
+  "skinAr": "كل درجات البشرة — اختبري عند الحساسية",
+  "skinEn": "All skin tones — patch-test if sensitive",
   "stock": 25
 }
 );

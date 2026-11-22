@@ -19,12 +19,12 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "برايمر فائق التثبيت ذا فيس جلو من نيكس - 35مل",
   "nameEn": "NYX The Face Glue Gripping Primer - 35ml",
-  "descAr": "برايمر فائق التثبيت ذا فيس جلو من نيكس (NYX) يمنحك خطوة عناية مركّزة، بملمس مريح ونتيجة تُلاحظ مع الانتظام. مصمم ليكون خطوة واضحة داخل روتين أقصر. مناسب لروتين مكياج يومي. الحجم تقريباً 35 مل. يناسب: إطلالة طبيعية يومية. خزّنيه بعيداً عن الحرارة، وأغلقي الغطاء جيداً.",
-  "descEn": "NYX The Face Glue Gripping Primer (NYX) is a focused care step with a comfortable texture and results that build with use. One focused job — not a long list of empty claims. Buildable finish for daily makeup. About 35 ml. Best for: combo to dry. Results look better with steady use and SPF when needed.",
-  "useAr": "١) على بشرة منظّفة ومرطّبة (وواقي شمس نهاراً).\n٢) طبّقي كمية قليلة ووزّعي جيداً.\n٣) ابنِي التغطية طبقات خفيفة.\n٤) ثبّتي إن احتجتِ لثبات أطول.",
-  "useEn": "1) On clean, moisturized skin (and SPF by day).\n2) Start with a little and blend well.\n3) Build coverage in thin layers.\n4) Set if you need longer wear.",
-  "skinAr": "إطلالة طبيعية يومية",
-  "skinEn": "combo to dry",
+  "descAr": "برايمر فائق التثبيت ذا فيس جلو من نيكس… من NYX. يمنحك إحساساً نظيفاً ونتيجة تُلاحظ مع الانتظام. صيغة عملية تُنجز مهمة واحدة بوضوح. يندمج مع البشرة بهدوء. الحجم تقريباً 35 مل. يناسب: كل درجات البشرة — اختبري عند الحساسية. خزّنيه قائماً وأغلقي الغطاء جيداً.",
+  "descEn": "NYX The Face Glue Gripping Primer from NYX. Clean on the skin, clearer with steady use. A practical formula with one clear job. A comfortable base for makeup. About 35 ml. Best for: All skin tones — patch-test if sensitive. Store upright and keep the cap closed.",
+  "useAr": "١) برايمر أو مرطب خفيف أولاً.\n٢) نقطة صغيرة وادمجي بالأسفنجة أو الفرشاة.\n٣) ركّزي على الوسط ثم الخارج.\n٤) لا تُكثري دفعة واحدة.\n٥) راجعي تاريخ الانتهاء على العبوة قبل الفتح.",
+  "useEn": "1) Primer or light cream first.\n2) A small dot — blend with sponge or brush.\n3) Center of the face outward.\n4) Do not pile product in one go.\n5) Check the expiry on the pack before opening.",
+  "skinAr": "كل درجات البشرة — اختبري عند الحساسية",
+  "skinEn": "All skin tones — patch-test if sensitive",
   "stock": 25
 }
 );

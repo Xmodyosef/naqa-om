@@ -16,12 +16,12 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "كريم العين ريتينال 4% سيول 1988 من ك-سيكريت - 30مل",
   "nameEn": "K-Secret Seoul 1988 Retinal 4% Eye Cream - 30ml",
-  "descAr": "كريم العين ريتينال 4% سيول 1988 من ك من K-Secret — اختيار يومي يريح البشرة ويعطي نتيجة واضحة بدون تعقيد. يبرز فيه ريتينويد لدعم نعومة الملمس ومظهر الخطوط الدقيقة. قوام كريمي يغلف البشرة. الحجم تقريباً 30 مل. يناسب: الحساسة الجافة. النتيجة أجمل مع الانتظام وواقي الشمس عند الحاجة.",
-  "descEn": "K (K-Secret) is a focused care step with a comfortable texture and results that build with use. It highlights a retinoid to support smoother texture and the look of fine lines. A soft layer that finishes calmly. About 30 ml. Best for: sensitive dry skin. If irritation appears, ease off and see a dermatologist if it lasts.",
-  "useAr": "١) بعد السيروم (أو مباشرة بعد التنظيف).\n٢) كمية بحجم حبة البازلاء للوجه، وزيد للرقبة.\n٣) صباحاً واقي شمس فوقه.\n٤) مساءً يمكن طبقة أغنى على الخدود الجافة.",
-  "useEn": "1) After serum (or right after cleansing).\n2) Pea-sized amount for the face; more for the neck.\n3) Sunscreen on top in the morning.\n4) At night, add a little on dry cheeks if needed.",
-  "skinAr": "الحساسة الجافة",
-  "skinEn": "sensitive dry skin",
+  "descAr": "من رفوف K-Secret: كريم العين ريتينال 4% سيول 1988 من ك-سيكريت. توازن بين نعومة الاستخدام ووضوح الهدف. يبرز فيه ريتينويد لدعم ملمس أنعم ومظهر الخطوط الدقيقة. ملمس غني دون شعور دهني مزعج. الحجم تقريباً 30 مل. يناسب: البشرة الحساسة — اختبري على الرقبة أولاً. خزّنيه بعيداً عن الحرارة وأغلقي الغطاء جيداً.",
+  "descEn": "A K-Secret pick: K-Secret Seoul 1988 Retinal 4% Eye Cream. Soft to use, honest about what it does. It leans on a retinoid to support smoother texture and the look of fine lines. Seals moisture softly. About 30 ml. Best for: Sensitive skin — patch-test first. Store away from heat and keep the cap closed.",
+  "useAr": "١) بعد السيروم (أو بعد الغسول مباشرة).\n٢) كمية بحجم حبة البازلاء للوجه.\n٣) وزّعي حتى الامتصاص بما فيها الرقبة.\n٤) صباحاً أكملي بواقي شمس.\n٥) راجعي تاريخ الانتهاء على العبوة قبل الفتح.",
+  "useEn": "1) After serum (or right after cleansing).\n2) Pea-sized amount for the face.\n3) Smooth in, including the neck.\n4) Morning: finish with SPF.\n5) Check the expiry on the pack before opening.",
+  "skinAr": "البشرة الحساسة — اختبري على الرقبة أولاً",
+  "skinEn": "Sensitive skin — patch-test first",
   "stock": 25
 },
 {
@@ -39,12 +39,12 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "سيروم الريتينال 2% والجينسنغ الأسود سيول 1988 من ك-سيكريت - 30مل",
   "nameEn": "K-Secret Seoul 1988 Retinal 2% Black Ginseng Serum - 30ml",
-  "descAr": "سيروم الريتينال 2% والجينسنغ الأسود سيول… من K-Secret — اختيار يومي يريح البشرة ويعطي نتيجة واضحة بدون تعقيد. يبرز فيه ريتينويد لدعم نعومة الملمس ومظهر الخطوط الدقيقة. ملمس خفيف يمتص بسرعة. الحجم تقريباً 30 مل. يناسب: الدهنية والمختلطة. إن ظهر تهيّج، خفّفي الاستخدام وراجعي طبيب بشرة عند اللزوم.",
-  "descEn": "K by K-Secret — a daily step that feels kind on skin and shows a clear result without fuss. It highlights a retinoid to support smoother texture and the look of fine lines. Glides on and settles cleanly. About 30 ml. Best for: most skin types — start small. Store away from heat and keep the cap closed.",
-  "useAr": "١) على بشرة نظيفة، بعد التونر إن وُجد.\n٢) قطرتان إلى ثلاث على الوجه والرقبة — اضغطي ولا تفركي بقوة.\n٣) أغلقي بمرطب. صباحاً: واقي شمس.\n٤) إن وُجد ريتينول/أحماض أخرى، أدخليها تدريجياً ليلاً.",
-  "useEn": "1) On clean skin, after toner if you use one.\n2) Press 2–3 drops on face and neck — do not rub hard.\n3) Seal with cream. Morning: sunscreen.\n4) Add other retinoids/acids slowly at night.",
-  "skinAr": "الدهنية والمختلطة",
-  "skinEn": "most skin types — start small",
+  "descAr": "اختيار K-Secret — سيروم الريتينال 2% والجينسنغ الأسود سيول 1988 من ك-سيكريت. صُمّم لروتين قصير يناسب يومك دون تعقيد. التركيبة تراهن على ريتينويد من أجل ملمس أنعم ومظهر الخطوط الدقيقة. طبقة رقيقة لا تثقل المكياج. الحجم تقريباً 30 مل. يناسب: البشرة الدهنية والمختلطة. النتيجة أوضح مع الانتظام وواقي الشمس عند الحاجة.",
+  "descEn": "From K-Secret — K-Secret Seoul 1988 Retinal 2% Black Ginseng Serum. Made for a short routine that fits a real day. The formula centers a retinoid for smoother texture and the look of fine lines. A light texture that absorbs fast. About 30 ml. Best for: Oily and combination skin. Results look better with steady use — and SPF when needed.",
+  "useAr": "١) بعد التنظيف والتونر.\n٢) طبقة رقيقة تكفي؛ لا تُغرقي البشرة.\n٣) دعيه يمتص قبل المكياج أو المرطب.\n٤) راقبي أول أسبوع إن كانت بشرتك حساسة.\n٥) إن تغيّر لون/رائحة المنتج، توقّفي عن الاستخدام.",
+  "useEn": "1) After cleanse and toner.\n2) A thin layer is enough — do not flood the skin.\n3) Let it settle before cream or makeup.\n4) Watch the first week if you are sensitive.\n5) Stop if color or smell changes.",
+  "skinAr": "البشرة الدهنية والمختلطة",
+  "skinEn": "Oily and combination skin",
   "stock": 25
 }
 );

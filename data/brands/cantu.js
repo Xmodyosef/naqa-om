@@ -16,12 +16,12 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "مرطب شعر الاطفال من كانتو - 283ج",
   "nameEn": "Cantu Kids Leave-In Conditioner - 283g",
-  "descAr": "مرطب شعر الاطفال من كانتو من Cantu — لمسة ناعمة، إحساس نظيف، وروتين لا يستهلك وقتك. يخدم هدفاً واحداً بوضوح بدل وعود كثيرة. نتيجة أنظف وأطرى مع الانتظام. الحجم تقريباً 283 ج. يناسب: الفروة التي تحتاج انتعاشاً. النتيجة أجمل مع الانتظام وواقي الشمس عند الحاجة.",
-  "descEn": "From Cantu: Cantu Kids Leave. Built for a simple routine that fits a real day. One focused job — not a long list of empty claims. Cleaner, softer results with regular use. About 283 g. Best for: scalp that needs a refresh. Results look better with steady use and SPF when needed.",
-  "useAr": "١) حسب النوع: شامبو على الفروة، بلسم على الأطراف، سيروم بدون شطف حسب العبوة.\n٢) ابدئي بكمية قليلة.\n٣) لا تُغرقي الشعر؛ القليل يوزَّع أبعد.\n٤) انتظمي ٢–٣ أسابيع لملاحظة أوضح.",
-  "useEn": "1) As labeled: shampoo on scalp, conditioner on lengths, leave-in where it belongs.\n2) Start with a small amount.\n3) Do not overload — a little spreads farther.\n4) Give it 2–3 weeks of steady use.",
-  "skinAr": "الفروة التي تحتاج انتعاشاً",
-  "skinEn": "scalp that needs a refresh",
+  "descAr": "عناية مركّزة في مرطب شعر الاطفال من كانتو (Cantu) — بسيطة في اليد، واضحة في النتيجة. صيغة عملية تُنجز مهمة واحدة بوضوح. يعتني بالشعر أو الفروة بوضوح. الحجم تقريباً 283 ج. يناسب: حسب نوع الشعر والفروة — ابدئي بكمية قليلة. الانتظام أوضح من الإفراط دفعة واحدة.",
+  "descEn": "Focused care in Cantu Kids Leave-In Conditioner (Cantu) — easy in the hand, clear in the result. A practical formula with one clear job. Clear role on hair or scalp. About 283 g. Best for: According to hair and scalp — start small. Steady use beats overloading once.",
+  "useAr": "١) شعر مبلل أو فروة نظيفة حسب المنتج.\n٢) وزّعي ثم دلّكي بلطف.\n٣) اشطفي إن طُلب، أو اتركيه إن كان بدون شطف.\n٤) تجنّبي العينين.\n٥) راجعي تاريخ الانتهاء على العبوة قبل الفتح.",
+  "useEn": "1) Wet hair or clean scalp as the product requires.\n2) Distribute, then massage gently.\n3) Rinse if asked — or leave in if it is leave-in.\n4) Keep away from the eyes.\n5) Check the expiry on the pack before opening.",
+  "skinAr": "حسب نوع الشعر والفروة — ابدئي بكمية قليلة",
+  "skinEn": "According to hair and scalp — start small",
   "stock": 25
 }
 );

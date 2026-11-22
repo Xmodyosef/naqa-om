@@ -17,12 +17,12 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "مقشر اكيور لتفتيح الوجه - 118مل",
   "nameEn": "Acure Brightening Facial Scrub - 118ml",
-  "descAr": "مقشر اكيور لتفتيح الوجه من Acure — لمسة ناعمة، إحساس نظيف، وروتين لا يستهلك وقتك. مصمم ليكون خطوة واضحة داخل روتين أقصر. يُستخدم بعدد مرات محدود أسبوعياً. الحجم تقريباً 118 مل. يناسب: تجنّبي البشرة المتهيجة. النتيجة أجمل مع الانتظام وواقي الشمس عند الحاجة.",
-  "descEn": "Acure Brightening Facial Scrub by Acure — soft on contact, clean finish, and a routine that does not steal your morning. Made as one clear step inside a shorter routine. Use only a few times a week. About 118 ml. Best for: skip on irritated skin. If irritation appears, ease off and see a dermatologist if it lasts.",
-  "useAr": "١) على بشرة مبللة بعد التنظيف.\n٢) دلكي دائرياً لثوانٍ قليلة — بلا قوة.\n٣) اشطفي ومرّطي.\n٤) ١–٢ مرة أسبوعياً فقط.",
-  "useEn": "1) On wet skin after cleansing.\n2) Soft circles for a few seconds — no force.\n3) Rinse and moisturize.\n4) Only 1–2 times a week.",
-  "skinAr": "تجنّبي البشرة المتهيجة",
-  "skinEn": "skip on irritated skin",
+  "descAr": "مقشر اكيور لتفتيح الوجه… من Acure. يمنحك إحساساً نظيفاً ونتيجة تُلاحظ مع الانتظام. بلا وعود مبالغ فيها — فقط خطوة تُشعرين بها. خطوة واضحة داخل الروتين. الحجم تقريباً 118 مل. يناسب: معظم الأنواع — مع واقي شمس يومي. النتيجة أوضح مع الانتظام وواقي الشمس عند الحاجة.",
+  "descEn": "Acure Brightening Facial Scrub from Acure. Clean on the skin, clearer with steady use. No long list of empty claims — just a step you feel. Results that build with use. About 118 ml. Best for: Most types — with daily SPF. Results look better with steady use — and SPF when needed.",
+  "useAr": "١) اتبّعي: تنظيف → عناية → حماية.\n٢) كمية معتدلة أفضل من الإفراط.\n٣) راقبي التهيّج أول أسبوع.\n٤) أوقفي عند اللذع المستمر.\n٥) إن تغيّر لون/رائحة المنتج، توقّفي عن الاستخدام.",
+  "useEn": "1) Follow: cleanse → treat → protect.\n2) Moderate amount beats overdoing it.\n3) Watch for irritation the first week.\n4) Stop if stinging continues.\n5) Stop if color or smell changes.",
+  "skinAr": "معظم الأنواع — مع واقي شمس يومي",
+  "skinEn": "Most types — with daily SPF",
   "stock": 25
 }
 );

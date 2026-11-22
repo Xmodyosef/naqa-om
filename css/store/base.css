@@ -311,11 +311,31 @@ html[data-theme="night"] #footBlurb{color:var(--muted)}
 .quiz-thumb img{width:100%;height:100%;object-fit:contain}
 .quiz-em{display:grid;place-items:center;height:90px;font-size:1.6rem}
 
-/* hide search row + category chips while scrolling down into catalog (Salla/Zid style mobile) */
+/* hide search + cats without continuous reflow thrash (images were blinking) */
 body.chrome-hide .search-row,
 body.chrome-hide .nav-cats{
-  max-height:0!important;opacity:0;overflow:hidden;padding-top:0!important;padding-bottom:0!important;margin:0!important;border:0!important;
-  pointer-events:none;transition:max-height .22s ease,opacity .18s ease,padding .18s ease;
+  max-height:0!important;
+  opacity:0;
+  overflow:hidden;
+  padding-top:0!important;
+  padding-bottom:0!important;
+  margin:0!important;
+  border:0!important;
+  pointer-events:none;
+  /* no animated max-height: it reflows every frame → lazy images re-fire */
+  transition: opacity .12s ease;
 }
-.search-row,.nav-cats{transition:max-height .22s ease,opacity .18s ease,padding .18s ease;max-height:120px;opacity:1}
-body.chrome-hide header{box-shadow:0 4px 14px rgba(50,30,25,.06)}
+.search-row,.nav-cats{
+  max-height:120px;
+  opacity:1;
+  overflow:hidden;
+  transition: opacity .12s ease;
+}
+body.chrome-hide header{box-shadow:0 4px 14px rgba(0,0,0,.12)}
+/* stabilize card images while chrome toggles */
+.card-visual img{
+  content-visibility:auto;
+  contain: layout paint;
+  background:var(--card);
+}
+.grid{contain: layout style;}

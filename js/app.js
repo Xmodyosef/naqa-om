@@ -241,25 +241,32 @@ window.addEventListener("popstate", ()=>{
   applyRoute();
 });
 window.addEventListener("hashchange", ()=>{ applyRoute(); });
-let __naqaScrollHashT=0;
+/* chrome-hide: hysteresis + cooldown — never thrash layout while scrolling */
 let __naqaLastY=0;
-let __naqaChromeLocked=false;
+let __naqaChromeCooldown=0;
+let __naqaChromeRAF=0;
+function naqaSetChrome(hide){
+  const on=document.body.classList.contains("chrome-hide");
+  if(hide===on) return;
+  const now=Date.now();
+  if(now < __naqaChromeCooldown) return;
+  if(hide) document.body.classList.add("chrome-hide");
+  else document.body.classList.remove("chrome-hide");
+  __naqaChromeCooldown = now + 380; // lock toggle ~0.4s to stop flicker loops
+}
 function naqaUpdateChrome(y){
-  // Hide search + category chips when scrolling down into products; show on scroll up / top
   const prod=$("#products");
-  const thresh = prod ? Math.max(120, prod.offsetTop - 8) : 180;
+  const thresh = prod ? Math.max(160, prod.offsetTop + 40) : 220;
   const delta = y - __naqaLastY;
-  if(y < 48){
-    document.body.classList.remove("chrome-hide");
-  } else if(y > thresh + 20 && delta > 6){
-    document.body.classList.add("chrome-hide");
-  } else if(delta < -6){
-    document.body.classList.remove("chrome-hide");
-  }
   __naqaLastY = y;
+  // near top always show
+  if(y < 60){ naqaSetChrome(false); return; }
+  // hide only on clear downward scroll into catalog
+  if(y > thresh && delta > 14){ naqaSetChrome(true); return; }
+  // show only on clear upward scroll
+  if(delta < -18){ naqaSetChrome(false); }
 }
 window.addEventListener("scroll", ()=>{
-  // Ignore while any overlay is open
   if(document.body.classList.contains("naqa-scroll-lock") ||
      document.body.classList.contains("sheet-open") ||
      document.body.classList.contains("modal-open") ||
@@ -268,25 +275,21 @@ window.addEventListener("scroll", ()=>{
      ($("#quizModal")&&$("#quizModal").classList.contains("show")) ||
      ($("#checkoutModal")&&$("#checkoutModal").classList.contains("show")) ||
      ($("#drawer")&&$("#drawer").classList.contains("show"))) return;
-  const y=window.scrollY||0;
-  naqaUpdateChrome(y);
-  // Don't overwrite search hash #q/…
-  if(__naqaScrollHashT) return;
-  __naqaScrollHashT=1;
+  // rAF coalesce: one update per frame max
+  if(__naqaChromeRAF) return;
+  __naqaChromeRAF=1;
   requestAnimationFrame(function(){
-    __naqaScrollHashT=0;
-    const h=routeHash();
-    if(h.indexOf("p/")===0||h.indexOf("b/")===0||h.indexOf("c/")===0||h.indexOf("q/")===0) return;
-    if(y>420){
-      if(h!=="shop"){ try{ history.replaceState({naqa:"shop"}, "", "#shop"); }catch(e){} }
-    } else if(h==="shop"){
-      try{ history.replaceState({naqa:"home"}, "", location.pathname+location.search); }catch(e){}
-    }
+    __naqaChromeRAF=0;
+    naqaUpdateChrome(window.scrollY||0);
   });
+  // IMPORTANT: no history.replaceState on scroll.
+  // It fired hashchange → applyRoute → scrollIntoView → jump + image thrash.
 }, {passive:true});
-// Always show chrome when focusing search
 document.addEventListener("focusin", function(e){
-  if(e.target && e.target.id==="search") document.body.classList.remove("chrome-hide");
+  if(e.target && e.target.id==="search"){
+    __naqaChromeCooldown=0;
+    naqaSetChrome(false);
+  }
 });
 
 

@@ -52,8 +52,9 @@ function applyRoute(){
     const prod=$("#products"); if(prod) prod.scrollIntoView({behavior:"smooth"});
     return;
   }
+  // shop/products: never auto-scroll here — was fighting user scroll + causing image thrash
   if(h==="shop"||h==="products"){
-    const prod=$("#products"); if(prod) prod.scrollIntoView({behavior:"smooth"});
+    return;
   }
 }
 

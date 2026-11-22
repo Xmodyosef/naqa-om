@@ -6,5 +6,5 @@
 | 2 | manifest + SW + icons + OG/JSON-LD + robots/sitemap | ✅ |
 | 3 | جاهزية + **قائمة تجربة يدوية** (أنتِ على الآيفون) | ✅ كود + docs |
 
-**رابط:** https://xmodyosef.github.io/naqa-om/?v=20261123s  
+**رابط:** https://xmodyosef.github.io/naqa-om/?v=20261123t  
 **قائمة التجربة:** docs/CHECKLIST-VO-WA.md

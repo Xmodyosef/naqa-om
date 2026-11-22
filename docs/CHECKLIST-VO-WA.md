@@ -1,6 +1,6 @@
 # قائمة تجربة VoiceOver + واتساب | VoiceOver & WhatsApp checklist
 
-**الموقع:** https://xmodyosef.github.io/naqa-om/?v=20261123s  
+**الموقع:** https://xmodyosef.github.io/naqa-om/?v=20261123t  
 **مدتها:** ٥–١٠ دقائق · **مجاني · على آيفونك**
 
 ---

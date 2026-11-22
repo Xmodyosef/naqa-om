@@ -84,9 +84,9 @@ let query="", currentCat="all", currentBrand="", currentSort="new", openProductI
 
 const ui={
  ar:{
-  search:"ابحثي...",
+  search:"ابحثي...", searchHint:"ماركة · منتج · سكراب · SKU / باركود", searchBtn:"بحث", searchNo:"ما لقينا نتائج — جرّبي الماركة أو SKU",
   all:"الكل", care:"عناية", face:"وجه", eyes:"عيون", brows:"حواجب", lips:"شفاه", scent:"عطور", tools:"أدوات", hair:"شعر",
-  shop:"تسوّقي الآن", wa:"واتساب نقاء", products:"المنتجات", count:n=>n+" منتج", empty:"ما في نتائج",
+  shop:"تسوّقي الآن", wa:"واتساب نقاء", products:"المنتجات", count:n=>n+" منتج", empty:"ما لقينا نتائج — جرّبي اسم الماركة أو SKU أو نوع (سكراب، سيروم…)",
   cart:"السلة", emptyCart:"السلة فاضية<br/>أضيفي من القائمة", total:"المجموع", checkout:"إتمام الطلب عبر واتساب",
   add:"أضيفي", qty:"الكمية", qv:"نظرة سريعة", open:"التفاصيل", del:"حذف", noSku:"SKU غير متوفر",
   heroTitle:"نقاء — ", heroEm:"عناية ومكياج",
@@ -110,9 +110,9 @@ const ui={
   govs:["مسقط","ظفار","الباطنة شمال","الباطنة جنوب","الداخلية","الشرقية شمال","الشرقية جنوب","الظاهرة","البريمي","الوسطى","مسندم"]
  },
  en:{
-  search:"Search...",
+  search:"Search...", searchHint:"Brand · product · scrub · SKU / barcode", searchBtn:"Search", searchNo:"No results — try a brand or SKU",
   all:"All", care:"Skincare", face:"Face", eyes:"Eyes", brows:"Brows", lips:"Lips", scent:"Fragrance", tools:"Tools", hair:"Hair",
-  shop:"Shop now", wa:"WhatsApp Naqa", products:"Products", count:n=>n+" products", empty:"No results",
+  shop:"Shop now", wa:"WhatsApp Naqa", products:"Products", count:n=>n+" products", empty:"No matches — try brand name, SKU, or type (scrub, serum…)",
   cart:"Cart", emptyCart:"Your cart is empty<br/>Add from the list", total:"Total", checkout:"Checkout on WhatsApp",
   add:"Add", qty:"Qty", qv:"Quick view", open:"Details", del:"Remove", noSku:"SKU unavailable",
   heroTitle:"Naqa — ", heroEm:"Care & Makeup",

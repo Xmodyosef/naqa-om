@@ -71,28 +71,34 @@
 <div id="top"></div>
 <header role="banner">
   <div class="wrap top">
-    <a class="logo" href="#top">
+    <a class="logo" href="#top" title="نقاء">
       <div class="logo-mark">ن</div>
       <div class="logo-text">
         <strong id="logoName">نقاء</strong>
         <span id="logoTag">عناية ومكياج</span>
       </div>
     </a>
-    <div class="search">
-      <label class="sr-only" for="search">بحث / Search</label>
-      <span aria-hidden="true">⌕</span>
-      <input id="search" type="search" placeholder="ابحثي..." enterkeyhint="search" autocomplete="off" aria-label="بحث عن منتج" />
+    <div class="top-actions" role="group" aria-label="أدوات">
+      <button class="icon-btn theme-btn" id="themeBtn" type="button" aria-label="الثيم" title="الثيم">☀</button>
+      <button class="lang-btn" id="langBtn" type="button" aria-label="تبديل اللغة">EN</button>
+      <button class="icon-btn" id="wishBtn" type="button" aria-label="المفضلة" title="المفضلة">
+        ♥
+        <span class="badge" id="wishBadge" hidden aria-live="polite">0</span>
+      </button>
+      <button class="icon-btn" id="cartBtn" type="button" aria-label="السلة" aria-expanded="false" aria-controls="drawer">
+        🛒
+        <span class="badge" id="cartBadge" hidden aria-live="polite">0</span>
+      </button>
     </div>
-    <button class="theme-btn" id="themeBtn" type="button" aria-label="الثيم">☀ تلقائي</button>
-    <button class="lang-btn" id="langBtn" type="button" aria-label="تبديل اللغة">EN</button>
-    <button class="icon-btn" id="wishBtn" type="button" aria-label="المفضلة" title="المفضلة">
-      ♥
-      <span class="badge" id="wishBadge" hidden aria-live="polite">0</span>
-    </button>
-    <button class="icon-btn" id="cartBtn" type="button" aria-label="السلة" aria-expanded="false" aria-controls="drawer">
-      🛒
-      <span class="badge" id="cartBadge" hidden aria-live="polite">0</span>
-    </button>
+  </div>
+  <div class="wrap search-row">
+    <form class="search" id="searchForm" role="search" action="#" method="get">
+      <label class="sr-only" for="search">بحث / Search</label>
+      <span class="search-ico" aria-hidden="true">⌕</span>
+      <input id="search" name="q" type="search" placeholder="ابحثي: ماركة، منتج، SKU..." enterkeyhint="search" autocomplete="off" aria-label="بحث عن منتج" />
+      <button type="button" class="search-clear" id="searchClear" hidden aria-label="مسح البحث">×</button>
+      <button type="submit" class="search-go" id="searchGo" aria-label="بحث">بحث</button>
+    </form>
   </div>
   <div class="wrap">
     <nav class="nav-cats" id="cats" aria-label="تصنيفات المنتجات">

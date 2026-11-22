@@ -41,11 +41,11 @@
           : ((typeof T === "function" && T("themeAuto")) || "تلقائي"));
       var label = (typeof lang !== "undefined" && lang === "en") ? en : ar;
       var icon = resolved === "night" ? "☾" : "☀";
-      btn.textContent = icon + " " + label;
+      btn.textContent = icon; // compact header — full name in title/aria
       btn.setAttribute("aria-label", (typeof lang !== "undefined" && lang === "en")
-        ? ("Theme: " + en + " (tap to cycle)")
-        : ("الثيم: " + ar + " (اضغطي للتبديل)"));
-      btn.title = btn.getAttribute("aria-label");
+        ? ("Theme: " + en + " (tap to cycle day / night / auto)")
+        : ("الثيم: " + ar + " (اضغطي: صباحي / مسائي / تلقائي)"));
+      btn.title = (typeof lang !== "undefined" && lang === "en") ? en : ar;
     }
   }
 

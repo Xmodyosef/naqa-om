@@ -39,7 +39,8 @@ function syncShipMarquee(){
 function applyLang(){
   document.documentElement.lang=lang==="en"?"en":"ar";
   document.documentElement.dir=lang==="en"?"ltr":"rtl";
-  $("#search").placeholder=T("search");
+  const sEl=$("#search"); if(sEl) sEl.placeholder=T("searchHint")||T("search");
+  const sg=$("#searchGo"); if(sg) sg.textContent=T("searchBtn")||(lang==="en"?"Search":"بحث");
   document.querySelectorAll("#cats a").forEach(a=>{
     const base=T(catLabel[a.dataset.cat]||"all");
     const n=a.dataset.cat==="all"?products.length:products.filter(x=>x.cat===a.dataset.cat).length;
@@ -127,19 +128,84 @@ function applyLang(){
   if(qm && qm.classList.contains("show") && typeof paintQuiz==="function") paintQuiz();
 }
 
+
+function naqaNorm(s){
+  return String(s||"")
+    .toLowerCase()
+    .replace(/[أإآٱ]/g,"ا")
+    .replace(/ة/g,"ه")
+    .replace(/ى/g,"ي")
+    .replace(/[\u064B-\u065F]/g,"")
+    .replace(/[^\w\u0600-\u06FF]+/g," ")
+    .replace(/\s+/g," ")
+    .trim();
+}
+/* synonym groups: any token expands to the whole set */
+var NAQA_SEARCH_SYN = [
+  ["scrub","scurb","سكراب","سكرب","مقشر","تقشير","exfol","exfoliat"],
+  ["serum","سيروم","أمبول","ampoule","ampule"],
+  ["cream","كريم","مرطب","moisturizer","moisturiser"],
+  ["cleanser","غسول","منظف","wash","foam","cleanser"],
+  ["toner","تونر","تونر"],
+  ["mask","ماسك","قناع","sheet mask"],
+  ["spf","sunscreen","واقي","شمس","sun screen"],
+  ["oil","زيت","face oil"],
+  ["lip","شفاه","ليبس","lipstick","gloss"],
+  ["eye","عيون","رموش","mascara","كحل"],
+  ["brow","حواجب","eyebrow"],
+  ["hair","شعر","شامبو","shampoo","conditioner"],
+  ["perfume","عطر","fragrance","mist"]
+];
+function naqaExpandQuery(q){
+  var n = naqaNorm(q);
+  if(!n) return [];
+  var terms = new Set([n]);
+  // also each word
+  n.split(" ").forEach(function(w){ if(w.length>=2) terms.add(w); });
+  NAQA_SEARCH_SYN.forEach(function(group){
+    var hit = group.some(function(g){ return n.indexOf(naqaNorm(g))>=0 || Array.from(terms).some(function(t){ return t.indexOf(naqaNorm(g))>=0 || naqaNorm(g).indexOf(t)>=0; }); });
+    if(hit) group.forEach(function(g){ terms.add(naqaNorm(g)); });
+  });
+  return Array.from(terms).filter(Boolean);
+}
+function productMatchesQuery(p, rawQ){
+  if(!rawQ) return true;
+  var q = String(rawQ).trim();
+  if(!q) return true;
+  var sku = String(p.sku||"");
+  var digits = q.replace(/\D/g,"");
+  // barcode / SKU: exact, prefix, or includes (4+ digits)
+  if(sku){
+    if(sku === q || sku.indexOf(q) >= 0) return true;
+    if(digits.length >= 4 && sku.indexOf(digits) >= 0) return true;
+  }
+  var terms = naqaExpandQuery(q);
+  var brandN = naqaNorm(p.brand);
+  // brand-only: whole query matches brand
+  if(brandN && (brandN === naqaNorm(q) || brandN.indexOf(naqaNorm(q)) >= 0 || naqaNorm(q).indexOf(brandN) >= 0)) return true;
+  var blob = naqaNorm([
+    p.nameAr, p.nameEn, p.brand, p.sku, p.cat,
+    p.descAr, p.descEn, p.useAr, p.useEn, p.skinAr, p.skinEn, p.em
+  ].join(" "));
+  // all significant terms? use ANY term match for UX (OR), but prefer multi-word soft
+  return terms.some(function(t){ return t.length >= 2 && blob.indexOf(t) >= 0; });
+}
+
 function render(){
   applyLang();
-  const q=query.toLowerCase();
+  const q=query;
+  const searching=!!(q && String(q).trim());
   const list=products.filter(p=>{
     if(p.hidden) return false;
-    const catOk=currentCat==="all"||p.cat===currentCat;
-    const brandOk=!currentBrand || p.brand===currentBrand;
-    const concernOk=!currentConcern || (p.concerns&&p.concerns.indexOf(currentConcern)>=0);
+    // أثناء البحث: لا نقيّد بالتصنيف/الماركة المختارة عشان SKU والماركة والكلمات تطلع كل المطابق
+    const catOk=searching || currentCat==="all" || p.cat===currentCat;
+    const brandOk=searching || !currentBrand || p.brand===currentBrand;
+    const concernOk=searching || !currentConcern || (p.concerns&&p.concerns.indexOf(currentConcern)>=0);
     const viewingWish=(typeof wishView!=="undefined" && wishView);
     const wishOk=!viewingWish || (typeof isWish==="function" && isWish(p.id));
     const okPrice=typeof priceOk!=="function" || priceOk(p);
-    const blob=[p.nameAr,p.nameEn,p.brand,p.sku,p.descAr,p.descEn].join(" ").toLowerCase();
-    return catOk && brandOk && concernOk && wishOk && okPrice && (!q || blob.includes(q));
+    const textOk=!searching || productMatchesQuery(p, q);
+    return catOk && brandOk && concernOk && wishOk && okPrice && textOk;
   });
   const offOf=p=>(p.was&&p.was>p.price)?(1-p.price/p.was):0;
   list.sort((a,b)=>{

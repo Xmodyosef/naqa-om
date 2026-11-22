@@ -39,7 +39,55 @@ $("#cartBtn").onclick=openCart;
 $("#closeCart").onclick=closeCart;
 $("#overlay").onclick=closeCart;
 $("#barGo").onclick=()=>{ if(cart.length) openCart(); else openCart(); };
-$("#search").addEventListener("input", e=>{ query=e.target.value.trim(); render(); });
+function runSearch(fromSubmit){
+  const el=$("#search");
+  query = el ? el.value.trim() : "";
+  const clr=$("#searchClear"); if(clr) clr.hidden = !query;
+  if(query){
+    // reset shelf-only filters that hide results; keep wish if active
+    currentCat = "all";
+    currentBrand = "";
+    currentConcern = "";
+    document.querySelectorAll("#cats a").forEach(x=>x.classList.toggle("on", x.dataset.cat==="all"));
+  }
+  render();
+  if(fromSubmit){
+    const prod=$("#products");
+    if(prod) prod.scrollIntoView({behavior:"smooth", block:"start"});
+  }
+}
+const searchEl=$("#search");
+if(searchEl){
+  searchEl.addEventListener("input", e=>{
+    query=e.target.value.trim();
+    const clr=$("#searchClear"); if(clr) clr.hidden = !query;
+    render();
+  });
+  searchEl.addEventListener("keydown", e=>{
+    if(e.key==="Enter"){ e.preventDefault(); runSearch(true); }
+  });
+}
+const searchForm=$("#searchForm");
+if(searchForm){
+  searchForm.addEventListener("submit", e=>{
+    e.preventDefault();
+    runSearch(true);
+  });
+}
+const searchClear=$("#searchClear");
+if(searchClear){
+  searchClear.addEventListener("click", ()=>{
+    query="";
+    if(searchEl) searchEl.value="";
+    searchClear.hidden=true;
+    render();
+    if(searchEl) searchEl.focus();
+  });
+}
+const searchGo=$("#searchGo");
+if(searchGo){
+  searchGo.addEventListener("click", e=>{ e.preventDefault(); runSearch(true); });
+}
 $("#sortSel").addEventListener("change", e=>{ currentSort=e.target.value; render(); });
 
 document.addEventListener("click", e=>{

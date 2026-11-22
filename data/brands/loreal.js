@@ -16,12 +16,13 @@ window.NAQA_PRODUCTS.push(
     "media/products/p80_4.webp"
   ],
   "nameAr": "رذاذ تثبيت المكياج إنفاليبل من لوريال باريس حتى 36ساعة - 75مل",
-  "nameEn": "L'oréal Beauty",
+  "nameEn": "L'Oréal Paris Infallible Setting Spray 36H - 75ml",
   "descAr": "رذاذ تثبيت المكياج إنفاليبل من لوريال باريس حتى 36ساعة من L'oréal، 75مل. تركيبة عملية للاستخدام المنتظم، بدون خطوات معقّدة. مكانه في الروتين: بعد العناية وواقي الشمس. يناسب: كل درجات البشرة — اختبري عند الحساسية.",
-  "descEn": "L'oréal Beauty by L'oréal, 75 ml. A practical formula for regular use, without a complicated routine. Where it sits: After skincare and sunscreen. Best for: All skin tones — patch-test if sensitive.",
+  "descEn": "L'Oréal Paris Infallible Setting Spray 36H - 75ml, 75 ml. A practical formula for regular use, without a complicated routine. Where it sits: After skincare and sunscreen. Best for: All skin tones — patch-test if sensitive.",
   "useAr": "١) بعد المرطب وواقي الشمس.\n٢) كمية قليلة من وسط الوجه للخارج.\n٣) ابنِ التغطية تدريجياً. أزيلي المكياج كاملاً مساءً.",
   "useEn": "1) After moisturizer and SPF.\n2) A small amount from the center out.\n3) Build coverage slowly. Remove all makeup at night.",
   "skinAr": "كل درجات البشرة — اختبري عند الحساسية",
-  "skinEn": "All skin tones — patch-test if sensitive"
+  "skinEn": "All skin tones — patch-test if sensitive",
+  "stock": 25
 }
 );

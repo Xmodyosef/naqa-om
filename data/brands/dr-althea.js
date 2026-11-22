@@ -22,7 +22,8 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) نظّفي الوجه واتركيه رطباً قليلاً.\n٢) قطرتان إلى ثلاث على الوجه والرقبة، واضغطي بالراحة حتى الامتصاص — لا تفركي بقوة ولا تشطفي.\n٣) أغلقي بمرطب. صباحاً: واقي شمس فوق الروتين.\n٤) ريتينول أو أحماض: ابدئي ليلاً يوماً بعد يوم.",
   "useEn": "1) Cleanse and leave skin slightly damp.\n2) Press 2–3 drops over face and neck until absorbed. Do not rinse.\n3) Seal with moisturizer. Morning: sunscreen on top.\n4) Retinoids or acids: start every other night.",
   "skinAr": "البشرة الحساسة",
-  "skinEn": "Sensitive skin"
+  "skinEn": "Sensitive skin",
+  "stock": 25
 },
 {
   "id": 18,
@@ -45,7 +46,8 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) بعد السيروم خذي كمية بحجم حبة البازلاء.\n٢) وزّعي من الوسط للخارج على الوجه والرقبة.\n٣) صباحاً أكملي بواقي شمس. مساءً زيدي طبقة على الخدود الجافة إن لزم.",
   "useEn": "1) After serum, use a pea-sized amount.\n2) Smooth from the center outward, including the neck.\n3) Morning: sunscreen after. Night: extra on dry cheeks if needed.",
   "skinAr": "البشرة الحساسة",
-  "skinEn": "Sensitive skin"
+  "skinEn": "Sensitive skin",
+  "stock": 25
 },
 {
   "id": 21,
@@ -68,7 +70,8 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) نظّفي الوجه واتركيه رطباً قليلاً.\n٢) قطرتان إلى ثلاث على الوجه والرقبة، واضغطي بالراحة حتى الامتصاص — لا تفركي بقوة ولا تشطفي.\n٣) أغلقي بمرطب. صباحاً: واقي شمس فوق الروتين.\n٤) ريتينول أو أحماض: ابدئي ليلاً يوماً بعد يوم.",
   "useEn": "1) Cleanse and leave skin slightly damp.\n2) Press 2–3 drops over face and neck until absorbed. Do not rinse.\n3) Seal with moisturizer. Morning: sunscreen on top.\n4) Retinoids or acids: start every other night.",
   "skinAr": "البشرة الجافة والمحتاجة",
-  "skinEn": "Dry and dehydrated skin"
+  "skinEn": "Dry and dehydrated skin",
+  "stock": 25
 },
 {
   "id": 47,
@@ -91,7 +94,8 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) بعد السيروم خذي كمية بحجم حبة البازلاء.\n٢) وزّعي من الوسط للخارج على الوجه والرقبة.\n٣) صباحاً أكملي بواقي شمس. مساءً زيدي طبقة على الخدود الجافة إن لزم.",
   "useEn": "1) After serum, use a pea-sized amount.\n2) Smooth from the center outward, including the neck.\n3) Morning: sunscreen after. Night: extra on dry cheeks if needed.",
   "skinAr": "معظم أنواع البشرة — مع واقي شمس يومي عند التفتيح",
-  "skinEn": "Most skin types — daily SPF when brightening"
+  "skinEn": "Most skin types — daily SPF when brightening",
+  "stock": 25
 },
 {
   "id": 58,
@@ -114,7 +118,8 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) بعد السيروم خذي كمية بحجم حبة البازلاء.\n٢) وزّعي من الوسط للخارج على الوجه والرقبة.\n٣) صباحاً أكملي بواقي شمس. مساءً زيدي طبقة على الخدود الجافة إن لزم.",
   "useEn": "1) After serum, use a pea-sized amount.\n2) Smooth from the center outward, including the neck.\n3) Morning: sunscreen after. Night: extra on dry cheeks if needed.",
   "skinAr": "البشرة الحساسة",
-  "skinEn": "Sensitive skin"
+  "skinEn": "Sensitive skin",
+  "stock": 25
 },
 {
   "id": 94,
@@ -131,13 +136,14 @@ window.NAQA_PRODUCTS.push(
     "media/products/p94_4.webp"
   ],
   "nameAr": "رولر العين دكتور ألثيا بالريتينول لتجديد وشد محيط العين - 25مل",
-  "nameEn": "Dr.Althea Eye",
+  "nameEn": "Dr.Althea 345 Relief Retinol Eye Roller - 25ml",
   "descAr": "رولر العين دكتور ألثيا بالريتينول لتجديد وشد محيط العين من Dr.Althea، 25مل. يركّز على ريتينويد من أجل ملمس أنعم ومظهر الخطوط الدقيقة. مكانه في الروتين: بعد التنظيف، قبل أو بدل المرطب حسب القوام. يناسب: البشرة الجافة والمحتاجة.",
-  "descEn": "Dr.Althea Eye by Dr.Althea, 25 ml. Built around Retinoid for smoother texture and the look of fine lines. Where it sits: After cleansing, before or instead of cream depending on texture. Best for: Dry and dehydrated skin.",
+  "descEn": "Dr.Althea 345 Relief Retinol Eye Roller - 25ml, 25 ml. Built around Retinoid for smoother texture and the look of fine lines. Where it sits: After cleansing, before or instead of cream depending on texture. Best for: Dry and dehydrated skin.",
   "useAr": "١) بعد التنظيف.\n٢) طبقة رقيقة حتى الامتصاص.\n٣) صباحاً واقي شمس. راقبي البشرة أول أسبوع.",
   "useEn": "1) After cleansing.\n2) A thin layer until absorbed.\n3) Daytime sunscreen. Watch skin the first week.",
   "skinAr": "البشرة الجافة والمحتاجة",
-  "skinEn": "Dry and dehydrated skin"
+  "skinEn": "Dry and dehydrated skin",
+  "stock": 25
 },
 {
   "id": 165,
@@ -159,7 +165,8 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) نظّفي الوجه واتركيه رطباً قليلاً.\n٢) قطرتان إلى ثلاث على الوجه والرقبة، واضغطي بالراحة حتى الامتصاص — لا تفركي بقوة ولا تشطفي.\n٣) أغلقي بمرطب. صباحاً: واقي شمس فوق الروتين.\n٤) ريتينول أو أحماض: ابدئي ليلاً يوماً بعد يوم.",
   "useEn": "1) Cleanse and leave skin slightly damp.\n2) Press 2–3 drops over face and neck until absorbed. Do not rinse.\n3) Seal with moisturizer. Morning: sunscreen on top.\n4) Retinoids or acids: start every other night.",
   "skinAr": "معظم الأنواع، مع واقي شمس يومي لأن التفتيح يحتاج حماية",
-  "skinEn": "Most skin types, with daily SPF because brightening needs sun protection"
+  "skinEn": "Most skin types, with daily SPF because brightening needs sun protection",
+  "stock": 25
 },
 {
   "id": 198,
@@ -181,6 +188,7 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) بعد السيروم خذي كمية بحجم حبة البازلاء.\n٢) وزّعي من الوسط للخارج على الوجه والرقبة.\n٣) صباحاً أكملي بواقي شمس. مساءً زيدي طبقة على الخدود الجافة إن لزم.",
   "useEn": "1) After serum, use a pea-sized amount.\n2) Smooth from the center outward, including the neck.\n3) Morning: sunscreen after. Night: extra on dry cheeks if needed.",
   "skinAr": "معظم أنواع البشرة — مع واقي شمس يومي عند التفتيح",
-  "skinEn": "Most skin types — daily SPF when brightening"
+  "skinEn": "Most skin types — daily SPF when brightening",
+  "stock": 25
 }
 );

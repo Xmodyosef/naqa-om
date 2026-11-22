@@ -59,18 +59,18 @@
       var rows = (A.reviews || []).map(function (r) {
         var img = r.photo ? '<img src="' + A.esc(r.photo) + '" alt="" style="width:64px;height:64px;object-fit:cover;border-radius:10px">' : "";
         return '<div class="row"><div>' + img + '<strong>' + A.esc(r.name || "") + " " + stars(r.stars) + '</strong><small>' + A.esc(r.sku || "") + " · " + A.esc((r.ar || r.en || "").slice(0, 80)) + '</small></div>'
-          + '<button type="button" class="mini" data-rv-off="' + A.esc(r.id) + '">' + (r.on === false ? "إظهار" : "إخفاء") + '</button>'
-          + '<button type="button" class="mini" data-rv-del="' + A.esc(r.id) + '">حذف</button></div>';
-      }).join("") || '<p class="note">لا تقييمات منشورة بعد.</p>';
-      box.innerHTML = '<div class="panel"><h2>تقييمات الزبونات</h2>'
-        + '<p class="note">الزبونة ترسل الكلام والصورة على واتساب. أنتِ توافقين هنا: لقب، نجوم، عربي، إنجليزي، وصورة. الرقم ما ينحفظ ولا يننشر. بعدين «نشر للكل».</p>'
-        + '<label>SKU المنتج<input id="rvSku" list="rvSkus" placeholder="SKU"></label><datalist id="rvSkus">' + opts + '</datalist>'
-        + '<label>اللقب<input id="rvName" maxlength="24"></label>'
-        + '<label>النجوم<select id="rvStars"><option>5</option><option>4</option><option>3</option><option>2</option><option>1</option></select></label>'
-        + '<label>النص العربي<textarea id="rvAr" rows="3"></textarea></label>'
-        + '<label>English text<textarea id="rvEn" rows="3"></textarea></label>'
-        + '<label>صورة اختيارية<input id="rvFile" type="file" accept="image/*"></label>'
-        + '<button type="button" class="primary" id="rvAdd" style="width:100%;margin-top:8px">إضافة التقييم</button>'
+          + '<button type="button" class="mini" data-rv-off="' + A.esc(r.id) + '">' + (r.on === false ? A.t("r_show") : A.t("r_hide")) + '</button>'
+          + '<button type="button" class="mini" data-rv-del="' + A.esc(r.id) + '">' + A.t("del") + '</button></div>';
+      }).join("") || '<p class="note">' + A.t("r_empty") + '</p>';
+      box.innerHTML = '<div class="panel"><h2>' + A.t("r_title") + '</h2>'
+        + '<p class="note">' + A.t("r_note") + '</p>'
+        + '<label>' + A.t("r_sku") + '<input id="rvSku" list="rvSkus" placeholder="SKU"></label><datalist id="rvSkus">' + opts + '</datalist>'
+        + '<label>' + A.t("r_nick") + '<input id="rvName" maxlength="24"></label>'
+        + '<label>' + A.t("r_stars") + '<select id="rvStars"><option>5</option><option>4</option><option>3</option><option>2</option><option>1</option></select></label>'
+        + '<label>' + A.t("r_ar") + '<textarea id="rvAr" rows="3"></textarea></label>'
+        + '<label>' + A.t("r_en") + '<textarea id="rvEn" rows="3"></textarea></label>'
+        + '<label>' + A.t("r_photo") + '<input id="rvFile" type="file" accept="image/*"></label>'
+        + '<button type="button" class="primary" id="rvAdd" style="width:100%;margin-top:8px">' + A.t("r_add") + '</button>'
         + '</div>' + rows;
       document.getElementById("rvAdd").onclick = addReview;
       box.querySelectorAll("[data-rv-del]").forEach(function (b) {
@@ -97,19 +97,19 @@
     var starsN = Number(document.getElementById("rvStars").value);
     var status = document.getElementById("reviewStatus");
     var p = (w.products || []).find(function (x) { return String(x.sku) === sku; });
-    if (!p) { if (status) status.textContent = "SKU غير موجود."; return; }
-    if (name.length < 2 || (ar.length < 2 && en.length < 2)) { if (status) status.textContent = "اللقب والنص مطلوبان."; return; }
+    if (!p) { if (status) status.textContent = A.t("r_badSku"); return; }
+    if (name.length < 2 || (ar.length < 2 && en.length < 2)) { if (status) status.textContent = A.t("r_need"); return; }
     var rec = { id: "rv" + Date.now().toString(36), sku: p.sku, pid: p.id, name: name, stars: starsN, ar: ar, en: en, photo: "", at: new Date().toISOString().slice(0, 10), on: true };
     var file = document.getElementById("rvFile").files[0];
     var finish = function () {
       A.reviews.unshift(rec);
       saveLocal();
-      if (status) status.textContent = "انضاف على جهازك. اضغطي «نشر للكل» عشان يظهر في المتجر.";
+      if (status) status.textContent = A.t("r_added");
       A.paintReviews();
     };
     if (!file) { finish(); return; }
     fileToJpeg(file).then(function (b64) { rec.photoB64 = b64; finish(); }).catch(function () {
-      if (status) status.textContent = "الصورة ما انفتحت.";
+      if (status) status.textContent = A.t("r_photoFail");
     });
   }
 })(window);

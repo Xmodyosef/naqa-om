@@ -24,6 +24,7 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) بعد المرطب وواقي الشمس.\n٢) كمية قليلة من وسط الوجه للخارج.\n٣) ابنِ التغطية تدريجياً. أزيلي المكياج كاملاً مساءً.",
   "useEn": "1) After moisturizer and SPF.\n2) A small amount from the center out.\n3) Build coverage slowly. Remove all makeup at night.",
   "skinAr": "كل درجات البشرة — اختبري عند الحساسية",
-  "skinEn": "All skin tones — patch-test if sensitive"
+  "skinEn": "All skin tones — patch-test if sensitive",
+  "stock": 25
 }
 );

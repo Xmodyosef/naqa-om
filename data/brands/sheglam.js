@@ -16,13 +16,14 @@ window.NAQA_PRODUCTS.push(
     "media/products/p78_4.webp"
   ],
   "nameAr": "برايمر ميلت تاتش فائق الترطيب من شيجلام - 30ج",
-  "nameEn": "SHEGLAM Beauty",
+  "nameEn": "SHEGLAM Melt Touch Moisturizing Primer - 30g",
   "descAr": "برايمر ميلت تاتش فائق الترطيب من شيجلام من SHEGLAM، 30ج. تركيبة عملية للاستخدام المنتظم، بدون خطوات معقّدة. مكانه في الروتين: بعد العناية وواقي الشمس. يناسب: كل درجات البشرة — اختبري عند الحساسية.",
-  "descEn": "SHEGLAM Beauty by SHEGLAM, 30 g. A practical formula for regular use, without a complicated routine. Where it sits: After skincare and sunscreen. Best for: All skin tones — patch-test if sensitive.",
+  "descEn": "SHEGLAM Melt Touch Moisturizing Primer - 30g, 30 g. A practical formula for regular use, without a complicated routine. Where it sits: After skincare and sunscreen. Best for: All skin tones — patch-test if sensitive.",
   "useAr": "١) بعد المرطب وواقي الشمس.\n٢) كمية قليلة من وسط الوجه للخارج.\n٣) ابنِ التغطية تدريجياً. أزيلي المكياج كاملاً مساءً.",
   "useEn": "1) After moisturizer and SPF.\n2) A small amount from the center out.\n3) Build coverage slowly. Remove all makeup at night.",
   "skinAr": "كل درجات البشرة — اختبري عند الحساسية",
-  "skinEn": "All skin tones — patch-test if sensitive"
+  "skinEn": "All skin tones — patch-test if sensitive",
+  "stock": 25
 },
 {
   "id": 79,
@@ -39,13 +40,14 @@ window.NAQA_PRODUCTS.push(
     "media/products/p79_4.webp"
   ],
   "nameAr": "برايمر إيفن بيتر المصحح للون البشرة من شيجلام - أخضر - 30ج",
-  "nameEn": "SHEGLAM Beauty",
+  "nameEn": "SHEGLAM Even Better Color-Correcting Primer Green - 30g",
   "descAr": "برايمر إيفن بيتر المصحح للون البشرة من شيجلام - أخضر من SHEGLAM، 30ج. تركيبة عملية للاستخدام المنتظم، بدون خطوات معقّدة. مكانه في الروتين: بعد العناية وواقي الشمس. يناسب: البشرة الحساسة والجافة والمجهدة.",
-  "descEn": "SHEGLAM Beauty by SHEGLAM, 30 g. A practical formula for regular use, without a complicated routine. Where it sits: After skincare and sunscreen. Best for: Sensitive, dry, or stressed skin.",
+  "descEn": "SHEGLAM Even Better Color-Correcting Primer Green - 30g, 30 g. A practical formula for regular use, without a complicated routine. Where it sits: After skincare and sunscreen. Best for: Sensitive, dry, or stressed skin.",
   "useAr": "١) بعد المرطب وواقي الشمس.\n٢) كمية قليلة من وسط الوجه للخارج.\n٣) ابنِ التغطية تدريجياً. أزيلي المكياج كاملاً مساءً.",
   "useEn": "1) After moisturizer and SPF.\n2) A small amount from the center out.\n3) Build coverage slowly. Remove all makeup at night.",
   "skinAr": "البشرة الحساسة والجافة والمجهدة",
-  "skinEn": "Sensitive, dry, or stressed skin"
+  "skinEn": "Sensitive, dry, or stressed skin",
+  "stock": 25
 },
 {
   "id": 81,
@@ -62,13 +64,14 @@ window.NAQA_PRODUCTS.push(
     "media/products/p81_4.webp"
   ],
   "nameAr": "برايمر كاميرا أون لتنعيم البشرة وتمويه المسام من شيجلام - 30ج",
-  "nameEn": "SHEGLAM Beauty",
+  "nameEn": "SHEGLAM Camera On Pore-Smoothing Primer - 30g",
   "descAr": "برايمر كاميرا أون لتنعيم البشرة وتمويه المسام من شيجلام من SHEGLAM، 30ج. تركيبة عملية للاستخدام المنتظم، بدون خطوات معقّدة. مكانه في الروتين: بعد العناية وواقي الشمس. يناسب: كل درجات البشرة — اختبري عند الحساسية.",
-  "descEn": "SHEGLAM Beauty by SHEGLAM, 30 g. A practical formula for regular use, without a complicated routine. Where it sits: After skincare and sunscreen. Best for: All skin tones — patch-test if sensitive.",
+  "descEn": "SHEGLAM Camera On Pore-Smoothing Primer - 30g, 30 g. A practical formula for regular use, without a complicated routine. Where it sits: After skincare and sunscreen. Best for: All skin tones — patch-test if sensitive.",
   "useAr": "١) بعد المرطب وواقي الشمس.\n٢) كمية قليلة من وسط الوجه للخارج.\n٣) ابنِ التغطية تدريجياً. أزيلي المكياج كاملاً مساءً.",
   "useEn": "1) After moisturizer and SPF.\n2) A small amount from the center out.\n3) Build coverage slowly. Remove all makeup at night.",
   "skinAr": "كل درجات البشرة — اختبري عند الحساسية",
-  "skinEn": "All skin tones — patch-test if sensitive"
+  "skinEn": "All skin tones — patch-test if sensitive",
+  "stock": 25
 },
 {
   "id": 82,
@@ -85,13 +88,14 @@ window.NAQA_PRODUCTS.push(
     "media/products/p82_4.webp"
   ],
   "nameAr": "بلاشر كولور بلوم السائل من شيجلام - لوف كيك",
-  "nameEn": "SHEGLAM Beauty",
+  "nameEn": "SHEGLAM Color Bloom Liquid Blush - Love Cake",
   "descAr": "بلاشر كولور بلوم السائل من شيجلام - لوف كيك من SHEGLAM. تركيبة عملية للاستخدام المنتظم، بدون خطوات معقّدة. مكانه في الروتين: بعد العناية وواقي الشمس. يناسب: كل درجات البشرة — اختبري عند الحساسية.",
-  "descEn": "SHEGLAM Beauty by SHEGLAM. A practical formula for regular use, without a complicated routine. Where it sits: After skincare and sunscreen. Best for: All skin tones — patch-test if sensitive.",
+  "descEn": "SHEGLAM Color Bloom Liquid Blush - Love Cake, without a complicated routine. Where it sits: After skincare and sunscreen. Best for: All skin tones — patch-test if sensitive.",
   "useAr": "١) بعد المرطب وواقي الشمس.\n٢) كمية قليلة من وسط الوجه للخارج.\n٣) ابنِ التغطية تدريجياً. أزيلي المكياج كاملاً مساءً.",
   "useEn": "1) After moisturizer and SPF.\n2) A small amount from the center out.\n3) Build coverage slowly. Remove all makeup at night.",
   "skinAr": "كل درجات البشرة — اختبري عند الحساسية",
-  "skinEn": "All skin tones — patch-test if sensitive"
+  "skinEn": "All skin tones — patch-test if sensitive",
+  "stock": 25
 },
 {
   "id": 83,
@@ -108,13 +112,14 @@ window.NAQA_PRODUCTS.push(
     "media/products/p83_4.webp"
   ],
   "nameAr": "سبراي تثبيت لوكد إن من شيجلام",
-  "nameEn": "SHEGLAM Beauty",
+  "nameEn": "SHEGLAM Locked In Setting Spray",
   "descAr": "سبراي تثبيت لوكد إن من شيجلام من SHEGLAM. تركيبة عملية للاستخدام المنتظم، بدون خطوات معقّدة. مكانه في الروتين: بعد العناية وواقي الشمس. يناسب: كل درجات البشرة — اختبري عند الحساسية.",
-  "descEn": "SHEGLAM Beauty by SHEGLAM. A practical formula for regular use, without a complicated routine. Where it sits: After skincare and sunscreen. Best for: All skin tones — patch-test if sensitive.",
+  "descEn": "SHEGLAM Locked In Setting Spray, without a complicated routine. Where it sits: After skincare and sunscreen. Best for: All skin tones — patch-test if sensitive.",
   "useAr": "١) بعد المرطب وواقي الشمس.\n٢) كمية قليلة من وسط الوجه للخارج.\n٣) ابنِ التغطية تدريجياً. أزيلي المكياج كاملاً مساءً.",
   "useEn": "1) After moisturizer and SPF.\n2) A small amount from the center out.\n3) Build coverage slowly. Remove all makeup at night.",
   "skinAr": "كل درجات البشرة — اختبري عند الحساسية",
-  "skinEn": "All skin tones — patch-test if sensitive"
+  "skinEn": "All skin tones — patch-test if sensitive",
+  "stock": 25
 },
 {
   "id": 84,
@@ -131,13 +136,14 @@ window.NAQA_PRODUCTS.push(
     "media/products/p84_4.webp"
   ],
   "nameAr": "برايمر جود جريب المرطب من شيجلام - 45مل",
-  "nameEn": "SHEGLAM Beauty",
+  "nameEn": "SHEGLAM Good Grip Hydrating Primer - 45ml",
   "descAr": "برايمر جود جريب المرطب من شيجلام من SHEGLAM، 45مل. تركيبة عملية للاستخدام المنتظم، بدون خطوات معقّدة. مكانه في الروتين: بعد العناية وواقي الشمس. يناسب: كل درجات البشرة — اختبري عند الحساسية.",
-  "descEn": "SHEGLAM Beauty by SHEGLAM, 45 ml. A practical formula for regular use, without a complicated routine. Where it sits: After skincare and sunscreen. Best for: All skin tones — patch-test if sensitive.",
+  "descEn": "SHEGLAM Good Grip Hydrating Primer - 45ml, 45 ml. A practical formula for regular use, without a complicated routine. Where it sits: After skincare and sunscreen. Best for: All skin tones — patch-test if sensitive.",
   "useAr": "١) بعد المرطب وواقي الشمس.\n٢) كمية قليلة من وسط الوجه للخارج.\n٣) ابنِ التغطية تدريجياً. أزيلي المكياج كاملاً مساءً.",
   "useEn": "1) After moisturizer and SPF.\n2) A small amount from the center out.\n3) Build coverage slowly. Remove all makeup at night.",
   "skinAr": "كل درجات البشرة — اختبري عند الحساسية",
-  "skinEn": "All skin tones — patch-test if sensitive"
+  "skinEn": "All skin tones — patch-test if sensitive",
+  "stock": 25
 },
 {
   "id": 85,
@@ -154,13 +160,14 @@ window.NAQA_PRODUCTS.push(
     "media/products/p85_4.webp"
   ],
   "nameAr": "سبراي تثبيت بريس ريفريش من شيجلام",
-  "nameEn": "SHEGLAM Beauty",
+  "nameEn": "SHEGLAM Press Refresh Setting Spray",
   "descAr": "سبراي تثبيت بريس ريفريش من شيجلام من SHEGLAM. تركيبة عملية للاستخدام المنتظم، بدون خطوات معقّدة. مكانه في الروتين: بعد العناية وواقي الشمس. يناسب: كل درجات البشرة — اختبري عند الحساسية.",
-  "descEn": "SHEGLAM Beauty by SHEGLAM. A practical formula for regular use, without a complicated routine. Where it sits: After skincare and sunscreen. Best for: All skin tones — patch-test if sensitive.",
+  "descEn": "SHEGLAM Press Refresh Setting Spray, without a complicated routine. Where it sits: After skincare and sunscreen. Best for: All skin tones — patch-test if sensitive.",
   "useAr": "١) بعد المرطب وواقي الشمس.\n٢) كمية قليلة من وسط الوجه للخارج.\n٣) ابنِ التغطية تدريجياً. أزيلي المكياج كاملاً مساءً.",
   "useEn": "1) After moisturizer and SPF.\n2) A small amount from the center out.\n3) Build coverage slowly. Remove all makeup at night.",
   "skinAr": "كل درجات البشرة — اختبري عند الحساسية",
-  "skinEn": "All skin tones — patch-test if sensitive"
+  "skinEn": "All skin tones — patch-test if sensitive",
+  "stock": 25
 },
 {
   "id": 86,
@@ -177,13 +184,14 @@ window.NAQA_PRODUCTS.push(
     "media/products/p86_4.webp"
   ],
   "nameAr": "ستيك كونتور وبرونزر باتري باف من شيجلام - جولدن صن",
-  "nameEn": "SHEGLAM Beauty",
+  "nameEn": "SHEGLAM Butter Puff Contour Stick - Golden Sun",
   "descAr": "ستيك كونتور وبرونزر باتري باف من شيجلام - جولدن صن من SHEGLAM. تركيبة عملية للاستخدام المنتظم، بدون خطوات معقّدة. مكانه في الروتين: بعد العناية وواقي الشمس. يناسب: كل درجات البشرة — اختبري عند الحساسية.",
-  "descEn": "SHEGLAM Beauty by SHEGLAM. A practical formula for regular use, without a complicated routine. Where it sits: After skincare and sunscreen. Best for: All skin tones — patch-test if sensitive.",
+  "descEn": "SHEGLAM Butter Puff Contour Stick - Golden Sun, without a complicated routine. Where it sits: After skincare and sunscreen. Best for: All skin tones — patch-test if sensitive.",
   "useAr": "١) بعد المرطب وواقي الشمس.\n٢) كمية قليلة من وسط الوجه للخارج.\n٣) ابنِ التغطية تدريجياً. أزيلي المكياج كاملاً مساءً.",
   "useEn": "1) After moisturizer and SPF.\n2) A small amount from the center out.\n3) Build coverage slowly. Remove all makeup at night.",
   "skinAr": "كل درجات البشرة — اختبري عند الحساسية",
-  "skinEn": "All skin tones — patch-test if sensitive"
+  "skinEn": "All skin tones — patch-test if sensitive",
+  "stock": 25
 },
 {
   "id": 87,
@@ -200,13 +208,14 @@ window.NAQA_PRODUCTS.push(
     "media/products/p87_4.webp"
   ],
   "nameAr": "سبراي تثبيت مات فريش من شيجلام",
-  "nameEn": "SHEGLAM Beauty",
+  "nameEn": "SHEGLAM Matte Fresh Setting Spray",
   "descAr": "سبراي تثبيت مات فريش من شيجلام من SHEGLAM. تركيبة عملية للاستخدام المنتظم، بدون خطوات معقّدة. مكانه في الروتين: بعد العناية وواقي الشمس. يناسب: كل درجات البشرة — اختبري عند الحساسية.",
-  "descEn": "SHEGLAM Beauty by SHEGLAM. A practical formula for regular use, without a complicated routine. Where it sits: After skincare and sunscreen. Best for: All skin tones — patch-test if sensitive.",
+  "descEn": "SHEGLAM Matte Fresh Setting Spray, without a complicated routine. Where it sits: After skincare and sunscreen. Best for: All skin tones — patch-test if sensitive.",
   "useAr": "١) بعد المرطب وواقي الشمس.\n٢) كمية قليلة من وسط الوجه للخارج.\n٣) ابنِ التغطية تدريجياً. أزيلي المكياج كاملاً مساءً.",
   "useEn": "1) After moisturizer and SPF.\n2) A small amount from the center out.\n3) Build coverage slowly. Remove all makeup at night.",
   "skinAr": "كل درجات البشرة — اختبري عند الحساسية",
-  "skinEn": "All skin tones — patch-test if sensitive"
+  "skinEn": "All skin tones — patch-test if sensitive",
+  "stock": 25
 },
 {
   "id": 88,
@@ -223,13 +232,14 @@ window.NAQA_PRODUCTS.push(
     "media/products/p88_4.webp"
   ],
   "nameAr": "بلاشر كولور بلوم السائل من شيجلام - أون بوينت",
-  "nameEn": "SHEGLAM Beauty",
+  "nameEn": "SHEGLAM Color Bloom Liquid Blush - On Point",
   "descAr": "بلاشر كولور بلوم السائل من شيجلام - أون بوينت من SHEGLAM. تركيبة عملية للاستخدام المنتظم، بدون خطوات معقّدة. مكانه في الروتين: بعد العناية وواقي الشمس. يناسب: كل درجات البشرة — اختبري عند الحساسية.",
-  "descEn": "SHEGLAM Beauty by SHEGLAM. A practical formula for regular use, without a complicated routine. Where it sits: After skincare and sunscreen. Best for: All skin tones — patch-test if sensitive.",
+  "descEn": "SHEGLAM Color Bloom Liquid Blush - On Point, without a complicated routine. Where it sits: After skincare and sunscreen. Best for: All skin tones — patch-test if sensitive.",
   "useAr": "١) بعد المرطب وواقي الشمس.\n٢) كمية قليلة من وسط الوجه للخارج.\n٣) ابنِ التغطية تدريجياً. أزيلي المكياج كاملاً مساءً.",
   "useEn": "1) After moisturizer and SPF.\n2) A small amount from the center out.\n3) Build coverage slowly. Remove all makeup at night.",
   "skinAr": "كل درجات البشرة — اختبري عند الحساسية",
-  "skinEn": "All skin tones — patch-test if sensitive"
+  "skinEn": "All skin tones — patch-test if sensitive",
+  "stock": 25
 },
 {
   "id": 89,
@@ -246,13 +256,14 @@ window.NAQA_PRODUCTS.push(
     "media/products/p89_4.webp"
   ],
   "nameAr": "كونتور صن سكالب السائل من شيجلام - تاوني أمبر",
-  "nameEn": "SHEGLAM Beauty",
+  "nameEn": "SHEGLAM Sun Sculpt Liquid Contour - Tawny Amber",
   "descAr": "كونتور صن سكالب السائل من شيجلام - تاوني أمبر من SHEGLAM. تركيبة عملية للاستخدام المنتظم، بدون خطوات معقّدة. مكانه في الروتين: بعد العناية وواقي الشمس. يناسب: كل درجات البشرة — اختبري عند الحساسية.",
-  "descEn": "SHEGLAM Beauty by SHEGLAM. A practical formula for regular use, without a complicated routine. Where it sits: After skincare and sunscreen. Best for: All skin tones — patch-test if sensitive.",
+  "descEn": "SHEGLAM Sun Sculpt Liquid Contour - Tawny Amber, without a complicated routine. Where it sits: After skincare and sunscreen. Best for: All skin tones — patch-test if sensitive.",
   "useAr": "١) بعد المرطب وواقي الشمس.\n٢) كمية قليلة من وسط الوجه للخارج.\n٣) ابنِ التغطية تدريجياً. أزيلي المكياج كاملاً مساءً.",
   "useEn": "1) After moisturizer and SPF.\n2) A small amount from the center out.\n3) Build coverage slowly. Remove all makeup at night.",
   "skinAr": "كل درجات البشرة — اختبري عند الحساسية",
-  "skinEn": "All skin tones — patch-test if sensitive"
+  "skinEn": "All skin tones — patch-test if sensitive",
+  "stock": 25
 },
 {
   "id": 90,
@@ -269,13 +280,14 @@ window.NAQA_PRODUCTS.push(
     "media/products/p90_4.webp"
   ],
   "nameAr": "برايمر تريبل ثريت المصحح من شيجلام",
-  "nameEn": "SHEGLAM Beauty",
+  "nameEn": "SHEGLAM Triple Threat Correcting Primer",
   "descAr": "برايمر تريبل ثريت المصحح من شيجلام من SHEGLAM. تركيبة عملية للاستخدام المنتظم، بدون خطوات معقّدة. مكانه في الروتين: بعد العناية وواقي الشمس. يناسب: كل درجات البشرة — اختبري عند الحساسية.",
-  "descEn": "SHEGLAM Beauty by SHEGLAM. A practical formula for regular use, without a complicated routine. Where it sits: After skincare and sunscreen. Best for: All skin tones — patch-test if sensitive.",
+  "descEn": "SHEGLAM Triple Threat Correcting Primer, without a complicated routine. Where it sits: After skincare and sunscreen. Best for: All skin tones — patch-test if sensitive.",
   "useAr": "١) بعد المرطب وواقي الشمس.\n٢) كمية قليلة من وسط الوجه للخارج.\n٣) ابنِ التغطية تدريجياً. أزيلي المكياج كاملاً مساءً.",
   "useEn": "1) After moisturizer and SPF.\n2) A small amount from the center out.\n3) Build coverage slowly. Remove all makeup at night.",
   "skinAr": "كل درجات البشرة — اختبري عند الحساسية",
-  "skinEn": "All skin tones — patch-test if sensitive"
+  "skinEn": "All skin tones — patch-test if sensitive",
+  "stock": 25
 },
 {
   "id": 122,
@@ -294,13 +306,14 @@ window.NAQA_PRODUCTS.push(
     "media/products/p122_4.webp"
   ],
   "nameAr": "زيت شفاه جيلي واو المرطب من شيجلام - بيري إنفولفد",
-  "nameEn": "SHEGLAM Lip",
+  "nameEn": "SHEGLAM Jelly Wow Hydrating Lip Oil - Berry Involved",
   "descAr": "زيت شفاه جيلي واو المرطب من شيجلام - بيري إنفولفد من SHEGLAM. تركيبة عملية للاستخدام المنتظم، بدون خطوات معقّدة. مكانه في الروتين: آخر لمسة، أو طوال اليوم حسب الحاجة. يناسب: كل درجات البشرة — اختبري عند الحساسية.",
-  "descEn": "SHEGLAM Lip by SHEGLAM. A practical formula for regular use, without a complicated routine. Where it sits: Finishing touch, or anytime through the day. Best for: All skin tones — patch-test if sensitive.",
+  "descEn": "SHEGLAM Jelly Wow Hydrating Lip Oil - Berry Involved, without a complicated routine. Where it sits: Finishing touch, or anytime through the day. Best for: All skin tones — patch-test if sensitive.",
   "useAr": "١) شفاه نظيفة. إن كانت خشنة: منديل رطب بلطف، بدون حك.\n٢) من المنتصف نحو الزوايا.\n٣) أضيفي طبقة ثانية للّون أو اللمعان. أزيلي مساءً إن كان مكياجاً.",
   "useEn": "1) Clean lips. Soften flakes with a damp tissue, don't scrub.\n2) From the center toward the corners.\n3) Add a second layer for color or shine. Remove makeup at night.",
   "skinAr": "كل درجات البشرة — اختبري عند الحساسية",
-  "skinEn": "All skin tones — patch-test if sensitive"
+  "skinEn": "All skin tones — patch-test if sensitive",
+  "stock": 25
 },
 {
   "id": 127,
@@ -323,7 +336,8 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) شفاه نظيفة. إن كانت خشنة: منديل رطب بلطف، بدون حك.\n٢) من المنتصف نحو الزوايا.\n٣) أضيفي طبقة ثانية للّون أو اللمعان. أزيلي مساءً إن كان مكياجاً.",
   "useEn": "1) Clean lips. Soften flakes with a damp tissue, don't scrub.\n2) From the center toward the corners.\n3) Add a second layer for color or shine. Remove makeup at night.",
   "skinAr": "كل درجات البشرة — اختبري عند الحساسية",
-  "skinEn": "All skin tones — patch-test if sensitive"
+  "skinEn": "All skin tones — patch-test if sensitive",
+  "stock": 25
 },
 {
   "id": 143,
@@ -346,7 +360,8 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) شفاه نظيفة. إن كانت خشنة: منديل رطب بلطف، بدون حك.\n٢) من المنتصف نحو الزوايا.\n٣) أضيفي طبقة ثانية للّون أو اللمعان. أزيلي مساءً إن كان مكياجاً.",
   "useEn": "1) Clean lips. Soften flakes with a damp tissue, don't scrub.\n2) From the center toward the corners.\n3) Add a second layer for color or shine. Remove makeup at night.",
   "skinAr": "كل درجات البشرة — اختبري عند الحساسية",
-  "skinEn": "All skin tones — patch-test if sensitive"
+  "skinEn": "All skin tones — patch-test if sensitive",
+  "stock": 25
 },
 {
   "id": 144,
@@ -369,7 +384,8 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) شفاه نظيفة. إن كانت خشنة: منديل رطب بلطف، بدون حك.\n٢) من المنتصف نحو الزوايا.\n٣) أضيفي طبقة ثانية للّون أو اللمعان. أزيلي مساءً إن كان مكياجاً.",
   "useEn": "1) Clean lips. Soften flakes with a damp tissue, don't scrub.\n2) From the center toward the corners.\n3) Add a second layer for color or shine. Remove makeup at night.",
   "skinAr": "كل درجات البشرة — اختبري عند الحساسية",
-  "skinEn": "All skin tones — patch-test if sensitive"
+  "skinEn": "All skin tones — patch-test if sensitive",
+  "stock": 25
 },
 {
   "id": 145,
@@ -392,7 +408,8 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) شفاه نظيفة. إن كانت خشنة: منديل رطب بلطف، بدون حك.\n٢) من المنتصف نحو الزوايا.\n٣) أضيفي طبقة ثانية للّون أو اللمعان. أزيلي مساءً إن كان مكياجاً.",
   "useEn": "1) Clean lips. Soften flakes with a damp tissue, don't scrub.\n2) From the center toward the corners.\n3) Add a second layer for color or shine. Remove makeup at night.",
   "skinAr": "كل درجات البشرة — اختبري عند الحساسية",
-  "skinEn": "All skin tones — patch-test if sensitive"
+  "skinEn": "All skin tones — patch-test if sensitive",
+  "stock": 25
 },
 {
   "id": 153,
@@ -415,7 +432,8 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) شفاه نظيفة. إن كانت خشنة: منديل رطب بلطف، بدون حك.\n٢) من المنتصف نحو الزوايا.\n٣) أضيفي طبقة ثانية للّون أو اللمعان. أزيلي مساءً إن كان مكياجاً.",
   "useEn": "1) Clean lips. Soften flakes with a damp tissue, don't scrub.\n2) From the center toward the corners.\n3) Add a second layer for color or shine. Remove makeup at night.",
   "skinAr": "كل درجات البشرة — اختبري عند الحساسية",
-  "skinEn": "All skin tones — patch-test if sensitive"
+  "skinEn": "All skin tones — patch-test if sensitive",
+  "stock": 25
 },
 {
   "id": 154,
@@ -438,7 +456,8 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) شفاه نظيفة. إن كانت خشنة: منديل رطب بلطف، بدون حك.\n٢) من المنتصف نحو الزوايا.\n٣) أضيفي طبقة ثانية للّون أو اللمعان. أزيلي مساءً إن كان مكياجاً.",
   "useEn": "1) Clean lips. Soften flakes with a damp tissue, don't scrub.\n2) From the center toward the corners.\n3) Add a second layer for color or shine. Remove makeup at night.",
   "skinAr": "كل درجات البشرة — اختبري عند الحساسية",
-  "skinEn": "All skin tones — patch-test if sensitive"
+  "skinEn": "All skin tones — patch-test if sensitive",
+  "stock": 25
 },
 {
   "id": 155,
@@ -461,7 +480,8 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) شفاه نظيفة. إن كانت خشنة: منديل رطب بلطف، بدون حك.\n٢) من المنتصف نحو الزوايا.\n٣) أضيفي طبقة ثانية للّون أو اللمعان. أزيلي مساءً إن كان مكياجاً.",
   "useEn": "1) Clean lips. Soften flakes with a damp tissue, don't scrub.\n2) From the center toward the corners.\n3) Add a second layer for color or shine. Remove makeup at night.",
   "skinAr": "كل درجات البشرة — اختبري عند الحساسية",
-  "skinEn": "All skin tones — patch-test if sensitive"
+  "skinEn": "All skin tones — patch-test if sensitive",
+  "stock": 25
 },
 {
   "id": 156,
@@ -484,7 +504,8 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) شفاه نظيفة. إن كانت خشنة: منديل رطب بلطف، بدون حك.\n٢) من المنتصف نحو الزوايا.\n٣) أضيفي طبقة ثانية للّون أو اللمعان. أزيلي مساءً إن كان مكياجاً.",
   "useEn": "1) Clean lips. Soften flakes with a damp tissue, don't scrub.\n2) From the center toward the corners.\n3) Add a second layer for color or shine. Remove makeup at night.",
   "skinAr": "كل درجات البشرة — اختبري عند الحساسية",
-  "skinEn": "All skin tones — patch-test if sensitive"
+  "skinEn": "All skin tones — patch-test if sensitive",
+  "stock": 25
 },
 {
   "id": 157,
@@ -507,7 +528,8 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) شفاه نظيفة. إن كانت خشنة: منديل رطب بلطف، بدون حك.\n٢) من المنتصف نحو الزوايا.\n٣) أضيفي طبقة ثانية للّون أو اللمعان. أزيلي مساءً إن كان مكياجاً.",
   "useEn": "1) Clean lips. Soften flakes with a damp tissue, don't scrub.\n2) From the center toward the corners.\n3) Add a second layer for color or shine. Remove makeup at night.",
   "skinAr": "كل درجات البشرة — اختبري عند الحساسية",
-  "skinEn": "All skin tones — patch-test if sensitive"
+  "skinEn": "All skin tones — patch-test if sensitive",
+  "stock": 25
 },
 {
   "id": 158,
@@ -530,7 +552,8 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) شفاه نظيفة. إن كانت خشنة: منديل رطب بلطف، بدون حك.\n٢) من المنتصف نحو الزوايا.\n٣) أضيفي طبقة ثانية للّون أو اللمعان. أزيلي مساءً إن كان مكياجاً.",
   "useEn": "1) Clean lips. Soften flakes with a damp tissue, don't scrub.\n2) From the center toward the corners.\n3) Add a second layer for color or shine. Remove makeup at night.",
   "skinAr": "كل درجات البشرة — اختبري عند الحساسية",
-  "skinEn": "All skin tones — patch-test if sensitive"
+  "skinEn": "All skin tones — patch-test if sensitive",
+  "stock": 25
 },
 {
   "id": 159,
@@ -553,7 +576,8 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) بعد المرطب وواقي الشمس.\n٢) كمية قليلة من وسط الوجه للخارج.\n٣) ابنِ التغطية تدريجياً. أزيلي المكياج كاملاً مساءً.",
   "useEn": "1) After moisturizer and SPF.\n2) A small amount from the center out.\n3) Build coverage slowly. Remove all makeup at night.",
   "skinAr": "كل درجات البشرة — اختبري عند الحساسية",
-  "skinEn": "All skin tones — patch-test if sensitive"
+  "skinEn": "All skin tones — patch-test if sensitive",
+  "stock": 25
 },
 {
   "id": 160,
@@ -576,7 +600,8 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) بعد المرطب وواقي الشمس.\n٢) كمية قليلة من وسط الوجه للخارج.\n٣) ابنِ التغطية تدريجياً. أزيلي المكياج كاملاً مساءً.",
   "useEn": "1) After moisturizer and SPF.\n2) A small amount from the center out.\n3) Build coverage slowly. Remove all makeup at night.",
   "skinAr": "كل درجات البشرة — اختبري عند الحساسية",
-  "skinEn": "All skin tones — patch-test if sensitive"
+  "skinEn": "All skin tones — patch-test if sensitive",
+  "stock": 25
 },
 {
   "id": 176,
@@ -599,7 +624,8 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) شعر مبلل جيداً.\n٢) الشامبو على الفروة فقط مع تدليك، والبلسم من منتصف الشعرة للأطراف ثم اشطفي.\n٣) السيروم بدون شطف: نقاط قليلة على أطراف جافة أو فروة نظيفة حسب العبوة — لا تُغرقي الشعر.",
   "useEn": "1) Fully wet hair.\n2) Shampoo the scalp only; conditioner from mid-lengths to ends, then rinse.\n3) Leave-in serum: a few drops on dry ends or a clean scalp as labeled.",
   "skinAr": "حسب نوع الشعر وفروة الرأس — ابدئي بكمية قليلة",
-  "skinEn": "According to hair/scalp type — start with a small amount"
+  "skinEn": "According to hair/scalp type — start with a small amount",
+  "stock": 25
 },
 {
   "id": 197,
@@ -622,6 +648,7 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) بعد المرطب وواقي الشمس.\n٢) كمية قليلة من وسط الوجه للخارج.\n٣) ابنِ التغطية تدريجياً. أزيلي المكياج كاملاً مساءً.",
   "useEn": "1) After moisturizer and SPF.\n2) A small amount from the center out.\n3) Build coverage slowly. Remove all makeup at night.",
   "skinAr": "كل درجات البشرة — اختبري عند الحساسية",
-  "skinEn": "All skin tones — patch-test if sensitive"
+  "skinEn": "All skin tones — patch-test if sensitive",
+  "stock": 25
 }
 );

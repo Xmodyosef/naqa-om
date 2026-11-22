@@ -22,6 +22,7 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) بعد التنظيف.\n٢) طبقة رقيقة حتى الامتصاص.\n٣) صباحاً واقي شمس. راقبي البشرة أول أسبوع.",
   "useEn": "1) After cleansing.\n2) A thin layer until absorbed.\n3) Daytime sunscreen. Watch skin the first week.",
   "skinAr": "معظم أنواع البشرة — راقبي أول أسبوع",
-  "skinEn": "Most skin types — watch the first week"
+  "skinEn": "Most skin types — watch the first week",
+  "stock": 25
 }
 );

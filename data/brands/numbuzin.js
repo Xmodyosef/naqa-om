@@ -22,7 +22,8 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) بعد الغسول، على راحة اليد أو قطنة.\n٢) مرّري على الوجه وتجنّبي محيط العين.\n٣) لا تشطفي. أكملي بسيروم ثم مرطب.",
   "useEn": "1) After cleansing, in palms or on a pad.\n2) Sweep the face, avoiding the eye area.\n3) Don't rinse. Follow with serum, then cream.",
   "skinAr": "البشرة الدهنية والمختلطة",
-  "skinEn": "Oily and combination skin"
+  "skinEn": "Oily and combination skin",
+  "stock": 25
 },
 {
   "id": 27,
@@ -45,7 +46,8 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) على بشرة نظيفة وجافة أو رطبة حسب القناع.\n٢) اتركيه ١٠–٢٠ دقيقة (أو حسب العبوة) ثم أزيليه أو ربّتي الباقي.\n٣) أكملي بمرطب. لا تستخدميه يومياً إن كان تقشيرياً.",
   "useEn": "1) Clean skin, damp or dry as the mask requires.\n2) Leave 10–20 minutes (or as labeled), then remove or pat in.\n3) Moisturize. Don't use daily if it exfoliates.",
   "skinAr": "معظم الأنواع، مع واقي شمس يومي لأن التفتيح يحتاج حماية",
-  "skinEn": "Most skin types, with daily SPF because brightening needs sun protection"
+  "skinEn": "Most skin types, with daily SPF because brightening needs sun protection",
+  "stock": 25
 },
 {
   "id": 91,
@@ -62,13 +64,14 @@ window.NAQA_PRODUCTS.push(
     "media/products/p91_4.webp"
   ],
   "nameAr": "كريم العين نومبوزين رقم 9 بالريتينول لشد منطقة اسفل العين - 10مل",
-  "nameEn": "Numbuzin Eye",
+  "nameEn": "Numbuzin No.9 Retinol Intense Eye Cream - 30ml",
   "descAr": "كريم العين نومبوزين رقم 9 بالريتينول لشد منطقة اسفل العين من Numbuzin، 10مل. يركّز على ريتينويد من أجل ملمس أنعم ومظهر الخطوط الدقيقة. مكانه في الروتين: على بشرة نظيفة تحت العين ١٠–٢٠ دقيقة، ثم أزيليه. يناسب: كل درجات البشرة — اختبري عند الحساسية.",
-  "descEn": "Numbuzin Eye by Numbuzin, 10 ml. Built around Retinoid for smoother texture and the look of fine lines. Where it sits: On clean under-eyes for 10–20 minutes, then remove. Best for: All complexions — patch-test if sensitive.",
+  "descEn": "Numbuzin No.9 Retinol Intense Eye Cream - 30ml, 10 ml. Built around Retinoid for smoother texture and the look of fine lines. Where it sits: On clean under-eyes for 10–20 minutes, then remove. Best for: All complexions — patch-test if sensitive.",
   "useAr": "١) بشرة نظيفة وجافة حول العين.\n٢) ضعي القطعة الهلامية تحت العين ١٥–٢٠ دقيقة وأنتِ مستلقية.\n٣) أزيليها وربّتي المتبقي بالبنصر — لا تشطفي بماء ساخن.\n٤) مرتان إلى أربع أسبوعياً. لا تستخدميها على جفن متهيّج.",
   "useEn": "1) Clean, dry under-eye skin.\n2) Lay the gel patch under the eye for 15–20 minutes while resting.\n3) Peel off and pat residue in with your ring finger.\n4) Two to four times a week. Skip irritated lids.",
   "skinAr": "كل درجات البشرة — اختبري عند الحساسية",
-  "skinEn": "All complexions — patch-test if sensitive"
+  "skinEn": "All complexions — patch-test if sensitive",
+  "stock": 25
 },
 {
   "id": 148,
@@ -91,6 +94,7 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) بعد الغسول، على راحة اليد أو قطنة.\n٢) مرّري على الوجه وتجنّبي محيط العين.\n٣) لا تشطفي. أكملي بسيروم ثم مرطب.",
   "useEn": "1) After cleansing, in palms or on a pad.\n2) Sweep the face, avoiding the eye area.\n3) Don't rinse. Follow with serum, then cream.",
   "skinAr": "البشرة الحساسة والجافة والمجهدة",
-  "skinEn": "Sensitive, dry, or stressed skin"
+  "skinEn": "Sensitive, dry, or stressed skin",
+  "stock": 25
 }
 );

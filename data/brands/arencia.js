@@ -24,7 +24,8 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) نظّفي الوجه واتركيه رطباً قليلاً.\n٢) قطرتان إلى ثلاث على الوجه والرقبة، واضغطي بالراحة حتى الامتصاص — لا تفركي بقوة ولا تشطفي.\n٣) أغلقي بمرطب. صباحاً: واقي شمس فوق الروتين.\n٤) ريتينول أو أحماض: ابدئي ليلاً يوماً بعد يوم.",
   "useEn": "1) Cleanse and leave skin slightly damp.\n2) Press 2–3 drops over face and neck until absorbed. Do not rinse.\n3) Seal with moisturizer. Morning: sunscreen on top.\n4) Retinoids or acids: start every other night.",
   "skinAr": "معظم الأنواع، مع واقي شمس يومي لأن التفتيح يحتاج حماية",
-  "skinEn": "Most skin types, with daily SPF because brightening needs sun protection"
+  "skinEn": "Most skin types, with daily SPF because brightening needs sun protection",
+  "stock": 25
 },
 {
   "id": 12,
@@ -47,7 +48,8 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) نظّفي الوجه واتركيه رطباً قليلاً.\n٢) قطرتان إلى ثلاث على الوجه والرقبة، واضغطي بالراحة حتى الامتصاص — لا تفركي بقوة ولا تشطفي.\n٣) أغلقي بمرطب. صباحاً: واقي شمس فوق الروتين.\n٤) ريتينول أو أحماض: ابدئي ليلاً يوماً بعد يوم.",
   "useEn": "1) Cleanse and leave skin slightly damp.\n2) Press 2–3 drops over face and neck until absorbed. Do not rinse.\n3) Seal with moisturizer. Morning: sunscreen on top.\n4) Retinoids or acids: start every other night.",
   "skinAr": "البشرة الدهنية والمختلطة",
-  "skinEn": "Oily and combination skin"
+  "skinEn": "Oily and combination skin",
+  "stock": 25
 },
 {
   "id": 16,
@@ -70,7 +72,8 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) نظّفي الوجه واتركيه رطباً قليلاً.\n٢) قطرتان إلى ثلاث على الوجه والرقبة، واضغطي بالراحة حتى الامتصاص — لا تفركي بقوة ولا تشطفي.\n٣) أغلقي بمرطب. صباحاً: واقي شمس فوق الروتين.\n٤) ريتينول أو أحماض: ابدئي ليلاً يوماً بعد يوم.",
   "useEn": "1) Cleanse and leave skin slightly damp.\n2) Press 2–3 drops over face and neck until absorbed. Do not rinse.\n3) Seal with moisturizer. Morning: sunscreen on top.\n4) Retinoids or acids: start every other night.",
   "skinAr": "البشرة الدهنية والمختلطة والمعرّضة للمسام",
-  "skinEn": "Oily, combination, pore-prone skin"
+  "skinEn": "Oily, combination, pore-prone skin",
+  "stock": 25
 },
 {
   "id": 29,
@@ -93,7 +96,8 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) نظّفي الوجه واتركيه رطباً قليلاً.\n٢) قطرتان إلى ثلاث على الوجه والرقبة، واضغطي بالراحة حتى الامتصاص — لا تفركي بقوة ولا تشطفي.\n٣) أغلقي بمرطب. صباحاً: واقي شمس فوق الروتين.\n٤) ريتينول أو أحماض: ابدئي ليلاً يوماً بعد يوم.",
   "useEn": "1) Cleanse and leave skin slightly damp.\n2) Press 2–3 drops over face and neck until absorbed. Do not rinse.\n3) Seal with moisturizer. Morning: sunscreen on top.\n4) Retinoids or acids: start every other night.",
   "skinAr": "معظم الأنواع، مع واقي شمس يومي لأن التفتيح يحتاج حماية",
-  "skinEn": "Most skin types, with daily SPF because brightening needs sun protection"
+  "skinEn": "Most skin types, with daily SPF because brightening needs sun protection",
+  "stock": 25
 },
 {
   "id": 32,
@@ -116,7 +120,8 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) نظّفي الوجه واتركيه رطباً قليلاً.\n٢) قطرتان إلى ثلاث على الوجه والرقبة، واضغطي بالراحة حتى الامتصاص — لا تفركي بقوة ولا تشطفي.\n٣) أغلقي بمرطب. صباحاً: واقي شمس فوق الروتين.\n٤) ريتينول أو أحماض: ابدئي ليلاً يوماً بعد يوم.",
   "useEn": "1) Cleanse and leave skin slightly damp.\n2) Press 2–3 drops over face and neck until absorbed. Do not rinse.\n3) Seal with moisturizer. Morning: sunscreen on top.\n4) Retinoids or acids: start every other night.",
   "skinAr": "معظم أنواع البشرة — راقبي أول أسبوع",
-  "skinEn": "Most skin types — watch the first week"
+  "skinEn": "Most skin types — watch the first week",
+  "stock": 25
 },
 {
   "id": 43,
@@ -139,7 +144,8 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) بلّلي الوجه بماء فاتر.\n٢) دلكي ٢٠ ثانية ثم اشطفي جيداً حتى يزول الرغوة.\n٣) جفّفي بالتربيت. إن كان تنظيفاً مزدوجاً: الزيتي أولاً ثم هذا.",
   "useEn": "1) Wet the face with lukewarm water.\n2) Massage 20 seconds, rinse until no foam remains.\n3) Pat dry. Double cleanse: oil first, then this.",
   "skinAr": "البشرة الدهنية والمختلطة",
-  "skinEn": "Oily and combination skin"
+  "skinEn": "Oily and combination skin",
+  "stock": 25
 },
 {
   "id": 95,
@@ -156,12 +162,13 @@ window.NAQA_PRODUCTS.push(
     "media/products/p95_4.webp"
   ],
   "nameAr": "سيروم أرينسيا بي دي أر إن بوستر شوت - 30مل",
-  "nameEn": "Arencia Eye",
+  "nameEn": "Arencia PDRN Booster Shot Serum - 30ml",
   "descAr": "سيروم أرينسيا بي دي أر إن بوستر شوت من Arencia، 30مل. تركيبة عملية للاستخدام المنتظم، بدون خطوات معقّدة. مكانه في الروتين: بعد الغسول والتونر، وقبل المرطب. لا يُشطف. يناسب: البشرة الجافة والمحتاجة.",
-  "descEn": "Arencia Eye by Arencia, 30 ml. A practical formula for regular use, without a complicated routine. Where it sits: After cleanser and toner, before moisturizer. Do not rinse off. Best for: Dry and dehydrated skin.",
+  "descEn": "Arencia PDRN Booster Shot Serum - 30ml, 30 ml. A practical formula for regular use, without a complicated routine. Where it sits: After cleanser and toner, before moisturizer. Do not rinse off. Best for: Dry and dehydrated skin.",
   "useAr": "١) نظّفي الوجه واتركيه رطباً قليلاً.\n٢) قطرتان إلى ثلاث على الوجه والرقبة، واضغطي بالراحة حتى الامتصاص — لا تفركي بقوة ولا تشطفي.\n٣) أغلقي بمرطب. صباحاً: واقي شمس فوق الروتين.\n٤) ريتينول أو أحماض: ابدئي ليلاً يوماً بعد يوم.",
   "useEn": "1) Cleanse and leave skin slightly damp.\n2) Press 2–3 drops over face and neck until absorbed. Do not rinse.\n3) Seal with moisturizer. Morning: sunscreen on top.\n4) Retinoids or acids: start every other night.",
   "skinAr": "البشرة الجافة والمحتاجة",
-  "skinEn": "Dry and dehydrated skin"
+  "skinEn": "Dry and dehydrated skin",
+  "stock": 25
 }
 );

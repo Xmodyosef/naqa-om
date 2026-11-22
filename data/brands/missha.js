@@ -16,13 +16,14 @@ window.NAQA_PRODUCTS.push(
     "media/products/p70_3.webp"
   ],
   "nameAr": "بي بي كريم بيرفكت إم من ميشا - رقم21 - 50مل",
-  "nameEn": "MISSHA Beauty",
+  "nameEn": "MISSHA Perfect M BB Cream #21 SPF42 - 50ml",
   "descAr": "بي بي كريم بيرفكت إم من ميشا - رقم21 من MISSHA، 50مل. تركيبة عملية للاستخدام المنتظم، بدون خطوات معقّدة. مكانه في الروتين: بعد العناية وواقي الشمس. يناسب: كل درجات البشرة — اختبري عند الحساسية.",
-  "descEn": "MISSHA Beauty by MISSHA, 50 ml. A practical formula for regular use, without a complicated routine. Where it sits: After skincare and sunscreen. Best for: All skin tones — patch-test if sensitive.",
+  "descEn": "MISSHA Perfect M BB Cream #21 SPF42 - 50ml, 50 ml. A practical formula for regular use, without a complicated routine. Where it sits: After skincare and sunscreen. Best for: All skin tones — patch-test if sensitive.",
   "useAr": "١) بعد المرطب وواقي الشمس.\n٢) كمية قليلة من وسط الوجه للخارج.\n٣) ابنِ التغطية تدريجياً. أزيلي المكياج كاملاً مساءً.",
   "useEn": "1) After moisturizer and SPF.\n2) A small amount from the center out.\n3) Build coverage slowly. Remove all makeup at night.",
   "skinAr": "كل درجات البشرة — اختبري عند الحساسية",
-  "skinEn": "All skin tones — patch-test if sensitive"
+  "skinEn": "All skin tones — patch-test if sensitive",
+  "stock": 25
 },
 {
   "id": 71,
@@ -39,13 +40,14 @@ window.NAQA_PRODUCTS.push(
     "media/products/p71_3.webp"
   ],
   "nameAr": "بي بي كريم بيرفكت إم من ميشا - رقم27 - 50مل",
-  "nameEn": "MISSHA Beauty",
+  "nameEn": "MISSHA Perfect M BB Cream #27 SPF42 - 50ml",
   "descAr": "بي بي كريم بيرفكت إم من ميشا - رقم27 من MISSHA، 50مل. تركيبة عملية للاستخدام المنتظم، بدون خطوات معقّدة. مكانه في الروتين: بعد العناية وواقي الشمس. يناسب: كل درجات البشرة — اختبري عند الحساسية.",
-  "descEn": "MISSHA Beauty by MISSHA, 50 ml. A practical formula for regular use, without a complicated routine. Where it sits: After skincare and sunscreen. Best for: All skin tones — patch-test if sensitive.",
+  "descEn": "MISSHA Perfect M BB Cream #27 SPF42 - 50ml, 50 ml. A practical formula for regular use, without a complicated routine. Where it sits: After skincare and sunscreen. Best for: All skin tones — patch-test if sensitive.",
   "useAr": "١) بعد المرطب وواقي الشمس.\n٢) كمية قليلة من وسط الوجه للخارج.\n٣) ابنِ التغطية تدريجياً. أزيلي المكياج كاملاً مساءً.",
   "useEn": "1) After moisturizer and SPF.\n2) A small amount from the center out.\n3) Build coverage slowly. Remove all makeup at night.",
   "skinAr": "كل درجات البشرة — اختبري عند الحساسية",
-  "skinEn": "All skin tones — patch-test if sensitive"
+  "skinEn": "All skin tones — patch-test if sensitive",
+  "stock": 25
 },
 {
   "id": 72,
@@ -62,13 +64,14 @@ window.NAQA_PRODUCTS.push(
     "media/products/p72_3.webp"
   ],
   "nameAr": "بي بي كريم بيرفكت إم من ميشا - رقم25 - 50مل",
-  "nameEn": "MISSHA Beauty",
+  "nameEn": "MISSHA Perfect M BB Cream #25 SPF42 - 50ml",
   "descAr": "بي بي كريم بيرفكت إم من ميشا - رقم25 من MISSHA، 50مل. تركيبة عملية للاستخدام المنتظم، بدون خطوات معقّدة. مكانه في الروتين: بعد العناية وواقي الشمس. يناسب: كل درجات البشرة — اختبري عند الحساسية.",
-  "descEn": "MISSHA Beauty by MISSHA, 50 ml. A practical formula for regular use, without a complicated routine. Where it sits: After skincare and sunscreen. Best for: All skin tones — patch-test if sensitive.",
+  "descEn": "MISSHA Perfect M BB Cream #25 SPF42 - 50ml, 50 ml. A practical formula for regular use, without a complicated routine. Where it sits: After skincare and sunscreen. Best for: All skin tones — patch-test if sensitive.",
   "useAr": "١) بعد المرطب وواقي الشمس.\n٢) كمية قليلة من وسط الوجه للخارج.\n٣) ابنِ التغطية تدريجياً. أزيلي المكياج كاملاً مساءً.",
   "useEn": "1) After moisturizer and SPF.\n2) A small amount from the center out.\n3) Build coverage slowly. Remove all makeup at night.",
   "skinAr": "كل درجات البشرة — اختبري عند الحساسية",
-  "skinEn": "All skin tones — patch-test if sensitive"
+  "skinEn": "All skin tones — patch-test if sensitive",
+  "stock": 25
 },
 {
   "id": 74,
@@ -92,7 +95,8 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) ابدئي بكمية قليلة على المكان المناسب.\n٢) لا تخلطيه مع مقشّر قوي في نفس الليلة إن كانت بشرتكِ جديدة عليه.\n٣) أوقفي الاستخدام عند التهيّج.",
   "useEn": "1) Start with a small amount on the right area.\n2) Don't stack with a strong exfoliant the same night at first.\n3) Stop if skin stings or stays red.",
   "skinAr": "كل درجات البشرة — اختبري عند الحساسية",
-  "skinEn": "All skin tones — patch-test if sensitive"
+  "skinEn": "All skin tones — patch-test if sensitive",
+  "stock": 25
 },
 {
   "id": 182,
@@ -114,6 +118,7 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) شعر مبلل جيداً.\n٢) الشامبو على الفروة فقط مع تدليك، والبلسم من منتصف الشعرة للأطراف ثم اشطفي.\n٣) السيروم بدون شطف: نقاط قليلة على أطراف جافة أو فروة نظيفة حسب العبوة — لا تُغرقي الشعر.",
   "useEn": "1) Fully wet hair.\n2) Shampoo the scalp only; conditioner from mid-lengths to ends, then rinse.\n3) Leave-in serum: a few drops on dry ends or a clean scalp as labeled.",
   "skinAr": "كل درجات البشرة — اختبري عند الحساسية",
-  "skinEn": "All skin tones — patch-test if sensitive"
+  "skinEn": "All skin tones — patch-test if sensitive",
+  "stock": 25
 }
 );

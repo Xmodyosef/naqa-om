@@ -22,7 +22,8 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) نظّفي الوجه واتركيه رطباً قليلاً.\n٢) قطرتان إلى ثلاث على الوجه والرقبة، واضغطي بالراحة حتى الامتصاص — لا تفركي بقوة ولا تشطفي.\n٣) أغلقي بمرطب. صباحاً: واقي شمس فوق الروتين.\n٤) ريتينول أو أحماض: ابدئي ليلاً يوماً بعد يوم.",
   "useEn": "1) Cleanse and leave skin slightly damp.\n2) Press 2–3 drops over face and neck until absorbed. Do not rinse.\n3) Seal with moisturizer. Morning: sunscreen on top.\n4) Retinoids or acids: start every other night.",
   "skinAr": "معظم أنواع البشرة — راقبي أول أسبوع",
-  "skinEn": "Most skin types — watch the first week"
+  "skinEn": "Most skin types — watch the first week",
+  "stock": 25
 },
 {
   "id": 54,
@@ -45,7 +46,8 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) نظّفي الوجه واتركيه رطباً قليلاً.\n٢) قطرتان إلى ثلاث على الوجه والرقبة، واضغطي بالراحة حتى الامتصاص — لا تفركي بقوة ولا تشطفي.\n٣) أغلقي بمرطب. صباحاً: واقي شمس فوق الروتين.\n٤) ريتينول أو أحماض: ابدئي ليلاً يوماً بعد يوم.",
   "useEn": "1) Cleanse and leave skin slightly damp.\n2) Press 2–3 drops over face and neck until absorbed. Do not rinse.\n3) Seal with moisturizer. Morning: sunscreen on top.\n4) Retinoids or acids: start every other night.",
   "skinAr": "البشرة الحساسة والجافة والمجهدة",
-  "skinEn": "Sensitive, dry, or stressed skin"
+  "skinEn": "Sensitive, dry, or stressed skin",
+  "stock": 25
 },
 {
   "id": 55,
@@ -68,7 +70,8 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) نظّفي الوجه واتركيه رطباً قليلاً.\n٢) قطرتان إلى ثلاث على الوجه والرقبة، واضغطي بالراحة حتى الامتصاص — لا تفركي بقوة ولا تشطفي.\n٣) أغلقي بمرطب. صباحاً: واقي شمس فوق الروتين.\n٤) ريتينول أو أحماض: ابدئي ليلاً يوماً بعد يوم.",
   "useEn": "1) Cleanse and leave skin slightly damp.\n2) Press 2–3 drops over face and neck until absorbed. Do not rinse.\n3) Seal with moisturizer. Morning: sunscreen on top.\n4) Retinoids or acids: start every other night.",
   "skinAr": "معظم أنواع البشرة — راقبي أول أسبوع",
-  "skinEn": "Most skin types — watch the first week"
+  "skinEn": "Most skin types — watch the first week",
+  "stock": 25
 },
 {
   "id": 105,
@@ -90,7 +93,8 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) جفن نظيف.\n٢) خط رفيع أو طبقة ظل، ثم امزجي قبل الجفاف.\n٣) الماسكارا من الجذور للأطراف بحركة متعرجة. أزيلي بمزيل لطيف.",
   "useEn": "1) Clean lid.\n2) Thin line or shadow, blend before it sets.\n3) Mascara root to tip in a zigzag. Remove with a gentle remover.",
   "skinAr": "كل درجات البشرة — اختبري عند الحساسية",
-  "skinEn": "All skin tones — patch-test if sensitive"
+  "skinEn": "All skin tones — patch-test if sensitive",
+  "stock": 25
 },
 {
   "id": 166,
@@ -115,7 +119,8 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) شعر مبلل جيداً.\n٢) الشامبو على الفروة فقط مع تدليك، والبلسم من منتصف الشعرة للأطراف ثم اشطفي.\n٣) السيروم بدون شطف: نقاط قليلة على أطراف جافة أو فروة نظيفة حسب العبوة — لا تُغرقي الشعر.",
   "useEn": "1) Fully wet hair.\n2) Shampoo the scalp only; conditioner from mid-lengths to ends, then rinse.\n3) Leave-in serum: a few drops on dry ends or a clean scalp as labeled.",
   "skinAr": "حسب نوع الشعر وفروة الرأس — ابدئي بكمية قليلة",
-  "skinEn": "According to hair/scalp type — start with a small amount"
+  "skinEn": "According to hair/scalp type — start with a small amount",
+  "stock": 25
 },
 {
   "id": 194,
@@ -138,6 +143,7 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) نظّفي الوجه واتركيه رطباً قليلاً.\n٢) قطرتان إلى ثلاث على الوجه والرقبة، واضغطي بالراحة حتى الامتصاص — لا تفركي بقوة ولا تشطفي.\n٣) أغلقي بمرطب. صباحاً: واقي شمس فوق الروتين.\n٤) ريتينول أو أحماض: ابدئي ليلاً يوماً بعد يوم.",
   "useEn": "1) Cleanse and leave skin slightly damp.\n2) Press 2–3 drops over face and neck until absorbed. Do not rinse.\n3) Seal with moisturizer. Morning: sunscreen on top.\n4) Retinoids or acids: start every other night.",
   "skinAr": "البشرة الدهنية والمختلطة والمعرّضة للمسام",
-  "skinEn": "Oily, combination, pore-prone skin"
+  "skinEn": "Oily, combination, pore-prone skin",
+  "stock": 25
 }
 );

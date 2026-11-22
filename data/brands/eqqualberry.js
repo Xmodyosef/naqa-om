@@ -22,7 +22,8 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) بعد التنظيف.\n٢) طبقة رقيقة حتى الامتصاص.\n٣) صباحاً واقي شمس. راقبي البشرة أول أسبوع.",
   "useEn": "1) After cleansing.\n2) A thin layer until absorbed.\n3) Daytime sunscreen. Watch skin the first week.",
   "skinAr": "معظم الأنواع، مع واقي شمس يومي لأن التفتيح يحتاج حماية",
-  "skinEn": "Most skin types, with daily SPF because brightening needs sun protection"
+  "skinEn": "Most skin types, with daily SPF because brightening needs sun protection",
+  "stock": 25
 },
 {
   "id": 25,
@@ -45,7 +46,8 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) نظّفي الوجه واتركيه رطباً قليلاً.\n٢) قطرتان إلى ثلاث على الوجه والرقبة، واضغطي بالراحة حتى الامتصاص — لا تفركي بقوة ولا تشطفي.\n٣) أغلقي بمرطب. صباحاً: واقي شمس فوق الروتين.\n٤) ريتينول أو أحماض: ابدئي ليلاً يوماً بعد يوم.",
   "useEn": "1) Cleanse and leave skin slightly damp.\n2) Press 2–3 drops over face and neck until absorbed. Do not rinse.\n3) Seal with moisturizer. Morning: sunscreen on top.\n4) Retinoids or acids: start every other night.",
   "skinAr": "معظم أنواع البشرة — راقبي أول أسبوع",
-  "skinEn": "Most skin types — watch the first week"
+  "skinEn": "Most skin types — watch the first week",
+  "stock": 25
 },
 {
   "id": 28,
@@ -68,6 +70,7 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) نظّفي الوجه واتركيه رطباً قليلاً.\n٢) قطرتان إلى ثلاث على الوجه والرقبة، واضغطي بالراحة حتى الامتصاص — لا تفركي بقوة ولا تشطفي.\n٣) أغلقي بمرطب. صباحاً: واقي شمس فوق الروتين.\n٤) ريتينول أو أحماض: ابدئي ليلاً يوماً بعد يوم.",
   "useEn": "1) Cleanse and leave skin slightly damp.\n2) Press 2–3 drops over face and neck until absorbed. Do not rinse.\n3) Seal with moisturizer. Morning: sunscreen on top.\n4) Retinoids or acids: start every other night.",
   "skinAr": "البشرة الحساسة والجافة والمجهدة",
-  "skinEn": "Sensitive, dry, or stressed skin"
+  "skinEn": "Sensitive, dry, or stressed skin",
+  "stock": 25
 }
 );

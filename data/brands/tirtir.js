@@ -16,13 +16,14 @@ window.NAQA_PRODUCTS.push(
     "media/products/p73_3.webp"
   ],
   "nameAr": "كريم أساس ماسك فيت ريد كوشن من تيرتير 23N رملي - 18ج",
-  "nameEn": "TIRTIR Beauty",
+  "nameEn": "TIRTIR Mask Fit Red Cushion Foundation 23N Sand - 18g",
   "descAr": "كريم أساس ماسك فيت ريد كوشن من تيرتير 23N رملي من TIRTIR، 18ج. تركيبة عملية للاستخدام المنتظم، بدون خطوات معقّدة. مكانه في الروتين: بعد العناية وواقي الشمس. يناسب: كل درجات البشرة — اختبري عند الحساسية.",
-  "descEn": "TIRTIR Beauty by TIRTIR, 18 g. A practical formula for regular use, without a complicated routine. Where it sits: After skincare and sunscreen. Best for: All skin tones — patch-test if sensitive.",
+  "descEn": "TIRTIR Mask Fit Red Cushion Foundation 23N Sand - 18g, 18 g. A practical formula for regular use, without a complicated routine. Where it sits: After skincare and sunscreen. Best for: All skin tones — patch-test if sensitive.",
   "useAr": "١) بعد المرطب وواقي الشمس.\n٢) كمية قليلة من وسط الوجه للخارج.\n٣) ابنِ التغطية تدريجياً. أزيلي المكياج كاملاً مساءً.",
   "useEn": "1) After moisturizer and SPF.\n2) A small amount from the center out.\n3) Build coverage slowly. Remove all makeup at night.",
   "skinAr": "كل درجات البشرة — اختبري عند الحساسية",
-  "skinEn": "All skin tones — patch-test if sensitive"
+  "skinEn": "All skin tones — patch-test if sensitive",
+  "stock": 25
 },
 {
   "id": 75,
@@ -44,6 +45,7 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) بعد المرطب وواقي الشمس.\n٢) كمية قليلة من وسط الوجه للخارج.\n٣) ابنِ التغطية تدريجياً. أزيلي المكياج كاملاً مساءً.",
   "useEn": "1) After moisturizer and SPF.\n2) A small amount from the center out.\n3) Build coverage slowly. Remove all makeup at night.",
   "skinAr": "كل درجات البشرة — اختبري عند الحساسية",
-  "skinEn": "All skin tones — patch-test if sensitive"
+  "skinEn": "All skin tones — patch-test if sensitive",
+  "stock": 25
 }
 );

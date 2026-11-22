@@ -22,7 +22,8 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) بعد السيروم خذي كمية بحجم حبة البازلاء.\n٢) وزّعي من الوسط للخارج على الوجه والرقبة.\n٣) صباحاً أكملي بواقي شمس. مساءً زيدي طبقة على الخدود الجافة إن لزم.",
   "useEn": "1) After serum, use a pea-sized amount.\n2) Smooth from the center outward, including the neck.\n3) Morning: sunscreen after. Night: extra on dry cheeks if needed.",
   "skinAr": "البشرة الحساسة",
-  "skinEn": "Sensitive skin"
+  "skinEn": "Sensitive skin",
+  "stock": 25
 },
 {
   "id": 164,
@@ -45,6 +46,7 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) بعد السيروم خذي كمية بحجم حبة البازلاء.\n٢) وزّعي من الوسط للخارج على الوجه والرقبة.\n٣) صباحاً أكملي بواقي شمس. مساءً زيدي طبقة على الخدود الجافة إن لزم.",
   "useEn": "1) After serum, use a pea-sized amount.\n2) Smooth from the center outward, including the neck.\n3) Morning: sunscreen after. Night: extra on dry cheeks if needed.",
   "skinAr": "البشرة الحساسة",
-  "skinEn": "Sensitive skin"
+  "skinEn": "Sensitive skin",
+  "stock": 25
 }
 );

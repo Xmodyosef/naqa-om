@@ -20,13 +20,17 @@
         document.getElementById("savebar").hidden = true;
         document.getElementById("pin").hidden = false;
         document.getElementById("pinInput").value = "";
+        if (A.clearSession) A.clearSession();
       }
     };
     document.getElementById("btnChangePin").onclick = function () {
       var n = prompt(A.t("setNewPin"));
       if (!n || n.trim().length < 4) return;
-      localStorage.setItem(A.PIN, n.trim());
-      A.setMsg("settingsStatus", A.t("setPinOk"));
+      A.hashPin(n.trim()).then(function (h) {
+        localStorage.setItem(A.PIN_HASH, h);
+        localStorage.removeItem(A.PIN);
+        A.setMsg("settingsStatus", A.t("setPinOk"));
+      });
     };
   };
   A.saveLocal = function () {

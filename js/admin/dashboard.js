@@ -36,46 +36,31 @@
     var recent = A.orders.slice(0, 6).map(function (o) {
       var st = A.normalizeStatus(o.status);
       return '<div class="cust-row"><div><strong>' + A.esc(o.id) + '</strong><small>' + A.esc(o.name || "") + ' · ' + A.esc(A.statusLabel(st) || "") + ' · ' + A.esc(o.area || "") + '</small></div><strong>' + A.esc(o.total != null ? Number(o.total).toFixed(3) : "—") + '</strong></div>';
-    }).join("") || '<p class="note">ما في طلبات حديثة. اطلبي من المتجر على نفس الجهاز.</p>';
+    }).join("") || '<p class="note">' + A.t("d_noRecent") + '</p>';
     var topHtml = topProducts.length
       ? topProducts.map(function (t) {
-          return '<div class="cust-row"><div><strong>' + A.esc(t.name) + '</strong><small>×' + t.qty + ' قطعة</small></div><strong>' + t.rev.toFixed(3) + '</strong></div>';
+          return '<div class="cust-row"><div><strong>' + A.esc(t.name) + '</strong><small>×' + t.qty + ' ' + A.t("d_pcs") + '</small></div><strong>' + t.rev.toFixed(3) + '</strong></div>';
         }).join("")
-      : '<p class="note">لما توصل طلبات بمنتجات، يظهر هنا الأكثر مبيعاً.</p>';
+      : '<p class="note">' + A.t("d_noTop") + '</p>';
     var lowHtml = lowList.length
-      ? lowList.slice(0, 8).map(function (x) {
-          return '<div class="cust-row"><div><strong>' + A.esc(x.name) + '</strong><small>SKU ' + A.esc(x.sku || "—") + '</small></div><strong style="color:#b05c6e">' + x.stock + '</strong></div>';
+      ? lowList.slice(0, 8).map(function (l) {
+          return '<div class="cust-row"><div><strong>' + A.esc(l.name) + '</strong><small>SKU ' + A.esc(l.sku || "—") + '</small></div><strong>' + l.stock + ' ' + A.t("d_left") + '</strong></div>';
         }).join("")
-      : '<p class="note">ما في منتجات بمخزون منخفض (≤٣) أو المخزون غير محدد.</p>';
+      : '<p class="note">' + A.t("d_noLow") + '</p>';
     box.innerHTML =
       '<div class="stat-grid">'
-      + '<div class="stat"><strong>' + sales.toFixed(3) + '</strong><span>مبيعات ر.ع</span></div>'
-      + '<div class="stat"><strong>' + active + '</strong><span>طلبات فعّالة</span></div>'
-      + '<div class="stat"><strong>' + neu + '</strong><span>جديد يحتاج متابعة</span></div>'
-      + '<div class="stat"><strong>' + lowStock + '</strong><span>مخزون ≤ ٣</span></div>'
+      + '<div class="stat"><strong>' + sales.toFixed(3) + '</strong><span>' + A.t("d_sales") + '</span></div>'
+      + '<div class="stat"><strong>' + active + '</strong><span>' + A.t("d_orders") + '</span></div>'
+      + '<div class="stat"><strong>' + neu + '</strong><span>' + A.t("d_new") + '</span></div>'
+      + '<div class="stat"><strong>' + prep + '</strong><span>' + A.t("d_prep") + '</span></div>'
+      + '<div class="stat"><strong>' + ship + '</strong><span>' + A.t("d_ship") + '</span></div>'
+      + '<div class="stat"><strong>' + delivered + '</strong><span>' + A.t("d_done") + '</span></div>'
+      + '<div class="stat"><strong>' + lowStock + '</strong><span>' + A.t("d_low") + '</span></div>'
+      + '<div class="stat"><strong>' + hidden + '</strong><span>' + A.t("d_hidden") + '</span></div>'
       + '</div>'
-      + '<div class="panel"><h2>حالات الطلبات</h2>'
-      + '<div class="status-bar" style="margin:0">'
-      + '<button type="button" data-go="orders">جديد ' + neu + '</button>'
-      + '<button type="button" data-go="orders">تجهيز ' + prep + '</button>'
-      + '<button type="button" data-go="orders">توصيل ' + ship + '</button>'
-      + '<button type="button" data-go="orders">تم ' + delivered + '</button>'
-      + '</div></div>'
-      + '<div class="panel"><h2>اختصارات</h2>'
-      + '<div class="status-bar" style="margin:0">'
-      + '<button type="button" data-go="orders">الطلبات</button>'
-      + '<button type="button" data-go="products">المنتجات</button>'
-      + '<button type="button" data-go="customers">العملاء</button>'
-      + '<button type="button" data-go="finance">المالية</button>'
-      + '</div></div>'
-      + '<div class="panel"><h2>آخر الطلبات</h2>' + recent + '</div>'
-      + '<div class="panel"><h2>الأكثر مبيعاً (من الطلبات)</h2>' + topHtml + '</div>'
-      + '<div class="panel"><h2>تنبيه مخزون</h2>' + lowHtml + '</div>'
-      + '<p class="note">مخفي من المتجر: ' + hidden + ' · كتالوج: ' + A.products.length + ' منتج</p>';
+      + '<div class="panel"><h2>' + A.t("d_recent") + '</h2>' + recent + '</div>'
+      + '<div class="panel"><h2>' + A.t("d_top") + '</h2>' + topHtml + '</div>'
+      + '<div class="panel"><h2>' + A.t("d_lowTitle") + '</h2>' + lowHtml + '</div>'
+      + '<p class="note">' + A.t("d_note") + '</p>';
   };
-  document.addEventListener("click", function (e) {
-    var b = e.target.closest("[data-go]");
-    if (!b || !document.getElementById("dashBox") || !document.getElementById("dashBox").contains(b)) return;
-    if (A.setTab) A.setTab(b.getAttribute("data-go"));
-  });
 })(window);

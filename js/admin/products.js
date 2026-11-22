@@ -8,6 +8,17 @@
     listView.hidden = false;
     editView.hidden = true;
     q = (q || "").toLowerCase();
+    var low = 0, out = 0;
+    A.products.forEach(function (p) {
+      var m = A.merged(p);
+      if (m.stock === "" || m.stock == null) return;
+      var n = Number(m.stock);
+      if (n <= 0) out++;
+      else if (n <= 3) low++;
+    });
+    var inv = '<div class="panel" style="margin-bottom:10px"><h2>' + A.t("p_invTitle") + '</h2>'
+      + '<p class="note">' + A.t("p_invNote") + '</p>'
+      + '<small>' + A.t("p_low") + ': <b>' + low + '</b> · ' + A.t("p_out") + ': <b>' + out + '</b></small></div>';
     var html = A.products.filter(function (p) {
       var m = A.merged(p);
       var blob = [m.nameAr, m.nameEn, m.brand, m.sku, p.id].join(" ").toLowerCase();
@@ -17,14 +28,16 @@
       var img = (m.imgs && m.imgs[0]) || "";
       var thumb = img ? '<img src="' + A.esc(img) + '" alt="">' : '<div class="ph"></div>';
       var stock = m.stock === "" || m.stock == null ? "—" : m.stock;
-      var hid = m.hidden ? " · مخفي" : "";
+      var stockN = Number(m.stock);
+      var stockCls = (m.stock !== "" && m.stock != null && stockN <= 0) ? ' style="color:#b05c6e;font-weight:800"' : (m.stock != null && m.stock !== "" && stockN <= 3 ? ' style="color:#c9a227;font-weight:800"' : "");
+      var hid = m.hidden ? " · " + A.t("p_hidden") : "";
       return '<article class="row" data-open="' + p.id + '">' + thumb
         + '<div><strong>' + A.esc(m.nameAr || m.nameEn) + '</strong>'
         + '<small>' + A.esc(m.brand || "") + ' · ' + A.esc(m.cat || "") + ' · SKU ' + A.esc(m.sku || "—") + '</small>'
-        + '<small>السعر ' + A.esc(m.price) + ' ر.ع <span style="color:#9a7b72;font-size:11px">شامل الضريبة ٥٪</span> · المخزون ' + A.esc(stock) + hid + '</small></div>'
-        + '<button type="button" class="edit-btn" data-open="' + p.id + '">تعديل كامل</button></article>';
+        + '<small>' + A.t("p_price") + ' ' + A.esc(m.price) + ' ' + A.t("omr") + ' <span style="color:#9a7b72;font-size:11px">' + A.t("vatInc") + '</span> · ' + A.t("p_stock") + ' <span' + stockCls + '>' + A.esc(stock) + '</span>' + hid + '</small></div>'
+        + '<button type="button" class="edit-btn" data-open="' + p.id + '">' + A.t("p_edit") + '</button></article>';
     }).join("");
-    document.getElementById("list").innerHTML = '<p class="note" id="vatAdminNote" style="color:#9a7b72;margin:0 0 10px">كل الأصناف · الأسعار شاملة ضريبة القيمة المضافة ٥٪</p>' + (html || '<p class="note">ما في نتائج</p>');
+    document.getElementById("list").innerHTML = inv + '<p class="note" id="vatAdminNote" style="color:#9a7b72;margin:0 0 10px">' + A.t("p_vatNote") + '</p>' + (html || '<p class="note">' + A.t("p_empty") + '</p>');
   };
   A.openEdit = function (id) {
     var p = A.products.find(function (x) { return x.id == id; });
@@ -38,28 +51,28 @@
     }).join("");
     var imgs = (m.imgs || []).join("\n");
     document.getElementById("editView").innerHTML =
-      '<button type="button" class="back" id="backList">← رجوع للقائمة</button>'
+      '<button type="button" class="back" id="backList">' + A.t("p_back") + '</button>'
       + '<div class="edit-card">'
       + '<div class="preview">' + ((m.imgs && m.imgs[0]) ? '<img src="' + A.esc(m.imgs[0]) + '" alt="">' : '<div class="ph big"></div>') + '</div>'
-      + '<label>الاسم عربي<textarea id="f_nameAr" rows="2">' + A.esc(m.nameAr || "") + '</textarea></label>'
-      + '<label>الاسم English<textarea id="f_nameEn" rows="2">' + A.esc(m.nameEn || "") + '</textarea></label>'
+      + '<label>' + A.t("p_nameAr") + '<textarea id="f_nameAr" rows="2">' + A.esc(m.nameAr || "") + '</textarea></label>'
+      + '<label>' + A.t("p_nameEn") + '<textarea id="f_nameEn" rows="2">' + A.esc(m.nameEn || "") + '</textarea></label>'
       + '<div class="grid2">'
-      + '<label>الماركة<input id="f_brand" type="text" value="' + A.esc(m.brand || "") + '"></label>'
-      + '<label>التصنيف<select id="f_cat">' + catOpts + '</select></label></div>'
-      + '<label>SKU<input id="f_sku" type="text" value="' + A.esc(m.sku || "") + '"></label>'
+      + '<label>' + A.t("p_brand") + '<input id="f_brand" type="text" value="' + A.esc(m.brand || "") + '"></label>'
+      + '<label>' + A.t("p_cat") + '<select id="f_cat">' + catOpts + '</select></label></div>'
+      + '<label>' + A.t("p_sku") + '<input id="f_sku" type="text" value="' + A.esc(m.sku || "") + '"></label>'
       + '<div class="grid3">'
-      + '<label>السعر ر.ع <span style="color:#9a7b72;font-size:11px;font-weight:600">شامل الضريبة ٥٪</span><input id="f_price" type="number" min="0" step="0.001" value="' + A.esc(m.price) + '"></label>'
-      + '<label>قبل الخصم<input id="f_was" type="number" min="0" step="0.001" value="' + A.esc(m.was) + '"></label>'
-      + '<label>الكمية<input id="f_stock" type="number" min="0" step="1" value="' + A.esc(m.stock) + '"></label></div>'
-      + '<label class="hide-row"><input id="f_hidden" type="checkbox"' + (m.hidden ? " checked" : "") + '> إخفاء المنتج</label>'
-      + '<label>الوصف عربي<textarea id="f_descAr" rows="4">' + A.esc(m.descAr || "") + '</textarea></label>'
-      + '<label>الوصف English<textarea id="f_descEn" rows="4">' + A.esc(m.descEn || "") + '</textarea></label>'
-      + '<label>الاستعمال عربي<textarea id="f_useAr" rows="4">' + A.esc(m.useAr || "") + '</textarea></label>'
-      + '<label>الاستعمال English<textarea id="f_useEn" rows="4">' + A.esc(m.useEn || "") + '</textarea></label>'
-      + '<label>يناسب (عربي)<input id="f_skinAr" type="text" value="' + A.esc(m.skinAr || "") + '"></label>'
-      + '<label>Best for<input id="f_skinEn" type="text" value="' + A.esc(m.skinEn || "") + '"></label>'
-      + '<label>صور (سطر لكل رابط)<textarea id="f_imgs" rows="5">' + A.esc(imgs) + '</textarea></label>'
-      + '<button type="button" class="primary" id="saveEdit">حفظ هذا المنتج</button></div>';
+      + '<label>' + A.t("p_priceLab") + ' <span style="color:#9a7b72;font-size:11px;font-weight:600">' + A.t("vatInc") + '</span><input id="f_price" type="number" min="0" step="0.001" value="' + A.esc(m.price) + '"></label>'
+      + '<label>' + A.t("p_was") + '<input id="f_was" type="number" min="0" step="0.001" value="' + A.esc(m.was) + '"></label>'
+      + '<label>' + A.t("p_qty") + '<input id="f_stock" type="number" min="0" step="1" value="' + A.esc(m.stock) + '"></label></div>'
+      + '<label class="hide-row"><input id="f_hidden" type="checkbox"' + (m.hidden ? " checked" : "") + '> ' + A.t("p_hide") + '</label>'
+      + '<label>' + A.t("p_descAr") + '<textarea id="f_descAr" rows="4">' + A.esc(m.descAr || "") + '</textarea></label>'
+      + '<label>' + A.t("p_descEn") + '<textarea id="f_descEn" rows="4">' + A.esc(m.descEn || "") + '</textarea></label>'
+      + '<label>' + A.t("p_useAr") + '<textarea id="f_useAr" rows="4">' + A.esc(m.useAr || "") + '</textarea></label>'
+      + '<label>' + A.t("p_useEn") + '<textarea id="f_useEn" rows="4">' + A.esc(m.useEn || "") + '</textarea></label>'
+      + '<label>' + A.t("p_skinAr") + '<input id="f_skinAr" type="text" value="' + A.esc(m.skinAr || "") + '"></label>'
+      + '<label>' + A.t("p_skinEn") + '<input id="f_skinEn" type="text" value="' + A.esc(m.skinEn || "") + '"></label>'
+      + '<label>' + A.t("p_imgs") + '<textarea id="f_imgs" rows="5">' + A.esc(imgs) + '</textarea></label>'
+      + '<button type="button" class="primary" id="saveEdit">' + A.t("p_save") + '</button></div>';
     document.getElementById("backList").onclick = function () { A.paintList(document.getElementById("q").value.trim()); };
     document.getElementById("saveEdit").onclick = function () { A.saveEdit(); };
   };
@@ -84,7 +97,7 @@
     if (Object.keys(next).length) A.overrides[A.editingId] = next;
     else delete A.overrides[A.editingId];
     localStorage.setItem(A.KEY, JSON.stringify(A.overrides));
-    A.setMsg("status", "انحفظ المنتج.");
+    A.setMsg("status", A.t("p_saved"));
     A.paintList(document.getElementById("q").value.trim());
   };
 })(window);

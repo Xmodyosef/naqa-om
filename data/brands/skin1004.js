@@ -22,7 +22,8 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) بعد السيروم خذي كمية بحجم حبة البازلاء.\n٢) وزّعي من الوسط للخارج على الوجه والرقبة.\n٣) صباحاً أكملي بواقي شمس. مساءً زيدي طبقة على الخدود الجافة إن لزم.",
   "useEn": "1) After serum, use a pea-sized amount.\n2) Smooth from the center outward, including the neck.\n3) Morning: sunscreen after. Night: extra on dry cheeks if needed.",
   "skinAr": "البشرة الحساسة والجافة والمجهدة",
-  "skinEn": "Sensitive, dry, or stressed skin"
+  "skinEn": "Sensitive, dry, or stressed skin",
+  "stock": 25
 },
 {
   "id": 20,
@@ -45,7 +46,8 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) بعد السيروم خذي كمية بحجم حبة البازلاء.\n٢) وزّعي من الوسط للخارج على الوجه والرقبة.\n٣) صباحاً أكملي بواقي شمس. مساءً زيدي طبقة على الخدود الجافة إن لزم.",
   "useEn": "1) After serum, use a pea-sized amount.\n2) Smooth from the center outward, including the neck.\n3) Morning: sunscreen after. Night: extra on dry cheeks if needed.",
   "skinAr": "معظم أنواع البشرة — مع واقي شمس يومي عند التفتيح",
-  "skinEn": "Most skin types — daily SPF when brightening"
+  "skinEn": "Most skin types — daily SPF when brightening",
+  "stock": 25
 },
 {
   "id": 65,
@@ -67,7 +69,8 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) بلّلي الوجه بماء فاتر.\n٢) دلكي ٢٠ ثانية ثم اشطفي جيداً حتى يزول الرغوة.\n٣) جفّفي بالتربيت. إن كان تنظيفاً مزدوجاً: الزيتي أولاً ثم هذا.",
   "useEn": "1) Wet the face with lukewarm water.\n2) Massage 20 seconds, rinse until no foam remains.\n3) Pat dry. Double cleanse: oil first, then this.",
   "skinAr": "البشرة الحساسة والجافة والمجهدة",
-  "skinEn": "Sensitive, dry, or stressed skin"
+  "skinEn": "Sensitive, dry, or stressed skin",
+  "stock": 25
 },
 {
   "id": 66,
@@ -89,7 +92,8 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) بلّلي الوجه بماء فاتر.\n٢) دلكي ٢٠ ثانية ثم اشطفي جيداً حتى يزول الرغوة.\n٣) جفّفي بالتربيت. إن كان تنظيفاً مزدوجاً: الزيتي أولاً ثم هذا.",
   "useEn": "1) Wet the face with lukewarm water.\n2) Massage 20 seconds, rinse until no foam remains.\n3) Pat dry. Double cleanse: oil first, then this.",
   "skinAr": "البشرة الحساسة والجافة والمجهدة",
-  "skinEn": "Sensitive, dry, or stressed skin"
+  "skinEn": "Sensitive, dry, or stressed skin",
+  "stock": 25
 },
 {
   "id": 106,
@@ -105,13 +109,14 @@ window.NAQA_PRODUCTS.push(
     "media/products/p106_3.webp"
   ],
   "nameAr": "كريم العين بروبيوتيك سنتيلا باكوشيول من سكين1004 - 20مل",
-  "nameEn": "SKIN1004 Eye",
+  "nameEn": "SKIN1004 Probio-Cica Bakuchiol Eye Cream - 20ml",
   "descAr": "كريم العين بروبيوتيك سنتيلا باكوشيول من سكين1004 من SKIN1004، 20مل. يركّز على سنتيلا من أجل تهدئة واحمرار. مكانه في الروتين: آخر خطوة عناية (أو قبل واقي الشمس صباحاً). يناسب: البشرة الحساسة والجافة والمجهدة.",
-  "descEn": "SKIN1004 Eye by SKIN1004, 20 ml. Built around Centella for calming redness. Where it sits: Last skincare step (or before SPF in the morning). Best for: Sensitive, dry, or stressed skin.",
+  "descEn": "SKIN1004 Probio-Cica Bakuchiol Eye Cream - 20ml, 20 ml. Built around Centella for calming redness. Where it sits: Last skincare step (or before SPF in the morning). Best for: Sensitive, dry, or stressed skin.",
   "useAr": "١) بعد السيروم خذي كمية بحجم حبة البازلاء.\n٢) وزّعي من الوسط للخارج على الوجه والرقبة.\n٣) صباحاً أكملي بواقي شمس. مساءً زيدي طبقة على الخدود الجافة إن لزم.",
   "useEn": "1) After serum, use a pea-sized amount.\n2) Smooth from the center outward, including the neck.\n3) Morning: sunscreen after. Night: extra on dry cheeks if needed.",
   "skinAr": "البشرة الحساسة والجافة والمجهدة",
-  "skinEn": "Sensitive, dry, or stressed skin"
+  "skinEn": "Sensitive, dry, or stressed skin",
+  "stock": 25
 },
 {
   "id": 147,
@@ -134,7 +139,8 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) بعد الغسول، على راحة اليد أو قطنة.\n٢) مرّري على الوجه وتجنّبي محيط العين.\n٣) لا تشطفي. أكملي بسيروم ثم مرطب.",
   "useEn": "1) After cleansing, in palms or on a pad.\n2) Sweep the face, avoiding the eye area.\n3) Don't rinse. Follow with serum, then cream.",
   "skinAr": "معظم أنواع البشرة — مع واقي شمس يومي عند التفتيح",
-  "skinEn": "Most skin types — daily SPF when brightening"
+  "skinEn": "Most skin types — daily SPF when brightening",
+  "stock": 25
 },
 {
   "id": 200,
@@ -156,6 +162,7 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) نظّفي الوجه واتركيه رطباً قليلاً.\n٢) قطرتان إلى ثلاث على الوجه والرقبة، واضغطي بالراحة حتى الامتصاص — لا تفركي بقوة ولا تشطفي.\n٣) أغلقي بمرطب. صباحاً: واقي شمس فوق الروتين.\n٤) ريتينول أو أحماض: ابدئي ليلاً يوماً بعد يوم.",
   "useEn": "1) Cleanse and leave skin slightly damp.\n2) Press 2–3 drops over face and neck until absorbed. Do not rinse.\n3) Seal with moisturizer. Morning: sunscreen on top.\n4) Retinoids or acids: start every other night.",
   "skinAr": "البشرة الحساسة والجافة والمجهدة",
-  "skinEn": "Sensitive, dry, or stressed skin"
+  "skinEn": "Sensitive, dry, or stressed skin",
+  "stock": 25
 }
 );

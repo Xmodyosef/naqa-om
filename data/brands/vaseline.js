@@ -23,6 +23,7 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) شفاه نظيفة. إن كانت خشنة: منديل رطب بلطف، بدون حك.\n٢) من المنتصف نحو الزوايا.\n٣) أضيفي طبقة ثانية للّون أو اللمعان. أزيلي مساءً إن كان مكياجاً.",
   "useEn": "1) Clean lips. Soften flakes with a damp tissue, don't scrub.\n2) From the center toward the corners.\n3) Add a second layer for color or shine. Remove makeup at night.",
   "skinAr": "كل درجات البشرة — اختبري عند الحساسية",
-  "skinEn": "All skin tones — patch-test if sensitive"
+  "skinEn": "All skin tones — patch-test if sensitive",
+  "stock": 25
 }
 );

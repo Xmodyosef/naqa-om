@@ -22,7 +22,8 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) بعد التنظيف.\n٢) طبقة رقيقة حتى الامتصاص.\n٣) صباحاً واقي شمس. راقبي البشرة أول أسبوع.",
   "useEn": "1) After cleansing.\n2) A thin layer until absorbed.\n3) Daytime sunscreen. Watch skin the first week.",
   "skinAr": "البشرة الدهنية والمختلطة",
-  "skinEn": "Oily and combination skin"
+  "skinEn": "Oily and combination skin",
+  "stock": 25
 },
 {
   "id": 92,
@@ -39,13 +40,14 @@ window.NAQA_PRODUCTS.push(
     "media/products/p92_4.webp"
   ],
   "nameAr": "باتش أبيب بي دي آر إن والريتينال لإشراقة وتجديد منطقة العين – 60 قطعة",
-  "nameEn": "Abib Eye",
+  "nameEn": "Abib PDRN Collagen Retinal Eye Patch - 60pcs",
   "descAr": "باتش أبيب بي دي آر إن والريتينال لإشراقة وتجديد منطقة العين من Abib، 60 قطعة. يركّز على ريتينويد من أجل ملمس أنعم ومظهر الخطوط الدقيقة. مكانه في الروتين: بعد التنظيف، قبل أو بدل المرطب حسب القوام. يناسب: معظم أنواع البشرة — مع واقي شمس يومي عند التفتيح.",
-  "descEn": "Abib Eye by Abib, 60 pcs. Built around Retinoid for smoother texture and the look of fine lines. Where it sits: After cleansing, before or instead of cream depending on texture. Best for: Most skin types — daily SPF when brightening.",
+  "descEn": "Abib PDRN Collagen Retinal Eye Patch - 60pcs, 60 pcs. Built around Retinoid for smoother texture and the look of fine lines. Where it sits: After cleansing, before or instead of cream depending on texture. Best for: Most skin types — daily SPF when brightening.",
   "useAr": "١) بعد التنظيف.\n٢) طبقة رقيقة حتى الامتصاص.\n٣) صباحاً واقي شمس. راقبي البشرة أول أسبوع.",
   "useEn": "1) After cleansing.\n2) A thin layer until absorbed.\n3) Daytime sunscreen. Watch skin the first week.",
   "skinAr": "معظم أنواع البشرة — مع واقي شمس يومي عند التفتيح",
-  "skinEn": "Most skin types — daily SPF when brightening"
+  "skinEn": "Most skin types — daily SPF when brightening",
+  "stock": 25
 },
 {
   "id": 98,
@@ -62,12 +64,13 @@ window.NAQA_PRODUCTS.push(
     "media/products/p98_4.webp"
   ],
   "nameAr": "باتش أبيب بالكولاجين وزهرة أريحا جيلي لمنطقة العين - 60 قطعة",
-  "nameEn": "Abib Eye",
+  "nameEn": "Abib Collagen Jericho Rose Jelly Eye Patch - 60pcs",
   "descAr": "باتش أبيب بالكولاجين وزهرة أريحا جيلي لمنطقة العين من Abib، 60 قطعة. يركّز على ببتيدات من أجل مرونة ومظهر ممتلئ. مكانه في الروتين: بعد التنظيف، قبل أو بدل المرطب حسب القوام. يناسب: البشرة الجافة والمحتاجة.",
-  "descEn": "Abib Eye by Abib, 60 pcs. Built around Peptides for a firmer, bouncier look. Where it sits: After cleansing, before or instead of cream depending on texture. Best for: Dry and dehydrated skin.",
+  "descEn": "Abib Collagen Jericho Rose Jelly Eye Patch - 60pcs, 60 pcs. Built around Peptides for a firmer, bouncier look. Where it sits: After cleansing, before or instead of cream depending on texture. Best for: Dry and dehydrated skin.",
   "useAr": "١) بعد التنظيف.\n٢) طبقة رقيقة حتى الامتصاص.\n٣) صباحاً واقي شمس. راقبي البشرة أول أسبوع.",
   "useEn": "1) After cleansing.\n2) A thin layer until absorbed.\n3) Daytime sunscreen. Watch skin the first week.",
   "skinAr": "البشرة الجافة والمحتاجة",
-  "skinEn": "Dry and dehydrated skin"
+  "skinEn": "Dry and dehydrated skin",
+  "stock": 25
 }
 );

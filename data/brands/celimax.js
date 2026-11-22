@@ -24,7 +24,8 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) نظّفي الوجه واتركيه رطباً قليلاً.\n٢) قطرتان إلى ثلاث على الوجه والرقبة، واضغطي بالراحة حتى الامتصاص — لا تفركي بقوة ولا تشطفي.\n٣) أغلقي بمرطب. صباحاً: واقي شمس فوق الروتين.\n٤) ريتينول أو أحماض: ابدئي ليلاً يوماً بعد يوم.",
   "useEn": "1) Cleanse and leave skin slightly damp.\n2) Press 2–3 drops over face and neck until absorbed. Do not rinse.\n3) Seal with moisturizer. Morning: sunscreen on top.\n4) Retinoids or acids: start every other night.",
   "skinAr": "البشرة الدهنية والمختلطة",
-  "skinEn": "Oily and combination skin"
+  "skinEn": "Oily and combination skin",
+  "stock": 25
 },
 {
   "id": 9,
@@ -47,7 +48,8 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) نظّفي الوجه واتركيه رطباً قليلاً.\n٢) قطرتان إلى ثلاث على الوجه والرقبة، واضغطي بالراحة حتى الامتصاص — لا تفركي بقوة ولا تشطفي.\n٣) أغلقي بمرطب. صباحاً: واقي شمس فوق الروتين.\n٤) ريتينول أو أحماض: ابدئي ليلاً يوماً بعد يوم.",
   "useEn": "1) Cleanse and leave skin slightly damp.\n2) Press 2–3 drops over face and neck until absorbed. Do not rinse.\n3) Seal with moisturizer. Morning: sunscreen on top.\n4) Retinoids or acids: start every other night.",
   "skinAr": "معظم أنواع البشرة — مع واقي شمس يومي عند التفتيح",
-  "skinEn": "Most skin types — daily SPF when brightening"
+  "skinEn": "Most skin types — daily SPF when brightening",
+  "stock": 25
 },
 {
   "id": 10,
@@ -70,7 +72,8 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) نظّفي الوجه واتركيه رطباً قليلاً.\n٢) قطرتان إلى ثلاث على الوجه والرقبة، واضغطي بالراحة حتى الامتصاص — لا تفركي بقوة ولا تشطفي.\n٣) أغلقي بمرطب. صباحاً: واقي شمس فوق الروتين.\n٤) ريتينول أو أحماض: ابدئي ليلاً يوماً بعد يوم.",
   "useEn": "1) Cleanse and leave skin slightly damp.\n2) Press 2–3 drops over face and neck until absorbed. Do not rinse.\n3) Seal with moisturizer. Morning: sunscreen on top.\n4) Retinoids or acids: start every other night.",
   "skinAr": "البشرة الدهنية والمختلطة",
-  "skinEn": "Oily and combination skin"
+  "skinEn": "Oily and combination skin",
+  "stock": 25
 },
 {
   "id": 11,
@@ -93,7 +96,8 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) على بشرة نظيفة وجافة أو رطبة حسب القناع.\n٢) اتركيه ١٠–٢٠ دقيقة (أو حسب العبوة) ثم أزيليه أو ربّتي الباقي.\n٣) أكملي بمرطب. لا تستخدميه يومياً إن كان تقشيرياً.",
   "useEn": "1) Clean skin, damp or dry as the mask requires.\n2) Leave 10–20 minutes (or as labeled), then remove or pat in.\n3) Moisturize. Don't use daily if it exfoliates.",
   "skinAr": "معظم أنواع البشرة — مع واقي شمس يومي عند التفتيح",
-  "skinEn": "Most skin types — daily SPF when brightening"
+  "skinEn": "Most skin types — daily SPF when brightening",
+  "stock": 25
 },
 {
   "id": 36,
@@ -116,6 +120,7 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) بعد السيروم خذي كمية بحجم حبة البازلاء.\n٢) وزّعي من الوسط للخارج على الوجه والرقبة.\n٣) صباحاً أكملي بواقي شمس. مساءً زيدي طبقة على الخدود الجافة إن لزم.",
   "useEn": "1) After serum, use a pea-sized amount.\n2) Smooth from the center outward, including the neck.\n3) Morning: sunscreen after. Night: extra on dry cheeks if needed.",
   "skinAr": "معظم أنواع البشرة — مع واقي شمس يومي عند التفتيح",
-  "skinEn": "Most skin types — daily SPF when brightening"
+  "skinEn": "Most skin types — daily SPF when brightening",
+  "stock": 25
 }
 );

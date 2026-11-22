@@ -22,7 +22,8 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) بعد السيروم خذي كمية بحجم حبة البازلاء.\n٢) وزّعي من الوسط للخارج على الوجه والرقبة.\n٣) صباحاً أكملي بواقي شمس. مساءً زيدي طبقة على الخدود الجافة إن لزم.",
   "useEn": "1) After serum, use a pea-sized amount.\n2) Smooth from the center outward, including the neck.\n3) Morning: sunscreen after. Night: extra on dry cheeks if needed.",
   "skinAr": "البشرة الجافة والمحتاجة",
-  "skinEn": "Dry and dehydrated skin"
+  "skinEn": "Dry and dehydrated skin",
+  "stock": 25
 },
 {
   "id": 14,
@@ -45,7 +46,8 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) على بشرة نظيفة وجافة أو رطبة حسب القناع.\n٢) اتركيه ١٠–٢٠ دقيقة (أو حسب العبوة) ثم أزيليه أو ربّتي الباقي.\n٣) أكملي بمرطب. لا تستخدميه يومياً إن كان تقشيرياً.",
   "useEn": "1) Clean skin, damp or dry as the mask requires.\n2) Leave 10–20 minutes (or as labeled), then remove or pat in.\n3) Moisturize. Don't use daily if it exfoliates.",
   "skinAr": "معظم الأنواع، مع واقي شمس يومي لأن التفتيح يحتاج حماية",
-  "skinEn": "Most skin types, with daily SPF because brightening needs sun protection"
+  "skinEn": "Most skin types, with daily SPF because brightening needs sun protection",
+  "stock": 25
 },
 {
   "id": 23,
@@ -68,7 +70,8 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) نظّفي الوجه واتركيه رطباً قليلاً.\n٢) قطرتان إلى ثلاث على الوجه والرقبة، واضغطي بالراحة حتى الامتصاص — لا تفركي بقوة ولا تشطفي.\n٣) أغلقي بمرطب. صباحاً: واقي شمس فوق الروتين.\n٤) ريتينول أو أحماض: ابدئي ليلاً يوماً بعد يوم.",
   "useEn": "1) Cleanse and leave skin slightly damp.\n2) Press 2–3 drops over face and neck until absorbed. Do not rinse.\n3) Seal with moisturizer. Morning: sunscreen on top.\n4) Retinoids or acids: start every other night.",
   "skinAr": "معظم أنواع البشرة — مع واقي شمس يومي عند التفتيح",
-  "skinEn": "Most skin types — daily SPF when brightening"
+  "skinEn": "Most skin types — daily SPF when brightening",
+  "stock": 25
 },
 {
   "id": 30,
@@ -91,7 +94,8 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) نظّفي الوجه واتركيه رطباً قليلاً.\n٢) قطرتان إلى ثلاث على الوجه والرقبة، واضغطي بالراحة حتى الامتصاص — لا تفركي بقوة ولا تشطفي.\n٣) أغلقي بمرطب. صباحاً: واقي شمس فوق الروتين.\n٤) ريتينول أو أحماض: ابدئي ليلاً يوماً بعد يوم.",
   "useEn": "1) Cleanse and leave skin slightly damp.\n2) Press 2–3 drops over face and neck until absorbed. Do not rinse.\n3) Seal with moisturizer. Morning: sunscreen on top.\n4) Retinoids or acids: start every other night.",
   "skinAr": "البشرة الجافة والمحتاجة",
-  "skinEn": "Dry and dehydrated skin"
+  "skinEn": "Dry and dehydrated skin",
+  "stock": 25
 },
 {
   "id": 33,
@@ -114,7 +118,8 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) بعد الغسول، على راحة اليد أو قطنة.\n٢) مرّري على الوجه وتجنّبي محيط العين.\n٣) لا تشطفي. أكملي بسيروم ثم مرطب.",
   "useEn": "1) After cleansing, in palms or on a pad.\n2) Sweep the face, avoiding the eye area.\n3) Don't rinse. Follow with serum, then cream.",
   "skinAr": "معظم أنواع البشرة — راقبي أول أسبوع",
-  "skinEn": "Most skin types — watch the first week"
+  "skinEn": "Most skin types — watch the first week",
+  "stock": 25
 },
 {
   "id": 35,
@@ -137,7 +142,8 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) على بشرة نظيفة وجافة أو رطبة حسب القناع.\n٢) اتركيه ١٠–٢٠ دقيقة (أو حسب العبوة) ثم أزيليه أو ربّتي الباقي.\n٣) أكملي بمرطب. لا تستخدميه يومياً إن كان تقشيرياً.",
   "useEn": "1) Clean skin, damp or dry as the mask requires.\n2) Leave 10–20 minutes (or as labeled), then remove or pat in.\n3) Moisturize. Don't use daily if it exfoliates.",
   "skinAr": "البشرة الدهنية والمختلطة",
-  "skinEn": "Oily and combination skin"
+  "skinEn": "Oily and combination skin",
+  "stock": 25
 },
 {
   "id": 39,
@@ -160,7 +166,8 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) على بشرة نظيفة وجافة أو رطبة حسب القناع.\n٢) اتركيه ١٠–٢٠ دقيقة (أو حسب العبوة) ثم أزيليه أو ربّتي الباقي.\n٣) أكملي بمرطب. لا تستخدميه يومياً إن كان تقشيرياً.",
   "useEn": "1) Clean skin, damp or dry as the mask requires.\n2) Leave 10–20 minutes (or as labeled), then remove or pat in.\n3) Moisturize. Don't use daily if it exfoliates.",
   "skinAr": "معظم أنواع البشرة — مع واقي شمس يومي عند التفتيح",
-  "skinEn": "Most skin types — daily SPF when brightening"
+  "skinEn": "Most skin types — daily SPF when brightening",
+  "stock": 25
 },
 {
   "id": 46,
@@ -183,7 +190,8 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) على بشرة نظيفة وجافة أو رطبة حسب القناع.\n٢) اتركيه ١٠–٢٠ دقيقة (أو حسب العبوة) ثم أزيليه أو ربّتي الباقي.\n٣) أكملي بمرطب. لا تستخدميه يومياً إن كان تقشيرياً.",
   "useEn": "1) Clean skin, damp or dry as the mask requires.\n2) Leave 10–20 minutes (or as labeled), then remove or pat in.\n3) Moisturize. Don't use daily if it exfoliates.",
   "skinAr": "معظم أنواع البشرة — راقبي أول أسبوع",
-  "skinEn": "Most skin types — watch the first week"
+  "skinEn": "Most skin types — watch the first week",
+  "stock": 25
 },
 {
   "id": 52,
@@ -206,7 +214,8 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) بعد السيروم خذي كمية بحجم حبة البازلاء.\n٢) وزّعي من الوسط للخارج على الوجه والرقبة.\n٣) صباحاً أكملي بواقي شمس. مساءً زيدي طبقة على الخدود الجافة إن لزم.",
   "useEn": "1) After serum, use a pea-sized amount.\n2) Smooth from the center outward, including the neck.\n3) Morning: sunscreen after. Night: extra on dry cheeks if needed.",
   "skinAr": "البشرة الحساسة والجافة والمجهدة",
-  "skinEn": "Sensitive, dry, or stressed skin"
+  "skinEn": "Sensitive, dry, or stressed skin",
+  "stock": 25
 },
 {
   "id": 59,
@@ -229,7 +238,8 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) على بشرة نظيفة وجافة أو رطبة حسب القناع.\n٢) اتركيه ١٠–٢٠ دقيقة (أو حسب العبوة) ثم أزيليه أو ربّتي الباقي.\n٣) أكملي بمرطب. لا تستخدميه يومياً إن كان تقشيرياً.",
   "useEn": "1) Clean skin, damp or dry as the mask requires.\n2) Leave 10–20 minutes (or as labeled), then remove or pat in.\n3) Moisturize. Don't use daily if it exfoliates.",
   "skinAr": "البشرة الجافة والمحتاجة",
-  "skinEn": "Dry and dehydrated skin"
+  "skinEn": "Dry and dehydrated skin",
+  "stock": 25
 },
 {
   "id": 60,
@@ -252,7 +262,8 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) بلّلي الوجه بماء فاتر.\n٢) دلكي ٢٠ ثانية ثم اشطفي جيداً حتى يزول الرغوة.\n٣) جفّفي بالتربيت. إن كان تنظيفاً مزدوجاً: الزيتي أولاً ثم هذا.",
   "useEn": "1) Wet the face with lukewarm water.\n2) Massage 20 seconds, rinse until no foam remains.\n3) Pat dry. Double cleanse: oil first, then this.",
   "skinAr": "البشرة الحساسة",
-  "skinEn": "Sensitive skin"
+  "skinEn": "Sensitive skin",
+  "stock": 25
 },
 {
   "id": 77,
@@ -269,13 +280,14 @@ window.NAQA_PRODUCTS.push(
     "media/products/p77_4.webp"
   ],
   "nameAr": "كريم الرقبة بي دي آر إن بالكولاجين مع أداة غوا شا من ميديكيوب - 90ج",
-  "nameEn": "Medicube Beauty",
+  "nameEn": "Medicube PDRN Collagen Neck Cream with Gua Sha",
   "descAr": "كريم الرقبة بي دي آر إن بالكولاجين مع أداة غوا شا من ميديكيوب من Medicube، 90ج. يركّز على ببتيدات من أجل مرونة ومظهر ممتلئ. مكانه في الروتين: آخر خطوة عناية (أو قبل واقي الشمس صباحاً). يناسب: كل درجات البشرة — اختبري عند الحساسية.",
-  "descEn": "Medicube Beauty by Medicube, 90 g. Built around Peptides for a firmer, bouncier look. Where it sits: Last skincare step (or before SPF in the morning). Best for: All complexions — patch-test if sensitive.",
+  "descEn": "Medicube PDRN Collagen Neck Cream with Gua Sha, 90 g. Built around Peptides for a firmer, bouncier look. Where it sits: Last skincare step (or before SPF in the morning). Best for: All complexions — patch-test if sensitive.",
   "useAr": "١) بعد السيروم خذي كمية بحجم حبة البازلاء.\n٢) وزّعي من الوسط للخارج على الوجه والرقبة.\n٣) صباحاً أكملي بواقي شمس. مساءً زيدي طبقة على الخدود الجافة إن لزم.",
   "useEn": "1) After serum, use a pea-sized amount.\n2) Smooth from the center outward, including the neck.\n3) Morning: sunscreen after. Night: extra on dry cheeks if needed.",
   "skinAr": "كل درجات البشرة — اختبري عند الحساسية",
-  "skinEn": "All complexions — patch-test if sensitive"
+  "skinEn": "All complexions — patch-test if sensitive",
+  "stock": 25
 },
 {
   "id": 120,
@@ -294,11 +306,12 @@ window.NAQA_PRODUCTS.push(
   "nameAr": "بلسم ميديكيوب الوردي متعدد الاستخدامات للوجه بالكولاجين وبي دي آر إن - 10ج",
   "nameEn": "Medicube Eye — DB-7451402043472",
   "descAr": "بلسم ميديكيوب الوردي متعدد الاستخدامات للوجه بالكولاجين وبي دي آر إن من Medicube، 10ج. يركّز على ببتيدات من أجل مرونة ومظهر ممتلئ. مكانه في الروتين: حسب نوعه: شامبو على الفروة، بلسم على الأطراف، سيروم بدون شطف. يناسب: حسب نوع الشعر وفروة الرأس — ابدئي بكمية قليلة.",
-  "descEn": "Medicube Eye — DB by Medicube, 10 g. Built around Peptides for a firmer, bouncier look. Where it sits: Shampoo on the scalp, conditioner on lengths, leave-in serum as labeled. Best for: According to hair/scalp type — start with a small amount.",
+  "descEn": "Medicube Eye — DB-7451402043472, 10 g. Built around Peptides for a firmer, bouncier look. Where it sits: Shampoo on the scalp, conditioner on lengths, leave-in serum as labeled. Best for: According to hair/scalp type — start with a small amount.",
   "useAr": "١) شعر مبلل جيداً.\n٢) الشامبو على الفروة فقط مع تدليك، والبلسم من منتصف الشعرة للأطراف ثم اشطفي.\n٣) السيروم بدون شطف: نقاط قليلة على أطراف جافة أو فروة نظيفة حسب العبوة — لا تُغرقي الشعر.",
   "useEn": "1) Fully wet hair.\n2) Shampoo the scalp only; conditioner from mid-lengths to ends, then rinse.\n3) Leave-in serum: a few drops on dry ends or a clean scalp as labeled.",
   "skinAr": "حسب نوع الشعر وفروة الرأس — ابدئي بكمية قليلة",
-  "skinEn": "According to hair/scalp type — start with a small amount"
+  "skinEn": "According to hair/scalp type — start with a small amount",
+  "stock": 25
 },
 {
   "id": 121,
@@ -321,7 +334,8 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) بلّلي الوجه بماء فاتر.\n٢) دلكي ٢٠ ثانية ثم اشطفي جيداً حتى يزول الرغوة.\n٣) جفّفي بالتربيت. إن كان تنظيفاً مزدوجاً: الزيتي أولاً ثم هذا.",
   "useEn": "1) Wet the face with lukewarm water.\n2) Massage 20 seconds, rinse until no foam remains.\n3) Pat dry. Double cleanse: oil first, then this.",
   "skinAr": "البشرة الحساسة والجافة والمجهدة",
-  "skinEn": "Sensitive, dry, or stressed skin"
+  "skinEn": "Sensitive, dry, or stressed skin",
+  "stock": 25
 },
 {
   "id": 126,
@@ -344,7 +358,8 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) شفاه نظيفة. إن كانت خشنة: منديل رطب بلطف، بدون حك.\n٢) من المنتصف نحو الزوايا.\n٣) أضيفي طبقة ثانية للّون أو اللمعان. أزيلي مساءً إن كان مكياجاً.",
   "useEn": "1) Clean lips. Soften flakes with a damp tissue, don't scrub.\n2) From the center toward the corners.\n3) Add a second layer for color or shine. Remove makeup at night.",
   "skinAr": "كل درجات البشرة — اختبري عند الحساسية",
-  "skinEn": "All skin tones — patch-test if sensitive"
+  "skinEn": "All skin tones — patch-test if sensitive",
+  "stock": 25
 },
 {
   "id": 167,
@@ -368,7 +383,8 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) شعر مبلل جيداً.\n٢) الشامبو على الفروة فقط مع تدليك، والبلسم من منتصف الشعرة للأطراف ثم اشطفي.\n٣) السيروم بدون شطف: نقاط قليلة على أطراف جافة أو فروة نظيفة حسب العبوة — لا تُغرقي الشعر.",
   "useEn": "1) Fully wet hair.\n2) Shampoo the scalp only; conditioner from mid-lengths to ends, then rinse.\n3) Leave-in serum: a few drops on dry ends or a clean scalp as labeled.",
   "skinAr": "حسب نوع الشعر وفروة الرأس — ابدئي بكمية قليلة",
-  "skinEn": "According to hair/scalp type — start with a small amount"
+  "skinEn": "According to hair/scalp type — start with a small amount",
+  "stock": 25
 },
 {
   "id": 168,
@@ -392,7 +408,8 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) شعر مبلل جيداً.\n٢) الشامبو على الفروة فقط مع تدليك، والبلسم من منتصف الشعرة للأطراف ثم اشطفي.\n٣) السيروم بدون شطف: نقاط قليلة على أطراف جافة أو فروة نظيفة حسب العبوة — لا تُغرقي الشعر.",
   "useEn": "1) Fully wet hair.\n2) Shampoo the scalp only; conditioner from mid-lengths to ends, then rinse.\n3) Leave-in serum: a few drops on dry ends or a clean scalp as labeled.",
   "skinAr": "حسب نوع الشعر وفروة الرأس — ابدئي بكمية قليلة",
-  "skinEn": "According to hair/scalp type — start with a small amount"
+  "skinEn": "According to hair/scalp type — start with a small amount",
+  "stock": 25
 },
 {
   "id": 192,
@@ -415,7 +432,8 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) على بشرة نظيفة وجافة أو رطبة حسب القناع.\n٢) اتركيه ١٠–٢٠ دقيقة (أو حسب العبوة) ثم أزيليه أو ربّتي الباقي.\n٣) أكملي بمرطب. لا تستخدميه يومياً إن كان تقشيرياً.",
   "useEn": "1) Clean skin, damp or dry as the mask requires.\n2) Leave 10–20 minutes (or as labeled), then remove or pat in.\n3) Moisturize. Don't use daily if it exfoliates.",
   "skinAr": "البشرة الدهنية والمختلطة",
-  "skinEn": "Oily and combination skin"
+  "skinEn": "Oily and combination skin",
+  "stock": 25
 },
 {
   "id": 193,
@@ -440,7 +458,8 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) ابدئي بكمية قليلة على المكان المناسب.\n٢) لا تخلطيه مع مقشّر قوي في نفس الليلة إن كانت بشرتكِ جديدة عليه.\n٣) أوقفي الاستخدام عند التهيّج.",
   "useEn": "1) Start with a small amount on the right area.\n2) Don't stack with a strong exfoliant the same night at first.\n3) Stop if skin stings or stays red.",
   "skinAr": "البشرة الدهنية والمختلطة",
-  "skinEn": "Oily and combination skin"
+  "skinEn": "Oily and combination skin",
+  "stock": 25
 },
 {
   "id": 196,
@@ -463,7 +482,8 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) نظّفي الوجه واتركيه رطباً قليلاً.\n٢) قطرتان إلى ثلاث على الوجه والرقبة، واضغطي بالراحة حتى الامتصاص — لا تفركي بقوة ولا تشطفي.\n٣) أغلقي بمرطب. صباحاً: واقي شمس فوق الروتين.\n٤) ريتينول أو أحماض: ابدئي ليلاً يوماً بعد يوم.",
   "useEn": "1) Cleanse and leave skin slightly damp.\n2) Press 2–3 drops over face and neck until absorbed. Do not rinse.\n3) Seal with moisturizer. Morning: sunscreen on top.\n4) Retinoids or acids: start every other night.",
   "skinAr": "البشرة الدهنية والمختلطة",
-  "skinEn": "Oily and combination skin"
+  "skinEn": "Oily and combination skin",
+  "stock": 25
 },
 {
   "id": 199,
@@ -485,6 +505,7 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) على بشرة نظيفة وجافة أو رطبة حسب القناع.\n٢) اتركيه ١٠–٢٠ دقيقة (أو حسب العبوة) ثم أزيليه أو ربّتي الباقي.\n٣) أكملي بمرطب. لا تستخدميه يومياً إن كان تقشيرياً.",
   "useEn": "1) Clean skin, damp or dry as the mask requires.\n2) Leave 10–20 minutes (or as labeled), then remove or pat in.\n3) Moisturize. Don't use daily if it exfoliates.",
   "skinAr": "البشرة الحساسة والجافة والمجهدة",
-  "skinEn": "Sensitive, dry, or stressed skin"
+  "skinEn": "Sensitive, dry, or stressed skin",
+  "stock": 25
 }
 );

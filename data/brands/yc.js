@@ -21,6 +21,7 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) بلّلي الوجه بماء فاتر.\n٢) دلكي ٢٠ ثانية ثم اشطفي جيداً حتى يزول الرغوة.\n٣) جفّفي بالتربيت. إن كان تنظيفاً مزدوجاً: الزيتي أولاً ثم هذا.",
   "useEn": "1) Wet the face with lukewarm water.\n2) Massage 20 seconds, rinse until no foam remains.\n3) Pat dry. Double cleanse: oil first, then this.",
   "skinAr": "كل درجات البشرة — اختبري عند الحساسية",
-  "skinEn": "All complexions — patch-test if sensitive"
+  "skinEn": "All complexions — patch-test if sensitive",
+  "stock": 25
 }
 );

@@ -22,7 +22,8 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) بعد الغسول، على راحة اليد أو قطنة.\n٢) مرّري على الوجه وتجنّبي محيط العين.\n٣) لا تشطفي. أكملي بسيروم ثم مرطب.",
   "useEn": "1) After cleansing, in palms or on a pad.\n2) Sweep the face, avoiding the eye area.\n3) Don't rinse. Follow with serum, then cream.",
   "skinAr": "البشرة الحساسة",
-  "skinEn": "Sensitive skin"
+  "skinEn": "Sensitive skin",
+  "stock": 25
 },
 {
   "id": 50,
@@ -45,6 +46,7 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) بلّلي الوجه بماء فاتر.\n٢) دلكي ٢٠ ثانية ثم اشطفي جيداً حتى يزول الرغوة.\n٣) جفّفي بالتربيت. إن كان تنظيفاً مزدوجاً: الزيتي أولاً ثم هذا.",
   "useEn": "1) Wet the face with lukewarm water.\n2) Massage 20 seconds, rinse until no foam remains.\n3) Pat dry. Double cleanse: oil first, then this.",
   "skinAr": "البشرة الحساسة",
-  "skinEn": "Sensitive skin"
+  "skinEn": "Sensitive skin",
+  "stock": 25
 }
 );

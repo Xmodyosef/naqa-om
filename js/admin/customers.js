@@ -32,33 +32,33 @@
       });
     }
     var head =
-      '<div class="panel"><h2>العملاء (' + Object.keys(map).length + ')</h2>'
-      + '<p class="note">مجمّعين من الطلبات — بحث ونسخ وواتساب.</p>'
-      + '<input id="custQ" type="search" placeholder="ابحثي عن زبونة…" value="' + A.esc(A._customerQuery || "") + '" style="width:100%;border:1px solid #efe4df;border-radius:12px;padding:12px;margin-top:8px" />'
+      '<div class="panel"><h2>' + A.t("c_title") + ' (' + Object.keys(map).length + ')</h2>'
+      + '<p class="note">' + A.t("c_note") + '</p>'
+      + '<input id="custQ" type="search" placeholder="' + A.t("c_search") + '" value="' + A.esc(A._customerQuery || "") + '" style="width:100%;border:1px solid #efe4df;border-radius:12px;padding:12px;margin-top:8px" />'
       + '<div class="status-bar" style="margin-top:8px">'
-      + '<button type="button" class="mini" id="copyCustomers">نسخ قائمة العملاء</button>'
-      + '<button type="button" class="mini" id="waCustomers" style="background:#25D366;color:#fff">واتساب القائمة</button>'
+      + '<button type="button" class="mini" id="copyCustomers">' + A.t("c_copy") + '</button>'
+      + '<button type="button" class="mini" id="waCustomers" style="background:#25D366;color:#fff">' + A.t("c_wa") + '</button>'
       + '</div>'
       + '<p class="status" id="custStatus"></p>'
       + '</div>';
     if (!Object.keys(map).length) {
-      box.innerHTML = head + '<p class="note">ما في عملاء بعد. أول طلب غير ملغي يظهر هنا.</p>';
+      box.innerHTML = head + '<p class="note">' + A.t("c_empty") + '</p>';
       bindCust();
       return;
     }
     if (!list.length) {
-      box.innerHTML = head + '<p class="note">ما في نتائج للبحث.</p>';
+      box.innerHTML = head + '<p class="note">' + A.t("c_noRes") + '</p>';
       bindCust();
       return;
     }
     box.innerHTML = head + list.map(function (c) {
       var phoneDigits = String(c.phone || "").replace(/\D/g, "").replace(/^968/, "");
-      var when = c.last ? new Date(c.last).toLocaleDateString("ar-OM") : "—";
+      var when = c.last ? new Date(c.last).toLocaleDateString(A.lang === "en" ? "en-OM" : "ar-OM") : "—";
       return '<div class="cust-row"><div><strong>' + A.esc(c.name) + '</strong>'
         + '<small>' + A.esc(c.phone) + ' · ' + A.esc(c.area) + '</small>'
-        + '<small>' + c.count + ' طلب · ' + c.total.toFixed(3) + ' ر.ع · آخر طلب ' + A.esc(when) + '</small>'
+        + '<small>' + c.count + ' ' + A.t("c_orders") + ' · ' + c.total.toFixed(3) + ' ' + A.t("omr") + ' · ' + A.t("c_last") + ' ' + A.esc(when) + '</small>'
         + '<small style="color:#8a7f78">' + A.esc((c.orders || []).slice(0, 3).join(" · ")) + (c.orders.length > 3 ? "…" : "") + '</small></div>'
-        + (phoneDigits ? ('<a class="mini" style="background:#25D366;color:#fff;text-decoration:none" href="https://wa.me/968' + A.esc(phoneDigits) + '" target="_blank" rel="noopener">واتساب</a>') : "")
+        + (phoneDigits ? ('<a class="mini" style="background:#25D366;color:#fff;text-decoration:none" href="https://wa.me/968' + A.esc(phoneDigits) + '" target="_blank" rel="noopener">' + A.t("wa") + '</a>') : "")
         + "</div>";
     }).join("");
     bindCust();

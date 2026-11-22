@@ -22,6 +22,7 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) على بشرة نظيفة وجافة أو رطبة حسب القناع.\n٢) اتركيه ١٠–٢٠ دقيقة (أو حسب العبوة) ثم أزيليه أو ربّتي الباقي.\n٣) أكملي بمرطب. لا تستخدميه يومياً إن كان تقشيرياً.",
   "useEn": "1) Clean skin, damp or dry as the mask requires.\n2) Leave 10–20 minutes (or as labeled), then remove or pat in.\n3) Moisturize. Don't use daily if it exfoliates.",
   "skinAr": "البشرة الحساسة",
-  "skinEn": "Sensitive skin"
+  "skinEn": "Sensitive skin",
+  "stock": 25
 }
 );

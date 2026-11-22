@@ -17,13 +17,14 @@ window.NAQA_PRODUCTS.push(
     "media/products/p112_3.webp"
   ],
   "nameAr": "قلم حواجب من لوليس - 303 رمادي",
-  "nameEn": "LOLLIS Eye",
+  "nameEn": "LOLLIS Brow Pencil #303 Grey",
   "descAr": "قلم حواجب من لوليس من LOLLIS. تركيبة عملية للاستخدام المنتظم، بدون خطوات معقّدة. مكانه في الروتين: بعد برايمر الجفن إن وُجد، وقبل الماسكارا. يناسب: كل درجات البشرة — اختبري عند الحساسية.",
-  "descEn": "LOLLIS Eye by LOLLIS. A practical formula for regular use, without a complicated routine. Where it sits: After lid primer if you use one, before mascara. Best for: All skin tones — patch-test if sensitive.",
+  "descEn": "LOLLIS Brow Pencil #303 Grey, without a complicated routine. Where it sits: After lid primer if you use one, before mascara. Best for: All skin tones — patch-test if sensitive.",
   "useAr": "١) جفن نظيف.\n٢) خط رفيع أو طبقة ظل، ثم امزجي قبل الجفاف.\n٣) الماسكارا من الجذور للأطراف بحركة متعرجة. أزيلي بمزيل لطيف.",
   "useEn": "1) Clean lid.\n2) Thin line or shadow, blend before it sets.\n3) Mascara root to tip in a zigzag. Remove with a gentle remover.",
   "skinAr": "كل درجات البشرة — اختبري عند الحساسية",
-  "skinEn": "All skin tones — patch-test if sensitive"
+  "skinEn": "All skin tones — patch-test if sensitive",
+  "stock": 25
 },
 {
   "id": 113,
@@ -40,13 +41,14 @@ window.NAQA_PRODUCTS.push(
     "media/products/p113_3.webp"
   ],
   "nameAr": "ظلال العيون لوليس ذا نودز - 01",
-  "nameEn": "LOLLIS Eye",
+  "nameEn": "LOLLIS The Nudes Eyeshadow Palette #01",
   "descAr": "ظلال العيون لوليس ذا نودز من LOLLIS. تركيبة عملية للاستخدام المنتظم، بدون خطوات معقّدة. مكانه في الروتين: بعد برايمر الجفن إن وُجد، وقبل الماسكارا. يناسب: كل درجات البشرة — اختبري عند الحساسية.",
-  "descEn": "LOLLIS Eye by LOLLIS. A practical formula for regular use, without a complicated routine. Where it sits: After lid primer if you use one, before mascara. Best for: All skin tones — patch-test if sensitive.",
+  "descEn": "LOLLIS The Nudes Eyeshadow Palette #01, without a complicated routine. Where it sits: After lid primer if you use one, before mascara. Best for: All skin tones — patch-test if sensitive.",
   "useAr": "١) جفن نظيف.\n٢) خط رفيع أو طبقة ظل، ثم امزجي قبل الجفاف.\n٣) الماسكارا من الجذور للأطراف بحركة متعرجة. أزيلي بمزيل لطيف.",
   "useEn": "1) Clean lid.\n2) Thin line or shadow, blend before it sets.\n3) Mascara root to tip in a zigzag. Remove with a gentle remover.",
   "skinAr": "كل درجات البشرة — اختبري عند الحساسية",
-  "skinEn": "All skin tones — patch-test if sensitive"
+  "skinEn": "All skin tones — patch-test if sensitive",
+  "stock": 25
 },
 {
   "id": 114,
@@ -62,13 +64,14 @@ window.NAQA_PRODUCTS.push(
     "media/products/p114_3.webp"
   ],
   "nameAr": "ظلال العيون برايت نيون من لوليس",
-  "nameEn": "LOLLIS Eye",
+  "nameEn": "LOLLIS Bright Neon Eyeshadow Palette",
   "descAr": "ظلال العيون برايت نيون من لوليس من LOLLIS. تركيبة عملية للاستخدام المنتظم، بدون خطوات معقّدة. مكانه في الروتين: بعد برايمر الجفن إن وُجد، وقبل الماسكارا. يناسب: كل درجات البشرة — اختبري عند الحساسية.",
-  "descEn": "LOLLIS Eye by LOLLIS. A practical formula for regular use, without a complicated routine. Where it sits: After lid primer if you use one, before mascara. Best for: All skin tones — patch-test if sensitive.",
+  "descEn": "LOLLIS Bright Neon Eyeshadow Palette, without a complicated routine. Where it sits: After lid primer if you use one, before mascara. Best for: All skin tones — patch-test if sensitive.",
   "useAr": "١) جفن نظيف.\n٢) خط رفيع أو طبقة ظل، ثم امزجي قبل الجفاف.\n٣) الماسكارا من الجذور للأطراف بحركة متعرجة. أزيلي بمزيل لطيف.",
   "useEn": "1) Clean lid.\n2) Thin line or shadow, blend before it sets.\n3) Mascara root to tip in a zigzag. Remove with a gentle remover.",
   "skinAr": "كل درجات البشرة — اختبري عند الحساسية",
-  "skinEn": "All skin tones — patch-test if sensitive"
+  "skinEn": "All skin tones — patch-test if sensitive",
+  "stock": 25
 },
 {
   "id": 115,
@@ -85,13 +88,14 @@ window.NAQA_PRODUCTS.push(
     "media/products/p115_3.webp"
   ],
   "nameAr": "قلم حواجب من لوليس - 301 بيج",
-  "nameEn": "LOLLIS Eye",
+  "nameEn": "LOLLIS Brow Pencil #301 Beige",
   "descAr": "قلم حواجب من لوليس من LOLLIS. تركيبة عملية للاستخدام المنتظم، بدون خطوات معقّدة. مكانه في الروتين: بعد برايمر الجفن إن وُجد، وقبل الماسكارا. يناسب: كل درجات البشرة — اختبري عند الحساسية.",
-  "descEn": "LOLLIS Eye by LOLLIS. A practical formula for regular use, without a complicated routine. Where it sits: After lid primer if you use one, before mascara. Best for: All skin tones — patch-test if sensitive.",
+  "descEn": "LOLLIS Brow Pencil #301 Beige, without a complicated routine. Where it sits: After lid primer if you use one, before mascara. Best for: All skin tones — patch-test if sensitive.",
   "useAr": "١) جفن نظيف.\n٢) خط رفيع أو طبقة ظل، ثم امزجي قبل الجفاف.\n٣) الماسكارا من الجذور للأطراف بحركة متعرجة. أزيلي بمزيل لطيف.",
   "useEn": "1) Clean lid.\n2) Thin line or shadow, blend before it sets.\n3) Mascara root to tip in a zigzag. Remove with a gentle remover.",
   "skinAr": "كل درجات البشرة — اختبري عند الحساسية",
-  "skinEn": "All skin tones — patch-test if sensitive"
+  "skinEn": "All skin tones — patch-test if sensitive",
+  "stock": 25
 },
 {
   "id": 116,
@@ -107,13 +111,14 @@ window.NAQA_PRODUCTS.push(
     "media/products/p116_3.webp"
   ],
   "nameAr": "ايلاينر أﺳﻮد داﻛﻦ من لوليس - 4مل",
-  "nameEn": "LOLLIS Eye",
+  "nameEn": "LOLLIS Dark Black Eyeliner - 4ml",
   "descAr": "ايلاينر أﺳﻮد داﻛﻦ من لوليس من LOLLIS، 4مل. تركيبة عملية للاستخدام المنتظم، بدون خطوات معقّدة. مكانه في الروتين: بعد برايمر الجفن إن وُجد، وقبل الماسكارا. يناسب: كل درجات البشرة — اختبري عند الحساسية.",
-  "descEn": "LOLLIS Eye by LOLLIS, 4 ml. A practical formula for regular use, without a complicated routine. Where it sits: After lid primer if you use one, before mascara. Best for: All skin tones — patch-test if sensitive.",
+  "descEn": "LOLLIS Dark Black Eyeliner - 4ml, 4 ml. A practical formula for regular use, without a complicated routine. Where it sits: After lid primer if you use one, before mascara. Best for: All skin tones — patch-test if sensitive.",
   "useAr": "١) جفن نظيف.\n٢) خط رفيع أو طبقة ظل، ثم امزجي قبل الجفاف.\n٣) الماسكارا من الجذور للأطراف بحركة متعرجة. أزيلي بمزيل لطيف.",
   "useEn": "1) Clean lid.\n2) Thin line or shadow, blend before it sets.\n3) Mascara root to tip in a zigzag. Remove with a gentle remover.",
   "skinAr": "كل درجات البشرة — اختبري عند الحساسية",
-  "skinEn": "All skin tones — patch-test if sensitive"
+  "skinEn": "All skin tones — patch-test if sensitive",
+  "stock": 25
 },
 {
   "id": 117,
@@ -130,13 +135,14 @@ window.NAQA_PRODUCTS.push(
     "media/products/p117_3.webp"
   ],
   "nameAr": "واكس تشكيل ورفع الحواجب بزيت الارغان من لوليس",
-  "nameEn": "LOLLIS Eye",
+  "nameEn": "LOLLIS Brow Lift Wax with Argan Oil",
   "descAr": "واكس تشكيل ورفع الحواجب بزيت الارغان من لوليس من LOLLIS. تركيبة عملية للاستخدام المنتظم، بدون خطوات معقّدة. مكانه في الروتين: بعد برايمر الجفن إن وُجد، وقبل الماسكارا. يناسب: كل درجات البشرة — اختبري عند الحساسية.",
-  "descEn": "LOLLIS Eye by LOLLIS. A practical formula for regular use, without a complicated routine. Where it sits: After lid primer if you use one, before mascara. Best for: All skin tones — patch-test if sensitive.",
+  "descEn": "LOLLIS Brow Lift Wax with Argan Oil, without a complicated routine. Where it sits: After lid primer if you use one, before mascara. Best for: All skin tones — patch-test if sensitive.",
   "useAr": "١) جفن نظيف.\n٢) خط رفيع أو طبقة ظل، ثم امزجي قبل الجفاف.\n٣) الماسكارا من الجذور للأطراف بحركة متعرجة. أزيلي بمزيل لطيف.",
   "useEn": "1) Clean lid.\n2) Thin line or shadow, blend before it sets.\n3) Mascara root to tip in a zigzag. Remove with a gentle remover.",
   "skinAr": "كل درجات البشرة — اختبري عند الحساسية",
-  "skinEn": "All skin tones — patch-test if sensitive"
+  "skinEn": "All skin tones — patch-test if sensitive",
+  "stock": 25
 },
 {
   "id": 118,
@@ -153,13 +159,14 @@ window.NAQA_PRODUCTS.push(
     "media/products/p118_3.webp"
   ],
   "nameAr": "قلم حواجب من لوليس - 302 بني",
-  "nameEn": "LOLLIS Eye",
+  "nameEn": "LOLLIS Brow Pencil #302 Brown",
   "descAr": "قلم حواجب من لوليس من LOLLIS. تركيبة عملية للاستخدام المنتظم، بدون خطوات معقّدة. مكانه في الروتين: بعد برايمر الجفن إن وُجد، وقبل الماسكارا. يناسب: كل درجات البشرة — اختبري عند الحساسية.",
-  "descEn": "LOLLIS Eye by LOLLIS. A practical formula for regular use, without a complicated routine. Where it sits: After lid primer if you use one, before mascara. Best for: All skin tones — patch-test if sensitive.",
+  "descEn": "LOLLIS Brow Pencil #302 Brown, without a complicated routine. Where it sits: After lid primer if you use one, before mascara. Best for: All skin tones — patch-test if sensitive.",
   "useAr": "١) جفن نظيف.\n٢) خط رفيع أو طبقة ظل، ثم امزجي قبل الجفاف.\n٣) الماسكارا من الجذور للأطراف بحركة متعرجة. أزيلي بمزيل لطيف.",
   "useEn": "1) Clean lid.\n2) Thin line or shadow, blend before it sets.\n3) Mascara root to tip in a zigzag. Remove with a gentle remover.",
   "skinAr": "كل درجات البشرة — اختبري عند الحساسية",
-  "skinEn": "All skin tones — patch-test if sensitive"
+  "skinEn": "All skin tones — patch-test if sensitive",
+  "stock": 25
 },
 {
   "id": 128,
@@ -181,7 +188,8 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) شفاه نظيفة. إن كانت خشنة: منديل رطب بلطف، بدون حك.\n٢) من المنتصف نحو الزوايا.\n٣) أضيفي طبقة ثانية للّون أو اللمعان. أزيلي مساءً إن كان مكياجاً.",
   "useEn": "1) Clean lips. Soften flakes with a damp tissue, don't scrub.\n2) From the center toward the corners.\n3) Add a second layer for color or shine. Remove makeup at night.",
   "skinAr": "كل درجات البشرة — اختبري عند الحساسية",
-  "skinEn": "All skin tones — patch-test if sensitive"
+  "skinEn": "All skin tones — patch-test if sensitive",
+  "stock": 25
 },
 {
   "id": 129,
@@ -203,7 +211,8 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) شفاه نظيفة. إن كانت خشنة: منديل رطب بلطف، بدون حك.\n٢) من المنتصف نحو الزوايا.\n٣) أضيفي طبقة ثانية للّون أو اللمعان. أزيلي مساءً إن كان مكياجاً.",
   "useEn": "1) Clean lips. Soften flakes with a damp tissue, don't scrub.\n2) From the center toward the corners.\n3) Add a second layer for color or shine. Remove makeup at night.",
   "skinAr": "كل درجات البشرة — اختبري عند الحساسية",
-  "skinEn": "All skin tones — patch-test if sensitive"
+  "skinEn": "All skin tones — patch-test if sensitive",
+  "stock": 25
 },
 {
   "id": 130,
@@ -225,7 +234,8 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) شفاه نظيفة. إن كانت خشنة: منديل رطب بلطف، بدون حك.\n٢) من المنتصف نحو الزوايا.\n٣) أضيفي طبقة ثانية للّون أو اللمعان. أزيلي مساءً إن كان مكياجاً.",
   "useEn": "1) Clean lips. Soften flakes with a damp tissue, don't scrub.\n2) From the center toward the corners.\n3) Add a second layer for color or shine. Remove makeup at night.",
   "skinAr": "كل درجات البشرة — اختبري عند الحساسية",
-  "skinEn": "All skin tones — patch-test if sensitive"
+  "skinEn": "All skin tones — patch-test if sensitive",
+  "stock": 25
 },
 {
   "id": 131,
@@ -247,7 +257,8 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) شفاه نظيفة. إن كانت خشنة: منديل رطب بلطف، بدون حك.\n٢) من المنتصف نحو الزوايا.\n٣) أضيفي طبقة ثانية للّون أو اللمعان. أزيلي مساءً إن كان مكياجاً.",
   "useEn": "1) Clean lips. Soften flakes with a damp tissue, don't scrub.\n2) From the center toward the corners.\n3) Add a second layer for color or shine. Remove makeup at night.",
   "skinAr": "كل درجات البشرة — اختبري عند الحساسية",
-  "skinEn": "All skin tones — patch-test if sensitive"
+  "skinEn": "All skin tones — patch-test if sensitive",
+  "stock": 25
 },
 {
   "id": 132,
@@ -269,7 +280,8 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) شفاه نظيفة. إن كانت خشنة: منديل رطب بلطف، بدون حك.\n٢) من المنتصف نحو الزوايا.\n٣) أضيفي طبقة ثانية للّون أو اللمعان. أزيلي مساءً إن كان مكياجاً.",
   "useEn": "1) Clean lips. Soften flakes with a damp tissue, don't scrub.\n2) From the center toward the corners.\n3) Add a second layer for color or shine. Remove makeup at night.",
   "skinAr": "كل درجات البشرة — اختبري عند الحساسية",
-  "skinEn": "All skin tones — patch-test if sensitive"
+  "skinEn": "All skin tones — patch-test if sensitive",
+  "stock": 25
 },
 {
   "id": 134,
@@ -291,7 +303,8 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) شفاه نظيفة. إن كانت خشنة: منديل رطب بلطف، بدون حك.\n٢) من المنتصف نحو الزوايا.\n٣) أضيفي طبقة ثانية للّون أو اللمعان. أزيلي مساءً إن كان مكياجاً.",
   "useEn": "1) Clean lips. Soften flakes with a damp tissue, don't scrub.\n2) From the center toward the corners.\n3) Add a second layer for color or shine. Remove makeup at night.",
   "skinAr": "كل درجات البشرة — اختبري عند الحساسية",
-  "skinEn": "All skin tones — patch-test if sensitive"
+  "skinEn": "All skin tones — patch-test if sensitive",
+  "stock": 25
 },
 {
   "id": 135,
@@ -313,7 +326,8 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) شفاه نظيفة. إن كانت خشنة: منديل رطب بلطف، بدون حك.\n٢) من المنتصف نحو الزوايا.\n٣) أضيفي طبقة ثانية للّون أو اللمعان. أزيلي مساءً إن كان مكياجاً.",
   "useEn": "1) Clean lips. Soften flakes with a damp tissue, don't scrub.\n2) From the center toward the corners.\n3) Add a second layer for color or shine. Remove makeup at night.",
   "skinAr": "كل درجات البشرة — اختبري عند الحساسية",
-  "skinEn": "All skin tones — patch-test if sensitive"
+  "skinEn": "All skin tones — patch-test if sensitive",
+  "stock": 25
 },
 {
   "id": 136,
@@ -335,7 +349,8 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) شفاه نظيفة. إن كانت خشنة: منديل رطب بلطف، بدون حك.\n٢) من المنتصف نحو الزوايا.\n٣) أضيفي طبقة ثانية للّون أو اللمعان. أزيلي مساءً إن كان مكياجاً.",
   "useEn": "1) Clean lips. Soften flakes with a damp tissue, don't scrub.\n2) From the center toward the corners.\n3) Add a second layer for color or shine. Remove makeup at night.",
   "skinAr": "كل درجات البشرة — اختبري عند الحساسية",
-  "skinEn": "All skin tones — patch-test if sensitive"
+  "skinEn": "All skin tones — patch-test if sensitive",
+  "stock": 25
 },
 {
   "id": 137,
@@ -357,7 +372,8 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) شفاه نظيفة. إن كانت خشنة: منديل رطب بلطف، بدون حك.\n٢) من المنتصف نحو الزوايا.\n٣) أضيفي طبقة ثانية للّون أو اللمعان. أزيلي مساءً إن كان مكياجاً.",
   "useEn": "1) Clean lips. Soften flakes with a damp tissue, don't scrub.\n2) From the center toward the corners.\n3) Add a second layer for color or shine. Remove makeup at night.",
   "skinAr": "كل درجات البشرة — اختبري عند الحساسية",
-  "skinEn": "All skin tones — patch-test if sensitive"
+  "skinEn": "All skin tones — patch-test if sensitive",
+  "stock": 25
 },
 {
   "id": 138,
@@ -379,7 +395,8 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) شفاه نظيفة. إن كانت خشنة: منديل رطب بلطف، بدون حك.\n٢) من المنتصف نحو الزوايا.\n٣) أضيفي طبقة ثانية للّون أو اللمعان. أزيلي مساءً إن كان مكياجاً.",
   "useEn": "1) Clean lips. Soften flakes with a damp tissue, don't scrub.\n2) From the center toward the corners.\n3) Add a second layer for color or shine. Remove makeup at night.",
   "skinAr": "كل درجات البشرة — اختبري عند الحساسية",
-  "skinEn": "All skin tones — patch-test if sensitive"
+  "skinEn": "All skin tones — patch-test if sensitive",
+  "stock": 25
 },
 {
   "id": 139,
@@ -401,7 +418,8 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) شفاه نظيفة. إن كانت خشنة: منديل رطب بلطف، بدون حك.\n٢) من المنتصف نحو الزوايا.\n٣) أضيفي طبقة ثانية للّون أو اللمعان. أزيلي مساءً إن كان مكياجاً.",
   "useEn": "1) Clean lips. Soften flakes with a damp tissue, don't scrub.\n2) From the center toward the corners.\n3) Add a second layer for color or shine. Remove makeup at night.",
   "skinAr": "كل درجات البشرة — اختبري عند الحساسية",
-  "skinEn": "All skin tones — patch-test if sensitive"
+  "skinEn": "All skin tones — patch-test if sensitive",
+  "stock": 25
 },
 {
   "id": 140,
@@ -423,7 +441,8 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) شفاه نظيفة. إن كانت خشنة: منديل رطب بلطف، بدون حك.\n٢) من المنتصف نحو الزوايا.\n٣) أضيفي طبقة ثانية للّون أو اللمعان. أزيلي مساءً إن كان مكياجاً.",
   "useEn": "1) Clean lips. Soften flakes with a damp tissue, don't scrub.\n2) From the center toward the corners.\n3) Add a second layer for color or shine. Remove makeup at night.",
   "skinAr": "كل درجات البشرة — اختبري عند الحساسية",
-  "skinEn": "All skin tones — patch-test if sensitive"
+  "skinEn": "All skin tones — patch-test if sensitive",
+  "stock": 25
 },
 {
   "id": 141,
@@ -445,7 +464,8 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) شفاه نظيفة. إن كانت خشنة: منديل رطب بلطف، بدون حك.\n٢) من المنتصف نحو الزوايا.\n٣) أضيفي طبقة ثانية للّون أو اللمعان. أزيلي مساءً إن كان مكياجاً.",
   "useEn": "1) Clean lips. Soften flakes with a damp tissue, don't scrub.\n2) From the center toward the corners.\n3) Add a second layer for color or shine. Remove makeup at night.",
   "skinAr": "كل درجات البشرة — اختبري عند الحساسية",
-  "skinEn": "All skin tones — patch-test if sensitive"
+  "skinEn": "All skin tones — patch-test if sensitive",
+  "stock": 25
 },
 {
   "id": 142,
@@ -467,6 +487,7 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) شفاه نظيفة. إن كانت خشنة: منديل رطب بلطف، بدون حك.\n٢) من المنتصف نحو الزوايا.\n٣) أضيفي طبقة ثانية للّون أو اللمعان. أزيلي مساءً إن كان مكياجاً.",
   "useEn": "1) Clean lips. Soften flakes with a damp tissue, don't scrub.\n2) From the center toward the corners.\n3) Add a second layer for color or shine. Remove makeup at night.",
   "skinAr": "كل درجات البشرة — اختبري عند الحساسية",
-  "skinEn": "All skin tones — patch-test if sensitive"
+  "skinEn": "All skin tones — patch-test if sensitive",
+  "stock": 25
 }
 );

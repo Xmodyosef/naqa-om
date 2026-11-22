@@ -21,10 +21,10 @@
       return '<article class="row" data-open="' + p.id + '">' + thumb
         + '<div><strong>' + A.esc(m.nameAr || m.nameEn) + '</strong>'
         + '<small>' + A.esc(m.brand || "") + ' · ' + A.esc(m.cat || "") + ' · SKU ' + A.esc(m.sku || "—") + '</small>'
-        + '<small>السعر ' + A.esc(m.price) + ' · المخزون ' + A.esc(stock) + hid + '</small></div>'
+        + '<small>السعر ' + A.esc(m.price) + ' ر.ع <span style="color:#9a7b72;font-size:11px">شامل الضريبة ٥٪</span> · المخزون ' + A.esc(stock) + hid + '</small></div>'
         + '<button type="button" class="edit-btn" data-open="' + p.id + '">تعديل كامل</button></article>';
     }).join("");
-    document.getElementById("list").innerHTML = html || '<p class="note">ما في نتائج</p>';
+    document.getElementById("list").innerHTML = '<p class="note" id="vatAdminNote" style="color:#9a7b72;margin:0 0 10px">كل الأصناف · الأسعار شاملة ضريبة القيمة المضافة ٥٪</p>' + (html || '<p class="note">ما في نتائج</p>');
   };
   A.openEdit = function (id) {
     var p = A.products.find(function (x) { return x.id == id; });
@@ -48,7 +48,7 @@
       + '<label>التصنيف<select id="f_cat">' + catOpts + '</select></label></div>'
       + '<label>SKU<input id="f_sku" type="text" value="' + A.esc(m.sku || "") + '"></label>'
       + '<div class="grid3">'
-      + '<label>السعر ر.ع<input id="f_price" type="number" min="0" step="0.001" value="' + A.esc(m.price) + '"></label>'
+      + '<label>السعر ر.ع <span style="color:#9a7b72;font-size:11px;font-weight:600">شامل الضريبة ٥٪</span><input id="f_price" type="number" min="0" step="0.001" value="' + A.esc(m.price) + '"></label>'
       + '<label>قبل الخصم<input id="f_was" type="number" min="0" step="0.001" value="' + A.esc(m.was) + '"></label>'
       + '<label>الكمية<input id="f_stock" type="number" min="0" step="1" value="' + A.esc(m.stock) + '"></label></div>'
       + '<label class="hide-row"><input id="f_hidden" type="checkbox"' + (m.hidden ? " checked" : "") + '> إخفاء المنتج</label>'

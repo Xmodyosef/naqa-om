@@ -106,7 +106,7 @@ const ui={
   coCancel:"إلغاء", coSend:"إرسال واتساب",
   payTitle:"طريقة الدفع", payCod:"دفع عند الاستلام", payPaid:"مدفوع مسبقاً (تحويل)",
   payNeed:"اختاري طريقة الدفع", shipFee:"رسوم التوصيل", shipFreeCod:"مثال COD ٢٥: ٢٥+٢+١.٥=٢٨.٥ · COD ٣٠: ٣٠+١.٥=٣١.٥ · المدفوع: بدون رسوم",
-  payStatusUnpaid:"غير مدفوع", payStatusPaid:"مدفوع", subTotal:"المجموع الفرعي", grandTotal:"الإجمالي", codFee:"رسوم الدفع عند الاستلام", vatInc:"شامل الضريبة ٥٪", vatOf:"منها ضريبة ٥٪", vatLabel:"الضريبة (٥٪ شاملة)",
+  payStatusUnpaid:"غير مدفوع", payStatusPaid:"مدفوع", subTotal:"المجموع الفرعي", grandTotal:"الإجمالي", codFee:"رسوم الدفع عند الاستلام", vatInc:"شامل الضريبة ٥٪", vatOf:"منها ضريبة ٥٪", vatLabel:"الضريبة (٥٪ شاملة)", vatBar:"كل الأصناف · الأسعار شاملة ضريبة ٥٪",
   govs:["مسقط","ظفار","الباطنة شمال","الباطنة جنوب","الداخلية","الشرقية شمال","الشرقية جنوب","الظاهرة","البريمي","الوسطى","مسندم"]
  },
  en:{
@@ -132,7 +132,7 @@ const ui={
   coCancel:"Cancel", coSend:"Send on WhatsApp",
   payTitle:"Payment method", payCod:"Cash on delivery", payPaid:"Paid in advance (transfer)",
   payNeed:"Choose a payment method", shipFee:"Delivery fee", shipFreeCod:"COD 25: 25+2+1.5=28.5 · COD 30: 30+1.5=31.5 · paid: no fees",
-  payStatusUnpaid:"Unpaid", payStatusPaid:"Paid", subTotal:"Subtotal", grandTotal:"Grand total", codFee:"Cash on delivery fee", vatInc:"Incl. 5% VAT", vatOf:"of which 5% VAT", vatLabel:"VAT (5% included)",
+  payStatusUnpaid:"Unpaid", payStatusPaid:"Paid", subTotal:"Subtotal", grandTotal:"Grand total", codFee:"Cash on delivery fee", vatInc:"Incl. 5% VAT", vatOf:"of which 5% VAT", vatLabel:"VAT (5% included)", vatBar:"All items · prices include 5% VAT",
   govs:["Muscat","Dhofar","North Al Batinah","South Al Batinah","Ad Dakhiliyah","North Ash Sharqiyah","South Ash Sharqiyah","Ad Dhahirah","Al Buraimi","Al Wusta","Musandam"]
  }
 };

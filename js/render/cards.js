@@ -3,6 +3,9 @@ function offPct(p){
   if(!(p.was>p.price)) return 0;
   return Math.round((1-p.price/p.was)*100);
 }
+function vatChip(){
+  return '<span class="vat-chip">'+(typeof T==="function"?T("vatInc"):"شامل الضريبة ٥٪")+'</span>';
+}
 function priceHTML(p){
   const pct=offPct(p);
   const vat=typeof vatNoteHTML==="function"?vatNoteHTML():'<span class="vat-note">شامل الضريبة ٥٪</span>';
@@ -63,13 +66,13 @@ function renderShelves(){
   let html="";
   if(hot.length){
     html+='<section class="shelf">'+shelfBanner("hot", hot)
-      +'<div class="shelf-head"><h3 id="hotTitle">'+T("hot")+'</h3>'
+      +'<div class="shelf-head"><h3 id="hotTitle">'+T("hot")+'</h3>'+vatChip()
       +'<button type="button" data-shelf="hot">'+T("viewAll")+'</button></div>'
       +'<div class="shelf-row">'+hot.map(cardHTML).join("")+'</div></section>';
   }
   if(year.length){
     html+='<section class="shelf">'+shelfBanner("year", year)
-      +'<div class="shelf-head"><h3 id="yearTitle">'+T("year")+'</h3>'
+      +'<div class="shelf-head"><h3 id="yearTitle">'+T("year")+'</h3>'+vatChip()
       +'<button type="button" data-shelf="year">'+T("viewAll")+'</button></div>'
       +'<div class="shelf-row">'+year.map(cardHTML).join("")+'</div></section>';
   }

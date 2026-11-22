@@ -52,6 +52,7 @@ function applyLang(){
     const send=$("#checkoutSend"); if(send) send.textContent=T("coSend");
   }
   const sf=$("#shipFree"); if(sf) sf.textContent=T("shipFree");
+  const vb=$("#vatBar"); if(vb) vb.textContent=T("vatBar")||T("vatInc");
   const pt=$("#payTitle"); if(pt) pt.textContent=T("payTitle");
   const pcl=$("#payCodLab"); if(pcl) pcl.textContent=T("payCod");
   const ppl=$("#payPaidLab"); if(ppl) ppl.textContent=T("payPaid");

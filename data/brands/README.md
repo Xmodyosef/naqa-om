@@ -81,3 +81,16 @@
 **المجموع: 200 منتج · 54 ماركة**
 
 > الملفات القديمة `data/products-care.js` إلخ أصبحت غير مستخدمة.
+
+## Bundle (performance)
+
+The live store loads **one** file: `data/products.bundle.js` (not each brand file).
+
+After you edit any `data/brands/*.js`:
+
+```bash
+node scripts/build-products-bundle.js
+```
+
+Then commit `data/products.bundle.js` with the brand change.
+

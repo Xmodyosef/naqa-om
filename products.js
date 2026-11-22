@@ -1,7 +1,8 @@
-/* Naqa products loader
- * Products are split by BRAND under data/brands/<slug>.js
- * Each brand file does: window.NAQA_PRODUCTS.push({...}, {...})
- * Add a product: open the brand file (or create a new one) and edit AR + EN fields.
+/* Naqa products
+ * Edit source: data/brands/<brand>.js (one file per brand)
+ * Storefront + admin load the bundle: data/products.bundle.js
+ * After editing any brand file, rebuild:
+ *   node scripts/build-products-bundle.js
  * See data/brands/README.md and data/brands/TEMPLATE.js
  */
 window.NAQA_PRODUCTS = window.NAQA_PRODUCTS || [];

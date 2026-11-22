@@ -8,5 +8,5 @@ const BRAND_DOMAIN={
 };
 
 /* Private preview gate — set to "" to disable. Change the pin anytime. */
-const SITE_GATE_PIN="2026";
+const SITE_GATE_PIN=""; /* empty = public, no PIN */
 const SITE_GATE_KEY="naqa_gate_ok_v1";

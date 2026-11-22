@@ -19,12 +19,12 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "برايمر فائق التثبيت ذا فيس جلو من نيكس - 35مل",
   "nameEn": "NYX The Face Glue Gripping Primer - 35ml",
-  "descAr": "برايمر فائق التثبيت ذا فيس جلو من نيكس… من NYX. يمنحك إحساساً نظيفاً ونتيجة تُلاحظ مع الانتظام. صيغة عملية تُنجز مهمة واحدة بوضوح. يندمج مع البشرة بهدوء. الحجم تقريباً 35 مل. يناسب: كل درجات البشرة — اختبري عند الحساسية. خزّنيه قائماً وأغلقي الغطاء جيداً.",
-  "descEn": "NYX The Face Glue Gripping Primer from NYX. Clean on the skin, clearer with steady use. A practical formula with one clear job. A comfortable base for makeup. About 35 ml. Best for: All skin tones — patch-test if sensitive. Store upright and keep the cap closed.",
-  "useAr": "١) برايمر أو مرطب خفيف أولاً.\n٢) نقطة صغيرة وادمجي بالأسفنجة أو الفرشاة.\n٣) ركّزي على الوسط ثم الخارج.\n٤) لا تُكثري دفعة واحدة.\n٥) راجعي تاريخ الانتهاء على العبوة قبل الفتح.",
-  "useEn": "1) Primer or light cream first.\n2) A small dot — blend with sponge or brush.\n3) Center of the face outward.\n4) Do not pile product in one go.\n5) Check the expiry on the pack before opening.",
-  "skinAr": "كل درجات البشرة — اختبري عند الحساسية",
-  "skinEn": "All skin tones — patch-test if sensitive",
+  "descAr": "لمسة NYX في برايمر فائق التثبيت ذا فيس جلو من نيكس: يبني التغطية بهدوء. صيغة مباشرة تُحترم مع الوقت. الحجم ≈ 35 مل. يناسب مكياج يومي هادئ. خزّنيها في مكان معتدل وأغلقي الغطاء.",
+  "descEn": "NYX's touch in NYX The Face Glue Gripping Primer: builds coverage quietly. A direct formula that earns trust over time. Size ≈ 35 ml. Fits combo to dry. Keep it cool-ish and cap it tight.",
+  "useAr": "١) بشرة مرطّبة (+ SPF نهاراً).\n٢) كمية قليلة ووزّعي.\n٣) غطّي بطبقات خفيفة.\n٤) ثبّتي عند الحاجة.",
+  "useEn": "1) Moisturized skin (+ SPF by day).\n2) Start small and blend.\n3) Build in thin layers.\n4) Set for longer wear.",
+  "skinAr": "مكياج يومي هادئ",
+  "skinEn": "combo to dry",
   "stock": 25
 }
 );

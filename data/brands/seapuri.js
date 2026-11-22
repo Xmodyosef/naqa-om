@@ -16,12 +16,12 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "سيروم سيبوري سكالبي لعلاج فروة الرأس وتخفيف التساقط - 20مل",
   "nameEn": "Seapuri Scalpy Hair Serum - 20ml",
-  "descAr": "سيروم سيبوري سكالبي لعلاج فروة الرأس وتخفيف التساقط من Seapuri: خطوة واضحة، ملمس مريح، ونتيجة تُبنى بهدوء. بلا وعود مبالغ فيها — فقط خطوة تُشعرين بها. نتيجة أوضح مع الانتظام. الحجم تقريباً 20 مل. يناسب: حسب نوع الشعر والفروة — ابدئي بكمية قليلة. خزّنيه بعيداً عن الحرارة.",
-  "descEn": "Seapuri Scalpy Hair Serum by Seapuri: a clear step, a comfortable feel, and results that build quietly. No long list of empty claims — just a step you feel. Clear role on hair or scalp. About 20 ml. Best for: According to hair and scalp — start small. Store away from heat.",
-  "useAr": "١) حسب النوع: شامبو على الفروة، بلسم على الأطراف، سيروم بدون شطف حيث يُستخدم.\n٢) ابدئي بكمية قليلة.\n٣) لا تُغرقي الشعر.\n٤) انتظمي ٢–٣ أسابيع لملاحظة أوضح.\n٥) منتج Seapuri: التزمي بكمية معتدلة وكرّري حسب العبوة.",
-  "useEn": "1) As labeled: shampoo on scalp, conditioner on lengths, leave-in where it belongs.\n2) Start with a small amount.\n3) Do not overload the hair.\n4) Give it 2–3 weeks for a clearer change.\n5) Seapuri tip: stay moderate and follow the pack.",
-  "skinAr": "حسب نوع الشعر والفروة — ابدئي بكمية قليلة",
-  "skinEn": "According to hair and scalp — start small",
+  "descAr": "Seapuri × عناية يومية: سيروم سيبوري سكالبي لعلاج فروة الرأس وتخفيف التساقط. يُركّز على راحة الاستخدام. الملمس: يفهم الفروة والأطراف. الحجم ≈ 20 مل. الشعر المجهد. انتظمي أسبوعين قبل الحكم النهائي.",
+  "descEn": "Seapuri for daily care: Seapuri Scalpy Hair Serum. Comfort-first use. Feel: makes styling simpler. Size ≈ 20 ml. Match hair and scalp. Give it two steady weeks before you decide.",
+  "useAr": "١) شامبو للفروة، بلسم للأطراف، سيروم حسب العبوة.\n٢) ابدئي بقليل.\n٣) لا تُشبعي الخصل.\n٤) أسبوعان–ثلاثة للفرق الأوضح.",
+  "useEn": "1) Shampoo scalp, condition lengths, leave-in as labeled.\n2) Start small.\n3) Don’t drench the hair.\n4) Two–three weeks for a clearer change.",
+  "skinAr": "الشعر المجهد",
+  "skinEn": "match hair and scalp",
   "stock": 25
 }
 );

@@ -18,12 +18,12 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "بلسم البشرة الجافة سيكابلاست بوم بي 5 لاروش بوزيه - 40مل",
   "nameEn": "Cicaplast Balm B5 For Dry Skin Irritations - 40ml",
-  "descAr": "La Roche-Posay تقدّم بلسم البشرة الجافة سيكابلاست بوم بي 5 لاروش بوزيه كخطوة يومية لطيفة لا تُثقل البشرة. محوره سنتيلا: يخدم تهدئة الاحمرار والراحة بلطف مع الاستخدام المنتظم. قوام كريمي يريح الجفاف. الحجم تقريباً 40 مل. يناسب: البشرة الجافة والمحتاجة. ابدئي بكمية قليلة ثم زيدِي حسب تحمّل بشرتك.",
-  "descEn": "La Roche-Posay keeps Cicaplast Balm B5 For Dry Skin Irritations simple — one job done well. Built around centella — helping calming redness and comfort with steady use. A creamy texture that comforts dry skin. About 40 ml. Best for: Dry and dehydrated skin. Start with a small amount, then adjust to what your skin likes.",
-  "useAr": "١) بعد السيروم (أو بعد الغسول مباشرة).\n٢) كمية بحجم حبة البازلاء للوجه.\n٣) وزّعي حتى الامتصاص بما فيها الرقبة.\n٤) صباحاً أكملي بواقي شمس.\n٥) راجعي تاريخ الانتهاء على العبوة قبل الفتح.",
-  "useEn": "1) After serum (or right after cleansing).\n2) Pea-sized amount for the face.\n3) Smooth in, including the neck.\n4) Morning: finish with SPF.\n5) Check the expiry on the pack before opening.",
-  "skinAr": "البشرة الجافة والمحتاجة",
-  "skinEn": "Dry and dehydrated skin",
+  "descAr": "بلسم البشرة الجافة سيكابلاست بوم بي 5 لاروش بوزيه من La Roche-Posay. غني ومطمئن، مع حضور خلاصة مهدّئة لـهدوء للاحمرار والتهيج الخفيف. الحجم ≈ 40 مل. يناسب البقع الجافة. خزّنيها في مكان معتدل وأغلقي الغطاء.",
+  "descEn": "Cicaplast Balm B5 For Dry Skin Irritations by La Roche-Posay. A rescue layer for thirsty spots, with calming botanicals for calm for mild redness. Size ≈ 40 ml. Suits dry patches. Give it two steady weeks before you decide.",
+  "useAr": "١) على الجفاف أو آخر طبقة.\n٢) طبقة رقيقة.\n٣) أعيدي ليلاً.\n٤) بعيداً عن العين ما لم يُذكر.",
+  "useEn": "1) On dry spots or as last step.\n2) Thin layer.\n3) Again at night if needed.\n4) Away from eyes unless labeled.",
+  "skinAr": "البقع الجافة",
+  "skinEn": "dry patches",
   "stock": 25
 }
 );

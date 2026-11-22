@@ -16,12 +16,12 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "غسول الوجه بالذهب لتبييض وشد البشرة - 100مل",
   "nameEn": "Yc Whitening Gold Caviar Face Wash",
-  "descAr": "غسول الوجه بالذهب لتبييض وشد البشرة… من YC. يمنحك إحساساً نظيفاً ونتيجة تُلاحظ مع الانتظام. مصمّم ليكون جزءاً ثابتاً من روتين أقصر. رغوة أو زيت يزيل الأوساخ بلطف. الحجم تقريباً 100 مل. يناسب: البشرة الحساسة — اختبري على الرقبة أولاً. خزّنيه بعيداً عن الحرارة وأغلقي الغطاء جيداً.",
-  "descEn": "Yc Whitening Gold Caviar Face Wash from YC. Clean on the skin, clearer with steady use. Made to stay in a shorter, steadier routine. Cleans without stripping comfort. About 100 ml. Best for: Sensitive skin — patch-test first. Store away from heat and keep the cap closed.",
-  "useAr": "١) بلّلي الوجه بماء فاتر.\n٢) دلكي ٢٠–٣٠ ثانية ثم اشطفي جيداً.\n٣) جفّفي بالتربيت.\n٤) التنظيف المزدوج: الزيتي أولاً ثم هذا.\n٥) منتج YC: التزمي بكمية معتدلة وكرّري حسب العبوة.",
-  "useEn": "1) Wet the face with lukewarm water.\n2) Massage 20–30 seconds, rinse well.\n3) Pat dry.\n4) Double cleanse: oil first, then this.\n5) YC tip: stay moderate and follow the pack.",
-  "skinAr": "البشرة الحساسة — اختبري على الرقبة أولاً",
-  "skinEn": "Sensitive skin — patch-test first",
+  "descAr": "غسول الوجه بالذهب لتبييض وشد البشرة. قصة قصيرة: تنظيف/عناية/حماية حسب نوعه، وYC هنا لتسهيل اليوم. إحساس وجه « جديد » بهدوء. الحجم ≈ 100 مل. الدهنية والمختلطة. الجمال الأهدأ يأتي من روتين قصير ثابت.",
+  "descEn": "Yc Whitening Gold Caviar Face Wash. Short story: cleanse, treat, or protect as labeled — YC keeps the day simple. No tight squeak after rinse. Size ≈ 100 ml. After makeup as step one. Give it two steady weeks before you decide.",
+  "useAr": "١) أول خطوة صباحًا ومساءً.\n٢) تجنّبي الماء المغلي.\n٣) إن شدّ الوجه، قصّري الوقت.",
+  "useEn": "1) Lukewarm water.\n2) 20–30 seconds, full rinse.\n3) Pat dry.\n4) Heavy makeup: oil first, then this.",
+  "skinAr": "الدهنية والمختلطة",
+  "skinEn": "after makeup as step one",
   "stock": 25
 }
 );

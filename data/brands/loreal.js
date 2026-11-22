@@ -17,12 +17,12 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "رذاذ تثبيت المكياج إنفاليبل من لوريال باريس حتى 36ساعة - 75مل",
   "nameEn": "L'Oréal Paris Infallible Setting Spray 36H - 75ml",
-  "descAr": "عناية مركّزة في رذاذ تثبيت المكياج إنفاليبل من لوريال باريس حتى 36ساعة (L'oréal) — بسيطة في اليد، واضحة في النتيجة. بلا وعود مبالغ فيها — فقط خطوة تُشعرين بها. قاعدة مريحة للمكياج. الحجم تقريباً 75 مل. يناسب: كل درجات البشرة — اختبري عند الحساسية. أزيليه بلطف في نهاية اليوم.",
-  "descEn": "Focused care in L'Oréal Paris Infallible Setting Spray 36H (L'oréal) — easy in the hand, clear in the result. No long list of empty claims — just a step you feel. A comfortable base for makeup. About 75 ml. Best for: All skin tones — patch-test if sensitive. Remove gently at the end of the day.",
-  "useAr": "١) برايمر أو مرطب خفيف أولاً.\n٢) نقطة صغيرة وادمجي بالأسفنجة أو الفرشاة.\n٣) ركّزي على الوسط ثم الخارج.\n٤) لا تُكثري دفعة واحدة.\n٥) احفظي L'oréal في مكان جاف بعيداً عن الشمس.",
-  "useEn": "1) Primer or light cream first.\n2) A small dot — blend with sponge or brush.\n3) Center of the face outward.\n4) Do not pile product in one go.\n5) Keep L'oréal dry and away from direct sun.",
-  "skinAr": "كل درجات البشرة — اختبري عند الحساسية",
-  "skinEn": "All skin tones — patch-test if sensitive",
+  "descAr": "لماذا L'oréal هنا؟ لأن رذاذ تثبيت المكياج إنفاليبل من لوريال باريس حتى 36س… يقدّم خطوة واحدة واضحة: لمسة نهائية حسب اختيارك. بدون ضجيج وعود طويلة. الحجم ≈ 75 مل. لـمختلطة إلى جافة. خزّنيها في مكان معتدل وأغلقي الغطاء.",
+  "descEn": "Why L'oréal? Because L'Oréal Paris Infallible Setting Spray 36H does one clear job: blends instead of masking. No long promise list. Size ≈ 75 ml. For swatch along the jaw. Keep it cool-ish and cap it tight.",
+  "useAr": "١) بشرة مرطّبة (+ SPF نهاراً).\n٢) كمية قليلة ووزّعي.\n٣) غطّي بطبقات خفيفة.\n٤) ثبّتي عند الحاجة.",
+  "useEn": "1) Moisturized skin (+ SPF by day).\n2) Start small and blend.\n3) Build in thin layers.\n4) Set for longer wear.",
+  "skinAr": "مختلطة إلى جافة",
+  "skinEn": "swatch along the jaw",
   "stock": 25
 }
 );

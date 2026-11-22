@@ -17,12 +17,12 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "تونر حمض الهيالورونيك بالأرز الأسود من هارو هارو - 300مل",
   "nameEn": "HaruHaru Black Rice Hyaluronic Toner - 300ml",
-  "descAr": "إذا أردتِ انتعاشاً بعد الغسول دون روتين طويل: تونر حمض الهيالورونيك بالأرز الأسود من هارو هارو من HaruHaru. محوره هيالورونيك: يخدم ترطيب خفيف يدوم بلطف مع الاستخدام المنتظم. ويُكمَّل بـ مستخلص الأرز. ملمس منعش بعد الغسول. الحجم تقريباً 300 مل. يناسب: معظم الأنواع — راقبي أول أسبوع. خزّنيه بعيداً عن الحرارة وأغلقي الغطاء جيداً.",
-  "descEn": "When you want a fresh post-cleanse feel without a long routine: HaruHaru Black Rice Hyaluronic Toner by HaruHaru. Built around hyaluronic acid — helping lightweight lasting moisture with steady use. Paired with rice extract. A fresh feel right after cleansing. About 300 ml. Best for: Most skin types — watch the first week. Store away from heat and keep the cap closed.",
-  "useAr": "١) بشرة نظيفة.\n٢) مرّري التونر بلطف على الوجه.\n٣) تجنّبي محيط العين.\n٤) انتظري ثوانٍ قبل الخطوة التالية.\n٥) راجعي تاريخ الانتهاء على العبوة قبل الفتح.",
-  "useEn": "1) Clean skin.\n2) Sweep gently over the face.\n3) Avoid the eye area.\n4) Wait a few seconds before the next step.\n5) Check the expiry on the pack before opening.",
-  "skinAr": "معظم الأنواع — راقبي أول أسبوع",
-  "skinEn": "Most skin types — watch the first week",
+  "descAr": "تونر حمض الهيالورونيك بالأرز الأسود من هارو هارو. قصة قصيرة: تنظيف/عناية/حماية حسب نوعه، وHaruHaru هنا لتسهيل اليوم. مائي ومنعش كرشة ماء. هيالورونيك → ترطيب خفيف وامتلاء لطيف. الحجم ≈ 300 مل. الحساسة. أي لسع مستمر؟ خفّفي أو راجعي مختصاً.",
+  "descEn": "HaruHaru Black Rice Hyaluronic Toner. Short story: cleanse, treat, or protect as labeled — HaruHaru keeps the day simple. Hydrates without bulk. Hyaluronic acid → light hydration and a plump feel. Size ≈ 300 ml. After every cleanse. Ongoing sting? Ease off or ask a pro.",
+  "useAr": "١) فوراً بعد الغسول.\n٢) راحة اليد أو القطنة — بلا سحب.\n٣) بدون شطف → سيروم → مرطب.",
+  "useEn": "1) Right after cleansing.\n2) Palms or pad — no dragging.\n3) No rinse → serum → cream.",
+  "skinAr": "الحساسة",
+  "skinEn": "after every cleanse",
   "stock": 25
 },
 {
@@ -41,12 +41,12 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "جل التنظيف اللطيف 5.5 بالارز الأسود من هارو هارو - 100مل",
   "nameEn": "HaruHaru Black Rice Moisture 5.5 Soft Cleansing Gel - 100ml",
-  "descAr": "من رفوف HaruHaru: جل التنظيف اللطيف 5.5 بالارز الأسود من هارو هارو. توازن بين نعومة الاستخدام ووضوح الهدف. يبرز فيه مستخلص الأرز لدعم نعومة وإشراقة هادئة. ملمس مريح للاستخدام اليومي. الحجم تقريباً 100 مل. يناسب: البشرة الحساسة — اختبري على الرقبة أولاً. النتيجة أوضح مع الانتظام وواقي الشمس عند الحاجة.",
-  "descEn": "A HaruHaru pick: HaruHaru Black Rice Moisture 5.5 Soft Cleansing Gel. Soft to use, honest about what it does. It leans on rice extract to support softness and quiet glow. Results that build with use. About 100 ml. Best for: Sensitive skin — patch-test first. Results look better with steady use — and SPF when needed.",
-  "useAr": "١) اتبّعي: تنظيف → عناية → حماية.\n٢) كمية معتدلة أفضل من الإفراط.\n٣) راقبي التهيّج أول أسبوع.\n٤) أوقفي عند اللذع المستمر.\n٥) راجعي تاريخ الانتهاء على العبوة قبل الفتح.",
-  "useEn": "1) Follow: cleanse → treat → protect.\n2) Moderate amount beats overdoing it.\n3) Watch for irritation the first week.\n4) Stop if stinging continues.\n5) Check the expiry on the pack before opening.",
-  "skinAr": "البشرة الحساسة — اختبري على الرقبة أولاً",
-  "skinEn": "Sensitive skin — patch-test first",
+  "descAr": "اختاري جل التنظيف اللطيف 5.5 بالارز الأسود من هارو هارو حين تريدين نتيجة بلا تعقيد. من HaruHaru، بدون شدّ مزعج بعد الشطف. الحجم ≈ 100 مل. مُخصص تقريباً لـصباحاً ومساءً. خزّنيها في مكان معتدل وأغلقي الغطاء.",
+  "descEn": "Reach for HaruHaru Black Rice Moisture 5.5 Soft Cleansing Gel when you want results without a maze. From HaruHaru, cleans and leaves skin at ease. Size ≈ 100 ml. Aimed at oily and combination. Quiet beauty loves a short, steady routine.",
+  "useAr": "١) أول خطوة صباحًا ومساءً.\n٢) تجنّبي الماء المغلي.\n٣) إن شدّ الوجه، قصّري الوقت.",
+  "useEn": "1) Lukewarm water.\n2) 20–30 seconds, full rinse.\n3) Pat dry.\n4) Heavy makeup: oil first, then this.",
+  "skinAr": "صباحاً ومساءً",
+  "skinEn": "oily and combination",
   "stock": 25
 }
 );

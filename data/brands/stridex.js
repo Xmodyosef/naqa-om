@@ -17,12 +17,12 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "ستريديكس قطع قطنية للسيطرة على حب الشباب - 55قطعة",
   "nameEn": "Stridex Maximum Single-Step Acne Control - 55 Pads",
-  "descAr": "إذا أردتِ عناية بسيطة دون روتين طويل: ستريديكس قطع قطنية للسيطرة على حب الشباب من Stridex. بلا وعود مبالغ فيها — فقط خطوة تُشعرين بها. نتيجة تُبنى مع الانتظام. الحجم تقريباً 55 قطعة. يناسب: البشرة الدهنية والمختلطة. إن ظهر تهيّج، خفّفي الاستخدام وراجعي مختصاً عند اللزوم.",
-  "descEn": "When you want simple care without a long routine: Stridex Maximum Single-Step Acne Control by Stridex. No long list of empty claims — just a step you feel. Results that build with use. About 55 pcs. Best for: Oily and combination skin. If irritation appears, ease off and see a specialist if it lasts.",
-  "useAr": "١) اتبّعي: تنظيف → عناية → حماية.\n٢) كمية معتدلة أفضل من الإفراط.\n٣) راقبي التهيّج أول أسبوع.\n٤) أوقفي عند اللذع المستمر.\n٥) احفظي Stridex في مكان جاف بعيداً عن الشمس.",
-  "useEn": "1) Follow: cleanse → treat → protect.\n2) Moderate amount beats overdoing it.\n3) Watch for irritation the first week.\n4) Stop if stinging continues.\n5) Keep Stridex dry and away from direct sun.",
-  "skinAr": "البشرة الدهنية والمختلطة",
-  "skinEn": "Oily and combination skin",
+  "descAr": "لماذا Stridex هنا؟ لأن ستريديكس قطع قطنية للسيطرة على حب الشباب يقدّم خطوة واحدة واضحة: مريح مع الانتظام. بدون ضجيج وعود طويلة. الحجم ≈ 55 قطعة. لـمعظم الأنواع. خزّنيها في مكان معتدل وأغلقي الغطاء.",
+  "descEn": "Why Stridex? Because Stridex Maximum Single does one clear job: balanced and direct. No long promise list. Size ≈ 55 pcs. For match today’s need. Keep it cool-ish and cap it tight.",
+  "useAr": "١) نظّفي → عالجي → احمي.\n٢) كمية معتدلة.\n٣) راقبي الأسبوع الأول.\n٤) SPF مع التفتيح أو الأحماض.",
+  "useEn": "1) Cleanse → treat → protect.\n2) Moderate amount.\n3) Watch week one.\n4) SPF with brightening or acids.",
+  "skinAr": "معظم الأنواع",
+  "skinEn": "match today’s need",
   "stock": 25
 }
 );

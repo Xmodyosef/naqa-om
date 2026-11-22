@@ -17,12 +17,12 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "كريم إيبي دبل أب لترميم حاجز البشرة بالإكتوين والبانثينول - 50مل",
   "nameEn": "Epii Double Up Cream Ectoin & Panthenol - 50ml",
-  "descAr": "اختيار epii — كريم إيبي دبل أب لترميم حاجز البشرة بالإكتوين والبانثينول. صُمّم لروتين قصير يناسب يومك دون تعقيد. مصمّم ليكون جزءاً ثابتاً من روتين أقصر. قوام كريمي يريح الجفاف. الحجم تقريباً 50 مل. يناسب: البشرة الجافة والمحتاجة. إن ظهر تهيّج، خفّفي الاستخدام وراجعي مختصاً عند اللزوم.",
-  "descEn": "From epii — Epii Double Up Cream Ectoin & Panthenol. Made for a short routine that fits a real day. Made to stay in a shorter, steadier routine. A creamy texture that comforts dry skin. About 50 ml. Best for: Dry and dehydrated skin. If irritation appears, ease off and see a specialist if it lasts.",
-  "useAr": "١) بعد السيروم (أو بعد الغسول مباشرة).\n٢) كمية بحجم حبة البازلاء للوجه.\n٣) وزّعي حتى الامتصاص بما فيها الرقبة.\n٤) صباحاً أكملي بواقي شمس.\n٥) راجعي تاريخ الانتهاء على العبوة قبل الفتح.",
-  "useEn": "1) After serum (or right after cleansing).\n2) Pea-sized amount for the face.\n3) Smooth in, including the neck.\n4) Morning: finish with SPF.\n5) Check the expiry on the pack before opening.",
-  "skinAr": "البشرة الجافة والمحتاجة",
-  "skinEn": "Dry and dehydrated skin",
+  "descAr": "لماذا epii هنا؟ لأن كريم إيبي دبل أب لترميم حاجز البشرة بالإكتوين والبا… يقدّم خطوة واحدة واضحة: كريمي يغلّف بلطف. المكوّن الأبرز: بانثينول (ترطيب مهدّئ). الحجم ≈ 50 مل. لـالمختلطة في الجو الجاف. انتظمي أسبوعين قبل الحكم النهائي.",
+  "descEn": "Why epii? Because Epii Double Up Cream Ectoin & Panthenol does one clear job: creamy wrap without a mask feel. Standout: panthenol (soothing moisture). Size ≈ 50 ml. For sensitive dry skin. Quiet beauty loves a short, steady routine.",
+  "useAr": "١) دفّئي الكمية بين الأصابع.\n٢) ربّتي حتى تختفي.\n٣) القليل اليومي أهدى من الكثير مرة واحدة.",
+  "useEn": "1) After serum or right after cleanse.\n2) Pea-size for face + a little neck.\n3) SPF over it in the morning.\n4) Extra on dry cheeks at night.",
+  "skinAr": "المختلطة في الجو الجاف",
+  "skinEn": "sensitive dry skin",
   "stock": 25
 }
 );

@@ -16,12 +16,12 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "كريم العين ماري أند ماي بالترانيكساميك والغلوتاثيون لتفتيح الهالات - 30ج",
   "nameEn": "Mary&May Tranexamic Acid + Glutathione Eye Cream - 30ml",
-  "descAr": "كريم العين ماري أند ماي بالترانيكساميك والغلوتاثيون لتفتيح الهالات من Mary&May: خطوة واضحة، ملمس مريح، ونتيجة تُبنى بهدوء. يبرز فيه ترانيكساميك لدعم مظهر بقع أهدأ. يغلق الترطيب بنعومة. الحجم تقريباً 30 ج. يناسب: البشرة الجافة والمحتاجة. إن ظهر تهيّج، خفّفي الاستخدام وراجعي مختصاً عند اللزوم.",
-  "descEn": "Mary&May Tranexamic Acid + Glutathione Eye Cream by Mary&May: a clear step, a comfortable feel, and results that build quietly. It leans on tranexamic acid to support a calmer look of dark spots. Seals moisture softly. About 30 g. Best for: Dry and dehydrated skin. If irritation appears, ease off and see a specialist if it lasts.",
-  "useAr": "١) على بشرة نظيفة.\n٢) دفّئي الكريم بين الأصابع ثم ربّتي.\n٣) زيدِي على الخدود الجافة ليلاً.\n٤) تجنّبي محيط العين إلا إذا كان مخصّصاً.\n٥) احفظي Mary&May في مكان جاف بعيداً عن الشمس.",
-  "useEn": "1) On clean skin.\n2) Warm between fingers, then press in.\n3) Extra on dry cheeks at night if needed.\n4) Avoid the eye area unless the product is meant for it.\n5) Keep Mary&May dry and away from direct sun.",
-  "skinAr": "البشرة الجافة والمحتاجة",
-  "skinEn": "Dry and dehydrated skin",
+  "descAr": "رقيق في الإحساس، صادق في الدور — كريم العين ماري أند ماي بالترانيكساميك والغلوتاثيون…. علامة Mary&May تعتمد لمسة ترانكساميك. مخملي على الخدود الجافة. الحجم ≈ 30 مل. يناسب مساءً لمعظم الأنواع. خزّنيها في مكان معتدل وأغلقي الغطاء.",
+  "descEn": "Soft to the touch, honest in role — Mary&May Tranexamic Acid + Glutathione Eye Cream. Mary&May leans on tranexamic acid. Rich yet breathable. Size ≈ 30 ml. Best with sensitive dry skin. Keep it cool-ish and cap it tight.",
+  "useAr": "١) دفّئي الكمية بين الأصابع.\n٢) ربّتي حتى تختفي.\n٣) القليل اليومي أهدى من الكثير مرة واحدة.",
+  "useEn": "1) After serum or right after cleanse.\n2) Pea-size for face + a little neck.\n3) SPF over it in the morning.\n4) Extra on dry cheeks at night.",
+  "skinAr": "مساءً لمعظم الأنواع",
+  "skinEn": "sensitive dry skin",
   "stock": 25
 }
 );

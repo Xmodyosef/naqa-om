@@ -17,12 +17,12 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "غسول سيتافيل للبشرة العادية الى الجافة والحساسة - 237مل",
   "nameEn": "Cetaphil Gentle Skin Cleanser - 237ml",
-  "descAr": "اختيار Cetaphil — غسول سيتافيل للبشرة العادية الى الجافة والحساسة. صُمّم لروتين قصير يناسب يومك دون تعقيد. صيغة عملية تُنجز مهمة واحدة بوضوح. رغوة أو زيت يزيل الأوساخ بلطف. الحجم تقريباً 237 مل. يناسب: البشرة الحساسة — اختبري على الرقبة أولاً. إن ظهر تهيّج، خفّفي الاستخدام وراجعي مختصاً عند اللزوم.",
-  "descEn": "From Cetaphil — Cetaphil Gentle Skin Cleanser. Made for a short routine that fits a real day. A practical formula with one clear job. Rinses clean and kind. About 237 ml. Best for: Sensitive skin — patch-test first. If irritation appears, ease off and see a specialist if it lasts.",
-  "useAr": "١) بلّلي الوجه بماء فاتر.\n٢) دلكي ٢٠–٣٠ ثانية ثم اشطفي جيداً.\n٣) جفّفي بالتربيت.\n٤) التنظيف المزدوج: الزيتي أولاً ثم هذا.\n٥) إن تغيّر لون/رائحة المنتج، توقّفي عن الاستخدام.",
-  "useEn": "1) Wet the face with lukewarm water.\n2) Massage 20–30 seconds, rinse well.\n3) Pat dry.\n4) Double cleanse: oil first, then this.\n5) Stop if color or smell changes.",
-  "skinAr": "البشرة الحساسة — اختبري على الرقبة أولاً",
-  "skinEn": "Sensitive skin — patch-test first",
+  "descAr": "اختاري غسول سيتافيل للبشرة العادية الى الجافة والحساسة حين تريدين نتيجة بلا تعقيد. من Cetaphil، بدون شدّ مزعج بعد الشطف. الحجم ≈ 237 مل. مُخصص تقريباً لـالدهنية والمختلطة. الجمال الأهدأ يأتي من روتين قصير ثابت.",
+  "descEn": "Reach for Cetaphil Gentle Skin Cleanser when you want results without a maze. From Cetaphil, cleans and leaves skin at ease. Size ≈ 237 ml. Aimed at after makeup as step one. Ongoing sting? Ease off or ask a pro.",
+  "useAr": "١) ماء فاتر.\n٢) ٢٠–٣٠ ثانية تدليك ثم شطف كامل.\n٣) تربيت للتجفيف.\n٤) مكياج ثقيل: زيتي أولاً ثم هذا.",
+  "useEn": "1) Lukewarm water.\n2) 20–30 seconds, full rinse.\n3) Pat dry.\n4) Heavy makeup: oil first, then this.",
+  "skinAr": "الدهنية والمختلطة",
+  "skinEn": "after makeup as step one",
   "stock": 25
 }
 );

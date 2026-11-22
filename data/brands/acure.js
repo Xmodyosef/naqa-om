@@ -17,12 +17,12 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "مقشر اكيور لتفتيح الوجه - 118مل",
   "nameEn": "Acure Brightening Facial Scrub - 118ml",
-  "descAr": "مقشر اكيور لتفتيح الوجه… من Acure. يمنحك إحساساً نظيفاً ونتيجة تُلاحظ مع الانتظام. بلا وعود مبالغ فيها — فقط خطوة تُشعرين بها. خطوة واضحة داخل الروتين. الحجم تقريباً 118 مل. يناسب: معظم الأنواع — مع واقي شمس يومي. النتيجة أوضح مع الانتظام وواقي الشمس عند الحاجة.",
-  "descEn": "Acure Brightening Facial Scrub from Acure. Clean on the skin, clearer with steady use. No long list of empty claims — just a step you feel. Results that build with use. About 118 ml. Best for: Most types — with daily SPF. Results look better with steady use — and SPF when needed.",
-  "useAr": "١) اتبّعي: تنظيف → عناية → حماية.\n٢) كمية معتدلة أفضل من الإفراط.\n٣) راقبي التهيّج أول أسبوع.\n٤) أوقفي عند اللذع المستمر.\n٥) إن تغيّر لون/رائحة المنتج، توقّفي عن الاستخدام.",
-  "useEn": "1) Follow: cleanse → treat → protect.\n2) Moderate amount beats overdoing it.\n3) Watch for irritation the first week.\n4) Stop if stinging continues.\n5) Stop if color or smell changes.",
-  "skinAr": "معظم الأنواع — مع واقي شمس يومي",
-  "skinEn": "Most types — with daily SPF",
+  "descAr": "رقيق في الإحساس، صادق في الدور — مقشر اكيور لتفتيح الوجه. علامة Acure. مرات قليلة في الأسبوع. الحجم ≈ 118 مل. يناسب بعيداً عن ريتينول قوي بنفس الليلة. خزّنيها في مكان معتدل وأغلقي الغطاء.",
+  "descEn": "Soft to the touch, honest in role — Acure Brightening Facial Scrub. Acure. Only a few times a week. Size ≈ 118 ml. Best with not with strong retinoid same night. Ongoing sting? Ease off or ask a pro.",
+  "useAr": "١) بشرة مبللة بعد الغسول.\n٢) دوائر ناعمة ثوانٍ.\n٣) شطف + ترطيب.\n٤) ١–٢× أسبوعياً فقط.",
+  "useEn": "1) Wet skin after cleanse.\n2) Soft circles, few seconds.\n3) Rinse + moisturize.\n4) Only 1–2× weekly.",
+  "skinAr": "بعيداً عن ريتينول قوي بنفس الليلة",
+  "skinEn": "not with strong retinoid same night",
   "stock": 25
 }
 );

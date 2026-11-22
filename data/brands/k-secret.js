@@ -16,12 +16,12 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "كريم العين ريتينال 4% سيول 1988 من ك-سيكريت - 30مل",
   "nameEn": "K-Secret Seoul 1988 Retinal 4% Eye Cream - 30ml",
-  "descAr": "من رفوف K-Secret: كريم العين ريتينال 4% سيول 1988 من ك-سيكريت. توازن بين نعومة الاستخدام ووضوح الهدف. يبرز فيه ريتينويد لدعم ملمس أنعم ومظهر الخطوط الدقيقة. ملمس غني دون شعور دهني مزعج. الحجم تقريباً 30 مل. يناسب: البشرة الحساسة — اختبري على الرقبة أولاً. خزّنيه بعيداً عن الحرارة وأغلقي الغطاء جيداً.",
-  "descEn": "A K-Secret pick: K-Secret Seoul 1988 Retinal 4% Eye Cream. Soft to use, honest about what it does. It leans on a retinoid to support smoother texture and the look of fine lines. Seals moisture softly. About 30 ml. Best for: Sensitive skin — patch-test first. Store away from heat and keep the cap closed.",
-  "useAr": "١) بعد السيروم (أو بعد الغسول مباشرة).\n٢) كمية بحجم حبة البازلاء للوجه.\n٣) وزّعي حتى الامتصاص بما فيها الرقبة.\n٤) صباحاً أكملي بواقي شمس.\n٥) راجعي تاريخ الانتهاء على العبوة قبل الفتح.",
-  "useEn": "1) After serum (or right after cleansing).\n2) Pea-sized amount for the face.\n3) Smooth in, including the neck.\n4) Morning: finish with SPF.\n5) Check the expiry on the pack before opening.",
-  "skinAr": "البشرة الحساسة — اختبري على الرقبة أولاً",
-  "skinEn": "Sensitive skin — patch-test first",
+  "descAr": "لمسة K-Secret في كريم العين ريتينال 4% سيول 1988 من ك: كريمي يغلّف بلطف. يُذكر فيه ريتينويد لدعم ملمس أنعم ومظهر خطوط أدق. الحجم ≈ 30 مل. يناسب الجافة والمحتاجة. الجمال الأهدأ يأتي من روتين قصير ثابت.",
+  "descEn": "K-Secret's touch in K: rich yet breathable. Notes of retinoid care support smoother texture and a softer look of fine lines. Size ≈ 30 ml. Fits sensitive dry skin. Keep it cool-ish and cap it tight.",
+  "useAr": "١) دفّئي الكمية بين الأصابع.\n٢) ربّتي حتى تختفي.\n٣) القليل اليومي أهدى من الكثير مرة واحدة.",
+  "useEn": "1) After serum or right after cleanse.\n2) Pea-size for face + a little neck.\n3) SPF over it in the morning.\n4) Extra on dry cheeks at night.",
+  "skinAr": "الجافة والمحتاجة",
+  "skinEn": "sensitive dry skin",
   "stock": 25
 },
 {
@@ -39,12 +39,12 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "سيروم الريتينال 2% والجينسنغ الأسود سيول 1988 من ك-سيكريت - 30مل",
   "nameEn": "K-Secret Seoul 1988 Retinal 2% Black Ginseng Serum - 30ml",
-  "descAr": "اختيار K-Secret — سيروم الريتينال 2% والجينسنغ الأسود سيول 1988 من ك-سيكريت. صُمّم لروتين قصير يناسب يومك دون تعقيد. التركيبة تراهن على ريتينويد من أجل ملمس أنعم ومظهر الخطوط الدقيقة. طبقة رقيقة لا تثقل المكياج. الحجم تقريباً 30 مل. يناسب: البشرة الدهنية والمختلطة. النتيجة أوضح مع الانتظام وواقي الشمس عند الحاجة.",
-  "descEn": "From K-Secret — K-Secret Seoul 1988 Retinal 2% Black Ginseng Serum. Made for a short routine that fits a real day. The formula centers a retinoid for smoother texture and the look of fine lines. A light texture that absorbs fast. About 30 ml. Best for: Oily and combination skin. Results look better with steady use — and SPF when needed.",
-  "useAr": "١) بعد التنظيف والتونر.\n٢) طبقة رقيقة تكفي؛ لا تُغرقي البشرة.\n٣) دعيه يمتص قبل المكياج أو المرطب.\n٤) راقبي أول أسبوع إن كانت بشرتك حساسة.\n٥) إن تغيّر لون/رائحة المنتج، توقّفي عن الاستخدام.",
-  "useEn": "1) After cleanse and toner.\n2) A thin layer is enough — do not flood the skin.\n3) Let it settle before cream or makeup.\n4) Watch the first week if you are sensitive.\n5) Stop if color or smell changes.",
-  "skinAr": "البشرة الدهنية والمختلطة",
-  "skinEn": "Oily and combination skin",
+  "descAr": "لماذا K-Secret هنا؟ لأن سيروم الريتينال 2% والجينسنغ الأسود سيول 1988 من ك يقدّم خطوة واحدة واضحة: خفيف وسريع الامتصاص. المكوّن الأبرز: ريتينويد (ملمس أنعم ومظهر خطوط أدق). الحجم ≈ 30 مل. لـمعظم الأنواع — ابدئي بقطرات. انتظمي أسبوعين قبل الحكم النهائي.",
+  "descEn": "Why K-Secret? Because K does one clear job: light and quick to settle. Standout: retinoid care (smoother texture and a softer look of fine lines). Size ≈ 30 ml. For daily SPF when brightening. Quiet beauty loves a short, steady routine.",
+  "useAr": "١) وجه نظيف ورطب قليلاً.\n٢) نقطة على الخد والجبهة والذقن، ثم توزيع.\n٣) دقيقة صبر ثم الكريم.\n٤) محيط العين فقط إن صُمّم لذلك.",
+  "useEn": "1) Clean skin; toner first if you use one.\n2) 2–3 drops — press from center out.\n3) Cream on top. AM: SPF.\n4) Retinoids/acids: night, slowly.",
+  "skinAr": "معظم الأنواع — ابدئي بقطرات",
+  "skinEn": "daily SPF when brightening",
   "stock": 25
 }
 );

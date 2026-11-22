@@ -16,12 +16,12 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "قناع اسفل العين هيدروجيل ام سوري فور ماي سكين للتفتيح - 60 قطعة",
   "nameEn": "I'm Sorry For My Skin Hydrogel Under-Eye Mask - 60pcs",
-  "descAr": "عناية مركّزة في قناع اسفل العين هيدروجيل ام سوري فور ماي سكين للتفتيح (Ultru) — بسيطة في اليد، واضحة في النتيجة. مصمّم ليكون جزءاً ثابتاً من روتين أقصر. سهولة دمج يومية. الحجم تقريباً 60 قطعة. يناسب: كل درجات البشرة — اختبري عند الحساسية. لا تشاركِي الفرشاة أو الإسفنجة مع آخرين.",
-  "descEn": "Focused care in I'm Sorry For My Skin Hydrogel Under-Eye Mask (Ultru) — easy in the hand, clear in the result. Made to stay in a shorter, steadier routine. Color that blends for everyday wear. About 60 pcs. Best for: All skin tones — patch-test if sensitive. Do not share wands or sponges.",
-  "useAr": "١) جفن نظيف وجاف.\n٢) ادمجي اللون من الرموش للأعلى.\n٣) ثبّتي ببودرة خفيفة إن لزم.\n٤) أزيلي بلطف مساءً.\n٥) منتج Ultru: التزمي بكمية معتدلة وكرّري حسب العبوة.",
-  "useEn": "1) Clean, dry lids.\n2) Blend color from the lash line up.\n3) Set with a light powder if needed.\n4) Remove gently at night.\n5) Ultru tip: stay moderate and follow the pack.",
-  "skinAr": "كل درجات البشرة — اختبري عند الحساسية",
-  "skinEn": "All skin tones — patch-test if sensitive",
+  "descAr": "اختاري قناع اسفل العين هيدروجيل ام سوري فور ماي سكين للتفت… حين تريدين نتيجة بلا تعقيد. من Ultru، مريح للحديث والقهوة. الحجم ≈ 60 قطعة. مُخصص تقريباً لـيومياً بلا إزعاج. الجمال الأهدأ يأتي من روتين قصير ثابت.",
+  "descEn": "Reach for I'm Sorry For My Skin Hydrogel Under when you want results without a maze. From Ultru, soft on contact. Size ≈ 60 pcs. Aimed at daily without fuss. Quiet beauty loves a short, steady routine.",
+  "useAr": "١) شفاه نظيفة.\n٢) من الوسط للخارج.\n٣) لمسة خلال اليوم.\n٤) ليلاً أغنى إن كان مرطباً.",
+  "useEn": "1) Clean lips.\n2) Center to outer edge.\n3) Touch up through the day.\n4) Richer layer at night if balm/mask.",
+  "skinAr": "يومياً بلا إزعاج",
+  "skinEn": "daily without fuss",
   "stock": 25
 }
 );

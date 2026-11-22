@@ -17,12 +17,12 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "مزيل عرق رول أون باور 3 من يورياج – 50مل",
   "nameEn": "Uriage Power 3 Roll-On Deodorant - 50ml",
-  "descAr": "مزيل عرق رول أون باور 3 من يورياج –… من Uriage. يمنحك إحساساً نظيفاً ونتيجة تُلاحظ مع الانتظام. صيغة عملية تُنجز مهمة واحدة بوضوح. خطوة واضحة داخل الروتين. الحجم تقريباً 50 مل. يناسب: معظم الأنواع — راقبي أول أسبوع. ابدئي بكمية قليلة ثم زيدِي حسب تحمّل بشرتك.",
-  "descEn": "Uriage Power 3 Roll-On Deodorant from Uriage. Clean on the skin, clearer with steady use. A practical formula with one clear job. One clear step in the routine. About 50 ml. Best for: Most skin types — watch the first week. Start with a small amount, then adjust to what your skin likes.",
-  "useAr": "١) اتبّعي: تنظيف → عناية → حماية.\n٢) كمية معتدلة أفضل من الإفراط.\n٣) راقبي التهيّج أول أسبوع.\n٤) أوقفي عند اللذع المستمر.\n٥) منتج Uriage: التزمي بكمية معتدلة وكرّري حسب العبوة.",
-  "useEn": "1) Follow: cleanse → treat → protect.\n2) Moderate amount beats overdoing it.\n3) Watch for irritation the first week.\n4) Stop if stinging continues.\n5) Uriage tip: stay moderate and follow the pack.",
-  "skinAr": "معظم الأنواع — راقبي أول أسبوع",
-  "skinEn": "Most skin types — watch the first week",
+  "descAr": "Uriage × عناية يومية: مزيل عرق رول أون باور 3 من يورياج. يُركّز على راحة الاستخدام. الملمس: يكمل ما تستخدمينه. الحجم ≈ 50 مل. حسب احتياج يومك. الجمال الأهدأ يأتي من روتين قصير ثابت.",
+  "descEn": "Uriage for daily care: Uriage Power 3 Roll. Comfort-first use. Feel: slots into what you already use. Size ≈ 50 ml. Match today’s need. Quiet beauty loves a short, steady routine.",
+  "useAr": "١) نظّفي → عالجي → احمي.\n٢) كمية معتدلة.\n٣) راقبي الأسبوع الأول.\n٤) SPF مع التفتيح أو الأحماض.",
+  "useEn": "1) Cleanse → treat → protect.\n2) Moderate amount.\n3) Watch week one.\n4) SPF with brightening or acids.",
+  "skinAr": "حسب احتياج يومك",
+  "skinEn": "match today’s need",
   "stock": 25
 }
 );

@@ -17,12 +17,12 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "جل كريم سيكا لترميم وتهدئة البشرة من توكوبو - 75مل",
   "nameEn": "Tocobo Cica Calming Gel Cream - 75ml",
-  "descAr": "جل كريم سيكا لترميم وتهدئة البشرة من توكوبو… من TOCOBO. يمنحك إحساساً نظيفاً ونتيجة تُلاحظ مع الانتظام. يبرز فيه سنتيلا لدعم تهدئة الاحمرار والراحة. قوام كريمي يريح الجفاف. الحجم تقريباً 75 مل. يناسب: البشرة الحساسة — اختبري على الرقبة أولاً. إن ظهر تهيّج، خفّفي الاستخدام وراجعي مختصاً عند اللزوم.",
-  "descEn": "Tocobo Cica Calming Gel Cream from TOCOBO. Clean on the skin, clearer with steady use. It leans on centella to support calming redness and comfort. Seals moisture softly. About 75 ml. Best for: Sensitive skin — patch-test first. If irritation appears, ease off and see a specialist if it lasts.",
-  "useAr": "١) بعد السيروم (أو بعد الغسول مباشرة).\n٢) كمية بحجم حبة البازلاء للوجه.\n٣) وزّعي حتى الامتصاص بما فيها الرقبة.\n٤) صباحاً أكملي بواقي شمس.\n٥) منتج TOCOBO: التزمي بكمية معتدلة وكرّري حسب العبوة.",
-  "useEn": "1) After serum (or right after cleansing).\n2) Pea-sized amount for the face.\n3) Smooth in, including the neck.\n4) Morning: finish with SPF.\n5) TOCOBO tip: stay moderate and follow the pack.",
-  "skinAr": "البشرة الحساسة — اختبري على الرقبة أولاً",
-  "skinEn": "Sensitive skin — patch-test first",
+  "descAr": "جل كريم سيكا لترميم وتهدئة البشرة من توكوبو. قصة قصيرة: تنظيف/عناية/حماية حسب نوعه، وTOCOBO هنا لتسهيل اليوم. غني لكن يتنفس. خلاصة مهدّئة → هدوء للاحمرار والتهيج الخفيف. الحجم ≈ 75 مل. مساءً لمعظم الأنواع. خزّنيها في مكان معتدل وأغلقي الغطاء.",
+  "descEn": "Tocobo Cica Calming Gel Cream. Short story: cleanse, treat, or protect as labeled — TOCOBO keeps the day simple. Velvet on dry cheeks. Calming botanicals → calm for mild redness. Size ≈ 75 ml. Nights for most types. Keep it cool-ish and cap it tight.",
+  "useAr": "١) بعد السيروم أو مباشرة بعد الغسول.\n٢) حبة بازيلاء للوجه + قليل للرقبة.\n٣) صباحاً SPF فوقه.\n٤) مساءً زيدي على الخدود الجافة.",
+  "useEn": "1) After serum or right after cleanse.\n2) Pea-size for face + a little neck.\n3) SPF over it in the morning.\n4) Extra on dry cheeks at night.",
+  "skinAr": "مساءً لمعظم الأنواع",
+  "skinEn": "nights for most types",
   "stock": 25
 }
 );

@@ -17,12 +17,12 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "مجموعة اروماتيكا روزماري التجريبية لتنقية فروة الرأس",
   "nameEn": "Aromatica Rosemary Scalp Scaling Trial Kit",
-  "descAr": "اختيار Aromatica — مجموعة اروماتيكا روزماري التجريبية لتنقية فروة الرأس. صُمّم لروتين قصير يناسب يومك دون تعقيد. مصمّم ليكون جزءاً ثابتاً من روتين أقصر. نتيجة أوضح مع الانتظام. يناسب: حسب نوع الشعر والفروة — ابدئي بكمية قليلة. تجنّبي ملامسة العينين.",
-  "descEn": "From Aromatica — Aromatica Rosemary Scalp Scaling Trial Kit. Made for a short routine that fits a real day. Made to stay in a shorter, steadier routine. Clear role on hair or scalp. Best for: According to hair and scalp — start small. Keep away from the eyes.",
-  "useAr": "١) حسب النوع: شامبو على الفروة، بلسم على الأطراف، سيروم بدون شطف حيث يُستخدم.\n٢) ابدئي بكمية قليلة.\n٣) لا تُغرقي الشعر.\n٤) انتظمي ٢–٣ أسابيع لملاحظة أوضح.\n٥) إن تغيّر لون/رائحة المنتج، توقّفي عن الاستخدام.",
-  "useEn": "1) As labeled: shampoo on scalp, conditioner on lengths, leave-in where it belongs.\n2) Start with a small amount.\n3) Do not overload the hair.\n4) Give it 2–3 weeks for a clearer change.\n5) Stop if color or smell changes.",
-  "skinAr": "حسب نوع الشعر والفروة — ابدئي بكمية قليلة",
-  "skinEn": "According to hair and scalp — start small",
+  "descAr": "مجموعة اروماتيكا روزماري التجريبية لتنقية فروة الرأس من Aromatica. أنظف وأطرى مع الأسابيع. يناسب فروة تحتاج انتعاشاً. أي لسع مستمر؟ خفّفي أو راجعي مختصاً.",
+  "descEn": "Aromatica Rosemary Scalp Scaling Trial Kit by Aromatica. Cleaner and softer over weeks. Suits scalp that needs air. Quiet beauty loves a short, steady routine.",
+  "useAr": "١) شامبو للفروة، بلسم للأطراف، سيروم حسب العبوة.\n٢) ابدئي بقليل.\n٣) لا تُشبعي الخصل.\n٤) أسبوعان–ثلاثة للفرق الأوضح.",
+  "useEn": "1) Shampoo scalp, condition lengths, leave-in as labeled.\n2) Start small.\n3) Don’t drench the hair.\n4) Two–three weeks for a clearer change.",
+  "skinAr": "فروة تحتاج انتعاشاً",
+  "skinEn": "scalp that needs air",
   "stock": 25
 }
 );

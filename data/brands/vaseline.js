@@ -18,12 +18,12 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "فازلين مرطب الشفاه الأصلي - 20ج",
   "nameEn": "Vaseline Lip Therapy Original - 20g",
-  "descAr": "اختيار Vaseline — فازلين مرطب الشفاه الأصلي. صُمّم لروتين قصير يناسب يومك دون تعقيد. صيغة عملية تُنجز مهمة واحدة بوضوح. ملمس ناعم على الشفاه. الحجم تقريباً 20 ج. يناسب: كل درجات البشرة — اختبري عند الحساسية. أزيليه بلطف في نهاية اليوم.",
-  "descEn": "From Vaseline — Vaseline Lip Therapy Original. Made for a short routine that fits a real day. A practical formula with one clear job. Color or shine depending on the formula. About 20 g. Best for: All skin tones — patch-test if sensitive. Remove gently at the end of the day.",
-  "useAr": "١) شفاه نظيفة وجافة.\n٢) طبّقي من الوسط للخارج.\n٣) أعيدي خلال اليوم حسب الحاجة.\n٤) ليلاً: مرطب أغنى إن رغبتِ.\n٥) راجعي تاريخ الانتهاء على العبوة قبل الفتح.",
-  "useEn": "1) Clean, dry lips.\n2) Apply from the center outward.\n3) Reapply through the day as needed.\n4) At night: a richer balm if you like.\n5) Check the expiry on the pack before opening.",
-  "skinAr": "كل درجات البشرة — اختبري عند الحساسية",
-  "skinEn": "All skin tones — patch-test if sensitive",
+  "descAr": "لمسة Vaseline في فازلين مرطب الشفاه الأصلي: مريح للحديث والقهوة. صيغة مباشرة تُحترم مع الوقت. الحجم ≈ 20 ج. يناسب الشفاه الجافة. انتظمي أسبوعين قبل الحكم النهائي.",
+  "descEn": "Vaseline's touch in Vaseline Lip Therapy Original: tint or shine by formula. A direct formula that earns trust over time. Size ≈ 20 g. Fits dry lips. Ongoing sting? Ease off or ask a pro.",
+  "useAr": "١) شفاه نظيفة.\n٢) من الوسط للخارج.\n٣) لمسة خلال اليوم.\n٤) ليلاً أغنى إن كان مرطباً.",
+  "useEn": "1) Clean lips.\n2) Center to outer edge.\n3) Touch up through the day.\n4) Richer layer at night if balm/mask.",
+  "skinAr": "الشفاه الجافة",
+  "skinEn": "dry lips",
   "stock": 25
 }
 );

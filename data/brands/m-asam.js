@@ -16,12 +16,12 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "ماجيك فينيش بلسم الشفاه ام اسام - 18ج",
   "nameEn": "M.Asam Magic Finish Volume Lip Balm - 18g",
-  "descAr": "عناية مركّزة في ماجيك فينيش بلسم الشفاه ام اسام (M.Asam) — بسيطة في اليد، واضحة في النتيجة. مصمّم ليكون جزءاً ثابتاً من روتين أقصر. لون أو لمعان حسب النوع. الحجم تقريباً 18 ج. يناسب: كل درجات البشرة — اختبري عند الحساسية. جرّبي كمية قليلة أولاً لتضبطي الكثافة.",
-  "descEn": "Focused care in M.Asam Magic Finish Volume Lip Balm (M.Asam) — easy in the hand, clear in the result. Made to stay in a shorter, steadier routine. Color or shine depending on the formula. About 18 g. Best for: All skin tones — patch-test if sensitive. Start with a little to control intensity.",
-  "useAr": "١) شفاه نظيفة وجافة.\n٢) طبّقي من الوسط للخارج.\n٣) أعيدي خلال اليوم حسب الحاجة.\n٤) ليلاً: مرطب أغنى إن رغبتِ.\n٥) راجعي تاريخ الانتهاء على العبوة قبل الفتح.",
-  "useEn": "1) Clean, dry lips.\n2) Apply from the center outward.\n3) Reapply through the day as needed.\n4) At night: a richer balm if you like.\n5) Check the expiry on the pack before opening.",
-  "skinAr": "كل درجات البشرة — اختبري عند الحساسية",
-  "skinEn": "All skin tones — patch-test if sensitive",
+  "descAr": "لمسة M.Asam في ماجيك فينيش بلسم الشفاه ام اسام: مريح للحديث والقهوة. صيغة مباشرة تُحترم مع الوقت. الحجم ≈ 18 ج. يناسب الشفاه الجافة. خزّنيها في مكان معتدل وأغلقي الغطاء.",
+  "descEn": "M.Asam's touch in M.Asam Magic Finish Volume Lip Balm: comfortable through talk and coffee. A direct formula that earns trust over time. Size ≈ 18 g. Fits daily without fuss. Give it two steady weeks before you decide.",
+  "useAr": "١) شفاه نظيفة.\n٢) من الوسط للخارج.\n٣) لمسة خلال اليوم.\n٤) ليلاً أغنى إن كان مرطباً.",
+  "useEn": "1) Clean lips.\n2) Center to outer edge.\n3) Touch up through the day.\n4) Richer layer at night if balm/mask.",
+  "skinAr": "الشفاه الجافة",
+  "skinEn": "daily without fuss",
   "stock": 25
 }
 );

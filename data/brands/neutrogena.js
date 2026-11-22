@@ -17,12 +17,12 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "شامبو وبلسم نيتروجينا تي/جيل 2 في 1 لعلاج مشاكل فروة الرأس - 250مل",
   "nameEn": "Neutrogena T/Gel 2In1 Scalp 250Ml Shampoo And Conditioner - 250ml",
-  "descAr": "شامبو وبلسم نيتروجينا تي/جيل 2 في 1 لعلاج مشاكل فروة الرأس… من Neutrogena. يمنحك إحساساً نظيفاً ونتيجة تُلاحظ مع الانتظام. بلا وعود مبالغ فيها — فقط خطوة تُشعرين بها. يوزَّع بكمية قليلة. الحجم تقريباً 250 مل. يناسب: حسب نوع الشعر والفروة — ابدئي بكمية قليلة. تجنّبي ملامسة العينين.",
-  "descEn": "Neutrogena T/Gel 2In1 Scalp from Neutrogena. Clean on the skin, clearer with steady use. No long list of empty claims — just a step you feel. Clear role on hair or scalp. About 250 ml. Best for: According to hair and scalp — start small. Keep away from the eyes.",
-  "useAr": "١) شعر مبلل أو فروة نظيفة حسب المنتج.\n٢) وزّعي ثم دلّكي بلطف.\n٣) اشطفي إن طُلب، أو اتركيه إن كان بدون شطف.\n٤) تجنّبي العينين.\n٥) راجعي تاريخ الانتهاء على العبوة قبل الفتح.",
-  "useEn": "1) Wet hair or clean scalp as the product requires.\n2) Distribute, then massage gently.\n3) Rinse if asked — or leave in if it is leave-in.\n4) Keep away from the eyes.\n5) Check the expiry on the pack before opening.",
-  "skinAr": "حسب نوع الشعر والفروة — ابدئي بكمية قليلة",
-  "skinEn": "According to hair and scalp — start small",
+  "descAr": "شامبو وبلسم نيتروجينا تي/جيل 2 في 1 لعلاج مشاكل فرو… من Neutrogena. لون أو لمعان حسب الصيغة. الحجم ≈ 250 مل. يناسب يومياً بلا إزعاج. انتظمي أسبوعين قبل الحكم النهائي.",
+  "descEn": "Neutrogena T/Gel 2In1 Scalp 250Ml Shampoo And Condition… by Neutrogena. Tint or shine by formula. Size ≈ 250 ml. Suits daily without fuss. Keep it cool-ish and cap it tight.",
+  "useAr": "١) شفاه نظيفة.\n٢) من الوسط للخارج.\n٣) لمسة خلال اليوم.\n٤) ليلاً أغنى إن كان مرطباً.",
+  "useEn": "1) Clean lips.\n2) Center to outer edge.\n3) Touch up through the day.\n4) Richer layer at night if balm/mask.",
+  "skinAr": "يومياً بلا إزعاج",
+  "skinEn": "daily without fuss",
   "stock": 25
 }
 );

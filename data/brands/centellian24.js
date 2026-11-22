@@ -17,12 +17,12 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "كريم ماديكا تايم ريفيرس لإصلاح البشرة وتقليل التجاعيد من سنتيليان24 - 50مل",
   "nameEn": "Centellian24 Madeca Cream Time Reverse - 50ml",
-  "descAr": "من رفوف Centellian24: كريم ماديكا تايم ريفيرس لإصلاح البشرة وتقليل التجاعيد من سنتيليان24. توازن بين نعومة الاستخدام ووضوح الهدف. صيغة عملية تُنجز مهمة واحدة بوضوح. يغلق الترطيب بنعومة. الحجم تقريباً 50 مل. يناسب: البشرة الجافة والمحتاجة. النتيجة أوضح مع الانتظام وواقي الشمس عند الحاجة.",
-  "descEn": "A Centellian24 pick: Centellian24 Madeca Cream Time Reverse. Soft to use, honest about what it does. A practical formula with one clear job. Rich feel without heavy grease. About 50 ml. Best for: Dry and dehydrated skin. Results look better with steady use — and SPF when needed.",
-  "useAr": "١) على بشرة نظيفة.\n٢) دفّئي الكريم بين الأصابع ثم ربّتي.\n٣) زيدِي على الخدود الجافة ليلاً.\n٤) تجنّبي محيط العين إلا إذا كان مخصّصاً.\n٥) منتج Centellian24: التزمي بكمية معتدلة وكرّري حسب العبوة.",
-  "useEn": "1) On clean skin.\n2) Warm between fingers, then press in.\n3) Extra on dry cheeks at night if needed.\n4) Avoid the eye area unless the product is meant for it.\n5) Centellian24 tip: stay moderate and follow the pack.",
-  "skinAr": "البشرة الجافة والمحتاجة",
-  "skinEn": "Dry and dehydrated skin",
+  "descAr": "رقيق في الإحساس، صادق في الدور — كريم ماديكا تايم ريفيرس لإصلاح البشرة وتقليل التجاع…. علامة Centellian24. كريمي يغلّف بلطف. الحجم ≈ 50 مل. يناسب الحساسة الجافة. أي لسع مستمر؟ خفّفي أو راجعي مختصاً.",
+  "descEn": "Soft to the touch, honest in role — Centellian24 Madeca Cream Time Reverse. Centellian24. Velvet on dry cheeks. Size ≈ 50 ml. Best with nights for most types. Keep it cool-ish and cap it tight.",
+  "useAr": "١) بعد السيروم أو مباشرة بعد الغسول.\n٢) حبة بازيلاء للوجه + قليل للرقبة.\n٣) صباحاً SPF فوقه.\n٤) مساءً زيدي على الخدود الجافة.",
+  "useEn": "1) After serum or right after cleanse.\n2) Pea-size for face + a little neck.\n3) SPF over it in the morning.\n4) Extra on dry cheeks at night.",
+  "skinAr": "الحساسة الجافة",
+  "skinEn": "nights for most types",
   "stock": 25
 }
 );

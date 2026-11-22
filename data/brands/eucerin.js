@@ -17,12 +17,12 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "جل التنظيف المضاد للتصبغات من يوسيرين - 200مل",
   "nameEn": "Eucerin Anti-Pigment Cleansing Gel - 200ml",
-  "descAr": "جل التنظيف المضاد للتصبغات من يوسيرين — لمسة Eucerin بهدوء واحتراف خفيف يناسب الاستخدام اليومي. بلا وعود مبالغ فيها — فقط خطوة تُشعرين بها. ملمس مريح للاستخدام اليومي. الحجم تقريباً 200 مل. يناسب: البشرة الدهنية والمختلطة. النتيجة أوضح مع الانتظام وواقي الشمس عند الحاجة.",
-  "descEn": "Eucerin Anti-Pigment Cleansing Gel — a calm Eucerin finish for everyday wear. No long list of empty claims — just a step you feel. Results that build with use. About 200 ml. Best for: Oily and combination skin. Results look better with steady use — and SPF when needed.",
-  "useAr": "١) اتبّعي: تنظيف → عناية → حماية.\n٢) كمية معتدلة أفضل من الإفراط.\n٣) راقبي التهيّج أول أسبوع.\n٤) أوقفي عند اللذع المستمر.\n٥) احفظي Eucerin في مكان جاف بعيداً عن الشمس.",
-  "useEn": "1) Follow: cleanse → treat → protect.\n2) Moderate amount beats overdoing it.\n3) Watch for irritation the first week.\n4) Stop if stinging continues.\n5) Keep Eucerin dry and away from direct sun.",
-  "skinAr": "البشرة الدهنية والمختلطة",
-  "skinEn": "Oily and combination skin",
+  "descAr": "لماذا Eucerin هنا؟ لأن جل التنظيف المضاد للتصبغات من يوسيرين يقدّم خطوة واحدة واضحة: ينظّف ويترك البشرة مرتاحة. بدون ضجيج وعود طويلة. الحجم ≈ 200 مل. لـبعد مكياج كخطوة أولى. الجمال الأهدأ يأتي من روتين قصير ثابت.",
+  "descEn": "Why Eucerin? Because Eucerin Anti does one clear job: no tight squeak after rinse. No long promise list. Size ≈ 200 ml. For sensitive with a milder formula. Give it two steady weeks before you decide.",
+  "useAr": "١) أول خطوة صباحًا ومساءً.\n٢) تجنّبي الماء المغلي.\n٣) إن شدّ الوجه، قصّري الوقت.",
+  "useEn": "1) Lukewarm water.\n2) 20–30 seconds, full rinse.\n3) Pat dry.\n4) Heavy makeup: oil first, then this.",
+  "skinAr": "بعد مكياج كخطوة أولى",
+  "skinEn": "sensitive with a milder formula",
   "stock": 25
 },
 {
@@ -41,12 +41,12 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "لوشن تخفيف الخشونة من يوسيرين - 500مل",
   "nameEn": "Eucerin‏ Roughness Relief Lotion - 500ml",
-  "descAr": "من رفوف Eucerin: لوشن تخفيف الخشونة من يوسيرين. توازن بين نعومة الاستخدام ووضوح الهدف. مصمّم ليكون جزءاً ثابتاً من روتين أقصر. ملمس غني دون شعور دهني مزعج. الحجم تقريباً 500 مل. يناسب: البشرة الجافة والمحتاجة. النتيجة أوضح مع الانتظام وواقي الشمس عند الحاجة.",
-  "descEn": "A Eucerin pick: Eucerin‏ Roughness Relief Lotion. Soft to use, honest about what it does. Made to stay in a shorter, steadier routine. A creamy texture that comforts dry skin. About 500 ml. Best for: Dry and dehydrated skin. Results look better with steady use — and SPF when needed.",
-  "useAr": "١) بعد السيروم (أو بعد الغسول مباشرة).\n٢) كمية بحجم حبة البازلاء للوجه.\n٣) وزّعي حتى الامتصاص بما فيها الرقبة.\n٤) صباحاً أكملي بواقي شمس.\n٥) راجعي تاريخ الانتهاء على العبوة قبل الفتح.",
-  "useEn": "1) After serum (or right after cleansing).\n2) Pea-sized amount for the face.\n3) Smooth in, including the neck.\n4) Morning: finish with SPF.\n5) Check the expiry on the pack before opening.",
-  "skinAr": "البشرة الجافة والمحتاجة",
-  "skinEn": "Dry and dehydrated skin",
+  "descAr": "لماذا Eucerin هنا؟ لأن لوشن تخفيف الخشونة من يوسيرين يقدّم خطوة واحدة واضحة: يمتص بمعدل مريح للجسم. بدون ضجيج وعود طويلة. الحجم ≈ 500 مل. لـبعد الاستحمام. خزّنيها في مكان معتدل وأغلقي الغطاء.",
+  "descEn": "Why Eucerin? Because Eucerin‏ Roughness Relief Lotion does one clear job: absorbs at a body-friendly pace. No long promise list. Size ≈ 500 ml. For most types. Give it two steady weeks before you decide.",
+  "useAr": "١) بعد الحمام على بشرة نديّة.\n٢) من الأطراف للداخل.\n٣) ركّزي على الكوعين والساقين.\n٤) صباح أو مساء.",
+  "useEn": "1) After shower, skin still damp.\n2) Limbs toward center.\n3) Elbows and dry legs again.\n4) Morning or night.",
+  "skinAr": "بعد الاستحمام",
+  "skinEn": "most types",
   "stock": 25
 }
 );

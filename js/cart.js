@@ -3,7 +3,16 @@
  - Delivery base: 2 OMR when subtotal < 30
  - Free delivery at 30+ (auto discount the 2)
  - COD (unpaid): +1.5 OMR cash-on-delivery fee
- - Paid — no extra fees."#payPaid");
+ - Paid in advance: remove delivery fee AND remove COD fee
+ Example COD 30: 30 + 0 delivery + 1.5 COD = 31.500
+ Example COD 25: 25 + 2 + 1.5 = 28.500
+ Example paid 25: 25 + 0 + 0 = 25.000
+*/
+function cartSubtotal(){
+  return cart.reduce((s,i)=>s+i.price*i.qty,0);
+}
+function getPayMethod(){
+  const paid=$("#payPaid");
   if(paid && paid.checked) return "paid";
   const cod=$("#payCod");
   if(cod && cod.checked) return "cod";
@@ -57,8 +66,8 @@ function updatePaySum(){
   if(hint){
     if(b.pay==="paid"){
       hint.textContent=lang==="en"
-        ? "Paid — no extra fees."
-        : "مدفوع — بدون رسوم إضافية.";
+        ? "Paid in advance: delivery fee and COD fee removed."
+        : "مدفوع.";
     } else if(b.freeShip){
       hint.textContent=lang==="en"
         ? "COD · free delivery (30+) · COD fee +1.500 OMR. Example: 30 + 1.5 = 31.5"

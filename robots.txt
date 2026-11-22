@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://xmodyosef.github.io/naqa-om/sitemap.xml

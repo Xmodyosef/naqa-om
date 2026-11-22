@@ -193,7 +193,7 @@
   function refreshChromeA11y() {
     var map = [
       ["#search", "aria-label", aT("بحث عن منتج", "Search products")],
-      ["#langBtn", "aria-label", aT("تبديل اللغة إلى الإنجليزية", "Switch language to Arabic")],
+      ["#langBtn", "aria-label", aT("التبديل إلى الإنجليزية", "Switch to Arabic")],
       ["#wishBtn", "aria-label", aT("المفضلة", "Wishlist")],
       ["#cartBtn", "aria-label", aT("السلة", "Cart")],
       ["#closeCart", "aria-label", aT("إغلاق السلة", "Close cart")],
@@ -248,8 +248,12 @@
     if (typeof applyLang === "function" && !applyLang.__a11y) {
       var orig = applyLang;
       window.applyLang = function () {
+        var prev = typeof lang !== "undefined" ? lang : "ar";
         orig.apply(this, arguments);
         refreshChromeA11y();
+        try {
+          announce(aT("اللغة: عربي", "Language: English"));
+        } catch (e) {}
       };
       window.applyLang.__a11y = true;
       clearInterval(hook);

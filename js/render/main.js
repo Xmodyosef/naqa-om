@@ -74,6 +74,21 @@ function applyLang(){
   if(typeof syncShipMarquee==="function") syncShipMarquee();
   const quiz=$("#heroQuiz"); if(quiz) quiz.textContent=T("quizBtn");
   document.title = openProductId ? (pname(products.find(x=>x.id===openProductId)||{})+" · Naqa") : T("docTitle");
+
+  // SEO meta bilingual
+  (function(){
+    var descAr="نقاء — عناية ومكياج أصلية. توصيل لجميع ولايات عُمان. طلب سريع عبر واتساب.";
+    var descEn="Naqa — authentic skincare & makeup. Delivery across Oman. Fast WhatsApp ordering.";
+    var titleAr="نقاء · عناية ومكياج | www.naqa.om";
+    var titleEn="Naqa · Skincare & Makeup | Oman";
+    var md=document.getElementById("metaDesc");
+    if(md) md.setAttribute("content", lang==="en"?descEn:descAr);
+    var ogt=document.getElementById("ogTitle");
+    if(ogt) ogt.setAttribute("content", lang==="en"?titleEn:titleAr);
+    var ogd=document.getElementById("ogDesc");
+    if(ogd) ogd.setAttribute("content", lang==="en"?descEn:descAr);
+  })();
+
   const mark=document.querySelector(".logo-mark"); if(mark) mark.textContent = lang==="en" ? "N" : "ن";
   const fb=$("#footBrand"); if(fb) fb.innerHTML = lang==="en" ? "Na<span>qa</span>" : "ن<span>قاء</span>";
   const co=$("#coTitle"); if(co){

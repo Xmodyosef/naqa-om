@@ -17,12 +17,12 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "كريم أساس ماسك فيت ريد كوشن من تيرتير 23N رملي - 18ج",
   "nameEn": "TIRTIR Mask Fit Red Cushion Foundation 23N Sand - 18g",
-  "descAr": "كريم أساس ماسك فيت ريد كوشن من تيرتير 23N رملي من TIRTIR، 18ج. تركيبة عملية للاستخدام المنتظم، بدون خطوات معقّدة. مكانه في الروتين: بعد العناية وواقي الشمس. يناسب: كل درجات البشرة — اختبري عند الحساسية.",
-  "descEn": "TIRTIR Mask Fit Red Cushion Foundation 23N Sand - 18g, 18 g. A practical formula for regular use, without a complicated routine. Where it sits: After skincare and sunscreen. Best for: All skin tones — patch-test if sensitive.",
-  "useAr": "١) بعد المرطب وواقي الشمس.\n٢) كمية قليلة من وسط الوجه للخارج.\n٣) ابنِ التغطية تدريجياً. أزيلي المكياج كاملاً مساءً.",
-  "useEn": "1) After moisturizer and SPF.\n2) A small amount from the center out.\n3) Build coverage slowly. Remove all makeup at night.",
-  "skinAr": "كل درجات البشرة — اختبري عند الحساسية",
-  "skinEn": "All skin tones — patch-test if sensitive",
+  "descAr": "من مجموعة TIRTIR: كريم أساس ماسك فيت ريد كوشن من تيرتير 23…. صُمم لروتين بسيط يناسب إيقاع يومك. يخدم هدفاً واحداً بوضوح بدل وعود كثيرة. مناسب لروتين مكياج يومي. الحجم تقريباً 18 ج. يناسب: بشرة مختلطة إلى جافة. خزّنيه بعيداً عن الحرارة، وأغلقي الغطاء جيداً.",
+  "descEn": "TIRTIR Mask Fit Red Cushion Foundation 23N Sand by TIRTIR — a daily step that feels kind on skin and shows a clear result without fuss. One focused job — not a long list of empty claims. buildable finish for daily makeup. About 18 g. Best for: natural daily makeup. Store away from heat and keep the cap closed.",
+  "useAr": "١) على بشرة منظّفة ومرطّبة (وواقي شمس نهاراً).\n٢) طبّقي كمية قليلة ووزّعي جيداً.\n٣) ابنِي التغطية طبقات خفيفة.\n٤) ثبّتي إن احتجتِ لثبات أطول.",
+  "useEn": "1) On clean, moisturized skin (and SPF by day).\n2) Start with a little and blend well.\n3) Build coverage in thin layers.\n4) Set if you need longer wear.",
+  "skinAr": "بشرة مختلطة إلى جافة",
+  "skinEn": "natural daily makeup",
   "stock": 25
 },
 {
@@ -40,12 +40,12 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "كريم أساس ماسك فيت ريد كوشن من تيرتير 17N فانيليا - 18ج",
   "nameEn": "Tirtir Mask Fit Red Cushion 17n Vanilla",
-  "descAr": "كريم أساس ماسك فيت ريد كوشن من تيرتير 17N فانيليا من TIRTIR، 18ج. تركيبة عملية للاستخدام المنتظم، بدون خطوات معقّدة. مكانه في الروتين: بعد العناية وواقي الشمس. يناسب: كل درجات البشرة — اختبري عند الحساسية.",
-  "descEn": "Tirtir Mask Fit Red Cushion 17n Vanilla by TIRTIR, 18 g. A practical formula for regular use, without a complicated routine. Where it sits: After skincare and sunscreen. Best for: All skin tones — patch-test if sensitive.",
-  "useAr": "١) بعد المرطب وواقي الشمس.\n٢) كمية قليلة من وسط الوجه للخارج.\n٣) ابنِ التغطية تدريجياً. أزيلي المكياج كاملاً مساءً.",
-  "useEn": "1) After moisturizer and SPF.\n2) A small amount from the center out.\n3) Build coverage slowly. Remove all makeup at night.",
-  "skinAr": "كل درجات البشرة — اختبري عند الحساسية",
-  "skinEn": "All skin tones — patch-test if sensitive",
+  "descAr": "من مجموعة TIRTIR: كريم أساس ماسك فيت ريد كوشن من تيرتير 17…. صُمم لروتين بسيط يناسب إيقاع يومك. يرتكز على توازن بين الراحة والنتيجة الظاهرة. تركيبة تترك أثراً مرئياً بعد الاستخدام. الحجم تقريباً 18 ج. يناسب: الحساسة — راقبي المدة. خزّنيه بعيداً عن الحرارة، وأغلقي الغطاء جيداً.",
+  "descEn": "A polished pick from TIRTIR: Tirtir Mask Fit Red Cushion 17n Vanilla. Balanced between feel and visible finish. One focused job — not a long list of empty claims. a reset step between ordinary days. About 18 g. Best for: 1–3 times weekly as tolerated. Results look better with steady use and SPF when needed.",
+  "useAr": "١) مرة إلى ثلاث أسبوعياً.\n٢) ابتعدي عن الجروح أو التهيّج.\n٣) أكملي بروتينك المعتاد بعد الإزالة.",
+  "useEn": "1) On clean skin.\n2) Even layer (or sheet as labeled) for 10–20 minutes.\n3) Remove or pat in, then moisturize.\n4) Not daily if it is clay or exfoliating.",
+  "skinAr": "الحساسة — راقبي المدة",
+  "skinEn": "1–3 times weekly as tolerated",
   "stock": 25
 }
 );

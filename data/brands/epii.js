@@ -17,12 +17,12 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "كريم إيبي دبل أب لترميم حاجز البشرة بالإكتوين والبانثينول - 50مل",
   "nameEn": "Epii Double Up Cream Ectoin & Panthenol - 50ml",
-  "descAr": "كريم إيبي دبل أب لترميم حاجز البشرة بالإكتوين والبانثينول من epii، 50مل. تركيبة عملية للاستخدام المنتظم، بدون خطوات معقّدة. مكانه في الروتين: آخر خطوة عناية (أو قبل واقي الشمس صباحاً). يناسب: البشرة الحساسة.",
-  "descEn": "Epii Double Up Cream Ectoin & Panthenol by epii, 50 ml. A practical formula for regular use, without a complicated routine. Where it sits: Last skincare step (or before SPF in the morning). Best for: Sensitive skin.",
-  "useAr": "١) بعد السيروم خذي كمية بحجم حبة البازلاء.\n٢) وزّعي من الوسط للخارج على الوجه والرقبة.\n٣) صباحاً أكملي بواقي شمس. مساءً زيدي طبقة على الخدود الجافة إن لزم.",
-  "useEn": "1) After serum, use a pea-sized amount.\n2) Smooth from the center outward, including the neck.\n3) Morning: sunscreen after. Night: extra on dry cheeks if needed.",
-  "skinAr": "البشرة الحساسة",
-  "skinEn": "Sensitive skin",
+  "descAr": "كريم إيبي دبل أب لترميم حاجز البشرة بالإ… من epii — اختيار يومي يريح البشرة ويعطي نتيجة واضحة بدون تعقيد. يبرز فيه بانثينول لدعم ترطيب وهدوء للبشرة. ملمس غني دون إحساس ثقيل مفرط. الحجم تقريباً 50 مل. يناسب: المختلطة في الطقس الجاف. إن ظهر تهيّج، خفّفي الاستخدام وراجعي طبيب بشرة عند اللزوم.",
+  "descEn": "Epii Double Up Cream Ectoin & Panthenol by epii — a daily step that feels kind on skin and shows a clear result without fuss. It highlights panthenol to support soothing moisture. a soft layer that finishes calmly. About 50 ml. Best for: dry and dehydrated. If irritation appears, ease off and see a dermatologist if it lasts.",
+  "useAr": "١) خذي كمية صغيرة ودفّئيها بين الأصابع.\n٢) ربّتي على البشرة حتى الامتصاص.\n٣) لا تفرطي؛ القليل المنتظم أفضل من الكثير.",
+  "useEn": "1) After serum (or right after cleansing).\n2) Pea-sized amount for the face; more for the neck.\n3) Sunscreen on top in the morning.\n4) At night, add a little on dry cheeks if needed.",
+  "skinAr": "المختلطة في الطقس الجاف",
+  "skinEn": "dry and dehydrated",
   "stock": 25
 }
 );

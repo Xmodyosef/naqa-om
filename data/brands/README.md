@@ -94,3 +94,13 @@ node scripts/build-products-bundle.js
 
 Then commit `data/products.bundle.js` with the brand change.
 
+
+## Refresh product copy (descriptions)
+
+Unique AR/EN descriptions (no repeated templates):
+
+```bash
+node scripts/enrich-product-copy.js
+```
+
+Then commit brand files + `data/products.bundle.js`.

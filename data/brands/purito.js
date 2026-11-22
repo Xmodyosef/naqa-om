@@ -17,12 +17,12 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "لوشن بيوريتو بزبدة الشيا لترطيب الجسم كوتون دريم لايت - 300مل",
   "nameEn": "Purito Luminous Moisture Shea Butter Body Lotion Cotton Dreamlight - 300ml",
-  "descAr": "لوشن بيوريتو بزبدة الشيا لترطيب الجسم كوتون دريم لايت من Purito، 300مل. تركيبة عملية للاستخدام المنتظم، بدون خطوات معقّدة. مكانه في الروتين: آخر خطوة عناية (أو قبل واقي الشمس صباحاً). يناسب: البشرة الحساسة.",
-  "descEn": "Purito Luminous Moisture Shea Butter Body Lotion Cotton Dreamlight by Purito, 300 ml. A practical formula for regular use, without a complicated routine. Where it sits: Last skincare step (or before SPF in the morning). Best for: Sensitive skin.",
-  "useAr": "١) بعد السيروم خذي كمية بحجم حبة البازلاء.\n٢) وزّعي من الوسط للخارج على الوجه والرقبة.\n٣) صباحاً أكملي بواقي شمس. مساءً زيدي طبقة على الخدود الجافة إن لزم.",
-  "useEn": "1) After serum, use a pea-sized amount.\n2) Smooth from the center outward, including the neck.\n3) Morning: sunscreen after. Night: extra on dry cheeks if needed.",
-  "skinAr": "البشرة الحساسة",
-  "skinEn": "Sensitive skin",
+  "descAr": "لوشن بيوريتو بزبدة الشيا لترطيب الجسم كو… من Purito — لمسة ناعمة، إحساس نظيف، وروتين لا يستهلك وقتك. يبرز فيه زبدة الشيا لدعم تغذية وملمس غني. يرطّب مساحات أوسع من الجسم. الحجم تقريباً 300 مل. يناسب: معظم أنواع البشرة. النتيجة أجمل مع الانتظام وواقي الشمس عند الحاجة.",
+  "descEn": "A polished pick from Purito: Purito Luminous Moisture Shea Butter Body Loti…. Balanced between feel and visible finish. It highlights shea butter to support rich nourishment and a soft feel. absorbs at a comfortable pace. About 300 ml. Best for: dry body skin. Store away from heat and keep the cap closed.",
+  "useAr": "١) بعد الاستحمام على بشرة رطبة قليلاً.\n٢) وزّعي من الأطراف للمركز.\n٣) أعيدي على الكوعين والساقين الجافة.\n٤) صباحاً أو مساءً حسب حاجتك.",
+  "useEn": "1) After shower on slightly damp skin.\n2) Smooth from limbs toward the center.\n3) Reapply on elbows and dry legs.\n4) Morning or night as needed.",
+  "skinAr": "معظم أنواع البشرة",
+  "skinEn": "dry body skin",
   "stock": 25
 },
 {
@@ -41,12 +41,12 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "لوشن بيوريتو بزبدة الشيا لترطيب الجسم ميدنايت رومانس - 300مل",
   "nameEn": "Purito Luminous Moisture Shea Butter Body Lotion Midnight Romance - 300ml",
-  "descAr": "لوشن بيوريتو بزبدة الشيا لترطيب الجسم ميدنايت رومانس من Purito، 300مل. تركيبة عملية للاستخدام المنتظم، بدون خطوات معقّدة. مكانه في الروتين: آخر خطوة عناية (أو قبل واقي الشمس صباحاً). يناسب: البشرة الحساسة.",
-  "descEn": "Purito Luminous Moisture Shea Butter Body Lotion Midnight Romance by Purito, 300 ml. A practical formula for regular use, without a complicated routine. Where it sits: Last skincare step (or before SPF in the morning). Best for: Sensitive skin.",
-  "useAr": "١) بعد السيروم خذي كمية بحجم حبة البازلاء.\n٢) وزّعي من الوسط للخارج على الوجه والرقبة.\n٣) صباحاً أكملي بواقي شمس. مساءً زيدي طبقة على الخدود الجافة إن لزم.",
-  "useEn": "1) After serum, use a pea-sized amount.\n2) Smooth from the center outward, including the neck.\n3) Morning: sunscreen after. Night: extra on dry cheeks if needed.",
-  "skinAr": "البشرة الحساسة",
-  "skinEn": "Sensitive skin",
+  "descAr": "من مجموعة Purito: لوشن بيوريتو بزبدة الشيا لترطيب الجسم مي…. صُمم لروتين بسيط يناسب إيقاع يومك. يبرز فيه زبدة الشيا لدعم تغذية وملمس غني. يرطّب مساحات أوسع من الجسم. الحجم تقريباً 300 مل. يناسب: معظم أنواع البشرة. النتيجة أجمل مع الانتظام وواقي الشمس عند الحاجة.",
+  "descEn": "From Purito: Purito Luminous Moisture Shea Butter Body Loti…. Built for a simple routine that fits a real day. It highlights shea butter to support rich nourishment and a soft feel. absorbs at a comfortable pace. About 300 ml. Best for: dry body skin. If irritation appears, ease off and see a dermatologist if it lasts.",
+  "useAr": "١) بعد الاستحمام على بشرة رطبة قليلاً.\n٢) وزّعي من الأطراف للمركز.\n٣) أعيدي على الكوعين والساقين الجافة.\n٤) صباحاً أو مساءً حسب حاجتك.",
+  "useEn": "1) After shower on slightly damp skin.\n2) Smooth from limbs toward the center.\n3) Reapply on elbows and dry legs.\n4) Morning or night as needed.",
+  "skinAr": "معظم أنواع البشرة",
+  "skinEn": "dry body skin",
   "stock": 25
 }
 );

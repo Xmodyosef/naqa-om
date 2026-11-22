@@ -17,12 +17,12 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "قناع بيوكولاجين ريل ديب من بيودانس - 34ج ×4 قطع",
   "nameEn": "Biodance Bio-Collagen Real Deep Mask - 34g × 4ea",
-  "descAr": "قناع بيوكولاجين ريل ديب من بيودانس من Biodance، 34ج. يركّز على ببتيدات من أجل مرونة ومظهر ممتلئ. مكانه في الروتين: مرة إلى ثلاث مرات أسبوعياً على بشرة نظيفة. يناسب: البشرة الحساسة.",
-  "descEn": "Biodance Bio-Collagen Real Deep Mask by Biodance, 34 g. Built around Peptides for a firmer, bouncier look. Where it sits: 1–3 times a week on clean skin. Best for: Sensitive skin.",
-  "useAr": "١) على بشرة نظيفة وجافة أو رطبة حسب القناع.\n٢) اتركيه ١٠–٢٠ دقيقة (أو حسب العبوة) ثم أزيليه أو ربّتي الباقي.\n٣) أكملي بمرطب. لا تستخدميه يومياً إن كان تقشيرياً.",
-  "useEn": "1) Clean skin, damp or dry as the mask requires.\n2) Leave 10–20 minutes (or as labeled), then remove or pat in.\n3) Moisturize. Don't use daily if it exfoliates.",
-  "skinAr": "البشرة الحساسة",
-  "skinEn": "Sensitive skin",
+  "descAr": "قناع بيوكولاجين ريل ديب من بيودانس (Biodance) يمنحك خطوة عناية مركّزة، بملمس مريح ونتيجة تُلاحظ مع الانتظام. يبرز فيه ببتيدات لدعم مرونة ومظهر أكثر امتلاءً. تركيبة تترك أثراً مرئياً بعد الاستخدام. الحجم تقريباً 34 ج. يناسب: مرة إلى ثلاث أسبوعياً حسب التحمل. خزّنيه بعيداً عن الحرارة، وأغلقي الغطاء جيداً.",
+  "descEn": "A polished pick from Biodance: Biodance Bio. Balanced between feel and visible finish. It highlights peptides to support a firmer, bouncier look. a reset step between ordinary days. About 34 g. Best for: 1–3 times weekly as tolerated. Store away from heat and keep the cap closed.",
+  "useAr": "١) مرة إلى ثلاث أسبوعياً.\n٢) ابتعدي عن الجروح أو التهيّج.\n٣) أكملي بروتينك المعتاد بعد الإزالة.",
+  "useEn": "1) On clean skin.\n2) Even layer (or sheet as labeled) for 10–20 minutes.\n3) Remove or pat in, then moisturize.\n4) Not daily if it is clay or exfoliating.",
+  "skinAr": "مرة إلى ثلاث أسبوعياً حسب التحمل",
+  "skinEn": "1–3 times weekly as tolerated",
   "stock": 25
 }
 );

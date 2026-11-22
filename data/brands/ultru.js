@@ -16,12 +16,12 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "قناع اسفل العين هيدروجيل ام سوري فور ماي سكين للتفتيح - 60 قطعة",
   "nameEn": "I'm Sorry For My Skin Hydrogel Under-Eye Mask - 60pcs",
-  "descAr": "قناع اسفل العين هيدروجيل ام سوري فور ماي سكين للتفتيح من Ultru، 60 قطعة. تركيبة عملية للاستخدام المنتظم، بدون خطوات معقّدة. مكانه في الروتين: على بشرة نظيفة تحت العين ١٠–٢٠ دقيقة، ثم أزيليه. يناسب: معظم أنواع البشرة — مع واقي شمس يومي عند التفتيح.",
-  "descEn": "I'm Sorry For My Skin Hydrogel Under-Eye Mask - 60pcs, 60 pcs. A practical formula for regular use, without a complicated routine. Where it sits: On clean under-eyes for 10–20 minutes, then remove. Best for: Most skin types — daily SPF when brightening.",
-  "useAr": "١) بشرة نظيفة وجافة حول العين.\n٢) ضعي القطعة الهلامية تحت العين ١٥–٢٠ دقيقة وأنتِ مستلقية.\n٣) أزيليها وربّتي المتبقي بالبنصر — لا تشطفي بماء ساخن.\n٤) مرتان إلى أربع أسبوعياً. لا تستخدميها على جفن متهيّج.",
-  "useEn": "1) Clean, dry under-eye skin.\n2) Lay the gel patch under the eye for 15–20 minutes while resting.\n3) Peel off and pat residue in with your ring finger.\n4) Two to four times a week. Skip irritated lids.",
-  "skinAr": "معظم أنواع البشرة — مع واقي شمس يومي عند التفتيح",
-  "skinEn": "Most skin types — daily SPF when brightening",
+  "descAr": "قناع اسفل العين هيدروجيل ام سوري فور ماي… من Ultru — اختيار يومي يريح البشرة ويعطي نتيجة واضحة بدون تعقيد. يبرز فيه حماية شمسية لدعم حماية يومية من أشعة الشمس. مريح طوال اليوم. الحجم تقريباً 60 قطع. يناسب: استخدام يومي مريح. خزّنيه بعيداً عن الحرارة، وأغلقي الغطاء جيداً.",
+  "descEn": "I'm Sorry For My Skin Hydrogel Under by Ultru — soft on contact, clean finish, and a routine that does not steal your morning. It highlights sun protection to support everyday UV protection. tint or shine depending on the formula. About 60 pcs. Best for: comfortable daily wear. Results look better with steady use and SPF when needed.",
+  "useAr": "١) شفاه نظيفة وجافة.\n٢) طبّقي من الوسط للخارج.\n٣) أعيدي خلال اليوم حسب الحاجة.\n٤) ليلاً: طبقة أغنى إن كان مرطباً.",
+  "useEn": "1) Clean, dry lips.\n2) Apply from the center outward.\n3) Reapply through the day as needed.\n4) At night, a richer layer if it is a balm/mask.",
+  "skinAr": "استخدام يومي مريح",
+  "skinEn": "comfortable daily wear",
   "stock": 25
 }
 );

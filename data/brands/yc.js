@@ -16,12 +16,12 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "غسول الوجه بالذهب لتبييض وشد البشرة - 100مل",
   "nameEn": "Yc Whitening Gold Caviar Face Wash",
-  "descAr": "غسول الوجه بالذهب لتبييض وشد البشرة من YC، 100مل. تركيبة عملية للاستخدام المنتظم، بدون خطوات معقّدة. مكانه في الروتين: أول خطوة: صباحاً ومساءً. يناسب: كل درجات البشرة — اختبري عند الحساسية.",
-  "descEn": "Yc Whitening Gold Caviar Face Wash by YC, 100 ml. A practical formula for regular use, without a complicated routine. Where it sits: First step, morning and night. Best for: All complexions — patch-test if sensitive.",
-  "useAr": "١) بلّلي الوجه بماء فاتر.\n٢) دلكي ٢٠ ثانية ثم اشطفي جيداً حتى يزول الرغوة.\n٣) جفّفي بالتربيت. إن كان تنظيفاً مزدوجاً: الزيتي أولاً ثم هذا.",
-  "useEn": "1) Wet the face with lukewarm water.\n2) Massage 20 seconds, rinse until no foam remains.\n3) Pat dry. Double cleanse: oil first, then this.",
-  "skinAr": "كل درجات البشرة — اختبري عند الحساسية",
-  "skinEn": "All complexions — patch-test if sensitive",
+  "descAr": "غسول الوجه بالذهب لتبييض وشد البشرة من YC — لمسة ناعمة، إحساس نظيف، وروتين لا يستهلك وقتك. يرتكز على توازن بين الراحة والنتيجة الظاهرة. رغوة أو زيت يزيل الشوائب بلطف. الحجم تقريباً 100 مل. يناسب: الحساسة بصيغة لطيفة. خزّنيه بعيداً عن الحرارة، وأغلقي الغطاء جيداً.",
+  "descEn": "Yc Whitening Gold Caviar Face Wash (YC) is a focused care step with a comfortable texture and results that build with use. Made as one clear step inside a shorter routine. cleanses and leaves skin comfortable. About 100 ml. Best for: after heavy makeup as step one. Results look better with steady use and SPF when needed.",
+  "useAr": "١) بلّلي الوجه بماء فاتر.\n٢) دلكي ٢٠–٣٠ ثانية ثم اشطفي جيداً.\n٣) جفّفي بالتربيت.\n٤) تنظيف مزدوج: الزيتي أولاً ثم الغسول إن لزم.",
+  "useEn": "1) Wet the face with lukewarm water.\n2) Massage 20–30 seconds, rinse well.\n3) Pat dry.\n4) Double cleanse: oil first, then foam if needed.",
+  "skinAr": "الحساسة بصيغة لطيفة",
+  "skinEn": "after heavy makeup as step one",
   "stock": 25
 }
 );

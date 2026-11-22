@@ -17,12 +17,12 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "مقشر اكيور لتفتيح الوجه - 118مل",
   "nameEn": "Acure Brightening Facial Scrub - 118ml",
-  "descAr": "مقشر اكيور لتفتيح الوجه من Acure، 118مل. تركيبة عملية للاستخدام المنتظم، بدون خطوات معقّدة. مكانه في الروتين: بعد التنظيف، قبل أو بدل المرطب حسب القوام. يناسب: معظم أنواع البشرة — راقبي أول أسبوع.",
-  "descEn": "Acure Brightening Facial Scrub by Acure, 118 ml. A practical formula for regular use, without a complicated routine. Where it sits: After cleansing, before or instead of cream depending on texture. Best for: Most skin types — watch the first week.",
-  "useAr": "١) بعد التنظيف.\n٢) طبقة رقيقة حتى الامتصاص.\n٣) صباحاً واقي شمس. راقبي البشرة أول أسبوع.",
-  "useEn": "1) After cleansing.\n2) A thin layer until absorbed.\n3) Daytime sunscreen. Watch skin the first week.",
-  "skinAr": "معظم أنواع البشرة — راقبي أول أسبوع",
-  "skinEn": "Most skin types — watch the first week",
+  "descAr": "مقشر اكيور لتفتيح الوجه من Acure — لمسة ناعمة، إحساس نظيف، وروتين لا يستهلك وقتك. مصمم ليكون خطوة واضحة داخل روتين أقصر. يُستخدم بعدد مرات محدود أسبوعياً. الحجم تقريباً 118 مل. يناسب: تجنّبي البشرة المتهيجة. النتيجة أجمل مع الانتظام وواقي الشمس عند الحاجة.",
+  "descEn": "Acure Brightening Facial Scrub by Acure — soft on contact, clean finish, and a routine that does not steal your morning. Made as one clear step inside a shorter routine. use only a few times a week. About 118 ml. Best for: skip on irritated skin. If irritation appears, ease off and see a dermatologist if it lasts.",
+  "useAr": "١) على بشرة مبللة بعد التنظيف.\n٢) دلكي دائرياً لثوانٍ قليلة — بلا قوة.\n٣) اشطفي ومرّطي.\n٤) ١–٢ مرة أسبوعياً فقط.",
+  "useEn": "1) On wet skin after cleansing.\n2) Soft circles for a few seconds — no force.\n3) Rinse and moisturize.\n4) Only 1–2 times a week.",
+  "skinAr": "تجنّبي البشرة المتهيجة",
+  "skinEn": "skip on irritated skin",
   "stock": 25
 }
 );

@@ -17,12 +17,12 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "جل كريم سيكا لترميم وتهدئة البشرة من توكوبو - 75مل",
   "nameEn": "Tocobo Cica Calming Gel Cream - 75ml",
-  "descAr": "جل كريم سيكا لترميم وتهدئة البشرة من توكوبو من TOCOBO، 75مل. يركّز على سنتيلا من أجل تهدئة واحمرار. مكانه في الروتين: آخر خطوة عناية (أو قبل واقي الشمس صباحاً). يناسب: البشرة الحساسة والجافة والمجهدة.",
-  "descEn": "Tocobo Cica Calming Gel Cream by TOCOBO, 75 ml. Built around Centella for calming redness. Where it sits: Last skincare step (or before SPF in the morning). Best for: Sensitive, dry, or stressed skin.",
-  "useAr": "١) بعد السيروم خذي كمية بحجم حبة البازلاء.\n٢) وزّعي من الوسط للخارج على الوجه والرقبة.\n٣) صباحاً أكملي بواقي شمس. مساءً زيدي طبقة على الخدود الجافة إن لزم.",
-  "useEn": "1) After serum, use a pea-sized amount.\n2) Smooth from the center outward, including the neck.\n3) Morning: sunscreen after. Night: extra on dry cheeks if needed.",
-  "skinAr": "البشرة الحساسة والجافة والمجهدة",
-  "skinEn": "Sensitive, dry, or stressed skin",
+  "descAr": "جل كريم سيكا لترميم وتهدئة البشرة من توك… (TOCOBO) يمنحك خطوة عناية مركّزة، بملمس مريح ونتيجة تُلاحظ مع الانتظام. يبرز فيه خلاصة مهدّئة (سنتيلا/هارت ليف) لدعم تهدئة الاحمرار والشعور بالراحة. ملمس غني دون إحساس ثقيل مفرط. الحجم تقريباً 75 مل. يناسب: الحساسة الجافة. النتيجة أجمل مع الانتظام وواقي الشمس عند الحاجة.",
+  "descEn": "Tocobo Cica Calming Gel Cream by TOCOBO — soft on contact, clean finish, and a routine that does not steal your morning. It highlights a calming botanical (centella/heartleaf) to support calming redness and comfort. a soft layer that finishes calmly. About 75 ml. Best for: combination in dry weather. Results look better with steady use and SPF when needed.",
+  "useAr": "١) خذي كمية صغيرة ودفّئيها بين الأصابع.\n٢) ربّتي على البشرة حتى الامتصاص.\n٣) لا تفرطي؛ القليل المنتظم أفضل من الكثير.",
+  "useEn": "1) After serum (or right after cleansing).\n2) Pea-sized amount for the face; more for the neck.\n3) Sunscreen on top in the morning.\n4) At night, add a little on dry cheeks if needed.",
+  "skinAr": "الحساسة الجافة",
+  "skinEn": "combination in dry weather",
   "stock": 25
 }
 );

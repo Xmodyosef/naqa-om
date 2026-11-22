@@ -17,12 +17,12 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "أمبول دكتور ميلاكسين برايت رايس للتقشير والتوهج - 80مل",
   "nameEn": "Dr.Melaxin Peel Shot Glow White Rice Ampoule - 80ml",
-  "descAr": "أمبول دكتور ميلاكسين برايت رايس للتقشير والتوهج من Dr.Melaxin، 80مل. تركيبة عملية للاستخدام المنتظم، بدون خطوات معقّدة. مكانه في الروتين: بعد الغسول والتونر، وقبل المرطب. لا يُشطف. يناسب: البشرة الدهنية والمختلطة.",
-  "descEn": "Dr.Melaxin Peel Shot Glow White Rice Ampoule by Dr.Melaxin, 80 ml. A practical formula for regular use, without a complicated routine. Where it sits: After cleanser and toner, before moisturizer. Do not rinse off. Best for: Oily and combination skin.",
-  "useAr": "١) نظّفي الوجه واتركيه رطباً قليلاً.\n٢) قطرتان إلى ثلاث على الوجه والرقبة، واضغطي بالراحة حتى الامتصاص — لا تفركي بقوة ولا تشطفي.\n٣) أغلقي بمرطب. صباحاً: واقي شمس فوق الروتين.\n٤) ريتينول أو أحماض: ابدئي ليلاً يوماً بعد يوم.",
-  "useEn": "1) Cleanse and leave skin slightly damp.\n2) Press 2–3 drops over face and neck until absorbed. Do not rinse.\n3) Seal with moisturizer. Morning: sunscreen on top.\n4) Retinoids or acids: start every other night.",
-  "skinAr": "البشرة الدهنية والمختلطة",
-  "skinEn": "Oily and combination skin",
+  "descAr": "أمبول دكتور ميلاكسين برايت رايس للتقشير … من Dr.Melaxin — اختيار يومي يريح البشرة ويعطي نتيجة واضحة بدون تعقيد. مصمم ليكون خطوة واضحة داخل روتين أقصر. تركيز أعلى في قطرات قليلة. الحجم تقريباً 80 مل. يناسب: أغلقي بمرطب. إن ظهر تهيّج، خفّفي الاستخدام وراجعي طبيب بشرة عند اللزوم.",
+  "descEn": "Dr.Melaxin Peel Shot Glow White Rice Ampoule by Dr.Melaxin — soft on contact, clean finish, and a routine that does not steal your morning. One focused job — not a long list of empty claims. higher focus in a few drops. About 80 ml. Best for: often at night. If irritation appears, ease off and see a dermatologist if it lasts.",
+  "useAr": "١) مساءً غالباً على بشرة نظيفة.\n٢) قطرات قليلة واضغطي.\n٣) أغلقي بكريم.\n٤) أدخليها يوماً بعد يوم أول أسبوع.",
+  "useEn": "1) Often at night on clean skin.\n2) A few drops, pressed in.\n3) Seal with cream.\n4) Every other night for the first week.",
+  "skinAr": "أغلقي بمرطب",
+  "skinEn": "often at night",
   "stock": 25
 }
 );

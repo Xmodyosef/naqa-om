@@ -18,12 +18,12 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "بلسم البشرة الجافة سيكابلاست بوم بي 5 لاروش بوزيه - 40مل",
   "nameEn": "Cicaplast Balm B5 For Dry Skin Irritations - 40ml",
-  "descAr": "بلسم البشرة الجافة سيكابلاست بوم بي 5 لاروش بوزيه من La Roche-Posay، 40مل. يركّز على سنتيلا من أجل تهدئة واحمرار. مكانه في الروتين: حسب نوعه: شامبو على الفروة، بلسم على الأطراف، سيروم بدون شطف. يناسب: حسب نوع الشعر وفروة الرأس — ابدئي بكمية قليلة.",
-  "descEn": "Cicaplast Balm B5 For Dry Skin Irritations by La Roche-Posay, 40 ml. Built around Centella for calming redness. Where it sits: Shampoo on the scalp, conditioner on lengths, leave-in serum as labeled. Best for: According to hair/scalp type — start with a small amount.",
-  "useAr": "١) شعر مبلل جيداً.\n٢) الشامبو على الفروة فقط مع تدليك، والبلسم من منتصف الشعرة للأطراف ثم اشطفي.\n٣) السيروم بدون شطف: نقاط قليلة على أطراف جافة أو فروة نظيفة حسب العبوة — لا تُغرقي الشعر.",
-  "useEn": "1) Fully wet hair.\n2) Shampoo the scalp only; conditioner from mid-lengths to ends, then rinse.\n3) Leave-in serum: a few drops on dry ends or a clean scalp as labeled.",
-  "skinAr": "حسب نوع الشعر وفروة الرأس — ابدئي بكمية قليلة",
-  "skinEn": "According to hair/scalp type — start with a small amount",
+  "descAr": "بلسم البشرة الجافة سيكابلاست بوم بي 5 لا… من La Roche-Posay — لمسة ناعمة، إحساس نظيف، وروتين لا يستهلك وقتك. يبرز فيه خلاصة مهدّئة (سنتيلا/هارت ليف) لدعم تهدئة الاحمرار والشعور بالراحة. بلسم يغلف ويهدّئ. الحجم تقريباً 40 مل. يناسب: المناطق الجافة. النتيجة أجمل مع الانتظام وواقي الشمس عند الحاجة.",
+  "descEn": "From La Roche-Posay: Cicaplast Balm B5 For Dry Skin Irritations. Built for a simple routine that fits a real day. It highlights a calming botanical (centella/heartleaf) to support calming redness and comfort. a cushioning balm for dry spots. About 40 ml. Best for: dry patches. If irritation appears, ease off and see a dermatologist if it lasts.",
+  "useAr": "١) على المنطقة الجافة أو بعد العناية.\n٢) طبقة رقيقة ووزّعيها.\n٣) يمكن تكرارها ليلاً.\n٤) تجنّبي العين إن لم يُذكر ذلك.",
+  "useEn": "1) On dry areas or after skincare.\n2) Thin layer, spread well.\n3) Repeat at night if needed.\n4) Avoid eyes unless the label allows it.",
+  "skinAr": "المناطق الجافة",
+  "skinEn": "dry patches",
   "stock": 25
 }
 );

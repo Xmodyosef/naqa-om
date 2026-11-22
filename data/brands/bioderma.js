@@ -17,12 +17,12 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "كريم بيوديرما بيجمنتبيو لتفتيح المناطق الحساسة وتوحيد اللون - 75مل",
   "nameEn": "Bioderma Pigmentbio Sensitive Areas - 75ml",
-  "descAr": "كريم بيوديرما بيجمنتبيو لتفتيح المناطق الحساسة وتوحيد اللون من Bioderma، 75مل. تركيبة عملية للاستخدام المنتظم، بدون خطوات معقّدة. مكانه في الروتين: آخر خطوة عناية (أو قبل واقي الشمس صباحاً). يناسب: البشرة الحساسة.",
-  "descEn": "Bioderma Pigmentbio Sensitive Areas by Bioderma, 75 ml. A practical formula for regular use, without a complicated routine. Where it sits: Last skincare step (or before SPF in the morning). Best for: Sensitive skin.",
-  "useAr": "١) بعد السيروم خذي كمية بحجم حبة البازلاء.\n٢) وزّعي من الوسط للخارج على الوجه والرقبة.\n٣) صباحاً أكملي بواقي شمس. مساءً زيدي طبقة على الخدود الجافة إن لزم.",
-  "useEn": "1) After serum, use a pea-sized amount.\n2) Smooth from the center outward, including the neck.\n3) Morning: sunscreen after. Night: extra on dry cheeks if needed.",
-  "skinAr": "البشرة الحساسة",
-  "skinEn": "Sensitive skin",
+  "descAr": "من مجموعة Bioderma: كريم بيوديرما بيجمنتبيو لتفتيح المناطق ا…. صُمم لروتين بسيط يناسب إيقاع يومك. يخدم هدفاً واحداً بوضوح بدل وعود كثيرة. طبقة ناعمة تريح الجفاف. الحجم تقريباً 75 مل. يناسب: الجافة والمحتاجة. خزّنيه بعيداً عن الحرارة، وأغلقي الغطاء جيداً.",
+  "descEn": "From Bioderma: Bioderma Pigmentbio Sensitive Areas. Built for a simple routine that fits a real day. It balances comfort with a visible, honest finish. rich enough, not greasy on most skins. About 75 ml. Best for: most types at night. Store away from heat and keep the cap closed.",
+  "useAr": "١) بعد السيروم (أو مباشرة بعد التنظيف).\n٢) كمية بحجم حبة البازلاء للوجه، وزيد للرقبة.\n٣) صباحاً واقي شمس فوقه.\n٤) مساءً يمكن طبقة أغنى على الخدود الجافة.",
+  "useEn": "1) After serum (or right after cleansing).\n2) Pea-sized amount for the face; more for the neck.\n3) Sunscreen on top in the morning.\n4) At night, add a little on dry cheeks if needed.",
+  "skinAr": "الجافة والمحتاجة",
+  "skinEn": "most types at night",
   "stock": 25
 }
 );

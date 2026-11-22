@@ -16,12 +16,12 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "سيروم سيبوري سكالبي لعلاج فروة الرأس وتخفيف التساقط - 20مل",
   "nameEn": "Seapuri Scalpy Hair Serum - 20ml",
-  "descAr": "سيروم سيبوري سكالبي لعلاج فروة الرأس وتخفيف التساقط من Seapuri، 20مل. تركيبة عملية للاستخدام المنتظم، بدون خطوات معقّدة. مكانه في الروتين: حسب نوعه: شامبو على الفروة، بلسم على الأطراف، سيروم بدون شطف. يناسب: حسب نوع الشعر وفروة الرأس — ابدئي بكمية قليلة.",
-  "descEn": "Seapuri Scalpy Hair Serum by Seapuri, 20 ml. A practical formula for regular use, without a complicated routine. Where it sits: Shampoo on the scalp, conditioner on lengths, leave-in serum as labeled. Best for: According to hair/scalp type — start with a small amount.",
-  "useAr": "١) شعر مبلل جيداً.\n٢) الشامبو على الفروة فقط مع تدليك، والبلسم من منتصف الشعرة للأطراف ثم اشطفي.\n٣) السيروم بدون شطف: نقاط قليلة على أطراف جافة أو فروة نظيفة حسب العبوة — لا تُغرقي الشعر.",
-  "useEn": "1) Fully wet hair.\n2) Shampoo the scalp only; conditioner from mid-lengths to ends, then rinse.\n3) Leave-in serum: a few drops on dry ends or a clean scalp as labeled.",
-  "skinAr": "حسب نوع الشعر وفروة الرأس — ابدئي بكمية قليلة",
-  "skinEn": "According to hair/scalp type — start with a small amount",
+  "descAr": "سيروم سيبوري سكالبي لعلاج فروة الرأس وتخ… من Seapuri — اختيار يومي يريح البشرة ويعطي نتيجة واضحة بدون تعقيد. يرتكز على توازن بين الراحة والنتيجة الظاهرة. ملمس يسهّل التصفيف. الحجم تقريباً 20 مل. يناسب: الشعر المجهد. خزّنيه بعيداً عن الحرارة، وأغلقي الغطاء جيداً.",
+  "descEn": "Seapuri Scalpy Hair Serum (Seapuri) is a focused care step with a comfortable texture and results that build with use. It balances comfort with a visible, honest finish. cares for hair or scalp with a clear role. About 20 ml. Best for: depends on hair and scalp. If irritation appears, ease off and see a dermatologist if it lasts.",
+  "useAr": "١) حسب النوع: شامبو على الفروة، بلسم على الأطراف، سيروم بدون شطف حسب العبوة.\n٢) ابدئي بكمية قليلة.\n٣) لا تُغرقي الشعر؛ القليل يوزَّع أبعد.\n٤) انتظمي ٢–٣ أسابيع لملاحظة أوضح.",
+  "useEn": "1) As labeled: shampoo on scalp, conditioner on lengths, leave-in where it belongs.\n2) Start with a small amount.\n3) Do not overload — a little spreads farther.\n4) Give it 2–3 weeks of steady use.",
+  "skinAr": "الشعر المجهد",
+  "skinEn": "depends on hair and scalp",
   "stock": 25
 }
 );

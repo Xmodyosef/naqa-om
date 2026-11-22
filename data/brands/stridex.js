@@ -17,12 +17,12 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "ستريديكس قطع قطنية للسيطرة على حب الشباب - 55قطعة",
   "nameEn": "Stridex Maximum Single-Step Acne Control - 55 Pads",
-  "descAr": "ستريديكس قطع قطنية للسيطرة على حب الشباب من Stridex، 55قطعة. تركيبة عملية للاستخدام المنتظم، بدون خطوات معقّدة. مكانه في الروتين: مرة إلى ثلاث مرات أسبوعياً على بشرة نظيفة. يناسب: البشرة الدهنية والمختلطة والمعرّضة للمسام.",
-  "descEn": "Stridex Maximum Single-Step Acne Control by Stridex, 55pcs. A practical formula for regular use, without a complicated routine. Where it sits: 1–3 times a week on clean skin. Best for: Oily, combination, pore-prone skin.",
-  "useAr": "١) على بشرة نظيفة وجافة أو رطبة حسب القناع.\n٢) اتركيه ١٠–٢٠ دقيقة (أو حسب العبوة) ثم أزيليه أو ربّتي الباقي.\n٣) أكملي بمرطب. لا تستخدميه يومياً إن كان تقشيرياً.",
-  "useEn": "1) Clean skin, damp or dry as the mask requires.\n2) Leave 10–20 minutes (or as labeled), then remove or pat in.\n3) Moisturize. Don't use daily if it exfoliates.",
-  "skinAr": "البشرة الدهنية والمختلطة والمعرّضة للمسام",
-  "skinEn": "Oily, combination, pore-prone skin",
+  "descAr": "ستريديكس قطع قطنية للسيطرة على حب الشباب من Stridex — لمسة ناعمة، إحساس نظيف، وروتين لا يستهلك وقتك. مصمم ليكون خطوة واضحة داخل روتين أقصر. ملمس مائي منعش. الحجم تقريباً 55قطع. يناسب: الحساسة. النتيجة أجمل مع الانتظام وواقي الشمس عند الحاجة.",
+  "descEn": "From Stridex: Stridex Maximum Single. Built for a simple routine that fits a real day. It balances comfort with a visible, honest finish. a clean, cool feel. About 55 pads. Best for: sensitive. Store away from heat and keep the cap closed.",
+  "useAr": "١) بعد الغسول مباشرة.\n٢) على الراحة أو القطنة — تجنّبي سحب البشرة.\n٣) لا تشطفي. أكملي بسيروم ثم مرطب.",
+  "useEn": "1) Right after cleansing.\n2) In palms or on a pad — do not drag the skin.\n3) Do not rinse. Follow with serum, then cream.",
+  "skinAr": "الحساسة",
+  "skinEn": "sensitive",
   "stock": 25
 }
 );

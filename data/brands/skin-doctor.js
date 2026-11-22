@@ -16,12 +16,12 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "سيرم الشعر بالكيراتين الحريري اللامع - 100مل",
   "nameEn": "Keratin Silkiness Shine Hair Serum - 100ml",
-  "descAr": "سيرم الشعر بالكيراتين الحريري اللامع من Skin Doctor، 100مل. تركيبة عملية للاستخدام المنتظم، بدون خطوات معقّدة. مكانه في الروتين: حسب نوعه: شامبو على الفروة، بلسم على الأطراف، سيروم بدون شطف. يناسب: حسب نوع الشعر وفروة الرأس — ابدئي بكمية قليلة.",
-  "descEn": "Keratin Silkiness Shine Hair Serum by Skin Doctor, 100 ml. A practical formula for regular use, without a complicated routine. Where it sits: Shampoo on the scalp, conditioner on lengths, leave-in serum as labeled. Best for: According to hair/scalp type — start with a small amount.",
-  "useAr": "١) شعر مبلل جيداً.\n٢) الشامبو على الفروة فقط مع تدليك، والبلسم من منتصف الشعرة للأطراف ثم اشطفي.\n٣) السيروم بدون شطف: نقاط قليلة على أطراف جافة أو فروة نظيفة حسب العبوة — لا تُغرقي الشعر.",
-  "useEn": "1) Fully wet hair.\n2) Shampoo the scalp only; conditioner from mid-lengths to ends, then rinse.\n3) Leave-in serum: a few drops on dry ends or a clean scalp as labeled.",
-  "skinAr": "حسب نوع الشعر وفروة الرأس — ابدئي بكمية قليلة",
-  "skinEn": "According to hair/scalp type — start with a small amount",
+  "descAr": "سيرم الشعر بالكيراتين الحريري اللامع (Skin Doctor) يمنحك خطوة عناية مركّزة، بملمس مريح ونتيجة تُلاحظ مع الانتظام. يخدم هدفاً واحداً بوضوح بدل وعود كثيرة. نتيجة أنظف وأطرى مع الانتظام. الحجم تقريباً 100 مل. يناسب: حسب نوع الشعر والفروة. خزّنيه بعيداً عن الحرارة، وأغلقي الغطاء جيداً.",
+  "descEn": "From Skin Doctor: Keratin Silkiness Shine Hair Serum. Built for a simple routine that fits a real day. One focused job — not a long list of empty claims. cares for hair or scalp with a clear role. About 100 ml. Best for: stressed hair. Results look better with steady use and SPF when needed.",
+  "useAr": "١) حسب النوع: شامبو على الفروة، بلسم على الأطراف، سيروم بدون شطف حسب العبوة.\n٢) ابدئي بكمية قليلة.\n٣) لا تُغرقي الشعر؛ القليل يوزَّع أبعد.\n٤) انتظمي ٢–٣ أسابيع لملاحظة أوضح.",
+  "useEn": "1) As labeled: shampoo on scalp, conditioner on lengths, leave-in where it belongs.\n2) Start with a small amount.\n3) Do not overload — a little spreads farther.\n4) Give it 2–3 weeks of steady use.",
+  "skinAr": "حسب نوع الشعر والفروة",
+  "skinEn": "stressed hair",
   "stock": 25
 }
 );

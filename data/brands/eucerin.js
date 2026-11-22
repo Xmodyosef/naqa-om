@@ -17,12 +17,12 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "جل التنظيف المضاد للتصبغات من يوسيرين - 200مل",
   "nameEn": "Eucerin Anti-Pigment Cleansing Gel - 200ml",
-  "descAr": "جل التنظيف المضاد للتصبغات من يوسيرين من Eucerin، 200مل. تركيبة عملية للاستخدام المنتظم، بدون خطوات معقّدة. مكانه في الروتين: أول خطوة: صباحاً ومساءً. يناسب: البشرة الحساسة.",
-  "descEn": "Eucerin Anti-Pigment Cleansing Gel by Eucerin, 200 ml. A practical formula for regular use, without a complicated routine. Where it sits: First step, morning and night. Best for: Sensitive skin.",
-  "useAr": "١) بلّلي الوجه بماء فاتر.\n٢) دلكي ٢٠ ثانية ثم اشطفي جيداً حتى يزول الرغوة.\n٣) جفّفي بالتربيت. إن كان تنظيفاً مزدوجاً: الزيتي أولاً ثم هذا.",
-  "useEn": "1) Wet the face with lukewarm water.\n2) Massage 20 seconds, rinse until no foam remains.\n3) Pat dry. Double cleanse: oil first, then this.",
-  "skinAr": "البشرة الحساسة",
-  "skinEn": "Sensitive skin",
+  "descAr": "جل التنظيف المضاد للتصبغات من يوسيرين من Eucerin — اختيار يومي يريح البشرة ويعطي نتيجة واضحة بدون تعقيد. يرتكز على توازن بين الراحة والنتيجة الظاهرة. يترك الوجه نظيفاً ومريحاً. الحجم تقريباً 200 مل. يناسب: الدهنية والمختلطة. إن ظهر تهيّج، خفّفي الاستخدام وراجعي طبيب بشرة عند اللزوم.",
+  "descEn": "From Eucerin: Eucerin Anti. Built for a simple routine that fits a real day. One focused job — not a long list of empty claims. a fresh reset for morning or night. About 200 ml. Best for: after heavy makeup as step one. Results look better with steady use and SPF when needed.",
+  "useAr": "١) بلّلي الوجه بماء فاتر.\n٢) دلكي ٢٠–٣٠ ثانية ثم اشطفي جيداً.\n٣) جفّفي بالتربيت.\n٤) تنظيف مزدوج: الزيتي أولاً ثم الغسول إن لزم.",
+  "useEn": "1) Wet the face with lukewarm water.\n2) Massage 20–30 seconds, rinse well.\n3) Pat dry.\n4) Double cleanse: oil first, then foam if needed.",
+  "skinAr": "الدهنية والمختلطة",
+  "skinEn": "after heavy makeup as step one",
   "stock": 25
 },
 {
@@ -41,12 +41,12 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "لوشن تخفيف الخشونة من يوسيرين - 500مل",
   "nameEn": "Eucerin‏ Roughness Relief Lotion - 500ml",
-  "descAr": "لوشن تخفيف الخشونة من يوسيرين من Eucerin، 500مل. تركيبة عملية للاستخدام المنتظم، بدون خطوات معقّدة. مكانه في الروتين: آخر خطوة عناية (أو قبل واقي الشمس صباحاً). يناسب: البشرة الحساسة والجافة والمجهدة.",
-  "descEn": "Eucerin‏ Roughness Relief Lotion by Eucerin, 500 ml. A practical formula for regular use, without a complicated routine. Where it sits: Last skincare step (or before SPF in the morning). Best for: Sensitive, dry, or stressed skin.",
-  "useAr": "١) بعد السيروم خذي كمية بحجم حبة البازلاء.\n٢) وزّعي من الوسط للخارج على الوجه والرقبة.\n٣) صباحاً أكملي بواقي شمس. مساءً زيدي طبقة على الخدود الجافة إن لزم.",
-  "useEn": "1) After serum, use a pea-sized amount.\n2) Smooth from the center outward, including the neck.\n3) Morning: sunscreen after. Night: extra on dry cheeks if needed.",
-  "skinAr": "البشرة الحساسة والجافة والمجهدة",
-  "skinEn": "Sensitive, dry, or stressed skin",
+  "descAr": "من مجموعة Eucerin: لوشن تخفيف الخشونة من يوسيرين. صُمم لروتين بسيط يناسب إيقاع يومك. يرتكز على توازن بين الراحة والنتيجة الظاهرة. يرطّب مساحات أوسع من الجسم. الحجم تقريباً 500 مل. يناسب: الجسم الجاف. إن ظهر تهيّج، خفّفي الاستخدام وراجعي طبيب بشرة عند اللزوم.",
+  "descEn": "Eucerin‏ Roughness Relief Lotion by Eucerin — a daily step that feels kind on skin and shows a clear result without fuss. Made as one clear step inside a shorter routine. a soft, non-tacky finish. About 500 ml. Best for: dry body skin. Results look better with steady use and SPF when needed.",
+  "useAr": "١) بعد الاستحمام على بشرة رطبة قليلاً.\n٢) وزّعي من الأطراف للمركز.\n٣) أعيدي على الكوعين والساقين الجافة.\n٤) صباحاً أو مساءً حسب حاجتك.",
+  "useEn": "1) After shower on slightly damp skin.\n2) Smooth from limbs toward the center.\n3) Reapply on elbows and dry legs.\n4) Morning or night as needed.",
+  "skinAr": "الجسم الجاف",
+  "skinEn": "dry body skin",
   "stock": 25
 }
 );

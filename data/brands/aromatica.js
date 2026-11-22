@@ -17,12 +17,12 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "مجموعة اروماتيكا روزماري التجريبية لتنقية فروة الرأس",
   "nameEn": "Aromatica Rosemary Scalp Scaling Trial Kit",
-  "descAr": "مجموعة اروماتيكا روزماري التجريبية لتنقية فروة الرأس من Aromatica. يركّز على إكليل الجبل من أجل فروة الرأس ومظهر الكثافة. مكانه في الروتين: حسب نوعه: شامبو على الفروة، بلسم على الأطراف، سيروم بدون شطف. يناسب: حسب نوع الشعر وفروة الرأس — ابدئي بكمية قليلة.",
-  "descEn": "Aromatica Rosemary Scalp Scaling Trial Kit by Aromatica. Built around Rosemary for scalp comfort and the look of density. Where it sits: Shampoo on the scalp, conditioner on lengths, leave-in serum as labeled. Best for: According to hair/scalp type — start with a small amount.",
-  "useAr": "١) شعر مبلل جيداً.\n٢) الشامبو على الفروة فقط مع تدليك، والبلسم من منتصف الشعرة للأطراف ثم اشطفي.\n٣) السيروم بدون شطف: نقاط قليلة على أطراف جافة أو فروة نظيفة حسب العبوة — لا تُغرقي الشعر.",
-  "useEn": "1) Fully wet hair.\n2) Shampoo the scalp only; conditioner from mid-lengths to ends, then rinse.\n3) Leave-in serum: a few drops on dry ends or a clean scalp as labeled.",
-  "skinAr": "حسب نوع الشعر وفروة الرأس — ابدئي بكمية قليلة",
-  "skinEn": "According to hair/scalp type — start with a small amount",
+  "descAr": "مجموعة اروماتيكا روزماري التجريبية لتنقي… من Aromatica — لمسة ناعمة، إحساس نظيف، وروتين لا يستهلك وقتك. يخدم هدفاً واحداً بوضوح بدل وعود كثيرة. نتيجة أنظف وأطرى مع الانتظام. يناسب: حسب نوع الشعر والفروة. النتيجة أجمل مع الانتظام وواقي الشمس عند الحاجة.",
+  "descEn": "Aromatica Rosemary Scalp Scaling Trial Kit by Aromatica — soft on contact, clean finish, and a routine that does not steal your morning. Made as one clear step inside a shorter routine. cleaner, softer results with regular use. Best for: stressed hair. Store away from heat and keep the cap closed.",
+  "useAr": "١) حسب النوع: شامبو على الفروة، بلسم على الأطراف، سيروم بدون شطف حسب العبوة.\n٢) ابدئي بكمية قليلة.\n٣) لا تُغرقي الشعر؛ القليل يوزَّع أبعد.\n٤) انتظمي ٢–٣ أسابيع لملاحظة أوضح.",
+  "useEn": "1) As labeled: shampoo on scalp, conditioner on lengths, leave-in where it belongs.\n2) Start with a small amount.\n3) Do not overload — a little spreads farther.\n4) Give it 2–3 weeks of steady use.",
+  "skinAr": "حسب نوع الشعر والفروة",
+  "skinEn": "stressed hair",
   "stock": 25
 }
 );

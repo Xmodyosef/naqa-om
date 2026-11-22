@@ -17,12 +17,12 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "تونر حمض الهيالورونيك بالأرز الأسود من هارو هارو - 300مل",
   "nameEn": "HaruHaru Black Rice Hyaluronic Toner - 300ml",
-  "descAr": "تونر حمض الهيالورونيك بالأرز الأسود من هارو هارو من HaruHaru، 300مل. يركّز على هيالورونيك من أجل ترطيب وخفة. مكانه في الروتين: بعد الغسول مباشرة، قبل السيروم. يناسب: البشرة الحساسة.",
-  "descEn": "HaruHaru Black Rice Hyaluronic Toner by HaruHaru, 300 ml. Built around Hyaluronic acid for lightweight hydration. Where it sits: Right after cleansing, before serum. Best for: Sensitive skin.",
-  "useAr": "١) بعد الغسول، على راحة اليد أو قطنة.\n٢) مرّري على الوجه وتجنّبي محيط العين.\n٣) لا تشطفي. أكملي بسيروم ثم مرطب.",
-  "useEn": "1) After cleansing, in palms or on a pad.\n2) Sweep the face, avoiding the eye area.\n3) Don't rinse. Follow with serum, then cream.",
-  "skinAr": "البشرة الحساسة",
-  "skinEn": "Sensitive skin",
+  "descAr": "تونر حمض الهيالورونيك بالأرز الأسود من ه… من HaruHaru — اختيار يومي يريح البشرة ويعطي نتيجة واضحة بدون تعقيد. يبرز فيه حمض الهيالورونيك لدعم ترطيب خفيف وامتلاء المظهر. ملمس مائي منعش. الحجم تقريباً 300 مل. يناسب: المتعطشة للترطيب. خزّنيه بعيداً عن الحرارة، وأغلقي الغطاء جيداً.",
+  "descEn": "HaruHaru Black Rice Hyaluronic Toner by HaruHaru — soft on contact, clean finish, and a routine that does not steal your morning. It highlights hyaluronic acid to support lightweight hydration and a plump look. a watery, refreshing first step. About 300 ml. Best for: oily after cleansing. Store away from heat and keep the cap closed.",
+  "useAr": "١) بعد الغسول مباشرة.\n٢) على الراحة أو القطنة — تجنّبي سحب البشرة.\n٣) لا تشطفي. أكملي بسيروم ثم مرطب.",
+  "useEn": "1) Right after cleansing.\n2) In palms or on a pad — do not drag the skin.\n3) Do not rinse. Follow with serum, then cream.",
+  "skinAr": "المتعطشة للترطيب",
+  "skinEn": "oily after cleansing",
   "stock": 25
 },
 {
@@ -41,12 +41,12 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "جل التنظيف اللطيف 5.5 بالارز الأسود من هارو هارو - 100مل",
   "nameEn": "HaruHaru Black Rice Moisture 5.5 Soft Cleansing Gel - 100ml",
-  "descAr": "جل التنظيف اللطيف 5.5 بالارز الأسود من هارو هارو من HaruHaru، 100مل. تركيبة عملية للاستخدام المنتظم، بدون خطوات معقّدة. مكانه في الروتين: أول خطوة: صباحاً ومساءً. يناسب: البشرة الحساسة.",
-  "descEn": "HaruHaru Black Rice Moisture 5.5 Soft Cleansing Gel by HaruHaru, 100 ml. A practical formula for regular use, without a complicated routine. Where it sits: First step, morning and night. Best for: Sensitive skin.",
-  "useAr": "١) بلّلي الوجه بماء فاتر.\n٢) دلكي ٢٠ ثانية ثم اشطفي جيداً حتى يزول الرغوة.\n٣) جفّفي بالتربيت. إن كان تنظيفاً مزدوجاً: الزيتي أولاً ثم هذا.",
-  "useEn": "1) Wet the face with lukewarm water.\n2) Massage 20 seconds, rinse until no foam remains.\n3) Pat dry. Double cleanse: oil first, then this.",
-  "skinAr": "البشرة الحساسة",
-  "skinEn": "Sensitive skin",
+  "descAr": "عناية أنيقة من HaruHaru: جل التنظيف اللطيف 5.5 بالارز الأسود من ه…. يوازن بين الفعالية والنعومة على البشرة. يخدم هدفاً واحداً بوضوح بدل وعود كثيرة. رغوة أو زيت يزيل الشوائب بلطف. الحجم تقريباً 100 مل. يناسب: الحساسة بصيغة لطيفة. النتيجة أجمل مع الانتظام وواقي الشمس عند الحاجة.",
+  "descEn": "From HaruHaru: HaruHaru Black Rice Moisture 5.5 Soft Cleansin…. Built for a simple routine that fits a real day. One focused job — not a long list of empty claims. cleanses and leaves skin comfortable. About 100 ml. Best for: most types morning and night. Results look better with steady use and SPF when needed.",
+  "useAr": "١) بلّلي الوجه بماء فاتر.\n٢) دلكي ٢٠–٣٠ ثانية ثم اشطفي جيداً.\n٣) جفّفي بالتربيت.\n٤) تنظيف مزدوج: الزيتي أولاً ثم الغسول إن لزم.",
+  "useEn": "1) Wet the face with lukewarm water.\n2) Massage 20–30 seconds, rinse well.\n3) Pat dry.\n4) Double cleanse: oil first, then foam if needed.",
+  "skinAr": "الحساسة بصيغة لطيفة",
+  "skinEn": "most types morning and night",
   "stock": 25
 }
 );

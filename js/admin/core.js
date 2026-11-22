@@ -103,8 +103,12 @@
       lines.push((i + 1) + ") " + (o.id || "") + " · " + st);
       lines.push("   " + (o.name || "—") + " · " + (o.phone || "—") + " · " + (o.area || "—"));
       lines.push("   المجموع: " + (o.total != null ? Number(o.total).toFixed(3) : "—") + " ر.ع");
-      lines.push("   الدفع: " + (o.paymentLabel || (o.paid ? "مدفوع" : (o.payment === "cod" ? "دفع عند الاستلام" : "—")))
-        + (o.shipping != null ? (" · توصيل " + Number(o.shipping).toFixed(3) + " ر.ع") : ""));
+      lines.push("   الدفع: " + (o.paymentLabel || (o.paid ? "مدفوع" : (o.payment === "cod" ? "دفع عند الاستلام" : "—"))));
+      if (o.delivery != null || o.codFee != null || o.shipping != null) {
+        lines.push("   رسوم: توصيل " + Number(o.delivery != null ? o.delivery : 0).toFixed(3)
+          + " · استلام " + Number(o.codFee != null ? o.codFee : 0).toFixed(3)
+          + " · صافي رسوم " + Number(o.shipping != null ? o.shipping : 0).toFixed(3) + " ر.ع");
+      }
       if (Array.isArray(o.items) && o.items.length) {
         o.items.forEach(function (it) {
           lines.push("   - " + (it.name || it.nameAr || "") + " ×" + (it.qty || 1) + " (" + (it.sku || "") + ")");

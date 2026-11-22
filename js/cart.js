@@ -1,4 +1,13 @@
-/* cart logic + drawer UI + payment / delivery fee */
+/* cart logic + drawer UI + payment / delivery fee
+ Rules:
+ - Delivery base: 2 OMR when subtotal < 30
+ - Free delivery at 30+ (auto discount the 2)
+ - COD (unpaid): +1.5 OMR cash-on-delivery fee
+ - Paid in advance: remove delivery fee AND remove COD fee
+ Example COD 30: 30 + 0 delivery + 1.5 COD = 31.500
+ Example COD 25: 25 + 2 + 1.5 = 28.500
+ Example paid 25: 25 + 0 + 0 = 25.000
+*/
 function cartSubtotal(){
   return cart.reduce((s,i)=>s+i.price*i.qty,0);
 }
@@ -10,53 +19,64 @@ function getPayMethod(){
   const r=document.querySelector('input[name="payMethod"]:checked');
   return (r && r.value) || "cod";
 }
-function deliveryFee(subtotal, pay){
-  const fee=(typeof DELIVERY_COD_FEE==="number")?DELIVERY_COD_FEE:2;
+function feeBreakdown(subtotal, pay){
+  const delBase=(typeof DELIVERY_FEE==="number")?DELIVERY_FEE:2;
+  const codBase=(typeof COD_FEE==="number")?COD_FEE:1.5;
   const min=(typeof FREE_SHIP_MIN==="number")?FREE_SHIP_MIN:30;
   pay=pay||getPayMethod();
   subtotal=subtotal!=null?subtotal:cartSubtotal();
-  // Rules:
-  // - Subtotal >= 30 OMR → free delivery (always)
-  // - Subtotal < 30 + unpaid/COD → +2 OMR (e.g. 25 + 2 = 27)
-  // - Paid in advance → fee removed (0)
-  if(subtotal>=min) return 0;
-  if(pay==="paid") return 0;
-  return fee;
+  let delivery=0, codFee=0;
+  if(pay==="paid"){
+    delivery=0; codFee=0; // paid removes both
+  } else {
+    // COD / unpaid
+    delivery = subtotal>=min ? 0 : delBase; // free at 30+
+    codFee = codBase; // always 1.5 on COD
+  }
+  return {
+    subtotal:subtotal,
+    delivery:delivery,
+    codFee:codFee,
+    shipping:delivery+codFee,
+    grand:subtotal+delivery+codFee,
+    pay:pay,
+    freeShip:subtotal>=min
+  };
+}
+function deliveryFee(subtotal, pay){
+  return feeBreakdown(subtotal, pay).shipping;
 }
 function cartGrand(subtotal, pay){
-  subtotal=subtotal!=null?subtotal:cartSubtotal();
-  return subtotal+deliveryFee(subtotal, pay);
+  return feeBreakdown(subtotal, pay).grand;
 }
 function updatePaySum(){
   const el=$("#paySum"); if(!el) return;
-  const sub=cartSubtotal();
-  const pay=getPayMethod();
-  const ship=deliveryFee(sub, pay);
-  const grand=sub+ship;
-  const payLab=pay==="paid"?(T("payStatusPaid")||"مدفوع"):(T("payStatusUnpaid")||"غير مدفوع");
+  const b=feeBreakdown();
+  const payLab=b.pay==="paid"?(T("payStatusPaid")||"مدفوع"):(T("payStatusUnpaid")||"غير مدفوع");
+  const freeLab=lang==="en"?"Free":"مجاني";
   el.innerHTML=
-    "<div><span>"+(T("subTotal")||"المجموع الفرعي")+"</span><b>"+money(sub)+"</b></div>"+
-    "<div><span>"+(T("shipFee")||"رسوم التوصيل")+"</span><b>"+(ship?money(ship):(lang==="en"?"Free":"مجاني"))+"</b></div>"+
-    "<div class=\"grand\"><span>"+(T("grandTotal")||"الإجمالي")+"</span><b>"+money(grand)+"</b></div>"+
-    "<div class=\"pay-status\">"+payLab+(pay==="cod"?" · "+(T("payCod")||"دفع عند الاستلام"):" · "+(T("payPaid")||"مدفوع"))+"</div>";
+    "<div><span>"+(T("subTotal")||"المجموع الفرعي")+"</span><b>"+money(b.subtotal)+"</b></div>"+
+    "<div><span>"+(T("shipFee")||"رسوم التوصيل")+"</span><b>"+(b.delivery?money(b.delivery):freeLab)+(b.freeShip&&b.pay!=="paid"?" · ٣٠+":"")+"</b></div>"+
+    "<div><span>"+(T("codFee")||"رسوم الدفع عند الاستلام")+"</span><b>"+(b.codFee?money(b.codFee):freeLab)+"</b></div>"+
+    "<div class=\"grand\"><span>"+(T("grandTotal")||"الإجمالي")+"</span><b>"+money(b.grand)+"</b></div>"+
+    "<div class=\"pay-status\">"+payLab+(b.pay==="cod"?" · "+(T("payCod")||"دفع عند الاستلام"):" · "+(T("payPaid")||"مدفوع مسبقاً"))+"</div>";
   const hint=$("#payHint");
   if(hint){
-    if(pay==="paid"){
+    if(b.pay==="paid"){
       hint.textContent=lang==="en"
-        ? "Paid in advance: no delivery fee. Confirm transfer with us on WhatsApp."
-        : "مدفوع مسبقاً: بدون رسوم توصيل. أكّدي التحويل معنا على واتساب.";
-    } else if(sub>=(FREE_SHIP_MIN||30)){
+        ? "Paid in advance: delivery fee and COD fee removed."
+        : "مدفوع مسبقاً: يُخصم رسوم التوصيل ورسوم الدفع عند الاستلام.";
+    } else if(b.freeShip){
       hint.textContent=lang==="en"
-        ? "Cash on delivery · free delivery (order over 30 OMR)."
-        : "دفع عند الاستلام · توصيل مجاني (الطلب فوق ٣٠ ر.ع).";
+        ? "COD · free delivery (30+) · COD fee +1.500 OMR. Example: 30 + 1.5 = 31.5"
+        : "دفع عند الاستلام · توصيل مجاني (٣٠+) · رسوم استلام +١.٥٠٠. مثال: ٣٠ + ١.٥ = ٣١.٥";
     } else {
       hint.textContent=lang==="en"
-        ? "Cash on delivery · delivery fee 2 OMR (under 30 OMR)."
-        : "دفع عند الاستلام · رسوم توصيل ٢ ر.ع (تحت ٣٠ ر.ع).";
+        ? "COD · delivery +2 + COD fee +1.5. Example: 25 + 2 + 1.5 = 28.5"
+        : "دفع عند الاستلام · توصيل +٢ + استلام +١.٥. مثال: ٢٥ + ٢ + ١.٥ = ٢٨.٥";
     }
   }
 }
-
 function addToCart(id, qty, quiet){
   const p=products.find(x=>x.id===id); if(!p) return;
   if(p.stock!=null && Number(p.stock)<=0){
@@ -82,8 +102,9 @@ function addToCart(id, qty, quiet){
 function renderCart(){
   const n=cart.reduce((s,i)=>s+i.qty,0);
   const sub=cartSubtotal();
-  const ship=deliveryFee(sub, "cod"); // default note assumes COD until checkout
-  const grand=sub+ship;
+  const b=feeBreakdown(sub, getPayMethod?getPayMethod():"cod");
+  const ship=b.shipping;
+  const grand=b.grand;
   const badge=$("#cartBadge");
   if(n){ badge.hidden=false; badge.textContent=n; } else badge.hidden=true;
   const bar=$("#cartBar");
@@ -95,10 +116,12 @@ function renderCart(){
     var shipNote;
     if(need>0){
       shipNote = lang==="en"
-        ? ("Under 30: +"+money(DELIVERY_COD_FEE||2)+" delivery on COD · add "+money(need)+" for free")
-        : ("تحت ٣٠: +" + money(DELIVERY_COD_FEE||2) + " توصيل عند الاستلام · أضيفي " + money(need) + " للمجاني");
+        ? ("Under 30: +2 delivery · COD +1.5 · add "+money(need)+" for free ship")
+        : ("تحت ٣٠: +٢ توصيل · استلام +١.٥ · أضيفي "+money(need)+" للمجاني");
     } else {
-      shipNote = lang==="en" ? "Free delivery (30+) ✓" : "توصيل مجاني (٣٠ فأكثر) ✓";
+      shipNote = lang==="en"
+        ? ("Free delivery 30+ · COD fee +1.5 if cash on delivery")
+        : ("توصيل مجاني ٣٠+ · رسوم استلام +١.٥ إذا دفع عند الاستلام");
     }
     $("#barSub").textContent=money(sub)+" · "+shipNote;
     $("#barGo").textContent=T("barCheckout");
@@ -114,9 +137,9 @@ function renderCart(){
     updatePaySum();
     return;
   }
-  const shipLine = ship>0
-    ? `<div class="cart-ship-note">${T("shipFee")||"رسوم التوصيل"} (COD): <b>${money(ship)}</b> · ${T("grandTotal")||"الإجمالي"}: <b>${money(grand)}</b></div>`
-    : `<div class="cart-ship-note">${lang==="en"?"Delivery free on COD for this cart":"التوصيل مجاني على الدفع عند الاستلام لهذه السلة"} · ${T("grandTotal")||"الإجمالي"}: <b>${money(grand)}</b></div>`;
+  const shipLine = `<div class="cart-ship-note">${T("shipFee")||"التوصيل"}: <b>${b.delivery?money(b.delivery):(lang==="en"?"Free":"مجاني")}</b>`
+    + ` · ${T("codFee")||"استلام"}: <b>${b.codFee?money(b.codFee):(lang==="en"?"—":"—")}</b>`
+    + ` · ${T("grandTotal")||"الإجمالي"}: <b>${money(grand)}</b></div>`;
   $("#cartBody").innerHTML=cart.map(i=>{
     const p=products.find(x=>x.id===i.id)||i;
     return `<div class="cart-item">
@@ -163,9 +186,12 @@ function sendCheckout(){
   if(!gov){ alert(T("coNeedGov")); const el=$("#coGov"); if(el) el.focus(); return; }
   const pay=getPayMethod();
   if(!pay){ alert(T("payNeed")||"اختاري طريقة الدفع"); return; }
-  const sub=cartSubtotal();
-  const ship=deliveryFee(sub, pay);
-  const grand=sub+ship;
+  const b=feeBreakdown(cartSubtotal(), pay);
+  const sub=b.subtotal;
+  const ship=b.shipping;
+  const grand=b.grand;
+  const delivery=b.delivery;
+  const codFee=b.codFee;
   const lines=cart.map(i=>{
     const p=products.find(x=>x.id===i.id)||i;
     const link=(typeof productLink==="function")?productLink(p.id):"";
@@ -190,7 +216,7 @@ function sendCheckout(){
     id:orderNo, at:new Date().toISOString(), status:"new",
     name:name, phone:phone, area:gov, note:note,
     payment:pay, paymentLabel:payLabel, paid:pay==="paid",
-    subtotal:sub, shipping:ship, total:grand, currency:"OMR",
+    subtotal:sub, delivery:delivery, codFee:codFee, shipping:ship, total:grand, currency:"OMR",
     items:items, lang:lang
   };
   try{
@@ -204,12 +230,15 @@ function sendCheckout(){
   if(typeof window.NAQA_ORDERS_HOOK==="function"){
     try{ window.NAQA_ORDERS_HOOK(order); }catch(e){}
   }
-  const shipLine = ship>0
-    ? (lang==="en"?"Delivery fee: "+money(ship):"رسوم التوصيل: "+money(ship))
-    : (lang==="en"?"Delivery fee: Free":"رسوم التوصيل: مجاني");
+  const delLine = lang==="en"
+    ? ("Delivery: "+(delivery?money(delivery):"Free"))
+    : ("التوصيل: "+(delivery?money(delivery):"مجاني"));
+  const codLine = lang==="en"
+    ? ("COD fee: "+(codFee?money(codFee):"0"))
+    : ("رسوم الدفع عند الاستلام: "+(codFee?money(codFee):"٠"));
   const msg = lang==="en"
-    ? ("Hello, I want to order from Naqa:\nOrder: "+orderNo+"\nName: "+name+"\nPhone: "+phone+"\nArea: "+gov+"\nPayment: "+payLabel+"\nNote: "+note+"\n\n"+lines+"\n\nSubtotal: "+money(sub)+"\n"+shipLine+"\nTotal: "+money(grand))
-    : ("السلام عليكم، أبغى أطلب من نقاء:\nرقم الطلب: "+orderNo+"\nالاسم: "+name+"\nالجوال: "+phone+"\nالمنطقة: "+gov+"\nالدفع: "+payLabel+"\nملاحظة: "+note+"\n\n"+lines+"\n\nالمجموع الفرعي: "+money(sub)+"\n"+shipLine+"\nالإجمالي: "+money(grand));
+    ? ("Hello, I want to order from Naqa:\nOrder: "+orderNo+"\nName: "+name+"\nPhone: "+phone+"\nArea: "+gov+"\nPayment: "+payLabel+"\nNote: "+note+"\n\n"+lines+"\n\nSubtotal: "+money(sub)+"\n"+delLine+"\n"+codLine+"\nTotal: "+money(grand))
+    : ("السلام عليكم، أبغى أطلب من نقاء:\nرقم الطلب: "+orderNo+"\nالاسم: "+name+"\nالجوال: "+phone+"\nالمنطقة: "+gov+"\nالدفع: "+payLabel+"\nملاحظة: "+note+"\n\n"+lines+"\n\nالمجموع الفرعي: "+money(sub)+"\n"+delLine+"\n"+codLine+"\nالإجمالي: "+money(grand));
   window.open("https://wa.me/"+WA_NUMBER+"?text="+encodeURIComponent(msg), "_blank");
   const done=$("#orderDone");
   if(done){

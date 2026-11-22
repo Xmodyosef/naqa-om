@@ -35,7 +35,7 @@
       .sort(function (a, b) { return b.qty - a.qty; }).slice(0, 5);
     var recent = A.orders.slice(0, 6).map(function (o) {
       var st = A.normalizeStatus(o.status);
-      return '<div class="cust-row"><div><strong>' + A.esc(o.id) + '</strong><small>' + A.esc(o.name || "") + ' · ' + A.esc(A.STATUS[st] || "") + ' · ' + A.esc(o.area || "") + '</small></div><strong>' + A.esc(o.total != null ? Number(o.total).toFixed(3) : "—") + '</strong></div>';
+      return '<div class="cust-row"><div><strong>' + A.esc(o.id) + '</strong><small>' + A.esc(o.name || "") + ' · ' + A.esc(A.statusLabel(st) || "") + ' · ' + A.esc(o.area || "") + '</small></div><strong>' + A.esc(o.total != null ? Number(o.total).toFixed(3) : "—") + '</strong></div>';
     }).join("") || '<p class="note">ما في طلبات حديثة. اطلبي من المتجر على نفس الجهاز.</p>';
     var topHtml = topProducts.length
       ? topProducts.map(function (t) {

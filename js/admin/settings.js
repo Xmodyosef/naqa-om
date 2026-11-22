@@ -3,19 +3,18 @@
   A.paintSettings = function () {
     var box = document.getElementById("settingsBox");
     if (!box) return;
-    var tok = localStorage.getItem(A.TOKEN) || "";
     box.innerHTML =
       '<div class="panel settings">'
-      + '<h2>الحساب والنشر</h2>'
-      + '<p class="note">رمز الدخول قفل على هذا الجهاز فقط، مو حساب سحابي.</p>'
-      + '<p class="note" style="color:#b05c6e">لا تلصقي رمز GitHub إلا وأنتِ وحدك على هذا الآيفون. الرمز يقدر يعدّل المتجر. الطلبات وأرقام الزبائن ما تننشر على الموقع.</p>'
-      + '<label style="display:block;margin:8px 0;font-size:.8rem;font-weight:800;color:#8a7f78">رمز GitHub (contents:write)<input id="token" type="password" value="' + A.esc(tok) + '" autocomplete="off" placeholder="ghp_..."></label>'
-      + '<p class="note">واتساب المتجر: +' + A.esc(String(w.WA_NUMBER || "96879088349")) + '</p>'
-      + '<button type="button" class="primary" id="btnChangePin" style="width:100%;margin-top:8px">تغيير رمز الدخول</button>'
-      + '<button type="button" class="logout" id="btnLogout" style="width:100%;margin-top:8px;border:0;border-radius:12px;padding:12px;font-weight:800">خروج</button>'
+      + '<h2>' + A.t("setTitle") + '</h2>'
+      + '<p class="note">' + A.t("setPin") + '</p>'
+      + '<p class="note" style="color:#b05c6e">' + A.t("setTok") + '</p>'
+      + '<label style="display:block;margin:8px 0;font-size:.8rem;font-weight:800;color:#8a7f78">' + A.t("setTokLabel") + '<input id="token" type="password" value="" autocomplete="off" placeholder="ghp_..."></label>'
+      + '<p class="note">' + A.t("setWa") + ': +' + A.esc(String(w.WA_NUMBER || "96879088349")) + '</p>'
+      + '<button type="button" class="primary" id="btnChangePin" style="width:100%;margin-top:8px">' + A.t("setPinBtn") + '</button>'
+      + '<button type="button" class="logout" id="btnLogout" style="width:100%;margin-top:8px;border:0;border-radius:12px;padding:12px;font-weight:800">' + A.t("setOut") + '</button>'
       + '</div>';
     document.getElementById("btnLogout").onclick = function () {
-      if (confirm("خروج من لوحة التحكم؟")) {
+      if (confirm(A.t("setOutAsk"))) {
         document.getElementById("tools").hidden = true;
         document.getElementById("tabs").hidden = true;
         document.getElementById("savebar").hidden = true;
@@ -24,49 +23,52 @@
       }
     };
     document.getElementById("btnChangePin").onclick = function () {
-      var n = prompt("رمز جديد (٤ أرقام على الأقل)");
+      var n = prompt(A.t("setNewPin"));
       if (!n || n.trim().length < 4) return;
       localStorage.setItem(A.PIN, n.trim());
-      A.setMsg("settingsStatus", "تم تغيير الرمز.");
+      A.setMsg("settingsStatus", A.t("setPinOk"));
     };
   };
   A.saveLocal = function () {
     if (A.editingId != null && document.getElementById("editView") && !document.getElementById("editView").hidden && A.saveEdit) A.saveEdit();
     localStorage.setItem(A.KEY, JSON.stringify(A.overrides));
     A.saveOrders();
-    var tokEl = document.getElementById("token");
-    if (tokEl && tokEl.value.trim()) localStorage.setItem(A.TOKEN, tokEl.value.trim());
-    A.setMsg("status", "انحفظ على الجهاز.");
-    A.setMsg("orderStatus", "انحفظ سجل الطلبات.");
-    A.setMsg("settingsStatus", "انحفظ.");
+    A.setMsg("status", A.t("savedDev"));
+    A.setMsg("orderStatus", A.t("savedOrders"));
+    A.setMsg("settingsStatus", A.t("saved"));
   };
   A.publish = function () {
     if (A.editingId != null && document.getElementById("editView") && !document.getElementById("editView").hidden && A.saveEdit) A.saveEdit();
     localStorage.setItem(A.KEY, JSON.stringify(A.overrides));
     A.saveOrders();
-    var token = (document.getElementById("token") && document.getElementById("token").value.trim()) || localStorage.getItem(A.TOKEN) || "";
+    var tokenEl = document.getElementById("token");
+    var token = tokenEl ? tokenEl.value.trim() : "";
+    try { localStorage.removeItem(A.TOKEN); } catch (e) {}
     if (!token) {
-      A.setMsg("status", "انحفظ محلياً. للنشر الصقي رمز GitHub في الإعدادات.");
-      A.setMsg("settingsStatus", "يلزم رمز GitHub للنشر.");
+      A.setMsg("status", A.t("needTok"));
+      A.setMsg("settingsStatus", A.t("needTok2"));
       return;
     }
-    localStorage.setItem(A.TOKEN, token);
-    A.setMsg("status", "جاري النشر…");
-    A.setMsg("settingsStatus", "جاري النشر…");
+    A.setMsg("status", A.t("publishing"));
+    A.setMsg("settingsStatus", A.t("publishing"));
     var jobs = [
       A.ghPut("data/overrides.json", JSON.stringify(A.overrides, null, 2) + "\n", token, "chore: publish product overrides")
     ];
     if (A.publishReviews) jobs.push(A.publishReviews(token));
     Promise.all(jobs).then(function (res) {
       if (!res[0].ok || (res[1] && !res[1].ok)) throw new Error("HTTP");
-      A.setMsg("status", "اننشرت المنتجات.");
-      A.setMsg("orderStatus", "الطلبات بقيت على جهازك، ما اننشرت.");
-      A.setMsg("settingsStatus", "اننشرت المنتجات والتقييمات. الطلبات ما اننشرت.");
+      if (tokenEl) tokenEl.value = "";
+      try { localStorage.removeItem(A.TOKEN); } catch (e) {}
+      A.setMsg("status", A.t("publishedProducts"));
+      A.setMsg("orderStatus", A.t("ordersStay"));
+      A.setMsg("settingsStatus", A.t("published"));
       var rs = document.getElementById("reviewStatus");
-      if (rs) rs.textContent = "اننشرت التقييمات المعتمدة.";
+      if (rs) rs.textContent = A.t("reviewsOk");
     }).catch(function (err) {
-      A.setMsg("status", "فشل النشر. " + (err && err.message ? err.message : ""));
-      A.setMsg("settingsStatus", "فشل النشر.");
+      if (tokenEl) tokenEl.value = "";
+      try { localStorage.removeItem(A.TOKEN); } catch (e) {}
+      A.setMsg("status", A.t("publishFail") + " " + (err && err.message ? err.message : ""));
+      A.setMsg("settingsStatus", A.t("publishFail"));
     });
   };
 })(window);

@@ -38,10 +38,10 @@
     var typed = document.getElementById("pinInput").value.trim();
     var have = localStorage.getItem(A.PIN);
     var msg = document.getElementById("pinMsg");
-    if (!typed || typed.length < 4) { msg.textContent = "الرمز ٤ أرقام على الأقل."; return; }
+    if (!typed || typed.length < 4) { msg.textContent = A.t("pinShort"); return; }
     if (!have) { localStorage.setItem(A.PIN, typed); A.openAdmin(); return; }
     if (typed === have) A.openAdmin();
-    else msg.textContent = "الرمز غير صحيح.";
+    else msg.textContent = A.t("pinBad");
   };
 
   document.getElementById("tabs").addEventListener("click", function (e) {
@@ -68,7 +68,14 @@
       A.orders = A.orders.filter(function (o) { return String(o.id) !== String(idDel); });
       A.saveOrders();
       A.paintOrders();
-      A.setMsg("orderStatus", "انحذف " + idDel);
+      A.setMsg("orderStatus", A.t("deleted") + " " + idDel);
+      return;
+    }
+    var payBtn = e.target.closest("[data-pay]");
+    if (payBtn) {
+      A.confirmPayment(payBtn.getAttribute("data-pay"));
+      A.paintOrders();
+      A.setMsg("orderStatus", A.t("confirmedMsg"));
       return;
     }
     var st = e.target.closest("[data-st]");
@@ -80,7 +87,7 @@
       });
       A.saveOrders();
       A.paintOrders();
-      A.setMsg("orderStatus", "حالة " + id + " → " + (A.STATUS[next] || next));
+      A.setMsg("orderStatus", A.t("statusTo") + " " + id + " → " + (A.statusLabel(next) || next));
     }
   });
 
@@ -94,4 +101,7 @@
 
   document.getElementById("saveLocal").onclick = function () { A.saveLocal(); };
   document.getElementById("publish").onclick = function () { A.publish(); };
+  var langBtn = document.getElementById("adminLang");
+  if (langBtn) langBtn.onclick = function () { A.setLang(A.lang === "en" ? "ar" : "en"); };
+  if (A.applyChrome) A.applyChrome();
 })(window);

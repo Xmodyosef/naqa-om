@@ -2,22 +2,18 @@
  Rules:
  - Delivery base: 2 OMR when subtotal < 30
  - Free delivery at 30+ (auto discount the 2)
- - COD (unpaid): +1.5 OMR cash-on-delivery fee
- - Paid in advance: remove delivery fee AND remove COD fee
- Example COD 30: 30 + 0 delivery + 1.5 COD = 31.500
- Example COD 25: 25 + 2 + 1.5 = 28.500
- Example paid 25: 25 + 0 + 0 = 25.000
+ - COD: delivery 2 under 30, free at 30+, plus 1.5 COD
+ - Bank transfer: same fees until the admin confirms the transfer
+ - After confirmation only: delivery and COD fee come off
 */
 function cartSubtotal(){
   return cart.reduce((s,i)=>s+i.price*i.qty,0);
 }
 function getPayMethod(){
-  const paid=$("#payPaid");
-  if(paid && paid.checked) return "paid";
-  const cod=$("#payCod");
-  if(cod && cod.checked) return "cod";
   const r=document.querySelector('input[name="payMethod"]:checked');
-  return (r && r.value) || "cod";
+  const v=(r && r.value) || "cod";
+  if(v==="paid" || v==="transfer") return "transfer";
+  return "cod";
 }
 function feeBreakdown(subtotal, pay){
   const delBase=(typeof DELIVERY_FEE==="number")?DELIVERY_FEE:2;
@@ -27,11 +23,10 @@ function feeBreakdown(subtotal, pay){
   subtotal=subtotal!=null?subtotal:cartSubtotal();
   let delivery=0, codFee=0;
   if(pay==="paid"){
-    delivery=0; codFee=0; // paid removes both
+    delivery=0; codFee=0; // only after admin confirms
   } else {
-    // COD / unpaid
-    delivery = subtotal>=min ? 0 : delBase; // free at 30+
-    codFee = codBase; // always 1.5 on COD
+    delivery = subtotal>=min ? 0 : delBase;
+    codFee = codBase;
   }
   return {
     subtotal:subtotal,
@@ -52,22 +47,21 @@ function cartGrand(subtotal, pay){
 function updatePaySum(){
   const el=$("#paySum"); if(!el) return;
   const b=feeBreakdown();
-  const payLab=b.pay==="paid"?(T("payStatusPaid")||"مدفوع"):(T("payStatusUnpaid")||"غير مدفوع");
+  const pending=b.pay==="transfer";
+  const payLab=pending?(T("payPending")||"بانتظار تأكيد التحويل"):(T("payStatusUnpaid")||"غير مدفوع");
   const freeLab=lang==="en"?"Free":"مجاني";
   const vatAmt=typeof vatOf==="function"?vatOf(b.grand):0;
   el.innerHTML=
     "<div><span>"+(T("subTotal")||"المجموع الفرعي")+"</span><b>"+money(b.subtotal)+"</b></div>"+
-    "<div><span>"+(T("shipFee")||"رسوم التوصيل")+"</span><b>"+(b.delivery?money(b.delivery):freeLab)+(b.freeShip&&b.pay!=="paid"?" · ٣٠+":"")+"</b></div>"+
+    "<div><span>"+(T("shipFee")||"رسوم التوصيل")+"</span><b>"+(b.delivery?money(b.delivery):freeLab)+(b.freeShip?" · ٣٠+":"")+"</b></div>"+
     "<div><span>"+(T("codFee")||"رسوم الدفع عند الاستلام")+"</span><b>"+(b.codFee?money(b.codFee):freeLab)+"</b></div>"+
     "<div class=\"grand\"><span>"+(T("grandTotal")||"الإجمالي")+"</span><b>"+money(b.grand)+"</b></div>"+
     "<div class=\"vat-line\"><span>"+(T("vatOf")||"منها ضريبة ٥٪")+"</span><b>"+money(vatAmt)+"</b></div>"+
-    "<div class=\"pay-status\">"+payLab+(b.pay==="cod"?" · "+(T("payCod")||"دفع عند الاستلام"):" · "+(T("payPaid")||"مدفوع"))+" · "+(T("vatInc")||"شامل الضريبة ٥٪")+"</div>";
+    "<div class=\"pay-status\">"+payLab+(pending?" · "+(T("payPaid")||""):" · "+(T("payCod")||""))+" · "+(T("vatInc")||"شامل الضريبة ٥٪")+"</div>";
   const hint=$("#payHint");
   if(hint){
-    if(b.pay==="paid"){
-      hint.textContent=lang==="en"
-        ? "Paid in advance: delivery fee and COD fee removed."
-        : "مدفوع.";
+    if(pending){
+      hint.textContent=T("payPendingHint")||"";
     } else if(b.freeShip){
       hint.textContent=lang==="en"
         ? "COD · free delivery (30+) · COD fee +1.500 OMR. Example: 30 + 1.5 = 31.5"
@@ -214,13 +208,13 @@ function sendCheckout(){
       img:(p.imgs&&p.imgs[0])||""
     };
   });
-  const payLabel=pay==="paid"
-    ?(lang==="en"?"Paid":"مدفوع")
+  const payLabel=pay==="transfer"
+    ?(lang==="en"?"Bank transfer · awaiting confirmation":"تحويل بنكي · بانتظار التأكيد")
     :(lang==="en"?"Cash on delivery (unpaid)":"دفع عند الاستلام (غير مدفوع)");
   const order={
     id:orderNo, at:new Date().toISOString(), status:"new",
     name:name, phone:phone, area:gov, note:note,
-    payment:pay, paymentLabel:payLabel, paid:pay==="paid",
+    payment:pay, paymentLabel:payLabel, paid:false, paymentStatus:pay==="transfer"?"pending":"cod",
     subtotal:sub, delivery:delivery, codFee:codFee, shipping:ship, total:grand,
     vatRate:typeof vatRate==="function"?vatRate():0.05, vat:typeof vatOf==="function"?vatOf(grand):0, vatInclusive:true, currency:"OMR",
     items:items, lang:lang
@@ -243,8 +237,8 @@ function sendCheckout(){
     ? ("COD fee: "+(codFee?money(codFee):"0"))
     : ("رسوم الدفع عند الاستلام: "+(codFee?money(codFee):"٠"));
   const msg = lang==="en"
-    ? ("Hello, I want to order from Naqa:\nOrder: "+orderNo+"\nName: "+name+"\nPhone: "+phone+"\nArea: "+gov+"\nPayment: "+payLabel+"\nNote: "+note+"\n\n"+lines+"\n\nSubtotal: "+money(sub)+"\n"+delLine+"\n"+codLine+"\nTotal (incl. 5% VAT): "+money(grand)+"\nOf which VAT 5%: "+money(typeof vatOf==="function"?vatOf(grand):0))
-    : ("السلام عليكم، أبغى أطلب من نقاء:\nرقم الطلب: "+orderNo+"\nالاسم: "+name+"\nالجوال: "+phone+"\nالمنطقة: "+gov+"\nالدفع: "+payLabel+"\nملاحظة: "+note+"\n\n"+lines+"\n\nالمجموع الفرعي: "+money(sub)+"\n"+delLine+"\n"+codLine+"\nالإجمالي (شامل الضريبة ٥٪): "+money(grand)+"\nمنها ضريبة ٥٪: "+money(typeof vatOf==="function"?vatOf(grand):0));
+    ? ("Hello, I want to order from Naqa:\nOrder: "+orderNo+"\nName: "+name+"\nPhone: "+phone+"\nArea: "+gov+"\nPayment: "+payLabel+"\nNote: "+note+"\n\n"+lines+"\n\nSubtotal: "+money(sub)+"\n"+delLine+"\n"+codLine+"\nTotal (incl. 5% VAT): "+money(grand)+"\nOf which VAT 5%: "+money(typeof vatOf==="function"?vatOf(grand):0)+(pay==="transfer"?("\nAfter we confirm the transfer, delivery and COD fees come off. Then total: "+money(sub)):""))
+    : ("السلام عليكم، أبغى أطلب من نقاء:\nرقم الطلب: "+orderNo+"\nالاسم: "+name+"\nالجوال: "+phone+"\nالمنطقة: "+gov+"\nالدفع: "+payLabel+"\nملاحظة: "+note+"\n\n"+lines+"\n\nالمجموع الفرعي: "+money(sub)+"\n"+delLine+"\n"+codLine+"\nالإجمالي (شامل الضريبة ٥٪): "+money(grand)+"\nمنها ضريبة ٥٪: "+money(typeof vatOf==="function"?vatOf(grand):0)+(pay==="transfer"?("\nبعد تأكيد التحويل تُحذف رسوم التوصيل والاستلام. الإجمالي وقتها: "+money(sub)):""));
   window.open("https://wa.me/"+WA_NUMBER+"?text="+encodeURIComponent(msg), "_blank");
   const done=$("#orderDone");
   if(done){

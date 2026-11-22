@@ -9,8 +9,8 @@
       o.status = A.normalizeStatus(o.status);
       counts[o.status] = (counts[o.status] || 0) + 1;
     });
-    var parts = [{ id: "all", label: "الكل" }].concat(A.STATUS_ORDER.map(function (k) {
-      return { id: k, label: A.STATUS[k] };
+    var parts = [{ id: "all", label: A.t("all") }].concat(A.STATUS_ORDER.map(function (k) {
+      return { id: k, label: A.statusLabel(k) };
     }));
     bar.innerHTML = parts.map(function (p) {
       return '<button type="button" data-filter="' + p.id + '"' + (A.orderFilter === p.id ? ' class="on"' : "") + ">"
@@ -58,7 +58,7 @@
         items = '<ul class="items">' + o.items.map(function (it) {
           var thumb = it.img ? ('<img src="' + A.esc(it.img) + '" alt="" style="width:40px;height:40px;object-fit:contain;border-radius:8px;background:#f6f1ee;margin-left:8px">') : "";
           return '<li>' + thumb + '<strong>' + A.esc(it.name || it.nameAr || "") + '</strong><small>SKU ' + A.esc(it.sku || "—") + ' · ×' + A.esc(it.qty) + ' · ' + A.esc(it.line != null ? it.line : it.price) + ' ر.ع <span style="color:#9a7b72">شامل ٥٪</span></small>'
-            + (it.link ? ('<div><a href="' + A.esc(it.link) + '" target="_blank" rel="noopener">رابط المنتج</a></div>') : "") + "</li>";
+            + (it.link ? ('<div><a href="' + A.esc(it.link) + '" target="_blank" rel="noopener">' + A.t("productLink") + '</a></div>') : "") + "</li>";
         }).join("") + "</ul>";
       } else if (o.itemsText) {
         items = '<pre class="note" style="white-space:pre-wrap">' + A.esc(o.itemsText) + "</pre>";
@@ -66,24 +66,25 @@
       var when = o.at ? new Date(o.at).toLocaleString("ar-OM") : "";
       var phoneDigits = String(o.phone || "").replace(/\D/g, "").replace(/^968/, "");
       var statusBtns = A.STATUS_ORDER.map(function (k) {
-        return '<button type="button" class="mini' + (st === k ? " on" : (k === "cancel" ? " ghost" : "")) + '" data-st="' + k + '" data-oid="' + A.esc(o.id) + '">' + A.STATUS[k] + "</button>";
+        return '<button type="button" class="mini' + (st === k ? " on" : (k === "cancel" ? " ghost" : "")) + '" data-st="' + k + '" data-oid="' + A.esc(o.id) + '">' + A.statusLabel(k) + '</button>';
       }).join("");
       return '<article class="order" data-oid="' + A.esc(o.id) + '">'
-        + '<strong>' + A.esc(o.id) + ' <span class="badge ' + A.esc(st) + '">' + A.esc(A.STATUS[st] || st) + "</span></strong>"
+        + '<strong>' + A.esc(o.id) + ' <span class="badge ' + A.esc(st) + '">' + A.esc(A.statusLabel(st) || st) + "</span></strong>"
         + "<small>" + A.esc(when) + "</small>"
         + "<small>" + A.esc(o.name || "—") + " · " + A.esc(o.phone || "—") + " · " + A.esc(o.area || "—") + "</small>"
-        + "<small>المجموع: <b>" + A.esc(o.total != null ? Number(o.total).toFixed(3) : "—") + " ر.ع</b></small>"
-        + "<small style=\"color:#9a8b84;font-size:12px\">شامل الضريبة ٥٪ · منها " + A.esc(
+        + "<small>" + A.t("total") + ": <b>" + A.esc(o.total != null ? Number(o.total).toFixed(3) : "—") + " " + A.t("omr") + "</b></small>"
+        + "<small style=\"color:#9a8b84;font-size:12px\">" + A.t("vatInc") + " · " + A.t("vatOf") + " " + A.esc(
           o.vat != null ? Number(o.vat).toFixed(3) : (o.total != null ? (Number(o.total) * 0.05 / 1.05).toFixed(3) : "—")
-        ) + " ر.ع</small>"
-        + "<small>الدفع: <b>" + A.esc(o.paymentLabel || (o.paid ? "مدفوع" : (o.payment === "cod" ? "دفع عند الاستلام" : "—"))) + "</b>"
+        ) + " " + A.t("omr") + "</small>"
+        + "<small>" + A.t("payLine") + ": <b>" + A.esc(A.payText(o)) + "</b>"
         + (o.subtotal != null ? (" · فرعي " + A.esc(Number(o.subtotal).toFixed(3))) : "")
-        + (o.shipping != null ? (" · توصيل " + A.esc(Number(o.shipping).toFixed(3)) + " ر.ع") : "")
+        + (o.shipping != null ? (" · " + A.esc(Number(o.shipping).toFixed(3)) + " " + A.t("omr")) : "")
         + "</small>"
-        + (o.note ? ("<small>ملاحظة: " + A.esc(o.note) + "</small>") : "")
+        + (o.note ? ("<small>" + A.t("note") + ": " + A.esc(o.note) + "</small>") : "")
         + items + '<div class="actions">' + statusBtns
-        + (phoneDigits ? ('<a class="mini" style="background:#25D366;display:inline-block;color:#fff;text-decoration:none;text-align:center" href="https://wa.me/968' + A.esc(phoneDigits) + '" target="_blank" rel="noopener">واتساب</a>') : "")
-        + '<button type="button" class="mini ghost" data-del="' + A.esc(o.id) + '">حذف</button></div></article>';
+        + (A.payState(o) === "pending" ? ('<button type="button" class="mini" data-pay="' + A.esc(o.id) + '">' + A.t("confirmPay") + '</button>') : "")
+        + (phoneDigits ? ('<a class="mini" style="background:#25D366;display:inline-block;color:#fff;text-decoration:none;text-align:center" href="https://wa.me/968' + A.esc(phoneDigits) + '" target="_blank" rel="noopener">' + A.t("wa") + '</a>') : "")
+        + '<button type="button" class="mini ghost" data-del="' + A.esc(o.id) + '">' + A.t("del") + '</button></div></article>';
     }).join("");
   };
 })(window);

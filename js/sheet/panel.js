@@ -1,24 +1,13 @@
-/* body scroll lock while sheet open */
-var __sheetScrollY=0;
+/* body scroll lock while sheet open — uses naqaScrollLock */
 function lockBodyScroll(){
-  __sheetScrollY=window.scrollY||window.pageYOffset||0;
   document.documentElement.classList.add("sheet-open");
   document.body.classList.add("sheet-open");
-  document.body.style.position="fixed";
-  document.body.style.top=(-__sheetScrollY)+"px";
-  document.body.style.left="0";
-  document.body.style.right="0";
-  document.body.style.width="100%";
+  if(window.naqaScrollLock) naqaScrollLock.lock();
 }
 function unlockBodyScroll(){
   document.documentElement.classList.remove("sheet-open");
   document.body.classList.remove("sheet-open");
-  document.body.style.position="";
-  document.body.style.top="";
-  document.body.style.left="";
-  document.body.style.right="";
-  document.body.style.width="";
-  window.scrollTo(0, __sheetScrollY||0);
+  if(window.naqaScrollLock) naqaScrollLock.unlock();
 }
 async function openSheet(id, mode, reset){
   const p=products.find(x=>x.id===id); if(!p) return;
@@ -95,8 +84,12 @@ function openLightbox(src){
   if(!src) return;
   $("#lbImg").src=src;
   $("#lightbox").classList.add("show");
+  document.body.classList.add("lightbox-open");
+  if(window.naqaScrollLock) naqaScrollLock.lock();
 }
 function closeLightbox(){
   $("#lightbox").classList.remove("show");
   $("#lbImg").removeAttribute("src");
+  document.body.classList.remove("lightbox-open");
+  if(window.naqaScrollLock) naqaScrollLock.unlock();
 }

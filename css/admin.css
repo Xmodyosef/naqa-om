@@ -47,3 +47,12 @@ a{color:inherit}button,input,textarea,select{font:inherit}
 .cust-row{display:flex;justify-content:space-between;gap:8px;padding:10px 0;border-bottom:1px solid var(--line)}
 .cust-row strong{display:block}.cust-row small{color:var(--muted)}
 .logout{background:#ffd0d0!important;color:#5a1010!important}
+
+/* scroll lock for admin edit full-screen */
+html.naqa-scroll-lock, body.naqa-scroll-lock{
+  overflow:hidden!important; overscroll-behavior:none;
+}
+body.naqa-scroll-lock{ position:fixed; width:100%; left:0; right:0; }
+#editView:not([hidden]){
+  overscroll-behavior:contain; -webkit-overflow-scrolling:touch;
+}

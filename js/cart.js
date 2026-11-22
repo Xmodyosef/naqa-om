@@ -20,12 +20,17 @@ function feeBreakdown(subtotal, pay){
   const codBase=(typeof COD_FEE==="number")?COD_FEE:1.5;
   const min=(typeof FREE_SHIP_MIN==="number")?FREE_SHIP_MIN:30;
   pay=pay||getPayMethod();
+  if(pay==="paid") pay="transfer";
   subtotal=subtotal!=null?subtotal:cartSubtotal();
   let delivery=0, codFee=0;
-  if(pay==="paid"){
-    delivery=0; codFee=0; // only after admin confirms
+  // Auto free delivery at 30+ (always)
+  const freeShip = subtotal >= min;
+  delivery = freeShip ? 0 : delBase;
+  if(pay==="transfer"){
+    // Bank transfer: no COD fee; delivery still auto-frees at 30+
+    codFee = 0;
   } else {
-    delivery = subtotal>=min ? 0 : delBase;
+    // Cash on delivery
     codFee = codBase;
   }
   return {
@@ -35,7 +40,7 @@ function feeBreakdown(subtotal, pay){
     shipping:delivery+codFee,
     grand:subtotal+delivery+codFee,
     pay:pay,
-    freeShip:subtotal>=min
+    freeShip:freeShip
   };
 }
 function deliveryFee(subtotal, pay){
@@ -61,15 +66,21 @@ function updatePaySum(){
   const hint=$("#payHint");
   if(hint){
     if(pending){
-      hint.textContent=T("payPendingHint")||"";
+      hint.textContent = lang==="en"
+        ? (b.freeShip
+          ? "Bank transfer · delivery FREE (30+) · no COD fee. Total = products only."
+          : "Bank transfer · delivery +2 under 30 · no COD fee. Free delivery auto at 30+.")
+        : (b.freeShip
+          ? "تحويل بنكي · توصيل مجاني تلقائي (٣٠+) · بدون رسوم استلام. الإجمالي = المنتجات فقط."
+          : "تحويل بنكي · توصيل +٢ تحت ٣٠ · بدون رسوم استلام. التوصيل يصير مجاني تلقائي من ٣٠.");
     } else if(b.freeShip){
       hint.textContent=lang==="en"
-        ? "COD · free delivery (30+) · COD fee +1.500 OMR. Example: 30 + 1.5 = 31.5"
-        : "دفع عند الاستلام · توصيل مجاني (٣٠+) · رسوم استلام +١.٥٠٠. مثال: ٣٠ + ١.٥ = ٣١.٥";
+        ? "COD · free delivery auto (30+) · COD fee +1.500 OMR. Example: 30 + 1.5 = 31.5"
+        : "دفع عند الاستلام · توصيل مجاني تلقائي (٣٠+) · رسوم استلام +١.٥٠٠. مثال: ٣٠ + ١.٥ = ٣١.٥";
     } else {
       hint.textContent=lang==="en"
-        ? "COD · delivery +2 + COD fee +1.5. Example: 25 + 2 + 1.5 = 28.5"
-        : "دفع عند الاستلام · توصيل +٢ + استلام +١.٥. مثال: ٢٥ + ٢ + ١.٥ = ٢٨.٥";
+        ? "COD · delivery +2 · COD fee +1.5. Free delivery auto when cart reaches 30. Example: 25+2+1.5=28.5"
+        : "دفع عند الاستلام · توصيل +٢ · استلام +١.٥. التوصيل ينخصم تلقائي عند ٣٠. مثال: ٢٥+٢+١.٥=٢٨.٥";
     }
   }
 }
@@ -160,8 +171,18 @@ function renderCart(){
   updatePaySum();
 }
 
-function openCart(){ $("#overlay").classList.add("show"); $("#drawer").classList.add("show"); }
-function closeCart(){ $("#overlay").classList.remove("show"); $("#drawer").classList.remove("show"); }
+function openCart(){
+  $("#overlay").classList.add("show");
+  $("#drawer").classList.add("show");
+  document.body.classList.add("drawer-open");
+  if(window.naqaScrollLock) naqaScrollLock.lock();
+}
+function closeCart(){
+  $("#overlay").classList.remove("show");
+  $("#drawer").classList.remove("show");
+  document.body.classList.remove("drawer-open");
+  if(window.naqaScrollLock) naqaScrollLock.unlock();
+}
 
 function openCheckout(){
   if(typeof applyLang==="function") applyLang();
@@ -170,9 +191,13 @@ function openCheckout(){
   const cod=$("#payCod"); if(cod) cod.checked=true;
   updatePaySum();
   const m=$("#checkoutModal"); if(m) m.classList.add("show");
+  if(window.naqaScrollLock) naqaScrollLock.lock();
+  document.body.classList.add("modal-open");
 }
 function closeCheckout(){
   const m=$("#checkoutModal"); if(m) m.classList.remove("show");
+  document.body.classList.remove("modal-open");
+  if(window.naqaScrollLock) naqaScrollLock.unlock();
 }
 function sendCheckout(){
   const name=($("#coName")&&$("#coName").value||"").trim();

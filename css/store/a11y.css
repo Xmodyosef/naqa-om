@@ -93,3 +93,57 @@ body.drawer-open header{
   .btn-primary,.nav-cats a.on,.icon-btn.on{border:2px solid CanvasText}
   :focus-visible{outline:3px solid Highlight}
 }
+
+/* === Scroll lock / prevent background bleed (iOS) === */
+html.naqa-scroll-lock,
+body.naqa-scroll-lock{
+  overflow:hidden!important;
+  overscroll-behavior:none;
+  height:100%;
+  touch-action:none;
+}
+body.naqa-scroll-lock{
+  position:fixed;
+  width:100%;
+  left:0;right:0;
+}
+/* allow pan inside panels only */
+body.naqa-scroll-lock .modal-card,
+body.naqa-scroll-lock .drawer,
+body.naqa-scroll-lock .drawer-body,
+body.naqa-scroll-lock .sheet-card,
+body.naqa-scroll-lock #sheetCard,
+body.naqa-scroll-lock #cartBody,
+body.naqa-scroll-lock #quizBody,
+body.naqa-scroll-lock .carousel-track{
+  touch-action:pan-y;
+  overscroll-behavior:contain;
+  -webkit-overflow-scrolling:touch;
+}
+.modal.show{
+  overscroll-behavior:none;
+}
+.modal.show .modal-card{
+  overscroll-behavior:contain;
+  max-height:min(92vh, 100dvh);
+  overflow-y:auto;
+  -webkit-overflow-scrolling:touch;
+  touch-action:pan-y;
+}
+.modal-backdrop{
+  touch-action:none;
+  overscroll-behavior:none;
+}
+.overlay.show,
+#overlay.show{
+  touch-action:none;
+  overscroll-behavior:none;
+}
+.drawer.show{
+  overscroll-behavior:contain;
+  touch-action:pan-y;
+}
+.lightbox.show{
+  overscroll-behavior:none;
+  touch-action:none;
+}

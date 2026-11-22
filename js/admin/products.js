@@ -7,6 +7,7 @@
     if (!listView || !editView) return;
     listView.hidden = false;
     editView.hidden = true;
+    if (window.naqaScrollLock) try { naqaScrollLock.unlock(); } catch (e) {}
     q = (q || "").toLowerCase();
     var low = 0, out = 0;
     A.products.forEach(function (p) {
@@ -46,6 +47,7 @@
     var m = A.merged(p);
     document.getElementById("listView").hidden = true;
     document.getElementById("editView").hidden = false;
+    if (window.naqaScrollLock) try { naqaScrollLock.lock(); } catch (e) {}
     var catOpts = A.CATS.map(function (c) {
       return '<option value="' + A.esc(c) + '"' + (m.cat === c ? " selected" : "") + ">" + A.esc(c) + "</option>";
     }).join("");

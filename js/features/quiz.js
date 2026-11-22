@@ -34,10 +34,14 @@ function openQuiz() {
   quizStep = 0; quizAns = {};
   var m = $("#quizModal"); if (!m) return;
   m.classList.add("show");
+  document.body.classList.add("modal-open");
+  if (window.naqaScrollLock) naqaScrollLock.lock();
   paintQuiz();
 }
 function closeQuiz() {
   var m = $("#quizModal"); if (m) m.classList.remove("show");
+  document.body.classList.remove("modal-open");
+  if (window.naqaScrollLock) naqaScrollLock.unlock();
 }
 
 function paintQuiz() {

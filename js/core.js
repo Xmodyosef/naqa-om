@@ -130,7 +130,7 @@ const ui={
   coGov:"Wilayat", coGovPh:"— Choose —",
   coNote:"Order note", coNotePh:"Building, nearest landmark…",
   coCancel:"Cancel", coSend:"Send on WhatsApp",
-  payTitle:"Payment method", payCod:"Cash on delivery", payPaid:"Bank transfer · awaiting confirmation", payPending:"Awaiting transfer confirmation", payPendingHint:"Fees stay until we confirm the transfer. Then delivery and the cash fee come off.",
+  payTitle:"Payment method", payCod:"Cash on delivery", payPaid:"Bank transfer · awaiting confirmation", payPending:"Awaiting transfer confirmation", payPendingHint:"Bank transfer: no COD fee. Delivery free auto at 30+ OMR.",
   payNeed:"Choose a payment method", shipFee:"Delivery fee", shipFreeCod:"Example: 25+2+1.5=28.5 · 30+1.5=31.5",
   payStatusUnpaid:"Unpaid", payStatusPaid:"Paid", subTotal:"Subtotal", grandTotal:"Grand total", codFee:"Cash on delivery fee", vatInc:"Incl. 5% VAT", vatOf:"of which 5% VAT", vatLabel:"VAT (5% included)", vatBar:"All items · prices include 5% VAT",policyTitle:"",policy1:"",policy2:"",policy3:"",policy4:"",
   govs:["Muscat","Dhofar","North Al Batinah","South Al Batinah","Ad Dakhiliyah","North Ash Sharqiyah","South Ash Sharqiyah","Ad Dhahirah","Al Buraimi","Al Wusta","Musandam"]

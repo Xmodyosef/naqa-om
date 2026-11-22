@@ -61,6 +61,7 @@ function applyLang(){
   for(const k of ["policy1","policy2","policy3","policy4"]){ const el=$("#"+k); if(el) el.textContent=T(k)||el.textContent; }
   const pt=$("#payTitle"); if(pt) pt.textContent=T("payTitle");
   const pcl=$("#payCodLab"); if(pcl) pcl.textContent=T("payCod");
+  const ph=$("#payHint"); if(ph) ph.textContent=T("payHint")||ph.textContent;
   const ppl=$("#payPaidLab"); if(ppl) ppl.textContent=T("payPaid");
   if(typeof updatePaySum==="function") updatePaySum();
   const sel=$("#sortSel");

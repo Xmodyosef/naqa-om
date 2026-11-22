@@ -11,7 +11,11 @@ function applyLang(){
   $("#heroText").textContent=T("hero");
   $("#btnShop").textContent=T("shop");
   $("#waHero").textContent=T("wa");
-  $("#products").textContent=(typeof wishView!=="undefined" && wishView)?T("saved"):T("products");
+  const prodH=$("#products");
+  if(prodH){
+    const base=(typeof wishView!=="undefined" && wishView)?T("saved"):T("products");
+    prodH.innerHTML=base+' <span class="vat-chip">'+(T("vatInc")||"شامل الضريبة ٥٪")+'</span>';
+  }
   const hb=$("#wishBtn"); if(hb){ hb.classList.toggle("on", typeof wishView!=="undefined" && !!wishView); hb.title=(typeof wishView!=="undefined" && wishView)?T("savedOn"):T("saved"); }
   $("#cartTitle").textContent=T("cart");
   $("#totalLabel").textContent=T("total");

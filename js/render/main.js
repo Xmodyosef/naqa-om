@@ -12,14 +12,25 @@ function syncShipMarquee(){
   bar.setAttribute("dir", dir);
   bar2.setAttribute("dir", dir);
   mq.classList.toggle("is-rtl", dir==="rtl");
-  var unit=phrase+"   ·   ";
-  bar.textContent=unit;
-  var unitW=bar.offsetWidth||1;
+  bar.textContent="";
+  var probe=document.createElement("span");
+  probe.className="ship-chunk";
+  probe.textContent=phrase;
+  bar.appendChild(probe);
+  var unitW=probe.offsetWidth||1;
   var view=(wrap&&wrap.clientWidth)||window.innerWidth||390;
   var n=Math.max(2, Math.ceil(view/unitW)+1);
-  var text=unit.repeat(n);
-  bar.textContent=text;
-  bar2.textContent=text;
+  function fillTrack(el){
+    el.textContent="";
+    for(var i=0;i<n;i++){
+      var chunk=document.createElement("span");
+      chunk.className="ship-chunk";
+      chunk.textContent=phrase;
+      el.appendChild(chunk);
+    }
+  }
+  fillTrack(bar);
+  fillTrack(bar2);
   var shift=Math.round(bar.getBoundingClientRect().width);
   if(shift<1) return;
   mq.style.setProperty("--ship-shift", (-shift)+"px");

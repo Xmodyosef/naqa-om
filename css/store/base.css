@@ -58,6 +58,7 @@ header{position:sticky;top:0;z-index:60;background:rgba(253,248,246,.94);
 .ship-marquee{display:flex;flex-wrap:nowrap;align-items:center;width:max-content;gap:0;will-change:transform;animation:shipScrollLtr var(--ship-dur,28s) linear infinite;-webkit-animation:shipScrollLtr var(--ship-dur,28s) linear infinite}
 .ship-marquee.is-rtl{animation-name:shipScrollRtl;-webkit-animation-name:shipScrollRtl}
 .ship-track{display:block;padding:0;margin:0;white-space:nowrap;flex:0 0 auto;line-height:36px;unicode-bidi:isolate}
+.ship-chunk{display:inline-block;padding-right:96px;white-space:nowrap}
 .ship-track[dir="rtl"]{direction:rtl}
 .ship-track[dir="ltr"]{direction:ltr}
 @keyframes shipScrollLtr{

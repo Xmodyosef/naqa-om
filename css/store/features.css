@@ -12,7 +12,7 @@
 html[dir="ltr"] .wish-btn{left:auto;right:10px}
 .wish-btn.on{color:#fff;background:var(--rose-deep);border-color:var(--rose-deep)}
 .card-visual{position:relative}
-.btn-wish-sheet{border:1px solid var(--line);background:#fff;border-radius:12px;padding:10px 14px;font-weight:700;color:var(--rose-deep)}
+.btn-wish-sheet{border:1px solid var(--line);background:var(--card);border-radius:12px;padding:10px 14px;font-weight:700;color:var(--rose-deep)}
 .btn-wish-sheet.on{background:#f8e6ea}
 .review-pill{display:inline-block;margin:6px 0 2px;background:#f6f1ee;border-radius:999px;padding:4px 10px;font-size:.75rem;color:var(--muted);font-weight:700}
 .brands-head{display:flex;align-items:center;justify-content:space-between;margin:8px 0 10px}

@@ -14,7 +14,7 @@ img{max-width:100%;display:block}
 .wrap{max-width:1180px;margin:0 auto;padding:0 16px}
 
 header{position:sticky;top:0;z-index:60;background:rgba(253,248,246,.94);
-  -webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+  border-bottom:1px solid var(--line);/* backdrop-filter removed: repaint flicker while scrolling on iOS */}
 .top{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:56px;padding:6px 0}
 .logo{display:flex;align-items:center;gap:8px;white-space:nowrap;min-width:0}
 .logo-mark{width:36px;height:36px;border-radius:11px;background:var(--card);
@@ -102,9 +102,9 @@ body.has-cart-bar{padding-bottom:88px}
 @media(min-width:1000px){.grid{grid-template-columns:repeat(4,1fr)}}
 .card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);
   overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column;
-  content-visibility:auto;contain-intrinsic-size:320px 420px}
+  /* content-visibility:auto removed — caused rapid image blink on iOS/Safari scroll */}
 .card-visual{aspect-ratio:1;background:#fff;position:relative;overflow:hidden}
-.card-visual img{width:100%;height:100%;object-fit:contain;background:#faf7f5;padding:12px;box-sizing:border-box}
+.card-visual img{width:100%;height:100%;object-fit:contain;background:#faf7f5;padding:12px;box-sizing:border-box;content-visibility:visible;-webkit-backface-visibility:hidden;backface-visibility:hidden}
 
 .tag-off{position:absolute;top:10px;inset-inline-start:10px;z-index:3;background:#b05c6e;color:#fff;font-weight:800;font-size:.72rem;padding:4px 9px;border-radius:999px;pointer-events:none}
 .tag-hot{position:absolute;top:10px;inset-inline-end:10px;z-index:3;background:#1f1a17;color:#fff;font-weight:800;font-size:.68rem;padding:4px 9px;border-radius:999px;pointer-events:none}

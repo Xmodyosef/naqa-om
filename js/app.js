@@ -222,8 +222,9 @@ window.addEventListener("popstate", ()=>{
   applyRoute();
 });
 window.addEventListener("hashchange", ()=>{ applyRoute(); });
+let __naqaScrollHashT=0;
 window.addEventListener("scroll", ()=>{
-  // Ignore while any overlay is open — unlock/lock was thrashing hash back to home
+  // Ignore while any overlay is open
   if(document.body.classList.contains("naqa-scroll-lock") ||
      document.body.classList.contains("sheet-open") ||
      document.body.classList.contains("modal-open") ||
@@ -232,13 +233,19 @@ window.addEventListener("scroll", ()=>{
      ($("#quizModal")&&$("#quizModal").classList.contains("show")) ||
      ($("#checkoutModal")&&$("#checkoutModal").classList.contains("show")) ||
      ($("#drawer")&&$("#drawer").classList.contains("show"))) return;
-  const h=routeHash();
-  if(h.indexOf("p/")===0||h.indexOf("b/")===0||h.indexOf("c/")===0) return;
-  if(window.scrollY>420){
-    if(h!=="shop"){ try{ history.replaceState({naqa:"shop"}, "", "#shop"); }catch(e){} }
-  } else if(h==="shop"){
-    try{ history.replaceState({naqa:"home"}, "", location.pathname+location.search); }catch(e){}
-  }
+  // throttle: avoid hammering history on every scroll frame (jank on iPhone)
+  if(__naqaScrollHashT) return;
+  __naqaScrollHashT=1;
+  requestAnimationFrame(function(){
+    __naqaScrollHashT=0;
+    const h=routeHash();
+    if(h.indexOf("p/")===0||h.indexOf("b/")===0||h.indexOf("c/")===0) return;
+    if(window.scrollY>420){
+      if(h!=="shop"){ try{ history.replaceState({naqa:"shop"}, "", "#shop"); }catch(e){} }
+    } else if(h==="shop"){
+      try{ history.replaceState({naqa:"home"}, "", location.pathname+location.search); }catch(e){}
+    }
+  });
 }, {passive:true});
 
 

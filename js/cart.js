@@ -15,10 +15,12 @@ function deliveryFee(subtotal, pay){
   const min=(typeof FREE_SHIP_MIN==="number")?FREE_SHIP_MIN:30;
   pay=pay||getPayMethod();
   subtotal=subtotal!=null?subtotal:cartSubtotal();
-  // Paid in advance: no delivery fee
-  if(pay==="paid") return 0;
-  // COD / unpaid: 2 OMR unless free-shipping threshold
+  // Rules:
+  // - Subtotal >= 30 OMR → free delivery (always)
+  // - Subtotal < 30 + unpaid/COD → +2 OMR (e.g. 25 + 2 = 27)
+  // - Paid in advance → fee removed (0)
   if(subtotal>=min) return 0;
+  if(pay==="paid") return 0;
   return fee;
 }
 function cartGrand(subtotal, pay){
@@ -93,10 +95,10 @@ function renderCart(){
     var shipNote;
     if(need>0){
       shipNote = lang==="en"
-        ? ("Add "+money(need)+" for free delivery · COD fee "+money(DELIVERY_COD_FEE||2)+" now")
-        : ("أضيفي "+money(need)+" للتوصيل المجاني · رسوم عند الاستلام الآن "+money(DELIVERY_COD_FEE||2));
+        ? ("Under 30: +"+money(DELIVERY_COD_FEE||2)+" delivery on COD · add "+money(need)+" for free")
+        : ("تحت ٣٠: +" + money(DELIVERY_COD_FEE||2) + " توصيل عند الاستلام · أضيفي " + money(need) + " للمجاني");
     } else {
-      shipNote = lang==="en" ? "Free delivery unlocked ✓" : "التوصيل المجاني مفعّل ✓";
+      shipNote = lang==="en" ? "Free delivery (30+) ✓" : "توصيل مجاني (٣٠ فأكثر) ✓";
     }
     $("#barSub").textContent=money(sub)+" · "+shipNote;
     $("#barGo").textContent=T("barCheckout");

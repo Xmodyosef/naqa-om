@@ -116,3 +116,11 @@ html[lang="en"] .price-badge{display:none}
 .btn-open{grid-column:1/-1;background:rgba(176,92,110,.1);color:var(--rose-deep);padding:8px;border-radius:12px;font-weight:700;font-size:.8rem}
 .empty{padding:40px 16px;text-align:center;color:var(--muted)}
 
+
+/* VAT inclusive note — light & small */
+.vat-note{display:block;font-size:.68rem;font-weight:500;color:#a89890;letter-spacing:.01em;margin-top:2px;line-height:1.2}
+.card-price .vat-note{font-size:.65rem}
+.vat-line,.vat-line-soft{font-size:.78rem;color:#9a8b84;font-weight:500}
+.pay-sum .vat-line{display:flex;justify-content:space-between;gap:10px;padding:2px 0;opacity:.9}
+.cart-item .vat-note{font-size:.65rem;color:#a89890}
+.vat-line-soft{margin-top:4px;opacity:.95}

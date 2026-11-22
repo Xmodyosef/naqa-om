@@ -1,6 +1,7 @@
 /* config */
 const WA_NUMBER="96879088349", CURRENCY="ر.ع", SITE="www.naqa.om";
 const DELIVERY_FEE=2, COD_FEE=1.5, FREE_SHIP_MIN=30;
+const VAT_RATE=0.05; /* 5% inclusive — prices already include VAT */
 
 const BRAND_DOMAIN={
 "ACM":"acm-laboratoire.com","AXIS-Y":"axis-y.com","Abib":"abib.com","Acure":"acure.com","Anua":"anua.com","Arencia":"arencia.com","Aromatica":"aromatica.com","Beauty of Joseon":"beautyofjoseon.com","Biodance":"biodance.com","Bioderma":"bioderma.com","Cantu":"cantubeauty.com","Celimax":"celimax.co.kr","Centellian24":"centellian24.com","Cetaphil":"cetaphil.com","Cosrx":"cosrx.com","Dr.Althea":"dralthea.com","EQQUALBERRY":"eqqualberry.com","Eucerin":"eucerin.com","HaruHaru":"haruharuwonder.com","ISDIN":"isdin.com","K18":"k18hair.com","L'oréal":"loreal.com","LANEIGE":"laneige.com","La Roche-Posay":"laroche-posay.com","M.Asam":"m-asam.com","MISSHA":"missha.com","Mary&May":"marynmay.com","Medicube":"medicube.com","NYX":"nyxcosmetics.com","Neutrogena":"neutrogena.com","Numbuzin":"numbuzin.com","OLAPLEX":"olaplex.com","Purito":"purito.com","SHEGLAM":"sheglam.com","SKIN1004":"skin1004.com","Schwarzkopf":"schwarzkopf.com","Shiseido":"shiseido.com","Stridex":"stridex.com","TIRTIR":"tirtir.com","TOCOBO":"tocobo.com","The Ordinary":"theordinary.com","Uriage":"uriage.com","Vaseline":"vaseline.com","essence":"essence.eu"

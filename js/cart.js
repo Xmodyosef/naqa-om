@@ -54,12 +54,14 @@ function updatePaySum(){
   const b=feeBreakdown();
   const payLab=b.pay==="paid"?(T("payStatusPaid")||"مدفوع"):(T("payStatusUnpaid")||"غير مدفوع");
   const freeLab=lang==="en"?"Free":"مجاني";
+  const vatAmt=typeof vatOf==="function"?vatOf(b.grand):0;
   el.innerHTML=
     "<div><span>"+(T("subTotal")||"المجموع الفرعي")+"</span><b>"+money(b.subtotal)+"</b></div>"+
     "<div><span>"+(T("shipFee")||"رسوم التوصيل")+"</span><b>"+(b.delivery?money(b.delivery):freeLab)+(b.freeShip&&b.pay!=="paid"?" · ٣٠+":"")+"</b></div>"+
     "<div><span>"+(T("codFee")||"رسوم الدفع عند الاستلام")+"</span><b>"+(b.codFee?money(b.codFee):freeLab)+"</b></div>"+
     "<div class=\"grand\"><span>"+(T("grandTotal")||"الإجمالي")+"</span><b>"+money(b.grand)+"</b></div>"+
-    "<div class=\"pay-status\">"+payLab+(b.pay==="cod"?" · "+(T("payCod")||"دفع عند الاستلام"):" · "+(T("payPaid")||"مدفوع مسبقاً"))+"</div>";
+    "<div class=\"vat-line\"><span>"+(T("vatOf")||"منها ضريبة ٥٪")+"</span><b>"+money(vatAmt)+"</b></div>"+
+    "<div class=\"pay-status\">"+payLab+(b.pay==="cod"?" · "+(T("payCod")||"دفع عند الاستلام"):" · "+(T("payPaid")||"مدفوع مسبقاً"))+" · "+(T("vatInc")||"شامل الضريبة ٥٪")+"</div>";
   const hint=$("#payHint");
   if(hint){
     if(b.pay==="paid"){
@@ -137,16 +139,18 @@ function renderCart(){
     updatePaySum();
     return;
   }
+  const vatCart=typeof vatOf==="function"?vatOf(grand):0;
   const shipLine = `<div class="cart-ship-note">${T("shipFee")||"التوصيل"}: <b>${b.delivery?money(b.delivery):(lang==="en"?"Free":"مجاني")}</b>`
     + ` · ${T("codFee")||"استلام"}: <b>${b.codFee?money(b.codFee):(lang==="en"?"—":"—")}</b>`
-    + ` · ${T("grandTotal")||"الإجمالي"}: <b>${money(grand)}</b></div>`;
+    + ` · ${T("grandTotal")||"الإجمالي"}: <b>${money(grand)}</b>`
+    + `<div class="vat-line-soft">${T("vatOf")||"منها ضريبة ٥٪"}: ${money(vatCart)} · ${T("vatInc")||"شامل الضريبة"}</div></div>`;
   $("#cartBody").innerHTML=cart.map(i=>{
     const p=products.find(x=>x.id===i.id)||i;
     return `<div class="cart-item">
       <div class="thumb">${visual(p,0)}</div>
       <div class="meta">
         <strong>${pname(p)}</strong>
-        <span>${money(i.price)} · ${p.brand||""}</span>
+        <span>${money(i.price)} · ${p.brand||""}</span><span class="vat-note">${T("vatInc")||"شامل الضريبة ٥٪"}</span>
         <div class="sku-line">${T("sku")}: ${p.sku||"—"}</div>
         <button class="rm" data-rm="${i.id}" type="button">${T("del")}</button>
       </div>
@@ -216,7 +220,8 @@ function sendCheckout(){
     id:orderNo, at:new Date().toISOString(), status:"new",
     name:name, phone:phone, area:gov, note:note,
     payment:pay, paymentLabel:payLabel, paid:pay==="paid",
-    subtotal:sub, delivery:delivery, codFee:codFee, shipping:ship, total:grand, currency:"OMR",
+    subtotal:sub, delivery:delivery, codFee:codFee, shipping:ship, total:grand,
+    vatRate:typeof vatRate==="function"?vatRate():0.05, vat:typeof vatOf==="function"?vatOf(grand):0, vatInclusive:true, currency:"OMR",
     items:items, lang:lang
   };
   try{
@@ -237,8 +242,8 @@ function sendCheckout(){
     ? ("COD fee: "+(codFee?money(codFee):"0"))
     : ("رسوم الدفع عند الاستلام: "+(codFee?money(codFee):"٠"));
   const msg = lang==="en"
-    ? ("Hello, I want to order from Naqa:\nOrder: "+orderNo+"\nName: "+name+"\nPhone: "+phone+"\nArea: "+gov+"\nPayment: "+payLabel+"\nNote: "+note+"\n\n"+lines+"\n\nSubtotal: "+money(sub)+"\n"+delLine+"\n"+codLine+"\nTotal: "+money(grand))
-    : ("السلام عليكم، أبغى أطلب من نقاء:\nرقم الطلب: "+orderNo+"\nالاسم: "+name+"\nالجوال: "+phone+"\nالمنطقة: "+gov+"\nالدفع: "+payLabel+"\nملاحظة: "+note+"\n\n"+lines+"\n\nالمجموع الفرعي: "+money(sub)+"\n"+delLine+"\n"+codLine+"\nالإجمالي: "+money(grand));
+    ? ("Hello, I want to order from Naqa:\nOrder: "+orderNo+"\nName: "+name+"\nPhone: "+phone+"\nArea: "+gov+"\nPayment: "+payLabel+"\nNote: "+note+"\n\n"+lines+"\n\nSubtotal: "+money(sub)+"\n"+delLine+"\n"+codLine+"\nTotal (incl. 5% VAT): "+money(grand)+"\nOf which VAT 5%: "+money(typeof vatOf==="function"?vatOf(grand):0))
+    : ("السلام عليكم، أبغى أطلب من نقاء:\nرقم الطلب: "+orderNo+"\nالاسم: "+name+"\nالجوال: "+phone+"\nالمنطقة: "+gov+"\nالدفع: "+payLabel+"\nملاحظة: "+note+"\n\n"+lines+"\n\nالمجموع الفرعي: "+money(sub)+"\n"+delLine+"\n"+codLine+"\nالإجمالي (شامل الضريبة ٥٪): "+money(grand)+"\nمنها ضريبة ٥٪: "+money(typeof vatOf==="function"?vatOf(grand):0));
   window.open("https://wa.me/"+WA_NUMBER+"?text="+encodeURIComponent(msg), "_blank");
   const done=$("#orderDone");
   if(done){

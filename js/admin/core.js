@@ -102,7 +102,9 @@
       var st = A.STATUS[A.normalizeStatus(o.status)] || o.status;
       lines.push((i + 1) + ") " + (o.id || "") + " · " + st);
       lines.push("   " + (o.name || "—") + " · " + (o.phone || "—") + " · " + (o.area || "—"));
-      lines.push("   المجموع: " + (o.total != null ? Number(o.total).toFixed(3) : "—") + " ر.ع");
+      lines.push("   المجموع: " + (o.total != null ? Number(o.total).toFixed(3) : "—") + " ر.ع (شامل الضريبة ٥٪)");
+      var vatN = o.vat != null ? Number(o.vat) : (o.total != null ? Number(o.total) * 0.05 / 1.05 : null);
+      if (vatN != null && !isNaN(vatN)) lines.push("   منها ضريبة ٥٪: " + vatN.toFixed(3) + " ر.ع");
       lines.push("   الدفع: " + (o.paymentLabel || (o.paid ? "مدفوع" : (o.payment === "cod" ? "دفع عند الاستلام" : "—"))));
       if (o.delivery != null || o.codFee != null || o.shipping != null) {
         lines.push("   رسوم: توصيل " + Number(o.delivery != null ? o.delivery : 0).toFixed(3)

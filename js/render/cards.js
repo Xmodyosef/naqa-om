@@ -5,8 +5,9 @@ function offPct(p){
 }
 function priceHTML(p){
   const pct=offPct(p);
-  if(!pct) return '<div class="card-price">'+money(p.price)+'</div>';
-  return '<div class="card-price"><span class="off">−'+pct+'%</span>'+money(p.price)+' <s class="was">'+money(p.was)+'</s></div>';
+  const vat=typeof vatNoteHTML==="function"?vatNoteHTML():'<span class="vat-note">شامل الضريبة ٥٪</span>';
+  if(!pct) return '<div class="card-price">'+money(p.price)+vat+'</div>';
+  return '<div class="card-price"><span class="off">−'+pct+'%</span>'+money(p.price)+' <s class="was">'+money(p.was)+'</s>'+vat+'</div>';
 }
 
 function visual(p, idx){

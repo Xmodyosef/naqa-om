@@ -106,7 +106,7 @@ const ui={
   coCancel:"إلغاء", coSend:"إرسال واتساب",
   payTitle:"طريقة الدفع", payCod:"دفع عند الاستلام", payPaid:"مدفوع مسبقاً (تحويل)",
   payNeed:"اختاري طريقة الدفع", shipFee:"رسوم التوصيل", shipFreeCod:"مثال COD ٢٥: ٢٥+٢+١.٥=٢٨.٥ · COD ٣٠: ٣٠+١.٥=٣١.٥ · المدفوع: بدون رسوم",
-  payStatusUnpaid:"غير مدفوع", payStatusPaid:"مدفوع", subTotal:"المجموع الفرعي", grandTotal:"الإجمالي", codFee:"رسوم الدفع عند الاستلام",
+  payStatusUnpaid:"غير مدفوع", payStatusPaid:"مدفوع", subTotal:"المجموع الفرعي", grandTotal:"الإجمالي", codFee:"رسوم الدفع عند الاستلام", vatInc:"شامل الضريبة ٥٪", vatOf:"منها ضريبة ٥٪", vatLabel:"الضريبة (٥٪ شاملة)",
   govs:["مسقط","ظفار","الباطنة شمال","الباطنة جنوب","الداخلية","الشرقية شمال","الشرقية جنوب","الظاهرة","البريمي","الوسطى","مسندم"]
  },
  en:{
@@ -132,13 +132,18 @@ const ui={
   coCancel:"Cancel", coSend:"Send on WhatsApp",
   payTitle:"Payment method", payCod:"Cash on delivery", payPaid:"Paid in advance (transfer)",
   payNeed:"Choose a payment method", shipFee:"Delivery fee", shipFreeCod:"COD 25: 25+2+1.5=28.5 · COD 30: 30+1.5=31.5 · paid: no fees",
-  payStatusUnpaid:"Unpaid", payStatusPaid:"Paid", subTotal:"Subtotal", grandTotal:"Grand total", codFee:"Cash on delivery fee",
+  payStatusUnpaid:"Unpaid", payStatusPaid:"Paid", subTotal:"Subtotal", grandTotal:"Grand total", codFee:"Cash on delivery fee", vatInc:"Incl. 5% VAT", vatOf:"of which 5% VAT", vatLabel:"VAT (5% included)",
   govs:["Muscat","Dhofar","North Al Batinah","South Al Batinah","Ad Dakhiliyah","North Ash Sharqiyah","South Ash Sharqiyah","Ad Dhahirah","Al Buraimi","Al Wusta","Musandam"]
  }
 };
 const catLabel={all:"all","عناية":"care","وجه":"face","عيون":"eyes","حواجب":"brows","شفاه":"lips","عطور":"scent","أدوات":"tools","شعر":"hair"};
 const T=k=>ui[lang][k];
 const money=n=>lang==="en"?(Number(n).toFixed(3)+" OMR"):(Number(n).toFixed(3)+" "+CURRENCY);
+const vatRate=()=>((typeof VAT_RATE==="number")?VAT_RATE:0.05);
+const vatOf=amount=>{const r=vatRate();const n=Number(amount)||0;return r<=0?0:n*r/(1+r);};
+const exVat=amount=>(Number(amount)||0)-vatOf(amount);
+function vatNoteHTML(){return '<span class="vat-note">'+(T("vatInc")||"شامل الضريبة ٥٪")+'</span>';}
+
 const pname=p=>lang==="en"?(p.nameEn||p.nameAr):(p.nameAr||p.nameEn);
 const pdesc=p=>lang==="en"?(p.descEn||p.descAr||""):(p.descAr||p.descEn||"");
 const puse=p=>lang==="en"?(p.useEn||p.useAr||""):(p.useAr||p.useEn||"");

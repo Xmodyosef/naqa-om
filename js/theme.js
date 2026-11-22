@@ -33,16 +33,20 @@
     if (meta) meta.setAttribute("content", resolved === "night" ? "#1a1412" : "#b05c6e");
     var btn = document.getElementById("themeBtn");
     if (btn) {
-      // Never call T() here: theme boots before const T exists (TDZ) and would kill the whole store.
+      // Theme IIFE boots BEFORE let lang / const T in store.min.js — never touch them (TDZ crash).
+      var isEn = false;
+      try { isEn = (localStorage.getItem("naqa_lang") === "en"); } catch (e) {}
+      try {
+        if (!isEn && document.documentElement && document.documentElement.lang === "en") isEn = true;
+      } catch (e2) {}
       var en = mode === "night" ? "Night" : (mode === "day" ? "Day" : "Auto");
       var ar = mode === "night" ? "مسائي" : (mode === "day" ? "صباحي" : "تلقائي");
-      var label = (typeof lang !== "undefined" && lang === "en") ? en : ar;
       var icon = resolved === "night" ? "☾" : "☀";
-      btn.textContent = icon; // compact header — full name in title/aria
-      btn.setAttribute("aria-label", (typeof lang !== "undefined" && lang === "en")
+      btn.textContent = icon;
+      btn.setAttribute("aria-label", isEn
         ? ("Theme: " + en + " (tap to cycle day / night / auto)")
         : ("الثيم: " + ar + " (اضغطي: صباحي / مسائي / تلقائي)"));
-      btn.title = (typeof lang !== "undefined" && lang === "en") ? en : ar;
+      btn.title = isEn ? en : ar;
     }
   }
 

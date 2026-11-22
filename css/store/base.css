@@ -55,8 +55,9 @@ header{position:sticky;top:0;z-index:60;background:rgba(253,248,246,.94);
 .btn-ghost{background:#fff;border:1px solid var(--line)}
 
 .ship-bar{background:#1f1a17;color:#fff;text-align:center;font-size:.92rem;font-weight:700;padding:8px 14px}
-.ship-free{position:fixed;left:0;right:0;bottom:64px;z-index:48;background:#e8f5e9;color:#1b5e20;text-align:center;font-size:.88rem;font-weight:800;padding:8px 12px;border-top:1px solid #c8e6c9}
-body{padding-bottom:120px}
+.ship-free{display:none!important}
+body{padding-bottom:24px}
+body.has-cart-bar{padding-bottom:88px}
 .section-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:22px 0 12px}
 .section-head h2{margin:0;font-size:1.2rem;font-weight:800}
 .section-tools{display:flex;align-items:center;gap:8px}
@@ -131,3 +132,18 @@ html[lang="en"] .price-badge{display:none}
 .pay-sum .vat-line{display:flex;justify-content:space-between;gap:10px;padding:2px 0;opacity:.9}
 .cart-item .vat-note{font-size:.65rem;color:#a89890}
 .vat-line-soft{margin-top:4px;opacity:.95}
+
+.policy-card{margin-top:16px;background:rgba(255,255,255,.72);border:1px solid var(--line,#efe4df);border-radius:16px;padding:12px 14px;text-align:start}
+.policy-title{font-weight:800;font-size:.9rem;color:var(--rose-deep,#b05c6e);margin-bottom:6px}
+.policy-list{margin:0;padding-inline-start:1.1rem;color:var(--fg,#1f1a17);font-size:.84rem;line-height:1.65;font-weight:600}
+.policy-list li{margin:2px 0}
+.site-gate{position:fixed;inset:0;z-index:9999;background:linear-gradient(160deg,#fdf8f6,#f3e4df);display:flex;align-items:center;justify-content:center;padding:20px}
+.site-gate[hidden]{display:none!important}
+.site-gate-card{width:min(380px,100%);background:#fff;border-radius:20px;padding:24px 20px;box-shadow:0 16px 40px rgba(50,30,25,.12);text-align:center}
+.site-gate-card h2{margin:0 0 8px;font-size:1.35rem}
+.site-gate-card p{margin:0 0 14px;color:#8a7f78;font-size:.92rem}
+.site-gate-card input{width:100%;padding:12px 14px;border-radius:12px;border:1px solid #efe4df;font-size:1rem;text-align:center;margin-bottom:10px}
+.site-gate-card button{width:100%;padding:12px;border:0;border-radius:12px;background:#1f1a17;color:#fff;font-weight:800}
+.gate-msg{color:#b05c6e;font-weight:700;min-height:1.2em;margin-top:8px!important}
+html.gated body > :not(#siteGate){visibility:hidden}
+html.gated #siteGate{visibility:visible}

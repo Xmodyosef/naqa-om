@@ -111,27 +111,28 @@ function renderCart(){
   if(n){ badge.hidden=false; badge.textContent=n; } else badge.hidden=true;
   const bar=$("#cartBar");
   if(n){
+    bar.hidden=false;
     bar.classList.remove("empty-bar");
+    document.body.classList.add("has-cart-bar");
     $("#barTitle").textContent=T("barItems")(n);
     var min=FREE_SHIP_MIN||30;
     var need=Math.max(0, min-sub);
     var shipNote;
     if(need>0){
       shipNote = lang==="en"
-        ? ("Under 30: +2 delivery · COD +1.5 · add "+money(need)+" for free ship")
-        : ("تحت ٣٠: +٢ توصيل · استلام +١.٥ · أضيفي "+money(need)+" للمجاني");
+        ? ("Need "+money(need)+" more for free delivery · COD +1.5")
+        : ("أضيفي "+money(need)+" للتوصيل المجاني · استلام +١.٥");
     } else {
       shipNote = lang==="en"
-        ? ("Free delivery 30+ · COD fee +1.5 if cash on delivery")
-        : ("توصيل مجاني ٣٠+ · رسوم استلام +١.٥ إذا دفع عند الاستلام");
+        ? ("Free delivery unlocked · COD still +1.5 if cash on delivery")
+        : ("توصيل مجاني مفعّل · الاستلام +١.٥ إذا اخترتي الدفع عند الاستلام");
     }
     $("#barSub").textContent=money(sub)+" · "+shipNote;
     $("#barGo").textContent=T("barCheckout");
   } else {
+    bar.hidden=true;
     bar.classList.add("empty-bar");
-    $("#barTitle").textContent=T("barEmpty");
-    $("#barSub").textContent=T("barHint");
-    $("#barGo").textContent=T("barOpen");
+    document.body.classList.remove("has-cart-bar");
   }
   if(!cart.length){
     $("#cartBody").innerHTML=`<div class="cart-empty">${T("emptyCart")}</div>`;

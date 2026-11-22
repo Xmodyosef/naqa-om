@@ -90,12 +90,12 @@ const ui={
   cart:"السلة", emptyCart:"السلة فاضية<br/>أضيفي من القائمة", total:"المجموع", checkout:"إتمام الطلب عبر واتساب",
   add:"أضيفي", qty:"الكمية", qv:"نظرة سريعة", open:"التفاصيل", del:"حذف", noSku:"SKU غير متوفر",
   heroTitle:"نقاء — ", heroEm:"عناية ومكياج",
-  hero:"صور حقيقية، تمرير بين ٥ صور، نظرة سريعة من غير ما تدخلي كامل، والسلة ثابتة تحت. الطلب بواتساب جاهز.",
+  hero:"متجر عُماني للعناية والمكياج — نختار لكِ منتجات أصلية بعناية، بأسعار واضحة شاملة الضريبة، وتوصيل داخل السلطنة. جمال يبدأ بنقاء.",
   alertEmpty:"السلة فاضية", coNeedName:"اكتبي الاسم", coNeedPhone:"اكتبي رقم جوال صحيح", coNeedGov:"اختاري الولاية", stockLimit:"ما في كمية أكثر", greet:"السلام عليكم، أبغى أطلب من نقاء",
   ship:"توصيل عُمان", order:"طلب واتساب", contact:"تواصلي", shopH:"التسوق", orders:"واتساب الطلبات",
   skin:"عناية", faceL:"وجه", hairL:"شعر", blurb:"عناية ومكياج · متجر عُماني", copy:"نقاء · Naqa · عُمان",
   about:"عن المنتج", how:"طريقة الاستعمال", skinT:"يناسب", also:"قد يعجبكِ أيضاً", same:"باقي منتجات الماركة", back:"رجوع",
-  sku:"SKU", logo:"نقاء", tag:"عناية ومكياج", shipBar:"خصم ٣٠٪ على منتجات مختارة · توصيل عُمان", shipFree:"توصيل ٢ ر.ع تحت ٣٠ · مجاني فوق ٣٠ · دفع عند الاستلام +١.٥ · المدفوع يزيل الرسوم", sortNew:"الأحدث", sortLow:"الأقل سعراً", sortHigh:"الأعلى سعراً", sortOff:"الأعلى خصماً", swipe:"اسحبي للأسفل للإغلاق · أو من الحافة اليمنى/اليسرى", swipeFull:"اسحبي من الحافة للرجوع · مرّري الصور", banHotSub:"مختارات الزبائن · ماركات عليها طلب", banYearSub:"خصم ٣٠٪ على منتجات مختارة لفترة محدودة",
+  sku:"SKU", logo:"نقاء", tag:"عناية ومكياج", footAbout:"نقاء — وجهتكِ في عُمان للعناية الأصيلة والمكياج المختار. أسعار شاملة الضريبة، وتوصيل داخل السلطنة.", shipBar:"نقاء · توصيل داخل عُمان · أسعار شاملة الضريبة ٥٪", shipFree:"سياسة التوصيل والدفع: تحت ٣٠ ر.ع توصيل ٢ ر.ع · من ٣٠ ر.ع توصيل مجاني · دفع عند الاستلام +١.٥ ر.ع · التحويل المسبق بدون رسوم", sortNew:"الأحدث", sortLow:"الأقل سعراً", sortHigh:"الأعلى سعراً", sortOff:"الأعلى خصماً", swipe:"اسحبي للأسفل للإغلاق · أو من الحافة اليمنى/اليسرى", swipeFull:"اسحبي من الحافة للرجوع · مرّري الصور", banHotSub:"مختارات الزبائن · ماركات عليها طلب", banYearSub:"خصم ٣٠٪ على منتجات مختارة لفترة محدودة",
   openImg:"اضغطي الصورة للتكبير", barEmpty:"السلة فاضية", barHint:"أضيفي منتجات من القائمة", barItems:n=>n+" منتج في السلة", barOpen:"افتحي السلة", barCheckout:"إتمام الطلب", hot:"الأكثر مبيعاً", year:"عروض نهاية السنة", viewAll:"عرض الكل", offTag:n=>"−"+n+"%",
   quizBtn:"اختبار البشرة ✨", docTitle:"نقاء · عناية ومكياج | www.naqa.om",
   saved:"المحفوظات", savedOn:"إخفاء المحفوظات", wishEmpty:"ما في منتجات محفوظة. اضغطي القلب ♥ على أي منتج.",
@@ -106,7 +106,7 @@ const ui={
   coCancel:"إلغاء", coSend:"إرسال واتساب",
   payTitle:"طريقة الدفع", payCod:"دفع عند الاستلام", payPaid:"مدفوع مسبقاً (تحويل)",
   payNeed:"اختاري طريقة الدفع", shipFee:"رسوم التوصيل", shipFreeCod:"مثال COD ٢٥: ٢٥+٢+١.٥=٢٨.٥ · COD ٣٠: ٣٠+١.٥=٣١.٥ · المدفوع: بدون رسوم",
-  payStatusUnpaid:"غير مدفوع", payStatusPaid:"مدفوع", subTotal:"المجموع الفرعي", grandTotal:"الإجمالي", codFee:"رسوم الدفع عند الاستلام", vatInc:"شامل الضريبة ٥٪", vatOf:"منها ضريبة ٥٪", vatLabel:"الضريبة (٥٪ شاملة)", vatBar:"كل الأصناف · الأسعار شاملة ضريبة ٥٪",
+  payStatusUnpaid:"غير مدفوع", payStatusPaid:"مدفوع", subTotal:"المجموع الفرعي", grandTotal:"الإجمالي", codFee:"رسوم الدفع عند الاستلام", vatInc:"شامل الضريبة ٥٪", vatOf:"منها ضريبة ٥٪", vatLabel:"الضريبة (٥٪ شاملة)", vatBar:"كل الأصناف · الأسعار شاملة ضريبة ٥٪",policyTitle:"التوصيل والدفع",policy1:"طلب أقل من ٣٠ ر.ع: توصيل ٢ ر.ع",policy2:"طلب ٣٠ ر.ع فأكثر: توصيل مجاني",policy3:"دفع عند الاستلام: +١.٥ ر.ع (أي مبلغ)",policy4:"تحويل مسبق: بدون رسوم توصيل ولا استلام",
   govs:["مسقط","ظفار","الباطنة شمال","الباطنة جنوب","الداخلية","الشرقية شمال","الشرقية جنوب","الظاهرة","البريمي","الوسطى","مسندم"]
  },
  en:{
@@ -116,12 +116,12 @@ const ui={
   cart:"Cart", emptyCart:"Your cart is empty<br/>Add from the list", total:"Total", checkout:"Checkout on WhatsApp",
   add:"Add", qty:"Qty", qv:"Quick view", open:"Details", del:"Remove", noSku:"SKU unavailable",
   heroTitle:"Naqa — ", heroEm:"Care & Makeup",
-  hero:"Real photos, swipe across up to 5 images, quick view without full page, cart always at the bottom. Checkout is a ready WhatsApp message.",
+  hero:"An Omani beauty store for skincare and makeup — carefully chosen authentic products, clear VAT-inclusive prices, and delivery across the Sultanate. Beauty starts with purity.",
   alertEmpty:"Cart is empty", coNeedName:"Enter your name", coNeedPhone:"Enter a valid mobile number", coNeedGov:"Choose a wilayat", stockLimit:"No more stock", greet:"Hello, I want to order from Naqa",
   ship:"Oman delivery", order:"WhatsApp order", contact:"Contact", shopH:"Shop", orders:"Order on WhatsApp",
   skin:"Skincare", faceL:"Face", hairL:"Hair", blurb:"Care and makeup · Oman store", copy:"Naqa · Oman",
   about:"About", how:"How to use", skinT:"Best for", also:"You may also like", same:"More from this brand", back:"Back",
-  sku:"SKU", logo:"Naqa", tag:"Care & Makeup", shipBar:"30% off selected items · Oman delivery", shipFree:"Delivery 2 under 30 · free at 30+ · COD +1.5 · paid removes fees", sortNew:"Newest", sortLow:"Lowest price", sortHigh:"Highest price", sortOff:"Biggest discount", swipe:"Swipe down to close · or from the edge", swipeFull:"Swipe from the edge to go back · swipe photos", banHotSub:"Customer favorites · in-demand brands", banYearSub:"30% off selected items for a limited time",
+  sku:"SKU", logo:"Naqa", tag:"Care & Makeup", footAbout:"Naqa — your Omani destination for authentic care and curated makeup. VAT-inclusive prices and delivery across Oman.", shipBar:"Naqa · Delivery across Oman · Prices include 5% VAT", shipFree:"Delivery & pay: under 30 OMR → 2 OMR delivery · 30+ free delivery · COD +1.5 OMR · prepaid transfer = no fees", sortNew:"Newest", sortLow:"Lowest price", sortHigh:"Highest price", sortOff:"Biggest discount", swipe:"Swipe down to close · or from the edge", swipeFull:"Swipe from the edge to go back · swipe photos", banHotSub:"Customer favorites · in-demand brands", banYearSub:"30% off selected items for a limited time",
   openImg:"Tap image to enlarge", barEmpty:"Cart is empty", barHint:"Add products from the list", barItems:n=>n+" items in cart", barOpen:"Open cart", barCheckout:"Checkout", hot:"Best sellers", year:"Year-end deals", viewAll:"View all", offTag:n=>"−"+n+"%",
   quizBtn:"Skin quiz ✨", docTitle:"Naqa · Care & Makeup | www.naqa.om",
   saved:"Saved", savedOn:"Hide saved", wishEmpty:"Nothing saved yet. Tap the heart on a product.",
@@ -132,7 +132,7 @@ const ui={
   coCancel:"Cancel", coSend:"Send on WhatsApp",
   payTitle:"Payment method", payCod:"Cash on delivery", payPaid:"Paid in advance (transfer)",
   payNeed:"Choose a payment method", shipFee:"Delivery fee", shipFreeCod:"COD 25: 25+2+1.5=28.5 · COD 30: 30+1.5=31.5 · paid: no fees",
-  payStatusUnpaid:"Unpaid", payStatusPaid:"Paid", subTotal:"Subtotal", grandTotal:"Grand total", codFee:"Cash on delivery fee", vatInc:"Incl. 5% VAT", vatOf:"of which 5% VAT", vatLabel:"VAT (5% included)", vatBar:"All items · prices include 5% VAT",
+  payStatusUnpaid:"Unpaid", payStatusPaid:"Paid", subTotal:"Subtotal", grandTotal:"Grand total", codFee:"Cash on delivery fee", vatInc:"Incl. 5% VAT", vatOf:"of which 5% VAT", vatLabel:"VAT (5% included)", vatBar:"All items · prices include 5% VAT",policyTitle:"Delivery & payment",policy1:"Under 30 OMR: 2 OMR delivery",policy2:"30 OMR and above: free delivery",policy3:"Cash on delivery: +1.5 OMR (any total)",policy4:"Prepaid transfer: no delivery or COD fees",
   govs:["Muscat","Dhofar","North Al Batinah","South Al Batinah","Ad Dakhiliyah","North Ash Sharqiyah","South Ash Sharqiyah","Ad Dhahirah","Al Buraimi","Al Wusta","Musandam"]
  }
 };

@@ -32,7 +32,7 @@ function applyLang(){
   $("#jumpHair").textContent=T("hairL");
   $("#copyLine").textContent=T("copy");
   $("#waFooter").textContent=T("orders");
-  $("#footBlurb").innerHTML=T("blurb")+"<br/>www.naqa.om";
+  $("#footBlurb").innerHTML=(T("footAbout")||T("blurb")||"")+"<br/>www.naqa.om";
   const bar=$("#shipBar"); if(bar) bar.textContent=T("shipBar");
   const quiz=$("#heroQuiz"); if(quiz) quiz.textContent=T("quizBtn");
   document.title = openProductId ? (pname(products.find(x=>x.id===openProductId)||{})+" · Naqa") : T("docTitle");
@@ -57,6 +57,8 @@ function applyLang(){
   }
   const sf=$("#shipFree"); if(sf) sf.textContent=T("shipFree");
   const vb=$("#vatBar"); if(vb) vb.textContent=T("vatBar")||T("vatInc");
+  const polT=$("#policyTitle"); if(polT) polT.textContent=T("policyTitle")||polT.textContent;
+  for(const k of ["policy1","policy2","policy3","policy4"]){ const el=$("#"+k); if(el) el.textContent=T(k)||el.textContent; }
   const pt=$("#payTitle"); if(pt) pt.textContent=T("payTitle");
   const pcl=$("#payCodLab"); if(pcl) pcl.textContent=T("payCod");
   const ppl=$("#payPaidLab"); if(ppl) ppl.textContent=T("payPaid");

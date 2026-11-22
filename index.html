@@ -6,13 +6,25 @@
 <meta name="theme-color" content="#b05c6e" />
 <meta name="description" content="نقاء — عناية ومكياج. توصيل عُمان. طلب واتساب." />
 <title>نقاء · عناية ومكياج | www.naqa.om</title>
-<link rel="stylesheet" href="css/store/base.css?v=20261122y" />
-<link rel="stylesheet" href="css/store/cart-chrome.css?v=20261122y" />
-<link rel="stylesheet" href="css/store/sheet.css?v=20261122y" />
-<link rel="stylesheet" href="css/store/features.css?v=20261122y" />
+<link rel="stylesheet" href="css/store/base.css?v=20261122z" />
+<link rel="stylesheet" href="css/store/cart-chrome.css?v=20261122z" />
+<link rel="stylesheet" href="css/store/sheet.css?v=20261122z" />
+<link rel="stylesheet" href="css/store/features.css?v=20261122z" />
 </head>
 <body>
-<div class="ship-bar" id="shipBar">توصيل داخل عُمان · الطلب عبر واتساب</div>
+
+<div id="siteGate" class="site-gate" hidden>
+  <div class="site-gate-card">
+    <div class="logo-mark" style="margin:0 auto 12px">ن</div>
+    <h2>نقاء · خاص</h2>
+    <p>الموقع للمعاينة الخاصة فقط. أدخلي رمز الدخول.</p>
+    <input id="gatePin" type="password" inputmode="numeric" placeholder="رمز الدخول" autocomplete="current-password" />
+    <button type="button" id="gateGo">دخول</button>
+    <p class="gate-msg" id="gateMsg"></p>
+  </div>
+</div>
+
+<div class="ship-bar" id="shipBar">نقاء · توصيل داخل عُمان · أسعار شاملة الضريبة ٥٪</div>
 <header>
   <div class="wrap top">
     <a class="logo" href="#top">
@@ -59,11 +71,20 @@
       <span class="pill" id="pillWa">طلب واتساب</span>
     </div>
     <h1 id="heroTitle">نقاء — <em>عناية ومكياج</em></h1>
-    <p id="heroText">منتجات بصورها الحقيقية. مرّري الصور، نظرة سريعة، أو ادخلي للتفاصيل. السلة ظاهرة دائماً أسفل الشاشة.</p>
+    <p id="heroText">متجر عُماني للعناية والمكياج — نختار لكِ منتجات أصلية بعناية، بأسعار واضحة شاملة الضريبة، وتوصيل داخل السلطنة. جمال يبدأ بنقاء.</p>
     <div class="hero-actions">
       <a class="btn btn-primary" id="btnShop" href="#products">تسوّقي الآن</a>
       <button class="btn btn-ghost" id="heroQuiz" type="button">اختبار البشرة ✨</button>
       <a class="btn btn-ghost" id="waHero" href="#" target="_blank" rel="noopener">واتساب نقاء</a>
+    </div>
+    <div class="policy-card" id="policyCard" aria-label="delivery policy">
+      <div class="policy-title" id="policyTitle">التوصيل والدفع</div>
+      <ul class="policy-list">
+        <li id="policy1">طلب أقل من ٣٠ ر.ع: توصيل ٢ ر.ع</li>
+        <li id="policy2">طلب ٣٠ ر.ع فأكثر: توصيل مجاني</li>
+        <li id="policy3">دفع عند الاستلام: +١.٥ ر.ع (أي مبلغ)</li>
+        <li id="policy4">تحويل مسبق: بدون رسوم توصيل ولا استلام</li>
+      </ul>
     </div>
   </section>
   <div class="trust-row" id="trustRow"></div>
@@ -93,7 +114,7 @@
   <div class="wrap foot-grid">
     <div>
       <div class="foot-brand" id="footBrand">ن<span>قاء</span></div>
-      <p id="footBlurb" style="margin:8px 0 0">عناية ومكياج · متجر عُماني<br/>www.naqa.om</p>
+      <p id="footBlurb" style="margin:8px 0 0">نقاء — وجهتكِ في عُمان للعناية الأصيلة والمكياج المختار.<br/>www.naqa.om</p>
     </div>
     <div>
       <h4 id="footContact">تواصلي</h4>
@@ -114,8 +135,9 @@
 </footer>
 
 <div class="vat-bar" id="vatBar">الأسعار شاملة ضريبة القيمة المضافة ٥٪</div>
-<div class="ship-free" id="shipFree">توصيل ٢ تحت ٣٠ · مجاني فوق ٣٠ · استلام +١.٥ · المدفوع يزيل الرسوم</div>
-<div class="cart-bar empty-bar" id="cartBar">
+<!-- ship policy moved to hero policy-card -->
+<div class="ship-free" id="shipFree" hidden></div>
+<div class="cart-bar empty-bar" id="cartBar" hidden>
   <div class="info">
     <strong id="barTitle">السلة فاضية</strong>
     <span id="barSub">أضيفي منتجات من القائمة</span>
@@ -174,75 +196,75 @@
     </div>
   </div>
 </div>
-<script src="products.js?v=20261122y"></script>
-<script src="data/brands/abib.js?v=20261122y"></script>
-<script src="data/brands/acm.js?v=20261122y"></script>
-<script src="data/brands/acure.js?v=20261122y"></script>
-<script src="data/brands/anua.js?v=20261122y"></script>
-<script src="data/brands/arencia.js?v=20261122y"></script>
-<script src="data/brands/aromatica.js?v=20261122y"></script>
-<script src="data/brands/axis-y.js?v=20261122y"></script>
-<script src="data/brands/beauty-of-joseon.js?v=20261122y"></script>
-<script src="data/brands/biodance.js?v=20261122y"></script>
-<script src="data/brands/bioderma.js?v=20261122y"></script>
-<script src="data/brands/cantu.js?v=20261122y"></script>
-<script src="data/brands/celimax.js?v=20261122y"></script>
-<script src="data/brands/centellian24.js?v=20261122y"></script>
-<script src="data/brands/cetaphil.js?v=20261122y"></script>
-<script src="data/brands/cosrx.js?v=20261122y"></script>
-<script src="data/brands/dr-althea.js?v=20261122y"></script>
-<script src="data/brands/dr-melaxin.js?v=20261122y"></script>
-<script src="data/brands/epii.js?v=20261122y"></script>
-<script src="data/brands/eqqualberry.js?v=20261122y"></script>
-<script src="data/brands/essence.js?v=20261122y"></script>
-<script src="data/brands/eucerin.js?v=20261122y"></script>
-<script src="data/brands/haruharu.js?v=20261122y"></script>
-<script src="data/brands/isdin.js?v=20261122y"></script>
-<script src="data/brands/k-secret.js?v=20261122y"></script>
-<script src="data/brands/k18.js?v=20261122y"></script>
-<script src="data/brands/la-roche-posay.js?v=20261122y"></script>
-<script src="data/brands/laneige.js?v=20261122y"></script>
-<script src="data/brands/liangyan.js?v=20261122y"></script>
-<script src="data/brands/lollis.js?v=20261122y"></script>
-<script src="data/brands/loreal.js?v=20261122y"></script>
-<script src="data/brands/m-asam.js?v=20261122y"></script>
-<script src="data/brands/mary-and-may.js?v=20261122y"></script>
-<script src="data/brands/medicube.js?v=20261122y"></script>
-<script src="data/brands/missha.js?v=20261122y"></script>
-<script src="data/brands/neutrogena.js?v=20261122y"></script>
-<script src="data/brands/numbuzin.js?v=20261122y"></script>
-<script src="data/brands/nyx.js?v=20261122y"></script>
-<script src="data/brands/olaplex.js?v=20261122y"></script>
-<script src="data/brands/purito.js?v=20261122y"></script>
-<script src="data/brands/schwarzkopf.js?v=20261122y"></script>
-<script src="data/brands/seapuri.js?v=20261122y"></script>
-<script src="data/brands/sheglam.js?v=20261122y"></script>
-<script src="data/brands/shiseido.js?v=20261122y"></script>
-<script src="data/brands/skin-doctor.js?v=20261122y"></script>
-<script src="data/brands/skin1004.js?v=20261122y"></script>
-<script src="data/brands/stridex.js?v=20261122y"></script>
-<script src="data/brands/the-ordinary.js?v=20261122y"></script>
-<script src="data/brands/tirtir.js?v=20261122y"></script>
-<script src="data/brands/tocobo.js?v=20261122y"></script>
-<script src="data/brands/ultru.js?v=20261122y"></script>
-<script src="data/brands/uriage.js?v=20261122y"></script>
-<script src="data/brands/vaseline.js?v=20261122y"></script>
-<script src="data/brands/vivelab.js?v=20261122y"></script>
-<script src="data/brands/yc.js?v=20261122y"></script>
-<script src="js/config.js?v=20261122y"></script>
-<script src="js/brands-logos.js?v=20261122y"></script>
-<script src="js/core.js?v=20261122y"></script>
-<script src="js/features/wish-concerns.js?v=20261122y"></script>
-<script src="js/features/bundles.js?v=20261122y"></script>
-<script src="js/features/quiz.js?v=20261122y"></script>
-<script src="js/features/boot.js?v=20261122y"></script>
-<script src="data/oman-areas.js?v=20261122y"></script>
-<script src="js/extras.js?v=20261122y"></script>
-<script src="js/render/cards.js?v=20261122y"></script>
-<script src="js/render/main.js?v=20261122y"></script>
-<script src="js/sheet/carousel.js?v=20261122y"></script>
-<script src="js/sheet/panel.js?v=20261122y"></script>
-<script src="js/cart.js?v=20261122y"></script>
-<script src="js/app.js?v=20261122y"></script>
+<script src="products.js?v=20261122z"></script>
+<script src="data/brands/abib.js?v=20261122z"></script>
+<script src="data/brands/acm.js?v=20261122z"></script>
+<script src="data/brands/acure.js?v=20261122z"></script>
+<script src="data/brands/anua.js?v=20261122z"></script>
+<script src="data/brands/arencia.js?v=20261122z"></script>
+<script src="data/brands/aromatica.js?v=20261122z"></script>
+<script src="data/brands/axis-y.js?v=20261122z"></script>
+<script src="data/brands/beauty-of-joseon.js?v=20261122z"></script>
+<script src="data/brands/biodance.js?v=20261122z"></script>
+<script src="data/brands/bioderma.js?v=20261122z"></script>
+<script src="data/brands/cantu.js?v=20261122z"></script>
+<script src="data/brands/celimax.js?v=20261122z"></script>
+<script src="data/brands/centellian24.js?v=20261122z"></script>
+<script src="data/brands/cetaphil.js?v=20261122z"></script>
+<script src="data/brands/cosrx.js?v=20261122z"></script>
+<script src="data/brands/dr-althea.js?v=20261122z"></script>
+<script src="data/brands/dr-melaxin.js?v=20261122z"></script>
+<script src="data/brands/epii.js?v=20261122z"></script>
+<script src="data/brands/eqqualberry.js?v=20261122z"></script>
+<script src="data/brands/essence.js?v=20261122z"></script>
+<script src="data/brands/eucerin.js?v=20261122z"></script>
+<script src="data/brands/haruharu.js?v=20261122z"></script>
+<script src="data/brands/isdin.js?v=20261122z"></script>
+<script src="data/brands/k-secret.js?v=20261122z"></script>
+<script src="data/brands/k18.js?v=20261122z"></script>
+<script src="data/brands/la-roche-posay.js?v=20261122z"></script>
+<script src="data/brands/laneige.js?v=20261122z"></script>
+<script src="data/brands/liangyan.js?v=20261122z"></script>
+<script src="data/brands/lollis.js?v=20261122z"></script>
+<script src="data/brands/loreal.js?v=20261122z"></script>
+<script src="data/brands/m-asam.js?v=20261122z"></script>
+<script src="data/brands/mary-and-may.js?v=20261122z"></script>
+<script src="data/brands/medicube.js?v=20261122z"></script>
+<script src="data/brands/missha.js?v=20261122z"></script>
+<script src="data/brands/neutrogena.js?v=20261122z"></script>
+<script src="data/brands/numbuzin.js?v=20261122z"></script>
+<script src="data/brands/nyx.js?v=20261122z"></script>
+<script src="data/brands/olaplex.js?v=20261122z"></script>
+<script src="data/brands/purito.js?v=20261122z"></script>
+<script src="data/brands/schwarzkopf.js?v=20261122z"></script>
+<script src="data/brands/seapuri.js?v=20261122z"></script>
+<script src="data/brands/sheglam.js?v=20261122z"></script>
+<script src="data/brands/shiseido.js?v=20261122z"></script>
+<script src="data/brands/skin-doctor.js?v=20261122z"></script>
+<script src="data/brands/skin1004.js?v=20261122z"></script>
+<script src="data/brands/stridex.js?v=20261122z"></script>
+<script src="data/brands/the-ordinary.js?v=20261122z"></script>
+<script src="data/brands/tirtir.js?v=20261122z"></script>
+<script src="data/brands/tocobo.js?v=20261122z"></script>
+<script src="data/brands/ultru.js?v=20261122z"></script>
+<script src="data/brands/uriage.js?v=20261122z"></script>
+<script src="data/brands/vaseline.js?v=20261122z"></script>
+<script src="data/brands/vivelab.js?v=20261122z"></script>
+<script src="data/brands/yc.js?v=20261122z"></script>
+<script src="js/config.js?v=20261122z"></script>
+<script src="js/brands-logos.js?v=20261122z"></script>
+<script src="js/core.js?v=20261122z"></script>
+<script src="js/features/wish-concerns.js?v=20261122z"></script>
+<script src="js/features/bundles.js?v=20261122z"></script>
+<script src="js/features/quiz.js?v=20261122z"></script>
+<script src="js/features/boot.js?v=20261122z"></script>
+<script src="data/oman-areas.js?v=20261122z"></script>
+<script src="js/extras.js?v=20261122z"></script>
+<script src="js/render/cards.js?v=20261122z"></script>
+<script src="js/render/main.js?v=20261122z"></script>
+<script src="js/sheet/carousel.js?v=20261122z"></script>
+<script src="js/sheet/panel.js?v=20261122z"></script>
+<script src="js/cart.js?v=20261122z"></script>
+<script src="js/app.js?v=20261122z"></script>
 </body>
 </html>

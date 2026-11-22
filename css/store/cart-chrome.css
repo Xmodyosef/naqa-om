@@ -53,3 +53,5 @@ footer{margin-top:40px;padding:28px 0 24px;border-top:1px solid var(--line);colo
 .pay-sum .grand{font-weight:800;font-size:1.02rem;margin-top:4px}
 .pay-sum .pay-status{color:var(--muted,#8a7f78);font-size:.82rem;justify-content:flex-start}
 .cart-ship-note{margin:10px 4px 4px;padding:10px 12px;border-radius:12px;background:#faf4f1;font-size:.88rem;color:#5a4a44}
+
+.cart-bar[hidden]{display:none!important}

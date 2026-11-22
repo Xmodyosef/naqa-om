@@ -184,6 +184,36 @@ window.addEventListener("scroll", ()=>{
   }
 }, {passive:true});
 
+
+/* Soft private gate — hides store until pin (client-side; not real security) */
+(function setupSiteGate(){
+  var pin = (typeof SITE_GATE_PIN==="string") ? SITE_GATE_PIN : "";
+  var key = (typeof SITE_GATE_KEY==="string") ? SITE_GATE_KEY : "naqa_gate_ok";
+  var gate = document.getElementById("siteGate");
+  if(!pin || !gate){ if(gate) gate.hidden=true; return; }
+  try{
+    if(sessionStorage.getItem(key)==="1"){ gate.hidden=true; return; }
+  }catch(e){}
+  gate.hidden=false;
+  document.documentElement.classList.add("gated");
+  var go=document.getElementById("gateGo");
+  var input=document.getElementById("gatePin");
+  var msg=document.getElementById("gateMsg");
+  function tryEnter(){
+    var v=(input&&input.value||"").trim();
+    if(v===pin){
+      try{ sessionStorage.setItem(key,"1"); }catch(e){}
+      gate.hidden=true;
+      document.documentElement.classList.remove("gated");
+      if(msg) msg.textContent="";
+    } else {
+      if(msg) msg.textContent = (typeof lang!=="undefined" && lang==="en") ? "Wrong code" : "الرمز غير صحيح";
+    }
+  }
+  if(go) go.onclick=tryEnter;
+  if(input) input.addEventListener("keydown", function(e){ if(e.key==="Enter") tryEnter(); });
+})();
+
 function boot(){
   try{
     if(!products.length) throw new Error("products.js missing");

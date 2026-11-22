@@ -175,6 +175,15 @@ window.addEventListener("popstate", ()=>{
 });
 window.addEventListener("hashchange", ()=>{ applyRoute(); });
 window.addEventListener("scroll", ()=>{
+  // Ignore while any overlay is open — unlock/lock was thrashing hash back to home
+  if(document.body.classList.contains("naqa-scroll-lock") ||
+     document.body.classList.contains("sheet-open") ||
+     document.body.classList.contains("modal-open") ||
+     document.body.classList.contains("drawer-open") ||
+     ($("#sheet")&&$("#sheet").classList.contains("show")) ||
+     ($("#quizModal")&&$("#quizModal").classList.contains("show")) ||
+     ($("#checkoutModal")&&$("#checkoutModal").classList.contains("show")) ||
+     ($("#drawer")&&$("#drawer").classList.contains("show"))) return;
   const h=routeHash();
   if(h.indexOf("p/")===0||h.indexOf("b/")===0||h.indexOf("c/")===0) return;
   if(window.scrollY>420){

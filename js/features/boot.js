@@ -27,12 +27,28 @@ document.addEventListener("click", function (e) {
   }
   var qp = e.target.closest(".quiz-p");
   if (qp && qp.dataset.open) {
+    e.preventDefault();
+    e.stopPropagation();
+    var pid = +qp.dataset.open;
+    // Apply filters without full jump, open product, then close quiz (avoids hash thrash → home)
+    if (typeof quizPendingFilters !== "undefined" && quizPendingFilters != null && typeof applyQuizFilters === "function") {
+      // store filters but defer heavy render until after sheet is open
+      var best = quizPendingFilters;
+      currentConcern = best === "makeup" ? "" : best;
+      currentCat = best === "makeup" ? "وجه" : "عناية";
+    }
     closeQuiz();
-    if (typeof openSheet === "function") openSheet(+qp.dataset.open, "full");
+    requestAnimationFrame(function () {
+      if (typeof openSheet === "function") openSheet(pid, "full");
+    });
     return;
   }
   if (e.target.closest("#quizApply")) {
+    e.preventDefault();
+    var bestA = (typeof quizPendingFilters !== "undefined" && quizPendingFilters != null) ? quizPendingFilters : null;
     closeQuiz();
+    if (bestA != null && typeof applyQuizFilters === "function") applyQuizFilters(bestA);
+    else if (typeof render === "function") render();
     var prod = $("#products");
     if (prod) prod.scrollIntoView({ behavior: "smooth" });
     return;

@@ -175,6 +175,7 @@ function render(){
   if(typeof renderConcernBar==="function") renderConcernBar();
   if(typeof renderTrust==="function") renderTrust();
   renderCart();
+  if(window.naqaTheme){ naqaTheme.bind(); naqaTheme.apply(); }
   if(openProductId) openSheet(openProductId, sheetMode, false);
 }
 

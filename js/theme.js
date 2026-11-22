@@ -33,8 +33,12 @@
     if (meta) meta.setAttribute("content", resolved === "night" ? "#1a1412" : "#b05c6e");
     var btn = document.getElementById("themeBtn");
     if (btn) {
-      var ar = mode === "night" ? "مسائي" : (mode === "day" ? "صباحي" : "تلقائي");
       var en = mode === "night" ? "Night" : (mode === "day" ? "Day" : "Auto");
+      var ar = mode === "night"
+        ? ((typeof T === "function" && T("themeNight")) || "مسائي")
+        : (mode === "day"
+          ? ((typeof T === "function" && T("themeDay")) || "صباحي")
+          : ((typeof T === "function" && T("themeAuto")) || "تلقائي"));
       var label = (typeof lang !== "undefined" && lang === "en") ? en : ar;
       var icon = resolved === "night" ? "☾" : "☀";
       btn.textContent = icon + " " + label;

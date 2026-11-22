@@ -33,7 +33,7 @@ function applyLang(){
   $("#copyLine").textContent=T("copy");
   $("#waFooter").textContent=T("orders");
   $("#footBlurb").innerHTML=(T("footAbout")||T("blurb")||"")+"<br/>www.naqa.om";
-  const barTxt=T("shipBar"); const bar=$("#shipBar"); if(bar) bar.textContent=barTxt; const bar2=$("#shipBar2"); if(bar2) bar2.textContent=barTxt;
+  const barTxt=(T("shipBar")+"     ·     ").repeat(6); const bar=$("#shipBar"); if(bar) bar.textContent=barTxt; const bar2=$("#shipBar2"); if(bar2) bar2.textContent=barTxt;
   const quiz=$("#heroQuiz"); if(quiz) quiz.textContent=T("quizBtn");
   document.title = openProductId ? (pname(products.find(x=>x.id===openProductId)||{})+" · Naqa") : T("docTitle");
   const mark=document.querySelector(".logo-mark"); if(mark) mark.textContent = lang==="en" ? "N" : "ن";

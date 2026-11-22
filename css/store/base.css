@@ -55,15 +55,10 @@ header{position:sticky;top:0;z-index:60;background:rgba(253,248,246,.94);
 .btn-ghost{background:#fff;border:1px solid var(--line)}
 
 .ship-bar{overflow:hidden;background:var(--fg,#1f1a17);color:#fff;font-size:.82rem;font-weight:700;line-height:1.2;padding:0;height:36px;display:flex;align-items:center}
-.ship-marquee{display:flex;width:max-content;animation:shipScroll 28s linear infinite;will-change:transform}
-.ship-track{padding:9px 2.5rem;white-space:nowrap;flex-shrink:0}
-.ship-track + .ship-track{padding-inline-start:0}
+.ship-marquee{display:flex;width:max-content;direction:ltr;animation:shipScroll 42s linear infinite;will-change:transform}
+.ship-track{padding:9px 0;white-space:nowrap;flex-shrink:0;direction:rtl}
+html[dir="ltr"] .ship-track{direction:ltr}
 @keyframes shipScroll{
-  from{transform:translateX(0)}
-  to{transform:translateX(50%)}
-}
-html[dir="rtl"] .ship-marquee{animation-name:shipScrollRtl}
-@keyframes shipScrollRtl{
   from{transform:translateX(0)}
   to{transform:translateX(-50%)}
 }

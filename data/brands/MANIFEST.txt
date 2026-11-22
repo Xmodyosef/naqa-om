@@ -1,0 +1,54 @@
+abib	Abib	3
+acm	ACM	3
+acure	Acure	1
+anua	Anua	17
+arencia	Arencia	7
+aromatica	Aromatica	1
+axis-y	AXIS-Y	4
+beauty-of-joseon	Beauty of Joseon	3
+biodance	Biodance	1
+bioderma	Bioderma	1
+cantu	Cantu	1
+celimax	Celimax	5
+centellian24	Centellian24	1
+cetaphil	Cetaphil	1
+cosrx	Cosrx	3
+dr-althea	Dr.Althea	8
+dr-melaxin	Dr.Melaxin	1
+epii	epii	1
+eqqualberry	EQQUALBERRY	3
+essence	essence	5
+eucerin	Eucerin	2
+haruharu	HaruHaru	2
+isdin	ISDIN	1
+k-secret	K-Secret	2
+k18	K18	3
+la-roche-posay	La Roche-Posay	1
+laneige	LANEIGE	1
+liangyan	LIANGYAN	1
+lollis	LOLLIS	21
+loreal	L'oréal	1
+m-asam	M.Asam	1
+mary-and-may	Mary&May	1
+medicube	Medicube	21
+missha	MISSHA	5
+neutrogena	Neutrogena	1
+numbuzin	Numbuzin	4
+nyx	NYX	1
+olaplex	OLAPLEX	2
+purito	Purito	2
+schwarzkopf	Schwarzkopf	2
+seapuri	Seapuri	1
+sheglam	SHEGLAM	27
+shiseido	Shiseido	2
+skin-doctor	Skin Doctor	1
+skin1004	SKIN1004	7
+stridex	Stridex	1
+the-ordinary	The Ordinary	6
+tirtir	TIRTIR	2
+tocobo	TOCOBO	1
+ultru	Ultru	1
+uriage	Uriage	1
+vaseline	Vaseline	1
+vivelab	ViveLab	3
+yc	YC	1

@@ -16,9 +16,9 @@ window.NAQA_PRODUCTS.push(
     "media/products/p53_4.webp"
   ],
   "nameAr": "ذا اورديناري سيروم الريتينول 0.5% في سكوالين - 30مل",
-  "nameEn": "Retinol 1% in Squalane - 30ml",
+  "nameEn": "The Ordinary Retinol 0.5% in Squalane - 30ml",
   "descAr": "ذا اورديناري سيروم الريتينول 0.5% في سكوالين من The Ordinary، 30مل. يركّز على ريتينويد من أجل ملمس أنعم ومظهر الخطوط الدقيقة. مكانه في الروتين: بعد الغسول والتونر، وقبل المرطب. لا يُشطف. يناسب: معظم أنواع البشرة — راقبي أول أسبوع.",
-  "descEn": "Retinol 1% in Squalane by The Ordinary, 30 ml. Built around Retinoid for smoother texture and the look of fine lines. Where it sits: After cleanser and toner, before moisturizer. Do not rinse off. Best for: Most skin types — watch the first week.",
+  "descEn": "The Ordinary Retinol 0.5% in Squalane by The Ordinary, 30 ml. Built around Retinoid for smoother texture and the look of fine lines. Where it sits: After cleanser and toner, before moisturizer. Do not rinse off. Best for: Most skin types — watch the first week.",
   "useAr": "١) نظّفي الوجه واتركيه رطباً قليلاً.\n٢) قطرتان إلى ثلاث على الوجه والرقبة، واضغطي بالراحة حتى الامتصاص — لا تفركي بقوة ولا تشطفي.\n٣) أغلقي بمرطب. صباحاً: واقي شمس فوق الروتين.\n٤) ريتينول أو أحماض: ابدئي ليلاً يوماً بعد يوم.",
   "useEn": "1) Cleanse and leave skin slightly damp.\n2) Press 2–3 drops over face and neck until absorbed. Do not rinse.\n3) Seal with moisturizer. Morning: sunscreen on top.\n4) Retinoids or acids: start every other night.",
   "skinAr": "معظم أنواع البشرة — راقبي أول أسبوع",
@@ -64,9 +64,9 @@ window.NAQA_PRODUCTS.push(
     "media/products/p55_4.webp"
   ],
   "nameAr": "ذا اورديناري سيروم الريتينول 1% في سكوالين - 30مل",
-  "nameEn": "Retinol 1% in Squalane - 30ml",
+  "nameEn": "The Ordinary Retinol 1% in Squalane - 30ml",
   "descAr": "ذا اورديناري سيروم الريتينول 1% في سكوالين من The Ordinary، 30مل. يركّز على ريتينويد من أجل ملمس أنعم ومظهر الخطوط الدقيقة. مكانه في الروتين: بعد الغسول والتونر، وقبل المرطب. لا يُشطف. يناسب: معظم أنواع البشرة — راقبي أول أسبوع.",
-  "descEn": "Retinol 1% in Squalane by The Ordinary, 30 ml. Built around Retinoid for smoother texture and the look of fine lines. Where it sits: After cleanser and toner, before moisturizer. Do not rinse off. Best for: Most skin types — watch the first week.",
+  "descEn": "The Ordinary Retinol 1% in Squalane by The Ordinary, 30 ml. Built around Retinoid for smoother texture and the look of fine lines. Where it sits: After cleanser and toner, before moisturizer. Do not rinse off. Best for: Most skin types — watch the first week.",
   "useAr": "١) نظّفي الوجه واتركيه رطباً قليلاً.\n٢) قطرتان إلى ثلاث على الوجه والرقبة، واضغطي بالراحة حتى الامتصاص — لا تفركي بقوة ولا تشطفي.\n٣) أغلقي بمرطب. صباحاً: واقي شمس فوق الروتين.\n٤) ريتينول أو أحماض: ابدئي ليلاً يوماً بعد يوم.",
   "useEn": "1) Cleanse and leave skin slightly damp.\n2) Press 2–3 drops over face and neck until absorbed. Do not rinse.\n3) Seal with moisturizer. Morning: sunscreen on top.\n4) Retinoids or acids: start every other night.",
   "skinAr": "معظم أنواع البشرة — راقبي أول أسبوع",

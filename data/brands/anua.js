@@ -232,9 +232,9 @@ window.NAQA_PRODUCTS.push(
     "media/products/p69_3.webp"
   ],
   "nameAr": "زيت انوا هارت ليف اللطيف لتنظيف البشرة والتحكم بالمسام - 200مل",
-  "nameEn": "Anua Heartleaf Pore Control Cleansing Oil - 200ml",
+  "nameEn": "Anua Heartleaf Mild Pore Control Cleansing Oil - 200ml",
   "descAr": "زيت انوا هارت ليف اللطيف لتنظيف البشرة والتحكم بالمسام من Anua، 200مل. تركيبة عملية للاستخدام المنتظم، بدون خطوات معقّدة. مكانه في الروتين: بعد التنظيف، قبل أو بدل المرطب حسب القوام. يناسب: البشرة الحساسة.",
-  "descEn": "Anua Heartleaf Pore Control Cleansing Oil - 200ml, 200 ml. A practical formula for regular use, without a complicated routine. Where it sits: After cleansing, before or instead of cream depending on texture. Best for: Sensitive skin.",
+  "descEn": "Anua Heartleaf Mild Pore Control Cleansing Oil by Anua, 200 ml. A practical formula for regular use, without a complicated routine. Where it sits: After cleansing, before or instead of cream depending on texture. Best for: Sensitive skin.",
   "useAr": "١) بعد التنظيف.\n٢) طبقة رقيقة حتى الامتصاص.\n٣) صباحاً واقي شمس. راقبي البشرة أول أسبوع.",
   "useEn": "1) After cleansing.\n2) A thin layer until absorbed.\n3) Daytime sunscreen. Watch skin the first week.",
   "skinAr": "البشرة الحساسة",

@@ -1,4 +1,4 @@
-/* Brand: Medicube · 21 products · edit AR/EN fields here */
+/* Brand: Medicube · 20 products · edit AR/EN fields here */
 window.NAQA_PRODUCTS = window.NAQA_PRODUCTS || [];
 window.NAQA_PRODUCTS.push(
 {
@@ -135,7 +135,7 @@ window.NAQA_PRODUCTS.push(
     "media/products/p35_3.webp",
     "media/products/p35_4.webp"
   ],
-  "nameAr": "قناع ميديكيوب زيرو بور بالطين لتنقية المسام وإزالة الرؤوس السوداء - 100ج",
+  "nameAr": "قناع ميديكيوب زيرو بور بالطين لتنقية المسام وإزالة الرؤوس السوداء + فرشاة - 100ج",
   "nameEn": "Medicube Zero Pore Blackhead Mud Mask + Brush",
   "descAr": "قناع ميديكيوب زيرو بور بالطين لتنقية المسام وإزالة الرؤوس السوداء من Medicube، 100ج. تركيبة عملية للاستخدام المنتظم، بدون خطوات معقّدة. مكانه في الروتين: مرة إلى ثلاث مرات أسبوعياً على بشرة نظيفة. يناسب: البشرة الدهنية والمختلطة.",
   "descEn": "Medicube Zero Pore Blackhead Mud Mask + Brush by Medicube, 100 g. A practical formula for regular use, without a complicated routine. Where it sits: 1–3 times a week on clean skin. Best for: Oily and combination skin.",
@@ -409,30 +409,6 @@ window.NAQA_PRODUCTS.push(
   "useEn": "1) Fully wet hair.\n2) Shampoo the scalp only; conditioner from mid-lengths to ends, then rinse.\n3) Leave-in serum: a few drops on dry ends or a clean scalp as labeled.",
   "skinAr": "حسب نوع الشعر وفروة الرأس — ابدئي بكمية قليلة",
   "skinEn": "According to hair/scalp type — start with a small amount",
-  "stock": 25
-},
-{
-  "id": 192,
-  "brand": "Medicube",
-  "cat": "عناية",
-  "sku": "8809960356767",
-  "price": 8.6,
-  "em": "✨",
-  "imgs": [
-    "media/products/p192_0.webp",
-    "media/products/p192_1.webp",
-    "media/products/p192_2.webp",
-    "media/products/p192_3.webp",
-    "media/products/p192_4.webp"
-  ],
-  "nameAr": "قناع ميديكيوب زيرو بور بالطين لتنقية المسام وإزالة الرؤوس السوداء + فرشاة",
-  "nameEn": "Medicube Zero Pore Blackhead Mud Mask + Brush",
-  "descAr": "قناع ميديكيوب زيرو بور بالطين لتنقية المسام وإزالة الرؤوس السوداء + فرشاة من Medicube. تركيبة عملية للاستخدام المنتظم، بدون خطوات معقّدة. مكانه في الروتين: مرة إلى ثلاث مرات أسبوعياً على بشرة نظيفة. يناسب: البشرة الدهنية والمختلطة.",
-  "descEn": "Medicube Zero Pore Blackhead Mud Mask + Brush by Medicube. A practical formula for regular use, without a complicated routine. Where it sits: 1–3 times a week on clean skin. Best for: Oily and combination skin.",
-  "useAr": "١) على بشرة نظيفة وجافة أو رطبة حسب القناع.\n٢) اتركيه ١٠–٢٠ دقيقة (أو حسب العبوة) ثم أزيليه أو ربّتي الباقي.\n٣) أكملي بمرطب. لا تستخدميه يومياً إن كان تقشيرياً.",
-  "useEn": "1) Clean skin, damp or dry as the mask requires.\n2) Leave 10–20 minutes (or as labeled), then remove or pat in.\n3) Moisturize. Don't use daily if it exfoliates.",
-  "skinAr": "البشرة الدهنية والمختلطة",
-  "skinEn": "Oily and combination skin",
   "stock": 25
 },
 {

@@ -17,7 +17,7 @@ window.NAQA_PRODUCTS.push(
     "media/products/p169_4.webp"
   ],
   "nameAr": "سيروم الشعر وفروة الرأس والحواجب من فايف لاب - 15مل",
-  "nameEn": "ViveLab Revive Therapy Hair Scalp & Brow Ampoule 15ml - 3pcs",
+  "nameEn": "ViveLab Revive Therapy Hair Scalp & Brow Ampoule - 15ml",
   "descAr": "سيروم الشعر وفروة الرأس والحواجب من فايف لاب من ViveLab، 15مل. تركيبة عملية للاستخدام المنتظم، بدون خطوات معقّدة. مكانه في الروتين: حسب نوعه: شامبو على الفروة، بلسم على الأطراف، سيروم بدون شطف. يناسب: كل درجات البشرة — اختبري عند الحساسية.",
   "descEn": "ViveLab Revive Therapy Hair Scalp & Brow Ampoule 15ml by ViveLab, 15 ml. A practical formula for regular use, without a complicated routine. Where it sits: Shampoo on the scalp, conditioner on lengths, leave-in serum as labeled. Best for: All skin tones — patch-test if sensitive.",
   "useAr": "١) شعر مبلل جيداً.\n٢) الشامبو على الفروة فقط مع تدليك، والبلسم من منتصف الشعرة للأطراف ثم اشطفي.\n٣) السيروم بدون شطف: نقاط قليلة على أطراف جافة أو فروة نظيفة حسب العبوة — لا تُغرقي الشعر.",
@@ -65,7 +65,7 @@ window.NAQA_PRODUCTS.push(
     "media/products/p174_4.webp"
   ],
   "nameAr": "سيروم الشعر وفروة الرأس والحواجب من فايف لاب - 3 عبوات × 15مل",
-  "nameEn": "ViveLab Revive Therapy Hair Scalp & Brow Ampoule 15ml - 3pcs",
+  "nameEn": "ViveLab Revive Therapy Hair Scalp & Brow Ampoule - 3×15ml Pack",
   "descAr": "سيروم الشعر وفروة الرأس والحواجب من فايف لاب من ViveLab، 15مل. تركيبة عملية للاستخدام المنتظم، بدون خطوات معقّدة. مكانه في الروتين: حسب نوعه: شامبو على الفروة، بلسم على الأطراف، سيروم بدون شطف. يناسب: كل درجات البشرة — اختبري عند الحساسية.",
   "descEn": "ViveLab Revive Therapy Hair Scalp & Brow Ampoule 15ml by ViveLab, 15 ml. A practical formula for regular use, without a complicated routine. Where it sits: Shampoo on the scalp, conditioner on lengths, leave-in serum as labeled. Best for: All skin tones — patch-test if sensitive.",
   "useAr": "١) شعر مبلل جيداً.\n٢) الشامبو على الفروة فقط مع تدليك، والبلسم من منتصف الشعرة للأطراف ثم اشطفي.\n٣) السيروم بدون شطف: نقاط قليلة على أطراف جافة أو فروة نظيفة حسب العبوة — لا تُغرقي الشعر.",

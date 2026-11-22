@@ -18,7 +18,7 @@ window.NAQA_PRODUCTS.push(
   "nameAr": "كريم بيوديرما بيجمنتبيو لتفتيح المناطق الحساسة وتوحيد اللون - 75مل",
   "nameEn": "Bioderma Pigmentbio Sensitive Areas - 75ml",
   "descAr": "من مجموعة Bioderma: كريم بيوديرما بيجمنتبيو لتفتيح المناطق ا…. صُمم لروتين بسيط يناسب إيقاع يومك. يخدم هدفاً واحداً بوضوح بدل وعود كثيرة. طبقة ناعمة تريح الجفاف. الحجم تقريباً 75 مل. يناسب: الجافة والمحتاجة. خزّنيه بعيداً عن الحرارة، وأغلقي الغطاء جيداً.",
-  "descEn": "From Bioderma: Bioderma Pigmentbio Sensitive Areas. Built for a simple routine that fits a real day. It balances comfort with a visible, honest finish. rich enough, not greasy on most skins. About 75 ml. Best for: most types at night. Store away from heat and keep the cap closed.",
+  "descEn": "From Bioderma: Bioderma Pigmentbio Sensitive Areas. Built for a simple routine that fits a real day. It balances comfort with a visible, honest finish. Rich enough, not greasy on most skins. About 75 ml. Best for: most types at night. Store away from heat and keep the cap closed.",
   "useAr": "١) بعد السيروم (أو مباشرة بعد التنظيف).\n٢) كمية بحجم حبة البازلاء للوجه، وزيد للرقبة.\n٣) صباحاً واقي شمس فوقه.\n٤) مساءً يمكن طبقة أغنى على الخدود الجافة.",
   "useEn": "1) After serum (or right after cleansing).\n2) Pea-sized amount for the face; more for the neck.\n3) Sunscreen on top in the morning.\n4) At night, add a little on dry cheeks if needed.",
   "skinAr": "الجافة والمحتاجة",

@@ -17,7 +17,7 @@ window.NAQA_PRODUCTS.push(
   "nameAr": "سيرم الشعر بالكيراتين الحريري اللامع - 100مل",
   "nameEn": "Keratin Silkiness Shine Hair Serum - 100ml",
   "descAr": "سيرم الشعر بالكيراتين الحريري اللامع (Skin Doctor) يمنحك خطوة عناية مركّزة، بملمس مريح ونتيجة تُلاحظ مع الانتظام. يخدم هدفاً واحداً بوضوح بدل وعود كثيرة. نتيجة أنظف وأطرى مع الانتظام. الحجم تقريباً 100 مل. يناسب: حسب نوع الشعر والفروة. خزّنيه بعيداً عن الحرارة، وأغلقي الغطاء جيداً.",
-  "descEn": "From Skin Doctor: Keratin Silkiness Shine Hair Serum. Built for a simple routine that fits a real day. One focused job — not a long list of empty claims. cares for hair or scalp with a clear role. About 100 ml. Best for: stressed hair. Results look better with steady use and SPF when needed.",
+  "descEn": "From Skin Doctor: Keratin Silkiness Shine Hair Serum. Built for a simple routine that fits a real day. One focused job — not a long list of empty claims. Cares for hair or scalp with a clear role. About 100 ml. Best for: stressed hair. Results look better with steady use and SPF when needed.",
   "useAr": "١) حسب النوع: شامبو على الفروة، بلسم على الأطراف، سيروم بدون شطف حسب العبوة.\n٢) ابدئي بكمية قليلة.\n٣) لا تُغرقي الشعر؛ القليل يوزَّع أبعد.\n٤) انتظمي ٢–٣ أسابيع لملاحظة أوضح.",
   "useEn": "1) As labeled: shampoo on scalp, conditioner on lengths, leave-in where it belongs.\n2) Start with a small amount.\n3) Do not overload — a little spreads farther.\n4) Give it 2–3 weeks of steady use.",
   "skinAr": "حسب نوع الشعر والفروة",

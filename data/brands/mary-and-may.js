@@ -17,7 +17,7 @@ window.NAQA_PRODUCTS.push(
   "nameAr": "كريم العين ماري أند ماي بالترانيكساميك والغلوتاثيون لتفتيح الهالات - 30ج",
   "nameEn": "Mary&May Tranexamic Acid + Glutathione Eye Cream - 30ml",
   "descAr": "كريم العين ماري أند ماي بالترانيكساميك و… من Mary&May — لمسة ناعمة، إحساس نظيف، وروتين لا يستهلك وقتك. يبرز فيه ترانكساميك لدعم مظهر بقع أفتح وأكثر توحيداً. ملمس غني دون إحساس ثقيل مفرط. الحجم تقريباً 30 ج. يناسب: المختلطة في الطقس الجاف. النتيجة أجمل مع الانتظام وواقي الشمس عند الحاجة.",
-  "descEn": "A polished pick from Mary&May: Mary&May Tranexamic Acid + Glutathione Eye Cream. Balanced between feel and visible finish. It highlights tranexamic acid to support a more even-looking tone. a soft layer that finishes calmly. About 30 ml. Best for: combination in dry weather. If irritation appears, ease off and see a dermatologist if it lasts.",
+  "descEn": "A polished pick from Mary&May: Mary&May Tranexamic Acid + Glutathione Eye Cream. Balanced between feel and visible finish. It highlights tranexamic acid to support a more even-looking tone. A soft layer that finishes calmly. About 30 ml. Best for: combination in dry weather. If irritation appears, ease off and see a dermatologist if it lasts.",
   "useAr": "١) خذي كمية صغيرة ودفّئيها بين الأصابع.\n٢) ربّتي على البشرة حتى الامتصاص.\n٣) لا تفرطي؛ القليل المنتظم أفضل من الكثير.",
   "useEn": "1) After serum (or right after cleansing).\n2) Pea-sized amount for the face; more for the neck.\n3) Sunscreen on top in the morning.\n4) At night, add a little on dry cheeks if needed.",
   "skinAr": "المختلطة في الطقس الجاف",

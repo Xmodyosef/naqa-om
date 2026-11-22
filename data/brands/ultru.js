@@ -16,11 +16,11 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "قناع اسفل العين هيدروجيل ام سوري فور ماي سكين للتفتيح - 60 قطعة",
   "nameEn": "I'm Sorry For My Skin Hydrogel Under-Eye Mask - 60pcs",
-  "descAr": "قناع اسفل العين هيدروجيل ام سوري فور ماي… من Ultru — اختيار يومي يريح البشرة ويعطي نتيجة واضحة بدون تعقيد. يبرز فيه حماية شمسية لدعم حماية يومية من أشعة الشمس. مريح طوال اليوم. الحجم تقريباً 60 قطع. يناسب: استخدام يومي مريح. خزّنيه بعيداً عن الحرارة، وأغلقي الغطاء جيداً.",
-  "descEn": "I'm Sorry For My Skin Hydrogel Under by Ultru — soft on contact, clean finish, and a routine that does not steal your morning. It highlights sun protection to support everyday UV protection. tint or shine depending on the formula. About 60 pcs. Best for: comfortable daily wear. Results look better with steady use and SPF when needed.",
+  "descAr": "قناع اسفل العين هيدروجيل ام سوري فور ماي… (Ultru) يمنحك خطوة عناية مركّزة، بملمس مريح ونتيجة تُلاحظ مع الانتظام. يخدم هدفاً واحداً بوضوح بدل وعود كثيرة. مريح طوال اليوم. الحجم تقريباً 60 قطع. يناسب: الشفاه الجافة. النتيجة أجمل مع الانتظام وواقي الشمس عند الحاجة.",
+  "descEn": "I'm Sorry For My Skin Hydrogel Under by Ultru — a daily step that feels kind on skin and shows a clear result without fuss. Made as one clear step inside a shorter routine. Comfortable enough for all-day wear. About 60 pcs. Best for: comfortable daily wear. Store away from heat and keep the cap closed.",
   "useAr": "١) شفاه نظيفة وجافة.\n٢) طبّقي من الوسط للخارج.\n٣) أعيدي خلال اليوم حسب الحاجة.\n٤) ليلاً: طبقة أغنى إن كان مرطباً.",
   "useEn": "1) Clean, dry lips.\n2) Apply from the center outward.\n3) Reapply through the day as needed.\n4) At night, a richer layer if it is a balm/mask.",
-  "skinAr": "استخدام يومي مريح",
+  "skinAr": "الشفاه الجافة",
   "skinEn": "comfortable daily wear",
   "stock": 25
 }

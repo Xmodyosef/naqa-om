@@ -17,12 +17,12 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "ستريديكس قطع قطنية للسيطرة على حب الشباب - 55قطعة",
   "nameEn": "Stridex Maximum Single-Step Acne Control - 55 Pads",
-  "descAr": "ستريديكس قطع قطنية للسيطرة على حب الشباب من Stridex — لمسة ناعمة، إحساس نظيف، وروتين لا يستهلك وقتك. مصمم ليكون خطوة واضحة داخل روتين أقصر. ملمس مائي منعش. الحجم تقريباً 55قطع. يناسب: الحساسة. النتيجة أجمل مع الانتظام وواقي الشمس عند الحاجة.",
-  "descEn": "From Stridex: Stridex Maximum Single. Built for a simple routine that fits a real day. It balances comfort with a visible, honest finish. a clean, cool feel. About 55 pads. Best for: sensitive. Store away from heat and keep the cap closed.",
-  "useAr": "١) بعد الغسول مباشرة.\n٢) على الراحة أو القطنة — تجنّبي سحب البشرة.\n٣) لا تشطفي. أكملي بسيروم ثم مرطب.",
-  "useEn": "1) Right after cleansing.\n2) In palms or on a pad — do not drag the skin.\n3) Do not rinse. Follow with serum, then cream.",
-  "skinAr": "الحساسة",
-  "skinEn": "sensitive",
+  "descAr": "ستريديكس قطع قطنية للسيطرة على حب الشباب من Stridex — لمسة ناعمة، إحساس نظيف، وروتين لا يستهلك وقتك. مصمم ليكون خطوة واضحة داخل روتين أقصر. خطوة عناية متوازنة. الحجم تقريباً 55قطع. يناسب: معظم أنواع البشرة. النتيجة أجمل مع الانتظام وواقي الشمس عند الحاجة.",
+  "descEn": "From Stridex: Stridex Maximum Single. Built for a simple routine that fits a real day. It balances comfort with a visible, honest finish. Comfortable results with steady use. About 55 pads. Best for: watch the first week. Store away from heat and keep the cap closed.",
+  "useAr": "١) اتبّعي ترتيب روتينك: تنظيف → عناية → حماية.\n٢) كمية معتدلة أفضل من الإفراط.\n٣) راقبي البشرة أول أسبوع.\n٤) واقي شمس نهاراً دائماً مع التفتيح أو الأحماض.",
+  "useEn": "1) Keep order: cleanse → treat → protect.\n2) Moderate amount beats excess.\n3) Watch skin the first week.\n4) Daytime SPF always with brightening or acids.",
+  "skinAr": "معظم أنواع البشرة",
+  "skinEn": "watch the first week",
   "stock": 25
 }
 );

@@ -57,7 +57,7 @@ function sizeEn(p) {
 const ING = [
   [/niacinamide|نياسيناميد/i, { ar: "نياسيناميد", en: "niacinamide", benefitAr: "توحيد اللون ومظهر المسام", benefitEn: "evening tone and the look of pores" }],
   [/retinol|retinal|ريتينول|ريتينال/i, { ar: "ريتينويد", en: "a retinoid", benefitAr: "نعومة الملمس ومظهر الخطوط الدقيقة", benefitEn: "smoother texture and the look of fine lines" }],
-  [/vitamin\s*c|فيتامين\s*سي|vit\s*c/i, { ar: "فيتامين سي", en: "vitamin C", benefitAr: "إشراقة ومظهر أكثر نضارة", benefitEn: "a brighter, fresher-looking complexion" }],
+  [/vitamin\s*c|فيتامين\s*سي|بفيتامين\s*سي|vit\s*c/i, { ar: "فيتامين سي", en: "vitamin C", benefitAr: "إشراقة ومظهر أكثر نضارة", benefitEn: "a brighter, fresher-looking complexion" }],
   [/hyaluronic|هيالورونيك|هيالورون/i, { ar: "حمض الهيالورونيك", en: "hyaluronic acid", benefitAr: "ترطيب خفيف وامتلاء المظهر", benefitEn: "lightweight hydration and a plump look" }],
   [/ceramide|سيراميد/i, { ar: "سيراميدات", en: "ceramides", benefitAr: "دعم حاجز البشرة", benefitEn: "supporting the skin barrier" }],
   [/peptide|ببتيد/i, { ar: "ببتيدات", en: "peptides", benefitAr: "مرونة ومظهر أكثر امتلاءً", benefitEn: "a firmer, bouncier look" }],
@@ -74,7 +74,7 @@ const ING = [
 ];
 
 function ingredients(p) {
-  const s = `${p.nameAr || ""} ${p.nameEn || ""} ${p.descAr || ""}`;
+  const s = `${p.nameAr || ""} ${p.nameEn || ""} ${p.brand || ""}`;
   const found = [];
   for (const [re, meta] of ING) if (re.test(s)) found.push(meta);
   return found;
@@ -84,21 +84,21 @@ function kindOf(p) {
   const n = `${p.nameAr || ""} ${p.nameEn || ""} ${p.cat || ""}`.toLowerCase();
   const rules = [
     [/mascara|ماسكارا/, "mascara"],
-    [/brow|حاجب|حواجب/, "brow"],
     [/lipstick|lip\s*oil|lip\s*plumper|lip\s*tint|lip\s*mask|lip\s*balm|شفاه|زيت\s*شفاه|قلم\s*شفاه|روج/, "lip"],
     [/blush|highlighter|contour|foundation|primer|concealer|setting|powder|فاونديشن|برايمر|كونسيلر|بلاش|هايلايتر|بودرة/, "face"],
-    [/brush|فرشاة|beauty\s*tool|أداة/, "tool"],
-    [/shampoo|conditioner|hair\s*serum|hair\s*oil|scalp|شعر|فروة|شامبو|بلسم\s*شعر/, "hair"],
-    [/sunscreen|spf|واقي\s*شمس/, "spf"],
+    [/shampoo|conditioner|hair\s*serum|hair\s*oil|scalp|فروة|شامبو|شعر(?!\s*الحواجب)|بلسم\s*شعر|ampoule.*hair|hair.*ampoule|سيروم\s*الشعر/, "hair"],
+    [/mud\s*mask|clay\s*mask|mask\s*\+|قناع|mask(?!\s*cara)/, "mask"],
+    [/sunscreen|spf|واقي\s*شمس|relief\s*sun/, "spf"],
     [/cleansing\s*oil|oil\s*cleanser|غسول|cleanser|foam|wash|تنظيف/, "cleanser"],
-    [/toner|تونر|pad|وسادة|مسحة/, "toner"],
+    [/toner|تونر|pore\s*pad|pad\s*-|وسادة|مسحة/, "toner"],
     [/scrub|مقشر|exfoliat/, "scrub"],
-    [/mask|قناع/, "mask"],
-    [/ampoule|أمبول/, "ampoule"],
     [/serum|سيروم|سيرم/, "serum"],
     [/cream|كريم|moisturizer|مرطب\s*وجه|gel\s*cream/, "cream"],
     [/lotion|body|لوشن|جسم/, "lotion"],
     [/balm|بلسم/, "balm"],
+    [/ampoule|أمبول/, "ampoule"],
+    [/brow|حاجب|حواجب/, "brow"],
+    [/brush|فرشاة|beauty\s*tool|أداة/, "tool"],
   ];
   for (const [re, k] of rules) if (re.test(n)) return k;
   if (p.cat === "شعر") return "hair";
@@ -380,7 +380,8 @@ function buildCopy(p) {
   ]);
 
   const descAr = `${openAr} ${midAr} ${texAr}.${sizeBitAr} يناسب: ${skinAr}. ${closeAr}`.replace(/\s+/g, " ").trim();
-  const descEn = `${openEn} ${midEn} ${texEn}.${sizeBitEn} Best for: ${skinEn}. ${closeEn}`.replace(/\s+/g, " ").trim();
+  const texEnCap = texEn.charAt(0).toUpperCase() + texEn.slice(1);
+  const descEn = `${openEn} ${midEn} ${texEnCap}.${sizeBitEn} Best for: ${skinEn}. ${closeEn}`.replace(/\s+/g, " ").trim();
 
   const useAr = useBlock(kind, "ar", rng);
   const useEn = useBlock(kind, "en", rng);

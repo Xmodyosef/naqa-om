@@ -22,9 +22,7 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) بشرة مرطّبة (+ SPF نهاراً).\n٢) كمية قليلة ووزّعي.\n٣) غطّي بطبقات خفيفة.\n٤) ثبّتي عند الحاجة.",
   "useEn": "1) Moisturized skin (+ SPF by day).\n2) Start small and blend.\n3) Build in thin layers.\n4) Set for longer wear.",
   "skinAr": "مكياج يومي هادئ",
-  "skinEn": "combo to dry",
-  "stock": 25
-},
+  "skinEn": "combo to dry"},
 {
   "id": 75,
   "brand": "TIRTIR",
@@ -45,7 +43,5 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) بشرة مرطّبة (+ SPF نهاراً).\n٢) كمية قليلة ووزّعي.\n٣) غطّي بطبقات خفيفة.\n٤) ثبّتي عند الحاجة.",
   "useEn": "1) Moisturized skin (+ SPF by day).\n2) Start small and blend.\n3) Build in thin layers.\n4) Set for longer wear.",
   "skinAr": "اختبري التطابق على الفك",
-  "skinEn": "quiet everyday makeup",
-  "stock": 25
-}
+  "skinEn": "quiet everyday makeup"}
 );

@@ -22,9 +22,7 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) فوراً بعد الغسول.\n٢) راحة اليد أو القطنة — بلا سحب.\n٣) بدون شطف → سيروم → مرطب.",
   "useEn": "1) Right after cleansing.\n2) Palms or pad — no dragging.\n3) No rinse → serum → cream.",
   "skinAr": "بعد كل غسول",
-  "skinEn": "water-thirsty skin",
-  "stock": 25
-},
+  "skinEn": "water-thirsty skin"},
 {
   "id": 27,
   "brand": "Numbuzin",
@@ -46,9 +44,7 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) نظّفي → عالجي → احمي.\n٢) كمية معتدلة.\n٣) راقبي الأسبوع الأول.\n٤) SPF مع التفتيح أو الأحماض.",
   "useEn": "1) Cleanse → treat → protect.\n2) Moderate amount.\n3) Watch week one.\n4) SPF with brightening or acids.",
   "skinAr": "أول أسبوع للمراقبة",
-  "skinEn": "watch week one",
-  "stock": 25
-},
+  "skinEn": "watch week one"},
 {
   "id": 91,
   "brand": "Numbuzin",
@@ -70,9 +66,7 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) دفّئي الكمية بين الأصابع.\n٢) ربّتي حتى تختفي.\n٣) القليل اليومي أهدى من الكثير مرة واحدة.",
   "useEn": "1) After serum or right after cleanse.\n2) Pea-size for face + a little neck.\n3) SPF over it in the morning.\n4) Extra on dry cheeks at night.",
   "skinAr": "الجافة والمحتاجة",
-  "skinEn": "sensitive dry skin",
-  "stock": 25
-},
+  "skinEn": "sensitive dry skin"},
 {
   "id": 148,
   "brand": "Numbuzin",
@@ -94,7 +88,5 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) فوراً بعد الغسول.\n٢) راحة اليد أو القطنة — بلا سحب.\n٣) بدون شطف → سيروم → مرطب.",
   "useEn": "1) Right after cleansing.\n2) Palms or pad — no dragging.\n3) No rinse → serum → cream.",
   "skinAr": "الدهنية المنتعشة",
-  "skinEn": "water-thirsty skin",
-  "stock": 25
-}
+  "skinEn": "water-thirsty skin"}
 );

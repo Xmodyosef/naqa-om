@@ -22,9 +22,7 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) نظّفي → عالجي → احمي.\n٢) كمية معتدلة.\n٣) راقبي الأسبوع الأول.\n٤) SPF مع التفتيح أو الأحماض.",
   "useEn": "1) Cleanse → treat → protect.\n2) Moderate amount.\n3) Watch week one.\n4) SPF with brightening or acids.",
   "skinAr": "أول أسبوع للمراقبة",
-  "skinEn": "watch week one",
-  "stock": 25
-},
+  "skinEn": "watch week one"},
 {
   "id": 92,
   "brand": "Abib",
@@ -46,9 +44,7 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) نظّفي → عالجي → احمي.\n٢) كمية معتدلة.\n٣) راقبي الأسبوع الأول.\n٤) SPF مع التفتيح أو الأحماض.",
   "useEn": "1) Cleanse → treat → protect.\n2) Moderate amount.\n3) Watch week one.\n4) SPF with brightening or acids.",
   "skinAr": "معظم الأنواع",
-  "skinEn": "match today’s need",
-  "stock": 25
-},
+  "skinEn": "match today’s need"},
 {
   "id": 98,
   "brand": "Abib",
@@ -70,7 +66,5 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) نظّفي → عالجي → احمي.\n٢) كمية معتدلة.\n٣) راقبي الأسبوع الأول.\n٤) SPF مع التفتيح أو الأحماض.",
   "useEn": "1) Cleanse → treat → protect.\n2) Moderate amount.\n3) Watch week one.\n4) SPF with brightening or acids.",
   "skinAr": "معظم الأنواع",
-  "skinEn": "watch week one",
-  "stock": 25
-}
+  "skinEn": "watch week one"}
 );

@@ -22,7 +22,5 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) بشرة مبللة بعد الغسول.\n٢) دوائر ناعمة ثوانٍ.\n٣) شطف + ترطيب.\n٤) ١–٢× أسبوعياً فقط.",
   "useEn": "1) Wet skin after cleanse.\n2) Soft circles, few seconds.\n3) Rinse + moisturize.\n4) Only 1–2× weekly.",
   "skinAr": "بعيداً عن ريتينول قوي بنفس الليلة",
-  "skinEn": "not with strong retinoid same night",
-  "stock": 25
-}
+  "skinEn": "not with strong retinoid same night"}
 );

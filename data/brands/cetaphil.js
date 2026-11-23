@@ -22,7 +22,5 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) ماء فاتر.\n٢) ٢٠–٣٠ ثانية تدليك ثم شطف كامل.\n٣) تربيت للتجفيف.\n٤) مكياج ثقيل: زيتي أولاً ثم هذا.",
   "useEn": "1) Lukewarm water.\n2) 20–30 seconds, full rinse.\n3) Pat dry.\n4) Heavy makeup: oil first, then this.",
   "skinAr": "الدهنية والمختلطة",
-  "skinEn": "after makeup as step one",
-  "stock": 25
-}
+  "skinEn": "after makeup as step one"}
 );

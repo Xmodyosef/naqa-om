@@ -23,9 +23,7 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) مشط للشكل.\n٢) فراغات بخطوط قصيرة.\n٣) تثبيت إن لزم.\n٤) مسح الزائد بقطنة.",
   "useEn": "1) Brush into shape.\n2) Short strokes in gaps.\n3) Set if needed.\n4) Clean extras with a swab.",
   "skinAr": "تحديد يومي خفيف",
-  "skinEn": "soft daily shape",
-  "stock": 25
-},
+  "skinEn": "soft daily shape"},
 {
   "id": 113,
   "brand": "LOLLIS",
@@ -47,9 +45,7 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) من الجذر للطرف بتعرج خفيف.\n٢) طبقة ثانية بعد الجفاف.\n٣) مزيل لطيف مساءً.\n٤) لا تشاركي الفرشاة.",
   "useEn": "1) Root to tip, soft zigzag.\n2) Second coat after it sets.\n3) Gentle remover at night.\n4) Never share the wand.",
   "skinAr": "كل الرموش",
-  "skinEn": "day or night looks",
-  "stock": 25
-},
+  "skinEn": "day or night looks"},
 {
   "id": 114,
   "brand": "LOLLIS",
@@ -70,9 +66,7 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) من الجذر للطرف بتعرج خفيف.\n٢) طبقة ثانية بعد الجفاف.\n٣) مزيل لطيف مساءً.\n٤) لا تشاركي الفرشاة.",
   "useEn": "1) Root to tip, soft zigzag.\n2) Second coat after it sets.\n3) Gentle remover at night.\n4) Never share the wand.",
   "skinAr": "يوم أو سهرة",
-  "skinEn": "all lashes",
-  "stock": 25
-},
+  "skinEn": "all lashes"},
 {
   "id": 115,
   "brand": "LOLLIS",
@@ -94,9 +88,7 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) مشط للشكل.\n٢) فراغات بخطوط قصيرة.\n٣) تثبيت إن لزم.\n٤) مسح الزائد بقطنة.",
   "useEn": "1) Brush into shape.\n2) Short strokes in gaps.\n3) Set if needed.\n4) Clean extras with a swab.",
   "skinAr": "تحديد يومي خفيف",
-  "skinEn": "all brow tones",
-  "stock": 25
-},
+  "skinEn": "all brow tones"},
 {
   "id": 116,
   "brand": "LOLLIS",
@@ -117,9 +109,7 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) من الجذر للطرف بتعرج خفيف.\n٢) طبقة ثانية بعد الجفاف.\n٣) مزيل لطيف مساءً.\n٤) لا تشاركي الفرشاة.",
   "useEn": "1) Root to tip, soft zigzag.\n2) Second coat after it sets.\n3) Gentle remover at night.\n4) Never share the wand.",
   "skinAr": "عيون حساسة؟ اختبري",
-  "skinEn": "all lashes",
-  "stock": 25
-},
+  "skinEn": "all lashes"},
 {
   "id": 117,
   "brand": "LOLLIS",
@@ -141,9 +131,7 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) مشط للشكل.\n٢) فراغات بخطوط قصيرة.\n٣) تثبيت إن لزم.\n٤) مسح الزائد بقطنة.",
   "useEn": "1) Brush into shape.\n2) Short strokes in gaps.\n3) Set if needed.\n4) Clean extras with a swab.",
   "skinAr": "كل درجات الحاجب",
-  "skinEn": "soft daily shape",
-  "stock": 25
-},
+  "skinEn": "soft daily shape"},
 {
   "id": 118,
   "brand": "LOLLIS",
@@ -165,9 +153,7 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) مشط للشكل.\n٢) فراغات بخطوط قصيرة.\n٣) تثبيت إن لزم.\n٤) مسح الزائد بقطنة.",
   "useEn": "1) Brush into shape.\n2) Short strokes in gaps.\n3) Set if needed.\n4) Clean extras with a swab.",
   "skinAr": "كل درجات الحاجب",
-  "skinEn": "soft daily shape",
-  "stock": 25
-},
+  "skinEn": "soft daily shape"},
 {
   "id": 128,
   "brand": "LOLLIS",
@@ -188,9 +174,7 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) شفاه نظيفة.\n٢) من الوسط للخارج.\n٣) لمسة خلال اليوم.\n٤) ليلاً أغنى إن كان مرطباً.",
   "useEn": "1) Clean lips.\n2) Center to outer edge.\n3) Touch up through the day.\n4) Richer layer at night if balm/mask.",
   "skinAr": "الشفاه الجافة",
-  "skinEn": "all lip tones",
-  "stock": 25
-},
+  "skinEn": "all lip tones"},
 {
   "id": 129,
   "brand": "LOLLIS",
@@ -211,9 +195,7 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) شفاه نظيفة.\n٢) من الوسط للخارج.\n٣) لمسة خلال اليوم.\n٤) ليلاً أغنى إن كان مرطباً.",
   "useEn": "1) Clean lips.\n2) Center to outer edge.\n3) Touch up through the day.\n4) Richer layer at night if balm/mask.",
   "skinAr": "كل درجات الشفاه",
-  "skinEn": "dry lips",
-  "stock": 25
-},
+  "skinEn": "dry lips"},
 {
   "id": 130,
   "brand": "LOLLIS",
@@ -234,9 +216,7 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) شفاه نظيفة.\n٢) من الوسط للخارج.\n٣) لمسة خلال اليوم.\n٤) ليلاً أغنى إن كان مرطباً.",
   "useEn": "1) Clean lips.\n2) Center to outer edge.\n3) Touch up through the day.\n4) Richer layer at night if balm/mask.",
   "skinAr": "الشفاه الجافة",
-  "skinEn": "daily without fuss",
-  "stock": 25
-},
+  "skinEn": "daily without fuss"},
 {
   "id": 131,
   "brand": "LOLLIS",
@@ -257,9 +237,7 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) شفاه نظيفة.\n٢) من الوسط للخارج.\n٣) لمسة خلال اليوم.\n٤) ليلاً أغنى إن كان مرطباً.",
   "useEn": "1) Clean lips.\n2) Center to outer edge.\n3) Touch up through the day.\n4) Richer layer at night if balm/mask.",
   "skinAr": "يومياً بلا إزعاج",
-  "skinEn": "daily without fuss",
-  "stock": 25
-},
+  "skinEn": "daily without fuss"},
 {
   "id": 132,
   "brand": "LOLLIS",
@@ -280,9 +258,7 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) شفاه نظيفة.\n٢) من الوسط للخارج.\n٣) لمسة خلال اليوم.\n٤) ليلاً أغنى إن كان مرطباً.",
   "useEn": "1) Clean lips.\n2) Center to outer edge.\n3) Touch up through the day.\n4) Richer layer at night if balm/mask.",
   "skinAr": "كل درجات الشفاه",
-  "skinEn": "dry lips",
-  "stock": 25
-},
+  "skinEn": "dry lips"},
 {
   "id": 134,
   "brand": "LOLLIS",
@@ -303,9 +279,7 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) شفاه نظيفة.\n٢) من الوسط للخارج.\n٣) لمسة خلال اليوم.\n٤) ليلاً أغنى إن كان مرطباً.",
   "useEn": "1) Clean lips.\n2) Center to outer edge.\n3) Touch up through the day.\n4) Richer layer at night if balm/mask.",
   "skinAr": "الشفاه الجافة",
-  "skinEn": "daily without fuss",
-  "stock": 25
-},
+  "skinEn": "daily without fuss"},
 {
   "id": 135,
   "brand": "LOLLIS",
@@ -326,9 +300,7 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) شفاه نظيفة.\n٢) من الوسط للخارج.\n٣) لمسة خلال اليوم.\n٤) ليلاً أغنى إن كان مرطباً.",
   "useEn": "1) Clean lips.\n2) Center to outer edge.\n3) Touch up through the day.\n4) Richer layer at night if balm/mask.",
   "skinAr": "يومياً بلا إزعاج",
-  "skinEn": "all lip tones",
-  "stock": 25
-},
+  "skinEn": "all lip tones"},
 {
   "id": 136,
   "brand": "LOLLIS",
@@ -349,9 +321,7 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) شفاه نظيفة.\n٢) من الوسط للخارج.\n٣) لمسة خلال اليوم.\n٤) ليلاً أغنى إن كان مرطباً.",
   "useEn": "1) Clean lips.\n2) Center to outer edge.\n3) Touch up through the day.\n4) Richer layer at night if balm/mask.",
   "skinAr": "كل درجات الشفاه",
-  "skinEn": "dry lips",
-  "stock": 25
-},
+  "skinEn": "dry lips"},
 {
   "id": 137,
   "brand": "LOLLIS",
@@ -372,9 +342,7 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) شفاه نظيفة.\n٢) من الوسط للخارج.\n٣) لمسة خلال اليوم.\n٤) ليلاً أغنى إن كان مرطباً.",
   "useEn": "1) Clean lips.\n2) Center to outer edge.\n3) Touch up through the day.\n4) Richer layer at night if balm/mask.",
   "skinAr": "الشفاه الجافة",
-  "skinEn": "all lip tones",
-  "stock": 25
-},
+  "skinEn": "all lip tones"},
 {
   "id": 138,
   "brand": "LOLLIS",
@@ -395,9 +363,7 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) شفاه نظيفة.\n٢) من الوسط للخارج.\n٣) لمسة خلال اليوم.\n٤) ليلاً أغنى إن كان مرطباً.",
   "useEn": "1) Clean lips.\n2) Center to outer edge.\n3) Touch up through the day.\n4) Richer layer at night if balm/mask.",
   "skinAr": "الشفاه الجافة",
-  "skinEn": "all lip tones",
-  "stock": 25
-},
+  "skinEn": "all lip tones"},
 {
   "id": 139,
   "brand": "LOLLIS",
@@ -418,9 +384,7 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) شفاه نظيفة.\n٢) من الوسط للخارج.\n٣) لمسة خلال اليوم.\n٤) ليلاً أغنى إن كان مرطباً.",
   "useEn": "1) Clean lips.\n2) Center to outer edge.\n3) Touch up through the day.\n4) Richer layer at night if balm/mask.",
   "skinAr": "يومياً بلا إزعاج",
-  "skinEn": "dry lips",
-  "stock": 25
-},
+  "skinEn": "dry lips"},
 {
   "id": 140,
   "brand": "LOLLIS",
@@ -441,9 +405,7 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) شفاه نظيفة.\n٢) من الوسط للخارج.\n٣) لمسة خلال اليوم.\n٤) ليلاً أغنى إن كان مرطباً.",
   "useEn": "1) Clean lips.\n2) Center to outer edge.\n3) Touch up through the day.\n4) Richer layer at night if balm/mask.",
   "skinAr": "يومياً بلا إزعاج",
-  "skinEn": "daily without fuss",
-  "stock": 25
-},
+  "skinEn": "daily without fuss"},
 {
   "id": 141,
   "brand": "LOLLIS",
@@ -464,9 +426,7 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) شفاه نظيفة.\n٢) من الوسط للخارج.\n٣) لمسة خلال اليوم.\n٤) ليلاً أغنى إن كان مرطباً.",
   "useEn": "1) Clean lips.\n2) Center to outer edge.\n3) Touch up through the day.\n4) Richer layer at night if balm/mask.",
   "skinAr": "الشفاه الجافة",
-  "skinEn": "dry lips",
-  "stock": 25
-},
+  "skinEn": "dry lips"},
 {
   "id": 142,
   "brand": "LOLLIS",
@@ -487,7 +447,5 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) شفاه نظيفة.\n٢) من الوسط للخارج.\n٣) لمسة خلال اليوم.\n٤) ليلاً أغنى إن كان مرطباً.",
   "useEn": "1) Clean lips.\n2) Center to outer edge.\n3) Touch up through the day.\n4) Richer layer at night if balm/mask.",
   "skinAr": "الشفاه الجافة",
-  "skinEn": "dry lips",
-  "stock": 25
-}
+  "skinEn": "dry lips"}
 );

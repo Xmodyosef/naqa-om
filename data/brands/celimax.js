@@ -24,9 +24,7 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) بشرة نظيفة، بعد التونر إن وُجد.\n٢) ٢–٣ قطرات — اضغطي من الوسط للخارج.\n٣) مرطب فوقه. صباحاً: SPF.\n٤) الريتينول/الأحماض: ليلاً وبالتدريج.",
   "useEn": "1) Clean skin; toner first if you use one.\n2) 2–3 drops — press from center out.\n3) Cream on top. AM: SPF.\n4) Retinoids/acids: night, slowly.",
   "skinAr": "الجافة والعطشى",
-  "skinEn": "sensitive after a patch test",
-  "stock": 25
-},
+  "skinEn": "sensitive after a patch test"},
 {
   "id": 9,
   "brand": "Celimax",
@@ -48,9 +46,7 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) بعد التنظيف.\n٢) طبقة خفيفة تكفي؛ لا تُغرقي.\n٣) أغلقي الترطيب.\n٤) إن لسع خفيفاً أول أيام، باعدي الاستخدام.",
   "useEn": "1) Clean, slightly damp face.\n2) Dot cheeks, forehead, chin; spread.\n3) Wait a minute, then cream.\n4) Eye area only if the formula is made for it.",
   "skinAr": "الحساسة بعد اختبار بسيط",
-  "skinEn": "dry and thirsty",
-  "stock": 25
-},
+  "skinEn": "dry and thirsty"},
 {
   "id": 10,
   "brand": "Celimax",
@@ -72,9 +68,7 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) بعد التنظيف.\n٢) طبقة خفيفة تكفي؛ لا تُغرقي.\n٣) أغلقي الترطيب.\n٤) إن لسع خفيفاً أول أيام، باعدي الاستخدام.",
   "useEn": "1) Clean skin; toner first if you use one.\n2) 2–3 drops — press from center out.\n3) Cream on top. AM: SPF.\n4) Retinoids/acids: night, slowly.",
   "skinAr": "مع SPF يومي عند التفتيح",
-  "skinEn": "sensitive after a patch test",
-  "stock": 25
-},
+  "skinEn": "sensitive after a patch test"},
 {
   "id": 11,
   "brand": "Celimax",
@@ -96,9 +90,7 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) فوراً بعد الغسول.\n٢) راحة اليد أو القطنة — بلا سحب.\n٣) بدون شطف → سيروم → مرطب.",
   "useEn": "1) Right after cleansing.\n2) Palms or pad — no dragging.\n3) No rinse → serum → cream.",
   "skinAr": "الدهنية المنتعشة",
-  "skinEn": "water-thirsty skin",
-  "stock": 25
-},
+  "skinEn": "water-thirsty skin"},
 {
   "id": 36,
   "brand": "Celimax",
@@ -120,7 +112,5 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) دفّئي الكمية بين الأصابع.\n٢) ربّتي حتى تختفي.\n٣) القليل اليومي أهدى من الكثير مرة واحدة.",
   "useEn": "1) After serum or right after cleanse.\n2) Pea-size for face + a little neck.\n3) SPF over it in the morning.\n4) Extra on dry cheeks at night.",
   "skinAr": "الحساسة الجافة",
-  "skinEn": "dry and needy",
-  "stock": 25
-}
+  "skinEn": "dry and needy"}
 );

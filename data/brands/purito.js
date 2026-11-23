@@ -22,9 +22,7 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) بعد الحمام على بشرة نديّة.\n٢) من الأطراف للداخل.\n٣) ركّزي على الكوعين والساقين.\n٤) صباح أو مساء.",
   "useEn": "1) After shower, skin still damp.\n2) Limbs toward center.\n3) Elbows and dry legs again.\n4) Morning or night.",
   "skinAr": "بعد الاستحمام",
-  "skinEn": "dry body skin",
-  "stock": 25
-},
+  "skinEn": "dry body skin"},
 {
   "id": 164,
   "brand": "Purito",
@@ -46,7 +44,5 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) بعد الحمام على بشرة نديّة.\n٢) من الأطراف للداخل.\n٣) ركّزي على الكوعين والساقين.\n٤) صباح أو مساء.",
   "useEn": "1) After shower, skin still damp.\n2) Limbs toward center.\n3) Elbows and dry legs again.\n4) Morning or night.",
   "skinAr": "بعد الاستحمام",
-  "skinEn": "dry body skin",
-  "stock": 25
-}
+  "skinEn": "dry body skin"}
 );

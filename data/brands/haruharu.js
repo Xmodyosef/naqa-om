@@ -22,9 +22,7 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) فوراً بعد الغسول.\n٢) راحة اليد أو القطنة — بلا سحب.\n٣) بدون شطف → سيروم → مرطب.",
   "useEn": "1) Right after cleansing.\n2) Palms or pad — no dragging.\n3) No rinse → serum → cream.",
   "skinAr": "الحساسة",
-  "skinEn": "after every cleanse",
-  "stock": 25
-},
+  "skinEn": "after every cleanse"},
 {
   "id": 50,
   "brand": "HaruHaru",
@@ -46,7 +44,5 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) أول خطوة صباحًا ومساءً.\n٢) تجنّبي الماء المغلي.\n٣) إن شدّ الوجه، قصّري الوقت.",
   "useEn": "1) Lukewarm water.\n2) 20–30 seconds, full rinse.\n3) Pat dry.\n4) Heavy makeup: oil first, then this.",
   "skinAr": "صباحاً ومساءً",
-  "skinEn": "oily and combination",
-  "stock": 25
-}
+  "skinEn": "oily and combination"}
 );

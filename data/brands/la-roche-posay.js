@@ -23,7 +23,5 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) على الجفاف أو آخر طبقة.\n٢) طبقة رقيقة.\n٣) أعيدي ليلاً.\n٤) بعيداً عن العين ما لم يُذكر.",
   "useEn": "1) On dry spots or as last step.\n2) Thin layer.\n3) Again at night if needed.\n4) Away from eyes unless labeled.",
   "skinAr": "البقع الجافة",
-  "skinEn": "dry patches",
-  "stock": 25
-}
+  "skinEn": "dry patches"}
 );

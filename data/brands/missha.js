@@ -22,9 +22,7 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) آخر عناية صباحية.\n٢) كمية إصبعين تقريباً للوجه والرقبة.\n٣) دقيقة قبل المكياج.\n٤) أعيدي في الشمس الطويلة.",
   "useEn": "1) Last morning step.\n2) About two fingers for face and neck.\n3) One minute before makeup.\n4) Reapply in long sun.",
   "skinAr": "تحت المكياج",
-  "skinEn": "after morning care",
-  "stock": 25
-},
+  "skinEn": "after morning care"},
 {
   "id": 71,
   "brand": "MISSHA",
@@ -46,9 +44,7 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) آخر عناية صباحية.\n٢) كمية إصبعين تقريباً للوجه والرقبة.\n٣) دقيقة قبل المكياج.\n٤) أعيدي في الشمس الطويلة.",
   "useEn": "1) Last morning step.\n2) About two fingers for face and neck.\n3) One minute before makeup.\n4) Reapply in long sun.",
   "skinAr": "بعد العناية الصباحية",
-  "skinEn": "under makeup",
-  "stock": 25
-},
+  "skinEn": "under makeup"},
 {
   "id": 72,
   "brand": "MISSHA",
@@ -70,9 +66,7 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) آخر عناية صباحية.\n٢) كمية إصبعين تقريباً للوجه والرقبة.\n٣) دقيقة قبل المكياج.\n٤) أعيدي في الشمس الطويلة.",
   "useEn": "1) Last morning step.\n2) About two fingers for face and neck.\n3) One minute before makeup.\n4) Reapply in long sun.",
   "skinAr": "تحت المكياج",
-  "skinEn": "all skin by day",
-  "stock": 25
-},
+  "skinEn": "all skin by day"},
 {
   "id": 74,
   "brand": "MISSHA",
@@ -95,9 +89,7 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) بشرة مرطّبة (+ SPF نهاراً).\n٢) كمية قليلة ووزّعي.\n٣) غطّي بطبقات خفيفة.\n٤) ثبّتي عند الحاجة.",
   "useEn": "1) Moisturized skin (+ SPF by day).\n2) Start small and blend.\n3) Build in thin layers.\n4) Set for longer wear.",
   "skinAr": "مكياج يومي هادئ",
-  "skinEn": "quiet everyday makeup",
-  "stock": 25
-},
+  "skinEn": "quiet everyday makeup"},
 {
   "id": 182,
   "brand": "MISSHA",
@@ -118,7 +110,5 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) شامبو للفروة، بلسم للأطراف، سيروم حسب العبوة.\n٢) ابدئي بقليل.\n٣) لا تُشبعي الخصل.\n٤) أسبوعان–ثلاثة للفرق الأوضح.",
   "useEn": "1) Shampoo scalp, condition lengths, leave-in as labeled.\n2) Start small.\n3) Don’t drench the hair.\n4) Two–three weeks for a clearer change.",
   "skinAr": "حسب الشعر والفروة",
-  "skinEn": "stressed hair",
-  "stock": 25
-}
+  "skinEn": "stressed hair"}
 );

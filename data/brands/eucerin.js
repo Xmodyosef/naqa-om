@@ -22,9 +22,7 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) أول خطوة صباحًا ومساءً.\n٢) تجنّبي الماء المغلي.\n٣) إن شدّ الوجه، قصّري الوقت.",
   "useEn": "1) Lukewarm water.\n2) 20–30 seconds, full rinse.\n3) Pat dry.\n4) Heavy makeup: oil first, then this.",
   "skinAr": "بعد مكياج كخطوة أولى",
-  "skinEn": "sensitive with a milder formula",
-  "stock": 25
-},
+  "skinEn": "sensitive with a milder formula"},
 {
   "id": 161,
   "brand": "Eucerin",
@@ -46,7 +44,5 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) بعد الحمام على بشرة نديّة.\n٢) من الأطراف للداخل.\n٣) ركّزي على الكوعين والساقين.\n٤) صباح أو مساء.",
   "useEn": "1) After shower, skin still damp.\n2) Limbs toward center.\n3) Elbows and dry legs again.\n4) Morning or night.",
   "skinAr": "بعد الاستحمام",
-  "skinEn": "most types",
-  "stock": 25
-}
+  "skinEn": "most types"}
 );

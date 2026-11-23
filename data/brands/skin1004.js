@@ -22,9 +22,7 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) دفّئي الكمية بين الأصابع.\n٢) ربّتي حتى تختفي.\n٣) القليل اليومي أهدى من الكثير مرة واحدة.",
   "useEn": "1) After serum or right after cleanse.\n2) Pea-size for face + a little neck.\n3) SPF over it in the morning.\n4) Extra on dry cheeks at night.",
   "skinAr": "المختلطة في الجو الجاف",
-  "skinEn": "combo in dry weather",
-  "stock": 25
-},
+  "skinEn": "combo in dry weather"},
 {
   "id": 20,
   "brand": "SKIN1004",
@@ -46,9 +44,7 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) بعد السيروم أو مباشرة بعد الغسول.\n٢) حبة بازيلاء للوجه + قليل للرقبة.\n٣) صباحاً SPF فوقه.\n٤) مساءً زيدي على الخدود الجافة.",
   "useEn": "1) After serum or right after cleanse.\n2) Pea-size for face + a little neck.\n3) SPF over it in the morning.\n4) Extra on dry cheeks at night.",
   "skinAr": "الحساسة الجافة",
-  "skinEn": "nights for most types",
-  "stock": 25
-},
+  "skinEn": "nights for most types"},
 {
   "id": 65,
   "brand": "SKIN1004",
@@ -69,9 +65,7 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) ماء فاتر.\n٢) ٢٠–٣٠ ثانية تدليك ثم شطف كامل.\n٣) تربيت للتجفيف.\n٤) مكياج ثقيل: زيتي أولاً ثم هذا.",
   "useEn": "1) Lukewarm water.\n2) 20–30 seconds, full rinse.\n3) Pat dry.\n4) Heavy makeup: oil first, then this.",
   "skinAr": "الحساسة بصيغة ألطف",
-  "skinEn": "after makeup as step one",
-  "stock": 25
-},
+  "skinEn": "after makeup as step one"},
 {
   "id": 66,
   "brand": "SKIN1004",
@@ -92,9 +86,7 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) ماء فاتر.\n٢) ٢٠–٣٠ ثانية تدليك ثم شطف كامل.\n٣) تربيت للتجفيف.\n٤) مكياج ثقيل: زيتي أولاً ثم هذا.",
   "useEn": "1) Lukewarm water.\n2) 20–30 seconds, full rinse.\n3) Pat dry.\n4) Heavy makeup: oil first, then this.",
   "skinAr": "صباحاً ومساءً",
-  "skinEn": "after makeup as step one",
-  "stock": 25
-},
+  "skinEn": "after makeup as step one"},
 {
   "id": 106,
   "brand": "SKIN1004",
@@ -115,9 +107,7 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) دفّئي الكمية بين الأصابع.\n٢) ربّتي حتى تختفي.\n٣) القليل اليومي أهدى من الكثير مرة واحدة.",
   "useEn": "1) After serum or right after cleanse.\n2) Pea-size for face + a little neck.\n3) SPF over it in the morning.\n4) Extra on dry cheeks at night.",
   "skinAr": "الجافة والمحتاجة",
-  "skinEn": "combo in dry weather",
-  "stock": 25
-},
+  "skinEn": "combo in dry weather"},
 {
   "id": 147,
   "brand": "SKIN1004",
@@ -139,9 +129,7 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) فوراً بعد الغسول.\n٢) راحة اليد أو القطنة — بلا سحب.\n٣) بدون شطف → سيروم → مرطب.",
   "useEn": "1) Right after cleansing.\n2) Palms or pad — no dragging.\n3) No rinse → serum → cream.",
   "skinAr": "الحساسة",
-  "skinEn": "oily that wants a refresh",
-  "stock": 25
-},
+  "skinEn": "oily that wants a refresh"},
 {
   "id": 200,
   "brand": "SKIN1004",
@@ -162,7 +150,5 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) بشرة نظيفة، بعد التونر إن وُجد.\n٢) ٢–٣ قطرات — اضغطي من الوسط للخارج.\n٣) مرطب فوقه. صباحاً: SPF.\n٤) الريتينول/الأحماض: ليلاً وبالتدريج.",
   "useEn": "1) Clean, slightly damp face.\n2) Dot cheeks, forehead, chin; spread.\n3) Wait a minute, then cream.\n4) Eye area only if the formula is made for it.",
   "skinAr": "مع SPF يومي عند التفتيح",
-  "skinEn": "oily and combination",
-  "stock": 25
-}
+  "skinEn": "oily and combination"}
 );

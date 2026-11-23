@@ -15,7 +15,14 @@
     })();
     A.orders.forEach(function (o) {
       var st = A.normalizeStatus(o.status);
-      var day = (o.at || "").slice(0, 10);
+      var day = (function () {
+        if (!o.at) return "";
+        try {
+          return new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Muscat", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date(o.at));
+        } catch (e) {
+          return String(o.at).slice(0, 10);
+        }
+      })();
       if (st === "cancel") { cancel++; return; }
       count++;
       var tot = Number(o.total) || 0;

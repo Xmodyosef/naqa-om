@@ -21,7 +21,5 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) آخر عناية صباحية.\n٢) كمية إصبعين تقريباً للوجه والرقبة.\n٣) دقيقة قبل المكياج.\n٤) أعيدي في الشمس الطويلة.",
   "useEn": "1) Last morning step.\n2) About two fingers for face and neck.\n3) One minute before makeup.\n4) Reapply in long sun.",
   "skinAr": "تحت المكياج",
-  "skinEn": "after morning care",
-  "stock": 25
-}
+  "skinEn": "after morning care"}
 );

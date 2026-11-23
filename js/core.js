@@ -60,10 +60,13 @@ function applyRoute(){
 
 const products=(window.NAQA_PRODUCTS||[]).map(p=>Object.assign({imgs:[]},p));
 function productLink(id){
-  var path=location.pathname||"/";
-  if(path.slice(-1)!=="/") path=path.replace(/[^/]*$/,"");
-  if(path.slice(-1)!=="/") path+="/";
-  return location.origin+path+"#p/"+id;
+  var path = location.pathname || "/";
+  path = path.replace(/\/index\.html$/i, "/");
+  path = path.replace(/\/(admin|order)\.html$/i, "/");
+  path = path.replace(/\/p\/[0-9]+\/?$/i, "/");
+  if (path.slice(-1) !== "/") path = path.replace(/\/[^/]*$/, "/");
+  if (path.slice(-1) !== "/") path += "/";
+  return location.origin + path + "p/" + id + "/";
 }
 function mergeOverrides(map){
   if(!map) return;
@@ -144,7 +147,7 @@ const ui={
   about:"About", how:"How to use", skinT:"Best for", also:"You may also like", same:"More from this brand", back:"Back",
   sku:"SKU", logo:"Naqa", tag:"Care & Makeup", footAbout:"Naqa — your Omani destination for authentic care and curated makeup. VAT-inclusive prices and delivery across Oman.", shipBar:"Naqa · Oman delivery · under 30: +2 · 30+: free · COD +1.5 · prices include 5% VAT", shipFree:"Under 30: delivery 2 · 30+: free · COD +1.5", sortNew:"Newest", sortLow:"Lowest price", sortHigh:"Highest price", sortOff:"Biggest discount", swipe:"Swipe down to close · or from the edge", swipeFull:"Swipe from the edge to go back · swipe photos", banHotSub:"Customer favorites · in-demand brands", banYearSub:"30% off selected items for a limited time",
   openImg:"Tap image to enlarge", barEmpty:"Cart is empty", barHint:"Add products from the list", barItems:n=>n+" items in cart", barOpen:"Open cart", barCheckout:"Checkout", hot:"Best sellers", year:"Year-end deals", viewAll:"View all", offTag:n=>"−"+n+"%",
-  quizBtn:"Skin quiz ✨", themeDay:"Day", themeNight:"Night", themeAuto:"Auto", docTitle:"Naqa · Care & Makeup | www.naqa.om",
+  quizBtn:"Skin quiz ✨", themeDay:"Day", themeNight:"Night", themeAuto:"Auto", docTitle:"Naqa · Care & Makeup | Naqa Oman",
   saved:"Saved", savedOn:"Hide saved", wishEmpty:"Nothing saved yet. Tap the heart on a product.",
   coTitle:"Checkout", coHint:"We'll prepare a WhatsApp message with your details and products.", payHint:"Under 30: delivery 2 · from 30: free (struck through) · COD: +1.5 · bank account: no COD fee.",
   coName:"Name", coNamePh:"Your name", coPhone:"Phone", coPhonePh:"9xxxxxxx",

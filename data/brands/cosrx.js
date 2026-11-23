@@ -21,9 +21,7 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) بعد الحمام على بشرة نديّة.\n٢) من الأطراف للداخل.\n٣) ركّزي على الكوعين والساقين.\n٤) صباح أو مساء.",
   "useEn": "1) After shower, skin still damp.\n2) Limbs toward center.\n3) Elbows and dry legs again.\n4) Morning or night.",
   "skinAr": "معظم الأنواع",
-  "skinEn": "after shower",
-  "stock": 25
-},
+  "skinEn": "after shower"},
 {
   "id": 93,
   "brand": "Cosrx",
@@ -45,9 +43,7 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) شفاه نظيفة.\n٢) من الوسط للخارج.\n٣) لمسة خلال اليوم.\n٤) ليلاً أغنى إن كان مرطباً.",
   "useEn": "1) Clean lips.\n2) Center to outer edge.\n3) Touch up through the day.\n4) Richer layer at night if balm/mask.",
   "skinAr": "يومياً بلا إزعاج",
-  "skinEn": "daily without fuss",
-  "stock": 25
-},
+  "skinEn": "daily without fuss"},
 {
   "id": 179,
   "brand": "Cosrx",
@@ -69,7 +65,5 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) شامبو للفروة، بلسم للأطراف، سيروم حسب العبوة.\n٢) ابدئي بقليل.\n٣) لا تُشبعي الخصل.\n٤) أسبوعان–ثلاثة للفرق الأوضح.",
   "useEn": "1) Shampoo scalp, condition lengths, leave-in as labeled.\n2) Start small.\n3) Don’t drench the hair.\n4) Two–three weeks for a clearer change.",
   "skinAr": "الشعر المجهد",
-  "skinEn": "scalp that needs air",
-  "stock": 25
-}
+  "skinEn": "scalp that needs air"}
 );

@@ -21,9 +21,7 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) دفّئي الكمية بين الأصابع.\n٢) ربّتي حتى تختفي.\n٣) القليل اليومي أهدى من الكثير مرة واحدة.",
   "useEn": "1) After serum or right after cleanse.\n2) Pea-size for face + a little neck.\n3) SPF over it in the morning.\n4) Extra on dry cheeks at night.",
   "skinAr": "الجافة والمحتاجة",
-  "skinEn": "sensitive dry skin",
-  "stock": 25
-},
+  "skinEn": "sensitive dry skin"},
 {
   "id": 123,
   "brand": "K-Secret",
@@ -44,7 +42,5 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) وجه نظيف ورطب قليلاً.\n٢) نقطة على الخد والجبهة والذقن، ثم توزيع.\n٣) دقيقة صبر ثم الكريم.\n٤) محيط العين فقط إن صُمّم لذلك.",
   "useEn": "1) Clean skin; toner first if you use one.\n2) 2–3 drops — press from center out.\n3) Cream on top. AM: SPF.\n4) Retinoids/acids: night, slowly.",
   "skinAr": "معظم الأنواع — ابدئي بقطرات",
-  "skinEn": "daily SPF when brightening",
-  "stock": 25
-}
+  "skinEn": "daily SPF when brightening"}
 );

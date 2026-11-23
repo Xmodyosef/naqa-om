@@ -40,7 +40,7 @@ function loadOrder(){
       payment:compact.pay||"", subtotal:compact.sub, delivery:compact.del, codFee:compact.cod, shipping:compact.ship,
       items:(compact.its||[]).map(function(x){
         return {id:x.i, qty:x.q, price:x.pr, sku:x.s||"", nameAr:x.na||"", nameEn:x.ne||"", name:x.na||x.ne||"", line:(x.pr||0)*(x.q||0),
-          link:(function(){ var path=location.pathname||"/"; if(path.slice(-1)!=="/") path=path.replace(/[^/]*$/,""); if(path.slice(-1)!=="/") path+="/"; return location.origin+path+"#p/"+x.i; })()
+          link:(function(){ var path=location.pathname||"/"; path=path.replace(/\/order\.html$/i,"/"); path=path.replace(/\/p\/[0-9]+\/?$/i,"/"); if(/\/[^/]+\.[a-zA-Z0-9]+$/.test(path)) path=path.replace(/\/[^/]+$/,"/"); if(path.slice(-1)!=="/") path+="/"; return location.origin+path+"p/"+x.i+"/"; })()
         };
       })
     };

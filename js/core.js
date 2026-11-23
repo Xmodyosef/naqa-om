@@ -59,14 +59,21 @@ function applyRoute(){
 }
 
 const products=(window.NAQA_PRODUCTS||[]).map(p=>Object.assign({imgs:[]},p));
-function productLink(id){
+/** Base path of the store (project pages: /naqa-om/). Never strip the last folder when there is no trailing slash. */
+function siteBasePath(){
   var path = location.pathname || "/";
   path = path.replace(/\/index\.html$/i, "/");
   path = path.replace(/\/(admin|order)\.html$/i, "/");
   path = path.replace(/\/p\/[0-9]+\/?$/i, "/");
-  if (path.slice(-1) !== "/") path = path.replace(/\/[^/]*$/, "/");
+  /* only strip a trailing FILE (has extension), not a directory segment */
+  if (/\/[^/]+\.[a-zA-Z0-9]+$/.test(path)) {
+    path = path.replace(/\/[^/]+$/, "/");
+  }
   if (path.slice(-1) !== "/") path += "/";
-  return location.origin + path + "p/" + id + "/";
+  return path;
+}
+function productLink(id){
+  return location.origin + siteBasePath() + "p/" + id + "/";
 }
 function mergeOverrides(map){
   if(!map) return;

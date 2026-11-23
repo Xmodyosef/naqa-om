@@ -21,3 +21,4 @@ print('built store.min.css', len(css), 'store.min.js', Path('js/store.min.js').s
 PY
 echo OK
 node scripts/build-seo-pages.js
+node scripts/verify-fixes.js

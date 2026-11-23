@@ -284,10 +284,9 @@ function sendCheckout(){
       its:priced.map(function(x){ return {i:x.id,q:x.qty,pr:x.price,s:x.sku,na:x.nameAr,ne:x.nameEn}; })
     };
     const raw=btoa(unescape(encodeURIComponent(JSON.stringify(compact))));
-    var path=location.pathname||"/";
-    if(path.slice(-1)!=="/") path=path.replace(/[^/]*$/,"");
-    if(path.slice(-1)!=="/") path+="/";
-    saveLink=location.origin+path+"order.html#"+raw;
+    var base=(typeof siteBasePath==="function")?siteBasePath():((location.pathname||"/").replace(/\/(admin|order)\.html$/i,"/").replace(/\/p\/[0-9]+\/?$/i,"/"));
+    if(base.slice(-1)!=="/") base+="/";
+    saveLink=location.origin+base+"order.html#"+raw;
   }catch(e){ saveLink=""; }
 
   const cap=(typeof ORDERS_CAP==="number" && ORDERS_CAP>0)?ORDERS_CAP:300;

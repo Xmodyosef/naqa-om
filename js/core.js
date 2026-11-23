@@ -80,9 +80,15 @@ function mergeOverrides(map){
     if(Array.isArray(o.imgs) && o.imgs.length) p.imgs=o.imgs.filter(Boolean).slice(0,5);
   });
 }
-try{
-  mergeOverrides(JSON.parse(localStorage.getItem("naqa_overrides")||"{}"));
-}catch(e){}
+/* Storefront trusts only published data/overrides.json (fetched in boot).
+   Do NOT merge localStorage naqa_overrides here — that let any browser rewrite prices into WhatsApp. */
+try {
+  var _allStock = products.map(function (p) { return p.stock; });
+  var _all25 = _allStock.length && _allStock.every(function (s) { return Number(s) === 25; });
+  if (_all25) {
+    products.forEach(function (p) { p.stock = null; });
+  }
+} catch (e) {}
 const $=s=>document.querySelector(s);
 
 function esc(v){
@@ -110,9 +116,9 @@ const ui={
   ship:"توصيل عُمان", order:"طلب واتساب", contact:"تواصلي", shopH:"التسوق", orders:"واتساب الطلبات",
   skin:"عناية", faceL:"وجه", hairL:"شعر", admin:"لوحة التحكم", blurb:"عناية ومكياج · متجر عُماني", copy:"نقاء · Naqa · عُمان",
   about:"عن المنتج", how:"طريقة الاستعمال", skinT:"يناسب", also:"قد يعجبكِ أيضاً", same:"باقي منتجات الماركة", back:"رجوع",
-  sku:"SKU", logo:"نقاء", tag:"عناية ومكياج", footAbout:"نقاء — وجهتكِ في عُمان للعناية الأصيلة والمكياج المختار. أسعار شاملة الضريبة، وتوصيل داخل السلطنة.", shipBar:"نقاء · توصيل عُمان · تحت ٣٠: +٢ ر.ع · ٣٠+: مجاني · استلام +١.٥ · أسعار شاملة الضريبة ٥٪", shipFree:"تحت ٣٠: توصيل ٢ · ٣٠+: مجاني · استلام +١.٥", sortNew:"الأحدث", sortLow:"الأقل سعراً", sortHigh:"الأعلى سعراً", sortOff:"الأعلى خصماً", swipe:"اسحبي للأسفل للإغلاق · أو من الحافة اليمنى/اليسرى", swipeFull:"اسحبي من الحافة للرجوع · مرّري الصور", banHotSub:"مختارات الزبائن · ماركات عليها طلب", banYearSub:"خصم ٣٠٪ على منتجات مختارة لفترة محدودة",
+  sku:"SKU", logo:"نقاء", tag:"عناية ومكياج", footAbout:"نقاء — وجهتكِ في عُمان للعناية الأصيلة والمكياج المختار. أسعار شاملة الضريبة، وتوصيل داخل السلطنة.", shipBar:"نقاء · توصيل عُمان · تحت ٣٠: +٢ ر.ع · ٣٠+: مجاني · استلام +١.٥ · أسعار شاملة الضريبة ٥٪", shipFree:"تحت ٣٠: توصيل ٢ · ٣٠+: مجاني · استلام +١.٥", sortNew:"الأحدث", sortLow:"الأقل سعراً", sortHigh:"الأعلى سعراً", sortOff:"الأعلى خصماً", swipe:"اسحبي للأسفل للإغلاق · أو من الحافة اليمنى/اليسرى", swipeFull:"اسحبي من الحافة للرجوع · مرّري الصور", banHotSub:"مختارات الزبائن · ماركات عليها طلب", banYearSub:"عرض −٣٠٪ على منتجات مختارة (سعر القائمة مشطوب)",
   openImg:"اضغطي الصورة للتكبير", barEmpty:"السلة فاضية", barHint:"أضيفي منتجات من القائمة", barItems:n=>n+" منتج في السلة", barOpen:"افتحي السلة", barCheckout:"إتمام الطلب", hot:"الأكثر مبيعاً", year:"عروض نهاية السنة", viewAll:"عرض الكل", offTag:n=>"−"+n+"%",
-  quizBtn:"اختبار البشرة ✨", themeDay:"صباحي", themeNight:"مسائي", themeAuto:"تلقائي", docTitle:"نقاء · عناية ومكياج | www.naqa.om",
+  quizBtn:"اختبار البشرة ✨", themeDay:"صباحي", themeNight:"مسائي", themeAuto:"تلقائي", docTitle:"نقاء · عناية ومكياج | Naqa Oman",
   saved:"المحفوظات", savedOn:"إخفاء المحفوظات", wishEmpty:"ما في منتجات محفوظة. اضغطي القلب ♥ على أي منتج.",
   coTitle:"إتمام الطلب", coHint:"نجهّز رسالة واتساب ببياناتكِ والمنتجات.", payHint:"تحت ٣٠: توصيل ٢ · من ٣٠: توصيل مجاني (مشطوب) · دفع عند الاستلام: +١.٥ · حساب بنكي: بدون رسوم استلام.",
   coName:"الاسم", coNamePh:"اسمكِ", coPhone:"الجوال", coPhonePh:"9xxxxxxx",

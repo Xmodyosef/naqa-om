@@ -74,9 +74,17 @@ function updatePaySum(){
   const hint=$("#payHint");
   if(hint){
     if(bank){
-      hint.textContent = T("payPendingHint") || (lang==="en"
-        ? "Pay to our bank account (manual) · no COD fee · delivery free at 30+ (shown crossed out)."
-        : "ادفعي لحسابنا البنكي يدوياً · بدون رسوم استلام · توصيل مجاني من ٣٠ (يظهر مشطوباً).");
+      var bn=(typeof BANK_NAME==="string"?BANK_NAME:"").trim();
+      var bi=(typeof BANK_IBAN==="string"?BANK_IBAN:"").trim();
+      if(bn||bi){
+        hint.textContent = (lang==="en"
+          ? ("Bank transfer · "+(bn||"Bank")+" · "+(bi||"IBAN pending")+" · no COD fee · free delivery at 30+.")
+          : ("تحويل بنكي · "+(bn||"البنك")+" · "+(bi||"الآيبان لاحقاً")+" · بدون رسوم استلام · توصيل مجاني من ٣٠."));
+      } else {
+        hint.textContent = (lang==="en"
+          ? ("Bank transfer selected · account number not published yet — the store will send it on WhatsApp · no COD fee.")
+          : ("اخترتِ التحويل · رقم الحساب غير منشور بعد — المتجر يرسله على واتساب · بدون رسوم استلام."));
+      }
     } else if(b.freeShip){
       hint.textContent=lang==="en"
         ? "Cash on delivery: delivery free (30+) · COD fee 1.500 OMR still applies. Example: 30 + 1.5 = 31.5"
@@ -214,60 +222,100 @@ function sendCheckout(){
   if(!gov){ alert(T("coNeedGov")); const el=$("#coGov"); if(el) el.focus(); return; }
   const pay=getPayMethod();
   if(!pay){ alert(T("payNeed")||"اختاري طريقة الدفع"); return; }
-  const b=feeBreakdown(cartSubtotal(), pay);
-  const sub=b.subtotal;
-  const ship=b.shipping;
-  const grand=b.grand;
-  const delivery=b.delivery;
-  const codFee=b.codFee;
-  const lines=cart.map(i=>{
-    const p=products.find(x=>x.id===i.id)||i;
-    const link=(typeof productLink==="function")?productLink(p.id):"";
-    return "• "+pname(p)+" × "+i.qty+" = "+money(i.price*i.qty)
-      +"\nSKU: "+(p.sku||"—")
-      +(link?("\n"+link):"");
-  }).join("\n\n");
+
+  /* Reprice from live catalog — never trust cart line prices (could be tampered via localStorage). */
+  const priced=[];
+  for(let k=0;k<cart.length;k++){
+    const i=cart[k];
+    const p=products.find(x=>x.id===i.id);
+    if(!p || p.hidden){ alert(lang==="en"?"A product is unavailable. Refresh and try again.":"منتج غير متاح. حدّثي الصفحة وحاولي."); return; }
+    if(p.stock!=null && Number(p.stock)<=0){ alert(lang==="en"?"Out of stock: ":"نفد: "+pname(p)); return; }
+    const qty=Math.max(1, Math.min(20, Number(i.qty)||1));
+    const unit=Number(p.price);
+    if(!(unit>0)){ alert(lang==="en"?"Invalid price. Contact the store.":"سعر غير صالح. تواصلي مع المتجر."); return; }
+    priced.push({
+      id:p.id, qty:qty, price:unit, brand:p.brand||"", sku:p.sku||"",
+      name:pname(p), nameAr:p.nameAr||"", nameEn:p.nameEn||"",
+      link:(typeof productLink==="function")?productLink(p.id):"",
+      img:(p.imgs&&p.imgs[0])||"", line:unit*qty
+    });
+  }
+  if(!priced.length){ alert(T("alertEmpty")); return; }
+
+  const sub=priced.reduce((s,x)=>s+x.line,0);
+  const b=feeBreakdown(sub, pay);
+  const ship=b.shipping, grand=b.grand, delivery=b.delivery, codFee=b.codFee;
   const orderNo=(typeof makeOrderNo==="function")?makeOrderNo():("NQ-"+Date.now());
-  const items=cart.map(i=>{
-    const p=products.find(x=>x.id===i.id)||i;
-    return {
-      id:p.id, name:pname(p), nameAr:p.nameAr||"", nameEn:p.nameEn||"",
-      brand:p.brand||"", sku:p.sku||"", qty:i.qty, price:i.price,
-      line:i.price*i.qty, link:(typeof productLink==="function")?productLink(p.id):"",
-      img:(p.imgs&&p.imgs[0])||""
-    };
-  });
   const payLabel=pay==="transfer"
     ?(lang==="en"?"Bank account (manual) · awaiting proof of payment":"حساب بنكي يدوي · بانتظار إثبات الدفع")
     :(lang==="en"?"Cash on delivery (unpaid)":"دفع عند الاستلام (غير مدفوع)");
+
+  const bankName=(typeof BANK_NAME==="string")?BANK_NAME.trim():"";
+  const bankIban=(typeof BANK_IBAN==="string")?BANK_IBAN.trim():"";
+  let bankBlock="";
+  if(pay==="transfer"){
+    if(bankName || bankIban){
+      bankBlock = lang==="en"
+        ? ("\nBank: "+(bankName||"—")+"\nAccount / IBAN: "+(bankIban||"—"))
+        : ("\nالبنك: "+(bankName||"—")+"\nالحساب / الآيبان: "+(bankIban||"—"));
+    } else {
+      bankBlock = lang==="en"
+        ? ("\nBank details: not set yet — "+(typeof BANK_HINT_EN==="string"?BANK_HINT_EN:"ask the store for account number"))
+        : ("\nالحساب البنكي: غير مضاف بعد — اسألي المتجر عن الرقم (أضيفيه في الإعدادات)");
+    }
+  }
+
   const order={
     id:orderNo, at:new Date().toISOString(), status:"new",
     name:name, phone:phone, area:gov, note:note,
     payment:pay, paymentLabel:payLabel, paid:false, paymentStatus:pay==="transfer"?"pending":"cod",
     subtotal:sub, delivery:delivery, codFee:codFee, shipping:ship, total:grand,
     vatRate:typeof vatRate==="function"?vatRate():0.05, vat:typeof vatOf==="function"?vatOf(grand):0, vatInclusive:true, currency:"OMR",
-    items:items, lang:lang
+    items:priced, lang:lang,
+    bankName:bankName||"", bankIban:bankIban||""
   };
+
+  /* Compact payload for order.html so the seller can save into their admin on their phone. */
+  let saveLink="";
+  try{
+    const compact={
+      id:order.id, at:order.at, n:order.name, p:order.phone, a:order.area, t:order.note,
+      tot:order.total, pay:order.payment, del:order.delivery, cod:order.codFee, ship:order.shipping, sub:order.subtotal,
+      its:priced.map(function(x){ return {i:x.id,q:x.qty,pr:x.price,s:x.sku,na:x.nameAr,ne:x.nameEn}; })
+    };
+    const raw=btoa(unescape(encodeURIComponent(JSON.stringify(compact))));
+    var path=location.pathname||"/";
+    if(path.slice(-1)!=="/") path=path.replace(/[^/]*$/,"");
+    if(path.slice(-1)!=="/") path+="/";
+    saveLink=location.origin+path+"order.html#"+raw;
+  }catch(e){ saveLink=""; }
+
+  const cap=(typeof ORDERS_CAP==="number" && ORDERS_CAP>0)?ORDERS_CAP:300;
   try{
     localStorage.setItem("naqa_last_order", orderNo);
     localStorage.setItem("naqa_last_order_full", JSON.stringify(order));
     var all=[];
     try{ all=JSON.parse(localStorage.getItem("naqa_orders")||"[]"); if(!Array.isArray(all)) all=[]; }catch(e){ all=[]; }
+    all=all.filter(function(o){ return o && o.id!==orderNo; });
     all.unshift(order);
-    localStorage.setItem("naqa_orders", JSON.stringify(all.slice(0,100)));
+    localStorage.setItem("naqa_orders", JSON.stringify(all.slice(0,cap)));
   }catch(e){}
   if(typeof window.NAQA_ORDERS_HOOK==="function"){
     try{ window.NAQA_ORDERS_HOOK(order); }catch(e){}
   }
+
+  const lines=priced.map(function(x){
+    return "• "+x.name+" × "+x.qty+" = "+money(x.line)
+      +"\nSKU: "+(x.sku||"—")
+      +(x.link?("\n"+x.link):"");
+  }).join("\n\n");
   const delLine = (function(){
     if(b.deliveryWaived){
       return lang==="en"
         ? ("Delivery: "+money(b.deliveryList)+" → FREE (30+)")
         : ("التوصيل: "+money(b.deliveryList)+" ← مجاني (٣٠+)");
     }
-    return lang==="en"
-      ? ("Delivery: "+money(delivery))
-      : ("التوصيل: "+money(delivery));
+    return lang==="en" ? ("Delivery: "+money(delivery)) : ("التوصيل: "+money(delivery));
   })();
   const codLine = (function(){
     if(b.codWaived){
@@ -275,19 +323,29 @@ function sendCheckout(){
         ? ("COD fee: "+money(b.codList)+" → 0 (bank account)")
         : ("رسوم الاستلام: "+money(b.codList)+" ← ٠ (حساب بنكي)");
     }
-    return lang==="en"
-      ? ("COD fee: "+money(codFee))
-      : ("رسوم الدفع عند الاستلام: "+money(codFee));
+    return lang==="en" ? ("COD fee: "+money(codFee)) : ("رسوم الدفع عند الاستلام: "+money(codFee));
   })();
+  const saveLine = saveLink
+    ? (lang==="en"
+      ? ("\n\nSeller: open this link on your phone to save the order in admin:\n"+saveLink)
+      : ("\n\nللبائعة: افتحي الرابط على جوالك لحفظ الطلب في اللوحة:\n"+saveLink))
+    : "";
   const msg = lang==="en"
-    ? ("Hello, I want to order from Naqa:\nOrder: "+orderNo+"\nName: "+name+"\nPhone: "+phone+"\nArea: "+gov+"\nPayment: "+payLabel+"\nNote: "+note+"\n\n"+lines+"\n\nSubtotal: "+money(sub)+"\n"+delLine+"\n"+codLine+"\nTotal (incl. 5% VAT): "+money(grand)+"\nOf which VAT 5%: "+money(typeof vatOf==="function"?vatOf(grand):0)+(pay==="transfer"?("\nI will pay to your bank account then send proof."):""))
-    : ("السلام عليكم، أبغى أطلب من نقاء:\nرقم الطلب: "+orderNo+"\nالاسم: "+name+"\nالجوال: "+phone+"\nالمنطقة: "+gov+"\nالدفع: "+payLabel+"\nملاحظة: "+note+"\n\n"+lines+"\n\nالمجموع الفرعي: "+money(sub)+"\n"+delLine+"\n"+codLine+"\nالإجمالي (شامل الضريبة ٥٪): "+money(grand)+"\nمنها ضريبة ٥٪: "+money(typeof vatOf==="function"?vatOf(grand):0)+(pay==="transfer"?("\nراح أحول على الحساب البنكي وأرسل إثبات الدفع."):""));
+    ? ("Hello, I want to order from Naqa:\nOrder: "+orderNo+"\nName: "+name+"\nPhone: "+phone+"\nArea: "+gov+"\nPayment: "+payLabel+bankBlock+"\nNote: "+note+"\n\n"+lines+"\n\nSubtotal: "+money(sub)+"\n"+delLine+"\n"+codLine+"\nTotal (incl. 5% VAT): "+money(grand)+"\nOf which VAT 5%: "+money(typeof vatOf==="function"?vatOf(grand):0)+(pay==="transfer"?("\nI will pay then send proof."):"")+saveLine)
+    : ("السلام عليكم، أبغى أطلب من نقاء:\nرقم الطلب: "+orderNo+"\nالاسم: "+name+"\nالجوال: "+phone+"\nالمنطقة: "+gov+"\nالدفع: "+payLabel+bankBlock+"\nملاحظة: "+note+"\n\n"+lines+"\n\nالمجموع الفرعي: "+money(sub)+"\n"+delLine+"\n"+codLine+"\nالإجمالي (شامل الضريبة ٥٪): "+money(grand)+"\nمنها ضريبة ٥٪: "+money(typeof vatOf==="function"?vatOf(grand):0)+(pay==="transfer"?("\nراح أحول وأرسل إثبات الدفع."):"")+saveLine);
   window.open("https://wa.me/"+WA_NUMBER+"?text="+encodeURIComponent(msg), "_blank");
+
+  /* Clear cart so the same order is not sent twice. */
+  cart=[];
+  try{ saveCart(); }catch(e){}
+  try{ renderCart(); }catch(e){}
+
   const done=$("#orderDone");
   if(done){
     done.hidden=false;
     done.innerHTML=(lang==="en"
-      ? ("Your order number is <b>"+orderNo+"</b>. Total <b>"+money(grand)+"</b>. WhatsApp should open now.")
-      : ("رقم طلبك <b>"+orderNo+"</b>. الإجمالي <b>"+money(grand)+"</b>. واتساب يفتح الحين."));
+      ? ("Your order number is <b>"+orderNo+"</b>. Total <b>"+money(grand)+"</b>. WhatsApp should open now. Cart cleared.")
+      : ("رقم طلبك <b>"+orderNo+"</b>. الإجمالي <b>"+money(grand)+"</b>. واتساب يفتح الحين. السلة تصفّرت."));
   }
 }
+

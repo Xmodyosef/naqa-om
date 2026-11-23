@@ -1,7 +1,7 @@
 /* features: concerns, quiz, wishlist, brands, bundles, trust */
 const CONCERNS = [
   {id:"oily", ar:"دهنية / مختلطة", en:"Oily / Combo", re:/دهن|مختلط|oily|combination|مسام|acne|رؤوس/i},
-  {id:"dry", ar:"جافة / عطشانة", en:"Dry / Dehydrated", re:/جاف|عطش|dry|dehydr|ترطيب|moist/i},
+  {id:"dry", ar:"جافة / عطشانة", en:"Dry / Dehydrated", re:/جافة|جاف\s|عطشان|مشدود|تقشر|dehydrated|\bdry\b|flaky|parched/i},
   {id:"sens", ar:"حساسة", en:"Sensitive", re:/حساس|sensitive|تهدئ|sooth|centella|سنتيلا|calm/i},
   {id:"pore", ar:"مسام / نضارة", en:"Pores / Glow", re:/مسام|pore|نضار|glow|vitamin c|فيتامين|bright|تفت/i},
   {id:"spot", ar:"تصبغ / توحيد", en:"Spots / Tone", re:/تصبغ|بقع|dark spot|niacinamide|نياسين|توحيد|whit|tone|txa|tranex/i},

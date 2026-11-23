@@ -20,3 +20,4 @@ Path('css/store.min.css').write_text(css+'\n')
 print('built store.min.css', len(css), 'store.min.js', Path('js/store.min.js').stat().st_size)
 PY
 echo OK
+node scripts/build-seo-pages.js

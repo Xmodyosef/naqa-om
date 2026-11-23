@@ -146,7 +146,9 @@ function priceOk(p) {
 function makeOrderNo() {
   var d = new Date();
   function p(n) { return (n < 10 ? "0" : "") + n; }
-  return "NQ-" + d.getFullYear() + p(d.getMonth() + 1) + p(d.getDate()) + "-" + Math.floor(100 + Math.random() * 900);
+  var rnd = Math.floor(1000 + Math.random() * 9000);
+  var t = Date.now().toString(36).slice(-4);
+  return "NQ-" + d.getFullYear() + p(d.getMonth() + 1) + p(d.getDate()) + "-" + rnd + "-" + t;
 }
 
 var OMAN_AREAS = window.OMAN_AREAS || [];

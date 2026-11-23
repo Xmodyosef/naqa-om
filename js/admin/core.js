@@ -39,7 +39,8 @@
     return "new";
   };
   A.saveOrders = function () {
-    localStorage.setItem(A.ORDERS_KEY, JSON.stringify(A.orders.slice(0, 100)));
+    var _cap = (typeof ORDERS_CAP === "number" && ORDERS_CAP > 0) ? ORDERS_CAP : 300;
+    localStorage.setItem(A.ORDERS_KEY, JSON.stringify(A.orders.slice(0, _cap)));
   };
   A.merged = function (p) {
     var o = A.overrides[p.id] || A.overrides[String(p.id)] || {};

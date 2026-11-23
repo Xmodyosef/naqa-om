@@ -6,7 +6,13 @@
     var sales = 0, count = 0, cancel = 0, todaySales = 0, todayCount = 0;
     var delivered = 0, ship = 0, prep = 0, neu = 0;
     var byArea = {}, byProduct = {};
-    var today = new Date().toISOString().slice(0, 10);
+    var today = (function () {
+      try {
+        return new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Muscat", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date());
+      } catch (e) {
+        return new Date().toISOString().slice(0, 10);
+      }
+    })();
     A.orders.forEach(function (o) {
       var st = A.normalizeStatus(o.status);
       var day = (o.at || "").slice(0, 10);

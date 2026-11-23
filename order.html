@@ -37,6 +37,7 @@ function loadOrder(){
       id:compact.id, at:compact.at, status:"new",
       name:compact.n||"", phone:compact.p||"", area:compact.a||"", note:compact.t||"",
       total:compact.tot, currency:"OMR",
+      payment:compact.pay||"", subtotal:compact.sub, delivery:compact.del, codFee:compact.cod, shipping:compact.ship,
       items:(compact.its||[]).map(function(x){
         return {id:x.i, qty:x.q, price:x.pr, sku:x.s||"", nameAr:x.na||"", nameEn:x.ne||"", name:x.na||x.ne||"", line:(x.pr||0)*(x.q||0),
           link:(function(){ var path=location.pathname||"/"; if(path.slice(-1)!=="/") path=path.replace(/[^/]*$/,""); if(path.slice(-1)!=="/") path+="/"; return location.origin+path+"#p/"+x.i; })()
@@ -69,7 +70,7 @@ function paint(order){
     try{ all=JSON.parse(localStorage.getItem("naqa_orders")||"[]"); if(!Array.isArray(all)) all=[]; }catch(e){ all=[]; }
     all=all.filter(function(o){ return o && o.id!==order.id; });
     all.unshift(order);
-    localStorage.setItem("naqa_orders", JSON.stringify(all.slice(0,200)));
+    localStorage.setItem("naqa_orders", JSON.stringify(all.slice(0,300)));
     document.getElementById("msg").textContent="انحفظ في الطلبات على هذا الجهاز.";
   };
 }

@@ -2,7 +2,7 @@
 :root{
   /* muted was #8a7f78 (~3.5:1 on bg) → darker for body-adjacent text */
   --muted:#5c534d;
-  --focus:#b05c6e;
+  --focus:#8d3048;
   --focus-ring:0 0 0 3px #fff, 0 0 0 6px var(--focus);
 }
 .sr-only{
@@ -12,7 +12,7 @@
 }
 .skip-link{
   position:absolute;inset-inline-start:12px;top:8px;z-index:200;
-  padding:10px 14px;border-radius:12px;background:var(--rose-deep,#b05c6e);color:#fff;
+  padding:10px 14px;border-radius:12px;background:var(--rose-deep,#8d3048);color:#fff;
   font-weight:800;text-decoration:none;transform:translateY(-120%);
   transition:transform .15s ease;
 }
@@ -45,7 +45,7 @@ textarea:focus-visible,
 }
 .search:focus-within{
   box-shadow:0 0 0 3px rgba(176,92,110,.35);
-  border-color:var(--rose-deep,#b05c6e);
+  border-color:var(--rose-deep,#8d3048);
 }
 /* touch targets ≥ 44px where interactive */
 .qty-pick button,

@@ -1,4 +1,4 @@
-:root{--bg:#fdf8f6;--card:#fff;--fg:#1f1a17;--muted:#8a7f78;--line:#efe4df;--rose:#b05c6e;--r:16px}
+:root{--bg:#fdf8f6;--card:#fff;--fg:#1f1a17;--muted:#6b625c;--line:#efe4df;--rose:#8d3048;--r:16px}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font-family:system-ui,-apple-system,"Segoe UI",Tahoma,sans-serif}
 a{color:inherit}button,input,textarea,select{font:inherit}
 .admin-top{position:sticky;top:0;z-index:20;background:rgba(253,248,246,.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);padding:12px 14px 0}

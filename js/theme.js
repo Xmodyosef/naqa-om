@@ -30,7 +30,7 @@
     root.setAttribute("data-theme", resolved);
     root.setAttribute("data-theme-mode", mode);
     var meta = document.querySelector('meta[name="theme-color"]');
-    if (meta) meta.setAttribute("content", resolved === "night" ? "#1a1412" : "#b05c6e");
+    if (meta) meta.setAttribute("content", resolved === "night" ? "#1a1412" : "#8d3048");
     var btn = document.getElementById("themeBtn");
     if (btn) {
       // Theme IIFE boots BEFORE let lang / const T in store.min.js — never touch them (TDZ crash).

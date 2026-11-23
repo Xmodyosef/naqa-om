@@ -10,6 +10,10 @@
       + '<p class="note" style="color:#b05c6e">' + A.t("setTok") + '</p>'
       + '<label style="display:block;margin:8px 0;font-size:.8rem;font-weight:800;color:#8a7f78">' + A.t("setTokLabel") + '<input id="token" type="password" value="" autocomplete="off" placeholder="ghp_..."></label>'
       + '<p class="note">' + A.t("setWa") + ': +' + A.esc(String(w.WA_NUMBER || "96879088349")) + '</p>'
+      + '<p class="note" style="margin-top:10px"><b>' + (A.lang==="en"?"Bank (storefront)":"الحساب البنكي (المتجر)") + '</b><br>'
+      + A.esc((w.BANK_NAME||"").trim() || (A.lang==="en"?"Name: not set":"الاسم: غير مضاف")) + '<br>'
+      + A.esc((w.BANK_IBAN||"").trim() || (A.lang==="en"?"IBAN: not set — edit js/config.js":"الآيبان: غير مضاف — عدّلي js/config.js")) + '</p>'
+      + '<p class="note" style="color:#8d3048">' + (A.lang==="en"?"PIN locks this device only. Orders arrive via the WhatsApp save link.":"الرمز يقفل هذا الجهاز فقط. الطلبات تصل عبر رابط الحفظ من واتساب.") + '</p>'
       + '<button type="button" class="primary" id="btnChangePin" style="width:100%;margin-top:8px">' + A.t("setPinBtn") + '</button>'
       + '<button type="button" class="logout" id="btnLogout" style="width:100%;margin-top:8px;border:0;border-radius:12px;padding:12px;font-weight:800">' + A.t("setOut") + '</button>'
       + '</div>';

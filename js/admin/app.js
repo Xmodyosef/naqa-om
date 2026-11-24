@@ -17,6 +17,30 @@
   };
 
   /* Page chips (Salla-style): options open in the page, not under the side button */
+  /* Short labels = compact children (long "جاري التجهيز (0)" was bloating chips) */
+  A.chipLabel = function (tab, id) {
+    if (tab === "orders") {
+      var map = {
+        all: A.t("all") || "الكل",
+        new: A.t("st_new_short") || A.t("st_new") || "جديد",
+        prep: A.t("st_prep_short") || "تجهيز",
+        ship: A.t("st_ship_short") || "توصيل",
+        delivered: A.t("st_done_short") || "تم",
+        cancel: A.t("st_cancel_short") || "ملغي"
+      };
+      return map[id] || (A.statusLabel ? A.statusLabel(id) : id);
+    }
+    if (tab === "products") {
+      var pm = {
+        all: A.t("sub_all") || "الكل",
+        shown: A.t("sub_shown") || "ظاهر",
+        hidden: A.t("sub_hidden") || "مخفي"
+      };
+      return pm[id] || id;
+    }
+    return id;
+  };
+
   A.fillPageSubNav = function () {
     var bar = document.getElementById("pageSubNav");
     if (!bar) return;
@@ -34,35 +58,33 @@
         var st = A.normalizeStatus(o.status);
         counts[st] = (counts[st] || 0) + 1;
       });
-      var parts = [{ id: "all", label: A.t("all") }].concat((A.STATUS_ORDER || A.ORDER_SUBS).map(function (k) {
-        return { id: k, label: A.statusLabel(k) };
+      var parts = [{ id: "all" }].concat((A.STATUS_ORDER || A.ORDER_SUBS).map(function (k) {
+        return { id: k };
       }));
       bar.innerHTML = parts.map(function (p) {
         var on = (A.orderFilter || sub || "all") === p.id;
+        var n = counts[p.id] || 0;
         return '<button type="button" class="page-chip' + (on ? " on" : "") + '" data-page-tab="orders" data-page-sub="' + p.id + '" role="tab" aria-selected="' + (on ? "true" : "false") + '">'
           + '<span class="chip-dot" aria-hidden="true"></span>'
-          + '<span>' + A.esc(p.label) + " (" + (counts[p.id] || 0) + ")</span></button>";
+          + '<span>' + A.esc(A.chipLabel("orders", p.id)) + '</span>'
+          + (n ? '<span class="chip-n">' + n + '</span>' : '')
+          + '</button>';
       }).join("");
       bar.hidden = false;
       return;
     }
     if (tab === "products" && A.editingId == null) {
-      var chips = [
-        { id: "all", label: A.t("sub_all") },
-        { id: "shown", label: A.t("sub_shown") },
-        { id: "hidden", label: A.t("sub_hidden") }
-      ];
-      bar.innerHTML = chips.map(function (p) {
-        var on = (A.productView || sub || "all") === p.id;
-        return '<button type="button" class="page-chip' + (on ? " on" : "") + '" data-page-tab="products" data-page-sub="' + p.id + '" role="tab" aria-selected="' + (on ? "true" : "false") + '">'
+      var chips = ["all", "shown", "hidden"];
+      bar.innerHTML = chips.map(function (id) {
+        var on = (A.productView || sub || "all") === id;
+        return '<button type="button" class="page-chip' + (on ? " on" : "") + '" data-page-tab="products" data-page-sub="' + id + '" role="tab" aria-selected="' + (on ? "true" : "false") + '">'
           + '<span class="chip-dot" aria-hidden="true"></span>'
-          + '<span>' + A.esc(p.label) + "</span></button>";
+          + '<span>' + A.esc(A.chipLabel("products", id)) + '</span></button>';
       }).join("");
       bar.hidden = false;
       return;
     }
   };
-
 
   A.updateOrdersBadge = function () {
     var el = document.getElementById("ordersBadge");

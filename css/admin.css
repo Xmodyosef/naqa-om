@@ -197,108 +197,95 @@ body.naqa-open #authBoot { display: none !important; }
 #fbForm { margin: 0; }
 
 
-/* —— Naqa admin shell: Salla-like right parent rail + page children —— */
+/* —— Naqa admin shell: right parent rail + compact page children —— */
+/* Root cause of "parents = letters / no space": mobile hid .side-lbl and rail was 72px */
+/* Root cause of "children too big": long status labels + fat chip padding + counts */
+
 body.naqa-open .admin-shell{
   display:flex;
   flex-direction:row;
-  direction:ltr; /* physical: main left, rail right */
+  direction:ltr; /* physical: content LEFT, rail RIGHT */
   align-items:stretch;
   gap:0;
   min-height:calc(100dvh - 96px);
   background:#f6f1ee;
   border:1px solid #eadfd9;
-  border-radius:20px;
+  border-radius:18px;
   overflow:hidden;
-  box-shadow:0 16px 40px rgba(28,18,22,.08);
+  box-shadow:0 14px 36px rgba(28,18,22,.08);
 }
 .admin-main{
   order:1;
   flex:1;
   min-width:0;
   direction:rtl;
-  background:
-    radial-gradient(900px 220px at 100% -10%, rgba(141,48,72,.06), transparent 60%),
-    #f7f2ef;
-  padding:16px 16px 28px;
+  background:#f7f2ef;
+  padding:14px 14px 24px;
 }
 .side-nav{
   order:2;
-  flex:0 0 200px;
-  width:200px;
+  flex:0 0 212px;
+  width:212px;
   direction:rtl;
   position:sticky;
   top:0;
   align-self:stretch;
-  max-height:none;
   min-height:100%;
   overflow-y:auto;
   overflow-x:hidden;
   background:#2a1a1e;
   color:#e8dcd9;
-  border:0;
-  border-radius:0;
-  padding:16px 12px 20px;
+  padding:14px 10px 18px;
   display:flex;
   flex-direction:column;
-  align-items:stretch;
-  gap:4px;
-  box-shadow:none;
+  gap:3px;
 }
 .side-nav::before{
   content:"نقاء";
   display:block;
   font-weight:800;
-  letter-spacing:.02em;
-  font-size:.95rem;
-  padding:4px 10px 14px;
+  font-size:.9rem;
+  padding:2px 8px 12px;
   color:#fff;
 }
-/* parent buttons — white tile icons that turn rose when active */
+/* Parents: icon tile + full label, room to breathe */
 .side-main{
   position:relative;
   border:0;
   background:transparent;
-  border-radius:12px;
-  padding:8px 10px;
+  border-radius:11px;
+  padding:8px 9px;
   font-weight:700;
-  font-size:.86rem;
+  font-size:.84rem;
   line-height:1.2;
-  text-align:right;
   cursor:pointer;
   width:100%;
   color:#e8dcd9;
-  transition:background .16s ease, color .16s ease;
   display:flex;
   flex-direction:row;
   align-items:center;
-  gap:12px;
+  gap:11px;
+  transition:background .15s ease, color .15s ease;
 }
-.side-main:hover{
-  background:rgba(255,255,255,.06);
-  color:#fff;
-}
-.side-main.on{
-  background:transparent;
-  color:#c46b7c;
-}
+.side-main:hover{ background:rgba(255,255,255,.06); color:#fff; }
+.side-main.on{ background:rgba(196,107,124,.14); color:#f0b4bf; }
 .side-ico{
   display:flex;
   align-items:center;
   justify-content:center;
-  width:34px;
-  height:34px;
-  flex:0 0 34px;
-  border-radius:10px;
+  width:32px;
+  height:32px;
+  flex:0 0 32px;
+  border-radius:9px; /* squircle-ish */
   background:#fff;
   color:#2a2422;
-  box-shadow:0 2px 5px rgba(0,0,0,.15);
-  transition:background .2s ease, box-shadow .2s ease, color .2s ease;
+  box-shadow:0 2px 4px rgba(0,0,0,.14);
 }
-.side-ico svg{display:block}
+.side-ico svg{ display:block; width:16px; height:16px; }
 .side-main.on .side-ico{
   background:#c46b7c;
   color:#fff;
-  box-shadow:0 3px 8px rgba(196,107,124,.4);
+  box-shadow:0 2px 6px rgba(196,107,124,.35);
 }
 .side-lbl{
   flex:1;
@@ -307,22 +294,20 @@ body.naqa-open .admin-shell{
   white-space:nowrap;
   overflow:hidden;
   text-overflow:ellipsis;
-  font-weight:600;
-  color:#e8dcd9;
+  font-weight:650;
+  font-size:.84rem;
+  color:inherit;
 }
-.side-main.on .side-lbl{
-  color:#c46b7c;
-  font-weight:800;
-}
+.side-main.on .side-lbl{ font-weight:800; color:#f3c4cd; }
 .side-badge{
   margin-inline-start:auto;
-  min-width:18px;
-  height:18px;
+  min-width:17px;
+  height:17px;
   padding:0 5px;
   border-radius:999px;
   background:#e23b4a;
   color:#fff;
-  font-size:.68rem;
+  font-size:.65rem;
   font-weight:800;
   display:flex;
   align-items:center;
@@ -330,16 +315,15 @@ body.naqa-open .admin-shell{
   line-height:1;
 }
 .side-main.on .side-badge{ background:#fff; color:#8d3048; }
-/* children never render inside the rail */
 .side-subs,.side-group{ display:none !important; }
 
-/* top search bar */
+/* Top bar */
 .top-bar{
   display:flex;
   align-items:center;
-  gap:10px;
-  padding:0 0 12px;
-  margin:0 0 12px;
+  gap:8px;
+  padding:0 0 10px;
+  margin:0 0 10px;
   border-bottom:1px solid var(--line);
 }
 .search-wrap{
@@ -350,14 +334,13 @@ body.naqa-open .admin-shell{
   border-radius:10px;
   overflow:hidden;
   background:#fff;
-  box-shadow:0 1px 3px rgba(0,0,0,.04);
 }
 .search-wrap input{
   flex:1;
   min-width:0;
   border:0;
-  padding:11px 14px;
-  font:600 .86rem/1.2 inherit;
+  padding:10px 12px;
+  font:600 .84rem/1.2 inherit;
   outline:0;
   background:#fff;
   color:var(--fg);
@@ -367,78 +350,80 @@ body.naqa-open .admin-shell{
   border-inline-start:1px solid var(--line);
   padding:0 8px;
   background:#fdf8f6;
-  font:700 .78rem inherit;
+  font:700 .76rem inherit;
   color:var(--fg);
-  max-width:108px;
+  max-width:100px;
 }
 .search-btn,.btn-add{
   border:0;
   background:#c46b7c;
   color:#fff;
-  font:800 .82rem inherit;
+  font:800 .8rem inherit;
   cursor:pointer;
 }
-.search-btn{ padding:0 14px; }
+.search-btn{ padding:0 12px; }
 .search-btn:hover,.btn-add:hover{ background:#8d3048; }
 .btn-add{
-  padding:11px 14px;
+  padding:10px 12px;
   border-radius:10px;
   white-space:nowrap;
-  box-shadow:0 2px 6px rgba(196,107,124,.3);
 }
 
-/* page children — Salla-style filters on the content, not under sidebar */
+/* Children: compact chips (NOT fat pills) */
 .page-sub-nav.page-sub-frame{
   display:flex;
   flex-wrap:nowrap;
-  gap:8px;
+  gap:6px;
   align-items:center;
-  justify-content:flex-start;
   overflow-x:auto;
   overflow-y:hidden;
   -webkit-overflow-scrolling:touch;
   scrollbar-width:thin;
-  padding:6px;
-  margin:0 0 14px;
+  padding:5px 6px;
+  margin:0 0 12px;
   background:#fff;
   border:1px solid #eadfd9;
-  border-radius:12px;
-  box-shadow:0 1px 2px rgba(28,18,22,.04);
+  border-radius:10px;
 }
 .page-sub-nav[hidden]{ display:none !important; }
 .page-chip{
   flex:0 0 auto;
-  border:1px solid #eadfd9;
-  background:#fff;
-  border-radius:999px;
-  padding:9px 14px;
-  font-weight:800;
-  font-size:.8rem;
+  border:1px solid #e5d6d1;
+  background:#faf6f4;
+  border-radius:8px; /* compact square-rounded, not giant pill */
+  padding:5px 9px;
+  font-weight:700;
+  font-size:.72rem;
+  line-height:1.25;
   cursor:pointer;
-  color:#2a211f;
+  color:#3a2c2a;
   display:inline-flex;
   align-items:center;
-  gap:8px;
+  gap:5px;
   white-space:nowrap;
-  box-shadow:0 1px 0 rgba(255,255,255,.8);
 }
-.page-chip:hover{ background:#fbf6f4; }
+.page-chip:hover{ background:#f3ebe8; }
 .page-chip.on{
   background:#8d3048;
   color:#fff;
   border-color:#8d3048;
-  box-shadow:0 6px 16px rgba(141,48,72,.22);
 }
 .page-chip .chip-dot{
-  width:7px;height:7px;border-radius:50%;background:#e4d4d8;flex:0 0 auto;
+  width:5px;height:5px;border-radius:50%;background:#d0bbb6;flex:0 0 auto;
 }
 .page-chip.on .chip-dot{ background:#fff; }
+.page-chip .chip-n{
+  opacity:.75;
+  font-weight:800;
+  font-size:.68rem;
+}
 .side-main:focus-visible,.page-chip:focus-visible{
   outline:2px solid #e7a0b0;
   outline-offset:2px;
 }
+body.naqa-open #ordersTools{ display:none !important; }
 
-/* phone: icon rail only, physical right */
+/* Phone: keep labels visible under icon (was display:none → "حروف فقط") */
 @media (max-width:860px){
   body.naqa-open .admin-shell{
     flex-direction:row;
@@ -448,97 +433,56 @@ body.naqa-open .admin-shell{
   }
   .side-nav{
     order:2;
-    width:72px;
-    flex:0 0 72px;
-    flex-direction:column;
-    overflow-x:hidden;
-    overflow-y:auto;
-    padding:10px 6px;
-    position:sticky;
-    top:0;
+    width:78px;
+    flex:0 0 78px;
+    padding:10px 5px 14px;
     max-height:calc(100dvh - 88px);
   }
-  .side-nav::before{ font-size:.72rem; padding:2px 0 8px; text-align:center; }
-  .side-main{
-    flex-direction:column;
-    gap:0;
-    padding:8px 4px;
-    font-size:.55rem;
+  .side-nav::before{
+    font-size:.68rem;
+    padding:0 0 8px;
     text-align:center;
   }
-  .side-lbl{ display:none; }
-  .side-ico{ width:34px; height:34px; flex-basis:34px; border-radius:10px; margin:0 auto; }
-  .side-badge{ position:absolute; top:2px; inset-inline-start:4px; margin:0; }
-  .admin-main{ padding:10px; }
-  .top-bar{ flex-wrap:wrap; gap:8px; }
+  .side-main{
+    flex-direction:column;
+    gap:3px;
+    padding:7px 3px;
+    text-align:center;
+  }
+  .side-lbl{
+    display:block !important; /* FIX: never hide parent labels */
+    font-size:.58rem;
+    font-weight:700;
+    line-height:1.15;
+    max-width:100%;
+    text-align:center;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+  }
+  .side-ico{
+    width:30px;
+    height:30px;
+    flex:0 0 30px;
+    border-radius:9px;
+    margin:0 auto;
+  }
+  .side-badge{
+    position:absolute;
+    top:1px;
+    inset-inline-start:2px;
+    margin:0;
+    min-width:15px;
+    height:15px;
+    font-size:.58rem;
+  }
+  .admin-main{ padding:10px 8px 20px; }
+  .top-bar{ flex-wrap:wrap; gap:6px; }
   .btn-add{ width:100%; }
-  .page-sub-nav.page-sub-frame{ margin-top:2px; }
+  .page-chip{ padding:4px 8px; font-size:.68rem; border-radius:7px; }
 }
-
 
 .pager{display:flex;gap:8px;align-items:center;justify-content:center;margin:14px 0 28px}
 .pager button{border:1px solid var(--line);background:#fff;border-radius:999px;padding:8px 14px;font-weight:800}
 .pager button:disabled{opacity:.4}
 .row.is-hidden{opacity:.55;outline:1px dashed #c9a7b0}
-
-/* White squircle icon (photo) — turns rose when the row is active */
-.side-main{
-  background:transparent !important;
-  box-shadow:none !important;
-  color:#e8dcd9;
-  gap:12px;
-  border-radius:10px;
-}
-.side-main:hover{ background:rgba(255,255,255,.05) !important; color:#fff; }
-.side-group.open > .side-main,
-.side-group.has-active-child > .side-main,
-.side-group.open.has-active-child > .side-main,
-.side-main.on{
-  background:transparent !important;
-  box-shadow:none !important;
-  color:#e8dcd9;
-}
-.side-ico{
-  width:34px;
-  height:34px;
-  flex:0 0 34px;
-  border-radius:10px;
-  background:#fff !important;
-  color:#2a2422;
-  box-shadow:0 2px 5px rgba(0,0,0,.15);
-  transition:background .2s ease, box-shadow .2s ease, color .2s ease;
-}
-.side-main.on .side-ico,
-.side-group.open > .side-main .side-ico{
-  background:#c46b7c !important;
-  color:#fff;
-  box-shadow:0 3px 8px rgba(196,107,124,.4);
-}
-.side-lbl{
-  color:#e8dcd9;
-  font-weight:600;
-  text-align:start;
-}
-.side-main.on .side-lbl,
-.side-group.open > .side-main .side-lbl{
-  color:#c46b7c;
-  font-weight:800;
-}
-.side-main.on .chev,
-.side-group.open > .side-main .chev{
-  color:#c46b7c;
-  transform:rotate(180deg);
-}
-@media (max-width:860px){
-  .side-ico{ width:34px; height:34px; flex-basis:34px; border-radius:10px; }
-  .side-main{ gap:6px; }
-}
-
-/* children live in the page, never inside the rail */
-.side-subs,.side-group{ display:none !important; }
-.side-nav{ padding:14px 10px 16px; gap:2px; }
-.side-main{ padding:7px 8px; gap:10px; }
-.side-lbl{ font-size:.78rem; }
-
-/* page chips replace the old status-bar filter row for orders */
-body.naqa-open #ordersTools{ display:none !important; }

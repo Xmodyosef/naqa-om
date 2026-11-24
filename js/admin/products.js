@@ -248,12 +248,31 @@
       var stockN = Number(m.stock);
       var stockCls = (m.stock !== "" && m.stock != null && stockN <= 0) ? ' style="color:#b05c6e;font-weight:800"' : (m.stock != null && m.stock !== "" && stockN <= 3 ? ' style="color:#c9a227;font-weight:800"' : "");
       var hid = m.hidden ? " · " + A.t("p_hidden") : "";
-      return '<article class="row' + (m.hidden ? ' is-hidden' : '') + '" data-open="' + p.id + '">' + thumb
-        + '<div><strong>' + A.esc(m.nameAr || m.nameEn) + '</strong>'
-        + '<small>' + A.esc(m.brand || "") + ' · ' + A.esc(m.cat || "") + ' · SKU ' + A.esc(m.sku || "—") + '</small>'
-        + '<small>' + A.t("p_price") + ' ' + A.esc(m.price) + ' ' + A.t("omr") + ' <span style="color:#9a7b72;font-size:11px">' + A.esc((A.taxLabel ? A.taxLabel(m) : (A.t('tax_vat5') || ''))) + '</span> · ' + A.t("p_stock") + ' <span' + stockCls + '>' + A.esc(stock) + '</span>' + hid + '</small></div>'
-        + '<button type="button" class="mini ghost" data-hide="' + p.id + '">' + (m.hidden ? A.t("p_show") : A.t("p_hide")) + '</button>'
-        + '<button type="button" class="edit-btn" data-open="' + p.id + '">' + A.t("p_edit") + '</button></article>';
+      var vol = m.vol || m.volume || m.size || m.unit || "";
+      var title = String(m.nameAr || m.nameEn || "").replace(/\s+/g, " ").trim();
+      var taxTxt = A.taxLabel ? A.taxLabel(m) : (A.t("tax_vat5") || "");
+      return '<article class="prod-card row' + (m.hidden ? " is-hidden" : "") + '" data-open="' + p.id + '">'
+        + '<div class="prod-thumb">' + thumb + '</div>'
+        + '<div class="prod-body">'
+        +   '<div class="prod-title">' + A.esc(title) + '</div>'
+        +   '<div class="prod-meta">'
+        +     (m.brand ? '<span>' + A.esc(m.brand) + '</span>' : '')
+        +     (m.cat ? '<span>' + A.esc(m.cat) + '</span>' : '')
+        +     (vol ? '<span>' + A.esc(vol) + '</span>' : '')
+        +     '<span>SKU ' + A.esc(m.sku || "—") + '</span>'
+        +   '</div>'
+        +   '<div class="prod-price-row">'
+        +     '<span class="prod-price">' + A.esc(m.price) + ' <small>' + A.t("omr") + '</small></span>'
+        +     (taxTxt ? '<span class="prod-tax">' + A.esc(taxTxt) + '</span>' : '')
+        +     '<span class="prod-stock"' + stockCls + '>' + A.t("p_stock") + ' ' + A.esc(stock) + '</span>'
+        +     (hid ? '<span class="prod-hid">' + A.esc(hid.replace(/^ · /, "")) + '</span>' : '')
+        +   '</div>'
+        + '</div>'
+        + '<div class="prod-actions">'
+        +   '<button type="button" class="mini ghost" data-hide="' + p.id + '">' + (m.hidden ? A.t("p_show") : A.t("p_hide")) + '</button>'
+        +   '<button type="button" class="edit-btn" data-open="' + p.id + '">' + A.t("p_edit") + '</button>'
+        + '</div>'
+        + '</article>';
     }).join("");
     var pager = "";
     if (matched.length) {

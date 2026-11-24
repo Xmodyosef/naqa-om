@@ -1,0 +1,23 @@
+{
+  "st_new": "New",
+  "st_prep": "Preparing",
+  "st_ship": "Out for delivery",
+  "st_delivered": "Delivered",
+  "st_cancel": "Cancelled",
+  "ordersStay": "Orders stayed on this device. They were not published.",
+  "payCod": "Cash on delivery · unpaid",
+  "payPending": "Bank transfer · awaiting confirmation",
+  "payConfirmed": "Transfer confirmed · fees removed",
+  "confirmPay": "Confirm payment",
+  "payLine": "Payment",
+  "o_copyAll": "Copy all orders",
+  "o_copyNew": "Copy new only",
+  "o_waSum": "WhatsApp summary",
+  "o_empty": "No orders yet. Place a store order on this device so it saves here automatically.",
+  "o_emptyFilter": "No orders in this status.",
+  "o_sub": "Subtotal",
+  "o_vatLine": "incl. 5%",
+  "o_tab": "Orders",
+  "o_lead": "Statuses: New · Preparing · Out for delivery · Delivered · Cancelled",
+  "o_waOpen": "Open orders WhatsApp"
+}

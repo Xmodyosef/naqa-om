@@ -62,17 +62,37 @@ function paint(order){
     +'<p><b>الاسم:</b> '+esc(order.name)+'<br><b>الجوال:</b> '+esc(order.phone)+'<br><b>الولاية:</b> '+esc(order.area)+'<br><b>ملاحظة:</b> '+esc(order.note||"—")+'</p>'
     +'<p><b>المجموع:</b> '+(Number(order.total||0).toFixed(3))+' ر.ع</p>'
     +items
+    +'<p class="muted">هذا الجوال فقط. جوال ثاني ما يشوف الطلب إلا إذا فتحتِ الرابط فيه.</p>'
+    +'<p class="ok" id="msg"></p>'
     +'<button class="btn" type="button" id="saveBtn">احفظي الطلب في لوحة التحكم</button>'
-    +'<a class="btn ghost" href="admin.html#orders">فتح الطلبات</a>'
-    +'<p class="ok" id="msg"></p></div>';
-  document.getElementById("saveBtn").onclick=function(){
+    +'</div>';
+  function saveHere(){
     var all=[];
     try{ all=JSON.parse(localStorage.getItem("naqa_orders")||"[]"); if(!Array.isArray(all)) all=[]; }catch(e){ all=[]; }
-    all=all.filter(function(o){ return o && o.id!==order.id; });
+    all=all.filter(function(x){ return x && x.id!==order.id; });
     all.unshift(order);
     localStorage.setItem("naqa_orders", JSON.stringify(all.slice(0,300)));
-    document.getElementById("msg").textContent="انحفظ في الطلبات على هذا الجهاز.";
-  };
+  }
+  var saved=false;
+  try { saveHere(); saved=true; } catch (e) { saved=false; }
+  var msg=document.getElementById("msg");
+  var btn=document.getElementById("saveBtn");
+  function goAdmin(){ location.href="admin.html#orders"; }
+  if(saved){
+    if(msg) msg.textContent="انحفظ في الطلبات على هذا الجوال. افتحي اللوحة من نفس الجوال.";
+    if(btn){ btn.textContent="فتح الطلبات في اللوحة"; btn.onclick=goAdmin; }
+  } else if(btn){
+    btn.onclick=function(){
+      try {
+        saveHere();
+        if(msg) msg.textContent="انحفظ في الطلبات على هذا الجوال. افتحي اللوحة من نفس الجوال.";
+        btn.textContent="فتح الطلبات في اللوحة";
+        btn.onclick=goAdmin;
+      } catch (e) {
+        if(msg) msg.textContent="ما قدرنا نحفظ على هذا الجوال.";
+      }
+    };
+  }
 }
 paint(loadOrder());
 </script>

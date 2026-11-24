@@ -326,8 +326,8 @@ function sendCheckout(){
   })();
   const saveLine = saveLink
     ? (lang==="en"
-      ? ("\n\nSeller: open this link on your phone to save the order in admin:\n"+saveLink)
-      : ("\n\nللبائعة: افتحي الرابط على جوالك لحفظ الطلب في اللوحة:\n"+saveLink))
+      ? ("\n\nOpen this link on the admin phone. The order saves itself:\n"+saveLink)
+      : ("\n\nافتحي الرابط من جوال اللوحة. الطلب ينحفظ لوحده:\n"+saveLink))
     : "";
   const msg = lang==="en"
     ? ("Hello, I want to order from Naqa:\nOrder: "+orderNo+"\nName: "+name+"\nPhone: "+phone+"\nArea: "+gov+"\nPayment: "+payLabel+bankBlock+"\nNote: "+note+"\n\n"+lines+"\n\nSubtotal: "+money(sub)+"\n"+delLine+"\n"+codLine+"\nTotal (incl. 5% VAT): "+money(grand)+"\nOf which VAT 5%: "+money(typeof vatOf==="function"?vatOf(grand):0)+(pay==="transfer"?("\nI will pay then send proof."):"")+saveLine)

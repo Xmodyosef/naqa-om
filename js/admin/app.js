@@ -98,6 +98,7 @@
       A.setLockInfo(fails, until);
     }
     if (!hashHave && !plain) {
+      if (!confirm(A.t("pinFirst"))) { msg.textContent = A.t("pinFirstNo"); return; }
       A.hashPin(typed).then(function (h) {
         localStorage.setItem(A.PIN_HASH, h);
         localStorage.removeItem(A.PIN);

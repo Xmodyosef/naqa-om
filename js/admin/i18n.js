@@ -11,7 +11,11 @@
       tab_customers: "العملاء",
       tab_finance: "المالية",
       tab_settings: "الإعدادات",
-      pinLead: "رمز الدخول مشفّر على هذا الجهاز. بعد ٥ محاولات خاطئة يُقفل ١٥ دقيقة. الجلسة تنتهي بعد ٣٠ دقيقة سكون.",
+      pinLead: "هذا الرمز لهذا الجوال فقط. جوال ثاني ما يفتح اللوحة إلا إذا سجّلتي الرمز فيه. بعد ٥ محاولات خاطئة يُقفل ١٥ دقيقة.",
+      pinFirstLead: "هذا الرمز لهذا الجوال فقط. جوال ثاني ما يفتح اللوحة إلا إذا سجّلتي الرمز فيه.",
+      pinFirstBtn: "حفظ الرمز",
+      pinFirst: "هذا الرمز لهذا الجوال فقط.\nجوال ثاني ما يفتح اللوحة حتى لو نفس الأرقام، إلا إذا سجّلتي الرمز فيه.\n\nأحفظ الرمز؟",
+      pinFirstNo: "ما انحفظ.",
       pinNote: "بعد الدخول: رئيسية · طلبات · منتجات · تقييمات · عملاء · مالية · إعدادات.",
       pinPh: "٤ أرقام أو أكثر",
       pinGo: "دخول",
@@ -228,7 +232,11 @@
       tab_customers: "Customers",
       tab_finance: "Finance",
       tab_settings: "Settings",
-      pinLead: "The entry code is hashed on this device. After 5 wrong tries it locks for 15 minutes. The session ends after 30 minutes idle.",
+      pinLead: "This code is for this phone only. Another phone will not open the panel unless you set the code on it too. After 5 wrong tries it locks for 15 minutes.",
+      pinFirstLead: "This code is for this phone only. Another phone will not open the panel unless you set the code on it too.",
+      pinFirstBtn: "Save code",
+      pinFirst: "This code is for this phone only.\nAnother phone will not open the panel with the same digits unless you set the code there too.\n\nSave the code?",
+      pinFirstNo: "Not saved.",
       pinNote: "After entry: Home · Orders · Products · Reviews · Customers · Finance · Settings.",
       pinPh: "4 digits or more",
       pinGo: "Enter",
@@ -552,14 +560,15 @@
       if (k) b.textContent = A.t("tab_" + k);
     });
     if (A.syncOrdersTab) A.syncOrdersTab();
+    var pinFirst = !localStorage.getItem(A.PIN_HASH) && !localStorage.getItem(A.PIN);
     var lead = document.getElementById("pinLead");
-    if (lead) lead.textContent = A.t("pinLead");
+    if (lead) lead.textContent = pinFirst ? A.t("pinFirstLead") : A.t("pinLead");
     var note = document.getElementById("pinNote");
     if (note) note.textContent = A.t("pinNote");
     var pinInput = document.getElementById("pinInput");
     if (pinInput) pinInput.placeholder = A.t("pinPh");
     var pinGo = document.getElementById("pinGo");
-    if (pinGo) pinGo.textContent = A.t("pinGo");
+    if (pinGo) pinGo.textContent = pinFirst ? A.t("pinFirstBtn") : A.t("pinGo");
     var save = document.getElementById("saveLocal");
     if (save) save.textContent = A.t("saveLocal");
     var pub = document.getElementById("publish");

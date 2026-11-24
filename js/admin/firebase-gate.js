@@ -1,4 +1,45 @@
 (function (w) {
+
+  /** Keep password managers mapping: email → username, pass → current-password */
+  function naqaFixLoginFields() {
+    var email = $("fbEmail");
+    var pass = $("fbPass");
+    if (email) {
+      try {
+        email.type = "email";
+        email.name = "email";
+        email.setAttribute("autocomplete", "username");
+        email.setAttribute("inputmode", "email");
+        email.setAttribute("autocapitalize", "off");
+        email.setAttribute("autocorrect", "off");
+        email.setAttribute("spellcheck", "false");
+        /* stop managers dumping password into email on first paint */
+        if (!email.dataset.roBound) {
+          email.dataset.roBound = "1";
+          email.setAttribute("readonly", "readonly");
+          var unlock = function () {
+            email.removeAttribute("readonly");
+            email.removeEventListener("focus", unlock);
+            email.removeEventListener("touchstart", unlock);
+          };
+          email.addEventListener("focus", unlock);
+          email.addEventListener("touchstart", unlock, { passive: true });
+          setTimeout(function () {
+            try { email.removeAttribute("readonly"); } catch (e) {}
+          }, 800);
+        }
+      } catch (e) {}
+    }
+    if (pass) {
+      try {
+        pass.type = "password";
+        pass.name = "password";
+        pass.setAttribute("autocomplete", "current-password");
+        pass.setAttribute("autocapitalize", "off");
+      } catch (e) {}
+    }
+  }
+
   "use strict";
   var A = w.NaqaAdmin = w.NaqaAdmin || {};
   A.fbUser = null;
@@ -381,4 +422,13 @@
   } else {
     setTimeout(A.fbBoot, 20);
   }
+
+  try {
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", function () { try { naqaFixLoginFields(); } catch (e) {} });
+    } else {
+      naqaFixLoginFields();
+    }
+  } catch (e) {}
+  /* login-field-fix */
 })(window);

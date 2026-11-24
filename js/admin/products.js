@@ -16,6 +16,19 @@
     return A.editingId != null;
   };
 
+  A.taxLabel = function (m) {
+    m = m || {};
+    var mode = m.taxMode || "vat5";
+    if (mode === "exempt") return A.t("tax_exempt") || "معفى من الضريبة";
+    if (mode === "custom") {
+      var r = Number(m.taxCustom);
+      if (!isFinite(r) || r < 0) r = 0;
+      return (A.t("tax_custom") || "نسبة أخرى") + " " + r + "%";
+    }
+    return A.t("tax_vat5") || "ضريبة ٥٪";
+  };
+
+
   /** Close product edit → list. fromPop=true when browser back/swipe. */
   A.closeEdit = function (fromPop) {
     var editView = document.getElementById("editView");
@@ -227,7 +240,7 @@
       return '<article class="row" data-open="' + p.id + '">' + thumb
         + '<div><strong>' + A.esc(m.nameAr || m.nameEn) + '</strong>'
         + '<small>' + A.esc(m.brand || "") + ' · ' + A.esc(m.cat || "") + ' · SKU ' + A.esc(m.sku || "—") + '</small>'
-        + '<small>' + A.t("p_price") + ' ' + A.esc(m.price) + ' ' + A.t("omr") + ' <span style="color:#9a7b72;font-size:11px">' + A.esc(A.taxLabel(m)) + '</span> · ' + A.t("p_stock") + ' <span' + stockCls + '>' + A.esc(stock) + '</span>' + hid + '</small></div>'
+        + '<small>' + A.t("p_price") + ' ' + A.esc(m.price) + ' ' + A.t("omr") + ' <span style="color:#9a7b72;font-size:11px">' + A.esc((A.taxLabel ? A.taxLabel(m) : (A.t('tax_vat5') || ''))) + '</span> · ' + A.t("p_stock") + ' <span' + stockCls + '>' + A.esc(stock) + '</span>' + hid + '</small></div>'
         + '<button type="button" class="mini ghost" data-hide="' + p.id + '">' + (m.hidden ? A.t("p_show") : A.t("p_hide")) + '</button>'
         + '<button type="button" class="edit-btn" data-open="' + p.id + '">' + A.t("p_edit") + '</button></article>';
     }).join("");

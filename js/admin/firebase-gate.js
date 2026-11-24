@@ -77,11 +77,9 @@
     });
   }
   function adminContinueUrl() {
-    try {
-      return location.origin + (location.pathname || "/").replace(/[^/]+$/, "") + "admin.html";
-    } catch (e) {
-      return "https://xmodyosef.github.io/naqa-om/admin.html";
-    }
+    /* Always use the Firebase project domain — github.io is often missing from Authorized domains
+       and causes auth/unauthorized-continue-uri on password reset. */
+    return "https://naqa-om.firebaseapp.com";
   }
   function setPending(on) {
     try {
@@ -166,7 +164,9 @@
     if (code === "auth/popup-blocked") return t("fb_popup", "");
     if (code === "auth/popup-closed-by-user" || code === "auth/cancelled-popup-request") return t("fb_popupClosed", "");
     if (code === "auth/operation-not-allowed") return t("fb_providerOff", "");
-    if (code === "auth/unauthorized-domain" || code === "auth/unauthorized-continue-uri") return t("fb_domain", "");
+    if (code === "auth/unauthorized-domain" || code === "auth/unauthorized-continue-uri" || code === "auth/invalid-continue-uri") {
+      return t("fb_domain", "أضيفي xmodyosef.github.io في Firebase → Authentication → Settings → Authorized domains، ثم أعدي المحاولة.");
+    }
     if (code === "auth/user-not-found") {
       return context === "reset" ? t("fb_resetNoUser", "") : t("fb_badOrCreate", "");
     }
@@ -372,8 +372,20 @@
         setMsg(t("fb_waitReset", ""));
         allowedEmail(email).then(function (ok) {
         if (!ok) { setMsg(t("fb_notAllowed", "")); setBusy(false); return; }
-        /* no continue URL: github.io is not an authorized domain, and that blocks the email */
-        firebase.auth().sendPasswordResetEmail(email).then(function () {
+        function sendReset(withUrl) {
+          var p = withUrl
+            ? firebase.auth().sendPasswordResetEmail(email, { url: adminContinueUrl(), handleCodeInApp: false })
+            : firebase.auth().sendPasswordResetEmail(email);
+          return p;
+        }
+        /* 1) authorized firebaseapp continue URL  2) fallback without continue URL */
+        sendReset(true).catch(function (err1) {
+          var c = (err1 && err1.code) || "";
+          if (c === "auth/unauthorized-continue-uri" || c === "auth/invalid-continue-uri") {
+            return sendReset(false);
+          }
+          throw err1;
+        }).then(function () {
           setMsg(t("fb_resetSent", ""));
         }).catch(function (err) {
           setMsg(mapAuthError(err, "reset"));

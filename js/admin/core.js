@@ -1,4 +1,4 @@
-/* Shared state + helpers for Naqa admin (Zid/Salla/Shopify-style modules) */
+/* Shared state + helpers for Naqa admin modules */
 (function (w) {
   var A = w.NaqaAdmin = w.NaqaAdmin || {};
   A.products = (w.NAQA_PRODUCTS || []).map(function (p) { return Object.assign({ imgs: [] }, p); });
@@ -84,7 +84,7 @@
   };
   A.copyText = function (text, msgId) {
     text = String(text || "");
-    function ok() { A.setMsg(msgId || "orderStatus", A.t("c_copied")); }
+    function ok() { A.setMsg(msgId || "orderStatus", "تم النسخ ✓"); }
     function fail() {
       try {
         var ta = document.createElement("textarea");
@@ -97,8 +97,8 @@
         document.body.removeChild(ta);
         ok();
       } catch (e) {
-        A.setMsg(msgId || "orderStatus", A.t("c_copyFail"));
-        prompt(A.t("c_copyPrompt"), text.slice(0, 1500));
+        A.setMsg(msgId || "orderStatus", "ما قدرنا ننسخ — حدّدي النص يدوياً");
+        prompt("انسخي من هنا:", text.slice(0, 1500));
       }
     }
     if (navigator.clipboard && navigator.clipboard.writeText) {
@@ -106,25 +106,25 @@
     } else fail();
   };
   A.buildOrdersReport = function (filter) {
-    var lines = [A.t("rep_title"), "—"];
+    var lines = ["نقاء — تقرير الطلبات", "—"];
     var list = A.orders.filter(function (o) {
       if (!filter || filter === "all") return true;
       if (filter === "new") return A.normalizeStatus(o.status) === "new";
       return A.normalizeStatus(o.status) === filter;
     });
-    if (!list.length) return A.t("rep_empty");
+    if (!list.length) return "ما في طلبات.";
     list.forEach(function (o, i) {
       var st = A.statusLabel(A.normalizeStatus(o.status)) || o.status;
       lines.push((i + 1) + ") " + (o.id || "") + " · " + st);
       lines.push("   " + (o.name || "—") + " · " + (o.phone || "—") + " · " + (o.area || "—"));
-      lines.push("   " + A.t("rep_total") + ": " + (o.total != null ? Number(o.total).toFixed(3) : "—") + " " + A.t("rep_vat"));
+      lines.push("   المجموع: " + (o.total != null ? Number(o.total).toFixed(3) : "—") + " ر.ع (شامل الضريبة ٥٪)");
       var vatN = o.vat != null ? Number(o.vat) : (o.total != null ? Number(o.total) * 0.05 / 1.05 : null);
-      if (vatN != null && !isNaN(vatN)) lines.push("   " + A.t("rep_vatOf") + ": " + vatN.toFixed(3) + " " + A.t("omr"));
+      if (vatN != null && !isNaN(vatN)) lines.push("   منها ضريبة ٥٪: " + vatN.toFixed(3) + " ر.ع");
       lines.push("   " + A.t("payLine") + ": " + A.payText(o));
       if (o.delivery != null || o.codFee != null || o.shipping != null) {
-        lines.push("   " + A.t("rep_fees") + " " + Number(o.delivery != null ? o.delivery : 0).toFixed(3)
-          + " · " + A.t("rep_cod") + " " + Number(o.codFee != null ? o.codFee : 0).toFixed(3)
-          + " · " + A.t("rep_netFee") + " " + Number(o.shipping != null ? o.shipping : 0).toFixed(3) + " " + A.t("omr"));
+        lines.push("   رسوم: توصيل " + Number(o.delivery != null ? o.delivery : 0).toFixed(3)
+          + " · استلام " + Number(o.codFee != null ? o.codFee : 0).toFixed(3)
+          + " · صافي رسوم " + Number(o.shipping != null ? o.shipping : 0).toFixed(3) + " ر.ع");
       }
       if (Array.isArray(o.items) && o.items.length) {
         o.items.forEach(function (it) {
@@ -133,7 +133,7 @@
       } else if (o.itemsText) lines.push("   " + o.itemsText);
       lines.push("");
     });
-    lines.push(A.t("rep_count") + ": " + list.length + " " + A.t("rep_orderUnit"));
+    lines.push("الإجمالي المسجّل: " + list.length + " طلب");
     return lines.join("\n");
   };
   A.buildCustomersReport = function () {
@@ -146,14 +146,14 @@
       map[key].total += Number(o.total) || 0;
     });
     var list = Object.keys(map).map(function (k) { return map[k]; }).sort(function (a, b) { return b.total - a.total; });
-    var lines = [A.t("rep_custTitle"), "—"];
-    if (!list.length) return A.t("rep_custEmpty");
+    var lines = ["نقاء — قائمة العملاء", "—"];
+    if (!list.length) return "ما في عملاء.";
     list.forEach(function (c, i) {
       lines.push((i + 1) + ") " + c.name + " · " + c.phone + " · " + c.area);
-      lines.push("   " + c.count + " " + A.t("rep_custLine") + " · " + c.total.toFixed(3) + " " + A.t("omr"));
+      lines.push("   " + c.count + " طلب · " + c.total.toFixed(3) + " ر.ع");
     });
     lines.push("");
-    lines.push(A.t("rep_custCount") + ": " + list.length);
+    lines.push("العدد: " + list.length);
     return lines.join("\n");
   };
   A.buildFinanceReport = function () {
@@ -166,16 +166,15 @@
       sales += Number(o.total) || 0;
       if (bySt[st] != null) bySt[st]++;
     });
-    var loc = A.lang === "en" ? "en-OM" : "ar-OM";
     return [
-      A.t("rep_finTitle"),
+      "نقاء — تقرير مالية",
       "—",
-      A.t("rep_finSales") + ": " + sales.toFixed(3) + " " + A.t("omr"),
-      A.t("rep_finActive") + ": " + count,
-      A.t("rep_finAvg") + ": " + (count ? (sales / count).toFixed(3) : "0.000") + " " + A.t("omr"),
-      A.t("rep_finNew") + ": " + bySt.new + " · " + A.t("rep_finPrep") + ": " + bySt.prep + " · " + A.t("rep_finShip") + ": " + bySt.ship + " · " + A.t("rep_finDone") + ": " + bySt.delivered,
-      A.t("rep_finCancel") + ": " + cancel,
-      A.t("rep_finDate") + ": " + new Date().toLocaleString(loc)
+      "مبيعات (بدون ملغي): " + sales.toFixed(3) + " ر.ع",
+      "طلبات فعّالة: " + count,
+      "متوسط الطلب: " + (count ? (sales / count).toFixed(3) : "0.000") + " ر.ع",
+      "جديد: " + bySt.new + " · تجهيز: " + bySt.prep + " · توصيل: " + bySt.ship + " · تم: " + bySt.delivered,
+      "ملغي: " + cancel,
+      "تاريخ التقرير: " + new Date().toLocaleString("ar-OM")
     ].join("\n");
   };
   A.waShareText = function (text) {

@@ -201,8 +201,13 @@ body.naqa-open .admin-shell{
   display:flex;
   flex-direction:row;
   align-items:stretch;
-  gap:12px;
+  gap:0;
   min-height:calc(100dvh - 120px);
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:18px;
+  overflow:hidden;
+  box-shadow:0 8px 28px rgba(31,26,23,.06);
 }
 /* Parent rail ≈ 2cm (76–80px) on the RTL start (right) */
 .side-nav{
@@ -216,13 +221,15 @@ body.naqa-open .admin-shell{
   overflow-y:auto;
   overflow-x:hidden;
   background:#fff;
-  border:1px solid var(--line);
-  border-radius:18px;
+  border:0;
+  border-inline-start:1px solid var(--line);
+  border-radius:0;
   padding:8px 6px;
   display:flex;
   flex-direction:column;
+  align-items:center;
   gap:4px;
-  box-shadow:0 8px 24px rgba(31,26,23,.06);
+  box-shadow:none;
 }
 .side-main{
   position:relative;
@@ -271,9 +278,9 @@ body.naqa-open .admin-shell{
 }
 .side-lbl{
   max-width:100%;
-  overflow:hidden;
-  text-overflow:ellipsis;
-  white-space:nowrap;
+  text-align:center;
+  word-break:break-word;
+  line-height:1.15;
   padding:0 1px;
 }
 .side-badge{
@@ -302,6 +309,7 @@ body.naqa-open .admin-shell{
   flex:1;
   min-width:0;
   background:var(--bg);
+  padding:14px;
 }
 
 /* Children: mode 7 H-scroll + mode 20 frame + active dots */
@@ -314,12 +322,12 @@ body.naqa-open .admin-shell{
   overflow-y:hidden;
   -webkit-overflow-scrolling:touch;
   scrollbar-width:thin;
-  padding:10px 12px;
-  margin:0 0 14px;
-  background:#fff;
-  border:1px solid var(--line);
-  border-radius:14px;
-  box-shadow:0 2px 10px rgba(31,26,23,.04);
+  padding:0 0 8px;
+  margin:0 0 12px;
+  background:transparent;
+  border:0;
+  border-radius:0;
+  box-shadow:none;
 }
 .page-sub-nav[hidden]{ display:none !important; }
 .page-chip{

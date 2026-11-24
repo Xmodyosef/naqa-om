@@ -37,3 +37,15 @@ node scripts/merge-json.js --lang en --out js/admin/i18n/dict-en.js js/admin/i18
 ## ما انقسم
 
 كتالوج المنتجات (حوالي ٢٦٠ ك.ب) يبقى ملفاً واحداً لأن البحث والعرض يحتاجان كل المنتجات. تقسيمه يزيد الطلبات وما يسرّع أول فتح.
+
+
+## ضغط الصور
+
+الصور الحالية حوالي ٥٦٠ بكسل بصيغة WebP. إعادة ضغطها توفر غالباً أقل من ١٠٪.
+
+```
+node scripts/compress-images.js media/products
+node scripts/compress-images.js media/products --write --max 800 --quality 75 --min-save 8
+```
+
+التشغيل الأول يعرض التوفير فقط. `--write` يستبدل الملف إذا صار أصغر بالنسبة المطلوبة. صور الكتالوج داخل `data/products.min.js` مسارات، مو صور، فالضغط ما ينقص ملف الكتالوج نفسه.

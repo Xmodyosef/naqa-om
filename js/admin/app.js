@@ -82,12 +82,27 @@
 
   A.syncNav = function () {
     var tab = A.currentTab || "home";
+    var sub = A.currentSub || "";
     document.querySelectorAll("#sideNav .side-main").forEach(function (b) {
       var bt = b.getAttribute("data-tab");
-      var on = bt === tab;
+      var grouped = !!b.closest(".side-group");
+      var on = bt === tab && !grouped;
       b.classList.toggle("on", on);
       if (on) b.setAttribute("aria-current", "page");
       else b.removeAttribute("aria-current");
+      if (grouped) b.setAttribute("aria-expanded", bt === tab ? "true" : "false");
+    });
+    document.querySelectorAll("#sideNav .side-group").forEach(function (g) {
+      var gt = g.getAttribute("data-group");
+      var open = gt === tab;
+      g.classList.toggle("open", open);
+      g.querySelectorAll(".side-sub").forEach(function (s) {
+        var on = open && s.getAttribute("data-sub") === (sub || A.defaultSub(gt));
+        s.classList.toggle("on", on);
+        if (on) s.setAttribute("aria-current", "page");
+        else s.removeAttribute("aria-current");
+      });
+      g.classList.toggle("has-active-child", !!g.querySelector(".side-sub.on"));
     });
     A.fillPageSubNav();
     if (A.updateOrdersBadge) A.updateOrdersBadge();
@@ -251,6 +266,16 @@
 
   var sideNav = document.getElementById("sideNav");
   if (sideNav) sideNav.addEventListener("click", function (e) {
+    var subBtn = e.target.closest(".side-sub[data-sub]");
+    if (subBtn) {
+      var tabS = subBtn.getAttribute("data-tab");
+      var subS = subBtn.getAttribute("data-sub");
+      if (tabS === "products" && A.editingId != null && A.closeEdit) A.closeEdit(true);
+      var sameS = tabS === A.currentTab && subS === A.currentSub;
+      if (tabS === "products" && subS !== A.productView) A.productPage = 1;
+      A.go(tabS, subS, { push: !sameS, page: tabS === "products" ? A.productPage : undefined });
+      return;
+    }
     var b = e.target.closest(".side-main[data-tab]");
     if (!b) return;
     var tab = b.getAttribute("data-tab");
@@ -262,6 +287,44 @@
     if (tab === "products") A.productPage = 1;
     A.go(tab, sub, { push: !same, page: 1 });
   });
+
+  A.addProduct = function () {
+    A.go("products", A.productView || "all", { push: true });
+    var q = document.getElementById("q");
+    if (q) {
+      q.focus();
+      try { q.scrollIntoView({ block: "nearest" }); } catch (e) {}
+    }
+  };
+
+  A.runGlobalSearch = function () {
+    var input = document.getElementById("globalSearch");
+    var scope = document.getElementById("searchScope");
+    var q = input ? input.value.trim() : "";
+    var which = scope ? scope.value : "orders";
+    if (which === "products") {
+      A.orderQuery = "";
+      var box = document.getElementById("q");
+      if (box) box.value = q;
+      A.productPage = 1;
+      A.go("products", A.productView || "all", { push: true, page: 1 });
+      if (A.paintList) A.paintList(q);
+      return;
+    }
+    A.orderQuery = q;
+    A.go("orders", A.orderFilter || A.currentSub || "all", { push: true });
+    if (A.paintOrders) A.paintOrders();
+  };
+
+  var gBtn = document.getElementById("globalSearchBtn");
+  var gInput = document.getElementById("globalSearch");
+  var addBtn = document.getElementById("addProductBtn");
+  if (gBtn) gBtn.addEventListener("click", function () { A.runGlobalSearch(); });
+  if (gInput) gInput.addEventListener("keydown", function (e) {
+    if (e.key === "Enter") { e.preventDefault(); A.runGlobalSearch(); }
+  });
+  if (addBtn) addBtn.addEventListener("click", function () { A.addProduct(); });
+
 
   var pageSub = document.getElementById("pageSubNav");
   if (pageSub) pageSub.addEventListener("click", function (e) {

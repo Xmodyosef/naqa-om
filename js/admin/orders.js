@@ -51,7 +51,12 @@
     if (!box) return;
     var list = A.orders.filter(function (o) {
       if (!A.inDateRange(o.at)) return false;
-      return A.orderFilter === "all" || A.normalizeStatus(o.status) === A.orderFilter;
+      if (!(A.orderFilter === "all" || A.normalizeStatus(o.status) === A.orderFilter)) return false;
+      var q = String(A.orderQuery || "").trim().toLowerCase();
+      if (!q) return true;
+      var bits = [o.id, o.name, o.phone, o.city, o.area, o.address, o.note];
+      (o.items || []).forEach(function (it) { bits.push(it.name, it.nameAr, it.sku); });
+      return bits.join(" ").toLowerCase().indexOf(q) >= 0;
     });
     if (!A.orders.length) {
       box.innerHTML = '<p class="note">' + A.t("o_empty") + '</p>';

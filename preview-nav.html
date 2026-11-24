@@ -4,24 +4,316 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="robots" content="noindex" />
-<title>اختاري شكل التنقل · نقاء</title>
+<title>٢٠ شكل · أب ٢سم يمين + أبناء في الصفحة</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@400;600;700;800&display=swap" rel="stylesheet" />
 <style>
+:root{
+  --bg:#fdf8f6; --card:#fff; --fg:#1f1a17; --muted:#6b625c;
+  --line:#efe4df; --rose:#8d3048; --soft:#f7e8ec;
+  --rail:78px; /* ≈ 2cm */
+}
 *{box-sizing:border-box;margin:0}
-body{font-family:"Noto Kufi Arabic",system-ui,Tahoma,sans-serif;background:#fdf8f6;color:#1f1a17;padding:28px 16px;max-width:520px;margin:0 auto}
-h1{font-size:1.3rem;margin-bottom:8px}
-p{color:#6b625c;line-height:1.6;margin-bottom:18px}
-a.big{display:block;background:#8d3048;color:#fff;text-align:center;padding:16px;border-radius:16px;font-weight:800;text-decoration:none;margin-bottom:12px}
-a.sec{display:block;background:#fff;border:1px solid #efe4df;color:#1f1a17;text-align:center;padding:12px;border-radius:14px;font-weight:700;text-decoration:none;margin-bottom:8px}
+body{font-family:"Noto Kufi Arabic",system-ui,Tahoma,sans-serif;background:var(--bg);color:var(--fg);min-height:100dvh}
+.pick{background:#1f1a17;color:#fff;padding:14px 16px 16px}
+.pick h1{font-size:1.05rem;margin:0 0 6px}
+.pick p{font-size:.8rem;opacity:.88;line-height:1.55;margin:0 0 12px;max-width:52rem}
+.nums{display:grid;grid-template-columns:repeat(auto-fill,minmax(52px,1fr));gap:6px;max-width:1100px}
+.nums button{border:1px solid #3a3330;background:#2a2421;color:#fff;border-radius:10px;padding:10px 4px;font:800 .85rem inherit;cursor:pointer}
+.nums button.on{background:var(--rose);border-color:var(--rose)}
+.wrap{max-width:1100px;margin:0 auto;padding:12px 12px 48px}
+.meta{display:flex;flex-wrap:wrap;gap:8px;justify-content:space-between;align-items:center;margin:8px 0 10px}
+.meta b{font-size:.95rem}
+.meta a{color:var(--rose);font-weight:700;font-size:.85rem;text-decoration:none}
+.rule{font-size:.78rem;color:var(--muted);margin:0 0 10px;line-height:1.5}
+.stage{background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;min-height:540px;box-shadow:0 8px 28px rgba(31,26,23,.06);display:flex;flex-direction:column}
+.top{padding:10px 14px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
+.top strong{font-size:.92rem}
+.body{display:flex;flex:1;min-height:480px;position:relative}
+/* PARENT RAIL — always ~2cm on the right (RTL start) */
+.rail{
+  width:var(--rail);flex:0 0 var(--rail);
+  background:#fff;border-inline-start:1px solid var(--line);
+  display:flex;flex-direction:column;align-items:center;gap:4px;
+  padding:8px 6px;position:relative;
+}
+.rail .p{
+  width:100%;border:0;background:transparent;border-radius:12px;
+  padding:10px 4px;cursor:pointer;color:var(--fg);
+  display:flex;flex-direction:column;align-items:center;gap:4px;
+  font:800 .62rem/1.15 inherit;
+}
+.rail .p .ico{
+  width:28px;height:28px;border-radius:9px;background:var(--soft);color:var(--rose);
+  display:flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:800;
+}
+.rail .p.on{background:var(--rose);color:#fff}
+.rail .p.on .ico{background:rgba(255,255,255,.2);color:#fff}
+.rail .p .lbl{text-align:center;max-width:100%;word-break:break-word}
+.rail .badge{
+  position:absolute;top:2px;inset-inline-start:2px;
+  background:var(--rose);color:#fff;font-size:.55rem;font-weight:800;
+  min-width:14px;height:14px;border-radius:999px;display:flex;align-items:center;justify-content:center;
+  padding:0 3px;
+}
+.rail .p{position:relative}
+.page{flex:1;min-width:0;padding:14px;background:var(--bg);display:flex;flex-direction:column;gap:10px}
+.crumb{font-size:.72rem;color:var(--muted)}
+.h{font-size:1.15rem;font-weight:800}
+/* children regions — variants change these */
+.kids{display:flex;flex-wrap:wrap;gap:8px}
+.kid{
+  border:1px solid var(--line);background:#fff;border-radius:999px;
+  padding:9px 14px;font:800 .8rem inherit;cursor:pointer;color:var(--fg);
+}
+.kid.on{background:var(--rose);color:#fff;border-color:var(--rose)}
+.cards .card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px;margin-bottom:8px}
+.card strong{display:block;font-size:.88rem}
+.card small{color:var(--muted);font-size:.75rem}
+.hint{margin-top:12px;font-size:.8rem;color:var(--muted);line-height:1.55}
+
+/* —— 20 child-area skins (parents always 2cm rail) —— */
+.V1 .kids{gap:8px}
+.V2 .kids{gap:6px}
+.V2 .kid{border-radius:12px;padding:12px 16px;min-width:88px;text-align:center}
+.V3 .kids{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:8px}
+.V3 .kid{border-radius:14px;padding:16px 10px;text-align:center}
+.V4 .kids{flex-direction:column;align-items:stretch;max-width:220px}
+.V4 .kid{border-radius:12px;text-align:right}
+.V5 .kids{border-bottom:1px solid var(--line);padding-bottom:10px;margin-bottom:4px}
+.V5 .kid{background:transparent;border:0;border-radius:0;border-bottom:3px solid transparent;padding:10px 12px}
+.V5 .kid.on{background:transparent;color:var(--rose);border-bottom-color:var(--rose)}
+.V6 .kids{background:#fff;border:1px solid var(--line);border-radius:14px;padding:6px;gap:4px}
+.V7 .kids{overflow-x:auto;flex-wrap:nowrap;padding-bottom:4px}
+.V7 .kid{flex:0 0 auto}
+.V8 .page{padding-top:0}
+.V8 .kids{
+  position:sticky;top:0;z-index:2;background:#fff;border-bottom:1px solid var(--line);
+  margin:0 -14px;padding:10px 14px;border-radius:0;
+}
+.V9 .kids{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.V9 .kid{border-radius:14px;padding:14px;text-align:center}
+.V10 .kids{gap:10px}
+.V10 .kid{border-radius:16px;padding:12px 18px;box-shadow:0 2px 8px rgba(31,26,23,.05)}
+.V11 .kids{background:var(--soft);border-radius:14px;padding:8px;gap:6px}
+.V11 .kid{background:#fff}
+.V11 .kid.on{background:var(--rose)}
+.V12 .kids{justify-content:center}
+.V13 .kid{font-size:.75rem;padding:8px 12px}
+.V14 .kids{flex-direction:column}
+.V14 .kid{display:flex;justify-content:space-between;align-items:center;border-radius:12px;width:100%}
+.V14 .kid .n{background:var(--soft);color:var(--rose);font-size:.7rem;padding:2px 8px;border-radius:999px}
+.V14 .kid.on .n{background:#fff;color:var(--rose)}
+.V15 .kids{display:none}
+.V15 .dropdown{display:block}
+.V16 .kids{gap:0;background:#fff;border-radius:12px;border:1px solid var(--line);overflow:hidden}
+.V16 .kid{border:0;border-radius:0;border-inline-start:3px solid transparent;flex:1;text-align:center;min-width:0}
+.V16 .kid.on{border-inline-start-color:#fff;background:var(--rose)}
+.V17 .kids{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.V17 .kid{aspect-ratio:1.4;display:flex;align-items:center;justify-content:center;border-radius:14px;padding:8px;text-align:center}
+.V18 .kids{order:2}
+.V18 .cards{order:1}
+.V18 .page{display:flex;flex-direction:column}
+.V19 .kids{position:absolute;inset-inline-end:calc(var(--rail) + 8px);top:56px;flex-direction:column;
+  background:#fff;border:1px solid var(--line);border-radius:14px;padding:8px;box-shadow:0 12px 28px rgba(0,0,0,.1);z-index:5;min-width:140px}
+.V19 .page{position:relative}
+.V20 .kids{gap:8px;align-items:center}
+.V20 .kid{border-radius:10px}
+.V20 .kid .dot{width:8px;height:8px;border-radius:50%;background:var(--line);display:inline-block;margin-inline-start:6px}
+.V20 .kid.on .dot{background:#fff}
+
+.dropdown select{
+  width:100%;max-width:280px;padding:12px;border-radius:12px;border:1px solid var(--line);
+  font:800 .9rem "Noto Kufi Arabic",system-ui,sans-serif;background:#fff;
+}
+.rail-measure{
+  font-size:.55rem;color:var(--muted);text-align:center;margin-top:auto;padding-top:8px;line-height:1.3;opacity:.7
+}
+
+@media(max-width:700px){
+  .nums{grid-template-columns:repeat(5,1fr)}
+  .rail .p .lbl{font-size:.55rem}
+}
 </style>
 </head>
 <body>
-<h1>أشكال تنقل اللوحة</h1>
-<p>جرّبي ٢٠ شكلاً في صفحة واحدة، أو الثلاثة الأساسية كلٌ على حدة.</p>
-<a class="big" href="preview-nav-20.html">افتحي ٢٠ شكلاً · اختاري رقم</a>
-<a class="sec" href="preview-nav-1.html">١ · فروع تحت الزر</a>
-<a class="sec" href="preview-nav-2.html">٢ · فلاتر في الصفحة</a>
-<a class="sec" href="preview-nav-3.html">٣ · جنب مضغوط</a>
-<a class="sec" href="admin.html">اللوحة الحقيقية</a>
+<header class="pick">
+  <h1>٢٠ شكلاً جديداً · نفس الفكرة</h1>
+  <p>
+    <b>ثابت في الكل:</b> الأب يمين بعرض تقريبي ٢ سم (≈٧٨px) — أيقونة/حرف فقط تقريباً.
+    الأبناء <b>ما يظهرون تحت الأب في الجنب</b>؛ ينفتحون في <b>باقي الصفحة</b>.
+    اضغطي رقماً، جرّبي، ثم قولي: أريد رقم X.
+  </p>
+  <div class="nums" id="nums"></div>
+</header>
+<div class="wrap">
+  <div class="meta">
+    <b id="title">—</b>
+    <a href="admin.html">← اللوحة الحقيقية</a>
+  </div>
+  <p class="rule" id="desc"></p>
+  <div class="stage" id="stage">
+    <div class="top">
+      <strong>لوحة نقاء</strong>
+      <span style="font-size:.75rem;color:#6b625c" id="tag"></span>
+    </div>
+    <div class="body" id="body"></div>
+  </div>
+  <p class="hint" id="hint"></p>
+</div>
+<script>
+(function(){
+  /* All 20 share: narrow right parent rail (~2cm). Children only on the page. */
+  var MODES = [
+    {n:1, name:"حبوب أبناء", d:"أب يمين ٢سم · أبناء كحبوب أفقية أعلى الصفحة"},
+    {n:2, name:"مربعات أبناء", d:"أب يمين · أبناء أزرار مربّعة أوضح للمس"},
+    {n:3, name:"شبكة أبناء", d:"أب يمين · الأبناء بطاقات شبكة"},
+    {n:4, name:"قائمة أبناء عمودية", d:"أب يمين · قائمة أبناء على طرف الصفحة"},
+    {n:5, name:"تبويب بخط", d:"أب يمين · أبناء كتبوّيب بخط وردي"},
+    {n:6, name:"شريط داخل كرت", d:"أب يمين · الأبناء داخل إطار أبيض"},
+    {n:7, name:"تمرير أفقي", d:"أب يمين · أبناء كثيرة تمرّر يمين/يسار"},
+    {n:8, name:"أبناء لاصقة أعلى", d:"أب يمين · شريط أبناء يثبت أعلى المحتوى"},
+    {n:9, name:"شبكتان", d:"أب يمين · أبناء في عمودين"},
+    {n:10, name:"أبناء بارزة", d:"أب يمين · أبناء بظل خفيف"},
+    {n:11, name:"خلفية ناعمة", d:"أب يمين · شريط أبناء على وردي فاتح"},
+    {n:12, name:"أبناء بالوسط", d:"أب يمين · الحبوب في وسط أعلى الصفحة"},
+    {n:13, name:"أبناء صغيرة", d:"أب يمين · فلاتر مضغوطة"},
+    {n:14, name:"أبناء + عدد", d:"أب يمين · كل ابن معه رقم"},
+    {n:15, name:"قائمة منسدلة", d:"أب يمين · الأبناء قائمة اختيار واحدة"},
+    {n:16, name:"شريط مقسّم", d:"أب يمين · الأبناء شريط واحد متصل"},
+    {n:17, name:"بلاطات مربعة", d:"أب يمين · أبناء مربعات كبيرة"},
+    {n:18, name:"محتوى ثم أبناء", d:"أب يمين · المحتوى فوق، الأبناء تحت"},
+    {n:19, name:"لوحة أبناء منبثقة", d:"أب يمين · الأبناء قائمة صغيرة بجانب السكة"},
+    {n:20, name:"أبناء بنقطة", d:"أب يمين · حالة نشطة بنقطة ملونة"}
+  ];
+
+  var parents = [
+    {id:"home", ico:"ر", label:"رئيسية"},
+    {id:"orders", ico:"ط", label:"طلبات", badge:3},
+    {id:"products", ico:"م", label:"منتجات"},
+    {id:"customers", ico:"ع", label:"عملاء"},
+    {id:"finance", ico:"ف", label:"مالية"},
+    {id:"settings", ico:"إ", label:"إعدادات"}
+  ];
+  var kidsMap = {
+    home: [],
+    orders: [
+      {id:"all", label:"الكل", n:12},
+      {id:"new", label:"جديد", n:3},
+      {id:"prep", label:"تجهيز", n:2},
+      {id:"ship", label:"توصيل", n:4},
+      {id:"done", label:"تم", n:2},
+      {id:"cancel", label:"ملغي", n:1}
+    ],
+    products: [
+      {id:"all", label:"الكل", n:48},
+      {id:"shown", label:"ظاهرة", n:40},
+      {id:"hidden", label:"مخفية", n:8}
+    ],
+    customers: [], finance: [], settings: []
+  };
+
+  var state = { mode:1, tab:"orders", sub:"prep" };
+
+  var nums = document.getElementById("nums");
+  MODES.forEach(function(m){
+    var b = document.createElement("button");
+    b.type="button"; b.textContent=m.n;
+    b.onclick=function(){ state.mode=m.n; render(); };
+    nums.appendChild(b);
+  });
+
+  function kids(){ return kidsMap[state.tab] || []; }
+  function defSub(){
+    var k = kids();
+    if (!k.length) return "";
+    if (k.some(function(x){ return x.id===state.sub; })) return state.sub;
+    return k[0].id;
+  }
+
+  function render(){
+    var m = MODES[state.mode-1];
+    document.querySelectorAll("#nums button").forEach(function(b,i){
+      b.classList.toggle("on", i+1===state.mode);
+    });
+    document.getElementById("title").textContent = "رقم "+m.n+" — "+m.name;
+    document.getElementById("desc").textContent = m.d;
+    document.getElementById("tag").textContent = "أب ≈٢سم يمين · أبناء في الصفحة";
+    document.getElementById("hint").textContent = "إذا عجبك: اكتبي «أريد رقم "+m.n+"» — نطبّقه على اللوحة الحقيقية ونحذف هالمعاينات.";
+
+    state.sub = defSub();
+    var stage = document.getElementById("stage");
+    stage.className = "stage V"+m.n;
+
+    var rail = '<div class="rail" title="عرض تقريبي ٢ سم">';
+    parents.forEach(function(p){
+      var on = state.tab===p.id;
+      var badge = (p.badge && p.id==="orders") ? '<span class="badge">'+p.badge+'</span>' : '';
+      rail += '<button type="button" class="p'+(on?' on':'')+'" data-tab="'+p.id+'">'+badge+
+        '<span class="ico">'+p.ico+'</span><span class="lbl">'+p.label+'</span></button>';
+    });
+    rail += '<div class="rail-measure">≈٢سم</div></div>';
+
+    var k = kids();
+    var kidsHtml = "";
+    if (m.n===15) {
+      if (k.length) {
+        kidsHtml = '<div class="dropdown"><select id="kidSel">'+
+          k.map(function(x){ return '<option value="'+x.id+'"'+(state.sub===x.id?' selected':'')+'>'+x.label+(x.n!=null?' ('+x.n+')':'')+'</option>'; }).join("")+
+          '</select></div>';
+      }
+    } else if (k.length) {
+      kidsHtml = '<div class="kids">'+k.map(function(x){
+        var on = state.sub===x.id;
+        if (m.n===14) {
+          return '<button type="button" class="kid'+(on?' on':'')+'" data-sub="'+x.id+'"><span>'+x.label+'</span><span class="n">'+(x.n||0)+'</span></button>';
+        }
+        if (m.n===20) {
+          return '<button type="button" class="kid'+(on?' on':'')+'" data-sub="'+x.id+'">'+x.label+'<span class="dot"></span></button>';
+        }
+        return '<button type="button" class="kid'+(on?' on':'')+'" data-sub="'+x.id+'">'+x.label+(m.n===13||m.n===1||m.n===7?'':'')+'</button>';
+      }).join("")+'</div>';
+    }
+
+    var title = parents.filter(function(p){return p.id===state.tab;})[0];
+    var subLabel = (k.filter(function(x){return x.id===state.sub;})[0]||{}).label;
+    var head = '<div class="crumb">نقاء / '+(title?title.label:"")+(subLabel?(" / "+subLabel):"")+'</div>'+
+      '<div class="h">'+(title?title.label:"")+(subLabel?(" · "+subLabel):"")+'</div>';
+
+    var cards = '<div class="cards">';
+    if (state.tab==="home") {
+      cards += '<div class="card"><strong>الرئيسية</strong><small>لا أبناء — المحتوى فقط.</small></div>';
+    } else if (k.length) {
+      for (var i=1;i<=3;i++) {
+        cards += '<div class="card"><strong>عنصر تجريبي '+i+'</strong><small>تابع لـ '+(subLabel||title.label)+'</small></div>';
+      }
+    } else {
+      cards += '<div class="card"><strong>'+title.label+'</strong><small>هذا القسم بدون أبناء في المعاينة.</small></div>';
+    }
+    cards += '</div>';
+
+    var page = '<div class="page">'+kidsHtml+head+cards+'</div>';
+    if (m.n===18) {
+      page = '<div class="page">'+head+cards+kidsHtml+'</div>';
+    }
+
+    var body = document.getElementById("body");
+    body.innerHTML = rail + page;
+
+    body.onclick = function(e){
+      var t = e.target.closest("[data-tab]");
+      var s = e.target.closest("[data-sub]");
+      if (s) { state.sub = s.getAttribute("data-sub"); render(); return; }
+      if (t) {
+        state.tab = t.getAttribute("data-tab");
+        state.sub = "";
+        render();
+      }
+    };
+    var sel = document.getElementById("kidSel");
+    if (sel) sel.onchange = function(){ state.sub = sel.value; render(); };
+  }
+  render();
+})();
+</script>
 </body>
 </html>

@@ -903,11 +903,19 @@ body.naqa-open .btn-add:hover {
   background: linear-gradient(135deg, #d68494 0%, #8d3048 100%);
 }
 
-/* Screenshot-matched mobile navigation: parents only on the right rail.
-   Orders/products filters remain in the horizontal pageSubNav in the content area. */
-body.naqa-open .side-nav .side-subs,
-body.naqa-open .side-nav .chev {
+/* Pattern A: children under parent in the right rail (not page chips) */
+body.naqa-open #pageSubNav {
   display: none !important;
+}
+body.naqa-open .side-nav .side-subs {
+  display: none; /* closed default; open via .side-group.open */
+}
+body.naqa-open .side-nav .side-group.open > .side-subs {
+  display: flex !important;
+  flex-direction: column !important;
+}
+body.naqa-open .side-nav .chev {
+  display: inline-block !important;
 }
 
 /* ========== fitW REAL (last wins) ==========
@@ -1085,3 +1093,43 @@ html body.naqa-open #list .prod-actions .edit-btn {
   }
 }
 
+
+
+/* step1a pattern A — nested children under parent */
+html body.naqa-open nav#sideNav .side-group.open > .side-subs {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 1px;
+  margin-top: 4px;
+  padding: 4px 0 6px !important;
+  background: #1a1013 !important;
+  border-radius: 10px;
+}
+html body.naqa-open nav#sideNav .side-sub {
+  display: block !important;
+  width: 100%;
+  text-align: start;
+  white-space: nowrap !important;
+  font-size: .68rem !important;
+  font-weight: 700;
+  min-height: 28px;
+  padding: 5px 10px 5px 20px !important;
+  border-radius: 8px;
+  color: #c9b4ae;
+}
+html body.naqa-open nav#sideNav .side-sub.on {
+  color: #fff !important;
+  background: rgba(196, 107, 124, .28) !important;
+  box-shadow: inset 3px 0 0 #c46b7c;
+}
+html body.naqa-open nav#sideNav .side-group.open > .side-main .chev {
+  display: inline-block !important;
+  transform: rotate(180deg);
+}
+html body.naqa-open #pageSubNav {
+  display: none !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+}

@@ -16,49 +16,38 @@
     return "all";
   };
 
-  /* Page chips (Salla-style): options open in the page, not under the side button */
+  /* Pattern A: children live under the parent in the sidebar — page chips stay off */
   A.fillPageSubNav = function () {
     var bar = document.getElementById("pageSubNav");
-    if (!bar) return;
+    if (bar) {
+      bar.innerHTML = "";
+      bar.hidden = true;
+    }
+    A.refreshSideSubs && A.refreshSideSubs();
+  };
+
+  A.refreshSideSubs = function () {
     var tab = A.currentTab || "home";
-    var sub = A.currentSub || "";
-    bar.innerHTML = "";
-    bar.hidden = true;
-    if (tab === "orders") {
-      var scoped = (A.orders || []).filter(function (o) { return A.inDateRange(o.at); });
-      var counts = { all: scoped.length };
-      (A.STATUS_ORDER || A.ORDER_SUBS).forEach(function (k) { counts[k] = 0; });
-      scoped.forEach(function (o) {
-        var st = A.normalizeStatus(o.status);
-        counts[st] = (counts[st] || 0) + 1;
-      });
-      var parts = [{ id: "all", label: A.t("all") }].concat((A.STATUS_ORDER || A.ORDER_SUBS).map(function (k) {
-        return { id: k, label: A.statusLabel(k) };
-      }));
-      bar.innerHTML = parts.map(function (p) {
-        var on = (A.orderFilter || sub || "all") === p.id;
-        return '<button type="button" class="page-chip' + (on ? " on" : "") + '" data-page-tab="orders" data-page-sub="' + p.id + '" role="tab" aria-selected="' + (on ? "true" : "false") + '">'
-          + '<span class="chip-dot" aria-hidden="true"></span>'
-          + '<span>' + A.esc(p.label) + " (" + (counts[p.id] || 0) + ")</span></button>";
-      }).join("");
-      bar.hidden = false;
-      return;
-    }
-    if (tab === "products" && A.editingId == null) {
-      var chips = [
-        { id: "all", label: A.t("sub_all") },
-        { id: "shown", label: A.t("sub_shown") },
-        { id: "hidden", label: A.t("sub_hidden") }
-      ];
-      bar.innerHTML = chips.map(function (p) {
-        var on = (A.productView || sub || "all") === p.id;
-        return '<button type="button" class="page-chip' + (on ? " on" : "") + '" data-page-tab="products" data-page-sub="' + p.id + '" role="tab" aria-selected="' + (on ? "true" : "false") + '">'
-          + '<span class="chip-dot" aria-hidden="true"></span>'
-          + '<span>' + A.esc(p.label) + "</span></button>";
-      }).join("");
-      bar.hidden = false;
-      return;
-    }
+    /* i18n labels */
+    document.querySelectorAll("#sideNav .side-sub[data-i18n-sub]").forEach(function (btn) {
+      var key = btn.getAttribute("data-i18n-sub");
+      var base = A.t(key) || btn.textContent;
+      if (btn.getAttribute("data-tab") === "orders" && key !== "all") {
+        /* keep short; counts optional */
+      }
+      if (btn.getAttribute("data-tab") === "orders") {
+        var scoped = (A.orders || []).filter(function (o) { return A.inDateRange(o.at); });
+        var id = btn.getAttribute("data-sub");
+        var n = 0;
+        if (id === "all") n = scoped.length;
+        else scoped.forEach(function (o) {
+          if (A.normalizeStatus(o.status) === id) n++;
+        });
+        btn.textContent = (A.t(key) || base) + (n ? " (" + n + ")" : "");
+      } else {
+        btn.textContent = A.t(key) || base;
+      }
+    });
   };
 
 
@@ -86,9 +75,10 @@
     document.querySelectorAll("#sideNav .side-main").forEach(function (b) {
       var bt = b.getAttribute("data-tab");
       var grouped = !!b.closest(".side-group");
-      var on = bt === tab && !grouped;
+      /* parent is active when its section is current (grouped or not) */
+      var on = bt === tab;
       b.classList.toggle("on", on);
-      if (on) b.setAttribute("aria-current", "page");
+      if (on && !grouped) b.setAttribute("aria-current", "page");
       else b.removeAttribute("aria-current");
       if (grouped) b.setAttribute("aria-expanded", bt === tab ? "true" : "false");
     });
@@ -96,14 +86,16 @@
       var gt = g.getAttribute("data-group");
       var open = gt === tab;
       g.classList.toggle("open", open);
+      var activeSub = sub || A.defaultSub(gt);
+      if (gt === "orders") activeSub = A.orderFilter || activeSub || "all";
+      if (gt === "products") activeSub = A.productView || activeSub || "all";
       g.querySelectorAll(".side-sub").forEach(function (s) {
-        var on = open && s.getAttribute("data-sub") === (sub || A.defaultSub(gt));
+        var on = open && s.getAttribute("data-sub") === activeSub;
         s.classList.toggle("on", on);
         if (on) s.setAttribute("aria-current", "page");
         else s.removeAttribute("aria-current");
       });
-      /* The right rail now shows parents only; the active parent still needs the selected style. */
-      g.classList.toggle("has-active-child", open || !!g.querySelector(".side-sub.on"));
+      g.classList.toggle("has-active-child", open);
     });
     A.fillPageSubNav();
     if (A.updateOrdersBadge) A.updateOrdersBadge();

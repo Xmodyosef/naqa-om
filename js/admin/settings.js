@@ -7,6 +7,7 @@
       '<div class="panel settings">'
       + '<h2>' + A.t("setTitle") + '</h2>'
       + '<p class="note">' + A.t("setPin") + '</p>'
+      + '<p class="note" style="border:1px solid #efe4df;border-radius:12px;padding:12px;background:#faf7f5">' + A.t("setSecure") + '</p>'
       + '<p class="note" style="color:#b05c6e">' + A.t("setTok") + '</p>'
       + '<label style="display:block;margin:8px 0;font-size:.8rem;font-weight:800;color:#8a7f78">' + A.t("setTokLabel") + '<input id="token" type="password" value="" autocomplete="off" placeholder="ghp_..."></label>'
       + (function () {

@@ -2,6 +2,7 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8" />
+<meta name="robots" content="noindex, nofollow" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 <title>طلب نقاء</title>
 <style>
@@ -16,6 +17,7 @@
   .ghost{background:#fff;color:#1f1a17;border:1px solid #efe4df}
   .muted{color:#8a7f78;font-size:.85rem}
   .ok{color:#14532d;font-weight:800}
+  .warn{color:#9a3412;font-size:.85rem;font-weight:700}
   h1{font-size:1.2rem;margin:0 0 8px}
 </style>
 </head>
@@ -24,6 +26,11 @@
 <div class="wrap" id="box"><p class="muted">جاري فتح الطلب…</p></div>
 <script>
 function esc(v){return String(v==null?"":v).split("&").join("&"+"amp;").split("<").join("&"+"lt;").split('"').join("&"+"quot;");}
+function scrubUrl(){
+  try {
+    if (location.hash) history.replaceState(null, "", location.pathname + location.search);
+  } catch (e) {}
+}
 function loadOrder(){
   var raw=(location.hash||"").replace(/^#/,"");
   var box=document.getElementById("box");
@@ -62,7 +69,8 @@ function paint(order){
     +'<p><b>الاسم:</b> '+esc(order.name)+'<br><b>الجوال:</b> '+esc(order.phone)+'<br><b>الولاية:</b> '+esc(order.area)+'<br><b>ملاحظة:</b> '+esc(order.note||"—")+'</p>'
     +'<p><b>المجموع:</b> '+(Number(order.total||0).toFixed(3))+' ر.ع</p>'
     +items
-    +'<p class="muted">هذا الجوال فقط. جوال ثاني ما يشوف الطلب إلا إذا فتحتِ الرابط فيه.</p>'
+    +'<p class="warn">لا تشاركين رابط الطلب في مجموعات. فيه اسم الزبونة وجوالها.</p>'
+    +'<p class="muted">بعد الحفظ يُمسح الرابط من شريط العنوان. الطلب يبقى على هذا الجوال فقط.</p>'
     +'<p class="ok" id="msg"></p>'
     +'<button class="btn" type="button" id="saveBtn">احفظي الطلب في لوحة التحكم</button>'
     +'</div>';
@@ -72,6 +80,7 @@ function paint(order){
     all=all.filter(function(x){ return x && x.id!==order.id; });
     all.unshift(order);
     localStorage.setItem("naqa_orders", JSON.stringify(all.slice(0,300)));
+    scrubUrl();
   }
   var saved=false;
   try { saveHere(); saved=true; } catch (e) { saved=false; }
@@ -79,13 +88,13 @@ function paint(order){
   var btn=document.getElementById("saveBtn");
   function goAdmin(){ location.href="admin.html#orders"; }
   if(saved){
-    if(msg) msg.textContent="انحفظ في الطلبات على هذا الجوال. افتحي اللوحة من نفس الجوال.";
+    if(msg) msg.textContent="انحفظ في الطلبات على هذا الجوال. الرابط انمسح من العنوان.";
     if(btn){ btn.textContent="فتح الطلبات في اللوحة"; btn.onclick=goAdmin; }
   } else if(btn){
     btn.onclick=function(){
       try {
         saveHere();
-        if(msg) msg.textContent="انحفظ في الطلبات على هذا الجوال. افتحي اللوحة من نفس الجوال.";
+        if(msg) msg.textContent="انحفظ في الطلبات على هذا الجوال. الرابط انمسح من العنوان.";
         btn.textContent="فتح الطلبات في اللوحة";
         btn.onclick=goAdmin;
       } catch (e) {

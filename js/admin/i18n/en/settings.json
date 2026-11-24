@@ -21,5 +21,6 @@
   "publishing": "Publishing…",
   "published": "Products, stock and reviews published. Orders were not. The token stayed on this device.",
   "publishedProducts": "Products and stock published.",
-  "publishFail": "Publish failed."
+  "publishFail": "Publish failed.",
+  "setSecure": "Data protection: orders and customer names stay on this phone only and are never published to GitHub. Do not share order links or your GitHub token. Lock the phone. Admin is noindex. Multi-device login later: Firebase."
 }

@@ -1,5 +1,8 @@
 User-agent: *
 Allow: /
 Disallow: /admin.html
+Disallow: /order.html
+Disallow: /js/admin/
+Disallow: /css/admin.css
 
 Sitemap: https://xmodyosef.github.io/naqa-om/sitemap.xml

@@ -1,22 +1,7 @@
 (function (w) {
   var A = w.NaqaAdmin;
   A.paintStatusBar = function () {
-    var bar = document.getElementById("statusBar");
-    if (!bar) return;
-    var scoped = (A.orders || []).filter(function (o) { return A.inDateRange(o.at); });
-    var counts = { all: scoped.length };
-    A.STATUS_ORDER.forEach(function (k) { counts[k] = 0; });
-    scoped.forEach(function (o) {
-      o.status = A.normalizeStatus(o.status);
-      counts[o.status] = (counts[o.status] || 0) + 1;
-    });
-    var parts = [{ id: "all", label: A.t("all") }].concat(A.STATUS_ORDER.map(function (k) {
-      return { id: k, label: A.statusLabel(k) };
-    }));
-    bar.innerHTML = parts.map(function (p) {
-      return '<button type="button" data-filter="' + p.id + '"' + (A.orderFilter === p.id ? ' class="on"' : "") + ">"
-        + p.label + " (" + (counts[p.id] || 0) + ")</button>";
-    }).join("");
+    if (A.fillPageSubNav) A.fillPageSubNav();
   };
   A.syncOrdersTab = function () {
     var btn = document.querySelector('#tabs button[data-tab="orders"]');

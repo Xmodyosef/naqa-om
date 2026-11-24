@@ -9,31 +9,71 @@
   A.productPage = A.productPage || 1;
 
   A.defaultSub = function (tab) {
-    if (tab === "orders") return "new";
+    if (tab === "orders") return "all";
     if (tab === "products") return "all";
     if (tab === "settings") return "general";
     if (tab === "home") return "";
     return "all";
   };
 
-  A.syncNav = function () {
+  /* Page chips (Salla-style): options open in the page, not under the side button */
+  A.fillPageSubNav = function () {
+    var bar = document.getElementById("pageSubNav");
+    if (!bar) return;
     var tab = A.currentTab || "home";
     var sub = A.currentSub || "";
-    document.querySelectorAll("#sideNav .side-group").forEach(function (g) {
-      g.classList.toggle("open", g.getAttribute("data-group") === tab);
-    });
-    document.querySelectorAll("#sideNav [data-tab]").forEach(function (b) {
+    bar.innerHTML = "";
+    bar.hidden = true;
+    if (tab === "orders") {
+      var scoped = (A.orders || []).filter(function (o) { return A.inDateRange(o.at); });
+      var counts = { all: scoped.length };
+      (A.STATUS_ORDER || A.ORDER_SUBS).forEach(function (k) { counts[k] = 0; });
+      scoped.forEach(function (o) {
+        var st = A.normalizeStatus(o.status);
+        counts[st] = (counts[st] || 0) + 1;
+      });
+      var parts = [{ id: "all", label: A.t("all") }].concat((A.STATUS_ORDER || A.ORDER_SUBS).map(function (k) {
+        return { id: k, label: A.statusLabel(k) };
+      }));
+      bar.innerHTML = parts.map(function (p) {
+        var on = (A.orderFilter || sub || "all") === p.id;
+        return '<button type="button" class="page-chip' + (on ? " on" : "") + '" data-page-tab="orders" data-page-sub="' + p.id + '" role="tab" aria-selected="' + (on ? "true" : "false") + '">'
+          + A.esc(p.label) + " (" + (counts[p.id] || 0) + ")</button>";
+      }).join("");
+      bar.hidden = false;
+      return;
+    }
+    if (tab === "products" && A.editingId == null) {
+      var chips = [
+        { id: "all", label: A.t("sub_all") },
+        { id: "shown", label: A.t("sub_shown") },
+        { id: "hidden", label: A.t("sub_hidden") }
+      ];
+      bar.innerHTML = chips.map(function (p) {
+        var on = (A.productView || sub || "all") === p.id;
+        return '<button type="button" class="page-chip' + (on ? " on" : "") + '" data-page-tab="products" data-page-sub="' + p.id + '" role="tab" aria-selected="' + (on ? "true" : "false") + '">'
+          + A.esc(p.label) + "</button>";
+      }).join("");
+      bar.hidden = false;
+      return;
+    }
+  };
+
+  A.syncNav = function () {
+    var tab = A.currentTab || "home";
+    document.querySelectorAll("#sideNav .side-main").forEach(function (b) {
       var bt = b.getAttribute("data-tab");
-      var bs = b.getAttribute("data-sub");
-      var isMain = b.classList.contains("side-main");
-      if (isMain) b.classList.toggle("on", bt === tab);
-      else b.classList.toggle("on", bt === tab && bs === sub);
+      var on = bt === tab;
+      b.classList.toggle("on", on);
+      if (on) b.setAttribute("aria-current", "page");
+      else b.removeAttribute("aria-current");
     });
+    A.fillPageSubNav();
   };
 
   A.sectionHash = function () {
     var tab = A.currentTab || "home";
-    if (tab === "orders") return "#/orders/" + (A.currentSub || "new");
+    if (tab === "orders") return "#/orders/" + (A.currentSub || "all");
     if (tab === "products") {
       if (A.editingId != null) return "#/products/edit/" + A.editingId;
       return "#/products/" + (A.productView || "all") + "/" + (A.productPage || 1);
@@ -51,7 +91,7 @@
     opts = opts || {};
     if (TABS.indexOf(tab) < 0) tab = "home";
     if (tab === "orders") {
-      if (A.ORDER_SUBS.indexOf(sub) < 0) sub = "new";
+      if (sub !== "all" && A.ORDER_SUBS.indexOf(sub) < 0) sub = "all";
       A.orderFilter = sub;
     } else if (tab === "products") {
       if (sub !== "all" && sub !== "shown" && sub !== "hidden") sub = "all";
@@ -189,15 +229,26 @@
 
   var sideNav = document.getElementById("sideNav");
   if (sideNav) sideNav.addEventListener("click", function (e) {
-    var b = e.target.closest("[data-tab]");
+    var b = e.target.closest(".side-main[data-tab]");
     if (!b) return;
     var tab = b.getAttribute("data-tab");
-    var sub = b.getAttribute("data-sub") || A.defaultSub(tab);
+    var sub = A.defaultSub(tab);
     if (tab === "products" && A.editingId != null) {
       A.closeEdit(true);
     }
-    var same = tab === A.currentTab && sub === A.currentSub && !(tab === "products" && (A.productPage || 1) !== 1 && b.classList.contains("side-sub"));
-    if (tab === "products" && (sub !== A.productView)) A.productPage = 1;
+    var same = tab === A.currentTab;
+    if (tab === "products") A.productPage = 1;
+    A.go(tab, sub, { push: !same, page: 1 });
+  });
+
+  var pageSub = document.getElementById("pageSubNav");
+  if (pageSub) pageSub.addEventListener("click", function (e) {
+    var b = e.target.closest("[data-page-sub]");
+    if (!b) return;
+    var tab = b.getAttribute("data-page-tab") || A.currentTab;
+    var sub = b.getAttribute("data-page-sub");
+    var same = tab === A.currentTab && sub === A.currentSub;
+    if (tab === "products" && sub !== A.productView) A.productPage = 1;
     A.go(tab, sub, { push: !same, page: (tab === "products" && sub !== A.productView) ? 1 : A.productPage });
   });
 

@@ -8,7 +8,7 @@
 <meta name="robots" content="noindex, nofollow" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 <title>لوحة تحكم نقاء</title>
-<link rel="stylesheet" href="css/admin.css?v=20261124fix28" />
+<link rel="stylesheet" href="css/admin.css?v=20261124fix29" />
 </head>
 <body class="naqa-locked naqa-auth-pending">
 <div class="admin-top">
@@ -51,50 +51,15 @@
   <div id="tools" class="admin-shell" hidden>
   <nav id="sideNav" class="side-nav" aria-label="أقسام اللوحة">
     <button type="button" class="side-main" data-tab="home" data-i18n="tab_home">الرئيسية</button>
-    <div class="side-group" data-group="orders">
-      <button type="button" class="side-main" data-tab="orders" data-sub="new" data-i18n="tab_orders">الطلبات</button>
-      <div class="side-subs">
-        <button type="button" class="side-sub" data-tab="orders" data-sub="new" data-i18n="st_new">جديد</button>
-        <button type="button" class="side-sub" data-tab="orders" data-sub="prep" data-i18n="st_prep">جاري التجهيز</button>
-        <button type="button" class="side-sub" data-tab="orders" data-sub="ship" data-i18n="st_ship">جاري التوصيل</button>
-        <button type="button" class="side-sub" data-tab="orders" data-sub="delivered" data-i18n="st_delivered">تم التوصيل</button>
-        <button type="button" class="side-sub" data-tab="orders" data-sub="cancel" data-i18n="st_cancel">ملغي</button>
-      </div>
-    </div>
-    <div class="side-group" data-group="products">
-      <button type="button" class="side-main" data-tab="products" data-sub="all" data-i18n="tab_products">المنتجات</button>
-      <div class="side-subs">
-        <button type="button" class="side-sub" data-tab="products" data-sub="all" data-i18n="sub_all">الكل</button>
-        <button type="button" class="side-sub" data-tab="products" data-sub="shown" data-i18n="sub_shown">الظاهرة</button>
-        <button type="button" class="side-sub" data-tab="products" data-sub="hidden" data-i18n="sub_hidden">المخفية</button>
-      </div>
-    </div>
-    <div class="side-group" data-group="reviews">
-      <button type="button" class="side-main" data-tab="reviews" data-sub="all" data-i18n="tab_reviews">التقييمات</button>
-      <div class="side-subs">
-        <button type="button" class="side-sub" data-tab="reviews" data-sub="all" data-i18n="sub_all">الكل</button>
-      </div>
-    </div>
-    <div class="side-group" data-group="customers">
-      <button type="button" class="side-main" data-tab="customers" data-sub="all" data-i18n="tab_customers">العملاء</button>
-      <div class="side-subs">
-        <button type="button" class="side-sub" data-tab="customers" data-sub="all" data-i18n="sub_all">الكل</button>
-      </div>
-    </div>
-    <div class="side-group" data-group="finance">
-      <button type="button" class="side-main" data-tab="finance" data-sub="all" data-i18n="tab_finance">المالية</button>
-      <div class="side-subs">
-        <button type="button" class="side-sub" data-tab="finance" data-sub="all" data-i18n="sub_all">الكل</button>
-      </div>
-    </div>
-    <div class="side-group" data-group="settings">
-      <button type="button" class="side-main" data-tab="settings" data-sub="general" data-i18n="tab_settings">الإعدادات</button>
-      <div class="side-subs">
-        <button type="button" class="side-sub" data-tab="settings" data-sub="general" data-i18n="sub_general">عام</button>
-      </div>
-    </div>
+    <button type="button" class="side-main" data-tab="orders" data-i18n="tab_orders">الطلبات</button>
+    <button type="button" class="side-main" data-tab="products" data-i18n="tab_products">المنتجات</button>
+    <button type="button" class="side-main" data-tab="reviews" data-i18n="tab_reviews">التقييمات</button>
+    <button type="button" class="side-main" data-tab="customers" data-i18n="tab_customers">العملاء</button>
+    <button type="button" class="side-main" data-tab="finance" data-i18n="tab_finance">المالية</button>
+    <button type="button" class="side-main" data-tab="settings" data-i18n="tab_settings">الإعدادات</button>
   </nav>
   <div class="admin-main">
+    <div id="pageSubNav" class="page-sub-nav" role="tablist" aria-label="خيارات القسم" hidden></div>
     <div id="homeTab" hidden>
       <div id="dashBox"></div>
     </div>
@@ -105,8 +70,7 @@
         <a id="waOrders" href="#" target="_blank" rel="noopener">فتح واتساب الطلبات</a>
       </div>
       <div class="status-bar" id="ordersTools"></div>
-      <div class="status-bar" id="statusBar" hidden></div>
-      <p class="status" id="orderStatus"></p>
+            <p class="status" id="orderStatus"></p>
       <div id="ordersList"></div>
     </div>
     <div id="reviewsTab" hidden>
@@ -137,22 +101,22 @@
   </div>
 </div>
 </div>
-<script defer src="js/config.js?v=20261124fix28"></script>
-<script defer src="js/firebase-config.js?v=20261124fix28"></script>
+<script defer src="js/config.js?v=20261124fix29"></script>
+<script defer src="js/firebase-config.js?v=20261124fix29"></script>
 <script defer src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
 <script defer src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
-<script defer src="data/products.bundle.js?v=20261124fix28"></script>
-<script defer src="js/admin.js?v=20261124fix28"></script>
-<script defer src="js/admin/core.js?v=20261124fix28"></script>
-<script src="js/admin/i18n.js?v=20261124fix28"></script>
-<script defer src="js/admin/products.js?v=20261124fix28"></script>
-<script defer src="js/admin/orders.js?v=20261124fix28"></script>
-<script defer src="js/admin/customers.js?v=20261124fix28"></script>
-<script defer src="js/admin/finance.js?v=20261124fix28"></script>
-<script defer src="js/admin/dashboard.js?v=20261124fix28"></script>
-<script defer src="js/admin/settings.js?v=20261124fix28"></script>
-<script defer src="js/admin/reviews.js?v=20261124fix28"></script>
-<script defer src="js/admin/app.js?v=20261124fix28"></script>
-<script defer src="js/admin/firebase-gate.js?v=20261124fix28"></script>
+<script defer src="data/products.bundle.js?v=20261124fix29"></script>
+<script defer src="js/admin.js?v=20261124fix29"></script>
+<script defer src="js/admin/core.js?v=20261124fix29"></script>
+<script src="js/admin/i18n.js?v=20261124fix29"></script>
+<script defer src="js/admin/products.js?v=20261124fix29"></script>
+<script defer src="js/admin/orders.js?v=20261124fix29"></script>
+<script defer src="js/admin/customers.js?v=20261124fix29"></script>
+<script defer src="js/admin/finance.js?v=20261124fix29"></script>
+<script defer src="js/admin/dashboard.js?v=20261124fix29"></script>
+<script defer src="js/admin/settings.js?v=20261124fix29"></script>
+<script defer src="js/admin/reviews.js?v=20261124fix29"></script>
+<script defer src="js/admin/app.js?v=20261124fix29"></script>
+<script defer src="js/admin/firebase-gate.js?v=20261124fix29"></script>
 </body>
 </html>

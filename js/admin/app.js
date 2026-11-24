@@ -187,6 +187,14 @@
 
   A.openAdmin = function () {
     A.touchSession();
+    if (A.loadOverridesCloud) {
+      A.loadOverridesCloud().then(function () {
+        if (A.currentTab === "products" && A.paintList) {
+          A.paintList(document.getElementById("q") ? document.getElementById("q").value.trim() : "");
+        }
+        if (A.paintDashboard) A.paintDashboard();
+      });
+    }
     try {
       document.body.classList.remove("naqa-locked");
       document.body.classList.add("naqa-open");

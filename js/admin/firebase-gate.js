@@ -7,27 +7,12 @@
     if (email) {
       try {
         email.type = "email";
-        email.name = "email";
+        email.name = "username";
         email.setAttribute("autocomplete", "username");
         email.setAttribute("inputmode", "email");
         email.setAttribute("autocapitalize", "off");
         email.setAttribute("autocorrect", "off");
         email.setAttribute("spellcheck", "false");
-        /* stop managers dumping password into email on first paint */
-        if (!email.dataset.roBound) {
-          email.dataset.roBound = "1";
-          email.setAttribute("readonly", "readonly");
-          var unlock = function () {
-            email.removeAttribute("readonly");
-            email.removeEventListener("focus", unlock);
-            email.removeEventListener("touchstart", unlock);
-          };
-          email.addEventListener("focus", unlock);
-          email.addEventListener("touchstart", unlock, { passive: true });
-          setTimeout(function () {
-            try { email.removeAttribute("readonly"); } catch (e) {}
-          }, 800);
-        }
       } catch (e) {}
     }
     if (pass) {
@@ -216,6 +201,16 @@
     return { email: email, pass: pass };
   }
 
+
+  function offerPasswordSave(email, pass) {
+    try {
+      if (w.PasswordCredential && navigator.credentials && navigator.credentials.store) {
+        var cred = new w.PasswordCredential({ id: email, password: pass, name: email });
+        navigator.credentials.store(cred).catch(function () {});
+      }
+    } catch (e) {}
+  }
+
   function doLogin() {
     if (_busy) return;
     var cred = needEmailPass();
@@ -230,6 +225,7 @@
       }
       return firebase.auth().signInWithEmailAndPassword(cred.email, cred.pass).then(function () {
         setMsg("");
+        offerPasswordSave(cred.email, cred.pass);
       }).catch(function (err) {
         setMsg(mapAuthError(err, "login"));
       }).finally(function () { setBusy(false); });
@@ -289,7 +285,16 @@
     if (form && !form._bound) {
       form._bound = true;
       form.addEventListener("submit", function (ev) {
-        ev.preventDefault();
+        var cred = needEmailPass();
+        if (!cred) {
+          ev.preventDefault();
+          return;
+        }
+        /* لا نمنع الإرسال: سفاري يطلب «حفظ كلمة السر» فقط إذا أُرسل النموذج فعلياً.
+           الإرسال يروح لإطار مخفي (pw-saved.html) واللوحة ما تتحدث. */
+        form.action = "pw-saved.html";
+        form.target = "naqaSaveFrame";
+        form.method = "post";
         doLogin();
       });
     }
@@ -318,7 +323,8 @@
         try { if ($("fbPass")) $("fbPass").autocomplete = "new-password"; } catch (e) {}
         firebase.auth().createUserWithEmailAndPassword(cred.email, cred.pass).then(function () {
           setMsg(t("fb_created", ""));
-          try { if ($("fbPass")) $("fbPass").autocomplete = "current-password"; } catch (e) {}
+          offerPasswordSave(cred.email, cred.pass);
+          try { if ($("fbPass")) $("fbPass").setAttribute("autocomplete", "current-password"); } catch (e) {}
         }).catch(function (err) {
           try { console.warn("naqa createUser", err && err.code, err && err.message); } catch (e) {}
           setMsg(mapAuthError(err, "create"));

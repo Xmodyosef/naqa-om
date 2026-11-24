@@ -102,7 +102,8 @@
         if (on) s.setAttribute("aria-current", "page");
         else s.removeAttribute("aria-current");
       });
-      g.classList.toggle("has-active-child", !!g.querySelector(".side-sub.on"));
+      /* The right rail now shows parents only; the active parent still needs the selected style. */
+      g.classList.toggle("has-active-child", open || !!g.querySelector(".side-sub.on"));
     });
     A.fillPageSubNav();
     if (A.updateOrdersBadge) A.updateOrdersBadge();

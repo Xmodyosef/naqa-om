@@ -223,8 +223,8 @@ body.naqa-open .admin-shell{
 .side-nav{
   order:2;
   flex:0 0 auto;
-  width:max-content;
-  max-width:max-content;
+  width:fit-content;
+  max-width:fit-content;
   min-width:0;
   direction:rtl;
   position:sticky;
@@ -910,79 +910,50 @@ body.naqa-open .side-nav .chev {
   display: none !important;
 }
 
-@media (max-width: 600px) {
-  body.naqa-open .side-nav {
-    width: 24vw;
-    min-width: 94px;
-    max-width: 210px;
-    flex: 0 0 24vw;
-    padding: 10px 5px 14px;
-  }
-
-  body.naqa-open .side-nav::before {
-    font-size: .74rem;
-    padding: 3px 2px 12px;
-  }
-
-  body.naqa-open .side-nav .side-main {
-    min-height: 42px;
-    justify-content: flex-start;
-    gap: 4px;
-    padding: 5px 2px;
-  }
-
-  body.naqa-open .side-nav .side-main .side-lbl {
-    display: block !important;
-    min-width: 0;
-    font-size: clamp(.55rem, 2.2vw, .68rem);
-    line-height: 1.25;
-    text-align: right;
-    white-space: nowrap !important;
-    overflow: hidden !important;
-    text-overflow: ellipsis !important;
-  }
-
-  body.naqa-open .side-nav .side-main .side-ico {
-    width: 27px;
-    height: 27px;
-    flex-basis: 27px;
-    border-radius: 8px;
-  }
-
-  body.naqa-open .side-nav .side-badge {
-    top: 1px;
-    inset-inline-start: 1px;
-  }
-
-  body.naqa-open .admin-main {
-    width: auto;
-    flex: 1 1 auto;
-    padding: 10px 8px 20px;
-  }
-}
-
-
-/* fit-content side-nav fix44 — width = words + padding only */
-body.naqa-open .side-nav {
-  width: max-content !important;
-  max-width: max-content !important;
+/* ========== fitW REAL (last wins) ==========
+   Sidebar width = text only + padding. No fixed px/vw.
+*/
+html body.naqa-open .admin-shell > .side-nav,
+html body.naqa-open nav#sideNav.side-nav {
+  width: fit-content !important;
+  max-width: fit-content !important;
   min-width: 0 !important;
   flex: 0 0 auto !important;
+  flex-basis: auto !important;
+  flex-grow: 0 !important;
   flex-shrink: 0 !important;
   padding-inline: 12px 14px !important;
-  box-sizing: border-box;
+  box-sizing: border-box !important;
+  align-self: stretch;
 }
-body.naqa-open .side-nav .side-main,
-body.naqa-open .side-nav a {
-  width: 100%;
-  justify-content: flex-start;
-}
-body.naqa-open .side-nav .side-main .side-lbl {
-  flex: 0 1 auto;
-  white-space: nowrap !important;
-}
-body.naqa-open .admin-main {
-  flex: 1 1 auto !important;
-  min-width: 0 !important;
+html body.naqa-open .admin-shell > .side-nav .side-main,
+html body.naqa-open nav#sideNav .side-main {
   width: auto !important;
+  min-width: 0 !important;
+  justify-content: flex-start !important;
+  white-space: nowrap;
 }
+html body.naqa-open nav#sideNav .side-lbl {
+  flex: 0 0 auto !important;
+  width: auto !important;
+  max-width: none !important;
+  white-space: nowrap !important;
+  overflow: visible !important;
+  text-overflow: clip !important;
+}
+html body.naqa-open .admin-shell > .admin-main {
+  flex: 1 1 auto !important;
+  width: auto !important;
+  min-width: 0 !important;
+}
+@media (max-width: 860px) {
+  html body.naqa-open .admin-shell > .side-nav,
+  html body.naqa-open nav#sideNav.side-nav {
+    width: fit-content !important;
+    max-width: fit-content !important;
+    min-width: 0 !important;
+    flex: 0 0 auto !important;
+    flex-basis: auto !important;
+  }
+}
+/* ========== end fitW ========== */

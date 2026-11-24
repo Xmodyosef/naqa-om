@@ -532,3 +532,56 @@ body.naqa-open .admin-shell{
 .pager button{border:1px solid var(--line);background:#fff;border-radius:999px;padding:8px 14px;font-weight:800}
 .pager button:disabled{opacity:.4}
 .row.is-hidden{opacity:.55;outline:1px dashed #c9a7b0}
+
+/* White squircle icon (photo) — turns rose when the row is active */
+.side-main{
+  background:transparent !important;
+  box-shadow:none !important;
+  color:#e8dcd9;
+  gap:12px;
+  border-radius:10px;
+}
+.side-main:hover{ background:rgba(255,255,255,.05) !important; color:#fff; }
+.side-group.open > .side-main,
+.side-group.has-active-child > .side-main,
+.side-group.open.has-active-child > .side-main,
+.side-main.on{
+  background:transparent !important;
+  box-shadow:none !important;
+  color:#e8dcd9;
+}
+.side-ico{
+  width:34px;
+  height:34px;
+  flex:0 0 34px;
+  border-radius:10px;
+  background:#fff !important;
+  color:#2a2422;
+  box-shadow:0 2px 5px rgba(0,0,0,.15);
+  transition:background .2s ease, box-shadow .2s ease, color .2s ease;
+}
+.side-main.on .side-ico,
+.side-group.open > .side-main .side-ico{
+  background:#c46b7c !important;
+  color:#fff;
+  box-shadow:0 3px 8px rgba(196,107,124,.4);
+}
+.side-lbl{
+  color:#e8dcd9;
+  font-weight:600;
+  text-align:start;
+}
+.side-main.on .side-lbl,
+.side-group.open > .side-main .side-lbl{
+  color:#c46b7c;
+  font-weight:800;
+}
+.side-main.on .chev,
+.side-group.open > .side-main .chev{
+  color:#c46b7c;
+  transform:rotate(180deg);
+}
+@media (max-width:860px){
+  .side-ico{ width:34px; height:34px; flex-basis:34px; border-radius:10px; }
+  .side-main{ gap:6px; }
+}

@@ -1,37 +1,72 @@
 (function (w) {
   var A = w.NaqaAdmin;
+
   A.paintSettings = function () {
     var box = document.getElementById("settingsBox");
     if (!box) return;
+
+    var email = "";
+    try { email = (A.fbUser && A.fbUser.email) || ""; } catch (e) {}
+    var hasTok = false;
+    try { hasTok = !!(A.readToken && A.readToken()); } catch (e) {}
+    var wa = String(w.WA_NUMBER || "96879088349");
+    var bankName = (w.BANK_NAME || "").trim();
+    var bankIban = (w.BANK_IBAN || "").trim();
+    var ar = A.lang !== "en";
+
     box.innerHTML =
-      '<div class="panel settings">'
-      + '<h2>' + A.t("setTitle") + '</h2>'
-      + '<p class="note">' + A.t("setPin") + '</p>'
-      + '<p class="note" style="border:1px solid #efe4df;border-radius:12px;padding:12px;background:#faf7f5">' + A.t("setSecure") + '</p>'
-      + (A.fbUser ? ('<div class="panel" style="margin:10px 0"><h2>' + A.t("fb_account") + '</h2>'+ '<p class="note">' + A.t("fb_signedIn") + '</p>'+ '<button type="button" class="mini" id="fbSignOutBtn">' + A.t("fb_signOut") + '</button></div>') : '')
-      + '<p class="note" style="color:#b05c6e">' + A.t("setTok") + '</p>'
-      + '<label style="display:block;margin:8px 0;font-size:.8rem;font-weight:800;color:#8a7f78">' + A.t("setTokLabel") + '<input id="token" type="password" value="" autocomplete="off" placeholder="ghp_..."></label>'
-      + (function () {
-          var has = "";
-          try { has = (A.readToken ? A.readToken() : "") || ""; } catch (e) {}
-          if (!has) return '<button type="button" class="primary" id="btnSaveTok" style="width:100%;margin-top:8px">' + A.t("tokSaveBtn") + '</button>';
-          return '<p class="note">' + A.t("tokSaved") + '</p>'
-            + '<button type="button" class="mini" id="btnForgetTok">' + A.t("tokForget") + '</button>';
-        })()
-      + '<p class="note">' + A.t("setWa") + ': +' + A.esc(String(w.WA_NUMBER || "96879088349")) + '</p>'
-      + '<p class="note" style="margin-top:10px"><b>' + (A.lang==="en"?"Bank (storefront)":"الحساب البنكي (المتجر)") + '</b><br>'
-      + A.esc((w.BANK_NAME||"").trim() || (A.lang==="en"?"Name: not set":"الاسم: غير مضاف")) + '<br>'
-      + A.esc((w.BANK_IBAN||"").trim() || (A.lang==="en"?"IBAN: not set — edit js/config.js":"الآيبان: غير مضاف — عدّلي js/config.js")) + '</p>'
-      + '<p class="note" style="color:#8d3048">' + (A.lang==="en"?"Primary login is Firebase. PIN here is optional device lock only (not required).":"الدخول الأساسي: Firebase. الرمز هنا اختياري فقط كقفل إضافي لهذا الجهاز (مو مطلوب).") + '</p>'
-      + '<button type="button" class="primary" id="btnChangePin" style="width:100%;margin-top:8px">' + A.t("setPinBtn") + '</button>'
-      + '<button type="button" class="logout" id="btnLogout" style="width:100%;margin-top:8px;border:0;border-radius:12px;padding:12px;font-weight:800">' + A.t("setOut") + '</button>'
+      '<div class="settings-stack">'
+
+      /* 1) Store */
+      + '<section class="panel settings-sec">'
+      +   '<h2>' + (ar ? "المتجر" : "Store") + '</h2>'
+      +   '<p class="note">' + (ar ? "بيانات تظهر للزبائن (من الإعدادات الثابتة)." : "Public store details (from config).") + '</p>'
+      +   '<div class="set-row"><span class="set-k">' + (ar ? "واتساب" : "WhatsApp") + '</span><span class="set-v" dir="ltr">+' + A.esc(wa) + '</span></div>'
+      +   '<div class="set-row"><span class="set-k">' + (ar ? "البنك" : "Bank") + '</span><span class="set-v">' + A.esc(bankName || (ar ? "غير مضاف" : "Not set")) + '</span></div>'
+      +   '<div class="set-row"><span class="set-k">IBAN</span><span class="set-v" dir="ltr">' + A.esc(bankIban || (ar ? "غير مضاف — js/config.js" : "Not set — js/config.js")) + '</span></div>'
+      + '</section>'
+
+      /* 2) Publish */
+      + '<section class="panel settings-sec">'
+      +   '<h2>' + (ar ? "النشر على الموقع" : "Publish to site") + '</h2>'
+      +   '<p class="note">' + (ar
+          ? "رمز GitHub ينشر تعديلات المنتجات (سعر، كمية، إخفاء). ينحفظ في هذه الجلسة فقط."
+          : "GitHub token publishes product edits (price, stock, hide). Stored for this session only.") + '</p>'
+      +   '<label class="set-lab">' + (ar ? "رمز GitHub (contents:write)" : "GitHub token (contents:write)")
+      +     '<input id="token" type="password" value="" autocomplete="off" placeholder="ghp_..."></label>'
+      +   (hasTok
+          ? ('<p class="note set-ok">' + (ar ? "✓ الرمز محفوظ في هذه الجلسة" : "✓ Token saved for this session") + '</p>'
+             + '<button type="button" class="mini" id="btnForgetTok">' + (ar ? "نسيان الرمز" : "Forget token") + '</button>')
+          : ('<button type="button" class="primary" id="btnSaveTok" style="width:100%;margin-top:8px">' + (ar ? "حفظ الرمز" : "Save token") + '</button>'))
+      + '</section>'
+
+      /* 3) Account — Firebase only */
+      + '<section class="panel settings-sec">'
+      +   '<h2>' + (ar ? "الحساب" : "Account") + '</h2>'
+      +   (email
+          ? ('<div class="set-row"><span class="set-k">' + (ar ? "مسجّلة كـ" : "Signed in as") + '</span><span class="set-v" dir="ltr">' + A.esc(email) + '</span></div>')
+          : ('<p class="note">' + (ar ? "ما في جلسة Firebase ظاهرة." : "No Firebase session visible.") + '</p>'))
+      +   '<p class="note">' + (ar
+          ? "تغيير كلمة السر يتم من «نسيت كلمة السر؟» في شاشة الدخول، أو من بريد Firebase."
+          : "Change password via “Forgot password?” on the login screen or Firebase email.") + '</p>'
+      +   '<button type="button" class="logout" id="btnLogout" style="width:100%;margin-top:8px;border:0;border-radius:12px;padding:12px;font-weight:800">'
+      +     (ar ? "خروج" : "Log out") + '</button>'
+      + '</section>'
+
+      /* 4) Privacy note */
+      + '<section class="panel settings-sec">'
+      +   '<h2>' + (ar ? "الخصوصية" : "Privacy") + '</h2>'
+      +   '<p class="note">' + A.t("setSecure") + '</p>'
+      + '</section>'
+
       + '</div>';
+
     var saveTok = document.getElementById("btnSaveTok");
     if (saveTok) saveTok.onclick = function () {
-      var v = (document.getElementById("token").value || "").trim();
+      var v = (document.getElementById("token") && document.getElementById("token").value || "").trim();
       if (v.length < 8) { A.setMsg("settingsStatus", A.t("needTok2")); return; }
       A.keepToken(v);
-      document.getElementById("token").value = "";
+      if (document.getElementById("token")) document.getElementById("token").value = "";
       A.setMsg("settingsStatus", A.t("tokSaved"));
       A.paintSettings();
     };
@@ -41,48 +76,33 @@
       A.setMsg("settingsStatus", A.t("needTok2"));
       A.paintSettings();
     };
-    document.getElementById("btnLogout").onclick = function () {
+    var logout = document.getElementById("btnLogout");
+    if (logout) logout.onclick = function () {
       if (!confirm(A.t("setOutAsk"))) return;
       function hidePanel() {
-        var tools=document.getElementById("tools");
-        var tabs=document.getElementById("tabs");
-        var save=document.getElementById("savebar");
-        var pin=document.getElementById("pin");
-        var pinIn=document.getElementById("pinInput");
+        var tools = document.getElementById("tools");
+        var tabs = document.getElementById("tabs");
+        var save = document.getElementById("savebar");
+        var pin = document.getElementById("pin");
         if (tools) tools.hidden = true;
         if (tabs) tabs.hidden = true;
         if (save) save.hidden = true;
         if (pin) pin.hidden = false;
-        if (pinIn) pinIn.value = "";
-        try { document.body.classList.add("naqa-locked"); document.body.classList.remove("naqa-open"); } catch (e) {}
+        try {
+          document.body.classList.add("naqa-locked");
+          document.body.classList.remove("naqa-open");
+        } catch (e) {}
         if (A.clearSession) A.clearSession();
+        var fbLogin = document.getElementById("fbLogin");
+        var pinRow = document.getElementById("pinRow");
+        if (fbLogin) fbLogin.hidden = false;
+        if (pinRow) pinRow.hidden = true;
       }
       if (A.fbSignOut) A.fbSignOut().then(hidePanel, hidePanel);
       else hidePanel();
     };
-    document.getElementById("btnChangePin").onclick = function () {
-      var oldPin = prompt(A.t("setOldPin"));
-      if (oldPin == null) return;
-      oldPin = String(oldPin).trim();
-      if (!oldPin) { A.setMsg("settingsStatus", A.t("pinBad")); return; }
-      A.hashPin(oldPin).then(function (oldH) {
-        var have = "", plain = "";
-        try { have = localStorage.getItem(A.PIN_HASH) || ""; } catch (e) {}
-        try { plain = localStorage.getItem(A.PIN) || ""; } catch (e) {}
-        var ok = (have && oldH === have) || (!have && plain && oldPin === plain);
-        if (!ok) { A.setMsg("settingsStatus", A.t("pinBad")); return; }
-        var n = prompt(A.t("setNewPin"));
-        if (n == null) return;
-        n = String(n).trim();
-        if (n.length < 4) { A.setMsg("settingsStatus", A.t("pinShort")); return; }
-        return A.hashPin(n).then(function (h) {
-          localStorage.setItem(A.PIN_HASH, h);
-          localStorage.removeItem(A.PIN);
-          A.setMsg("settingsStatus", A.t("setPinOk"));
-        });
-      });
-    };
   };
+
   A.saveLocal = function () {
     if (A.editingId != null && document.getElementById("editView") && !document.getElementById("editView").hidden && A.saveEdit) A.saveEdit();
     try { localStorage.setItem(A.KEY, JSON.stringify(A.overrides)); } catch (e) {}
@@ -91,6 +111,7 @@
     A.setMsg("orderStatus", A.t("savedOrders"));
     A.setMsg("settingsStatus", A.t("saved"));
   };
+
   A.readToken = function () {
     var el = document.getElementById("token");
     var typed = el && el.value ? el.value.trim() : "";
@@ -107,18 +128,17 @@
     } catch (e) {}
     return "";
   };
+
   A.keepToken = function (token) {
     try { sessionStorage.setItem(A.TOKEN, token); } catch (e) {}
-    if (A.forgetToken) A.forgetToken();
   };
+
   A.forgetToken = function () {
     try { sessionStorage.removeItem(A.TOKEN); } catch (e) {}
     try { localStorage.removeItem(A.TOKEN); } catch (e) {}
     var el = document.getElementById("token");
     if (el) el.value = "";
   };
-    var fso = document.getElementById("fbSignOutBtn");
-    if (fso) fso.onclick = function () { if (A.fbSignOut) A.fbSignOut(); };
 
   A.publishLive = function () {
     if (A._publishing) { A._publishAgain = true; return; }
@@ -151,6 +171,7 @@
       if (A._publishAgain) { A._publishAgain = false; A.publishLive(); }
     });
   };
+
   A.publish = function () {
     if (A.editingId != null && document.getElementById("editView") && !document.getElementById("editView").hidden && A.saveEdit) A.saveEdit({ skipPublish: true });
     try { localStorage.setItem(A.KEY, JSON.stringify(A.overrides)); } catch (e) {}
@@ -177,7 +198,6 @@
     }).then(function (res) {
       if (!res[0].ok || (res[1] && !res[1].ok)) throw new Error("HTTP");
       if (tokenEl) tokenEl.value = "";
-      /* token kept on device */
       A.setMsg("status", A.t("publishedProducts"));
       A.setMsg("orderStatus", A.t("ordersStay"));
       A.setMsg("settingsStatus", A.t("published"));

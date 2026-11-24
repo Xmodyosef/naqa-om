@@ -53,7 +53,7 @@
       draw();
     }).catch(draw);
     function draw() {
-      var opts = (w.products || []).map(function (p) {
+      var opts = (A.products || w.products || []).map(function (p) {
         return '<option value="' + A.esc(p.sku || "") + '">' + A.esc((p.sku || "") + " · " + (p.brand || "") ) + "</option>";
       }).join("");
       var rows = (A.reviews || []).map(function (r) {
@@ -96,7 +96,7 @@
     var en = document.getElementById("rvEn").value.trim();
     var starsN = Number(document.getElementById("rvStars").value);
     var status = document.getElementById("reviewStatus");
-    var p = (w.products || []).find(function (x) { return String(x.sku) === sku; });
+    var p = (A.products || w.products || []).find(function (x) { return String(x.sku) === sku; });
     if (!p) { if (status) status.textContent = A.t("r_badSku"); return; }
     if (name.length < 2 || (ar.length < 2 && en.length < 2)) { if (status) status.textContent = A.t("r_need"); return; }
     var rec = { id: "rv" + Date.now().toString(36), sku: p.sku, pid: p.id, name: name, stars: starsN, ar: ar, en: en, photo: "", at: new Date().toISOString().slice(0, 10), on: true };

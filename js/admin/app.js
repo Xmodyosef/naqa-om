@@ -455,5 +455,5 @@
     var msg = document.getElementById("pinMsg");
     if (msg) msg.textContent = A.t("fb_signedOut") || A.t("pinLead");
   }, 60000);
-})\(window);
+
 })(window);

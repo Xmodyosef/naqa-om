@@ -9,9 +9,11 @@ window.NAQA_FIREBASE = {
   appId: "1:177264458224:web:065f25485b856f6fa14535",
   measurementId: "G-BHTELLKZXB"
 };
-window.NAQA_ADMIN_EMAILS = [
-  "hotmail.yosef@gmail.com"
+/* SHA-256 of allowed admin emails. The address is not stored in clear text. */
+window.NAQA_ADMIN_EMAIL_HASHES = [
+  "0dde1f885b34abdb2451c22516f3327b16ea0e59d441b2bf2d36c33b54487cff"
 ];
+window.NAQA_ADMIN_EMAILS = [];
 window.naqaFirebaseEnabled = function () {
   var c = window.NAQA_FIREBASE || {};
   return !!(c.apiKey && c.projectId && c.appId);

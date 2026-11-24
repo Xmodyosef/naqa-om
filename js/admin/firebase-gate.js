@@ -26,16 +26,29 @@
       if (el) el.disabled = !!on;
     });
   }
-  function allowedEmail(userOrEmail) {
-    var list = (w.NAQA_ADMIN_EMAILS || []).map(function (e) {
+  function emailHashes() {
+    return (w.NAQA_ADMIN_EMAIL_HASHES || []).map(function (e) {
       return String(e || "").trim().toLowerCase();
     }).filter(Boolean);
+  }
+  function hashEmail(email) {
+    email = String(email || "").trim().toLowerCase();
+    if (!email || !w.crypto || !crypto.subtle || !w.TextEncoder) return Promise.resolve("");
+    return crypto.subtle.digest("SHA-256", new TextEncoder().encode(email)).then(function (buf) {
+      return Array.prototype.map.call(new Uint8Array(buf), function (b) {
+        return ("0" + b.toString(16)).slice(-2);
+      }).join("");
+    });
+  }
+  function allowedEmail(userOrEmail) {
+    var list = emailHashes();
     var email = typeof userOrEmail === "string"
       ? userOrEmail
       : String((userOrEmail && userOrEmail.email) || "");
-    email = email.trim().toLowerCase();
-    if (!list.length || !email) return false;
-    return list.indexOf(email) >= 0;
+    if (!list.length || !String(email).trim()) return Promise.resolve(false);
+    return hashEmail(email).then(function (hex) {
+      return !!(hex && list.indexOf(hex) >= 0);
+    });
   }
   function adminContinueUrl() {
     try {
@@ -109,9 +122,6 @@
     var boot = $("authBootText");
     if (boot) boot.textContent = t("fb_booting", "جاري فتح اللوحة…");
     var emailEl = $("fbEmail");
-    if (emailEl && !emailEl.value && (w.NAQA_ADMIN_EMAILS || [])[0]) {
-      emailEl.value = w.NAQA_ADMIN_EMAILS[0];
-    }
     if (emailEl) emailEl.placeholder = t("fb_emailPh", "name@email.com");
     if ($("fbPass")) $("fbPass").placeholder = t("fb_passPh", "••••••••");
   };
@@ -155,10 +165,6 @@
       setMsg(t("fb_need", ""));
       return null;
     }
-    if (!allowedEmail(email)) {
-      setMsg(t("fb_notAllowed", ""));
-      return null;
-    }
     if (pass.length < 6) {
       setMsg(t("fb_passShort", ""));
       return null;
@@ -172,12 +178,18 @@
     if (!cred) return;
     setBusy(true);
     setMsg(t("fb_wait", ""));
-    firebase.auth().signInWithEmailAndPassword(cred.email, cred.pass).then(function () {
-      setMsg("");
-      /* Password managers hook successful form login */
-    }).catch(function (err) {
-      setMsg(mapAuthError(err, "login"));
-    }).finally(function () { setBusy(false); });
+    allowedEmail(cred.email).then(function (ok) {
+      if (!ok) {
+        setMsg(t("fb_notAllowed", ""));
+        setBusy(false);
+        return;
+      }
+      return firebase.auth().signInWithEmailAndPassword(cred.email, cred.pass).then(function () {
+        setMsg("");
+      }).catch(function (err) {
+        setMsg(mapAuthError(err, "login"));
+      }).finally(function () { setBusy(false); });
+    });
   }
 
   A.fbSignOut = function () {
@@ -255,6 +267,8 @@
         if (!cred) return;
         setBusy(true);
         setMsg(t("fb_waitCreate", ""));
+        allowedEmail(cred.email).then(function (ok) {
+        if (!ok) { setMsg(t("fb_notAllowed", "")); setBusy(false); return; }
         /* create uses new-password autocomplete hint */
         try { if ($("fbPass")) $("fbPass").autocomplete = "new-password"; } catch (e) {}
         firebase.auth().createUserWithEmailAndPassword(cred.email, cred.pass).then(function () {
@@ -265,6 +279,7 @@
           setMsg(mapAuthError(err, "create"));
           try { if ($("fbPass")) $("fbPass").autocomplete = "current-password"; } catch (e) {}
         }).finally(function () { setBusy(false); });
+        });
       };
     }
 
@@ -311,9 +326,10 @@
         if (_busy) return;
         var email = ($("fbEmail") && $("fbEmail").value || "").trim();
         if (!email) { setMsg(t("fb_resetNeed", "")); return; }
-        if (!allowedEmail(email)) { setMsg(t("fb_notAllowed", "")); return; }
         setBusy(true);
         setMsg(t("fb_waitReset", ""));
+        allowedEmail(email).then(function (ok) {
+        if (!ok) { setMsg(t("fb_notAllowed", "")); setBusy(false); return; }
         firebase.auth().sendPasswordResetEmail(email, {
           url: adminContinueUrl(),
           handleCodeInApp: false
@@ -322,6 +338,7 @@
         }).catch(function (err) {
           setMsg(mapAuthError(err, "reset"));
         }).finally(function () { setBusy(false); });
+        });
       };
     }
 
@@ -329,26 +346,29 @@
       _authReady = true;
       setPending(false);
 
-      if (user && !allowedEmail(user)) {
+      if (!user) {
         A.fbUser = null;
-        firebase.auth().signOut().then(function () {
-          lockUI();
-          setMsg(t("fb_notAllowed", ""));
-          setBusy(false);
-        });
+        lockUI();
+        if ($("pin")) $("pin").hidden = false;
         return;
       }
-      A.fbUser = user || null;
-      if (user) {
+      allowedEmail(user).then(function (ok) {
+        if (!ok) {
+          A.fbUser = null;
+          firebase.auth().signOut().then(function () {
+            lockUI();
+            setMsg(t("fb_notAllowed", ""));
+            setBusy(false);
+          });
+          return;
+        }
+        A.fbUser = user;
         unlockUI();
         if (A.touchSession) A.touchSession();
         if (A.openAdmin) A.openAdmin();
         setMsg("");
         setBusy(false);
-      } else {
-        lockUI();
-        if ($("pin")) $("pin").hidden = false;
-      }
+      });
     });
   };
 

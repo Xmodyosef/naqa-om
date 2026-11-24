@@ -2,6 +2,9 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@400;600;700;800&display=swap" rel="stylesheet" />
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
 <meta http-equiv="Pragma" content="no-cache" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
@@ -38,7 +41,7 @@
 <meta name="application-name" content="نقاء | Naqa" />
 
 <title>نقاء · عناية ومكياج | Naqa Oman</title>
-<link rel="stylesheet" href="css/store.min.css?v=20261123fix3" />
+<link rel="stylesheet" href="css/store.min.css?v=20261124fix25" />
 
 <script type="application/ld+json">
 {
@@ -54,7 +57,7 @@
     "addressCountry": "OM"
   },
   "currenciesAccepted": "OMR",
-  "paymentAccepted": "Cash, Bank transfer, WhatsApp order",
+  "paymentAccepted": "Cash, WhatsApp order",
   "inLanguage": ["ar", "en"]
 }
 </script>
@@ -229,7 +232,7 @@
     <fieldset class="pay-box" id="payBox">
       <legend id="payTitle">طريقة الدفع</legend>
       <label class="pay-opt" for="payCod"><input type="radio" name="payMethod" id="payCod" value="cod" checked aria-label="دفع عند الاستلام"> <span id="payCodLab">دفع عند الاستلام</span></label>
-      <label class="pay-opt" for="payPaid"><input type="radio" name="payMethod" id="payPaid" value="transfer" aria-label="حساب بنكي يدوي"> <span id="payPaidLab">حساب بنكي يدوي · أحوّل ثم أرسل الإيصال</span></label>
+      <label class="pay-opt" id="payBankOpt" for="payPaid" hidden><input type="radio" name="payMethod" id="payPaid" value="transfer" aria-label="حساب بنكي يدوي"> <span id="payPaidLab">حساب بنكي يدوي · أحوّل ثم أرسل الإيصال</span></label>
       <p class="pay-hint" id="payHint">تحت ٣٠ ر.ع: توصيل ٢ · من ٣٠: توصيل مجاني · الدفع عند الاستلام: +١.٥ ر.ع.</p>
       <div class="pay-sum" id="paySum"></div>
     </fieldset>
@@ -241,7 +244,7 @@
   </div>
 </div>
 <script defer src="data/products.min.js?v=20261123fix3"></script>
-<script defer src="js/store.min.js?v=20261124fix24"></script>
+<script defer src="js/store.min.js?v=20261124fix25"></script>
 
 <script>
 if ('serviceWorker' in navigator) {

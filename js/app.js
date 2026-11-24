@@ -38,7 +38,7 @@ $("#wishBtn").onclick=()=>{
 $("#cartBtn").onclick=openCart;
 $("#closeCart").onclick=closeCart;
 $("#overlay").onclick=closeCart;
-$("#barGo").onclick=()=>{ if(cart.length) openCart(); else openCart(); };
+$("#barGo").onclick=()=>{ if(cart.length) openCart(); else { if(typeof toast==="function") toast(lang==="en"?"Your cart is empty":"السلة فاضية"); var prod=$("#products"); if(prod) prod.scrollIntoView({behavior:"smooth"}); } };
 function runSearch(fromSubmit){
   const el=$("#search");
   query = el ? el.value.trim() : "";
@@ -303,8 +303,23 @@ function boot(){
         return (o && typeof o === "object") ? o : {};
       } catch (e) { return {}; }
     }
+    function naqaDeepOverrides(remote, local){
+      var out = {}, r = remote || {}, o = local || {}, keys = {};
+      Object.keys(r).forEach(function(k){ keys[k] = 1; });
+      Object.keys(o).forEach(function(k){ keys[k] = 1; });
+      Object.keys(keys).forEach(function(k){
+        var i = r[k] && typeof r[k] === "object" ? r[k] : {};
+        var s = o[k] && typeof o[k] === "object" ? o[k] : null;
+        if (!s) { out[k] = i; return; }
+        var u = Object.assign({}, i, s);
+        if (Object.prototype.hasOwnProperty.call(s, "hidden")) u.hidden = !!s.hidden;
+        else if (i.hidden) u.hidden = true;
+        out[k] = u;
+      });
+      return out;
+    }
     function naqaApplyOverrides(remote){
-      var map = Object.assign({}, remote || {}, naqaLocalOverrides());
+      var map = naqaDeepOverrides(remote || {}, naqaLocalOverrides());
       if (typeof mergeOverrides === "function") mergeOverrides(map);
       if (typeof render === "function") render();
     }

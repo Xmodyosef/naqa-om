@@ -17,7 +17,7 @@ function visual(p, idx){
   const imgs=pimgs(p); const i=idx||0;
   if(imgs[i]){
     const pri=i===0?' loading="lazy" decoding="async"':' loading="lazy" decoding="async"';
-    return '<img src="'+imgs[i]+'" alt="'+esc(pname(p))+'"'+pri+'>';
+    return '<img src="'+esc(imgs[i])+'" alt="'+esc(pname(p))+'" width="800" height="800"'+pri+'>';
   }
   return '<span style="font-size:2rem;display:grid;place-items:center;height:100%">'+ (p.em||'✨') +'</span>';
 }
@@ -47,7 +47,7 @@ function cardHTML(p){
 function shelfBanner(kind, list){
   const thumbs=list.slice(0,4).map(p=>{
     const imgs=pimgs(p);
-    if(imgs[0]) return '<img src="'+imgs[0]+'" alt="'+esc(pname(p))+'" loading="lazy">';
+    if(imgs[0]) return '<img src="'+esc(imgs[0])+'" alt="'+esc(pname(p))+'" width="120" height="120" loading="lazy">';
     return '<span class="em">'+(p.em||"✨")+'</span>';
   }).join("");
   if(kind==="hot"){
@@ -61,8 +61,8 @@ function renderShelves(){
   const show=!query && currentCat==="all" && !currentBrand && !(typeof wishView!=="undefined" && wishView);
   if(!show){ box.innerHTML=""; box.hidden=true; return; }
   box.hidden=false;
-  const hot=products.filter(p=>p.hot).slice(0,12);
-  const year=products.filter(p=>p.was>p.price).sort((a,b)=>offPct(b)-offPct(a)).slice(0,16);
+  const hot=products.filter(p=>p.hot&&!p.hidden).slice(0,12);
+  const year=products.filter(p=>!p.hidden&&p.was>p.price).sort((a,b)=>offPct(b)-offPct(a)).slice(0,16);
   let html="";
   if(hot.length){
     html+='<section class="shelf">'+shelfBanner("hot", hot)

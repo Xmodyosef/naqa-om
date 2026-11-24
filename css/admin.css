@@ -1,5 +1,5 @@
 :root{--bg:#fdf8f6;--card:#fff;--fg:#1f1a17;--muted:#6b625c;--line:#efe4df;--rose:#8d3048;--r:16px}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font-family:system-ui,-apple-system,"Segoe UI",Tahoma,sans-serif}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font-family:"Noto Kufi Arabic",system-ui,-apple-system,"Segoe UI",Tahoma,sans-serif}
 a{color:inherit}button,input,textarea,select{font:inherit}
 .admin-top{position:sticky;top:0;z-index:20;background:rgba(253,248,246,.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);padding:12px 14px 0}
 .admin-top h1{margin:4px 0 8px;font-size:1.15rem}

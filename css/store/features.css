@@ -8,7 +8,7 @@
 .cchip{flex:0 0 auto;border:1px solid var(--line);background:var(--card);border-radius:999px;padding:8px 14px;font-weight:700;font-size:.82rem;color:var(--fg)}
 .cchip.on{background:var(--rose-deep);color:#fff;border-color:var(--rose-deep)}
 .cchip.quiz-chip{background:linear-gradient(135deg,#f8e6ea,#fff);border-color:#e7c4cb;color:var(--rose-deep)}
-.wish-btn{position:absolute;top:10px;left:10px;z-index:3;width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.92);border:1px solid var(--line);color:#c9a0a8;font-size:1rem;display:grid;place-items:center;box-shadow:0 4px 12px rgba(0,0,0,.06)}
+.wish-btn{position:absolute;top:10px;left:10px;z-index:3;width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.92);border:1px solid var(--line);color:#c9a0a8;font-size:1rem;display:grid;place-items:center;box-shadow:0 4px 12px rgba(0,0,0,.06)}
 html[dir="ltr"] .wish-btn{left:auto;right:10px}
 .wish-btn.on{color:#fff;background:var(--rose-deep);border-color:var(--rose-deep)}
 .card-visual{position:relative}

@@ -52,7 +52,22 @@ function feeCell(listAmt, charged, waived, freeLab){
   }
   return '<span class="fee-now">'+money(charged)+'</span>';
 }
+function bankReady(){
+  var bn=(typeof BANK_NAME==="string"?BANK_NAME:"").trim();
+  var bi=(typeof BANK_IBAN==="string"?BANK_IBAN:"").trim();
+  return !!(bn && bi);
+}
+function syncBankOption(){
+  var opt=document.getElementById("payBankOpt");
+  var ready=bankReady();
+  if(opt) opt.hidden=!ready;
+  if(!ready){
+    var cod=document.getElementById("payCod");
+    if(cod) cod.checked=true;
+  }
+}
 function updatePaySum(){
+  syncBankOption();
   const el=$("#paySum"); if(!el) return;
   const b=feeBreakdown();
   const bank=b.pay==="transfer";
@@ -97,7 +112,7 @@ function updatePaySum(){
   }
 }
 function addToCart(id, qty, quiet){
-  const p=products.find(x=>x.id===id); if(!p) return;
+  const p=products.find(x=>x.id===id); if(!p||p.hidden) return;
   if(p.stock!=null && Number(p.stock)<=0){
     if(!quiet && typeof toast==="function") toast(lang==="en"?"Out of stock":"نفد المخزون");
     return;
@@ -167,9 +182,9 @@ function renderCart(){
     return `<div class="cart-item">
       <div class="thumb">${visual(p,0)}</div>
       <div class="meta">
-        <strong>${pname(p)}</strong>
-        <span>${money(i.price)} · ${p.brand||""}</span><span class="vat-note">${T("vatInc")||"شامل الضريبة ٥٪"}</span>
-        <div class="sku-line">${T("sku")}: ${p.sku||"—"}</div>
+        <strong>${esc(pname(p))}</strong>
+        <span>${money(i.price)} · ${esc(p.brand||"")}</span><span class="vat-note">${T("vatInc")||"شامل الضريبة ٥٪"}</span>
+        <div class="sku-line">${T("sku")}: ${esc(p.sku||"—")}</div>
         <button class="rm" data-rm="${i.id}" type="button">${T("del")}</button>
       </div>
       <div class="qty" role="group" aria-label="${T("qty")}">

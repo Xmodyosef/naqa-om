@@ -14,15 +14,9 @@
       }
     })();
     A.orders.forEach(function (o) {
+      if (!A.inDateRange(o.at)) return;
       var st = A.normalizeStatus(o.status);
-      var day = (function () {
-        if (!o.at) return "";
-        try {
-          return new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Muscat", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date(o.at));
-        } catch (e) {
-          return String(o.at).slice(0, 10);
-        }
-      })();
+      var day = A.dayKey(o.at);
       if (st === "cancel") { cancel++; return; }
       count++;
       var tot = Number(o.total) || 0;
@@ -59,9 +53,11 @@
         }).join("")
       : '<p class="note">' + A.t("f_noProds") + '</p>';
     box.innerHTML =
-      '<div class="status-bar" style="margin:0 0 10px">'
+      A.dateFilterHtml("finDate")
+      + '<div class="status-bar" style="margin:0 0 10px">'
       + '<button type="button" class="mini" id="copyFinance">' + A.t("f_copy") + '</button>'
       + '<button type="button" class="mini" id="waFinance" style="background:#25D366;color:#fff">' + A.t("f_wa") + '</button>'
+      + '<button type="button" class="mini" id="exportFinanceCsv">' + A.t("exportCsv") + '</button>'
       + '</div>'
       + '<div class="stat-grid">'
       + '<div class="stat"><strong>' + todaySales.toFixed(3) + '</strong><span>' + A.t("f_todaySales") + '</span></div>'
@@ -78,9 +74,21 @@
       + '<div class="panel"><h2>' + A.t("f_areas") + '</h2>' + areaHtml + '</div>'
       + '<div class="panel"><h2>' + A.t("f_prods") + '</h2>' + prodHtml + '</div>'
       + '<p class="note" id="financeStatus">' + A.t("f_note") + '</p>';
+    A.bindDateFilter("finDate", function () { A.paintFinance(); });
     var cf = document.getElementById("copyFinance");
     if (cf) cf.onclick = function () { A.copyText(A.buildFinanceReport(), "financeStatus"); };
     var wf = document.getElementById("waFinance");
     if (wf) wf.onclick = function () { A.waShareText(A.buildFinanceReport()); };
+    var ef = document.getElementById("exportFinanceCsv");
+    if (ef) ef.onclick = function () {
+      var rows = [["id", "at", "status", "name", "phone", "area", "total"]];
+      (A.orders || []).forEach(function (o) {
+        if (!A.inDateRange(o.at)) return;
+        if (A.normalizeStatus(o.status) === "cancel") return;
+        rows.push([o.id || "", o.at || "", A.normalizeStatus(o.status), o.name || "", o.phone || "", o.area || "", o.total != null ? o.total : ""]);
+      });
+      A.downloadCsv("naqa-finance.csv", rows);
+      A.setMsg("financeStatus", A.t("exportOk"));
+    };
   };
 })(window);

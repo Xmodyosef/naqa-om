@@ -41,5 +41,6 @@
   "p_invNote": "Quantities publish with products. Customers see out-of-stock after Publish. Stock drops automatically when an order is set to Preparing.",
   "p_low": "Low",
   "p_out": "Out",
-  "p_search": "Search products…"
+  "p_search": "Search products…",
+  "p_show": "Show"
 }

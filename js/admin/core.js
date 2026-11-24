@@ -8,6 +8,85 @@
   A.ORDERS_KEY = "naqa_orders";
   A.overrides = {};
   A.orders = [];
+  A.dateFrom = A.dateFrom || "";
+  A.dateTo = A.dateTo || "";
+  A.dayKey = function (d) {
+    if (!d) return "";
+    try {
+      return new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Muscat", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date(d));
+    } catch (e) {
+      return String(d).slice(0, 10);
+    }
+  };
+  A.inDateRange = function (at) {
+    var day = A.dayKey(at);
+    if (A.dateFrom && (!day || day < A.dateFrom)) return false;
+    if (A.dateTo && (!day || day > A.dateTo)) return false;
+    return true;
+  };
+  A.dateFilterHtml = function (prefix) {
+    return '<div class="date-filter status-bar" style="flex-wrap:wrap;gap:8px;align-items:center">'
+      + '<label style="display:flex;gap:6px;align-items:center;font-size:13px">' + A.t("dateFrom")
+      + ' <input type="date" id="' + prefix + 'From" value="' + A.esc(A.dateFrom || "") + '" style="border:1px solid #efe4df;border-radius:10px;padding:8px"></label>'
+      + '<label style="display:flex;gap:6px;align-items:center;font-size:13px">' + A.t("dateTo")
+      + ' <input type="date" id="' + prefix + 'To" value="' + A.esc(A.dateTo || "") + '" style="border:1px solid #efe4df;border-radius:10px;padding:8px"></label>'
+      + '<button type="button" class="mini" id="' + prefix + 'Clear">' + A.t("dateClear") + '</button>'
+      + '</div>';
+  };
+  A.bindDateFilter = function (prefix, onChange) {
+    function sync() {
+      var f = document.getElementById(prefix + "From");
+      var t = document.getElementById(prefix + "To");
+      A.dateFrom = (f && f.value) || "";
+      A.dateTo = (t && t.value) || "";
+      if (onChange) onChange();
+    }
+    var f = document.getElementById(prefix + "From");
+    var t = document.getElementById(prefix + "To");
+    var c = document.getElementById(prefix + "Clear");
+    if (f) f.onchange = sync;
+    if (t) t.onchange = sync;
+    if (c) c.onclick = function () { A.dateFrom = ""; A.dateTo = ""; if (onChange) onChange(); };
+  };
+  A.csvCell = function (v) {
+    v = String(v == null ? "" : v);
+    if (/[",\n\r]/.test(v)) return '"' + v.replace(/"/g, '""') + '"';
+    return v;
+  };
+  A.downloadCsv = function (filename, rows) {
+    var text = "\uFEFF" + rows.map(function (r) {
+      return r.map(A.csvCell).join(",");
+    }).join("\n");
+    var blob = new Blob([text], { type: "text/csv;charset=utf-8" });
+    var a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(function () { try { URL.revokeObjectURL(a.href); } catch (e) {} }, 1500);
+  };
+  A.parseCsv = function (text) {
+    text = String(text || "").replace(/^\uFEFF/, "");
+    var rows = [], row = [], cell = "", i = 0, q = false;
+    while (i < text.length) {
+      var ch = text[i];
+      if (q) {
+        if (ch === '"') {
+          if (text[i + 1] === '"') { cell += '"'; i += 2; continue; }
+          q = false; i++; continue;
+        }
+        cell += ch; i++; continue;
+      }
+      if (ch === '"') { q = true; i++; continue; }
+      if (ch === ",") { row.push(cell); cell = ""; i++; continue; }
+      if (ch === "\n") { row.push(cell); rows.push(row); row = []; cell = ""; i++; continue; }
+      if (ch === "\r") { i++; continue; }
+      cell += ch; i++;
+    }
+    if (cell.length || row.length) { row.push(cell); rows.push(row); }
+    return rows.filter(function (r) { return r.some(function (c) { return String(c).trim() !== ""; }); });
+  };
   A.editingId = null;
   A.orderFilter = "all";
   A.CATS = ["عناية", "وجه", "عيون", "حواجب", "شفاه", "عطور", "أدوات", "شعر"];
@@ -84,7 +163,7 @@
   };
   A.copyText = function (text, msgId) {
     text = String(text || "");
-    function ok() { A.setMsg(msgId || "orderStatus", "تم النسخ ✓"); }
+    function ok() { A.setMsg(msgId || "orderStatus", A.t("copied")); }
     function fail() {
       try {
         var ta = document.createElement("textarea");

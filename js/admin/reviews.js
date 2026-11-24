@@ -56,14 +56,17 @@
       var opts = (A.products || w.products || []).map(function (p) {
         return '<option value="' + A.esc(p.sku || "") + '">' + A.esc((p.sku || "") + " · " + (p.brand || "") ) + "</option>";
       }).join("");
-      var rows = (A.reviews || []).map(function (r) {
+      var rows = (A.reviews || []).filter(function (r) { return A.inDateRange(r.at); }).map(function (r) {
         var img = r.photo ? '<img src="' + A.esc(r.photo) + '" alt="" style="width:64px;height:64px;object-fit:cover;border-radius:10px">' : "";
-        return '<div class="row"><div>' + img + '<strong>' + A.esc(r.name || "") + " " + stars(r.stars) + '</strong><small>' + A.esc(r.sku || "") + " · " + A.esc((r.ar || r.en || "").slice(0, 80)) + '</small></div>'
+        var when = r.at ? new Date(r.at).toLocaleDateString(A.lang === "en" ? "en-OM" : "ar-OM") : "";
+        return '<div class="row"><div>' + img + '<strong>' + A.esc(r.name || "") + " " + stars(r.stars) + '</strong><small>' + A.esc(r.sku || "") + (when ? " · " + A.esc(when) : "") + " · " + A.esc((r.ar || r.en || "").slice(0, 80)) + '</small></div>'
           + '<button type="button" class="mini" data-rv-off="' + A.esc(r.id) + '">' + (r.on === false ? A.t("r_show") : A.t("r_hide")) + '</button>'
           + '<button type="button" class="mini" data-rv-del="' + A.esc(r.id) + '">' + A.t("del") + '</button></div>';
       }).join("") || '<p class="note">' + A.t("r_empty") + '</p>';
       box.innerHTML = '<div class="panel"><h2>' + A.t("r_title") + '</h2>'
         + '<p class="note">' + A.t("r_note") + '</p>'
+        + A.dateFilterHtml("revDate")
+        + '<div class="status-bar" style="margin:8px 0"><button type="button" class="mini" id="exportReviewsCsv">' + A.t("exportCsv") + '</button></div>'
         + '<label>' + A.t("r_sku") + '<input id="rvSku" list="rvSkus" placeholder="SKU"></label><datalist id="rvSkus">' + opts + '</datalist>'
         + '<label>' + A.t("r_nick") + '<input id="rvName" maxlength="24"></label>'
         + '<label>' + A.t("r_stars") + '<select id="rvStars"><option>5</option><option>4</option><option>3</option><option>2</option><option>1</option></select></label>'
@@ -73,8 +76,18 @@
         + '<button type="button" class="primary" id="rvAdd" style="width:100%;margin-top:8px">' + A.t("r_add") + '</button>'
         + '</div>' + rows;
       document.getElementById("rvAdd").onclick = addReview;
+      A.bindDateFilter("revDate", draw);
+      var er = document.getElementById("exportReviewsCsv");
+      if (er) er.onclick = function () {
+        var rows = [["id", "at", "sku", "name", "stars", "ar", "en", "on"]];
+        (A.reviews || []).filter(function (r) { return A.inDateRange(r.at); }).forEach(function (r) {
+          rows.push([r.id || "", r.at || "", r.sku || "", r.name || "", r.stars || "", r.ar || "", r.en || "", r.on === false ? "off" : "on"]);
+        });
+        A.downloadCsv("naqa-reviews.csv", rows);
+      };
       box.querySelectorAll("[data-rv-del]").forEach(function (b) {
         b.onclick = function () {
+          if (!confirm(A.t("delConfirm"))) return;
           A.reviews = A.reviews.filter(function (r) { return r.id !== b.dataset.rvDel; });
           saveLocal();
           draw();

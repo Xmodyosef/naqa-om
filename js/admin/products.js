@@ -228,6 +228,7 @@
         + '<div><strong>' + A.esc(m.nameAr || m.nameEn) + '</strong>'
         + '<small>' + A.esc(m.brand || "") + ' · ' + A.esc(m.cat || "") + ' · SKU ' + A.esc(m.sku || "—") + '</small>'
         + '<small>' + A.t("p_price") + ' ' + A.esc(m.price) + ' ' + A.t("omr") + ' <span style="color:#9a7b72;font-size:11px">' + A.t("vatInc") + '</span> · ' + A.t("p_stock") + ' <span' + stockCls + '>' + A.esc(stock) + '</span>' + hid + '</small></div>'
+        + '<button type="button" class="mini ghost" data-hide="' + p.id + '">' + (m.hidden ? A.t("p_show") : A.t("p_hide")) + '</button>'
         + '<button type="button" class="edit-btn" data-open="' + p.id + '">' + A.t("p_edit") + '</button></article>';
     }).join("");
     document.getElementById("list").innerHTML = inv + '<p class="note" id="vatAdminNote" style="color:#9a7b72;margin:0 0 10px">' + A.t("p_vatNote") + '</p>' + (html || '<p class="note">' + A.t("p_empty") + '</p>');
@@ -311,6 +312,29 @@
     document.getElementById("saveEdit").onclick = function () { A.saveEdit(); };
   };
 
+  A.toggleHide = function (id) {
+    var p = A.products.find(function (x) { return String(x.id) === String(id); });
+    if (!p) return;
+    var key = String(id);
+    var existing = A.overrides[id] || A.overrides[key] || {};
+    var next = Object.assign({}, existing);
+    if (next.hidden) delete next.hidden;
+    else next.hidden = true;
+    if (Object.keys(next).length) {
+      A.overrides[key] = next;
+      if (A.overrides[id] && String(id) !== key) delete A.overrides[id];
+    } else {
+      delete A.overrides[key];
+      delete A.overrides[id];
+    }
+    try { localStorage.setItem(A.KEY, JSON.stringify(A.overrides)); } catch (e) {
+      A.setMsg("status", A.t("p_imgsFull"));
+      return;
+    }
+    if (A.paintList) A.paintList(document.getElementById("q") ? document.getElementById("q").value.trim() : "");
+    if (A.publishLive) A.publishLive();
+    else A.setMsg("status", A.t("p_saved"));
+  };
   A.saveEdit = function (opts) {
     opts = opts || {};
     if (A.editingId == null) return;
@@ -330,8 +354,14 @@
     if (!next.imgs.length) delete next.imgs;
     if (!next.hidden) delete next.hidden;
     Object.keys(next).forEach(function (k) { if (next[k] === "" || next[k] === undefined) delete next[k]; });
-    if (Object.keys(next).length) A.overrides[A.editingId] = next;
-    else delete A.overrides[A.editingId];
+    var ok = String(A.editingId);
+    if (Object.keys(next).length) {
+      A.overrides[ok] = next;
+      if (A.overrides[A.editingId] && String(A.editingId) !== ok) delete A.overrides[A.editingId];
+    } else {
+      delete A.overrides[ok];
+      delete A.overrides[A.editingId];
+    }
     try { localStorage.setItem(A.KEY, JSON.stringify(A.overrides)); } catch (e) {
       A.setMsg("status", A.t("p_imgsFull"));
       return;

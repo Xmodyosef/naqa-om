@@ -3,9 +3,10 @@
   A.paintStatusBar = function () {
     var bar = document.getElementById("statusBar");
     if (!bar) return;
-    var counts = { all: A.orders.length };
+    var scoped = (A.orders || []).filter(function (o) { return A.inDateRange(o.at); });
+    var counts = { all: scoped.length };
     A.STATUS_ORDER.forEach(function (k) { counts[k] = 0; });
-    A.orders.forEach(function (o) {
+    scoped.forEach(function (o) {
       o.status = A.normalizeStatus(o.status);
       counts[o.status] = (counts[o.status] || 0) + 1;
     });
@@ -37,16 +38,33 @@
           if (t.id === "copyAllOrders") A.copyText(A.buildOrdersReport("all"), "orderStatus");
           if (t.id === "copyNewOrders") A.copyText(A.buildOrdersReport("new"), "orderStatus");
           if (t.id === "waOrdersReport") A.waShareText(A.buildOrdersReport(A.orderFilter === "all" ? "new" : A.orderFilter));
+          if (t.id === "exportOrdersCsv") A.exportOrdersCsv();
+          if (t.id === "importOrdersBtn") {
+            var inp = document.getElementById("importOrdersFile");
+            if (inp) inp.click();
+          }
+        });
+        tools.addEventListener("change", function (e) {
+          if (e.target && e.target.id === "importOrdersFile") {
+            A.importOrdersCsv(e.target.files && e.target.files[0]);
+            e.target.value = "";
+          }
         });
       }
       tools.innerHTML =
-        '<button type="button" class="mini" id="copyAllOrders">' + A.t("o_copyAll") + '</button>'
+        A.dateFilterHtml("ordDate")
+        + '<button type="button" class="mini" id="copyAllOrders">' + A.t("o_copyAll") + '</button>'
         + '<button type="button" class="mini" id="copyNewOrders">' + A.t("o_copyNew") + '</button>'
-        + '<button type="button" class="mini" id="waOrdersReport" style="background:#25D366;color:#fff">' + A.t("o_waSum") + '</button>';
+        + '<button type="button" class="mini" id="waOrdersReport" style="background:#25D366;color:#fff">' + A.t("o_waSum") + '</button>'
+        + '<button type="button" class="mini" id="exportOrdersCsv">' + A.t("exportCsv") + '</button>'
+        + '<button type="button" class="mini" id="importOrdersBtn">' + A.t("importCsv") + '</button>'
+        + '<input id="importOrdersFile" type="file" accept=".csv,text/csv" hidden>';
+      A.bindDateFilter("ordDate", function () { A.paintOrders(); });
     }
     var box = document.getElementById("ordersList");
     if (!box) return;
     var list = A.orders.filter(function (o) {
+      if (!A.inDateRange(o.at)) return false;
       return A.orderFilter === "all" || A.normalizeStatus(o.status) === A.orderFilter;
     });
     if (!A.orders.length) {

@@ -146,6 +146,13 @@
 
   var list = document.getElementById("list");
   if (list) list.addEventListener("click", function (e) {
+    var hide = e.target.closest("[data-hide]");
+    if (hide) {
+      e.preventDefault();
+      e.stopPropagation();
+      if (A.toggleHide) A.toggleHide(hide.getAttribute("data-hide"));
+      return;
+    }
     var btn = e.target.closest("[data-open]");
     if (!btn) return;
     A.openEdit(+btn.getAttribute("data-open"));
@@ -156,6 +163,7 @@
     var del = e.target.closest("[data-del]");
     if (del) {
       var idDel = del.getAttribute("data-del");
+      if (!confirm(A.t("delConfirm") + "\n" + idDel)) return;
       A.orders = A.orders.filter(function (o) { return String(o.id) !== String(idDel); });
       A.saveOrders();
       A.paintOrders();

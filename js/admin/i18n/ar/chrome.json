@@ -107,5 +107,15 @@
   "rep_finDone": "تم",
   "rep_finCancel": "ملغي",
   "rep_finDate": "تاريخ التقرير",
-  "storeLink": "← المتجر"
+  "storeLink": "← المتجر",
+  "dateFrom": "من",
+  "dateTo": "إلى",
+  "dateClear": "كل التواريخ",
+  "exportCsv": "تصدير Excel",
+  "importCsv": "استيراد Excel",
+  "exportOk": "تم التصدير",
+  "importOk": "تم الاستيراد",
+  "importFail": "ملف الاستيراد غير صالح",
+  "copied": "تم النسخ ✓",
+  "delConfirm": "هل تحذفين هذا الطلب؟ لا يمكن التراجع."
 }

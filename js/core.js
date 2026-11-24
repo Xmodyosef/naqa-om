@@ -76,14 +76,14 @@ function productLink(id){
   return location.origin + siteBasePath() + "p/" + id + "/";
 }
 function mergeOverrides(map){
-  if(!map) return;
+  if(!map) map={};
   products.forEach(function(p){
     var o=map[p.id]||map[String(p.id)];
-    if(!o) return;
+    if(!o){ p.hidden=false; return; }
     if(o.price!=null && o.price!=="") p.price=Number(o.price);
     if(o.was!=null && o.was!=="") p.was=Number(o.was);
     if(o.stock!=null && o.stock!=="") p.stock=Number(o.stock);
-    if(o.hidden!=null) p.hidden=!!o.hidden;
+    p.hidden=!!o.hidden;
     ["nameAr","nameEn","descAr","descEn","useAr","useEn","skinAr","skinEn","brand","cat","sku","em"].forEach(function(k){
       if(o[k]!=null && o[k]!=="") p[k]=o[k];
     });

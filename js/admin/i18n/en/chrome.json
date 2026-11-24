@@ -107,5 +107,15 @@
   "rep_finCancel": "Cancelled",
   "rep_finDate": "Report date",
   "storeLink": "← Store",
-  "entry": "Enter"
+  "entry": "Enter",
+  "dateFrom": "From",
+  "dateTo": "To",
+  "dateClear": "All dates",
+  "exportCsv": "Export Excel",
+  "importCsv": "Import Excel",
+  "exportOk": "Exported",
+  "importOk": "Imported",
+  "importFail": "Import file is invalid",
+  "copied": "Copied ✓",
+  "delConfirm": "Delete this order? This cannot be undone."
 }

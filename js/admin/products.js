@@ -398,6 +398,9 @@
       imgs: normImgs(A._editImgs),
       hidden: !!(document.getElementById("f_hidden") && document.getElementById("f_hidden").checked)
     };
+    if (next.price != null && (isNaN(next.price) || next.price < 0)) { A.setMsg("status", A.t("p_priceBad")); return; }
+    if (next.was != null && (isNaN(next.was) || next.was < 0)) { A.setMsg("status", A.t("p_priceBad")); return; }
+    if (next.stock != null && (isNaN(next.stock) || next.stock < 0)) { A.setMsg("status", A.t("p_stockBad")); return; }
     if (next.price == null || isNaN(next.price)) delete next.price;
     if (next.was == null || isNaN(next.was)) delete next.was;
     if (next.stock == null || isNaN(next.stock)) delete next.stock;

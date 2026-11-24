@@ -47,5 +47,7 @@
   "tax_vat5": "5% VAT (included in price)",
   "tax_exempt": "VAT exempt",
   "tax_custom": "Other rate",
-  "tax_customRate": "Tax rate %"
+  "tax_customRate": "Tax rate %",
+  "p_priceBad": "Price cannot be below zero.",
+  "p_stockBad": "Stock cannot be below zero."
 }

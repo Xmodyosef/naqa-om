@@ -13,7 +13,7 @@
       + '<label style="display:block;margin:8px 0;font-size:.8rem;font-weight:800;color:#8a7f78">' + A.t("setTokLabel") + '<input id="token" type="password" value="" autocomplete="off" placeholder="ghp_..."></label>'
       + (function () {
           var has = "";
-          try { has = localStorage.getItem(A.TOKEN) || ""; } catch (e) {}
+          try { has = (A.readToken ? A.readToken() : "") || ""; } catch (e) {}
           if (!has) return '<button type="button" class="primary" id="btnSaveTok" style="width:100%;margin-top:8px">' + A.t("tokSaveBtn") + '</button>';
           return '<p class="note">' + A.t("tokSaved") + '</p>'
             + '<button type="button" class="mini" id="btnForgetTok">' + A.t("tokForget") + '</button>';
@@ -61,12 +61,25 @@
       else hidePanel();
     };
     document.getElementById("btnChangePin").onclick = function () {
-      var n = prompt(A.t("setNewPin"));
-      if (!n || n.trim().length < 4) return;
-      A.hashPin(n.trim()).then(function (h) {
-        localStorage.setItem(A.PIN_HASH, h);
-        localStorage.removeItem(A.PIN);
-        A.setMsg("settingsStatus", A.t("setPinOk"));
+      var oldPin = prompt(A.t("setOldPin"));
+      if (oldPin == null) return;
+      oldPin = String(oldPin).trim();
+      if (!oldPin) { A.setMsg("settingsStatus", A.t("pinBad")); return; }
+      A.hashPin(oldPin).then(function (oldH) {
+        var have = "", plain = "";
+        try { have = localStorage.getItem(A.PIN_HASH) || ""; } catch (e) {}
+        try { plain = localStorage.getItem(A.PIN) || ""; } catch (e) {}
+        var ok = (have && oldH === have) || (!have && plain && oldPin === plain);
+        if (!ok) { A.setMsg("settingsStatus", A.t("pinBad")); return; }
+        var n = prompt(A.t("setNewPin"));
+        if (n == null) return;
+        n = String(n).trim();
+        if (n.length < 4) { A.setMsg("settingsStatus", A.t("pinShort")); return; }
+        return A.hashPin(n).then(function (h) {
+          localStorage.setItem(A.PIN_HASH, h);
+          localStorage.removeItem(A.PIN);
+          A.setMsg("settingsStatus", A.t("setPinOk"));
+        });
       });
     };
   };
@@ -82,13 +95,25 @@
     var el = document.getElementById("token");
     var typed = el && el.value ? el.value.trim() : "";
     if (typed) return typed;
-    try { return (localStorage.getItem(A.TOKEN) || "").trim(); } catch (e) { return ""; }
+    try {
+      var sess = (sessionStorage.getItem(A.TOKEN) || "").trim();
+      if (sess) return sess;
+      var oldTok = (localStorage.getItem(A.TOKEN) || "").trim();
+      if (oldTok) {
+        sessionStorage.setItem(A.TOKEN, oldTok);
+        localStorage.removeItem(A.TOKEN);
+        return oldTok;
+      }
+    } catch (e) {}
+    return "";
   };
   A.keepToken = function (token) {
-    try { localStorage.setItem(A.TOKEN, token); } catch (e) {}
+    try { sessionStorage.setItem(A.TOKEN, token); } catch (e) {}
+    if (A.forgetToken) A.forgetToken();
   };
   A.forgetToken = function () {
-    /* token kept on device */
+    try { sessionStorage.removeItem(A.TOKEN); } catch (e) {}
+    try { localStorage.removeItem(A.TOKEN); } catch (e) {}
     var el = document.getElementById("token");
     if (el) el.value = "";
   };

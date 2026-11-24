@@ -37,6 +37,30 @@
         byProduct[k].rev += Number(it.line != null ? it.line : 0) || 0;
       });
     });
+    var byDay = {};
+    A.orders.forEach(function (o) {
+      if (!A.inDateRange(o.at)) return;
+      if (A.normalizeStatus(o.status) === "cancel") return;
+      var d = A.dayKey(o.at);
+      if (!d) return;
+      byDay[d] = (byDay[d] || 0) + (Number(o.total) || 0);
+    });
+    var dayKeys = Object.keys(byDay).sort().slice(-7);
+    var chartHtml = "";
+    if (dayKeys.length) {
+      var maxV = 1;
+      dayKeys.forEach(function (k) { if (byDay[k] > maxV) maxV = byDay[k]; });
+      var W = 320, H = 128, gap = 10;
+      var bw = Math.max(8, Math.floor((W - gap * (dayKeys.length + 1)) / dayKeys.length));
+      var bars = dayKeys.map(function (k, i) {
+        var bh = Math.max(4, Math.round((byDay[k] / maxV) * (H - 28)));
+        var x = gap + i * (bw + gap);
+        var y = H - 22 - bh;
+        return '<rect x="' + x + '" y="' + y + '" width="' + bw + '" height="' + bh + '" rx="4" fill="#8d3048"></rect>'
+          + '<text x="' + (x + bw / 2) + '" y="' + (H - 6) + '" text-anchor="middle" font-size="10" fill="#6b625c">' + A.esc(String(k).slice(5)) + '</text>';
+      }).join("");
+      chartHtml = '<div class="panel"><h2>' + A.t("f_chart") + '</h2><svg viewBox="0 0 ' + W + ' ' + H + '" width="100%" height="140" role="img" aria-label="' + A.esc(A.t("f_chart")) + '">' + bars + '</svg></div>';
+    }
     var areas = Object.keys(byArea).map(function (k) {
       return { name: k, n: byArea[k].n, rev: byArea[k].rev };
     }).sort(function (a, b) { return b.rev - a.rev; }).slice(0, 8);
@@ -71,6 +95,7 @@
       + '<div class="stat"><strong>' + neu + '</strong><span>' + A.t("f_new") + '</span></div>'
       + '<div class="stat"><strong>' + cancel + '</strong><span>' + A.t("f_cancel") + '</span></div>'
       + '</div>'
+      + chartHtml
       + '<div class="panel"><h2>' + A.t("f_areas") + '</h2>' + areaHtml + '</div>'
       + '<div class="panel"><h2>' + A.t("f_prods") + '</h2>' + prodHtml + '</div>'
       + '<p class="note" id="financeStatus">' + A.t("f_note") + '</p>';

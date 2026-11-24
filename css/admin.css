@@ -1,7 +1,7 @@
 :root{--bg:#fdf8f6;--card:#fff;--fg:#1f1a17;--muted:#6b625c;--line:#efe4df;--rose:#8d3048;--r:16px}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font-family:"Noto Kufi Arabic",system-ui,-apple-system,"Segoe UI",Tahoma,sans-serif}
 a{color:inherit}button,input,textarea,select{font:inherit}
-.admin-top{position:sticky;top:0;z-index:20;background:rgba(253,248,246,.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);padding:12px 14px 0}
+.admin-top{position:sticky;top:0;z-index:20;background:#fdf8f6;border-bottom:1px solid var(--line);padding:12px 14px 0}
 .admin-top h1{margin:4px 0 8px;font-size:1.15rem}
 .admin-top a.store{font-size:.85rem;color:var(--rose);font-weight:700;text-decoration:none}
 .tabs{display:none!important;gap:6px;overflow-x:auto;padding-bottom:10px;-webkit-overflow-scrolling:touch}
@@ -88,10 +88,8 @@ body.naqa-editing .admin-top{visibility:hidden;pointer-events:none}
   gap:10px;
   padding:12px 14px;
   padding-top:max(12px, env(safe-area-inset-top, 0px));
-  background:rgba(253,248,246,.98);
+  background:#fdf8f6;
   border-bottom:1px solid var(--line);
-  backdrop-filter:blur(10px);
-  -webkit-backdrop-filter:blur(10px);
   z-index:2;
 }
 .edit-sheet-head .back{
@@ -216,3 +214,5 @@ body.naqa-open .admin-shell{display:flex;align-items:flex-start;gap:14px}
   .side-group{min-width:168px}
   .side-subs{padding-inline-start:0}
 }
+
+.side-main:focus-visible,.side-sub:focus-visible{outline:2px solid var(--rose);outline-offset:2px}

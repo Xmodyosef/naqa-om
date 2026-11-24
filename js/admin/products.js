@@ -2,10 +2,6 @@
   var A = w.NaqaAdmin;
   var MAX_IMGS = 5;
 
-  function L(ar, en) {
-    return A.lang === "en" ? en : ar;
-  }
-
   function endEditMode() {
     try { document.body.classList.remove("naqa-editing"); } catch (e) {}
     if (window.naqaScrollLock) try { naqaScrollLock.unlock(); } catch (e) {}
@@ -50,7 +46,7 @@
       box.innerHTML =
         '<div class="img-gal-add" id="imgGalEmpty" role="button" tabindex="0">'
         + '<span style="font-size:1.4rem">＋</span>'
-        + '<span>' + L("أضيفي صورة", "Add image") + '</span>'
+        + '<span>' + A.t("p_imgsAdd") + '</span>'
         + '</div>';
       var empty = document.getElementById("imgGalEmpty");
       if (empty) empty.onclick = function () {
@@ -61,7 +57,7 @@
     }
     var html = imgs.map(function (src, i) {
       var main = i === 0
-        ? '<span class="main-tag">' + L("رئيسية", "Main") + '</span>'
+        ? '<span class="main-tag">' + A.t("p_imgsMain") + '</span>'
         : "";
       return '<div class="img-gal-item' + (i === 0 ? " is-main" : "") + '" data-i="' + i + '">'
         + main
@@ -76,7 +72,7 @@
     if (imgs.length < MAX_IMGS) {
       html += '<div class="img-gal-add" id="imgGalAddMore" role="button" tabindex="0">'
         + '<span style="font-size:1.2rem">＋</span>'
-        + '<span>' + L("إضافة", "Add") + '</span></div>';
+        + '<span>' + A.t("p_imgsAddBtn") + '</span></div>';
     }
     box.innerHTML = html;
     var more = document.getElementById("imgGalAddMore");
@@ -143,17 +139,17 @@
         if (!files.length) return;
         var left = MAX_IMGS - (A._editImgs || []).length;
         if (left <= 0) {
-          A.setMsg("status", L("الحد " + MAX_IMGS + " صور", "Max " + MAX_IMGS + " images"));
+          A.setMsg("status", A.t("p_imgsMax"));
           return;
         }
         files = files.slice(0, left);
-        A.setMsg("status", L("جاري تجهيز الصور…", "Preparing images…"));
+        A.setMsg("status", A.t("p_imgsPrep"));
         Promise.all(files.map(fileToDataUrl)).then(function (urls) {
           A._editImgs = normImgs((A._editImgs || []).concat(urls));
           A.paintImgGallery();
-          A.setMsg("status", L("انضافت الصور · احفظي المنتج", "Images added · save product"));
+          A.setMsg("status", A.t("p_imgsAdded"));
         }).catch(function () {
-          A.setMsg("status", L("الصورة ما انفتحت", "Could not open image"));
+          A.setMsg("status", A.t("p_imgsFail"));
         });
       });
     }
@@ -163,7 +159,7 @@
       var u = inp ? inp.value.trim() : "";
       if (!u) return;
       if ((A._editImgs || []).length >= MAX_IMGS) {
-        A.setMsg("status", L("الحد " + MAX_IMGS + " صور", "Max " + MAX_IMGS + " images"));
+        A.setMsg("status", A.t("p_imgsMax"));
         return;
       }
       A._editImgs = normImgs((A._editImgs || []).concat([u]));
@@ -239,18 +235,15 @@
       + '</div>'
       + '<div class="edit-sheet-body" id="editSheetBody">'
       + '<div class="edit-card">'
-      + '<span class="img-gal-label">' + L("صور المنتج", "Product images") + '</span>'
-      + '<p class="img-gal-note">' + L(
-        "مثل سلة وزد: ارفعي من الجهاز أو ألصقي رابط. الأولى رئيسية · ★ لجعلها رئيسية · ‹› للترتيب · ✕ للحذف. الحد ٥. الصور المرفوعة تُحفظ هنا ثم تُرفع للمتجر عند «نشر للكل».",
-        "Like Salla & Zid: upload or paste a URL. First is main · ★ set main · arrows reorder · ✕ delete. Max 5. Uploaded photos go live on Publish."
-      ) + '</p>'
+      + '<span class="img-gal-label">' + A.t("p_imgs") + '</span>'
+      + '<p class="img-gal-note">' + A.t("p_imgsNote") + '</p>'
       + '<div class="img-gal-tools">'
-      + '<button type="button" class="mini" id="btnImgPick">' + L("📷 رفع من الجهاز", "📷 Upload") + '</button>'
+      + '<button type="button" class="mini" id="btnImgPick">' + A.t("p_imgsUpload") + '</button>'
       + '<input id="f_imgFile" type="file" accept="image/*" multiple>'
       + '</div>'
       + '<div class="img-gal-url-row">'
-      + '<input id="f_imgUrl" type="url" inputmode="url" placeholder="' + L("أو الصقي رابط صورة…", "Or paste image URL…") + '">'
-      + '<button type="button" class="mini" id="btnImgUrl">' + L("إضافة", "Add") + '</button>'
+      + '<input id="f_imgUrl" type="url" inputmode="url" placeholder="' + A.t("p_imgsUrlPh") + '">'
+      + '<button type="button" class="mini" id="btnImgUrl">' + A.t("p_imgsAddBtn") + '</button>'
       + '</div>'
       + '<div class="img-gal" id="imgGal"></div>'
       + '<label>' + A.t("p_nameAr") + '<textarea id="f_nameAr" rows="2">' + A.esc(m.nameAr || "") + '</textarea></label>'
@@ -308,7 +301,7 @@
     if (Object.keys(next).length) A.overrides[A.editingId] = next;
     else delete A.overrides[A.editingId];
     try { localStorage.setItem(A.KEY, JSON.stringify(A.overrides)); } catch (e) {
-      A.setMsg("status", L("مساحة الجهاز ممتلئة — قلّلي الصور أو انشري أولاً", "Device storage full — fewer images or publish first"));
+      A.setMsg("status", A.t("p_imgsFull"));
       return;
     }
     A.setMsg("status", A.t("p_saved"));

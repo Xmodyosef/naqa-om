@@ -222,8 +222,10 @@ body.naqa-open .admin-shell{
 }
 .side-nav{
   order:2;
-  flex:0 0 232px;
-  width:232px;
+  flex:0 0 auto;
+  width:max-content;
+  max-width:max-content;
+  min-width:0;
   direction:rtl;
   position:sticky;
   top:0;
@@ -505,8 +507,10 @@ body.naqa-open .admin-shell{
   }
   .side-nav{
     order:2;
-    width:168px;
-    flex:0 0 168px;
+    width:max-content;
+    max-width:max-content;
+    min-width:0;
+    flex:0 0 auto;
     flex-direction:column;
     overflow-x:hidden;
     overflow-y:auto;
@@ -661,10 +665,11 @@ body.naqa-open #pageSubNav .page-chip .chip-dot {
 }
 @media (max-width: 860px) {
   body.naqa-open .side-nav {
-    width: 184px;
-    flex: 0 0 184px;
-    min-width: 184px;
-    padding: 10px 7px;
+    width: max-content;
+    max-width: max-content;
+    flex: 0 0 auto;
+    min-width: 0;
+    padding: 10px 12px;
   }
   body.naqa-open .side-nav .side-main {
     min-height: 42px;
@@ -692,9 +697,10 @@ body.naqa-open #pageSubNav .page-chip .chip-dot {
 }
 @media (max-width: 390px) {
   body.naqa-open .side-nav {
-    width: 170px;
-    flex-basis: 170px;
-    min-width: 170px;
+    width: max-content;
+    max-width: max-content;
+    flex: 0 0 auto;
+    min-width: 0;
   }
   body.naqa-open .side-nav .side-main .side-lbl {
     font-size: .68rem;
@@ -723,46 +729,45 @@ body.naqa-open #pageSubNav .page-chip .chip-dot {
     border-radius: 14px;
   }
 
+  /* fit-content rail (not 68px icon-only) */
   body.naqa-open .side-nav {
-    width: 68px;
-    min-width: 68px;
-    flex: 0 0 68px;
-    padding: 8px 5px 12px;
+    width: max-content !important;
+    max-width: max-content !important;
+    min-width: 0 !important;
+    flex: 0 0 auto !important;
+    padding: 8px 12px 12px !important;
     gap: 3px;
   }
 
   body.naqa-open .side-nav::before {
-    font-size: .68rem;
-    padding: 2px 0 8px;
+    font-size: .72rem;
+    padding: 2px 4px 8px;
+    text-align: start;
   }
 
   body.naqa-open .side-nav .side-main {
-    min-height: 48px;
-    justify-content: center;
-    padding: 6px 3px;
-    gap: 0;
+    min-height: 40px;
+    justify-content: flex-start;
+    padding: 6px 8px;
+    gap: 8px;
     position: relative;
+    width: 100%;
   }
 
-  body.naqa-open .side-nav .side-main .side-lbl,
+  body.naqa-open .side-nav .side-main .side-lbl {
+    display: block !important;
+    white-space: nowrap !important;
+    overflow: visible !important;
+    font-size: .72rem;
+  }
   body.naqa-open .side-nav .side-main .chev {
-    display: none !important;
+    display: inline-block !important;
   }
 
   body.naqa-open .side-nav .side-main .side-ico {
-    width: 34px;
-    height: 34px;
-    flex-basis: 34px;
-  }
-
-  body.naqa-open .side-nav .side-badge {
-    position: absolute;
-    top: 1px;
-    inset-inline-start: 2px;
-    min-width: 16px;
-    height: 16px;
-    padding: 0 4px;
-    font-size: .6rem;
+    width: 30px;
+    height: 30px;
+    flex-basis: 30px;
   }
 
   body.naqa-open .side-nav .side-group.open .side-subs {
@@ -771,17 +776,18 @@ body.naqa-open #pageSubNav .page-chip .chip-dot {
   }
 
   body.naqa-open .side-nav .side-sub {
-    min-height: 26px;
-    padding: 4px 2px;
-    font-size: .58rem;
-    line-height: 1.15;
-    text-align: center;
-    overflow-wrap: anywhere;
+    min-height: 24px;
+    padding: 4px 8px 4px 14px;
+    font-size: .62rem;
+    line-height: 1.2;
+    text-align: start;
+    white-space: nowrap;
   }
 
   body.naqa-open .admin-main {
     min-width: 0;
-    width: calc(100% - 68px);
+    width: auto;
+    flex: 1 1 auto;
     padding: 10px 8px 20px;
     overflow-x: hidden;
   }
@@ -953,4 +959,30 @@ body.naqa-open .side-nav .chev {
     flex: 1 1 auto;
     padding: 10px 8px 20px;
   }
+}
+
+
+/* fit-content side-nav fix44 — width = words + padding only */
+body.naqa-open .side-nav {
+  width: max-content !important;
+  max-width: max-content !important;
+  min-width: 0 !important;
+  flex: 0 0 auto !important;
+  flex-shrink: 0 !important;
+  padding-inline: 12px 14px !important;
+  box-sizing: border-box;
+}
+body.naqa-open .side-nav .side-main,
+body.naqa-open .side-nav a {
+  width: 100%;
+  justify-content: flex-start;
+}
+body.naqa-open .side-nav .side-main .side-lbl {
+  flex: 0 1 auto;
+  white-space: nowrap !important;
+}
+body.naqa-open .admin-main {
+  flex: 1 1 auto !important;
+  min-width: 0 !important;
+  width: auto !important;
 }

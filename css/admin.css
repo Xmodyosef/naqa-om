@@ -795,3 +795,82 @@ body.naqa-open .btn-add {
 .settings-sec .set-lab { display: block; margin: 8px 0; font-size: .8rem; font-weight: 800; color: #8a7f78; }
 .settings-sec .set-lab input { width: 100%; margin-top: 6px; box-sizing: border-box; }
 .settings-sec .set-ok { color: #2f6b3a; font-weight: 700; }
+
+
+/* ========== STEP4: mobile touch targets & spacing ========== */
+html body.naqa-open .mini,
+html body.naqa-open .edit-btn,
+html body.naqa-open .back,
+html body.naqa-open button.primary,
+html body.naqa-open .savebar button,
+html body.naqa-open .pager button {
+  min-height: 44px;
+  min-width: 44px;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: rgba(196,107,124,.18);
+}
+html body.naqa-open #pageSubNav .page-chip {
+  min-height: 40px;
+  padding: 8px 14px;
+  font-size: .74rem;
+  touch-action: manipulation;
+}
+html body.naqa-open #list .prod-actions {
+  gap: 8px;
+}
+html body.naqa-open #list .prod-actions .mini,
+html body.naqa-open #list .prod-actions .edit-btn {
+  min-height: 44px;
+  font-size: .78rem !important;
+  padding: 10px 12px !important;
+  border-radius: 12px !important;
+}
+html body.naqa-open .savebar {
+  padding: 10px 14px calc(10px + env(safe-area-inset-bottom, 0px));
+  gap: 10px;
+}
+html body.naqa-open .savebar button {
+  font-size: .85rem;
+  border-radius: 14px;
+}
+html body.naqa-open .side-main {
+  min-height: 44px;
+  touch-action: manipulation;
+}
+/* Prevent accidental horizontal page scroll when swiping chips */
+html body.naqa-open #pageSubNav {
+  overscroll-behavior-x: contain;
+}
+@media (max-width: 600px) {
+  html body.naqa-open #list .prod-actions {
+    flex-direction: row;
+    gap: 8px;
+  }
+  html body.naqa-open #list .prod-actions .mini,
+  html body.naqa-open #list .prod-actions .edit-btn {
+    flex: 1 1 0;
+    text-align: center;
+    justify-content: center;
+  }
+  html body.naqa-open #pageSubNav .page-chip {
+    min-height: 40px;
+    padding: 8px 12px;
+    font-size: .72rem;
+  }
+  html body.naqa-open .edit-sheet-foot .primary,
+  html body.naqa-open #saveEdit {
+    min-height: 48px;
+    width: 100%;
+    font-size: .9rem;
+  }
+  html body.naqa-open .back {
+    min-height: 44px;
+    padding: 10px 14px;
+  }
+  /* status messages more readable */
+  html body.naqa-open .status {
+    font-size: .8rem;
+    line-height: 1.35;
+  }
+}
+/* ========== end STEP4 ========== */

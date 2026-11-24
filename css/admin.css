@@ -202,7 +202,7 @@ body.naqa-open .admin-shell{display:flex;align-items:flex-start;gap:14px}
 .side-subs{display:none;flex-direction:column;gap:4px;margin:4px 0 6px;padding-inline-start:10px}
 .side-group.open .side-subs{display:flex}
 .side-sub{font-size:.82rem;font-weight:700;background:#faf6f3}
-.side-sub.on{background:#8d3048;color:#fff;border-color:#8d3048}
+.side-sub.on{background:var(--rose);color:#fff;border-color:var(--rose)}
 .admin-main{flex:1;min-width:0}
 .row.is-hidden{opacity:.55;outline:1px dashed #c9a7b0}
 .pager{display:flex;gap:8px;align-items:center;justify-content:center;margin:14px 0 28px}
@@ -213,6 +213,52 @@ body.naqa-open .admin-shell{display:flex;align-items:flex-start;gap:14px}
   .side-nav{position:static;width:100%;flex-basis:auto;flex-direction:row;overflow-x:auto;align-items:flex-start}
   .side-group{min-width:168px}
   .side-subs{padding-inline-start:0}
+  .side-group.open .side-subs{padding-inline-start:0}
+  .side-group.open .side-subs::before{display:none}
 }
 
 .side-main:focus-visible,.side-sub:focus-visible{outline:2px solid var(--rose);outline-offset:2px}
+
+/* open group: strong parent + rail to children (keep branches in side) */
+.side-group.open > .side-main{
+  background:var(--rose);
+  color:#fff;
+  border-color:var(--rose);
+  box-shadow:0 2px 8px rgba(141,48,72,.22);
+}
+.side-group.open .side-subs{
+  position:relative;
+  padding-inline-start:18px;
+}
+.side-group.open .side-subs::before{
+  content:"";
+  position:absolute;
+  inset-inline-start:6px;
+  top:4px;
+  bottom:4px;
+  width:2px;
+  background:var(--rose);
+  opacity:.35;
+  border-radius:2px;
+}
+.side-sub{
+  transition:background .15s ease,color .15s ease,border-color .15s ease;
+}
+.side-sub.on{
+  background:var(--rose);
+  color:#fff;
+  border-color:var(--rose);
+  box-shadow:inset 3px 0 0 #5c1f30;
+}
+.side-sub:hover:not(.on){
+  background:#f3e8e4;
+}
+.side-main{
+  transition:background .15s ease,color .15s ease,border-color .15s ease;
+}
+/* home (no group) keeps dark on */
+.side-main.on:not(.side-group.open > .side-main){
+  background:#1f1a17;
+  color:#fff;
+  border-color:#1f1a17;
+}

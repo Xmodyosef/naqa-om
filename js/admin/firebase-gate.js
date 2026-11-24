@@ -122,10 +122,13 @@
     if (code === "auth/too-many-requests") return t("fb_rate", "");
     if (code === "auth/network-request-failed") return t("fb_network", "");
     if (code === "auth/account-exists-with-different-credential") return t("fb_existsDiff", "");
-    if (context === "google") return t("fb_googleOff", "");
-    if (context === "reset") return t("fb_resetFail", "");
-    if (context === "create") return t("fb_createFail", "");
-    return t("fb_bad", "");
+    if (context === "google") return t("fb_googleOff", "") + (code ? " (" + code.replace("auth/", "") + ")" : "");
+    if (context === "reset") return t("fb_resetFail", "") + (code ? " (" + code.replace("auth/", "") + ")" : "");
+    if (context === "create") {
+      if (code === "auth/operation-not-allowed") return t("fb_providerOff", "");
+      return t("fb_createFail", "") + (code ? " (" + code.replace("auth/", "") + ")" : "");
+    }
+    return t("fb_bad", "") + (code ? " (" + code.replace("auth/", "") + ")" : "");
   }
 
   function needEmailPass() {
@@ -215,6 +218,7 @@
         firebase.auth().createUserWithEmailAndPassword(cred.email, cred.pass).then(function () {
           setMsg(t("fb_created", ""));
         }).catch(function (err) {
+          try { console.warn("naqa createUser", err && err.code, err && err.message); } catch (e) {}
           setMsg(mapAuthError(err, "create"));
         }).finally(function () { setBusy(false); });
       };

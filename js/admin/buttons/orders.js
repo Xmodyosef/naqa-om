@@ -1,0 +1,47 @@
+/* زر الطلبات: تأكيد الدفع وتغيير الحالة. عطل هنا ما يوقف باقي الأزرار. */
+(function (w) {
+  var A = w.NaqaAdmin;
+  if (!A) return;
+  function safe(fn) { try { fn(); } catch (err) { try { console.error("naqa orders btn", err); } catch (e) {} } }
+  var ordersList = document.getElementById("ordersList");
+  if (ordersList) ordersList.addEventListener("click", function (e) {
+    safe(function () {
+      var payBtn = e.target.closest("[data-pay]");
+      if (payBtn) {
+        A.confirmPayment(payBtn.getAttribute("data-pay"));
+        A.paintOrders();
+        A.setMsg("orderStatus", A.t("confirmedMsg"));
+        return;
+      }
+      var st = e.target.closest("[data-st]");
+      if (!st) return;
+      var id = st.getAttribute("data-oid");
+      var next = st.getAttribute("data-st");
+      if (next === "cancel") {
+        if (!confirm(A.t("cancelConfirm") + "\n" + id)) return;
+      }
+      A.orders.forEach(function (o) {
+        if (String(o.id) !== String(id)) return;
+        var prev = A.normalizeStatus(o.status);
+        o.status = next;
+        if (next === "cancel" && prev !== "cancel") A.restoreStockForOrder(o);
+        else if (next !== "cancel" && prev === "cancel") A.deductStockForOrder(o);
+        else if (next !== "cancel" && !o.stockDeducted && (next === "prep" || next === "ship" || next === "delivered" || next === "new")) {
+          if (next === "prep" || next === "ship" || next === "delivered") A.deductStockForOrder(o);
+        }
+      });
+      A.saveOrders();
+      A.paintOrders();
+      A.setMsg("orderStatus", A.t("statusTo") + " " + id + " → " + (A.statusLabel(next) || next));
+    });
+  });
+  var statusBarEl = document.getElementById("statusBar");
+  if (statusBarEl) statusBarEl.addEventListener("click", function (e) {
+    safe(function () {
+      var f = e.target.closest("[data-filter]");
+      if (!f) return;
+      A.orderFilter = f.getAttribute("data-filter") || "all";
+      A.paintOrders();
+    });
+  });
+})(window);

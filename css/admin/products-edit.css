@@ -1,0 +1,118 @@
+/* —— Product edit sheet (full-screen mobile pattern) ——
+   Body is locked; only the sheet body scrolls so long forms work. */
+html.naqa-scroll-lock,
+body.naqa-scroll-lock{
+  overflow:hidden!important;
+  overscroll-behavior:none;
+  height:100%;
+}
+body.naqa-scroll-lock{
+  position:fixed;
+  width:100%;
+  left:0;
+  right:0;
+}
+body.naqa-editing .savebar{display:none!important}
+body.naqa-editing .admin-top{visibility:hidden;pointer-events:none}
+
+#editView[hidden]{display:none!important}
+#editView:not([hidden]){
+  position:fixed;
+  inset:0;
+  z-index:40;
+  display:flex;
+  flex-direction:column;
+  width:100%;
+  max-width:720px;
+  margin:0 auto;
+  left:0;
+  right:0;
+  background:var(--bg);
+  overscroll-behavior:none;
+}
+.edit-sheet-head{
+  flex:0 0 auto;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:12px 14px;
+  padding-top:max(12px, env(safe-area-inset-top, 0px));
+  background:#fdf8f6;
+  border-bottom:1px solid var(--line);
+  z-index:2;
+}
+.edit-sheet-head .back{
+  flex:0 0 auto;
+  white-space:nowrap;
+}
+.edit-sheet-head h2{
+  margin:0;
+  font-size:1rem;
+  flex:1;
+  min-width:0;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+.edit-sheet-body{
+  flex:1 1 auto;
+  min-height:0;
+  overflow-y:auto;
+  overflow-x:hidden;
+  -webkit-overflow-scrolling:touch;
+  overscroll-behavior:contain;
+  padding:12px 14px;
+  touch-action:pan-y;
+}
+.edit-sheet-body .edit-card{
+  margin:0 0 12px;
+}
+.edit-sheet-foot{
+  flex:0 0 auto;
+  padding:10px 14px;
+  padding-bottom:max(10px, env(safe-area-inset-bottom, 0px));
+  background:rgba(253,248,246,.98);
+  border-top:1px solid var(--line);
+  z-index:2;
+}
+.edit-sheet-foot .primary{
+  width:100%;
+  display:block;
+}
+
+/* —— Product image gallery —— */
+.img-gal-label{display:block;margin:12px 0 6px;font-size:.78rem;font-weight:800;color:var(--muted)}
+.img-gal-note{color:var(--muted);font-size:.78rem;line-height:1.45;margin:0 0 10px}
+.img-gal{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:0 0 10px}
+@media(min-width:480px){.img-gal{grid-template-columns:repeat(4,1fr)}}
+.img-gal-item{position:relative;aspect-ratio:1;border:1px solid var(--line);border-radius:14px;background:#f6f1ee;overflow:hidden}
+.img-gal-item.is-main{outline:2px solid var(--rose);outline-offset:1px}
+.img-gal-item img{width:100%;height:100%;object-fit:contain;display:block;background:#f6f1ee}
+.img-gal-item .main-tag{position:absolute;top:6px;inset-inline-start:6px;background:var(--rose);color:#fff;font-size:.65rem;font-weight:800;padding:2px 7px;border-radius:999px;z-index:2}
+.img-gal-actions{position:absolute;left:0;right:0;bottom:0;display:flex;gap:2px;justify-content:center;flex-wrap:wrap;padding:4px;background:linear-gradient(transparent,rgba(0,0,0,.55));z-index:2}
+.img-gal-actions button{border:0;border-radius:8px;padding:4px 6px;font-size:.65rem;font-weight:800;background:rgba(255,255,255,.95);color:#1f1a17;min-width:28px}
+.img-gal-add{aspect-ratio:1;border:1.5px dashed #d4c4bc;border-radius:14px;background:#faf6f3;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;cursor:pointer;font-size:.72rem;font-weight:800;color:var(--muted);text-align:center;padding:8px}
+.img-gal-add:active{background:#efe4df}
+.img-gal-tools{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 8px}
+.img-gal-tools .mini{margin:0}
+.img-gal-url-row{display:flex;gap:6px;margin:0 0 8px}
+.img-gal-url-row input{flex:1;border:1px solid var(--line);border-radius:12px;padding:10px 12px}
+.img-gal-url-row button{flex:0 0 auto}
+#f_imgFile{display:none}
+
+
+/* Keep edit/list gestures inside the admin — avoid browser page swipe */
+html.naqa-scroll-lock, body.naqa-scroll-lock {
+  overscroll-behavior-x: none;
+}
+body.naqa-editing {
+  overscroll-behavior-x: none;
+}
+.edit-sheet-body {
+  overscroll-behavior: contain;
+}
+#editView {
+  overscroll-behavior-x: none;
+  touch-action: pan-y;
+}
+

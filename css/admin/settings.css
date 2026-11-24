@@ -1,0 +1,16 @@
+/* Settings sections */
+.settings-stack { display: flex; flex-direction: column; gap: 12px; }
+.settings-sec h2 { margin: 0 0 8px; font-size: 1rem; }
+.settings-sec .set-row {
+  display: flex; justify-content: space-between; gap: 12px; align-items: baseline;
+  padding: 8px 0; border-bottom: 1px solid var(--line); font-size: .85rem;
+}
+.settings-sec .set-row:last-of-type { border-bottom: 0; }
+.settings-sec .set-k { color: var(--muted); font-weight: 700; flex: 0 0 auto; }
+.settings-sec .set-v { font-weight: 800; text-align: end; word-break: break-word; }
+.settings-sec .set-lab { display: block; margin: 8px 0; font-size: .8rem; font-weight: 800; color: #8a7f78; }
+.settings-sec .set-lab input { width: 100%; margin-top: 6px; box-sizing: border-box; }
+.settings-sec .set-ok { color: #2f6b3a; font-weight: 700; }
+
+
+

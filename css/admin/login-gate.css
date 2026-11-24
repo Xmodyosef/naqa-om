@@ -1,0 +1,29 @@
+/* Locked gate */
+body.naqa-locked #adminTitle,
+body.naqa-locked #tabs,
+body.naqa-locked #vatAdminBar,
+body.naqa-locked #tools,
+body.naqa-locked #savebar{display:none!important}
+body.naqa-locked .admin-top{border-bottom:0;padding-bottom:8px}
+body.naqa-locked .admin-wrap{max-width:480px;margin:0 auto}
+body.naqa-locked .pin-card{margin-top:24px}
+body.naqa-open #adminTitle{display:block}
+
+/* Login form */
+.pin-card .fb-lab{display:block;margin:8px 0;font-size:.85rem;font-weight:700}
+.pin-card .fb-lab input{width:100%;box-sizing:border-box;margin-top:4px;padding:12px;border:1px solid var(--line);border-radius:12px}
+.pin-card .btn-primary{margin-top:10px;width:100%;border:0;border-radius:12px;padding:12px;font-weight:800;background:#1f1a17;color:#fff}
+.pin-card .btn-google{margin-top:8px;width:100%;border:1px solid var(--line);border-radius:12px;padding:12px;font-weight:800;background:#fff;color:#1f1a17}
+.pin-card .btn-primary:disabled,.pin-card .btn-google:disabled,.pin-card .btn-link:disabled{opacity:.55;cursor:wait}
+.pin-card .fb-links{display:flex;flex-wrap:wrap;gap:8px 14px;justify-content:center;margin-top:12px}
+.pin-card .btn-link{border:0;background:transparent;color:#8a7f78;font-weight:700;text-decoration:underline;padding:4px 2px;cursor:pointer}
+.pin-card #pinMsg{min-height:1.2em;color:#b05c6e;font-weight:600}
+
+/* Auth boot: no login flash while Firebase restores session */
+body.naqa-auth-pending #pin { display: none !important; }
+body.naqa-auth-pending #authBoot { display: block !important; }
+.auth-boot { text-align: center; padding: 48px 20px; color: #9a7b72; font-weight: 700; }
+body.naqa-open #authBoot { display: none !important; }
+#fbForm { margin: 0; }
+
+

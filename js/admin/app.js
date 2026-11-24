@@ -141,15 +141,7 @@
       var el = document.getElementById(name + "Tab");
       if (el) el.hidden = name !== tab;
     });
-    if (tab === "home" && A.paintDashboard) A.paintDashboard();
-    if (tab === "orders" && A.paintOrders) A.paintOrders();
-    if (tab === "products" && A.paintList && A.editingId == null) {
-      A.paintList(document.getElementById("q") ? document.getElementById("q").value.trim() : "");
-    }
-    if (tab === "reviews" && A.paintReviews) A.paintReviews();
-    if (tab === "customers" && A.paintCustomers) A.paintCustomers();
-    if (tab === "finance" && A.paintFinance) A.paintFinance();
-    if (tab === "settings" && A.paintSettings) A.paintSettings();
+    A.paintSection(tab);
     if (!opts.fromPop) {
       var hash = A.sectionHash();
       try {
@@ -267,6 +259,7 @@
 
   var sideNav = document.getElementById("sideNav");
   if (sideNav) sideNav.addEventListener("click", function (e) {
+    try {
     var subBtn = e.target.closest(".side-sub[data-sub]");
     if (subBtn) {
       var tabS = subBtn.getAttribute("data-tab");
@@ -287,142 +280,14 @@
     var same = tab === A.currentTab;
     if (tab === "products") A.productPage = 1;
     A.go(tab, sub, { push: !same, page: 1 });
+    } catch (err) {
+      try { console.error("naqa nav btn", err); } catch (e2) {}
+    }
   });
 
   A.addProduct = function () {
     A.go("products", A.productView || "all", { push: true });
-    var q = document.getElementById("q");
-    if (q) {
-      q.focus();
-      try { q.scrollIntoView({ block: "nearest" }); } catch (e) {}
-    }
-  };
-
-  A.runGlobalSearch = function () {
-    var input = document.getElementById("globalSearch");
-    var scope = document.getElementById("searchScope");
-    var q = input ? input.value.trim() : "";
-    var which = scope ? scope.value : "orders";
-    if (which === "products") {
-      A.orderQuery = "";
-      var box = document.getElementById("q");
-      if (box) box.value = q;
-      A.productPage = 1;
-      A.go("products", A.productView || "all", { push: true, page: 1 });
-      if (A.paintList) A.paintList(q);
-      return;
-    }
-    A.orderQuery = q;
-    A.go("orders", A.orderFilter || A.currentSub || "all", { push: true });
-    if (A.paintOrders) A.paintOrders();
-  };
-
-  var gBtn = document.getElementById("globalSearchBtn");
-  var gInput = document.getElementById("globalSearch");
-  var addBtn = document.getElementById("addProductBtn");
-  if (gBtn) gBtn.addEventListener("click", function () { A.runGlobalSearch(); });
-  if (gInput) gInput.addEventListener("keydown", function (e) {
-    if (e.key === "Enter") { e.preventDefault(); A.runGlobalSearch(); }
-  });
-  if (addBtn) addBtn.addEventListener("click", function () { A.addProduct(); });
-
-
-  var pageSub = document.getElementById("pageSubNav");
-  if (pageSub) pageSub.addEventListener("click", function (e) {
-    var b = e.target.closest("[data-page-sub]");
-    if (!b) return;
-    var tab = b.getAttribute("data-page-tab") || A.currentTab;
-    var sub = b.getAttribute("data-page-sub");
-    var same = tab === A.currentTab && sub === A.currentSub;
-    if (tab === "products" && sub !== A.productView) A.productPage = 1;
-    A.go(tab, sub, { push: !same, page: (tab === "products" && sub !== A.productView) ? 1 : A.productPage });
-  });
-
-  /* Browser back / edge-swipe: leave edit → list; else apply hash tab */
-  window.addEventListener("popstate", function () {
-    var editOpen = A.editingId != null || (document.getElementById("editView") && !document.getElementById("editView").hidden);
-    var hash = (location.hash || "").replace(/^#\/?/, "");
-    if (editOpen && hash.indexOf("products/edit/") !== 0) {
-      A._editNavPushed = false;
-      if (A.closeEdit) A.closeEdit(true);
-    }
-    A.applyRoute(hash);
-  });
-
-  var q = document.getElementById("q");
-  if (q) q.addEventListener("input", function (e) {
-    A.productPage = 1;
-    A.paintList(e.target.value.trim());
-    try { history.replaceState({ naqa: "sec", tab: "products", page: 1 }, "", A.sectionHash()); } catch (err) {}
-    A.syncNav();
-  });
-
-  var list = document.getElementById("list");
-  if (list) list.addEventListener("click", function (e) {
-    var pg = e.target.closest("[data-page]");
-    if (pg && !pg.disabled) {
-      var n = parseInt(pg.getAttribute("data-page"), 10);
-      if (!n || n < 1) return;
-      A.productPage = n;
-      A.paintList(document.getElementById("q") ? document.getElementById("q").value.trim() : "");
-      try { history.pushState({ naqa: "sec", tab: "products", page: n }, "", A.sectionHash()); } catch (err) {}
-      var box = document.getElementById("productsTab");
-      if (box && box.scrollIntoView) box.scrollIntoView({ block: "start" });
-      return;
-    }
-    var hide = e.target.closest("[data-hide]");
-    if (hide) {
-      e.preventDefault();
-      e.stopPropagation();
-      if (A.toggleHide) A.toggleHide(hide.getAttribute("data-hide"));
-      return;
-    }
-    var btn = e.target.closest("[data-open]");
-    if (!btn) return;
-    A.openEdit(+btn.getAttribute("data-open"));
-  });
-
-  var ordersList = document.getElementById("ordersList");
-  if (ordersList) ordersList.addEventListener("click", function (e) {
-    var payBtn = e.target.closest("[data-pay]");
-    if (payBtn) {
-      A.confirmPayment(payBtn.getAttribute("data-pay"));
-      A.paintOrders();
-      A.setMsg("orderStatus", A.t("confirmedMsg"));
-      return;
-    }
-    var st = e.target.closest("[data-st]");
-    if (st) {
-      var id = st.getAttribute("data-oid");
-      var next = st.getAttribute("data-st");
-      if (next === "cancel") {
-        if (!confirm(A.t("cancelConfirm") + "\n" + id)) return;
-      }
-      A.orders.forEach(function (o) {
-        if (String(o.id) !== String(id)) return;
-        var prev = A.normalizeStatus(o.status);
-        o.status = next;
-        if (next === "cancel" && prev !== "cancel") A.restoreStockForOrder(o);
-        else if (next !== "cancel" && prev === "cancel") A.deductStockForOrder(o);
-        else if (next !== "cancel" && !o.stockDeducted && (next === "prep" || next === "ship" || next === "delivered" || next === "new")) {
-          if (next === "prep" || next === "ship" || next === "delivered") A.deductStockForOrder(o);
-        }
-      });
-      A.saveOrders();
-      A.paintOrders();
-      A.setMsg("orderStatus", A.t("statusTo") + " " + id + " → " + (A.statusLabel(next) || next));
-    }
-  });
-
-  var statusBarEl = document.getElementById("statusBar");
-  if (statusBarEl) statusBarEl.addEventListener("click", function (e) {
-    var f = e.target.closest("[data-filter]");
-    if (!f) return;
-    A.orderFilter = f.getAttribute("data-filter") || "all";
-    A.paintOrders();
-  });
-
-  var langBtn = document.getElementById("adminLang");
+    var langBtn = document.getElementById("adminLang");
   if (langBtn) langBtn.onclick = function () { A.setLang(A.lang === "en" ? "ar" : "en"); };
   if (A.applyChrome) A.applyChrome();
   /* session heartbeat + idle lock */

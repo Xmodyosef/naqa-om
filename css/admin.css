@@ -151,3 +151,19 @@ body.naqa-editing .admin-top{visibility:hidden;pointer-events:none}
 .img-gal-url-row input{flex:1;border:1px solid var(--line);border-radius:12px;padding:10px 12px}
 .img-gal-url-row button{flex:0 0 auto}
 #f_imgFile{display:none}
+
+
+/* Keep edit/list gestures inside the admin — avoid browser page swipe */
+html.naqa-scroll-lock, body.naqa-scroll-lock {
+  overscroll-behavior-x: none;
+}
+body.naqa-editing {
+  overscroll-behavior-x: none;
+}
+.edit-sheet-body {
+  overscroll-behavior: contain;
+}
+#editView {
+  overscroll-behavior-x: none;
+  touch-action: pan-y;
+}

@@ -80,6 +80,9 @@ body{font-family:"Noto Kufi Arabic",system-ui,Tahoma,sans-serif;background:#ecef
 .M4 .item span:not(.ico):not(.badge),.M4 .logo b,.M4 .shop,.M4 .visit,.M4 .sec,.M4 .subs{display:none}
 .M4 .item{justify-content:center;padding:12px 0}
 .M6 .kids{flex-wrap:nowrap;overflow-x:auto}
+.M6{--teal:var(--rose)}
+.M6 .go,.M6 .kid.on{background:var(--rose);border-color:var(--rose);color:#fff}
+.M6 .item.on{background:rgba(141,48,72,.28)}
 .M8 .subs{display:none!important}
 .fly{display:none}
 .M8 .fly.show{display:flex;flex-direction:column;position:absolute;inset-inline-end:236px;top:120px;background:var(--navy);border:1px solid #2a4664;border-radius:12px;padding:8px;min-width:160px;z-index:3}
@@ -92,6 +95,36 @@ body{font-family:"Noto Kufi Arabic",system-ui,Tahoma,sans-serif;background:#ecef
   .logo{font-size:.95rem;padding-bottom:8px}
   .item{font-size:.72rem;padding:9px 6px;gap:6px}
   .item .ico{flex-basis:16px;width:16px}
+}
+@media(max-width:600px){
+  .bar{padding:9px 10px 10px}
+  .bar h1{font-size:.82rem;line-height:1.35;margin-bottom:3px}
+  .bar p{font-size:.62rem;line-height:1.45;margin-bottom:7px}
+  .nums{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px}
+  .nums button{min-width:0;padding:6px 3px;border-radius:8px;font-size:.59rem;line-height:1.25;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .stage{min-height:calc(100dvh - 142px);height:calc(100dvh - 142px);overflow:hidden}
+  .side{width:104px;flex:0 0 104px;padding:8px 5px;gap:2px;min-height:100%;overflow-y:auto}
+  .logo{font-size:.78rem;padding:2px 4px 7px}
+  .logo span{padding:1px 5px;font-size:.65rem}
+  .shop{gap:4px;padding:5px;margin:0 1px 5px;border-radius:9px}
+  .shop strong{font-size:.62rem;line-height:1.25}
+  .shop small,.visit{display:none}
+  .av{width:25px;height:25px;border-radius:7px;font-size:.7rem}
+  .item{font-size:.61rem;line-height:1.25;padding:7px 3px;gap:4px;border-radius:8px}
+  .item .ico{width:15px;flex-basis:15px;font-size:.78rem}
+  .item .badge{min-width:15px;height:15px;font-size:.56rem;padding:0 3px}
+  .main{min-width:0}
+  .top{padding:7px;display:flex;flex-direction:column;align-items:stretch;gap:5px}
+  .search,.go{width:100%;min-height:38px}
+  .search{padding:8px 9px;font-size:.7rem}
+  .go{padding:8px 10px;font-size:.72rem}
+  .body{padding:8px;gap:8px;min-width:0;overflow:hidden}
+  .kids{gap:5px;overflow-x:auto;flex-wrap:nowrap;padding-bottom:2px}
+  .kid{flex:0 0 auto;padding:6px 10px;font-size:.64rem;white-space:nowrap}
+  .card{padding:10px;border-radius:11px}
+  .card h2{font-size:.86rem;margin-bottom:5px}
+  .note{font-size:.65rem}
+  .row{padding:8px 0;font-size:.7rem}
 }
 </style>
 </head>

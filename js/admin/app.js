@@ -201,11 +201,21 @@
     A.applyRoute((location.hash || "").replace(/^#\/?/, ""));
   };
 
-  document.getElementById("pinGo").onclick = function () {
-    var typed = document.getElementById("pinInput").value.trim();
+  /* STEP2: PIN opens admin ONLY when Firebase is disabled. With Firebase, PIN is settings-only. */
+  var pinGoBtn = document.getElementById("pinGo");
+  if (pinGoBtn) pinGoBtn.onclick = function () {
     var msg = document.getElementById("pinMsg");
-    if (!typed || typed.length < 4) { msg.textContent = A.t("pinShort"); return; }
-    if (A.isLocked && A.isLocked()) { msg.textContent = A.t("pinLocked"); return; }
+    var fbOn = false;
+    try { fbOn = !!(window.naqaFirebaseEnabled && naqaFirebaseEnabled()); } catch (e) {}
+    if (fbOn) {
+      if (msg) msg.textContent = A.lang === "en"
+        ? "Sign in with email or Google. Device PIN is optional in Settings."
+        : "ادخلي بالإيميل أو Google. رمز الجهاز اختياري من الإعدادات.";
+      return;
+    }
+    var typed = (document.getElementById("pinInput") && document.getElementById("pinInput").value || "").trim();
+    if (!typed || typed.length < 4) { if (msg) msg.textContent = A.t("pinShort"); return; }
+    if (A.isLocked && A.isLocked()) { if (msg) msg.textContent = A.t("pinLocked"); return; }
     var plain = localStorage.getItem(A.PIN);
     var hashHave = localStorage.getItem(A.PIN_HASH);
     function ok() {
@@ -220,14 +230,14 @@
       if (fails >= A.MAX_FAIL) {
         until = Date.now() + A.LOCK_MS;
         fails = 0;
-        msg.textContent = A.t("pinLocked");
+        if (msg) msg.textContent = A.t("pinLocked");
       } else {
-        msg.textContent = A.t("pinBad") + " · " + (A.MAX_FAIL - fails) + " " + A.t("pinLeft");
+        if (msg) msg.textContent = A.t("pinBad") + " · " + (A.MAX_FAIL - fails) + " " + A.t("pinLeft");
       }
       A.setLockInfo(fails, until);
     }
     if (!hashHave && !plain) {
-      if (!confirm(A.t("pinFirst"))) { msg.textContent = A.t("pinFirstNo"); return; }
+      if (!confirm(A.t("pinFirst"))) { if (msg) msg.textContent = A.t("pinFirstNo"); return; }
       A.hashPin(typed).then(function (h) {
         localStorage.setItem(A.PIN_HASH, h);
         localStorage.removeItem(A.PIN);
@@ -415,11 +425,34 @@
   });
   setInterval(function () {
     if (document.getElementById("tools") && !document.getElementById("tools").hidden && !A.sessionOk()) {
-      /* Firebase session still valid → refresh local idle timer */
-      if (A.fbUser && window.firebase && firebase.auth && firebase.auth().currentUser) {
+      /* STEP2: Firebase session is source of truth when enabled */
+      var fbUser = null;
+      try { fbUser = window.firebase && firebase.auth && firebase.auth().currentUser; } catch (e) {}
+      if (fbUser) {
         A.touchSession();
         return;
       }
+      document.getElementById("tools").hidden = true;
+      try {
+        document.body.classList.add("naqa-locked");
+        document.body.classList.remove("naqa-open");
+      } catch (e) {}
+      var pinEl = document.getElementById("pin");
+      if (pinEl) pinEl.hidden = false;
+      var fbLogin = document.getElementById("fbLogin");
+      var pinRow = document.getElementById("pinRow");
+      var fbOn = false;
+      try { fbOn = !!(window.naqaFirebaseEnabled && naqaFirebaseEnabled()); } catch (e2) {}
+      if (fbOn) {
+        if (fbLogin) fbLogin.hidden = false;
+        if (pinRow) pinRow.hidden = true;
+      } else {
+        if (fbLogin) fbLogin.hidden = true;
+        if (pinRow) pinRow.hidden = false;
+      }
+      var msg = document.getElementById("pinMsg");
+      if (msg) msg.textContent = A.t("fb_signedOut") || A.t("pinLead");
+    }
       A.clearSession();
       document.getElementById("tools").hidden = true;
       var tabs = document.getElementById("tabs");
@@ -434,13 +467,13 @@
     }
   }, 60000);
   /* auto-open if session still valid */
-  if (A.sessionOk() && localStorage.getItem(A.PIN_HASH || "naqa_admin_pin_hash") || localStorage.getItem(A.PIN)) {
-    /* only auto if not locked */
-    if (!A.isLocked()) {
-      /* require hash or pin exists */
-      if (localStorage.getItem(A.PIN_HASH) || localStorage.getItem(A.PIN)) {
-        /* stay on pin for safety on shared devices — do not auto-open */
-      }
+  /* STEP2: never auto-open via PIN alone — Firebase onAuthStateChanged owns unlock when FB is on */
+  (function () {
+    var fbOn = false;
+    try { fbOn = !!(window.naqaFirebaseEnabled && naqaFirebaseEnabled()); } catch (e) {}
+    if (fbOn) return;
+    if (A.sessionOk() && (localStorage.getItem(A.PIN_HASH) || localStorage.getItem(A.PIN))) {
+      /* PIN-only mode: still require manual entry for shared devices */
     }
-  }
+  })();
 })(window);

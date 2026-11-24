@@ -89,6 +89,7 @@
     if ($("authBoot")) $("authBoot").hidden = true;
   }
   function showPinOnly() {
+    /* Legacy path: Firebase unavailable — PIN is the only door */
     setPending(false);
     if ($("fbLogin")) $("fbLogin").hidden = true;
     if ($("pinRow")) $("pinRow").hidden = false;
@@ -127,8 +128,10 @@
   };
 
   function showFbOnly() {
+    /* STEP2: primary login = Firebase; hide device PIN on this screen */
     if ($("fbLogin")) $("fbLogin").hidden = false;
     if ($("pinRow")) $("pinRow").hidden = true;
+    if ($("pin")) $("pin").hidden = false;
     A.fbApplyLabels();
   }
 
@@ -198,6 +201,7 @@
       A.fbUser = null;
       lockUI();
       setPending(false);
+      showFbOnly();
       setMsg(t("fb_signedOut", ""));
     });
   };
@@ -349,7 +353,7 @@
       if (!user) {
         A.fbUser = null;
         lockUI();
-        if ($("pin")) $("pin").hidden = false;
+        showFbOnly();
         return;
       }
       allowedEmail(user).then(function (ok) {

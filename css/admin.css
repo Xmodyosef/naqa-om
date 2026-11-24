@@ -602,134 +602,128 @@ body.naqa-open .admin-shell{
 }
 
 
-/* Naqa admin navigation hierarchy — parent labels readable, children compact.
-   CSS-only override: no changes to Firebase, routes, permissions, or data. */
+/* ========== STEP3: one nav system (parents only, no subs) ========== */
+/* Active = .side-main.on only (no accordion children in rail) */
 body.naqa-open .side-nav .side-main {
   min-height: 44px;
-  padding: 7px 9px;
-  gap: 9px;
+  padding: 8px 10px;
+  gap: 10px;
   align-items: center;
+  background: transparent !important;
+  box-shadow: none !important;
+  color: #e8dcd9;
+}
+body.naqa-open .side-nav .side-main:hover {
+  background: rgba(255,255,255,.06) !important;
+  color: #fff;
 }
 body.naqa-open .side-nav .side-main .side-lbl {
   display: block !important;
   flex: 0 0 auto;
-  min-width: 0;
-  max-width: none;
   white-space: nowrap !important;
   overflow: visible !important;
   text-overflow: clip !important;
-  overflow-wrap: normal;
-  line-height: 1.2;
-  font-size: .72rem;
-  font-weight: 750;
+  line-height: 1.25;
+  font-size: .78rem;
+  font-weight: 700;
   text-align: start;
+  color: #e8dcd9;
 }
 body.naqa-open .side-nav .side-main .side-ico {
-  width: 32px;
-  height: 32px;
-  flex: 0 0 32px;
+  width: 34px;
+  height: 34px;
+  flex: 0 0 34px;
+  border-radius: 10px;
+  background: #fff !important;
+  color: #2a2422;
+  box-shadow: 0 2px 5px rgba(0,0,0,.15);
 }
-body.naqa-open .side-nav .side-group.open .side-subs {
-  gap: 1px;
-  padding: 3px 0;
+/* Active parent */
+body.naqa-open .side-nav .side-main.on {
+  background: transparent !important;
+  box-shadow: none !important;
 }
-body.naqa-open .side-nav .side-sub {
-  min-height: 25px;
-  padding: 3px 9px 3px 16px;
-  font-size: .64rem;
-  line-height: 1.25;
-  font-weight: 600;
+body.naqa-open .side-nav .side-main.on .side-ico {
+  background: #c46b7c !important;
+  color: #fff !important;
+  box-shadow: 0 3px 8px rgba(196,107,124,.4);
 }
-body.naqa-open #pageSubNav.page-sub-frame {
+body.naqa-open .side-nav .side-main.on .side-lbl {
+  color: #c46b7c !important;
+  font-weight: 800;
+}
+/* Kill leftover open/child styles (subs hidden) */
+body.naqa-open .side-nav .side-group.open > .side-main,
+body.naqa-open .side-nav .side-group.has-active-child > .side-main {
+  background: transparent !important;
+  box-shadow: none !important;
+  color: #e8dcd9 !important;
+}
+body.naqa-open .side-nav .side-group.open > .side-main:not(.on) .side-ico,
+body.naqa-open .side-nav .side-group.has-active-child > .side-main:not(.on) .side-ico {
+  background: #fff !important;
+  color: #2a2422 !important;
+}
+body.naqa-open .side-nav .side-group.open > .side-main:not(.on) .side-lbl,
+body.naqa-open .side-nav .side-group.has-active-child > .side-main:not(.on) .side-lbl {
+  color: #e8dcd9 !important;
+  font-weight: 700;
+}
+body.naqa-open .side-nav .side-subs,
+body.naqa-open .side-nav .chev {
+  display: none !important;
+}
+/* Page chips (filters inside content) */
+body.naqa-open #pageSubNav.page-sub-frame,
+body.naqa-open #pageSubNav {
+  display: flex;
   flex-wrap: nowrap;
   gap: 7px;
   overflow-x: auto;
-  overflow-y: hidden;
   -webkit-overflow-scrolling: touch;
-  scrollbar-width: thin;
-  padding: 2px 1px 10px;
-  margin: 0 0 10px;
+  padding: 2px 0 10px;
+  margin: 0 0 8px;
+  background: transparent !important;
+  border: 0 !important;
+}
+body.naqa-open #pageSubNav[hidden] {
+  display: none !important;
 }
 body.naqa-open #pageSubNav .page-chip {
   min-height: 32px;
-  padding: 6px 11px;
-  gap: 6px;
+  padding: 6px 12px;
   border-radius: 999px;
-  font-size: .7rem;
-  line-height: 1.2;
-  box-shadow: 0 2px 6px rgba(75,38,45,.06);
+  font-size: .72rem;
+  font-weight: 800;
+  border: 1px solid #eadfd9;
+  background: #fff;
+  color: #1f1a17;
+  white-space: nowrap;
+  cursor: pointer;
 }
-body.naqa-open #pageSubNav .page-chip .chip-dot {
-  width: 6px;
-  height: 6px;
+body.naqa-open #pageSubNav .page-chip.on {
+  background: #c46b7c;
+  border-color: #c46b7c;
+  color: #fff;
 }
-@media (max-width: 860px) {
-  body.naqa-open .side-nav {
-    width: max-content;
-    max-width: max-content;
-    flex: 0 0 auto;
-    min-width: 0;
-    padding: 10px 12px;
-  }
-  body.naqa-open .side-nav .side-main {
-    min-height: 42px;
-    padding: 6px;
-    gap: 7px;
-  }
-  body.naqa-open .side-nav .side-main .side-lbl {
-    font-size: .72rem;
-    line-height: 1.3;
-  }
-  body.naqa-open .side-nav .side-main .side-ico {
-    width: 30px;
-    height: 30px;
-    flex-basis: 30px;
-  }
-  body.naqa-open .side-nav .side-sub {
-    min-height: 23px;
-    padding: 3px 7px 3px 13px;
-    font-size: .61rem;
-  }
-  body.naqa-open .admin-main {
-    min-width: 0;
-    padding: 10px;
-  }
+body.naqa-open .search-wrap:focus-within {
+  border-color: #c46b7c;
+  box-shadow: 0 0 0 3px rgba(196,107,124,.14);
 }
-@media (max-width: 390px) {
-  body.naqa-open .side-nav {
-    width: max-content;
-    max-width: max-content;
-    flex: 0 0 auto;
-    min-width: 0;
-  }
-  body.naqa-open .side-nav .side-main .side-lbl {
-    font-size: .68rem;
-  }
-  body.naqa-open #pageSubNav .page-chip {
-    min-height: 26px;
-    padding: 3px 6px;
-    font-size: .62rem;
-  }
+body.naqa-open .search-btn,
+body.naqa-open .btn-add {
+  background: linear-gradient(135deg, #c46b7c 0%, #9d3d58 100%);
 }
-
-/* —— Narrow phones: keep the work area usable —— */
+/* Mobile: rail hugs labels, content gets space */
 @media (max-width: 600px) {
-  body.naqa-open {
-    overflow-x: hidden;
-  }
-
-  body.naqa-open .admin-wrap {
-    padding: 8px 8px 88px;
-  }
-
+  body.naqa-open { overflow-x: hidden; }
+  body.naqa-open .admin-wrap { padding: 8px 8px 88px; }
   body.naqa-open .admin-shell {
     width: 100%;
     min-width: 0;
     min-height: calc(100dvh - 82px);
     border-radius: 14px;
   }
-
-  /* fit-content rail (not 68px icon-only) */
   body.naqa-open .side-nav {
     width: max-content !important;
     max-width: max-content !important;
@@ -738,403 +732,46 @@ body.naqa-open #pageSubNav .page-chip .chip-dot {
     padding: 8px 12px 12px !important;
     gap: 3px;
   }
-
   body.naqa-open .side-nav::before {
     font-size: .72rem;
     padding: 2px 4px 8px;
     text-align: start;
   }
-
   body.naqa-open .side-nav .side-main {
     min-height: 40px;
-    justify-content: flex-start;
     padding: 6px 8px;
     gap: 8px;
-    position: relative;
-    width: 100%;
   }
-
-  body.naqa-open .side-nav .side-main .side-lbl {
-    display: block !important;
-    white-space: nowrap !important;
-    overflow: visible !important;
-    font-size: .72rem;
-  }
-  body.naqa-open .side-nav .side-main .chev {
-    display: inline-block !important;
-  }
-
+  body.naqa-open .side-nav .side-main .side-lbl { font-size: .72rem; }
   body.naqa-open .side-nav .side-main .side-ico {
     width: 30px;
     height: 30px;
     flex-basis: 30px;
   }
-
-  body.naqa-open .side-nav .side-group.open .side-subs {
-    padding: 3px 0;
-    margin-top: 1px;
-  }
-
-  body.naqa-open .side-nav .side-sub {
-    min-height: 24px;
-    padding: 4px 8px 4px 14px;
-    font-size: .62rem;
-    line-height: 1.2;
-    text-align: start;
-    white-space: nowrap;
-  }
-
   body.naqa-open .admin-main {
     min-width: 0;
-    width: auto;
     flex: 1 1 auto;
     padding: 10px 8px 20px;
     overflow-x: hidden;
   }
-
   body.naqa-open .top-bar {
     flex-direction: column;
     align-items: stretch;
     gap: 8px;
-    padding-bottom: 10px;
-    margin-bottom: 10px;
   }
-
-  body.naqa-open .search-wrap {
-    width: 100%;
-    min-height: 44px;
-  }
-
-  body.naqa-open .search-wrap input {
-    min-width: 0;
-    padding: 10px 9px;
-    font-size: .74rem;
-  }
-
-  body.naqa-open .search-wrap select {
-    max-width: 68px;
-    padding: 0 3px;
-    font-size: .65rem;
-  }
-
-  body.naqa-open .search-btn {
-    flex: 0 0 auto;
-    padding: 0 9px;
-    font-size: .72rem;
-  }
-
-  body.naqa-open .btn-add {
-    width: 100%;
-    min-height: 42px;
-    padding: 9px 12px;
-  }
-
-  body.naqa-open #q {
-    margin-top: 2px;
-  }
-
-  body.naqa-open .stat-grid {
-    grid-template-columns: 1fr 1fr;
-    gap: 6px;
-  }
-
-  body.naqa-open .panel,
-  body.naqa-open .wa-box,
-  body.naqa-open .order,
-  body.naqa-open .row {
-    padding: 11px;
-    border-radius: 13px;
+  body.naqa-open .search-wrap { width: 100%; min-height: 44px; }
+  body.naqa-open .btn-add { width: 100%; min-height: 42px; }
+  body.naqa-open .stat-grid { grid-template-columns: 1fr 1fr; gap: 6px; }
+}
+@media (max-width: 390px) {
+  body.naqa-open .side-nav .side-main .side-lbl { font-size: .68rem; }
+  body.naqa-open #pageSubNav .page-chip {
+    min-height: 28px;
+    padding: 4px 8px;
+    font-size: .64rem;
   }
 }
-
-/* —— Naqa palette polish for option 6 —— */
-body.naqa-open .side-nav {
-  background:
-    radial-gradient(180px 180px at 50% -8%, rgba(196,107,124,.18), transparent 70%),
-    linear-gradient(180deg, #302025 0%, #241619 100%);
-}
-
-body.naqa-open .side-nav::before {
-  border-bottom: 1px solid rgba(255,255,255,.08);
-}
-
-body.naqa-open .side-nav .side-main.on,
-body.naqa-open .side-nav .side-group.has-active-child > .side-main {
-  background: linear-gradient(135deg, #c46b7c 0%, #9d3d58 100%) !important;
-  color: #fff;
-  box-shadow: 0 7px 18px rgba(112,35,55,.25) !important;
-}
-
-body.naqa-open .side-nav .side-group.open > .side-main {
-  background: rgba(196,107,124,.2) !important;
-  color: #fff;
-  box-shadow: inset 3px 0 0 #d98a99 !important;
-}
-
-body.naqa-open .side-nav .side-group.open.has-active-child > .side-main {
-  background: linear-gradient(135deg, #c46b7c 0%, #9d3d58 100%) !important;
-  box-shadow: 0 7px 18px rgba(112,35,55,.25) !important;
-}
-
-body.naqa-open .side-nav .side-main.on .side-ico,
-body.naqa-open .side-nav .side-group.open > .side-main .side-ico {
-  background: #fff !important;
-  color: #8d3048;
-  box-shadow: 0 3px 8px rgba(0,0,0,.16);
-}
-
-body.naqa-open .side-nav .side-main.on .side-lbl,
-body.naqa-open .side-nav .side-group.open > .side-main .side-lbl {
-  color: #fff;
-}
-
-body.naqa-open .search-wrap:focus-within {
-  border-color: #c46b7c;
-  box-shadow: 0 0 0 3px rgba(196,107,124,.14);
-}
-
-body.naqa-open .search-btn,
-body.naqa-open .btn-add {
-  background: linear-gradient(135deg, #c46b7c 0%, #9d3d58 100%);
-}
-
-body.naqa-open .search-btn:hover,
-body.naqa-open .btn-add:hover {
-  background: linear-gradient(135deg, #d68494 0%, #8d3048 100%);
-}
-
-/* Pattern A: children under parent in the right rail (not page chips) */
-body.naqa-open #pageSubNav {
-  display: none !important;
-}
-body.naqa-open .side-nav .side-subs {
-  display: none; /* closed default; open via .side-group.open */
-}
-body.naqa-open .side-nav .side-group.open > .side-subs {
-  display: flex !important;
-  flex-direction: column !important;
-}
-body.naqa-open .side-nav .chev {
-  display: inline-block !important;
-}
-
-/* ========== fitW REAL (last wins) ==========
-   Sidebar width = text only + padding. No fixed px/vw.
-*/
-html body.naqa-open .admin-shell > .side-nav,
-html body.naqa-open nav#sideNav.side-nav {
-  width: fit-content !important;
-  max-width: fit-content !important;
-  min-width: 0 !important;
-  flex: 0 0 auto !important;
-  flex-basis: auto !important;
-  flex-grow: 0 !important;
-  flex-shrink: 0 !important;
-  padding-inline: 12px 14px !important;
-  box-sizing: border-box !important;
-  align-self: stretch;
-}
-html body.naqa-open .admin-shell > .side-nav .side-main,
-html body.naqa-open nav#sideNav .side-main {
-  width: auto !important;
-  min-width: 0 !important;
-  justify-content: flex-start !important;
-  white-space: nowrap;
-}
-html body.naqa-open nav#sideNav .side-lbl {
-  flex: 0 0 auto !important;
-  width: auto !important;
-  max-width: none !important;
-  white-space: nowrap !important;
-  overflow: visible !important;
-  text-overflow: clip !important;
-}
-html body.naqa-open .admin-shell > .admin-main {
-  flex: 1 1 auto !important;
-  width: auto !important;
-  min-width: 0 !important;
-}
-@media (max-width: 860px) {
-  html body.naqa-open .admin-shell > .side-nav,
-  html body.naqa-open nav#sideNav.side-nav {
-    width: fit-content !important;
-    max-width: fit-content !important;
-    min-width: 0 !important;
-    flex: 0 0 auto !important;
-    flex-basis: auto !important;
-  }
-}
-/* ========== end fitW ========== */
-
-/* ===== Product cards: compact, multi-word titles stay together ===== */
-html body.naqa-open #list .prod-card {
-  display: grid !important;
-  grid-template-columns: 56px minmax(0, 1fr) auto;
-  gap: 10px 12px;
-  align-items: center;
-  padding: 10px 12px !important;
-  margin: 8px 0 !important;
-  border-radius: 14px;
-  background: #fff;
-  border: 1px solid var(--line);
-  box-shadow: 0 1px 2px rgba(28,18,22,.04);
-}
-html body.naqa-open #list .prod-card.is-hidden {
-  opacity: .62;
-  outline: 1px dashed #c9a7b0;
-}
-html body.naqa-open #list .prod-thumb {
-  width: 56px;
-  height: 56px;
-}
-html body.naqa-open #list .prod-thumb img,
-html body.naqa-open #list .prod-thumb .ph {
-  width: 56px !important;
-  height: 56px !important;
-  border-radius: 12px;
-  object-fit: contain;
-  background: #f6f1ee;
-  display: block;
-}
-html body.naqa-open #list .prod-body {
-  min-width: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-}
-html body.naqa-open #list .prod-title {
-  font-size: .82rem;
-  font-weight: 800;
-  line-height: 1.35;
-  color: #1f1a17;
-  white-space: normal !important;
-  overflow-wrap: break-word;
-  word-break: normal !important;
-  word-wrap: break-word;
-  hyphens: none;
-}
-html body.naqa-open #list .prod-meta,
-html body.naqa-open #list .prod-price-row {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 4px 8px;
-  font-size: .7rem;
-  line-height: 1.3;
-  color: #6b625c;
-}
-html body.naqa-open #list .prod-meta span,
-html body.naqa-open #list .prod-price-row span {
-  display: inline;
-  white-space: nowrap;
-  max-width: 100%;
-}
-html body.naqa-open #list .prod-meta span:not(:last-child)::after {
-  content: "·";
-  margin-inline-start: 8px;
-  opacity: .45;
-}
-html body.naqa-open #list .prod-price {
-  font-weight: 800;
-  color: #8d3048;
-  font-size: .78rem;
-  white-space: nowrap;
-}
-html body.naqa-open #list .prod-price small {
-  font-weight: 700;
-  font-size: .68rem;
-  color: #9a7b72;
-}
-html body.naqa-open #list .prod-tax {
-  color: #9a7b72;
-  font-size: .65rem;
-}
-html body.naqa-open #list .prod-stock {
-  font-weight: 700;
-}
-html body.naqa-open #list .prod-actions {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  align-items: stretch;
-}
-html body.naqa-open #list .prod-actions .mini,
-html body.naqa-open #list .prod-actions .edit-btn {
-  margin: 0 !important;
-  white-space: nowrap;
-  font-size: .68rem !important;
-  padding: 7px 10px !important;
-  border-radius: 10px !important;
-}
-@media (max-width: 600px) {
-  html body.naqa-open #list .prod-card {
-    grid-template-columns: 48px minmax(0, 1fr);
-    grid-template-areas:
-      "thumb body"
-      "actions actions";
-  }
-  html body.naqa-open #list .prod-thumb { grid-area: thumb; width: 48px; height: 48px; }
-  html body.naqa-open #list .prod-thumb img,
-  html body.naqa-open #list .prod-thumb .ph { width: 48px !important; height: 48px !important; }
-  html body.naqa-open #list .prod-body { grid-area: body; }
-  html body.naqa-open #list .prod-actions {
-    grid-area: actions;
-    flex-direction: row;
-    justify-content: stretch;
-  }
-  html body.naqa-open #list .prod-actions .mini,
-  html body.naqa-open #list .prod-actions .edit-btn {
-    flex: 1;
-    text-align: center;
-  }
-  html body.naqa-open #list .prod-title {
-    font-size: .78rem;
-    line-height: 1.4;
-  }
-}
-
-/* ========== STEP1 simple: parents-only rail + page filter chips ========== */
-html body.naqa-open nav#sideNav .side-subs,
-html body.naqa-open nav#sideNav .chev {
-  display: none !important;
-}
-html body.naqa-open nav#sideNav .side-group {
-  display: block;
-}
-html body.naqa-open #pageSubNav {
-  display: flex !important;
-  flex-wrap: nowrap;
-  gap: 6px;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  padding: 0 0 10px !important;
-  margin: 0 0 8px !important;
-  height: auto !important;
-  border: 0 !important;
-  background: transparent !important;
-}
-html body.naqa-open #pageSubNav[hidden] {
-  display: none !important;
-}
-html body.naqa-open #pageSubNav .page-chip {
-  flex: 0 0 auto;
-  border: 1px solid #eadfd9;
-  background: #fff;
-  color: #1f1a17;
-  border-radius: 999px;
-  padding: 7px 12px;
-  font-size: .72rem;
-  font-weight: 800;
-  cursor: pointer;
-  white-space: nowrap;
-}
-html body.naqa-open #pageSubNav .page-chip.on {
-  background: #c46b7c;
-  border-color: #c46b7c;
-  color: #fff;
-}
-/* ========== end STEP1 simple ========== */
-
+/* ========== end STEP3 nav ========== */
 
 /* STEP2 login: Firebase-first card */
 #fbLogin { margin-top: 4px; }

@@ -1093,43 +1093,80 @@ html body.naqa-open #list .prod-actions .edit-btn {
   }
 }
 
-
-
-/* step1a pattern A — nested children under parent */
-html body.naqa-open nav#sideNav .side-group.open > .side-subs {
-  display: flex !important;
-  flex-direction: column !important;
-  gap: 1px;
-  margin-top: 4px;
-  padding: 4px 0 6px !important;
-  background: #1a1013 !important;
-  border-radius: 10px;
-}
-html body.naqa-open nav#sideNav .side-sub {
-  display: block !important;
-  width: 100%;
-  text-align: start;
-  white-space: nowrap !important;
-  font-size: .68rem !important;
-  font-weight: 700;
-  min-height: 28px;
-  padding: 5px 10px 5px 20px !important;
-  border-radius: 8px;
-  color: #c9b4ae;
-}
-html body.naqa-open nav#sideNav .side-sub.on {
-  color: #fff !important;
-  background: rgba(196, 107, 124, .28) !important;
-  box-shadow: inset 3px 0 0 #c46b7c;
-}
-html body.naqa-open nav#sideNav .side-group.open > .side-main .chev {
-  display: inline-block !important;
-  transform: rotate(180deg);
-}
+/* ========== STEP1A: parent + nested children in right rail ========== */
 html body.naqa-open #pageSubNav {
   display: none !important;
   height: 0 !important;
   margin: 0 !important;
   padding: 0 !important;
   overflow: hidden !important;
+  border: 0 !important;
 }
+html body.naqa-open nav#sideNav .side-subs {
+  display: none !important;
+}
+html body.naqa-open nav#sideNav .side-group.open > .side-subs {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 2px;
+  margin-top: 4px;
+  padding: 5px 4px 6px !important;
+  background: #1a1013 !important;
+  border-radius: 10px;
+  position: relative;
+}
+html body.naqa-open nav#sideNav .side-group.open > .side-subs::before {
+  content: "";
+  position: absolute;
+  inset-inline-start: 14px;
+  top: 6px;
+  bottom: 6px;
+  width: 2px;
+  background: #c46b7c;
+  opacity: .4;
+  border-radius: 2px;
+  pointer-events: none;
+}
+html body.naqa-open nav#sideNav .side-sub {
+  display: block !important;
+  width: 100%;
+  box-sizing: border-box;
+  text-align: start !important;
+  white-space: nowrap !important;
+  font-size: .66rem !important;
+  font-weight: 700;
+  line-height: 1.2;
+  min-height: 26px;
+  padding: 5px 8px 5px 22px !important;
+  border: 0 !important;
+  border-radius: 8px;
+  background: transparent;
+  color: #c9b4ae;
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+}
+html body.naqa-open nav#sideNav .side-sub:hover {
+  background: #2a1a1e !important;
+  color: #fff !important;
+}
+html body.naqa-open nav#sideNav .side-sub.on {
+  color: #fff !important;
+  background: rgba(196, 107, 124, .3) !important;
+  box-shadow: inset 3px 0 0 #c46b7c;
+  font-weight: 800;
+}
+html body.naqa-open nav#sideNav .side-group > .side-main .chev {
+  display: inline-block !important;
+  margin-inline-start: auto;
+  opacity: .85;
+  transition: transform .15s ease;
+}
+html body.naqa-open nav#sideNav .side-group.open > .side-main .chev {
+  transform: rotate(180deg);
+}
+html body.naqa-open nav#sideNav .side-group.open > .side-main,
+html body.naqa-open nav#sideNav .side-group.has-active-child > .side-main {
+  /* keep parent readable when open */
+}
+/* ========== end STEP1A ========== */

@@ -16,7 +16,7 @@
     return "all";
   };
 
-  /* Pattern A: children live under the parent in the sidebar — page chips stay off */
+  /* STEP1A: children nested under parent in sidebar — page chips always off */
   A.fillPageSubNav = function () {
     var bar = document.getElementById("pageSubNav");
     if (bar) {

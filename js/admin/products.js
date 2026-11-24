@@ -1,5 +1,10 @@
 (function (w) {
   var A = w.NaqaAdmin;
+  var MAX_IMGS = 5;
+
+  function L(ar, en) {
+    return A.lang === "en" ? en : ar;
+  }
 
   function endEditMode() {
     try { document.body.classList.remove("naqa-editing"); } catch (e) {}
@@ -11,8 +16,165 @@
     if (window.naqaScrollLock) try { naqaScrollLock.lock(); } catch (e) {}
   }
 
+  function fileToDataUrl(file) {
+    return new Promise(function (resolve, reject) {
+      var img = new Image();
+      var url = URL.createObjectURL(file);
+      img.onload = function () {
+        var max = 1000;
+        var s = Math.min(1, max / Math.max(img.width, img.height));
+        var c = document.createElement("canvas");
+        c.width = Math.max(1, Math.round(img.width * s));
+        c.height = Math.max(1, Math.round(img.height * s));
+        c.getContext("2d").drawImage(img, 0, 0, c.width, c.height);
+        URL.revokeObjectURL(url);
+        resolve(c.toDataURL("image/jpeg", 0.78));
+      };
+      img.onerror = function () {
+        URL.revokeObjectURL(url);
+        reject(new Error("photo"));
+      };
+      img.src = url;
+    });
+  }
+
+  function normImgs(list) {
+    return (list || []).map(function (s) { return String(s || "").trim(); }).filter(Boolean).slice(0, MAX_IMGS);
+  }
+
+  A.paintImgGallery = function () {
+    var box = document.getElementById("imgGal");
+    if (!box) return;
+    var imgs = A._editImgs = normImgs(A._editImgs);
+    if (!imgs.length) {
+      box.innerHTML =
+        '<div class="img-gal-add" id="imgGalEmpty" role="button" tabindex="0">'
+        + '<span style="font-size:1.4rem">＋</span>'
+        + '<span>' + L("أضيفي صورة", "Add image") + '</span>'
+        + '</div>';
+      var empty = document.getElementById("imgGalEmpty");
+      if (empty) empty.onclick = function () {
+        var f = document.getElementById("f_imgFile");
+        if (f) f.click();
+      };
+      return;
+    }
+    var html = imgs.map(function (src, i) {
+      var main = i === 0
+        ? '<span class="main-tag">' + L("رئيسية", "Main") + '</span>'
+        : "";
+      return '<div class="img-gal-item' + (i === 0 ? " is-main" : "") + '" data-i="' + i + '">'
+        + main
+        + '<img src="' + A.esc(src) + '" alt="" loading="lazy">'
+        + '<div class="img-gal-actions">'
+        + (i > 0 ? '<button type="button" data-img-main="' + i + '">★</button>' : "")
+        + (i > 0 ? '<button type="button" data-img-up="' + i + '">‹</button>' : "")
+        + (i < imgs.length - 1 ? '<button type="button" data-img-down="' + i + '">›</button>' : "")
+        + '<button type="button" data-img-del="' + i + '">✕</button>'
+        + '</div></div>';
+    }).join("");
+    if (imgs.length < MAX_IMGS) {
+      html += '<div class="img-gal-add" id="imgGalAddMore" role="button" tabindex="0">'
+        + '<span style="font-size:1.2rem">＋</span>'
+        + '<span>' + L("إضافة", "Add") + '</span></div>';
+    }
+    box.innerHTML = html;
+    var more = document.getElementById("imgGalAddMore");
+    if (more) more.onclick = function () {
+      var f = document.getElementById("f_imgFile");
+      if (f) f.click();
+    };
+  };
+
+  function bindImgTools() {
+    var gal = document.getElementById("imgGal");
+    if (gal && !gal._bound) {
+      gal._bound = true;
+      gal.addEventListener("click", function (e) {
+        var main = e.target.closest("[data-img-main]");
+        var up = e.target.closest("[data-img-up]");
+        var down = e.target.closest("[data-img-down]");
+        var del = e.target.closest("[data-img-del]");
+        if (main) {
+          var i = +main.getAttribute("data-img-main");
+          var t = A._editImgs.splice(i, 1)[0];
+          A._editImgs.unshift(t);
+          A.paintImgGallery();
+          return;
+        }
+        if (up) {
+          var iu = +up.getAttribute("data-img-up");
+          if (iu > 0) {
+            var a = A._editImgs[iu - 1];
+            A._editImgs[iu - 1] = A._editImgs[iu];
+            A._editImgs[iu] = a;
+            A.paintImgGallery();
+          }
+          return;
+        }
+        if (down) {
+          var id = +down.getAttribute("data-img-down");
+          if (id < A._editImgs.length - 1) {
+            var b = A._editImgs[id + 1];
+            A._editImgs[id + 1] = A._editImgs[id];
+            A._editImgs[id] = b;
+            A.paintImgGallery();
+          }
+          return;
+        }
+        if (del) {
+          var ix = +del.getAttribute("data-img-del");
+          A._editImgs.splice(ix, 1);
+          A.paintImgGallery();
+        }
+      });
+    }
+    var pick = document.getElementById("btnImgPick");
+    if (pick) pick.onclick = function () {
+      var f = document.getElementById("f_imgFile");
+      if (f) f.click();
+    };
+    var file = document.getElementById("f_imgFile");
+    if (file && !file._bound) {
+      file._bound = true;
+      file.addEventListener("change", function () {
+        var files = Array.prototype.slice.call(file.files || []);
+        file.value = "";
+        if (!files.length) return;
+        var left = MAX_IMGS - (A._editImgs || []).length;
+        if (left <= 0) {
+          A.setMsg("status", L("الحد " + MAX_IMGS + " صور", "Max " + MAX_IMGS + " images"));
+          return;
+        }
+        files = files.slice(0, left);
+        A.setMsg("status", L("جاري تجهيز الصور…", "Preparing images…"));
+        Promise.all(files.map(fileToDataUrl)).then(function (urls) {
+          A._editImgs = normImgs((A._editImgs || []).concat(urls));
+          A.paintImgGallery();
+          A.setMsg("status", L("انضافت الصور · احفظي المنتج", "Images added · save product"));
+        }).catch(function () {
+          A.setMsg("status", L("الصورة ما انفتحت", "Could not open image"));
+        });
+      });
+    }
+    var addUrl = document.getElementById("btnImgUrl");
+    if (addUrl) addUrl.onclick = function () {
+      var inp = document.getElementById("f_imgUrl");
+      var u = inp ? inp.value.trim() : "";
+      if (!u) return;
+      if ((A._editImgs || []).length >= MAX_IMGS) {
+        A.setMsg("status", L("الحد " + MAX_IMGS + " صور", "Max " + MAX_IMGS + " images"));
+        return;
+      }
+      A._editImgs = normImgs((A._editImgs || []).concat([u]));
+      if (inp) inp.value = "";
+      A.paintImgGallery();
+    };
+  }
+
   A.paintList = function (q) {
     A.editingId = null;
+    A._editImgs = [];
     var listView = document.getElementById("listView");
     var editView = document.getElementById("editView");
     if (!listView || !editView) return;
@@ -63,13 +225,13 @@
     editView.hidden = false;
     startEditMode();
 
+    A._editImgs = normImgs(m.imgs || []);
+
     var catOpts = A.CATS.map(function (c) {
       return '<option value="' + A.esc(c) + '"' + (m.cat === c ? " selected" : "") + ">" + A.esc(c) + "</option>";
     }).join("");
-    var imgs = (m.imgs || []).join("\n");
     var title = m.nameAr || m.nameEn || A.t("p_edit");
 
-    /* Full-screen sheet: sticky head + scrollable body + sticky foot (Salla/Zid mobile) */
     editView.innerHTML =
       '<div class="edit-sheet-head">'
       + '<button type="button" class="back" id="backList">' + A.t("p_back") + '</button>'
@@ -77,7 +239,20 @@
       + '</div>'
       + '<div class="edit-sheet-body" id="editSheetBody">'
       + '<div class="edit-card">'
-      + '<div class="preview">' + ((m.imgs && m.imgs[0]) ? '<img src="' + A.esc(m.imgs[0]) + '" alt="">' : '<div class="ph big"></div>') + '</div>'
+      + '<span class="img-gal-label">' + L("صور المنتج", "Product images") + '</span>'
+      + '<p class="img-gal-note">' + L(
+        "مثل سلة وزد: ارفعي من الجهاز أو ألصقي رابط. الأولى رئيسية · ★ لجعلها رئيسية · ‹› للترتيب · ✕ للحذف. الحد ٥. الصور المرفوعة تُحفظ هنا ثم تُرفع للمتجر عند «نشر للكل».",
+        "Like Salla & Zid: upload or paste a URL. First is main · ★ set main · arrows reorder · ✕ delete. Max 5. Uploaded photos go live on Publish."
+      ) + '</p>'
+      + '<div class="img-gal-tools">'
+      + '<button type="button" class="mini" id="btnImgPick">' + L("📷 رفع من الجهاز", "📷 Upload") + '</button>'
+      + '<input id="f_imgFile" type="file" accept="image/*" multiple>'
+      + '</div>'
+      + '<div class="img-gal-url-row">'
+      + '<input id="f_imgUrl" type="url" inputmode="url" placeholder="' + L("أو الصقي رابط صورة…", "Or paste image URL…") + '">'
+      + '<button type="button" class="mini" id="btnImgUrl">' + L("إضافة", "Add") + '</button>'
+      + '</div>'
+      + '<div class="img-gal" id="imgGal"></div>'
       + '<label>' + A.t("p_nameAr") + '<textarea id="f_nameAr" rows="2">' + A.esc(m.nameAr || "") + '</textarea></label>'
       + '<label>' + A.t("p_nameEn") + '<textarea id="f_nameEn" rows="2">' + A.esc(m.nameEn || "") + '</textarea></label>'
       + '<div class="grid2">'
@@ -95,11 +270,13 @@
       + '<label>' + A.t("p_useEn") + '<textarea id="f_useEn" rows="4">' + A.esc(m.useEn || "") + '</textarea></label>'
       + '<label>' + A.t("p_skinAr") + '<input id="f_skinAr" type="text" value="' + A.esc(m.skinAr || "") + '"></label>'
       + '<label>' + A.t("p_skinEn") + '<input id="f_skinEn" type="text" value="' + A.esc(m.skinEn || "") + '"></label>'
-      + '<label>' + A.t("p_imgs") + '<textarea id="f_imgs" rows="5">' + A.esc(imgs) + '</textarea></label>'
       + '</div></div>'
       + '<div class="edit-sheet-foot">'
       + '<button type="button" class="primary" id="saveEdit">' + A.t("p_save") + '</button>'
       + '</div>';
+
+    A.paintImgGallery();
+    bindImgTools();
 
     var bodyEl = document.getElementById("editSheetBody");
     if (bodyEl) bodyEl.scrollTop = 0;
@@ -119,7 +296,7 @@
       stock: A.val("f_stock") === "" ? undefined : Number(A.val("f_stock")),
       descAr: A.val("f_descAr"), descEn: A.val("f_descEn"), useAr: A.val("f_useAr"), useEn: A.val("f_useEn"),
       skinAr: A.val("f_skinAr"), skinEn: A.val("f_skinEn"),
-      imgs: A.val("f_imgs").split(/\n+/).map(function (s) { return s.trim(); }).filter(Boolean).slice(0, 5),
+      imgs: normImgs(A._editImgs),
       hidden: !!(document.getElementById("f_hidden") && document.getElementById("f_hidden").checked)
     };
     if (next.price == null || isNaN(next.price)) delete next.price;
@@ -130,8 +307,35 @@
     Object.keys(next).forEach(function (k) { if (next[k] === "" || next[k] === undefined) delete next[k]; });
     if (Object.keys(next).length) A.overrides[A.editingId] = next;
     else delete A.overrides[A.editingId];
-    localStorage.setItem(A.KEY, JSON.stringify(A.overrides));
+    try { localStorage.setItem(A.KEY, JSON.stringify(A.overrides)); } catch (e) {
+      A.setMsg("status", L("مساحة الجهاز ممتلئة — قلّلي الصور أو انشري أولاً", "Device storage full — fewer images or publish first"));
+      return;
+    }
     A.setMsg("status", A.t("p_saved"));
     A.paintList(document.getElementById("q").value.trim());
+  };
+
+  A.materializeProductImages = function (token) {
+    var jobs = [];
+    Object.keys(A.overrides || {}).forEach(function (id) {
+      var o = A.overrides[id];
+      if (!o || !Array.isArray(o.imgs)) return;
+      o.imgs.forEach(function (src, i) {
+        if (typeof src !== "string" || src.indexOf("data:image") !== 0) return;
+        var parts = src.split(",");
+        var b64 = parts[1];
+        if (!b64) return;
+        var path = "media/products/p" + id + "-" + i + "-" + Date.now().toString(36) + ".jpg";
+        jobs.push(
+          A.ghPutB64(path, b64, token, "chore: product image " + id).then(function (res) {
+            if (!res.ok) throw new Error("img");
+            o.imgs[i] = path;
+          })
+        );
+      });
+    });
+    return Promise.all(jobs).then(function () {
+      try { localStorage.setItem(A.KEY, JSON.stringify(A.overrides)); } catch (e) {}
+    });
   };
 })(window);

@@ -2,8 +2,21 @@
   var A = w.NaqaAdmin;
   var TABS = ["home", "orders", "products", "reviews", "customers", "finance", "settings"];
 
-  A.setTab = function (tab) {
+  A.setTab = function (tab, opts) {
+    opts = opts || {};
     if (TABS.indexOf(tab) < 0) tab = "home";
+    /* Leaving a nested edit: drop it without fighting browser history */
+    if (A.editingId != null && tab !== "products") {
+      A._editNavPushed = false;
+      A.editingId = null;
+      A._editImgs = [];
+      var ev = document.getElementById("editView");
+      var lv = document.getElementById("listView");
+      if (ev) { ev.hidden = true; ev.innerHTML = ""; }
+      if (lv) lv.hidden = false;
+      document.body.classList.remove("naqa-editing");
+      if (window.naqaScrollLock) try { naqaScrollLock.unlock(); } catch (e) {}
+    }
     document.querySelectorAll("#tabs button").forEach(function (b) {
       b.classList.toggle("on", b.getAttribute("data-tab") === tab);
     });
@@ -18,7 +31,33 @@
     if (tab === "customers" && A.paintCustomers) A.paintCustomers();
     if (tab === "finance" && A.paintFinance) A.paintFinance();
     if (tab === "settings" && A.paintSettings) A.paintSettings();
-    try { history.replaceState(null, "", "#/" + tab); } catch (e) {}
+    if (!opts.fromPop && !opts.skipHash) {
+      try { history.replaceState({ naqa: "tab", tab: tab }, "", "#/" + tab); } catch (e) {}
+    }
+  };
+
+  A.applyRoute = function (raw) {
+    raw = String(raw || (location.hash || "").replace(/^#\/?/, "") || "");
+    /* products/edit/123 */
+    var editMatch = raw.match(/^products\/edit\/([^/]+)/);
+    if (editMatch) {
+      var id = editMatch[1];
+      if (TABS.indexOf("products") >= 0) {
+        /* show products tab chrome without wiping edit via paintList */
+        document.querySelectorAll("#tabs button").forEach(function (b) {
+          b.classList.toggle("on", b.getAttribute("data-tab") === "products");
+        });
+        TABS.forEach(function (t) {
+          var el = document.getElementById(t + "Tab");
+          if (el) el.hidden = t !== "products";
+        });
+        if (A.openEdit) A.openEdit(isNaN(+id) ? id : +id, { fromPop: true });
+        return;
+      }
+    }
+    var tab = raw.split("/")[0];
+    if (TABS.indexOf(tab) < 0) tab = "home";
+    A.setTab(tab, { fromPop: true, skipHash: true });
   };
 
   A.openAdmin = function () {
@@ -30,9 +69,7 @@
     var wa = document.getElementById("waOrders");
     if (wa) wa.href = "https://wa.me/" + (w.WA_NUMBER || "96879088349");
     A.loadRemoteOrders();
-    var hash = (location.hash || "").replace(/^#\/?/, "");
-    var start = TABS.indexOf(hash) >= 0 ? hash : "home";
-    A.setTab(start);
+    A.applyRoute((location.hash || "").replace(/^#\/?/, ""));
   };
 
   document.getElementById("pinGo").onclick = function () {
@@ -83,7 +120,24 @@
   document.getElementById("tabs").addEventListener("click", function (e) {
     var b = e.target.closest("[data-tab]");
     if (!b) return;
-    A.setTab(b.getAttribute("data-tab"));
+    var tab = b.getAttribute("data-tab");
+    if (tab === "products" && A.editingId != null) {
+      A.closeEdit(false);
+      return;
+    }
+    A.setTab(tab);
+  });
+
+  /* Browser back / edge-swipe: leave edit → list; else apply hash tab */
+  window.addEventListener("popstate", function () {
+    if (A.editingId != null || (document.getElementById("editView") && !document.getElementById("editView").hidden)) {
+      A._editNavPushed = false;
+      if (A.closeEdit) A.closeEdit(true);
+      else if (A.paintList) A.paintList(document.getElementById("q") ? document.getElementById("q").value.trim() : "");
+      try { history.replaceState({ naqa: "tab", tab: "products" }, "", "#/products"); } catch (e) {}
+      return;
+    }
+    A.applyRoute((location.hash || "").replace(/^#\/?/, ""));
   });
 
   var q = document.getElementById("q");

@@ -4,7 +4,7 @@
   A.lang = "ar";
   try { if (localStorage.getItem("naqa_admin_lang") === "en") A.lang = "en"; } catch (e) {}
   /* One language file only. Must stay a blocking script so document.write runs while the page is parsing. */
-  document.write('<script src="js/admin/i18n/dict-' + A.lang + '.js?v=20261124fix19"><\/script>');
+  document.write('<script src="js/admin/i18n/dict-' + A.lang + '.js?v=20261124fix23"><\/script>');
   A.t = function (k) {
     var pack = A.I18N[A.lang] || A.I18N.ar;
     return pack[k] != null ? pack[k] : (A.I18N.ar[k] || k);
@@ -121,9 +121,9 @@
     document.title = A.t("title");
     var h1 = document.querySelector(".admin-top h1");
     if (h1) h1.textContent = A.t("title");
-    document.querySelectorAll("#tabs button").forEach(function (b) {
-      var k = b.getAttribute("data-tab");
-      if (k) b.textContent = A.t("tab_" + k);
+    document.querySelectorAll("[data-i18n]").forEach(function (b) {
+      var k = b.getAttribute("data-i18n");
+      if (k) b.textContent = A.t(k);
     });
     if (A.syncOrdersTab) A.syncOrdersTab();
     var pinFirst = !localStorage.getItem(A.PIN_HASH) && !localStorage.getItem(A.PIN);
@@ -162,7 +162,7 @@
   A.ensureLang = function (lang, done) {
     if (A.I18N && A.I18N[lang]) { done(); return; }
     var s = document.createElement("script");
-    s.src = "js/admin/i18n/dict-" + lang + ".js?v=20261124fix19";
+    s.src = "js/admin/i18n/dict-" + lang + ".js?v=20261124fix23";
     s.onload = function () { done(); };
     s.onerror = function () { done(); };
     document.head.appendChild(s);
@@ -173,8 +173,8 @@
     A.ensureLang(A.lang, function () {
       A.applyChrome();
       if (document.getElementById("tools") && !document.getElementById("tools").hidden && A.setTab) {
-        var on = document.querySelector("#tabs button.on");
-        A.setTab(on ? on.getAttribute("data-tab") : "home");
+        if (A.go) A.go(A.currentTab || "home", A.currentSub || (A.defaultSub ? A.defaultSub(A.currentTab || "home") : ""), { fromPop: true, keepPage: true, page: A.productPage });
+        else if (A.setTab) A.setTab(A.currentTab || "home");
       }
     });
   };

@@ -225,11 +225,22 @@
     var inv = '<div class="panel" style="margin-bottom:10px"><h2>' + A.t("p_invTitle") + '</h2>'
       + '<p class="note">' + A.t("p_invNote") + '</p>'
       + '<small>' + A.t("p_low") + ': <b>' + low + '</b> · ' + A.t("p_out") + ': <b>' + out + '</b></small></div>';
-    var html = A.products.filter(function (p) {
+    var view = A.productView || "all";
+    var matched = A.products.filter(function (p) {
       var m = A.merged(p);
+      if (view === "hidden" && !m.hidden) return false;
+      if (view === "shown" && m.hidden) return false;
       var blob = [m.nameAr, m.nameEn, m.brand, m.sku, p.id].join(" ").toLowerCase();
       return !q || blob.indexOf(q) >= 0;
-    }).map(function (p) {
+    });
+    var per = 50;
+    var pages = Math.max(1, Math.ceil(matched.length / per));
+    var page = A.productPage || 1;
+    if (page < 1) page = 1;
+    if (page > pages) page = pages;
+    A.productPage = page;
+    var slice = matched.slice((page - 1) * per, page * per);
+    var html = slice.map(function (p) {
       var m = A.merged(p);
       var img = (m.imgs && m.imgs[0]) || "";
       var thumb = img ? '<img src="' + A.esc(img) + '" alt="">' : '<div class="ph"></div>';
@@ -237,14 +248,22 @@
       var stockN = Number(m.stock);
       var stockCls = (m.stock !== "" && m.stock != null && stockN <= 0) ? ' style="color:#b05c6e;font-weight:800"' : (m.stock != null && m.stock !== "" && stockN <= 3 ? ' style="color:#c9a227;font-weight:800"' : "");
       var hid = m.hidden ? " · " + A.t("p_hidden") : "";
-      return '<article class="row" data-open="' + p.id + '">' + thumb
+      return '<article class="row' + (m.hidden ? ' is-hidden' : '') + '" data-open="' + p.id + '">' + thumb
         + '<div><strong>' + A.esc(m.nameAr || m.nameEn) + '</strong>'
         + '<small>' + A.esc(m.brand || "") + ' · ' + A.esc(m.cat || "") + ' · SKU ' + A.esc(m.sku || "—") + '</small>'
         + '<small>' + A.t("p_price") + ' ' + A.esc(m.price) + ' ' + A.t("omr") + ' <span style="color:#9a7b72;font-size:11px">' + A.esc((A.taxLabel ? A.taxLabel(m) : (A.t('tax_vat5') || ''))) + '</span> · ' + A.t("p_stock") + ' <span' + stockCls + '>' + A.esc(stock) + '</span>' + hid + '</small></div>'
         + '<button type="button" class="mini ghost" data-hide="' + p.id + '">' + (m.hidden ? A.t("p_show") : A.t("p_hide")) + '</button>'
         + '<button type="button" class="edit-btn" data-open="' + p.id + '">' + A.t("p_edit") + '</button></article>';
     }).join("");
-    document.getElementById("list").innerHTML = inv + (html || '<p class="note">' + A.t("p_empty") + '</p>');
+    var pager = "";
+    if (matched.length) {
+      pager = '<div class="pager" id="prodPager">'
+        + '<button type="button" data-page="' + (page - 1) + '"' + (page <= 1 ? " disabled" : "") + ">" + A.t("pagePrev") + "</button>"
+        + '<span>' + page + " / " + pages + " · " + matched.length + "</span>"
+        + '<button type="button" data-page="' + (page + 1) + '"' + (page >= pages ? " disabled" : "") + ">" + A.t("pageNext") + "</button>"
+        + "</div>";
+    }
+    document.getElementById("list").innerHTML = inv + (html || '<p class="note">' + A.t("p_empty") + '</p>') + pager;
   };
 
   A.openEdit = function (id, opts) {

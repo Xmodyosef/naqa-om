@@ -196,3 +196,23 @@ body.naqa-auth-pending #authBoot { display: block !important; }
 .auth-boot { text-align: center; padding: 48px 20px; color: #9a7b72; font-weight: 700; }
 body.naqa-open #authBoot { display: none !important; }
 #fbForm { margin: 0; }
+
+body.naqa-open .admin-shell{display:flex;align-items:flex-start;gap:14px}
+.side-nav{flex:0 0 228px;width:228px;position:sticky;top:8px;background:#fff;border:1px solid var(--line);border-radius:18px;padding:10px;display:flex;flex-direction:column;gap:6px}
+.side-main,.side-sub{border:1px solid var(--line);background:#fff;border-radius:12px;padding:10px 12px;font-weight:800;text-align:inherit;cursor:pointer;width:100%}
+.side-main.on{background:#1f1a17;color:#fff;border-color:#1f1a17}
+.side-subs{display:none;flex-direction:column;gap:4px;margin:4px 0 6px;padding-inline-start:10px}
+.side-group.open .side-subs{display:flex}
+.side-sub{font-size:.82rem;font-weight:700;background:#faf6f3}
+.side-sub.on{background:#8d3048;color:#fff;border-color:#8d3048}
+.admin-main{flex:1;min-width:0}
+.row.is-hidden{opacity:.55;outline:1px dashed #c9a7b0}
+.pager{display:flex;gap:8px;align-items:center;justify-content:center;margin:14px 0 28px}
+.pager button{border:1px solid var(--line);background:#fff;border-radius:999px;padding:8px 14px;font-weight:800}
+.pager button:disabled{opacity:.4}
+@media (max-width:860px){
+  body.naqa-open .admin-shell{flex-direction:column}
+  .side-nav{position:static;width:100%;flex-basis:auto;flex-direction:row;overflow-x:auto;align-items:flex-start}
+  .side-group{min-width:168px}
+  .side-subs{padding-inline-start:0}
+}

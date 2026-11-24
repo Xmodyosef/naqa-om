@@ -162,5 +162,12 @@
   "fb_rate": "Too many attempts. Wait a minute and try again.",
   "fb_network": "Network error. Check your connection and try again.",
   "fb_existsDiff": "This email is linked to another sign-in method. Try Google or password.",
-  "fb_booting": "Opening the panel…"
+  "fb_booting": "Opening the panel…",
+  "sub_all": "All",
+  "sub_shown": "Visible",
+  "sub_hidden": "Hidden",
+  "sub_general": "General",
+  "pagePrev": "Previous",
+  "pageNext": "Next",
+  "hideNeedTok": "Hidden on this device only. Add the publish token in Settings so it hides on the store for everyone."
 }

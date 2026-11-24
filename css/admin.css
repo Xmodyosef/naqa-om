@@ -197,11 +197,11 @@ body.naqa-open #authBoot { display: none !important; }
 #fbForm { margin: 0; }
 
 
-/* —— Nav: option 6, right dark sidebar, scrolling children, squircle icons —— */
+/* —— Naqa admin shell: Salla-like right parent rail + page children —— */
 body.naqa-open .admin-shell{
   display:flex;
   flex-direction:row;
-  direction:ltr;
+  direction:ltr; /* physical: main left, rail right */
   align-items:stretch;
   gap:0;
   min-height:calc(100dvh - 96px);
@@ -235,10 +235,9 @@ body.naqa-open .admin-shell{
   overflow-x:hidden;
   background:#2a1a1e;
   color:#e8dcd9;
-  border-inline-start:1px solid #3d2a2e;
   border:0;
   border-radius:0;
-  padding:18px 12px 20px;
+  padding:16px 12px 20px;
   display:flex;
   flex-direction:column;
   align-items:stretch;
@@ -254,11 +253,12 @@ body.naqa-open .admin-shell{
   padding:4px 10px 14px;
   color:#fff;
 }
+/* parent buttons — white tile icons that turn rose when active */
 .side-main{
   position:relative;
   border:0;
   background:transparent;
-  border-radius:14px;
+  border-radius:12px;
   padding:8px 10px;
   font-weight:700;
   font-size:.86rem;
@@ -266,93 +266,80 @@ body.naqa-open .admin-shell{
   text-align:right;
   cursor:pointer;
   width:100%;
-  color:rgba(255,255,255,.78);
+  color:#e8dcd9;
   transition:background .16s ease, color .16s ease;
   display:flex;
   flex-direction:row;
   align-items:center;
-  gap:10px;
+  gap:12px;
 }
 .side-main:hover{
   background:rgba(255,255,255,.06);
   color:#fff;
 }
 .side-main.on{
-  background:#8d3048;
-  color:#fff;
-}
-.side-group.open > .side-main{
-  background:#c46b7c;
-  color:#fff;
-  font-weight:800;
-  border-radius:8px;
-  box-shadow:0 3px 10px rgba(196,107,124,.35);
-}
-.side-group.open > .side-main .side-ico,
-.side-group.open > .side-main .chev{ color:#fff; }
-.side-group.open > .side-main .side-ico{ background:rgba(255,255,255,.18); }
-.side-group.open > .side-main .chev{ transform:rotate(180deg); }
-.side-group.has-active-child > .side-main{
-  background:#8d3048;
-  color:#fff;
-}
-.side-group.open.has-active-child > .side-main{
-  background:#c46b7c;
-}
-.side-group.open .side-subs{
-  display:flex;
-  flex-direction:column;
-  background:#1f1215;
-  border-radius:8px;
-  padding:6px 0;
-  margin-top:3px;
-  position:relative;
-}
-.side-subs{ display:none; }
-.side-group.open .side-subs::before{
-  content:"";
-  position:absolute;
-  inset-inline-start:16px;
-  top:8px;
-  bottom:8px;
-  width:2px;
-  background:#c46b7c;
-  opacity:.55;
-  border-radius:2px;
-}
-.side-sub{
-  border:0;
   background:transparent;
-  color:#bfa9a4;
-  padding:8px 16px;
-  padding-inline-start:28px;
-  font:700 .82rem/1.3 inherit;
-  text-align:inherit;
-  cursor:pointer;
-  width:100%;
-  position:relative;
-  z-index:1;
+  color:#c46b7c;
 }
-.side-sub:hover{ background:#2a1a1e; color:#fff; }
-.side-sub.on{
-  background:rgba(196,107,124,.22);
-  color:#f4c9d1;
+.side-ico{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:34px;
+  height:34px;
+  flex:0 0 34px;
+  border-radius:10px;
+  background:#fff;
+  color:#2a2422;
+  box-shadow:0 2px 5px rgba(0,0,0,.15);
+  transition:background .2s ease, box-shadow .2s ease, color .2s ease;
+}
+.side-ico svg{display:block}
+.side-main.on .side-ico{
+  background:#c46b7c;
+  color:#fff;
+  box-shadow:0 3px 8px rgba(196,107,124,.4);
+}
+.side-lbl{
+  flex:1;
+  min-width:0;
+  text-align:start;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  font-weight:600;
+  color:#e8dcd9;
+}
+.side-main.on .side-lbl{
+  color:#c46b7c;
   font-weight:800;
-  box-shadow:inset 3px 0 0 #c46b7c;
 }
-.chev{
+.side-badge{
   margin-inline-start:auto;
-  font-size:.75rem;
-  opacity:.8;
-  transition:transform .15s ease;
+  min-width:18px;
+  height:18px;
+  padding:0 5px;
+  border-radius:999px;
+  background:#e23b4a;
+  color:#fff;
+  font-size:.68rem;
+  font-weight:800;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  line-height:1;
 }
-.side-main:hover{ background:#3d2a2e; color:#fff; }
+.side-main.on .side-badge{ background:#fff; color:#8d3048; }
+/* children never render inside the rail */
+.side-subs,.side-group{ display:none !important; }
+
+/* top search bar */
 .top-bar{
   display:flex;
   align-items:center;
   gap:10px;
   padding:0 0 12px;
-  margin:0 0 14px;
+  margin:0 0 12px;
   border-bottom:1px solid var(--line);
 }
 .search-wrap{
@@ -400,51 +387,7 @@ body.naqa-open .admin-shell{
   box-shadow:0 2px 6px rgba(196,107,124,.3);
 }
 
-.side-ico{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  width:36px;
-  height:36px;
-  flex:0 0 36px;
-  border-radius:12px;
-  background:#2c2226;
-  color:#f3c9d4;
-  box-shadow:inset 0 0 0 1px rgba(255,255,255,.06);
-}
-.side-ico svg{display:block}
-.side-main.on .side-ico{
-  background:#8d3048;
-  color:#fff;
-  box-shadow:none;
-}
-.side-lbl{
-  flex:1;
-  min-width:0;
-  text-align:right;
-  white-space:nowrap;
-  overflow:hidden;
-  text-overflow:ellipsis;
-  font-weight:800;
-}
-.side-badge{
-  position:static;
-  margin-inline-start:auto;
-  min-width:18px;
-  height:18px;
-  padding:0 5px;
-  border-radius:999px;
-  background:#e23b4a;
-  color:#fff;
-  font-size:.68rem;
-  font-weight:800;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  line-height:1;
-}
-.side-main.on .side-badge{ background:#fff; color:#8d3048; }
-
+/* page children — Salla-style filters on the content, not under sidebar */
 .page-sub-nav.page-sub-frame{
   display:flex;
   flex-wrap:nowrap;
@@ -495,6 +438,7 @@ body.naqa-open .admin-shell{
   outline-offset:2px;
 }
 
+/* phone: icon rail only, physical right */
 @media (max-width:860px){
   body.naqa-open .admin-shell{
     flex-direction:row;
@@ -524,12 +468,13 @@ body.naqa-open .admin-shell{
   }
   .side-lbl{ display:none; }
   .side-ico{ width:34px; height:34px; flex-basis:34px; border-radius:10px; margin:0 auto; }
-  .side-badge{ position:absolute; top:2px; inset-inline-start:4px; }
+  .side-badge{ position:absolute; top:2px; inset-inline-start:4px; margin:0; }
   .admin-main{ padding:10px; }
   .top-bar{ flex-wrap:wrap; gap:8px; }
   .btn-add{ width:100%; }
   .page-sub-nav.page-sub-frame{ margin-top:2px; }
 }
+
 
 .pager{display:flex;gap:8px;align-items:center;justify-content:center;margin:14px 0 28px}
 .pager button{border:1px solid var(--line);background:#fff;border-radius:999px;padding:8px 14px;font-weight:800}
@@ -594,3 +539,6 @@ body.naqa-open .admin-shell{
 .side-nav{ padding:14px 10px 16px; gap:2px; }
 .side-main{ padding:7px 8px; gap:10px; }
 .side-lbl{ font-size:.78rem; }
+
+/* page chips replace the old status-bar filter row for orders */
+body.naqa-open #ordersTools{ display:none !important; }

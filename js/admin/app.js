@@ -25,7 +25,9 @@
     bar.innerHTML = "";
     bar.hidden = true;
     if (tab === "orders") {
-      var scoped = (A.orders || []).filter(function (o) { return A.inDateRange(o.at); });
+      var scoped = (A.orders || []).filter(function (o) {
+        try { return !A.inDateRange || A.inDateRange(o.at); } catch (e) { return true; }
+      });
       var counts = { all: scoped.length };
       (A.STATUS_ORDER || A.ORDER_SUBS).forEach(function (k) { counts[k] = 0; });
       scoped.forEach(function (o) {
@@ -80,30 +82,17 @@
     }
   };
 
+  /* Parents only in the right rail; children live in #pageSubNav (Salla pattern). */
   A.syncNav = function () {
     var tab = A.currentTab || "home";
-    var sub = A.currentSub || "";
     document.querySelectorAll("#sideNav .side-main").forEach(function (b) {
       var bt = b.getAttribute("data-tab");
       var on = bt === tab;
       b.classList.toggle("on", on);
       if (on) b.setAttribute("aria-current", "page");
       else b.removeAttribute("aria-current");
-      if (grouped) b.setAttribute("aria-expanded", bt === tab ? "true" : "false");
     });
-    document.querySelectorAll("#sideNav .side-group").forEach(function (g) {
-      var gt = g.getAttribute("data-group");
-      var open = gt === tab;
-      g.classList.toggle("open", open);
-      g.querySelectorAll(".side-sub").forEach(function (s) {
-        var on = open && s.getAttribute("data-sub") === (sub || A.defaultSub(gt));
-        s.classList.toggle("on", on);
-        if (on) s.setAttribute("aria-current", "page");
-        else s.removeAttribute("aria-current");
-      });
-      g.classList.toggle("has-active-child", !!g.querySelector(".side-sub.on"));
-    });
-    A.fillPageSubNav();
+    try { A.fillPageSubNav(); } catch (e) { console.error("fillPageSubNav", e); }
     if (A.updateOrdersBadge) A.updateOrdersBadge();
   };
 

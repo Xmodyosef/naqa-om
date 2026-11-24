@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex" />
+<title>خيار ١ · فروع في الجنب</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@400;600;700;800&display=swap" rel="stylesheet" />
+<style>
+:root{--bg:#fdf8f6;--card:#fff;--fg:#1f1a17;--muted:#6b625c;--line:#efe4df;--rose:#8d3048}
+*{box-sizing:border-box;margin:0}
+body{font-family:"Noto Kufi Arabic",system-ui,Tahoma,sans-serif;background:var(--bg);color:var(--fg);min-height:100dvh}
+.banner{background:#1f1a17;color:#fff;padding:10px 14px;font-size:.82rem;font-weight:700;display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between}
+.banner a{color:#ffc9d4;font-weight:800;text-decoration:none}
+.top{background:var(--card);border-bottom:1px solid var(--line);padding:12px 14px;display:flex;justify-content:space-between;align-items:center}
+.top h1{font-size:1.05rem}
+.top a.store{color:var(--rose);font-weight:700;font-size:.85rem;text-decoration:none}
+.shell{display:flex;align-items:flex-start;gap:14px;max-width:1100px;margin:0 auto;padding:14px}
+.side{flex:0 0 200px;width:200px;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:10px;position:sticky;top:10px;display:flex;flex-direction:column;gap:4px}
+.side.compact{flex-basis:168px;width:168px}
+.side-main{border:0;background:transparent;width:100%;text-align:inherit;padding:11px 12px;border-radius:12px;font:800 .9rem/1.2 inherit;cursor:pointer;color:var(--fg);display:flex;align-items:center;gap:8px}
+.side-main:hover{background:#f7f0ee}
+.side-main.on{background:var(--rose);color:#fff;box-shadow:0 2px 8px rgba(141,48,72,.2)}
+.side-main .ico{width:22px;height:22px;border-radius:7px;background:#f3e8e4;display:inline-flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:800;color:var(--rose);flex:0 0 auto}
+.side-main.on .ico{background:rgba(255,255,255,.22);color:#fff}
+.side-subs{display:none;flex-direction:column;gap:3px;margin:2px 4px 6px 0;padding:0 0 0 6px;border-inline-start:2px solid #e8c9d0}
+.side-group.open .side-subs{display:flex}
+.side-sub{border:0;background:transparent;width:100%;text-align:inherit;padding:8px 10px;border-radius:10px;font:700 .8rem/1.2 inherit;cursor:pointer;color:var(--muted)}
+.side-sub.on{background:#f7e8ec;color:var(--rose);font-weight:800}
+.admin-main{flex:1;min-width:0}
+.page-sub-nav{display:flex;flex-wrap:wrap;gap:8px;padding:0 0 14px;margin:0 0 12px;border-bottom:1px solid var(--line)}
+.page-sub-nav[hidden]{display:none!important}
+.page-chip{border:1px solid var(--line);background:#fff;border-radius:999px;padding:9px 16px;font-weight:800;font-size:.82rem;cursor:pointer}
+.page-chip.on{background:var(--rose);color:#fff;border-color:var(--rose)}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px;margin:0 0 10px}
+.panel strong{display:block}
+.panel small{color:var(--muted)}
+.crumb{color:var(--muted);font-size:.78rem;margin-bottom:6px}
+.h{font-size:1.2rem;font-weight:800;margin:0 0 12px}
+.note{color:var(--muted);font-size:.85rem;line-height:1.55;margin-top:12px}
+@media (max-width:860px){
+  .shell{flex-direction:column}
+  .side,.side.compact{position:static;width:100%;flex-basis:auto;flex-direction:row;overflow-x:auto;align-items:flex-start}
+  .side-group{min-width:140px}
+  .side-main{white-space:nowrap}
+}
+body.mode-pagechips .side-subs{display:none!important}
+body.mode-accordion .page-sub-nav{display:none!important}
+body.mode-compact .page-sub-nav{display:none!important}
+</style>
+</head>
+<body class="mode-accordion">
+<div class="banner">
+  <span>معاينة الخيار 1 · رئيسي يمين + فروع تحت الزر المفتوح</span>
+  <span>
+    <a href="preview-nav.html">كل الخيارات</a> ·
+    <a href="preview-nav-1.html">١</a>
+    <a href="preview-nav-2.html">٢</a>
+    <a href="preview-nav-3.html">٣</a>
+  </span>
+</div>
+<div class="top">
+  <h1>لوحة تحكم نقاء</h1>
+  <a class="store" href="index.html">← المتجر</a>
+</div>
+<div class="shell">
+  <nav class="side" id="sideNav" aria-label="أقسام">
+    <button type="button" class="side-main" data-tab="home"><span class="ico">ر</span><span>الرئيسية</span></button>
+    <div class="side-group" data-group="orders">
+      <button type="button" class="side-main" data-tab="orders"><span class="ico">ط</span><span>الطلبات</span></button>
+      <div class="side-subs">
+        <button type="button" class="side-sub" data-tab="orders" data-sub="all">الكل</button>
+        <button type="button" class="side-sub" data-tab="orders" data-sub="new">جديد</button>
+        <button type="button" class="side-sub" data-tab="orders" data-sub="prep">تجهيز</button>
+        <button type="button" class="side-sub" data-tab="orders" data-sub="ship">توصيل</button>
+        <button type="button" class="side-sub" data-tab="orders" data-sub="done">تم</button>
+        <button type="button" class="side-sub" data-tab="orders" data-sub="cancel">ملغي</button>
+      </div>
+    </div>
+    <div class="side-group" data-group="products">
+      <button type="button" class="side-main" data-tab="products"><span class="ico">م</span><span>المنتجات</span></button>
+      <div class="side-subs">
+        <button type="button" class="side-sub" data-tab="products" data-sub="all">الكل</button>
+        <button type="button" class="side-sub" data-tab="products" data-sub="shown">الظاهرة</button>
+        <button type="button" class="side-sub" data-tab="products" data-sub="hidden">المخفية</button>
+      </div>
+    </div>
+    <button type="button" class="side-main" data-tab="customers"><span class="ico">ع</span><span>العملاء</span></button>
+    <button type="button" class="side-main" data-tab="finance"><span class="ico">ف</span><span>المالية</span></button>
+    <button type="button" class="side-main" data-tab="settings"><span class="ico">إ</span><span>الإعدادات</span></button>
+  </nav>
+  <div class="admin-main">
+    <div id="pageSubNav" class="page-sub-nav" hidden></div>
+    <div class="crumb" id="crumb">الرئيسية</div>
+    <div class="h" id="title">الرئيسية</div>
+    <div id="content"></div>
+    <p class="note">هذا نموذج تجربة فقط. ما يغيّر اللوحة الحقيقية لين تختارين رقماً.</p>
+  </div>
+</div>
+<script>
+(function(){
+  var MODE = "accordion";
+  var state = { tab: "home", sub: "" };
+  var labels = {
+    home: "الرئيسية",
+    orders: "الطلبات",
+    products: "المنتجات",
+    customers: "العملاء",
+    finance: "المالية",
+    settings: "الإعدادات",
+    all: "الكل", new: "جديد", prep: "تجهيز", ship: "توصيل", done: "تم", cancel: "ملغي",
+    shown: "الظاهرة", hidden: "المخفية"
+  };
+  var orderSubs = ["all","new","prep","ship","done","cancel"];
+  var productSubs = ["all","shown","hidden"];
+
+  function defaultSub(tab){
+    if (tab === "orders" || tab === "products") return "all";
+    return "";
+  }
+
+  function paint(){
+    document.querySelectorAll(".side-main").forEach(function(b){
+      b.classList.toggle("on", b.getAttribute("data-tab") === state.tab);
+    });
+    document.querySelectorAll(".side-group").forEach(function(g){
+      var open = g.getAttribute("data-group") === state.tab && (MODE === "accordion" || MODE === "compact");
+      g.classList.toggle("open", open);
+    });
+    document.querySelectorAll(".side-sub").forEach(function(b){
+      var on = b.getAttribute("data-tab") === state.tab && b.getAttribute("data-sub") === state.sub;
+      b.classList.toggle("on", on);
+    });
+
+    var bar = document.getElementById("pageSubNav");
+    if (MODE === "pagechips" && (state.tab === "orders" || state.tab === "products")) {
+      var subs = state.tab === "orders" ? orderSubs : productSubs;
+      bar.hidden = false;
+      bar.innerHTML = subs.map(function(s){
+        return '<button type="button" class="page-chip'+(state.sub===s?' on':'')+'" data-sub="'+s+'">'+labels[s]+'</button>';
+      }).join("");
+    } else {
+      bar.hidden = true;
+      bar.innerHTML = "";
+    }
+
+    var crumb = labels.home;
+    if (state.tab !== "home") crumb += " / " + labels[state.tab];
+    if (state.sub) crumb += " / " + (labels[state.sub] || state.sub);
+    document.getElementById("crumb").textContent = crumb;
+    document.getElementById("title").textContent = state.sub
+      ? (labels[state.tab] + " · " + (labels[state.sub] || state.sub))
+      : labels[state.tab];
+
+    var box = document.getElementById("content");
+    if (state.tab === "home") {
+      box.innerHTML = '<div class="panel"><strong>مرحباً</strong><small>اختاري قسماً من اليمين. هذا الخيار 1.</small></div>';
+    } else if (state.tab === "orders") {
+      box.innerHTML = [1,2,3].map(function(i){
+        return '<div class="panel"><strong>طلب N-10'+i+'</strong><small>زبونة تجريبية · '+(labels[state.sub]||"الكل")+'</small></div>';
+      }).join("");
+    } else if (state.tab === "products") {
+      box.innerHTML = [1,2,3].map(function(i){
+        return '<div class="panel"><strong>منتج تجريبي '+i+'</strong><small>عرض: '+(labels[state.sub]||"الكل")+'</small></div>';
+      }).join("");
+    } else {
+      box.innerHTML = '<div class="panel"><strong>'+labels[state.tab]+'</strong><small>محتوى القسم يظهر هنا.</small></div>';
+    }
+  }
+
+  document.getElementById("sideNav").addEventListener("click", function(e){
+    var subBtn = e.target.closest(".side-sub");
+    var mainBtn = e.target.closest(".side-main");
+    if (subBtn) {
+      state.tab = subBtn.getAttribute("data-tab");
+      state.sub = subBtn.getAttribute("data-sub");
+      paint();
+      return;
+    }
+    if (mainBtn) {
+      state.tab = mainBtn.getAttribute("data-tab");
+      state.sub = defaultSub(state.tab);
+      paint();
+    }
+  });
+  document.getElementById("pageSubNav").addEventListener("click", function(e){
+    var b = e.target.closest("[data-sub]");
+    if (!b) return;
+    state.sub = b.getAttribute("data-sub");
+    paint();
+  });
+  paint();
+})();
+</script>
+</body>
+</html>

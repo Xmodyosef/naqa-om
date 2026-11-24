@@ -85,8 +85,7 @@
     var sub = A.currentSub || "";
     document.querySelectorAll("#sideNav .side-main").forEach(function (b) {
       var bt = b.getAttribute("data-tab");
-      var grouped = !!b.closest(".side-group");
-      var on = bt === tab && !grouped;
+      var on = bt === tab;
       b.classList.toggle("on", on);
       if (on) b.setAttribute("aria-current", "page");
       else b.removeAttribute("aria-current");

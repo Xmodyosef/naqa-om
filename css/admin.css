@@ -222,8 +222,8 @@ body.naqa-open .admin-shell{
 }
 .side-nav{
   order:2;
-  flex:0 0 232px;
-  width:232px;
+  flex:0 0 176px;
+  width:176px;
   direction:rtl;
   position:sticky;
   top:0;
@@ -398,7 +398,6 @@ body.naqa-open .admin-shell{
   white-space:nowrap;
   box-shadow:0 2px 6px rgba(196,107,124,.3);
 }
-#pageSubNav{ display:none !important; }
 
 .side-ico{
   display:flex;
@@ -450,17 +449,17 @@ body.naqa-open .admin-shell{
   flex-wrap:nowrap;
   gap:8px;
   align-items:center;
+  justify-content:flex-start;
   overflow-x:auto;
   overflow-y:hidden;
   -webkit-overflow-scrolling:touch;
   scrollbar-width:thin;
-  padding:2px 2px 12px;
+  padding:4px;
   margin:0 0 14px;
-  background:transparent;
-  border:0;
-  border-bottom:1px solid #eadfd9;
-  border-radius:0;
-  box-shadow:none;
+  background:#fff;
+  border:1px solid #eadfd9;
+  border-radius:14px;
+  box-shadow:0 1px 2px rgba(28,18,22,.04);
 }
 .page-sub-nav[hidden]{ display:none !important; }
 .page-chip{
@@ -504,8 +503,8 @@ body.naqa-open .admin-shell{
   }
   .side-nav{
     order:2;
-    width:156px;
-    flex:0 0 156px;
+    width:108px;
+    flex:0 0 108px;
     flex-direction:column;
     overflow-x:hidden;
     overflow-y:auto;
@@ -585,3 +584,9 @@ body.naqa-open .admin-shell{
   .side-ico{ width:34px; height:34px; flex-basis:34px; border-radius:10px; }
   .side-main{ gap:6px; }
 }
+
+/* children live in the page, never inside the rail */
+.side-subs,.side-group{ display:none !important; }
+.side-nav{ padding:14px 10px 16px; gap:2px; }
+.side-main{ padding:7px 8px; gap:10px; }
+.side-lbl{ font-size:.78rem; }

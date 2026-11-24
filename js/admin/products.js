@@ -269,7 +269,6 @@
         +   '</div>'
         + '</div>'
         + '<div class="prod-actions">'
-        +   '<button type="button" class="mini ghost" data-hide="' + p.id + '">' + (m.hidden ? A.t("p_show") : A.t("p_hide")) + '</button>'
         +   '<button type="button" class="edit-btn" data-open="' + p.id + '">' + A.t("p_edit") + '</button>'
         + '</div>'
         + '</article>';

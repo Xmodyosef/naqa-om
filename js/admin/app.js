@@ -38,7 +38,8 @@
       bar.innerHTML = parts.map(function (p) {
         var on = (A.orderFilter || sub || "all") === p.id;
         return '<button type="button" class="page-chip' + (on ? " on" : "") + '" data-page-tab="orders" data-page-sub="' + p.id + '" role="tab" aria-selected="' + (on ? "true" : "false") + '">'
-          + A.esc(p.label) + " (" + (counts[p.id] || 0) + ")</button>";
+          + '<span class="chip-dot" aria-hidden="true"></span>'
+          + '<span>' + A.esc(p.label) + " (" + (counts[p.id] || 0) + ")</span></button>";
       }).join("");
       bar.hidden = false;
       return;
@@ -52,10 +53,30 @@
       bar.innerHTML = chips.map(function (p) {
         var on = (A.productView || sub || "all") === p.id;
         return '<button type="button" class="page-chip' + (on ? " on" : "") + '" data-page-tab="products" data-page-sub="' + p.id + '" role="tab" aria-selected="' + (on ? "true" : "false") + '">'
-          + A.esc(p.label) + "</button>";
+          + '<span class="chip-dot" aria-hidden="true"></span>'
+          + '<span>' + A.esc(p.label) + "</span></button>";
       }).join("");
       bar.hidden = false;
       return;
+    }
+  };
+
+
+  A.updateOrdersBadge = function () {
+    var el = document.getElementById("ordersBadge");
+    if (!el) return;
+    var n = 0;
+    try {
+      (A.orders || []).forEach(function (o) {
+        if (A.normalizeStatus(o.status) === "new") n++;
+      });
+    } catch (e) {}
+    if (n > 0) {
+      el.hidden = false;
+      el.textContent = n > 99 ? "99+" : String(n);
+    } else {
+      el.hidden = true;
+      el.textContent = "0";
     }
   };
 
@@ -69,6 +90,7 @@
       else b.removeAttribute("aria-current");
     });
     A.fillPageSubNav();
+    if (A.updateOrdersBadge) A.updateOrdersBadge();
   };
 
   A.sectionHash = function () {

@@ -2,6 +2,7 @@
   var A = w.NaqaAdmin;
   A.paintStatusBar = function () {
     if (A.fillPageSubNav) A.fillPageSubNav();
+    if (A.updateOrdersBadge) A.updateOrdersBadge();
   };
   A.syncOrdersTab = function () {
     var btn = document.querySelector('#tabs button[data-tab="orders"]');

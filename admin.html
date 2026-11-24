@@ -8,7 +8,7 @@
 <meta name="robots" content="noindex, nofollow" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 <title>لوحة تحكم نقاء</title>
-<link rel="stylesheet" href="css/admin.css?v=20261124step2" />
+<link rel="stylesheet" href="css/admin.css?v=20261124step2b" />
 </head>
 <body class="naqa-locked naqa-auth-pending">
 <div class="admin-top">
@@ -45,13 +45,11 @@
       </div>
     </div>
 
-    <!-- PIN only if Firebase is OFF (legacy / fallback) -->
-    <div id="pinRow" hidden>
-      <p class="note" id="pinFallbackNote" style="margin:0 0 8px">الدخول برمز الجهاز (Firebase غير مفعّل).</p>
-      <input id="pinInput" inputmode="numeric" maxlength="12" placeholder="٤ أرقام أو أكثر" name="pin" autocomplete="one-time-code" />
-      <button id="pinGo" type="button" class="btn-primary">دخول بالرمز</button>
+    <!-- hidden stubs: PIN login removed — Firebase only -->
+    <div id="pinRow" hidden style="display:none!important">
+      <input id="pinInput" type="hidden" />
+      <button id="pinGo" type="button" hidden></button>
     </div>
-
     <p class="note" id="pinMsg" role="status" aria-live="polite"></p>
   </div>
   <div id="tools" class="admin-shell" hidden>
@@ -144,22 +142,22 @@
   </div>
 </div>
 </div>
-<script defer src="js/config.js?v=20261124step2"></script>
-<script defer src="js/firebase-config.js?v=20261124step2"></script>
+<script defer src="js/config.js?v=20261124step2b"></script>
+<script defer src="js/firebase-config.js?v=20261124step2b"></script>
 <script defer src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
 <script defer src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
-<script defer src="data/products.bundle.js?v=20261124step2"></script>
-<script defer src="js/admin.js?v=20261124step2"></script>
-<script defer src="js/admin/core.js?v=20261124step2"></script>
-<script src="js/admin/i18n.js?v=20261124step2"></script>
-<script defer src="js/admin/products.js?v=20261124step2"></script>
-<script defer src="js/admin/orders.js?v=20261124step2"></script>
-<script defer src="js/admin/customers.js?v=20261124step2"></script>
-<script defer src="js/admin/finance.js?v=20261124step2"></script>
-<script defer src="js/admin/dashboard.js?v=20261124step2"></script>
-<script defer src="js/admin/settings.js?v=20261124step2"></script>
-<script defer src="js/admin/reviews.js?v=20261124step2"></script>
-<script defer src="js/admin/app.js?v=20261124step2"></script>
-<script defer src="js/admin/firebase-gate.js?v=20261124step2"></script>
+<script defer src="data/products.bundle.js?v=20261124step2b"></script>
+<script defer src="js/admin.js?v=20261124step2b"></script>
+<script defer src="js/admin/core.js?v=20261124step2b"></script>
+<script src="js/admin/i18n.js?v=20261124step2b"></script>
+<script defer src="js/admin/products.js?v=20261124step2b"></script>
+<script defer src="js/admin/orders.js?v=20261124step2b"></script>
+<script defer src="js/admin/customers.js?v=20261124step2b"></script>
+<script defer src="js/admin/finance.js?v=20261124step2b"></script>
+<script defer src="js/admin/dashboard.js?v=20261124step2b"></script>
+<script defer src="js/admin/settings.js?v=20261124step2b"></script>
+<script defer src="js/admin/reviews.js?v=20261124step2b"></script>
+<script defer src="js/admin/app.js?v=20261124step2b"></script>
+<script defer src="js/admin/firebase-gate.js?v=20261124step2b"></script>
 </body>
 </html>

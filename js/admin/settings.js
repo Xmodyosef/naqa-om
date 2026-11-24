@@ -22,7 +22,7 @@
       + '<p class="note" style="margin-top:10px"><b>' + (A.lang==="en"?"Bank (storefront)":"الحساب البنكي (المتجر)") + '</b><br>'
       + A.esc((w.BANK_NAME||"").trim() || (A.lang==="en"?"Name: not set":"الاسم: غير مضاف")) + '<br>'
       + A.esc((w.BANK_IBAN||"").trim() || (A.lang==="en"?"IBAN: not set — edit js/config.js":"الآيبان: غير مضاف — عدّلي js/config.js")) + '</p>'
-      + '<p class="note" style="color:#8d3048">' + (A.lang==="en"?"PIN locks this device only. Orders arrive via the WhatsApp save link.":"الرمز يقفل هذا الجهاز فقط. الطلبات تصل عبر رابط الحفظ من واتساب.") + '</p>'
+      + '<p class="note" style="color:#8d3048">' + (A.lang==="en"?"Primary login is Firebase. PIN here is optional device lock only (not required).":"الدخول الأساسي: Firebase. الرمز هنا اختياري فقط كقفل إضافي لهذا الجهاز (مو مطلوب).") + '</p>'
       + '<button type="button" class="primary" id="btnChangePin" style="width:100%;margin-top:8px">' + A.t("setPinBtn") + '</button>'
       + '<button type="button" class="logout" id="btnLogout" style="width:100%;margin-top:8px;border:0;border-radius:12px;padding:12px;font-weight:800">' + A.t("setOut") + '</button>'
       + '</div>';

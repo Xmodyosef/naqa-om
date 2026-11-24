@@ -424,56 +424,36 @@
     }, { passive: true });
   });
   setInterval(function () {
-    if (document.getElementById("tools") && !document.getElementById("tools").hidden && !A.sessionOk()) {
-      /* STEP2: Firebase session is source of truth when enabled */
-      var fbUser = null;
-      try { fbUser = window.firebase && firebase.auth && firebase.auth().currentUser; } catch (e) {}
-      if (fbUser) {
-        A.touchSession();
-        return;
-      }
-      document.getElementById("tools").hidden = true;
-      try {
-        document.body.classList.add("naqa-locked");
-        document.body.classList.remove("naqa-open");
-      } catch (e) {}
-      var pinEl = document.getElementById("pin");
-      if (pinEl) pinEl.hidden = false;
-      var fbLogin = document.getElementById("fbLogin");
-      var pinRow = document.getElementById("pinRow");
-      var fbOn = false;
-      try { fbOn = !!(window.naqaFirebaseEnabled && naqaFirebaseEnabled()); } catch (e2) {}
-      if (fbOn) {
-        if (fbLogin) fbLogin.hidden = false;
-        if (pinRow) pinRow.hidden = true;
-      } else {
-        if (fbLogin) fbLogin.hidden = true;
-        if (pinRow) pinRow.hidden = false;
-      }
-      var msg = document.getElementById("pinMsg");
-      if (msg) msg.textContent = A.t("fb_signedOut") || A.t("pinLead");
+    if (!(document.getElementById("tools") && !document.getElementById("tools").hidden)) return;
+    if (A.sessionOk()) return;
+    /* Firebase still signed in → keep panel open */
+    var fbUser = null;
+    try { fbUser = window.firebase && firebase.auth && firebase.auth().currentUser; } catch (e) {}
+    if (fbUser) {
+      A.touchSession();
+      return;
     }
-      A.clearSession();
-      document.getElementById("tools").hidden = true;
-      var tabs = document.getElementById("tabs");
-      if (tabs) tabs.hidden = true;
-      document.getElementById("pin").hidden = false;
-      try {
-        document.body.classList.add("naqa-locked");
-        document.body.classList.remove("naqa-open");
-      } catch (e) {}
-      var msg = document.getElementById("pinMsg");
-      if (msg) msg.textContent = A.t("pinLead");
-    }
-  }, 60000);
-  /* auto-open if session still valid */
-  /* STEP2: never auto-open via PIN alone — Firebase onAuthStateChanged owns unlock when FB is on */
-  (function () {
+    A.clearSession && A.clearSession();
+    document.getElementById("tools").hidden = true;
+    try {
+      document.body.classList.add("naqa-locked");
+      document.body.classList.remove("naqa-open");
+    } catch (e) {}
+    var pinEl = document.getElementById("pin");
+    if (pinEl) pinEl.hidden = false;
+    var fbLogin = document.getElementById("fbLogin");
+    var pinRow = document.getElementById("pinRow");
     var fbOn = false;
-    try { fbOn = !!(window.naqaFirebaseEnabled && naqaFirebaseEnabled()); } catch (e) {}
-    if (fbOn) return;
-    if (A.sessionOk() && (localStorage.getItem(A.PIN_HASH) || localStorage.getItem(A.PIN))) {
-      /* PIN-only mode: still require manual entry for shared devices */
+    try { fbOn = !!(window.naqaFirebaseEnabled && naqaFirebaseEnabled()); } catch (e2) {}
+    if (fbOn) {
+      if (fbLogin) fbLogin.hidden = false;
+      if (pinRow) pinRow.hidden = true;
+    } else {
+      if (fbLogin) fbLogin.hidden = true;
+      if (pinRow) pinRow.hidden = false;
     }
-  })();
+    var msg = document.getElementById("pinMsg");
+    if (msg) msg.textContent = A.t("fb_signedOut") || A.t("pinLead");
+  }, 60000);
+})\(window);
 })(window);

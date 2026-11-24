@@ -17,11 +17,15 @@
         + p.label + " (" + (counts[p.id] || 0) + ")</button>";
     }).join("");
   };
+  A.syncOrdersTab = function () {
+    var btn = document.querySelector('#tabs button[data-tab="orders"]');
+    if (!btn || !A.t) return;
+    var n = (A.orders && A.orders.length) || 0;
+    var label = A.t("tab_orders");
+    btn.textContent = n ? (label + " (" + n + ")") : label;
+  };
   A.paintOrders = function () {
-    try {
-      var btn = document.querySelector('#tabs button[data-tab="orders"]');
-      if (btn) btn.textContent = A.orders.length ? (A.t("o_tab") + " (" + A.orders.length + ")") : A.t("o_tab");
-    } catch (e) {}
+    try { A.syncOrdersTab(); } catch (e) {}
     A.orders.forEach(function (o) { o.status = A.normalizeStatus(o.status); });
     A.paintStatusBar();
     var tools = document.getElementById("ordersTools");

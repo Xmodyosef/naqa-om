@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex" />
+<title>٢٠ شكل تنقل · نقاء</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@400;600;700;800&display=swap" rel="stylesheet" />
+<style>
+:root{--bg:#fdf8f6;--card:#fff;--fg:#1f1a17;--muted:#6b625c;--line:#efe4df;--rose:#8d3048;--rose-soft:#f7e8ec}
+*{box-sizing:border-box;margin:0}
+body{font-family:"Noto Kufi Arabic",system-ui,Tahoma,sans-serif;background:var(--bg);color:var(--fg);min-height:100dvh}
+.pick{background:#1f1a17;color:#fff;padding:14px 16px}
+.pick h1{font-size:1.05rem;margin:0 0 6px}
+.pick p{font-size:.8rem;opacity:.85;line-height:1.5;margin:0 0 10px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:8px;max-width:1100px}
+.grid button{border:1px solid #3a3330;background:#2a2421;color:#fff;border-radius:12px;padding:10px 8px;font:700 .75rem/1.35 inherit;cursor:pointer;text-align:center}
+.grid button:hover{background:#3a3330}
+.grid button.on{background:var(--rose);border-color:var(--rose)}
+.grid button small{display:block;font-weight:600;opacity:.75;font-size:.65rem;margin-top:3px}
+.demo-wrap{max-width:1100px;margin:0 auto;padding:12px 12px 40px}
+.meta{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between;margin:10px 0 12px}
+.meta .name{font-weight:800;font-size:1rem}
+.meta a{color:var(--rose);font-weight:700;font-size:.85rem;text-decoration:none}
+.stage{background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;min-height:520px;box-shadow:0 8px 28px rgba(31,26,23,.06)}
+.stage-top{padding:10px 14px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;background:#fff}
+.stage-top strong{font-size:.95rem}
+.stage-body{display:flex;min-height:460px}
+.side{background:#fff;border-inline-start:1px solid var(--line);padding:10px;display:flex;flex-direction:column;gap:4px}
+.main-area{flex:1;min-width:0;padding:14px;background:var(--bg)}
+.btn{border:0;background:transparent;width:100%;text-align:inherit;padding:10px 12px;border-radius:12px;font:800 .85rem/1.2 inherit;cursor:pointer;color:var(--fg);display:flex;align-items:center;gap:8px}
+.btn:hover{background:#f7f0ee}
+.btn.on{background:var(--rose);color:#fff}
+.ico{width:22px;height:22px;border-radius:7px;background:var(--rose-soft);color:var(--rose);display:inline-flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:800;flex:0 0 auto}
+.btn.on .ico{background:rgba(255,255,255,.22);color:#fff}
+.subs{display:none;flex-direction:column;gap:2px;margin:2px 4px 6px;padding-inline-start:8px;border-inline-start:2px solid #e8c9d0}
+.group.open .subs{display:flex}
+.sub{border:0;background:transparent;width:100%;text-align:inherit;padding:8px 10px;border-radius:10px;font:700 .78rem/1.2 inherit;cursor:pointer;color:var(--muted)}
+.sub.on{background:var(--rose-soft);color:var(--rose)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+.chip{border:1px solid var(--line);background:#fff;border-radius:999px;padding:8px 14px;font:800 .78rem inherit;cursor:pointer}
+.chip.on{background:var(--rose);color:#fff;border-color:var(--rose)}
+.card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px;margin-bottom:8px}
+.card strong{display:block;font-size:.9rem}
+.card small{color:var(--muted);font-size:.75rem}
+.crumb{color:var(--muted);font-size:.72rem;margin-bottom:4px}
+.h{font-weight:800;font-size:1.1rem;margin-bottom:10px}
+.hint{margin-top:10px;font-size:.8rem;color:var(--muted);line-height:1.5}
+/* layout variants */
+.L1 .side{width:200px;flex:0 0 200px}
+.L2 .side{width:190px;flex:0 0 190px}
+.L2 .subs{display:none!important}
+.L3 .side{width:160px;flex:0 0 160px}
+.L4 .side{width:64px;flex:0 0 64px;align-items:center}
+.L4 .btn span:not(.ico){display:none}
+.L4 .subs{display:none!important}
+.L4 .btn{justify-content:center;padding:12px}
+.L5 .stage-body{flex-direction:column}
+.L5 .side{width:100%;flex:none;flex-direction:row;overflow-x:auto;border:0;border-bottom:1px solid var(--line)}
+.L5 .subs{display:none!important}
+.L5 .btn{width:auto;white-space:nowrap}
+.L6 .stage-body{flex-direction:column}
+.L6 .side{order:2;width:100%;flex:none;flex-direction:row;justify-content:space-around;border:0;border-top:1px solid var(--line);position:sticky;bottom:0}
+.L6 .subs{display:none!important}
+.L6 .btn{flex-direction:column;font-size:.65rem;padding:8px;width:auto}
+.L6 .btn span:not(.ico){font-size:.65rem}
+.L7 .side{width:210px}
+.L8 .side{width:220px}
+.L9 .side{width:220px}
+.L9 .group .subs{display:flex!important}
+.L10 .stage-body{flex-direction:column}
+.L10 .side{display:none}
+.L10 .tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:12px}
+.L10 .tile{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px;text-align:center;font-weight:800;cursor:pointer}
+.L10 .tile.on{outline:2px solid var(--rose)}
+.L11 .side{display:none}
+.L12 .side{width:72px;flex:0 0 72px}
+.L12 .btn span:not(.ico){display:none}
+.L12 .btn{justify-content:center}
+.L12 .subs{display:none!important}
+.L13 .side{width:200px}
+.L14 .side{width:180px}
+.L14 .subs{display:none!important}
+.L15 .side{display:none}
+.L16 .side{width:200px}
+.L17 .stage-body{flex-direction:column}
+.L17 .side{width:100%;flex:none;flex-direction:row;overflow-x:auto;border:0;border-bottom:1px solid var(--line);gap:0}
+.L17 .btn{border-radius:0;border-bottom:3px solid transparent;width:auto}
+.L17 .btn.on{background:transparent;color:var(--rose);border-bottom-color:var(--rose);box-shadow:none}
+.L17 .subs{display:none!important}
+.L18 .side{width:64px;flex:0 0 64px}
+.L18 .btn span:not(.ico){display:none}
+.L18 .btn{justify-content:center}
+.L18 .subs{display:none!important}
+.L19 .side{width:240px}
+.L19 .btn{padding:8px 10px;font-size:.8rem;border-radius:8px}
+.L20 .side{width:200px}
+.L20 .subs{display:none!important}
+.fly{position:absolute;inset-inline-end:72px;top:80px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:8px;min-width:160px;box-shadow:0 12px 32px rgba(0,0,0,.12);z-index:5;display:none}
+.fly.show{display:block}
+.sheet{position:fixed;left:0;right:0;bottom:0;background:#fff;border-radius:18px 18px 0 0;padding:14px;border-top:1px solid var(--line);box-shadow:0 -8px 30px rgba(0,0,0,.12);z-index:20;display:none}
+.sheet.show{display:block}
+.sheet h3{font-size:.9rem;margin-bottom:8px}
+.mega{background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px;margin-top:4px;display:none}
+.group.open .mega{display:grid;grid-template-columns:1fr 1fr;gap:4px}
+.badge{margin-inline-start:auto;background:var(--rose);color:#fff;font-size:.65rem;font-weight:800;padding:1px 7px;border-radius:999px}
+.btn.on .badge{background:#fff;color:var(--rose)}
+.rail-label{writing-mode:horizontal-tb}
+.split-head{display:flex;flex-wrap:wrap;gap:6px;padding:8px 0 12px;border-bottom:1px solid var(--line);margin-bottom:10px}
+@media(max-width:700px){
+  .grid{grid-template-columns:repeat(2,1fr)}
+  .L1 .side,.L2 .side,.L3 .side,.L7 .side,.L8 .side,.L9 .side,.L13 .side,.L14 .side,.L16 .side,.L19 .side,.L20 .side{width:100%;flex:none}
+  .stage-body{flex-direction:column}
+}
+</style>
+</head>
+<body>
+<header class="pick">
+  <h1>٢٠ شكل تنقل للوحة نقاء</h1>
+  <p>اضغطي رقماً، جرّبي القائمة والمحتوى، ثم احفظي الرقم اللي يناسبك (مثلاً: أريد رقم ١٢).</p>
+  <div class="grid" id="picker"></div>
+</header>
+<div class="demo-wrap">
+  <div class="meta">
+    <div class="name" id="modeName">—</div>
+    <a href="admin.html">← اللوحة الحقيقية</a>
+  </div>
+  <div class="stage" id="stage">
+    <div class="stage-top">
+      <strong>لوحة تحكم نقاء</strong>
+      <span style="font-size:.8rem;color:#6b625c" id="modeTag"></span>
+    </div>
+    <div class="stage-body" id="body">
+      <!-- filled by JS -->
+    </div>
+  </div>
+  <p class="hint" id="hint"></p>
+</div>
+<div class="fly" id="fly"></div>
+<div class="sheet" id="sheet"><h3 id="sheetTitle"></h3><div id="sheetBody"></div></div>
+<script>
+(function(){
+  var MODES = [
+    {id:1, name:"Accordion جنب", desc:"رئيسي يمين، الفروع تحت الزر المفتوح فقط", hint:"قسم واحد مفتوح. اضغطي الطلبات ثم تجهيز."},
+    {id:2, name:"فلاتر في الصفحة", desc:"جنب رئيسي فقط، الحالات فوق المحتوى", hint:"الفلاتر تظهر كأزرار مدوّرة في الصفحة."},
+    {id:3, name:"جنب مضغوط", desc:"أضيق + حرف واسم قصير + فروع تحت المفتوح", hint:"مساحة أكبر للمحتوى."},
+    {id:4, name:"سكة أيقونات", desc:"أيقونات فقط يمين، المحتوى واسع", hint:"مناسب للشاشات الضيقة. الفروع من الصفحة."},
+    {id:5, name:"تبويب علوي", desc:"الأقسام صف أفقي فوق، بدون جنب", hint:"مثل تطبيقات الجوال الواسعة."},
+    {id:6, name:"شريط سفلي", desc:"تنقل رئيسي أسفل الشاشة", hint:"مألوف للجوال. الفروع في الصفحة."},
+    {id:7, name:"أب + ابن ملوّنان", desc:"فروع في الجنب مع تمييز قوي للأب", hint:"تعرفين دائماً أين أنتِ."},
+    {id:8, name:"قائمة كبيرة (Mega)", desc:"تحت القسم شبكة خيارات", hint:"اضغطي الطلبات لرؤية الشبكة."},
+    {id:9, name:"شجرة مفتوحة", desc:"كل الفروع ظاهرة دائماً", hint:"مسح سريع لكل الحالات."},
+    {id:10, name:"بلاطات أقسام", desc:"لا جنب — مربعات للأقسام", hint:"اضغطي بلاطة للدخول."},
+    {id:11, name:"شرائح علوية فقط", desc:"كل التنقل شرائح أفقية", hint:"بدون قائمة جانبية."},
+    {id:12, name:"أيقونات + مسار", desc:"سكة أيقونات + فتات خبز يوضح المكان", hint:"خفيف وواضح."},
+    {id:13, name:"شارات أعداد", desc:"فروع في الجنب + رقم الطلبات الجديدة", hint:"٣ طلبات جديدة كشارة."},
+    {id:14, name:"رأس فلاتر ثابت", desc:"جنب رئيسي + صف فلاتر دائماً تحت العنوان", hint:"الفلاتر لا تختفي."},
+    {id:15, name:"لوحة بلاطات كاملة", desc:"الرئيسية شبكة اختصارات لكل شيء", hint:"وصول سريع بدون قائمة."},
+    {id:16, name:"درج فرعي", desc:"رئيسي في الجنب، الفرع ينسحب من الأسفل", hint:"اضغطي الطلبات."},
+    {id:17, name:"تبويب خط سفلي", desc:"أقسام أفقية بخط وردي تحت النشط", hint:"أسلوب تطبيقات حديثة."},
+    {id:18, name:"أيقونة + قائمة طافية", desc:"سكة أيقونات، الفروع تظهر بجانب الزر", hint:"مرّري/اضغطي أيقونة الطلبات."},
+    {id:19, name:"قائمة كثيفة", desc:"صفوف مضغوطة كثيرة في الجنب", hint:"كثير من الروابط في مساحة صغيرة."},
+    {id:20, name:"هجين", desc:"جنب رئيسي + شرائح تحت العنوان فقط عند الحاجة", hint:"وسط بين ١ و٢."}
+  ];
+
+  var state = { mode: 1, tab: "home", sub: "" };
+  var labels = {
+    home:"الرئيسية", orders:"الطلبات", products:"المنتجات", customers:"العملاء",
+    finance:"المالية", settings:"الإعدادات", reviews:"التقييمات",
+    all:"الكل", new:"جديد", prep:"تجهيز", ship:"توصيل", done:"تم", cancel:"ملغي",
+    shown:"الظاهرة", hidden:"المخفية"
+  };
+  var mains = [
+    {t:"home", ico:"ر"},
+    {t:"orders", ico:"ط", badge:3},
+    {t:"products", ico:"م"},
+    {t:"customers", ico:"ع"},
+    {t:"finance", ico:"ف"},
+    {t:"settings", ico:"إ"}
+  ];
+  var orderSubs = ["all","new","prep","ship","done","cancel"];
+  var productSubs = ["all","shown","hidden"];
+
+  function defSub(tab){
+    if (tab==="orders"||tab==="products") return "all";
+    return "";
+  }
+  function subsFor(tab){
+    if (tab==="orders") return orderSubs;
+    if (tab==="products") return productSubs;
+    return [];
+  }
+
+  var picker = document.getElementById("picker");
+  MODES.forEach(function(m){
+    var b = document.createElement("button");
+    b.type = "button";
+    b.innerHTML = m.id + "<small>" + m.name + "</small>";
+    b.onclick = function(){ state.mode = m.id; state.tab="home"; state.sub=""; render(); };
+    picker.appendChild(b);
+  });
+
+  function contentHTML(){
+    var title = state.sub ? (labels[state.tab]+" · "+labels[state.sub]) : labels[state.tab];
+    var crumb = "نقاء";
+    if (state.tab!=="home") crumb += " / "+labels[state.tab];
+    if (state.sub) crumb += " / "+labels[state.sub];
+    var cards = "";
+    if (state.tab==="home") {
+      cards = '<div class="card"><strong>مرحباً في المعاينة</strong><small>اختاري شكلاً من الأرقام فوق، ثم تنقّلي.</small></div>';
+    } else if (state.tab==="orders") {
+      cards = [1,2,3].map(function(i){
+        return '<div class="card"><strong>طلب N-10'+i+'</strong><small>حالة العرض: '+(labels[state.sub]||"الكل")+'</small></div>';
+      }).join("");
+    } else if (state.tab==="products") {
+      cards = [1,2].map(function(i){
+        return '<div class="card"><strong>منتج تجريبي '+i+'</strong><small>'+(labels[state.sub]||"الكل")+'</small></div>';
+      }).join("");
+    } else {
+      cards = '<div class="card"><strong>'+labels[state.tab]+'</strong><small>محتوى القسم هنا.</small></div>';
+    }
+    return '<div class="crumb">'+crumb+'</div><div class="h">'+title+'</div>'+cards;
+  }
+
+  function chipsHTML(){
+    var subs = subsFor(state.tab);
+    if (!subs.length) return "";
+    return '<div class="chips">'+subs.map(function(s){
+      return '<button type="button" class="chip'+(state.sub===s?' on':'')+'" data-sub="'+s+'">'+labels[s]+'</button>';
+    }).join("")+'</div>';
+  }
+
+  function sideHTML(opts){
+    opts = opts || {};
+    var showSubs = opts.subs !== false;
+    var showBadge = !!opts.badge;
+    var mega = !!opts.mega;
+    var dense = !!opts.dense;
+    var alwaysOpen = !!opts.alwaysOpen;
+    var html = '<nav class="side">';
+    mains.forEach(function(m){
+      var on = state.tab===m.t;
+      var open = alwaysOpen || on;
+      var badge = (showBadge && m.badge) ? '<span class="badge">'+m.badge+'</span>' : '';
+      if (m.t==="orders"||m.t==="products") {
+        html += '<div class="group'+(open?' open':'')+'" data-group="'+m.t+'">';
+        html += '<button type="button" class="btn'+(on?' on':'')+'" data-tab="'+m.t+'"><span class="ico">'+m.ico+'</span><span>'+labels[m.t]+'</span>'+badge+'</button>';
+        if (mega && on) {
+          html += '<div class="mega">';
+          subsFor(m.t).forEach(function(s){
+            html += '<button type="button" class="sub'+(state.sub===s?' on':'')+'" data-tab="'+m.t+'" data-sub="'+s+'">'+labels[s]+'</button>';
+          });
+          html += '</div>';
+        } else if (showSubs) {
+          html += '<div class="subs">';
+          subsFor(m.t).forEach(function(s){
+            html += '<button type="button" class="sub'+(state.sub===s?' on':'')+'" data-tab="'+m.t+'" data-sub="'+s+'">'+labels[s]+'</button>';
+          });
+          html += '</div>';
+        }
+        html += '</div>';
+      } else {
+        html += '<button type="button" class="btn'+(on?' on':'')+'" data-tab="'+m.t+'"><span class="ico">'+m.ico+'</span><span>'+labels[m.t]+'</span></button>';
+      }
+    });
+    html += '</nav>';
+    return html;
+  }
+
+  function goTab(tab){
+    state.tab = tab;
+    state.sub = defSub(tab);
+    if (state.mode===16 && (tab==="orders"||tab==="products")) openSheet();
+    if (state.mode===18 && (tab==="orders"||tab==="products")) openFly();
+    else closeFly();
+    render();
+  }
+  function goSub(sub){
+    state.sub = sub;
+    closeSheet(); closeFly();
+    render();
+  }
+
+  function openSheet(){
+    var sh = document.getElementById("sheet");
+    document.getElementById("sheetTitle").textContent = labels[state.tab];
+    document.getElementById("sheetBody").innerHTML = subsFor(state.tab).map(function(s){
+      return '<button type="button" class="sub'+(state.sub===s?' on':'')+'" style="text-align:right" data-sub="'+s+'">'+labels[s]+'</button>';
+    }).join("");
+    sh.classList.add("show");
+  }
+  function closeSheet(){ document.getElementById("sheet").classList.remove("show"); }
+  function openFly(){
+    var fly = document.getElementById("fly");
+    fly.innerHTML = subsFor(state.tab).map(function(s){
+      return '<button type="button" class="sub'+(state.sub===s?' on':'')+'" data-sub="'+s+'">'+labels[s]+'</button>';
+    }).join("");
+    fly.classList.add("show");
+  }
+  function closeFly(){ document.getElementById("fly").classList.remove("show"); }
+
+  function render(){
+    var m = MODES[state.mode-1];
+    document.querySelectorAll("#picker button").forEach(function(b,i){
+      b.classList.toggle("on", i+1===state.mode);
+    });
+    document.getElementById("modeName").textContent = "رقم "+m.id+" — "+m.name;
+    document.getElementById("modeTag").textContent = m.desc;
+    document.getElementById("hint").textContent = m.hint + " · بعد الاختيار قولي: أريد رقم "+m.id;
+
+    var stage = document.getElementById("stage");
+    stage.className = "stage L"+m.id;
+    var body = document.getElementById("body");
+    var main = "";
+
+    if (m.id===10 || m.id===15) {
+      var tiles = mains.map(function(x){
+        return '<button type="button" class="tile'+(state.tab===x.t?' on':'')+'" data-tab="'+x.t+'">'+labels[x.t]+'</button>';
+      }).join("");
+      if (m.id===15) {
+        // home shortcuts include subs
+        tiles = mains.map(function(x){
+          return '<button type="button" class="tile" data-tab="'+x.t+'">'+labels[x.t]+'</button>';
+        }).join("") + orderSubs.map(function(s){
+          return '<button type="button" class="tile" data-tab="orders" data-sub="'+s+'">طلبات · '+labels[s]+'</button>';
+        }).join("");
+      }
+      main = '<div style="flex:1;padding:14px;background:var(--bg)"><div class="tiles">'+tiles+'</div>'+contentHTML()+'</div>';
+      body.innerHTML = main;
+    } else if (m.id===11) {
+      var top = mains.map(function(x){
+        return '<button type="button" class="chip'+(state.tab===x.t?' on':'')+'" data-tab="'+x.t+'">'+labels[x.t]+'</button>';
+      }).join("");
+      body.innerHTML = '<div style="flex:1;padding:14px">'+
+        '<div class="chips">'+top+'</div>'+chipsHTML()+contentHTML()+'</div>';
+    } else {
+      var sideOpts = {subs:true, badge:false, mega:false, alwaysOpen:false};
+      if (m.id===2 || m.id===4 || m.id===5 || m.id===6 || m.id===12 || m.id===14 || m.id===17 || m.id===18 || m.id===20) sideOpts.subs=false;
+      if (m.id===7 || m.id===13) sideOpts.badge = (m.id===13);
+      if (m.id===8) sideOpts.mega = true;
+      if (m.id===9) sideOpts.alwaysOpen = true;
+      if (m.id===19) sideOpts.dense = true;
+
+      var side = sideHTML(sideOpts);
+      var areaExtra = "";
+      if (m.id===2 || m.id===4 || m.id===5 || m.id===6 || m.id===12 || m.id===14 || m.id===17 || m.id===20) {
+        areaExtra = chipsHTML();
+      }
+      if (m.id===14) {
+        areaExtra = '<div class="split-head">'+subsFor(state.tab).map(function(s){
+          return '<button type="button" class="chip'+(state.sub===s?' on':'')+'" data-sub="'+s+'">'+labels[s]+'</button>';
+        }).join("")+'</div>';
+        if (!subsFor(state.tab).length) areaExtra = "";
+      }
+      body.innerHTML = side + '<div class="main-area">'+areaExtra+contentHTML()+'</div>';
+    }
+
+    // bind
+    body.onclick = function(e){
+      var sub = e.target.closest("[data-sub]");
+      var tab = e.target.closest("[data-tab]");
+      if (sub && sub.getAttribute("data-sub") && (!tab || sub.classList.contains("sub") || sub.classList.contains("chip") || sub.classList.contains("tile"))) {
+        if (sub.getAttribute("data-tab")) state.tab = sub.getAttribute("data-tab");
+        goSub(sub.getAttribute("data-sub"));
+        return;
+      }
+      if (tab && tab.getAttribute("data-tab")) {
+        goTab(tab.getAttribute("data-tab"));
+      }
+    };
+    document.getElementById("sheet").onclick = function(e){
+      var s = e.target.closest("[data-sub]");
+      if (s) goSub(s.getAttribute("data-sub"));
+    };
+    document.getElementById("fly").onclick = function(e){
+      var s = e.target.closest("[data-sub]");
+      if (s) goSub(s.getAttribute("data-sub"));
+    };
+  }
+
+  render();
+})();
+</script>
+</body>
+</html>

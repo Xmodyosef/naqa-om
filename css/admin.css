@@ -612,15 +612,15 @@ body.naqa-open .side-nav .side-main {
 }
 body.naqa-open .side-nav .side-main .side-lbl {
   display: block !important;
-  flex: 1 1 auto;
+  flex: 0 0 auto;
   min-width: 0;
   max-width: none;
-  white-space: normal !important;
+  white-space: nowrap !important;
   overflow: visible !important;
   text-overflow: clip !important;
-  overflow-wrap: anywhere;
-  line-height: 1.35;
-  font-size: .78rem;
+  overflow-wrap: normal;
+  line-height: 1.2;
+  font-size: .72rem;
   font-weight: 750;
   text-align: start;
 }
@@ -957,3 +957,71 @@ html body.naqa-open .admin-shell > .admin-main {
   }
 }
 /* ========== end fitW ========== */
+
+
+/* product density fix — one line, smaller type, less height */
+html body.naqa-open nav#sideNav .side-lbl {
+  white-space: nowrap !important;
+  overflow-wrap: normal !important;
+  word-break: keep-all !important;
+  font-size: .7rem !important;
+  line-height: 1.2 !important;
+}
+html body.naqa-open nav#sideNav .side-main {
+  min-height: 36px !important;
+  padding: 5px 8px !important;
+  gap: 8px !important;
+}
+html body.naqa-open nav#sideNav .side-ico {
+  width: 28px !important;
+  height: 28px !important;
+  flex: 0 0 28px !important;
+}
+/* product list rows: title + meta side by side where possible */
+html body.naqa-open #list .row {
+  padding: 8px 10px !important;
+  margin: 6px 0 !important;
+  gap: 8px !important;
+  align-items: center !important;
+}
+html body.naqa-open #list .row img,
+html body.naqa-open #list .row .ph {
+  width: 44px !important;
+  height: 44px !important;
+}
+html body.naqa-open #list .row strong {
+  display: inline !important;
+  font-size: .78rem !important;
+  line-height: 1.25 !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  max-width: 100%;
+}
+html body.naqa-open #list .row small {
+  display: inline !important;
+  font-size: .68rem !important;
+  margin-inline-start: 6px;
+  white-space: nowrap;
+}
+html body.naqa-open #list .row div {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 2px 6px;
+  min-width: 0;
+}
+html body.naqa-open #pageSubNav .page-chip {
+  font-size: .65rem !important;
+  padding: 4px 8px !important;
+  min-height: 28px !important;
+  white-space: nowrap !important;
+}
+@media (max-width: 600px) {
+  html body.naqa-open nav#sideNav .side-lbl {
+    font-size: .62rem !important;
+  }
+  html body.naqa-open #list .row strong {
+    font-size: .72rem !important;
+  }
+}

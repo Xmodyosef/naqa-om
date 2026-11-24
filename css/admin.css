@@ -287,44 +287,8 @@ body.naqa-open .admin-shell{
   .side-main{ width:auto; white-space:nowrap; flex:0 0 auto; }
   .page-sub-nav{ padding-top:4px; }
 }
-  background:var(--rose);
-  color:#fff;
-  border-color:var(--rose);
-  box-shadow:0 2px 8px rgba(141,48,72,.22);
-}
-.side-group.open .side-subs{
-  position:relative;
-  padding-inline-start:18px;
-}
-.side-group.open .side-subs::before{
-  content:"";
-  position:absolute;
-  inset-inline-start:6px;
-  top:4px;
-  bottom:4px;
-  width:2px;
-  background:var(--rose);
-  opacity:.35;
-  border-radius:2px;
-}
-.side-sub{
-  transition:background .15s ease,color .15s ease,border-color .15s ease;
-}
-.side-sub.on{
-  background:var(--rose);
-  color:#fff;
-  border-color:var(--rose);
-  box-shadow:inset 3px 0 0 #5c1f30;
-}
-.side-sub:hover:not(.on){
-  background:#f3e8e4;
-}
-.side-main{
-  transition:background .15s ease,color .15s ease,border-color .15s ease;
-}
-/* home (no group) keeps dark on */
-.side-main.on:not(.side-group.open > .side-main){
-  background:#1f1a17;
-  color:#fff;
-  border-color:#1f1a17;
-}
+
+.pager{display:flex;gap:8px;align-items:center;justify-content:center;margin:14px 0 28px}
+.pager button{border:1px solid var(--line);background:#fff;border-radius:999px;padding:8px 14px;font-weight:800}
+.pager button:disabled{opacity:.4}
+.row.is-hidden{opacity:.55;outline:1px dashed #c9a7b0}

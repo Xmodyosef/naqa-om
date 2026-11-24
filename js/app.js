@@ -297,10 +297,21 @@ document.addEventListener("focusin", function(e){
 function boot(){
   try{
     if(!products.length) throw new Error("products.js missing");
-    fetch("data/overrides.json?v="+Date.now()).then(function(res){ return res.ok?res.json():{}; }).then(function(map){
-      if(map && typeof mergeOverrides==="function") mergeOverrides(map);
-      if(typeof render==="function") render();
-    }).catch(function(){});
+    function naqaLocalOverrides(){
+      try {
+        var o = JSON.parse(localStorage.getItem("naqa_overrides") || "{}");
+        return (o && typeof o === "object") ? o : {};
+      } catch (e) { return {}; }
+    }
+    function naqaApplyOverrides(remote){
+      var map = Object.assign({}, remote || {}, naqaLocalOverrides());
+      if (typeof mergeOverrides === "function") mergeOverrides(map);
+      if (typeof render === "function") render();
+    }
+    naqaApplyOverrides({});
+    fetch("https://raw.githubusercontent.com/Xmodyosef/naqa-om/main/data/overrides.json?v="+Date.now()).then(function(res){ return res.ok ? res.json() : {}; }).then(naqaApplyOverrides).catch(function(){
+      return fetch("data/overrides.json?v="+Date.now()).then(function(res){ return res.ok ? res.json() : {}; }).then(naqaApplyOverrides);
+    });
     const wa="https://wa.me/"+WA_NUMBER;
     $("#waFooter").href=wa; $("#waFloat").href=wa; $("#waHero").href=wa;
     $("#yr").textContent=new Date().getFullYear();

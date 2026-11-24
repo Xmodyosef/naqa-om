@@ -311,7 +311,8 @@
     document.getElementById("saveEdit").onclick = function () { A.saveEdit(); };
   };
 
-  A.saveEdit = function () {
+  A.saveEdit = function (opts) {
+    opts = opts || {};
     if (A.editingId == null) return;
     var next = {
       nameAr: A.val("f_nameAr"), nameEn: A.val("f_nameEn"), brand: A.val("f_brand"), cat: A.val("f_cat"), sku: A.val("f_sku"),
@@ -335,8 +336,10 @@
       A.setMsg("status", A.t("p_imgsFull"));
       return;
     }
-    A.setMsg("status", A.t("p_saved"));
+    if (opts && opts.skipPublish) return;
     A.closeEdit(false);
+    if (A.publishLive) A.publishLive();
+    else A.setMsg("status", A.t("p_saved"));
   };
 
   A.materializeProductImages = function (token) {

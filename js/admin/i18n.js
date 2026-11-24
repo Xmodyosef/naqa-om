@@ -113,6 +113,14 @@
   };
   A.clearSession = function () {
     localStorage.removeItem(A.SESSION);
+    try {
+      if (A.TOKEN) {
+        sessionStorage.removeItem(A.TOKEN);
+        localStorage.removeItem(A.TOKEN);
+      }
+      sessionStorage.removeItem("naqa_gh_token");
+      localStorage.removeItem("naqa_gh_token");
+    } catch (e) {}
   };
   A.applyChrome = function () {
     var en = A.lang === "en";

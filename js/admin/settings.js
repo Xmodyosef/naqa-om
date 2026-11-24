@@ -1,12 +1,32 @@
 (function (w) {
   var A = w.NaqaAdmin;
 
+  function scrubLegacyTokens() {
+    try {
+      if (A.TOKEN) {
+        sessionStorage.removeItem(A.TOKEN);
+        localStorage.removeItem(A.TOKEN);
+      }
+      sessionStorage.removeItem("naqa_gh_token");
+      localStorage.removeItem("naqa_gh_token");
+    } catch (e) {}
+    var el = document.getElementById("token");
+    if (el && el.parentNode) el.parentNode.removeChild(el);
+  }
+
   A.paintSettings = function () {
     var box = document.getElementById("settingsBox");
     if (!box) return;
+    scrubLegacyTokens();
 
     var email = "";
     try { email = (A.fbUser && A.fbUser.email) || ""; } catch (e) {}
+    try {
+      if (!email && w.firebase && firebase.auth) {
+        var u = firebase.auth().currentUser;
+        if (u && u.email) email = u.email;
+      }
+    } catch (e2) {}
     var wa = String(w.WA_NUMBER || "96879088349");
     var bankName = (w.BANK_NAME || "").trim();
     var bankIban = (w.BANK_IBAN || "").trim();
@@ -17,46 +37,43 @@
 
       + '<section class="panel settings-sec">'
       +   '<h2>' + (ar ? "المتجر" : "Store") + '</h2>'
-      +   '<p class="note">' + (ar ? "هذه بيانات المتجر للزبائن." : "Public store details.") + '</p>'
+      +   '<p class="note">' + (ar ? "بيانات تظهر للزبائن في المتجر." : "Details customers see in the store.") + '</p>'
       +   '<div class="set-row"><span class="set-k">' + (ar ? "واتساب" : "WhatsApp") + '</span><span class="set-v" dir="ltr">+' + A.esc(wa) + '</span></div>'
       +   '<div class="set-row"><span class="set-k">' + (ar ? "البنك" : "Bank") + '</span><span class="set-v">' + A.esc(bankName || (ar ? "غير مضاف" : "Not set")) + '</span></div>'
       +   '<div class="set-row"><span class="set-k">IBAN</span><span class="set-v" dir="ltr">' + A.esc(bankIban || (ar ? "غير مضاف" : "Not set")) + '</span></div>'
-      +   '<p class="note" style="margin-top:10px">' + (ar
-          ? "لتعديل البنك أو الرقم لاحقاً: من ملف الإعدادات في المشروع (أو نضيف شاشة لاحقاً)."
-          : "Bank/WhatsApp are set in project config for now.") + '</p>'
       + '</section>'
 
       + '<section class="panel settings-sec">'
       +   '<h2>' + (ar ? "الحساب" : "Account") + '</h2>'
       +   (email
           ? ('<div class="set-row"><span class="set-k">' + (ar ? "مسجّلة كـ" : "Signed in as") + '</span><span class="set-v" dir="ltr">' + A.esc(email) + '</span></div>')
-          : ('<p class="note">' + (ar ? "ما في جلسة ظاهرة." : "No session visible.") + '</p>'))
+          : ('<p class="note">' + (ar ? "ما في جلسة ظاهرة — ارجعي لشاشة الدخول." : "No session — return to sign-in.") + '</p>'))
       +   '<p class="note">' + (ar
-          ? "كلمة سر اللوحة تُغيَّر من شاشة الدخول → «نسيت كلمة السر؟» (بريد Firebase). مو من هنا."
-          : "Change login password from the login screen → Forgot password (Firebase email). Not here.") + '</p>'
-      +   '<button type="button" class="logout" id="btnLogout" style="width:100%;margin-top:8px;border:0;border-radius:12px;padding:12px;font-weight:800">'
-      +     (ar ? "خروج" : "Log out") + '</button>'
+          ? "كلمة السر تُدار من شاشة الدخول (نسيت كلمة السر؟). الحفظ بعد الدخول يزامن المنتجات مع حسابك تلقائياً — بدون رموز إضافية."
+          : "Password is managed on the login screen (Forgot password?). After sign-in, product saves sync to your account automatically — no extra tokens.") + '</p>'
+      +   '<button type="button" class="logout" id="btnLogout" style="width:100%;margin-top:10px;border:0;border-radius:12px;padding:14px;font-weight:800">'
+      +     (ar ? "خروج من اللوحة" : "Sign out") + '</button>'
+      +   '<p class="note" id="settingsStatus" role="status" style="margin-top:8px"></p>'
       + '</section>'
 
       + '<section class="panel settings-sec">'
-      +   '<h2>' + (ar ? "الخصوصية" : "Privacy") + '</h2>'
+      +   '<h2>' + (ar ? "الخصوصية والحماية" : "Privacy & security") + '</h2>'
       +   '<p class="note">' + A.t("setSecure") + '</p>'
+      +   '<ul class="set-bullets" style="margin:8px 0 0;padding-inline-start:1.2em;font-size:.82rem;line-height:1.55;color:var(--muted)">'
+      +     '<li>' + (ar ? "الدخول: إيميل + كلمة سر (Firebase) فقط." : "Sign-in: email + password (Firebase) only.") + '</li>'
+      +     '<li>' + (ar ? "أسعار/كمية/إخفاء: تُحفظ على حسابك بعد الدخول." : "Price/stock/hide: saved to your account after sign-in.") + '</li>'
+      +     '<li>' + (ar ? "الطلبات وأسماء العملاء: على هذا الجهاز (ما تُرفع للمتجر العام)." : "Orders & customer names: on this device (not public on the store).") + '</li>'
+      +     '<li>' + (ar ? "ما في رمز GitHub ولا PIN في الإعدادات." : "No GitHub token or PIN in Settings.") + '</li>'
+      +   '</ul>'
       + '</section>'
 
       + '</div>';
 
-    /* hidden field so publishLive can still read typed token if we inject later */
-    if (!document.getElementById("token")) {
-      var hid = document.createElement("input");
-      hid.type = "hidden";
-      hid.id = "token";
-      hid.autocomplete = "off";
-      box.appendChild(hid);
-    }
-
     var logout = document.getElementById("btnLogout");
     if (logout) logout.onclick = function () {
-      if (!confirm(A.t("setOutAsk"))) return;
+      var ask = A.t("setOutAsk") || (ar ? "خروج من لوحة التحكم؟" : "Leave the admin?");
+      if (!confirm(ask)) return;
+      scrubLegacyTokens();
       function hidePanel() {
         var tools = document.getElementById("tools");
         var tabs = document.getElementById("tabs");
@@ -71,8 +88,11 @@
           document.body.classList.remove("naqa-open");
         } catch (e) {}
         if (A.clearSession) A.clearSession();
+        if (A.forgetToken) A.forgetToken();
+        scrubLegacyTokens();
         var fbLogin = document.getElementById("fbLogin");
         if (fbLogin) fbLogin.hidden = false;
+        if (A.setMsg) A.setMsg("pinMsg", A.t("fb_signedOut") || (ar ? "تم الخروج." : "Signed out."));
       }
       if (A.fbSignOut) A.fbSignOut().then(hidePanel, hidePanel);
       else hidePanel();
@@ -88,35 +108,20 @@
     A.setMsg("settingsStatus", A.t("saved"));
   };
 
-  A.readToken = function () {
-    var el = document.getElementById("token");
-    var typed = el && el.value ? el.value.trim() : "";
-    if (typed) return typed;
-    try {
-      var sess = (sessionStorage.getItem(A.TOKEN) || "").trim();
-      if (sess) return sess;
-      var oldTok = (localStorage.getItem(A.TOKEN) || "").trim();
-      if (oldTok) {
-        sessionStorage.setItem(A.TOKEN, oldTok);
-        localStorage.removeItem(A.TOKEN);
-        return oldTok;
-      }
-    } catch (e) {}
-    return "";
-  };
-
-  A.keepToken = function (token) {
-    try { sessionStorage.setItem(A.TOKEN, token); } catch (e) {}
-  };
-
+  A.readToken = function () { return ""; };
+  A.keepToken = function () {};
   A.forgetToken = function () {
-    try { sessionStorage.removeItem(A.TOKEN); } catch (e) {}
-    try { localStorage.removeItem(A.TOKEN); } catch (e) {}
+    try {
+      if (A.TOKEN) {
+        sessionStorage.removeItem(A.TOKEN);
+        localStorage.removeItem(A.TOKEN);
+      }
+      sessionStorage.removeItem("naqa_gh_token");
+      localStorage.removeItem("naqa_gh_token");
+    } catch (e) {}
     var el = document.getElementById("token");
     if (el) el.value = "";
   };
-
-  /** Ask once for GitHub PAT — never confuses with login password */
 
   A.publishLive = function () {
     if (A.syncOverridesCloud) return A.syncOverridesCloud();
@@ -134,4 +139,3 @@
     if (A.setMsg) A.setMsg("settingsStatus", A.lang === "en" ? "Saved on this device" : "انحفظ على الجهاز");
   };
 })(window);
-

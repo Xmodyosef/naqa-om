@@ -8,13 +8,13 @@
 <meta name="robots" content="noindex, nofollow" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 <title>لوحة تحكم نقاء</title>
-<link rel="stylesheet" href="css/admin.css?v=20261124fix42" />
+<link rel="stylesheet" href="css/admin.css?v=20261124fix43" />
 </head>
 <body class="naqa-locked naqa-auth-pending">
 <div class="admin-top">
-  <div class="admin-top-row">
+  <div style="display:flex;justify-content:space-between;align-items:center;gap:8px">
     <a class="store" href="index.html">← المتجر</a>
-    <button type="button" id="adminLang">English</button>
+    <button type="button" id="adminLang" style="border:1px solid #efe4df;background:#fff;border-radius:999px;padding:6px 12px;font-weight:800">English</button>
   </div>
   <h1 id="adminTitle">لوحة تحكم نقاء</h1>
 </div>
@@ -22,7 +22,7 @@
   <div id="authBoot" class="auth-boot" hidden>
     <p id="authBootText">جاري فتح اللوحة…</p>
   </div>
-    <div class="pin-card" id="pin" hidden>
+  <div class="pin-card" id="pin" hidden>
     <p id="pinLead">مرحباً بكِ في لوحة نقاء ✨</p>
     <p class="note" id="pinNote">مكان هادئ لإدارة متجرك. ابدئي بتسجيل الدخول.</p>
     <div id="pinRow">
@@ -54,15 +54,34 @@
       <span class="side-ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5 12 4l8 6.5V20a1 1 0 0 1-1 1h-5v-6H10v6H5a1 1 0 0 1-1-1z"/></svg></span>
       <span class="side-lbl" data-i18n="tab_home">الرئيسية</span>
     </button>
-    <button type="button" class="side-main" data-tab="orders" title="الطلبات">
-      <span class="side-ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 7h12l-1 13H7L6 7z"/><path d="M9 7V5a3 3 0 0 1 6 0v2"/></svg></span>
-      <span class="side-lbl" data-i18n="tab_orders">الطلبات</span>
-      <span class="side-badge" id="ordersBadge" hidden>0</span>
-    </button>
-    <button type="button" class="side-main" data-tab="products" title="المنتجات">
-      <span class="side-ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="1.5"/><rect x="4" y="13" width="7" height="7" rx="1.5"/><rect x="13" y="13" width="7" height="7" rx="1.5"/></svg></span>
-      <span class="side-lbl" data-i18n="tab_products">المنتجات</span>
-    </button>
+    <div class="side-group" data-group="orders">
+      <button type="button" class="side-main" data-tab="orders" title="الطلبات" aria-expanded="false">
+        <span class="side-ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 7h12l-1 13H7L6 7z"/><path d="M9 7V5a3 3 0 0 1 6 0v2"/></svg></span>
+        <span class="side-lbl" data-i18n="tab_orders">الطلبات</span>
+        <span class="side-badge" id="ordersBadge" hidden>0</span>
+        <span class="chev" aria-hidden="true">▾</span>
+      </button>
+      <div class="side-subs">
+        <button type="button" class="side-sub" data-tab="orders" data-sub="all" data-i18n="all">الكل</button>
+        <button type="button" class="side-sub" data-tab="orders" data-sub="new" data-i18n="st_new">جديد</button>
+        <button type="button" class="side-sub" data-tab="orders" data-sub="prep" data-i18n="st_prep">تجهيز</button>
+        <button type="button" class="side-sub" data-tab="orders" data-sub="ship" data-i18n="st_ship">توصيل</button>
+        <button type="button" class="side-sub" data-tab="orders" data-sub="delivered" data-i18n="st_delivered">تم</button>
+        <button type="button" class="side-sub" data-tab="orders" data-sub="cancel" data-i18n="st_cancel">ملغي</button>
+      </div>
+    </div>
+    <div class="side-group" data-group="products">
+      <button type="button" class="side-main" data-tab="products" title="المنتجات" aria-expanded="false">
+        <span class="side-ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="1.5"/><rect x="4" y="13" width="7" height="7" rx="1.5"/><rect x="13" y="13" width="7" height="7" rx="1.5"/></svg></span>
+        <span class="side-lbl" data-i18n="tab_products">المنتجات</span>
+        <span class="chev" aria-hidden="true">▾</span>
+      </button>
+      <div class="side-subs">
+        <button type="button" class="side-sub" data-tab="products" data-sub="all" data-i18n="sub_all">الكل</button>
+        <button type="button" class="side-sub" data-tab="products" data-sub="shown" data-i18n="sub_shown">ظاهر</button>
+        <button type="button" class="side-sub" data-tab="products" data-sub="hidden" data-i18n="sub_hidden">مخفي</button>
+      </div>
+    </div>
     <button type="button" class="side-main" data-tab="reviews" title="التقييمات">
       <span class="side-ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 2.4 4.8L20 8.6l-4 3.9.9 5.5L12 15.8 7.1 18l.9-5.5-4-3.9 5.6-.8z"/></svg></span>
       <span class="side-lbl" data-i18n="tab_reviews">التقييمات</span>
@@ -93,11 +112,10 @@
       <button type="button" class="btn-add" id="addProductBtn">+ إضافة منتج</button>
     </div>
     <div id="pageSubNav" class="page-sub-nav page-sub-frame" role="tablist" aria-label="خيارات القسم" hidden></div>
-<div id="homeTab" hidden>
+    <div id="homeTab" hidden>
       <div id="dashBox"></div>
     </div>
-    
-<div id="ordersTab" hidden>
+    <div id="ordersTab" hidden>
       <div class="wa-box">
         <strong>الطلبات</strong>
         <p class="note" id="ordersLead">حالات: جديد · جاري التجهيز · جاري التوصيل · تم التوصيل · ملغي</p>
@@ -107,13 +125,11 @@
             <p class="status" id="orderStatus"></p>
       <div id="ordersList"></div>
     </div>
-    
-<div id="reviewsTab" hidden>
+    <div id="reviewsTab" hidden>
       <p class="status" id="reviewStatus"></p>
       <div id="reviewsBox"></div>
     </div>
-    
-<div id="productsTab" hidden>
+    <div id="productsTab" hidden>
       <div id="listView">
         <input id="q" type="search" placeholder="ابحثي بالاسم أو SKU أو الماركة" />
         <p class="note" id="productsListNote">اضغطي «تعديل كامل» للكمية والصور والوصف والاستعمال.</p>
@@ -122,40 +138,37 @@
       </div>
       <div id="editView" hidden></div>
     </div>
-    
-<div id="customersTab" hidden>
+    <div id="customersTab" hidden>
       <div class="panel"><h2>العملاء</h2><p class="note">مجمّعين تلقائي من الطلبات.</p></div>
       <div id="customersList"></div>
     </div>
-    
-<div id="financeTab" hidden>
+    <div id="financeTab" hidden>
       <div class="panel"><h2>المالية والتحليلات</h2></div>
       <div id="financeBox"></div>
     </div>
-    
-<div id="settingsTab" hidden>
+    <div id="settingsTab" hidden>
       <p class="status" id="settingsStatus"></p>
       <div id="settingsBox"></div>
     </div>
   </div>
 </div>
 </div>
-<script defer src="js/config.js?v=20261124fix42"></script>
-<script defer src="js/firebase-config.js?v=20261124fix42"></script>
+<script defer src="js/config.js?v=20261124fix43"></script>
+<script defer src="js/firebase-config.js?v=20261124fix43"></script>
 <script defer src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
 <script defer src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
-<script defer src="data/products.bundle.js?v=20261124fix42"></script>
-<script defer src="js/admin.js?v=20261124fix42"></script>
-<script defer src="js/admin/core.js?v=20261124fix42"></script>
-<script src="js/admin/i18n.js?v=20261124fix42"></script>
-<script defer src="js/admin/products.js?v=20261124fix42"></script>
-<script defer src="js/admin/orders.js?v=20261124fix42"></script>
-<script defer src="js/admin/customers.js?v=20261124fix42"></script>
-<script defer src="js/admin/finance.js?v=20261124fix42"></script>
-<script defer src="js/admin/dashboard.js?v=20261124fix42"></script>
-<script defer src="js/admin/settings.js?v=20261124fix42"></script>
-<script defer src="js/admin/reviews.js?v=20261124fix42"></script>
-<script defer src="js/admin/app.js?v=20261124fix42"></script>
-<script defer src="js/admin/firebase-gate.js?v=20261124fix42"></script>
+<script defer src="data/products.bundle.js?v=20261124fix43"></script>
+<script defer src="js/admin.js?v=20261124fix43"></script>
+<script defer src="js/admin/core.js?v=20261124fix43"></script>
+<script src="js/admin/i18n.js?v=20261124fix43"></script>
+<script defer src="js/admin/products.js?v=20261124fix43"></script>
+<script defer src="js/admin/orders.js?v=20261124fix43"></script>
+<script defer src="js/admin/customers.js?v=20261124fix43"></script>
+<script defer src="js/admin/finance.js?v=20261124fix43"></script>
+<script defer src="js/admin/dashboard.js?v=20261124fix43"></script>
+<script defer src="js/admin/settings.js?v=20261124fix43"></script>
+<script defer src="js/admin/reviews.js?v=20261124fix43"></script>
+<script defer src="js/admin/app.js?v=20261124fix43"></script>
+<script defer src="js/admin/firebase-gate.js?v=20261124fix43"></script>
 </body>
 </html>

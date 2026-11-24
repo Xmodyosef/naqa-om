@@ -17,30 +17,6 @@
   };
 
   /* Page chips (Salla-style): options open in the page, not under the side button */
-  /* Short labels = compact children (long "جاري التجهيز (0)" was bloating chips) */
-  A.chipLabel = function (tab, id) {
-    if (tab === "orders") {
-      var map = {
-        all: A.t("all") || "الكل",
-        new: A.t("st_new_short") || A.t("st_new") || "جديد",
-        prep: A.t("st_prep_short") || "تجهيز",
-        ship: A.t("st_ship_short") || "توصيل",
-        delivered: A.t("st_done_short") || "تم",
-        cancel: A.t("st_cancel_short") || "ملغي"
-      };
-      return map[id] || (A.statusLabel ? A.statusLabel(id) : id);
-    }
-    if (tab === "products") {
-      var pm = {
-        all: A.t("sub_all") || "الكل",
-        shown: A.t("sub_shown") || "ظاهر",
-        hidden: A.t("sub_hidden") || "مخفي"
-      };
-      return pm[id] || id;
-    }
-    return id;
-  };
-
   A.fillPageSubNav = function () {
     var bar = document.getElementById("pageSubNav");
     if (!bar) return;
@@ -49,42 +25,42 @@
     bar.innerHTML = "";
     bar.hidden = true;
     if (tab === "orders") {
-      var scoped = (A.orders || []).filter(function (o) {
-        try { return !A.inDateRange || A.inDateRange(o.at); } catch (e) { return true; }
-      });
+      var scoped = (A.orders || []).filter(function (o) { return A.inDateRange(o.at); });
       var counts = { all: scoped.length };
       (A.STATUS_ORDER || A.ORDER_SUBS).forEach(function (k) { counts[k] = 0; });
       scoped.forEach(function (o) {
         var st = A.normalizeStatus(o.status);
         counts[st] = (counts[st] || 0) + 1;
       });
-      var parts = [{ id: "all" }].concat((A.STATUS_ORDER || A.ORDER_SUBS).map(function (k) {
-        return { id: k };
+      var parts = [{ id: "all", label: A.t("all") }].concat((A.STATUS_ORDER || A.ORDER_SUBS).map(function (k) {
+        return { id: k, label: A.statusLabel(k) };
       }));
       bar.innerHTML = parts.map(function (p) {
         var on = (A.orderFilter || sub || "all") === p.id;
-        var n = counts[p.id] || 0;
         return '<button type="button" class="page-chip' + (on ? " on" : "") + '" data-page-tab="orders" data-page-sub="' + p.id + '" role="tab" aria-selected="' + (on ? "true" : "false") + '">'
           + '<span class="chip-dot" aria-hidden="true"></span>'
-          + '<span>' + A.esc(A.chipLabel("orders", p.id)) + '</span>'
-          + (n ? '<span class="chip-n">' + n + '</span>' : '')
-          + '</button>';
+          + '<span>' + A.esc(p.label) + " (" + (counts[p.id] || 0) + ")</span></button>";
       }).join("");
       bar.hidden = false;
       return;
     }
     if (tab === "products" && A.editingId == null) {
-      var chips = ["all", "shown", "hidden"];
-      bar.innerHTML = chips.map(function (id) {
-        var on = (A.productView || sub || "all") === id;
-        return '<button type="button" class="page-chip' + (on ? " on" : "") + '" data-page-tab="products" data-page-sub="' + id + '" role="tab" aria-selected="' + (on ? "true" : "false") + '">'
+      var chips = [
+        { id: "all", label: A.t("sub_all") },
+        { id: "shown", label: A.t("sub_shown") },
+        { id: "hidden", label: A.t("sub_hidden") }
+      ];
+      bar.innerHTML = chips.map(function (p) {
+        var on = (A.productView || sub || "all") === p.id;
+        return '<button type="button" class="page-chip' + (on ? " on" : "") + '" data-page-tab="products" data-page-sub="' + p.id + '" role="tab" aria-selected="' + (on ? "true" : "false") + '">'
           + '<span class="chip-dot" aria-hidden="true"></span>'
-          + '<span>' + A.esc(A.chipLabel("products", id)) + '</span></button>';
+          + '<span>' + A.esc(p.label) + "</span></button>";
       }).join("");
       bar.hidden = false;
       return;
     }
   };
+
 
   A.updateOrdersBadge = function () {
     var el = document.getElementById("ordersBadge");
@@ -104,17 +80,31 @@
     }
   };
 
-  /* Parents only in the right rail; children live in #pageSubNav (Salla pattern). */
   A.syncNav = function () {
     var tab = A.currentTab || "home";
+    var sub = A.currentSub || "";
     document.querySelectorAll("#sideNav .side-main").forEach(function (b) {
       var bt = b.getAttribute("data-tab");
-      var on = bt === tab;
+      var grouped = !!b.closest(".side-group");
+      var on = bt === tab && !grouped;
       b.classList.toggle("on", on);
       if (on) b.setAttribute("aria-current", "page");
       else b.removeAttribute("aria-current");
+      if (grouped) b.setAttribute("aria-expanded", bt === tab ? "true" : "false");
     });
-    try { A.fillPageSubNav(); } catch (e) { console.error("fillPageSubNav", e); }
+    document.querySelectorAll("#sideNav .side-group").forEach(function (g) {
+      var gt = g.getAttribute("data-group");
+      var open = gt === tab;
+      g.classList.toggle("open", open);
+      g.querySelectorAll(".side-sub").forEach(function (s) {
+        var on = open && s.getAttribute("data-sub") === (sub || A.defaultSub(gt));
+        s.classList.toggle("on", on);
+        if (on) s.setAttribute("aria-current", "page");
+        else s.removeAttribute("aria-current");
+      });
+      g.classList.toggle("has-active-child", !!g.querySelector(".side-sub.on"));
+    });
+    A.fillPageSubNav();
     if (A.updateOrdersBadge) A.updateOrdersBadge();
   };
 

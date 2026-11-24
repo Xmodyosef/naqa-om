@@ -211,6 +211,11 @@
   });
   setInterval(function () {
     if (document.getElementById("tools") && !document.getElementById("tools").hidden && !A.sessionOk()) {
+      /* Firebase session still valid → refresh local idle timer */
+      if (A.fbUser && window.firebase && firebase.auth && firebase.auth().currentUser) {
+        A.touchSession();
+        return;
+      }
       A.clearSession();
       document.getElementById("tools").hidden = true;
       document.getElementById("tabs").hidden = true;

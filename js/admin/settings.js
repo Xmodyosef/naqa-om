@@ -8,6 +8,7 @@
       + '<h2>' + A.t("setTitle") + '</h2>'
       + '<p class="note">' + A.t("setPin") + '</p>'
       + '<p class="note" style="border:1px solid #efe4df;border-radius:12px;padding:12px;background:#faf7f5">' + A.t("setSecure") + '</p>'
+      + (A.fbUser ? ('<div class="panel" style="margin:10px 0"><h2>' + A.t("fb_account") + '</h2>'+ '<p class="note">' + A.esc(A.fbUser.email || "") + '</p>'+ '<button type="button" class="mini" id="fbSignOutBtn">' + A.t("fb_signOut") + '</button></div>') : '')
       + '<p class="note" style="color:#b05c6e">' + A.t("setTok") + '</p>'
       + '<label style="display:block;margin:8px 0;font-size:.8rem;font-weight:800;color:#8a7f78">' + A.t("setTokLabel") + '<input id="token" type="password" value="" autocomplete="off" placeholder="ghp_..."></label>'
       + (function () {
@@ -82,6 +83,9 @@
     var el = document.getElementById("token");
     if (el) el.value = "";
   };
+    var fso = document.getElementById("fbSignOutBtn");
+    if (fso) fso.onclick = function () { if (A.fbSignOut) A.fbSignOut(); };
+
   A.publishLive = function () {
     if (A._publishing) { A._publishAgain = true; return; }
     var typedEl = document.getElementById("token");

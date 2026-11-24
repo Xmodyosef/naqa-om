@@ -118,5 +118,15 @@
   "importFail": "Import file is invalid",
   "copied": "Copied ✓",
   "delConfirm": "Delete this order? This cannot be undone.",
-  "cancelConfirm": "Cancel this order? Stock will be restored if it was deducted."
+  "cancelConfirm": "Cancel this order? Stock will be restored if it was deducted.",
+  "fb_lead": "Sign in with your email and password (Firebase). Same account on any device.",
+  "fb_note": "After sign-in: Home · Orders · Products · Reviews · Customers · Finance · Settings.",
+  "fb_need": "Email and password are required.",
+  "fb_wait": "Signing in…",
+  "fb_bad": "Wrong email or password.",
+  "fb_loadFail": "Could not load Firebase. Check the network or use the PIN.",
+  "fb_signedOut": "Signed out.",
+  "fb_account": "Sign-in account",
+  "fb_signOut": "Sign out",
+  "fb_storeNote": "The store stays open for customers with no login. Firebase protects the admin only."
 }

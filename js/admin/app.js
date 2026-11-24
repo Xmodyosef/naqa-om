@@ -160,16 +160,6 @@
 
   var ordersList = document.getElementById("ordersList");
   if (ordersList) ordersList.addEventListener("click", function (e) {
-    var del = e.target.closest("[data-del]");
-    if (del) {
-      var idDel = del.getAttribute("data-del");
-      if (!confirm(A.t("delConfirm") + "\n" + idDel)) return;
-      A.orders = A.orders.filter(function (o) { return String(o.id) !== String(idDel); });
-      A.saveOrders();
-      A.paintOrders();
-      A.setMsg("orderStatus", A.t("deleted") + " " + idDel);
-      return;
-    }
     var payBtn = e.target.closest("[data-pay]");
     if (payBtn) {
       A.confirmPayment(payBtn.getAttribute("data-pay"));
@@ -181,6 +171,9 @@
     if (st) {
       var id = st.getAttribute("data-oid");
       var next = st.getAttribute("data-st");
+      if (next === "cancel") {
+        if (!confirm(A.t("cancelConfirm") + "\n" + id)) return;
+      }
       A.orders.forEach(function (o) {
         if (String(o.id) !== String(id)) return;
         var prev = A.normalizeStatus(o.status);

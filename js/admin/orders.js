@@ -108,7 +108,7 @@
         + items + '<div class="actions">' + statusBtns
         + (A.payState(o) === "pending" ? ('<button type="button" class="mini" data-pay="' + A.esc(o.id) + '">' + A.t("confirmPay") + '</button>') : "")
         + (phoneDigits ? ('<a class="mini" style="background:#25D366;display:inline-block;color:#fff;text-decoration:none;text-align:center" href="https://wa.me/968' + A.esc(phoneDigits) + '" target="_blank" rel="noopener">' + A.t("wa") + '</a>') : "")
-        + '<button type="button" class="mini ghost" data-del="' + A.esc(o.id) + '">' + A.t("del") + '</button></div></article>';
+        + '</div></article>';
     }).join("");
   };
 })(window);

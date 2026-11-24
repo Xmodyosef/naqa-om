@@ -117,5 +117,6 @@
   "importOk": "Imported",
   "importFail": "Import file is invalid",
   "copied": "Copied ✓",
-  "delConfirm": "Delete this order? This cannot be undone."
+  "delConfirm": "Delete this order? This cannot be undone.",
+  "cancelConfirm": "Cancel this order? Stock will be restored if it was deducted."
 }

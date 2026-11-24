@@ -166,7 +166,7 @@
     if (code === "auth/popup-blocked") return t("fb_popup", "");
     if (code === "auth/popup-closed-by-user" || code === "auth/cancelled-popup-request") return t("fb_popupClosed", "");
     if (code === "auth/operation-not-allowed") return t("fb_providerOff", "");
-    if (code === "auth/unauthorized-domain") return t("fb_domain", "");
+    if (code === "auth/unauthorized-domain" || code === "auth/unauthorized-continue-uri") return t("fb_domain", "");
     if (code === "auth/user-not-found") {
       return context === "reset" ? t("fb_resetNoUser", "") : t("fb_badOrCreate", "");
     }
@@ -372,10 +372,8 @@
         setMsg(t("fb_waitReset", ""));
         allowedEmail(email).then(function (ok) {
         if (!ok) { setMsg(t("fb_notAllowed", "")); setBusy(false); return; }
-        firebase.auth().sendPasswordResetEmail(email, {
-          url: adminContinueUrl(),
-          handleCodeInApp: false
-        }).then(function () {
+        /* no continue URL: github.io is not an authorized domain, and that blocks the email */
+        firebase.auth().sendPasswordResetEmail(email).then(function () {
           setMsg(t("fb_resetSent", ""));
         }).catch(function (err) {
           setMsg(mapAuthError(err, "reset"));

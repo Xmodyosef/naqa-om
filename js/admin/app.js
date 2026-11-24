@@ -16,39 +16,44 @@
     return "all";
   };
 
-  /* STEP1A: children nested under parent in sidebar — page chips always off */
+  /* STEP1 simple: parents ONLY in sidebar. Filters = thin chips in main content. */
   A.fillPageSubNav = function () {
     var bar = document.getElementById("pageSubNav");
-    if (bar) {
+    if (!bar) return;
+    var tab = A.currentTab || "home";
+    var chips = [];
+    if (tab === "orders") {
+      var scoped = (A.orders || []).filter(function (o) { return A.inDateRange(o.at); });
+      function count(st) {
+        if (st === "all") return scoped.length;
+        var n = 0;
+        scoped.forEach(function (o) {
+          if (A.normalizeStatus(o.status) === st) n++;
+        });
+        return n;
+      }
+      [["all", "all"], ["new", "st_new"], ["prep", "st_prep"], ["ship", "st_ship"], ["delivered", "st_delivered"], ["cancel", "st_cancel"]].forEach(function (x) {
+        var n = count(x[0]);
+        chips.push({ id: x[0], label: (A.t(x[1]) || x[0]) + (n ? " · " + n : "") });
+      });
+    } else if (tab === "products") {
+      [["all", "sub_all"], ["shown", "sub_shown"], ["hidden", "sub_hidden"]].forEach(function (x) {
+        chips.push({ id: x[0], label: A.t(x[1]) || x[0] });
+      });
+    }
+    if (!chips.length) {
       bar.innerHTML = "";
       bar.hidden = true;
+      return;
     }
-    A.refreshSideSubs && A.refreshSideSubs();
+    var active = tab === "orders" ? (A.orderFilter || A.currentSub || "all") : (A.productView || A.currentSub || "all");
+    bar.hidden = false;
+    bar.innerHTML = chips.map(function (c) {
+      return '<button type="button" class="page-chip' + (c.id === active ? " on" : "") + '" data-page-tab="' + tab + '" data-page-sub="' + c.id + '">' + A.esc(c.label) + "</button>";
+    }).join("");
   };
 
-  A.refreshSideSubs = function () {
-    var tab = A.currentTab || "home";
-    /* i18n labels */
-    document.querySelectorAll("#sideNav .side-sub[data-i18n-sub]").forEach(function (btn) {
-      var key = btn.getAttribute("data-i18n-sub");
-      var base = A.t(key) || btn.textContent;
-      if (btn.getAttribute("data-tab") === "orders" && key !== "all") {
-        /* keep short; counts optional */
-      }
-      if (btn.getAttribute("data-tab") === "orders") {
-        var scoped = (A.orders || []).filter(function (o) { return A.inDateRange(o.at); });
-        var id = btn.getAttribute("data-sub");
-        var n = 0;
-        if (id === "all") n = scoped.length;
-        else scoped.forEach(function (o) {
-          if (A.normalizeStatus(o.status) === id) n++;
-        });
-        btn.textContent = (A.t(key) || base) + (n ? " (" + n + ")" : "");
-      } else {
-        btn.textContent = A.t(key) || base;
-      }
-    });
-  };
+  A.refreshSideSubs = function () { /* no sidebar children */ };
 
 
   A.updateOrdersBadge = function () {
@@ -71,31 +76,16 @@
 
   A.syncNav = function () {
     var tab = A.currentTab || "home";
-    var sub = A.currentSub || "";
     document.querySelectorAll("#sideNav .side-main").forEach(function (b) {
       var bt = b.getAttribute("data-tab");
-      var grouped = !!b.closest(".side-group");
-      /* parent is active when its section is current (grouped or not) */
       var on = bt === tab;
       b.classList.toggle("on", on);
-      if (on && !grouped) b.setAttribute("aria-current", "page");
+      if (on) b.setAttribute("aria-current", "page");
       else b.removeAttribute("aria-current");
-      if (grouped) b.setAttribute("aria-expanded", bt === tab ? "true" : "false");
+      b.removeAttribute("aria-expanded");
     });
     document.querySelectorAll("#sideNav .side-group").forEach(function (g) {
-      var gt = g.getAttribute("data-group");
-      var open = gt === tab;
-      g.classList.toggle("open", open);
-      var activeSub = sub || A.defaultSub(gt);
-      if (gt === "orders") activeSub = A.orderFilter || activeSub || "all";
-      if (gt === "products") activeSub = A.productView || activeSub || "all";
-      g.querySelectorAll(".side-sub").forEach(function (s) {
-        var on = open && s.getAttribute("data-sub") === activeSub;
-        s.classList.toggle("on", on);
-        if (on) s.setAttribute("aria-current", "page");
-        else s.removeAttribute("aria-current");
-      });
-      g.classList.toggle("has-active-child", open);
+      g.classList.remove("open", "has-active-child");
     });
     A.fillPageSubNav();
     if (A.updateOrdersBadge) A.updateOrdersBadge();

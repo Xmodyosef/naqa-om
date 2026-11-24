@@ -88,7 +88,38 @@
       p_useEn: "الاستعمال English",
       p_skinAr: "يناسب (عربي)",
       p_skinEn: "Best for",
-      p_imgs: "صور (سطر لكل رابط)",
+
+      p_imgs: "صور المنتج",
+      p_imgsNote: "ارفعي من الجهاز أو ألصقي رابط. الأولى رئيسية · ★ رئيسية · ‹› ترتيب · ✕ حذف. الحد ٥. الرفع يظهر في المتجر بعد «نشر للكل».",
+      p_imgsAdd: "أضيفي صورة",
+      p_imgsUpload: "📷 رفع من الجهاز",
+      p_imgsUrlPh: "أو الصقي رابط صورة…",
+      p_imgsMain: "رئيسية",
+      p_imgsAddBtn: "إضافة",
+      p_imgsMax: "الحد ٥ صور",
+      p_imgsPrep: "جاري تجهيز الصور…",
+      p_imgsAdded: "انضافت الصور · احفظي المنتج",
+      p_imgsFail: "الصورة ما انفتحت",
+      p_imgsFull: "مساحة الجهاز ممتلئة — قلّلي الصور أو انشري أولاً",
+      p_listNote: "اضغطي «تعديل كامل» للكمية والصور والوصف والاستعمال.",
+      vatBar: "نقاء · كل الأسعار شاملة ضريبة ٥٪",
+      o_copyAll: "نسخ كل الطلبات",
+      o_copyNew: "نسخ الجديدة فقط",
+      o_waSum: "واتساب الملخص",
+      o_empty: "ما في طلبات بعد. اطلبي من المتجر على نفس الجهاز عشان تنحفظ هنا تلقائي.",
+      o_emptyFilter: "ما في طلبات بهالحالة.",
+      o_sub: "فرعي",
+      o_vatLine: "شامل ٥٪",
+      o_tab: "الطلبات",
+      o_lead: "حالات: جديد · جاري التجهيز · جاري التوصيل · تم التوصيل · ملغي",
+      o_waOpen: "فتح واتساب الطلبات",
+      c_copied: "تم النسخ ✓",
+      c_copyFail: "ما قدرنا ننسخ — حدّدي النص يدوياً",
+      c_copyPrompt: "انسخي من هنا:",
+      rep_title: "نقاء — تقرير الطلبات",
+      rep_empty: "ما في طلبات.",
+      rep_total: "المجموع",
+      rep_vat: "ر.ع (شامل الضريبة ٥٪)",
       p_save: "حفظ هذا المنتج",
       p_saved: "انحفظ المنتج.",
       p_invTitle: "المخزون المركزي",
@@ -160,6 +191,27 @@
       r_need: "اللقب والنص مطلوبان.",
       r_added: "انضاف على جهازك. اضغطي «نشر للكل» عشان يظهر في المتجر.",
       r_photoFail: "الصورة ما انفتحت.",
+
+      rep_vatOf: "منها ضريبة ٥٪",
+      rep_fees: "رسوم: توصيل",
+      rep_cod: "استلام",
+      rep_netFee: "صافي رسوم",
+      rep_count: "الإجمالي المسجّل",
+      rep_orderUnit: "طلب",
+      rep_custTitle: "نقاء — قائمة العملاء",
+      rep_custEmpty: "ما في عملاء.",
+      rep_custLine: "طلب",
+      rep_custCount: "العدد",
+      rep_finTitle: "نقاء — تقرير مالية",
+      rep_finSales: "مبيعات (بدون ملغي)",
+      rep_finActive: "طلبات فعّالة",
+      rep_finAvg: "متوسط الطلب",
+      rep_finNew: "جديد",
+      rep_finPrep: "تجهيز",
+      rep_finShip: "توصيل",
+      rep_finDone: "تم",
+      rep_finCancel: "ملغي",
+      rep_finDate: "تاريخ التقرير",
       storeLink: "← المتجر"
     },
     en: {
@@ -247,7 +299,38 @@
       p_useEn: "How to use English",
       p_skinAr: "Best for (Arabic)",
       p_skinEn: "Best for",
-      p_imgs: "Images (one URL per line)",
+
+      p_imgs: "Product images",
+      p_imgsNote: "Upload from device or paste a URL. First is main · ★ set main · arrows reorder · ✕ delete. Max 5. Uploads go live after Publish.",
+      p_imgsAdd: "Add image",
+      p_imgsUpload: "📷 Upload",
+      p_imgsUrlPh: "Or paste image URL…",
+      p_imgsMain: "Main",
+      p_imgsAddBtn: "Add",
+      p_imgsMax: "Max 5 images",
+      p_imgsPrep: "Preparing images…",
+      p_imgsAdded: "Images added · save product",
+      p_imgsFail: "Could not open image",
+      p_imgsFull: "Device storage full — fewer images or publish first",
+      p_listNote: "Tap Full edit for stock, photos, description and how-to-use.",
+      vatBar: "Naqa · all prices include 5% VAT",
+      o_copyAll: "Copy all orders",
+      o_copyNew: "Copy new only",
+      o_waSum: "WhatsApp summary",
+      o_empty: "No orders yet. Place a store order on this device so it saves here automatically.",
+      o_emptyFilter: "No orders in this status.",
+      o_sub: "Subtotal",
+      o_vatLine: "incl. 5%",
+      o_tab: "Orders",
+      o_lead: "Statuses: New · Preparing · Out for delivery · Delivered · Cancelled",
+      o_waOpen: "Open orders WhatsApp",
+      c_copied: "Copied ✓",
+      c_copyFail: "Could not copy — select the text manually",
+      c_copyPrompt: "Copy from here:",
+      rep_title: "Naqa — orders report",
+      rep_empty: "No orders.",
+      rep_total: "Total",
+      rep_vat: "OMR (incl. 5% VAT)",
       p_save: "Save this product",
       p_saved: "Product saved.",
       p_invTitle: "Central stock",
@@ -315,6 +398,27 @@
       r_need: "Nickname and text are required.",
       r_added: "Saved on this device. Tap Publish to show it in the store.",
       r_photoFail: "Could not open the photo.",
+
+      rep_vatOf: "of which 5% VAT",
+      rep_fees: "Fees: delivery",
+      rep_cod: "COD",
+      rep_netFee: "net fees",
+      rep_count: "Listed total",
+      rep_orderUnit: "orders",
+      rep_custTitle: "Naqa — customers list",
+      rep_custEmpty: "No customers.",
+      rep_custLine: "orders",
+      rep_custCount: "Count",
+      rep_finTitle: "Naqa — finance report",
+      rep_finSales: "Sales (excl. cancelled)",
+      rep_finActive: "Active orders",
+      rep_finAvg: "Average order",
+      rep_finNew: "New",
+      rep_finPrep: "Preparing",
+      rep_finShip: "Shipping",
+      rep_finDone: "Delivered",
+      rep_finCancel: "Cancelled",
+      rep_finDate: "Report date",
       storeLink: "← Store"
     }
   };
@@ -457,6 +561,23 @@
     if (store) store.textContent = A.t("storeLink");
     var q = document.getElementById("q");
     if (q) q.placeholder = A.t("p_search");
+    var vatBar = document.getElementById("vatAdminBar");
+    if (vatBar) vatBar.textContent = A.t("vatBar");
+    var pNote = document.getElementById("productsListNote");
+    if (pNote) pNote.textContent = A.t("p_listNote");
+    var oLead = document.getElementById("ordersLead");
+    if (oLead) oLead.textContent = A.t("o_lead");
+    var oWa = document.getElementById("waOrders");
+    if (oWa) oWa.textContent = A.t("o_waOpen");
+    var oTitle = document.querySelector("#ordersTab .wa-box strong");
+    if (oTitle) oTitle.textContent = A.t("o_tab");
+    // refresh order tool buttons if already built
+    var ca = document.getElementById("copyAllOrders");
+    if (ca) ca.textContent = A.t("o_copyAll");
+    var cn = document.getElementById("copyNewOrders");
+    if (cn) cn.textContent = A.t("o_copyNew");
+    var ow = document.getElementById("waOrdersReport");
+    if (ow) ow.textContent = A.t("o_waSum");
   };
   A.setLang = function (next) {
     A.lang = next === "en" ? "en" : "ar";

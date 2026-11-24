@@ -167,3 +167,13 @@ body.naqa-editing {
   overscroll-behavior-x: none;
   touch-action: pan-y;
 }
+
+/* Locked gate: hide panel chrome until sign-in */
+body.naqa-locked #adminTitle,
+body.naqa-locked #tabs,
+body.naqa-locked #vatAdminBar,
+body.naqa-locked #tools,
+body.naqa-locked #savebar{display:none!important}
+body.naqa-locked .admin-top{border-bottom:0;padding-bottom:8px}
+body.naqa-locked .admin-wrap{max-width:480px;margin:0 auto}
+body.naqa-locked .pin-card{margin-top:24px}

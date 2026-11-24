@@ -62,6 +62,7 @@
 
   A.openAdmin = function () {
     A.touchSession();
+    try { document.body.classList.remove("naqa-locked"); } catch (e) {}
     document.getElementById("pin").hidden = true;
     document.getElementById("tools").hidden = false;
     document.getElementById("tabs").hidden = false;
@@ -221,6 +222,7 @@
       document.getElementById("tabs").hidden = true;
       document.getElementById("savebar").hidden = true;
       document.getElementById("pin").hidden = false;
+      try { document.body.classList.add("naqa-locked"); } catch (e) {}
       var msg = document.getElementById("pinMsg");
       if (msg) msg.textContent = A.t("pinLead");
     }

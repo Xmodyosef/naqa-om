@@ -119,8 +119,8 @@
   "copied": "Copied ✓",
   "delConfirm": "Delete this order? This cannot be undone.",
   "cancelConfirm": "Cancel this order? Stock will be restored if it was deducted.",
-  "fb_lead": "Sign in with your email and password (Firebase). Same account on any device.",
-  "fb_note": "After sign-in: Home · Orders · Products · Reviews · Customers · Finance · Settings.",
+  "fb_lead": "Admin sign-in only. Tabs appear after you sign in.",
+  "fb_note": "Your email is allowlisted. Create a password once, or continue with Google.",
   "fb_need": "Email and password are required.",
   "fb_wait": "Signing in…",
   "fb_bad": "Wrong email or password.",
@@ -137,5 +137,11 @@
   "fb_resetNeed": "Type your email first, then tap forgot password.",
   "fb_resetSent": "A reset link was sent to your email.",
   "fb_resetFail": "Could not send the link. Make sure this email exists in Firebase.",
-  "fb_notAllowed": "This email is not allowed to open the panel."
+  "fb_notAllowed": "This email is not allowed to open the panel.",
+  "fb_create": "Create a new password",
+  "fb_created": "Account created. You are in.",
+  "fb_exists": "Account exists. Sign in, or use forgot password to set it by email.",
+  "fb_createFail": "Could not create the account. Try Google or check Firebase.",
+  "fb_passShort": "Password must be at least 6 characters.",
+  "fb_badOrCreate": "Wrong password or no account. Create a password or use Google."
 }

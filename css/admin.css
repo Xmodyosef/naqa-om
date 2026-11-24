@@ -48,7 +48,7 @@ a{color:inherit}button,input,textarea,select{font:inherit}
 .cust-row strong{display:block}.cust-row small{color:var(--muted)}
 .logout{background:#ffd0d0!important;color:#5a1010!important}
 
-/* —— Product edit sheet (سلة / زد / mobile admin pattern) ——
+/* —— Product edit sheet (full-screen mobile pattern) ——
    Body is locked; only the sheet body scrolls so long forms work. */
 html.naqa-scroll-lock,
 body.naqa-scroll-lock{
@@ -132,7 +132,7 @@ body.naqa-editing .admin-top{visibility:hidden;pointer-events:none}
   display:block;
 }
 
-/* —— Product image gallery (Salla/Zid style) —— */
+/* —— Product image gallery —— */
 .img-gal-label{display:block;margin:12px 0 6px;font-size:.78rem;font-weight:800;color:var(--muted)}
 .img-gal-note{color:var(--muted);font-size:.78rem;line-height:1.45;margin:0 0 10px}
 .img-gal{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:0 0 10px}

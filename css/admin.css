@@ -702,3 +702,138 @@ body.naqa-open #pageSubNav .page-chip .chip-dot {
     font-size: .62rem;
   }
 }
+
+/* —— Narrow phones: keep the work area usable —— */
+@media (max-width: 600px) {
+  body.naqa-open {
+    overflow-x: hidden;
+  }
+
+  body.naqa-open .admin-wrap {
+    padding: 8px 8px 88px;
+  }
+
+  body.naqa-open .admin-shell {
+    width: 100%;
+    min-width: 0;
+    min-height: calc(100dvh - 82px);
+    border-radius: 14px;
+  }
+
+  body.naqa-open .side-nav {
+    width: 68px;
+    min-width: 68px;
+    flex: 0 0 68px;
+    padding: 8px 5px 12px;
+    gap: 3px;
+  }
+
+  body.naqa-open .side-nav::before {
+    font-size: .68rem;
+    padding: 2px 0 8px;
+  }
+
+  body.naqa-open .side-nav .side-main {
+    min-height: 48px;
+    justify-content: center;
+    padding: 6px 3px;
+    gap: 0;
+    position: relative;
+  }
+
+  body.naqa-open .side-nav .side-main .side-lbl,
+  body.naqa-open .side-nav .side-main .chev {
+    display: none !important;
+  }
+
+  body.naqa-open .side-nav .side-main .side-ico {
+    width: 34px;
+    height: 34px;
+    flex-basis: 34px;
+  }
+
+  body.naqa-open .side-nav .side-badge {
+    position: absolute;
+    top: 1px;
+    inset-inline-start: 2px;
+    min-width: 16px;
+    height: 16px;
+    padding: 0 4px;
+    font-size: .6rem;
+  }
+
+  body.naqa-open .side-nav .side-group.open .side-subs {
+    padding: 3px 0;
+    margin-top: 1px;
+  }
+
+  body.naqa-open .side-nav .side-sub {
+    min-height: 26px;
+    padding: 4px 2px;
+    font-size: .58rem;
+    line-height: 1.15;
+    text-align: center;
+    overflow-wrap: anywhere;
+  }
+
+  body.naqa-open .admin-main {
+    min-width: 0;
+    width: calc(100% - 68px);
+    padding: 10px 8px 20px;
+    overflow-x: hidden;
+  }
+
+  body.naqa-open .top-bar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+  }
+
+  body.naqa-open .search-wrap {
+    width: 100%;
+    min-height: 44px;
+  }
+
+  body.naqa-open .search-wrap input {
+    min-width: 0;
+    padding: 10px 9px;
+    font-size: .74rem;
+  }
+
+  body.naqa-open .search-wrap select {
+    max-width: 68px;
+    padding: 0 3px;
+    font-size: .65rem;
+  }
+
+  body.naqa-open .search-btn {
+    flex: 0 0 auto;
+    padding: 0 9px;
+    font-size: .72rem;
+  }
+
+  body.naqa-open .btn-add {
+    width: 100%;
+    min-height: 42px;
+    padding: 9px 12px;
+  }
+
+  body.naqa-open #q {
+    margin-top: 2px;
+  }
+
+  body.naqa-open .stat-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+  }
+
+  body.naqa-open .panel,
+  body.naqa-open .wa-box,
+  body.naqa-open .order,
+  body.naqa-open .row {
+    padding: 11px;
+    border-radius: 13px;
+  }
+}

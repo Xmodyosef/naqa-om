@@ -39,7 +39,7 @@
   };
   A.saveLocal = function () {
     if (A.editingId != null && document.getElementById("editView") && !document.getElementById("editView").hidden && A.saveEdit) A.saveEdit();
-    localStorage.setItem(A.KEY, JSON.stringify(A.overrides));
+    try { localStorage.setItem(A.KEY, JSON.stringify(A.overrides)); } catch (e) {}
     A.saveOrders();
     A.setMsg("status", A.t("savedDev"));
     A.setMsg("orderStatus", A.t("savedOrders"));
@@ -47,7 +47,7 @@
   };
   A.publish = function () {
     if (A.editingId != null && document.getElementById("editView") && !document.getElementById("editView").hidden && A.saveEdit) A.saveEdit();
-    localStorage.setItem(A.KEY, JSON.stringify(A.overrides));
+    try { localStorage.setItem(A.KEY, JSON.stringify(A.overrides)); } catch (e) {}
     A.saveOrders();
     var tokenEl = document.getElementById("token");
     var token = tokenEl ? tokenEl.value.trim() : "";
@@ -59,11 +59,15 @@
     }
     A.setMsg("status", A.t("publishing"));
     A.setMsg("settingsStatus", A.t("publishing"));
-    var jobs = [
-      A.ghPut("data/overrides.json", JSON.stringify(A.overrides, null, 2) + "\n", token, "chore: publish product overrides")
-    ];
-    if (A.publishReviews) jobs.push(A.publishReviews(token));
-    Promise.all(jobs).then(function (res) {
+    var chain = Promise.resolve();
+    if (A.materializeProductImages) chain = A.materializeProductImages(token);
+    chain.then(function () {
+      var jobs = [
+        A.ghPut("data/overrides.json", JSON.stringify(A.overrides, null, 2) + "\n", token, "chore: publish product overrides")
+      ];
+      if (A.publishReviews) jobs.push(A.publishReviews(token));
+      return Promise.all(jobs);
+    }).then(function (res) {
       if (!res[0].ok || (res[1] && !res[1].ok)) throw new Error("HTTP");
       if (tokenEl) tokenEl.value = "";
       try { localStorage.removeItem(A.TOKEN); } catch (e) {}

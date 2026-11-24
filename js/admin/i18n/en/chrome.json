@@ -161,5 +161,6 @@
   "fb_resetNoUser": "No account for this email yet. Tap “Create a new password” or use Google.",
   "fb_rate": "Too many attempts. Wait a minute and try again.",
   "fb_network": "Network error. Check your connection and try again.",
-  "fb_existsDiff": "This email is linked to another sign-in method. Try Google or password."
+  "fb_existsDiff": "This email is linked to another sign-in method. Try Google or password.",
+  "fb_booting": "Opening the panel…"
 }

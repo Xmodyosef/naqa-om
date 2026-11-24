@@ -3,6 +3,7 @@
   var A = w.NaqaAdmin = w.NaqaAdmin || {};
   A.fbUser = null;
   var _busy = false;
+  var _authReady = false;
 
   function $(id) { return document.getElementById(id); }
   function t(key, fallback) {
@@ -38,9 +39,21 @@
   }
   function adminContinueUrl() {
     try {
-      return location.origin + location.pathname.replace(/\/?$/, "/") + "admin.html";
+      return location.origin + (location.pathname || "/").replace(/[^/]+$/, "") + "admin.html";
     } catch (e) {
       return "https://xmodyosef.github.io/naqa-om/admin.html";
+    }
+  }
+  function setPending(on) {
+    try {
+      if (on) document.body.classList.add("naqa-auth-pending");
+      else document.body.classList.remove("naqa-auth-pending");
+    } catch (e) {}
+    var boot = $("authBoot");
+    if (boot) {
+      boot.hidden = !on;
+      var tx = $("authBootText");
+      if (tx) tx.textContent = t("fb_booting", "جاري فتح اللوحة…");
     }
   }
   function lockUI() {
@@ -51,16 +64,22 @@
     if ($("tools")) $("tools").hidden = true;
     if ($("tabs")) $("tabs").hidden = true;
     if ($("pin")) $("pin").hidden = false;
+    if ($("authBoot")) $("authBoot").hidden = true;
   }
   function unlockUI() {
     try {
       document.body.classList.remove("naqa-locked");
       document.body.classList.add("naqa-open");
+      document.body.classList.remove("naqa-auth-pending");
     } catch (e) {}
+    if ($("pin")) $("pin").hidden = true;
+    if ($("authBoot")) $("authBoot").hidden = true;
   }
   function showPinOnly() {
+    setPending(false);
     if ($("fbLogin")) $("fbLogin").hidden = true;
     if ($("pinRow")) $("pinRow").hidden = false;
+    if ($("pin")) $("pin").hidden = false;
   }
   function applyAuthLang() {
     try {
@@ -72,7 +91,6 @@
 
   A.fbApplyLabels = function () {
     if (!w.naqaFirebaseEnabled || !naqaFirebaseEnabled()) return;
-    if ($("fbLogin") && $("fbLogin").hidden) return;
     applyAuthLang();
     var lead = $("pinLead");
     if (lead) lead.textContent = t("fb_welcome", t("fb_lead", ""));
@@ -80,9 +98,6 @@
     if (note) note.textContent = t("fb_welcomeNote", t("fb_note", ""));
     var hint = $("fbPassHint");
     if (hint) hint.textContent = t("fb_passHint", "");
-    var emailLab = $("fbEmailLab");
-    if (emailLab) emailLab.firstChild && (emailLab.childNodes[0].textContent = t("fb_email", "الإيميل"));
-    /* labels wrap text+input — set data via dedicated spans if present */
     var eL = $("fbEmailLabel");
     if (eL) eL.textContent = t("fb_email", "الإيميل");
     var pL = $("fbPassLabel");
@@ -91,6 +106,8 @@
     if ($("fbGoogle")) $("fbGoogle").textContent = t("fb_google", "دخول بحساب Google");
     if ($("fbReset")) $("fbReset").textContent = t("fb_forgot", "نسيت كلمة السر؟");
     if ($("fbCreate")) $("fbCreate").textContent = t("fb_create", "إنشاء كلمة سر جديدة");
+    var boot = $("authBootText");
+    if (boot) boot.textContent = t("fb_booting", "جاري فتح اللوحة…");
     var emailEl = $("fbEmail");
     if (emailEl && !emailEl.value && (w.NAQA_ADMIN_EMAILS || [])[0]) {
       emailEl.value = w.NAQA_ADMIN_EMAILS[0];
@@ -149,21 +166,39 @@
     return { email: email, pass: pass };
   }
 
+  function doLogin() {
+    if (_busy) return;
+    var cred = needEmailPass();
+    if (!cred) return;
+    setBusy(true);
+    setMsg(t("fb_wait", ""));
+    firebase.auth().signInWithEmailAndPassword(cred.email, cred.pass).then(function () {
+      setMsg("");
+      /* Password managers hook successful form login */
+    }).catch(function (err) {
+      setMsg(mapAuthError(err, "login"));
+    }).finally(function () { setBusy(false); });
+  }
+
   A.fbSignOut = function () {
     if (!w.firebase || !firebase.auth) return Promise.resolve();
     return firebase.auth().signOut().then(function () {
       A.fbUser = null;
       lockUI();
+      setPending(false);
       setMsg(t("fb_signedOut", ""));
     });
   };
 
   A.fbBoot = function () {
     if (!w.naqaFirebaseEnabled || !naqaFirebaseEnabled()) {
+      setPending(false);
       showPinOnly();
+      if ($("pin")) $("pin").hidden = false;
       return;
     }
     if (!w.firebase || !firebase.apps) {
+      setPending(false);
       showPinOnly();
       setMsg(t("fb_loadFail", ""));
       return;
@@ -171,38 +206,43 @@
     try {
       if (!firebase.apps.length) firebase.initializeApp(w.NAQA_FIREBASE);
     } catch (e) {
+      setPending(false);
       showPinOnly();
       setMsg(t("fb_loadFail", ""));
       return;
     }
 
-    showFbOnly();
-    lockUI();
+    setPending(true);
+    if ($("pin")) $("pin").hidden = true;
     applyAuthLang();
 
-    /* Finish Google redirect if returning from Google */
-    firebase.auth().getRedirectResult().then(function (result) {
-      if (result && result.user) {
-        setMsg("");
-      }
-    }).catch(function (err) {
+    try {
+      firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL);
+    } catch (e) {}
+
+    showFbOnly();
+
+    firebase.auth().getRedirectResult().then(function () {}).catch(function (err) {
+      setPending(false);
+      lockUI();
       setMsg(mapAuthError(err, "google"));
     });
 
+    var form = $("fbForm");
+    if (form && !form._bound) {
+      form._bound = true;
+      form.addEventListener("submit", function (ev) {
+        ev.preventDefault();
+        doLogin();
+      });
+    }
+    /* fallback if no form */
     var go = $("fbGo");
-    if (go && !go._bound) {
+    if (go && !go._bound && (!form || go.type !== "submit")) {
       go._bound = true;
-      go.onclick = function () {
-        if (_busy) return;
-        var cred = needEmailPass();
-        if (!cred) return;
-        setBusy(true);
-        setMsg(t("fb_wait", ""));
-        firebase.auth().signInWithEmailAndPassword(cred.email, cred.pass).then(function () {
-          setMsg("");
-        }).catch(function (err) {
-          setMsg(mapAuthError(err, "login"));
-        }).finally(function () { setBusy(false); });
+      go.onclick = function (ev) {
+        if (ev) ev.preventDefault();
+        doLogin();
       };
     }
 
@@ -215,11 +255,15 @@
         if (!cred) return;
         setBusy(true);
         setMsg(t("fb_waitCreate", ""));
+        /* create uses new-password autocomplete hint */
+        try { if ($("fbPass")) $("fbPass").autocomplete = "new-password"; } catch (e) {}
         firebase.auth().createUserWithEmailAndPassword(cred.email, cred.pass).then(function () {
           setMsg(t("fb_created", ""));
+          try { if ($("fbPass")) $("fbPass").autocomplete = "current-password"; } catch (e) {}
         }).catch(function (err) {
           try { console.warn("naqa createUser", err && err.code, err && err.message); } catch (e) {}
           setMsg(mapAuthError(err, "create"));
+          try { if ($("fbPass")) $("fbPass").autocomplete = "current-password"; } catch (e) {}
         }).finally(function () { setBusy(false); });
       };
     }
@@ -270,11 +314,10 @@
         if (!allowedEmail(email)) { setMsg(t("fb_notAllowed", "")); return; }
         setBusy(true);
         setMsg(t("fb_waitReset", ""));
-        var action = {
+        firebase.auth().sendPasswordResetEmail(email, {
           url: adminContinueUrl(),
           handleCodeInApp: false
-        };
-        firebase.auth().sendPasswordResetEmail(email, action).then(function () {
+        }).then(function () {
           setMsg(t("fb_resetSent", ""));
         }).catch(function (err) {
           setMsg(mapAuthError(err, "reset"));
@@ -282,19 +325,10 @@
       };
     }
 
-    /* Enter key on password submits login */
-    var passEl = $("fbPass");
-    if (passEl && !passEl._bound) {
-      passEl._bound = true;
-      passEl.addEventListener("keydown", function (ev) {
-        if (ev.key === "Enter") {
-          ev.preventDefault();
-          if ($("fbGo")) $("fbGo").click();
-        }
-      });
-    }
-
     firebase.auth().onAuthStateChanged(function (user) {
+      _authReady = true;
+      setPending(false);
+
       if (user && !allowedEmail(user)) {
         A.fbUser = null;
         firebase.auth().signOut().then(function () {
@@ -313,13 +347,14 @@
         setBusy(false);
       } else {
         lockUI();
+        if ($("pin")) $("pin").hidden = false;
       }
     });
   };
 
   if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", function () { setTimeout(A.fbBoot, 40); });
+    document.addEventListener("DOMContentLoaded", function () { setTimeout(A.fbBoot, 20); });
   } else {
-    setTimeout(A.fbBoot, 40);
+    setTimeout(A.fbBoot, 20);
   }
 })(window);

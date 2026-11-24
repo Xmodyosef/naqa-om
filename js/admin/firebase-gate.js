@@ -285,16 +285,7 @@
     if (form && !form._bound) {
       form._bound = true;
       form.addEventListener("submit", function (ev) {
-        var cred = needEmailPass();
-        if (!cred) {
-          ev.preventDefault();
-          return;
-        }
-        /* لا نمنع الإرسال: سفاري يطلب «حفظ كلمة السر» فقط إذا أُرسل النموذج فعلياً.
-           الإرسال يروح لإطار مخفي (pw-saved.html) واللوحة ما تتحدث. */
-        form.action = "pw-saved.html";
-        form.target = "naqaSaveFrame";
-        form.method = "post";
+        ev.preventDefault();
         doLogin();
       });
     }

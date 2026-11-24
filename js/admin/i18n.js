@@ -543,6 +543,7 @@
       var k = b.getAttribute("data-tab");
       if (k) b.textContent = A.t("tab_" + k);
     });
+    if (A.syncOrdersTab) A.syncOrdersTab();
     var lead = document.getElementById("pinLead");
     if (lead) lead.textContent = A.t("pinLead");
     var note = document.getElementById("pinNote");

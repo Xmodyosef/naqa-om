@@ -169,5 +169,6 @@
   "sub_general": "General",
   "pagePrev": "Previous",
   "pageNext": "Next",
-  "hideNeedTok": "Hidden on this device only. Add the publish token in Settings so it hides on the store for everyone."
+  "hideNeedTok": "Hidden on this device only. Add the publish token in Settings so it hides on the store for everyone.",
+  "fb_signedIn": "Signed in. The email address is not shown here."
 }

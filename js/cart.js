@@ -59,7 +59,7 @@ function updatePaySum(){
   const freeLab=lang==="en"?"Free":"مجاني";
   const zeroLab=lang==="en"?"0.000":"٠.٠٠٠";
   const payLab=bank?(T("payPending")||""):(T("payStatusUnpaid")||"");
-  const vatAmt=typeof vatOf==="function"?vatOf(b.grand):0;
+  const vatAmt=(typeof cartVatFromLines==="function"?cartVatFromLines(cart.map(function(i){var p=(typeof products!=="undefined"?products.find(function(x){return x.id===i.id}):null)||i;return{price:p.price!=null?p.price:i.price,qty:i.qty,taxMode:p.taxMode,taxCustom:p.taxCustom}})):(typeof vatOf==="function"?vatOf(b.grand):0));
   const shipCell=feeCell(b.deliveryList, b.delivery, b.deliveryWaived, freeLab);
   const codCell=feeCell(b.codList, b.codFee, b.codWaived, zeroLab);
   const shipNote=b.deliveryWaived?(' <span class="fee-tag">'+(lang==="en"?"30+ free":"٣٠+ مجاني")+'</span>'):"";

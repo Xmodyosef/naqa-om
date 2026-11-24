@@ -84,6 +84,8 @@ function mergeOverrides(map){
     if(o.was!=null && o.was!=="") p.was=Number(o.was);
     if(o.stock!=null && o.stock!=="") p.stock=Number(o.stock);
     p.hidden=!!o.hidden;
+    if(o.taxMode==="exempt"||o.taxMode==="custom"||o.taxMode==="vat5") p.taxMode=o.taxMode; else if(o.taxMode==null) delete p.taxMode;
+    if(o.taxCustom!=null && o.taxCustom!=="") p.taxCustom=Number(o.taxCustom); else if(o.taxMode!=="custom") delete p.taxCustom;
     ["nameAr","nameEn","descAr","descEn","useAr","useEn","skinAr","skinEn","brand","cat","sku","em"].forEach(function(k){
       if(o[k]!=null && o[k]!=="") p[k]=o[k];
     });
@@ -183,9 +185,37 @@ function cleanProductCopy(s){
 
 const money=n=>lang==="en"?(Number(n).toFixed(3)+" OMR"):(Number(n).toFixed(3)+" "+CURRENCY);
 const vatRate=()=>((typeof VAT_RATE==="number")?VAT_RATE:0.05);
-const vatOf=amount=>{const r=vatRate();const n=Number(amount)||0;return r<=0?0:n*r/(1+r);};
-const exVat=amount=>(Number(amount)||0)-vatOf(amount);
-function vatNoteHTML(){return '<span class="vat-note">'+(T("vatInc")||"شامل الضريبة ٥٪")+'</span>';}
+function productTaxRate(p){
+  var m=(p&&p.taxMode)||"vat5";
+  if(m==="exempt") return 0;
+  if(m==="custom"){
+    var r=Number(p.taxCustom);
+    return (isFinite(r)&&r>=0)?(r/100):vatRate();
+  }
+  return vatRate();
+}
+const vatOf=(amount, rate)=>{
+  const r=(rate==null?vatRate():Number(rate));
+  const n=Number(amount)||0;
+  return r<=0?0:n*r/(1+r);
+};
+const exVat=(amount, rate)=>(Number(amount)||0)-vatOf(amount, rate);
+function productTaxLabel(p){
+  var m=(p&&p.taxMode)||"vat5";
+  if(m==="exempt") return (lang==="en"?"VAT exempt":"معفى من الضريبة");
+  if(m==="custom"){
+    var r=Number(p.taxCustom); if(!isFinite(r)||r<0) r=0;
+    return (lang==="en"?("Tax "+r+"% incl."):("ضريبة "+r+"٪ شاملة"));
+  }
+  return T("vatInc")||"شامل الضريبة ٥٪";
+}
+function cartVatFromLines(lines){
+  return (lines||[]).reduce(function(s,x){
+    var rate=productTaxRate(x);
+    return s+vatOf(Number(x.price)||0, rate)*(Number(x.qty)||0);
+  },0);
+}
+function vatNoteHTML(p){return '<span class="vat-note">'+productTaxLabel(p)+'</span>';}
 
 const pname=p=>lang==="en"?(p.nameEn||p.nameAr):(p.nameAr||p.nameEn);
 const pdesc=p=>cleanProductCopy(lang==="en"?(p.descEn||p.descAr||""):(p.descAr||p.descEn||""));

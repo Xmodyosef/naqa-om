@@ -42,5 +42,10 @@
   "p_low": "Low",
   "p_out": "Out",
   "p_search": "Search products…",
-  "p_show": "Show"
+  "p_show": "Show",
+  "tax_label": "Tax",
+  "tax_vat5": "5% VAT (included in price)",
+  "tax_exempt": "VAT exempt",
+  "tax_custom": "Other rate",
+  "tax_customRate": "Tax rate %"
 }

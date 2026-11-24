@@ -4,7 +4,8 @@ a{color:inherit}button,input,textarea,select{font:inherit}
 .admin-top{position:sticky;top:0;z-index:20;background:rgba(253,248,246,.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);padding:12px 14px 0}
 .admin-top h1{margin:4px 0 8px;font-size:1.15rem}
 .admin-top a.store{font-size:.85rem;color:var(--rose);font-weight:700;text-decoration:none}
-.tabs{display:flex;gap:6px;overflow-x:auto;padding-bottom:10px;-webkit-overflow-scrolling:touch}
+.tabs{display:none!important;gap:6px;overflow-x:auto;padding-bottom:10px;-webkit-overflow-scrolling:touch}
+body.naqa-open .tabs{display:flex!important}
 .tabs button{flex:0 0 auto;border:1px solid var(--line);background:#fff;border-radius:999px;padding:8px 12px;font-weight:800;font-size:.78rem;white-space:nowrap}
 .tabs button.on{background:var(--fg);color:#fff;border-color:var(--fg)}
 .admin-wrap{max-width:720px;margin:0 auto;padding:12px 14px 100px}
@@ -168,7 +169,7 @@ body.naqa-editing {
   touch-action: pan-y;
 }
 
-/* Locked gate: hide panel chrome until sign-in */
+/* Locked gate */
 body.naqa-locked #adminTitle,
 body.naqa-locked #tabs,
 body.naqa-locked #vatAdminBar,
@@ -177,3 +178,4 @@ body.naqa-locked #savebar{display:none!important}
 body.naqa-locked .admin-top{border-bottom:0;padding-bottom:8px}
 body.naqa-locked .admin-wrap{max-width:480px;margin:0 auto}
 body.naqa-locked .pin-card{margin-top:24px}
+body.naqa-open #adminTitle{display:block}

@@ -18,14 +18,19 @@
     return list.indexOf(email) >= 0;
   }
   function lockUI() {
-    try { document.body.classList.add("naqa-locked"); } catch (e) {}
+    try {
+      document.body.classList.add("naqa-locked");
+      document.body.classList.remove("naqa-open");
+    } catch (e) {}
     if ($("tools")) $("tools").hidden = true;
     if ($("tabs")) $("tabs").hidden = true;
-    if ($("savebar")) $("savebar").hidden = true;
     if ($("pin")) $("pin").hidden = false;
   }
   function unlockUI() {
-    try { document.body.classList.remove("naqa-locked"); } catch (e) {}
+    try {
+      document.body.classList.remove("naqa-locked");
+      document.body.classList.add("naqa-open");
+    } catch (e) {}
   }
   function showPinOnly() {
     var fb = $("fbLogin");

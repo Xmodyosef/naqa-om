@@ -4,7 +4,7 @@
   A.lang = "ar";
   try { if (localStorage.getItem("naqa_admin_lang") === "en") A.lang = "en"; } catch (e) {}
   /* One language file only. Must stay a blocking script so document.write runs while the page is parsing. */
-  document.write('<script src="js/admin/i18n/dict-' + A.lang + '.js?v=20261124fix17"><\/script>');
+  document.write('<script src="js/admin/i18n/dict-' + A.lang + '.js?v=20261124fix18"><\/script>');
   A.t = function (k) {
     var pack = A.I18N[A.lang] || A.I18N.ar;
     return pack[k] != null ? pack[k] : (A.I18N.ar[k] || k);
@@ -128,25 +128,20 @@
     if (A.syncOrdersTab) A.syncOrdersTab();
     var pinFirst = !localStorage.getItem(A.PIN_HASH) && !localStorage.getItem(A.PIN);
     var lead = document.getElementById("pinLead");
-    if (lead) lead.textContent = pinFirst ? A.t("pinFirstLead") : A.t("pinLead");
     var note = document.getElementById("pinNote");
-    if (note) note.textContent = A.t("pinNote");
+    var fbOn = window.naqaFirebaseEnabled && naqaFirebaseEnabled();
+    if (lead) lead.textContent = fbOn ? A.t("fb_welcome") : (pinFirst ? A.t("pinFirstLead") : A.t("pinLead"));
+    if (note) note.textContent = fbOn ? A.t("fb_welcomeNote") : A.t("pinNote");
     var pinInput = document.getElementById("pinInput");
     if (pinInput) pinInput.placeholder = A.t("pinPh");
     var pinGo = document.getElementById("pinGo");
     if (pinGo) pinGo.textContent = pinFirst ? A.t("pinFirstBtn") : A.t("pinGo");
-    var save = document.getElementById("saveLocal");
-    if (save) save.textContent = A.t("saveLocal");
-    var pub = document.getElementById("publish");
-    if (pub) pub.textContent = A.t("publish");
     var langBtn = document.getElementById("adminLang");
     if (langBtn) langBtn.textContent = A.t("langBtn");
     var store = document.querySelector(".admin-top a.store");
     if (store) store.textContent = A.t("storeLink");
     var q = document.getElementById("q");
     if (q) q.placeholder = A.t("p_search");
-    var vatBar = document.getElementById("vatAdminBar");
-    if (vatBar) vatBar.textContent = A.t("vatBar");
     var pNote = document.getElementById("productsListNote");
     if (pNote) pNote.textContent = A.t("p_listNote");
     var oLead = document.getElementById("ordersLead");
@@ -166,7 +161,7 @@
   A.ensureLang = function (lang, done) {
     if (A.I18N && A.I18N[lang]) { done(); return; }
     var s = document.createElement("script");
-    s.src = "js/admin/i18n/dict-" + lang + ".js?v=20261124fix17";
+    s.src = "js/admin/i18n/dict-" + lang + ".js?v=20261124fix18";
     s.onload = function () { done(); };
     s.onerror = function () { done(); };
     document.head.appendChild(s);

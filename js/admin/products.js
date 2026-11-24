@@ -227,11 +227,11 @@
       return '<article class="row" data-open="' + p.id + '">' + thumb
         + '<div><strong>' + A.esc(m.nameAr || m.nameEn) + '</strong>'
         + '<small>' + A.esc(m.brand || "") + ' · ' + A.esc(m.cat || "") + ' · SKU ' + A.esc(m.sku || "—") + '</small>'
-        + '<small>' + A.t("p_price") + ' ' + A.esc(m.price) + ' ' + A.t("omr") + ' <span style="color:#9a7b72;font-size:11px">' + A.t("vatInc") + '</span> · ' + A.t("p_stock") + ' <span' + stockCls + '>' + A.esc(stock) + '</span>' + hid + '</small></div>'
+        + '<small>' + A.t("p_price") + ' ' + A.esc(m.price) + ' ' + A.t("omr") + ' <span style="color:#9a7b72;font-size:11px">' + A.esc(A.taxLabel(m)) + '</span> · ' + A.t("p_stock") + ' <span' + stockCls + '>' + A.esc(stock) + '</span>' + hid + '</small></div>'
         + '<button type="button" class="mini ghost" data-hide="' + p.id + '">' + (m.hidden ? A.t("p_show") : A.t("p_hide")) + '</button>'
         + '<button type="button" class="edit-btn" data-open="' + p.id + '">' + A.t("p_edit") + '</button></article>';
     }).join("");
-    document.getElementById("list").innerHTML = inv + '<p class="note" id="vatAdminNote" style="color:#9a7b72;margin:0 0 10px">' + A.t("p_vatNote") + '</p>' + (html || '<p class="note">' + A.t("p_empty") + '</p>');
+    document.getElementById("list").innerHTML = inv + (html || '<p class="note">' + A.t("p_empty") + '</p>');
   };
 
   A.openEdit = function (id, opts) {
@@ -285,9 +285,15 @@
       + '<label>' + A.t("p_cat") + '<select id="f_cat">' + catOpts + '</select></label></div>'
       + '<label>' + A.t("p_sku") + '<input id="f_sku" type="text" value="' + A.esc(m.sku || "") + '"></label>'
       + '<div class="grid3">'
-      + '<label>' + A.t("p_priceLab") + ' <span style="color:#9a7b72;font-size:11px;font-weight:600">' + A.t("vatInc") + '</span><input id="f_price" type="number" min="0" step="0.001" value="' + A.esc(m.price) + '"></label>'
+      + '<label>' + A.t("p_priceLab") + '<input id="f_price" type="number" min="0" step="0.001" value="' + A.esc(m.price) + '"></label>'
       + '<label>' + A.t("p_was") + '<input id="f_was" type="number" min="0" step="0.001" value="' + A.esc(m.was) + '"></label>'
       + '<label>' + A.t("p_qty") + '<input id="f_stock" type="number" min="0" step="1" value="' + A.esc(m.stock) + '"></label></div>'
+      + '<label>' + A.t("tax_label") + '<select id="f_taxMode">'
+      + '<option value="vat5"' + ((m.taxMode || "vat5") === "vat5" ? " selected" : "") + '>' + A.t("tax_vat5") + '</option>'
+      + '<option value="exempt"' + (m.taxMode === "exempt" ? " selected" : "") + '>' + A.t("tax_exempt") + '</option>'
+      + '<option value="custom"' + (m.taxMode === "custom" ? " selected" : "") + '>' + A.t("tax_custom") + '</option>'
+      + '</select></label>'
+      + '<label id="f_taxCustomWrap"' + ((m.taxMode || "vat5") === "custom" ? "" : " hidden") + '>' + A.t("tax_customRate") + '<input id="f_taxCustom" type="number" min="0" max="100" step="0.1" value="' + A.esc(m.taxCustom != null ? m.taxCustom : "") + '" placeholder="%"></label>'
       + '<label class="hide-row"><input id="f_hidden" type="checkbox"' + (m.hidden ? " checked" : "") + '> ' + A.t("p_hide") + '</label>'
       + '<label>' + A.t("p_descAr") + '<textarea id="f_descAr" rows="4">' + A.esc(m.descAr || "") + '</textarea></label>'
       + '<label>' + A.t("p_descEn") + '<textarea id="f_descEn" rows="4">' + A.esc(m.descEn || "") + '</textarea></label>'
@@ -310,7 +316,13 @@
       A.closeEdit(false);
     };
     document.getElementById("saveEdit").onclick = function () { A.saveEdit(); };
+    var taxSel = document.getElementById("f_taxMode");
+    var taxWrap = document.getElementById("f_taxCustomWrap");
+    if (taxSel && taxWrap) {
+      taxSel.onchange = function () { taxWrap.hidden = taxSel.value !== "custom"; };
+    }
   };
+
 
   A.toggleHide = function (id) {
     var p = A.products.find(function (x) { return String(x.id) === String(id); });
@@ -338,11 +350,17 @@
   A.saveEdit = function (opts) {
     opts = opts || {};
     if (A.editingId == null) return;
+    var taxModeEl = document.getElementById("f_taxMode");
+    var taxMode = taxModeEl ? taxModeEl.value : "vat5";
+    if (taxMode !== "exempt" && taxMode !== "custom") taxMode = "vat5";
+    var taxCustom = A.val("f_taxCustom") === "" ? undefined : Number(A.val("f_taxCustom"));
     var next = {
       nameAr: A.val("f_nameAr"), nameEn: A.val("f_nameEn"), brand: A.val("f_brand"), cat: A.val("f_cat"), sku: A.val("f_sku"),
       price: A.val("f_price") === "" ? undefined : Number(A.val("f_price")),
       was: A.val("f_was") === "" ? undefined : Number(A.val("f_was")),
       stock: A.val("f_stock") === "" ? undefined : Number(A.val("f_stock")),
+      taxMode: taxMode,
+      taxCustom: taxMode === "custom" ? taxCustom : undefined,
       descAr: A.val("f_descAr"), descEn: A.val("f_descEn"), useAr: A.val("f_useAr"), useEn: A.val("f_useEn"),
       skinAr: A.val("f_skinAr"), skinEn: A.val("f_skinEn"),
       imgs: normImgs(A._editImgs),
@@ -351,6 +369,8 @@
     if (next.price == null || isNaN(next.price)) delete next.price;
     if (next.was == null || isNaN(next.was)) delete next.was;
     if (next.stock == null || isNaN(next.stock)) delete next.stock;
+    if (next.taxMode === "vat5") delete next.taxMode;
+    if (next.taxCustom == null || isNaN(next.taxCustom) || next.taxMode !== "custom") delete next.taxCustom;
     if (!next.imgs.length) delete next.imgs;
     if (!next.hidden) delete next.hidden;
     Object.keys(next).forEach(function (k) { if (next[k] === "" || next[k] === undefined) delete next[k]; });

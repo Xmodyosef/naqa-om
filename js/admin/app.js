@@ -62,11 +62,14 @@
 
   A.openAdmin = function () {
     A.touchSession();
-    try { document.body.classList.remove("naqa-locked"); } catch (e) {}
+    try {
+      document.body.classList.remove("naqa-locked");
+      document.body.classList.add("naqa-open");
+    } catch (e) {}
     document.getElementById("pin").hidden = true;
     document.getElementById("tools").hidden = false;
-    document.getElementById("tabs").hidden = false;
-    document.getElementById("savebar").hidden = false;
+    var tabs = document.getElementById("tabs");
+    if (tabs) tabs.hidden = false;
     var wa = document.getElementById("waOrders");
     if (wa) wa.href = "https://wa.me/" + (w.WA_NUMBER || "96879088349");
     A.loadRemoteOrders();
@@ -199,8 +202,6 @@
     A.paintOrders();
   });
 
-  document.getElementById("saveLocal").onclick = function () { A.saveLocal(); };
-  document.getElementById("publish").onclick = function () { A.publish(); };
   var langBtn = document.getElementById("adminLang");
   if (langBtn) langBtn.onclick = function () { A.setLang(A.lang === "en" ? "ar" : "en"); };
   if (A.applyChrome) A.applyChrome();
@@ -219,10 +220,13 @@
       }
       A.clearSession();
       document.getElementById("tools").hidden = true;
-      document.getElementById("tabs").hidden = true;
-      document.getElementById("savebar").hidden = true;
+      var tabs = document.getElementById("tabs");
+      if (tabs) tabs.hidden = true;
       document.getElementById("pin").hidden = false;
-      try { document.body.classList.add("naqa-locked"); } catch (e) {}
+      try {
+        document.body.classList.add("naqa-locked");
+        document.body.classList.remove("naqa-open");
+      } catch (e) {}
       var msg = document.getElementById("pinMsg");
       if (msg) msg.textContent = A.t("pinLead");
     }

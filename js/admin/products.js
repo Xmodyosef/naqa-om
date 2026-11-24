@@ -12,6 +12,27 @@
     if (window.naqaScrollLock) try { naqaScrollLock.lock(); } catch (e) {}
   }
 
+  A.isEditing = function () {
+    return A.editingId != null;
+  };
+
+  /** Close product edit → list. fromPop=true when browser back/swipe. */
+  A.closeEdit = function (fromPop) {
+    var editView = document.getElementById("editView");
+    var open = A.editingId != null || (editView && !editView.hidden);
+    if (!open) return false;
+    var qEl = document.getElementById("q");
+    var q = qEl ? qEl.value.trim() : "";
+    if (!fromPop && A._editNavPushed) {
+      A._editNavPushed = false;
+      try { history.back(); return true; } catch (e) {}
+    }
+    A._editNavPushed = false;
+    A.paintList(q);
+    try { history.replaceState({ naqa: "tab", tab: "products" }, "", "#/products"); } catch (e) {}
+    return true;
+  };
+
   function fileToDataUrl(file) {
     return new Promise(function (resolve, reject) {
       var img = new Image();
@@ -171,6 +192,7 @@
   A.paintList = function (q) {
     A.editingId = null;
     A._editImgs = [];
+    A._editNavPushed = false;
     var listView = document.getElementById("listView");
     var editView = document.getElementById("editView");
     if (!listView || !editView) return;
@@ -211,7 +233,8 @@
     document.getElementById("list").innerHTML = inv + '<p class="note" id="vatAdminNote" style="color:#9a7b72;margin:0 0 10px">' + A.t("p_vatNote") + '</p>' + (html || '<p class="note">' + A.t("p_empty") + '</p>');
   };
 
-  A.openEdit = function (id) {
+  A.openEdit = function (id, opts) {
+    opts = opts || {};
     var p = A.products.find(function (x) { return x.id == id; });
     if (!p) return;
     A.editingId = p.id;
@@ -220,6 +243,14 @@
     var editView = document.getElementById("editView");
     editView.hidden = false;
     startEditMode();
+    if (!opts.fromPop) {
+      try {
+        history.pushState({ naqa: "edit", id: p.id }, "", "#/products/edit/" + p.id);
+        A._editNavPushed = true;
+      } catch (e) { A._editNavPushed = false; }
+    } else {
+      A._editNavPushed = true;
+    }
 
     A._editImgs = normImgs(m.imgs || []);
 
@@ -275,7 +306,7 @@
     if (bodyEl) bodyEl.scrollTop = 0;
 
     document.getElementById("backList").onclick = function () {
-      A.paintList(document.getElementById("q").value.trim());
+      A.closeEdit(false);
     };
     document.getElementById("saveEdit").onclick = function () { A.saveEdit(); };
   };
@@ -305,7 +336,7 @@
       return;
     }
     A.setMsg("status", A.t("p_saved"));
-    A.paintList(document.getElementById("q").value.trim());
+    A.closeEdit(false);
   };
 
   A.materializeProductImages = function (token) {

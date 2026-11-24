@@ -906,10 +906,10 @@ body.naqa-open .side-nav .chev {
 
 @media (max-width: 600px) {
   body.naqa-open .side-nav {
-    width: 28vw;
-    min-width: 104px;
+    width: 32vw;
+    min-width: 120px;
     max-width: 280px;
-    flex: 0 0 28vw;
+    flex: 0 0 32vw;
     padding: 12px 7px 16px;
   }
 

@@ -7,8 +7,6 @@
 
     var email = "";
     try { email = (A.fbUser && A.fbUser.email) || ""; } catch (e) {}
-    var hasTok = false;
-    try { hasTok = !!(A.readToken && A.readToken()); } catch (e) {}
     var wa = String(w.WA_NUMBER || "96879088349");
     var bankName = (w.BANK_NAME || "").trim();
     var bankIban = (w.BANK_IBAN || "").trim();
@@ -17,43 +15,29 @@
     box.innerHTML =
       '<div class="settings-stack">'
 
-      /* 1) Store */
       + '<section class="panel settings-sec">'
       +   '<h2>' + (ar ? "المتجر" : "Store") + '</h2>'
-      +   '<p class="note">' + (ar ? "بيانات تظهر للزبائن (من الإعدادات الثابتة)." : "Public store details (from config).") + '</p>'
+      +   '<p class="note">' + (ar ? "هذه بيانات المتجر للزبائن." : "Public store details.") + '</p>'
       +   '<div class="set-row"><span class="set-k">' + (ar ? "واتساب" : "WhatsApp") + '</span><span class="set-v" dir="ltr">+' + A.esc(wa) + '</span></div>'
       +   '<div class="set-row"><span class="set-k">' + (ar ? "البنك" : "Bank") + '</span><span class="set-v">' + A.esc(bankName || (ar ? "غير مضاف" : "Not set")) + '</span></div>'
-      +   '<div class="set-row"><span class="set-k">IBAN</span><span class="set-v" dir="ltr">' + A.esc(bankIban || (ar ? "غير مضاف — js/config.js" : "Not set — js/config.js")) + '</span></div>'
+      +   '<div class="set-row"><span class="set-k">IBAN</span><span class="set-v" dir="ltr">' + A.esc(bankIban || (ar ? "غير مضاف" : "Not set")) + '</span></div>'
+      +   '<p class="note" style="margin-top:10px">' + (ar
+          ? "لتعديل البنك أو الرقم لاحقاً: من ملف الإعدادات في المشروع (أو نضيف شاشة لاحقاً)."
+          : "Bank/WhatsApp are set in project config for now.") + '</p>'
       + '</section>'
 
-      /* 2) Publish */
-      + '<section class="panel settings-sec">'
-      +   '<h2>' + (ar ? "النشر على الموقع" : "Publish to site") + '</h2>'
-      +   '<p class="note">' + (ar
-          ? "رمز GitHub ينشر تعديلات المنتجات (سعر، كمية، إخفاء). ينحفظ في هذه الجلسة فقط."
-          : "GitHub token publishes product edits (price, stock, hide). Stored for this session only.") + '</p>'
-      +   '<label class="set-lab">' + (ar ? "رمز GitHub (contents:write)" : "GitHub token (contents:write)")
-      +     '<input id="token" type="password" value="" autocomplete="off" placeholder="ghp_..."></label>'
-      +   (hasTok
-          ? ('<p class="note set-ok">' + (ar ? "✓ الرمز محفوظ في هذه الجلسة" : "✓ Token saved for this session") + '</p>'
-             + '<button type="button" class="mini" id="btnForgetTok">' + (ar ? "نسيان الرمز" : "Forget token") + '</button>')
-          : ('<button type="button" class="primary" id="btnSaveTok" style="width:100%;margin-top:8px">' + (ar ? "حفظ الرمز" : "Save token") + '</button>'))
-      + '</section>'
-
-      /* 3) Account — Firebase only */
       + '<section class="panel settings-sec">'
       +   '<h2>' + (ar ? "الحساب" : "Account") + '</h2>'
       +   (email
           ? ('<div class="set-row"><span class="set-k">' + (ar ? "مسجّلة كـ" : "Signed in as") + '</span><span class="set-v" dir="ltr">' + A.esc(email) + '</span></div>')
-          : ('<p class="note">' + (ar ? "ما في جلسة Firebase ظاهرة." : "No Firebase session visible.") + '</p>'))
+          : ('<p class="note">' + (ar ? "ما في جلسة ظاهرة." : "No session visible.") + '</p>'))
       +   '<p class="note">' + (ar
-          ? "تغيير كلمة السر يتم من «نسيت كلمة السر؟» في شاشة الدخول، أو من بريد Firebase."
-          : "Change password via “Forgot password?” on the login screen or Firebase email.") + '</p>'
+          ? "كلمة سر اللوحة تُغيَّر من شاشة الدخول → «نسيت كلمة السر؟» (بريد Firebase). مو من هنا."
+          : "Change login password from the login screen → Forgot password (Firebase email). Not here.") + '</p>'
       +   '<button type="button" class="logout" id="btnLogout" style="width:100%;margin-top:8px;border:0;border-radius:12px;padding:12px;font-weight:800">'
       +     (ar ? "خروج" : "Log out") + '</button>'
       + '</section>'
 
-      /* 4) Privacy note */
       + '<section class="panel settings-sec">'
       +   '<h2>' + (ar ? "الخصوصية" : "Privacy") + '</h2>'
       +   '<p class="note">' + A.t("setSecure") + '</p>'
@@ -61,21 +45,15 @@
 
       + '</div>';
 
-    var saveTok = document.getElementById("btnSaveTok");
-    if (saveTok) saveTok.onclick = function () {
-      var v = (document.getElementById("token") && document.getElementById("token").value || "").trim();
-      if (v.length < 8) { A.setMsg("settingsStatus", A.t("needTok2")); return; }
-      A.keepToken(v);
-      if (document.getElementById("token")) document.getElementById("token").value = "";
-      A.setMsg("settingsStatus", A.t("tokSaved"));
-      A.paintSettings();
-    };
-    var forgetTok = document.getElementById("btnForgetTok");
-    if (forgetTok) forgetTok.onclick = function () {
-      A.forgetToken();
-      A.setMsg("settingsStatus", A.t("needTok2"));
-      A.paintSettings();
-    };
+    /* hidden field so publishLive can still read typed token if we inject later */
+    if (!document.getElementById("token")) {
+      var hid = document.createElement("input");
+      hid.type = "hidden";
+      hid.id = "token";
+      hid.autocomplete = "off";
+      box.appendChild(hid);
+    }
+
     var logout = document.getElementById("btnLogout");
     if (logout) logout.onclick = function () {
       if (!confirm(A.t("setOutAsk"))) return;
@@ -94,9 +72,7 @@
         } catch (e) {}
         if (A.clearSession) A.clearSession();
         var fbLogin = document.getElementById("fbLogin");
-        var pinRow = document.getElementById("pinRow");
         if (fbLogin) fbLogin.hidden = false;
-        if (pinRow) pinRow.hidden = true;
       }
       if (A.fbSignOut) A.fbSignOut().then(hidePanel, hidePanel);
       else hidePanel();
@@ -140,16 +116,36 @@
     if (el) el.value = "";
   };
 
+  /** Ask once for GitHub PAT — never confuses with login password */
+  A.askPublishToken = function () {
+    var ar = A.lang !== "en";
+    var msg = ar
+      ? "لنشر تعديلات المنتجات على الموقع تحتاجين رمز GitHub (يبدأ غالباً بـ ghp_ أو github_pat_).\n\nهذا مو كلمة سر اللوحة ولا إيميل Firebase.\nإذا ما عندك الرمز، اتركي الحقل فاضي — التعديل يبقى على جهازك."
+      : "To publish product edits to the live site you need a GitHub token (usually starts with ghp_ or github_pat_).\n\nThis is NOT your admin login password.\nLeave empty to keep changes on this device only.";
+    var v = prompt(msg, "");
+    if (v == null) return "";
+    v = String(v).trim();
+    if (!v) return "";
+    if (v.length < 8 || (!/^gh[pous]_/i.test(v) && v.indexOf("github_pat_") !== 0 && v.indexOf("gho_") !== 0)) {
+      var warn = ar
+        ? "هذا الشكل ما يشبه رمز GitHub. ما نحفظه عشان ما ينخلط بكلمة السر. إذا متأكدة أنه صحيح، أرسلي لي من GitHub Developer settings."
+        : "That does not look like a GitHub token. Not saved (to avoid password mix-ups).";
+      A.setMsg("status", warn);
+      A.setMsg("settingsStatus", warn);
+      return "";
+    }
+    A.keepToken(v);
+    return v;
+  };
+
   A.publishLive = function () {
     if (A._publishing) { A._publishAgain = true; return; }
-    var typedEl = document.getElementById("token");
-    var typed = typedEl && typedEl.value ? typedEl.value.trim() : "";
-    var token = typed || A.readToken();
+    var token = A.readToken();
+    if (!token) token = A.askPublishToken();
     if (!token) {
-      A.setMsg("status", A.t("needTok"));
+      A.setMsg("status", A.lang === "en" ? "Saved on this device only (no publish)." : "انحفظ على الجهاز فقط (بدون نشر للموقع).");
       return;
     }
-    if (typed) A.keepToken(typed);
     A._publishing = true;
     A.setMsg("status", A.t("publishing"));
     var chain = A.materializeProductImages ? A.materializeProductImages(token) : Promise.resolve();
@@ -162,7 +158,6 @@
         throw new Error("auth");
       }
       if (!res || !res.ok) throw new Error("HTTP");
-      if (typedEl) typedEl.value = "";
       A.setMsg("status", A.t("p_live"));
     }).catch(function () {
       A.setMsg("status", A.t("publishFail"));
@@ -176,15 +171,13 @@
     if (A.editingId != null && document.getElementById("editView") && !document.getElementById("editView").hidden && A.saveEdit) A.saveEdit({ skipPublish: true });
     try { localStorage.setItem(A.KEY, JSON.stringify(A.overrides)); } catch (e) {}
     A.saveOrders();
-    var tokenEl = document.getElementById("token");
-    var typed = tokenEl && tokenEl.value ? tokenEl.value.trim() : "";
-    var token = typed || A.readToken();
+    var token = A.readToken();
+    if (!token) token = A.askPublishToken();
     if (!token) {
-      A.setMsg("status", A.t("needTok"));
-      A.setMsg("settingsStatus", A.t("needTok2"));
+      A.setMsg("status", A.lang === "en" ? "Saved on this device only." : "انحفظ على الجهاز فقط.");
+      A.setMsg("settingsStatus", A.lang === "en" ? "Saved on this device only." : "انحفظ على الجهاز فقط.");
       return;
     }
-    if (typed) A.keepToken(typed);
     A.setMsg("status", A.t("publishing"));
     A.setMsg("settingsStatus", A.t("publishing"));
     var chain = Promise.resolve();
@@ -197,15 +190,13 @@
       return Promise.all(jobs);
     }).then(function (res) {
       if (!res[0].ok || (res[1] && !res[1].ok)) throw new Error("HTTP");
-      if (tokenEl) tokenEl.value = "";
       A.setMsg("status", A.t("publishedProducts"));
       A.setMsg("orderStatus", A.t("ordersStay"));
       A.setMsg("settingsStatus", A.t("published"));
       var rs = document.getElementById("reviewStatus");
       if (rs) rs.textContent = A.t("reviewsOk");
     }).catch(function (err) {
-      if (tokenEl) tokenEl.value = "";
-      try { localStorage.removeItem(A.TOKEN); } catch (e) {}
+      try { A.forgetToken(); } catch (e) {}
       A.setMsg("status", A.t("publishFail") + " " + (err && err.message ? err.message : ""));
       A.setMsg("settingsStatus", A.t("publishFail"));
     });

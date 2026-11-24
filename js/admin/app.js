@@ -2,6 +2,41 @@
   var A = w.NaqaAdmin;
   var TABS = ["home", "orders", "products", "reviews", "customers", "finance", "settings"];
 
+  A.paintSection = function (tab) {
+    var jobs = {
+      home: function () { if (A.paintDashboard) A.paintDashboard(); },
+      orders: function () { if (A.paintOrders) A.paintOrders(); },
+      products: function () {
+        if (A.paintList && A.editingId == null) {
+          var q = document.getElementById("q");
+          A.paintList(q ? q.value.trim() : "");
+        }
+      },
+      reviews: function () { if (A.paintReviews) A.paintReviews(); },
+      customers: function () { if (A.paintCustomers) A.paintCustomers(); },
+      finance: function () { if (A.paintFinance) A.paintFinance(); },
+      settings: function () { if (A.paintSettings) A.paintSettings(); }
+    };
+    var fn = jobs[tab];
+    if (!fn) return;
+    try { fn(); }
+    catch (err) {
+      try { console.error("naqa section", tab, err); } catch (e) {}
+      var el = document.getElementById(tab + "Tab");
+      if (!el) return;
+      var note = el.querySelector(".section-error");
+      if (!note) {
+        note = document.createElement("p");
+        note.className = "note section-error";
+        el.insertBefore(note, el.firstChild);
+      }
+      note.textContent = A.lang === "en"
+        ? "This section has an error. The other buttons still work."
+        : "هذا القسم فيه خطأ. باقي الأزرار تشتغل.";
+    }
+  };
+
+
   A.ORDER_SUBS = ["new", "prep", "ship", "delivered", "cancel"];
   A.currentTab = A.currentTab || "home";
   A.currentSub = A.currentSub || "";
@@ -287,7 +322,65 @@
 
   A.addProduct = function () {
     A.go("products", A.productView || "all", { push: true });
-    var langBtn = document.getElementById("adminLang");
+    var q = document.getElementById("q");
+    if (q) {
+      q.focus();
+      try { q.scrollIntoView({ block: "nearest" }); } catch (e) {}
+    }
+  };
+
+  A.runGlobalSearch = function () {
+    var input = document.getElementById("globalSearch");
+    var scope = document.getElementById("searchScope");
+    var q = input ? input.value.trim() : "";
+    var which = scope ? scope.value : "orders";
+    if (which === "products") {
+      A.orderQuery = "";
+      var box = document.getElementById("q");
+      if (box) box.value = q;
+      A.productPage = 1;
+      A.go("products", A.productView || "all", { push: true, page: 1 });
+      if (A.paintList) A.paintList(q);
+      return;
+    }
+    A.orderQuery = q;
+    A.go("orders", A.orderFilter || A.currentSub || "all", { push: true });
+    if (A.paintOrders) A.paintOrders();
+  };
+
+  var gBtn = document.getElementById("globalSearchBtn");
+  var gInput = document.getElementById("globalSearch");
+  var addBtn = document.getElementById("addProductBtn");
+  if (gBtn) gBtn.addEventListener("click", function () { A.runGlobalSearch(); });
+  if (gInput) gInput.addEventListener("keydown", function (e) {
+    if (e.key === "Enter") { e.preventDefault(); A.runGlobalSearch(); }
+  });
+  if (addBtn) addBtn.addEventListener("click", function () { A.addProduct(); });
+
+
+  var pageSub = document.getElementById("pageSubNav");
+  if (pageSub) pageSub.addEventListener("click", function (e) {
+    var b = e.target.closest("[data-page-sub]");
+    if (!b) return;
+    var tab = b.getAttribute("data-page-tab") || A.currentTab;
+    var sub = b.getAttribute("data-page-sub");
+    var same = tab === A.currentTab && sub === A.currentSub;
+    if (tab === "products" && sub !== A.productView) A.productPage = 1;
+    A.go(tab, sub, { push: !same, page: (tab === "products" && sub !== A.productView) ? 1 : A.productPage });
+  });
+
+  /* Browser back / edge-swipe: leave edit → list; else apply hash tab */
+  window.addEventListener("popstate", function () {
+    var editOpen = A.editingId != null || (document.getElementById("editView") && !document.getElementById("editView").hidden);
+    var hash = (location.hash || "").replace(/^#\/?/, "");
+    if (editOpen && hash.indexOf("products/edit/") !== 0) {
+      A._editNavPushed = false;
+      if (A.closeEdit) A.closeEdit(true);
+    }
+    A.applyRoute(hash);
+  });
+
+  var langBtn = document.getElementById("adminLang");
   if (langBtn) langBtn.onclick = function () { A.setLang(A.lang === "en" ? "ar" : "en"); };
   if (A.applyChrome) A.applyChrome();
   /* session heartbeat + idle lock */

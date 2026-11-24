@@ -399,7 +399,7 @@ body.naqa-open .admin-shell{
   white-space:nowrap;
   box-shadow:0 2px 6px rgba(196,107,124,.3);
 }
-#pageSubNav{ display:none !important; }
+#pageSubNav{ display:flex; }
 
 .side-ico{
   display:flex;
@@ -637,24 +637,27 @@ body.naqa-open .side-nav .side-sub {
   font-weight: 600;
 }
 body.naqa-open #pageSubNav.page-sub-frame {
-  flex-wrap: wrap;
-  gap: 5px;
-  overflow: visible;
-  padding: 0 0 8px;
+  flex-wrap: nowrap;
+  gap: 7px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  padding: 2px 1px 10px;
   margin: 0 0 10px;
 }
 body.naqa-open #pageSubNav .page-chip {
-  min-height: 28px;
-  padding: 4px 8px;
-  gap: 5px;
-  border-radius: 8px;
-  font-size: .66rem;
+  min-height: 32px;
+  padding: 6px 11px;
+  gap: 6px;
+  border-radius: 999px;
+  font-size: .7rem;
   line-height: 1.2;
-  box-shadow: none;
+  box-shadow: 0 2px 6px rgba(75,38,45,.06);
 }
 body.naqa-open #pageSubNav .page-chip .chip-dot {
-  width: 5px;
-  height: 5px;
+  width: 6px;
+  height: 6px;
 }
 @media (max-width: 860px) {
   body.naqa-open .side-nav {
@@ -836,4 +839,60 @@ body.naqa-open #pageSubNav .page-chip .chip-dot {
     padding: 11px;
     border-radius: 13px;
   }
+}
+
+/* —— Naqa palette polish for option 6 —— */
+body.naqa-open .side-nav {
+  background:
+    radial-gradient(180px 180px at 50% -8%, rgba(196,107,124,.18), transparent 70%),
+    linear-gradient(180deg, #302025 0%, #241619 100%);
+}
+
+body.naqa-open .side-nav::before {
+  border-bottom: 1px solid rgba(255,255,255,.08);
+}
+
+body.naqa-open .side-nav .side-main.on,
+body.naqa-open .side-nav .side-group.has-active-child > .side-main {
+  background: linear-gradient(135deg, #c46b7c 0%, #9d3d58 100%) !important;
+  color: #fff;
+  box-shadow: 0 7px 18px rgba(112,35,55,.25) !important;
+}
+
+body.naqa-open .side-nav .side-group.open > .side-main {
+  background: rgba(196,107,124,.2) !important;
+  color: #fff;
+  box-shadow: inset 3px 0 0 #d98a99 !important;
+}
+
+body.naqa-open .side-nav .side-group.open.has-active-child > .side-main {
+  background: linear-gradient(135deg, #c46b7c 0%, #9d3d58 100%) !important;
+  box-shadow: 0 7px 18px rgba(112,35,55,.25) !important;
+}
+
+body.naqa-open .side-nav .side-main.on .side-ico,
+body.naqa-open .side-nav .side-group.open > .side-main .side-ico {
+  background: #fff !important;
+  color: #8d3048;
+  box-shadow: 0 3px 8px rgba(0,0,0,.16);
+}
+
+body.naqa-open .side-nav .side-main.on .side-lbl,
+body.naqa-open .side-nav .side-group.open > .side-main .side-lbl {
+  color: #fff;
+}
+
+body.naqa-open .search-wrap:focus-within {
+  border-color: #c46b7c;
+  box-shadow: 0 0 0 3px rgba(196,107,124,.14);
+}
+
+body.naqa-open .search-btn,
+body.naqa-open .btn-add {
+  background: linear-gradient(135deg, #c46b7c 0%, #9d3d58 100%);
+}
+
+body.naqa-open .search-btn:hover,
+body.naqa-open .btn-add:hover {
+  background: linear-gradient(135deg, #d68494 0%, #8d3048 100%);
 }

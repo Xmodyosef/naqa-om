@@ -48,11 +48,86 @@ a{color:inherit}button,input,textarea,select{font:inherit}
 .cust-row strong{display:block}.cust-row small{color:var(--muted)}
 .logout{background:#ffd0d0!important;color:#5a1010!important}
 
-/* scroll lock for admin edit full-screen */
-html.naqa-scroll-lock, body.naqa-scroll-lock{
-  overflow:hidden!important; overscroll-behavior:none;
+/* —— Product edit sheet (سلة / زد / mobile admin pattern) ——
+   Body is locked; only the sheet body scrolls so long forms work. */
+html.naqa-scroll-lock,
+body.naqa-scroll-lock{
+  overflow:hidden!important;
+  overscroll-behavior:none;
+  height:100%;
 }
-body.naqa-scroll-lock{ position:fixed; width:100%; left:0; right:0; }
+body.naqa-scroll-lock{
+  position:fixed;
+  width:100%;
+  left:0;
+  right:0;
+}
+body.naqa-editing .savebar{display:none!important}
+body.naqa-editing .admin-top{visibility:hidden;pointer-events:none}
+
+#editView[hidden]{display:none!important}
 #editView:not([hidden]){
-  overscroll-behavior:contain; -webkit-overflow-scrolling:touch;
+  position:fixed;
+  inset:0;
+  z-index:40;
+  display:flex;
+  flex-direction:column;
+  width:100%;
+  max-width:720px;
+  margin:0 auto;
+  left:0;
+  right:0;
+  background:var(--bg);
+  overscroll-behavior:none;
+}
+.edit-sheet-head{
+  flex:0 0 auto;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:12px 14px;
+  padding-top:max(12px, env(safe-area-inset-top, 0px));
+  background:rgba(253,248,246,.98);
+  border-bottom:1px solid var(--line);
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+  z-index:2;
+}
+.edit-sheet-head .back{
+  flex:0 0 auto;
+  white-space:nowrap;
+}
+.edit-sheet-head h2{
+  margin:0;
+  font-size:1rem;
+  flex:1;
+  min-width:0;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+.edit-sheet-body{
+  flex:1 1 auto;
+  min-height:0;
+  overflow-y:auto;
+  overflow-x:hidden;
+  -webkit-overflow-scrolling:touch;
+  overscroll-behavior:contain;
+  padding:12px 14px;
+  touch-action:pan-y;
+}
+.edit-sheet-body .edit-card{
+  margin:0 0 12px;
+}
+.edit-sheet-foot{
+  flex:0 0 auto;
+  padding:10px 14px;
+  padding-bottom:max(10px, env(safe-area-inset-bottom, 0px));
+  background:rgba(253,248,246,.98);
+  border-top:1px solid var(--line);
+  z-index:2;
+}
+.edit-sheet-foot .primary{
+  width:100%;
+  display:block;
 }

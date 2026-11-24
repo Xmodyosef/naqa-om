@@ -1,5 +1,16 @@
 (function (w) {
   var A = w.NaqaAdmin;
+
+  function endEditMode() {
+    try { document.body.classList.remove("naqa-editing"); } catch (e) {}
+    if (window.naqaScrollLock) try { naqaScrollLock.unlock(); } catch (e) {}
+  }
+
+  function startEditMode() {
+    try { document.body.classList.add("naqa-editing"); } catch (e) {}
+    if (window.naqaScrollLock) try { naqaScrollLock.lock(); } catch (e) {}
+  }
+
   A.paintList = function (q) {
     A.editingId = null;
     var listView = document.getElementById("listView");
@@ -7,7 +18,8 @@
     if (!listView || !editView) return;
     listView.hidden = false;
     editView.hidden = true;
-    if (window.naqaScrollLock) try { naqaScrollLock.unlock(); } catch (e) {}
+    editView.innerHTML = "";
+    endEditMode();
     q = (q || "").toLowerCase();
     var low = 0, out = 0;
     A.products.forEach(function (p) {
@@ -40,20 +52,30 @@
     }).join("");
     document.getElementById("list").innerHTML = inv + '<p class="note" id="vatAdminNote" style="color:#9a7b72;margin:0 0 10px">' + A.t("p_vatNote") + '</p>' + (html || '<p class="note">' + A.t("p_empty") + '</p>');
   };
+
   A.openEdit = function (id) {
     var p = A.products.find(function (x) { return x.id == id; });
     if (!p) return;
     A.editingId = p.id;
     var m = A.merged(p);
     document.getElementById("listView").hidden = true;
-    document.getElementById("editView").hidden = false;
-    if (window.naqaScrollLock) try { naqaScrollLock.lock(); } catch (e) {}
+    var editView = document.getElementById("editView");
+    editView.hidden = false;
+    startEditMode();
+
     var catOpts = A.CATS.map(function (c) {
       return '<option value="' + A.esc(c) + '"' + (m.cat === c ? " selected" : "") + ">" + A.esc(c) + "</option>";
     }).join("");
     var imgs = (m.imgs || []).join("\n");
-    document.getElementById("editView").innerHTML =
-      '<button type="button" class="back" id="backList">' + A.t("p_back") + '</button>'
+    var title = m.nameAr || m.nameEn || A.t("p_edit");
+
+    /* Full-screen sheet: sticky head + scrollable body + sticky foot (Salla/Zid mobile) */
+    editView.innerHTML =
+      '<div class="edit-sheet-head">'
+      + '<button type="button" class="back" id="backList">' + A.t("p_back") + '</button>'
+      + '<h2>' + A.esc(title) + '</h2>'
+      + '</div>'
+      + '<div class="edit-sheet-body" id="editSheetBody">'
       + '<div class="edit-card">'
       + '<div class="preview">' + ((m.imgs && m.imgs[0]) ? '<img src="' + A.esc(m.imgs[0]) + '" alt="">' : '<div class="ph big"></div>') + '</div>'
       + '<label>' + A.t("p_nameAr") + '<textarea id="f_nameAr" rows="2">' + A.esc(m.nameAr || "") + '</textarea></label>'
@@ -74,10 +96,20 @@
       + '<label>' + A.t("p_skinAr") + '<input id="f_skinAr" type="text" value="' + A.esc(m.skinAr || "") + '"></label>'
       + '<label>' + A.t("p_skinEn") + '<input id="f_skinEn" type="text" value="' + A.esc(m.skinEn || "") + '"></label>'
       + '<label>' + A.t("p_imgs") + '<textarea id="f_imgs" rows="5">' + A.esc(imgs) + '</textarea></label>'
-      + '<button type="button" class="primary" id="saveEdit">' + A.t("p_save") + '</button></div>';
-    document.getElementById("backList").onclick = function () { A.paintList(document.getElementById("q").value.trim()); };
+      + '</div></div>'
+      + '<div class="edit-sheet-foot">'
+      + '<button type="button" class="primary" id="saveEdit">' + A.t("p_save") + '</button>'
+      + '</div>';
+
+    var bodyEl = document.getElementById("editSheetBody");
+    if (bodyEl) bodyEl.scrollTop = 0;
+
+    document.getElementById("backList").onclick = function () {
+      A.paintList(document.getElementById("q").value.trim());
+    };
     document.getElementById("saveEdit").onclick = function () { A.saveEdit(); };
   };
+
   A.saveEdit = function () {
     if (A.editingId == null) return;
     var next = {

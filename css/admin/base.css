@@ -49,3 +49,8 @@ body.naqa-open .tabs{display:flex!important}
 .cust-row strong{display:block}.cust-row small{color:var(--muted)}
 .logout{background:#ffd0d0!important;color:#5a1010!important}
 
+
+/* كل قسم يظهر لحاله — المخفي ما يطلع مع الرئيسية */
+.admin-main > [id$="Tab"][hidden] { display: none !important; }
+.admin-main > [id$="Tab"]:not([hidden]) { display: block; }
+#topBar[hidden] { display: none !important; }

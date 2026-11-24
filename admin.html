@@ -8,7 +8,7 @@
 <meta name="robots" content="noindex, nofollow" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 <title>لوحة تحكم نقاء</title>
-<link rel="stylesheet" href="css/admin.css?v=20261124split2" />
+<link rel="stylesheet" href="css/admin.css?v=20261124split3" />
 </head>
 <body class="naqa-locked naqa-auth-pending">
 <div class="admin-top">
@@ -110,10 +110,10 @@
       <button type="button" class="btn-add" id="addProductBtn">+ إضافة منتج</button>
     </div>
     <div id="pageSubNav" class="page-sub-nav page-sub-frame" role="tablist" aria-label="فلاتر القسم" hidden data-nav-mode="page"></div>
-    <div id="homeTab" hidden>
+    <div id="homeTab" class="admin-section" hidden>
       <div id="dashBox"></div>
     </div>
-    <div id="ordersTab" hidden>
+    <div id="ordersTab" class="admin-section" hidden>
       <div class="wa-box">
         <strong>الطلبات</strong>
         <p class="note" id="ordersLead">حالات: جديد · جاري التجهيز · جاري التوصيل · تم التوصيل · ملغي</p>
@@ -123,11 +123,11 @@
             <p class="status" id="orderStatus"></p>
       <div id="ordersList"></div>
     </div>
-    <div id="reviewsTab" hidden>
+    <div id="reviewsTab" class="admin-section" hidden>
       <p class="status" id="reviewStatus"></p>
       <div id="reviewsBox"></div>
     </div>
-    <div id="productsTab" hidden>
+    <div id="productsTab" class="admin-section" hidden>
       <div id="listView">
         <input id="q" type="search" placeholder="ابحثي بالاسم أو SKU أو الماركة" />
         <p class="note" id="productsListNote">اضغطي «تعديل كامل» للكمية والصور والوصف والاستعمال.</p>
@@ -136,41 +136,47 @@
       </div>
       <div id="editView" hidden></div>
     </div>
-    <div id="customersTab" hidden>
+    <div id="customersTab" class="admin-section" hidden>
       <div class="panel"><h2>العملاء</h2><p class="note">مجمّعين تلقائي من الطلبات.</p></div>
       <div id="customersList"></div>
     </div>
-    <div id="financeTab" hidden>
+    <div id="financeTab" class="admin-section" hidden>
       <div class="panel"><h2>المالية والتحليلات</h2></div>
       <div id="financeBox"></div>
     </div>
-    <div id="settingsTab" hidden>
+    <div id="settingsTab" class="admin-section" hidden>
       <p class="status" id="settingsStatus"></p>
       <div id="settingsBox"></div>
     </div>
   </div>
 </div>
 </div>
-<script defer src="js/config.js?v=20261124split2"></script>
-<script defer src="js/firebase-config.js?v=20261124split2"></script>
+<script defer src="js/config.js?v=20261124split3"></script>
+<script defer src="js/firebase-config.js?v=20261124split3"></script>
 <script defer src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
 <script defer src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
 <script defer src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
-<script defer src="data/products.bundle.js?v=20261124split2"></script>
-<script defer src="js/admin.js?v=20261124split2"></script>
-<script defer src="js/admin/core.js?v=20261124split2"></script>
-<script src="js/admin/i18n.js?v=20261124split2"></script>
-<script defer src="js/admin/products.js?v=20261124split2"></script>
-<script defer src="js/admin/orders.js?v=20261124split2"></script>
-<script defer src="js/admin/customers.js?v=20261124split2"></script>
-<script defer src="js/admin/finance.js?v=20261124split2"></script>
-<script defer src="js/admin/dashboard.js?v=20261124split2"></script>
-<script defer src="js/admin/settings.js?v=20261124split2"></script>
-<script defer src="js/cloud-overrides.js?v=20261124split2"></script>
-<script defer src="js/admin/reviews.js?v=20261124split2"></script>
-<script defer src="js/admin/app.js?v=20261124split2"></script>
-<script defer src="js/admin/buttons/products.js?v=20261124split2"></script>
-<script defer src="js/admin/buttons/orders.js?v=20261124split2"></script>
-<script defer src="js/admin/firebase-gate.js?v=20261124split2"></script>
+<script defer src="data/products.bundle.js?v=20261124split3"></script>
+<script defer src="js/admin.js?v=20261124split3"></script>
+<script defer src="js/admin/core.js?v=20261124split3"></script>
+<script src="js/admin/i18n.js?v=20261124split3"></script>
+<script defer src="js/admin/products.js?v=20261124split3"></script>
+<script defer src="js/admin/orders.js?v=20261124split3"></script>
+<script defer src="js/admin/customers.js?v=20261124split3"></script>
+<script defer src="js/admin/finance.js?v=20261124split3"></script>
+<script defer src="js/admin/dashboard.js?v=20261124split3"></script>
+<script defer src="js/admin/settings.js?v=20261124split3"></script>
+<script defer src="js/cloud-overrides.js?v=20261124split3"></script>
+<script defer src="js/admin/reviews.js?v=20261124split3"></script>
+<script defer src="js/admin/app.js?v=20261124split3"></script>
+<script defer src="js/admin/buttons/bind.js?v=20261124split3"></script>
+<script defer src="js/admin/buttons/home.js?v=20261124split3"></script>
+<script defer src="js/admin/buttons/orders.js?v=20261124split3"></script>
+<script defer src="js/admin/buttons/products.js?v=20261124split3"></script>
+<script defer src="js/admin/buttons/reviews.js?v=20261124split3"></script>
+<script defer src="js/admin/buttons/customers.js?v=20261124split3"></script>
+<script defer src="js/admin/buttons/finance.js?v=20261124split3"></script>
+<script defer src="js/admin/buttons/settings.js?v=20261124split3"></script>
+<script defer src="js/admin/firebase-gate.js?v=20261124split3"></script>
 </body>
 </html>

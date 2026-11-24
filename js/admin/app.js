@@ -3,20 +3,7 @@
   var TABS = ["home", "orders", "products", "reviews", "customers", "finance", "settings"];
 
   A.paintSection = function (tab) {
-    var jobs = {
-      home: function () { if (A.paintDashboard) A.paintDashboard(); },
-      orders: function () { if (A.paintOrders) A.paintOrders(); },
-      products: function () {
-        if (A.paintList && A.editingId == null) {
-          var q = document.getElementById("q");
-          A.paintList(q ? q.value.trim() : "");
-        }
-      },
-      reviews: function () { if (A.paintReviews) A.paintReviews(); },
-      customers: function () { if (A.paintCustomers) A.paintCustomers(); },
-      finance: function () { if (A.paintFinance) A.paintFinance(); },
-      settings: function () { if (A.paintSettings) A.paintSettings(); }
-    };
+    var jobs = A._paints || {};
     var fn = jobs[tab];
     if (!fn) return;
     try { fn(); }
@@ -124,6 +111,10 @@
     });
     A.fillPageSubNav();
     if (A.updateOrdersBadge) A.updateOrdersBadge();
+    var top = document.getElementById("topBar");
+    if (top) top.hidden = !(tab === "products" || tab === "orders");
+    var add = document.getElementById("addProductBtn");
+    if (add) add.hidden = tab !== "products";
   };
 
   A.sectionHash = function () {
@@ -144,7 +135,7 @@
 
   A.go = function (tab, sub, opts) {
     opts = opts || {};
-    if (TABS.indexOf(tab) < 0) tab = "home";
+    if (TABS.indexOf(tab) < 0) return;
     if (tab === "orders") {
       if (sub !== "all" && A.ORDER_SUBS.indexOf(sub) < 0) sub = "all";
       A.orderFilter = sub;
@@ -291,34 +282,6 @@
       fail();
     });
   };
-
-  var sideNav = document.getElementById("sideNav");
-  if (sideNav) sideNav.addEventListener("click", function (e) {
-    try {
-    var subBtn = e.target.closest(".side-sub[data-sub]");
-    if (subBtn) {
-      var tabS = subBtn.getAttribute("data-tab");
-      var subS = subBtn.getAttribute("data-sub");
-      if (tabS === "products" && A.editingId != null && A.closeEdit) A.closeEdit(true);
-      var sameS = tabS === A.currentTab && subS === A.currentSub;
-      if (tabS === "products" && subS !== A.productView) A.productPage = 1;
-      A.go(tabS, subS, { push: !sameS, page: tabS === "products" ? A.productPage : undefined });
-      return;
-    }
-    var b = e.target.closest(".side-main[data-tab]");
-    if (!b) return;
-    var tab = b.getAttribute("data-tab");
-    var sub = A.defaultSub(tab);
-    if (tab === "products" && A.editingId != null) {
-      A.closeEdit(true);
-    }
-    var same = tab === A.currentTab;
-    if (tab === "products") A.productPage = 1;
-    A.go(tab, sub, { push: !same, page: 1 });
-    } catch (err) {
-      try { console.error("naqa nav btn", err); } catch (e2) {}
-    }
-  });
 
   A.addProduct = function () {
     A.go("products", A.productView || "all", { push: true });

@@ -39,3 +39,13 @@
     });
   });
 })(window);
+
+(function (w) {
+  var A = w.NaqaAdmin; if (!A || !A.bindTab) return;
+  A.bindTab("products", function () {
+    if (A.paintList && A.editingId == null) {
+      var q = document.getElementById("q");
+      A.paintList(q ? q.value.trim() : "");
+    }
+  });
+})(window);

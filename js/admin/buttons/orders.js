@@ -45,3 +45,8 @@
     });
   });
 })(window);
+
+(function (w) {
+  var A = w.NaqaAdmin; if (!A || !A.bindTab) return;
+  A.bindTab("orders", function () { if (A.paintOrders) A.paintOrders(); });
+})(window);

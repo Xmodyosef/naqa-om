@@ -128,5 +128,14 @@
   "fb_signedOut": "Signed out.",
   "fb_account": "Sign-in account",
   "fb_signOut": "Sign out",
-  "fb_storeNote": "The store stays open for customers with no login. Firebase protects the admin only."
+  "fb_storeNote": "The store stays open for customers with no login. Firebase protects the admin only.",
+  "fb_google": "Continue with Google",
+  "fb_forgot": "Forgot password?",
+  "fb_go": "Sign in",
+  "fb_popup": "The browser blocked the popup. Allow popups and try again.",
+  "fb_googleOff": "Google sign-in is not enabled in Firebase, or the popup was closed.",
+  "fb_resetNeed": "Type your email first, then tap forgot password.",
+  "fb_resetSent": "A reset link was sent to your email.",
+  "fb_resetFail": "Could not send the link. Make sure this email exists in Firebase.",
+  "fb_notAllowed": "This email is not allowed to open the panel."
 }

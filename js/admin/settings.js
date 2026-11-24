@@ -8,7 +8,7 @@
       + '<h2>' + A.t("setTitle") + '</h2>'
       + '<p class="note">' + A.t("setPin") + '</p>'
       + '<p class="note" style="border:1px solid #efe4df;border-radius:12px;padding:12px;background:#faf7f5">' + A.t("setSecure") + '</p>'
-      + (A.fbUser ? ('<div class="panel" style="margin:10px 0"><h2>' + A.t("fb_account") + '</h2>'+ '<p class="note">' + A.esc(A.fbUser.email || "") + '</p>'+ '<button type="button" class="mini" id="fbSignOutBtn">' + A.t("fb_signOut") + '</button></div>') : '')
+      + (A.fbUser ? ('<div class="panel" style="margin:10px 0"><h2>' + A.t("fb_account") + '</h2>'+ '<p class="note">' + A.t("fb_signedIn") + '</p>'+ '<button type="button" class="mini" id="fbSignOutBtn">' + A.t("fb_signOut") + '</button></div>') : '')
       + '<p class="note" style="color:#b05c6e">' + A.t("setTok") + '</p>'
       + '<label style="display:block;margin:8px 0;font-size:.8rem;font-weight:800;color:#8a7f78">' + A.t("setTokLabel") + '<input id="token" type="password" value="" autocomplete="off" placeholder="ghp_..."></label>'
       + (function () {
@@ -42,14 +42,23 @@
       A.paintSettings();
     };
     document.getElementById("btnLogout").onclick = function () {
-      if (confirm(A.t("setOutAsk"))) {
-        document.getElementById("tools").hidden = true;
-        document.getElementById("tabs").hidden = true;
-        document.getElementById("savebar").hidden = true;
-        document.getElementById("pin").hidden = false;
-        document.getElementById("pinInput").value = "";
+      if (!confirm(A.t("setOutAsk"))) return;
+      function hidePanel() {
+        var tools=document.getElementById("tools");
+        var tabs=document.getElementById("tabs");
+        var save=document.getElementById("savebar");
+        var pin=document.getElementById("pin");
+        var pinIn=document.getElementById("pinInput");
+        if (tools) tools.hidden = true;
+        if (tabs) tabs.hidden = true;
+        if (save) save.hidden = true;
+        if (pin) pin.hidden = false;
+        if (pinIn) pinIn.value = "";
+        try { document.body.classList.add("naqa-locked"); document.body.classList.remove("naqa-open"); } catch (e) {}
         if (A.clearSession) A.clearSession();
       }
+      if (A.fbSignOut) A.fbSignOut().then(hidePanel, hidePanel);
+      else hidePanel();
     };
     document.getElementById("btnChangePin").onclick = function () {
       var n = prompt(A.t("setNewPin"));

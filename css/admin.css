@@ -798,23 +798,143 @@ body.naqa-open .btn-add {
 
 
 
-/* ========== STEP5: compact list — hide only in edit form ========== */
+/* ========== STEP5b: product cards — title one flow, not word-per-line ========== */
+/* Override .row flex which broke nested prod-body / title width */
+html body.naqa-open #list .prod-card.row {
+  display: grid !important;
+  grid-template-columns: 56px minmax(0, 1fr) auto;
+  grid-template-areas: "thumb body actions";
+  gap: 10px 12px;
+  align-items: start;
+  padding: 12px;
+  margin: 8px 0;
+}
+html body.naqa-open #list .prod-card.row > div {
+  flex: none !important;
+  min-width: 0;
+}
+html body.naqa-open #list .prod-thumb {
+  grid-area: thumb;
+  width: 56px;
+  flex: 0 0 56px !important;
+}
+html body.naqa-open #list .prod-thumb img,
+html body.naqa-open #list .prod-thumb .ph {
+  width: 56px !important;
+  height: 56px !important;
+  border-radius: 12px;
+  object-fit: contain;
+  background: #f6f1ee;
+  display: block;
+}
+html body.naqa-open #list .prod-body {
+  grid-area: body;
+  display: block !important;
+  min-width: 0 !important;
+  max-width: 100%;
+  overflow: hidden;
+}
+html body.naqa-open #list .prod-title {
+  display: block;
+  font-size: .88rem;
+  font-weight: 800;
+  line-height: 1.4;
+  color: #1f1a17;
+  /* natural Arabic/English wrapping — NOT one word per line */
+  white-space: normal !important;
+  word-break: normal !important;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: none;
+}
+html body.naqa-open #list .prod-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px 8px;
+  margin-top: 4px;
+  font-size: .72rem;
+  color: #9a7b72;
+  font-weight: 600;
+  line-height: 1.35;
+}
+html body.naqa-open #list .prod-meta span {
+  display: inline;
+  white-space: nowrap;
+}
+html body.naqa-open #list .prod-meta span:not(:last-child)::after {
+  content: " ·";
+  margin-inline-start: 2px;
+  opacity: .7;
+}
+html body.naqa-open #list .prod-price-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 10px;
+  margin-top: 6px;
+  font-size: .78rem;
+}
+html body.naqa-open #list .prod-price {
+  font-weight: 800;
+  font-size: .9rem;
+  white-space: nowrap;
+}
+html body.naqa-open #list .prod-price small {
+  font-weight: 700;
+  font-size: .68rem;
+  color: #9a7b72;
+}
+html body.naqa-open #list .prod-tax,
+html body.naqa-open #list .prod-stock,
+html body.naqa-open #list .prod-hid {
+  font-size: .72rem;
+  font-weight: 700;
+  color: #9a7b72;
+  white-space: nowrap;
+}
+html body.naqa-open #list .prod-hid {
+  color: #b05c6e;
+}
 html body.naqa-open #list .prod-actions {
+  grid-area: actions;
   display: flex;
   flex-direction: column;
   align-items: stretch;
+  justify-content: flex-start;
   gap: 6px;
+  flex: 0 0 auto !important;
+  width: auto;
+  min-width: 0;
 }
 html body.naqa-open #list .prod-actions .edit-btn {
   margin: 0 !important;
   min-height: 36px;
   min-width: 0;
   font-size: .72rem !important;
-  padding: 8px 10px !important;
+  padding: 8px 12px !important;
   border-radius: 10px !important;
   white-space: nowrap;
 }
 @media (max-width: 600px) {
+  html body.naqa-open #list .prod-card.row {
+    grid-template-columns: 52px minmax(0, 1fr);
+    grid-template-areas:
+      "thumb body"
+      "actions actions";
+    gap: 8px 10px;
+  }
+  html body.naqa-open #list .prod-thumb {
+    width: 52px;
+  }
+  html body.naqa-open #list .prod-thumb img,
+  html body.naqa-open #list .prod-thumb .ph {
+    width: 52px !important;
+    height: 52px !important;
+  }
+  html body.naqa-open #list .prod-title {
+    font-size: .84rem;
+    line-height: 1.35;
+  }
   html body.naqa-open #list .prod-actions {
     flex-direction: row;
   }
@@ -824,7 +944,7 @@ html body.naqa-open #list .prod-actions .edit-btn {
     min-height: 40px;
   }
 }
-/* edit form hide row clear */
+/* edit form hide row */
 html body.naqa-open .hide-row {
   margin-top: 12px;
   padding: 12px;
@@ -838,4 +958,4 @@ html body.naqa-open .hide-row input {
   width: 18px;
   height: 18px;
 }
-/* ========== end STEP5 ========== */
+/* ========== end STEP5b ========== */

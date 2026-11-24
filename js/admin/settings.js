@@ -117,88 +117,21 @@
   };
 
   /** Ask once for GitHub PAT — never confuses with login password */
-  A.askPublishToken = function () {
-    var ar = A.lang !== "en";
-    var msg = ar
-      ? "لنشر تعديلات المنتجات على الموقع تحتاجين رمز GitHub (يبدأ غالباً بـ ghp_ أو github_pat_).\n\nهذا مو كلمة سر اللوحة ولا إيميل Firebase.\nإذا ما عندك الرمز، اتركي الحقل فاضي — التعديل يبقى على جهازك."
-      : "To publish product edits to the live site you need a GitHub token (usually starts with ghp_ or github_pat_).\n\nThis is NOT your admin login password.\nLeave empty to keep changes on this device only.";
-    var v = prompt(msg, "");
-    if (v == null) return "";
-    v = String(v).trim();
-    if (!v) return "";
-    if (v.length < 8 || (!/^gh[pous]_/i.test(v) && v.indexOf("github_pat_") !== 0 && v.indexOf("gho_") !== 0)) {
-      var warn = ar
-        ? "هذا الشكل ما يشبه رمز GitHub. ما نحفظه عشان ما ينخلط بكلمة السر. إذا متأكدة أنه صحيح، أرسلي لي من GitHub Developer settings."
-        : "That does not look like a GitHub token. Not saved (to avoid password mix-ups).";
-      A.setMsg("status", warn);
-      A.setMsg("settingsStatus", warn);
-      return "";
-    }
-    A.keepToken(v);
-    return v;
-  };
 
   A.publishLive = function () {
-    if (A._publishing) { A._publishAgain = true; return; }
-    var token = A.readToken();
-    if (!token) token = A.askPublishToken();
-    if (!token) {
-      A.setMsg("status", A.lang === "en" ? "Saved on this device only (no publish)." : "انحفظ على الجهاز فقط (بدون نشر للموقع).");
-      return;
-    }
-    A._publishing = true;
-    A.setMsg("status", A.t("publishing"));
-    var chain = A.materializeProductImages ? A.materializeProductImages(token) : Promise.resolve();
-    chain.then(function () {
-      try { localStorage.setItem(A.KEY, JSON.stringify(A.overrides)); } catch (e) {}
-      return A.ghPut("data/overrides.json", JSON.stringify(A.overrides, null, 2) + "\n", token, "chore: publish product overrides");
-    }).then(function (res) {
-      if (res && (res.status === 401 || res.status === 403)) {
-        A.forgetToken();
-        throw new Error("auth");
-      }
-      if (!res || !res.ok) throw new Error("HTTP");
-      A.setMsg("status", A.t("p_live"));
-    }).catch(function () {
-      A.setMsg("status", A.t("publishFail"));
-    }).then(function () {
-      A._publishing = false;
-      if (A._publishAgain) { A._publishAgain = false; A.publishLive(); }
-    });
+    if (A.syncOverridesCloud) return A.syncOverridesCloud();
+    try { localStorage.setItem(A.KEY, JSON.stringify(A.overrides || {})); } catch (e) {}
+    if (A.setMsg) A.setMsg("status", A.lang === "en" ? "Saved on this device" : "انحفظ على الجهاز");
   };
 
   A.publish = function () {
-    if (A.editingId != null && document.getElementById("editView") && !document.getElementById("editView").hidden && A.saveEdit) A.saveEdit({ skipPublish: true });
-    try { localStorage.setItem(A.KEY, JSON.stringify(A.overrides)); } catch (e) {}
-    A.saveOrders();
-    var token = A.readToken();
-    if (!token) token = A.askPublishToken();
-    if (!token) {
-      A.setMsg("status", A.lang === "en" ? "Saved on this device only." : "انحفظ على الجهاز فقط.");
-      A.setMsg("settingsStatus", A.lang === "en" ? "Saved on this device only." : "انحفظ على الجهاز فقط.");
-      return;
+    if (A.editingId != null && document.getElementById("editView") && !document.getElementById("editView").hidden && A.saveEdit) {
+      A.saveEdit({ skipPublish: true });
     }
-    A.setMsg("status", A.t("publishing"));
-    A.setMsg("settingsStatus", A.t("publishing"));
-    var chain = Promise.resolve();
-    if (A.materializeProductImages) chain = A.materializeProductImages(token);
-    chain.then(function () {
-      var jobs = [
-        A.ghPut("data/overrides.json", JSON.stringify(A.overrides, null, 2) + "\n", token, "chore: publish product overrides")
-      ];
-      if (A.publishReviews) jobs.push(A.publishReviews(token));
-      return Promise.all(jobs);
-    }).then(function (res) {
-      if (!res[0].ok || (res[1] && !res[1].ok)) throw new Error("HTTP");
-      A.setMsg("status", A.t("publishedProducts"));
-      A.setMsg("orderStatus", A.t("ordersStay"));
-      A.setMsg("settingsStatus", A.t("published"));
-      var rs = document.getElementById("reviewStatus");
-      if (rs) rs.textContent = A.t("reviewsOk");
-    }).catch(function (err) {
-      try { A.forgetToken(); } catch (e) {}
-      A.setMsg("status", A.t("publishFail") + " " + (err && err.message ? err.message : ""));
-      A.setMsg("settingsStatus", A.t("publishFail"));
-    });
+    try { localStorage.setItem(A.KEY, JSON.stringify(A.overrides || {})); } catch (e) {}
+    if (A.saveOrders) A.saveOrders();
+    if (A.syncOverridesCloud) return A.syncOverridesCloud();
+    if (A.setMsg) A.setMsg("settingsStatus", A.lang === "en" ? "Saved on this device" : "انحفظ على الجهاز");
   };
 })(window);
+

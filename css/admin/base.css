@@ -382,11 +382,3 @@ body.naqa-open .orders-top-tools .search-wrap.search-wide{
   font-weight: 800;
 }
 
-/* top bar: add + excel stay fixed beside search */
-.top-bar{
-  display:flex;align-items:center;gap:8px;flex-wrap:wrap;
-  position:relative;z-index:25;
-}
-.top-bar .btn-add{
-  flex:0 0 auto;height:36px;min-height:36px;box-sizing:border-box;
-}

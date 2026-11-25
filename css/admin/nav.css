@@ -410,86 +410,81 @@ body.naqa-open #ordersTopTools:not([hidden]) {
 }
 
 
-/* ===== Excel منتجات: ثابت في الشريط العلوي مثل تصدير الطلبات ===== */
-body.naqa-open #topBar {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  flex-wrap: wrap;
-  position: relative;
-  z-index: 30;
-}
-body.naqa-open #topBar .excel-wrap,
+/* ===== Excel منتجات: الشريط العلوي — نفس مقاس زر الإضافة ===== */
+body.naqa-open #excelWrap.excel-wrap,
 #excelWrap.excel-wrap {
   position: relative;
   display: inline-flex;
   flex: 0 0 auto;
   align-items: center;
-  z-index: 50;
+  align-self: center;
+  z-index: 40;
   margin: 0;
+  /* لا يمدّد ارتفاع الشريط */
+  height: 34px;
+  max-height: 34px;
 }
 #excelWrap[hidden] {
   display: none !important;
 }
+/* نفس ارتفاع .btn-add (34px) — بدون فرض 36px على الشريط */
 #excelMenuBtn.btn-excel,
-body.naqa-open #topBar .btn-excel {
+body.naqa-open #excelMenuBtn.btn-excel {
   display: inline-flex !important;
   align-items: center;
   justify-content: center;
-  gap: 6px;
+  gap: 5px;
   flex: 0 0 auto !important;
   margin: 0 !important;
-  height: 36px;
-  min-height: 36px;
+  height: 34px !important;
+  min-height: 34px !important;
+  max-height: 34px !important;
   padding: 0 12px !important;
-  border: 1px solid #8d3048 !important;
+  border: 0 !important;
   border-radius: 999px !important;
-  background: #8d3048 !important;
+  background: #c46b7c !important;
   color: #fff !important;
-  font: 800 0.72rem/1 "Noto Sans Arabic", "IBM Plex Sans", system-ui, sans-serif !important;
+  font: 800 0.75rem/1 "Noto Sans Arabic", "IBM Plex Sans", system-ui, sans-serif !important;
   white-space: nowrap !important;
   cursor: pointer;
-  box-shadow: 0 2px 6px rgba(141, 48, 72, 0.25) !important;
-  transition: background 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease, transform 0.12s ease;
+  box-shadow: none !important;
+  transition: background 0.15s ease, transform 0.12s ease;
   touch-action: manipulation;
   user-select: none;
+  box-sizing: border-box;
 }
-#excelMenuBtn.btn-excel:hover,
-body.naqa-open #topBar .btn-excel:hover {
-  background: #a03d56 !important;
-  border-color: #a03d56 !important;
-  box-shadow: 0 3px 10px rgba(141, 48, 72, 0.3) !important;
+#excelMenuBtn.btn-excel:hover {
+  background: #8d3048 !important;
 }
-#excelMenuBtn.btn-excel:active,
-body.naqa-open #topBar .btn-excel:active {
-  transform: scale(0.96) translateY(1px);
-  background: #7a2a3e !important;
-  box-shadow: 0 1px 2px rgba(80, 20, 35, 0.35) inset !important;
+#excelMenuBtn.btn-excel:active {
+  transform: scale(0.97);
+  background: #8d3048 !important;
 }
 #excelMenuBtn .excel-ico {
   display: inline-flex;
-  width: 18px;
-  height: 18px;
+  width: 16px;
+  height: 16px;
   align-items: center;
   justify-content: center;
-  border-radius: 4px;
-  background: rgba(255, 255, 255, 0.18);
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.2);
   flex-shrink: 0;
 }
 #excelMenuBtn .excel-ico svg {
   display: block;
-  width: 12px;
-  height: 12px;
+  width: 11px;
+  height: 11px;
 }
 #excelMenuBtn .excel-label {
   color: #fff !important;
 }
 #excelMenuBtn .excel-chev {
-  font-size: 0.65rem;
+  font-size: 0.6rem;
   opacity: 0.9;
   color: #fff;
-  margin-inline-start: 2px;
+  line-height: 1;
 }
+/* القائمة فوق المحتوى — خارج التدفق، بدون فراغ */
 #excelMenu.excel-menu,
 #excelWrap .excel-menu {
   position: absolute !important;
@@ -497,16 +492,18 @@ body.naqa-open #topBar .btn-excel:active {
   inset-inline-end: 0 !important;
   inset-inline-start: auto !important;
   z-index: 120 !important;
-  min-width: 9.5rem;
+  min-width: 9rem;
   padding: 6px;
   border-radius: 12px;
   background: #fff;
   border: 1px solid #eadfd9;
-  box-shadow: 0 10px 28px rgba(40, 20, 24, 0.18);
+  box-shadow: 0 10px 28px rgba(40, 20, 24, 0.16);
   display: flex;
   flex-direction: column;
   gap: 4px;
-  height: auto;
+  height: auto !important;
+  max-height: none !important;
+  margin: 0 !important;
 }
 #excelMenu.excel-menu[hidden],
 #excelWrap .excel-menu[hidden] {
@@ -526,8 +523,5 @@ body.naqa-open #topBar .btn-excel:active {
 #excelMenu .excel-menu-item:active {
   background: #8d3048;
   color: #fff;
-}
-body.naqa-open #childNav .child-set[data-for="products"] {
-  min-width: max-content;
 }
 

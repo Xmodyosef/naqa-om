@@ -132,6 +132,7 @@ async function openSheet(id, mode, reset){
   const p=products.find(x=>x.id===id); if(!p) return;
   naqaRememberShopScroll();
   openProductId=id; sheetMode=mode||"full";
+  if(typeof pickQty==="undefined"){ try{ pickQty=1; }catch(e){} }
   if(reset!==false){ galleryIndex=0; pickQty=1; }
   const qv=sheetMode==="qv";
   $("#sheet").classList.toggle("qv", qv);

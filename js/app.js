@@ -21,17 +21,41 @@ function adjustCardQty(id, delta){
   try{ if(typeof refreshProductCartUI==="function") refreshProductCartUI(); }catch(err){}
 }
 function onCatalogClick(e){
-  const wish=e.target.closest("[data-wish]"); if(wish){ e.preventDefault(); e.stopPropagation(); toggleWish(+wish.dataset.wish); return; }
-  const inc=e.target.closest("[data-inc]"); if(inc){ e.preventDefault(); adjustCardQty(inc.dataset.inc, 1); return; }
-  const dec=e.target.closest("[data-dec]"); if(dec){ e.preventDefault(); adjustCardQty(dec.dataset.dec, -1); return; }
-  const add=e.target.closest("[data-add]"); if(add){ addToCart(+add.dataset.add); return; }
-  const qv=e.target.closest("[data-qv]"); if(qv){ openSheet(+qv.dataset.qv, "qv"); return; }
-  const open=e.target.closest("[data-open]"); if(open){ openSheet(+open.dataset.open, "full"); return; }
+  const wish=e.target.closest("[data-wish]"); if(wish){ e.preventDefault(); e.stopPropagation(); toggleWish(+wish.dataset.wish); return true; }
+  const inc=e.target.closest("[data-inc]"); if(inc){ e.preventDefault(); e.stopPropagation(); adjustCardQty(inc.dataset.inc, 1); return true; }
+  const dec=e.target.closest("[data-dec]"); if(dec){ e.preventDefault(); e.stopPropagation(); adjustCardQty(dec.dataset.dec, -1); return true; }
+  const add=e.target.closest("[data-add]"); if(add){
+    e.preventDefault(); e.stopPropagation();
+    var pid = Number(add.dataset.add);
+    if(pid) addToCart(pid, 1);
+    return true;
+  }
+  const qv=e.target.closest("[data-qv]"); if(qv){ openSheet(+qv.dataset.qv, "qv"); return true; }
+  const open=e.target.closest("[data-open]"); if(open){ openSheet(+open.dataset.open, "full"); return true; }
+  return false;
 }
 $("#grid").addEventListener("click", onCatalogClick);
-document.addEventListener("click", e=>{
-  if(e.target.closest("#shelves")) onCatalogClick(e);
+/* shelves + brand rails + any future catalog islands */
+document.addEventListener("click", function(e){
+  if(e.target.closest("#shelves") || e.target.closest(".catalog-rail-wrap") || e.target.closest("#brandsGrid")){
+    onCatalogClick(e);
+  }
 });
+/* capture: reliable Add on cards/shelves (sheet has own handler) */
+document.addEventListener("click", function(e){
+  var add = e.target.closest && e.target.closest("[data-add]");
+  if(!add) return;
+  if(e.target.closest && e.target.closest("#sheetCard")) return;
+  if(add.getAttribute("data-busy")==="1") return;
+  e.preventDefault();
+  e.stopPropagation();
+  var pid = Number(add.dataset.add);
+  if(!pid || typeof addToCart!=="function") return;
+  add.setAttribute("data-busy","1");
+  try{ addToCart(pid, 1); } finally {
+    setTimeout(function(){ try{ add.removeAttribute("data-busy"); }catch(err){} }, 280);
+  }
+}, true);
 $("#cartBody").addEventListener("click", e=>{
   const inc=e.target.closest("[data-inc]"); const dec=e.target.closest("[data-dec]"); const rm=e.target.closest("[data-rm]");
   if(inc){

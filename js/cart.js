@@ -112,14 +112,20 @@ function updatePaySum(){
   }
 }
 function addToCart(id, qty, quiet){
-  const p=products.find(x=>x.id===id); if(!p||p.hidden) return;
+  id = Number(id);
+  if(!id) return;
+  const p=products.find(function(x){ return Number(x.id)===id; });
+  if(!p || p.hidden){
+    if(!quiet && typeof toast==="function") toast(lang==="en"?"Product unavailable":"المنتج غير متاح");
+    return;
+  }
   if(p.stock!=null && Number(p.stock)<=0){
     if(!quiet && typeof toast==="function") toast(lang==="en"?"Out of stock":"نفد المخزون");
     return;
   }
   let n=Math.max(1, Math.min(20, parseInt(qty,10)||1));
   if(p.stock!=null){
-    const have=(cart.find(x=>x.id===id)||{}).qty||0;
+    const have=(cart.find(function(x){ return Number(x.id)===id; })||{}).qty||0;
     const left=Math.max(0, Number(p.stock)-have);
     if(left<=0){
       if(!quiet && typeof toast==="function") toast(lang==="en"?"Out of stock":"نفد المخزون");
@@ -127,13 +133,13 @@ function addToCart(id, qty, quiet){
     }
     n=Math.min(n, left);
   }
-  const row=cart.find(x=>x.id===id);
-  if(row) row.qty+=n; else cart.push({id:p.id, brand:p.brand, price:p.price, sku:p.sku, qty:n});
+  const row=cart.find(function(x){ return Number(x.id)===id; });
+  if(row) row.qty+=n; else cart.push({id:Number(p.id), brand:p.brand, price:p.price, sku:p.sku, qty:n});
   saveCart(); renderCart();
   if(!quiet && typeof toast==="function"){
-    var line = cart.find(function(x){ return x.id===id; });
+    var line = cart.find(function(x){ return Number(x.id)===id; });
     var lineQty = line ? line.qty : n;
-    var cartN = cart.reduce(function(s,i){ return s + i.qty; }, 0);
+    var cartN = cart.reduce(function(s,i){ return s + (Number(i.qty)||0); }, 0);
     toast(lang==="en"
       ? ("Added · this item ×"+lineQty+" · cart "+cartN)
       : ("انضاف · هذا المنتج ×"+lineQty+" · السلة "+cartN));

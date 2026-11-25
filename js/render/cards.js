@@ -25,12 +25,12 @@ function productCartControls(id, opts){
       +'<button type="button" data-inc="'+id+'" aria-label="'+(en?"Increase":"زيادة")+'">+</button>'
       +'</div>';
   }
+  var label = en ? "Add to cart" : "أضف للسلة";
+  if(typeof T==="function" && T("addCart")) label = T("addCart");
   if(sheet){
-    var label = en ? "Add to cart" : "أضف للسلة";
-    if(typeof T==="function" && T("addCart")) label = T("addCart");
     return '<button class="btn-add card-add sheet-add-cta" data-add="'+id+'" type="button">'+label+'</button>';
   }
-  return '<button class="btn-add" data-add="'+id+'" type="button">'+(typeof T==="function"?T("add"):"أضف")+'</button>';
+  return '<button class="btn-add card-add-cta" data-add="'+id+'" type="button">'+label+'</button>';
 }
 function refreshSheetCartControls(){
   try{
@@ -74,7 +74,7 @@ function refreshCardCartControls(){
       }
       var actions = card.querySelector(".card-actions");
       if(!actions) return;
-      var old = actions.querySelector(".inline-qty, button.btn-add");
+      var old = actions.querySelector(".inline-qty, button.btn-add, button.card-add-cta");
       if(!old) return;
       var wrap = document.createElement("div");
       wrap.innerHTML = productCartControls(id, {});
@@ -114,24 +114,26 @@ function visual(p, idx){
 function cardHTML(p){
   const pct=offPct(p);
   const tags=(pct?'<span class="tag-off">'+esc(T("offTag")(pct))+'</span>':'')+(p.hot?'<span class="tag-hot">'+esc(T("hot"))+'</span>':'')+(p.stock!=null && Number(p.stock)<=0?'<span class="tag-out">'+(lang==="en"?"Out of stock":"نفد")+'</span>':'');
-  const qty=(cart.find(c=>c.id===p.id)||{}).qty;
-  const out=p.stock!=null && Number(p.stock)<=0;
-  return '<article class="card" data-id="'+p.id+'" aria-label="'+esc(pname(p))+'">'
+  const qty=cartLineQty(p.id);
+  const catLab=esc(T(catLabel[p.cat]||"all"));
+  return '<article class="card card-v2" data-id="'+p.id+'" aria-label="'+esc(pname(p))+'">'
     +'<div class="card-visual" data-open="'+p.id+'">'
     +'<button type="button" class="wish-btn'+(typeof isWish==='function'&&isWish(p.id)?' on':'')+'" data-wish="'+p.id+'" aria-label="'+(lang==="en"?"Save to wishlist":"حفظ في المفضلة")+'">♥</button>'
     +'<span class="card-cart-chip'+(qty?' show':'')+'" data-chip="'+p.id+'">'+(qty?('×'+qty):'')+'</span>'
-    +tags+visual(p,0)+'</div>'
+    +tags+visual(p,0)
+    +'<div class="card-price-float">'+money(p.price)+'</div>'
+    +'</div>'
     +'<div class="card-body">'
-    +brandMark(p.brand)
-    +'<div class="card-brand">'+esc(T(catLabel[p.cat]||"all"))+'</div>'
+    +'<div class="card-meta-row">'
+    +brandMark(p.brand, {nameOnly:true})
+    +'<span class="card-cat-pill">'+catLab+'</span>'
+    +'</div>'
     +'<button class="card-name" data-open="'+p.id+'" type="button">'+esc(pname(p))+'</button>'
-    +'<div class="card-desc">'+esc(pdesc(p))+'</div>'
-    +(p.stock!=null && Number(p.stock)<=2?('<div class="card-code">'+(lang==="en"?"Stock ":"المخزون ")+p.stock+'</div>'):'')
+    +(p.stock!=null && Number(p.stock)<=2?('<div class="card-code">'+(lang==="en"?"Low stock · ":"مخزون منخفض · ")+p.stock+'</div>'):'')
     +priceHTML(p)
-    +'<div class="card-actions">'
-    +'<button class="btn-qv" data-qv="'+p.id+'" type="button">'+T("qv")+'</button>'
+    +'<div class="card-actions card-actions-v2">'
     +productCartControls(p.id, {})
-    +'<button class="btn-open" data-open="'+p.id+'" type="button">'+T("open")+'</button>'
+    +'<button class="btn-open-ghost" data-open="'+p.id+'" type="button">'+T("open")+'</button>'
     +'</div></div></article>';
 }
 function shelfBanner(kind, list){
@@ -155,17 +157,40 @@ function renderShelves(){
   const year=products.filter(p=>!p.hidden&&p.was>p.price).sort((a,b)=>offPct(b)-offPct(a)).slice(0,16);
   let html="";
   if(hot.length){
-    html+='<section class="shelf">'+shelfBanner("hot", hot)
+    html+='<section class="shelf shelf-featured">'+shelfBanner("hot", hot)
       +'<div class="shelf-head"><h2 id="hotTitle">'+T("hot")+'</h2>'+vatChip()
       +'<button type="button" data-shelf="hot">'+T("viewAll")+'</button></div>'
       +'<div class="shelf-row">'+hot.map(cardHTML).join("")+'</div></section>';
   }
   if(year.length){
-    html+='<section class="shelf">'+shelfBanner("year", year)
+    html+='<section class="shelf shelf-featured">'+shelfBanner("year", year)
       +'<div class="shelf-head"><h2 id="yearTitle">'+T("year")+'</h2>'+vatChip()
       +'<button type="button" data-shelf="year">'+T("viewAll")+'</button></div>'
       +'<div class="shelf-row">'+year.map(cardHTML).join("")+'</div></section>';
   }
+  /* Brand mini-catalogs: top brands as product rails */
+  try{
+    var counts={};
+    products.forEach(function(p){ if(!p.hidden) counts[p.brand]=(counts[p.brand]||0)+1; });
+    var top=Object.keys(counts).sort(function(a,b){ return counts[b]-counts[a]; }).slice(0,6);
+    if(top.length){
+      html+='<section class="catalog-rail-wrap" aria-label="'+(lang==="en"?"Brand catalogs":"كتالوجات الماركات")+'">';
+      html+='<div class="catalog-rail-head"><h2>'+(lang==="en"?"Brand catalogs":"كتالوجات الماركات")+'</h2>'
+        +'<span>'+(lang==="en"?"Curated rails":"أرفف مختارة")+'</span></div>';
+      top.forEach(function(b){
+        var list=products.filter(function(p){ return !p.hidden && p.brand===b; }).slice(0,10);
+        if(!list.length) return;
+        html+='<section class="shelf shelf-brand-rail">'
+          +'<div class="shelf-head shelf-head-brand">'
+          +brandMark(b)
+          +'<span class="shelf-count">'+counts[b]+(lang==="en"?" items":" منتج")+'</span>'
+          +'<button type="button" data-brand="'+esc(b)+'">'+(lang==="en"?"View catalog":"عرض الكتالوج")+'</button>'
+          +'</div>'
+          +'<div class="shelf-row">'+list.map(cardHTML).join("")+'</div></section>';
+      });
+      html+='</section>';
+    }
+  }catch(e){}
   box.innerHTML=html;
 }
 

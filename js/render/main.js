@@ -299,6 +299,35 @@ function render(){
     const cc=$("#clearConcern"); if(cc) cc.onclick=()=>{ currentConcern=""; render(); };
   } else { bar.hidden=true; bar.innerHTML=""; }
   $("#countLabel").textContent=T("count")(list.length);
+  /* Brand catalog hero strip */
+  try{
+    var hero=$("#catalogHero");
+    if(!hero){
+      hero=document.createElement("div");
+      hero.id="catalogHero";
+      hero.className="catalog-hero";
+      var gridEl=$("#grid");
+      if(gridEl && gridEl.parentNode) gridEl.parentNode.insertBefore(hero, gridEl);
+    }
+    if(currentBrand && !query){
+      hero.hidden=false;
+      var nList=list.length;
+      var logo=(typeof BRAND_LOGO!=="undefined" && BRAND_LOGO[currentBrand])?BRAND_LOGO[currentBrand]:"";
+      var d=(typeof BRAND_DOMAIN!=="undefined" && BRAND_DOMAIN[currentBrand])?BRAND_DOMAIN[currentBrand]:"";
+      var fav=logo||(d?("https://www.google.com/s2/favicons?domain="+encodeURIComponent(d)+"&sz=128"):"");
+      var mark=fav?'<img src="'+fav+'" alt="" width="56" height="56" loading="lazy">':'<span class="bmono">'+esc(String(currentBrand).slice(0,2).toUpperCase())+'</span>';
+      hero.innerHTML='<div class="catalog-hero-inner">'
+        +'<div class="catalog-hero-mark">'+mark+'</div>'
+        +'<div class="catalog-hero-copy"><b>'+esc(currentBrand)+'</b>'
+        +'<span>'+(lang==="en"? (nList+" products in this catalog") : (nList+" منتج في هذا الكتالوج"))+'</span></div>'
+        +'<button type="button" class="catalog-hero-clear" id="clearBrandHero">'+(lang==="en"?"All brands":"كل الماركات")+'</button>'
+        +'</div>';
+      var cb=document.getElementById("clearBrandHero");
+      if(cb) cb.onclick=function(){ currentBrand=""; try{ history.pushState({naqa:"shop"},"","#shop"); }catch(e){} render(); };
+    } else {
+      hero.hidden=true; hero.innerHTML="";
+    }
+  }catch(e){}
   $("#empty").hidden=list.length>0;
   const catTotal=currentCat==="all"?products.length:products.filter(x=>x.cat===currentCat).length;
   const soon=currentCat!=="all" && catTotal===0;

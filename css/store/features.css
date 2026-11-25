@@ -122,3 +122,7 @@ html[dir="ltr"] .wish-btn{left:auto;right:10px}
 /* quiz-rec content-visibility removed (scroll flicker) */
 .quiz-p{cursor:pointer;-webkit-tap-highlight-color:transparent}
 .modal-card#quizBody, #quizBody.modal-card, #quizBody{max-height:88vh;overflow:auto;-webkit-overflow-scrolling:touch}
+
+/* brand mosaic overrides horizontal-only row */
+.brands-mosaic .brand-tile-v2{ width:auto; min-width:0; }
+.brands-head-v2{ display:flex; align-items:flex-start; justify-content:space-between; gap:12px; }

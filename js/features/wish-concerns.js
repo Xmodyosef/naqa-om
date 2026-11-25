@@ -62,17 +62,27 @@ function renderBrandsGrid() {
   if (query || currentCat !== "all" || currentBrand || currentConcern || wishView) { el.hidden = true; return; }
   el.hidden = false;
   var counts = {};
-  products.forEach(function (p) { counts[p.brand] = (counts[p.brand] || 0) + 1; });
+  products.forEach(function (p) { if (!p.hidden) counts[p.brand] = (counts[p.brand] || 0) + 1; });
   var brands = Object.keys(counts).sort(function (a, b) { return counts[b] - counts[a]; });
-  var title = lang === "en" ? "Shop by brand" : "تسوّقي حسب الماركة";
-  el.innerHTML = '<div class="brands-head"><h3>' + title + "</h3><span>" + brands.length + (lang === "en" ? " brands" : " ماركة") + "</span></div>"
-    + '<div class="brands-row">' + brands.map(function (b) {
+  var title = lang === "en" ? "Brand catalogs" : "كتالوجات الماركات";
+  var sub = lang === "en" ? "Tap a brand to open its full catalog" : "اضغطي ماركة لفتح كتالوجها الكامل";
+  el.innerHTML = '<div class="brands-catalog">'
+    + '<div class="brands-head brands-head-v2"><div><h3>' + title + "</h3><p class=\"brands-sub\">" + sub + "</p></div>"
+    + "<span class=\"brands-count-pill\">" + brands.length + (lang === "en" ? " brands" : " ماركة") + "</span></div>"
+    + '<div class="brands-mosaic">' + brands.map(function (b, i) {
       var logo = (typeof BRAND_LOGO !== "undefined" && BRAND_LOGO[b]) ? BRAND_LOGO[b] : "";
-      var mark = logo
-        ? '<img src="' + logo + '" alt="' + esc(b) + '" loading="lazy" width="40" height="40">'
-        : '<span class="bmono">' + esc(String(b).slice(0, 2).toUpperCase()) + "</span>";
-      var name = logo ? '<span aria-hidden="true">' + esc(b) + "</span>" : "<span>" + esc(b) + "</span>";
-      return '<button type="button" class="brand-tile" data-brand="' + esc(b) + '">' + mark + name + "<i>" + counts[b] + "</i></button>";
-    }).join("") + "</div>";
+      var d = (typeof BRAND_DOMAIN !== "undefined" && BRAND_DOMAIN[b]) ? BRAND_DOMAIN[b] : "";
+      var fav = logo || (d ? ("https://www.google.com/s2/favicons?domain=" + encodeURIComponent(d) + "&sz=128") : "");
+      var mark = fav
+        ? '<img src="' + fav + '" alt="" loading="lazy" width="48" height="48" onerror="this.style.display=\'none\';this.nextElementSibling&&(this.nextElementSibling.hidden=false)">'
+          + '<span class="bmono" hidden>' + esc(String(b).replace(/[^A-Za-z\u0600-\u06FF0-9]/g,"").slice(0, 2).toUpperCase() || "•") + "</span>"
+        : '<span class="bmono">' + esc(String(b).replace(/[^A-Za-z\u0600-\u06FF0-9]/g,"").slice(0, 2).toUpperCase() || "•") + "</span>";
+      var featured = i < 3 ? " brand-tile-feature" : "";
+      return '<button type="button" class="brand-tile brand-tile-v2' + featured + '" data-brand="' + esc(b) + '">'
+        + '<span class="brand-tile-mark">' + mark + "</span>"
+        + '<span class="brand-tile-name">' + esc(b) + "</span>"
+        + '<i class="brand-tile-n">' + counts[b] + (lang === "en" ? " products" : " منتج") + "</i>"
+        + "</button>";
+    }).join("") + "</div></div>";
 }
 

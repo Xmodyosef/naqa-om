@@ -141,15 +141,83 @@
       });
       A.downloadCsv("naqa-reviews.csv", rows);
     };
+    function productOf(r) {
+      var list = A.products || w.products || [];
+      return list.find(function (p) {
+        if (!p) return false;
+        if (r.pid != null && Number(p.id) === Number(r.pid)) return true;
+        return r.sku && String(p.sku) === String(r.sku);
+      }) || null;
+    }
+    function productTitle(p) {
+      if (!p) return "";
+      var en = A.lang === "en";
+      return String((en ? (p.nameEn || p.nameAr) : (p.nameAr || p.nameEn)) || p.brand || p.sku || "");
+    }
+    function storeProductHref(p) {
+      if (!p || p.id == null) return "";
+      return "index.html#p/" + encodeURIComponent(String(p.id));
+    }
     function draw() {
       var q = A.reviewQuery || "";
-      var rows = (A.reviews || []).filter(function (r) { return matchPhone(r, q); }).map(function (r) {
+      var list = (A.reviews || []).filter(function (r) { return matchPhone(r, q); });
+      var openId = A.reviewOpen || "";
+      var opened = openId ? list.find(function (r) { return r.id === openId; }) : null;
+      if (openId && !opened) A.reviewOpen = "";
+      if (opened) {
+        var phoneKey = phoneDigits(opened.phone);
+        var mine = phoneKey
+          ? list.filter(function (r) { return phoneDigits(r.phone) === phoneKey; })
+          : [opened];
+        var back = A.lang === "en" ? "Back" : "رجوع";
+        var prodLab = A.lang === "en" ? "Product" : "المنتج";
+        var ordLab = A.lang === "en" ? "Order" : "رقم الطلب";
+        var cards = mine.map(function (r) {
+          var p = productOf(r);
+          var title = productTitle(p) || r.sku || "";
+          var href = storeProductHref(p);
+          var sample = r.sample ? (' <span class="tax-mark">' + (A.lang === "en" ? "Preview" : "تجريبي") + '</span>') : "";
+          var text = A.lang === "en" ? (r.en || r.ar || "") : (r.ar || r.en || "");
+          var prod = href
+            ? ('<a class="rv-link" href="' + A.esc(href) + '" target="_blank" rel="noopener">' + A.esc(title) + '</a>')
+            : A.esc(title);
+          var ord = r.order
+            ? ('<button type="button" class="rv-link rv-order" data-rv-order="' + A.esc(r.order) + '">' + A.esc(r.order) + '</button>')
+            : "—";
+          return '<article class="rv-card">'
+            + '<strong>' + stars(r.stars) + sample + '</strong>'
+            + '<p class="rv-text">' + A.esc(text) + '</p>'
+            + '<p class="rv-meta"><span>' + prodLab + '</span> ' + prod + '</p>'
+            + '<p class="rv-meta"><span>' + ordLab + '</span> ' + ord + '</p>'
+            + '</article>';
+        }).join("");
+        box.innerHTML = '<div class="panel">'
+          + '<button type="button" class="mini" id="rvBack">' + A.esc(back) + '</button>'
+          + '<h2>' + A.esc(opened.name || "") + '</h2>'
+          + '<p class="note">' + A.esc(opened.phone || "") + '</p>'
+          + cards
+          + '</div>';
+        var backBtn = document.getElementById("rvBack");
+        if (backBtn) backBtn.onclick = function () { A.reviewOpen = ""; draw(); };
+        box.querySelectorAll("[data-rv-order]").forEach(function (b) {
+          b.onclick = function () {
+            A.orderQuery = b.getAttribute("data-rv-order") || "";
+            if (A.go) A.go("orders", "all", { push: true });
+            else if (A.paintOrders) A.paintOrders();
+          };
+        });
+        return;
+      }
+      var rows = list.map(function (r) {
         var imgSrc = r.photo || (r.photoB64 ? ("data:image/jpeg;base64," + r.photoB64) : "");
         var img = imgSrc ? '<img src="' + A.esc(imgSrc) + '" alt="" style="width:64px;height:64px;object-fit:cover;border-radius:10px">' : "";
         var sample = r.sample ? (' <span class="tax-mark">' + (A.lang === "en" ? "Preview" : "تجريبي") + '</span>') : "";
         var phone = r.phone ? (' · ' + A.esc(r.phone)) : "";
         var ord = r.order ? (" · " + A.esc(r.order)) : "";
-        return '<div class="row"><div>' + img + '<strong>' + A.esc(r.name || "") + " " + stars(r.stars) + sample + '</strong><small>' + A.esc(r.sku || "") + phone + ord + " · " + A.esc((r.ar || r.en || "").slice(0, 80)) + '</small></div></div>';
+        return '<button type="button" class="row rv-hit" data-rv-open="' + A.esc(r.id) + '"><div>' + img
+          + '<strong>' + A.esc(r.name || "") + " " + stars(r.stars) + sample + '</strong><small>'
+          + A.esc(r.sku || "") + phone + ord + " · " + A.esc((r.ar || r.en || "").slice(0, 80))
+          + '</small></div></button>';
       }).join("");
       if (!rows) {
         rows = '<p class="note">' + A.esc(q
@@ -160,6 +228,12 @@
         + '<div id="reviewStatus" class="msg"></div>'
         + rows
         + '</div>';
+      box.querySelectorAll("[data-rv-open]").forEach(function (b) {
+        b.onclick = function () {
+          A.reviewOpen = b.getAttribute("data-rv-open") || "";
+          draw();
+        };
+      });
     }
   };
   

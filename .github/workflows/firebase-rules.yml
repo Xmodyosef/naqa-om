@@ -1,0 +1,36 @@
+# ينشر firestore.rules من GitHub → Firebase تلقائياً عند تعديل الملف.
+# يحتاج Secret مرة واحدة: FIREBASE_TOKEN (من جهازك: firebase login:ci)
+name: Deploy Firestore rules
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "firestore.rules"
+      - "firebase.json"
+      - ".github/workflows/firebase-rules.yml"
+  workflow_dispatch:
+
+jobs:
+  deploy-rules:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install Firebase CLI
+        run: npm install -g firebase-tools@13
+
+      - name: Deploy Firestore rules only
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+        run: |
+          if [ -z "$FIREBASE_TOKEN" ]; then
+            echo "Missing secret FIREBASE_TOKEN. Create it once (see docs/FIREBASE-GITHUB-SYNC.md)."
+            exit 1
+          fi
+          firebase deploy --only firestore:rules --project naqa-om --non-interactive --token "$FIREBASE_TOKEN"

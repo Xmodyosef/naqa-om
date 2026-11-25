@@ -32,3 +32,6 @@
 - لوحة → تقييمات → «انشري للمتجر» → يجب أن تنجح بعد Publish.  
 - متجر يقرأ التقييمات بدون دخول.  
 - طلبات سحابية: إعدادات → سحب/رفع الطلبات (بعد Publish لـ `orders_private`).
+
+
+**تلقائي من GitHub:** [FIREBASE-GITHUB-SYNC.md](./FIREBASE-GITHUB-SYNC.md)

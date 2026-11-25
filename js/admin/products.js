@@ -983,10 +983,15 @@
 
     var pager = "";
     if (matched.length) {
-      pager = '<div class="pager" id="prodPager">'
-        + '<button type="button" data-page="' + (page - 1) + '"' + (page <= 1 ? " disabled" : "") + ">" + A.t("pagePrev") + "</button>"
-        + '<span>' + page + " / " + pages + " · " + matched.length + "</span>"
-        + '<button type="button" data-page="' + (page + 1) + '"' + (page >= pages ? " disabled" : "") + ">" + A.t("pageNext") + "</button>"
+      pager = '<div class="pager naqa-pager" id="prodPager" role="navigation" aria-label="pages">'
+        + '<button type="button" class="pager-btn" data-page="' + (page - 1) + '"' + (page <= 1 ? " disabled" : "") + ">"
+        +   A.esc(A.t("pagePrev") || (A.lang === "en" ? "Previous" : "السابق"))
+        + '</button>'
+        + '<span class="pager-meta"><b>' + page + '</b><span class="pager-sep">/</span>' + pages
+        +   '<span class="pager-dot">·</span><span class="pager-total">' + matched.length + '</span></span>'
+        + '<button type="button" class="pager-btn" data-page="' + (page + 1) + '"' + (page >= pages ? " disabled" : "") + ">"
+        +   A.esc(A.t("pageNext") || (A.lang === "en" ? "Next" : "التالي"))
+        + '</button>'
         + "</div>";
     }
     var listEl = document.getElementById("list");

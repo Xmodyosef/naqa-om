@@ -745,6 +745,9 @@
 
   A.paintOrders = function (opts) {
     opts = opts || {};
+    if (opts.resetPage) A.orderPage = 1;
+
+    opts = opts || {};
     try { A.syncOrdersTab(); } catch (e) {}
     A.orders.forEach(function (o) { o.status = A.normalizeStatus(o.status); });
     try { if (A.updateOrdersBadge) A.updateOrdersBadge(); } catch (e2) {}
@@ -858,8 +861,49 @@
         + '</div></div></article>';
     };
     list.sort(function (a, b) { return String(b.at || "").localeCompare(String(a.at || "")); });
-    /* No day headers — each order already shows its own date/time. No slice: show ALL matching. */
-    box.innerHTML = list.map(cardHtml).join("");
+    /* pagination — same control as products */
+    var per = 50;
+    var total = list.length;
+    var pages = Math.max(1, Math.ceil(total / per) || 1);
+    var page = A.orderPage || 1;
+    if (page > pages) page = pages;
+    if (page < 1) page = 1;
+    A.orderPage = page;
+    var slice = list.slice((page - 1) * per, page * per);
+    var pager = "";
+    if (total > 0) {
+      pager = '<div class="pager naqa-pager" id="ordPager" role="navigation" aria-label="pages">'
+        + '<button type="button" class="pager-btn" data-ord-page="' + (page - 1) + '"' + (page <= 1 ? " disabled" : "") + ">"
+        +   A.esc(A.t("pagePrev") || (A.lang === "en" ? "Previous" : "السابق"))
+        + '</button>'
+        + '<span class="pager-meta"><b>' + page + '</b><span class="pager-sep">/</span>' + pages
+        +   '<span class="pager-dot">·</span><span class="pager-total">' + total + '</span></span>'
+        + '<button type="button" class="pager-btn" data-ord-page="' + (page + 1) + '"' + (page >= pages ? " disabled" : "") + ">"
+        +   A.esc(A.t("pageNext") || (A.lang === "en" ? "Next" : "التالي"))
+        + '</button>'
+        + '</div>';
+    }
+    box.innerHTML = slice.map(cardHtml).join("") + pager;
     try { A.syncExportLabel(); } catch (e3) {}
+    if (A.bindOrderPager) A.bindOrderPager();
+  };
+
+  A.bindOrderPager = function () {
+    var box = document.getElementById("ordersBox");
+    if (!box || box._naqaOrdPager) return;
+    box._naqaOrdPager = true;
+    box.addEventListener("click", function (e) {
+      var btn = e.target && e.target.closest && e.target.closest("[data-ord-page]");
+      if (!btn || btn.disabled) return;
+      e.preventDefault();
+      var n = parseInt(btn.getAttribute("data-ord-page"), 10);
+      if (!n || n < 1) return;
+      A.orderPage = n;
+      if (A.paintOrders) A.paintOrders({ skipTools: true });
+      try {
+        var el = document.getElementById("ordersBox");
+        if (el && el.scrollIntoView) el.scrollIntoView({ behavior: "smooth", block: "start" });
+      } catch (err) {}
+    });
   };
 })(window);

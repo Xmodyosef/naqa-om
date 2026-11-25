@@ -299,3 +299,85 @@ body.naqa-open .orders-top-tools .search-wrap.search-wide{
 }
 
 .orders-count-line{display:none!important}
+
+
+/* ===== naqa pager (products + orders) ===== */
+.pager.naqa-pager,
+.naqa-pager {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 16px auto 8px;
+  width: 100%;
+  max-width: 100%;
+  padding: 0 8px;
+  box-sizing: border-box;
+}
+.naqa-pager .pager-btn {
+  appearance: none;
+  -webkit-appearance: none;
+  border: 1px solid #eadfd9;
+  background: linear-gradient(180deg, #fff 0%, #faf6f4 100%);
+  color: #8d3048;
+  font: 800 0.78rem/1 inherit;
+  padding: 10px 16px;
+  min-height: 40px;
+  border-radius: 999px;
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(141, 48, 72, 0.08);
+  transition: background 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease, transform 0.12s ease, color 0.15s ease;
+  touch-action: manipulation;
+  user-select: none;
+}
+.naqa-pager .pager-btn:hover:not(:disabled) {
+  background: linear-gradient(180deg, #fff8f7 0%, #f3e4e7 100%);
+  border-color: #c46b7c;
+  box-shadow: 0 3px 10px rgba(196, 107, 124, 0.18);
+}
+.naqa-pager .pager-btn:active:not(:disabled) {
+  transform: scale(0.96) translateY(1px);
+  background: #c46b7c;
+  border-color: #c46b7c;
+  color: #fff;
+  box-shadow: 0 1px 2px rgba(141, 48, 72, 0.25) inset;
+}
+.naqa-pager .pager-btn:disabled {
+  opacity: 0.38;
+  cursor: not-allowed;
+  box-shadow: none;
+  color: #a89b94;
+  background: #f5efed;
+  border-color: #efe4df;
+}
+.naqa-pager .pager-meta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  min-width: 5.5rem;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: #faf6f4;
+  border: 1px solid #eadfd9;
+  color: #5c3d42;
+  font: 700 0.8rem/1 inherit;
+  white-space: nowrap;
+}
+.naqa-pager .pager-meta b {
+  color: #8d3048;
+  font-weight: 900;
+  font-size: 0.95rem;
+}
+.naqa-pager .pager-sep {
+  opacity: 0.45;
+  margin: 0 1px;
+}
+.naqa-pager .pager-dot {
+  opacity: 0.4;
+  margin: 0 4px;
+}
+.naqa-pager .pager-total {
+  color: #8d3048;
+  font-weight: 800;
+}

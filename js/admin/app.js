@@ -376,6 +376,7 @@
       var tab = subBtn.getAttribute("data-tab") || A.currentTab;
       var sub = subBtn.getAttribute("data-sub") || A.defaultSub(tab);
       if (tab === "products" && sub !== A.productView) A.productPage = 1;
+      if (tab === "orders" && sub !== A.currentSub) A.orderPage = 1;
       var same = tab === A.currentTab && sub === A.currentSub;
       A.go(tab, sub, { push: !same, page: (tab === "products" && sub !== A.productView) ? 1 : A.productPage });
     });

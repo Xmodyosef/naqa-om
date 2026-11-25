@@ -76,6 +76,18 @@ function productLink(id){
   return location.origin + siteBasePath() + "p/" + id + "/";
 }
 
+function naqaKeepImgs(base, saved){
+  base=(base||[]).filter(Boolean);
+  saved=(saved||[]).filter(Boolean);
+  if(!saved.length) return base.slice(0,5);
+  var kept=saved.some(function(u){ return base.indexOf(u)>=0; });
+  if(kept) return saved.slice(0,5);
+  var out=[], seen={};
+  function add(u){ if(!u||seen[u]||out.length>=6) return; seen[u]=1; out.push(u); }
+  saved.forEach(add);
+  base.forEach(add);
+  return out;
+}
 function mergeOverrides(map){
   if(!map) map={};
   products.forEach(function(p){
@@ -90,7 +102,7 @@ function mergeOverrides(map){
     ["nameAr","nameEn","descAr","descEn","useAr","useEn","skinAr","skinEn","brand","cat","sku","em"].forEach(function(k){
       if(o[k]!=null && o[k]!=="") p[k]=o[k];
     });
-    if(Array.isArray(o.imgs) && o.imgs.length) p.imgs=o.imgs.filter(Boolean).slice(0,5);
+    if(Array.isArray(o.imgs) && o.imgs.length) p.imgs=naqaKeepImgs(p.imgs, o.imgs);
   });
 }
 
@@ -261,6 +273,6 @@ const pname=p=>lang==="en"?(p.nameEn||p.nameAr):(p.nameAr||p.nameEn);
 const pdesc=p=>cleanProductCopy(lang==="en"?(p.descEn||p.descAr||""):(p.descAr||p.descEn||""));
 const puse=p=>cleanProductCopy(lang==="en"?(p.useEn||p.useAr||""):(p.useAr||p.useEn||""));
 const pskin=p=>lang==="en"?(p.skinEn||p.skinAr||""):(p.skinAr||p.skinEn||"");
-const pimgs=p=>(Array.isArray(p.imgs)?p.imgs:[]).filter(Boolean).slice(0,5);
+const pimgs=p=>(Array.isArray(p.imgs)?p.imgs:[]).filter(Boolean).slice(0,6);
 function saveCart(){try{localStorage.setItem("naqa_cart",JSON.stringify(cart))}catch(e){}}
 function nl2br(t){return esc(t).split("\n").join("<br>");}

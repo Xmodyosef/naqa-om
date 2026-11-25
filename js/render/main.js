@@ -319,7 +319,7 @@ function render(){
 
 function galleryList(p){
   // up to 5 real photos only (thumbs stay small). Arabic card is separate optional first for AR.
-  return pimgs(p).slice(0,5);
+  return pimgs(p).slice(0,6);
 }
 
 window.addEventListener("resize", function(){ if(window.__naqaShipResize) cancelAnimationFrame(window.__naqaShipResize); window.__naqaShipResize=requestAnimationFrame(function(){ if(typeof syncShipMarquee==="function") syncShipMarquee(); }); });

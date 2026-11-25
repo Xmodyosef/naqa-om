@@ -1,6 +1,6 @@
 (function (w) {
   var A = w.NaqaAdmin;
-  var MAX_IMGS = 5;
+  var MAX_IMGS = 6;
 
   var __editScale = 1;
   var __pinch = null;

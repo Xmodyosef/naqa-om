@@ -143,10 +143,24 @@
     var _cap = (typeof ORDERS_CAP === "number" && ORDERS_CAP > 0) ? ORDERS_CAP : 300;
     localStorage.setItem(A.ORDERS_KEY, JSON.stringify(A.orders.slice(0, _cap)));
   };
+  A.keepImgs = function (base, saved) {
+    base = (base || []).filter(Boolean);
+    saved = (saved || []).filter(Boolean);
+    if (!saved.length) return base.slice(0, 5);
+    var kept = saved.some(function (u) { return base.indexOf(u) >= 0; });
+    if (kept) return saved.slice(0, 5);
+    var out = [], seen = {};
+    function add(u) { if (!u || seen[u] || out.length >= 6) return; seen[u] = 1; out.push(u); }
+    saved.forEach(add);
+    base.forEach(add);
+    return out;
+  };
   A.merged = function (p) {
     var o = A.overrides[p.id] || A.overrides[String(p.id)] || {};
+    var baseImgs = Array.isArray(p.imgs) ? p.imgs.filter(Boolean) : [];
     var m = Object.assign({}, p, o);
-    if (o.imgs && o.imgs.length) m.imgs = o.imgs.filter(Boolean).slice(0, 5);
+    var savedImgs = Array.isArray(o.imgs) ? o.imgs.filter(Boolean) : [];
+    m.imgs = savedImgs.length ? A.keepImgs(baseImgs, savedImgs) : baseImgs.slice(0, 5);
     if (m.stock == null || m.stock === "") m.stock = 3;
     if (m.was == null) m.was = "";
     return m;

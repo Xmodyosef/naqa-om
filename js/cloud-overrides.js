@@ -56,7 +56,7 @@
             if (typeof u !== "string") return false;
             u = u.trim();
             return /^https?:\/\//i.test(u) || /^fs:[A-Za-z0-9]{8,}$/.test(u);
-          }).map(function (u) { return u.trim(); }).slice(0, 5);
+          }).map(function (u) { return u.trim(); }).slice(0, 6);
           if (urls.length) n.imgs = urls;
           return;
         }

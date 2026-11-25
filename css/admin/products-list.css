@@ -297,12 +297,21 @@
 .prod-sel-clear:hover{border-color:#c46b7c;background:#fff8f7}
 
 .prod-price-row.prod-readonly{
-  display:flex;flex-wrap:wrap;gap:8px 12px;align-items:baseline;
-  margin-top:4px;font:700 .8rem/1.3 inherit;color:#4a3a36
+  display:flex;flex-wrap:wrap;gap:4px 14px;align-items:baseline;
+  margin-top:2px;line-height:1.25
 }
-.prod-readonly .pr-price{color:#8d3048;font-weight:800}
-.prod-readonly .pr-price small{font-weight:700;color:#8a7a76;margin-inline-start:2px}
-.prod-readonly .pr-stock{color:#5c4a46}
-.prod-readonly .pr-stock.is-low{color:#b45309}
-.prod-readonly .pr-stock.is-out{color:#b91c1c}
-.prod-readonly .pr-stock b{font-weight:800}
+.prod-readonly .pr-line{
+  display:inline-flex;align-items:baseline;gap:3px;
+  font:700 .78rem/1.2 inherit;color:#5c4a46;white-space:nowrap
+}
+.prod-readonly .pr-lab{font-weight:700;color:#7a6a66}
+.prod-readonly .pr-colon{color:#b9aaa6;font-weight:700}
+.prod-readonly .pr-val{font-weight:800;color:#8d3048}
+.prod-readonly .pr-cur{
+  font-weight:700;color:#8a7a76;font-size:.72rem;margin-inline-start:2px
+}
+.prod-readonly .pr-price .pr-val{color:#8d3048}
+.prod-readonly .pr-qty .pr-val{color:#4a3a36}
+.prod-readonly .pr-qty.is-low .pr-val{color:#b45309}
+.prod-readonly .pr-qty.is-out .pr-val{color:#b91c1c}
+.prod-readonly .prod-was{font-size:.72rem;color:#a89b94}

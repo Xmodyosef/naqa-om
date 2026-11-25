@@ -5,7 +5,8 @@
 @import url("admin/nav.css?v=20261125theme1");
 @import url("admin/login-card.css?v=20261125theme1");
 @import url("admin/settings.css?v=20261125theme1");
-@import url("admin/theme-mode.css?v=20261125theme1");
+@import url("admin/theme-mode.css?v=20261125desk1");
+@import url("admin/desktop.css?v=20261125desk1");
 @import url("admin/products-list.css?v=20261125theme1");
 
 /* Customers — same hit rows as reviews, phone emphasis */

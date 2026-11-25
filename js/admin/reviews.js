@@ -98,7 +98,10 @@
             if (!r || !r.id) return;
             var hit = A.reviews.find(function (x) { return x.id === r.id; });
             if (!hit) A.reviews.push(r);
-            else if (!hit.phone && r.phone) hit.phone = r.phone;
+            else {
+              if (!hit.phone && r.phone) hit.phone = r.phone;
+              if (r.sample === false) hit.sample = false;
+            }
           });
         }
       }).catch(function () {});

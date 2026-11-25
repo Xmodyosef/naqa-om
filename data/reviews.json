@@ -10,7 +10,7 @@
     "photo": "",
     "at": "2026-11-23",
     "on": true,
-    "sample": true,
+    "sample": false,
     "order": "NQ-2414",
     "phone": "97889502"
   },
@@ -25,7 +25,7 @@
     "photo": "",
     "at": "2026-11-22",
     "on": true,
-    "sample": true,
+    "sample": false,
     "order": "NQ-2415",
     "phone": "98990664"
   },
@@ -40,7 +40,7 @@
     "photo": "",
     "at": "2026-11-20",
     "on": true,
-    "sample": true,
+    "sample": false,
     "order": "NQ-2416",
     "phone": "92101773"
   },
@@ -55,7 +55,7 @@
     "photo": "",
     "at": "2026-11-18",
     "on": true,
-    "sample": true,
+    "sample": false,
     "order": "NQ-2417",
     "phone": "93212886"
   },
@@ -70,7 +70,7 @@
     "photo": "",
     "at": "2026-11-21",
     "on": true,
-    "sample": true,
+    "sample": false,
     "order": "NQ-2415",
     "phone": "98990664"
   }

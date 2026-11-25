@@ -37,8 +37,22 @@ function onCatalogClick(e){
 $("#grid").addEventListener("click", onCatalogClick);
 /* shelves + brand rails + any future catalog islands */
 document.addEventListener("click", function(e){
-  if(e.target.closest("#shelves") || e.target.closest(".catalog-rail-wrap") || e.target.closest("#brandsGrid")){
+  if(e.target.closest("#shelves") || e.target.closest("#brandsGrid")){
     onCatalogClick(e);
+  }
+  var jump = e.target.closest && e.target.closest("[data-cat-jump]");
+  if(jump && jump.dataset.catJump){
+    e.preventDefault();
+    currentCat = jump.dataset.catJump;
+    currentBrand = "";
+    query = "";
+    if(typeof wishView !== "undefined") wishView = false;
+    var s = $("#search"); if(s) s.value = "";
+    document.querySelectorAll("#cats [data-cat]").forEach(function(x){ x.classList.toggle("on", x.dataset.cat === currentCat); });
+    try{ history.pushState({naqa:"cat"}, "", "#c/"+encodeURIComponent(currentCat)); }catch(err){}
+    if(typeof closeSheet === "function") closeSheet(true);
+    render();
+    var prod = $("#products"); if(prod) prod.scrollIntoView({behavior:"smooth"});
   }
 });
 /* capture: reliable Add on cards/shelves (sheet has own handler) */

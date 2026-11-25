@@ -57,10 +57,6 @@ function applyLang(){
     else if(query && String(query).trim()){
       // title filled after list length known in render(); temporary
       base=T("products");
-    } else if(currentCat && currentCat!=="all" && catLabel[currentCat]){
-      base=T(catLabel[currentCat]);
-    } else if(currentBrand){
-      base=currentBrand;
     } else base=T("products");
     prodH.innerHTML=base+' <span class="vat-chip">'+(T("vatInc")||"شامل الضريبة ٥٪")+'</span>';
   }
@@ -262,13 +258,7 @@ function render(){
     const wishOk=!viewingWish || (typeof isWish==="function" && isWish(p.id));
     const okPrice=typeof priceOk!=="function" || priceOk(p);
     const textOk=!searching || productMatchesQuery(p, q);
-    var shelfOk=true;
-    try{
-      var sf=window.__naqaShelfFilter||"";
-      if(sf==="hot") shelfOk=!!p.hot;
-      else if(sf==="off") shelfOk=!!(p.was>p.price);
-    }catch(e){}
-    return catOk && brandOk && concernOk && wishOk && okPrice && textOk && shelfOk;
+    return catOk && brandOk && concernOk && wishOk && okPrice && textOk;
   });
   const offOf=p=>(p.was&&p.was>p.price)?(1-p.price/p.was):0;
   list.sort((a,b)=>{
@@ -302,67 +292,62 @@ function render(){
     const cs=$("#clearSearch"); if(cs) cs.onclick=()=>{
       query=""; const s=$("#search"); if(s) s.value="";
       const clr=$("#searchClear"); if(clr) clr.hidden=true;
-      if(typeof backToCatalogs==="function") backToCatalogs(); else { try{ history.pushState({naqa:"shop"}, "", "#shop"); }catch(e){} render(); }
+      try{ history.pushState({naqa:"shop"}, "", "#shop"); }catch(e){}
+      render();
     };
-    const clear=$("#clearBrand"); if(clear) clear.onclick=()=>{ if(typeof backToCatalogs==="function") backToCatalogs(); else { currentBrand=""; render(); } };
-    const cc=$("#clearConcern"); if(cc) cc.onclick=()=>{ currentConcern=""; if(!currentBrand && currentCat==="all" && !query){ if(typeof backToCatalogs==="function") backToCatalogs(); else render(); } else render(); };
+    const clear=$("#clearBrand"); if(clear) clear.onclick=()=>{ currentBrand=""; render(); };
+    const cc=$("#clearConcern"); if(cc) cc.onclick=()=>{ currentConcern=""; render(); };
   } else { bar.hidden=true; bar.innerHTML=""; }
-  /* Shelf special filters from home catalog cards */
-  if(window.__naqaShelfFilter==="hot"){
-    for(var _i=list.length-1;_i>=0;_i--){ if(!list[_i].hot) list.splice(_i,1); }
-  } else if(window.__naqaShelfFilter==="off"){
-    for(var _j=list.length-1;_j>=0;_j--){ if(!(list[_j].was>list[_j].price)) list.splice(_j,1); }
-  }
   $("#countLabel").textContent=T("count")(list.length);
-  var home = (typeof isHomeCatalogView==="function") && isHomeCatalogView();
-  /* hide old brand catalog hero if present */
-  try{ var hero=$("#catalogHero"); if(hero){ hero.hidden=true; hero.innerHTML=""; } }catch(e){}
-  var head=$("#productsHead") || document.querySelector(".section-head");
-  var priceBar=$("#priceBar");
-  var grid=$("#grid");
-  var empty=$("#empty");
-  if(home){
-    if(head) head.hidden=true;
-    if(priceBar) priceBar.hidden=true;
-    if(grid){ grid.innerHTML=""; grid.hidden=true; }
-    if(empty) empty.hidden=true;
-    if(typeof renderHomeCatalogs==="function") renderHomeCatalogs();
-  } else {
-    if(head){
-      head.hidden=false;
-      /* back + title */
-      var titleEl=$("#products");
-      var label;
-      if(typeof wishView!=="undefined" && wishView) label=T("saved");
-      else if(query && String(query).trim()) label=null; /* already set above */
-      else if(currentBrand) label=(lang==="en"?"Catalog · ":"كتالوج · ")+currentBrand;
-      else if(window.__naqaShelfFilter==="hot") label=lang==="en"?"Bestsellers":"الأكثر طلباً";
-      else if(window.__naqaShelfFilter==="off") label=lang==="en"?"Offers":"عروض";
-      else if(currentCat && currentCat!=="all") label=T(catLabel[currentCat]||"all");
-      else label=T("products");
-      if(titleEl && label){
-        titleEl.innerHTML='<button type="button" class="cat-back" id="backCatalogs" aria-label="'+(lang==="en"?"Back to catalogs":"رجوع للكتالوجات")+'">‹</button> '
-          +esc(label)+' <span class="vat-chip">'+(T("vatInc")||"شامل الضريبة ٥٪")+'</span>';
-        var bk=document.getElementById("backCatalogs");
-        if(bk) bk.onclick=function(){ if(typeof backToCatalogs==="function") backToCatalogs(); };
+  /* Home = category catalog on #shelves; full grid only when filtered/searching */
+  var homeCatalog = !query && currentCat==="all" && !currentBrand && !(typeof wishView!=="undefined" && wishView) && !currentConcern;
+  try{
+    var hero=$("#catalogHero");
+    if(hero){ hero.hidden=true; hero.innerHTML=""; }
+    var secHead=document.querySelector(".section-head");
+    var priceBar=$("#priceBar");
+    var gridEl=$("#grid");
+    if(homeCatalog){
+      if(secHead) secHead.hidden=true;
+      if(priceBar) priceBar.hidden=true;
+      if(gridEl){ gridEl.innerHTML=""; gridEl.hidden=true; }
+      $("#empty").hidden=true;
+    } else {
+      if(secHead) secHead.hidden=false;
+      if(gridEl) gridEl.hidden=false;
+      /* brand filter soft title */
+      if(currentBrand && !query){
+        if(!hero){
+          hero=document.createElement("div");
+          hero.id="catalogHero";
+          hero.className="catalog-hero catalog-hero-soft";
+          if(gridEl && gridEl.parentNode) gridEl.parentNode.insertBefore(hero, gridEl);
+        }
+        hero.hidden=false;
+        hero.innerHTML='<div class="catalog-hero-inner">'
+          +'<div class="catalog-hero-copy"><b>'+esc(currentBrand)+'</b>'
+          +'<span>'+T("count")(list.length)+'</span></div>'
+          +'<button type="button" class="catalog-hero-clear" id="clearBrandHero">'+(lang==="en"?"Clear":"مسح")+'</button>'
+          +'</div>';
+        var cb=document.getElementById("clearBrandHero");
+        if(cb) cb.onclick=function(){ currentBrand=""; try{ history.pushState({naqa:"shop"},"","#shop"); }catch(e){} render(); };
       }
+      $("#empty").hidden=list.length>0;
+      const catTotal=currentCat==="all"?products.length:products.filter(x=>x.cat===currentCat).length;
+      const soon=currentCat!=="all" && catTotal===0;
+      $("#empty").textContent=soon
+        ? (lang==="en"?"This section is coming soon. The other sections are ready.":"هذا القسم قريباً. باقي الأقسام فيها منتجات.")
+        : ((typeof wishView!=="undefined" && wishView && !list.length)?T("wishEmpty"):T("empty"));
+      if(typeof renderPriceBar==="function") renderPriceBar();
+      if(gridEl) gridEl.innerHTML=list.map(cardHTML).join("");
     }
-    if(priceBar) priceBar.hidden=false;
-    if(grid) grid.hidden=false;
-    empty.hidden=list.length>0;
-    const catTotal=currentCat==="all"?products.length:products.filter(x=>x.cat===currentCat).length;
-    const soon=currentCat!=="all" && catTotal===0 && !(window.__naqaShelfFilter);
-    empty.textContent=soon
-      ? (lang==="en"?"This section is coming soon. The other sections are ready.":"هذا القسم قريباً. باقي الأقسام فيها منتجات.")
-      : ((typeof wishView!=="undefined" && wishView && !list.length)?T("wishEmpty"):T("empty"));
-    if(typeof renderPriceBar==="function") renderPriceBar();
-    grid.innerHTML=list.map(cardHTML).join("");
-    if(typeof renderHomeCatalogs==="function") renderHomeCatalogs();
+  }catch(e){
+    $("#empty").hidden=list.length>0;
+    $("#grid").innerHTML=list.map(cardHTML).join("");
   }
   renderShelves();
   if(typeof renderBrandsGrid==="function") renderBrandsGrid();
   if(typeof renderBundles==="function") renderBundles();
-  /* concerns only on product browse, keep light on home */
   if(typeof renderConcernBar==="function") renderConcernBar();
   if(typeof renderTrust==="function") renderTrust();
   renderCart();

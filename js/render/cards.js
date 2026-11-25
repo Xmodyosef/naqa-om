@@ -106,10 +106,10 @@ function priceHTML(p){
 function visual(p, idx){
   const imgs=pimgs(p); const i=idx||0;
   if(imgs[i]){
-    const pri=i===0?' loading="lazy" decoding="async"':' loading="lazy" decoding="async"';
-    return '<img src="'+esc(imgs[i])+'" alt="'+esc(pname(p))+'" width="800" height="800"'+pri+'>';
+    /* fixed width/height + contain stops scroll flash / reflow */
+    return '<img src="'+esc(imgs[i])+'" alt="'+esc(pname(p))+'" width="800" height="800" loading="eager" decoding="async" fetchpriority="low" draggable="false" style="width:100%;height:100%;object-fit:contain;object-position:center">';
   }
-  return '<span style="font-size:2rem;display:grid;place-items:center;height:100%">'+ (p.em||'✨') +'</span>';
+  return '<span class="card-em" style="font-size:2rem;display:grid;place-items:center;height:100%">'+ (p.em||'✨') +'</span>';
 }
 function cardHTML(p){
   const pct=offPct(p);
@@ -147,161 +147,93 @@ function shelfBanner(kind, list){
   }
   return '<div class="banner banner-year" data-shelf="year"><div class="banner-copy"><b>'+T("year")+'</b><span>'+T("banYearSub")+'</span><span class="banner-badge">−30%</span></div><div class="banner-thumbs">'+thumbs+'</div></div>';
 }
-
-/** Home shows catalogs, not product grid */
-var catalogBrowse = false;
-try{ window.catalogBrowse = catalogBrowse; }catch(e){}
-
-function isHomeCatalogView(){
-  try{
-    if(typeof query!=="undefined" && query && String(query).trim()) return false;
-    if(typeof currentBrand!=="undefined" && currentBrand) return false;
-    if(typeof currentConcern!=="undefined" && currentConcern) return false;
-    if(typeof wishView!=="undefined" && wishView) return false;
-    if(typeof currentCat!=="undefined" && currentCat!=="all") return false;
-    if(catalogBrowse) return false;
-    return true;
-  }catch(e){ return false; }
+function catalogCatMeta(cat){
+  /* unique icon + accent key per category for home catalog chapters */
+  var map={
+    "عناية":{em:"✨", key:"care"},
+    "وجه":{em:"🌸", key:"face"},
+    "شفاه":{em:"💄", key:"lips"},
+    "عيون":{em:"👁", key:"eyes"},
+    "حواجب":{em:"✏️", key:"brows"},
+    "شعر":{em:"💇", key:"hair"},
+    "أدوات":{em:"🔧", key:"tools"},
+    "عطور":{em:"🌺", key:"scent"}
+  };
+  return map[cat] || {em:"✦", key:"care"};
 }
-function openCatalog(cat, kind){
-  catalogBrowse = true;
-  currentBrand = "";
-  currentConcern = "";
-  wishView = false;
-  query = "";
-  var s = document.getElementById("search"); if(s) s.value = "";
-  var clr = document.getElementById("searchClear"); if(clr) clr.hidden = true;
-  if(kind==="hot"){
-    currentCat = "all";
-    currentSort = "new";
-    window.__naqaShelfFilter = "hot";
-  } else if(kind==="off"){
-    currentCat = "all";
-    currentSort = "off";
-    window.__naqaShelfFilter = "off";
-  } else if(kind==="all"){
-    currentCat = "all";
-    currentSort = "new";
-    window.__naqaShelfFilter = "";
-  } else {
-    currentCat = cat || "all";
-    currentSort = "new";
-    window.__naqaShelfFilter = "";
-  }
-  document.querySelectorAll("#cats [data-cat]").forEach(function(x){
-    x.classList.toggle("on", x.dataset.cat === currentCat);
-  });
-  var sel = document.getElementById("sortSel"); if(sel) sel.value = currentSort;
-  try{
-    if(kind==="hot") history.pushState({naqa:"shelf"}, "", "#shelf/hot");
-    else if(kind==="off") history.pushState({naqa:"shelf"}, "", "#shelf/off");
-    else if(kind==="all" || currentCat==="all") history.pushState({naqa:"shop"}, "", "#products");
-    else history.pushState({naqa:"cat"}, "", "#c/"+encodeURIComponent(currentCat));
-  }catch(e){}
-  if(typeof render==="function") render();
-  var prod = document.getElementById("products");
-  if(prod) prod.scrollIntoView({behavior:"smooth", block:"start"});
-}
-function backToCatalogs(){
-  catalogBrowse = false;
-  window.__naqaShelfFilter = "";
-  currentCat = "all";
-  currentBrand = "";
-  currentConcern = "";
-  wishView = false;
-  query = "";
-  currentSort = "new";
-  var s = document.getElementById("search"); if(s) s.value = "";
-  document.querySelectorAll("#cats [data-cat]").forEach(function(x){
-    x.classList.toggle("on", x.dataset.cat === "all");
-  });
-  var sel = document.getElementById("sortSel"); if(sel) sel.value = "new";
-  try{ history.pushState({naqa:"shop"}, "", "#shop"); }catch(e){}
-  if(typeof render==="function") render();
-  var hc = document.getElementById("homeCatalogs");
-  if(hc) hc.scrollIntoView({behavior:"smooth", block:"start"});
-}
-function catalogThumbHTML(list){
-  var imgs = [];
-  (list||[]).forEach(function(p){
-    if(imgs.length>=4) return;
-    var g = typeof pimgs==="function" ? pimgs(p) : (p.imgs||[]);
-    if(g && g[0]) imgs.push(g[0]);
-  });
-  if(!imgs.length) return '<div class="cat-cover-empty">✨</div>';
-  var n = imgs.length;
-  return '<div class="cat-cover cat-cover-'+Math.min(n,4)+'">'
-    + imgs.map(function(src){ return '<img src="'+esc(src)+'" alt="" loading="lazy" width="200" height="200">'; }).join("")
-    + '</div>';
-}
-function renderHomeCatalogs(){
-  var el = document.getElementById("homeCatalogs");
-  if(!el) return;
-  if(!isHomeCatalogView()){ el.hidden = true; el.innerHTML = ""; return; }
-  el.hidden = false;
-  var cats = [
-    {id:"عناية", ar:"عناية بالبشرة", en:"Skincare", em:"🧴"},
-    {id:"وجه", ar:"مكياج الوجه", en:"Face makeup", em:"💄"},
-    {id:"عيون", ar:"العيون", en:"Eyes", em:"👁️"},
-    {id:"شفاه", ar:"الشفاه", en:"Lips", em:"💋"},
-    {id:"حواجب", ar:"الحواجب", en:"Brows", em:"✨"},
-    {id:"شعر", ar:"العناية بالشعر", en:"Hair care", em:"💇"},
-    {id:"أدوات", ar:"أدوات التجميل", en:"Tools", em:"🔧"},
-    {id:"عطور", ar:"عطور", en:"Fragrance", em:"🌸"}
-  ];
-  var allN0 = products.filter(function(p){ return !p.hidden; }).length;
-  var brandN = (function(){ var s={}; products.forEach(function(p){ if(!p.hidden) s[p.brand]=1; }); return Object.keys(s).length; })();
-  var title = lang==="en" ? "Catalog" : "الكتالوج";
-  var sub = lang==="en" ? "Open a section to browse products — not a dump of everything" : "افتحي قسماً لتصفّح المنتجات — بدل عرض كل شيء دفعة واحدة";
-  var html = '<div class="home-cat-hero">'
-    +'<div class="home-cat-hero-copy">'
-    +'<p class="home-cat-kicker">'+(lang==="en"?"Naqa Oman":"نقاء عُمان")+'</p>'
-    +'<h2>'+title+'</h2>'
-    +'<p>'+sub+'</p>'
-    +'</div>'
-    +'<div class="home-cat-stats" aria-hidden="true">'
-    +'<span><b>'+allN0+'</b><i>'+(lang==="en"?"products":"منتج")+'</i></span>'
-    +'<span><b>'+brandN+'</b><i>'+(lang==="en"?"brands":"ماركة")+'</i></span>'
-    +'</div></div>';
-  html += '<div class="home-cat-grid">';
-  /* special: hot + offers + all */
-  var hot = products.filter(function(p){ return p.hot && !p.hidden; });
-  var offs = products.filter(function(p){ return !p.hidden && p.was > p.price; });
-  var allN = products.filter(function(p){ return !p.hidden; }).length;
-  html += '<button type="button" class="home-cat-card home-cat-special home-cat-hot" data-open-catalog="hot">'
-    + catalogThumbHTML(hot)
-    + '<div class="home-cat-body"><span class="home-cat-em">★</span><b>'+(lang==="en"?"Bestsellers":"الأكثر طلباً")+'</b>'
-    + '<span>'+hot.length+(lang==="en"?" picks":" منتج")+'</span></div></button>';
-  if(offs.length){
-    html += '<button type="button" class="home-cat-card home-cat-special home-cat-off" data-open-catalog="off">'
-      + catalogThumbHTML(offs)
-      + '<div class="home-cat-body"><span class="home-cat-em">%</span><b>'+(lang==="en"?"Offers":"عروض")+'</b>'
-      + '<span>'+offs.length+(lang==="en"?" deals":" عرض")+'</span></div></button>';
-  }
-  cats.forEach(function(c){
-    var list = products.filter(function(p){ return !p.hidden && p.cat===c.id; });
-    if(!list.length) return; /* skip empty */
-    var name = lang==="en" ? c.en : c.ar;
-    html += '<button type="button" class="home-cat-card" data-open-catalog="'+esc(c.id)+'">'
-      + catalogThumbHTML(list)
-      + '<div class="home-cat-body"><span class="home-cat-em">'+c.em+'</span><b>'+esc(name)+'</b>'
-      + '<span>'+list.length+(lang==="en"?" products":" منتج")+'</span></div></button>';
-  });
-  html += '<button type="button" class="home-cat-card home-cat-all" data-open-catalog="all">'
-    + '<div class="cat-cover cat-cover-all"><span>ن</span></div>'
-    + '<div class="home-cat-body"><span class="home-cat-em">▣</span><b>'+(lang==="en"?"All products":"كل المنتجات")+'</b>'
-    + '<span>'+allN+(lang==="en"?" items":" منتج")+'</span></div></button>';
-  html += '</div>';
-  el.innerHTML = html;
-}
-
 function renderShelves(){
   const box=$("#shelves");
   if(!box) return;
-  /* product shelves only when browsing products — not on home catalogs */
-  if(isHomeCatalogView()){ box.innerHTML=""; box.hidden=true; return; }
-  box.hidden=true; /* keep product shelves off; home catalogs replace them */
-  box.innerHTML="";
+  /* Home catalog only — full product grid stays hidden on main page */
+  const show=!query && currentCat==="all" && !currentBrand && !(typeof wishView!=="undefined" && wishView) && !currentConcern;
+  if(!show){ box.innerHTML=""; box.hidden=true; return; }
+  box.hidden=false;
+  const hot=products.filter(p=>p.hot&&!p.hidden).slice(0,12);
+  const year=products.filter(p=>!p.hidden&&p.was>p.price).sort((a,b)=>offPct(b)-offPct(a)).slice(0,16);
+  var totalVisible=products.filter(function(p){ return !p.hidden; }).length;
+  let html="";
+  html+='<div class="home-catalog" id="homeCatalog">'
+    +'<header class="home-catalog-hero">'
+    +'<div class="home-catalog-hero-text">'
+    +'<p class="home-catalog-kicker">'+(lang==="en"?"Naqa store":"متجر نقاء")+'</p>'
+    +'<h2 class="home-catalog-title">'+(typeof T==="function" && T("catalog") ? T("catalog") : (lang==="en"?"Catalog":"الكتالوج"))+'</h2>'
+    +'<p class="home-catalog-sub">'+(lang==="en"
+      ?"Browse curated sections — open a chapter or tap any product"
+      :"تصفّحي أقسامنا المختارة — افتحي قسماً كاملاً أو اختاري منتجاً")+'</p>'
+    +'</div>'
+    +'<div class="home-catalog-stats" aria-hidden="true">'
+    +'<span><b>'+totalVisible+'</b><i>'+(lang==="en"?"products":"منتج")+'</i></span>'
+    +'<span><b>'+ (function(){var s={}; products.forEach(function(p){ if(!p.hidden) s[p.brand]=1; }); return Object.keys(s).length; })() +'</b><i>'+(lang==="en"?"brands":"ماركة")+'</i></span>'
+    +'</div>'
+    +'</header>';
+
+  if(hot.length){
+    html+='<section class="shelf shelf-featured shelf-hot">'+shelfBanner("hot", hot)
+      +'<div class="shelf-head"><h2 id="hotTitle">'+T("hot")+'</h2>'+vatChip()
+      +'<button type="button" data-shelf="hot">'+T("viewAll")+'</button></div>'
+      +'<div class="shelf-row">'+hot.map(cardHTML).join("")+'</div></section>';
+  }
+  if(year.length){
+    html+='<section class="shelf shelf-featured shelf-year">'+shelfBanner("year", year)
+      +'<div class="shelf-head"><h2 id="yearTitle">'+T("year")+'</h2>'+vatChip()
+      +'<button type="button" data-shelf="year">'+T("viewAll")+'</button></div>'
+      +'<div class="shelf-row">'+year.map(cardHTML).join("")+'</div></section>';
+  }
+
+  /* Category chapters — main home catalog (not a dump of all products) */
+  html+='<div class="catalog-chapters-head">'
+    +'<h3>'+(lang==="en"?"Shop by section":"تسوّقي حسب القسم")+'</h3>'
+    +'<span>'+(lang==="en"?"Swipe inside each chapter":"اسحبي داخل كل قسم")+'</span>'
+    +'</div>';
+
+  var catsOrder=["عناية","وجه","شفاه","عيون","حواجب","شعر","أدوات","عطور"];
+  catsOrder.forEach(function(cat, idx){
+    var list=products.filter(function(p){ return !p.hidden && p.cat===cat; });
+    if(!list.length) return;
+    var shown=list.slice(0,10);
+    var lab=(typeof T==="function" && catLabel[cat]) ? T(catLabel[cat]) : cat;
+    var meta=catalogCatMeta(cat);
+    var thumbs=list.slice(0,3).map(function(p){
+      var imgs=pimgs(p);
+      if(imgs[0]) return '<img src="'+esc(imgs[0])+'" alt="" width="56" height="56" loading="lazy" decoding="async">';
+      return '<span class="cat-thumb-em">'+(p.em||meta.em)+'</span>';
+    }).join("");
+    html+='<section class="shelf shelf-cat-rail cat-accent-'+meta.key+'" data-cat-rail="'+esc(cat)+'">'
+      +'<div class="cat-rail-banner" data-cat-jump="'+esc(cat)+'" role="button" tabindex="0">'
+      +'<div class="cat-rail-mark"><span class="cat-rail-em" aria-hidden="true">'+meta.em+'</span>'
+      +'<div class="cat-rail-thumbs">'+thumbs+'</div></div>'
+      +'<div class="cat-rail-copy">'
+      +'<span class="cat-rail-idx">'+(idx+1).toString().padStart(2,"0")+'</span>'
+      +'<h2>'+esc(lab)+'</h2>'
+      +'<p>'+list.length+(lang==="en"?" products in this section":" منتج في هذا القسم")+'</p>'
+      +'</div>'
+      +'<button type="button" class="cat-rail-open" data-cat-jump="'+esc(cat)+'">'
+      +(lang==="en"?"Open":"فتح القسم")+'</button>'
+      +'</div>'
+      +'<div class="shelf-row">'+shown.map(cardHTML).join("")+'</div></section>';
+  });
+  html+='</div>'; /* .home-catalog */
+  box.innerHTML=html;
 }
 
 

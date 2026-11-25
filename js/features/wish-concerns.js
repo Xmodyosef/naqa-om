@@ -59,10 +59,7 @@ function renderConcernBar() {
 
 function renderBrandsGrid() {
   var el = $("#brandsGrid"); if (!el) return;
-  /* home only — compact brand chips, not brand catalogs */
-  if (query || currentCat !== "all" || currentBrand || currentConcern || wishView || (typeof catalogBrowse!=="undefined" && catalogBrowse)) {
-    el.hidden = true; return;
-  }
+  if (query || currentCat !== "all" || currentBrand || currentConcern || wishView) { el.hidden = true; return; }
   el.hidden = false;
   var counts = {};
   products.forEach(function (p) { if (!p.hidden) counts[p.brand] = (counts[p.brand] || 0) + 1; });
@@ -73,10 +70,12 @@ function renderBrandsGrid() {
       var logo = (typeof BRAND_LOGO !== "undefined" && BRAND_LOGO[b]) ? BRAND_LOGO[b] : "";
       var d = (typeof BRAND_DOMAIN !== "undefined" && BRAND_DOMAIN[b]) ? BRAND_DOMAIN[b] : "";
       var fav = logo || (d ? ("https://www.google.com/s2/favicons?domain=" + encodeURIComponent(d) + "&sz=128") : "");
+      var ini = String(b || "?").replace(/[^A-Za-z\u0600-\u06FF0-9]/g, "").slice(0, 2).toUpperCase() || "•";
       var mark = fav
-        ? '<img src="' + fav + '" alt="' + esc(b) + '" loading="lazy" width="40" height="40" onerror="this.onerror=null;this.replaceWith(Object.assign(document.createElement(\'span\'),{className:\'bmono\',textContent:\'' + esc(String(b).slice(0,2).toUpperCase()) + '\'}))">'
-        : '<span class="bmono">' + esc(String(b).slice(0, 2).toUpperCase()) + "</span>";
+        ? '<img src="' + fav + '" alt="" loading="lazy" width="40" height="40">'
+        : '<span class="bmono">' + esc(ini) + "</span>";
       return '<button type="button" class="brand-tile" data-brand="' + esc(b) + '">' + mark + "<span>" + esc(b) + "</span><i>" + counts[b] + "</i></button>";
     }).join("") + "</div>";
 }
+
 

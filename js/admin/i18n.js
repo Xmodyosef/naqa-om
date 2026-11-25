@@ -20,6 +20,14 @@
     if (o.payment === "transfer" || o.payment === "paid") return "pending";
     return "cod";
   };
+  A.isOrderPaid = function (o) {
+    if (!o) return false;
+    if (o.paymentStatus === "confirmed" || o.paid === true) return true;
+    return false;
+  };
+  A.paidLabel = function (o) {
+    return A.isOrderPaid(o) ? (A.t("paidYes") || "مدفوع") : (A.t("paidNo") || "غير مدفوع");
+  };
   A.payText = function (o) {
     var s = A.payState(o);
     if (s === "confirmed") return A.t("payConfirmed");

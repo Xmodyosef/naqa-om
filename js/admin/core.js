@@ -13,6 +13,7 @@
       var u = firebase.auth().currentUser;
       if (!u || !u.uid) return false;
       if (A.fbUser && A.fbUser.uid && u.uid !== A.fbUser.uid) return false;
+      if (w.naqaIsAdminUid && !naqaIsAdminUid(u.uid)) return false;
       return true;
     } catch (e) {
       return false;

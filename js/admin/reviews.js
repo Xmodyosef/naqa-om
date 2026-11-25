@@ -70,11 +70,20 @@
   A.publishReviews = function () {
     return A.syncReviewsCloud().then(function () {
       if (A.setMsg) A.setMsg("reviewStatus", A.t("r_published") || (A.lang === "en" ? "Reviews published to the store ✓" : "انشرت التقييمات على المتجر ✓"));
+      try { if (A.activity && A.activity.log) A.activity.log(A.lang === "en" ? "Publish reviews" : "نشر تقييمات", ""); } catch (e) {}
       return true;
     }).catch(function (err) {
-      var code = err && err.message;
-      var msg = A.lang === "en" ? "Could not publish reviews." : "ما قدرنا ننشر التقييمات.";
-      if (code === "not-signed-in") msg = A.lang === "en" ? "Sign in first." : "سجّلي الدخول أولاً.";
+      var code = (err && (err.code || err.message)) || "";
+      var msg = A.t("r_publishFail") || (A.lang === "en" ? "Could not publish reviews." : "ما قدرنا ننشر التقييمات.");
+      if (String(code).indexOf("not-signed-in") >= 0) {
+        msg = A.lang === "en" ? "Sign in first." : "سجّلي الدخول أولاً.";
+      } else if (String(code).indexOf("permission") >= 0 || String(code).indexOf("Permission") >= 0) {
+        msg = A.lang === "en"
+          ? "Permission denied. Publish firestore.rules once in Firebase Console (reviews path)."
+          : "مرفوض. انشري ملف firestore.rules مرة في Firebase (مسار التقييمات).";
+      } else if (String(code).indexOf("no-firestore") >= 0) {
+        msg = A.lang === "en" ? "Firestore not ready. Check network." : "Firestore غير جاهز. راجعي النت.";
+      }
       if (A.setMsg) A.setMsg("reviewStatus", msg);
       return false;
     });

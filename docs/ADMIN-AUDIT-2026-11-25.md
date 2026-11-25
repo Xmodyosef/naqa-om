@@ -31,3 +31,10 @@
 
 ## ممنوع اللمس (سليم)
 دخول · إخفاء · أسعار/كميات · كمية 3 · Firestore overrides · Excel/تاريخ · لا PIN/توكن في الإعدادات · بحث منتجات ملغى
+
+## تحديث لاحق 2026-11-25 (def1)
+- publishReviews → Firestore فقط + رسالة permission-denied واضحة.
+- materializeProductImages (GitHub) → no-op.
+- hideNeedTok / fb_loadFail بدون إشارة توكن/PIN.
+- طلبات سحابية + لصق واتساب مضافة.
+- قرار: قواعد Firestore يدوية.

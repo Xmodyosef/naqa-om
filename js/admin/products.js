@@ -775,28 +775,9 @@
     else A.setMsg("status", A.t("p_saved"));
   };
 
-  A.materializeProductImages = function (token) {
-    var jobs = [];
-    Object.keys(A.overrides || {}).forEach(function (id) {
-      var o = A.overrides[id];
-      if (!o || !Array.isArray(o.imgs)) return;
-      o.imgs.forEach(function (src, i) {
-        if (typeof src !== "string" || src.indexOf("data:image") !== 0) return;
-        var parts = src.split(",");
-        var b64 = parts[1];
-        if (!b64) return;
-        var path = "media/products/p" + id + "-" + i + "-" + Date.now().toString(36) + ".jpg";
-        jobs.push(
-          A.ghPutB64(path, b64, token, "chore: product image " + id).then(function (res) {
-            if (!res.ok) throw new Error("img");
-            o.imgs[i] = path;
-          })
-        );
-      });
-    });
-    return Promise.all(jobs).then(function () {
-      try { localStorage.setItem(A.KEY, JSON.stringify(A.overrides)); } catch (e) {}
-    });
+  A.materializeProductImages = function () {
+    /* Legacy GitHub upload removed. Product photos use Firestore naqa_imgs (fs:…) or https/media paths. */
+    return Promise.resolve();
   };
 
   /* List clicks: hide / edit / pager — bound here so it works after deferred load */

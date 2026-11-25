@@ -22,7 +22,9 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) بشرة نظيفة، بعد التونر إن وُجد.\n٢) ٢–٣ قطرات — اضغطي من الوسط للخارج.\n٣) مرطب فوقه. صباحاً: SPF.\n٤) الريتينول/الأحماض: ليلاً وبالتدريج.",
   "useEn": "1) Clean skin; toner first if you use one.\n2) 2–3 drops — press from center out.\n3) Cream on top. AM: SPF.\n4) Retinoids/acids: night, slowly.",
   "skinAr": "مع SPF يومي عند التفتيح",
-  "skinEn": "daily SPF when brightening"},
+  "skinEn": "daily SPF when brightening",
+  "stock": 3
+},
 {
   "id": 54,
   "brand": "The Ordinary",
@@ -44,7 +46,9 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) وجه نظيف ورطب قليلاً.\n٢) نقطة على الخد والجبهة والذقن، ثم توزيع.\n٣) دقيقة صبر ثم الكريم.\n٤) محيط العين فقط إن صُمّم لذلك.",
   "useEn": "1) Clean skin; toner first if you use one.\n2) 2–3 drops — press from center out.\n3) Cream on top. AM: SPF.\n4) Retinoids/acids: night, slowly.",
   "skinAr": "مع SPF يومي عند التفتيح",
-  "skinEn": "sensitive after a patch test"},
+  "skinEn": "sensitive after a patch test",
+  "stock": 3
+},
 {
   "id": 55,
   "brand": "The Ordinary",
@@ -66,7 +70,9 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) بشرة نظيفة، بعد التونر إن وُجد.\n٢) ٢–٣ قطرات — اضغطي من الوسط للخارج.\n٣) مرطب فوقه. صباحاً: SPF.\n٤) الريتينول/الأحماض: ليلاً وبالتدريج.",
   "useEn": "1) Clean skin; toner first if you use one.\n2) 2–3 drops — press from center out.\n3) Cream on top. AM: SPF.\n4) Retinoids/acids: night, slowly.",
   "skinAr": "معظم الأنواع — ابدئي بقطرات",
-  "skinEn": "dry and thirsty"},
+  "skinEn": "dry and thirsty",
+  "stock": 3
+},
 {
   "id": 105,
   "brand": "The Ordinary",
@@ -87,7 +93,9 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) بعد التنظيف.\n٢) طبقة خفيفة تكفي؛ لا تُغرقي.\n٣) أغلقي الترطيب.\n٤) إن لسع خفيفاً أول أيام، باعدي الاستخدام.",
   "useEn": "1) Clean, slightly damp face.\n2) Dot cheeks, forehead, chin; spread.\n3) Wait a minute, then cream.\n4) Eye area only if the formula is made for it.",
   "skinAr": "الدهنية والمختلطة",
-  "skinEn": "sensitive after a patch test"},
+  "skinEn": "sensitive after a patch test",
+  "stock": 3
+},
 {
   "id": 166,
   "brand": "The Ordinary",
@@ -111,7 +119,9 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) شامبو للفروة، بلسم للأطراف، سيروم حسب العبوة.\n٢) ابدئي بقليل.\n٣) لا تُشبعي الخصل.\n٤) أسبوعان–ثلاثة للفرق الأوضح.",
   "useEn": "1) Shampoo scalp, condition lengths, leave-in as labeled.\n2) Start small.\n3) Don’t drench the hair.\n4) Two–three weeks for a clearer change.",
   "skinAr": "حسب الشعر والفروة",
-  "skinEn": "match hair and scalp"},
+  "skinEn": "match hair and scalp",
+  "stock": 3
+},
 {
   "id": 194,
   "brand": "The Ordinary",
@@ -133,5 +143,7 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) وجه نظيف ورطب قليلاً.\n٢) نقطة على الخد والجبهة والذقن، ثم توزيع.\n٣) دقيقة صبر ثم الكريم.\n٤) محيط العين فقط إن صُمّم لذلك.",
   "useEn": "1) Clean skin; toner first if you use one.\n2) 2–3 drops — press from center out.\n3) Cream on top. AM: SPF.\n4) Retinoids/acids: night, slowly.",
   "skinAr": "معظم الأنواع — ابدئي بقطرات",
-  "skinEn": "daily SPF when brightening"}
+  "skinEn": "daily SPF when brightening",
+  "stock": 3
+}
 );

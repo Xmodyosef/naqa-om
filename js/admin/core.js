@@ -125,7 +125,7 @@
     var o = A.overrides[p.id] || A.overrides[String(p.id)] || {};
     var m = Object.assign({}, p, o);
     if (o.imgs && o.imgs.length) m.imgs = o.imgs;
-    if (m.stock == null || m.stock === "") m.stock = "";
+    if (m.stock == null || m.stock === "") m.stock = 3;
     if (m.was == null) m.was = "";
     return m;
   };

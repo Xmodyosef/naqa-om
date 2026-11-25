@@ -22,7 +22,9 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) نظّفي → عالجي → احمي.\n٢) كمية معتدلة.\n٣) راقبي الأسبوع الأول.\n٤) SPF مع التفتيح أو الأحماض.",
   "useEn": "1) Cleanse → treat → protect.\n2) Moderate amount.\n3) Watch week one.\n4) SPF with brightening or acids.",
   "skinAr": "حسب احتياج يومك",
-  "skinEn": "match today’s need"},
+  "skinEn": "match today’s need",
+  "stock": 3
+},
 {
   "id": 25,
   "brand": "EQQUALBERRY",
@@ -44,7 +46,9 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) بعد التنظيف.\n٢) طبقة خفيفة تكفي؛ لا تُغرقي.\n٣) أغلقي الترطيب.\n٤) إن لسع خفيفاً أول أيام، باعدي الاستخدام.",
   "useEn": "1) Clean skin; toner first if you use one.\n2) 2–3 drops — press from center out.\n3) Cream on top. AM: SPF.\n4) Retinoids/acids: night, slowly.",
   "skinAr": "الجافة والعطشى",
-  "skinEn": "sensitive after a patch test"},
+  "skinEn": "sensitive after a patch test",
+  "stock": 3
+},
 {
   "id": 28,
   "brand": "EQQUALBERRY",
@@ -66,5 +70,7 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) وجه نظيف ورطب قليلاً.\n٢) نقطة على الخد والجبهة والذقن، ثم توزيع.\n٣) دقيقة صبر ثم الكريم.\n٤) محيط العين فقط إن صُمّم لذلك.",
   "useEn": "1) Clean skin; toner first if you use one.\n2) 2–3 drops — press from center out.\n3) Cream on top. AM: SPF.\n4) Retinoids/acids: night, slowly.",
   "skinAr": "الدهنية والمختلطة",
-  "skinEn": "sensitive after a patch test"}
+  "skinEn": "sensitive after a patch test",
+  "stock": 3
+}
 );

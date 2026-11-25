@@ -22,7 +22,9 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) بعد السيروم أو مباشرة بعد الغسول.\n٢) حبة بازيلاء للوجه + قليل للرقبة.\n٣) صباحاً SPF فوقه.\n٤) مساءً زيدي على الخدود الجافة.",
   "useEn": "1) After serum or right after cleanse.\n2) Pea-size for face + a little neck.\n3) SPF over it in the morning.\n4) Extra on dry cheeks at night.",
   "skinAr": "مساءً لمعظم الأنواع",
-  "skinEn": "sensitive dry skin"},
+  "skinEn": "sensitive dry skin",
+  "stock": 3
+},
 {
   "id": 14,
   "brand": "Medicube",
@@ -44,7 +46,9 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) بشرة نظيفة.\n٢) مرّري التونر/الوسادة.\n٣) إن كان مقشّراً: ليس بالضرورة يومياً.",
   "useEn": "1) Right after cleansing.\n2) Palms or pad — no dragging.\n3) No rinse → serum → cream.",
   "skinAr": "المتعطشة للماء",
-  "skinEn": "water-thirsty skin"},
+  "skinEn": "water-thirsty skin",
+  "stock": 3
+},
 {
   "id": 23,
   "brand": "Medicube",
@@ -66,7 +70,9 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) وجه نظيف ورطب قليلاً.\n٢) نقطة على الخد والجبهة والذقن، ثم توزيع.\n٣) دقيقة صبر ثم الكريم.\n٤) محيط العين فقط إن صُمّم لذلك.",
   "useEn": "1) Clean skin; toner first if you use one.\n2) 2–3 drops — press from center out.\n3) Cream on top. AM: SPF.\n4) Retinoids/acids: night, slowly.",
   "skinAr": "مع SPF يومي عند التفتيح",
-  "skinEn": "most types — start with drops"},
+  "skinEn": "most types — start with drops",
+  "stock": 3
+},
 {
   "id": 30,
   "brand": "Medicube",
@@ -88,7 +94,9 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) بعد التنظيف.\n٢) طبقة خفيفة تكفي؛ لا تُغرقي.\n٣) أغلقي الترطيب.\n٤) إن لسع خفيفاً أول أيام، باعدي الاستخدام.",
   "useEn": "1) Clean, slightly damp face.\n2) Dot cheeks, forehead, chin; spread.\n3) Wait a minute, then cream.\n4) Eye area only if the formula is made for it.",
   "skinAr": "الجافة والعطشى",
-  "skinEn": "dry and thirsty"},
+  "skinEn": "dry and thirsty",
+  "stock": 3
+},
 {
   "id": 33,
   "brand": "Medicube",
@@ -110,7 +118,9 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) فوراً بعد الغسول.\n٢) راحة اليد أو القطنة — بلا سحب.\n٣) بدون شطف → سيروم → مرطب.",
   "useEn": "1) Right after cleansing.\n2) Palms or pad — no dragging.\n3) No rinse → serum → cream.",
   "skinAr": "الدهنية المنتعشة",
-  "skinEn": "sensitive"},
+  "skinEn": "sensitive",
+  "stock": 3
+},
 {
   "id": 35,
   "brand": "Medicube",
@@ -132,7 +142,9 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) ١–٣ مرات أسبوعياً.\n٢) ابتعدي عن الجروح.\n٣) أكملي روتينك بعد الجلسة.",
   "useEn": "1) Clean skin.\n2) 10–20 minutes (or as labeled).\n3) Remove or pat in + cream.\n4) Clay/acids: not daily.",
   "skinAr": "المرطّب للجافة",
-  "skinEn": "clay for oily"},
+  "skinEn": "clay for oily",
+  "stock": 3
+},
 {
   "id": 39,
   "brand": "Medicube",
@@ -154,7 +166,9 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) بشرة نظيفة.\n٢) ١٠–٢٠ دقيقة (أو حسب العبوة).\n٣) إزالة أو تربيت الباقي + مرطب.\n٤) الطين/التقشير: ليس يومياً.",
   "useEn": "1) Clean skin.\n2) 10–20 minutes (or as labeled).\n3) Remove or pat in + cream.\n4) Clay/acids: not daily.",
   "skinAr": "الطين للدهنية",
-  "skinEn": "sensitive — watch the clock"},
+  "skinEn": "sensitive — watch the clock",
+  "stock": 3
+},
 {
   "id": 46,
   "brand": "Medicube",
@@ -176,7 +190,9 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) بشرة نظيفة.\n٢) ١٠–٢٠ دقيقة (أو حسب العبوة).\n٣) إزالة أو تربيت الباقي + مرطب.\n٤) الطين/التقشير: ليس يومياً.",
   "useEn": "1) Clean skin.\n2) 10–20 minutes (or as labeled).\n3) Remove or pat in + cream.\n4) Clay/acids: not daily.",
   "skinAr": "الطين للدهنية",
-  "skinEn": "sensitive — watch the clock"},
+  "skinEn": "sensitive — watch the clock",
+  "stock": 3
+},
 {
   "id": 52,
   "brand": "Medicube",
@@ -198,7 +214,9 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) بعد السيروم أو مباشرة بعد الغسول.\n٢) حبة بازيلاء للوجه + قليل للرقبة.\n٣) صباحاً SPF فوقه.\n٤) مساءً زيدي على الخدود الجافة.",
   "useEn": "1) After serum or right after cleanse.\n2) Pea-size for face + a little neck.\n3) SPF over it in the morning.\n4) Extra on dry cheeks at night.",
   "skinAr": "مساءً لمعظم الأنواع",
-  "skinEn": "nights for most types"},
+  "skinEn": "nights for most types",
+  "stock": 3
+},
 {
   "id": 59,
   "brand": "Medicube",
@@ -220,7 +238,9 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) ١–٣ مرات أسبوعياً.\n٢) ابتعدي عن الجروح.\n٣) أكملي روتينك بعد الجلسة.",
   "useEn": "1) Clean skin.\n2) 10–20 minutes (or as labeled).\n3) Remove or pat in + cream.\n4) Clay/acids: not daily.",
   "skinAr": "١–٣ مرات أسبوعياً",
-  "skinEn": "1–3 times a week"},
+  "skinEn": "1–3 times a week",
+  "stock": 3
+},
 {
   "id": 60,
   "brand": "Medicube",
@@ -242,7 +262,9 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) ماء فاتر.\n٢) ٢٠–٣٠ ثانية تدليك ثم شطف كامل.\n٣) تربيت للتجفيف.\n٤) مكياج ثقيل: زيتي أولاً ثم هذا.",
   "useEn": "1) Lukewarm water.\n2) 20–30 seconds, full rinse.\n3) Pat dry.\n4) Heavy makeup: oil first, then this.",
   "skinAr": "الدهنية والمختلطة",
-  "skinEn": "after makeup as step one"},
+  "skinEn": "after makeup as step one",
+  "stock": 3
+},
 {
   "id": 77,
   "brand": "Medicube",
@@ -264,7 +286,9 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) بعد السيروم أو مباشرة بعد الغسول.\n٢) حبة بازيلاء للوجه + قليل للرقبة.\n٣) صباحاً SPF فوقه.\n٤) مساءً زيدي على الخدود الجافة.",
   "useEn": "1) After serum or right after cleanse.\n2) Pea-size for face + a little neck.\n3) SPF over it in the morning.\n4) Extra on dry cheeks at night.",
   "skinAr": "المختلطة في الجو الجاف",
-  "skinEn": "combo in dry weather"},
+  "skinEn": "combo in dry weather",
+  "stock": 3
+},
 {
   "id": 120,
   "brand": "Medicube",
@@ -286,7 +310,9 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) على الجفاف أو آخر طبقة.\n٢) طبقة رقيقة.\n٣) أعيدي ليلاً.\n٤) بعيداً عن العين ما لم يُذكر.",
   "useEn": "1) On dry spots or as last step.\n2) Thin layer.\n3) Again at night if needed.\n4) Away from eyes unless labeled.",
   "skinAr": "البقع الجافة",
-  "skinEn": "sensitive and needy"},
+  "skinEn": "sensitive and needy",
+  "stock": 3
+},
 {
   "id": 121,
   "brand": "Medicube",
@@ -308,7 +334,9 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) ماء فاتر.\n٢) ٢٠–٣٠ ثانية تدليك ثم شطف كامل.\n٣) تربيت للتجفيف.\n٤) مكياج ثقيل: زيتي أولاً ثم هذا.",
   "useEn": "1) Lukewarm water.\n2) 20–30 seconds, full rinse.\n3) Pat dry.\n4) Heavy makeup: oil first, then this.",
   "skinAr": "بعد مكياج كخطوة أولى",
-  "skinEn": "after makeup as step one"},
+  "skinEn": "after makeup as step one",
+  "stock": 3
+},
 {
   "id": 126,
   "brand": "Medicube",
@@ -330,7 +358,9 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) شفاه نظيفة.\n٢) من الوسط للخارج.\n٣) لمسة خلال اليوم.\n٤) ليلاً أغنى إن كان مرطباً.",
   "useEn": "1) Clean lips.\n2) Center to outer edge.\n3) Touch up through the day.\n4) Richer layer at night if balm/mask.",
   "skinAr": "يومياً بلا إزعاج",
-  "skinEn": "daily without fuss"},
+  "skinEn": "daily without fuss",
+  "stock": 3
+},
 {
   "id": 167,
   "brand": "Medicube",
@@ -353,7 +383,9 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) شامبو للفروة، بلسم للأطراف، سيروم حسب العبوة.\n٢) ابدئي بقليل.\n٣) لا تُشبعي الخصل.\n٤) أسبوعان–ثلاثة للفرق الأوضح.",
   "useEn": "1) Shampoo scalp, condition lengths, leave-in as labeled.\n2) Start small.\n3) Don’t drench the hair.\n4) Two–three weeks for a clearer change.",
   "skinAr": "فروة تحتاج انتعاشاً",
-  "skinEn": "match hair and scalp"},
+  "skinEn": "match hair and scalp",
+  "stock": 3
+},
 {
   "id": 168,
   "brand": "Medicube",
@@ -376,7 +408,9 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) شامبو للفروة، بلسم للأطراف، سيروم حسب العبوة.\n٢) ابدئي بقليل.\n٣) لا تُشبعي الخصل.\n٤) أسبوعان–ثلاثة للفرق الأوضح.",
   "useEn": "1) Shampoo scalp, condition lengths, leave-in as labeled.\n2) Start small.\n3) Don’t drench the hair.\n4) Two–three weeks for a clearer change.",
   "skinAr": "فروة تحتاج انتعاشاً",
-  "skinEn": "match hair and scalp"},
+  "skinEn": "match hair and scalp",
+  "stock": 3
+},
 {
   "id": 193,
   "brand": "Medicube",
@@ -400,7 +434,9 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) ماء فاتر.\n٢) ٢٠–٣٠ ثانية تدليك ثم شطف كامل.\n٣) تربيت للتجفيف.\n٤) مكياج ثقيل: زيتي أولاً ثم هذا.",
   "useEn": "1) Lukewarm water.\n2) 20–30 seconds, full rinse.\n3) Pat dry.\n4) Heavy makeup: oil first, then this.",
   "skinAr": "الحساسة بصيغة ألطف",
-  "skinEn": "after makeup as step one"},
+  "skinEn": "after makeup as step one",
+  "stock": 3
+},
 {
   "id": 196,
   "brand": "Medicube",
@@ -422,7 +458,9 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) وجه نظيف ورطب قليلاً.\n٢) نقطة على الخد والجبهة والذقن، ثم توزيع.\n٣) دقيقة صبر ثم الكريم.\n٤) محيط العين فقط إن صُمّم لذلك.",
   "useEn": "1) Clean skin; toner first if you use one.\n2) 2–3 drops — press from center out.\n3) Cream on top. AM: SPF.\n4) Retinoids/acids: night, slowly.",
   "skinAr": "معظم الأنواع — ابدئي بقطرات",
-  "skinEn": "daily SPF when brightening"},
+  "skinEn": "daily SPF when brightening",
+  "stock": 3
+},
 {
   "id": 199,
   "brand": "Medicube",
@@ -443,5 +481,7 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) أول خطوة صباحًا ومساءً.\n٢) تجنّبي الماء المغلي.\n٣) إن شدّ الوجه، قصّري الوقت.",
   "useEn": "1) Lukewarm water.\n2) 20–30 seconds, full rinse.\n3) Pat dry.\n4) Heavy makeup: oil first, then this.",
   "skinAr": "الحساسة بصيغة ألطف",
-  "skinEn": "sensitive with a milder formula"}
+  "skinEn": "sensitive with a milder formula",
+  "stock": 3
+}
 );

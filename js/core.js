@@ -95,11 +95,10 @@ function mergeOverrides(map){
 /* Storefront trusts only published data/overrides.json (fetched in boot).
    Do NOT merge localStorage naqa_overrides here — that let any browser rewrite prices into WhatsApp. */
 try {
-  var _allStock = products.map(function (p) { return p.stock; });
-  var _all25 = _allStock.length && _allStock.every(function (s) { return Number(s) === 25; });
-  if (_all25) {
-    products.forEach(function (p) { p.stock = null; });
-  }
+  /* Default stock: 3 when missing/empty. Do not wipe uniform stock. */
+  products.forEach(function (p) {
+    if (p.stock == null || p.stock === "") p.stock = 3;
+  });
 } catch (e) {}
 const $=s=>document.querySelector(s);
 

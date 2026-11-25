@@ -21,5 +21,7 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) أول خطوة صباحًا ومساءً.\n٢) تجنّبي الماء المغلي.\n٣) إن شدّ الوجه، قصّري الوقت.",
   "useEn": "1) Lukewarm water.\n2) 20–30 seconds, full rinse.\n3) Pat dry.\n4) Heavy makeup: oil first, then this.",
   "skinAr": "الدهنية والمختلطة",
-  "skinEn": "after makeup as step one"}
+  "skinEn": "after makeup as step one",
+  "stock": 3
+}
 );

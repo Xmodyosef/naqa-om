@@ -22,7 +22,9 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) بشرة مرطّبة (+ SPF نهاراً).\n٢) كمية قليلة ووزّعي.\n٣) غطّي بطبقات خفيفة.\n٤) ثبّتي عند الحاجة.",
   "useEn": "1) Moisturized skin (+ SPF by day).\n2) Start small and blend.\n3) Build in thin layers.\n4) Set for longer wear.",
   "skinAr": "مختلطة إلى جافة",
-  "skinEn": "combo to dry"},
+  "skinEn": "combo to dry",
+  "stock": 3
+},
 {
   "id": 79,
   "brand": "SHEGLAM",
@@ -44,7 +46,9 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) بشرة مرطّبة (+ SPF نهاراً).\n٢) كمية قليلة ووزّعي.\n٣) غطّي بطبقات خفيفة.\n٤) ثبّتي عند الحاجة.",
   "useEn": "1) Moisturized skin (+ SPF by day).\n2) Start small and blend.\n3) Build in thin layers.\n4) Set for longer wear.",
   "skinAr": "مختلطة إلى جافة",
-  "skinEn": "combo to dry"},
+  "skinEn": "combo to dry",
+  "stock": 3
+},
 {
   "id": 81,
   "brand": "SHEGLAM",
@@ -66,7 +70,9 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) بشرة مرطّبة (+ SPF نهاراً).\n٢) كمية قليلة ووزّعي.\n٣) غطّي بطبقات خفيفة.\n٤) ثبّتي عند الحاجة.",
   "useEn": "1) Moisturized skin (+ SPF by day).\n2) Start small and blend.\n3) Build in thin layers.\n4) Set for longer wear.",
   "skinAr": "اختبري التطابق على الفك",
-  "skinEn": "combo to dry"},
+  "skinEn": "combo to dry",
+  "stock": 3
+},
 {
   "id": 82,
   "brand": "SHEGLAM",
@@ -88,7 +94,9 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) بشرة مرطّبة (+ SPF نهاراً).\n٢) كمية قليلة ووزّعي.\n٣) غطّي بطبقات خفيفة.\n٤) ثبّتي عند الحاجة.",
   "useEn": "1) Moisturized skin (+ SPF by day).\n2) Start small and blend.\n3) Build in thin layers.\n4) Set for longer wear.",
   "skinAr": "مختلطة إلى جافة",
-  "skinEn": "combo to dry"},
+  "skinEn": "combo to dry",
+  "stock": 3
+},
 {
   "id": 83,
   "brand": "SHEGLAM",
@@ -110,7 +118,9 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) بشرة مرطّبة (+ SPF نهاراً).\n٢) كمية قليلة ووزّعي.\n٣) غطّي بطبقات خفيفة.\n٤) ثبّتي عند الحاجة.",
   "useEn": "1) Moisturized skin (+ SPF by day).\n2) Start small and blend.\n3) Build in thin layers.\n4) Set for longer wear.",
   "skinAr": "مختلطة إلى جافة",
-  "skinEn": "quiet everyday makeup"},
+  "skinEn": "quiet everyday makeup",
+  "stock": 3
+},
 {
   "id": 84,
   "brand": "SHEGLAM",
@@ -132,7 +142,9 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) بشرة مرطّبة (+ SPF نهاراً).\n٢) كمية قليلة ووزّعي.\n٣) غطّي بطبقات خفيفة.\n٤) ثبّتي عند الحاجة.",
   "useEn": "1) Moisturized skin (+ SPF by day).\n2) Start small and blend.\n3) Build in thin layers.\n4) Set for longer wear.",
   "skinAr": "اختبري التطابق على الفك",
-  "skinEn": "quiet everyday makeup"},
+  "skinEn": "quiet everyday makeup",
+  "stock": 3
+},
 {
   "id": 85,
   "brand": "SHEGLAM",
@@ -154,7 +166,9 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) بشرة مرطّبة (+ SPF نهاراً).\n٢) كمية قليلة ووزّعي.\n٣) غطّي بطبقات خفيفة.\n٤) ثبّتي عند الحاجة.",
   "useEn": "1) Moisturized skin (+ SPF by day).\n2) Start small and blend.\n3) Build in thin layers.\n4) Set for longer wear.",
   "skinAr": "اختبري التطابق على الفك",
-  "skinEn": "swatch along the jaw"},
+  "skinEn": "swatch along the jaw",
+  "stock": 3
+},
 {
   "id": 86,
   "brand": "SHEGLAM",
@@ -176,7 +190,9 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) بشرة مرطّبة (+ SPF نهاراً).\n٢) كمية قليلة ووزّعي.\n٣) غطّي بطبقات خفيفة.\n٤) ثبّتي عند الحاجة.",
   "useEn": "1) Moisturized skin (+ SPF by day).\n2) Start small and blend.\n3) Build in thin layers.\n4) Set for longer wear.",
   "skinAr": "مختلطة إلى جافة",
-  "skinEn": "combo to dry"},
+  "skinEn": "combo to dry",
+  "stock": 3
+},
 {
   "id": 87,
   "brand": "SHEGLAM",
@@ -198,7 +214,9 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) بشرة مرطّبة (+ SPF نهاراً).\n٢) كمية قليلة ووزّعي.\n٣) غطّي بطبقات خفيفة.\n٤) ثبّتي عند الحاجة.",
   "useEn": "1) Moisturized skin (+ SPF by day).\n2) Start small and blend.\n3) Build in thin layers.\n4) Set for longer wear.",
   "skinAr": "مختلطة إلى جافة",
-  "skinEn": "quiet everyday makeup"},
+  "skinEn": "quiet everyday makeup",
+  "stock": 3
+},
 {
   "id": 88,
   "brand": "SHEGLAM",
@@ -220,7 +238,9 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) بشرة مرطّبة (+ SPF نهاراً).\n٢) كمية قليلة ووزّعي.\n٣) غطّي بطبقات خفيفة.\n٤) ثبّتي عند الحاجة.",
   "useEn": "1) Moisturized skin (+ SPF by day).\n2) Start small and blend.\n3) Build in thin layers.\n4) Set for longer wear.",
   "skinAr": "مكياج يومي هادئ",
-  "skinEn": "combo to dry"},
+  "skinEn": "combo to dry",
+  "stock": 3
+},
 {
   "id": 89,
   "brand": "SHEGLAM",
@@ -242,7 +262,9 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) بشرة مرطّبة (+ SPF نهاراً).\n٢) كمية قليلة ووزّعي.\n٣) غطّي بطبقات خفيفة.\n٤) ثبّتي عند الحاجة.",
   "useEn": "1) Moisturized skin (+ SPF by day).\n2) Start small and blend.\n3) Build in thin layers.\n4) Set for longer wear.",
   "skinAr": "اختبري التطابق على الفك",
-  "skinEn": "quiet everyday makeup"},
+  "skinEn": "quiet everyday makeup",
+  "stock": 3
+},
 {
   "id": 90,
   "brand": "SHEGLAM",
@@ -264,7 +286,9 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) بشرة مرطّبة (+ SPF نهاراً).\n٢) كمية قليلة ووزّعي.\n٣) غطّي بطبقات خفيفة.\n٤) ثبّتي عند الحاجة.",
   "useEn": "1) Moisturized skin (+ SPF by day).\n2) Start small and blend.\n3) Build in thin layers.\n4) Set for longer wear.",
   "skinAr": "اختبري التطابق على الفك",
-  "skinEn": "combo to dry"},
+  "skinEn": "combo to dry",
+  "stock": 3
+},
 {
   "id": 122,
   "brand": "SHEGLAM",
@@ -288,7 +312,9 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) شفاه نظيفة.\n٢) من الوسط للخارج.\n٣) لمسة خلال اليوم.\n٤) ليلاً أغنى إن كان مرطباً.",
   "useEn": "1) Clean lips.\n2) Center to outer edge.\n3) Touch up through the day.\n4) Richer layer at night if balm/mask.",
   "skinAr": "كل درجات الشفاه",
-  "skinEn": "all lip tones"},
+  "skinEn": "all lip tones",
+  "stock": 3
+},
 {
   "id": 127,
   "brand": "SHEGLAM",
@@ -310,7 +336,9 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) شفاه نظيفة.\n٢) من الوسط للخارج.\n٣) لمسة خلال اليوم.\n٤) ليلاً أغنى إن كان مرطباً.",
   "useEn": "1) Clean lips.\n2) Center to outer edge.\n3) Touch up through the day.\n4) Richer layer at night if balm/mask.",
   "skinAr": "الشفاه الجافة",
-  "skinEn": "dry lips"},
+  "skinEn": "dry lips",
+  "stock": 3
+},
 {
   "id": 143,
   "brand": "SHEGLAM",
@@ -332,7 +360,9 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) شفاه نظيفة.\n٢) من الوسط للخارج.\n٣) لمسة خلال اليوم.\n٤) ليلاً أغنى إن كان مرطباً.",
   "useEn": "1) Clean lips.\n2) Center to outer edge.\n3) Touch up through the day.\n4) Richer layer at night if balm/mask.",
   "skinAr": "الشفاه الجافة",
-  "skinEn": "daily without fuss"},
+  "skinEn": "daily without fuss",
+  "stock": 3
+},
 {
   "id": 144,
   "brand": "SHEGLAM",
@@ -354,7 +384,9 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) شفاه نظيفة.\n٢) من الوسط للخارج.\n٣) لمسة خلال اليوم.\n٤) ليلاً أغنى إن كان مرطباً.",
   "useEn": "1) Clean lips.\n2) Center to outer edge.\n3) Touch up through the day.\n4) Richer layer at night if balm/mask.",
   "skinAr": "يومياً بلا إزعاج",
-  "skinEn": "all lip tones"},
+  "skinEn": "all lip tones",
+  "stock": 3
+},
 {
   "id": 145,
   "brand": "SHEGLAM",
@@ -376,7 +408,9 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) شفاه نظيفة.\n٢) من الوسط للخارج.\n٣) لمسة خلال اليوم.\n٤) ليلاً أغنى إن كان مرطباً.",
   "useEn": "1) Clean lips.\n2) Center to outer edge.\n3) Touch up through the day.\n4) Richer layer at night if balm/mask.",
   "skinAr": "كل درجات الشفاه",
-  "skinEn": "dry lips"},
+  "skinEn": "dry lips",
+  "stock": 3
+},
 {
   "id": 153,
   "brand": "SHEGLAM",
@@ -398,7 +432,9 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) شفاه نظيفة.\n٢) من الوسط للخارج.\n٣) لمسة خلال اليوم.\n٤) ليلاً أغنى إن كان مرطباً.",
   "useEn": "1) Clean lips.\n2) Center to outer edge.\n3) Touch up through the day.\n4) Richer layer at night if balm/mask.",
   "skinAr": "الشفاه الجافة",
-  "skinEn": "dry lips"},
+  "skinEn": "dry lips",
+  "stock": 3
+},
 {
   "id": 154,
   "brand": "SHEGLAM",
@@ -420,7 +456,9 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) شفاه نظيفة.\n٢) من الوسط للخارج.\n٣) لمسة خلال اليوم.\n٤) ليلاً أغنى إن كان مرطباً.",
   "useEn": "1) Clean lips.\n2) Center to outer edge.\n3) Touch up through the day.\n4) Richer layer at night if balm/mask.",
   "skinAr": "الشفاه الجافة",
-  "skinEn": "all lip tones"},
+  "skinEn": "all lip tones",
+  "stock": 3
+},
 {
   "id": 155,
   "brand": "SHEGLAM",
@@ -442,7 +480,9 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) شفاه نظيفة.\n٢) من الوسط للخارج.\n٣) لمسة خلال اليوم.\n٤) ليلاً أغنى إن كان مرطباً.",
   "useEn": "1) Clean lips.\n2) Center to outer edge.\n3) Touch up through the day.\n4) Richer layer at night if balm/mask.",
   "skinAr": "يومياً بلا إزعاج",
-  "skinEn": "dry lips"},
+  "skinEn": "dry lips",
+  "stock": 3
+},
 {
   "id": 156,
   "brand": "SHEGLAM",
@@ -464,7 +504,9 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) شفاه نظيفة.\n٢) من الوسط للخارج.\n٣) لمسة خلال اليوم.\n٤) ليلاً أغنى إن كان مرطباً.",
   "useEn": "1) Clean lips.\n2) Center to outer edge.\n3) Touch up through the day.\n4) Richer layer at night if balm/mask.",
   "skinAr": "الشفاه الجافة",
-  "skinEn": "dry lips"},
+  "skinEn": "dry lips",
+  "stock": 3
+},
 {
   "id": 157,
   "brand": "SHEGLAM",
@@ -486,7 +528,9 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) شفاه نظيفة.\n٢) من الوسط للخارج.\n٣) لمسة خلال اليوم.\n٤) ليلاً أغنى إن كان مرطباً.",
   "useEn": "1) Clean lips.\n2) Center to outer edge.\n3) Touch up through the day.\n4) Richer layer at night if balm/mask.",
   "skinAr": "كل درجات الشفاه",
-  "skinEn": "all lip tones"},
+  "skinEn": "all lip tones",
+  "stock": 3
+},
 {
   "id": 158,
   "brand": "SHEGLAM",
@@ -508,7 +552,9 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) شفاه نظيفة.\n٢) من الوسط للخارج.\n٣) لمسة خلال اليوم.\n٤) ليلاً أغنى إن كان مرطباً.",
   "useEn": "1) Clean lips.\n2) Center to outer edge.\n3) Touch up through the day.\n4) Richer layer at night if balm/mask.",
   "skinAr": "كل درجات الشفاه",
-  "skinEn": "all lip tones"},
+  "skinEn": "all lip tones",
+  "stock": 3
+},
 {
   "id": 159,
   "brand": "SHEGLAM",
@@ -530,7 +576,9 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) بشرة مرطّبة (+ SPF نهاراً).\n٢) كمية قليلة ووزّعي.\n٣) غطّي بطبقات خفيفة.\n٤) ثبّتي عند الحاجة.",
   "useEn": "1) Moisturized skin (+ SPF by day).\n2) Start small and blend.\n3) Build in thin layers.\n4) Set for longer wear.",
   "skinAr": "مكياج يومي هادئ",
-  "skinEn": "combo to dry"},
+  "skinEn": "combo to dry",
+  "stock": 3
+},
 {
   "id": 160,
   "brand": "SHEGLAM",
@@ -552,7 +600,9 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) بشرة مرطّبة (+ SPF نهاراً).\n٢) كمية قليلة ووزّعي.\n٣) غطّي بطبقات خفيفة.\n٤) ثبّتي عند الحاجة.",
   "useEn": "1) Moisturized skin (+ SPF by day).\n2) Start small and blend.\n3) Build in thin layers.\n4) Set for longer wear.",
   "skinAr": "اختبري التطابق على الفك",
-  "skinEn": "quiet everyday makeup"},
+  "skinEn": "quiet everyday makeup",
+  "stock": 3
+},
 {
   "id": 176,
   "brand": "SHEGLAM",
@@ -574,7 +624,9 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) شامبو للفروة، بلسم للأطراف، سيروم حسب العبوة.\n٢) ابدئي بقليل.\n٣) لا تُشبعي الخصل.\n٤) أسبوعان–ثلاثة للفرق الأوضح.",
   "useEn": "1) Shampoo scalp, condition lengths, leave-in as labeled.\n2) Start small.\n3) Don’t drench the hair.\n4) Two–three weeks for a clearer change.",
   "skinAr": "حسب الشعر والفروة",
-  "skinEn": "match hair and scalp"},
+  "skinEn": "match hair and scalp",
+  "stock": 3
+},
 {
   "id": 197,
   "brand": "SHEGLAM",
@@ -596,5 +648,7 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) بشرة مرطّبة (+ SPF نهاراً).\n٢) كمية قليلة ووزّعي.\n٣) غطّي بطبقات خفيفة.\n٤) ثبّتي عند الحاجة.",
   "useEn": "1) Moisturized skin (+ SPF by day).\n2) Start small and blend.\n3) Build in thin layers.\n4) Set for longer wear.",
   "skinAr": "مختلطة إلى جافة",
-  "skinEn": "combo to dry"}
+  "skinEn": "combo to dry",
+  "stock": 3
+}
 );

@@ -29,7 +29,7 @@ const ctx = { window: {} };
 vm.createContext(ctx);
 vm.runInContext(code, ctx);
 const P = ctx.window.NAQA_PRODUCTS;
-assert(!(P.length && P.every((p) => Number(p.stock) === 25)), "stock not all 25");
+assert(P.length && P.every((p) => Number(p.stock) === 3), "catalog stock default 3");
 
 const dry = read("js/features/wish-concerns.js").split('id:"dry"')[1].slice(0, 180);
 assert(!/moist|ترطيب/.test(dry), "dry quiz without moist/ترطيب");

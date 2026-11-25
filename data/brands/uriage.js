@@ -22,5 +22,7 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) نظّفي → عالجي → احمي.\n٢) كمية معتدلة.\n٣) راقبي الأسبوع الأول.\n٤) SPF مع التفتيح أو الأحماض.",
   "useEn": "1) Cleanse → treat → protect.\n2) Moderate amount.\n3) Watch week one.\n4) SPF with brightening or acids.",
   "skinAr": "حسب احتياج يومك",
-  "skinEn": "match today’s need"}
+  "skinEn": "match today’s need",
+  "stock": 3
+}
 );

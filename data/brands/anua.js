@@ -24,7 +24,9 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) وجه نظيف ورطب قليلاً.\n٢) نقطة على الخد والجبهة والذقن، ثم توزيع.\n٣) دقيقة صبر ثم الكريم.\n٤) محيط العين فقط إن صُمّم لذلك.",
   "useEn": "1) Clean, slightly damp face.\n2) Dot cheeks, forehead, chin; spread.\n3) Wait a minute, then cream.\n4) Eye area only if the formula is made for it.",
   "skinAr": "الجافة والعطشى",
-  "skinEn": "most types — start with drops"},
+  "skinEn": "most types — start with drops",
+  "stock": 3
+},
 {
   "id": 37,
   "brand": "Anua",
@@ -46,7 +48,9 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) أول خطوة صباحًا ومساءً.\n٢) تجنّبي الماء المغلي.\n٣) إن شدّ الوجه، قصّري الوقت.",
   "useEn": "1) Lukewarm water.\n2) 20–30 seconds, full rinse.\n3) Pat dry.\n4) Heavy makeup: oil first, then this.",
   "skinAr": "الدهنية والمختلطة",
-  "skinEn": "oily and combination"},
+  "skinEn": "oily and combination",
+  "stock": 3
+},
 {
   "id": 44,
   "brand": "Anua",
@@ -68,7 +72,9 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) ماء فاتر.\n٢) ٢٠–٣٠ ثانية تدليك ثم شطف كامل.\n٣) تربيت للتجفيف.\n٤) مكياج ثقيل: زيتي أولاً ثم هذا.",
   "useEn": "1) Lukewarm water.\n2) 20–30 seconds, full rinse.\n3) Pat dry.\n4) Heavy makeup: oil first, then this.",
   "skinAr": "بعد مكياج كخطوة أولى",
-  "skinEn": "oily and combination"},
+  "skinEn": "oily and combination",
+  "stock": 3
+},
 {
   "id": 56,
   "brand": "Anua",
@@ -90,7 +96,9 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) وجه نظيف ورطب قليلاً.\n٢) نقطة على الخد والجبهة والذقن، ثم توزيع.\n٣) دقيقة صبر ثم الكريم.\n٤) محيط العين فقط إن صُمّم لذلك.",
   "useEn": "1) Clean skin; toner first if you use one.\n2) 2–3 drops — press from center out.\n3) Cream on top. AM: SPF.\n4) Retinoids/acids: night, slowly.",
   "skinAr": "الدهنية والمختلطة",
-  "skinEn": "sensitive after a patch test"},
+  "skinEn": "sensitive after a patch test",
+  "stock": 3
+},
 {
   "id": 57,
   "brand": "Anua",
@@ -112,7 +120,9 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) بشرة نظيفة، بعد التونر إن وُجد.\n٢) ٢–٣ قطرات — اضغطي من الوسط للخارج.\n٣) مرطب فوقه. صباحاً: SPF.\n٤) الريتينول/الأحماض: ليلاً وبالتدريج.",
   "useEn": "1) Clean skin; toner first if you use one.\n2) 2–3 drops — press from center out.\n3) Cream on top. AM: SPF.\n4) Retinoids/acids: night, slowly.",
   "skinAr": "الجافة والعطشى",
-  "skinEn": "oily and combination"},
+  "skinEn": "oily and combination",
+  "stock": 3
+},
 {
   "id": 61,
   "brand": "Anua",
@@ -134,7 +144,9 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) بشرة نظيفة.\n٢) مرّري التونر/الوسادة.\n٣) إن كان مقشّراً: ليس بالضرورة يومياً.",
   "useEn": "1) Right after cleansing.\n2) Palms or pad — no dragging.\n3) No rinse → serum → cream.",
   "skinAr": "المتعطشة للماء",
-  "skinEn": "sensitive"},
+  "skinEn": "sensitive",
+  "stock": 3
+},
 {
   "id": 62,
   "brand": "Anua",
@@ -156,7 +168,9 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) آخر عناية صباحية.\n٢) كمية إصبعين تقريباً للوجه والرقبة.\n٣) دقيقة قبل المكياج.\n٤) أعيدي في الشمس الطويلة.",
   "useEn": "1) Last morning step.\n2) About two fingers for face and neck.\n3) One minute before makeup.\n4) Reapply in long sun.",
   "skinAr": "تحت المكياج",
-  "skinEn": "after morning care"},
+  "skinEn": "after morning care",
+  "stock": 3
+},
 {
   "id": 63,
   "brand": "Anua",
@@ -178,7 +192,9 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) نظّفي → عالجي → احمي.\n٢) كمية معتدلة.\n٣) راقبي الأسبوع الأول.\n٤) SPF مع التفتيح أو الأحماض.",
   "useEn": "1) Cleanse → treat → protect.\n2) Moderate amount.\n3) Watch week one.\n4) SPF with brightening or acids.",
   "skinAr": "حسب احتياج يومك",
-  "skinEn": "most types"},
+  "skinEn": "most types",
+  "stock": 3
+},
 {
   "id": 68,
   "brand": "Anua",
@@ -199,7 +215,9 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) بشرة مرطّبة (+ SPF نهاراً).\n٢) كمية قليلة ووزّعي.\n٣) غطّي بطبقات خفيفة.\n٤) ثبّتي عند الحاجة.",
   "useEn": "1) Moisturized skin (+ SPF by day).\n2) Start small and blend.\n3) Build in thin layers.\n4) Set for longer wear.",
   "skinAr": "مختلطة إلى جافة",
-  "skinEn": "quiet everyday makeup"},
+  "skinEn": "quiet everyday makeup",
+  "stock": 3
+},
 {
   "id": 69,
   "brand": "Anua",
@@ -220,7 +238,9 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) ماء فاتر.\n٢) ٢٠–٣٠ ثانية تدليك ثم شطف كامل.\n٣) تربيت للتجفيف.\n٤) مكياج ثقيل: زيتي أولاً ثم هذا.",
   "useEn": "1) Lukewarm water.\n2) 20–30 seconds, full rinse.\n3) Pat dry.\n4) Heavy makeup: oil first, then this.",
   "skinAr": "صباحاً ومساءً",
-  "skinEn": "after makeup as step one"},
+  "skinEn": "after makeup as step one",
+  "stock": 3
+},
 {
   "id": 96,
   "brand": "Anua",
@@ -242,7 +262,9 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) فوراً بعد الغسول.\n٢) راحة اليد أو القطنة — بلا سحب.\n٣) بدون شطف → سيروم → مرطب.",
   "useEn": "1) Right after cleansing.\n2) Palms or pad — no dragging.\n3) No rinse → serum → cream.",
   "skinAr": "بعد كل غسول",
-  "skinEn": "after every cleanse"},
+  "skinEn": "after every cleanse",
+  "stock": 3
+},
 {
   "id": 99,
   "brand": "Anua",
@@ -264,7 +286,9 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) بعد السيروم أو مباشرة بعد الغسول.\n٢) حبة بازيلاء للوجه + قليل للرقبة.\n٣) صباحاً SPF فوقه.\n٤) مساءً زيدي على الخدود الجافة.",
   "useEn": "1) After serum or right after cleanse.\n2) Pea-size for face + a little neck.\n3) SPF over it in the morning.\n4) Extra on dry cheeks at night.",
   "skinAr": "مساءً لمعظم الأنواع",
-  "skinEn": "combo in dry weather"},
+  "skinEn": "combo in dry weather",
+  "stock": 3
+},
 {
   "id": 146,
   "brand": "Anua",
@@ -286,7 +310,9 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) فوراً بعد الغسول.\n٢) راحة اليد أو القطنة — بلا سحب.\n٣) بدون شطف → سيروم → مرطب.",
   "useEn": "1) Right after cleansing.\n2) Palms or pad — no dragging.\n3) No rinse → serum → cream.",
   "skinAr": "بعد كل غسول",
-  "skinEn": "oily that wants a refresh"},
+  "skinEn": "oily that wants a refresh",
+  "stock": 3
+},
 {
   "id": 149,
   "brand": "Anua",
@@ -308,7 +334,9 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) بعد السيروم أو مباشرة بعد الغسول.\n٢) حبة بازيلاء للوجه + قليل للرقبة.\n٣) صباحاً SPF فوقه.\n٤) مساءً زيدي على الخدود الجافة.",
   "useEn": "1) After serum or right after cleanse.\n2) Pea-size for face + a little neck.\n3) SPF over it in the morning.\n4) Extra on dry cheeks at night.",
   "skinAr": "المختلطة في الجو الجاف",
-  "skinEn": "combo in dry weather"},
+  "skinEn": "combo in dry weather",
+  "stock": 3
+},
 {
   "id": 150,
   "brand": "Anua",
@@ -330,7 +358,9 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) دفّئي الكمية بين الأصابع.\n٢) ربّتي حتى تختفي.\n٣) القليل اليومي أهدى من الكثير مرة واحدة.",
   "useEn": "1) After serum or right after cleanse.\n2) Pea-size for face + a little neck.\n3) SPF over it in the morning.\n4) Extra on dry cheeks at night.",
   "skinAr": "المختلطة في الجو الجاف",
-  "skinEn": "dry and needy"},
+  "skinEn": "dry and needy",
+  "stock": 3
+},
 {
   "id": 151,
   "brand": "Anua",
@@ -352,7 +382,9 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) فوراً بعد الغسول.\n٢) راحة اليد أو القطنة — بلا سحب.\n٣) بدون شطف → سيروم → مرطب.",
   "useEn": "1) Right after cleansing.\n2) Palms or pad — no dragging.\n3) No rinse → serum → cream.",
   "skinAr": "الدهنية المنتعشة",
-  "skinEn": "sensitive"},
+  "skinEn": "sensitive",
+  "stock": 3
+},
 {
   "id": 152,
   "brand": "Anua",
@@ -374,5 +406,7 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) بشرة نظيفة، بعد التونر إن وُجد.\n٢) ٢–٣ قطرات — اضغطي من الوسط للخارج.\n٣) مرطب فوقه. صباحاً: SPF.\n٤) الريتينول/الأحماض: ليلاً وبالتدريج.",
   "useEn": "1) Clean, slightly damp face.\n2) Dot cheeks, forehead, chin; spread.\n3) Wait a minute, then cream.\n4) Eye area only if the formula is made for it.",
   "skinAr": "الحساسة بعد اختبار بسيط",
-  "skinEn": "sensitive after a patch test"}
+  "skinEn": "sensitive after a patch test",
+  "stock": 3
+}
 );

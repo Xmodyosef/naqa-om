@@ -22,7 +22,9 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) بشرة نظيفة، بعد التونر إن وُجد.\n٢) ٢–٣ قطرات — اضغطي من الوسط للخارج.\n٣) مرطب فوقه. صباحاً: SPF.\n٤) الريتينول/الأحماض: ليلاً وبالتدريج.",
   "useEn": "1) Clean skin; toner first if you use one.\n2) 2–3 drops — press from center out.\n3) Cream on top. AM: SPF.\n4) Retinoids/acids: night, slowly.",
   "skinAr": "معظم الأنواع — ابدئي بقطرات",
-  "skinEn": "dry and thirsty"},
+  "skinEn": "dry and thirsty",
+  "stock": 3
+},
 {
   "id": 18,
   "brand": "Dr.Althea",
@@ -44,7 +46,9 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) دفّئي الكمية بين الأصابع.\n٢) ربّتي حتى تختفي.\n٣) القليل اليومي أهدى من الكثير مرة واحدة.",
   "useEn": "1) After serum or right after cleanse.\n2) Pea-size for face + a little neck.\n3) SPF over it in the morning.\n4) Extra on dry cheeks at night.",
   "skinAr": "مساءً لمعظم الأنواع",
-  "skinEn": "sensitive dry skin"},
+  "skinEn": "sensitive dry skin",
+  "stock": 3
+},
 {
   "id": 21,
   "brand": "Dr.Althea",
@@ -66,7 +70,9 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) بشرة نظيفة، بعد التونر إن وُجد.\n٢) ٢–٣ قطرات — اضغطي من الوسط للخارج.\n٣) مرطب فوقه. صباحاً: SPF.\n٤) الريتينول/الأحماض: ليلاً وبالتدريج.",
   "useEn": "1) Clean skin; toner first if you use one.\n2) 2–3 drops — press from center out.\n3) Cream on top. AM: SPF.\n4) Retinoids/acids: night, slowly.",
   "skinAr": "مع SPF يومي عند التفتيح",
-  "skinEn": "daily SPF when brightening"},
+  "skinEn": "daily SPF when brightening",
+  "stock": 3
+},
 {
   "id": 47,
   "brand": "Dr.Althea",
@@ -88,7 +94,9 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) دفّئي الكمية بين الأصابع.\n٢) ربّتي حتى تختفي.\n٣) القليل اليومي أهدى من الكثير مرة واحدة.",
   "useEn": "1) After serum or right after cleanse.\n2) Pea-size for face + a little neck.\n3) SPF over it in the morning.\n4) Extra on dry cheeks at night.",
   "skinAr": "مساءً لمعظم الأنواع",
-  "skinEn": "nights for most types"},
+  "skinEn": "nights for most types",
+  "stock": 3
+},
 {
   "id": 58,
   "brand": "Dr.Althea",
@@ -110,7 +118,9 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) دفّئي الكمية بين الأصابع.\n٢) ربّتي حتى تختفي.\n٣) القليل اليومي أهدى من الكثير مرة واحدة.",
   "useEn": "1) After serum or right after cleanse.\n2) Pea-size for face + a little neck.\n3) SPF over it in the morning.\n4) Extra on dry cheeks at night.",
   "skinAr": "مساءً لمعظم الأنواع",
-  "skinEn": "sensitive dry skin"},
+  "skinEn": "sensitive dry skin",
+  "stock": 3
+},
 {
   "id": 94,
   "brand": "Dr.Althea",
@@ -132,7 +142,9 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) نظّفي → عالجي → احمي.\n٢) كمية معتدلة.\n٣) راقبي الأسبوع الأول.\n٤) SPF مع التفتيح أو الأحماض.",
   "useEn": "1) Cleanse → treat → protect.\n2) Moderate amount.\n3) Watch week one.\n4) SPF with brightening or acids.",
   "skinAr": "معظم الأنواع",
-  "skinEn": "watch week one"},
+  "skinEn": "watch week one",
+  "stock": 3
+},
 {
   "id": 165,
   "brand": "Dr.Althea",
@@ -153,7 +165,9 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) بشرة نظيفة، بعد التونر إن وُجد.\n٢) ٢–٣ قطرات — اضغطي من الوسط للخارج.\n٣) مرطب فوقه. صباحاً: SPF.\n٤) الريتينول/الأحماض: ليلاً وبالتدريج.",
   "useEn": "1) Clean skin; toner first if you use one.\n2) 2–3 drops — press from center out.\n3) Cream on top. AM: SPF.\n4) Retinoids/acids: night, slowly.",
   "skinAr": "الجافة والعطشى",
-  "skinEn": "daily SPF when brightening"},
+  "skinEn": "daily SPF when brightening",
+  "stock": 3
+},
 {
   "id": 198,
   "brand": "Dr.Althea",
@@ -174,5 +188,7 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) بعد السيروم أو مباشرة بعد الغسول.\n٢) حبة بازيلاء للوجه + قليل للرقبة.\n٣) صباحاً SPF فوقه.\n٤) مساءً زيدي على الخدود الجافة.",
   "useEn": "1) After serum or right after cleanse.\n2) Pea-size for face + a little neck.\n3) SPF over it in the morning.\n4) Extra on dry cheeks at night.",
   "skinAr": "الجافة والمحتاجة",
-  "skinEn": "sensitive dry skin"}
+  "skinEn": "sensitive dry skin",
+  "stock": 3
+}
 );

@@ -22,5 +22,7 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) بشرة مرطّبة (+ SPF نهاراً).\n٢) كمية قليلة ووزّعي.\n٣) غطّي بطبقات خفيفة.\n٤) ثبّتي عند الحاجة.",
   "useEn": "1) Moisturized skin (+ SPF by day).\n2) Start small and blend.\n3) Build in thin layers.\n4) Set for longer wear.",
   "skinAr": "مختلطة إلى جافة",
-  "skinEn": "swatch along the jaw"}
+  "skinEn": "swatch along the jaw",
+  "stock": 3
+}
 );

@@ -22,5 +22,7 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) شامبو للفروة، بلسم للأطراف، سيروم حسب العبوة.\n٢) ابدئي بقليل.\n٣) لا تُشبعي الخصل.\n٤) أسبوعان–ثلاثة للفرق الأوضح.",
   "useEn": "1) Shampoo scalp, condition lengths, leave-in as labeled.\n2) Start small.\n3) Don’t drench the hair.\n4) Two–three weeks for a clearer change.",
   "skinAr": "فروة تحتاج انتعاشاً",
-  "skinEn": "scalp that needs air"}
+  "skinEn": "scalp that needs air",
+  "stock": 3
+}
 );

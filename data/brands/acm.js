@@ -22,7 +22,9 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) بعد السيروم أو مباشرة بعد الغسول.\n٢) حبة بازيلاء للوجه + قليل للرقبة.\n٣) صباحاً SPF فوقه.\n٤) مساءً زيدي على الخدود الجافة.",
   "useEn": "1) After serum or right after cleanse.\n2) Pea-size for face + a little neck.\n3) SPF over it in the morning.\n4) Extra on dry cheeks at night.",
   "skinAr": "مساءً لمعظم الأنواع",
-  "skinEn": "dry and needy"},
+  "skinEn": "dry and needy",
+  "stock": 3
+},
 {
   "id": 107,
   "brand": "ACM",
@@ -43,7 +45,9 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) بشرة مرطّبة (+ SPF نهاراً).\n٢) كمية قليلة ووزّعي.\n٣) غطّي بطبقات خفيفة.\n٤) ثبّتي عند الحاجة.",
   "useEn": "1) Moisturized skin (+ SPF by day).\n2) Start small and blend.\n3) Build in thin layers.\n4) Set for longer wear.",
   "skinAr": "مكياج يومي هادئ",
-  "skinEn": "combo to dry"},
+  "skinEn": "combo to dry",
+  "stock": 3
+},
 {
   "id": 190,
   "brand": "ACM",
@@ -64,5 +68,7 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) شامبو للفروة، بلسم للأطراف، سيروم حسب العبوة.\n٢) ابدئي بقليل.\n٣) لا تُشبعي الخصل.\n٤) أسبوعان–ثلاثة للفرق الأوضح.",
   "useEn": "1) Shampoo scalp, condition lengths, leave-in as labeled.\n2) Start small.\n3) Don’t drench the hair.\n4) Two–three weeks for a clearer change.",
   "skinAr": "فروة تحتاج انتعاشاً",
-  "skinEn": "match hair and scalp"}
+  "skinEn": "match hair and scalp",
+  "stock": 3
+}
 );

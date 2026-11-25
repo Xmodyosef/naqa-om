@@ -22,5 +22,7 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) مساءً غالباً.\n٢) قطرات قليلة بالضغط.\n٣) كريم فوقها.\n٤) أول أسبوع: يوم بعد يوم.",
   "useEn": "1) Often at night.\n2) Few drops, pressed in.\n3) Cream to seal.\n4) Week one: every other night.",
   "skinAr": "غالباً ليلاً",
-  "skinEn": "often at night"}
+  "skinEn": "often at night",
+  "stock": 3
+}
 );

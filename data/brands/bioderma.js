@@ -22,5 +22,7 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) بعد السيروم أو مباشرة بعد الغسول.\n٢) حبة بازيلاء للوجه + قليل للرقبة.\n٣) صباحاً SPF فوقه.\n٤) مساءً زيدي على الخدود الجافة.",
   "useEn": "1) After serum or right after cleanse.\n2) Pea-size for face + a little neck.\n3) SPF over it in the morning.\n4) Extra on dry cheeks at night.",
   "skinAr": "مساءً لمعظم الأنواع",
-  "skinEn": "combo in dry weather"}
+  "skinEn": "combo in dry weather",
+  "stock": 3
+}
 );

@@ -24,7 +24,9 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) من الجذر للطرف بتعرج خفيف.\n٢) طبقة ثانية بعد الجفاف.\n٣) مزيل لطيف مساءً.\n٤) لا تشاركي الفرشاة.",
   "useEn": "1) Root to tip, soft zigzag.\n2) Second coat after it sets.\n3) Gentle remover at night.\n4) Never share the wand.",
   "skinAr": "عيون حساسة؟ اختبري",
-  "skinEn": "sensitive eyes? patch-test"},
+  "skinEn": "sensitive eyes? patch-test",
+  "stock": 3
+},
 {
   "id": 109,
   "brand": "essence",
@@ -46,7 +48,9 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) من الجذر للطرف بتعرج خفيف.\n٢) طبقة ثانية بعد الجفاف.\n٣) مزيل لطيف مساءً.\n٤) لا تشاركي الفرشاة.",
   "useEn": "1) Root to tip, soft zigzag.\n2) Second coat after it sets.\n3) Gentle remover at night.\n4) Never share the wand.",
   "skinAr": "كل الرموش",
-  "skinEn": "day or night looks"},
+  "skinEn": "day or night looks",
+  "stock": 3
+},
 {
   "id": 110,
   "brand": "essence",
@@ -68,7 +72,9 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) من الجذر للطرف بتعرج خفيف.\n٢) طبقة ثانية بعد الجفاف.\n٣) مزيل لطيف مساءً.\n٤) لا تشاركي الفرشاة.",
   "useEn": "1) Root to tip, soft zigzag.\n2) Second coat after it sets.\n3) Gentle remover at night.\n4) Never share the wand.",
   "skinAr": "عيون حساسة؟ اختبري",
-  "skinEn": "all lashes"},
+  "skinEn": "all lashes",
+  "stock": 3
+},
 {
   "id": 111,
   "brand": "essence",
@@ -90,7 +96,9 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) من الجذر للطرف بتعرج خفيف.\n٢) طبقة ثانية بعد الجفاف.\n٣) مزيل لطيف مساءً.\n٤) لا تشاركي الفرشاة.",
   "useEn": "1) Root to tip, soft zigzag.\n2) Second coat after it sets.\n3) Gentle remover at night.\n4) Never share the wand.",
   "skinAr": "يوم أو سهرة",
-  "skinEn": "all lashes"},
+  "skinEn": "all lashes",
+  "stock": 3
+},
 {
   "id": 119,
   "brand": "essence",
@@ -111,5 +119,7 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) من الجذر للطرف بتعرج خفيف.\n٢) طبقة ثانية بعد الجفاف.\n٣) مزيل لطيف مساءً.\n٤) لا تشاركي الفرشاة.",
   "useEn": "1) Root to tip, soft zigzag.\n2) Second coat after it sets.\n3) Gentle remover at night.\n4) Never share the wand.",
   "skinAr": "كل الرموش",
-  "skinEn": "all lashes"}
+  "skinEn": "all lashes",
+  "stock": 3
+}
 );

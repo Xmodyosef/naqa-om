@@ -23,7 +23,9 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) وجه نظيف ورطب قليلاً.\n٢) نقطة على الخد والجبهة والذقن، ثم توزيع.\n٣) دقيقة صبر ثم الكريم.\n٤) محيط العين فقط إن صُمّم لذلك.",
   "useEn": "1) Clean skin; toner first if you use one.\n2) 2–3 drops — press from center out.\n3) Cream on top. AM: SPF.\n4) Retinoids/acids: night, slowly.",
   "skinAr": "مع SPF يومي عند التفتيح",
-  "skinEn": "oily and combination"},
+  "skinEn": "oily and combination",
+  "stock": 3
+},
 {
   "id": 48,
   "brand": "AXIS-Y",
@@ -45,7 +47,9 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) بعد السيروم أو مباشرة بعد الغسول.\n٢) حبة بازيلاء للوجه + قليل للرقبة.\n٣) صباحاً SPF فوقه.\n٤) مساءً زيدي على الخدود الجافة.",
   "useEn": "1) After serum or right after cleanse.\n2) Pea-size for face + a little neck.\n3) SPF over it in the morning.\n4) Extra on dry cheeks at night.",
   "skinAr": "الحساسة الجافة",
-  "skinEn": "combo in dry weather"},
+  "skinEn": "combo in dry weather",
+  "stock": 3
+},
 {
   "id": 51,
   "brand": "AXIS-Y",
@@ -67,7 +71,9 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) دفّئي الكمية بين الأصابع.\n٢) ربّتي حتى تختفي.\n٣) القليل اليومي أهدى من الكثير مرة واحدة.",
   "useEn": "1) After serum or right after cleanse.\n2) Pea-size for face + a little neck.\n3) SPF over it in the morning.\n4) Extra on dry cheeks at night.",
   "skinAr": "مساءً لمعظم الأنواع",
-  "skinEn": "nights for most types"},
+  "skinEn": "nights for most types",
+  "stock": 3
+},
 {
   "id": 97,
   "brand": "AXIS-Y",
@@ -89,5 +95,7 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) نظّفي → عالجي → احمي.\n٢) كمية معتدلة.\n٣) راقبي الأسبوع الأول.\n٤) SPF مع التفتيح أو الأحماض.",
   "useEn": "1) Cleanse → treat → protect.\n2) Moderate amount.\n3) Watch week one.\n4) SPF with brightening or acids.",
   "skinAr": "أول أسبوع للمراقبة",
-  "skinEn": "match today’s need"}
+  "skinEn": "match today’s need",
+  "stock": 3
+}
 );

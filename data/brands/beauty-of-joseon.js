@@ -22,7 +22,9 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) وجه نظيف ورطب قليلاً.\n٢) نقطة على الخد والجبهة والذقن، ثم توزيع.\n٣) دقيقة صبر ثم الكريم.\n٤) محيط العين فقط إن صُمّم لذلك.",
   "useEn": "1) Clean skin; toner first if you use one.\n2) 2–3 drops — press from center out.\n3) Cream on top. AM: SPF.\n4) Retinoids/acids: night, slowly.",
   "skinAr": "معظم الأنواع — ابدئي بقطرات",
-  "skinEn": "oily and combination"},
+  "skinEn": "oily and combination",
+  "stock": 3
+},
 {
   "id": 34,
   "brand": "Beauty of Joseon",
@@ -44,7 +46,9 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) آخر عناية صباحية.\n٢) كمية إصبعين تقريباً للوجه والرقبة.\n٣) دقيقة قبل المكياج.\n٤) أعيدي في الشمس الطويلة.",
   "useEn": "1) Last morning step.\n2) About two fingers for face and neck.\n3) One minute before makeup.\n4) Reapply in long sun.",
   "skinAr": "بعد العناية الصباحية",
-  "skinEn": "under makeup"},
+  "skinEn": "under makeup",
+  "stock": 3
+},
 {
   "id": 103,
   "brand": "Beauty of Joseon",
@@ -65,5 +69,7 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) بشرة نظيفة، بعد التونر إن وُجد.\n٢) ٢–٣ قطرات — اضغطي من الوسط للخارج.\n٣) مرطب فوقه. صباحاً: SPF.\n٤) الريتينول/الأحماض: ليلاً وبالتدريج.",
   "useEn": "1) Clean skin; toner first if you use one.\n2) 2–3 drops — press from center out.\n3) Cream on top. AM: SPF.\n4) Retinoids/acids: night, slowly.",
   "skinAr": "الجافة والعطشى",
-  "skinEn": "most types — start with drops"}
+  "skinEn": "most types — start with drops",
+  "stock": 3
+}
 );

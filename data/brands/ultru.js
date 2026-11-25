@@ -21,5 +21,7 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) شفاه نظيفة.\n٢) من الوسط للخارج.\n٣) لمسة خلال اليوم.\n٤) ليلاً أغنى إن كان مرطباً.",
   "useEn": "1) Clean lips.\n2) Center to outer edge.\n3) Touch up through the day.\n4) Richer layer at night if balm/mask.",
   "skinAr": "يومياً بلا إزعاج",
-  "skinEn": "daily without fuss"}
+  "skinEn": "daily without fuss",
+  "stock": 3
+}
 );

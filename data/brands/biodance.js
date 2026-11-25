@@ -22,5 +22,7 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) ١–٣ مرات أسبوعياً.\n٢) ابتعدي عن الجروح.\n٣) أكملي روتينك بعد الجلسة.",
   "useEn": "1) Clean skin.\n2) 10–20 minutes (or as labeled).\n3) Remove or pat in + cream.\n4) Clay/acids: not daily.",
   "skinAr": "١–٣ مرات أسبوعياً",
-  "skinEn": "sensitive — watch the clock"}
+  "skinEn": "sensitive — watch the clock",
+  "stock": 3
+}
 );

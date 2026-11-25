@@ -24,7 +24,9 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) بعد التنظيف.\n٢) طبقة خفيفة تكفي؛ لا تُغرقي.\n٣) أغلقي الترطيب.\n٤) إن لسع خفيفاً أول أيام، باعدي الاستخدام.",
   "useEn": "1) Clean skin; toner first if you use one.\n2) 2–3 drops — press from center out.\n3) Cream on top. AM: SPF.\n4) Retinoids/acids: night, slowly.",
   "skinAr": "الجافة والعطشى",
-  "skinEn": "daily SPF when brightening"},
+  "skinEn": "daily SPF when brightening",
+  "stock": 3
+},
 {
   "id": 12,
   "brand": "Arencia",
@@ -46,7 +48,9 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) وجه نظيف ورطب قليلاً.\n٢) نقطة على الخد والجبهة والذقن، ثم توزيع.\n٣) دقيقة صبر ثم الكريم.\n٤) محيط العين فقط إن صُمّم لذلك.",
   "useEn": "1) Clean, slightly damp face.\n2) Dot cheeks, forehead, chin; spread.\n3) Wait a minute, then cream.\n4) Eye area only if the formula is made for it.",
   "skinAr": "الجافة والعطشى",
-  "skinEn": "dry and thirsty"},
+  "skinEn": "dry and thirsty",
+  "stock": 3
+},
 {
   "id": 16,
   "brand": "Arencia",
@@ -68,7 +72,9 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) وجه نظيف ورطب قليلاً.\n٢) نقطة على الخد والجبهة والذقن، ثم توزيع.\n٣) دقيقة صبر ثم الكريم.\n٤) محيط العين فقط إن صُمّم لذلك.",
   "useEn": "1) Clean, slightly damp face.\n2) Dot cheeks, forehead, chin; spread.\n3) Wait a minute, then cream.\n4) Eye area only if the formula is made for it.",
   "skinAr": "الدهنية والمختلطة",
-  "skinEn": "dry and thirsty"},
+  "skinEn": "dry and thirsty",
+  "stock": 3
+},
 {
   "id": 29,
   "brand": "Arencia",
@@ -90,7 +96,9 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) وجه نظيف ورطب قليلاً.\n٢) نقطة على الخد والجبهة والذقن، ثم توزيع.\n٣) دقيقة صبر ثم الكريم.\n٤) محيط العين فقط إن صُمّم لذلك.",
   "useEn": "1) Clean, slightly damp face.\n2) Dot cheeks, forehead, chin; spread.\n3) Wait a minute, then cream.\n4) Eye area only if the formula is made for it.",
   "skinAr": "معظم الأنواع — ابدئي بقطرات",
-  "skinEn": "most types — start with drops"},
+  "skinEn": "most types — start with drops",
+  "stock": 3
+},
 {
   "id": 32,
   "brand": "Arencia",
@@ -112,7 +120,9 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) بشرة نظيفة، بعد التونر إن وُجد.\n٢) ٢–٣ قطرات — اضغطي من الوسط للخارج.\n٣) مرطب فوقه. صباحاً: SPF.\n٤) الريتينول/الأحماض: ليلاً وبالتدريج.",
   "useEn": "1) Clean, slightly damp face.\n2) Dot cheeks, forehead, chin; spread.\n3) Wait a minute, then cream.\n4) Eye area only if the formula is made for it.",
   "skinAr": "معظم الأنواع — ابدئي بقطرات",
-  "skinEn": "most types — start with drops"},
+  "skinEn": "most types — start with drops",
+  "stock": 3
+},
 {
   "id": 43,
   "brand": "Arencia",
@@ -134,7 +144,9 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) أول خطوة صباحًا ومساءً.\n٢) تجنّبي الماء المغلي.\n٣) إن شدّ الوجه، قصّري الوقت.",
   "useEn": "1) Lukewarm water.\n2) 20–30 seconds, full rinse.\n3) Pat dry.\n4) Heavy makeup: oil first, then this.",
   "skinAr": "صباحاً ومساءً",
-  "skinEn": "sensitive with a milder formula"},
+  "skinEn": "sensitive with a milder formula",
+  "stock": 3
+},
 {
   "id": 95,
   "brand": "Arencia",
@@ -156,5 +168,7 @@ window.NAQA_PRODUCTS.push(
   "useAr": "١) بعد التنظيف.\n٢) طبقة خفيفة تكفي؛ لا تُغرقي.\n٣) أغلقي الترطيب.\n٤) إن لسع خفيفاً أول أيام، باعدي الاستخدام.",
   "useEn": "1) Clean, slightly damp face.\n2) Dot cheeks, forehead, chin; spread.\n3) Wait a minute, then cream.\n4) Eye area only if the formula is made for it.",
   "skinAr": "مع SPF يومي عند التفتيح",
-  "skinEn": "dry and thirsty"}
+  "skinEn": "dry and thirsty",
+  "stock": 3
+}
 );

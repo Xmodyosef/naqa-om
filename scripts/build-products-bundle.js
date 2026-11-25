@@ -29,6 +29,7 @@ function card(p) {
   if (p.was != null && p.was !== "" && Number(p.was) > 0) o.was = p.was;
   if (p.hot) o.hot = true;
   if (p.em) o.em = p.em;
+  if (p.hidden) o.hidden = true;
   return o;
 }
 function detail(p) {

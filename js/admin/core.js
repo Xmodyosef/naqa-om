@@ -450,8 +450,11 @@
       A.orders = Object.keys(by).map(function (k) { return by[k]; });
       A.orders.sort(function (a, b) { return (b.at || "").localeCompare(a.at || ""); });
       A.orders.forEach(function (o) { o.status = A.normalizeStatus(o.status); });
+      A._ordersRemoteCount = Array.isArray(remote) ? remote.length : 0;
+      A._ordersTotalCount = A.orders.length;
       if (A.settleOrderStock) A.settleOrderStock();
       A.saveOrders();
+      if (A.updateOrdersBadge) A.updateOrdersBadge();
       if (A.paintOrders) A.paintOrders();
       if (A.paintDashboard) A.paintDashboard();
       if (A.paintCustomers) A.paintCustomers();

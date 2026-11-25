@@ -6,7 +6,7 @@ const DELIVERY_FEE = 2;
 const COD_FEE = 1.5;
 const FREE_SHIP_MIN = 30;
 const VAT_RATE = 0.05; /* 5% inclusive — prices already include VAT */
-const ORDERS_CAP = 300;
+const ORDERS_CAP = 2000;
 
 /* Bank transfer (manual). Leave empty until you set real details — do not invent. */
 const BANK_NAME = "";

@@ -44,6 +44,8 @@
       A.orders = Object.keys(by).map(function (k) { return by[k]; });
       A.orders.sort(function (a, b) { return String(b.at || "").localeCompare(String(a.at || "")); });
       A.orders.forEach(function (o) { o.status = A.normalizeStatus(o.status); });
+      A._ordersFromCloud = true;
+      A._ordersTotalCount = A.orders.length;
       if (A.settleOrderStock) A.settleOrderStock();
       if (A.saveOrders) A.saveOrders();
       if (A.updateOrdersBadge) A.updateOrdersBadge();

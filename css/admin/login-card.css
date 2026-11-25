@@ -1,2 +1,9 @@
-/* login-card: layout helpers only — visuals live in login-gate.css */
-#pinRow{display:none!important}
+/* STEP2 login: Firebase-first card */
+#fbLogin { margin-top: 4px; }
+#pinRow { margin-top: 12px; padding-top: 12px; border-top: 1px dashed var(--line); }
+.pin-card .btn-primary { width: 100%; }
+.pin-card .btn-google { width: 100%; margin-top: 8px; }
+.pin-card .fb-links { display: flex; flex-wrap: wrap; gap: 8px 14px; margin-top: 10px; justify-content: center; }
+.pin-card .btn-link { border: 0; background: transparent; color: var(--rose); font-weight: 800; font-size: .8rem; cursor: pointer; text-decoration: underline; padding: 4px; }
+
+

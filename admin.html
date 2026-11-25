@@ -8,7 +8,7 @@
 <meta name="robots" content="noindex, nofollow" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 <title>لوحة تحكم نقاء</title>
-<link rel="stylesheet" href="css/admin.css?v=20261125auth1" />
+<link rel="stylesheet" href="css/admin.css?v=20261125stable1" />
 </head>
 <body class="naqa-locked naqa-auth-pending">
 <div class="admin-top">
@@ -28,55 +28,29 @@
 
     <!-- STEP2: Firebase is the only primary login when enabled -->
     <div id="fbLogin" hidden>
-      <p class="auth-hint note" id="fbPassHint">تسجيل دخول آمن عبر Firebase. الإيميل المسموح فقط.</p>
-      <form id="fbForm" class="auth-form" method="post" action="#" autocomplete="on" novalidate>
-        <label class="fb-lab" for="fbEmail"><span id="fbEmailLabel">البريد الإلكتروني</span>
+      <p class="note" id="fbPassHint" style="margin:0 0 10px;color:#9a7b72">إيميل مسموح + كلمة سر (٦ أحرف فأكثر) أو Google.</p>
+      <form id="fbForm" method="post" action="#" autocomplete="on" novalidate>
+        <!-- order + names fixed so iOS/Safari password manager fills email then password -->
+        <label class="fb-lab" for="fbEmail"><span id="fbEmailLabel">الإيميل</span>
           <input id="fbEmail" name="username" type="email" inputmode="email"
             autocomplete="username"
             autocapitalize="off" autocorrect="off" spellcheck="false"
             required placeholder="name@email.com"
             data-lpignore="false" data-1p-ignore="false" />
         </label>
-        <label class="fb-lab" for="fbPass"><span id="fbPassLabel">كلمة المرور</span>
-          <div class="pass-wrap">
-            <input id="fbPass" name="password" type="password"
-              autocomplete="current-password"
-              autocapitalize="off" autocorrect="off" spellcheck="false"
-              required minlength="6" placeholder="••••••••"
-              data-lpignore="false" data-1p-ignore="false" />
-            <button type="button" id="fbTogglePass" class="pass-toggle" aria-label="إظهار كلمة المرور" title="إظهار">👁</button>
-          </div>
+        <label class="fb-lab" for="fbPass"><span id="fbPassLabel">كلمة السر</span>
+          <input id="fbPass" name="password" type="password"
+            autocomplete="current-password"
+            autocapitalize="off" autocorrect="off" spellcheck="false"
+            required minlength="6" placeholder="••••••••"
+            data-lpignore="false" data-1p-ignore="false" />
         </label>
-        <button id="fbGo" type="submit" class="btn-primary auth-btn">
-          <span class="auth-btn-label" id="fbGoLabel">تسجيل الدخول</span>
-          <span class="auth-btn-spin" aria-hidden="true" hidden></span>
-        </button>
+        <button id="fbGo" type="submit" class="btn-primary">دخول</button>
       </form>
-
-      <div class="auth-or" role="separator" aria-label="أو"><span id="fbOr">أو</span></div>
-
-      <button id="fbGoogle" type="button" class="btn-google auth-btn" aria-label="تسجيل الدخول بحساب Google">
-        <span class="g-ico" aria-hidden="true">
-          <svg viewBox="0 0 48 48" width="20" height="20" xmlns="http://www.w3.org/2000/svg">
-            <path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.7 29.3 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3 0 5.8 1.1 7.9 3l5.7-5.7C34 5.1 29.3 3 24 3 12.3 3 3 12.3 3 24s9.3 21 21 21 21-9.3 21-21c0-1.4-.1-2.4-.4-3.5z"/>
-            <path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 15.1 19 12 24 12c3 0 5.8 1.1 7.9 3l5.7-5.7C34 5.1 29.3 3 24 3 16.1 3 9.2 7.4 6.3 14.7z"/>
-            <path fill="#4CAF50" d="M24 45c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.3 36 26.8 37 24 37c-5.2 0-9.6-3.3-11.2-7.9l-6.5 5C9.1 40.6 16 45 24 45z"/>
-            <path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.2-2.2 4.1-4.1 5.5l.1.1 6.2 5.2C39.2 37.3 43 32.2 43 24c0-1.4-.1-2.4-.4-3.5z"/>
-          </svg>
-        </span>
-        <span class="auth-btn-label" id="fbGoogleLabel">المتابعة مع Google</span>
-        <span class="auth-btn-spin" aria-hidden="true" hidden></span>
-      </button>
-
+      <button id="fbGoogle" type="button" class="btn-google">دخول بحساب Google</button>
       <div class="fb-links">
-        <button id="fbReset" type="button" class="btn-link">نسيت كلمة المرور؟</button>
-        <button id="fbCreate" type="button" class="btn-link">إنشاء كلمة مرور جديدة</button>
-      </div>
-
-      <div class="auth-notes" id="fbAuthNotes">
-        <p id="fbNoteSave">بعد الدخول الناجح يمكن للمتصفح حفظ كلمة المرور على هذا الجهاز فقط.</p>
-        <p id="fbNoteGoogle">Google يعمل بعد تفعيله في Firebase وإضافة النطاق المصرّح <strong>xmodyosef.github.io</strong>.</p>
-        <p id="fbNoteSession">الجلسة محلية (LOCAL) وتبقى حتى تسجّلي الخروج.</p>
+        <button id="fbCreate" type="button" class="btn-link">إنشاء كلمة سر</button>
+        <button id="fbReset" type="button" class="btn-link">نسيت كلمة السر؟</button>
       </div>
     </div>
 
@@ -177,32 +151,32 @@
   </div>
 </div>
 </div>
-<script defer src="js/config.js?v=20261125auth1"></script>
-<script defer src="js/firebase-config.js?v=20261125auth1"></script>
+<script defer src="js/config.js?v=20261125stable1"></script>
+<script defer src="js/firebase-config.js?v=20261125stable1"></script>
 <script defer src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
 <script defer src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
 <script defer src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
-<script defer src="data/products.bundle.js?v=20261125auth1"></script>
-<script defer src="js/admin.js?v=20261125auth1"></script>
-<script defer src="js/admin/core.js?v=20261125auth1"></script>
-<script src="js/admin/i18n.js?v=20261125auth1"></script>
-<script defer src="js/admin/products.js?v=20261125auth1"></script>
-<script defer src="js/admin/orders.js?v=20261125auth1"></script>
-<script defer src="js/admin/customers.js?v=20261125auth1"></script>
-<script defer src="js/admin/finance.js?v=20261125auth1"></script>
-<script defer src="js/admin/dashboard.js?v=20261125auth1"></script>
-<script defer src="js/admin/settings.js?v=20261125auth1"></script>
-<script defer src="js/cloud-overrides.js?v=20261125auth1"></script>
-<script defer src="js/admin/reviews.js?v=20261125auth1"></script>
-<script defer src="js/admin/app.js?v=20261125auth1"></script>
-<script defer src="js/admin/buttons/bind.js?v=20261125auth1"></script>
-<script defer src="js/admin/buttons/home.js?v=20261125auth1"></script>
-<script defer src="js/admin/buttons/orders.js?v=20261125auth1"></script>
-<script defer src="js/admin/buttons/products.js?v=20261125auth1"></script>
-<script defer src="js/admin/buttons/reviews.js?v=20261125auth1"></script>
-<script defer src="js/admin/buttons/customers.js?v=20261125auth1"></script>
-<script defer src="js/admin/buttons/finance.js?v=20261125auth1"></script>
-<script defer src="js/admin/buttons/settings.js?v=20261125auth1"></script>
-<script defer src="js/admin/firebase-gate.js?v=20261125auth1"></script>
+<script defer src="data/products.bundle.js?v=20261125stable1"></script>
+<script defer src="js/admin.js?v=20261125stable1"></script>
+<script defer src="js/admin/core.js?v=20261125stable1"></script>
+<script src="js/admin/i18n.js?v=20261125stable1"></script>
+<script defer src="js/admin/products.js?v=20261125stable1"></script>
+<script defer src="js/admin/orders.js?v=20261125stable1"></script>
+<script defer src="js/admin/customers.js?v=20261125stable1"></script>
+<script defer src="js/admin/finance.js?v=20261125stable1"></script>
+<script defer src="js/admin/dashboard.js?v=20261125stable1"></script>
+<script defer src="js/admin/settings.js?v=20261125stable1"></script>
+<script defer src="js/cloud-overrides.js?v=20261125stable1"></script>
+<script defer src="js/admin/reviews.js?v=20261125stable1"></script>
+<script defer src="js/admin/app.js?v=20261125stable1"></script>
+<script defer src="js/admin/buttons/bind.js?v=20261125stable1"></script>
+<script defer src="js/admin/buttons/home.js?v=20261125stable1"></script>
+<script defer src="js/admin/buttons/orders.js?v=20261125stable1"></script>
+<script defer src="js/admin/buttons/products.js?v=20261125stable1"></script>
+<script defer src="js/admin/buttons/reviews.js?v=20261125stable1"></script>
+<script defer src="js/admin/buttons/customers.js?v=20261125stable1"></script>
+<script defer src="js/admin/buttons/finance.js?v=20261125stable1"></script>
+<script defer src="js/admin/buttons/settings.js?v=20261125stable1"></script>
+<script defer src="js/admin/firebase-gate.js?v=20261125stable1"></script>
 </body>
 </html>

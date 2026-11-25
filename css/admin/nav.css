@@ -408,3 +408,52 @@ body.naqa-open #ordersTopTools:not([hidden]) {
   flex: 1 1 auto;
   min-width: 0;
 }
+
+
+/* ===== تصدير Excel بجانب فلاتر المنتجات ===== */
+body.naqa-open #childNav .btn-excel {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  flex: 0 0 auto !important;
+  margin: 0 !important;
+  margin-inline-start: 4px !important;
+  padding: 8px 14px !important;
+  border: 1px solid #c9e4d4 !important;
+  border-radius: 999px !important;
+  background: linear-gradient(180deg, #f3fbf6 0%, #e7f5ec 100%) !important;
+  color: #1d6f42 !important;
+  font: 800 0.76rem/1.2 inherit !important;
+  white-space: nowrap !important;
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(33, 115, 70, 0.12) !important;
+  transition: background 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+}
+body.naqa-open #childNav .btn-excel:hover {
+  background: linear-gradient(180deg, #e8f7ee 0%, #d4efdf 100%) !important;
+  border-color: #217346 !important;
+  box-shadow: 0 2px 8px rgba(33, 115, 70, 0.18) !important;
+}
+body.naqa-open #childNav .btn-excel:active {
+  transform: translateY(1px);
+}
+body.naqa-open #childNav .btn-excel .excel-ico {
+  display: inline-flex;
+  width: 18px;
+  height: 18px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  background: #217346;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.15);
+}
+body.naqa-open #childNav .btn-excel .excel-ico svg {
+  display: block;
+  width: 12px;
+  height: 12px;
+}
+body.naqa-open #childNav .btn-excel .excel-label {
+  color: #1d6f42;
+}
+/* keep filter pills rose; excel is soft green — same pill shape, same height */

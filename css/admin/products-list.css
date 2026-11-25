@@ -266,3 +266,9 @@
   #list .prod-actions .hide-btn,
   #list .prod-actions .edit-btn{flex:1 1 auto}
 }
+
+/* no sort bar — export moved next to low-stock filter */
+.prod-tools-row:empty{display:none}
+.prod-tools:has(.prod-bulk:not(.on)):not(:has(.prod-tools-row > *)){margin:0}
+.prod-tools:not(:has(.prod-bulk.on)){display:none}
+.prod-tools:has(.prod-bulk.on){display:flex}

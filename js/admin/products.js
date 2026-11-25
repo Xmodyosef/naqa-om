@@ -515,12 +515,25 @@
     return true;
   };
 
+
+  /* Excel button lives in childNav (static) — bind once */
+  if (typeof document !== "undefined" && !window.__naqaExportProductsBound) {
+    window.__naqaExportProductsBound = true;
+    document.addEventListener("click", function (e) {
+      var btn = e.target && e.target.closest && e.target.closest("#exportProductsBtn");
+      if (!btn) return;
+      e.preventDefault();
+      e.stopPropagation();
+      if (A.exportProductsCsv) A.exportProductsCsv();
+    }, true);
+  }
+
   A.exportProductsCsv = function () {
     if (A.requireAuth && !A.requireAuth("status")) return;
     var ar = A.lang !== "en";
     var head = ar
-      ? ["المعرف", "SKU", "الاسم عربي", "الاسم EN", "الماركة", "التصنيف", "السعر", "قبل الخصم", "المخزون", "مخفي", "مميز", "ضريبة"]
-      : ["id", "SKU", "nameAr", "nameEn", "brand", "cat", "price", "was", "stock", "hidden", "hot", "tax"];
+      ? ["المعرف", "SKU", "الاسم عربي", "الاسم EN", "الماركة", "التصنيف", "السعر", "قبل الخصم", "المخزون", "مخفي", "ضريبة"]
+      : ["id", "SKU", "nameAr", "nameEn", "brand", "cat", "price", "was", "stock", "hidden", "tax"];
     var rows = [head];
     (A.products || []).forEach(function (p) {
       var m = A.merged(p);
@@ -535,13 +548,16 @@
         m.was != null ? m.was : "",
         m.stock != null ? m.stock : "",
         m.hidden ? (ar ? "نعم" : "yes") : (ar ? "لا" : "no"),
-        m.hot ? (ar ? "نعم" : "yes") : (ar ? "لا" : "no"),
         A.taxLabel ? A.taxLabel(m) : ""
       ]);
     });
-    if (A.downloadXlsx) A.downloadXlsx("naqa-products.xlsx", rows, ar ? "المنتجات" : "Products");
-    if (A.downloadCsv) A.downloadCsv("naqa-products.csv", rows);
-    A.setMsg("status", A.t("exportOk") || (ar ? "تم التصدير" : "Exported"));
+    /* real .xlsx spreadsheet when available; CSV fallback only */
+    if (A.downloadXlsx) {
+      A.downloadXlsx("naqa-products.xlsx", rows, ar ? "المنتجات" : "Products");
+    } else if (A.downloadCsv) {
+      A.downloadCsv("naqa-products.csv", rows);
+    }
+    A.setMsg("status", A.t("exportOk") || (ar ? "تم التصدير · Excel" : "Exported · Excel"));
   };
 
   A.bulkSetHidden = function (hide) {
@@ -747,20 +763,9 @@
 
     var selCount = Object.keys(A.productSel || {}).filter(function (id) { return A.productSel[id]; }).length;
 
-    /* search lives in top bar (same as orders). tools: sort + export + bulk only */
+    /* search + filters in top/childNav. tools: bulk only (no sort name/high-low) */
     var tools =
       '<div class="prod-tools" id="prodTools">'
-      + '<div class="prod-tools-row">'
-      +   '<select id="prodSort" class="prod-sort" aria-label="' + A.esc(A.t("p_sort") || "فرز") + '">'
-      +     '<option value="name"' + (sort === "name" ? " selected" : "") + '>' + A.esc(A.t("p_sortName") || (A.lang === "en" ? "Name" : "الاسم")) + '</option>'
-      +     '<option value="priceAsc"' + (sort === "priceAsc" ? " selected" : "") + '>' + A.esc(A.t("p_sortPriceAsc") || (A.lang === "en" ? "Price ↑" : "السعر ↑")) + '</option>'
-      +     '<option value="priceDesc"' + (sort === "priceDesc" ? " selected" : "") + '>' + A.esc(A.t("p_sortPriceDesc") || (A.lang === "en" ? "Price ↓" : "السعر ↓")) + '</option>'
-      +     '<option value="stockAsc"' + (sort === "stockAsc" ? " selected" : "") + '>' + A.esc(A.t("p_sortStockAsc") || (A.lang === "en" ? "Stock ↑" : "المخزون ↑")) + '</option>'
-      +     '<option value="stockDesc"' + (sort === "stockDesc" ? " selected" : "") + '>' + A.esc(A.t("p_sortStockDesc") || (A.lang === "en" ? "Stock ↓" : "المخزون ↓")) + '</option>'
-      +     '<option value="hidden"' + (sort === "hidden" ? " selected" : "") + '>' + A.esc(A.t("p_sortHidden") || (A.lang === "en" ? "Hidden first" : "المخفي أولاً")) + '</option>'
-      +   '</select>'
-      +   '<button type="button" class="export-one" id="exportProductsBtn">' + A.esc(A.t("p_export") || (A.lang === "en" ? "Export Excel" : "تصدير Excel")) + '</button>'
-      + '</div>'
       + '<div class="prod-bulk' + (selCount ? " on" : "") + '" id="prodBulk">'
       +   '<label class="prod-check-all"><input type="checkbox" id="prodCheckAll"' + (selCount && selCount === matched.length ? " checked" : "") + '> ' + A.esc(A.t("p_selectAll") || (A.lang === "en" ? "Select all page" : "تحديد صفحة")) + '</label>'
       +   '<span class="prod-sel-n">' + selCount + '</span>'

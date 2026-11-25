@@ -1,10 +1,10 @@
 /* نقاء — أنماط اللوحة. كل زر/قسم في ملفه. الترتيب مهم. */
-@import url("admin/base.css");
-@import url("admin/products-edit.css");
-@import url("admin/login-gate.css");
-@import url("admin/nav.css");
-@import url("admin/login-card.css");
-@import url("admin/settings.css");
-@import url("admin/products-list.css");
+@import url("admin/base.css?v=20261125pc3");
+@import url("admin/products-edit.css?v=20261125pc3");
+@import url("admin/login-gate.css?v=20261125pc3");
+@import url("admin/nav.css?v=20261125pc3");
+@import url("admin/login-card.css?v=20261125pc3");
+@import url("admin/settings.css?v=20261125pc3");
+@import url("admin/products-list.css?v=20261125pc3");
 
 /* Gate visuals: admin/login-gate.css */

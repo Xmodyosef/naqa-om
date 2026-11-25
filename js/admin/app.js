@@ -90,7 +90,6 @@
       b.classList.toggle("on", on);
       if (on) b.setAttribute("aria-current", "page");
       else b.removeAttribute("aria-current");
-      b.removeAttribute("aria-expanded");
     });
     document.querySelectorAll("#sideNav .side-group").forEach(function (g) {
       var gtab = g.getAttribute("data-group") || "";
@@ -99,6 +98,20 @@
       g.classList.toggle("has-active-child", child);
       var main = g.querySelector(".side-main");
       if (main) main.setAttribute("aria-expanded", child ? "true" : "false");
+      /* Force children under parent (CSS + inline) */
+      var subs = g.querySelector(".side-subs");
+      if (subs) {
+        if (child) {
+          subs.hidden = false;
+          subs.removeAttribute("hidden");
+          subs.style.setProperty("display", "flex", "important");
+          subs.style.setProperty("flex-direction", "column", "important");
+          subs.style.setProperty("visibility", "visible", "important");
+        } else {
+          subs.hidden = true;
+          subs.style.setProperty("display", "none", "important");
+        }
+      }
     });
     A.fillPageSubNav();
     if (A.refreshSideSubs) A.refreshSideSubs();

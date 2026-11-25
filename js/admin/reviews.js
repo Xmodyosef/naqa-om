@@ -120,7 +120,34 @@
         });
       }).catch(function () {});
     }
-    Promise.resolve().then(mergeRemoteJson).then(mergeCloud).then(draw).catch(draw);
+    function mergeInbox() {
+      try {
+        if (!w.firebase || !firebase.apps || !firebase.apps.length || !firebase.firestore) return Promise.resolve();
+        return firebase.firestore().collection("naqa_inbox").limit(80).get().then(function (snap) {
+          snap.forEach(function (doc) {
+            var r = doc.data() || {};
+            if (r.kind && r.kind !== "review") return;
+            var id = doc.id;
+            if (!id || A.reviews.some(function (x) { return x.id === id; })) return;
+            var en = r.lang === "en";
+            A.reviews.unshift({
+              id: id,
+              sku: r.sku || "",
+              pid: r.pid,
+              name: r.name || "",
+              stars: Number(r.stars) || 5,
+              ar: en ? "" : (r.text || ""),
+              en: en ? (r.text || "") : "",
+              photo: r.photo || "",
+              at: r.at ? new Date(r.at).toISOString().slice(0, 10) : "",
+              on: true
+            });
+          });
+          saveLocal();
+        }).catch(function () {});
+      } catch (e) { return Promise.resolve(); }
+    }
+    Promise.resolve().then(mergeRemoteJson).then(mergeCloud).then(mergeInbox).then(draw).catch(draw);
     function phoneDigits(s) {
       return String(s || "").replace(/\D/g, "");
     }

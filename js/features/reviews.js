@@ -69,8 +69,7 @@ function reviewsSection(p) {
     return '<article class="review-card"><header><span>' + esc(r.name || (en ? "Customer" : "زبونة")) + '</span><span>' + "★".repeat(Math.max(1, Math.min(5, Number(r.stars) || 0))) + '</span></header><p>' + esc(reviewText(r)) + '</p>' + photo + '</article>';
   }).join("");
   var empty = list.length ? "" : '<p class="review-empty">' + (en ? "No reviews yet. Be the first." : "لا تقييمات بعد. كوني الأولى.") + "</p>";
-  return '<section class="reviews-block"><h4 class="block-h">' + (en ? "Real reviews" : "تقييمات حقيقية") + '</h4>'
-    + '<p class="review-empty">' + (en ? "A nickname, your words, and an optional photo. Your phone number is never shown. It appears after we approve it." : "لقب، كلامك، وصورة اختيارية. رقمك ما يننشر. يظهر بعد الموافقة.") + "</p>"
+  return '<section class="reviews-block"><h4 class="block-h">' + (en ? "Reviews" : "التقييمات") + '</h4>'
     + empty + cards
     + '<button type="button" class="btn-ghost" data-write-review="' + p.id + '" style="margin-top:8px;border:1px solid var(--line);border-radius:12px;padding:10px 14px;font-weight:800">' + (en ? "Write a review" : "اكتبي تقييمك") + "</button></section>";
 }
@@ -133,16 +132,9 @@ function openReviewForm(id) {
   document.getElementById("rvName").value = "";
   document.getElementById("rvText").value = "";
   document.getElementById("rvPhoto").value = "";
-  document.getElementById("rvMsg").textContent = en
-    ? "We read it first. Your phone number is not published."
-    : "نقرأ التقييم أولاً. رقمك ما يننشر.";
+  document.getElementById("rvMsg").textContent = "";
   document.querySelectorAll("#starPick button").forEach(function (x) { x.classList.add("on"); });
   el.hidden = false;
-}
-
-function looksLikePhone(s) {
-  var digits = String(s || "").replace(/\D/g, "");
-  return digits.length >= 8;
 }
 
 function hasArabic(s) {
@@ -160,46 +152,62 @@ function submitReview(e) {
   var stars = Number(el.dataset.stars || 0);
   var msg = document.getElementById("rvMsg");
   if (name.length < 2) { msg.textContent = en ? "Add a nickname." : "اكتبي لقباً."; return; }
-  if (looksLikePhone(name) || looksLikePhone(text)) { msg.textContent = en ? "Don't include a phone number." : "لا تكتبي رقم هاتف."; return; }
   if (text.length < 8) { msg.textContent = en ? "Write a little more about the product." : "اكتبي أكثر عن المنتج."; return; }
   if (stars < 1) { msg.textContent = en ? "Choose the stars." : "اختاري النجوم."; return; }
   var fileInput = document.getElementById("rvPhoto");
   var file = fileInput.files && fileInput.files[0];
-  var body = (en ? "Naqa review" : "تقييم نقاء") + "\n"
-    + (p.sku || "") + " · " + pname(p) + "\n"
-    + "★".repeat(stars) + " " + stars + "/5\n"
-    + name + "\n" + text;
-  if (file) body += en ? "\n\nPhoto is attached." : "\n\nالصورة مرفقة.";
-  else body += "";
-  var share = { text: body, title: "Naqa" };
-  if (file) share.files = [file];
-  var done = function () {
-    el.hidden = true;
-    if (typeof toast === "function") toast(en ? "Sent. It shows after approval." : "وصل. يظهر بعد الموافقة.");
-  };
-  if (file && navigator.canShare && navigator.canShare({ files: [file] })) {
-    navigator.share(share).then(done).catch(function (err) {
-      if (err && err.name === "AbortError") return;
-      openWaReview(body + (en ? "\n\nAttach the photo in the chat." : "\n\nأرفقي الصورة في نفس المحادثة."));
-      done();
-    });
-    return;
-  }
-  if (!file && navigator.share) {
-    navigator.share({ text: body, title: "Naqa" }).then(done).catch(function (err) {
-      if (err && err.name === "AbortError") return;
-      openWaReview(body);
-      done();
-    });
-    return;
-  }
-  openWaReview(body + (file ? (en ? "\n\nAttach the photo in the chat." : "\n\nأرفقي الصورة في نفس المحادثة.") : ""));
-  done();
+  var sendBtn = document.getElementById("rvSend");
+  if (sendBtn) sendBtn.disabled = true;
+  shrinkReviewPhoto(file).then(function (photo) {
+    var id = "rv" + Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
+    var data = {
+      kind: "review",
+      pid: Number(p.id),
+      sku: String(p.sku || ""),
+      name: name.slice(0, 24),
+      stars: stars,
+      text: text.slice(0, 600),
+      lang: en ? "en" : "ar",
+      photo: photo && photo.length < 650000 ? photo : "",
+      at: Date.now()
+    };
+    function fail() {
+      if (sendBtn) sendBtn.disabled = false;
+      msg.textContent = en ? "Could not send. Try again." : "ما وصل التقييم. حاولي مرة ثانية.";
+    }
+    function ok() {
+      if (sendBtn) sendBtn.disabled = false;
+      el.hidden = true;
+      if (typeof toast === "function") toast(en ? "Your review was sent." : "وصل تقييمك.");
+    }
+    try {
+      if (window.NAQA_FIREBASE && window.firebase && firebase.apps && !firebase.apps.length && firebase.initializeApp) {
+        firebase.initializeApp(window.NAQA_FIREBASE);
+      }
+      if (!window.firebase || !firebase.firestore) { fail(); return; }
+      firebase.firestore().collection("naqa_inbox").doc(id).set(data).then(ok).catch(fail);
+    } catch (err) { fail(); }
+  });
 }
 
-function openWaReview(text) {
-  var n = (typeof WA_NUMBER !== "undefined") ? WA_NUMBER : "96879088349";
-  window.open("https://wa.me/" + n + "?text=" + encodeURIComponent(text), "_blank");
+function shrinkReviewPhoto(file) {
+  return new Promise(function (resolve) {
+    if (!file) { resolve(""); return; }
+    var img = new Image();
+    var url = URL.createObjectURL(file);
+    img.onload = function () {
+      var max = 640;
+      var s = Math.min(1, max / Math.max(img.width, img.height));
+      var c = document.createElement("canvas");
+      c.width = Math.max(1, Math.round(img.width * s));
+      c.height = Math.max(1, Math.round(img.height * s));
+      c.getContext("2d").drawImage(img, 0, 0, c.width, c.height);
+      URL.revokeObjectURL(url);
+      resolve(c.toDataURL("image/jpeg", 0.62));
+    };
+    img.onerror = function () { URL.revokeObjectURL(url); resolve(""); };
+    img.src = url;
+  });
 }
 
 document.addEventListener("click", function (e) {

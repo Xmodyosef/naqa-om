@@ -107,26 +107,39 @@
 .sheet-actions .sheet-inline-qty b{font-size:1.05rem;min-width:2ch;text-align:center}
 .sheet-actions .btn-open{grid-column:1/-1;margin-top:4px;border-radius:12px;padding:12px;border:1px solid var(--line);font-weight:800}
 .sheet-pairs{
-  margin:18px 0 10px;padding:14px;border:1px solid var(--line);border-radius:16px;
-  background:linear-gradient(180deg,#fdf8f6 0%,#fff 70%);
+  margin:16px 0 8px;padding:14px 0 12px;border-radius:16px;
+  background:linear-gradient(180deg,#faf5f3 0%,var(--card) 70%);border:1px solid var(--line);
+  overflow:hidden
 }
-.sheet-pairs .block-h{margin:0 0 8px}
-.pair-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:0 0 10px}
+.pair-head{display:flex;align-items:baseline;justify-content:space-between;gap:8px;padding:0 12px;margin:0 0 8px}
+.sheet-pairs .block-h{margin:0;flex:1}
+.pair-hint{font-size:.72rem;font-weight:700;color:var(--muted);white-space:nowrap}
+/* horizontal chain: 4–6 products, swipe */
+.pair-row{
+  display:flex;gap:10px;margin:0 0 12px;padding:2px 12px 8px;
+  overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;
+  scroll-snap-type:x mandatory;scroll-padding-inline:12px;
+  scrollbar-width:none
+}
+.pair-row::-webkit-scrollbar{display:none}
 .pair-card{
-  background:var(--card);border:1px solid var(--line);border-radius:14px;padding:8px;
-  text-align:start;color:var(--fg);cursor:pointer;font-family:inherit;
+  flex:0 0 42%;max-width:160px;min-width:128px;
+  scroll-snap-align:start;
+  text-align:start;border:1px solid var(--line);border-radius:14px;padding:8px;
+  background:#fff;cursor:pointer;font:inherit;color:inherit
 }
-.pair-vis{display:block;height:92px;border-radius:10px;overflow:hidden;background:#faf7f5}
-.pair-vis img{width:100%;height:92px;object-fit:contain}
-.pair-name{display:block;font-size:.78rem;font-weight:700;margin-top:6px;line-height:1.35;
-  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-.pair-price{color:var(--rose-deep);font-weight:800;font-size:.88rem}
+.pair-vis{display:block;height:88px;border-radius:10px;overflow:hidden;background:#faf7f5}
+.pair-vis img{width:100%;height:88px;object-fit:contain}
+.pair-name{display:block;font-size:.76rem;font-weight:700;margin-top:6px;line-height:1.35;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:2.4em}
+.pair-price{color:var(--rose-deep);font-weight:800;font-size:.86rem}
 .btn-add-pair{
-  width:100%;padding:13px 14px;border-radius:12px;border:0;cursor:pointer;font-family:inherit;
-  background:var(--rose-deep);color:#fff;font-weight:800;font-size:.95rem;
-  box-shadow:0 3px 12px rgba(141,48,72,.28);
+  display:block;width:calc(100% - 24px);margin:0 12px;
+  border:0;border-radius:12px;padding:12px 14px;font:inherit;font-weight:800;
+  background:var(--rose-deep);color:#fff;cursor:pointer;box-shadow:0 4px 14px rgba(141,48,72,.22)
 }
 .btn-add-pair:active{transform:scale(.98)}
+
 .sheet-same{margin:12px 0 8px}
 .sug-row-sm{gap:8px}
 .sug-row-sm .sug{padding:6px;border-radius:12px}

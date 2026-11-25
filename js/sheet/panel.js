@@ -45,41 +45,46 @@ function naqaPairProducts(p){
   });
   var roles=[];
   if(naqaHasKW(blob,["سيروم","serum","retinol","فيتامين","vitamin c","niacin","نياس"])){
-    roles=[["واقي","sunscreen","spf","sun cream","suncream"],["مرطب","moistur","cream","كريم","lotion","هيالورون","hyaluron"]];
+    roles=[["واقي","sunscreen","spf","sun cream","suncream"],["مرطب","moistur","cream","كريم","lotion","هيالورون","hyaluron"],["تونر","toner"],["غسول","cleanser","wash"]];
   } else if(naqaHasKW(blob,["غسول","cleanser","cleansing","foam wash","facial wash","wash"])){
-    roles=[["تونر","toner"],["مرطب","moistur","كريم","cream"]];
+    roles=[["تونر","toner"],["سيروم","serum"],["مرطب","moistur","كريم","cream"],["واقي","spf","sunscreen"]];
   } else if(naqaHasKW(blob,["تونر","toner"])){
-    roles=[["سيروم","serum"],["مرطب","moistur","كريم","cream"]];
+    roles=[["سيروم","serum"],["مرطب","moistur","كريم","cream"],["واقي","spf","sunscreen"],["غسول","cleanser"]];
   } else if(naqaHasKW(blob,["واقي","spf","sunscreen","sun "])){
-    roles=[["مرطب","moistur","كريم","cream"],["سيروم","serum"]];
+    roles=[["مرطب","moistur","كريم","cream"],["سيروم","serum"],["تونر","toner"],["غسول","cleanser"]];
   } else if(naqaHasKW(blob,["شامبو","shampoo"])){
-    roles=[["بلسم","conditioner","condit"],["زيت","oil","mask","ماسك"]];
+    roles=[["بلسم","conditioner","condit"],["زيت","oil","mask","ماسك"],["سيروم شعر","hair serum"],["غسول","wash"]];
   } else if(naqaHasKW(blob,["بلسم","conditioner"])){
-    roles=[["شامبو","shampoo"],["زيت","oil","mask","ماسك"]];
+    roles=[["شامبو","shampoo"],["زيت","oil","mask","ماسك"],["سيروم شعر","hair serum"]];
   } else if(p.cat==="شفاه" || naqaHasKW(blob,["lip","شفاه","أحمر","محدد","gloss","plumper"])){
-    roles=[["محدد","liner"],["بلمبر","plumper","gloss","جلوس","أحمر"]];
+    roles=[["محدد","liner"],["بلمبر","plumper","gloss","جلوس","أحمر"],["مرطب شفاه","lip balm","balm"]];
   } else if(p.cat==="شعر" || naqaHasKW(blob,["hair","شعر"])){
-    roles=[["شامبو","shampoo"],["بلسم","conditioner"]];
+    roles=[["شامبو","shampoo"],["بلسم","conditioner"],["زيت","oil","mask","ماسك"]];
+  } else {
+    roles=[["سيروم","serum"],["مرطب","moistur","كريم","cream"],["واقي","spf","sunscreen"],["تونر","toner"]];
   }
-  var picked=[], used={};
+  var MAX=6, picked=[], used={};
   function take(pred){
-    if(picked.length>=2) return;
+    if(picked.length>=MAX) return;
     var hit=visible.find(function(x){ return !used[x.id] && pred(x); });
     if(hit){ used[hit.id]=1; picked.push(hit); }
   }
+  /* 1) complementary roles — prefer same brand then any */
   roles.forEach(function(kws){
     take(function(x){ return x.brand===p.brand && naqaHasKW(naqaTextBlob(x), kws); });
     take(function(x){ return naqaHasKW(naqaTextBlob(x), kws); });
   });
-  if(picked.length<2){
-    visible.filter(function(x){ return x.cat===p.cat && !used[x.id]; }).slice(0,2-picked.length)
-      .forEach(function(x){ used[x.id]=1; picked.push(x); });
+  /* 2) fill from same category */
+  visible.filter(function(x){ return x.cat===p.cat && !used[x.id]; })
+    .forEach(function(x){ if(picked.length<MAX){ used[x.id]=1; picked.push(x); } });
+  /* 3) hot / any remaining */
+  visible.filter(function(x){ return !used[x.id] && x.hot; })
+    .forEach(function(x){ if(picked.length<MAX){ used[x.id]=1; picked.push(x); } });
+  if(picked.length<4){
+    visible.filter(function(x){ return !used[x.id]; })
+      .forEach(function(x){ if(picked.length<MAX){ used[x.id]=1; picked.push(x); } });
   }
-  if(picked.length<2){
-    visible.filter(function(x){ return !used[x.id] && x.hot; }).slice(0,2-picked.length)
-      .forEach(function(x){ used[x.id]=1; picked.push(x); });
-  }
-  return picked.slice(0,2);
+  return picked.slice(0, MAX);
 }
 function naqaPairSectionHTML(p){
   var pairs=naqaPairProducts(p);
@@ -93,15 +98,19 @@ function naqaPairSectionHTML(p){
       +'</button>';
   }).join("");
   var ids=pairs.map(function(s){ return s.id; }).join(",");
-  var sum=pairs.reduce(function(a,s){ return a+Number(s.price||0); },0);
-  var btnLabel=en ? "Add both" : "أضف الاثنين";
-  if(pairs.length===1){
-    btnLabel=en ? "Add to cart" : "أضف للسلة";
-  }
+  var n=pairs.length;
+  var btnLabel;
+  if(n<=1) btnLabel = en ? "Add to cart" : "أضف للسلة";
+  else if(n===2) btnLabel = en ? "Add both" : "أضف الاثنين";
+  else btnLabel = en ? ("Add all · "+n) : ("أضف الكل · "+n);
   var title=en ? "Pairs with this" : "يناسب هذا المنتج";
+  var hint=en ? "Swipe for more" : "مرّر للمزيد";
   return '<section class="sheet-pairs" aria-label="'+esc(title)+'">'
+    +'<div class="pair-head">'
     +'<h4 class="block-h">'+esc(title)+'</h4>'
-    +'<div class="pair-row">'+cards+'</div>'
+    +(n>2 ? '<span class="pair-hint">'+esc(hint)+'</span>' : '')
+    +'</div>'
+    +'<div class="pair-row" role="list">'+cards+'</div>'
     +'<button type="button" class="btn-add-pair" data-add-pair="'+ids+'">'+esc(btnLabel)+'</button>'
     +'</section>';
 }

@@ -25,3 +25,11 @@
 - `js/cloud-overrides.js` → repair on `A.loadOverridesCloud`
 
 If someone “fixes” images by replacing the whole `imgs` array with only the new file — **reject that change**.
+
+## Cloud sanitize (critical)
+`sanitizeMap` in `js/cloud-overrides.js` MUST allow:
+- `https://…`
+- `fs:…`
+- `media/…` catalog paths
+
+If `media/` is stripped, every Save after a delete (or any save) drops catalog photos from Firestore and the gallery looks empty.

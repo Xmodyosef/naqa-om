@@ -143,17 +143,13 @@
     var _cap = (typeof ORDERS_CAP === "number" && ORDERS_CAP > 0) ? ORDERS_CAP : 300;
     localStorage.setItem(A.ORDERS_KEY, JSON.stringify(A.orders.slice(0, _cap)));
   };
-  /* RULE: a new photo never wipes the product gallery.
-     - New/uploaded urls go first.
-     - Catalog shots stay unless the admin deletes them with ✕ (tracked in A._editRemoved).
-     - Applies to every product on load, save, and store merge. */
+  /* RULE (LOCKED): a photo is never lost unless deleted with ✕.
+     Gallery order first; every catalog path not in A._editRemoved is always kept.
+     Cloud must also allow media/* paths (see cloud-overrides sanitizeMap). */
   A.keepImgs = function (base, saved, removed) {
     removed = removed || {};
-    base = (base || []).filter(function (u) { return u && !removed[u]; });
+    base = (base || []).filter(Boolean);
     saved = (saved || []).filter(Boolean);
-    if (!saved.length) return base.slice(0, 6);
-    var hasOriginal = saved.some(function (u) { return base.indexOf(u) >= 0; });
-    if (hasOriginal) return saved.slice(0, 6);
     var out = [], seen = {};
     function add(u) {
       if (!u || seen[u] || removed[u] || out.length >= 6) return;

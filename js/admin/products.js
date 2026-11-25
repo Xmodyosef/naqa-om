@@ -546,7 +546,7 @@
 
     A._editRemoved = {};
     A._editBaseImgs = Array.isArray(p.imgs) ? p.imgs.filter(Boolean).slice() : [];
-    A._editImgs = normImgs(m.imgs || []);
+    A._editImgs = normImgs(A.keepImgs ? A.keepImgs(A._editBaseImgs, m.imgs || [], {}) : (m.imgs || []));
 
     var catOpts = A.CATS.map(function (c) {
       return '<option value="' + A.esc(c) + '"' + (m.cat === c ? " selected" : "") + ">" + A.esc(c) + "</option>";
@@ -665,10 +665,14 @@
       descAr: A.val("f_descAr"), descEn: A.val("f_descEn"), useAr: A.val("f_useAr"), useEn: A.val("f_useEn"),
       skinAr: A.val("f_skinAr"), skinEn: A.val("f_skinEn"),
       imgs: (function () {
-        var base = A._editBaseImgs || [];
         var p0 = A.products.find(function (x) { return String(x.id) === String(A.editingId); });
-        if (p0 && Array.isArray(p0.imgs) && p0.imgs.length) base = p0.imgs.filter(Boolean);
-        return normImgs(A.keepImgs ? A.keepImgs(base, A._editImgs || [], A._editRemoved || {}) : (A._editImgs || []));
+        var base = (A._editBaseImgs && A._editBaseImgs.length)
+          ? A._editBaseImgs
+          : (p0 && Array.isArray(p0.imgs) ? p0.imgs.filter(Boolean) : []);
+        var finalImgs = A.keepImgs
+          ? A.keepImgs(base, A._editImgs || [], A._editRemoved || {})
+          : (A._editImgs || []);
+        return normImgs(finalImgs);
       })(),
       hidden: !!(document.getElementById("f_hidden") && document.getElementById("f_hidden").checked)
     };
@@ -680,7 +684,16 @@
     if (next.stock == null || isNaN(next.stock)) delete next.stock;
     if (next.taxMode === "vat5") delete next.taxMode;
     if (next.taxCustom == null || isNaN(next.taxCustom) || next.taxMode !== "custom") delete next.taxCustom;
-    if (!next.imgs.length) delete next.imgs;
+    if (!next.imgs || !next.imgs.length) {
+      var pBase = A.products.find(function (x) { return String(x.id) === String(A.editingId); });
+      var base0 = (A._editBaseImgs && A._editBaseImgs.length)
+        ? A._editBaseImgs
+        : (pBase && pBase.imgs) || [];
+      var rem0 = A._editRemoved || {};
+      var restored = (base0 || []).filter(function (u) { return u && !rem0[u]; }).slice(0, 6);
+      if (restored.length) next.imgs = restored;
+      else delete next.imgs;
+    }
     if (!next.hidden) delete next.hidden;
     Object.keys(next).forEach(function (k) { if (next[k] === "" || next[k] === undefined) delete next[k]; });
     var ok = String(A.editingId);

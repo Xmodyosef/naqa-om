@@ -55,7 +55,15 @@
           var urls = v.filter(function (u) {
             if (typeof u !== "string") return false;
             u = u.trim();
-            return /^https?:\/\//i.test(u) || /^fs:[A-Za-z0-9]{8,}$/.test(u);
+            if (!u || u.length > 800) return false;
+            if (/^data:/i.test(u)) return false; /* never cloud-store raw base64 */
+            if (/^https:\/\//i.test(u)) return true;
+            if (/^fs:[A-Za-z0-9_-]{6,}$/.test(u)) return true;
+            /* catalog / site paths — MUST keep or save wipes product photos */
+            if (u.indexOf("..") >= 0) return false;
+            if (/^\.?\/?media\//i.test(u)) return true;
+            if (/^p\//i.test(u)) return true;
+            return false;
           }).map(function (u) { return u.trim(); }).slice(0, 6);
           if (urls.length) n.imgs = urls;
           return;

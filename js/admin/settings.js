@@ -111,8 +111,8 @@
     applyStoreCfg(cfg);
     var emailMasked = maskEmail(email);
     var signed = email
-      ? (ar ? "مسجّلة دخول ✓" : "Signed in ✓")
-      : (ar ? "غير مسجّلة" : "Not signed in");
+      ? (ar ? "مسجّل الدخول ✓" : "Signed in ✓")
+      : (ar ? "غير مسجّل" : "Not signed in");
     var langLabel = A.lang === "en" ? "English" : "العربية";
 
     box.innerHTML =
@@ -121,7 +121,7 @@
       /* ① المتجر — قابل للتعديل */
       + '<section class="set-card" id="setStoreCard">'
       +   '<div class="set-card-head"><span class="set-card-ico" aria-hidden="true">◈</span><h2 class="set-card-title">' + (ar ? "المتجر" : "Store") + '</h2></div>'
-      +   '<p class="set-card-note">' + (ar ? "واتساب والبنك يظهران للزبون. عدّلي ثم احفظي." : "WhatsApp & bank shown to customers. Edit then save.") + '</p>'
+      +   '<p class="set-card-note">' + (ar ? "بيانات واتساب والبنك تظهر للزبون. عدّل الحقول ثم احفظ." : "WhatsApp and bank details appear to customers. Edit the fields, then save.") + '</p>'
       +   '<div class="set-fields">'
       +     '<label class="set-field"><span class="set-field-lab">' + (ar ? "واتساب (مع مفتاح الدولة)" : "WhatsApp (with country code)") + '</span>'
       +       '<input type="tel" id="setWa" class="set-input" dir="ltr" inputmode="numeric" autocomplete="tel" placeholder="9687xxxxxxx" value="' + A.esc(cfg.wa) + '" /></label>'
@@ -143,7 +143,7 @@
       +     '<div class="set-row"><span class="set-k">' + (ar ? "الحالة" : "Status") + '</span><span class="set-v set-ok">' + A.esc(signed) + '</span></div>'
       +     (email
             ? ('<div class="set-row"><span class="set-k">' + (ar ? "البريد" : "Email") + '</span><span class="set-v set-mono" dir="ltr" id="emailRevealVal">' + A.esc(emailMasked) + '</span></div>')
-            : ('<p class="set-card-note">' + (ar ? "ما في جلسة — ارجعي لشاشة الدخول." : "No session — return to sign-in.") + '</p>'))
+            : ('<p class="set-card-note">' + (ar ? "لا جلسة نشطة — العودة إلى شاشة الدخول." : "No active session — return to the sign-in screen.") + '</p>'))
       +     '<div class="set-row"><span class="set-k">' + (ar ? "لغة اللوحة" : "Panel language") + '</span><span class="set-v" id="setLangVal">' + A.esc(langLabel) + '</span></div>'
       +   '</div>'
       +   '<div class="set-actions set-actions-row">'
@@ -179,10 +179,22 @@
       +   '</div>'
       + '</section>'
 
-      /* ⑤ النشاط */
-      + '<section class="set-card">'
-      +   '<div class="set-card-head"><span class="set-card-ico" aria-hidden="true">☰</span><h2 class="set-card-title">' + (ar ? "سجل النشاط" : "Activity") + '</h2></div>'
-      +   '<div id="activityBox" class="set-activity"></div>'
+      /* ⑤ النشاط — زر ثم عرض */
+      + '<section class="set-card" id="setActivityCard">'
+      +   '<div class="set-card-head"><span class="set-card-ico" aria-hidden="true">☰</span><h2 class="set-card-title">' + (ar ? "سجل النشاط" : "Activity log") + '</h2></div>'
+      +   '<p class="set-card-note">' + (ar
+          ? "سجل موجز لعمليات اللوحة (حفظ، مزامنة، تعديل)."
+          : "A brief log of panel actions (save, sync, edits).") + '</p>'
+      +   '<div class="set-actions set-actions-row" id="activityClosedBar">'
+      +     '<button type="button" class="set-pill set-pill-solid" id="btnOpenActivity">' + (ar ? "عرض سجل النشاط" : "View activity log") + '</button>'
+      +   '</div>'
+      +   '<div id="activityPanel" class="set-act-panel" hidden>'
+      +     '<div class="set-actions set-actions-row" style="margin-top:0;margin-bottom:8px">'
+      +       '<button type="button" class="set-pill set-pill-ghost" id="btnCloseActivity">' + (ar ? "إغلاق" : "Close") + '</button>'
+      +       '<button type="button" class="set-pill set-pill-ghost" id="btnClearActivity">' + (ar ? "مسح السجل" : "Clear log") + '</button>'
+      +     '</div>'
+      +     '<div id="activityBox" class="set-activity"></div>'
+      +   '</div>'
       + '</section>'
 
       + '</div>';
@@ -190,6 +202,36 @@
     try {
       if (A.activity && A.activity.render) A.activity.render(document.getElementById("activityBox"));
     } catch (eAct) {}
+
+    var actPanel = document.getElementById("activityPanel");
+    var actClosed = document.getElementById("activityClosedBar");
+    var openAct = document.getElementById("btnOpenActivity");
+    var closeAct = document.getElementById("btnCloseActivity");
+    var clearAct = document.getElementById("btnClearActivity");
+    function showActivity(on) {
+      if (actPanel) actPanel.hidden = !on;
+      if (actClosed) actClosed.hidden = !!on;
+      if (on) {
+        try {
+          if (A.activity && A.activity.render) A.activity.render(document.getElementById("activityBox"));
+        } catch (e) {}
+      }
+    }
+    if (openAct) openAct.onclick = function () { showActivity(true); };
+    if (closeAct) closeAct.onclick = function () { showActivity(false); };
+    if (clearAct) {
+      clearAct.onclick = function () {
+        var ask = ar ? "مسح سجل النشاط؟" : "Clear the activity log?";
+        if (!confirm(ask)) return;
+        try {
+          localStorage.removeItem("naqa_activity_log");
+        } catch (e) {}
+        try {
+          if (A.activity && A.activity.render) A.activity.render(document.getElementById("activityBox"));
+        } catch (e2) {}
+        A.setMsg("settingsStatus", ar ? "تم مسح سجل النشاط." : "Activity log cleared.");
+      };
+    }
 
     /* حفظ المتجر */
     var saveBtn = document.getElementById("btnSaveStore");
@@ -212,7 +254,7 @@
         if (biEl) biEl.value = saved.bankIban;
         A.setMsg("storeStatus", ar ? "تم حفظ بيانات المتجر ✓" : "Store details saved ✓");
         try {
-          if (A.activity && A.activity.log) A.activity.log(ar ? "حفظ المتجر" : "Save store", "wa · bank");
+          if (A.activity && A.activity.log) A.activity.log(ar ? "حفظ بيانات المتجر" : "Store details saved", "WhatsApp · Bank");
           if (A.activity && A.activity.render) A.activity.render(document.getElementById("activityBox"));
         } catch (eL) {}
       };
@@ -251,18 +293,18 @@
     if (pullO) {
       pullO.onclick = function () {
         if (!A.pullOrdersCloud) {
-          A.setMsg("settingsStatus", ar ? "المزامنة غير مفعّلة بعد." : "Sync not available yet.");
+          A.setMsg("settingsStatus", ar ? "المزامنة غير مفعّلة حالياً." : "Sync is not available yet.");
           return;
         }
         A.setMsg("settingsStatus", ar ? "جاري السحب…" : "Pulling…");
         A.pullOrdersCloud().then(function (ok) {
           A.setMsg("settingsStatus", ok
             ? (ar ? "تم سحب الطلبات ✓" : "Orders pulled ✓")
-            : (ar ? "ما في طلبات سحابية أو فشل السحب." : "No cloud orders or pull failed."));
+            : (ar ? "لا طلبات سحابية أو تعذّر السحب." : "No cloud orders, or pull failed."));
           if (ok && A.paintOrders) A.paintOrders();
           try { if (A.activity && A.activity.log) A.activity.log(ar ? "سحب طلبات" : "Pull orders", ok ? "ok" : "fail"); } catch (e) {}
         }).catch(function () {
-          A.setMsg("settingsStatus", ar ? "فشل السحب." : "Pull failed.");
+          A.setMsg("settingsStatus", ar ? "تعذّر السحب." : "Pull failed.");
         });
       };
     }
@@ -270,17 +312,17 @@
     if (pushO) {
       pushO.onclick = function () {
         if (!A.pushOrdersCloud) {
-          A.setMsg("settingsStatus", ar ? "المزامنة غير مفعّلة بعد." : "Sync not available yet.");
+          A.setMsg("settingsStatus", ar ? "المزامنة غير مفعّلة حالياً." : "Sync is not available yet.");
           return;
         }
         A.setMsg("settingsStatus", ar ? "جاري الرفع…" : "Pushing…");
         A.pushOrdersCloud().then(function (ok) {
           A.setMsg("settingsStatus", ok
             ? (ar ? "تم رفع الطلبات ✓" : "Orders pushed ✓")
-            : (ar ? "فشل الرفع — راجعي الدخول." : "Push failed — check sign-in."));
+            : (ar ? "تعذّر الرفع — تحقق من تسجيل الدخول." : "Push failed — check sign-in."));
           try { if (A.activity && A.activity.log) A.activity.log(ar ? "رفع طلبات" : "Push orders", ok ? "ok" : "fail"); } catch (e) {}
         }).catch(function () {
-          A.setMsg("settingsStatus", ar ? "فشل الرفع." : "Push failed.");
+          A.setMsg("settingsStatus", ar ? "تعذّر الرفع." : "Push failed.");
         });
       };
     }

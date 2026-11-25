@@ -25,7 +25,7 @@
       var rows = A.activity.list();
       var ar = A.lang !== "en";
       if (!rows.length) {
-        el.innerHTML = '<p class="set-act-empty">' + (ar ? "ما في نشاط بعد." : "No activity yet.") + "</p>";
+        el.innerHTML = '<p class="set-act-empty">' + (ar ? "لا أحداث مسجّلة بعد." : "No recorded activity yet.") + "</p>";
         return;
       }
       function ago(iso) {
@@ -76,7 +76,7 @@
     wrap.id = "naqaCmd";
     wrap.className = "naqa-cmd";
     wrap.innerHTML = '<div class="naqa-cmd-card" role="dialog" aria-label="Command">'
-      + '<input type="search" id="naqaCmdInput" placeholder="' + (ar ? "بحث أوامر… (طلبات، منتجات، مالية، وضع ليلي)" : "Command search… (orders, products, finance, dark)") + '" autocomplete="off" />'
+      + '<input type="search" id="naqaCmdInput" placeholder="' + (ar ? "بحث في الأوامر… (طلبات، منتجات، مالية، مظهر)" : "Search commands… (orders, products, finance, theme)") + '" autocomplete="off" />'
       + '<div id="naqaCmdList" class="naqa-cmd-list"></div>'
       + '<p class="note" style="margin:8px 4px 0;font-size:.75rem">Esc ' + (ar ? "للإغلاق" : "to close") + " · Ctrl/⌘ K</p>"
       + "</div>";

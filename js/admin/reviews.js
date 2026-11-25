@@ -82,7 +82,7 @@
           ? "Permission denied. Publish firestore.rules once in Firebase Console (reviews path)."
           : "مرفوض. انشري ملف firestore.rules مرة في Firebase (مسار التقييمات).";
       } else if (String(code).indexOf("no-firestore") >= 0) {
-        msg = A.lang === "en" ? "Firestore not ready. Check network." : "Firestore غير جاهز. راجعي النت.";
+        msg = A.lang === "en" ? "Firestore not ready. Check network." : "Firestore غير جاهز. تحقق من الشبكة.";
       }
       if (A.setMsg) A.setMsg("reviewStatus", msg);
       return false;

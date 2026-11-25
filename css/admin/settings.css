@@ -340,3 +340,11 @@ body.dark .set-act-list {
 body.dark .set-act-item { border-bottom-color: #3a2f2a; }
 body.dark .set-act-what { color: #f5eeea; }
 body.dark .set-act-detail { color: #a89b94; }
+
+
+.set-act-panel {
+  margin-top: 4px;
+  padding-top: 4px;
+  border-top: 1px solid #f0e6e2;
+}
+body.dark .set-act-panel { border-top-color: #3a2f2a; }

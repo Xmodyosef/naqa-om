@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@400;600;700;800&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
 <meta name="robots" content="noindex, nofollow" />
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=5, user-scalable=yes, viewport-fit=cover, interactive-widget=resizes-content" />
 <title>لوحة تحكم نقاء</title>
@@ -23,9 +23,9 @@
 <link rel="dns-prefetch" href="https://www.gstatic.com" />
 <link rel="preload" href="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js" as="script" />
 <link rel="preload" href="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js" as="script" />
-<link rel="preload" href="js/firebase-config.js?v=20261125copy2" as="script" />
-<link rel="preload" href="js/admin/firebase-gate.js?v=20261125copy2" as="script" />
-<link rel="stylesheet" href="css/admin.css?v=20261125copy2" />
+<link rel="preload" href="js/firebase-config.js?v=20261125filt1" as="script" />
+<link rel="preload" href="js/admin/firebase-gate.js?v=20261125filt1" as="script" />
+<link rel="stylesheet" href="css/admin.css?v=20261125filt1" />
 
 
 </head>
@@ -155,9 +155,12 @@
   </div>
   <main class="admin-main" id="adminMain" role="main">
     <div class="top-bar" id="topBar" hidden>
-      <div class="search-wrap" id="ordersSearchWrap" hidden>
-        <input type="search" id="globalSearch" placeholder="رقم أو اسم أو جوال" autocomplete="off" aria-label="بحث الطلبات" data-i18n-placeholder="o_search" />
-        <button type="button" class="search-btn" id="globalSearchBtn" aria-label="بحث">⌕</button>
+      <div class="orders-top-tools" id="ordersTopTools" hidden>
+        <div class="search-wrap" id="ordersSearchWrap">
+          <input type="search" id="globalSearch" placeholder="رقم أو اسم أو جوال" autocomplete="off" aria-label="بحث الطلبات" data-i18n-placeholder="o_search" />
+          <button type="button" class="search-btn" id="globalSearchBtn" aria-label="بحث">⌕</button>
+        </div>
+        <div id="ordersTools" class="orders-tools-slot"></div>
       </div>
       <button type="button" class="btn-add" id="addProductBtn" data-i18n="p_add" hidden>+ إضافة منتج</button>
     </div>
@@ -169,8 +172,12 @@
       var top = document.getElementById("topBar");
       var add = document.getElementById("addProductBtn");
       var search = document.getElementById("ordersSearchWrap");
+      var ot = document.getElementById("ordersTopTools");
       if (tab === "products" && add) add.hidden = false;
-      if (tab === "orders" && search) search.hidden = false;
+      if (tab === "orders") {
+        if (search) search.hidden = false;
+        if (ot) ot.hidden = false;
+      }
       if (top && (tab === "products" || tab === "orders")) top.hidden = false;
     })();
     </script>
@@ -178,7 +185,6 @@
       <div id="dashBox"></div>
     </div>
     <div id="ordersTab" class="admin-section" hidden>
-      <div class="status-bar" id="ordersTools"></div>
       <p class="status" id="orderStatus"></p>
       <div id="ordersList"></div>
     </div>
@@ -210,17 +216,17 @@
   </main>
 </div>
 </div>
-<script defer src="js/config.js?v=20261125copy2"></script>
-<script defer src="js/firebase-config.js?v=20261125copy2"></script>
+<script defer src="js/config.js?v=20261125filt1"></script>
+<script defer src="js/firebase-config.js?v=20261125filt1"></script>
 <script defer src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
 <script defer src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
-<script defer src="js/admin.js?v=20261125copy2"></script>
-<script defer src="js/admin/core.js?v=20261125copy2"></script>
-<script defer src="js/admin/firebase-gate.js?v=20261125copy2"></script>
-<script defer src="js/admin/app.js?v=20261125copy2"></script>
-<script defer src="js/admin/i18n/dict-ar.js?v=20261125copy2"></script>
-<script defer src="js/admin/i18n/dict-en.js?v=20261125copy2"></script>
-<script defer src="js/admin/i18n.js?v=20261125copy2"></script>
-<script defer src="js/admin/load-modules.js?v=20261125copy2"></script>
+<script defer src="js/admin.js?v=20261125filt1"></script>
+<script defer src="js/admin/core.js?v=20261125filt1"></script>
+<script defer src="js/admin/firebase-gate.js?v=20261125filt1"></script>
+<script defer src="js/admin/app.js?v=20261125filt1"></script>
+<script defer src="js/admin/i18n/dict-ar.js?v=20261125filt1"></script>
+<script defer src="js/admin/i18n/dict-en.js?v=20261125filt1"></script>
+<script defer src="js/admin/i18n.js?v=20261125filt1"></script>
+<script defer src="js/admin/load-modules.js?v=20261125filt1"></script>
 </body>
 </html>

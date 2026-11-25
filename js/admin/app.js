@@ -148,6 +148,8 @@
     if (add) add.hidden = tab !== "products";
     var search = document.getElementById("ordersSearchWrap");
     if (search) search.hidden = tab !== "orders";
+    var ot = document.getElementById("ordersTopTools");
+    if (ot) ot.hidden = tab !== "orders";
   };
 
   A.sectionHash = function () {

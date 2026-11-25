@@ -155,16 +155,6 @@
           var t = e.target;
           if (t.id === "waOrdersReport") A.waShareText(A.buildOrdersReport(A.orderFilter === "all" ? "new" : A.orderFilter));
           if (t.id === "exportOrdersCsv") A.exportOrdersCsv();
-          if (t.id === "importWaOrders") {
-            var raw = window.prompt(A.lang === "en"
-              ? "Paste WhatsApp order text (name / phone / area / total):"
-              : "الصقي نص طلب واتساب (الاسم / الجوال / المنطقة / الإجمالي):", "");
-            if (raw == null) return;
-            var n = A.importWhatsAppOrdersText ? A.importWhatsAppOrdersText(raw) : 0;
-            if (n) A.setMsg("orderStatus", A.lang === "en" ? ("Imported " + n + " order(s).") : ("استوردنا " + n + " طلب."));
-            else A.setMsg("orderStatus", "");
-            A.paintOrders();
-          }
         });
         tools.addEventListener("toggle", function (e) {
           if (e.target && e.target.id === "ordersToolsPanel") {
@@ -174,13 +164,12 @@
       }
       var openAttr = A.ordersToolsOpen ? " open" : "";
       tools.innerHTML =
-        '<details class="orders-tools-panel" id="ordersToolsPanel"' + openAttr + '>'
-        + '<summary>' + A.esc(A.t("o_tools") || (A.lang === "en" ? "Filter & tools" : "فلتر وأدوات")) + '</summary>'
+        '<details class="orders-filter-pill" id="ordersToolsPanel"' + openAttr + '>'
+        + '<summary class="status-one filter-sum">' + A.esc(A.t("o_tools") || "فلتر") + '</summary>'
         + '<div class="tools-body">'
-        + A.dateFilterHtml("ordDate", "order")
+        + A.dateFilterHtml("ordDate", "order", { noClear: true })
         + '<button type="button" class="mini" id="waOrdersReport" style="background:#25D366;color:#fff">' + A.t("o_waSum") + '</button>'
         + '<button type="button" class="mini" id="exportOrdersCsv">' + A.t("exportCsv") + '</button>'
-        + '<button type="button" class="mini" id="importWaOrders">' + A.t("o_waPaste") + '</button>'
         + '</div></details>';
       A.bindDateFilter("ordDate", function () { A.paintOrders(); }, "order");
     }
@@ -231,7 +220,7 @@
       }
       var when = "";
       try {
-        when = o.at ? new Date(o.at).toLocaleString(A.lang === "en" ? "en-GB" : "ar-OM", { day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" }) : "";
+        when = o.at ? new Date(o.at).toLocaleString("en-GB", { day: "numeric", month: "short", year: "numeric", hour: "2-digit", minute: "2-digit" }) : "";
       } catch (e) { when = o.at || ""; }
       var phoneDigits = String(o.phone || "").replace(/\D/g, "").replace(/^968/, "");
       var statusPick = '<select class="status-one ' + A.esc(st) + '" data-st-pick data-oid="' + A.esc(o.id) + '" aria-label="' + A.esc(A.t("statusTo")) + '">'
@@ -285,7 +274,7 @@
       var label = day;
       try {
         if (day && day !== "—") {
-          label = new Date(day + "T12:00:00").toLocaleDateString(A.lang === "en" ? "en-GB" : "ar-OM", { weekday: "short", year: "numeric", month: "short", day: "numeric" });
+          label = new Date(day + "T12:00:00").toLocaleDateString("en-GB", { weekday: "short", year: "numeric", month: "short", day: "numeric" });
         }
       } catch (e) {}
       return '<h3 class="order-day">' + A.esc(label) + ' · ' + byDay[day].length + '</h3>'

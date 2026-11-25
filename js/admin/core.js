@@ -61,15 +61,19 @@
     if (A.dateTo && (!day || day > A.dateTo)) return false;
     return true;
   };
-  A.dateFilterHtml = function (prefix, bag) {
+  A.dateFilterHtml = function (prefix, bag, opts) {
+    opts = opts || {};
     var from = bag === "order" ? (A.orderDateFrom || "") : (A.dateFrom || "");
     var to = bag === "order" ? (A.orderDateTo || "") : (A.dateTo || "");
+    var clearBtn = opts.noClear
+      ? ""
+      : ('<button type="button" class="mini" id="' + prefix + 'Clear">' + A.t("dateClear") + '</button>');
     return '<div class="date-filter" style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;width:100%">'
       + '<label style="display:flex;gap:6px;align-items:center;font-size:13px">' + A.t("dateFrom")
-      + ' <input type="date" id="' + prefix + 'From" value="' + A.esc(from) + '" style="border:1px solid #efe4df;border-radius:10px;padding:8px"></label>'
+      + ' <input type="date" lang="en" dir="ltr" id="' + prefix + 'From" value="' + A.esc(from) + '" style="border:1px solid #efe4df;border-radius:10px;padding:8px"></label>'
       + '<label style="display:flex;gap:6px;align-items:center;font-size:13px">' + A.t("dateTo")
-      + ' <input type="date" id="' + prefix + 'To" value="' + A.esc(to) + '" style="border:1px solid #efe4df;border-radius:10px;padding:8px"></label>'
-      + '<button type="button" class="mini" id="' + prefix + 'Clear">' + A.t("dateClear") + '</button>'
+      + ' <input type="date" lang="en" dir="ltr" id="' + prefix + 'To" value="' + A.esc(to) + '" style="border:1px solid #efe4df;border-radius:10px;padding:8px"></label>'
+      + clearBtn
       + '</div>';
   };
   A.bindDateFilter = function (prefix, onChange, bag) {

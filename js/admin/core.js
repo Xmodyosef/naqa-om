@@ -141,20 +141,26 @@
     setTimeout(function () { try { URL.revokeObjectURL(a.href); } catch (e) {} }, 1500);
   };
   A.downloadXlsx = function (filename, rows, sheetName) {
-    function xmlEsc(v) {
+    function clean(v) {
       return String(v == null ? "" : v)
-        .replace(/\u0026/g, "\u0026amp;")
-        .replace(/</g, "\u0026lt;")
-        .replace(/>/g, "\u0026gt;")
-        .replace(/"/g, "\u0026quot;");
+        .replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F]/g, "")
+        .replace(/\r\n|\n|\r/g, " ")
+        .replace(/\s+/g, " ")
+        .trim();
+    }
+    function xmlEsc(v) {
+      return clean(v)
+        .replace(/&/g, "&")
+        .replace(/</g, "<")
+        .replace(/>/g, ">")
+        .replace(/"/g, """);
     }
     function colName(n) {
-      var s = "";
-      n = n + 1;
-      while (n > 0) {
-        var m = (n - 1) % 26;
+      var s = "", x = n + 1;
+      while (x > 0) {
+        var m = (x - 1) % 26;
         s = String.fromCharCode(65 + m) + s;
-        n = Math.floor((n - 1) / 26);
+        x = Math.floor((x - 1) / 26);
       }
       return s;
     }
@@ -168,21 +174,13 @@
           table[i] = c >>> 0;
         }
       }
-      var crc = 0 ^ (-1);
-      for (var j = 0; j < bytes.length; j++) {
-        crc = (crc >>> 8) ^ table[(crc ^ bytes[j]) & 0xFF];
-      }
-      return (crc ^ (-1)) >>> 0;
+      var crc = 0xFFFFFFFF;
+      for (var j = 0; j < bytes.length; j++) crc = (crc >>> 8) ^ table[(crc ^ bytes[j]) & 0xFF];
+      return (crc ^ 0xFFFFFFFF) >>> 0;
     }
-    function u8(str) {
-      return new TextEncoder().encode(str);
-    }
-    function u32le(n) {
-      return new Uint8Array([n & 255, (n >>> 8) & 255, (n >>> 16) & 255, (n >>> 24) & 255]);
-    }
-    function u16le(n) {
-      return new Uint8Array([n & 255, (n >>> 8) & 255]);
-    }
+    function u8(str) { return new TextEncoder().encode(str); }
+    function u32le(n) { return new Uint8Array([n & 255, (n >>> 8) & 255, (n >>> 16) & 255, (n >>> 24) & 255]); }
+    function u16le(n) { return new Uint8Array([n & 255, (n >>> 8) & 255]); }
     function concat(parts) {
       var len = 0, i, out, off = 0;
       for (i = 0; i < parts.length; i++) len += parts[i].length;
@@ -190,26 +188,63 @@
       for (i = 0; i < parts.length; i++) { out.set(parts[i], off); off += parts[i].length; }
       return out;
     }
+    function toNum(v) {
+      if (typeof v === "number" && isFinite(v)) return v;
+      if (typeof v === "string" && v.trim() !== "" && !isNaN(Number(v))) return Number(v);
+      return null;
+    }
     var name = String(sheetName || "Orders").replace(/[\\/?*\[\]:]/g, " ").slice(0, 31) || "Orders";
+    var shared = [];
+    var sharedIndex = Object.create(null);
+    function si(text) {
+      var t = clean(text);
+      if (Object.prototype.hasOwnProperty.call(sharedIndex, t)) return sharedIndex[t];
+      var idx = shared.length;
+      shared.push(t);
+      sharedIndex[t] = idx;
+      return idx;
+    }
     var sheetRows = "";
+    var maxCol = 0;
     (rows || []).forEach(function (r, ri) {
       var rowNum = ri + 1;
+      var cells = r || [];
+      if (cells.length > maxCol) maxCol = cells.length;
       sheetRows += '<row r="' + rowNum + '">';
-      (r || []).forEach(function (cell, ci) {
+      cells.forEach(function (cell, ci) {
         var ref = colName(ci) + rowNum;
-        var num = ri > 0 && typeof cell === "number" && isFinite(cell);
-        if (num) {
-          sheetRows += '<c r="' + ref + '"><v>' + String(cell) + '</v></c>';
-        } else {
-          sheetRows += '<c r="' + ref + '" t="inlineStr"><is><t>' + xmlEsc(cell) + '</t></is></c>';
+        var num = ri > 0 ? toNum(cell) : null;
+        if (num != null && !(typeof cell === "string" && /[^\d.\-]/.test(String(cell).trim()))) {
+          /* pure numeric totals only — keep phone/id as text */
+          if (ci === 6 || (typeof cell === "number")) {
+            sheetRows += '<c r="' + ref + '"><v>' + String(num) + "</v></c>";
+            return;
+          }
         }
+        if (typeof cell === "number" && isFinite(cell) && ri > 0) {
+          sheetRows += '<c r="' + ref + '"><v>' + String(cell) + "</v></c>";
+          return;
+        }
+        sheetRows += '<c r="' + ref + '" t="s"><v>' + si(cell) + "</v></c>";
       });
       sheetRows += "</row>";
     });
+    var lastCol = maxCol > 0 ? colName(maxCol - 1) : "A";
+    var lastRow = (rows && rows.length) || 1;
     var sheet1 =
       '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>' +
       '<worksheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main">' +
+      "<dimension ref=\"A1:" + lastCol + lastRow + "\"/>" +
       "<sheetData>" + sheetRows + "</sheetData></worksheet>";
+    var sstParts = [
+      '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>',
+      '<sst xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" count="' + shared.length + '" uniqueCount="' + shared.length + '">'
+    ];
+    shared.forEach(function (t) {
+      sstParts.push("<si><t xml:space=\"preserve\">" + xmlEsc(t) + "</t></si>");
+    });
+    sstParts.push("</sst>");
+    var sharedStrings = sstParts.join("");
     var workbook =
       '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>' +
       '<workbook xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" ' +
@@ -219,6 +254,7 @@
       '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>' +
       '<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">' +
       '<Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/worksheet" Target="worksheets/sheet1.xml"/>' +
+      '<Relationship Id="rId2" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/sharedStrings" Target="sharedStrings.xml"/>' +
       "</Relationships>";
     var rootRels =
       '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>' +
@@ -232,13 +268,15 @@
       '<Default Extension="xml" ContentType="application/xml"/>' +
       '<Override PartName="/xl/workbook.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet.main+xml"/>' +
       '<Override PartName="/xl/worksheets/sheet1.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.worksheet+xml"/>' +
+      '<Override PartName="/xl/sharedStrings.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.sharedStrings+xml"/>' +
       "</Types>";
     var files = [
       { path: "[Content_Types].xml", data: u8(contentTypes) },
       { path: "_rels/.rels", data: u8(rootRels) },
       { path: "xl/workbook.xml", data: u8(workbook) },
       { path: "xl/_rels/workbook.xml.rels", data: u8(wbRels) },
-      { path: "xl/worksheets/sheet1.xml", data: u8(sheet1) }
+      { path: "xl/worksheets/sheet1.xml", data: u8(sheet1) },
+      { path: "xl/sharedStrings.xml", data: u8(sharedStrings) }
     ];
     var locals = [], centrals = [], offset = 0;
     files.forEach(function (f) {
@@ -266,14 +304,14 @@
       offset += local.length;
     });
     var central = concat(centrals);
-    var end = concat([
+    var endRec = concat([
       u32le(0x06054b50),
       u16le(0), u16le(0),
       u16le(files.length), u16le(files.length),
       u32le(central.length), u32le(offset),
       u16le(0)
     ]);
-    var zip = concat(locals.concat([central, end]));
+    var zip = concat(locals.concat([central, endRec]));
     var blob = new Blob([zip], {
       type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
     });

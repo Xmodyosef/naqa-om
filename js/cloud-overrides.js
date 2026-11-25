@@ -249,13 +249,31 @@
     if (typeof mergeOverrides !== "function") return;
     w.naqaLoadCloudOverrides().then(function (map) {
       if (!map) map = {};
+      /* Repair sellable stock + unhide accidental zeros (Nov 2025) */
+      Object.keys(map).forEach(function (id) {
+        var o = map[id];
+        if (!o || typeof o !== "object") return;
+        if (o.stock != null && o.stock !== "" && Number(o.stock) < 1) o.stock = 3;
+        if (o.hidden === true && (o.stock == null || Number(o.stock) >= 1)) {
+          /* keep explicit hide only when stock ok — still allow hide */
+        }
+      });
       try {
         if (Object.keys(map).length) {
-          sessionStorage.setItem("naqa_ov_pub_v1", JSON.stringify(map));
+          sessionStorage.setItem("naqa_ov_pub_v2", JSON.stringify(map));
         }
+        sessionStorage.removeItem("naqa_ov_pub_v1");
       } catch (e) {}
       if (!Object.keys(map).length) return;
       try { mergeOverrides(map); } catch (e) {}
+      try {
+        if (typeof naqaForceCatalogStock === "function") naqaForceCatalogStock();
+        if (typeof naqaUnhideIfEmptyCatalog === "function") naqaUnhideIfEmptyCatalog();
+        /* User request: all quantities = 3 until inventory is managed carefully */
+        if (typeof products !== "undefined" && products && products.length) {
+          products.forEach(function (p) { p.stock = 3; });
+        }
+      } catch (e) {}
       var done = function () {
         try { if (typeof render === "function") render(); } catch (e) {}
       };

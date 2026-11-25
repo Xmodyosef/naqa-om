@@ -301,7 +301,7 @@ function boot(){
   try{
     if(!products.length) throw new Error("products.js missing");
     /* Public store: cloud overrides. Cache last map so hidden products do not flash. */
-    var OV_CACHE = "naqa_ov_pub_v1";
+    var OV_CACHE = "naqa_ov_pub_v2";
     function naqaApplyOverrides(remote, opts){
       opts = opts || {};
       var map = (remote && typeof remote === "object") ? remote : {};
@@ -322,6 +322,12 @@ function boot(){
     if(typeof featuresBoot==="function") featuresBoot();
     if(typeof fillAreas==="function") fillAreas();
     /* First paint after cache (if any). Cloud re-render when ready. */
+    try { if (typeof naqaForceCatalogStock === "function") naqaForceCatalogStock(); } catch (e) {}
+    try {
+      products.forEach(function (p) {
+        if (p.stock == null || p.stock === "" || Number(p.stock) < 1) p.stock = 3;
+      });
+    } catch (e) {}
     render();
     applyRoute();
     /* Lazy product copy (desc/use/skin) — keeps first paint light */

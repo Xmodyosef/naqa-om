@@ -155,6 +155,25 @@ function naqaKeepImgs(base, saved, removed){
   base.forEach(add);
   return out;
 }
+
+/** Repair: keep catalog sellable — stock floor 3, undo mass-hide flash. */
+function naqaForceCatalogStock(){
+  try{
+    products.forEach(function(p){
+      var n = Number(p.stock);
+      if(!isFinite(n) || n < 1) p.stock = 3;
+      else p.stock = n;
+    });
+  }catch(e){}
+}
+function naqaUnhideIfEmptyCatalog(){
+  try{
+    var vis = products.filter(function(p){ return !p.hidden; });
+    if(!vis.length && products.length){
+      products.forEach(function(p){ p.hidden = false; if(!isFinite(Number(p.stock))||Number(p.stock)<1) p.stock=3; });
+    }
+  }catch(e){}
+}
 function mergeOverrides(map){
   if(!map) map={};
   /* Inject admin-created products (_new) into live catalog */
@@ -210,6 +229,8 @@ function mergeOverrides(map){
       p.imgs=(p.imgs||[]).filter(function(u){ return u && !rem[naqaNormImgPath(u)]; });
     }
   });
+  naqaForceCatalogStock();
+  naqaUnhideIfEmptyCatalog();
 }
 
 window.naqaHydrateFsImages = function () {
@@ -256,8 +277,10 @@ window.naqaHydrateFsImages = function () {
 try {
   /* Default stock: 3 when missing/empty. Do not wipe uniform stock. */
   products.forEach(function (p) {
-    if (p.stock == null || p.stock === "") p.stock = 3;
+    if (p.stock == null || p.stock === "" || !isFinite(Number(p.stock)) || Number(p.stock) < 1) p.stock = 3;
+    if (p.hidden == null) p.hidden = false;
   });
+  naqaForceCatalogStock();
 } catch (e) {}
 const $=s=>document.querySelector(s);
 

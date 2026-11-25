@@ -1,0 +1,79 @@
+/* Admin day / night — driven by html[data-admin-theme] */
+html[data-admin-theme="dark"] {
+  --bg: #1a1412;
+  --card: #241d1a;
+  --fg: #f5eeea;
+  --muted: #a89b94;
+  --line: #3a2f2a;
+  --rose: #e8b4be;
+  color-scheme: dark;
+}
+html[data-admin-theme="dark"] body {
+  background: #1a1412 !important;
+  color: #f5eeea !important;
+}
+html[data-admin-theme="dark"] .admin-top,
+html[data-admin-theme="dark"] .savebar {
+  background: #1a1412 !important;
+  color: #f5eeea !important;
+  border-color: #3a2f2a !important;
+}
+html[data-admin-theme="dark"] .admin-top h1,
+html[data-admin-theme="dark"] .admin-top a.store {
+  color: #f5eeea;
+}
+html[data-admin-theme="dark"] body.naqa-open #sideNav.top-parents,
+html[data-admin-theme="dark"] body.naqa-open .top-parents,
+html[data-admin-theme="dark"] .top-kids,
+html[data-admin-theme="dark"] .search-wrap,
+html[data-admin-theme="dark"] .panel,
+html[data-admin-theme="dark"] .order,
+html[data-admin-theme="dark"] .wa-box,
+html[data-admin-theme="dark"] .edit-card,
+html[data-admin-theme="dark"] .pin-card,
+html[data-admin-theme="dark"] .stat,
+html[data-admin-theme="dark"] .prod-card,
+html[data-admin-theme="dark"] .set-card {
+  background: #241d1a !important;
+  color: #f5eeea !important;
+  border-color: #3a2f2a !important;
+}
+html[data-admin-theme="dark"] .side-main,
+html[data-admin-theme="dark"] .side-sub,
+html[data-admin-theme="dark"] .tabs button,
+html[data-admin-theme="dark"] .status-bar button,
+html[data-admin-theme="dark"] input,
+html[data-admin-theme="dark"] textarea,
+html[data-admin-theme="dark"] select,
+html[data-admin-theme="dark"] .search-wrap input {
+  background: #1a1412 !important;
+  color: #f5eeea !important;
+  border-color: #3a2f2a !important;
+}
+html[data-admin-theme="dark"] .side-main.on,
+html[data-admin-theme="dark"] .side-sub.on,
+html[data-admin-theme="dark"] .tabs button.on {
+  background: #8d3048 !important;
+  color: #fff !important;
+  border-color: #8d3048 !important;
+}
+html[data-admin-theme="dark"] .note,
+html[data-admin-theme="dark"] small,
+html[data-admin-theme="dark"] .set-k,
+html[data-admin-theme="dark"] .set-card-note,
+html[data-admin-theme="dark"] .set-card-hint {
+  color: #a89b94 !important;
+}
+html[data-admin-theme="dark"] .mini,
+html[data-admin-theme="dark"] .export-pop,
+html[data-admin-theme="dark"] .export-pop button {
+  background: #2a2220 !important;
+  color: #f5eeea !important;
+  border-color: #3a2f2a !important;
+}
+html[data-admin-theme="dark"] #adminLang,
+html[data-admin-theme="dark"] .lang-btn {
+  background: #241d1a !important;
+  color: #f5eeea !important;
+  border-color: #3a2f2a !important;
+}

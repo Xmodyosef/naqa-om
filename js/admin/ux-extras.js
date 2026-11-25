@@ -55,8 +55,19 @@
   A.applyAdminTheme = function (mode) {
     mode = mode === "dark" ? "dark" : "light";
     try { localStorage.setItem(THEME_KEY, mode); } catch (e) {}
+    var dark = mode === "dark";
     document.documentElement.setAttribute("data-admin-theme", mode);
-    document.body.classList.toggle("admin-dark", mode === "dark");
+    document.documentElement.classList.toggle("admin-dark", dark);
+    if (document.body) {
+      document.body.classList.toggle("admin-dark", dark);
+      document.body.classList.toggle("dark", dark);
+    }
+    var btn = document.getElementById("btnThemeToggle");
+    if (btn) {
+      var en = A.lang === "en";
+      btn.textContent = dark ? (en ? "Light mode" : "الوضع النهاري") : (en ? "Dark mode" : "الوضع الليلي");
+      btn.setAttribute("aria-pressed", dark ? "true" : "false");
+    }
   };
   A.toggleAdminTheme = function () {
     var cur = "light";

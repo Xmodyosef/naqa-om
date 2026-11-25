@@ -621,14 +621,47 @@
     var num = val === "" ? undefined : Number(val);
     if (num != null && (isNaN(num) || num < 0)) {
       A.setMsg("status", field === "stock" ? A.t("p_stockBad") : A.t("p_priceBad"));
-      if (A.paintList) A.paintList(A.productQuery || "");
       return;
     }
     var patch = {};
     patch[field] = num;
     if (!A.persistOverridePatch(id, patch)) return;
+    /* soft UI update — keep focus, no full repaint */
+    try {
+      var card = document.querySelector('#list .prod-card[data-pid="' + String(id).replace(/"/g, "") + '"]');
+      if (card && field === "stock") {
+        var labs = card.querySelectorAll("label.qk");
+        for (var i = 0; i < labs.length; i++) {
+          if (labs[i].querySelector("[data-qk-stock]")) {
+            labs[i].classList.remove("is-low", "is-out");
+            if (num != null && num <= 0) labs[i].classList.add("is-out");
+            else if (num != null && num <= 3) labs[i].classList.add("is-low");
+          }
+        }
+      }
+      if (card && field === "price") {
+        var wasEl = card.querySelector(".prod-was s, .prod-was");
+        var priceN = Number(num);
+        var wasN = wasEl ? Number(String(wasEl.textContent || "").replace(/[^0-9.]/g, "")) : NaN;
+        var tag = card.querySelector(".prod-off-tag");
+        if (wasEl && isFinite(wasN) && wasN > priceN && priceN >= 0) {
+          var off = Math.round((1 - priceN / wasN) * 100);
+          if (tag) tag.textContent = "−" + off + "%";
+          else {
+            var title = card.querySelector(".prod-title");
+            if (title) {
+              var sp = document.createElement("span");
+              sp.className = "prod-off-tag";
+              sp.textContent = "−" + off + "%";
+              title.appendChild(document.createTextNode(" "));
+              title.appendChild(sp);
+            }
+          }
+        } else if (tag) tag.remove();
+      }
+    } catch (eSoft) {}
     A.setMsg("status", A.t("p_saved") || (A.lang === "en" ? "Saved." : "انحفظ."));
-    if (A.paintList) A.paintList(A.productQuery || "");
+    try { if (A.updateOrdersBadge) A.updateOrdersBadge(); } catch (eB) {}
   };
 
   A.openNewProduct = function () {
@@ -816,6 +849,7 @@
     fillStoredImgs(listEl);
     if (A.bindProductListClicks) A.bindProductListClicks();
     if (A.bindProductTools) A.bindProductTools();
+    try { if (A.updateOrdersBadge) A.updateOrdersBadge(); } catch (eBadge) {}
   };
 
   A.openEdit = function (id, opts) {

@@ -302,9 +302,16 @@
   };
 
   A.runGlobalSearch = function () {
-    /* Search is orders-only (product list search removed by request). */
     var input = document.getElementById("globalSearch");
     var q = input ? input.value.trim() : "";
+    var tab = A.currentTab || "home";
+    if (tab === "products") {
+      A.productQuery = q;
+      A.productPage = 1;
+      A.go("products", A.productView || "all", { push: true, keepPage: false, page: 1 });
+      if (A.paintList) A.paintList(q);
+      return;
+    }
     A.orderQuery = q;
     A.go("orders", A.orderFilter || A.currentSub || "all", { push: true });
     if (A.paintOrders) A.paintOrders();

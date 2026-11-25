@@ -311,10 +311,19 @@ function render(){
     var gridEl=$("#grid");
     var empty=$("#empty");
     if(home){
-      if(secHead) secHead.hidden=true;
-      if(priceBar) priceBar.hidden=true;
-      if(gridEl){ gridEl.innerHTML=""; gridEl.hidden=true; }
-      if(empty) empty.hidden=true;
+      if(secHead) secHead.hidden=false;
+      if(priceBar) priceBar.hidden=false;
+      if(gridEl) gridEl.hidden=false;
+      var titleHome=$("#products");
+      if(titleHome){
+        titleHome.innerHTML=esc(T("products"))+' <span class="vat-chip">'+(T("vatInc")||"")+'</span>';
+      }
+      if(empty){
+        empty.hidden=list.length>0;
+        empty.textContent=T("empty");
+      }
+      if(typeof renderPriceBar==="function") renderPriceBar();
+      if(gridEl) gridEl.innerHTML=list.map(cardHTML).join("");
     } else {
       if(secHead) secHead.hidden=false;
       if(gridEl) gridEl.hidden=false;

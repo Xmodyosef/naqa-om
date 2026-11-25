@@ -204,6 +204,19 @@ function catalogTileHTML(c, size){
     + '</div></button>';
 }
 
+function catalogMiniHTML(c){
+  var list = catalogList(c.id, 1);
+  if(!list.length && c.id !== "all") return "";
+  var name = lang==="en" ? c.en : c.ar;
+  var photo = c.cover
+    ? '<img src="'+esc(c.cover)+'" alt="" loading="lazy" decoding="async" width="76" height="76">'
+    : '<span class="home-cat-mini-fallback" aria-hidden="true">'+c.em+'</span>';
+  return '<button type="button" class="home-cat-mini" data-open-catalog="'+esc(c.id)+'">'
+    + '<span class="home-cat-mini-photo">'+photo+'</span>'
+    + '<b>'+esc(name)+'</b>'
+    + '</button>';
+}
+
 function renderHomeCatalogs(){
   var box = document.getElementById("shelves");
   if(!box) return;
@@ -214,54 +227,15 @@ function renderHomeCatalogs(){
   }
   box.hidden = false;
   var cats = getNaqaCatalogs();
-  var total = products.filter(function(p){ return !p.hidden; }).length;
-  var brandN = (function(){ var s={}; products.forEach(function(p){ if(!p.hidden) s[p.brand]=1; }); return Object.keys(s).length; })();
-  var offN = products.filter(function(p){ return !p.hidden && p.was > p.price; }).length;
   var en = (typeof lang !== "undefined" && lang === "en");
-
-  var html = '';
-  html += '<div class="home-catalog" id="homeCatalog">';
-
-  /* Compact strip — keep stats (nice part), drop noisy kicker copy */
-  html += '<header class="home-cat-hero">'
-    + '<div class="home-cat-hero-copy">'
-    + '<h2>'+(en?"Browse catalogs":"تصفّحي الكتالوجات")+'</h2>'
-    + '<p>'+(en
-      ?"Pick a catalog — products open inside it"
-      :"اختاري كتالوجاً — المنتجات تظهر داخله")+'</p>'
+  var html = '<div class="home-catalog home-catalog--mini" id="homeCatalog">'
+    + '<div class="home-cat-section-head home-cat-section-head--slim">'
+    + '<h3>'+(en?"Catalogs":"الكتالوجات")+'</h3>'
+    + '<span>'+(en?"Swipe":"اسحبي")+'</span>'
     + '</div>'
-    + '<div class="home-cat-stats" aria-hidden="true">'
-    + '<span><b>'+total+'</b><i>'+(en?"products":"منتج")+'</i></span>'
-    + '<span><b>'+brandN+'</b><i>'+(en?"brands":"ماركة")+'</i></span>'
-    + '<span><b>'+offN+'</b><i>'+(en?"on sale":"عرض")+'</i></span>'
-    + '</div></header>';
-
-  /* Featured hero row — 4 large tiles only, no product cards */
-  var featured = cats.filter(function(c){ return c.featured; });
-  if(featured.length){
-    html += '<div class="home-cat-section-head">'
-      + '<h3>'+(en?"Highlights":"مختارات")+'</h3>'
-      + '</div>';
-    html += '<div class="home-cat-featured">';
-    featured.forEach(function(c){
-      html += catalogTileHTML(c, "hero");
-    });
-    html += '</div>';
-  }
-
-  /* Shop-by-section grid */
-  var shop = cats.filter(function(c){ return !c.featured; });
-  html += '<div class="home-cat-section-head">'
-    + '<h3>'+(en?"Shop by section":"تسوّقي حسب القسم")+'</h3>'
-    + '<span>'+(en?"Tap a card":"اضغطي بطاقة")+'</span>'
-    + '</div>';
-  html += '<div class="home-cat-grid">';
-  shop.forEach(function(c){
-    html += catalogTileHTML(c, "grid");
-  });
-  html += '</div>';
-
-  html += '</div>'; /* home-catalog */
+    + '<div class="home-cat-strip">';
+  cats.forEach(function(c){ html += catalogMiniHTML(c); });
+  html += '</div></div>';
   box.innerHTML = html;
 }
 

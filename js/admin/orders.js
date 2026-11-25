@@ -442,7 +442,7 @@
       A.setMsg("orderStatus", A.t("exportNone") || "");
       return;
     }
-    A.downloadCsv("naqa-orders.csv", rows);
+    A.downloadXls("naqa-orders.xls", rows, "Orders");
     A.setMsg("orderStatus", hasSel ? (A.t("exportOkSel") || A.t("exportOk")) : A.t("exportOk"));
   };
   A.importOrdersCsv = function (file) {

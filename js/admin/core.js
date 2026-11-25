@@ -140,6 +140,34 @@
     a.remove();
     setTimeout(function () { try { URL.revokeObjectURL(a.href); } catch (e) {} }, 1500);
   };
+  A.downloadXls = function (filename, rows, sheetName) {
+    function esc(v) {
+      return String(v == null ? "" : v)
+        .replace(/&/g, "&").replace(/</g, "<").replace(/>/g, ">").replace(/"/g, """);
+    }
+    var name = String(sheetName || "Orders").replace(/[\\/?*\[\]:]/g, " ").slice(0, 31) || "Orders";
+    var xml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
+      + "<?mso-application progid=\"Excel.Sheet\"?>"
+      + "<Workbook xmlns=\"urn:schemas-microsoft-com:office:spreadsheet\" xmlns:ss=\"urn:schemas-microsoft-com:office:spreadsheet\">"
+      + "<Worksheet ss:Name=\"" + esc(name) + "\"><Table>";
+    (rows || []).forEach(function (r, ri) {
+      xml += "<Row>";
+      (r || []).forEach(function (cell) {
+        var num = ri > 0 && typeof cell === "number" && isFinite(cell);
+        xml += "<Cell><Data ss:Type=\"" + (num ? "Number" : "String") + "\">" + (num ? String(cell) : esc(cell)) + "</Data></Cell>";
+      });
+      xml += "</Row>";
+    });
+    xml += "</Table></Worksheet></Workbook>";
+    var blob = new Blob([xml], { type: "application/vnd.ms-excel;charset=utf-8" });
+    var a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = String(filename || "naqa.xls").replace(/\.csv$/i, ".xls");
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(function () { try { URL.revokeObjectURL(a.href); } catch (e) {} }, 1500);
+  };
   A.parseCsv = function (text) {
     text = String(text || "").replace(/^\uFEFF/, "");
     var rows = [], row = [], cell = "", i = 0, q = false;

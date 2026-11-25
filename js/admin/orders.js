@@ -72,7 +72,7 @@
       if (Array.isArray(o.items) && o.items.length) {
         items = '<ul class="items">' + o.items.map(function (it) {
           var thumb = it.img ? ('<img src="' + A.esc(it.img) + '" alt="" style="width:40px;height:40px;object-fit:contain;border-radius:8px;background:#f6f1ee;margin-left:8px">') : "";
-          return '<li>' + thumb + '<strong>' + A.esc(it.name || it.nameAr || "") + '</strong><small>SKU ' + A.esc(it.sku || "—") + ' · ×' + A.esc(it.qty) + ' · ' + A.esc(it.line != null ? it.line : it.price) + ' ' + A.t("omr") + ' <span style="color:#9a7b72">' + A.t("o_vatLine") + '</span></small>'
+          return '<li>' + thumb + '<strong>' + A.esc((A.lang === 'en' ? (it.nameEn || it.name || it.nameAr) : (it.nameAr || it.name || it.nameEn)) || "") + '</strong><small>SKU ' + A.esc(it.sku || "—") + ' · ×' + A.esc(it.qty) + ' · ' + A.esc(it.line != null ? it.line : it.price) + ' ' + A.t("omr") + ' <span style="color:#9a7b72">' + A.t("o_vatLine") + '</span></small>'
             + (it.link ? ('<div><a href="' + A.esc(it.link) + '" target="_blank" rel="noopener">' + A.t("productLink") + '</a></div>') : "") + "</li>";
         }).join("") + "</ul>";
       } else if (o.itemsText) {

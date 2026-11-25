@@ -174,7 +174,7 @@
   A.ensureLang = function (lang, done) {
     if (A.I18N && A.I18N[lang]) { done(); return; }
     var s = document.createElement("script");
-    s.src = "js/admin/i18n/dict-" + lang + ".js?v=20261125img6";
+    s.src = "js/admin/i18n/dict-" + lang + ".js?v=20261125en1";
     s.onload = function () { done(); };
     s.onerror = function () { done(); };
     document.head.appendChild(s);

@@ -229,7 +229,7 @@
         var cred = new w.PasswordCredential({
           id: email,
           password: pass,
-          name: "نقاء · لوحة التحكم"
+          name: (A.lang === "en" ? "Naqa · Admin" : "نقاء · لوحة التحكم")
         });
         navigator.credentials.store(cred).catch(function () {});
       }

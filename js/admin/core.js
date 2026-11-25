@@ -226,8 +226,8 @@
         document.body.removeChild(ta);
         ok();
       } catch (e) {
-        A.setMsg(msgId || "orderStatus", "ما قدرنا ننسخ — حدّدي النص يدوياً");
-        prompt("انسخي من هنا:", text.slice(0, 1500));
+        A.setMsg(msgId || "orderStatus", A.t("c_copyFail"));
+        prompt(A.t("c_copyPrompt"), text.slice(0, 1500));
       }
     }
     if (navigator.clipboard && navigator.clipboard.writeText) {
@@ -235,37 +235,43 @@
     } else fail();
   };
   A.buildOrdersReport = function (filter) {
-    var lines = ["نقاء — تقرير الطلبات", "—"];
+    var omr = A.t("omr");
+    var lines = [A.t("rep_title"), "—"];
     var list = A.orders.filter(function (o) {
       if (!filter || filter === "all") return true;
       if (filter === "new") return A.normalizeStatus(o.status) === "new";
       return A.normalizeStatus(o.status) === filter;
     });
-    if (!list.length) return "ما في طلبات.";
+    if (!list.length) return A.t("rep_empty");
     list.forEach(function (o, i) {
       var st = A.statusLabel(A.normalizeStatus(o.status)) || o.status;
+      var itemName = function (it) {
+        if (A.lang === "en") return it.nameEn || it.name || it.nameAr || "";
+        return it.nameAr || it.name || it.nameEn || "";
+      };
       lines.push((i + 1) + ") " + (o.id || "") + " · " + st);
       lines.push("   " + (o.name || "—") + " · " + (o.phone || "—") + " · " + (o.area || "—"));
-      lines.push("   المجموع: " + (o.total != null ? Number(o.total).toFixed(3) : "—") + " ر.ع (شامل الضريبة ٥٪)");
+      lines.push("   " + A.t("rep_total") + ": " + (o.total != null ? Number(o.total).toFixed(3) : "—") + " " + A.t("rep_vat"));
       var vatN = o.vat != null ? Number(o.vat) : (o.total != null ? Number(o.total) * 0.05 / 1.05 : null);
-      if (vatN != null && !isNaN(vatN)) lines.push("   منها ضريبة ٥٪: " + vatN.toFixed(3) + " ر.ع");
+      if (vatN != null && !isNaN(vatN)) lines.push("   " + A.t("rep_vatOf") + ": " + vatN.toFixed(3) + " " + omr);
       lines.push("   " + A.t("payLine") + ": " + A.payText(o));
       if (o.delivery != null || o.codFee != null || o.shipping != null) {
-        lines.push("   رسوم: توصيل " + Number(o.delivery != null ? o.delivery : 0).toFixed(3)
-          + " · استلام " + Number(o.codFee != null ? o.codFee : 0).toFixed(3)
-          + " · صافي رسوم " + Number(o.shipping != null ? o.shipping : 0).toFixed(3) + " ر.ع");
+        lines.push("   " + A.t("rep_fees") + " " + Number(o.delivery != null ? o.delivery : 0).toFixed(3)
+          + " · " + A.t("rep_cod") + " " + Number(o.codFee != null ? o.codFee : 0).toFixed(3)
+          + " · " + A.t("rep_netFee") + " " + Number(o.shipping != null ? o.shipping : 0).toFixed(3) + " " + omr);
       }
       if (Array.isArray(o.items) && o.items.length) {
         o.items.forEach(function (it) {
-          lines.push("   - " + (it.name || it.nameAr || "") + " ×" + (it.qty || 1) + " (" + (it.sku || "") + ")");
+          lines.push("   - " + itemName(it) + " ×" + (it.qty || 1) + " (" + (it.sku || "") + ")");
         });
       } else if (o.itemsText) lines.push("   " + o.itemsText);
       lines.push("");
     });
-    lines.push("الإجمالي المسجّل: " + list.length + " طلب");
+    lines.push(A.t("rep_count") + ": " + list.length + " " + A.t("rep_orderUnit"));
     return lines.join("\n");
   };
   A.buildCustomersReport = function () {
+    var omr = A.t("omr");
     var map = {};
     A.orders.forEach(function (o) {
       if (A.normalizeStatus(o.status) === "cancel") return;
@@ -275,17 +281,18 @@
       map[key].total += Number(o.total) || 0;
     });
     var list = Object.keys(map).map(function (k) { return map[k]; }).sort(function (a, b) { return b.total - a.total; });
-    var lines = ["نقاء — قائمة العملاء", "—"];
-    if (!list.length) return "ما في عملاء.";
+    var lines = [A.t("rep_custTitle"), "—"];
+    if (!list.length) return A.t("rep_custEmpty");
     list.forEach(function (c, i) {
       lines.push((i + 1) + ") " + c.name + " · " + c.phone + " · " + c.area);
-      lines.push("   " + c.count + " طلب · " + c.total.toFixed(3) + " ر.ع");
+      lines.push("   " + c.count + " " + A.t("rep_custLine") + " · " + c.total.toFixed(3) + " " + omr);
     });
     lines.push("");
-    lines.push("العدد: " + list.length);
+    lines.push(A.t("rep_custCount") + ": " + list.length);
     return lines.join("\n");
   };
   A.buildFinanceReport = function () {
+    var omr = A.t("omr");
     var sales = 0, count = 0, cancel = 0;
     var bySt = { new: 0, prep: 0, ship: 0, delivered: 0 };
     A.orders.forEach(function (o) {
@@ -295,15 +302,16 @@
       sales += Number(o.total) || 0;
       if (bySt[st] != null) bySt[st]++;
     });
+    var loc = A.lang === "en" ? "en-OM" : "ar-OM";
     return [
-      "نقاء — تقرير مالية",
+      A.t("rep_finTitle"),
       "—",
-      "مبيعات (بدون ملغي): " + sales.toFixed(3) + " ر.ع",
-      "طلبات فعّالة: " + count,
-      "متوسط الطلب: " + (count ? (sales / count).toFixed(3) : "0.000") + " ر.ع",
-      "جديد: " + bySt.new + " · تجهيز: " + bySt.prep + " · توصيل: " + bySt.ship + " · تم: " + bySt.delivered,
-      "ملغي: " + cancel,
-      "تاريخ التقرير: " + new Date().toLocaleString("ar-OM")
+      A.t("rep_finSales") + ": " + sales.toFixed(3) + " " + omr,
+      A.t("rep_finActive") + ": " + count,
+      A.t("rep_finAvg") + ": " + (count ? (sales / count).toFixed(3) : "0.000") + " " + omr,
+      A.t("rep_finNew") + ": " + bySt.new + " · " + A.t("rep_finPrep") + ": " + bySt.prep + " · " + A.t("rep_finShip") + ": " + bySt.ship + " · " + A.t("rep_finDone") + ": " + bySt.delivered,
+      A.t("rep_finCancel") + ": " + cancel,
+      A.t("rep_finDate") + ": " + new Date().toLocaleString(loc)
     ].join("\n");
   };
   A.waShareText = function (text) {

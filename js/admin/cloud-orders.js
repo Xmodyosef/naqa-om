@@ -3,7 +3,7 @@
   "use strict";
   var A = w.NaqaAdmin = w.NaqaAdmin || {};
   var DOC = { col: "naqa", id: "orders_private" };
-  var MAX = 400;
+  var MAX = 2000;
 
   function db() {
     try {

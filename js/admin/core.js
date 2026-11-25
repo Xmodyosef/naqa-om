@@ -198,7 +198,7 @@
     return "new";
   };
   A.saveOrders = function () {
-    var _cap = (typeof ORDERS_CAP === "number" && ORDERS_CAP > 0) ? ORDERS_CAP : 300;
+    var _cap = (typeof ORDERS_CAP === "number" && ORDERS_CAP > 0) ? ORDERS_CAP : 2000;
     localStorage.setItem(A.ORDERS_KEY, JSON.stringify(A.orders.slice(0, _cap)));
   };
   /* RULE (LOCKED) — product images
@@ -434,7 +434,7 @@
     if (A._ordersRemoteLoadedAt && (Date.now() - A._ordersRemoteLoadedAt) < 60000) {
       return Promise.resolve(A.orders || []);
     }
-    A._ordersRemoteLoading = fetch("data/orders.json?v=20261125ord1").then(function (r) { return r.ok ? r.json() : []; }).then(function (remote) {
+    A._ordersRemoteLoading = fetch("data/orders.json?v=20261125ord2").then(function (r) { return r.ok ? r.json() : []; }).then(function (remote) {
       A._ordersRemoteLoadedAt = Date.now();
       A._ordersRemoteLoading = null;
       if (!Array.isArray(remote)) return;

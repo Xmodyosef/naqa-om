@@ -22,6 +22,104 @@
       A.orderDateTo = today;
     }
   };
+
+  A.getVisibleOrders = function () {
+    var sel = A.selectedOrderIds || {};
+    var hasSel = Object.keys(sel).some(function (k) { return !!sel[k]; });
+    var out = [];
+    (A.orders || []).forEach(function (o) {
+      if (!o || !o.id) return;
+      if (hasSel) {
+        if (sel[o.id]) out.push(o);
+        return;
+      }
+      if (A.ordersInRange && !A.ordersInRange(o.at)) return;
+      if (!(A.orderFilter === "all" || A.normalizeStatus(o.status) === A.orderFilter)) return;
+      var q = String(A.orderQuery || "").trim().toLowerCase();
+      if (q) {
+        var bits = [o.id, o.name, o.phone, o.city, o.area, o.address, o.note];
+        (o.items || []).forEach(function (it) { bits.push(it.name, it.nameAr, it.sku); });
+        if (bits.join(" ").toLowerCase().indexOf(q) < 0) return;
+      }
+      out.push(o);
+    });
+    out.sort(function (a, b) { return String(b.at || "").localeCompare(String(a.at || "")); });
+    return out;
+  };
+
+  A.printOrdersPdf = function () {
+    var list = A.getVisibleOrders();
+    if (!list.length) {
+      A.setMsg("orderStatus", A.t("o_printEmpty") || "");
+      return;
+    }
+    var dir = A.lang === "en" ? "ltr" : "rtl";
+    var lang = A.lang === "en" ? "en" : "ar";
+    var title = A.t("o_pdfHead") || "Naqa";
+    var printed = A.t("o_pdfPrinted") || "";
+    var whenPrint = "";
+    try { whenPrint = A.fmtDateTimeNum(new Date()); } catch (e) { whenPrint = new Date().toISOString(); }
+    var cards = list.map(function (o, idx) {
+      var st = A.normalizeStatus(o.status);
+      var when = "";
+      try { when = o.at ? A.fmtDateTimeNum(o.at) : ""; } catch (e2) { when = o.at || ""; }
+      var sums = A.orderTotals ? A.orderTotals(o) : { grand: o.total || 0, beforeTax: 0, tax: 0, del: 0, cod: 0, discount: 0 };
+      var itemsHtml = "";
+      if (Array.isArray(o.items) && o.items.length) {
+        itemsHtml = "<table class='items'><thead><tr><th>#</th><th>" + A.esc(A.lang === "en" ? "Item" : "الصنف") + "</th><th>" + A.esc(A.lang === "en" ? "Qty" : "الكمية") + "</th><th>" + A.esc(A.lang === "en" ? "Price" : "السعر") + "</th></tr></thead><tbody>"
+          + o.items.map(function (it, i) {
+              var name = (A.lang === "en" ? (it.nameEn || it.name || it.nameAr) : (it.nameAr || it.name || it.nameEn)) || "";
+              var tax = A.itemTaxView ? A.itemTaxView(it) : { qty: it.qty || 1, unit: it.price || 0 };
+              return "<tr><td>" + (i + 1) + "</td><td>" + A.esc(name) + (it.sku ? (" <small>" + A.esc(it.sku) + "</small>") : "") + "</td><td>" + A.esc(tax.qty) + "</td><td>" + A.esc(A.fmtMoney ? A.fmtMoney(tax.unit) : tax.unit) + "</td></tr>";
+            }).join("")
+          + "</tbody></table>";
+      } else if (o.itemsText) {
+        itemsHtml = "<pre class='note'>" + A.esc(o.itemsText) + "</pre>";
+      }
+      return "<section class='card'>"
+        + "<header><b>" + A.esc(o.id) + "</b><span class='st'>" + A.esc(A.statusLabel(st)) + "</span><span class='when'>" + A.esc(when) + "</span></header>"
+        + "<div class='meta'>" + A.esc(o.name || "—") + " · " + A.esc(o.phone || "—") + " · " + A.esc(o.area || "—") + "</div>"
+        + "<div class='meta'>" + A.esc(A.t("payLine") || "Payment") + ": " + A.esc(A.payText ? A.payText(o) : (o.payment || "")) + "</div>"
+        + (o.note ? ("<div class='meta'>" + A.esc(A.t("note") || "Note") + ": " + A.esc(o.note) + "</div>") : "")
+        + itemsHtml
+        + "<footer class='tot'><span>" + A.esc(A.t("o_grand") || "Total") + "</span><b>" + A.esc(A.fmtMoney ? A.fmtMoney(sums.grand) : sums.grand) + " " + A.esc(A.t("omr") || "OMR") + "</b></footer>"
+        + "</section>";
+    }).join("");
+    var html = "<!doctype html><html lang='" + lang + "' dir='" + dir + "'><head><meta charset='utf-8'>"
+      + "<title>" + A.esc(title) + "</title>"
+      + "<style>"
+      + "@page{size:A4;margin:12mm}"
+      + "body{font-family:'Noto Sans Arabic','IBM Plex Sans',system-ui,sans-serif;color:#1f1a17;margin:0;padding:12px;background:#fff}"
+      + "h1{font-size:1.1rem;margin:0 0 4px;color:#8d3048}"
+      + ".sub{color:#6b625c;font-size:.8rem;margin-bottom:14px}"
+      + ".card{border:1px solid #e8ddd8;border-radius:10px;padding:12px;margin:0 0 12px;page-break-inside:avoid}"
+      + ".card header{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:6px}"
+      + ".card header b{font-size:.95rem}"
+      + ".st{background:#f3e6e9;color:#8d3048;border-radius:999px;padding:3px 8px;font-size:.72rem;font-weight:800}"
+      + ".when{margin-inline-start:auto;font-size:.75rem;color:#6b625c}"
+      + ".meta{font-size:.82rem;color:#3a322e;margin:2px 0}"
+      + "table.items{width:100%;border-collapse:collapse;margin-top:8px;font-size:.8rem}"
+      + "table.items th,table.items td{border-bottom:1px solid #efe4df;padding:5px 4px;text-align:start}"
+      + "table.items th{color:#6b625c;font-weight:700}"
+      + "footer.tot{display:flex;justify-content:space-between;margin-top:10px;padding-top:8px;border-top:1px solid #efe4df;font-weight:800}"
+      + "pre.note{white-space:pre-wrap;font-size:.78rem;background:#faf6f4;padding:8px;border-radius:8px}"
+      + "@media print{body{padding:0}.no-print{display:none!important}}"
+      + "</style></head><body>"
+      + "<h1>" + A.esc(title) + "</h1>"
+      + "<div class='sub'>" + A.esc(printed) + ": " + A.esc(whenPrint) + " · " + list.length + "</div>"
+      + cards
+      + "<script>window.onload=function(){setTimeout(function(){window.print();},250);}<\\/script>"
+      + "</body></html>";
+    var w = window.open("", "_blank");
+    if (!w) {
+      A.setMsg("orderStatus", A.lang === "en" ? "Allow popups to print PDF" : "اسمحي بالنوافذ المنبثقة للطباعة");
+      return;
+    }
+    w.document.open();
+    w.document.write(html);
+    w.document.close();
+  };
+
   A.paintStatusBar = function () {
         if (A.updateOrdersBadge) A.updateOrdersBadge();
   };
@@ -236,6 +334,10 @@
         if (!t) return;
         if (t.id === "exportOrdersCsv" || (t.closest && t.closest("#exportOrdersCsv"))) {
           A.exportOrdersCsv();
+          return;
+        }
+        if (t.id === "printOrdersPdf" || (t.closest && t.closest("#printOrdersPdf"))) {
+          A.printOrdersPdf();
         }
       });
     }
@@ -259,6 +361,7 @@
       + '<label class="pick-all-lab" title="' + A.esc(A.t("selectAllOrders") || "تحديد الكل") + '">'
       + '<input type="checkbox" id="ordSelectAll"><span class="pick-all-txt">' + A.esc(A.t("selectAllOrders") || "الكل") + '</span></label>'
       + '<button type="button" class="export-one" id="exportOrdersCsv">' + A.esc(A.t("exportExcel") || "Excel") + '</button>'
+      + '<button type="button" class="export-one pdf-one" id="printOrdersPdf" title="' + A.esc(A.t("printPdfTitle") || "PDF") + '">' + A.esc(A.t("printPdf") || "PDF") + '</button>'
       + '</div>';
     A.syncExportLabel();
   };
@@ -282,13 +385,18 @@
       (o.items || []).forEach(function (it) { bits.push(it.name, it.nameAr, it.sku); });
       return bits.join(" ").toLowerCase().indexOf(q) >= 0;
     });
+    var totalAll = (A.orders && A.orders.length) || 0;
+    var countLine = (A.t("o_countLine") || "Showing: {shown} · All: {all}")
+      .split("{shown}").join(String(list.length))
+      .split("{all}").join(String(totalAll));
+    var countHtml = '<p class="orders-count-line" id="ordersCountLine">' + A.esc(countLine) + '</p>';
     if (!A.orders.length) {
-      box.innerHTML = '<p class="note">' + A.t("o_empty") + '</p>';
+      box.innerHTML = countHtml + '<p class="note">' + A.t("o_empty") + '</p>';
       return;
     }
     if (!list.length) {
       var emptyF = A.t("o_emptyFilter") || "";
-      box.innerHTML = emptyF ? ('<p class="note">' + emptyF + '</p>') : "";
+      box.innerHTML = countHtml + (emptyF ? ('<p class="note">' + emptyF + '</p>') : "");
       return;
     }
     var cardHtml = function (o) {
@@ -363,7 +471,7 @@
         + '</div></div></article>';
     };
     list.sort(function (a, b) { return String(b.at || "").localeCompare(String(a.at || "")); });
-    /* No day headers — each order already shows its own date/time */
-    box.innerHTML = list.map(cardHtml).join("");
+    /* No day headers — each order already shows its own date/time. No slice: show ALL matching. */
+    box.innerHTML = countHtml + list.map(cardHtml).join("");
   };
 })(window);

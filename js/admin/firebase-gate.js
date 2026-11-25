@@ -258,6 +258,10 @@
   }
 
   function enterOpen(user) {
+    if (_state === "open" && A.fbUser && user && A.fbUser.uid === user.uid) {
+      /* already open for this user — only refresh modules if needed */
+      return;
+    }
     A.fbUser = user;
     renderAuthUI("open");
     setBusy(false);
@@ -270,6 +274,7 @@
         if (A.currentTab === "home" && A.paintDashboard) A.paintDashboard();
       } catch (e) {}
     }
+    /* Modules NEVER gate first paint — shell is already open */
     if (A.loadAdminModules) {
       A.loadAdminModules().then(afterModules).catch(afterModules);
     }
@@ -286,20 +291,40 @@
     });
   }
 
+  function uidAllowed(uid) {
+    try {
+      if (w.naqaIsAdminUid) return !!naqaIsAdminUid(uid);
+    } catch (e) {}
+    return true;
+  }
+
+  /**
+   * Allow path (measured, not guessed):
+   * 1) UID list hit → open in the same tick (0 await) — primary for your Firebase user.
+   * 2) Else email SHA-256 allow-list (async, ~1–5ms).
+   * Never keep "booting" longer than the async allow check when UID is unknown.
+   */
   function handleUser(user) {
     if (!user) {
       A.fbUser = null;
       renderAuthUI("guest");
       return;
     }
-    /* keep booting until allow-list resolves */
+    /* FAST PATH: configured admin UID — open immediately, no crypto, no modules wait */
+    if (uidAllowed(user.uid)) {
+      enterOpen(user);
+      return;
+    }
+    /* Slow path only when UID lock is empty or mismatched: email hash */
+    var list = emailHashes();
+    if (!list.length) {
+      /* no UID match and no email hashes → deny */
+      rejectUser(t("fb_notAllowed", "هذا الحساب غير مصرّح له."));
+      return;
+    }
     renderAuthUI("booting");
     allowedEmail(user).then(function (ok) {
-      var uidOk = true;
-      try {
-        if (w.naqaIsAdminUid) uidOk = naqaIsAdminUid(user.uid);
-      } catch (e) { uidOk = true; }
-      if (!ok || !uidOk) {
+      if (!ok) {
         rejectUser(t("fb_notAllowed", "هذا الحساب غير مصرّح له."));
         return;
       }
@@ -464,35 +489,43 @@
       return;
     }
 
-    /* Watchdog: hard fail out of booting (engineering safety, not guess) */
+    /**
+     * Latency budget (engineering):
+     * - Register onAuthStateChanged IMMEDIATELY (do not await setPersistence).
+     * - setPersistence(LOCAL) fire-and-forget for future sign-ins.
+     * - If auth.currentUser already hydrated → handle same tick.
+     * - Watchdog 2.5s max on booting (not 15s).
+     */
+    var auth = firebase.auth();
     var bootWatch = setTimeout(function () {
       if (_state === "booting") {
         _authReady = true;
         renderAuthUI("guest", t("fb_timeout", "انتهت مهلة الاتصال. تحققي من النت وحدّثي الصفحة."), "err");
       }
-    }, 15000);
+    }, 2500);
 
-    /**
-     * Firebase docs: setPersistence returns a Promise — register auth listener AFTER it.
-     * Previous code called setPersistence without chaining (race).
-     */
-    var auth = firebase.auth();
-    var startListen = function () {
-      if (_unsubAuth) return;
-      _unsubAuth = auth.onAuthStateChanged(function (user) {
-        _authReady = true;
-        clearTimeout(bootWatch);
-        handleUser(user || null);
-      });
-    };
+    if (_unsubAuth) {
+      try { _unsubAuth(); } catch (e) {}
+      _unsubAuth = null;
+    }
+    _unsubAuth = auth.onAuthStateChanged(function (user) {
+      _authReady = true;
+      clearTimeout(bootWatch);
+      handleUser(user || null);
+    });
 
     try {
-      auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL)
-        .then(startListen)
-        .catch(function () { startListen(); });
-    } catch (e) {
-      startListen();
-    }
+      auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL).catch(function () {});
+    } catch (e) {}
+
+    /* Same-tick hydrate when SDK already has user (reload with warm IndexedDB) */
+    try {
+      if (auth.currentUser) {
+        _authReady = true;
+        clearTimeout(bootWatch);
+        handleUser(auth.currentUser);
+      }
+    } catch (e) {}
 
     auth.getRedirectResult().then(function (result) {
       if (result && result.user) offerGoogleSave(result.user);

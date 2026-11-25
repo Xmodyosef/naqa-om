@@ -150,3 +150,8 @@ body.naqa-open #authBoot {
 .pin-card #pinMsg.is-err { color: #b05c6e; }
 #adminTitle { display: none; }
 body.naqa-open #adminTitle { display: block; }
+
+/* lt1: open always beats pending/boot — sub-second shell */
+body.naqa-open #authBoot{display:none!important;visibility:hidden!important}
+body.naqa-open #pin{display:none!important}
+body.naqa-open #tools,body.naqa-open .admin-shell{display:block!important;visibility:visible!important;pointer-events:auto!important}

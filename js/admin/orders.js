@@ -439,10 +439,15 @@
       if (Array.isArray(o.items) && o.items.length) {
         items = o.items.map(function (it) {
           var n = A.lang === "en" ? (it.nameEn || it.name || it.nameAr) : (it.nameAr || it.name || it.nameEn);
-          return (n || "") + " x" + (it.qty || 1) + " (" + (it.sku || "") + ")";
-        }).join("; ");
+          var qty = it.qty != null ? it.qty : 1;
+          var sku = it.sku ? String(it.sku) : "";
+          var piece = String(n || "").replace(/[\r\n;|]+/g, " ").trim();
+          if (sku) piece += " [" + sku + "]";
+          piece += " ×" + qty;
+          return piece;
+        }).join(" | ");
       } else {
-        items = o.itemsText || "";
+        items = String(o.itemsText || "").replace(/[\r\n]+/g, " ").trim();
       }
       var when = "";
       try { when = o.at ? A.fmtDateTimeNum(o.at) : (o.at || ""); } catch (e) { when = o.at || ""; }

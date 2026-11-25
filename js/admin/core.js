@@ -150,10 +150,10 @@
     }
     function xmlEsc(v) {
       return clean(v)
-        .replace(/&/g, "&")
-        .replace(/</g, "<")
-        .replace(/>/g, ">")
-        .replace(/"/g, """);
+        .replace(/&/g, "\u0026amp;")
+        .replace(/</g, "\u0026lt;")
+        .replace(/>/g, "\u0026gt;")
+        .replace(/"/g, "\u0026quot;");
     }
     function colName(n) {
       var s = "", x = n + 1;
@@ -188,11 +188,6 @@
       for (i = 0; i < parts.length; i++) { out.set(parts[i], off); off += parts[i].length; }
       return out;
     }
-    function toNum(v) {
-      if (typeof v === "number" && isFinite(v)) return v;
-      if (typeof v === "string" && v.trim() !== "" && !isNaN(Number(v))) return Number(v);
-      return null;
-    }
     var name = String(sheetName || "Orders").replace(/[\\/?*\[\]:]/g, " ").slice(0, 31) || "Orders";
     var shared = [];
     var sharedIndex = Object.create(null);
@@ -213,16 +208,13 @@
       sheetRows += '<row r="' + rowNum + '">';
       cells.forEach(function (cell, ci) {
         var ref = colName(ci) + rowNum;
-        var num = ri > 0 ? toNum(cell) : null;
-        if (num != null && !(typeof cell === "string" && /[^\d.\-]/.test(String(cell).trim()))) {
-          /* pure numeric totals only — keep phone/id as text */
-          if (ci === 6 || (typeof cell === "number")) {
-            sheetRows += '<c r="' + ref + '"><v>' + String(num) + "</v></c>";
-            return;
-          }
-        }
-        if (typeof cell === "number" && isFinite(cell) && ri > 0) {
+        /* total column (index 6) as number when pure numeric; keep phones/ids as text */
+        if (ri > 0 && ci === 6 && typeof cell === "number" && isFinite(cell)) {
           sheetRows += '<c r="' + ref + '"><v>' + String(cell) + "</v></c>";
+          return;
+        }
+        if (ri > 0 && ci === 6 && cell != null && String(cell).trim() !== "" && isFinite(Number(cell))) {
+          sheetRows += '<c r="' + ref + '"><v>' + String(Number(cell)) + "</v></c>";
           return;
         }
         sheetRows += '<c r="' + ref + '" t="s"><v>' + si(cell) + "</v></c>";

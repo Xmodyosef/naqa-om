@@ -144,35 +144,36 @@ button.stat.sales-link{width:100%;margin-top:4px}
 .order-head{display:flex;align-items:center;gap:8px;padding:10px 12px}
 .order-sum{flex:1;min-width:0;display:flex;align-items:center;gap:10px;padding:4px 0;background:transparent;border:0;font:inherit;color:inherit;cursor:pointer;text-align:start}
 .order-id{font-weight:800;white-space:nowrap}
+.order-id,.order-tot{font-size:.9rem;font-weight:800;line-height:1.2;white-space:nowrap}
+.order-when{flex:1;color:var(--muted);font-size:.68rem;min-width:0;white-space:nowrap}
+
+/* مدفوع + حالة الطلب: نفس الطول والحجم والخط، الألوان كما هي */
+.pay-flag,
 .status-one{
   appearance:none;-webkit-appearance:none;-moz-appearance:none;
-  border:0;border-radius:999px;padding:6px 10px;
-  font:800 .72rem/1 inherit;cursor:pointer;
-  background-color:#f3e6e9;background-image:none;
-  color:#8d3048;max-width:8.6rem;
-  margin-inline-start:auto;flex:0 0 auto;text-align:center
+  border:0;outline:0;background-image:none;
+  font-family:inherit;font-size:.9rem;font-weight:800;line-height:1;
+  width:8.8rem;min-width:8.8rem;max-width:8.8rem;
+  height:2.15rem;min-height:2.15rem;
+  padding:0 10px;box-sizing:border-box;
+  border-radius:999px;text-align:center;text-align-last:center;
+  margin:0;flex:0 0 8.8rem;white-space:nowrap;cursor:pointer;
+  vertical-align:middle
 }
-.status-one::-ms-expand{display:none}
-[dir="ltr"] .status-one{padding:6px 10px}
-.status-one.new,.status-one.prep,.status-one.ship,.status-one.delivered{background-color:#f3e6e9;color:#8d3048}
-.status-one.cancel{background-color:#eee9e6;color:#7a726e}
-.order-when{flex:1;color:var(--muted);font-size:.68rem;min-width:0;white-space:nowrap}
-.order-tot{font-weight:800;white-space:nowrap}
-.pay-flag{flex:0 0 auto;border-radius:999px;padding:4px 8px;font:800 .66rem/1 inherit;white-space:nowrap}
-.pay-flag.on{background:#e5f6ea;color:#1b7a38}
-.pay-flag.off{background:#f6e4e8;color:#8d3048}
-.pay-flag,.status-one{
-  font-family:"Noto Sans Arabic","IBM Plex Sans",system-ui,sans-serif;
-  font-size:1rem;font-weight:800;line-height:1;
-  width:8.6rem;min-width:8.6rem;height:36px;
-  padding:0 8px;box-sizing:border-box;
-  border-radius:999px;text-align:center;
+.pay-flag{
   display:inline-flex;align-items:center;justify-content:center
 }
-.status-one{max-width:none;margin-inline-start:0;text-align-last:center;display:inline-block}
+.status-one{
+  display:inline-block;line-height:2.15rem;vertical-align:middle
+}
+.status-one::-ms-expand{display:none}
 .pay-flag.on{background:#e5f6ea;color:#1b7a38}
 .pay-flag.off{background:#f6e4e8;color:#8d3048}
-.status-one,.status-one.new,.status-one.prep,.status-one.ship,.status-one.delivered{background-color:#f3e6e9;color:#8d3048}
+.status-one,
+.status-one.new,
+.status-one.prep,
+.status-one.ship,
+.status-one.delivered{background-color:#f3e6e9;color:#8d3048}
 .status-one.cancel{background-color:#eee9e6;color:#7a726e}
 
 .export-menu{position:relative;flex:0 0 auto}

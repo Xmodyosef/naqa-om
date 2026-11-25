@@ -140,34 +140,153 @@
     a.remove();
     setTimeout(function () { try { URL.revokeObjectURL(a.href); } catch (e) {} }, 1500);
   };
-  A.downloadXls = function (filename, rows, sheetName) {
-    function esc(v) {
+  A.downloadXlsx = function (filename, rows, sheetName) {
+    function xmlEsc(v) {
       return String(v == null ? "" : v)
-        .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+        .replace(/\u0026/g, "\u0026amp;")
+        .replace(/</g, "\u0026lt;")
+        .replace(/>/g, "\u0026gt;")
+        .replace(/"/g, "\u0026quot;");
+    }
+    function colName(n) {
+      var s = "";
+      n = n + 1;
+      while (n > 0) {
+        var m = (n - 1) % 26;
+        s = String.fromCharCode(65 + m) + s;
+        n = Math.floor((n - 1) / 26);
+      }
+      return s;
+    }
+    function crc32(bytes) {
+      var table = A._crcTable;
+      if (!table) {
+        table = A._crcTable = new Uint32Array(256);
+        for (var i = 0; i < 256; i++) {
+          var c = i;
+          for (var k = 0; k < 8; k++) c = (c & 1) ? (0xEDB88320 ^ (c >>> 1)) : (c >>> 1);
+          table[i] = c >>> 0;
+        }
+      }
+      var crc = 0 ^ (-1);
+      for (var j = 0; j < bytes.length; j++) {
+        crc = (crc >>> 8) ^ table[(crc ^ bytes[j]) & 0xFF];
+      }
+      return (crc ^ (-1)) >>> 0;
+    }
+    function u8(str) {
+      return new TextEncoder().encode(str);
+    }
+    function u32le(n) {
+      return new Uint8Array([n & 255, (n >>> 8) & 255, (n >>> 16) & 255, (n >>> 24) & 255]);
+    }
+    function u16le(n) {
+      return new Uint8Array([n & 255, (n >>> 8) & 255]);
+    }
+    function concat(parts) {
+      var len = 0, i, out, off = 0;
+      for (i = 0; i < parts.length; i++) len += parts[i].length;
+      out = new Uint8Array(len);
+      for (i = 0; i < parts.length; i++) { out.set(parts[i], off); off += parts[i].length; }
+      return out;
     }
     var name = String(sheetName || "Orders").replace(/[\\/?*\[\]:]/g, " ").slice(0, 31) || "Orders";
-    var xml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
-      + "<?mso-application progid=\"Excel.Sheet\"?>"
-      + "<Workbook xmlns=\"urn:schemas-microsoft-com:office:spreadsheet\" xmlns:ss=\"urn:schemas-microsoft-com:office:spreadsheet\">"
-      + "<Worksheet ss:Name=\"" + esc(name) + "\"><Table>";
+    var sheetRows = "";
     (rows || []).forEach(function (r, ri) {
-      xml += "<Row>";
-      (r || []).forEach(function (cell) {
+      var rowNum = ri + 1;
+      sheetRows += '<row r="' + rowNum + '">';
+      (r || []).forEach(function (cell, ci) {
+        var ref = colName(ci) + rowNum;
         var num = ri > 0 && typeof cell === "number" && isFinite(cell);
-        xml += "<Cell><Data ss:Type=\"" + (num ? "Number" : "String") + "\">" + (num ? String(cell) : esc(cell)) + "</Data></Cell>";
+        if (num) {
+          sheetRows += '<c r="' + ref + '"><v>' + String(cell) + '</v></c>';
+        } else {
+          sheetRows += '<c r="' + ref + '" t="inlineStr"><is><t>' + xmlEsc(cell) + '</t></is></c>';
+        }
       });
-      xml += "</Row>";
+      sheetRows += "</row>";
     });
-    xml += "</Table></Worksheet></Workbook>";
-    var blob = new Blob([xml], { type: "application/vnd.ms-excel;charset=utf-8" });
+    var sheet1 =
+      '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>' +
+      '<worksheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main">' +
+      "<sheetData>" + sheetRows + "</sheetData></worksheet>";
+    var workbook =
+      '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>' +
+      '<workbook xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" ' +
+      'xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships">' +
+      "<sheets><sheet name=\"" + xmlEsc(name) + "\" sheetId=\"1\" r:id=\"rId1\"/></sheets></workbook>";
+    var wbRels =
+      '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>' +
+      '<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">' +
+      '<Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/worksheet" Target="worksheets/sheet1.xml"/>' +
+      "</Relationships>";
+    var rootRels =
+      '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>' +
+      '<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">' +
+      '<Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="xl/workbook.xml"/>' +
+      "</Relationships>";
+    var contentTypes =
+      '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>' +
+      '<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types">' +
+      '<Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/>' +
+      '<Default Extension="xml" ContentType="application/xml"/>' +
+      '<Override PartName="/xl/workbook.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet.main+xml"/>' +
+      '<Override PartName="/xl/worksheets/sheet1.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.worksheet+xml"/>' +
+      "</Types>";
+    var files = [
+      { path: "[Content_Types].xml", data: u8(contentTypes) },
+      { path: "_rels/.rels", data: u8(rootRels) },
+      { path: "xl/workbook.xml", data: u8(workbook) },
+      { path: "xl/_rels/workbook.xml.rels", data: u8(wbRels) },
+      { path: "xl/worksheets/sheet1.xml", data: u8(sheet1) }
+    ];
+    var locals = [], centrals = [], offset = 0;
+    files.forEach(function (f) {
+      var nameBytes = u8(f.path);
+      var crc = crc32(f.data);
+      var size = f.data.length;
+      var local = concat([
+        u32le(0x04034b50),
+        u16le(20), u16le(0), u16le(0),
+        u16le(0), u16le(0),
+        u32le(crc), u32le(size), u32le(size),
+        u16le(nameBytes.length), u16le(0),
+        nameBytes, f.data
+      ]);
+      locals.push(local);
+      centrals.push(concat([
+        u32le(0x02014b50),
+        u16le(20), u16le(20), u16le(0), u16le(0),
+        u16le(0), u16le(0),
+        u32le(crc), u32le(size), u32le(size),
+        u16le(nameBytes.length), u16le(0), u16le(0),
+        u16le(0), u16le(0), u32le(0), u32le(offset),
+        nameBytes
+      ]));
+      offset += local.length;
+    });
+    var central = concat(centrals);
+    var end = concat([
+      u32le(0x06054b50),
+      u16le(0), u16le(0),
+      u16le(files.length), u16le(files.length),
+      u32le(central.length), u32le(offset),
+      u16le(0)
+    ]);
+    var zip = concat(locals.concat([central, end]));
+    var blob = new Blob([zip], {
+      type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+    });
     var a = document.createElement("a");
     a.href = URL.createObjectURL(blob);
-    a.download = String(filename || "naqa.xls").replace(/\.csv$/i, ".xls");
+    a.download = String(filename || "naqa.xlsx").replace(/\.csv$/i, ".xlsx").replace(/\.xls$/i, ".xlsx");
     document.body.appendChild(a);
     a.click();
     a.remove();
     setTimeout(function () { try { URL.revokeObjectURL(a.href); } catch (e) {} }, 1500);
   };
+  A.downloadXls = A.downloadXlsx;
+
   A.parseCsv = function (text) {
     text = String(text || "").replace(/^\uFEFF/, "");
     var rows = [], row = [], cell = "", i = 0, q = false;

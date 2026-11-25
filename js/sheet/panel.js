@@ -104,12 +104,8 @@ function naqaPairSectionHTML(p){
   else if(n===2) btnLabel = en ? "Add both" : "أضف الاثنين";
   else btnLabel = en ? ("Add all · "+n) : ("أضف الكل · "+n);
   var title=en ? "Pairs with this" : "يناسب هذا المنتج";
-  var hint=en ? "Swipe for more" : "مرّر للمزيد";
   return '<section class="sheet-pairs" aria-label="'+esc(title)+'">'
-    +'<div class="pair-head">'
     +'<h4 class="block-h">'+esc(title)+'</h4>'
-    +(n>2 ? '<span class="pair-hint">'+esc(hint)+'</span>' : '')
-    +'</div>'
     +'<div class="pair-row" role="list">'+cards+'</div>'
     +'<button type="button" class="btn-add-pair" data-add-pair="'+ids+'">'+esc(btnLabel)+'</button>'
     +'</section>';

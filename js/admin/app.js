@@ -63,6 +63,7 @@
   };
 
   A.syncNav = function () {
+    try { document.body.classList.add("naqa-nav-pills"); } catch (e) {}
     var tab = A.currentTab || "home";
     document.querySelectorAll("#sideNav .side-main").forEach(function (b) {
       var bt = b.getAttribute("data-tab");

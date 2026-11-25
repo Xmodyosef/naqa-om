@@ -341,8 +341,8 @@
         }
       });
     }
-    /* ابني الأدوات مرة واحدة فقط حتى لا يختطف منتقي التاريخ */
-    if (tools.querySelector("#ordersToolsPanel")) {
+    /* ابني الأدوات مرة واحدة فقط — إلا إذا ناقص زر PDF (نسخة قديمة) */
+    if (tools.querySelector("#ordersToolsPanel") && document.getElementById("printOrdersPdf")) {
       A.syncExportLabel();
       return;
     }

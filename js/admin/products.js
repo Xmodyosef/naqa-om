@@ -150,19 +150,25 @@
     return true;
   };
 
-  function fileToDataUrl(file) {
+  function fileToJpegBlob(file) {
     return new Promise(function (resolve, reject) {
       var img = new Image();
       var url = URL.createObjectURL(file);
       img.onload = function () {
-        var max = 1000;
+        var max = 1400;
         var s = Math.min(1, max / Math.max(img.width, img.height));
         var c = document.createElement("canvas");
         c.width = Math.max(1, Math.round(img.width * s));
         c.height = Math.max(1, Math.round(img.height * s));
-        c.getContext("2d").drawImage(img, 0, 0, c.width, c.height);
+        var ctx = c.getContext("2d");
+        ctx.fillStyle = "#ffffff";
+        ctx.fillRect(0, 0, c.width, c.height);
+        ctx.drawImage(img, 0, 0, c.width, c.height);
         URL.revokeObjectURL(url);
-        resolve(c.toDataURL("image/jpeg", 0.78));
+        c.toBlob(function (blob) {
+          if (!blob) reject(new Error("photo"));
+          else resolve(blob);
+        }, "image/jpeg", 0.82);
       };
       img.onerror = function () {
         URL.revokeObjectURL(url);
@@ -170,6 +176,38 @@
       };
       img.src = url;
     });
+  }
+
+  function uploadJpeg(blob) {
+    if (!window.firebase || !firebase.storage || !firebase.apps || !firebase.apps.length) {
+      var e1 = new Error("no-storage");
+      e1.code = "no-storage";
+      return Promise.reject(e1);
+    }
+    var user = firebase.auth && firebase.auth().currentUser;
+    if (!user) {
+      var e2 = new Error("not-signed-in");
+      e2.code = "not-signed-in";
+      return Promise.reject(e2);
+    }
+    if (window.naqaIsAdminUid && !window.naqaIsAdminUid(user.uid)) {
+      var e3 = new Error("not-admin");
+      e3.code = "not-admin";
+      return Promise.reject(e3);
+    }
+    var name = "products/" + user.uid + "/" + Date.now().toString(36) + "-" + Math.random().toString(36).slice(2, 7) + ".jpg";
+    var ref = firebase.storage().ref(name);
+    return ref.put(blob, { contentType: "image/jpeg", cacheControl: "public,max-age=31536000" }).then(function () {
+      return ref.getDownloadURL();
+    });
+  }
+
+  function imgUploadMsg(err) {
+    var code = (err && (err.code || err.message)) || "";
+    if (code === "not-signed-in" || code.indexOf("unauthenticated") >= 0) return A.t("p_imgsNeedLogin");
+    if (code === "not-admin" || code.indexOf("unauthorized") >= 0 || code.indexOf("permission") >= 0) return A.t("p_imgsNeedStorage");
+    if (code === "no-storage" || code.indexOf("storage/unknown") >= 0 || code.indexOf("bucket") >= 0) return A.t("p_imgsNeedStorage");
+    return A.t("p_imgsFail");
   }
 
   function normImgs(list) {
@@ -282,12 +320,21 @@
         }
         files = files.slice(0, left);
         A.setMsg("status", A.t("p_imgsPrep"));
-        Promise.all(files.map(fileToDataUrl)).then(function (urls) {
-          A._editImgs = normImgs((A._editImgs || []).concat(urls));
-          A.paintImgGallery();
-          A.setMsg("status", A.t("p_imgsAdded"));
-        }).catch(function () {
-          A.setMsg("status", A.t("p_imgsFail"));
+        var chain = Promise.resolve();
+        var added = [];
+        files.forEach(function (one) {
+          chain = chain.then(function () {
+            return fileToJpegBlob(one).then(uploadJpeg).then(function (url) {
+              added.push(url);
+              A._editImgs = normImgs((A._editImgs || []).concat([url]));
+              A.paintImgGallery();
+            });
+          });
+        });
+        chain.then(function () {
+          A.setMsg("status", added.length ? A.t("p_imgsAdded") : A.t("p_imgsFail"));
+        }).catch(function (err) {
+          A.setMsg("status", imgUploadMsg(err));
         });
       });
     }
@@ -296,6 +343,10 @@
       var inp = document.getElementById("f_imgUrl");
       var u = inp ? inp.value.trim() : "";
       if (!u) return;
+      if (!/^https:\/\//i.test(u)) {
+        A.setMsg("status", A.t("p_imgsUrlBad"));
+        return;
+      }
       if ((A._editImgs || []).length >= MAX_IMGS) {
         A.setMsg("status", A.t("p_imgsMax"));
         return;

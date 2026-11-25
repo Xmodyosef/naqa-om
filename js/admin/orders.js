@@ -11,6 +11,72 @@
     var label = A.t("tab_orders");
     btn.textContent = n ? (label + " (" + n + ")") : label;
   };
+
+  A.exportOrdersCsv = function () {
+    var rows = [["id", "at", "status", "name", "phone", "area", "total", "payment", "items"]];
+    (A.orders || []).forEach(function (o) {
+      if (!A.inDateRange(o.at)) return;
+      var st = A.normalizeStatus(o.status);
+      var items = "";
+      if (Array.isArray(o.items) && o.items.length) {
+        items = o.items.map(function (it) {
+          var n = A.lang === "en" ? (it.nameEn || it.name || it.nameAr) : (it.nameAr || it.name || it.nameEn);
+          return (n || "") + " x" + (it.qty || 1) + " (" + (it.sku || "") + ")";
+        }).join("; ");
+      } else {
+        items = o.itemsText || "";
+      }
+      rows.push([
+        o.id || "", o.at || "", st, o.name || "", o.phone || "", o.area || "",
+        o.total != null ? o.total : "", A.payText(o), items
+      ]);
+    });
+    A.downloadCsv("naqa-orders.csv", rows);
+    A.setMsg("orderStatus", A.t("exportOk"));
+  };
+  A.importOrdersCsv = function (file) {
+    if (!file) return;
+    var reader = new FileReader();
+    reader.onload = function () {
+      try {
+        var text = String(reader.result || "");
+        var table = A.parseCsv ? A.parseCsv(text) : null;
+        if (!table || !table.length) {
+          A.setMsg("orderStatus", A.t("importFail"));
+          return;
+        }
+        var header = (table[0] || []).map(function (h) { return String(h || "").toLowerCase().trim(); });
+        var idx = function (name) { return header.indexOf(name); };
+        var idI = idx("id"), atI = idx("at"), stI = idx("status"), nameI = idx("name"), phoneI = idx("phone"), areaI = idx("area"), totalI = idx("total");
+        if (idI < 0) {
+          A.setMsg("orderStatus", A.t("importFail"));
+          return;
+        }
+        var by = {};
+        (A.orders || []).forEach(function (o) { if (o && o.id) by[o.id] = o; });
+        for (var r = 1; r < table.length; r++) {
+          var row = table[r] || [];
+          var id = String(row[idI] || "").trim();
+          if (!id) continue;
+          var cur = by[id] || { id: id };
+          if (atI >= 0 && row[atI]) cur.at = row[atI];
+          if (stI >= 0 && row[stI]) cur.status = A.normalizeStatus(row[stI]);
+          if (nameI >= 0) cur.name = row[nameI] || cur.name || "";
+          if (phoneI >= 0) cur.phone = row[phoneI] || cur.phone || "";
+          if (areaI >= 0) cur.area = row[areaI] || cur.area || "";
+          if (totalI >= 0 && row[totalI] !== "" && row[totalI] != null) cur.total = Number(row[totalI]);
+          by[id] = cur;
+        }
+        A.orders = Object.keys(by).map(function (k) { return by[k]; });
+        if (A.saveOrders) A.saveOrders();
+        A.setMsg("orderStatus", A.t("importOk"));
+        A.paintOrders();
+      } catch (e) {
+        A.setMsg("orderStatus", A.t("importFail"));
+      }
+    };
+    reader.readAsText(file);
+  };
   A.paintOrders = function () {
     try { A.syncOrdersTab(); } catch (e) {}
     A.orders.forEach(function (o) { o.status = A.normalizeStatus(o.status); });

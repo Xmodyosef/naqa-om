@@ -50,8 +50,21 @@ function applyRoute(){
     render();
     return;
   }
+  if(h.indexOf("cat/")===0){
+    var cid=h.slice(4);
+    if(cid==="off") cid="eoy";
+    currentCatalog=cid; currentBrand=""; currentConcern=""; wishView=false; query=""; currentCat="all";
+    window.__naqaShelfFilter=""; catalogBrowse=true;
+    var s=$("#search"); if(s) s.value="";
+    document.querySelectorAll("#cats [data-cat]").forEach(x=>x.classList.toggle("on", x.dataset.cat==="all"));
+    var catDef=typeof catalogById==="function"?catalogById(cid):null;
+    if(catDef && catDef.sort) currentSort=catDef.sort;
+    render();
+    var prod=$("#products"); if(prod) prod.scrollIntoView({behavior:"smooth"});
+    return;
+  }
   if(h==="shop" || h==="" || h==="top"){
-    catalogBrowse=false; window.__naqaShelfFilter=""; currentCat="all"; currentBrand=""; currentConcern=""; wishView=false; query="";
+    catalogBrowse=false; window.__naqaShelfFilter=""; currentCat="all"; currentBrand=""; currentConcern=""; wishView=false; query=""; currentCatalog="";
     document.querySelectorAll("#cats [data-cat]").forEach(x=>x.classList.toggle("on", x.dataset.cat==="all"));
     const s=$("#search"); if(s) s.value="";
     const clr=$("#searchClear"); if(clr) clr.hidden=true;
@@ -71,7 +84,7 @@ function applyRoute(){
     return;
   }
   if(h.indexOf("b/")===0){
-    currentBrand=h.slice(2); currentCat="all"; query=""; catalogBrowse=true; window.__naqaShelfFilter="";
+    currentBrand=h.slice(2); currentCat="all"; query=""; catalogBrowse=true; window.__naqaShelfFilter=""; currentCatalog="";
     const s=$("#search"); if(s) s.value="";
     document.querySelectorAll("#cats [data-cat]").forEach(x=>x.classList.toggle("on", x.dataset.cat==="all"));
     render();
@@ -80,7 +93,7 @@ function applyRoute(){
     return;
   }
   if(h.indexOf("c/")===0){
-    currentCat=h.slice(2); currentBrand=""; query=""; catalogBrowse=(currentCat!=="all"); window.__naqaShelfFilter="";
+    currentCat=h.slice(2); currentBrand=""; query=""; catalogBrowse=(currentCat!=="all"); window.__naqaShelfFilter=""; currentCatalog="";
     const s=$("#search"); if(s) s.value="";
     document.querySelectorAll("#cats [data-cat]").forEach(x=>x.classList.toggle("on", x.dataset.cat===currentCat));
     render();

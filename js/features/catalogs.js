@@ -1,3 +1,4 @@
+var catalogBrowse = false;
 /* Curated home catalogs — inspired by Noon / Nice One / Nazih deal rails */
 var currentCatalog = "";
 var NAQA_K_BEAUTY = {

@@ -88,7 +88,7 @@ $("#cartBody").addEventListener("click", e=>{
 $("#wishBtn").onclick=()=>{
   wishView=!wishView;
   if(wishView){
-    currentCat="all"; currentBrand=""; currentConcern=""; query="";
+    currentCat="all"; currentBrand=""; currentConcern=""; currentCatalog=""; query="";
     const search=$("#search"); if(search) search.value="";
     document.querySelectorAll("#cats [data-cat]").forEach(x=>x.classList.toggle("on", x.dataset.cat==="all"));
     if(typeof closeSheet==="function") closeSheet(true);
@@ -108,6 +108,7 @@ function runSearch(fromSubmit){
     currentCat = "all";
     currentBrand = "";
     currentConcern = "";
+    currentCatalog = "";
     wishView = false;
     catalogBrowse = true;
     window.__naqaShelfFilter = "";
@@ -523,16 +524,13 @@ function boot(){
 }
 if(document.readyState==="loading") document.addEventListener("DOMContentLoaded", boot); else boot();
 
-/* Home catalog tiles */
+/* Home curated catalogs */
 document.addEventListener("click", function(e){
   var t = e.target.closest && e.target.closest("[data-open-catalog]");
   if(!t) return;
   e.preventDefault();
   var k = t.getAttribute("data-open-catalog");
   if(!k) return;
-  if(k==="hot" || k==="off" || k==="all"){
-    if(typeof openCatalog==="function") openCatalog("all", k);
-  } else {
-    if(typeof openCatalog==="function") openCatalog(k, "");
-  }
+  if(k === "off") k = "eoy";
+  if(typeof openCatalog === "function") openCatalog(k);
 });

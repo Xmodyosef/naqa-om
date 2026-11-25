@@ -258,7 +258,8 @@ function render(){
     const wishOk=!viewingWish || (typeof isWish==="function" && isWish(p.id));
     const okPrice=typeof priceOk!=="function" || priceOk(p);
     const textOk=!searching || productMatchesQuery(p, q);
-    return catOk && brandOk && concernOk && wishOk && okPrice && textOk;
+    const catalogOk=searching || !currentCatalog || typeof catalogMatch!=="function" || catalogMatch(p, currentCatalog);
+    return catOk && brandOk && concernOk && wishOk && okPrice && textOk && catalogOk;
   });
   const offOf=p=>(p.was&&p.was>p.price)?(1-p.price/p.was):0;
   list.sort((a,b)=>{
@@ -286,6 +287,7 @@ function render(){
   if(searching) chips+='<button type="button" class="brand-chip" id="clearSearch">⌕ '+esc(q)+' ×</button>';
   if(currentBrand) chips+='<button type="button" class="brand-chip" id="clearBrand">'+esc(currentBrand)+' ×</button>';
   if(currentConcern) chips+='<button type="button" class="brand-chip" id="clearConcern">'+esc(typeof concernLabel==="function"?concernLabel(currentConcern):currentConcern)+' ×</button>';
+  if(currentCatalog) chips+='<button type="button" class="brand-chip" id="clearCatalog">'+esc(typeof catalogLabel==="function"?catalogLabel(currentCatalog):currentCatalog)+' ×</button>';
   if(chips){
     bar.hidden=false; bar.innerHTML=chips;
     const cw=$("#clearWish"); if(cw) cw.onclick=()=>{ wishView=false; render(); };
@@ -297,26 +299,41 @@ function render(){
     };
     const clear=$("#clearBrand"); if(clear) clear.onclick=()=>{ currentBrand=""; render(); };
     const cc=$("#clearConcern"); if(cc) cc.onclick=()=>{ currentConcern=""; render(); };
+    const ccat=$("#clearCatalog"); if(ccat) ccat.onclick=()=>{ if(typeof backToCatalogs==="function") backToCatalogs(); else { currentCatalog=""; render(); } };
   } else { bar.hidden=true; bar.innerHTML=""; }
   $("#countLabel").textContent=T("count")(list.length);
-  /* Home = category catalog on #shelves; full grid only when filtered/searching */
-  var homeCatalog = !query && currentCat==="all" && !currentBrand && !(typeof wishView!=="undefined" && wishView) && !currentConcern;
+  var home = (typeof isHomeCatalogView==="function") ? isHomeCatalogView() : (!query && currentCat==="all" && !currentBrand && !currentConcern && !(typeof wishView!=="undefined" && wishView) && !currentCatalog);
   try{
     var hero=$("#catalogHero");
     if(hero){ hero.hidden=true; hero.innerHTML=""; }
     var secHead=document.querySelector(".section-head");
     var priceBar=$("#priceBar");
     var gridEl=$("#grid");
-    if(homeCatalog){
+    var empty=$("#empty");
+    if(home){
       if(secHead) secHead.hidden=true;
       if(priceBar) priceBar.hidden=true;
       if(gridEl){ gridEl.innerHTML=""; gridEl.hidden=true; }
-      $("#empty").hidden=true;
+      if(empty) empty.hidden=true;
     } else {
       if(secHead) secHead.hidden=false;
       if(gridEl) gridEl.hidden=false;
-      /* brand filter soft title */
-      if(currentBrand && !query){
+      if(priceBar) priceBar.hidden=false;
+      /* title: catalog / brand / category + back to catalogs */
+      var titleEl=$("#products");
+      if(titleEl && !(query && String(query).trim())){
+        var label;
+        if(typeof wishView!=="undefined" && wishView) label=T("saved");
+        else if(currentCatalog && typeof catalogLabel==="function") label=catalogLabel(currentCatalog);
+        else if(currentBrand) label=(lang==="en"?"Brand · ":"ماركة · ")+currentBrand;
+        else if(currentCat && currentCat!=="all") label=T(catLabel[currentCat]||"all");
+        else label=T("products");
+        var backBtn='<button type="button" class="cat-back" id="backCatalogs" aria-label="'+(lang==="en"?"Back to catalogs":"رجوع للكتالوجات")+'">‹</button> ';
+        titleEl.innerHTML=backBtn+esc(label)+' <span class="vat-chip">'+(T("vatInc")||"")+'</span>';
+        var bk=document.getElementById("backCatalogs");
+        if(bk) bk.onclick=function(){ if(typeof backToCatalogs==="function") backToCatalogs(); };
+      }
+      if(currentBrand && !query && !currentCatalog){
         if(!hero){
           hero=document.createElement("div");
           hero.id="catalogHero";
@@ -332,18 +349,19 @@ function render(){
         var cb=document.getElementById("clearBrandHero");
         if(cb) cb.onclick=function(){ currentBrand=""; try{ history.pushState({naqa:"shop"},"","#shop"); }catch(e){} render(); };
       }
-      $("#empty").hidden=list.length>0;
-      const catTotal=currentCat==="all"?products.length:products.filter(x=>x.cat===currentCat).length;
-      const soon=currentCat!=="all" && catTotal===0;
-      $("#empty").textContent=soon
-        ? (lang==="en"?"This section is coming soon. The other sections are ready.":"هذا القسم قريباً. باقي الأقسام فيها منتجات.")
-        : ((typeof wishView!=="undefined" && wishView && !list.length)?T("wishEmpty"):T("empty"));
+      if(empty){
+        empty.hidden=list.length>0;
+        const catTotal=currentCat==="all"?products.length:products.filter(x=>x.cat===currentCat).length;
+        const soon=currentCat!=="all" && catTotal===0 && !currentCatalog;
+        empty.textContent=soon
+          ? (lang==="en"?"This section is coming soon. The other sections are ready.":"هذا القسم قريباً. باقي الأقسام فيها منتجات.")
+          : ((typeof wishView!=="undefined" && wishView && !list.length)?T("wishEmpty"):T("empty"));
+      }
       if(typeof renderPriceBar==="function") renderPriceBar();
       if(gridEl) gridEl.innerHTML=list.map(cardHTML).join("");
     }
   }catch(e){
-    $("#empty").hidden=list.length>0;
-    $("#grid").innerHTML=list.map(cardHTML).join("");
+    try{ $("#empty").hidden=list.length>0; $("#grid").innerHTML=list.map(cardHTML).join(""); }catch(err){}
   }
   renderShelves();
   if(typeof renderBrandsGrid==="function") renderBrandsGrid();

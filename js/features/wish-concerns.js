@@ -1,10 +1,15 @@
 /* features: concerns, quiz, wishlist, brands, bundles, trust */
 const CONCERNS = [
-  {id:"oily", ar:"دهنية / مختلطة", en:"Oily / Combo", re:/دهن|مختلط|oily|combination|مسام|acne|رؤوس/i},
-  {id:"dry", ar:"جافة / عطشانة", en:"Dry / Dehydrated", re:/جافة|جاف\s|عطشان|مشدود|تقشر|dehydrated|\bdry\b|flaky|parched/i},
-  {id:"sens", ar:"حساسة", en:"Sensitive", re:/حساس|sensitive|تهدئ|sooth|centella|سنتيلا|calm/i},
-  {id:"pore", ar:"مسام / نضارة", en:"Pores / Glow", re:/مسام|pore|نضار|glow|vitamin c|فيتامين|bright|تفت/i},
-  {id:"spot", ar:"تصبغ / توحيد", en:"Spots / Tone", re:/تصبغ|بقع|dark spot|niacinamide|نياسين|توحيد|whit|tone|txa|tranex/i},
+  /* classic skin types (dermatology) */
+  {id:"oily", ar:"دهنية", en:"Oily", re:/دهن|لامع|oily|shiny|sebum|sebium|مسام واسعة|blackhead|رؤوس سوداء/i},
+  {id:"dry", ar:"جافة", en:"Dry", re:/جافة|جاف\s|عطشان|مشدود|تقشر|dehydrated|\bdry\b|flaky|parched|xerosis/i},
+  {id:"combo", ar:"مختلطة", en:"Combination", re:/مختلط|combination|combo|T-zone|تي زون|zone T/i},
+  {id:"sens", ar:"حساسة", en:"Sensitive", re:/حساس|sensitive|تهدئ|sooth|centella|سنتيلا|calm|reactive|احمرار|redness/i},
+  {id:"normal", ar:"عادية / متوازنة", en:"Normal / Balanced", re:/عادي|متوازن|normal|balanced|all skin|كل أنواع/i},
+  /* goals / concerns */
+  {id:"pore", ar:"مسام / نضارة", en:"Pores / Glow", re:/مسام|pore|نضار|glow|vitamin c|فيتامين|bright|تفت|إشراق/i},
+  {id:"spot", ar:"تصبغ / توحيد", en:"Spots / Tone", re:/تصبغ|بقع|dark spot|niacinamide|نياسين|توحيد|whit|tone|txa|tranex|melasma/i},
+  {id:"acne", ar:"حبوب / شوائب", en:"Acne / Blemish", re:/حبوب|acne|شوائب|blemish|salicylic|ساليسيليك|benzoyl|رؤوس/i},
   {id:"hair", ar:"شعر", en:"Hair", re:/شعر|hair|scalp|فروة|olaplex|k18/i}
 ];
 
@@ -49,8 +54,14 @@ function concernLabel(id) {
 
 function renderConcernBar() {
   var el = $("#concernBar"); if (!el) return;
+  /* keep bar on product browse; light hide only when pure home catalogs */
+  if (typeof isHomeCatalogView === "function" && isHomeCatalogView()) {
+    el.innerHTML = '<button type="button" class="cchip quiz-chip" id="openQuizBtn">' + (lang === "en" ? "Skin quiz ✨" : "اختبار البشرة ✨") + "</button>";
+    return;
+  }
   var html = '<button type="button" class="cchip' + (currentConcern === "" ? " on" : "") + '" data-concern="">' + (lang === "en" ? "All needs" : "كل الاحتياجات") + "</button>";
   CONCERNS.forEach(function (c) {
+    /* skin types first, skip hair on face concerns? keep all */
     html += '<button type="button" class="cchip' + (currentConcern === c.id ? " on" : "") + '" data-concern="' + c.id + '">' + (lang === "en" ? c.en : c.ar) + "</button>";
   });
   html += '<button type="button" class="cchip quiz-chip" id="openQuizBtn">' + (lang === "en" ? "Skin quiz ✨" : "اختبار البشرة ✨") + "</button>";
@@ -59,7 +70,7 @@ function renderConcernBar() {
 
 function renderBrandsGrid() {
   var el = $("#brandsGrid"); if (!el) return;
-  if (query || currentCat !== "all" || currentBrand || currentConcern || wishView) { el.hidden = true; return; }
+  if (query || currentCat !== "all" || currentBrand || currentConcern || wishView || (typeof currentCatalog!=="undefined" && currentCatalog)) { el.hidden = true; return; }
   el.hidden = false;
   var counts = {};
   products.forEach(function (p) { if (!p.hidden) counts[p.brand] = (counts[p.brand] || 0) + 1; });

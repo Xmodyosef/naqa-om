@@ -210,6 +210,23 @@ body.naqa-open #childNav .side-sub:focus-visible {
   outline: 2px solid #c46b7c;
   outline-offset: 2px;
 }
+body.naqa-open #childNav .side-sub .sub-count {
+  margin-inline-start: 6px;
+  min-width: 16px;
+  padding: 0 5px;
+  border-radius: 999px;
+  background: #f3e8e6;
+  color: #8d3048;
+  font-size: 0.68rem;
+  font-weight: 800;
+  line-height: 16px;
+  text-align: center;
+}
+body.naqa-open #childNav .side-sub.on .sub-count {
+  background: rgba(255, 255, 255, 0.22);
+  color: #fff;
+}
+
 
 /* ===== المحتوى ===== */
 body.naqa-open .admin-main {

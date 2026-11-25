@@ -57,6 +57,43 @@
   };
 
   /* Nav mode: pills-top — parents #sideNav, children #childNav */
+
+  /* Child counts — Zid status tabs + Shopify index views: number on each filter, not a new layout. */
+  A.updateOrdersBadge = function () {
+    var counts = { all: 0, new: 0, prep: 0, ship: 0, delivered: 0, cancel: 0 };
+    (A.orders || []).forEach(function (o) {
+      var st = "new";
+      try { st = A.normalizeStatus(o.status); } catch (e) { st = o && o.status || "new"; }
+      if (!Object.prototype.hasOwnProperty.call(counts, st)) st = "new";
+      counts[st] += 1;
+      counts.all += 1;
+    });
+    document.querySelectorAll('#childNav [data-for="orders"] .sub-count').forEach(function (el) {
+      var k = el.getAttribute("data-for-sub") || "";
+      el.textContent = String(counts[k] || 0);
+    });
+    var badge = document.getElementById("ordersBadge");
+    if (badge) {
+      var nNew = counts.new || 0;
+      badge.textContent = String(nNew);
+      if (nNew > 0) badge.hidden = false;
+      else badge.hidden = true;
+    }
+    var shown = 0, hid = 0, allp = 0;
+    (A.products || []).forEach(function (p) {
+      allp += 1;
+      var m = p;
+      try { if (A.merged) m = A.merged(p); } catch (e2) {}
+      if (m && m.hidden) hid += 1;
+      else shown += 1;
+    });
+    var pc = { all: allp, shown: shown, hidden: hid };
+    document.querySelectorAll('#childNav [data-for="products"] .sub-count').forEach(function (el) {
+      var k = el.getAttribute("data-for-sub") || "";
+      el.textContent = String(pc[k] || 0);
+    });
+  };
+
   A.refreshChildNav = function () {
     var tab = A.currentTab || "home";
     var active = "all";
@@ -67,9 +104,11 @@
       var bs = b.getAttribute("data-sub") || "";
       var on = bt === tab && bs === active;
       b.classList.toggle("on", on);
+      b.setAttribute("aria-pressed", on ? "true" : "false");
       if (on) b.setAttribute("aria-current", "page");
       else b.removeAttribute("aria-current");
     });
+    if (A.updateOrdersBadge) A.updateOrdersBadge();
   };
 
   A.syncNav = function () {

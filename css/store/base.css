@@ -1169,6 +1169,14 @@ html[data-theme="night"] .home-ban{ box-shadow: none; }
 .campaign-banner.tone-sale{ background:linear-gradient(120deg,#8b1f3c,#c5505e 55%,#f0b080); }
 .campaign-banner.tone-korean{ background:linear-gradient(120deg,#36575d,#8bb0a5 53%,#efd3c6); }
 .campaign-banner.tone-essence{ background:linear-gradient(120deg,#572b5e,#a96792 52%,#e6b6bb); }
+.campaign-banner.tone-makeup{ background:linear-gradient(120deg,#5a1f3a,#c46b8a 52%,#f0c0c8); }
+.campaign-banner.tone-hair{ background:linear-gradient(120deg,#1e3a4c,#4a7a8c 52%,#b8d4dc); }
+.campaign-banner.tone-hot{ background:linear-gradient(120deg,#7d2945,#d0838f 55%,#e8c0a0); }
+.campaign-banner.tone-deal{ background:linear-gradient(120deg,#3c254b,#8b496c 48%,#d49376); }
+.campaign-banner.tone-price{ background:linear-gradient(120deg,#2d4a3e,#6a9b7e 52%,#c8e0c0); }
+.campaign-banner.tone-tools{ background:linear-gradient(120deg,#2a2a3a,#6a6a88 52%,#c0c0d8); }
+.campaign-banner.tone-new{ background:linear-gradient(120deg,#4a2040,#a06090 52%,#e8c0d0); }
+.campaign-banner.tone-all{ background:linear-gradient(120deg,#3a2a2a,#8a6060 52%,#e0c0b0); }
 
 .campaign-copy{ position:relative; z-index:1; max-width:62%; }
 .campaign-copy small{ font-size:.68rem; opacity:.88; font-weight:700; }

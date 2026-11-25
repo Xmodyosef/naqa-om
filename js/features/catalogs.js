@@ -33,7 +33,7 @@ function naqaIsSerum(p){
  */
 function getNaqaCatalogs(){
   return [
-    /* 10 homepage banners (Nice One style) — full page width, products below */
+    /* Homepage banners only — full width; products open after click */
     { id:"hot", cover:"media/catalogs/hot.webp", ar:"الأكثر طلباً", en:"Bestsellers", em:"★", tone:"hot", home:true, group:"deal",
       subAr:"مختارات عليها طلب", subEn:"Customer favourites",
       sort:"new", match:function(p){ return !!p.hot; } },
@@ -66,15 +66,23 @@ function getNaqaCatalogs(){
       sort:"price-desc", match:function(p){ return naqaIsStraightener(p); } },
 
     /* Extra catalogs (openable, not on the 10-banner home strip) */
-    { id:"tools", cover:"media/catalogs/tools.webp", ar:"أدوات التجميل", en:"Beauty tools", em:"🔧", tone:"tools", group:"shop",
-      subAr:"أدوات · أجهزة", subEn:"Tools & devices",
-      sort:"new", match:function(p){ return p.cat === "أدوات"; } },
-    { id:"serum", cover:"media/catalogs/serum.webp", ar:"سيرومات", en:"Serums", em:"💧", tone:"care", group:"shop",
+    /* +5 extra home banners */
+    { id:"serum", cover:"media/catalogs/serum.webp", ar:"سيرومات", en:"Serums", em:"💧", tone:"care", home:true, group:"shop",
       subAr:"نضارة · تصبغ · ترطيب", subEn:"Glow · spots · hydration",
       sort:"new", match:function(p){ return naqaIsSerum(p); } },
-    { id:"new", cover:"media/catalogs/new.webp", ar:"وصل حديثاً", en:"New arrivals", em:"✦", tone:"new", group:"shop",
+    { id:"new", cover:"media/catalogs/new.webp", ar:"وصل حديثاً", en:"New arrivals", em:"✦", tone:"new", home:true, group:"shop",
       subAr:"آخر الإضافات", subEn:"Latest drops",
       sort:"new", match:function(p){ return Number(p.id) >= 250; } },
+    { id:"tools", cover:"media/catalogs/tools.webp", ar:"أدوات التجميل", en:"Beauty tools", em:"🔧", tone:"tools", home:true, group:"shop",
+      subAr:"أدوات · أجهزة", subEn:"Tools & devices",
+      sort:"new", match:function(p){ return p.cat === "أدوات"; } },
+    { id:"sheglam", cover:"media/catalogs/sheglam.webp", ar:"ماركة SHEGLAM", en:"SHEGLAM", em:"💎", tone:"makeup", home:true, group:"shop",
+      subAr:"مكياج ترندي بأسعار حلوة", subEn:"Trendy makeup picks",
+      sort:"new", match:function(p){ return /sheglam/i.test(String(p.brand||"")); } },
+    { id:"olaplex", cover:"media/catalogs/olaplex.webp", ar:"Olaplex للشعر", en:"Olaplex hair", em:"🧪", tone:"hair", home:true, group:"shop",
+      subAr:"إصلاح وحماية الشعر", subEn:"Repair & protect",
+      sort:"new", match:function(p){ return /olaplex/i.test(String(p.brand||"")); } },
+
     { id:"all", cover:"media/catalogs/all.webp", ar:"كل المنتجات", en:"All products", em:"▣", tone:"all", group:"shop",
       subAr:"الكتالوج الكامل", subEn:"Full catalog",
       sort:"new", match:function(){ return true; } }

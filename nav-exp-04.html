@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
+<title>تجربة 04 — أساسي فوق + ثانوي لاصق للأبناء</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Tahoma,sans-serif;background:#f6f0ed;color:#1f1a17;direction:rtl}
+.wrap{max-width:980px;margin:0 auto;padding:12px}
+.tag{display:inline-block;font-size:.7rem;font-weight:800;color:#8d3048;background:#f3e4e8;padding:4px 10px;border-radius:999px;margin-bottom:10px}
+h1{font-size:1.05rem;margin:0 0 6px}
+.note{color:#7a6a65;font-size:.82rem;margin:0 0 16px;line-height:1.5}
+.demo{background:#fff;border:1px solid #eadfd9;border-radius:16px;overflow:hidden;box-shadow:0 8px 24px rgba(40,20,24,.06)}
+.main{padding:16px;min-height:220px}
+.main h2{margin:0 0 8px;font-size:1rem}
+.main p{margin:0;color:#7a6a65;font-size:.85rem;line-height:1.55}
+.ph{height:10px;background:#f0e6e2;border-radius:6px;margin:10px 0}
+.ph.w2{width:70%}.ph.w3{width:45%}
+.card{background:#faf6f4;border:1px solid #eadfd9;border-radius:12px;padding:12px;margin-top:12px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <span class="tag">تجربة 04 · معاينة فقط · اللوحة الأصلية ما تغيّرت</span>
+  <h1>أساسي فوق + ثانوي لاصق للأبناء</h1>
+  <p class="note">الآباء سطر ثابت. عند وجود أبناء يظهر شريط ثانوي لاصق تحتهم (منفصل 100%).<br>اضغطي الآباء والأبناء للتجربة. اختاري الرقم اللي يعجبك.</p>
+  
+<style>
+.sticky{position:sticky;top:0;z-index:5;background:#fff;border-bottom:1px solid #eadfd9}
+.nav-p{display:flex;gap:2px;padding:0 8px;overflow-x:auto}
+.pbtn{border:0;background:0;padding:14px 16px;font:800 .82rem inherit;color:#6b5c57;cursor:pointer;position:relative;white-space:nowrap}
+.pbtn.on{color:#1f1a17}
+.pbtn.on::after{content:"";position:absolute;left:12px;right:12px;bottom:0;height:3px;background:#c46b7c;border-radius:3px 3px 0 0}
+.nav-c{display:none;gap:8px;padding:8px 12px;background:#f7f1ef;overflow-x:auto}
+.nav-c.show{display:flex}
+.cbtn{border:0;background:#fff;border:1px solid #e5d8d3;padding:6px 12px;border-radius:8px;font:700 .74rem inherit;cursor:pointer;white-space:nowrap}
+.cbtn.on{background:#1f1a17;border-color:#1f1a17;color:#fff}
+</style>
+<div class="demo">
+  <div class="sticky">
+    <div class="nav-p" id="parents"></div>
+    <div class="nav-c" id="children"></div>
+  </div>
+  <div class="main"><h2 id="t">—</h2><p id="dscr"></p><div class="ph w2"></div><div class="ph"></div><div class="card">محتوى طويل للتمرير</div><div class="ph"></div><div class="ph w3"></div></div>
+</div>
+<script>
+const tabs={home:{l:'الرئيسية'},orders:{l:'الطلبات',c:[['all','الكل'],['new','جديد'],['prep','تجهيز'],['ship','توصيل'],['done','تم'],['cancel','ملغي']]},products:{l:'المنتجات',c:[['all','الكل'],['shown','ظاهر'],['hidden','مخفي']]},reviews:{l:'التقييمات'},customers:{l:'العملاء'},finance:{l:'المالية'},settings:{l:'الإعدادات'}};
+let cur='products',sub='shown';
+const P=document.getElementById('parents'),C=document.getElementById('children');
+function paint(){
+  P.innerHTML=Object.entries(tabs).map(([k,v])=>`<button class="pbtn ${k===cur?'on':''}" data-k="${k}">${v.l}</button>`).join('');
+  const t=tabs[cur];
+  document.getElementById('t').textContent=t.l+(sub&&t.c?' / '+(t.c.find(x=>x[0]===sub)||[])[1]:'');
+  if(t.c){C.classList.add('show');C.innerHTML=t.c.map(([id,l])=>`<button class="cbtn ${sub===id?'on':''}" data-s="${id}">${l}</button>`).join('');}
+  else{C.classList.remove('show');C.innerHTML='';}
+  document.getElementById('dscr').textContent='شريطان منفصلان: آباء / أبناء.';
+}
+P.onclick=e=>{const b=e.target.closest('[data-k]');if(!b)return;cur=b.dataset.k;sub=tabs[cur].c?tabs[cur].c[0][0]:null;paint()};
+C.onclick=e=>{const b=e.target.closest('[data-s]');if(!b)return;sub=b.dataset.s;paint()};
+paint();
+</script>
+
+  <p class="note" style="margin-top:16px"><a href="nav-experiments.html">← كل التجارب</a></p>
+</div>
+</body>
+</html>

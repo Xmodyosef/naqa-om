@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
+<title>تجربة 02 — حبوب آباء + بطاقات أبناء</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Tahoma,sans-serif;background:#f6f0ed;color:#1f1a17;direction:rtl}
+.wrap{max-width:980px;margin:0 auto;padding:12px}
+.tag{display:inline-block;font-size:.7rem;font-weight:800;color:#8d3048;background:#f3e4e8;padding:4px 10px;border-radius:999px;margin-bottom:10px}
+h1{font-size:1.05rem;margin:0 0 6px}
+.note{color:#7a6a65;font-size:.82rem;margin:0 0 16px;line-height:1.5}
+.demo{background:#fff;border:1px solid #eadfd9;border-radius:16px;overflow:hidden;box-shadow:0 8px 24px rgba(40,20,24,.06)}
+.main{padding:16px;min-height:220px}
+.main h2{margin:0 0 8px;font-size:1rem}
+.main p{margin:0;color:#7a6a65;font-size:.85rem;line-height:1.55}
+.ph{height:10px;background:#f0e6e2;border-radius:6px;margin:10px 0}
+.ph.w2{width:70%}.ph.w3{width:45%}
+.card{background:#faf6f4;border:1px solid #eadfd9;border-radius:12px;padding:12px;margin-top:12px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <span class="tag">تجربة 02 · معاينة فقط · اللوحة الأصلية ما تغيّرت</span>
+  <h1>حبوب آباء + بطاقات أبناء</h1>
+  <p class="note">الأب حبوب وردية في الأعلى. الأبناء تظهر كبطاقات كبيرة تحت العنوان فقط — منفصلة تماماً.<br>اضغطي الآباء والأبناء للتجربة. اختاري الرقم اللي يعجبك.</p>
+  
+<style>
+.nav-p{display:flex;gap:8px;padding:12px;overflow-x:auto;background:linear-gradient(180deg,#2a1a1e,#1f1215)}
+.pbtn{border:0;background:rgba(255,255,255,.08);color:#e8dcd9;padding:10px 16px;border-radius:999px;font:800 .8rem inherit;cursor:pointer;white-space:nowrap}
+.pbtn.on{background:#c46b7c;color:#fff;box-shadow:0 4px 12px rgba(196,107,124,.4)}
+.kids{display:none;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:8px;padding:12px 16px 0}
+.kids.show{display:grid}
+.k{border:1px solid #eadfd9;background:#fff;border-radius:12px;padding:14px 10px;text-align:center;font:800 .78rem inherit;cursor:pointer}
+.k.on{border-color:#c46b7c;background:#fdf0f3;color:#8d3048}
+</style>
+<div class="demo">
+  <div class="nav-p" id="parents"></div>
+  <div class="main">
+    <h2 id="t">—</h2>
+    <div class="kids" id="children"></div>
+    <p id="dscr" style="margin-top:12px"></p>
+    <div class="ph w2"></div><div class="card">المحتوى</div>
+  </div>
+</div>
+<script>
+const tabs={home:{l:'الرئيسية'},orders:{l:'الطلبات',c:[['all','الكل'],['new','جديد'],['prep','تجهيز'],['ship','توصيل'],['done','تم'],['cancel','ملغي']]},products:{l:'المنتجات',c:[['all','الكل'],['shown','ظاهر'],['hidden','مخفي']]},reviews:{l:'التقييمات'},customers:{l:'العملاء'},finance:{l:'المالية'},settings:{l:'الإعدادات'}};
+let cur='products',sub='all';
+const P=document.getElementById('parents'),C=document.getElementById('children');
+function paint(){
+  P.innerHTML=Object.entries(tabs).map(([k,v])=>`<button class="pbtn ${k===cur?'on':''}" data-k="${k}">${v.l}</button>`).join('');
+  const t=tabs[cur];
+  document.getElementById('t').textContent=t.l;
+  if(t.c){C.classList.add('show');C.innerHTML=t.c.map(([id,l])=>`<button class="k ${sub===id?'on':''}" data-s="${id}">${l}</button>`).join('');}
+  else{C.classList.remove('show');C.innerHTML='';}
+  document.getElementById('dscr').textContent=t.c?'اضغطي بطاقة ابن — منفصلة عن شريط الآباء.':'قسم بلا أبناء.';
+}
+P.onclick=e=>{const b=e.target.closest('[data-k]');if(!b)return;cur=b.dataset.k;sub=tabs[cur].c?tabs[cur].c[0][0]:null;paint()};
+C.onclick=e=>{const b=e.target.closest('[data-s]');if(!b)return;sub=b.dataset.s;paint()};
+paint();
+</script>
+
+  <p class="note" style="margin-top:16px"><a href="nav-experiments.html">← كل التجارب</a></p>
+</div>
+</body>
+</html>

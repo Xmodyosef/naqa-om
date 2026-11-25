@@ -25,13 +25,12 @@ function productCartControls(id, opts){
       +'<button type="button" data-inc="'+id+'" aria-label="'+(en?"Increase":"زيادة")+'">+</button>'
       +'</div>';
   }
-  if(sheet && p){
-    var label = en
-      ? ("Add to cart · "+(typeof money==="function"?money(p.price):p.price))
-      : ("أضيفي للسلة · "+(typeof money==="function"?money(p.price):p.price));
+  if(sheet){
+    var label = en ? "Add to cart" : "أضف للسلة";
+    if(typeof T==="function" && T("addCart")) label = T("addCart");
     return '<button class="btn-add card-add sheet-add-cta" data-add="'+id+'" type="button">'+label+'</button>';
   }
-  return '<button class="btn-add'+(sheet?' card-add':'')+'" data-add="'+id+'" type="button">'+(typeof T==="function"?T("add"):"أضف")+'</button>';
+  return '<button class="btn-add" data-add="'+id+'" type="button">'+(typeof T==="function"?T("add"):"أضف")+'</button>';
 }
 function refreshSheetCartControls(){
   try{

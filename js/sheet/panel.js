@@ -94,11 +94,9 @@ function naqaPairSectionHTML(p){
   }).join("");
   var ids=pairs.map(function(s){ return s.id; }).join(",");
   var sum=pairs.reduce(function(a,s){ return a+Number(s.price||0); },0);
-  var btnLabel=en
-    ? ("Add both · "+money(sum))
-    : ("أضيفي الاثنين · "+money(sum));
+  var btnLabel=en ? "Add both" : "أضف الاثنين";
   if(pairs.length===1){
-    btnLabel=en ? ("Add · "+money(sum)) : ("أضيفي · "+money(sum));
+    btnLabel=en ? "Add to cart" : "أضف للسلة";
   }
   var title=en ? "Pairs with this" : "يناسب هذا المنتج";
   return '<section class="sheet-pairs" aria-label="'+esc(title)+'">'

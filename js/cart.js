@@ -130,7 +130,14 @@ function addToCart(id, qty, quiet){
   const row=cart.find(x=>x.id===id);
   if(row) row.qty+=n; else cart.push({id:p.id, brand:p.brand, price:p.price, sku:p.sku, qty:n});
   saveCart(); renderCart();
-  if(!quiet && typeof toast==="function") toast(lang==="en"?"Added to cart":"انضاف للسلة");
+  if(!quiet && typeof toast==="function"){
+    var line = cart.find(function(x){ return x.id===id; });
+    var lineQty = line ? line.qty : n;
+    var cartN = cart.reduce(function(s,i){ return s + i.qty; }, 0);
+    toast(lang==="en"
+      ? ("Added · this item ×"+lineQty+" · cart "+cartN)
+      : ("انضاف · هذا المنتج ×"+lineQty+" · السلة "+cartN));
+  }
 }
 
 function renderCart(){

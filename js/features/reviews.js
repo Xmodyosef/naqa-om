@@ -75,7 +75,7 @@ function reviewsSection(p) {
   return '<section class="reviews-block"><h4 class="block-h">' + (en ? "Reviews" : "التقييمات") + '</h4>'
     + empty + cards
     + '<p class="review-empty">' + thanks + '</p>'
-    + '<button type="button" class="btn-ghost" data-write-review="' + p.id + '" style="margin-top:8px;border:1px solid var(--line);border-radius:12px;padding:10px 14px;font-weight:800">' + (en ? "Write a review" : "اكتبي تقييمك") + "</button></section>";
+    + '<button type="button" class="btn-ghost btn-write-review" data-write-review="' + p.id + '">' + (en ? "Write a review (1–5 stars)" : "اكتبي تقييمك (من 1 إلى 5 نجوم)") + "</button></section>";
 }
 
 function ensureReviewForm() {
@@ -87,7 +87,8 @@ function ensureReviewForm() {
   el.innerHTML = '<form class="review-card-form" id="reviewForm">'
     + '<h3 id="reviewTitle" style="margin:0 0 6px"></h3>'
     + '<p class="review-empty" id="reviewLead"></p>'
-    + '<div class="star-pick" id="starPick"></div>'
+    + '<div class="star-pick" id="starPick" role="group" aria-label="stars"></div>'
+    + '<p class="star-count" id="starCount" aria-live="polite"></p>'
     + '<label id="lblName"></label><input id="rvName" maxlength="24" autocomplete="nickname">'
     + '<label id="lblText"></label><textarea id="rvText" maxlength="600" rows="4"></textarea>'
     + '<label id="lblPhoto"></label><input id="rvPhoto" type="file" accept="image/*">'
@@ -103,15 +104,28 @@ function ensureReviewForm() {
     b.type = "button";
     b.dataset.star = String(i);
     b.textContent = "★";
+    b.setAttribute("aria-label", String(i));
     pick.appendChild(b);
   }
+  function paintStars(n) {
+    n = Math.max(1, Math.min(5, Number(n) || 5));
+    el.dataset.stars = String(n);
+    pick.querySelectorAll("button").forEach(function (x) {
+      var on = Number(x.dataset.star) <= n;
+      x.classList.toggle("on", on);
+      x.setAttribute("aria-pressed", on && Number(x.dataset.star) === n ? "true" : (on ? "true" : "false"));
+    });
+    var sc = document.getElementById("starCount");
+    if (sc) {
+      var en = typeof lang !== "undefined" && lang === "en";
+      sc.textContent = en ? ("You chose " + n + " of 5 stars") : ("اخترتِ " + n + " من 5 نجوم");
+    }
+  }
+  el.__paintStars = paintStars;
   pick.addEventListener("click", function (e) {
     var b = e.target.closest("[data-star]");
     if (!b) return;
-    el.dataset.stars = b.dataset.star;
-    pick.querySelectorAll("button").forEach(function (x) {
-      x.classList.toggle("on", Number(x.dataset.star) <= Number(el.dataset.stars));
-    });
+    paintStars(b.dataset.star);
   });
   document.getElementById("rvClose").onclick = function () { el.hidden = true; };
   el.addEventListener("click", function (e) { if (e.target === el) el.hidden = true; });
@@ -139,7 +153,8 @@ function openReviewForm(id) {
   document.getElementById("rvMsg").textContent = en
     ? "Thank you. We are glad you are here."
     : "شكراً لكِ. يسعدنا وجودكِ.";
-  document.querySelectorAll("#starPick button").forEach(function (x) { x.classList.add("on"); });
+  if (typeof el.__paintStars === "function") el.__paintStars(5);
+  else document.querySelectorAll("#starPick button").forEach(function (x) { x.classList.add("on"); });
   el.hidden = false;
 }
 
@@ -180,7 +195,11 @@ function submitReview(e) {
     function thanks() {
       if (sendBtn) sendBtn.disabled = false;
       el.hidden = true;
-      if (typeof toast === "function") toast(en ? "Thank you. Your review was sent." : "شكراً لكِ. وصل تقييمك.");
+      if (typeof toast === "function") {
+        toast(en
+          ? ("Thank you · " + stars + " stars sent")
+          : ("شكراً لكِ · تم إرسال " + stars + " نجوم"));
+      }
     }
     function openWa() {
       var n = (typeof WA_NUMBER !== "undefined") ? WA_NUMBER : "96879088349";

@@ -138,7 +138,7 @@ html[lang="en"] .price-badge{display:none}
 .brand-icon-only .brand-logo,.brand-icon-only .brand-mono{width:48px;height:48px;min-width:48px;border-radius:14px;box-shadow:0 1px 4px rgba(0,0,0,.06)}
 .brand-icon-only:hover .brand-logo,.brand-icon-only:hover .brand-mono{outline:2px solid var(--rose-deep);outline-offset:2px}
 .brand-name-only{border:0;background:none;padding:0;text-decoration:underline;text-underline-offset:3px}
-.qty-pick{display:flex;align-items:center;gap:8px;margin:10px 0 4px}
+.qty-pick{display:none!important}
 .qty-pick span{font-weight:800;margin-inline-end:6px}
 .qty-pick button{width:36px;height:36px;border-radius:10px;background:var(--card);border:1px solid var(--line);color:var(--fg);font-weight:800;font-size:1.1rem}
 .qty-pick b{min-width:24px;text-align:center}

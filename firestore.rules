@@ -1,13 +1,13 @@
 rules_version = '2';
 /**
- * Naqa · Firestore security rules
- * Collections used by the app:
- *   naqa/overrides  — product price/stock/hidden map (public READ for store)
- *   naqa/reviews    — approved reviews list (public READ for store)
+ * Naqa · Firestore security rules (LOCKED)
+ * Collections:
+ *   naqa/overrides  — product price/stock/hidden (public READ)
+ *   naqa/reviews    — approved reviews (public READ)
  *
- * WRITE: signed-in Firebase user only.
- * Tighten later: set adminUids() to your Authentication → Users → User UID(s).
- * Paste this file into Firebase Console → Firestore → Rules → Publish.
+ * WRITE: only the admin UID listed below (signed-in).
+ * Paste into Firebase Console → Firestore → Rules → Publish.
+ * Adding a second admin: put their UID in adminUids() list.
  */
 service cloud.firestore {
   match /databases/{database}/documents {
@@ -16,23 +16,21 @@ service cloud.firestore {
       return request.auth != null && request.auth.uid != null;
     }
 
-    /** Optional hard lock: list of admin UIDs. Empty list = any signed-in user. */
+    /** Hard lock: only these Firebase Auth UIDs may write. */
     function adminUids() {
       return [
-        // Example: 'AbCdEf1234567890'
+        'a8z7XCtr63Xze6hKlloXyplju2i1'
       ];
     }
 
     function isAdmin() {
-      return signedIn()
-        && (adminUids().size() == 0 || request.auth.uid in adminUids());
+      return signedIn() && request.auth.uid in adminUids();
     }
 
     function onlyKnownKeys(keys) {
       return request.resource.data.keys().hasOnly(keys);
     }
 
-    /* —— public product overrides —— */
     match /naqa/overrides {
       allow read: if true;
       allow create, update: if isAdmin()
@@ -43,7 +41,6 @@ service cloud.firestore {
       allow delete: if false;
     }
 
-    /* —— public approved reviews —— */
     match /naqa/reviews {
       allow read: if true;
       allow create, update: if isAdmin()
@@ -54,7 +51,6 @@ service cloud.firestore {
       allow delete: if false;
     }
 
-    /* —— deny everything else —— */
     match /{document=**} {
       allow read, write: if false;
     }

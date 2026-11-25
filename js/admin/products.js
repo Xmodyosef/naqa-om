@@ -3,28 +3,91 @@
   var MAX_IMGS = 5;
 
   var __editScale = 1;
+  var __pinch = null;
+  function clampScale(n) {
+    n = Number(n) || 1;
+    if (n < 0.9) n = 0.9;
+    if (n > 2) n = 2;
+    return Math.round(n * 100) / 100;
+  }
+  function distTouches(a, b) {
+    var dx = a.clientX - b.clientX;
+    var dy = a.clientY - b.clientY;
+    return Math.sqrt(dx * dx + dy * dy) || 1;
+  }
   function applyEditScale() {
-    var el = document.getElementById("editSheetScale");
-    if (el) {
-      /* CSS zoom: text + fields enlarge without trapping pinch on fixed overlay */
-      el.style.zoom = String(__editScale);
-      el.style.transform = "";
+    __editScale = clampScale(__editScale);
+    var root = document.getElementById("editView");
+    if (root) {
+      /* iPhone-safe: change real font-size (CSS zoom is unreliable on iOS forms) */
+      root.style.setProperty("--edit-fs", (16 * __editScale) + "px");
+      root.style.setProperty("--edit-pad", (12 * __editScale) + "px");
+      root.style.zoom = ""; /* clear any prior zoom */
     }
-    try { document.documentElement.style.setProperty("--edit-scale", String(__editScale)); } catch (e) {}
+    var pct = document.getElementById("editZoomPct");
+    if (pct) pct.textContent = Math.round(__editScale * 100) + "%";
+    try { localStorage.setItem("naqa_edit_scale", String(__editScale)); } catch (e) {}
+  }
+  function loadEditScale() {
+    try {
+      var s = parseFloat(localStorage.getItem("naqa_edit_scale") || "1");
+      __editScale = clampScale(isFinite(s) ? s : 1);
+    } catch (e) { __editScale = 1; }
+  }
+  function bindEditPinch(root) {
+    if (!root || root._pinchBound) return;
+    root._pinchBound = true;
+    root.addEventListener("touchstart", function (e) {
+      if (e.touches.length === 2) {
+        __pinch = {
+          d0: distTouches(e.touches[0], e.touches[1]),
+          s0: __editScale
+        };
+      }
+    }, { passive: true });
+    root.addEventListener("touchmove", function (e) {
+      if (!__pinch || e.touches.length !== 2) return;
+      var d = distTouches(e.touches[0], e.touches[1]);
+      __editScale = clampScale(__pinch.s0 * (d / __pinch.d0));
+      applyEditScale();
+    }, { passive: true });
+    root.addEventListener("touchend", function (e) {
+      if (!e.touches || e.touches.length < 2) __pinch = null;
+    }, { passive: true });
+    root.addEventListener("touchcancel", function () { __pinch = null; }, { passive: true });
+  }
+  function wireZoomButtons() {
+    function bump(delta) {
+      __editScale = clampScale(__editScale + delta);
+      applyEditScale();
+    }
+    ["editZoomIn", "editZoomInFloat"].forEach(function (id) {
+      var b = document.getElementById(id);
+      if (b) b.onclick = function () { bump(0.1); };
+    });
+    ["editZoomOut", "editZoomOutFloat"].forEach(function (id) {
+      var b = document.getElementById(id);
+      if (b) b.onclick = function () { bump(-0.1); };
+    });
   }
   function endEditMode() {
-    try { document.body.classList.remove("naqa-editing"); } catch (e) {}
-    __editScale = 1;
-    applyEditScale();
-    /* never lock overflow/position — pinch-zoom must stay free */
+    try {
+      document.body.classList.remove("naqa-editing");
+      document.documentElement.classList.remove("naqa-editing");
+    } catch (e) {}
+    __pinch = null;
   }
 
   function startEditMode() {
-    try { document.body.classList.add("naqa-editing"); } catch (e) {}
-    __editScale = 1;
+    try {
+      document.body.classList.add("naqa-editing");
+      document.documentElement.classList.add("naqa-editing");
+    } catch (e) {}
+    loadEditScale();
     applyEditScale();
     try {
       var ev = document.getElementById("editView");
+      bindEditPinch(ev);
       if (ev && ev.scrollIntoView) ev.scrollIntoView({ block: "start" });
       window.scrollTo(0, 0);
     } catch (e) {}
@@ -330,12 +393,16 @@
       '<div class="edit-sheet-head">'
       + '<button type="button" class="back" id="backList">' + A.t("p_back") + '</button>'
       + '<h2>' + A.esc(title) + '</h2>'
-      + '<div class="edit-zoom" role="group" aria-label="' + (A.lang === "en" ? "Zoom" : "تكبير") + '">'
-      + '<button type="button" id="editZoomOut" title="-">−</button>'
-      + '<button type="button" id="editZoomIn" title="+">+</button>'
+      + '<div class="edit-zoom" role="group" aria-label="' + (A.lang === "en" ? "Text size" : "حجم الخط") + '">'
+      + '<button type="button" id="editZoomOut" aria-label="-">−</button>'
+      + '<span class="edit-zoom-pct" id="editZoomPct">100%</span>'
+      + '<button type="button" id="editZoomIn" aria-label="+">+</button>'
       + '</div>'
       + '</div>'
-      + '<div class="edit-sheet-scale" id="editSheetScale">'
+      + '<div class="edit-zoom-float" id="editZoomFloat" aria-hidden="false">'
+      + '<button type="button" class="out" id="editZoomOutFloat" aria-label="-">−</button>'
+      + '<button type="button" id="editZoomInFloat" aria-label="+">+</button>'
+      + '</div>'
       + '<div class="edit-sheet-body" id="editSheetBody">'
       + '<div class="edit-card">'
       + '<span class="img-gal-label">' + A.t("p_imgs") + '</span>'
@@ -373,7 +440,6 @@
       + '<label>' + A.t("p_skinAr") + '<input id="f_skinAr" type="text" value="' + A.esc(m.skinAr || "") + '"></label>'
       + '<label>' + A.t("p_skinEn") + '<input id="f_skinEn" type="text" value="' + A.esc(m.skinEn || "") + '"></label>'
       + '</div></div>'
-      + '</div>'
       + '<div class="edit-sheet-foot">'
       + '<button type="button" class="primary" id="saveEdit">' + A.t("p_save") + '</button>'
       + '</div>';
@@ -387,18 +453,10 @@
     document.getElementById("backList").onclick = function () {
       A.closeEdit(false);
     };
-    var zIn = document.getElementById("editZoomIn");
-    var zOut = document.getElementById("editZoomOut");
-    if (zIn) zIn.onclick = function () {
-      __editScale = Math.min(1.6, Math.round((__editScale + 0.1) * 10) / 10);
-      applyEditScale();
-    };
-    if (zOut) zOut.onclick = function () {
-      __editScale = Math.max(0.85, Math.round((__editScale - 0.1) * 10) / 10);
-      applyEditScale();
-    };
-    __editScale = 1;
+    loadEditScale();
     applyEditScale();
+    wireZoomButtons();
+    bindEditPinch(editView);
     document.getElementById("saveEdit").onclick = function () { A.saveEdit(); };
     var taxSel = document.getElementById("f_taxMode");
     var taxWrap = document.getElementById("f_taxCustomWrap");

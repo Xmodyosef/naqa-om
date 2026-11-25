@@ -31,6 +31,7 @@
 
   function onTouchMove(e) {
     if (!depth) return;
+    if (e.touches && e.touches.length > 1) return;
     if (isScrollableTarget(e.target)) return;
     e.preventDefault();
   }

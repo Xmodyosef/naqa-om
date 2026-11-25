@@ -72,8 +72,8 @@
 
 
 html.sheet-open, body.sheet-open{overflow:hidden!important;overscroll-behavior:none}
-.sheet.show{touch-action:none}
-.sheet.show .sheet-card, .sheet.show #sheetCard{touch-action:pan-y;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
-.sheet.show .carousel-track{touch-action:pan-x}
+.sheet.show{touch-action:pan-y pinch-zoom}
+.sheet.show .sheet-card, .sheet.show #sheetCard{touch-action:pan-y pinch-zoom;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
+.sheet.show .carousel-track{touch-action:pan-x pinch-zoom}
 .sku-line{display:none!important}
 .card-code{font-size:.72rem;color:var(--muted)}

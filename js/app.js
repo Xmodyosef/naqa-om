@@ -173,6 +173,7 @@ $("#lightbox").addEventListener("click", e=>{ if(e.target.id==="lightbox"||e.tar
   const sheet=$("#sheet"), card=$("#sheetCard");
   const reset=()=>{ mode=null; x0=null; y0=null; };
   sheet.addEventListener("touchstart", e=>{
+    if(e.touches && e.touches.length > 1){ reset(); return; }
     if(!sheet.classList.contains("show") || $("#lightbox").classList.contains("show")) return;
     const t=e.changedTouches[0];
     const qv=sheet.classList.contains("qv");
@@ -187,6 +188,7 @@ $("#lightbox").addEventListener("click", e=>{ if(e.target.id==="lightbox"||e.tar
     reset();
   },{passive:true});
   sheet.addEventListener("touchmove", e=>{
+    if(e.touches && e.touches.length > 1){ reset(); card.style.transform=""; return; }
     if(!mode||x0==null) return;
     const t=e.changedTouches[0];
     const dx=t.clientX-x0, dy=t.clientY-y0;
@@ -223,6 +225,7 @@ $("#lightbox").addEventListener("click", e=>{ if(e.target.id==="lightbox"||e.tar
   const sheet=$("#sheet");
   if(!sheet) return;
   sheet.addEventListener("touchmove", function(e){
+    if(e.touches && e.touches.length > 1) return;
     if(!sheet.classList.contains("show")) return;
     const allow=e.target.closest && e.target.closest(".sheet-card, .carousel-track, .lightbox, .thumbs");
     // if touch is on dimmed backdrop (the sheet element itself) block

@@ -313,10 +313,11 @@
         + main
         + '<img src="' + A.esc(showImgSrc(src)) + '" data-src="' + A.esc(src) + '" alt="" loading="lazy">'
         + '<div class="img-gal-actions">'
-        + (i > 0 ? '<button type="button" data-img-main="' + i + '" title="' + A.esc(A.t("p_imgsSetMain")) + '" aria-label="' + A.esc(A.t("p_imgsSetMain")) + '">★</button>' : "")
-        + (i > 0 ? '<button type="button" data-img-up="' + i + '" title="' + A.esc(A.t("p_imgsUp")) + '" aria-label="' + A.esc(A.t("p_imgsUp")) + '">‹</button>' : "")
-        + (i < imgs.length - 1 ? '<button type="button" data-img-down="' + i + '" title="' + A.esc(A.t("p_imgsDown")) + '" aria-label="' + A.esc(A.t("p_imgsDown")) + '">›</button>' : "")
-        + '<button type="button" data-img-del="' + i + '" title="' + A.esc(A.t("p_imgsDel")) + '" aria-label="' + A.esc(A.t("p_imgsDel")) + '">✕</button>'
+        /* نجمة = رئيسية فقط · حذف — بدون تحريك يمين/يسار */
+        + (i === 0
+          ? '<button type="button" class="img-fav is-main" disabled title="' + A.esc(A.t("p_imgsMain") || (A.lang === "en" ? "Main photo" : "الصورة الرئيسية")) + '" aria-label="' + A.esc(A.t("p_imgsMain") || "رئيسية") + '">★</button>'
+          : '<button type="button" class="img-fav" data-img-main="' + i + '" title="' + A.esc(A.t("p_imgsSetMain") || (A.lang === "en" ? "Set as main" : "اجعلها الرئيسية")) + '" aria-label="' + A.esc(A.t("p_imgsSetMain") || "رئيسية") + '">☆</button>')
+        + '<button type="button" class="img-del" data-img-del="' + i + '" title="' + A.esc(A.t("p_imgsDel") || (A.lang === "en" ? "Delete" : "حذف")) + '" aria-label="' + A.esc(A.t("p_imgsDel") || "حذف") + '">✕</button>'
         + '</div></div>';
     }).join("");
     if (imgs.length < MAX_IMGS) {
@@ -338,34 +339,13 @@
       gal._bound = true;
       gal.addEventListener("click", function (e) {
         var main = e.target.closest("[data-img-main]");
-        var up = e.target.closest("[data-img-up]");
-        var down = e.target.closest("[data-img-down]");
         var del = e.target.closest("[data-img-del]");
         if (main) {
           var i = +main.getAttribute("data-img-main");
+          if (isNaN(i) || i <= 0 || i >= (A._editImgs || []).length) return;
           var t = A._editImgs.splice(i, 1)[0];
           A._editImgs.unshift(t);
           A.paintImgGallery();
-          return;
-        }
-        if (up) {
-          var iu = +up.getAttribute("data-img-up");
-          if (iu > 0) {
-            var a = A._editImgs[iu - 1];
-            A._editImgs[iu - 1] = A._editImgs[iu];
-            A._editImgs[iu] = a;
-            A.paintImgGallery();
-          }
-          return;
-        }
-        if (down) {
-          var id = +down.getAttribute("data-img-down");
-          if (id < A._editImgs.length - 1) {
-            var b = A._editImgs[id + 1];
-            A._editImgs[id + 1] = A._editImgs[id];
-            A._editImgs[id] = b;
-            A.paintImgGallery();
-          }
           return;
         }
         if (del) {

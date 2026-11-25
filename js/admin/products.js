@@ -2,48 +2,32 @@
   var A = w.NaqaAdmin;
   var MAX_IMGS = 5;
 
-  var __kbPadBound = false;
-  function onKbPad() {
-    try {
-      var vv = window.visualViewport;
-      if (!vv) return;
-      var pad = Math.max(0, (window.innerHeight || 0) - vv.height - (vv.offsetTop || 0));
-      document.documentElement.style.setProperty("--kb-pad", pad + "px");
-    } catch (e) {}
-  }
-  function bindKbPad(on) {
-    try {
-      if (on && !__kbPadBound && window.visualViewport) {
-        window.visualViewport.addEventListener("resize", onKbPad);
-        window.visualViewport.addEventListener("scroll", onKbPad);
-        __kbPadBound = true;
-        onKbPad();
-      } else if (!on && __kbPadBound && window.visualViewport) {
-        window.visualViewport.removeEventListener("resize", onKbPad);
-        window.visualViewport.removeEventListener("scroll", onKbPad);
-        __kbPadBound = false;
-        document.documentElement.style.setProperty("--kb-pad", "0px");
-      }
-    } catch (e) {}
+  var __editScale = 1;
+  function applyEditScale() {
+    var el = document.getElementById("editSheetScale");
+    if (el) {
+      /* CSS zoom: text + fields enlarge without trapping pinch on fixed overlay */
+      el.style.zoom = String(__editScale);
+      el.style.transform = "";
+    }
+    try { document.documentElement.style.setProperty("--edit-scale", String(__editScale)); } catch (e) {}
   }
   function endEditMode() {
     try { document.body.classList.remove("naqa-editing"); } catch (e) {}
-    /* Soft unlock only — never use position:fixed lock here (kills zoom/keyboard) */
-    try {
-      document.documentElement.style.overflow = "";
-      document.body.style.overflow = "";
-    } catch (e) {}
-    bindKbPad(false);
+    __editScale = 1;
+    applyEditScale();
+    /* never lock overflow/position — pinch-zoom must stay free */
   }
 
   function startEditMode() {
     try { document.body.classList.add("naqa-editing"); } catch (e) {}
-    /* Soft lock: hide overflow on body WITHOUT position:fixed so pinch-zoom works */
+    __editScale = 1;
+    applyEditScale();
     try {
-      document.documentElement.style.overflow = "hidden";
-      document.body.style.overflow = "hidden";
+      var ev = document.getElementById("editView");
+      if (ev && ev.scrollIntoView) ev.scrollIntoView({ block: "start" });
+      window.scrollTo(0, 0);
     } catch (e) {}
-    bindKbPad(true);
   }
 
   A.isEditing = function () {
@@ -346,7 +330,12 @@
       '<div class="edit-sheet-head">'
       + '<button type="button" class="back" id="backList">' + A.t("p_back") + '</button>'
       + '<h2>' + A.esc(title) + '</h2>'
+      + '<div class="edit-zoom" role="group" aria-label="' + (A.lang === "en" ? "Zoom" : "تكبير") + '">'
+      + '<button type="button" id="editZoomOut" title="-">−</button>'
+      + '<button type="button" id="editZoomIn" title="+">+</button>'
       + '</div>'
+      + '</div>'
+      + '<div class="edit-sheet-scale" id="editSheetScale">'
       + '<div class="edit-sheet-body" id="editSheetBody">'
       + '<div class="edit-card">'
       + '<span class="img-gal-label">' + A.t("p_imgs") + '</span>'
@@ -384,6 +373,7 @@
       + '<label>' + A.t("p_skinAr") + '<input id="f_skinAr" type="text" value="' + A.esc(m.skinAr || "") + '"></label>'
       + '<label>' + A.t("p_skinEn") + '<input id="f_skinEn" type="text" value="' + A.esc(m.skinEn || "") + '"></label>'
       + '</div></div>'
+      + '</div>'
       + '<div class="edit-sheet-foot">'
       + '<button type="button" class="primary" id="saveEdit">' + A.t("p_save") + '</button>'
       + '</div>';

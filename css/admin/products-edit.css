@@ -1,48 +1,57 @@
-/* —— Product edit sheet (full-screen mobile) ——
-   Keyboard-friendly: no body position:fixed (that freezes zoom/pan on iOS).
-   Inputs ≥16px so Safari does not force-zoom on focus. */
-html.naqa-scroll-lock,
-body.naqa-scroll-lock{
-  overflow:hidden!important;
-  overscroll-behavior:none;
-}
-/* DO NOT use position:fixed on body — breaks keyboard + pinch-zoom */
+/* —— Product edit: page mode (zoomable) ——
+   NOT position:fixed full-screen trap.
+   Document scroll + pinch-zoom work. Sticky head/foot only. */
 body.naqa-editing .savebar{display:none!important}
-body.naqa-editing .admin-top{visibility:hidden;pointer-events:none}
+body.naqa-editing .admin-top{display:none!important}
 body.naqa-editing .side-nav,
 body.naqa-editing .top-bar,
-body.naqa-editing #pageSubNav{visibility:hidden;pointer-events:none}
+body.naqa-editing #pageSubNav{display:none!important}
+/* Main expands full width while editing */
+body.naqa-editing .admin-shell{
+  display:block!important;
+}
+body.naqa-editing .admin-main{
+  max-width:none!important;
+  margin:0!important;
+  padding:0!important;
+}
+body.naqa-editing #productsTab{
+  padding:0!important;
+  margin:0!important;
+}
 
-/* Form fields: 16px prevents iOS auto-zoom; still allow user pinch-zoom */
+/* Inputs: 16px stops *forced* Safari zoom on focus, but pinch still allowed */
 #editView input,
 #editView textarea,
 #editView select{
   font-size:16px!important;
-  line-height:1.35;
+  line-height:1.4;
   max-width:100%;
-  touch-action:manipulation;
+  touch-action:auto;
 }
-#editView textarea{min-height:88px}
+#editView textarea{min-height:96px}
 
 #editView[hidden]{display:none!important}
 #editView:not([hidden]){
-  position:fixed;
-  inset:0;
-  z-index:40;
-  display:flex;
-  flex-direction:column;
+  display:block;
+  position:relative; /* critical: not fixed — browser page zoom works */
   width:100%;
   max-width:720px;
   margin:0 auto;
-  left:0;
-  right:0;
+  min-height:100dvh;
+  min-height:100svh;
   background:var(--bg);
-  overscroll-behavior:contain;
-  /* keyboard: pad with visualViewport via JS class */
-  padding-bottom:var(--kb-pad, 0px);
+  z-index:5;
+  touch-action:auto;
+  -webkit-text-size-adjust:100%;
+  text-size-adjust:100%;
+  padding-bottom:env(safe-area-inset-bottom, 0px);
 }
+
 .edit-sheet-head{
-  flex:0 0 auto;
+  position:sticky;
+  top:0;
+  z-index:6;
   display:flex;
   align-items:center;
   gap:10px;
@@ -50,7 +59,7 @@ body.naqa-editing #pageSubNav{visibility:hidden;pointer-events:none}
   padding-top:max(12px, env(safe-area-inset-top, 0px));
   background:#fdf8f6;
   border-bottom:1px solid var(--line);
-  z-index:2;
+  /* zoom UI */
 }
 .edit-sheet-head .back{
   flex:0 0 auto;
@@ -65,26 +74,49 @@ body.naqa-editing #pageSubNav{visibility:hidden;pointer-events:none}
   text-overflow:ellipsis;
   white-space:nowrap;
 }
+.edit-zoom{
+  display:flex;
+  gap:4px;
+  flex:0 0 auto;
+}
+.edit-zoom button{
+  width:36px;
+  height:36px;
+  border:1px solid var(--line);
+  border-radius:10px;
+  background:#fff;
+  font-weight:800;
+  font-size:1rem;
+  line-height:1;
+  cursor:pointer;
+  touch-action:manipulation;
+}
+.edit-zoom button:active{background:#efe4df}
+
 .edit-sheet-body{
-  flex:1 1 auto;
-  min-height:0;
-  overflow-y:auto;
-  overflow-x:hidden;
-  -webkit-overflow-scrolling:touch;
-  overscroll-behavior:contain;
-  padding:12px 14px;
-  touch-action:pan-y;
+  display:block;
+  overflow:visible; /* page scrolls — not inner scroll trap */
+  max-height:none;
+  padding:12px 14px 24px;
+  touch-action:auto;
 }
 .edit-sheet-body .edit-card{
   margin:0 0 12px;
 }
+/* Optional scale target for A+/A− buttons */
+.edit-sheet-scale{
+  transform-origin: top center;
+  transition: transform .12s ease;
+}
+
 .edit-sheet-foot{
-  flex:0 0 auto;
+  position:sticky;
+  bottom:0;
+  z-index:6;
   padding:10px 14px;
   padding-bottom:max(10px, env(safe-area-inset-bottom, 0px));
   background:rgba(253,248,246,.98);
   border-top:1px solid var(--line);
-  z-index:2;
 }
 .edit-sheet-foot .primary{
   width:100%;
@@ -110,15 +142,3 @@ body.naqa-editing #pageSubNav{visibility:hidden;pointer-events:none}
 .img-gal-url-row input{flex:1;border:1px solid var(--line);border-radius:12px;padding:10px 12px}
 .img-gal-url-row button{flex:0 0 auto}
 #f_imgFile{display:none}
-
-
-/* Keep edit/list gestures inside the admin — avoid browser page swipe */
-
-.edit-sheet-body {
-  overscroll-behavior: contain;
-}
-#editView {
-  overscroll-behavior-x: none;
-  touch-action: pan-y;
-}
-

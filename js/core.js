@@ -76,18 +76,6 @@ function productLink(id){
   return location.origin + siteBasePath() + "p/" + id + "/";
 }
 
-function naqaMixImgs(base, saved) {
-  base = (base || []).filter(Boolean);
-  saved = (saved || []).filter(Boolean).slice(0, 5);
-  if (!saved.length) return base.slice(0, 5);
-  var hasOriginal = saved.some(function (u) { return base.indexOf(u) >= 0; });
-  if (hasOriginal) return saved;
-  var out = base.slice(0, 5);
-  saved.forEach(function (u) {
-    if (out.indexOf(u) < 0 && out.length < 5) out.push(u);
-  });
-  return out;
-}
 function mergeOverrides(map){
   if(!map) map={};
   products.forEach(function(p){
@@ -102,7 +90,7 @@ function mergeOverrides(map){
     ["nameAr","nameEn","descAr","descEn","useAr","useEn","skinAr","skinEn","brand","cat","sku","em"].forEach(function(k){
       if(o[k]!=null && o[k]!=="") p[k]=o[k];
     });
-    if(Array.isArray(o.imgs) && o.imgs.length) p.imgs=naqaMixImgs(p.imgs, o.imgs);
+    if(Array.isArray(o.imgs) && o.imgs.length) p.imgs=o.imgs.filter(Boolean).slice(0,5);
   });
 }
 

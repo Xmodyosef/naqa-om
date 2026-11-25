@@ -258,25 +258,28 @@
     return src;
   }
 
-  function hydrateFsPreviews() {
-    if (A._fsBusy) return;
-    var need = (A._editImgs || []).filter(function (s) {
-      return typeof s === "string" && s.indexOf("fs:") === 0 && !(A._fsPreview && A._fsPreview[s]);
-    });
-    if (!need.length || !window.firebase || !firebase.firestore || !firebase.apps || !firebase.apps.length) return;
-    A._fsBusy = true;
-    Promise.all(need.map(function (refId) {
-      return firebase.firestore().collection("naqa_imgs").doc(refId.slice(3)).get().then(function (snap) {
-        A._fsPreview = A._fsPreview || {};
-        var j = snap.exists && snap.data() && snap.data().jpeg;
-        A._fsPreview[refId] = j ? ("data:image/jpeg;base64," + j) : "data:,";
-      }).catch(function () {
-        A._fsPreview = A._fsPreview || {};
-        A._fsPreview[refId] = "data:,";
-      });
-    })).then(function () {
-      A._fsBusy = false;
-      A.paintImgGallery();
+  function showStoredImg(img, src) {
+    if (!img || !src) return;
+    if (A._fsPreview && A._fsPreview[src]) {
+      img.src = A._fsPreview[src];
+      return;
+    }
+    if (src.indexOf("fs:") !== 0) return;
+    if (!window.firebase || !firebase.firestore || !firebase.apps || !firebase.apps.length) return;
+    firebase.firestore().collection("naqa_imgs").doc(src.slice(3)).get().then(function (snap) {
+      var j = snap.exists && snap.data() && snap.data().jpeg;
+      if (!j) return;
+      A._fsPreview = A._fsPreview || {};
+      A._fsPreview[src] = "data:image/jpeg;base64," + j;
+      img.src = A._fsPreview[src];
+    }).catch(function () {});
+  }
+
+  function fillStoredImgs(root) {
+    if (!root) return;
+    Array.prototype.forEach.call(root.querySelectorAll("img"), function (img) {
+      var src = img.getAttribute("data-src") || img.getAttribute("src") || "";
+      if (src.indexOf("fs:") === 0) showStoredImg(img, src);
     });
   }
 
@@ -307,7 +310,7 @@
         : "";
       return '<div class="img-gal-item' + (i === 0 ? " is-main" : "") + '" data-i="' + i + '">'
         + main
-        + '<img src="' + A.esc(showImgSrc(src)) + '" alt="" loading="lazy">'
+        + '<img src="' + A.esc(showImgSrc(src)) + '" data-src="' + A.esc(src) + '" alt="" loading="lazy">'
         + '<div class="img-gal-actions">'
         + (i > 0 ? '<button type="button" data-img-main="' + i + '">★</button>' : "")
         + (i > 0 ? '<button type="button" data-img-up="' + i + '">‹</button>' : "")
@@ -326,10 +329,8 @@
       var f = document.getElementById("f_imgFile");
       if (f) f.click();
     };
+    fillStoredImgs(box);
   };
-    hydrateFsPreviews();
-
-
   function bindImgTools() {
     var gal = document.getElementById("imgGal");
     if (gal && !gal._bound) {
@@ -470,7 +471,7 @@
     var html = slice.map(function (p) {
       var m = A.merged(p);
       var img = (m.imgs && m.imgs[0]) || "";
-      var thumb = img ? '<img src="' + A.esc(img) + '" alt="">' : '<div class="ph"></div>';
+      var thumb = img ? '<img src="' + A.esc(img.indexOf("fs:") === 0 ? "" : img) + '" data-src="' + A.esc(img) + '" alt="">' : '<div class="ph"></div>';
       var stock = m.stock === "" || m.stock == null ? "—" : m.stock;
       var stockN = Number(m.stock);
       var stockCls = (m.stock !== "" && m.stock != null && stockN <= 0) ? ' style="color:#b05c6e;font-weight:800"' : (m.stock != null && m.stock !== "" && stockN <= 3 ? ' style="color:#c9a227;font-weight:800"' : "");
@@ -508,7 +509,9 @@
         + '<button type="button" data-page="' + (page + 1) + '"' + (page >= pages ? " disabled" : "") + ">" + A.t("pageNext") + "</button>"
         + "</div>";
     }
-    document.getElementById("list").innerHTML = inv + (html || '<p class="note">' + A.t("p_empty") + '</p>') + pager;
+    var listEl = document.getElementById("list");
+    listEl.innerHTML = inv + (html || '<p class="note">' + A.t("p_empty") + '</p>') + pager;
+    fillStoredImgs(listEl);
   };
 
   A.openEdit = function (id, opts) {

@@ -143,24 +143,10 @@
     var _cap = (typeof ORDERS_CAP === "number" && ORDERS_CAP > 0) ? ORDERS_CAP : 300;
     localStorage.setItem(A.ORDERS_KEY, JSON.stringify(A.orders.slice(0, _cap)));
   };
-  A.mixImgs = function (base, saved) {
-    base = (base || []).filter(Boolean);
-    saved = (saved || []).filter(Boolean).slice(0, 5);
-    if (!saved.length) return base.slice(0, 5);
-    var hasOriginal = saved.some(function (u) { return base.indexOf(u) >= 0; });
-    if (hasOriginal) return saved;
-    var out = base.slice(0, 5);
-    saved.forEach(function (u) {
-      if (out.indexOf(u) < 0 && out.length < 5) out.push(u);
-    });
-    return out;
-  };
   A.merged = function (p) {
     var o = A.overrides[p.id] || A.overrides[String(p.id)] || {};
-    var baseImgs = Array.isArray(p.imgs) ? p.imgs.filter(Boolean) : [];
     var m = Object.assign({}, p, o);
-    var savedImgs = Array.isArray(o.imgs) ? o.imgs.filter(Boolean) : [];
-    m.imgs = savedImgs.length ? A.mixImgs(baseImgs, savedImgs) : baseImgs.slice(0, 5);
+    if (o.imgs && o.imgs.length) m.imgs = o.imgs.filter(Boolean).slice(0, 5);
     if (m.stock == null || m.stock === "") m.stock = 3;
     if (m.was == null) m.was = "";
     return m;

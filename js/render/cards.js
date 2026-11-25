@@ -40,20 +40,53 @@ function refreshSheetCartControls(){
     if(!box) return;
     var p = products.find(function(x){ return Number(x.id)===Number(openProductId); });
     if(!p) return;
-    var wishOn = typeof isWish==="function" && isWish(p.id) ? " on" : "";
-    var qv = typeof sheetMode!=="undefined" && sheetMode==="qv";
-    var en = (typeof lang!=="undefined" && lang==="en");
-    box.innerHTML =
-      '<button class="btn-wish-sheet'+wishOn+'" data-wish="'+p.id+'" type="button" aria-label="'+(en?"Save":"حفظ")+'">♥</button>'
-      + productCartControls(p.id, { sheet:true })
-      + (qv ? '<button class="btn-open" data-open="'+p.id+'" type="button">'+(typeof T==="function"?T("open"):"")+'</button>' : "");
+    var wish = box.querySelector("[data-wish]");
+    if(wish){
+      wish.classList.toggle("on", typeof isWish==="function" && isWish(p.id));
+    }
+    var cartEl = box.querySelector(".sheet-inline-qty, .inline-qty, .sheet-add-cta, button[data-add], button.btn-add.card-add");
+    var html = productCartControls(p.id, { sheet:true });
+    if(cartEl){
+      var wrap = document.createElement("div");
+      wrap.innerHTML = html;
+      if(wrap.firstChild) cartEl.replaceWith(wrap.firstChild);
+    } else {
+      var wishOn = typeof isWish==="function" && isWish(p.id) ? " on" : "";
+      var qv = typeof sheetMode!=="undefined" && sheetMode==="qv";
+      var en = (typeof lang!=="undefined" && lang==="en");
+      box.innerHTML =
+        '<button class="btn-wish-sheet'+wishOn+'" data-wish="'+p.id+'" type="button" aria-label="'+(en?"Save":"حفظ")+'">♥</button>'
+        + html
+        + (qv ? '<button class="btn-open" data-open="'+p.id+'" type="button">'+(typeof T==="function"?T("open"):"")+'</button>' : "");
+    }
+  }catch(e){}
+}
+/** Update only cart chips + add/qty controls on cards — no full page re-render (stops flash). */
+function refreshCardCartControls(){
+  try{
+    document.querySelectorAll(".card[data-id]").forEach(function(card){
+      var id = Number(card.dataset.id);
+      if(!id) return;
+      var q = cartLineQty(id);
+      var chip = card.querySelector(".card-cart-chip");
+      if(chip){
+        if(q>0){ chip.classList.add("show"); chip.textContent = "×"+q; }
+        else { chip.classList.remove("show"); chip.textContent = ""; }
+      }
+      var actions = card.querySelector(".card-actions");
+      if(!actions) return;
+      var old = actions.querySelector(".inline-qty, button.btn-add");
+      if(!old) return;
+      var wrap = document.createElement("div");
+      wrap.innerHTML = productCartControls(id, {});
+      if(wrap.firstChild) old.replaceWith(wrap.firstChild);
+    });
   }catch(e){}
 }
 function refreshProductCartUI(){
-  try{
-    if(typeof render==="function") render();
-  }catch(e){}
+  /* Surgical update only — full render() was flashing the whole page on qty change. */
   refreshSheetCartControls();
+  refreshCardCartControls();
 }
 
 /* render: cards, shelves, grid, lang */

@@ -1,6 +1,29 @@
 /* events, gestures, boot */
+function adjustCardQty(id, delta){
+  id = +id;
+  var it = cart.find(function(i){ return i.id===id; });
+  if(delta>0){
+    if(!it){ addToCart(id, 1); return; }
+    var p = products.find(function(x){ return x.id===id; });
+    if(p && p.stock!=null && it.qty>=Number(p.stock)){
+      if(typeof toast==="function") toast(T("stockLimit"));
+      return;
+    }
+    it.qty++;
+    saveCart(); renderCart();
+    try{ if(typeof refreshProductCartUI==="function") refreshProductCartUI(); }catch(err){}
+    return;
+  }
+  if(!it) return;
+  it.qty--;
+  if(it.qty<=0) cart = cart.filter(function(x){ return x.id!==id; });
+  saveCart(); renderCart();
+  try{ if(typeof refreshProductCartUI==="function") refreshProductCartUI(); }catch(err){}
+}
 function onCatalogClick(e){
   const wish=e.target.closest("[data-wish]"); if(wish){ e.preventDefault(); e.stopPropagation(); toggleWish(+wish.dataset.wish); return; }
+  const inc=e.target.closest("[data-inc]"); if(inc){ e.preventDefault(); adjustCardQty(inc.dataset.inc, 1); return; }
+  const dec=e.target.closest("[data-dec]"); if(dec){ e.preventDefault(); adjustCardQty(dec.dataset.dec, -1); return; }
   const add=e.target.closest("[data-add]"); if(add){ addToCart(+add.dataset.add); return; }
   const qv=e.target.closest("[data-qv]"); if(qv){ openSheet(+qv.dataset.qv, "qv"); return; }
   const open=e.target.closest("[data-open]"); if(open){ openSheet(+open.dataset.open, "full"); return; }

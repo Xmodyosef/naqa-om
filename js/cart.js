@@ -252,7 +252,10 @@ function sendCheckout(){
       id:p.id, qty:qty, price:unit, brand:p.brand||"", sku:p.sku||"",
       name:pname(p), nameAr:p.nameAr||"", nameEn:p.nameEn||"",
       link:(typeof productLink==="function")?productLink(p.id):"",
-      img:(p.imgs&&p.imgs[0])||"", line:unit*qty
+      img:(p.imgs&&p.imgs[0])||"", line:unit*qty,
+      was:(p.was!=null && Number(p.was)>unit)?Number(p.was):undefined,
+      taxMode:p.taxMode||"vat5",
+      taxCustom:p.taxMode==="custom"?Number(p.taxCustom):undefined
     });
   }
   if(!priced.length){ alert(T("alertEmpty")); return; }

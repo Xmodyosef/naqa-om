@@ -6,6 +6,16 @@
   var ordersList = document.getElementById("ordersList");
   if (ordersList) ordersList.addEventListener("click", function (e) {
     safe(function () {
+      var opener = e.target.closest("[data-open-order]");
+      if (opener && !e.target.closest("[data-st],[data-pay],a")) {
+        var oid = opener.getAttribute("data-open-order");
+        A.openOrderIds = A.openOrderIds || {};
+        A.openOrderIds[oid] = !A.openOrderIds[oid];
+        var body = opener.parentElement && opener.parentElement.querySelector(".order-body");
+        if (body) body.hidden = !A.openOrderIds[oid];
+        opener.setAttribute("aria-expanded", A.openOrderIds[oid] ? "true" : "false");
+        return;
+      }
       var payBtn = e.target.closest("[data-pay]");
       if (payBtn) {
         A.confirmPayment(payBtn.getAttribute("data-pay"));

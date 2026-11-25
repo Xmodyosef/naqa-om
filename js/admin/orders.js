@@ -76,6 +76,38 @@
     };
     reader.readAsText(file);
   };
+
+  A.itemTaxView = function (it) {
+    var qty = Math.max(1, Number(it && it.qty) || 1);
+    var unit = Number(it && it.price);
+    if (!isFinite(unit)) {
+      var line0 = Number(it && it.line);
+      unit = isFinite(line0) ? line0 / qty : 0;
+    }
+    var prod = null;
+    if (A.products && it && (it.id != null || it.sku)) {
+      prod = A.products.find(function (p) {
+        return (it.id != null && String(p.id) === String(it.id)) || (it.sku && p.sku && String(p.sku) === String(it.sku));
+      }) || null;
+    }
+    var merged = prod && A.merged ? A.merged(prod) : (prod || {});
+    var was = Number(it && it.was != null ? it.was : merged.was);
+    var mode = (it && it.taxMode) || merged.taxMode || "vat5";
+    var custom = it && it.taxCustom != null ? Number(it.taxCustom) : Number(merged.taxCustom);
+    var rate = 0.05;
+    var mark = "5%";
+    if (mode === "exempt") { rate = 0; mark = "0%"; }
+    else if (mode === "custom" && isFinite(custom) && custom >= 0) {
+      rate = custom / 100;
+      mark = (Math.round(custom * 10) / 10).toString().replace(/\.0$/, "") + "%";
+    }
+    var off = 0;
+    if (isFinite(was) && was > unit + 0.0005) off = Math.round((was - unit) / was * 100);
+    var paid = unit * qty;
+    var tax = rate <= 0 ? 0 : paid * rate / (1 + rate);
+    return { qty: qty, unit: unit, was: was, off: off, tax: tax, mark: mark };
+  };
+
   A.paintOrders = function () {
     try { A.syncOrdersTab(); } catch (e) {}
     A.orders.forEach(function (o) { o.status = A.normalizeStatus(o.status); });
@@ -149,35 +181,51 @@
       var items = "";
       if (Array.isArray(o.items) && o.items.length) {
         items = '<ul class="items">' + o.items.map(function (it) {
-          var thumb = it.img ? ('<img src="' + A.esc(it.img) + '" alt="" style="width:40px;height:40px;object-fit:contain;border-radius:8px;background:#f6f1ee;margin-left:8px">') : "";
-          return '<li>' + thumb + '<strong>' + A.esc((A.lang === 'en' ? (it.nameEn || it.name || it.nameAr) : (it.nameAr || it.name || it.nameEn)) || "") + '</strong><small>SKU ' + A.esc(it.sku || "—") + ' · ×' + A.esc(it.qty) + ' · ' + A.esc(it.line != null ? it.line : it.price) + ' ' + A.t("omr") + ' <span style="color:#9a7b72">' + A.t("o_vatLine") + '</span></small>'
-            + (it.link ? ('<div><a href="' + A.esc(it.link) + '" target="_blank" rel="noopener">' + A.t("productLink") + '</a></div>') : "") + "</li>";
+          var name = (A.lang === "en" ? (it.nameEn || it.name || it.nameAr) : (it.nameAr || it.name || it.nameEn)) || "";
+          var tax = A.itemTaxView(it);
+          var thumb = it.img ? ('<img src="' + A.esc(it.img) + '" alt="" class="line-thumb">') : "";
+          var money = function (n) { return A.esc(Number(n).toFixed(3)); };
+          var priceBit = "";
+          if (tax.off > 0) {
+            priceBit = '<s class="price-was">' + money(tax.was) + '</s>'
+              + '<b class="off-mark">−' + tax.off + '%</b>'
+              + '<span>' + money(tax.unit) + '</span>';
+          } else {
+            priceBit = '<span>' + money(tax.unit) + '</span>';
+          }
+          return '<li class="line">' + thumb + '<div class="line-main"><strong>' + A.esc(name) + '</strong>'
+            + '<div class="line-meta">' + priceBit + '<span class="line-qty">×' + A.esc(tax.qty) + '</span>'
+            + '<span class="tax-mark">' + A.esc(tax.mark) + '</span>'
+            + '<span class="tax-amt">' + money(tax.tax) + '</span></div></div></li>';
         }).join("") + "</ul>";
       } else if (o.itemsText) {
         items = '<pre class="note" style="white-space:pre-wrap">' + A.esc(o.itemsText) + "</pre>";
       }
-      var when = o.at ? new Date(o.at).toLocaleString(A.lang === "en" ? "en-OM" : "ar-OM") : "";
+      var when = "";
+      try {
+        when = o.at ? new Date(o.at).toLocaleString(A.lang === "en" ? "en-GB" : "ar-OM", { day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" }) : "";
+      } catch (e) { when = o.at || ""; }
       var phoneDigits = String(o.phone || "").replace(/\D/g, "").replace(/^968/, "");
       var statusBtns = A.STATUS_ORDER.map(function (k) {
         return '<button type="button" class="mini' + (st === k ? " on" : (k === "cancel" ? " ghost" : "")) + '" data-st="' + k + '" data-oid="' + A.esc(o.id) + '">' + A.statusLabel(k) + '</button>';
       }).join("");
+      var open = A.openOrderIds && A.openOrderIds[o.id];
+      var tot = o.total != null ? Number(o.total).toFixed(3) + " " + A.t("omr") : "—";
       return '<article class="order" data-oid="' + A.esc(o.id) + '">'
-        + '<strong>' + A.esc(o.id) + ' <span class="badge ' + A.esc(st) + '">' + A.esc(A.statusLabel(st) || st) + "</span></strong>"
-        + "<small>" + A.esc(when) + "</small>"
+        + '<button type="button" class="order-sum" data-open-order="' + A.esc(o.id) + '" aria-expanded="' + (open ? "true" : "false") + '">'
+        + '<b class="order-id">' + A.esc(o.id) + '</b>'
+        + '<span class="order-when">' + A.esc(when) + '</span>'
+        + '<b class="order-tot">' + A.esc(tot) + '</b>'
+        + '</button>'
+        + '<div class="order-body"' + (open ? "" : " hidden") + '>'
         + "<small>" + A.esc(o.name || "—") + " · " + A.esc(o.phone || "—") + " · " + A.esc(o.area || "—") + "</small>"
-        + "<small>" + A.t("total") + ": <b>" + A.esc(o.total != null ? Number(o.total).toFixed(3) : "—") + " " + A.t("omr") + "</b></small>"
-        + "<small style=\"color:#9a8b84;font-size:12px\">" + A.t("vatInc") + " · " + A.t("vatOf") + " " + A.esc(
-          o.vat != null ? Number(o.vat).toFixed(3) : (o.total != null ? (Number(o.total) * 0.05 / 1.05).toFixed(3) : "—")
-        ) + " " + A.t("omr") + "</small>"
-        + "<small>" + A.t("payLine") + ": <b>" + A.esc(A.payText(o)) + "</b>"
-        + (o.subtotal != null ? (" · " + A.t("o_sub") + " " + A.esc(Number(o.subtotal).toFixed(3))) : "")
-        + (o.shipping != null ? (" · " + A.esc(Number(o.shipping).toFixed(3)) + " " + A.t("omr")) : "")
-        + "</small>"
+        + "<small>" + A.t("payLine") + ": <b>" + A.esc(A.payText(o)) + "</b></small>"
         + (o.note ? ("<small>" + A.t("note") + ": " + A.esc(o.note) + "</small>") : "")
-        + items + '<div class="actions">' + statusBtns
+        + items
+        + '<div class="actions">' + statusBtns
         + (A.payState(o) === "pending" ? ('<button type="button" class="mini" data-pay="' + A.esc(o.id) + '">' + A.t("confirmPay") + '</button>') : "")
         + (phoneDigits ? ('<a class="mini" style="background:#25D366;display:inline-block;color:#fff;text-decoration:none;text-align:center" href="https://wa.me/968' + A.esc(phoneDigits) + '" target="_blank" rel="noopener">' + A.t("wa") + '</a>') : "")
-        + '</div></article>';
+        + '</div></div></article>';
     };
     list.sort(function (a, b) { return String(b.at || "").localeCompare(String(a.at || "")); });
     var days = [];

@@ -139,3 +139,19 @@ button.stat.stat-link strong{display:block}
 
 button.cust-row.cust-link{width:100%;background:transparent;border:0;border-bottom:1px solid var(--line);font:inherit;color:inherit;text-align:inherit;cursor:pointer}
 button.stat.sales-link{width:100%;margin-top:4px}
+
+.order{padding:0;overflow:hidden}
+.order-sum{width:100%;display:flex;align-items:center;gap:12px;padding:14px;background:transparent;border:0;font:inherit;color:inherit;cursor:pointer;text-align:start}
+.order-id{font-weight:800;white-space:nowrap}
+.order-when{flex:1;color:var(--muted);font-size:.82rem;min-width:0}
+.order-tot{font-weight:800;white-space:nowrap}
+.order-body{padding:0 14px 14px}
+.order-body[hidden]{display:none!important}
+.order .items li.line{display:flex;gap:8px;align-items:flex-start}
+.line-thumb{width:40px;height:40px;object-fit:contain;border-radius:8px;background:#f6f1ee;flex:none}
+.line-main{min-width:0;flex:1}
+.line-meta{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin-top:4px;color:var(--muted);font-size:.8rem}
+.price-was{text-decoration:line-through;color:#b3a29c}
+.off-mark{color:#8d3048;font-weight:800}
+.tax-mark{font-weight:800;font-size:11px;line-height:1.4;background:#f4e4e8;color:#8d3048;border-radius:6px;padding:1px 6px}
+.tax-amt{font-weight:800;color:var(--fg)}

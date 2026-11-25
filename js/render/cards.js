@@ -25,6 +25,12 @@ function productCartControls(id, opts){
       +'<button type="button" data-inc="'+id+'" aria-label="'+(en?"Increase":"زيادة")+'">+</button>'
       +'</div>';
   }
+  if(sheet && p){
+    var label = en
+      ? ("Add to cart · "+(typeof money==="function"?money(p.price):p.price))
+      : ("أضيفي للسلة · "+(typeof money==="function"?money(p.price):p.price));
+    return '<button class="btn-add card-add sheet-add-cta" data-add="'+id+'" type="button">'+label+'</button>';
+  }
   return '<button class="btn-add'+(sheet?' card-add':'')+'" data-add="'+id+'" type="button">'+(typeof T==="function"?T("add"):"أضف")+'</button>';
 }
 function refreshSheetCartControls(){
@@ -38,7 +44,7 @@ function refreshSheetCartControls(){
     var qv = typeof sheetMode!=="undefined" && sheetMode==="qv";
     var en = (typeof lang!=="undefined" && lang==="en");
     box.innerHTML =
-      '<button class="btn-wish-sheet'+wishOn+'" data-wish="'+p.id+'" type="button">♥ '+(en?"Save":"حفظ")+'</button>'
+      '<button class="btn-wish-sheet'+wishOn+'" data-wish="'+p.id+'" type="button" aria-label="'+(en?"Save":"حفظ")+'">♥</button>'
       + productCartControls(p.id, { sheet:true })
       + (qv ? '<button class="btn-open" data-open="'+p.id+'" type="button">'+(typeof T==="function"?T("open"):"")+'</button>' : "");
   }catch(e){}

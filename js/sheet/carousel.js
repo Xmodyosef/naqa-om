@@ -136,6 +136,34 @@ function bindCarousel(p){
     }
     const wish=e.target.closest("[data-wish]");
     if(wish){ e.preventDefault(); e.stopPropagation(); if(typeof toggleWish==="function") toggleWish(+wish.dataset.wish); wish.classList.toggle("on", isWish(+wish.dataset.wish)); return; }
+    const pair=e.target.closest("[data-add-pair]");
+    if(pair){
+      var ids=String(pair.dataset.addPair||"").split(",").map(function(x){ return +x; }).filter(Boolean);
+      ids.forEach(function(pid){ addToCart(pid, 1, true); });
+      if(typeof toast==="function"){
+        toast(lang==="en" ? ("Added "+ids.length+" products") : ("انضاف "+ids.length+" منتجات"));
+      }
+      try{ if(typeof refreshProductCartUI==="function") refreshProductCartUI(); }catch(err){}
+      return;
+    }
+    const inc=e.target.closest("[data-inc]");
+    if(inc){
+      var it=cart.find(function(i){ return i.id===+inc.dataset.inc; });
+      if(it){
+        var pp=products.find(function(x){ return x.id===it.id; });
+        if(pp && pp.stock!=null && it.qty>=Number(pp.stock)){
+          if(typeof toast==="function") toast(T("stockLimit"));
+        } else { it.qty++; saveCart(); renderCart(); try{ if(typeof refreshProductCartUI==="function") refreshProductCartUI(); }catch(err){} }
+      }
+      return;
+    }
+    const dec=e.target.closest("[data-dec]");
+    if(dec){
+      var it2=cart.find(function(i){ return i.id===+dec.dataset.dec; });
+      if(it2){ it2.qty--; if(it2.qty<=0) cart=cart.filter(function(x){ return x.id!==it2.id; }); }
+      saveCart(); renderCart(); try{ if(typeof refreshProductCartUI==="function") refreshProductCartUI(); }catch(err){}
+      return;
+    }
     const add=e.target.closest("[data-add]");
     if(add){ addToCart(+add.dataset.add, pickQty); return; }
     const open=e.target.closest("[data-open]");

@@ -52,7 +52,7 @@
     return db.collection(DOC_PATH.col).doc(DOC_PATH.id).set({
       map: clean,
       updatedAt: firebase.firestore.FieldValue.serverTimestamp(),
-      updatedBy: user.email || user.uid || ""
+      updatedBy: user.uid || "" /* never store admin email in public docs */
     }, { merge: false });
   };
 

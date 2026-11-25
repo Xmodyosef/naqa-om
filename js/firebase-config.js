@@ -1,5 +1,5 @@
-/* Naqa · Firebase (Spark free). Public web keys only — never put a password here.
-   Only emails in NAQA_ADMIN_EMAILS may open the admin panel. */
+/* Naqa · Firebase (Spark free). Public web keys only — never put a password or email here.
+   Allowed admins: NAQA_ADMIN_EMAIL_HASHES only (SHA-256). No cleartext admin email. */
 window.NAQA_FIREBASE = {
   apiKey: "AIzaSyAfEuzPkJ5KWzjBBLCoXRUm4YT75BUO6x8",
   authDomain: "naqa-om.firebaseapp.com",

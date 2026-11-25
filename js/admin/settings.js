@@ -27,6 +27,17 @@
         if (u && u.email) email = u.email;
       }
     } catch (e2) {}
+    /* show full email only in admin account card (never on store) */
+    function maskEmail(em) {
+      em = String(em || "");
+      var at = em.indexOf("@");
+      if (at < 1) return em ? "••••" : "";
+      var local = em.slice(0, at);
+      var domain = em.slice(at + 1);
+      var show = local.length <= 2 ? local[0] + "•" : local.slice(0, 2) + "•••";
+      return show + "@" + domain;
+    }
+    var emailShow = maskEmail(email);
     var wa = String(w.WA_NUMBER || "96879088349");
     var bankName = (w.BANK_NAME || "").trim();
     var bankIban = (w.BANK_IBAN || "").trim();
@@ -46,7 +57,7 @@
       + '<section class="panel settings-sec">'
       +   '<h2>' + (ar ? "الحساب" : "Account") + '</h2>'
       +   (email
-          ? ('<div class="set-row"><span class="set-k">' + (ar ? "مسجّلة كـ" : "Signed in as") + '</span><span class="set-v" dir="ltr">' + A.esc(email) + '</span></div>')
+          ? ('<div class="set-row"><span class="set-k">' + (ar ? "مسجّلة كـ" : "Signed in as") + '</span><span class="set-v" dir="ltr">' + A.esc(emailShow) + '</span></div>')
           : ('<p class="note">' + (ar ? "ما في جلسة ظاهرة — ارجعي لشاشة الدخول." : "No session — return to sign-in.") + '</p>'))
       +   '<p class="note">' + (ar
           ? "كلمة السر تُدار من شاشة الدخول (نسيت كلمة السر؟). الحفظ بعد الدخول يزامن المنتجات مع حسابك تلقائياً — بدون رموز إضافية."

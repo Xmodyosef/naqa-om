@@ -64,7 +64,7 @@
     return doc.set({
       list: list,
       updatedAt: firebase.firestore.FieldValue.serverTimestamp(),
-      updatedBy: user.email || user.uid || ""
+      updatedBy: user.uid || ""
     }, { merge: false }).then(function () { return true; });
   };
   A.publishReviews = function () {

@@ -205,19 +205,20 @@ $("#lightbox").addEventListener("click", e=>{ if(e.target.id==="lightbox"||e.tar
   });
 })();
 
-/* One back-step for the whole store.
-   Arabic (rtl): finger starts at the right edge and moves left.
-   English (ltr): finger starts at the left edge and moves right.
-   Closes the open layer only. Never a second history.back (that jumped to the first page). */
+/* Edge swipe = one in-app step only.
+   Arabic: right→left. English: left→right.
+   Never history.back() here — Safari also backs on edge and that was double-pop to home.
+   Product close uses replaceState + absorb window for the browser's extra back. */
 (function(){
   var x0=null, y0=null, armed=false, busy=false;
+  window.__naqaAbsorbBackUntil = window.__naqaAbsorbBackUntil || 0;
   function rtl(){ return document.documentElement.dir!=="ltr"; }
   function onBackEdge(x){
     var w=window.innerWidth||360;
-    return rtl() ? x>=w-32 : x<=32;
+    return rtl() ? x>=w-36 : x<=36;
   }
   function isBackSwipe(dx, dy){
-    if(Math.abs(dx)<72 || Math.abs(dx)<Math.abs(dy)+8) return false;
+    if(Math.abs(dx)<64 || Math.abs(dx)<Math.abs(dy)+10) return false;
     return rtl() ? dx<0 : dx>0;
   }
   function layerOpen(){
@@ -229,28 +230,38 @@ $("#lightbox").addEventListener("click", e=>{ if(e.target.id==="lightbox"||e.tar
     if(sh && sh.classList.contains("show")) return "sheet";
     return "";
   }
+  function shopHash(){
+    var h = window.__naqaShopHash;
+    if(h && String(h).indexOf("#p/")!==0) return h.indexOf("#")===0 ? h : "#"+h;
+    return "#shop";
+  }
+  function syncShopUrl(){
+    try{
+      var target = shopHash();
+      var next = location.pathname + location.search + target;
+      history.replaceState({naqa:"shop"}, "", next);
+    }catch(err){}
+  }
   function stepBack(){
     if(busy) return;
     busy=true;
-    setTimeout(function(){ busy=false; }, 450);
+    setTimeout(function(){ busy=false; }, 500);
     var layer=layerOpen();
     if(layer==="light"){ closeLightbox(); return; }
     if(layer==="check"){ closeCheckout(); return; }
     if(layer==="quiz" && typeof closeQuiz==="function"){ closeQuiz(); return; }
     if(layer==="cart"){ closeCart(); return; }
     if(layer==="sheet"){
+      /* Absorb Safari/Chrome edge-back that would pop a second history entry. */
+      window.__naqaAbsorbBackUntil = Date.now() + 800;
       closeSheet(true);
       if(typeof routeHash==="function" && routeHash().indexOf("p/")===0){
-        try{ history.back(); }catch(err){}
-      } else if(typeof naqaRestoreShopScroll==="function"){
-        naqaRestoreShopScroll();
+        syncShopUrl();
       }
+      if(typeof naqaRestoreShopScroll==="function") naqaRestoreShopScroll();
       return;
     }
-    var h=typeof routeHash==="function"?routeHash():"";
-    if(h && h!=="shop" && h!=="top" && history.state && history.state.naqa){
-      try{ history.back(); }catch(err){}
-    }
+    /* Catalog: do nothing — history.back here jumped to the first page. */
   }
   document.addEventListener("touchstart", function(e){
     if(!e.touches || e.touches.length!==1){ armed=false; return; }
@@ -264,7 +275,9 @@ $("#lightbox").addEventListener("click", e=>{ if(e.target.id==="lightbox"||e.tar
     if(!tch) return;
     var dx=tch.clientX-x0, dy=tch.clientY-y0;
     if(Math.abs(dy)>Math.abs(dx)+10 && Math.abs(dy)>16){ armed=false; return; }
-    if(Math.abs(dx)>12 && (rtl()?dx<0:dx>0)) e.preventDefault();
+    if(Math.abs(dx)>10 && (rtl()?dx<0:dx>0)){
+      try{ e.preventDefault(); }catch(err){}
+    }
   }, {passive:false, capture:true});
   document.addEventListener("touchend", function(e){
     if(!armed || x0==null) return;
@@ -298,11 +311,37 @@ $("#lightbox").addEventListener("click", e=>{ if(e.target.id==="lightbox"||e.tar
 })();
 
 
-window.addEventListener("popstate", ()=>{
-  if($("#lightbox").classList.contains("show")){ closeLightbox(); return; }
-  applyRoute();
-});
-window.addEventListener("hashchange", ()=>{ applyRoute(); });
+/* popstate + hashchange both fire on back — debounce once.
+   After edge-swipe product close, absorb one extra browser back so we stay on shop. */
+(function(){
+  var routeTimer=0;
+  function runRoute(){
+    clearTimeout(routeTimer);
+    routeTimer=setTimeout(function(){
+      if($("#lightbox") && $("#lightbox").classList.contains("show")){ closeLightbox(); return; }
+      if(typeof applyRoute==="function") applyRoute();
+    }, 0);
+  }
+  window.addEventListener("popstate", function(){
+    if(Date.now() < (window.__naqaAbsorbBackUntil||0)){
+      window.__naqaAbsorbBackUntil = Date.now() + 400;
+      try{
+        var h = window.__naqaShopHash || "#shop";
+        if(String(h).indexOf("#")!==0) h="#"+h;
+        if(String(h).indexOf("#p/")===0) h="#shop";
+        history.pushState({naqa:"shop"}, "", location.pathname + location.search + h);
+      }catch(err){}
+      if($("#sheet") && $("#sheet").classList.contains("show") && typeof closeSheet==="function") closeSheet(true);
+      if(typeof naqaRestoreShopScroll==="function") naqaRestoreShopScroll();
+      return;
+    }
+    runRoute();
+  });
+  window.addEventListener("hashchange", function(){
+    if(Date.now() < (window.__naqaAbsorbBackUntil||0)) return;
+    runRoute();
+  });
+})();
 /* chrome-hide: hysteresis + cooldown — never thrash layout while scrolling */
 let __naqaLastY=0;
 let __naqaChromeCooldown=0;

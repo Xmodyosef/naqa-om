@@ -177,7 +177,13 @@ async function openSheet(id, mode, reset){
   bindCarousel(p);
   document.title=pname(p)+" · Naqa";
   try{
-    if(!qv && routeHash()!=="p/"+id) history.pushState({naqa:"product",id}, "", "#p/"+id);
+    if(!qv){
+      var cur = routeHash();
+      if(cur.indexOf("p/")!==0){
+        window.__naqaShopHash = (location.hash && location.hash!=="#") ? location.hash : "#shop";
+      }
+      if(cur!=="p/"+id) history.pushState({naqa:"product",id}, "", "#p/"+id);
+    }
   }catch(e){}
 }
 

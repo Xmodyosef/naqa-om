@@ -74,8 +74,6 @@
 .sheet-actions .btn-wish-sheet{align-self:stretch}
 .sheet-actions .card-add{padding:14px 12px;border-radius:14px;background:var(--rose-deep);color:#fff;font-weight:800;font-size:1rem}
 .sheet-actions .btn-open{grid-column:1/-1}
-.sheet-actions-foot{position:static;background:none;padding:16px 0 8px;margin-top:18px;grid-template-columns:1fr}
-.sheet-actions-foot .card-add{grid-column:1/-1}
 
 
 .lightbox{position:fixed;inset:0;z-index:120;background:rgba(10,8,6,.94);display:none;align-items:center;justify-content:center;padding:12px}

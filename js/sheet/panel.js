@@ -41,7 +41,6 @@ async function openSheet(id, mode, reset){
     ${priceHTML(p)}
     ${carouselHTML(p, galleryIndex)}
     <div class="sheet-brand-row">${brandMark(p.brand, { iconOnly: true })}</div>
-    <div class="qty-pick" role="group" aria-label="${T("qty")}"><span id="qtyLab">${T("qty")}</span><button type="button" data-q="-1" aria-label="${lang==="en"?"Decrease quantity":"تقليل الكمية"}">−</button><b id="pickQty" aria-live="polite">1</b><button type="button" data-q="1" aria-label="${lang==="en"?"Increase quantity":"زيادة الكمية"}">+</button></div>
     ${actions}
     <span class="skin-pill">${T("skinT")}: ${esc(pskin(p))}</span>
     ${typeof shadeHTML==="function"?shadeHTML(p):""}
@@ -56,9 +55,7 @@ async function openSheet(id, mode, reset){
       <h4 class="block-h">${alsoLabel}</h4>
       <div class="sug-row">${cards}</div>
     `}
-    <div class="sheet-actions sheet-actions-foot" aria-hidden="true">
-      <button class="btn-add card-add" data-add="${p.id}" ${addDisabled} type="button">${addLabel}</button>
-    </div>`;
+`;
   $("#sheet").classList.add("show");
   const sh=$("#sheet"); if(sh){ sh.setAttribute("aria-modal","true"); sh.setAttribute("aria-labelledby","sheetTitle"); }
   lockBodyScroll();

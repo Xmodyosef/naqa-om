@@ -254,9 +254,9 @@
 
 <script>
 if ('serviceWorker' in navigator) {
-  window.addEventListener('load', function () {
-    navigator.serviceWorker.register('./sw.js').catch(function () {});
-  });
+  navigator.serviceWorker.getRegistrations().then(function (list) {
+    list.forEach(function (r) { r.unregister(); });
+  }).catch(function () {});
 }
 </script>
 

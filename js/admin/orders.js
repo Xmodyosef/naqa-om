@@ -69,14 +69,14 @@
   };
 
   A.printOrdersPdf = function () {
-    var list = A.getSelectedOrders();
+    var list = A.getSelectedOrders ? A.getSelectedOrders() : [];
     if (!list.length) {
       A.setMsg("orderStatus", A.t("o_printNeedSel") || A.t("o_printEmpty") || "");
       return;
     }
     var dir = A.lang === "en" ? "ltr" : "rtl";
     var lang = A.lang === "en" ? "en" : "ar";
-    var title = A.t("o_pdfHead") || "Naqa";
+    var brand = A.t("o_pdfHead") || "Naqa";
     var printed = A.t("o_pdfPrinted") || "";
     var whenPrint = "";
     try { whenPrint = A.fmtDateTimeNum(new Date()); } catch (e) { whenPrint = new Date().toISOString(); }
@@ -85,8 +85,7 @@
       try { return A.fmtMoney(n); } catch (e2) { return String(n == null ? "—" : n); }
     };
     var payLabel = function (o) {
-      var s = (o && (o.paymentStatus || o.payStatus || o.payment || o.pay)) || "";
-      s = String(s).toLowerCase();
+      var s = String((o && (o.paymentStatus || o.payStatus || o.payment || o.pay)) || "").toLowerCase();
       if (s === "confirmed" || s.indexOf("confirm") >= 0) return A.t("payConfirmed") || "Confirmed";
       if (s === "pending" || s.indexOf("pending") >= 0 || s.indexOf("bank") >= 0 || s.indexOf("transfer") >= 0) return A.t("payPending") || "Pending";
       if (s === "cod" || s.indexOf("cod") >= 0 || s.indexOf("استلام") >= 0) return A.t("payCod") || "COD";
@@ -96,7 +95,9 @@
       }
       return o.payment || "—";
     };
-    var cards = list.map(function (o) {
+    var phoneLab = A.t("o_pdfPhone") || A.t("o_pdfContact") || (A.lang === "en" ? "Mobile number" : "رقم الجوال");
+    var totalN = list.length;
+    var pages = list.map(function (o, idx) {
       var st = A.normalizeStatus(o.status);
       var when = "";
       try { when = o.at ? A.fmtDateTimeNum(o.at) : ""; } catch (e2) { when = o.at || ""; }
@@ -104,14 +105,11 @@
         grand: o.total || 0, paid: o.subtotal || 0, del: o.delivery || 0,
         cod: o.codFee || 0, discount: 0, tax: o.vat || 0, beforeTax: 0
       };
-      /* استخدم أرقام الطلب المحفوظة إن وُجدت */
       if (o.subtotal != null && isFinite(Number(o.subtotal))) sums.paid = Number(o.subtotal);
       if (o.delivery != null && isFinite(Number(o.delivery))) sums.del = Number(o.delivery);
       if (o.codFee != null && isFinite(Number(o.codFee))) sums.cod = Number(o.codFee);
       if (o.vat != null && isFinite(Number(o.vat))) sums.tax = Number(o.vat);
       if (o.total != null && isFinite(Number(o.total))) sums.grand = Number(o.total);
-      var ship = o.shipping != null ? Number(o.shipping) : (sums.del + sums.cod);
-      if (!isFinite(ship)) ship = sums.del + sums.cod;
 
       var itemsHtml = "";
       if (Array.isArray(o.items) && o.items.length) {
@@ -125,17 +123,16 @@
           + "</tr></thead><tbody>"
           + o.items.map(function (it, i) {
               var name = (A.lang === "en" ? (it.nameEn || it.name || it.nameAr) : (it.nameAr || it.name || it.nameEn)) || "";
-              var tax = A.itemTaxView ? A.itemTaxView(it) : { qty: it.qty || 1, unit: it.price || 0 };
-              var unit = it.price != null ? Number(it.price) : Number(tax.unit) || 0;
-              var qty = it.qty != null ? Number(it.qty) : Number(tax.qty) || 1;
+              var unit = it.price != null ? Number(it.price) : 0;
+              var qty = it.qty != null ? Number(it.qty) : 1;
               var line = it.line != null ? Number(it.line) : (unit * qty);
               return "<tr>"
                 + "<td class='c-n'>" + (i + 1) + "</td>"
                 + "<td class='c-name'>" + A.esc(name) + "</td>"
                 + "<td class='c-sku'>" + A.esc(it.sku || "—") + "</td>"
                 + "<td class='c-q'>" + A.esc(qty) + "</td>"
-                + "<td class='c-p'>" + A.esc(money(unit)) + "</td>"
-                + "<td class='c-l'>" + A.esc(money(line)) + "</td>"
+                + "<td class='c-p'>" + A.esc(money(unit)) + " " + A.esc(omr) + "</td>"
+                + "<td class='c-l'>" + A.esc(money(line)) + " " + A.esc(omr) + "</td>"
                 + "</tr>";
             }).join("")
           + "</tbody></table>";
@@ -153,76 +150,93 @@
       if (sums.tax > 0.0005) sumRows += "<div class='sum-row'><span>" + A.esc(A.t("o_pdfVat") || "VAT") + "</span><b>" + A.esc(money(sums.tax)) + " " + A.esc(omr) + "</b></div>";
       sumRows += "<div class='sum-row grand'><span>" + A.esc(A.t("o_grand") || "Total") + "</span><b>" + A.esc(money(sums.grand)) + " " + A.esc(omr) + "</b></div>";
 
-      var addr = o.address || o.addr || "";
-      var city = o.city || "";
-      var area = o.area || "";
+      var pageLab = (A.t("o_pdfPageOf") || "Order {n} of {t}")
+        .split("{n}").join(String(idx + 1))
+        .split("{t}").join(String(totalN));
 
-      return "<section class='card'>"
-        + "<header class='card-head'>"
-        + "<div class='oid'><span class='lab'>" + A.esc(A.lang === "en" ? "Order" : "طلب") + "</span><b>" + A.esc(o.id) + "</b></div>"
+      return "<section class='page'>"
+        + "<header class='doc-head'>"
+        + "<div class='brand'>"
+        + "<div class='brand-name'>نقاء · Naqa</div>"
+        + "<div class='brand-sub'>" + A.esc(brand) + "</div>"
+        + "</div>"
+        + "<div class='doc-meta'>"
+        + "<div>" + A.esc(printed) + ": " + A.esc(whenPrint) + "</div>"
+        + "<div>" + A.esc(pageLab) + "</div>"
+        + "</div>"
+        + "</header>"
+        + "<div class='order-title'>"
+        + "<div class='oid'><span>" + A.esc(A.lang === "en" ? "Order No." : "رقم الطلب") + "</span><b>" + A.esc(o.id) + "</b></div>"
         + "<span class='st'>" + A.esc(A.statusLabel(st)) + "</span>"
         + "<span class='when'>" + A.esc(when) + "</span>"
-        + "</header>"
+        + "</div>"
         + "<div class='grid'>"
         + "<div class='cell'><div class='k'>" + A.esc(A.t("o_pdfCustomer") || "Customer") + "</div><div class='v'>" + A.esc(o.name || "—") + "</div></div>"
-        + "<div class='cell'><div class='k'>" + A.esc(A.t("o_pdfContact") || "Phone") + "</div><div class='v dir-ltr'>" + A.esc(o.phone || "—") + "</div></div>"
-        + "<div class='cell'><div class='k'>" + A.esc(A.t("o_pdfArea") || "Area") + "</div><div class='v'>" + A.esc(area || "—") + "</div></div>"
-        + "<div class='cell'><div class='k'>" + A.esc(A.t("o_pdfCity") || "City") + "</div><div class='v'>" + A.esc(city || "—") + "</div></div>"
-        + (addr ? ("<div class='cell span2'><div class='k'>" + A.esc(A.t("o_pdfAddress") || "Address") + "</div><div class='v'>" + A.esc(addr) + "</div></div>") : "")
+        + "<div class='cell'><div class='k'>" + A.esc(phoneLab) + "</div><div class='v dir-ltr'>" + A.esc(o.phone || "—") + "</div></div>"
+        + "<div class='cell'><div class='k'>" + A.esc(A.t("o_pdfArea") || "Area") + "</div><div class='v'>" + A.esc(o.area || "—") + "</div></div>"
+        + "<div class='cell'><div class='k'>" + A.esc(A.t("o_pdfCity") || "City") + "</div><div class='v'>" + A.esc(o.city || "—") + "</div></div>"
+        + ((o.address || o.addr) ? ("<div class='cell span2'><div class='k'>" + A.esc(A.t("o_pdfAddress") || "Address") + "</div><div class='v'>" + A.esc(o.address || o.addr) + "</div></div>") : "")
         + "<div class='cell'><div class='k'>" + A.esc(A.t("payLine") || "Payment") + "</div><div class='v'>" + A.esc(payLabel(o)) + "</div></div>"
         + "<div class='cell'><div class='k'>" + A.esc(A.t("o_pdfStatus") || "Status") + "</div><div class='v'>" + A.esc(A.statusLabel(st)) + "</div></div>"
         + "</div>"
         + (o.note ? ("<div class='note-line'><span class='k'>" + A.esc(A.t("note") || "Note") + ":</span> " + A.esc(o.note) + "</div>") : "")
         + itemsHtml
         + "<div class='summary'><div class='sum-title'>" + A.esc(A.t("o_pdfSummary") || "Summary") + "</div>" + sumRows + "</div>"
+        + "<footer class='foot'>" + A.esc(A.lang === "en" ? "Thank you · Naqa" : "شكراً لتعاملكم · نقاء") + "</footer>"
         + "</section>";
     }).join("");
 
     var html = "<!doctype html><html lang='" + lang + "' dir='" + dir + "'><head><meta charset='utf-8'>"
-      + "<title>" + A.esc(title) + "</title>"
+      + "<title>" + A.esc(brand) + "</title>"
       + "<style>"
-      + "@page{size:A4;margin:10mm 12mm}"
+      + "@page{size:A4;margin:12mm 14mm}"
       + "*{box-sizing:border-box}"
-      + "html,body{width:100%;margin:0;padding:0;background:#fff}"
-      + "body{font-family:'Noto Sans Arabic','IBM Plex Sans',Tahoma,system-ui,sans-serif;color:#1a1412;font-size:11pt;line-height:1.45;padding:0 2mm}"
-      + ".sheet{width:100%;max-width:186mm;margin:0 auto}"
-      + ".doc-head{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;border-bottom:2.5px solid #8d3048;padding:0 0 10px;margin:0 0 14px}"
-      + ".doc-head h1{font-size:17pt;margin:0;color:#8d3048;font-weight:800}"
-      + ".doc-head .sub{font-size:10pt;color:#5c534e;text-align:end}"
-      + ".card{width:100%;border:1px solid #e2d4cf;border-radius:8px;padding:12px 14px;margin:0 0 12px;page-break-inside:avoid}"
-      + ".card-head{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin:0 0 10px;padding-bottom:8px;border-bottom:1px solid #efe4df}"
-      + ".oid .lab{display:block;font-size:8.5pt;color:#8a7f78;font-weight:700}"
-      + ".oid b{font-size:13pt}"
-      + ".st{background:#f3e6e9;color:#8d3048;border-radius:999px;padding:4px 12px;font-size:9.5pt;font-weight:800}"
-      + ".when{margin-inline-start:auto;font-size:10pt;color:#5c534e}"
-      + ".grid{display:grid;grid-template-columns:1fr 1fr;gap:8px 16px;margin:0 0 10px}"
+      + "html,body{margin:0;padding:0;background:#fff}"
+      + "body{font-family:'Noto Naskh Arabic','Amiri','Times New Roman','Noto Sans Arabic',Georgia,serif;"
+      + "color:#1a1412;font-size:11.5pt;line-height:1.55}"
+      + ".page{width:100%;max-width:182mm;margin:0 auto;min-height:250mm;"
+      + "page-break-after:always;break-after:page;padding:2mm 0 4mm}"
+      + ".page:last-child{page-break-after:auto;break-after:auto}"
+      + ".doc-head{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;"
+      + "border-bottom:2.5px solid #8d3048;padding:0 0 12px;margin:0 0 16px}"
+      + ".brand{text-align:start}"
+      + ".brand-name{font-size:20pt;font-weight:800;color:#8d3048;letter-spacing:.02em;line-height:1.2}"
+      + ".brand-sub{font-size:10.5pt;color:#5c534e;margin-top:2px}"
+      + ".doc-meta{text-align:end;font-size:10pt;color:#5c534e;line-height:1.5}"
+      + ".order-title{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;margin:0 0 14px;"
+      + "padding:10px 12px;background:#fdf8f6;border:1px solid #efe4df;border-radius:10px}"
+      + ".oid span{display:block;font-size:9pt;color:#8a7f78;font-weight:700}"
+      + ".oid b{font-size:15pt;font-weight:800;color:#1a1412}"
+      + ".st{background:#8d3048;color:#fff;border-radius:999px;padding:5px 14px;font-size:10pt;font-weight:800}"
+      + ".when{margin-inline-start:auto;font-size:10.5pt;color:#5c534e;font-variant-numeric:tabular-nums}"
+      + ".grid{display:grid;grid-template-columns:1fr 1fr;gap:10px 18px;margin:0 0 14px}"
       + ".cell.span2{grid-column:1 / -1}"
-      + ".cell .k{font-size:8.5pt;color:#8a7f78;font-weight:700;margin-bottom:2px}"
-      + ".cell .v{font-size:11pt;font-weight:600;word-break:break-word}"
+      + ".cell .k{font-size:9pt;color:#8a7f78;font-weight:700;margin-bottom:3px}"
+      + ".cell .v{font-size:12pt;font-weight:700;word-break:break-word}"
       + ".dir-ltr{direction:ltr;unicode-bidi:isolate;text-align:start}"
-      + ".note-line{font-size:10pt;background:#faf6f4;border-radius:6px;padding:6px 10px;margin:0 0 10px}"
+      + ".note-line{font-size:11pt;background:#faf6f4;border-radius:8px;padding:8px 12px;margin:0 0 12px;border:1px solid #efe4df}"
       + ".note-line .k{font-weight:800;color:#8d3048}"
-      + "table.items{width:100%;border-collapse:collapse;margin:4px 0 12px;font-size:10pt}"
-      + "table.items th{background:#f7eee9;color:#5c3a40;font-weight:800;padding:7px 6px;border-bottom:2px solid #e8ddd8;text-align:start}"
-      + "table.items td{padding:7px 6px;border-bottom:1px solid #efe4df;vertical-align:top}"
-      + ".c-n{width:24px;text-align:center!important;color:#8a7f78}"
-      + ".c-sku{width:90px;font-size:8.5pt;color:#6b625c;word-break:break-all}"
-      + ".c-q,.c-p,.c-l{width:64px;text-align:end!important;font-variant-numeric:tabular-nums;white-space:nowrap}"
-      + ".summary{margin-top:4px;padding:10px 12px;background:#fdf8f6;border:1px solid #efe4df;border-radius:8px;max-width:300px;margin-inline-start:auto}"
-      + ".sum-title{font-size:9pt;font-weight:800;color:#8d3048;margin-bottom:6px}"
-      + ".sum-row{display:flex;justify-content:space-between;gap:16px;font-size:10.5pt;padding:3px 0}"
-      + ".sum-row.grand{margin-top:4px;padding-top:6px;border-top:1.5px solid #d9c8c2;font-size:12.5pt;font-weight:800;color:#8d3048}"
-      + "pre.note{white-space:pre-wrap;font-size:10pt;background:#faf6f4;padding:10px;border-radius:8px}"
-      + ".empty-items{color:#8a7f78;font-size:10pt}"
-      + "@media print{body{padding:0}.sheet{max-width:none}}"
-      + "@media screen{body{padding:16px;background:#ece6e2}.sheet{background:#fff;padding:14px 16px;border-radius:10px;box-shadow:0 2px 12px rgba(0,0,0,.08)}}"
-      + "</style></head><body><div class='sheet'>"
-      + "<div class='doc-head'><h1>" + A.esc(title) + "</h1>"
-      + "<div class='sub'>" + A.esc(printed) + ": " + A.esc(whenPrint) + "<br>" + list.length + " "
-      + A.esc(A.lang === "en" ? (list.length === 1 ? "order" : "orders") : "طلب") + "</div></div>"
-      + cards
-      + "</div>"
-      + "<script>window.onload=function(){setTimeout(function(){window.print();},280);}<\\/script>"
+      + "table.items{width:100%;border-collapse:collapse;margin:4px 0 14px;font-size:10.5pt}"
+      + "table.items th{background:#8d3048;color:#fff;font-weight:800;padding:9px 8px;text-align:start}"
+      + "table.items td{padding:9px 8px;border-bottom:1px solid #e8ddd8;vertical-align:top}"
+      + "table.items tbody tr:nth-child(even) td{background:#fdf8f6}"
+      + ".c-n{width:28px;text-align:center!important;color:#8a7f78}"
+      + ".c-sku{width:100px;font-size:9pt;color:#6b625c;word-break:break-all}"
+      + ".c-q,.c-p,.c-l{width:78px;text-align:end!important;font-variant-numeric:tabular-nums;white-space:nowrap}"
+      + ".summary{margin:8px 0 0;padding:12px 14px;background:#fdf8f6;border:1.5px solid #e2d4cf;border-radius:10px;"
+      + "max-width:320px;margin-inline-start:auto}"
+      + ".sum-title{font-size:10pt;font-weight:800;color:#8d3048;margin-bottom:8px;text-align:center}"
+      + ".sum-row{display:flex;justify-content:space-between;gap:18px;font-size:11pt;padding:4px 0}"
+      + ".sum-row.grand{margin-top:6px;padding-top:8px;border-top:2px solid #8d3048;font-size:13.5pt;font-weight:800;color:#8d3048}"
+      + ".foot{margin-top:22px;padding-top:10px;border-top:1px dashed #d9c8c2;text-align:center;font-size:10.5pt;color:#8a7f78}"
+      + "pre.note{white-space:pre-wrap;font-size:10.5pt;background:#faf6f4;padding:10px;border-radius:8px}"
+      + ".empty-items{color:#8a7f78;font-size:10.5pt;text-align:center}"
+      + "@media print{body{padding:0}.page{max-width:none;min-height:0}}"
+      + "@media screen{body{padding:18px;background:#e8e0dc}.page{background:#fff;padding:16px 18px;border-radius:12px;"
+      + "box-shadow:0 2px 14px rgba(0,0,0,.08);margin-bottom:16px;min-height:auto}}"
+      + "</style></head><body>"
+      + pages
+      + "<script>window.onload=function(){setTimeout(function(){window.print();},300);}<\\/script>"
       + "</body></html>";
     var w = window.open("", "_blank");
     if (!w) {
@@ -548,18 +562,15 @@
       (o.items || []).forEach(function (it) { bits.push(it.name, it.nameAr, it.sku); });
       return bits.join(" ").toLowerCase().indexOf(q) >= 0;
     });
-    var totalAll = (A.orders && A.orders.length) || 0;
-    var countLine = (A.t("o_countLine") || "Showing: {shown} · All: {all}")
-      .split("{shown}").join(String(list.length))
-      .split("{all}").join(String(totalAll));
-    var countHtml = '<p class="orders-count-line" id="ordersCountLine">' + A.esc(countLine) + '</p>';
     if (!A.orders.length) {
-      box.innerHTML = countHtml + '<p class="note">' + A.t("o_empty") + '</p>';
+      box.innerHTML = '<p class="note">' + A.t("o_empty") + '</p>';
+      try { A.syncExportLabel(); } catch (e0) {}
       return;
     }
     if (!list.length) {
       var emptyF = A.t("o_emptyFilter") || "";
-      box.innerHTML = countHtml + (emptyF ? ('<p class="note">' + emptyF + '</p>') : "");
+      box.innerHTML = emptyF ? ('<p class="note">' + emptyF + '</p>') : "";
+      try { A.syncExportLabel(); } catch (e0b) {}
       return;
     }
     var cardHtml = function (o) {
@@ -635,7 +646,7 @@
     };
     list.sort(function (a, b) { return String(b.at || "").localeCompare(String(a.at || "")); });
     /* No day headers — each order already shows its own date/time. No slice: show ALL matching. */
-    box.innerHTML = countHtml + list.map(cardHtml).join("");
+    box.innerHTML = list.map(cardHtml).join("");
     try { A.syncExportLabel(); } catch (e3) {}
   };
 })(window);

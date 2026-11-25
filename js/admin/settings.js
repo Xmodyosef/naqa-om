@@ -1,5 +1,6 @@
 (function (w) {
   var A = w.NaqaAdmin;
+  var STORE_KEY = "naqa_store_cfg";
 
   function scrubLegacyTokens() {
     try {
@@ -24,6 +25,73 @@
     return show + "@" + domain;
   }
 
+  function defaultStore() {
+    return {
+      wa: String(w.WA_NUMBER || "96879088349").replace(/\D/g, "") || "96879088349",
+      bankName: String(w.BANK_NAME || "").trim(),
+      bankIban: String(w.BANK_IBAN || "").trim()
+    };
+  }
+
+  function loadStoreCfg() {
+    var base = defaultStore();
+    try {
+      var raw = localStorage.getItem(STORE_KEY);
+      if (!raw) return base;
+      var o = JSON.parse(raw);
+      if (!o || typeof o !== "object") return base;
+      if (o.wa) base.wa = String(o.wa).replace(/\D/g, "") || base.wa;
+      if (o.bankName != null) base.bankName = String(o.bankName).trim();
+      if (o.bankIban != null) base.bankIban = String(o.bankIban).trim().replace(/\s+/g, " ");
+    } catch (e) {}
+    return base;
+  }
+
+  function applyStoreCfg(cfg) {
+    if (!cfg) return;
+    var wa = String(cfg.wa || "").replace(/\D/g, "");
+    if (wa) {
+      try { w.WA_NUMBER = wa; } catch (e) {}
+    }
+    try { w.BANK_NAME = String(cfg.bankName || ""); } catch (e2) {}
+    try { w.BANK_IBAN = String(cfg.bankIban || ""); } catch (e3) {}
+    try {
+      var a = document.getElementById("waAdmin");
+      if (a && wa) a.href = "https://wa.me/" + wa;
+    } catch (e4) {}
+  }
+
+  function saveStoreCfg(cfg) {
+    var clean = {
+      wa: String(cfg.wa || "").replace(/\D/g, ""),
+      bankName: String(cfg.bankName || "").trim(),
+      bankIban: String(cfg.bankIban || "").trim().replace(/\s+/g, " ")
+    };
+    try { localStorage.setItem(STORE_KEY, JSON.stringify(clean)); } catch (e) {}
+    applyStoreCfg(clean);
+    /* optional cloud public doc for store (if signed in) */
+    try {
+      if (w.firebase && firebase.apps && firebase.apps.length && firebase.firestore) {
+        var u = firebase.auth && firebase.auth().currentUser;
+        if (u) {
+          firebase.firestore().collection("naqa").doc("store").set({
+            wa: clean.wa,
+            bankName: clean.bankName,
+            bankIban: clean.bankIban,
+            updatedAt: (firebase.firestore.FieldValue && firebase.firestore.FieldValue.serverTimestamp)
+              ? firebase.firestore.FieldValue.serverTimestamp()
+              : new Date().toISOString(),
+            updatedBy: u.uid || ""
+          }, { merge: true }).catch(function () {});
+        }
+      }
+    } catch (eC) {}
+    return clean;
+  }
+
+  /* apply saved cfg as soon as module loads */
+  try { applyStoreCfg(loadStoreCfg()); } catch (e0) {}
+
   A.paintSettings = function () {
     var box = document.getElementById("settingsBox");
     if (!box) return;
@@ -39,43 +107,49 @@
       }
     } catch (e2) {}
 
-    var wa = String(w.WA_NUMBER || "96879088349");
-    var bankName = (w.BANK_NAME || "").trim();
-    var bankIban = (w.BANK_IBAN || "").trim();
+    var cfg = loadStoreCfg();
+    applyStoreCfg(cfg);
     var emailMasked = maskEmail(email);
     var signed = email
       ? (ar ? "مسجّلة دخول ✓" : "Signed in ✓")
       : (ar ? "غير مسجّلة" : "Not signed in");
+    var langLabel = A.lang === "en" ? "English" : "العربية";
 
     box.innerHTML =
       '<div class="settings-stack">'
 
-      /* ① المتجر */
-      + '<section class="set-card">'
+      /* ① المتجر — قابل للتعديل */
+      + '<section class="set-card" id="setStoreCard">'
       +   '<div class="set-card-head"><span class="set-card-ico" aria-hidden="true">◈</span><h2 class="set-card-title">' + (ar ? "المتجر" : "Store") + '</h2></div>'
-      +   '<p class="set-card-note">' + (ar ? "بيانات تظهر للزبائن في المتجر." : "Details customers see on the store.") + '</p>'
-      +   '<div class="set-list">'
-      +     '<div class="set-row"><span class="set-k">' + (ar ? "واتساب" : "WhatsApp") + '</span><span class="set-v" dir="ltr">+' + A.esc(wa) + '</span></div>'
-      +     '<div class="set-row"><span class="set-k">' + (ar ? "البنك" : "Bank") + '</span><span class="set-v">' + A.esc(bankName || (ar ? "غير مضاف" : "Not set")) + '</span></div>'
-      +     '<div class="set-row"><span class="set-k">IBAN</span><span class="set-v set-mono" dir="ltr">' + A.esc(bankIban || (ar ? "غير مضاف" : "Not set")) + '</span></div>'
+      +   '<p class="set-card-note">' + (ar ? "واتساب والبنك يظهران للزبون. عدّلي ثم احفظي." : "WhatsApp & bank shown to customers. Edit then save.") + '</p>'
+      +   '<div class="set-fields">'
+      +     '<label class="set-field"><span class="set-field-lab">' + (ar ? "واتساب (مع مفتاح الدولة)" : "WhatsApp (with country code)") + '</span>'
+      +       '<input type="tel" id="setWa" class="set-input" dir="ltr" inputmode="numeric" autocomplete="tel" placeholder="9687xxxxxxx" value="' + A.esc(cfg.wa) + '" /></label>'
+      +     '<label class="set-field"><span class="set-field-lab">' + (ar ? "اسم البنك" : "Bank name") + '</span>'
+      +       '<input type="text" id="setBankName" class="set-input" autocomplete="organization" placeholder="' + (ar ? "مثال: بنك مسقط" : "e.g. Bank Muscat") + '" value="' + A.esc(cfg.bankName) + '" /></label>'
+      +     '<label class="set-field"><span class="set-field-lab">IBAN</span>'
+      +       '<input type="text" id="setBankIban" class="set-input set-mono" dir="ltr" autocomplete="off" placeholder="OM…" value="' + A.esc(cfg.bankIban) + '" /></label>'
       +   '</div>'
-      +   '<p class="set-card-hint">' + (ar ? "التعديل من الملف لاحقاً — بدون رموز تقنية." : "Editable later — no technical tokens.") + '</p>'
+      +   '<div class="set-actions set-actions-row">'
+      +     '<button type="button" class="set-pill set-pill-solid" id="btnSaveStore">' + (ar ? "حفظ بيانات المتجر" : "Save store details") + '</button>'
+      +   '</div>'
+      +   '<p class="set-status" id="storeStatus" role="status" aria-live="polite"></p>'
       + '</section>'
 
-      /* ② الحساب */
+      /* ② الحساب + لغة */
       + '<section class="set-card">'
       +   '<div class="set-card-head"><span class="set-card-ico" aria-hidden="true">☺</span><h2 class="set-card-title">' + (ar ? "الحساب" : "Account") + '</h2></div>'
       +   '<div class="set-list">'
       +     '<div class="set-row"><span class="set-k">' + (ar ? "الحالة" : "Status") + '</span><span class="set-v set-ok">' + A.esc(signed) + '</span></div>'
       +     (email
-            ? ('<div class="set-row" id="emailRevealRow"><span class="set-k">' + (ar ? "البريد" : "Email") + '</span><span class="set-v set-mono" dir="ltr" id="emailRevealVal">' + A.esc(emailMasked) + '</span></div>')
+            ? ('<div class="set-row"><span class="set-k">' + (ar ? "البريد" : "Email") + '</span><span class="set-v set-mono" dir="ltr" id="emailRevealVal">' + A.esc(emailMasked) + '</span></div>')
             : ('<p class="set-card-note">' + (ar ? "ما في جلسة — ارجعي لشاشة الدخول." : "No session — return to sign-in.") + '</p>'))
+      +     '<div class="set-row"><span class="set-k">' + (ar ? "لغة اللوحة" : "Panel language") + '</span><span class="set-v" id="setLangVal">' + A.esc(langLabel) + '</span></div>'
       +   '</div>'
-      +   (email
-          ? ('<div class="set-actions">'
-            + '<button type="button" class="set-pill set-pill-ghost" id="btnRevealEmail">' + (ar ? "إظهار / إخفاء البريد" : "Show / hide email") + '</button>'
-            + '</div>')
-          : "")
+      +   '<div class="set-actions set-actions-row">'
+      +     (email ? '<button type="button" class="set-pill set-pill-ghost" id="btnRevealEmail">' + (ar ? "إظهار / إخفاء البريد" : "Show / hide email") + '</button>' : '')
+      +     '<button type="button" class="set-pill set-pill-solid" id="btnToggleLang">' + (ar ? "English" : "العربية") + '</button>'
+      +   '</div>'
       +   '<p class="set-card-hint">' + (ar
           ? "كلمة السر من شاشة الدخول فقط. بعد الدخول الحفظ يزامن تلقائياً."
           : "Password only on the login screen. After sign-in, saves sync automatically.") + '</p>'
@@ -88,8 +162,8 @@
       + '<section class="set-card">'
       +   '<div class="set-card-head"><span class="set-card-ico" aria-hidden="true">⇄</span><h2 class="set-card-title">' + (ar ? "المزامنة" : "Sync") + '</h2></div>'
       +   '<p class="set-card-note">' + (ar
-          ? "الطلبات على هذا الجهاز. اسحبي من السحابة أو ارفعي نسخة."
-          : "Orders stay on this device. Pull from cloud or push a copy.") + '</p>'
+          ? "اسحبي الطلبات من السحابة لهذا الجهاز، أو ارفعي نسخة احتياطية."
+          : "Pull cloud orders to this device, or push a backup.") + '</p>'
       +   '<div class="set-actions set-actions-row">'
       +     '<button type="button" class="set-pill set-pill-solid" id="btnPullOrders">' + (ar ? "سحب الطلبات" : "Pull orders") + '</button>'
       +     '<button type="button" class="set-pill set-pill-solid" id="btnPushOrders">' + (ar ? "رفع الطلبات" : "Push orders") + '</button>'
@@ -117,6 +191,33 @@
       if (A.activity && A.activity.render) A.activity.render(document.getElementById("activityBox"));
     } catch (eAct) {}
 
+    /* حفظ المتجر */
+    var saveBtn = document.getElementById("btnSaveStore");
+    if (saveBtn) {
+      saveBtn.onclick = function () {
+        var waEl = document.getElementById("setWa");
+        var bnEl = document.getElementById("setBankName");
+        var biEl = document.getElementById("setBankIban");
+        var wa = (waEl && waEl.value || "").replace(/\D/g, "");
+        if (wa.length < 8) {
+          A.setMsg("storeStatus", ar ? "رقم واتساب غير مكتمل." : "WhatsApp number looks incomplete.");
+          return;
+        }
+        var saved = saveStoreCfg({
+          wa: wa,
+          bankName: bnEl ? bnEl.value : "",
+          bankIban: biEl ? biEl.value : ""
+        });
+        if (waEl) waEl.value = saved.wa;
+        if (biEl) biEl.value = saved.bankIban;
+        A.setMsg("storeStatus", ar ? "تم حفظ بيانات المتجر ✓" : "Store details saved ✓");
+        try {
+          if (A.activity && A.activity.log) A.activity.log(ar ? "حفظ المتجر" : "Save store", "wa · bank");
+          if (A.activity && A.activity.render) A.activity.render(document.getElementById("activityBox"));
+        } catch (eL) {}
+      };
+    }
+
     var revealed = false;
     var rev = document.getElementById("btnRevealEmail");
     if (rev) {
@@ -125,6 +226,24 @@
         if (!val || !email) return;
         revealed = !revealed;
         val.textContent = revealed ? email : emailMasked;
+      };
+    }
+
+    var langBtn = document.getElementById("btnToggleLang");
+    if (langBtn) {
+      langBtn.onclick = function () {
+        var next = A.lang === "en" ? "ar" : "en";
+        if (A.setLang) {
+          A.setLang(next);
+          /* repaint after dict load */
+          setTimeout(function () {
+            if (A.paintSettings) A.paintSettings();
+          }, 80);
+        } else {
+          A.lang = next;
+          try { localStorage.setItem("naqa_admin_lang", next); } catch (e) {}
+          A.paintSettings();
+        }
       };
     }
 
@@ -141,6 +260,9 @@
             ? (ar ? "تم سحب الطلبات ✓" : "Orders pulled ✓")
             : (ar ? "ما في طلبات سحابية أو فشل السحب." : "No cloud orders or pull failed."));
           if (ok && A.paintOrders) A.paintOrders();
+          try { if (A.activity && A.activity.log) A.activity.log(ar ? "سحب طلبات" : "Pull orders", ok ? "ok" : "fail"); } catch (e) {}
+        }).catch(function () {
+          A.setMsg("settingsStatus", ar ? "فشل السحب." : "Pull failed.");
         });
       };
     }
@@ -155,7 +277,10 @@
         A.pushOrdersCloud().then(function (ok) {
           A.setMsg("settingsStatus", ok
             ? (ar ? "تم رفع الطلبات ✓" : "Orders pushed ✓")
-            : (ar ? "فشل الرفع — راجعي الدخول والقواعد." : "Push failed — check sign-in and rules."));
+            : (ar ? "فشل الرفع — راجعي الدخول." : "Push failed — check sign-in."));
+          try { if (A.activity && A.activity.log) A.activity.log(ar ? "رفع طلبات" : "Push orders", ok ? "ok" : "fail"); } catch (e) {}
+        }).catch(function () {
+          A.setMsg("settingsStatus", ar ? "فشل الرفع." : "Push failed.");
         });
       };
     }

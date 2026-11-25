@@ -235,3 +235,108 @@ body.dark .set-pill-danger {
   color: #e8b4be;
   border-color: #5a3040;
 }
+
+/* ===== حقول المتجر ===== */
+.set-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 4px;
+}
+.set-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 0;
+}
+.set-field-lab {
+  font: 700 0.72rem/1.2 inherit;
+  color: #7a6a66;
+}
+.set-input {
+  width: 100%;
+  box-sizing: border-box;
+  height: 40px;
+  padding: 0 12px;
+  border: 1px solid #eadfd9;
+  border-radius: 12px;
+  background: #faf6f4;
+  color: #1f1a17;
+  font: 700 0.88rem/1 "Noto Sans Arabic", "IBM Plex Sans", system-ui, sans-serif;
+  outline: 0;
+  transition: border-color 0.15s, background 0.15s, box-shadow 0.15s;
+}
+.set-input:focus {
+  border-color: #c46b7c;
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(196, 107, 124, 0.18);
+}
+.set-input.set-mono {
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.03em;
+}
+.set-input::placeholder {
+  color: #b9aaa6;
+  font-weight: 600;
+}
+
+/* سجل نشاط مبسّط */
+.set-act-empty {
+  margin: 0;
+  font: 600 0.78rem/1.4 inherit;
+  color: #9a7b72;
+}
+.set-act-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #f0e6e2;
+  background: #faf6f4;
+}
+.set-act-item {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-areas:
+    "what when"
+    "detail when";
+  gap: 2px 10px;
+  padding: 10px 12px;
+  border-bottom: 1px solid #f0e6e2;
+  align-items: start;
+}
+.set-act-item:last-child { border-bottom: 0; }
+.set-act-what {
+  grid-area: what;
+  font: 800 0.8rem/1.3 inherit;
+  color: #1f1a17;
+}
+.set-act-detail {
+  grid-area: detail;
+  font: 600 0.72rem/1.3 inherit;
+  color: #7a6a66;
+}
+.set-act-when {
+  grid-area: when;
+  font: 700 0.68rem/1.2 inherit;
+  color: #8d3048;
+  white-space: nowrap;
+  align-self: center;
+}
+
+body.dark .set-input {
+  background: #1a1412;
+  border-color: #3a2f2a;
+  color: #f5eeea;
+}
+body.dark .set-act-list {
+  background: #1a1412;
+  border-color: #3a2f2a;
+}
+body.dark .set-act-item { border-bottom-color: #3a2f2a; }
+body.dark .set-act-what { color: #f5eeea; }
+body.dark .set-act-detail { color: #a89b94; }

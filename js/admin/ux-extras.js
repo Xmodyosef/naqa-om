@@ -25,12 +25,30 @@
       var rows = A.activity.list();
       var ar = A.lang !== "en";
       if (!rows.length) {
-        el.innerHTML = '<p class="note">' + (ar ? "ما في نشاط بعد." : "No activity yet.") + "</p>";
+        el.innerHTML = '<p class="set-act-empty">' + (ar ? "ما في نشاط بعد." : "No activity yet.") + "</p>";
         return;
       }
-      el.innerHTML = rows.slice(0, 30).map(function (r) {
-        return '<div class="cust-row"><div><strong>' + A.esc(r.action) + '</strong><small dir="ltr">' + A.esc(r.at) + "</small></div><span>" + A.esc(r.detail || "") + "</span></div>";
-      }).join("");
+      function ago(iso) {
+        try {
+          var t = new Date(iso).getTime();
+          if (!isFinite(t)) return iso || "";
+          var d = Math.max(0, Date.now() - t);
+          var m = Math.floor(d / 60000);
+          if (m < 1) return ar ? "الآن" : "now";
+          if (m < 60) return (ar ? "قبل " + m + " د" : m + "m ago");
+          var h = Math.floor(m / 60);
+          if (h < 48) return (ar ? "قبل " + h + " س" : h + "h ago");
+          var days = Math.floor(h / 24);
+          return ar ? "قبل " + days + " يوم" : days + "d ago";
+        } catch (e) { return iso || ""; }
+      }
+      el.innerHTML = '<ul class="set-act-list">' + rows.slice(0, 12).map(function (r) {
+        return '<li class="set-act-item">'
+          + '<span class="set-act-what">' + A.esc(r.action) + '</span>'
+          + (r.detail ? '<span class="set-act-detail">' + A.esc(r.detail) + '</span>' : '')
+          + '<span class="set-act-when" dir="ltr">' + A.esc(ago(r.at)) + '</span>'
+          + '</li>';
+      }).join("") + '</ul>';
     }
   };
 

@@ -48,7 +48,7 @@ function getNaqaCatalogs(){
       sort:"new", match:function(p){ return !!NAQA_K_BEAUTY[p.brand]; } },
 
     /* —— Shop by section —— */
-    { id:"care", cover:"media/catalogs/care.webp", ar:"عناية بالبشرة", en:"Skincare", em:"✨", tone:"care", group:"shop",
+    { id:"care", cover:"media/catalogs/care.webp", ar:"عناية بالبشرة", en:"Skincare", em:"✨", tone:"care", featured:true, group:"deal",
       subAr:"غسول · سيروم · مرطب", subEn:"Cleanse · treat · moisturise",
       sort:"new", match:function(p){ return p.cat === "عناية"; } },
     { id:"face", cover:"media/catalogs/face.webp", ar:"مكياج الوجه", en:"Face makeup", em:"💄", tone:"makeup", group:"shop",
@@ -204,17 +204,23 @@ function catalogTileHTML(c, size){
     + '</div></button>';
 }
 
-function catalogMiniHTML(c){
+function catalogBannerHTML(c, size){
   var list = catalogList(c.id, 1);
   if(!list.length && c.id !== "all") return "";
   var name = lang==="en" ? c.en : c.ar;
-  var photo = c.cover
-    ? '<img src="'+esc(c.cover)+'" alt="" loading="lazy" decoding="async" width="76" height="76">'
-    : '<span class="home-cat-mini-fallback" aria-hidden="true">'+c.em+'</span>';
-  return '<button type="button" class="home-cat-mini" data-open-catalog="'+esc(c.id)+'">'
-    + '<span class="home-cat-mini-photo">'+photo+'</span>'
+  var sub = lang==="en" ? c.subEn : c.subAr;
+  var n = catalogList(c.id).length;
+  var sizeCls = size === "feat" ? " home-ban--feat" : " home-ban--grid";
+  var img = c.cover
+    ? '<img src="'+esc(c.cover)+'" alt="" loading="lazy" decoding="async" width="600" height="260">'
+    : '<span class="home-ban-fallback" aria-hidden="true">'+c.em+'</span>';
+  return '<button type="button" class="home-ban tone-'+esc(c.tone||"care")+sizeCls+'" data-open-catalog="'+esc(c.id)+'">'
+    + img
+    + '<span class="home-ban-copy">'
     + '<b>'+esc(name)+'</b>'
-    + '</button>';
+    + '<i>'+esc(sub)+'</i>'
+    + '<em>'+n+(lang==="en"?" products":" منتج")+'</em>'
+    + '</span></button>';
 }
 
 function renderHomeCatalogs(){
@@ -228,14 +234,32 @@ function renderHomeCatalogs(){
   box.hidden = false;
   var cats = getNaqaCatalogs();
   var en = (typeof lang !== "undefined" && lang === "en");
-  var html = '<div class="home-catalog home-catalog--mini" id="homeCatalog">'
-    + '<div class="home-cat-section-head home-cat-section-head--slim">'
-    + '<h3>'+(en?"Catalogs":"الكتالوجات")+'</h3>'
-    + '<span>'+(en?"Swipe":"اسحبي")+'</span>'
-    + '</div>'
-    + '<div class="home-cat-strip">';
-  cats.forEach(function(c){ html += catalogMiniHTML(c); });
-  html += '</div></div>';
+  var html = '<div class="home-catalog home-catalog--banners" id="homeCatalog">';
+
+  /* Promo banners — deals / care / Korean like Nice One */
+  var featured = cats.filter(function(c){ return c.featured; });
+  if(featured.length){
+    html += '<div class="home-cat-section-head home-cat-section-head--slim">'
+      + '<h3>'+(en?"Offers & picks":"عروض ومختارات")+'</h3>'
+      + '<span>'+(en?"Swipe":"اسحبي")+'</span>'
+      + '</div>';
+    html += '<div class="home-ban-row" role="list">';
+    featured.forEach(function(c){ html += catalogBannerHTML(c, "feat"); });
+    html += '</div>';
+  }
+
+  /* Category banners — one banner per shop type */
+  var shop = cats.filter(function(c){ return !c.featured; });
+  if(shop.length){
+    html += '<div class="home-cat-section-head home-cat-section-head--slim">'
+      + '<h3>'+(en?"Shop by type":"تسوقي حسب النوع")+'</h3>'
+      + '</div>';
+    html += '<div class="home-ban-grid">';
+    shop.forEach(function(c){ html += catalogBannerHTML(c, "grid"); });
+    html += '</div>';
+  }
+
+  html += '</div>';
   box.innerHTML = html;
 }
 

@@ -59,56 +59,127 @@
     var printed = A.t("o_pdfPrinted") || "";
     var whenPrint = "";
     try { whenPrint = A.fmtDateTimeNum(new Date()); } catch (e) { whenPrint = new Date().toISOString(); }
+    var omr = A.t("omr") || "OMR";
+    var money = function (n) {
+      try { return A.fmtMoney(n); } catch (e2) { return String(n == null ? "—" : n); }
+    };
+    /* نص دفع نظيف للطباعة — بدون «الرسوم انحذفت» */
+    var payLabel = function (o) {
+      var s = (o && (o.paymentStatus || o.payStatus || o.payment || o.pay)) || "";
+      s = String(s).toLowerCase();
+      if (s === "confirmed" || s.indexOf("confirm") >= 0) return A.t("payConfirmed") || "Confirmed";
+      if (s === "pending" || s.indexOf("pending") >= 0 || s.indexOf("bank") >= 0) return A.t("payPending") || "Pending";
+      if (s === "cod" || s.indexOf("cod") >= 0 || s.indexOf("استلام") >= 0) return A.t("payCod") || "COD";
+      if (A.payText) {
+        var t = A.payText(o) || "";
+        return String(t).replace(/\s*[·•]\s*الرسوم\s*انحذفت?/gi, "").replace(/\s*[·•]\s*fees\s*removed/gi, "").trim() || t;
+      }
+      return o.payment || "—";
+    };
     var cards = list.map(function (o, idx) {
       var st = A.normalizeStatus(o.status);
       var when = "";
       try { when = o.at ? A.fmtDateTimeNum(o.at) : ""; } catch (e2) { when = o.at || ""; }
-      var sums = A.orderTotals ? A.orderTotals(o) : { grand: o.total || 0, beforeTax: 0, tax: 0, del: 0, cod: 0, discount: 0 };
+      var sums = A.orderTotals ? A.orderTotals(o) : { grand: o.total || 0, paid: 0, del: 0, cod: 0, discount: 0, tax: 0 };
       var itemsHtml = "";
       if (Array.isArray(o.items) && o.items.length) {
-        itemsHtml = "<table class='items'><thead><tr><th>#</th><th>" + A.esc(A.lang === "en" ? "Item" : "الصنف") + "</th><th>" + A.esc(A.lang === "en" ? "Qty" : "الكمية") + "</th><th>" + A.esc(A.lang === "en" ? "Price" : "السعر") + "</th></tr></thead><tbody>"
+        itemsHtml = "<table class='items'><thead><tr>"
+          + "<th class='c-n'>#</th>"
+          + "<th class='c-name'>" + A.esc(A.t("o_pdfItems") || "Items") + "</th>"
+          + "<th class='c-q'>" + A.esc(A.t("o_pdfQty") || "Qty") + "</th>"
+          + "<th class='c-p'>" + A.esc(A.t("o_pdfPrice") || "Price") + "</th>"
+          + "<th class='c-l'>" + A.esc(A.t("o_pdfLine") || "Total") + "</th>"
+          + "</tr></thead><tbody>"
           + o.items.map(function (it, i) {
               var name = (A.lang === "en" ? (it.nameEn || it.name || it.nameAr) : (it.nameAr || it.name || it.nameEn)) || "";
               var tax = A.itemTaxView ? A.itemTaxView(it) : { qty: it.qty || 1, unit: it.price || 0 };
-              return "<tr><td>" + (i + 1) + "</td><td>" + A.esc(name) + (it.sku ? (" <small>" + A.esc(it.sku) + "</small>") : "") + "</td><td>" + A.esc(tax.qty) + "</td><td>" + A.esc(A.fmtMoney ? A.fmtMoney(tax.unit) : tax.unit) + "</td></tr>";
+              var line = (Number(tax.unit) || 0) * (Number(tax.qty) || 1);
+              return "<tr>"
+                + "<td class='c-n'>" + (i + 1) + "</td>"
+                + "<td class='c-name'>" + A.esc(name) + (it.sku ? (" <span class='sku'>" + A.esc(it.sku) + "</span>") : "") + "</td>"
+                + "<td class='c-q'>" + A.esc(tax.qty) + "</td>"
+                + "<td class='c-p'>" + A.esc(money(tax.unit)) + "</td>"
+                + "<td class='c-l'>" + A.esc(money(line)) + "</td>"
+                + "</tr>";
             }).join("")
           + "</tbody></table>";
       } else if (o.itemsText) {
         itemsHtml = "<pre class='note'>" + A.esc(o.itemsText) + "</pre>";
       }
+      var sumRows = "";
+      if (sums.paid) sumRows += "<div class='sum-row'><span>" + A.esc(A.t("o_sub") || "Subtotal") + "</span><b>" + A.esc(money(sums.paid)) + " " + A.esc(omr) + "</b></div>";
+      if (sums.discount > 0) sumRows += "<div class='sum-row'><span>" + A.esc(A.t("o_disc") || "Discount") + "</span><b>−" + A.esc(money(sums.discount)) + " " + A.esc(omr) + "</b></div>";
+      if (sums.del) sumRows += "<div class='sum-row'><span>" + A.esc(A.t("o_del") || "Delivery") + "</span><b>" + A.esc(money(sums.del)) + " " + A.esc(omr) + "</b></div>";
+      if (sums.cod) sumRows += "<div class='sum-row'><span>" + A.esc(A.t("o_cod") || "COD fee") + "</span><b>" + A.esc(money(sums.cod)) + " " + A.esc(omr) + "</b></div>";
+      sumRows += "<div class='sum-row grand'><span>" + A.esc(A.t("o_grand") || "Total") + "</span><b>" + A.esc(money(sums.grand)) + " " + A.esc(omr) + "</b></div>";
       return "<section class='card'>"
-        + "<header><b>" + A.esc(o.id) + "</b><span class='st'>" + A.esc(A.statusLabel(st)) + "</span><span class='when'>" + A.esc(when) + "</span></header>"
-        + "<div class='meta'>" + A.esc(o.name || "—") + " · " + A.esc(o.phone || "—") + " · " + A.esc(o.area || "—") + "</div>"
-        + "<div class='meta'>" + A.esc(A.t("payLine") || "Payment") + ": " + A.esc(A.payText ? A.payText(o) : (o.payment || "")) + "</div>"
-        + (o.note ? ("<div class='meta'>" + A.esc(A.t("note") || "Note") + ": " + A.esc(o.note) + "</div>") : "")
+        + "<header class='card-head'>"
+        + "<div class='oid'><span class='lab'>" + A.esc(A.lang === "en" ? "Order" : "طلب") + "</span><b>" + A.esc(o.id) + "</b></div>"
+        + "<span class='st'>" + A.esc(A.statusLabel(st)) + "</span>"
+        + "<span class='when'>" + A.esc(when) + "</span>"
+        + "</header>"
+        + "<div class='grid'>"
+        + "<div class='cell'><div class='k'>" + A.esc(A.t("o_pdfCustomer") || "Customer") + "</div><div class='v'>" + A.esc(o.name || "—") + "</div></div>"
+        + "<div class='cell'><div class='k'>" + A.esc(A.t("o_pdfContact") || "Contact") + "</div><div class='v dir-ltr'>" + A.esc(o.phone || "—") + "</div></div>"
+        + "<div class='cell'><div class='k'>" + A.esc(A.t("o_pdfArea") || "Area") + "</div><div class='v'>" + A.esc(o.area || o.city || "—") + "</div></div>"
+        + "<div class='cell'><div class='k'>" + A.esc(A.t("payLine") || "Payment") + "</div><div class='v'>" + A.esc(payLabel(o)) + "</div></div>"
+        + "</div>"
+        + (o.note ? ("<div class='note-line'><span class='k'>" + A.esc(A.t("note") || "Note") + ":</span> " + A.esc(o.note) + "</div>") : "")
         + itemsHtml
-        + "<footer class='tot'><span>" + A.esc(A.t("o_grand") || "Total") + "</span><b>" + A.esc(A.fmtMoney ? A.fmtMoney(sums.grand) : sums.grand) + " " + A.esc(A.t("omr") || "OMR") + "</b></footer>"
+        + "<div class='summary'><div class='sum-title'>" + A.esc(A.t("o_pdfSummary") || "Summary") + "</div>" + sumRows + "</div>"
         + "</section>";
     }).join("");
     var html = "<!doctype html><html lang='" + lang + "' dir='" + dir + "'><head><meta charset='utf-8'>"
       + "<title>" + A.esc(title) + "</title>"
       + "<style>"
-      + "@page{size:A4;margin:12mm}"
-      + "body{font-family:'Noto Sans Arabic','IBM Plex Sans',system-ui,sans-serif;color:#1f1a17;margin:0;padding:12px;background:#fff}"
-      + "h1{font-size:1.1rem;margin:0 0 4px;color:#8d3048}"
-      + ".sub{color:#6b625c;font-size:.8rem;margin-bottom:14px}"
-      + ".card{border:1px solid #e8ddd8;border-radius:10px;padding:12px;margin:0 0 12px;page-break-inside:avoid}"
-      + ".card header{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:6px}"
-      + ".card header b{font-size:.95rem}"
-      + ".st{background:#f3e6e9;color:#8d3048;border-radius:999px;padding:3px 8px;font-size:.72rem;font-weight:800}"
-      + ".when{margin-inline-start:auto;font-size:.75rem;color:#6b625c}"
-      + ".meta{font-size:.82rem;color:#3a322e;margin:2px 0}"
-      + "table.items{width:100%;border-collapse:collapse;margin-top:8px;font-size:.8rem}"
-      + "table.items th,table.items td{border-bottom:1px solid #efe4df;padding:5px 4px;text-align:start}"
-      + "table.items th{color:#6b625c;font-weight:700}"
-      + "footer.tot{display:flex;justify-content:space-between;margin-top:10px;padding-top:8px;border-top:1px solid #efe4df;font-weight:800}"
-      + "pre.note{white-space:pre-wrap;font-size:.78rem;background:#faf6f4;padding:8px;border-radius:8px}"
-      + "@media print{body{padding:0}.no-print{display:none!important}}"
-      + "</style></head><body>"
-      + "<h1>" + A.esc(title) + "</h1>"
-      + "<div class='sub'>" + A.esc(printed) + ": " + A.esc(whenPrint) + " · " + list.length + "</div>"
+      + "/* A4 full-bleed friendly */"
+      + "@page{size:A4;margin:10mm 12mm}"
+      + "*{box-sizing:border-box}"
+      + "html,body{width:100%;margin:0;padding:0;background:#fff}"
+      + "body{font-family:'Noto Sans Arabic','IBM Plex Sans',Tahoma,system-ui,sans-serif;color:#1a1412;"
+      + "font-size:11.5pt;line-height:1.45;padding:0 2mm}"
+      + ".sheet{width:100%;max-width:186mm;margin:0 auto}"
+      + ".doc-head{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;"
+      + "border-bottom:2.5px solid #8d3048;padding:0 0 10px;margin:0 0 14px}"
+      + ".doc-head h1{font-size:18pt;margin:0;color:#8d3048;font-weight:800;letter-spacing:-.02em}"
+      + ".doc-head .sub{font-size:10pt;color:#5c534e;text-align:end}"
+      + ".card{width:100%;border:1px solid #e2d4cf;border-radius:8px;padding:12px 14px;margin:0 0 12px;"
+      + "page-break-inside:avoid;background:#fff}"
+      + ".card-head{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin:0 0 10px;"
+      + "padding-bottom:8px;border-bottom:1px solid #efe4df}"
+      + ".oid .lab{display:block;font-size:8.5pt;color:#8a7f78;font-weight:700}"
+      + ".oid b{font-size:13pt;color:#1a1412}"
+      + ".st{background:#f3e6e9;color:#8d3048;border-radius:999px;padding:4px 12px;font-size:9.5pt;font-weight:800}"
+      + ".when{margin-inline-start:auto;font-size:10pt;color:#5c534e;font-variant-numeric:tabular-nums}"
+      + ".grid{display:grid;grid-template-columns:1fr 1fr;gap:8px 16px;margin:0 0 10px}"
+      + ".cell .k{font-size:8.5pt;color:#8a7f78;font-weight:700;margin-bottom:2px}"
+      + ".cell .v{font-size:11pt;font-weight:600;color:#1a1412;word-break:break-word}"
+      + ".dir-ltr{direction:ltr;unicode-bidi:isolate;text-align:start}"
+      + ".note-line{font-size:10pt;background:#faf6f4;border-radius:6px;padding:6px 10px;margin:0 0 10px}"
+      + ".note-line .k{font-weight:800;color:#8d3048}"
+      + "table.items{width:100%;border-collapse:collapse;margin:4px 0 12px;font-size:10.5pt}"
+      + "table.items th{background:#f7eee9;color:#5c3a40;font-weight:800;padding:7px 8px;border-bottom:2px solid #e8ddd8;text-align:start}"
+      + "table.items td{padding:7px 8px;border-bottom:1px solid #efe4df;vertical-align:top}"
+      + "table.items tbody tr:last-child td{border-bottom:0}"
+      + ".c-n{width:28px;text-align:center!important;color:#8a7f78}"
+      + ".c-q,.c-p,.c-l{width:72px;text-align:end!important;font-variant-numeric:tabular-nums;white-space:nowrap}"
+      + ".sku{display:inline-block;font-size:8.5pt;color:#8a7f78;font-weight:600;margin-inline-start:4px}"
+      + ".summary{margin-top:4px;padding:10px 12px;background:#fdf8f6;border:1px solid #efe4df;border-radius:8px;"
+      + "max-width:280px;margin-inline-start:auto}"
+      + ".sum-title{font-size:9pt;font-weight:800;color:#8d3048;margin-bottom:6px}"
+      + ".sum-row{display:flex;justify-content:space-between;gap:16px;font-size:10.5pt;padding:3px 0;color:#3a322e}"
+      + ".sum-row.grand{margin-top:4px;padding-top:6px;border-top:1.5px solid #d9c8c2;font-size:12.5pt;font-weight:800;color:#8d3048}"
+      + "pre.note{white-space:pre-wrap;font-size:10pt;background:#faf6f4;padding:10px;border-radius:8px;margin:0 0 10px}"
+      + "@media print{body{padding:0}.sheet{max-width:none}.no-print{display:none!important}}"
+      + "@media screen{body{padding:16px;background:#ece6e2}.sheet{background:#fff;padding:14px 16px;border-radius:10px;"
+      + "box-shadow:0 2px 12px rgba(0,0,0,.08)}}"
+      + "</style></head><body><div class='sheet'>"
+      + "<div class='doc-head'><h1>" + A.esc(title) + "</h1>"
+      + "<div class='sub'>" + A.esc(printed) + ": " + A.esc(whenPrint) + "<br>" + list.length + " "
+      + A.esc(A.lang === "en" ? (list.length === 1 ? "order" : "orders") : "طلب") + "</div></div>"
       + cards
-      + "<script>window.onload=function(){setTimeout(function(){window.print();},250);}<\\/script>"
+      + "</div>"
+      + "<script>window.onload=function(){setTimeout(function(){window.print();},280);}<\\/script>"
       + "</body></html>";
     var w = window.open("", "_blank");
     if (!w) {

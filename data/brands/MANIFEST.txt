@@ -8,7 +8,8 @@ axis-y	AXIS-Y	4
 beauty-of-joseon	Beauty of Joseon	3
 biodance	Biodance	1
 bioderma	Bioderma	1
-cantu	Cantu	1
+bourjois	Bourjois	6
+cantu	Cantu	12
 celimax	Celimax	5
 centellian24	Centellian24	1
 cetaphil	Cetaphil	1
@@ -17,7 +18,7 @@ dr-althea	Dr.Althea	8
 dr-melaxin	Dr.Melaxin	1
 epii	epii	1
 eqqualberry	EQQUALBERRY	3
-essence	essence	5
+essence	essence	17
 eucerin	Eucerin	2
 haruharu	HaruHaru	2
 isdin	ISDIN	1
@@ -29,8 +30,9 @@ liangyan	LIANGYAN	1
 lollis	LOLLIS	21
 loreal	L'oréal	1
 m-asam	M.Asam	1
+makeup-revolution	Makeup Revolution	5
 mary-and-may	Mary&May	1
-medicube	Medicube	21
+medicube	Medicube	20
 missha	MISSHA	5
 neutrogena	Neutrogena	1
 numbuzin	Numbuzin	4

@@ -339,3 +339,25 @@ body.chrome-hide header{box-shadow:0 4px 14px rgba(0,0,0,.12)}
   background:var(--card);
 }
 .grid{contain: layout style;}
+
+/* ===== p0a CLS + touch (web.dev CLS + Lighthouse target-size) ===== */
+.ship-bar{min-height:36px;contain:layout}
+.hero{min-height:148px;contain:layout}
+#products{min-height:48vh}
+#grid{min-height:280px;contain:layout}
+#shelves{min-height:0}
+.card{contain:layout style;content-visibility:auto;contain-intrinsic-size:auto 360px}
+.card-visual{aspect-ratio:1 / 1;background:#faf7f5;min-height:120px}
+.card-visual img{width:100%;height:100%;object-fit:contain}
+.card-desc{
+  display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;
+  overflow:hidden;max-height:2.8em;line-height:1.4;
+}
+.card-actions button,.btn-qv,.btn-add,.btn-open{
+  min-height:44px;min-width:44px;
+}
+.nav-cats button{min-height:44px;padding:10px 14px}
+.wish-btn{min-width:44px;min-height:44px}
+.qty-pick button{min-width:44px;min-height:44px}
+.icon-btn,.lang-btn{min-width:44px;min-height:44px}
+.shelf-head h2,.shelf-head h3{font-size:1.05rem;margin:0}

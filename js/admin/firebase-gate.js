@@ -11,6 +11,7 @@
 
   var A = w.NaqaAdmin = w.NaqaAdmin || {};
   A.fbUser = null;
+  var EMAIL_KEY = "naqa_admin_last_email";
   var _busy = false;
   var _authReady = false;
 
@@ -158,6 +159,8 @@
     if ($("fbReset")) $("fbReset").textContent = t("fb_forgot", "نسيت كلمة المرور؟");
     if ($("fbCreate")) $("fbCreate").textContent = t("fb_create", "إنشاء كلمة مرور جديدة");
     if ($("fbOr")) $("fbOr").textContent = t("fb_or", "أو");
+    var sum = $("fbEmailSummary");
+    if (sum) sum.textContent = t("fb_emailDetails", A.lang === "en" ? "Sign in with email" : "دخول بالإيميل وكلمة السر");
     if ($("fbNoteSave")) $("fbNoteSave").textContent = t("fb_noteSave", "");
     if ($("fbNoteGoogle")) {
       $("fbNoteGoogle").innerHTML = t("fb_noteGoogleHtml",
@@ -176,8 +179,14 @@
   function showFbOnly() {
     if ($("fbLogin")) $("fbLogin").hidden = false;
     if ($("pinRow")) $("pinRow").hidden = true;
+    /* Only reveal gate after auth resolved with no user — prevents login flash */
     if ($("pin")) $("pin").hidden = false;
+    try { document.body.classList.remove("naqa-auth-pending"); } catch (e) {}
     A.fbApplyLabels();
+    try {
+      var last = localStorage.getItem(EMAIL_KEY) || "";
+      if (last && $("fbEmail") && !$("fbEmail").value) $("fbEmail").value = last;
+    } catch (e) {}
   }
 
   function mapAuthError(err, context) {
@@ -314,6 +323,7 @@
       }
       return firebase.auth().signInWithEmailAndPassword(cred.email, cred.pass).then(function () {
         setMsg(t("fb_signedIn", "تم تسجيل الدخول."), "ok");
+        try { localStorage.setItem(EMAIL_KEY, cred.email); } catch (e) {}
         offerPasswordSave(cred.email, cred.pass);
       }).catch(function (err) {
         guideAfterLoginFail(cred.email, err);
@@ -332,6 +342,7 @@
       try { if ($("fbPass")) $("fbPass").setAttribute("autocomplete", "new-password"); } catch (e) {}
       firebase.auth().createUserWithEmailAndPassword(cred.email, cred.pass).then(function () {
         setMsg(t("fb_created", ""), "ok");
+        try { localStorage.setItem(EMAIL_KEY, cred.email); } catch (e) {}
         offerPasswordSave(cred.email, cred.pass);
       }).catch(function (err) {
         var code = (err && err.code) || "";
@@ -530,14 +541,17 @@
 
     firebase.auth().onAuthStateChanged(function (user) {
       _authReady = true;
-      setPending(false);
 
       if (!user) {
         A.fbUser = null;
         lockUI();
+        setPending(false);
         showFbOnly();
         return;
       }
+      /* User restored (LOCAL persistence) — never flash the pin card */
+      setPending(true);
+      if ($("pin")) $("pin").hidden = true;
       allowedEmail(user).then(function (ok) {
         var uidOk = true;
         try {

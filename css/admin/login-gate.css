@@ -156,3 +156,36 @@ body.naqa-auth-pending #authBoot{display:block!important}
 body.naqa-open #authBoot{display:none!important}
 #fbForm{margin:0}
 #fbLogin{margin-top:4px}
+
+/* ===== p0a: Google-first + no-flash helpers ===== */
+.auth-btn-primary-google{
+  margin-top:4px !important;
+  min-height:52px !important;
+  border:2px solid #c46b7c !important;
+  box-shadow:0 4px 14px rgba(196,107,124,.22) !important;
+}
+.auth-email-details{
+  margin-top:4px;
+  border:1px solid #efe4df;
+  border-radius:12px;
+  background:#fdfaf8;
+  padding:0 12px 10px;
+}
+.auth-email-details > summary{
+  cursor:pointer;
+  list-style:none;
+  font-weight:800;
+  font-size:.88rem;
+  color:#5a3a42;
+  padding:12px 4px;
+  text-align:center;
+}
+.auth-email-details > summary::-webkit-details-marker{display:none}
+.auth-email-details[open] > summary{border-bottom:1px solid #efe4df;margin-bottom:10px}
+/* Contrast: notes / muted on white */
+.auth-hint,.pin-card #pinNote,.auth-notes{color:#5c4f4a !important}
+.pin-card #pinMsg.is-info{color:#5c4f4a !important}
+/* Auth pending: never show tools or pin */
+body.naqa-auth-pending #tools,
+body.naqa-auth-pending .admin-shell{display:none !important}
+body.naqa-open main.admin-main{display:block}

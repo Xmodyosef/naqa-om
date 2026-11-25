@@ -36,7 +36,7 @@ function cardHTML(p){
     +'<div class="card-brand">'+esc(T(catLabel[p.cat]||"all"))+'</div>'
     +'<button class="card-name" data-open="'+p.id+'" type="button">'+esc(pname(p))+'</button>'
     +'<div class="card-desc">'+esc(pdesc(p))+'</div>'
-    +(p.stock!=null?('<div class="card-code">'+(lang==="en"?"Stock ":"المخزون ")+p.stock+'</div>'):'')
+    +(p.stock!=null && Number(p.stock)<=2?('<div class="card-code">'+(lang==="en"?"Stock ":"المخزون ")+p.stock+'</div>'):'')
     +priceHTML(p)
     +'<div class="card-actions">'
     +'<button class="btn-qv" data-qv="'+p.id+'" type="button">'+T("qv")+'</button>'
@@ -66,13 +66,13 @@ function renderShelves(){
   let html="";
   if(hot.length){
     html+='<section class="shelf">'+shelfBanner("hot", hot)
-      +'<div class="shelf-head"><h3 id="hotTitle">'+T("hot")+'</h3>'+vatChip()
+      +'<div class="shelf-head"><h2 id="hotTitle">'+T("hot")+'</h2>'+vatChip()
       +'<button type="button" data-shelf="hot">'+T("viewAll")+'</button></div>'
       +'<div class="shelf-row">'+hot.map(cardHTML).join("")+'</div></section>';
   }
   if(year.length){
     html+='<section class="shelf">'+shelfBanner("year", year)
-      +'<div class="shelf-head"><h3 id="yearTitle">'+T("year")+'</h3>'+vatChip()
+      +'<div class="shelf-head"><h2 id="yearTitle">'+T("year")+'</h2>'+vatChip()
       +'<button type="button" data-shelf="year">'+T("viewAll")+'</button></div>'
       +'<div class="shelf-row">'+year.map(cardHTML).join("")+'</div></section>';
   }

@@ -2,11 +2,12 @@
 (function (w) {
   "use strict";
   var A = w.NaqaAdmin = w.NaqaAdmin || {};
-  var V = "20261125rem1";
+  var V = "20261125p0a";
   var loaded = false;
   var inflight = null;
 
   var MODULES = [
+    "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js",
     "data/products.bundle.js?v=" + V,
     "js/admin/products.js?v=" + V,
     "js/admin/orders.js?v=" + V,

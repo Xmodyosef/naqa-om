@@ -1,4 +1,4 @@
-/* Brand: essence · 17 products · verified barcodes */
+/* Brand: essence · 20 products · barcodes from public retail listings */
 window.NAQA_PRODUCTS = window.NAQA_PRODUCTS || [];
 window.NAQA_PRODUCTS.push(
 {
@@ -342,5 +342,60 @@ window.NAQA_PRODUCTS.push(
   "skinAr": "حواجب داكنة",
   "skinEn": "Deep brows",
   "id": 212
+},
+{
+  "id": 261,
+  "brand": "essence",
+  "cat": "وجه",
+  "sku": "4059729274018",
+  "price": 1.8,
+  "em": "✨",
+  "imgs": [],
+  "nameAr": "بودرة تثبيت أول أباوت مات",
+  "nameEn": "essence All About Matt Fixing Compact Powder",
+  "descAr": "بودرة تثبيت أول أباوت مات — منتج أصلي ضمن كتالوج نقاء المتنوع.",
+  "descEn": "essence All About Matt Fixing Compact Powder — authentic listing in Naqa’s curated catalog.",
+  "useAr": "١) بشرة نظيفة ومرطّبة.\n٢) كمية قليلة ووزّعي جيداً.\n٣) ابنِي التغطية بطبقات.\n٤) ثبّتي عند الحاجة.",
+  "useEn": "1) Clean moisturized skin.\n2) Apply a little and blend.\n3) Build in thin layers.\n4) Set if needed.",
+  "skinAr": "كل أنواع البشرة",
+  "skinEn": "all skin types",
+  "stock": 3
+},
+{
+  "id": 262,
+  "brand": "essence",
+  "cat": "وجه",
+  "sku": "4059729265845",
+  "price": 1.9,
+  "em": "✨",
+  "imgs": [],
+  "nameAr": "بلاش بيبي جوت 10",
+  "nameEn": "essence Baby Got Blush 10 Tickle Me Pink",
+  "descAr": "بلاش بيبي جوت 10 — منتج أصلي ضمن كتالوج نقاء المتنوع.",
+  "descEn": "essence Baby Got Blush 10 Tickle Me Pink — authentic listing in Naqa’s curated catalog.",
+  "useAr": "١) بشرة نظيفة ومرطّبة.\n٢) كمية قليلة ووزّعي جيداً.\n٣) ابنِي التغطية بطبقات.\n٤) ثبّتي عند الحاجة.",
+  "useEn": "1) Clean moisturized skin.\n2) Apply a little and blend.\n3) Build in thin layers.\n4) Set if needed.",
+  "skinAr": "كل أنواع البشرة",
+  "skinEn": "all skin types",
+  "stock": 3,
+  "hot": true
+},
+{
+  "id": 263,
+  "brand": "essence",
+  "cat": "وجه",
+  "sku": "4059729265852",
+  "price": 1.9,
+  "em": "✨",
+  "imgs": [],
+  "nameAr": "بلاش بيبي جوت 20",
+  "nameEn": "essence Baby Got Blush 20 Peaches & Cream",
+  "descAr": "بلاش بيبي جوت 20 — منتج أصلي ضمن كتالوج نقاء المتنوع.",
+  "descEn": "essence Baby Got Blush 20 Peaches & Cream — authentic listing in Naqa’s curated catalog.",
+  "useAr": "١) بشرة نظيفة ومرطّبة.\n٢) كمية قليلة ووزّعي جيداً.\n٣) ابنِي التغطية بطبقات.\n٤) ثبّتي عند الحاجة.",
+  "useEn": "1) Clean moisturized skin.\n2) Apply a little and blend.\n3) Build in thin layers.\n4) Set if needed.",
+  "skinAr": "كل أنواع البشرة",
+  "skinEn": "all skin types",
+  "stock": 3
 }
 );

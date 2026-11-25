@@ -58,5 +58,7 @@ const BRAND_DOMAIN = {
   "The Ordinary": "theordinary.com",
   "Uriage": "uriage.com",
   "Vaseline": "vaseline.com",
-  "essence": "essence.eu"
+  "essence": "essence.eu",
+  "Makeup Revolution": "revolutionbeauty.com",
+  "Bourjois": "bourjois.com"
 };

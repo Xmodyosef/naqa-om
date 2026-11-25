@@ -150,6 +150,17 @@
     if (top) top.hidden = !(tab === "products" || tab === "orders");
     var add = document.getElementById("addProductBtn");
     if (add) add.hidden = tab !== "products";
+    var excel = document.getElementById("excelWrap");
+    if (excel) {
+      excel.hidden = tab !== "products";
+      /* close menu when leaving products */
+      if (tab !== "products") {
+        var em = document.getElementById("excelMenu");
+        var eb = document.getElementById("excelMenuBtn");
+        if (em) em.hidden = true;
+        if (eb) eb.setAttribute("aria-expanded", "false");
+      }
+    }
     var search = document.getElementById("ordersSearchWrap");
     if (search) search.hidden = !(tab === "orders" || tab === "products");
     var ot = document.getElementById("ordersTopTools");

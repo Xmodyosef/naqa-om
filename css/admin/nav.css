@@ -410,95 +410,124 @@ body.naqa-open #ordersTopTools:not([hidden]) {
 }
 
 
-/* ===== تصدير Excel بجانب فلاتر المنتجات ===== */
-body.naqa-open #childNav .btn-excel {
+/* ===== Excel منتجات: ثابت في الشريط العلوي مثل تصدير الطلبات ===== */
+body.naqa-open #topBar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 30;
+}
+body.naqa-open #topBar .excel-wrap,
+#excelWrap.excel-wrap {
+  position: relative;
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  z-index: 50;
+  margin: 0;
+}
+#excelWrap[hidden] {
+  display: none !important;
+}
+#excelMenuBtn.btn-excel,
+body.naqa-open #topBar .btn-excel {
   display: inline-flex !important;
   align-items: center;
   justify-content: center;
   gap: 6px;
   flex: 0 0 auto !important;
   margin: 0 !important;
-  margin-inline-start: 4px !important;
-  padding: 8px 14px !important;
-  border: 1px solid #c9e4d4 !important;
+  height: 36px;
+  min-height: 36px;
+  padding: 0 12px !important;
+  border: 1px solid #8d3048 !important;
   border-radius: 999px !important;
-  background: linear-gradient(180deg, #f3fbf6 0%, #e7f5ec 100%) !important;
-  color: #1d6f42 !important;
-  font: 800 0.76rem/1.2 inherit !important;
+  background: #8d3048 !important;
+  color: #fff !important;
+  font: 800 0.72rem/1 "Noto Sans Arabic", "IBM Plex Sans", system-ui, sans-serif !important;
   white-space: nowrap !important;
   cursor: pointer;
-  box-shadow: 0 1px 3px rgba(33, 115, 70, 0.12) !important;
-  transition: background 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+  box-shadow: 0 2px 6px rgba(141, 48, 72, 0.25) !important;
+  transition: background 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease, transform 0.12s ease;
+  touch-action: manipulation;
+  user-select: none;
 }
-body.naqa-open #childNav .btn-excel:hover {
-  background: linear-gradient(180deg, #e8f7ee 0%, #d4efdf 100%) !important;
-  border-color: #217346 !important;
-  box-shadow: 0 2px 8px rgba(33, 115, 70, 0.18) !important;
+#excelMenuBtn.btn-excel:hover,
+body.naqa-open #topBar .btn-excel:hover {
+  background: #a03d56 !important;
+  border-color: #a03d56 !important;
+  box-shadow: 0 3px 10px rgba(141, 48, 72, 0.3) !important;
 }
-body.naqa-open #childNav .btn-excel:active {
-  transform: translateY(1px);
+#excelMenuBtn.btn-excel:active,
+body.naqa-open #topBar .btn-excel:active {
+  transform: scale(0.96) translateY(1px);
+  background: #7a2a3e !important;
+  box-shadow: 0 1px 2px rgba(80, 20, 35, 0.35) inset !important;
 }
-body.naqa-open #childNav .btn-excel .excel-ico {
+#excelMenuBtn .excel-ico {
   display: inline-flex;
   width: 18px;
   height: 18px;
   align-items: center;
   justify-content: center;
   border-radius: 4px;
-  background: #217346;
-  box-shadow: inset 0 0 0 1px rgba(255,255,255,.15);
+  background: rgba(255, 255, 255, 0.18);
+  flex-shrink: 0;
 }
-body.naqa-open #childNav .btn-excel .excel-ico svg {
+#excelMenuBtn .excel-ico svg {
   display: block;
   width: 12px;
   height: 12px;
 }
-body.naqa-open #childNav .btn-excel .excel-label {
-  color: #1d6f42;
+#excelMenuBtn .excel-label {
+  color: #fff !important;
 }
-/* keep filter pills rose; excel is soft green — same pill shape, same height */
-
-
-/* Excel wrap + dropdown (Import / Export) */
-body.naqa-open #childNav .excel-wrap {
-  position: relative;
-  display: inline-flex;
-  flex: 0 0 auto;
-  margin-inline-start: 4px;
-}
-body.naqa-open #childNav .btn-excel .excel-chev {
+#excelMenuBtn .excel-chev {
   font-size: 0.65rem;
-  opacity: 0.75;
+  opacity: 0.9;
+  color: #fff;
   margin-inline-start: 2px;
 }
-body.naqa-open #childNav .excel-menu {
-  position: absolute;
-  top: calc(100% + 6px);
-  inset-inline-end: 0;
-  z-index: 80;
+#excelMenu.excel-menu,
+#excelWrap .excel-menu {
+  position: absolute !important;
+  top: calc(100% + 6px) !important;
+  inset-inline-end: 0 !important;
+  inset-inline-start: auto !important;
+  z-index: 120 !important;
   min-width: 9.5rem;
   padding: 6px;
   border-radius: 12px;
   background: #fff;
-  border: 1px solid #c9e4d4;
-  box-shadow: 0 8px 24px rgba(33, 115, 70, 0.16);
+  border: 1px solid #eadfd9;
+  box-shadow: 0 10px 28px rgba(40, 20, 24, 0.18);
   display: flex;
   flex-direction: column;
   gap: 4px;
+  height: auto;
 }
-body.naqa-open #childNav .excel-menu[hidden] {
+#excelMenu.excel-menu[hidden],
+#excelWrap .excel-menu[hidden] {
   display: none !important;
 }
-body.naqa-open #childNav .excel-menu-item {
+#excelMenu .excel-menu-item {
   border: 0;
-  background: #f3fbf6;
-  color: #1d6f42;
+  background: #fdf8f6;
+  color: #8d3048;
   font: 800 0.78rem/1.2 inherit;
   text-align: start;
   padding: 10px 12px;
   border-radius: 8px;
   cursor: pointer;
 }
-body.naqa-open #childNav .excel-menu-item:hover {
-  background: #e7f5ec;
+#excelMenu .excel-menu-item:hover,
+#excelMenu .excel-menu-item:active {
+  background: #8d3048;
+  color: #fff;
 }
+body.naqa-open #childNav .child-set[data-for="products"] {
+  min-width: max-content;
+}
+

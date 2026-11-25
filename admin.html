@@ -23,9 +23,9 @@
 <link rel="dns-prefetch" href="https://www.gstatic.com" />
 <link rel="preload" href="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js" as="script" />
 <link rel="preload" href="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js" as="script" />
-<link rel="preload" href="js/firebase-config.js?v=20261125px1" as="script" />
-<link rel="preload" href="js/admin/firebase-gate.js?v=20261125px1" as="script" />
-<link rel="stylesheet" href="css/admin.css?v=20261125px1" />
+<link rel="preload" href="js/firebase-config.js?v=20261125ex1" as="script" />
+<link rel="preload" href="js/admin/firebase-gate.js?v=20261125ex1" as="script" />
+<link rel="stylesheet" href="css/admin.css?v=20261125ex1" />
 
 
 </head>
@@ -147,6 +147,20 @@
         <div id="ordersTools" class="orders-tools-slot"></div>
       </div>
       <button type="button" class="btn-add" id="addProductBtn" data-i18n="p_add" hidden>+ إضافة منتج</button>
+      <div class="excel-wrap export-menu" id="excelWrap" hidden>
+        <button type="button" class="btn-excel export-one" id="excelMenuBtn" aria-haspopup="true" aria-expanded="false" title="Excel" aria-label="Excel">
+          <span class="excel-ico" aria-hidden="true">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="3" width="18" height="18" rx="2" fill="#217346"/><path d="M7 8h4.2L12 10.2 12.8 8H17l-2.6 4L17 16h-4.2L12 13.8 11.2 16H7l2.6-4L7 8z" fill="#fff"/></svg>
+          </span>
+          <span class="excel-label" data-i18n="p_excel">Excel</span>
+          <span class="excel-chev" aria-hidden="true">▾</span>
+        </button>
+        <div class="excel-menu export-pop" id="excelMenu" hidden role="menu">
+          <button type="button" class="excel-menu-item" id="excelExportBtn" role="menuitem" data-i18n="p_excelExport">تصدير</button>
+          <button type="button" class="excel-menu-item" id="excelImportBtn" role="menuitem" data-i18n="p_excelImport">استيراد</button>
+        </div>
+        <input type="file" id="excelImportFile" accept=".csv,text/csv,.xlsx,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" hidden />
+      </div>
     </div>
     <script>
     /* First paint: show add/search only for the tab in the URL. Stops the refresh flash. */
@@ -157,7 +171,9 @@
       var add = document.getElementById("addProductBtn");
       var search = document.getElementById("ordersSearchWrap");
       var ot = document.getElementById("ordersTopTools");
+      var excel = document.getElementById("excelWrap");
       if (tab === "products" && add) add.hidden = false;
+      if (excel) excel.hidden = tab !== "products";
       if (tab === "orders" || tab === "products") {
         if (search) search.hidden = false;
         if (ot) ot.hidden = !(tab === "orders" || tab === "products");
@@ -180,20 +196,6 @@
       <button type="button" class="side-sub" data-tab="products" data-sub="hidden"><span data-i18n="sub_hidden">مخفي</span><span class="sub-count" data-for-sub="hidden">0</span></button>
       <button type="button" class="side-sub" data-tab="products" data-sub="stock"><span data-i18n="sub_stock">مخزون منخفض</span><span class="sub-count" data-for-sub="stock">0</span></button>
 
-      <div class="excel-wrap" id="excelWrap">
-        <button type="button" class="btn-excel" id="excelMenuBtn" aria-haspopup="true" aria-expanded="false" title="Excel" aria-label="Excel">
-          <span class="excel-ico" aria-hidden="true">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="3" width="18" height="18" rx="2" fill="#217346"/><path d="M7 8h4.2L12 10.2 12.8 8H17l-2.6 4L17 16h-4.2L12 13.8 11.2 16H7l2.6-4L7 8z" fill="#fff"/></svg>
-          </span>
-          <span class="excel-label" data-i18n="p_excel">Excel</span>
-          <span class="excel-chev" aria-hidden="true">▾</span>
-        </button>
-        <div class="excel-menu" id="excelMenu" hidden role="menu">
-          <button type="button" class="excel-menu-item" id="excelExportBtn" role="menuitem" data-i18n="p_excelExport">تصدير</button>
-          <button type="button" class="excel-menu-item" id="excelImportBtn" role="menuitem" data-i18n="p_excelImport">استيراد</button>
-        </div>
-        <input type="file" id="excelImportFile" accept=".csv,text/csv,.xlsx,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" hidden />
-      </div>
     </div>
   </div>
 <div id="homeTab" class="admin-section" hidden>
@@ -231,17 +233,17 @@
   </main>
 </div>
 </div>
-<script defer src="js/config.js?v=20261125px1"></script>
-<script defer src="js/firebase-config.js?v=20261125px1"></script>
+<script defer src="js/config.js?v=20261125ex1"></script>
+<script defer src="js/firebase-config.js?v=20261125ex1"></script>
 <script defer src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
 <script defer src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
-<script defer src="js/admin.js?v=20261125px1"></script>
-<script defer src="js/admin/core.js?v=20261125px1"></script>
-<script defer src="js/admin/firebase-gate.js?v=20261125px1"></script>
-<script defer src="js/admin/app.js?v=20261125px1"></script>
-<script defer src="js/admin/i18n/dict-ar.js?v=20261125px1"></script>
-<script defer src="js/admin/i18n/dict-en.js?v=20261125px1"></script>
-<script defer src="js/admin/i18n.js?v=20261125px1"></script>
-<script defer src="js/admin/load-modules.js?v=20261125px1"></script>
+<script defer src="js/admin.js?v=20261125ex1"></script>
+<script defer src="js/admin/core.js?v=20261125ex1"></script>
+<script defer src="js/admin/firebase-gate.js?v=20261125ex1"></script>
+<script defer src="js/admin/app.js?v=20261125ex1"></script>
+<script defer src="js/admin/i18n/dict-ar.js?v=20261125ex1"></script>
+<script defer src="js/admin/i18n/dict-en.js?v=20261125ex1"></script>
+<script defer src="js/admin/i18n.js?v=20261125ex1"></script>
+<script defer src="js/admin/load-modules.js?v=20261125ex1"></script>
 </body>
 </html>

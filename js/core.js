@@ -92,6 +92,46 @@ function mergeOverrides(map){
     if(Array.isArray(o.imgs) && o.imgs.length) p.imgs=o.imgs.filter(Boolean).slice(0,5);
   });
 }
+
+window.naqaHydrateFsImages = function () {
+  var cache = window.__naqaFsCache = window.__naqaFsCache || {};
+  var ids = [];
+  var seen = {};
+  products.forEach(function (p) {
+    (p.imgs || []).forEach(function (s) {
+      if (typeof s !== "string" || s.indexOf("fs:") !== 0) return;
+      var id = s.slice(3);
+      if (!id || seen[id] || cache[id]) return;
+      seen[id] = 1;
+      ids.push(id);
+    });
+  });
+  function apply() {
+    var changed = false;
+    products.forEach(function (p) {
+      if (!Array.isArray(p.imgs)) return;
+      p.imgs = p.imgs.map(function (s) {
+        if (typeof s === "string" && s.indexOf("fs:") === 0 && cache[s.slice(3)]) {
+          changed = true;
+          return cache[s.slice(3)];
+        }
+        return s;
+      });
+    });
+    return changed;
+  }
+  if (!ids.length || !window.firebase || !firebase.apps || !firebase.apps.length || !firebase.firestore) {
+    apply();
+    return Promise.resolve(false);
+  }
+  var db = firebase.firestore();
+  return Promise.all(ids.map(function (id) {
+    return db.collection("naqa_imgs").doc(id).get().then(function (snap) {
+      var j = snap.exists && snap.data() && snap.data().jpeg;
+      if (j) cache[id] = "data:image/jpeg;base64," + j;
+    }).catch(function () {});
+  })).then(apply);
+};
 /* Storefront trusts only published data/overrides.json (fetched in boot).
    Do NOT merge localStorage naqa_overrides here — that let any browser rewrite prices into WhatsApp. */
 try {

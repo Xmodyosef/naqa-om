@@ -51,6 +51,19 @@ service cloud.firestore {
       allow delete: if false;
     }
 
+
+    match /naqa_imgs/{id} {
+      allow read: if true;
+      allow create, update: if isAdmin()
+        && onlyKnownKeys(['jpeg', 'updatedAt', 'updatedBy'])
+        && request.resource.data.jpeg is string
+        && request.resource.data.jpeg.size() > 20
+        && request.resource.data.jpeg.size() < 700000
+        && request.resource.data.updatedBy is string
+        && request.resource.data.updatedBy == request.auth.uid;
+      allow delete: if false;
+    }
+
     match /{document=**} {
       allow read, write: if false;
     }

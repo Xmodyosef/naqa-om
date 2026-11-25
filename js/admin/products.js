@@ -150,12 +150,11 @@
     return true;
   };
 
-  function fileToJpegBlob(file) {
+  function fileToJpegBlob(file, max, quality) {
     return new Promise(function (resolve, reject) {
       var img = new Image();
       var url = URL.createObjectURL(file);
       img.onload = function () {
-        var max = 1400;
         var s = Math.min(1, max / Math.max(img.width, img.height));
         var c = document.createElement("canvas");
         c.width = Math.max(1, Math.round(img.width * s));
@@ -168,7 +167,7 @@
         c.toBlob(function (blob) {
           if (!blob) reject(new Error("photo"));
           else resolve(blob);
-        }, "image/jpeg", 0.82);
+        }, "image/jpeg", quality);
       };
       img.onerror = function () {
         URL.revokeObjectURL(url);
@@ -178,10 +177,44 @@
     });
   }
 
-  function uploadJpeg(blob) {
-    if (!window.firebase || !firebase.storage || !firebase.apps || !firebase.apps.length) {
-      var e1 = new Error("no-storage");
-      e1.code = "no-storage";
+  function blobToB64(blob) {
+    return new Promise(function (resolve, reject) {
+      var r = new FileReader();
+      r.onload = function () {
+        var s = String(r.result || "");
+        var i = s.indexOf(",");
+        resolve(i >= 0 ? s.slice(i + 1) : s);
+      };
+      r.onerror = function () { reject(new Error("photo")); };
+      r.readAsDataURL(blob);
+    });
+  }
+
+  function shrinkToB64(file) {
+    var max = 1000;
+    var quality = 0.72;
+    function attempt() {
+      return fileToJpegBlob(file, max, quality).then(function (blob) {
+        return blobToB64(blob).then(function (b64) {
+          if (b64.length < 680000) return { blob: blob, b64: b64 };
+          if (max <= 480) {
+            var e = new Error("too-big");
+            e.code = "too-big";
+            throw e;
+          }
+          max = Math.round(max * 0.78);
+          quality = Math.max(0.5, quality - 0.08);
+          return attempt();
+        });
+      });
+    }
+    return attempt();
+  }
+
+  function saveFsImage(b64) {
+    if (!window.firebase || !firebase.firestore || !firebase.apps || !firebase.apps.length) {
+      var e1 = new Error("no-firestore");
+      e1.code = "no-firestore";
       return Promise.reject(e1);
     }
     var user = firebase.auth && firebase.auth().currentUser;
@@ -195,19 +228,56 @@
       e3.code = "not-admin";
       return Promise.reject(e3);
     }
-    var name = "products/" + user.uid + "/" + Date.now().toString(36) + "-" + Math.random().toString(36).slice(2, 7) + ".jpg";
-    var ref = firebase.storage().ref(name);
-    return ref.put(blob, { contentType: "image/jpeg", cacheControl: "public,max-age=31536000" }).then(function () {
-      return ref.getDownloadURL();
-    });
+    var ref = firebase.firestore().collection("naqa_imgs").doc();
+    var payload = {
+      jpeg: b64,
+      updatedBy: String(user.uid)
+    };
+    try {
+      if (firebase.firestore.FieldValue && firebase.firestore.FieldValue.serverTimestamp) {
+        payload.updatedAt = firebase.firestore.FieldValue.serverTimestamp();
+      } else {
+        payload.updatedAt = Date.now();
+      }
+    } catch (e) {
+      payload.updatedAt = Date.now();
+    }
+    return ref.set(payload).then(function () { return "fs:" + ref.id; });
   }
 
   function imgUploadMsg(err) {
     var code = (err && (err.code || err.message)) || "";
     if (code === "not-signed-in" || code.indexOf("unauthenticated") >= 0) return A.t("p_imgsNeedLogin");
-    if (code === "not-admin" || code.indexOf("unauthorized") >= 0 || code.indexOf("permission") >= 0) return A.t("p_imgsNeedStorage");
-    if (code === "no-storage" || code.indexOf("storage/unknown") >= 0 || code.indexOf("bucket") >= 0) return A.t("p_imgsNeedStorage");
+    if (code === "too-big") return A.t("p_imgsTooBig");
+    if (code === "not-admin" || code.indexOf("permission-denied") >= 0 || code.indexOf("permission") >= 0) return A.t("p_imgsNeedRules");
     return A.t("p_imgsFail");
+  }
+
+  function showImgSrc(src) {
+    if (A._fsPreview && A._fsPreview[src]) return A._fsPreview[src];
+    return src;
+  }
+
+  function hydrateFsPreviews() {
+    if (A._fsBusy) return;
+    var need = (A._editImgs || []).filter(function (s) {
+      return typeof s === "string" && s.indexOf("fs:") === 0 && !(A._fsPreview && A._fsPreview[s]);
+    });
+    if (!need.length || !window.firebase || !firebase.firestore || !firebase.apps || !firebase.apps.length) return;
+    A._fsBusy = true;
+    Promise.all(need.map(function (refId) {
+      return firebase.firestore().collection("naqa_imgs").doc(refId.slice(3)).get().then(function (snap) {
+        A._fsPreview = A._fsPreview || {};
+        var j = snap.exists && snap.data() && snap.data().jpeg;
+        A._fsPreview[refId] = j ? ("data:image/jpeg;base64," + j) : "data:,";
+      }).catch(function () {
+        A._fsPreview = A._fsPreview || {};
+        A._fsPreview[refId] = "data:,";
+      });
+    })).then(function () {
+      A._fsBusy = false;
+      A.paintImgGallery();
+    });
   }
 
   function normImgs(list) {
@@ -237,7 +307,7 @@
         : "";
       return '<div class="img-gal-item' + (i === 0 ? " is-main" : "") + '" data-i="' + i + '">'
         + main
-        + '<img src="' + A.esc(src) + '" alt="" loading="lazy">'
+        + '<img src="' + A.esc(showImgSrc(src)) + '" alt="" loading="lazy">'
         + '<div class="img-gal-actions">'
         + (i > 0 ? '<button type="button" data-img-main="' + i + '">★</button>' : "")
         + (i > 0 ? '<button type="button" data-img-up="' + i + '">‹</button>' : "")
@@ -257,6 +327,8 @@
       if (f) f.click();
     };
   };
+    hydrateFsPreviews();
+
 
   function bindImgTools() {
     var gal = document.getElementById("imgGal");
@@ -324,7 +396,7 @@
         var added = [];
         files.forEach(function (one) {
           chain = chain.then(function () {
-            return fileToJpegBlob(one).then(uploadJpeg).then(function (url) {
+            return shrinkToB64(one).then(function (packed) { return saveFsImage(packed.b64).then(function (url) { A._fsPreview = A._fsPreview || {}; A._fsPreview[url] = URL.createObjectURL(packed.blob); return url; }); }).then(function (url) {
               added.push(url);
               A._editImgs = normImgs((A._editImgs || []).concat([url]));
               A.paintImgGallery();

@@ -23,7 +23,7 @@
   "p_skinAr": "Best for (Arabic)",
   "p_skinEn": "Best for",
   "p_imgs": "Product images",
-  "p_imgsNote": "Upload from your phone or computer and it goes live after you save, or paste an https link. First image is main · ★ main · arrows reorder · ✕ delete. Max 5.",
+  "p_imgsNote": "Upload from your phone or computer. It is saved free and shows for everyone after you save, or paste an https link. First image is main. Max 5.",
   "p_imgsAdd": "Add image",
   "p_imgsUpload": "📷 Upload",
   "p_imgsUrlPh": "Or paste image URL…",
@@ -51,6 +51,8 @@
   "p_priceBad": "Price cannot be below zero.",
   "p_stockBad": "Stock cannot be below zero.",
   "p_imgsNeedLogin": "Sign in first, then upload the photo.",
-  "p_imgsNeedStorage": "Upload needs Firebase Storage enabled once. An https link works without it.",
-  "p_imgsUrlBad": "The link must start with https."
+  "p_imgsNeedStorage": "Upload after you sign in. Storage and a card are not required.",
+  "p_imgsUrlBad": "The link must start with https.",
+  "p_imgsNeedRules": "The photo was not saved. Publish the new Firestore rules (image collection) once, then upload again.",
+  "p_imgsTooBig": "The photo is still too large after shrinking. Try a smaller one."
 }

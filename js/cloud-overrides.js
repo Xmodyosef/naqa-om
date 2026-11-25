@@ -53,7 +53,9 @@
         if (k === "imgs") {
           if (!Array.isArray(v)) return;
           var urls = v.filter(function (u) {
-            return typeof u === "string" && /^https?:\/\//i.test(u.trim());
+            if (typeof u !== "string") return false;
+            u = u.trim();
+            return /^https?:\/\//i.test(u) || /^fs:[A-Za-z0-9]{8,}$/.test(u);
           }).map(function (u) { return u.trim(); }).slice(0, 5);
           if (urls.length) n.imgs = urls;
           return;
@@ -219,10 +221,13 @@
     if (typeof mergeOverrides !== "function") return;
     w.naqaLoadCloudOverrides().then(function (map) {
       if (!map || !Object.keys(map).length) return;
-      try {
-        mergeOverrides(map);
-        if (typeof render === "function") render();
-      } catch (e) {}
+      try { mergeOverrides(map); } catch (e) {}
+      var done = function () {
+        try { if (typeof render === "function") render(); } catch (e) {}
+      };
+      if (typeof w.naqaHydrateFsImages === "function") {
+        w.naqaHydrateFsImages().then(done).catch(done);
+      } else done();
     });
   };
 })(window);

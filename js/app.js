@@ -167,57 +167,116 @@ $("#checkoutSend").onclick=()=>{
 $("#lbClose").onclick=closeLightbox;
 $("#lightbox").addEventListener("click", e=>{ if(e.target.id==="lightbox"||e.target.id==="lbClose") closeLightbox(); });
 
-/* edge swipe + pull-down to close (quick view) */
+/* pull-down to close the product sheet only */
 (function(){
-  let x0=null,y0=null,mode=null; // edge | pull
+  let x0=null,y0=null,mode=null;
   const sheet=$("#sheet"), card=$("#sheetCard");
+  if(!sheet||!card) return;
   const reset=()=>{ mode=null; x0=null; y0=null; };
   sheet.addEventListener("touchstart", e=>{
     if(e.touches && e.touches.length > 1){ reset(); return; }
     if(!sheet.classList.contains("show") || $("#lightbox").classList.contains("show")) return;
-    const t=e.changedTouches[0];
+    const tch=e.changedTouches[0];
     const qv=sheet.classList.contains("qv");
     const top=card.getBoundingClientRect().top;
-    // pull-down: sheet scrolled to top, touch near handle / top area, or any qv pull when scrollTop<=2
-    if(card.scrollTop<=2 && (qv || t.clientY < top+72)){
-      x0=t.clientX; y0=t.clientY; mode="pull"; card.style.transition="none"; return;
+    if(card.scrollTop<=2 && (qv || tch.clientY < top+72)){
+      x0=tch.clientX; y0=tch.clientY; mode="pull"; card.style.transition="none"; return;
     }
-    // edge swipe (RTL: left edge still works for LTR; also allow right edge 32px)
-    const edge=t.clientX<=28 || t.clientX>=(window.innerWidth-28);
-    if(edge){ x0=t.clientX; y0=t.clientY; mode="edge"; card.style.transition="none"; return; }
     reset();
   },{passive:true});
   sheet.addEventListener("touchmove", e=>{
     if(e.touches && e.touches.length > 1){ reset(); card.style.transform=""; return; }
-    if(!mode||x0==null) return;
-    const t=e.changedTouches[0];
-    const dx=t.clientX-x0, dy=t.clientY-y0;
-    if(mode==="pull"){
-      if(Math.abs(dx)>Math.abs(dy)+12){ mode=null; card.style.transform=""; return; }
-      if(dy>0) card.style.transform="translateY("+Math.min(dy,220)+"px)";
-      return;
-    }
-    // edge
-    if(Math.abs(dy)>48 && Math.abs(dx)<24){ mode=null; card.style.transform=""; return; }
-    const dir = dx; // positive = right
-    if(Math.abs(dir)>0) card.style.transform="translateX("+(dir>0?Math.min(dir,160):Math.max(dir,-160))+"px)";
+    if(mode!=="pull"||x0==null) return;
+    const tch=e.changedTouches[0];
+    const dx=tch.clientX-x0, dy=tch.clientY-y0;
+    if(Math.abs(dx)>Math.abs(dy)+12){ mode=null; card.style.transform=""; return; }
+    if(dy>0) card.style.transform="translateY("+Math.min(dy,220)+"px)";
   },{passive:true});
   sheet.addEventListener("touchend", e=>{
-    if(!mode||x0==null) return;
-    const t=e.changedTouches[0];
-    const dx=t.clientX-x0, dy=t.clientY-y0;
-    const was=mode; reset();
+    if(mode!=="pull"||x0==null) return;
+    const tch=e.changedTouches[0];
+    const dy=tch.clientY-y0;
+    reset();
     card.style.transition="transform .22s ease";
-    if(was==="pull"){
-      if(dy>90) closeSheet(); else card.style.transform="";
-      return;
-    }
-    if(Math.abs(dx)>72) closeSheet(); else card.style.transform="";
+    if(dy>90) closeSheet(); else card.style.transform="";
   },{passive:true});
-  // tap dimmed backdrop closes qv
   sheet.addEventListener("click", e=>{
     if(e.target===sheet && sheet.classList.contains("qv")) closeSheet();
   });
+})();
+
+/* One back-step for the whole store.
+   Arabic (rtl): finger starts at the right edge and moves left.
+   English (ltr): finger starts at the left edge and moves right.
+   Closes the open layer only. Never a second history.back (that jumped to the first page). */
+(function(){
+  var x0=null, y0=null, armed=false, busy=false;
+  function rtl(){ return document.documentElement.dir!=="ltr"; }
+  function onBackEdge(x){
+    var w=window.innerWidth||360;
+    return rtl() ? x>=w-32 : x<=32;
+  }
+  function isBackSwipe(dx, dy){
+    if(Math.abs(dx)<72 || Math.abs(dx)<Math.abs(dy)+8) return false;
+    return rtl() ? dx<0 : dx>0;
+  }
+  function layerOpen(){
+    var lb=$("#lightbox"), co=$("#checkoutModal"), qz=$("#quizModal"), dr=$("#drawer"), sh=$("#sheet");
+    if(lb && lb.classList.contains("show")) return "light";
+    if(co && co.classList.contains("show")) return "check";
+    if(qz && qz.classList.contains("show")) return "quiz";
+    if(dr && dr.classList.contains("show")) return "cart";
+    if(sh && sh.classList.contains("show")) return "sheet";
+    return "";
+  }
+  function stepBack(){
+    if(busy) return;
+    busy=true;
+    setTimeout(function(){ busy=false; }, 450);
+    var layer=layerOpen();
+    if(layer==="light"){ closeLightbox(); return; }
+    if(layer==="check"){ closeCheckout(); return; }
+    if(layer==="quiz" && typeof closeQuiz==="function"){ closeQuiz(); return; }
+    if(layer==="cart"){ closeCart(); return; }
+    if(layer==="sheet"){
+      closeSheet(true);
+      if(typeof routeHash==="function" && routeHash().indexOf("p/")===0){
+        try{ history.back(); }catch(err){}
+      } else if(typeof naqaRestoreShopScroll==="function"){
+        naqaRestoreShopScroll();
+      }
+      return;
+    }
+    var h=typeof routeHash==="function"?routeHash():"";
+    if(h && h!=="shop" && h!=="top" && history.state && history.state.naqa){
+      try{ history.back(); }catch(err){}
+    }
+  }
+  document.addEventListener("touchstart", function(e){
+    if(!e.touches || e.touches.length!==1){ armed=false; return; }
+    var tch=e.touches[0];
+    if(!onBackEdge(tch.clientX)){ armed=false; return; }
+    x0=tch.clientX; y0=tch.clientY; armed=true;
+  }, {passive:true, capture:true});
+  document.addEventListener("touchmove", function(e){
+    if(!armed || x0==null) return;
+    var tch=e.touches && e.touches[0];
+    if(!tch) return;
+    var dx=tch.clientX-x0, dy=tch.clientY-y0;
+    if(Math.abs(dy)>Math.abs(dx)+10 && Math.abs(dy)>16){ armed=false; return; }
+    if(Math.abs(dx)>12 && (rtl()?dx<0:dx>0)) e.preventDefault();
+  }, {passive:false, capture:true});
+  document.addEventListener("touchend", function(e){
+    if(!armed || x0==null) return;
+    var tch=e.changedTouches && e.changedTouches[0];
+    armed=false;
+    if(!tch) return;
+    var dx=tch.clientX-x0, dy=tch.clientY-y0;
+    x0=null; y0=null;
+    if(!isBackSwipe(dx, dy)) return;
+    stepBack();
+  }, {passive:true, capture:true});
+  document.addEventListener("touchcancel", function(){ armed=false; x0=null; y0=null; }, {capture:true});
 })();
 
 /* sheet-open touch guard: stop background scroll under quick view */

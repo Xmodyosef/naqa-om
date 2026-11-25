@@ -107,7 +107,7 @@ body.has-cart-bar{padding-bottom:88px}
   overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column;
   /* content-visibility:auto removed — caused rapid image blink on iOS/Safari scroll */}
 .card-visual{aspect-ratio:1;background:var(--card);position:relative;overflow:hidden}
-.card-visual img{width:100%;height:100%;object-fit:contain;background:#faf7f5;padding:12px;box-sizing:border-box;content-visibility:visible;-webkit-backface-visibility:hidden;backface-visibility:hidden}
+.card-visual img{width:100%;height:100%;object-fit:contain;background:#faf7f5;padding:12px;box-sizing:border-box;/*cv off*/-webkit-backface-visibility:hidden;backface-visibility:hidden}
 
 .tag-off{position:absolute;top:10px;inset-inline-start:10px;z-index:3;background:var(--rose-deep);color:#fff;font-weight:800;font-size:.72rem;padding:4px 9px;border-radius:999px;pointer-events:none}
 .tag-hot{position:absolute;top:10px;inset-inline-end:10px;z-index:3;background:#1f1a17;color:#fff;font-weight:800;font-size:.68rem;padding:4px 9px;border-radius:999px;pointer-events:none}
@@ -320,42 +320,36 @@ html[data-theme="night"] #footBlurb{color:var(--muted)}
 .quiz-thumb img{width:100%;height:100%;object-fit:contain}
 .quiz-em{display:grid;place-items:center;height:90px;font-size:1.6rem}
 
-/* hide search + cats without continuous reflow thrash (images were blinking) */
+/* chrome-hide: keep layout reserved height so product grid never jumps / re-decodes images */
 body.chrome-hide .search-row,
 body.chrome-hide .nav-cats{
-  max-height:0!important;
   opacity:0;
-  overflow:hidden;
-  padding-top:0!important;
-  padding-bottom:0!important;
-  margin:0!important;
-  border:0!important;
   pointer-events:none;
-  /* no animated max-height: it reflows every frame → lazy images re-fire */
-  transition: opacity .12s ease;
+  visibility:hidden;
+  /* height stays — no max-height collapse, no sticky reflow flash */
 }
 .search-row,.nav-cats{
-  max-height:120px;
   opacity:1;
-  overflow:hidden;
-  transition: opacity .12s ease;
+  visibility:visible;
 }
 body.chrome-hide header{box-shadow:0 4px 14px rgba(0,0,0,.12)}
 /* stabilize card images while chrome toggles */
 .card-visual img{
-  content-visibility:auto;
-  contain: layout paint;
+  /* content-visibility removed — flash on iOS scroll */
   background:var(--card);
+  -webkit-backface-visibility:hidden;
+  backface-visibility:hidden;
+  transform:translateZ(0);
 }
-.grid{contain: layout style;}
+.grid{contain:none;}
 
 /* ===== p0a CLS + touch (web.dev CLS + Lighthouse target-size) ===== */
 .ship-bar{min-height:36px;contain:layout}
 .hero{min-height:148px;contain:layout}
 #products{min-height:0}
-#grid{min-height:280px;contain:layout}
+#grid{min-height:280px;contain:none}
 #shelves{min-height:0}
-.card{contain:layout style;content-visibility:auto;contain-intrinsic-size:auto 360px}
+.card{contain:style;/* no content-visibility — flash on scroll */}
 .card-visual{aspect-ratio:1 / 1;background:#faf7f5;min-height:120px}
 .card-visual img{width:100%;height:100%;object-fit:contain}
 .card-desc{
@@ -671,3 +665,404 @@ html[data-theme="night"] .catalog-hero{
   background:linear-gradient(125deg, #120e0c 0%, #2a181c 50%, #8d3048 100%);
 }
 html[data-theme="night"] .card-cat-pill{ background:#1a1512; }
+
+
+/* ===== NAQA_SCROLL_STABLE_V3 — no flash when scrolling up/down ===== */
+.card, .card-v2, .shelf-row .card {
+  contain: none !important;
+  content-visibility: visible !important;
+  transform: none; /* avoid layer thrash from translateZ on many cards */
+}
+.card-visual, .card-v2 .card-visual {
+  aspect-ratio: 1 / 1;
+  min-height: 140px;
+  overflow: hidden;
+  background: #faf7f5;
+}
+.card-visual img, .card-v2 .card-visual img, .shelf-row .card-visual img {
+  content-visibility: visible !important;
+  contain: none !important;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  /* keep decoded bitmap: no opacity transitions on scroll */
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+/* Never let chrome-hide touch product images or grid layout */
+body.chrome-hide .grid,
+body.chrome-hide #grid,
+body.chrome-hide .card,
+body.chrome-hide .card-visual,
+body.chrome-hide .card-visual img {
+  content-visibility: visible !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: none !important;
+}
+/* Header stays sticky but chrome collapse must not change document flow of #products */
+header {
+  /* already sticky; avoid backdrop-filter which repaints on iOS */
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+}
+
+
+/* ===== scroll stability — no flash while scrolling ===== */
+.card, .card-v2{
+  -webkit-transform:translateZ(0);
+  transform:translateZ(0);
+}
+.card-visual, .card-v2 .card-visual{
+  overflow:hidden;
+  background:#faf7f5;
+  aspect-ratio:1 / 1;
+  min-height:140px;
+}
+.card-visual img, .card-v2 .card-visual img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  object-position:center;
+  content-visibility:visible !important;
+  -webkit-backface-visibility:hidden;
+  backface-visibility:hidden;
+  transform:translateZ(0);
+  will-change:auto;
+}
+body.chrome-hide .grid,
+body.chrome-hide .card,
+body.chrome-hide .card-visual,
+body.chrome-hide .card-visual img{
+  content-visibility:visible !important;
+}
+.grid{contain:none;}
+#grid{min-height:280px;}
+
+/* ===== Home category catalog (main page) — unique chapter design ===== */
+.home-catalog{ margin: 4px 0 8px; }
+.home-catalog-hero{
+  display:flex; align-items:flex-end; justify-content:space-between; gap:14px; flex-wrap:wrap;
+  margin: 4px 0 18px;
+  padding: 18px 16px;
+  border-radius: 22px;
+  background:
+    radial-gradient(120% 80% at 100% 0%, rgba(141,48,72,.14), transparent 55%),
+    linear-gradient(145deg, #fff 0%, #faf4f2 55%, #f3e6e8 100%);
+  border: 1px solid var(--line);
+  box-shadow: 0 10px 28px rgba(50,30,25,.05);
+}
+.home-catalog-kicker{
+  margin:0 0 4px; font-size:.72rem; font-weight:800; letter-spacing:.08em;
+  text-transform:uppercase; color:var(--rose-deep); opacity:.9;
+}
+.home-catalog-title{
+  margin:0 0 6px; font-size:1.55rem; font-weight:800; color:var(--fg); line-height:1.2;
+}
+.home-catalog-sub{
+  margin:0; font-size:.88rem; color:var(--muted); font-weight:600; max-width:34ch; line-height:1.45;
+}
+.home-catalog-stats{
+  display:flex; gap:10px; flex-shrink:0;
+}
+.home-catalog-stats span{
+  min-width:72px; text-align:center;
+  background:rgba(255,255,255,.78);
+  border:1px solid var(--line);
+  border-radius:16px; padding:10px 12px;
+  display:flex; flex-direction:column; gap:2px;
+}
+.home-catalog-stats b{ font-size:1.15rem; font-weight:800; color:var(--rose-deep); line-height:1; }
+.home-catalog-stats i{ font-style:normal; font-size:.68rem; color:var(--muted); font-weight:700; }
+
+.catalog-chapters-head{
+  display:flex; align-items:baseline; justify-content:space-between; gap:10px;
+  margin: 18px 0 12px; padding: 0 2px;
+}
+.catalog-chapters-head h3{ margin:0; font-size:1.05rem; font-weight:800; }
+.catalog-chapters-head span{ font-size:.78rem; color:var(--muted); font-weight:600; }
+
+.shelf-cat-rail{
+  margin: 0 0 20px;
+  padding: 0 0 8px;
+  border-radius: 22px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  box-shadow: 0 6px 20px rgba(50,30,25,.04);
+  overflow:hidden;
+}
+.shelf-cat-rail .shelf-row{
+  padding: 4px 12px 14px;
+}
+.cat-rail-banner{
+  display:flex; align-items:center; gap:12px; flex-wrap:wrap;
+  padding: 14px 14px 10px;
+  cursor:pointer;
+  background: linear-gradient(120deg, rgba(141,48,72,.06), transparent 60%);
+  border-bottom: 1px solid var(--line);
+}
+.cat-rail-mark{
+  display:flex; align-items:center; gap:8px; flex-shrink:0;
+}
+.cat-rail-em{
+  width:44px; height:44px; border-radius:14px;
+  display:grid; place-items:center;
+  font-size:1.25rem;
+  background:#fff;
+  border:1px solid var(--line);
+  box-shadow: 0 2px 8px rgba(50,30,25,.05);
+}
+.cat-rail-thumbs{
+  display:flex; align-items:center;
+}
+.cat-rail-thumbs img,
+.cat-rail-thumbs .cat-thumb-em{
+  width:36px; height:36px; border-radius:10px;
+  object-fit:contain; background:#fff;
+  border:1.5px solid #fff;
+  box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  margin-inline-start: -10px;
+}
+.cat-rail-thumbs img:first-child,
+.cat-rail-thumbs .cat-thumb-em:first-child{ margin-inline-start:0; }
+.cat-rail-thumbs .cat-thumb-em{
+  display:grid; place-items:center; font-size:.9rem; background:#faf6f4;
+}
+.cat-rail-copy{ flex:1; min-width:0; }
+.cat-rail-idx{
+  display:block; font-size:.68rem; font-weight:800; letter-spacing:.06em;
+  color:var(--rose-deep); opacity:.75; margin-bottom:2px;
+}
+.cat-rail-copy h2{
+  margin:0; font-size:1.08rem; font-weight:800; color:var(--fg);
+}
+.cat-rail-copy p{
+  margin:2px 0 0; font-size:.78rem; color:var(--muted); font-weight:600;
+}
+.cat-rail-open{
+  flex-shrink:0;
+  background: var(--rose-deep);
+  color:#fff;
+  border:0; border-radius:999px;
+  padding: 10px 16px; font-weight:800; font-size:.8rem;
+  cursor:pointer; font-family:inherit;
+  box-shadow: 0 4px 12px rgba(141,48,72,.25);
+}
+.cat-rail-open:active{ transform: scale(.97); }
+
+.cat-accent-care .cat-rail-banner{ background: linear-gradient(120deg, rgba(90,140,110,.12), transparent 65%); }
+.cat-accent-care .cat-rail-em{ background:#eef6f0; }
+.cat-accent-face .cat-rail-banner{ background: linear-gradient(120deg, rgba(220,140,120,.14), transparent 65%); }
+.cat-accent-face .cat-rail-em{ background:#fbf0ec; }
+.cat-accent-lips .cat-rail-banner{ background: linear-gradient(120deg, rgba(180,60,90,.12), transparent 65%); }
+.cat-accent-lips .cat-rail-em{ background:#f9e8ed; }
+.cat-accent-eyes .cat-rail-banner{ background: linear-gradient(120deg, rgba(110,100,170,.12), transparent 65%); }
+.cat-accent-eyes .cat-rail-em{ background:#efedf8; }
+.cat-accent-brows .cat-rail-banner{ background: linear-gradient(120deg, rgba(130,100,70,.12), transparent 65%); }
+.cat-accent-brows .cat-rail-em{ background:#f4eee6; }
+.cat-accent-hair .cat-rail-banner{ background: linear-gradient(120deg, rgba(180,140,60,.12), transparent 65%); }
+.cat-accent-hair .cat-rail-em{ background:#f8f3e6; }
+.cat-accent-tools .cat-rail-banner{ background: linear-gradient(120deg, rgba(90,120,150,.12), transparent 65%); }
+.cat-accent-tools .cat-rail-em{ background:#eaf0f5; }
+.cat-accent-scent .cat-rail-banner{ background: linear-gradient(120deg, rgba(150,80,140,.12), transparent 65%); }
+.cat-accent-scent .cat-rail-em{ background:#f5eaf3; }
+
+.catalog-hero-soft{
+  background: linear-gradient(125deg, #f8ebe8 0%, #fff 60%);
+  color: var(--fg);
+  box-shadow: none;
+  border: 1px solid var(--line);
+}
+.catalog-hero-soft .catalog-hero-clear{
+  background: var(--card);
+  color: var(--rose-deep);
+  border: 1px solid var(--line);
+}
+#grid[hidden]{ display:none !important; }
+.section-head[hidden]{ display:none !important; }
+#shelves[hidden]{ display:none !important; }
+#brandsGrid[hidden]{ display:none !important; }
+
+html[data-theme="night"] .home-catalog-hero{
+  background:
+    radial-gradient(120% 80% at 100% 0%, rgba(141,48,72,.28), transparent 55%),
+    linear-gradient(145deg, #1a1512 0%, #241c18 60%, #2a181c 100%);
+  border-color: #3a2f2a;
+}
+html[data-theme="night"] .home-catalog-stats span{
+  background: rgba(30,24,20,.85);
+  border-color: #3a2f2a;
+}
+html[data-theme="night"] .shelf-cat-rail{
+  background: #1a1512;
+  border-color: #3a2f2a;
+}
+html[data-theme="night"] .cat-rail-banner{ border-bottom-color: #3a2f2a; }
+html[data-theme="night"] .cat-rail-em{
+  background: #241c18;
+  border-color: #3a2f2a;
+}
+
+/* Kill flash: never use content-visibility on product images */
+.card-visual img,
+.card-v2 .card-visual img,
+.shelf-row .card-visual img{
+  content-visibility: visible !important;
+  contain: none !important;
+}
+.card, .card-v2, .shelf-row .card{
+  content-visibility: visible !important;
+  contain: style !important;
+}
+body.chrome-hide .card-visual img{
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+
+/* ===== Home catalogs (replace product grid on home) ===== */
+.home-catalogs{ margin:8px 0 24px; }
+.home-cat-hero{
+  display:flex; align-items:flex-end; justify-content:space-between; gap:14px; flex-wrap:wrap;
+  margin: 0 0 16px;
+  padding: 18px 16px;
+  border-radius: 22px;
+  background:
+    radial-gradient(120% 90% at 0% 0%, rgba(141,48,72,.16), transparent 50%),
+    linear-gradient(145deg, #ffffff 0%, #faf4f2 50%, #f4e6e8 100%);
+  border: 1px solid var(--line);
+  box-shadow: 0 10px 28px rgba(50,30,25,.05);
+}
+.home-cat-kicker{
+  margin:0 0 4px; font-size:.7rem; font-weight:800; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--rose-deep);
+}
+.home-cat-hero h2{
+  margin:0 0 6px; font-size:1.55rem; font-weight:800; line-height:1.15; color:var(--fg);
+}
+.home-cat-hero-copy p:last-child{
+  margin:0; color:var(--muted); font-size:.88rem; font-weight:600; max-width:36ch; line-height:1.45;
+}
+.home-cat-stats{ display:flex; gap:10px; }
+.home-cat-stats span{
+  min-width:70px; text-align:center;
+  background:rgba(255,255,255,.8);
+  border:1px solid var(--line);
+  border-radius:16px; padding:10px 12px;
+  display:flex; flex-direction:column; gap:2px;
+}
+.home-cat-stats b{ font-size:1.12rem; font-weight:800; color:var(--rose-deep); line-height:1; }
+.home-cat-stats i{ font-style:normal; font-size:.66rem; color:var(--muted); font-weight:700; }
+
+.home-cat-grid{
+  display:grid;
+  grid-template-columns:repeat(2, 1fr);
+  gap:12px;
+}
+@media(min-width:700px){
+  .home-cat-grid{ grid-template-columns:repeat(3, 1fr); gap:16px; }
+}
+@media(min-width:1000px){
+  .home-cat-grid{ grid-template-columns:repeat(4, 1fr); }
+}
+.home-cat-card{
+  display:flex; flex-direction:column;
+  text-align:start;
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:20px;
+  overflow:hidden;
+  box-shadow:0 8px 24px rgba(50,30,25,.06);
+  padding:0;
+  cursor:pointer;
+  font-family:inherit;
+  color:inherit;
+  transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+  position:relative;
+}
+.home-cat-card:active{ transform:scale(.98); }
+.home-cat-card:focus-visible{
+  outline:2px solid var(--rose-deep); outline-offset:2px;
+}
+.home-cat-special{
+  border-color:#e8c9d0;
+  background:linear-gradient(180deg, #fff 0%, #fdf6f7 100%);
+}
+.home-cat-hot::after,
+.home-cat-off::after{
+  content:"";
+  position:absolute; top:10px; inset-inline-end:10px;
+  width:8px; height:8px; border-radius:50%;
+  background:var(--rose-deep);
+  box-shadow:0 0 0 4px rgba(141,48,72,.15);
+}
+.home-cat-off::after{ background:#c46b7c; }
+.cat-cover{
+  display:grid;
+  gap:3px;
+  background:linear-gradient(160deg,#faf6f4,#f0e4e0);
+  aspect-ratio:1.15;
+  padding:8px;
+  box-sizing:border-box;
+}
+.cat-cover-1{ grid-template-columns:1fr; }
+.cat-cover-2{ grid-template-columns:1fr 1fr; }
+.cat-cover-3{ grid-template-columns:1fr 1fr; grid-template-rows:1fr 1fr; }
+.cat-cover-3 img:first-child{ grid-row:1 / span 2; }
+.cat-cover-4{ grid-template-columns:1fr 1fr; grid-template-rows:1fr 1fr; }
+.cat-cover img{
+  width:100%; height:100%; object-fit:contain;
+  background:#fff; border-radius:12px; padding:6px; box-sizing:border-box;
+}
+.cat-cover-empty, .cat-cover-all{
+  aspect-ratio:1.15;
+  display:grid; place-items:center;
+  background:linear-gradient(135deg,#8d3048 0%,#c46b7c 55%,#f3d4c2 100%);
+  color:#fff; font-size:2rem; font-weight:800;
+}
+.cat-cover-all span{
+  width:64px; height:64px; border-radius:18px;
+  background:rgba(255,255,255,.95); color:var(--rose-deep);
+  display:grid; place-items:center; font-size:1.6rem;
+}
+.home-cat-body{
+  padding:12px 12px 14px;
+  display:flex; flex-direction:column; gap:2px;
+}
+.home-cat-body b{ font-size:.95rem; font-weight:800; line-height:1.3; }
+.home-cat-body span:not(.home-cat-em){ font-size:.75rem; color:var(--muted); font-weight:600; }
+.home-cat-em{ font-size:1rem; margin-bottom:2px; display:block; }
+.home-cat-hot .home-cat-body b{ color:var(--rose-deep); }
+.home-cat-off .cat-cover{ background:linear-gradient(160deg,#fff5f7,#f8e6ea); }
+.home-cat-all .home-cat-body b{ color:var(--rose-deep); }
+.cat-back{
+  display:inline-grid; place-items:center;
+  width:36px; height:36px; border-radius:12px;
+  border:1px solid var(--line); background:var(--card);
+  font-size:1.2rem; font-weight:800; color:var(--rose-deep);
+  vertical-align:middle; margin-inline-end:4px;
+  cursor:pointer;
+}
+.section-head[hidden], #grid[hidden], #priceBar[hidden], #homeCatalogs[hidden], #shelves[hidden]{
+  display:none!important;
+}
+html[data-theme="night"] .home-cat-hero{
+  background:
+    radial-gradient(120% 90% at 0% 0%, rgba(141,48,72,.28), transparent 50%),
+    linear-gradient(145deg, #1a1512 0%, #241c18 60%, #2a181c 100%);
+  border-color:#3a2f2a;
+}
+html[data-theme="night"] .home-cat-stats span{
+  background:rgba(30,24,20,.85); border-color:#3a2f2a;
+}
+html[data-theme="night"] .cat-cover{
+  background:linear-gradient(160deg,#1a1512,#241c18);
+}
+html[data-theme="night"] .cat-cover img{ background:#151210; }
+html[data-theme="night"] .home-cat-card{ box-shadow:none; }
+html[data-theme="night"] .home-cat-special{
+  background:linear-gradient(180deg, #1a1512 0%, #241818 100%);
+  border-color:#3a2f2a;
+}
+
+/* no brand-catalog mosaic / rails on home — simple brands-row only */
+.brands-mosaic, .catalog-rail-wrap{ display:none!important; }

@@ -34,10 +34,34 @@ function applyRoute(){
   }
   if($("#sheet").classList.contains("show")) closeSheet(true);
   // Search results: #q/keyword
+  if(h.indexOf("shelf/")===0){
+    var sk=h.slice(6);
+    catalogBrowse=true; currentBrand=""; currentConcern=""; wishView=false; query=""; currentCat="all";
+    if(sk==="hot"){ window.__naqaShelfFilter="hot"; currentSort="new"; }
+    else if(sk==="off"){ window.__naqaShelfFilter="off"; currentSort="off"; }
+    else { window.__naqaShelfFilter=""; }
+    document.querySelectorAll("#cats [data-cat]").forEach(x=>x.classList.toggle("on", x.dataset.cat==="all"));
+    render();
+    return;
+  }
+  if(h==="products" || h==="all"){
+    catalogBrowse=true; window.__naqaShelfFilter=""; currentCat="all"; currentBrand=""; query="";
+    document.querySelectorAll("#cats [data-cat]").forEach(x=>x.classList.toggle("on", true && x.dataset.cat==="all"));
+    render();
+    return;
+  }
+  if(h==="shop" || h==="" || h==="top"){
+    catalogBrowse=false; window.__naqaShelfFilter=""; currentCat="all"; currentBrand=""; currentConcern=""; wishView=false; query="";
+    document.querySelectorAll("#cats [data-cat]").forEach(x=>x.classList.toggle("on", x.dataset.cat==="all"));
+    const s=$("#search"); if(s) s.value="";
+    const clr=$("#searchClear"); if(clr) clr.hidden=true;
+    render();
+    return;
+  }
   if(h.indexOf("q/")===0){
     const raw=h.slice(2);
     query=raw;
-    currentCat="all"; currentBrand=""; currentConcern=""; wishView=false;
+    currentCat="all"; currentBrand=""; currentConcern=""; wishView=false; catalogBrowse=true; window.__naqaShelfFilter="";
     const s=$("#search"); if(s) s.value=query;
     const clr=$("#searchClear"); if(clr) clr.hidden=!query;
     document.querySelectorAll("#cats [data-cat]").forEach(x=>x.classList.toggle("on", x.dataset.cat==="all"));
@@ -47,7 +71,7 @@ function applyRoute(){
     return;
   }
   if(h.indexOf("b/")===0){
-    currentBrand=h.slice(2); currentCat="all"; query="";
+    currentBrand=h.slice(2); currentCat="all"; query=""; catalogBrowse=true; window.__naqaShelfFilter="";
     const s=$("#search"); if(s) s.value="";
     document.querySelectorAll("#cats [data-cat]").forEach(x=>x.classList.toggle("on", x.dataset.cat==="all"));
     render();
@@ -56,7 +80,7 @@ function applyRoute(){
     return;
   }
   if(h.indexOf("c/")===0){
-    currentCat=h.slice(2); currentBrand=""; query="";
+    currentCat=h.slice(2); currentBrand=""; query=""; catalogBrowse=(currentCat!=="all"); window.__naqaShelfFilter="";
     const s=$("#search"); if(s) s.value="";
     document.querySelectorAll("#cats [data-cat]").forEach(x=>x.classList.toggle("on", x.dataset.cat===currentCat));
     render();

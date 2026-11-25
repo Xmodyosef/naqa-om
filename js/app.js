@@ -95,7 +95,11 @@ function runSearch(fromSubmit){
     currentBrand = "";
     currentConcern = "";
     wishView = false;
+    catalogBrowse = true;
+    window.__naqaShelfFilter = "";
     document.querySelectorAll("#cats [data-cat]").forEach(x=>x.classList.toggle("on", x.dataset.cat==="all"));
+  } else {
+    /* empty search from home stays on catalogs */
   }
   // Exact single match (SKU / full name) → open full product page
   if(fromSubmit && query && typeof isExactProductMatch==="function"){
@@ -174,6 +178,8 @@ document.addEventListener("click", e=>{
   currentCat="all";
   query="";
   wishView=false;
+  catalogBrowse=true;
+  window.__naqaShelfFilter="";
   const search=$("#search"); if(search) search.value="";
   document.querySelectorAll("#cats [data-cat]").forEach(x=>x.classList.toggle("on", x.dataset.cat==="all"));
   closeSheet(true);
@@ -187,14 +193,21 @@ $("#cats").addEventListener("click", e=>{
   const a=e.target.closest("[data-cat]"); if(!a) return; e.preventDefault();
   document.querySelectorAll("#cats [data-cat]").forEach(x=>x.classList.remove("on")); a.classList.add("on");
   currentCat=a.dataset.cat; currentBrand=""; wishView=false; closeSheet(true);
+  window.__naqaShelfFilter="";
+  catalogBrowse = (currentCat !== "all");
   try{ history.pushState({naqa:"cat"}, "", currentCat==="all"?"#shop":"#c/"+encodeURIComponent(currentCat)); }catch(e){}
-  render(); $("#products").scrollIntoView({behavior:"smooth"});
+  render();
+  if(currentCat!=="all"){ const p=$("#products"); if(p) p.scrollIntoView({behavior:"smooth"}); }
 });
 document.querySelectorAll("[data-cat-jump]").forEach(el=>{
   el.addEventListener("click", e=>{
     e.preventDefault(); currentCat=el.dataset.catJump; currentBrand=""; wishView=false;
+    window.__naqaShelfFilter="";
+    catalogBrowse = (currentCat !== "all");
     document.querySelectorAll("#cats [data-cat]").forEach(x=>x.classList.toggle("on", x.dataset.cat===currentCat));
-    render(); $("#products").scrollIntoView({behavior:"smooth"});
+    try{ history.pushState({naqa:"cat"}, "", currentCat==="all"?"#shop":"#c/"+encodeURIComponent(currentCat)); }catch(err){}
+    render();
+    if(currentCat!=="all"){ const p=$("#products"); if(p) p.scrollIntoView({behavior:"smooth"}); }
   });
 });
 $("#checkoutBtn").onclick=()=>{
@@ -400,19 +413,20 @@ function naqaSetChrome(hide){
   if(now < __naqaChromeCooldown) return;
   if(hide) document.body.classList.add("chrome-hide");
   else document.body.classList.remove("chrome-hide");
-  __naqaChromeCooldown = now + 380; // lock toggle ~0.4s to stop flicker loops
+  __naqaChromeCooldown = now + 900; // lock toggle ~0.9s — stop flash loops
 }
 function naqaUpdateChrome(y){
-  const prod=$("#products");
-  const thresh = prod ? Math.max(160, prod.offsetTop + 40) : 220;
+  /* Prefer home catalog shelves as threshold; fall back to products heading */
+  const anchor = $("#homeCatalogs") || $("#shelves") || $("#products");
+  const thresh = anchor ? Math.max(160, anchor.offsetTop + 40) : 220;
   const delta = y - __naqaLastY;
   __naqaLastY = y;
   // near top always show
   if(y < 60){ naqaSetChrome(false); return; }
   // hide only on clear downward scroll into catalog
-  if(y > thresh && delta > 14){ naqaSetChrome(true); return; }
+  if(y > thresh && delta > 28){ naqaSetChrome(true); return; }
   // show only on clear upward scroll
-  if(delta < -18){ naqaSetChrome(false); }
+  if(delta < -36){ naqaSetChrome(false); }
 }
 window.addEventListener("scroll", ()=>{
   if(document.body.classList.contains("naqa-scroll-lock") ||
@@ -494,3 +508,17 @@ function boot(){
   }
 }
 if(document.readyState==="loading") document.addEventListener("DOMContentLoaded", boot); else boot();
+
+/* Home catalog tiles */
+document.addEventListener("click", function(e){
+  var t = e.target.closest && e.target.closest("[data-open-catalog]");
+  if(!t) return;
+  e.preventDefault();
+  var k = t.getAttribute("data-open-catalog");
+  if(!k) return;
+  if(k==="hot" || k==="off" || k==="all"){
+    if(typeof openCatalog==="function") openCatalog("all", k);
+  } else {
+    if(typeof openCatalog==="function") openCatalog(k, "");
+  }
+});

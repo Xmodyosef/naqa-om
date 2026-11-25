@@ -55,7 +55,7 @@
     }
     box.innerHTML = head + list.map(function (c) {
       var phoneDigits = String(c.phone || "").replace(/\D/g, "").replace(/^968/, "");
-      var when = c.last ? new Date(c.last).toLocaleDateString(A.lang === "en" ? "en-OM" : "ar-OM") : "—";
+      var when = c.last ? A.fmtDateNum(c.last) : "—";
       return '<div class="cust-row"><div><strong>' + A.esc(c.name) + '</strong>'
         + '<small>' + A.esc(c.phone) + ' · ' + A.esc(c.area) + '</small>'
         + '<small>' + c.count + ' ' + A.t("c_orders") + ' · ' + c.total.toFixed(3) + ' ' + A.t("omr") + ' · ' + A.t("c_last") + ' ' + A.esc(when) + '</small>'

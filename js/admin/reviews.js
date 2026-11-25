@@ -122,7 +122,7 @@
       var rows = (A.reviews || []).filter(function (r) { return A.inDateRange(r.at); }).map(function (r) {
         var imgSrc = r.photo || (r.photoB64 ? ("data:image/jpeg;base64," + r.photoB64) : "");
         var img = imgSrc ? '<img src="' + A.esc(imgSrc) + '" alt="" style="width:64px;height:64px;object-fit:cover;border-radius:10px">' : "";
-        var when = r.at ? new Date(r.at).toLocaleDateString(A.lang === "en" ? "en-OM" : "ar-OM") : "";
+        var when = r.at ? A.fmtDateNum(r.at) : "";
         return '<div class="row"><div>' + img + '<strong>' + A.esc(r.name || "") + " " + stars(r.stars) + '</strong><small>' + A.esc(r.sku || "") + (when ? " · " + A.esc(when) : "") + " · " + A.esc((r.ar || r.en || "").slice(0, 80)) + '</small></div>'
           + '<button type="button" class="mini" data-rv-off="' + A.esc(r.id) + '">' + (r.on === false ? A.t("r_show") : A.t("r_hide")) + '</button>'
           + '<button type="button" class="mini" data-rv-del="' + A.esc(r.id) + '">' + A.t("del") + '</button></div>';

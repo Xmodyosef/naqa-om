@@ -220,7 +220,7 @@
       }
       var when = "";
       try {
-        when = o.at ? new Date(o.at).toLocaleString("en-GB", { day: "numeric", month: "short", year: "numeric", hour: "2-digit", minute: "2-digit" }) : "";
+        when = o.at ? A.fmtDateTimeNum(o.at) : "";
       } catch (e) { when = o.at || ""; }
       var phoneDigits = String(o.phone || "").replace(/\D/g, "").replace(/^968/, "");
       var statusPick = '<select class="status-one ' + A.esc(st) + '" data-st-pick data-oid="' + A.esc(o.id) + '" aria-label="' + A.esc(A.t("statusTo")) + '">'
@@ -274,7 +274,7 @@
       var label = day;
       try {
         if (day && day !== "—") {
-          label = new Date(day + "T12:00:00").toLocaleDateString("en-GB", { weekday: "short", year: "numeric", month: "short", day: "numeric" });
+          label = A.fmtDateNum(day + "T12:00:00");
         }
       } catch (e) {}
       return '<h3 class="order-day">' + A.esc(label) + ' · ' + byDay[day].length + '</h3>'

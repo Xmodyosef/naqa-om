@@ -55,6 +55,25 @@
       return String(d).slice(0, 10);
     }
   };
+  /* Numeric dates only: 25/11/2026 · 25/11/2026 14:05 (no month/weekday names) */
+  A.fmtDateNum = function (d) {
+    if (!d) return "";
+    var dt = d instanceof Date ? d : new Date(d);
+    if (isNaN(dt.getTime())) return "";
+    var dd = String(dt.getDate()).padStart(2, "0");
+    var mm = String(dt.getMonth() + 1).padStart(2, "0");
+    var yy = dt.getFullYear();
+    return dd + "/" + mm + "/" + yy;
+  };
+  A.fmtDateTimeNum = function (d) {
+    if (!d) return "";
+    var dt = d instanceof Date ? d : new Date(d);
+    if (isNaN(dt.getTime())) return "";
+    var hh = String(dt.getHours()).padStart(2, "0");
+    var mi = String(dt.getMinutes()).padStart(2, "0");
+    return A.fmtDateNum(dt) + " " + hh + ":" + mi;
+  };
+
   A.inDateRange = function (at) {
     var day = A.dayKey(at);
     if (A.dateFrom && (!day || day < A.dateFrom)) return false;
@@ -403,7 +422,7 @@
       A.t("rep_finAvg") + ": " + (count ? (sales / count).toFixed(3) : "0.000") + " " + omr,
       A.t("rep_finNew") + ": " + bySt.new + " · " + A.t("rep_finPrep") + ": " + bySt.prep + " · " + A.t("rep_finShip") + ": " + bySt.ship + " · " + A.t("rep_finDone") + ": " + bySt.delivered,
       A.t("rep_finCancel") + ": " + cancel,
-      A.t("rep_finDate") + ": " + new Date().toLocaleString(loc)
+      A.t("rep_finDate") + ": " + A.fmtDateTimeNum(new Date())
     ].join("\n");
   };
   A.waShareText = function (text) {

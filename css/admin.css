@@ -17,3 +17,14 @@
 }
 .cust-hit strong{font-size:1rem}
 .sub-count-inline{font-weight:600;color:var(--muted,#8a7f78);font-size:.9em}
+
+/* Customer detail cards */
+.cust-detail-grid{display:grid;gap:6px;margin:10px 0 14px}
+.cust-orders-h{margin:16px 0 10px;font-size:1rem;font-weight:800}
+.cust-order-card{margin-bottom:10px}
+.cust-hit .cust-phone,
+.cust-detail-grid .cust-phone{
+  display:inline-block;
+  color:var(--rose, #c46b7c);
+  font-weight:800;
+}

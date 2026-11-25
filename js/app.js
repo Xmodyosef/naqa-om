@@ -322,7 +322,7 @@ function boot(){
     render();
     applyRoute();
     /* Lazy product copy (desc/use/skin) — keeps first paint light */
-    fetch("data/products.detail.json?v=20261125clean1").then(function(res){ return res.ok ? res.json() : null; }).then(function(d){
+    fetch("data/products.detail.json?v=20261125store1").then(function(res){ return res.ok ? res.json() : null; }).then(function(d){
       if (d && typeof naqaMergeProductDetails === "function") {
         naqaMergeProductDetails(d);
         try { if (typeof render === "function") render(); } catch (e) {}

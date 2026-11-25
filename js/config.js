@@ -60,5 +60,8 @@ const BRAND_DOMAIN = {
   "Vaseline": "vaseline.com",
   "essence": "essence.eu",
   "Makeup Revolution": "revolutionbeauty.com",
-  "Bourjois": "bourjois.com"
+  "Bourjois": "bourjois.com",
+  "GHD": "ghdhair.com",
+  "Nuova Donatella": "nuovadonatella.com",
+  "BaByliss PRO": "babylisspro.com"
 };

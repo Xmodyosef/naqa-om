@@ -5,6 +5,7 @@ anua	Anua	17
 arencia	Arencia	7
 aromatica	Aromatica	1
 axis-y	AXIS-Y	4
+babyliss-pro	BaByliss PRO	1
 beauty-of-joseon	Beauty of Joseon	3
 biodance	Biodance	1
 bioderma	Bioderma	1
@@ -20,6 +21,7 @@ epii	epii	1
 eqqualberry	EQQUALBERRY	3
 essence	essence	20
 eucerin	Eucerin	2
+ghd	GHD	4
 haruharu	HaruHaru	2
 isdin	ISDIN	1
 k-secret	K-Secret	2
@@ -36,6 +38,7 @@ medicube	Medicube	20
 missha	MISSHA	5
 neutrogena	Neutrogena	1
 numbuzin	Numbuzin	4
+nuova-donatella	Nuova Donatella	2
 nyx	NYX	1
 olaplex	OLAPLEX	10
 purito	Purito	2

@@ -162,8 +162,8 @@
       + '<section class="set-card">'
       +   '<div class="set-card-head"><span class="set-card-ico" aria-hidden="true">⇄</span><h2 class="set-card-title">' + (ar ? "المزامنة" : "Sync") + '</h2></div>'
       +   '<p class="set-card-note">' + (ar
-          ? "اسحبي الطلبات من السحابة لهذا الجهاز، أو ارفع نسخة احتياطية."
-          : "Pull cloud orders to this device, or push a backup.") + '</p>'
+          ? "سحب الطلبات من السحابة إلى هذا الجهاز، أو رفع نسخة احتياطية."
+          : "Pull orders from the cloud to this device, or push a backup.") + '</p>'
       +   '<div class="set-actions set-actions-row">'
       +     '<button type="button" class="set-pill set-pill-solid" id="btnPullOrders">' + (ar ? "سحب الطلبات" : "Pull orders") + '</button>'
       +     '<button type="button" class="set-pill set-pill-solid" id="btnPushOrders">' + (ar ? "رفع الطلبات" : "Push orders") + '</button>'

@@ -318,7 +318,7 @@ function reviewsSection(p) {
   }).join("");
   var empty = list.length ? "" : '<p class="review-empty">' + (en ? "No reviews yet. Be the first." : "لا تقييمات بعد. كوني الأولى.") + "</p>";
   return '<section class="reviews-block"><h4 class="block-h">' + (en ? "Real reviews" : "تقييمات حقيقية") + '</h4>'
-    + '<p class="review-empty">' + (en ? "A nickname, your words, and an optional photo. Your phone number is never shown. It appears after we approve it." : "لقب، كلامك، وصورة اختيارية. رقمك ما يننشر. يظهر بعد الموافقة.") + "</p>"
+    + '<p class="review-empty">' + (en ? "Thank you for sharing your experience. It means a lot to us." : "شكراً لمشاركتكِ تجربتكِ. رأيكِ يعني لنا الكثير.") + "</p>"
     + empty + cards
     + '<button type="button" class="btn-ghost" data-write-review="' + p.id + '" style="margin-top:8px;border:1px solid var(--line);border-radius:12px;padding:10px 14px;font-weight:800">' + (en ? "Write a review" : "اكتبي تقييمك") + "</button></section>";
 }
@@ -382,8 +382,8 @@ function openReviewForm(id) {
   document.getElementById("rvText").value = "";
   document.getElementById("rvPhoto").value = "";
   document.getElementById("rvMsg").textContent = en
-    ? "We read it first. Your phone number is not published."
-    : "نقرأ التقييم أولاً. رقمك ما يننشر.";
+    ? "Thank you. We are glad you are here."
+    : "شكراً لكِ. يسعدنا وجودكِ.";
   document.querySelectorAll("#starPick button").forEach(function (x) { x.classList.add("on"); });
   el.hidden = false;
 }

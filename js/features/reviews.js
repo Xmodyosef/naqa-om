@@ -69,8 +69,12 @@ function reviewsSection(p) {
     return '<article class="review-card"><header><span>' + esc(r.name || (en ? "Customer" : "زبونة")) + '</span><span>' + "★".repeat(Math.max(1, Math.min(5, Number(r.stars) || 0))) + '</span></header><p>' + esc(reviewText(r)) + '</p>' + photo + '</article>';
   }).join("");
   var empty = list.length ? "" : '<p class="review-empty">' + (en ? "No reviews yet. Be the first." : "لا تقييمات بعد. كوني الأولى.") + "</p>";
+  var thanks = en
+    ? "Thank you for sharing your experience. It means a lot to us."
+    : "شكراً لمشاركتكِ تجربتكِ. رأيكِ يعني لنا الكثير.";
   return '<section class="reviews-block"><h4 class="block-h">' + (en ? "Reviews" : "التقييمات") + '</h4>'
     + empty + cards
+    + '<p class="review-empty">' + thanks + '</p>'
     + '<button type="button" class="btn-ghost" data-write-review="' + p.id + '" style="margin-top:8px;border:1px solid var(--line);border-radius:12px;padding:10px 14px;font-weight:800">' + (en ? "Write a review" : "اكتبي تقييمك") + "</button></section>";
 }
 
@@ -132,7 +136,9 @@ function openReviewForm(id) {
   document.getElementById("rvName").value = "";
   document.getElementById("rvText").value = "";
   document.getElementById("rvPhoto").value = "";
-  document.getElementById("rvMsg").textContent = "";
+  document.getElementById("rvMsg").textContent = en
+    ? "Thank you. We are glad you are here."
+    : "شكراً لكِ. يسعدنا وجودكِ.";
   document.querySelectorAll("#starPick button").forEach(function (x) { x.classList.add("on"); });
   el.hidden = false;
 }
@@ -171,22 +177,33 @@ function submitReview(e) {
       photo: photo && photo.length < 650000 ? photo : "",
       at: Date.now()
     };
-    function fail() {
-      if (sendBtn) sendBtn.disabled = false;
-      msg.textContent = en ? "Could not send. Try again." : "ما وصل التقييم. حاولي مرة ثانية.";
-    }
-    function ok() {
+    function thanks() {
       if (sendBtn) sendBtn.disabled = false;
       el.hidden = true;
-      if (typeof toast === "function") toast(en ? "Your review was sent." : "وصل تقييمك.");
+      if (typeof toast === "function") toast(en ? "Thank you. Your review was sent." : "شكراً لكِ. وصل تقييمك.");
     }
-    try {
-      if (window.NAQA_FIREBASE && window.firebase && firebase.apps && !firebase.apps.length && firebase.initializeApp) {
-        firebase.initializeApp(window.NAQA_FIREBASE);
-      }
-      if (!window.firebase || !firebase.firestore) { fail(); return; }
-      firebase.firestore().collection("naqa_inbox").doc(id).set(data).then(ok).catch(fail);
-    } catch (err) { fail(); }
+    function openWa() {
+      var n = (typeof WA_NUMBER !== "undefined") ? WA_NUMBER : "96879088349";
+      var body = (en ? "Naqa review" : "تقييم نقاء") + "\n"
+        + (p.sku || "") + " · " + pname(p) + "\n"
+        + "★".repeat(stars) + " " + stars + "/5\n"
+        + name + "\n" + text;
+      window.open("https://wa.me/" + n + "?text=" + encodeURIComponent(body), "_blank");
+    }
+    function deliver() {
+      thanks();
+      try {
+        if (window.NAQA_FIREBASE && window.firebase && firebase.apps && !firebase.apps.length && firebase.initializeApp) {
+          firebase.initializeApp(window.NAQA_FIREBASE);
+        }
+        if (window.firebase && firebase.firestore) {
+          firebase.firestore().collection("naqa_inbox").doc(id).set(data).catch(function () { openWa(); });
+          return;
+        }
+      } catch (err) {}
+      openWa();
+    }
+    deliver();
   });
 }
 

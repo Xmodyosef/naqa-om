@@ -1,17 +1,38 @@
 /* Real reviews only. Approved list is data/reviews.json. No phone numbers. */
 var NAQA_REVIEWS = [];
 
+function applyReviewsList(list) {
+  NAQA_REVIEWS = Array.isArray(list) ? list : [];
+  if (typeof openProductId !== "undefined" && openProductId && typeof openSheet === "function") {
+    var mode = (typeof sheetMode !== "undefined") ? sheetMode : "full";
+    if (mode !== "qv") openSheet(openProductId, mode, false);
+  }
+}
+function loadReviewsFromCloud() {
+  try {
+    if (!window.firebase || !firebase.apps || !firebase.apps.length || !firebase.firestore) return Promise.resolve(null);
+    return firebase.firestore().collection("naqa").doc("reviews").get().then(function (snap) {
+      if (!snap.exists) return null;
+      var d = snap.data() || {};
+      var list = d.list || d.reviews || null;
+      return Array.isArray(list) ? list : null;
+    }).catch(function () { return null; });
+  } catch (e) { return Promise.resolve(null); }
+}
 function loadReviews() {
   return fetch("data/reviews.json?v=" + Date.now())
     .then(function (r) { return r.ok ? r.json() : []; })
     .then(function (list) {
-      NAQA_REVIEWS = Array.isArray(list) ? list : [];
-      if (openProductId && typeof openSheet === "function") {
-        var mode = (typeof sheetMode !== "undefined") ? sheetMode : "full";
-        if (mode !== "qv") openSheet(openProductId, mode, false);
-      }
+      applyReviewsList(Array.isArray(list) ? list : []);
+      return loadReviewsFromCloud().then(function (cloud) {
+        if (cloud && cloud.length) applyReviewsList(cloud);
+      });
     })
-    .catch(function () { NAQA_REVIEWS = []; });
+    .catch(function () {
+      return loadReviewsFromCloud().then(function (cloud) {
+        applyReviewsList(cloud || []);
+      }).catch(function () { NAQA_REVIEWS = []; });
+    });
 }
 
 function reviewsFor(p) {

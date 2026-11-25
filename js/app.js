@@ -297,29 +297,9 @@ document.addEventListener("focusin", function(e){
 function boot(){
   try{
     if(!products.length) throw new Error("products.js missing");
-    function naqaLocalOverrides(){
-      try {
-        var o = JSON.parse(localStorage.getItem("naqa_overrides") || "{}");
-        return (o && typeof o === "object") ? o : {};
-      } catch (e) { return {}; }
-    }
-    function naqaDeepOverrides(remote, local){
-      var out = {}, r = remote || {}, o = local || {}, keys = {};
-      Object.keys(r).forEach(function(k){ keys[k] = 1; });
-      Object.keys(o).forEach(function(k){ keys[k] = 1; });
-      Object.keys(keys).forEach(function(k){
-        var i = r[k] && typeof r[k] === "object" ? r[k] : {};
-        var s = o[k] && typeof o[k] === "object" ? o[k] : null;
-        if (!s) { out[k] = i; return; }
-        var u = Object.assign({}, i, s);
-        if (Object.prototype.hasOwnProperty.call(s, "hidden")) u.hidden = !!s.hidden;
-        else if (i.hidden) u.hidden = true;
-        out[k] = u;
-      });
-      return out;
-    }
+    /* Public store: only remote overrides (+ Firestore via store-cloud-boot). Never localStorage. */
     function naqaApplyOverrides(remote){
-      var map = naqaDeepOverrides(remote || {}, naqaLocalOverrides());
+      var map = (remote && typeof remote === "object") ? remote : {};
       if (typeof mergeOverrides === "function") mergeOverrides(map);
       if (typeof render === "function") render();
     }

@@ -172,5 +172,8 @@
   "hideNeedTok": "Hidden on this device only. Add the publish token in Settings so it hides on the store for everyone.",
   "fb_signedIn": "Signed in. The email address is not shown here.",
   "f_chart": "Sales over recent days",
-  "o_search": "Search by order no., customer name, or phone…"
+  "o_search": "Search by order no., customer name, or phone…",
+  "r_publish": "Publish to store",
+  "r_published": "Reviews published to the store ✓",
+  "r_publishFail": "Could not publish reviews."
 }

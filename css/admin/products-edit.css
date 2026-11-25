@@ -1,19 +1,28 @@
-/* —— Product edit sheet (full-screen mobile pattern) ——
-   Body is locked; only the sheet body scrolls so long forms work. */
+/* —— Product edit sheet (full-screen mobile) ——
+   Keyboard-friendly: no body position:fixed (that freezes zoom/pan on iOS).
+   Inputs ≥16px so Safari does not force-zoom on focus. */
 html.naqa-scroll-lock,
 body.naqa-scroll-lock{
   overflow:hidden!important;
   overscroll-behavior:none;
-  height:100%;
 }
-body.naqa-scroll-lock{
-  position:fixed;
-  width:100%;
-  left:0;
-  right:0;
-}
+/* DO NOT use position:fixed on body — breaks keyboard + pinch-zoom */
 body.naqa-editing .savebar{display:none!important}
 body.naqa-editing .admin-top{visibility:hidden;pointer-events:none}
+body.naqa-editing .side-nav,
+body.naqa-editing .top-bar,
+body.naqa-editing #pageSubNav{visibility:hidden;pointer-events:none}
+
+/* Form fields: 16px prevents iOS auto-zoom; still allow user pinch-zoom */
+#editView input,
+#editView textarea,
+#editView select{
+  font-size:16px!important;
+  line-height:1.35;
+  max-width:100%;
+  touch-action:manipulation;
+}
+#editView textarea{min-height:88px}
 
 #editView[hidden]{display:none!important}
 #editView:not([hidden]){
@@ -28,7 +37,9 @@ body.naqa-editing .admin-top{visibility:hidden;pointer-events:none}
   left:0;
   right:0;
   background:var(--bg);
-  overscroll-behavior:none;
+  overscroll-behavior:contain;
+  /* keyboard: pad with visualViewport via JS class */
+  padding-bottom:var(--kb-pad, 0px);
 }
 .edit-sheet-head{
   flex:0 0 auto;
@@ -102,12 +113,7 @@ body.naqa-editing .admin-top{visibility:hidden;pointer-events:none}
 
 
 /* Keep edit/list gestures inside the admin — avoid browser page swipe */
-html.naqa-scroll-lock, body.naqa-scroll-lock {
-  overscroll-behavior-x: none;
-}
-body.naqa-editing {
-  overscroll-behavior-x: none;
-}
+
 .edit-sheet-body {
   overscroll-behavior: contain;
 }

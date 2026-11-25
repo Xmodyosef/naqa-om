@@ -227,61 +227,7 @@
     A.applyRoute((location.hash || "").replace(/^#\/?/, ""));
   };
 
-  /* STEP2: PIN opens admin ONLY when Firebase is disabled. With Firebase, PIN is settings-only. */
-  var pinGoBtn = document.getElementById("pinGo");
-  if (pinGoBtn) pinGoBtn.onclick = function () {
-    var msg = document.getElementById("pinMsg");
-    var fbOn = false;
-    try { fbOn = !!(window.naqaFirebaseEnabled && naqaFirebaseEnabled()); } catch (e) {}
-    if (fbOn) {
-      if (msg) msg.textContent = A.lang === "en"
-        ? "Sign in with email or Google. Device PIN is optional in Settings."
-        : "ادخلي بالإيميل أو Google. رمز الجهاز اختياري من الإعدادات.";
-      return;
-    }
-    var typed = (document.getElementById("pinInput") && document.getElementById("pinInput").value || "").trim();
-    if (!typed || typed.length < 4) { if (msg) msg.textContent = A.t("pinShort"); return; }
-    if (A.isLocked && A.isLocked()) { if (msg) msg.textContent = A.t("pinLocked"); return; }
-    var plain = localStorage.getItem(A.PIN);
-    var hashHave = localStorage.getItem(A.PIN_HASH);
-    function ok() {
-      A.setLockInfo(0, 0);
-      A.touchSession();
-      A.openAdmin();
-    }
-    function fail() {
-      var info = A.lockInfo();
-      var fails = (info.fails || 0) + 1;
-      var until = 0;
-      if (fails >= A.MAX_FAIL) {
-        until = Date.now() + A.LOCK_MS;
-        fails = 0;
-        if (msg) msg.textContent = A.t("pinLocked");
-      } else {
-        if (msg) msg.textContent = A.t("pinBad") + " · " + (A.MAX_FAIL - fails) + " " + A.t("pinLeft");
-      }
-      A.setLockInfo(fails, until);
-    }
-    if (!hashHave && !plain) {
-      if (!confirm(A.t("pinFirst"))) { if (msg) msg.textContent = A.t("pinFirstNo"); return; }
-      A.hashPin(typed).then(function (h) {
-        localStorage.setItem(A.PIN_HASH, h);
-        localStorage.removeItem(A.PIN);
-        ok();
-      });
-      return;
-    }
-    A.hashPin(typed).then(function (h) {
-      if (hashHave && h === hashHave) { ok(); return; }
-      if (!hashHave && plain && typed === plain) {
-        localStorage.setItem(A.PIN_HASH, h);
-        localStorage.removeItem(A.PIN);
-        ok();
-        return;
-      }
-      fail();
-    });
-  };
+  /* PIN login removed — Firebase only */
 
   A.addProduct = function () {
     A.go("products", A.productView || "all", { push: true });
@@ -363,13 +309,8 @@
     var pinRow = document.getElementById("pinRow");
     var fbOn = false;
     try { fbOn = !!(window.naqaFirebaseEnabled && naqaFirebaseEnabled()); } catch (e2) {}
-    if (fbOn) {
-      if (fbLogin) fbLogin.hidden = false;
-      if (pinRow) pinRow.hidden = true;
-    } else {
-      if (fbLogin) fbLogin.hidden = true;
-      if (pinRow) pinRow.hidden = false;
-    }
+    if (fbLogin) fbLogin.hidden = false;
+    if (pinRow) pinRow.hidden = true;
     var msg = document.getElementById("pinMsg");
     if (msg) msg.textContent = A.t("fb_signedOut") || A.t("pinLead");
   }, 60000);

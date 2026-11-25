@@ -2,14 +2,48 @@
   var A = w.NaqaAdmin;
   var MAX_IMGS = 5;
 
+  var __kbPadBound = false;
+  function onKbPad() {
+    try {
+      var vv = window.visualViewport;
+      if (!vv) return;
+      var pad = Math.max(0, (window.innerHeight || 0) - vv.height - (vv.offsetTop || 0));
+      document.documentElement.style.setProperty("--kb-pad", pad + "px");
+    } catch (e) {}
+  }
+  function bindKbPad(on) {
+    try {
+      if (on && !__kbPadBound && window.visualViewport) {
+        window.visualViewport.addEventListener("resize", onKbPad);
+        window.visualViewport.addEventListener("scroll", onKbPad);
+        __kbPadBound = true;
+        onKbPad();
+      } else if (!on && __kbPadBound && window.visualViewport) {
+        window.visualViewport.removeEventListener("resize", onKbPad);
+        window.visualViewport.removeEventListener("scroll", onKbPad);
+        __kbPadBound = false;
+        document.documentElement.style.setProperty("--kb-pad", "0px");
+      }
+    } catch (e) {}
+  }
   function endEditMode() {
     try { document.body.classList.remove("naqa-editing"); } catch (e) {}
-    if (window.naqaScrollLock) try { naqaScrollLock.unlock(); } catch (e) {}
+    /* Soft unlock only — never use position:fixed lock here (kills zoom/keyboard) */
+    try {
+      document.documentElement.style.overflow = "";
+      document.body.style.overflow = "";
+    } catch (e) {}
+    bindKbPad(false);
   }
 
   function startEditMode() {
     try { document.body.classList.add("naqa-editing"); } catch (e) {}
-    if (window.naqaScrollLock) try { naqaScrollLock.lock(); } catch (e) {}
+    /* Soft lock: hide overflow on body WITHOUT position:fixed so pinch-zoom works */
+    try {
+      document.documentElement.style.overflow = "hidden";
+      document.body.style.overflow = "hidden";
+    } catch (e) {}
+    bindKbPad(true);
   }
 
   A.isEditing = function () {

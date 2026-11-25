@@ -3,7 +3,7 @@
   function stars(n) { return "★".repeat(Math.max(1, Math.min(5, Number(n) || 0))); }
   function saveLocal() {
     A.reviews.forEach(function (r) {
-      if (r.photoB64 && r.photoB64.length > 1800000) r.photoB64 = "";
+      if (r.photoB64 && r.photoB64.length > 900000) r.photoB64 = "";
     });
     try { localStorage.setItem(A.REVIEWS_KEY, JSON.stringify(A.reviews)); } catch (e) {}
   }
@@ -12,52 +12,107 @@
       var img = new Image();
       var url = URL.createObjectURL(file);
       img.onload = function () {
-        var max = 900, s = Math.min(1, max / Math.max(img.width, img.height));
+        var max = 720, s = Math.min(1, max / Math.max(img.width, img.height));
         var c = document.createElement("canvas");
         c.width = Math.round(img.width * s);
         c.height = Math.round(img.height * s);
         c.getContext("2d").drawImage(img, 0, 0, c.width, c.height);
         URL.revokeObjectURL(url);
-        resolve(c.toDataURL("image/jpeg", 0.72).split(",")[1]);
+        resolve(c.toDataURL("image/jpeg", 0.7).split(",")[1]);
       };
       img.onerror = function () { URL.revokeObjectURL(url); reject(new Error("photo")); };
       img.src = url;
     });
   }
-  A.publishReviews = function (token) {
-    var uploads = (A.reviews || []).filter(function (r) { return r.photoB64; }).map(function (r) {
-      var path = "media/reviews/" + r.id + ".jpg";
-      return A.ghPutB64(path, r.photoB64, token, "chore: review photo " + r.id).then(function (res) {
-        if (!res.ok) throw new Error("photo");
-        r.photo = path;
-        delete r.photoB64;
-      });
+  function publicList() {
+    return (A.reviews || []).filter(function (r) { return r.on !== false; }).map(function (r) {
+      var photo = r.photo || "";
+      if (!photo && r.photoB64 && r.photoB64.length < 700000) {
+        photo = "data:image/jpeg;base64," + r.photoB64;
+      }
+      return {
+        id: r.id,
+        sku: r.sku || "",
+        pid: r.pid,
+        name: r.name || "",
+        stars: Number(r.stars) || 5,
+        ar: r.ar || "",
+        en: r.en || "",
+        photo: photo,
+        at: r.at || ""
+      };
     });
-    return Promise.all(uploads).then(function () {
-      saveLocal();
-      var pub = (A.reviews || []).filter(function (r) { return r.on !== false; }).map(function (r) {
-        return { id: r.id, sku: r.sku || "", pid: r.pid, name: r.name || "", stars: Number(r.stars) || 5, ar: r.ar || "", en: r.en || "", photo: r.photo || "", at: r.at || "" };
-      });
-      return A.ghPut("data/reviews.json", JSON.stringify(pub, null, 2) + "\n", token, "chore: publish approved reviews");
+  }
+  function fsDoc() {
+    try {
+      if (!w.firebase || !firebase.apps || !firebase.apps.length) return null;
+      if (!firebase.firestore) return null;
+      return firebase.firestore().collection("naqa").doc("reviews");
+    } catch (e) { return null; }
+  }
+  /** Publish approved reviews to Firestore for the live store (no GitHub token). */
+  A.syncReviewsCloud = function () {
+    saveLocal();
+    var list = publicList();
+    var doc = fsDoc();
+    if (!doc) {
+      return Promise.reject(new Error("no-firestore"));
+    }
+    var user = null;
+    try { user = firebase.auth && firebase.auth().currentUser; } catch (e) {}
+    if (!user) return Promise.reject(new Error("not-signed-in"));
+    return doc.set({
+      list: list,
+      updatedAt: firebase.firestore.FieldValue.serverTimestamp(),
+      updatedBy: user.email || user.uid || ""
+    }, { merge: false }).then(function () { return true; });
+  };
+  A.publishReviews = function () {
+    return A.syncReviewsCloud().then(function () {
+      if (A.setMsg) A.setMsg("reviewStatus", A.t("r_published") || (A.lang === "en" ? "Reviews published to the store ✓" : "انشرت التقييمات على المتجر ✓"));
+      return true;
+    }).catch(function (err) {
+      var code = err && err.message;
+      var msg = A.lang === "en" ? "Could not publish reviews." : "ما قدرنا ننشر التقييمات.";
+      if (code === "not-signed-in") msg = A.lang === "en" ? "Sign in first." : "سجّلي الدخول أولاً.";
+      if (A.setMsg) A.setMsg("reviewStatus", msg);
+      return false;
     });
   };
   A.paintReviews = function () {
     var box = document.getElementById("reviewsBox");
     if (!box) return;
-    fetch("data/reviews.json?v=" + Date.now()).then(function (r) { return r.ok ? r.json() : []; }).then(function (remote) {
-      if (Array.isArray(remote)) {
-        remote.forEach(function (r) {
+    function mergeRemoteJson() {
+      return fetch("data/reviews.json?v=" + Date.now()).then(function (r) { return r.ok ? r.json() : []; }).then(function (remote) {
+        if (Array.isArray(remote)) {
+          remote.forEach(function (r) {
+            if (!A.reviews.some(function (x) { return x.id === r.id; })) A.reviews.push(r);
+          });
+        }
+      }).catch(function () {});
+    }
+    function mergeCloud() {
+      var doc = fsDoc();
+      if (!doc) return Promise.resolve();
+      return doc.get().then(function (snap) {
+        if (!snap.exists) return;
+        var d = snap.data() || {};
+        var list = d.list || d.reviews || [];
+        if (!Array.isArray(list)) return;
+        list.forEach(function (r) {
+          if (!r || !r.id) return;
           if (!A.reviews.some(function (x) { return x.id === r.id; })) A.reviews.push(r);
         });
-      }
-      draw();
-    }).catch(draw);
+      }).catch(function () {});
+    }
+    Promise.resolve().then(mergeRemoteJson).then(mergeCloud).then(draw).catch(draw);
     function draw() {
       var opts = (A.products || w.products || []).map(function (p) {
         return '<option value="' + A.esc(p.sku || "") + '">' + A.esc((p.sku || "") + " · " + (p.brand || "") ) + "</option>";
       }).join("");
       var rows = (A.reviews || []).filter(function (r) { return A.inDateRange(r.at); }).map(function (r) {
-        var img = r.photo ? '<img src="' + A.esc(r.photo) + '" alt="" style="width:64px;height:64px;object-fit:cover;border-radius:10px">' : "";
+        var imgSrc = r.photo || (r.photoB64 ? ("data:image/jpeg;base64," + r.photoB64) : "");
+        var img = imgSrc ? '<img src="' + A.esc(imgSrc) + '" alt="" style="width:64px;height:64px;object-fit:cover;border-radius:10px">' : "";
         var when = r.at ? new Date(r.at).toLocaleDateString(A.lang === "en" ? "en-OM" : "ar-OM") : "";
         return '<div class="row"><div>' + img + '<strong>' + A.esc(r.name || "") + " " + stars(r.stars) + '</strong><small>' + A.esc(r.sku || "") + (when ? " · " + A.esc(when) : "") + " · " + A.esc((r.ar || r.en || "").slice(0, 80)) + '</small></div>'
           + '<button type="button" class="mini" data-rv-off="' + A.esc(r.id) + '">' + (r.on === false ? A.t("r_show") : A.t("r_hide")) + '</button>'
@@ -66,7 +121,9 @@
       box.innerHTML = '<div class="panel"><h2>' + A.t("r_title") + '</h2>'
         + '<p class="note">' + A.t("r_note") + '</p>'
         + A.dateFilterHtml("revDate")
-        + '<div class="status-bar" style="margin:8px 0"><button type="button" class="mini" id="exportReviewsCsv">' + A.t("exportCsv") + '</button></div>'
+        + '<div class="status-bar" style="margin:8px 0;flex-wrap:wrap;gap:6px">'
+        + '<button type="button" class="primary" id="publishReviewsBtn">' + (A.t("r_publish") || (A.lang === "en" ? "Publish to store" : "انشري للمتجر")) + '</button>'
+        + '<button type="button" class="mini" id="exportReviewsCsv">' + A.t("exportCsv") + '</button></div>'
         + '<label>' + A.t("r_sku") + '<input id="rvSku" list="rvSkus" placeholder="SKU"></label><datalist id="rvSkus">' + opts + '</datalist>'
         + '<label>' + A.t("r_nick") + '<input id="rvName" maxlength="24"></label>'
         + '<label>' + A.t("r_stars") + '<select id="rvStars"><option>5</option><option>4</option><option>3</option><option>2</option><option>1</option></select></label>'
@@ -76,6 +133,11 @@
         + '<button type="button" class="primary" id="rvAdd" style="width:100%;margin-top:8px">' + A.t("r_add") + '</button>'
         + '</div>' + rows;
       document.getElementById("rvAdd").onclick = addReview;
+      var pubBtn = document.getElementById("publishReviewsBtn");
+      if (pubBtn) pubBtn.onclick = function () {
+        if (A.setMsg) A.setMsg("reviewStatus", A.lang === "en" ? "Publishing…" : "جاري النشر…");
+        A.publishReviews();
+      };
       A.bindDateFilter("revDate", draw);
       var er = document.getElementById("exportReviewsCsv");
       if (er) er.onclick = function () {

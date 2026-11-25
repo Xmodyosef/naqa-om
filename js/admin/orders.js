@@ -416,7 +416,11 @@
   A.selectedOrderIds = A.selectedOrderIds || {};
   A.exportOrdersCsv = function (opts) {
     opts = opts || {};
-    var rows = [["id", "at", "status", "name", "phone", "area", "total", "payment", "items"]];
+    var ar = A.lang !== "en";
+    var headers = ar
+      ? ["رقم الطلب", "التاريخ", "الحالة", "الاسم", "الجوال", "المنطقة", "الإجمالي", "الدفع", "المنتجات"]
+      : ["Order ID", "Date", "Status", "Name", "Phone", "Area", "Total", "Payment", "Items"];
+    var rows = [headers];
     var sel = A.selectedOrderIds || {};
     var hasSel = Object.keys(sel).some(function (k) { return !!sel[k]; });
     var count = 0;
@@ -435,25 +439,38 @@
         }
       }
       var st = A.normalizeStatus(o.status);
+      var stLabel = A.statusLabel ? A.statusLabel(st) : st;
       var items = "";
       if (Array.isArray(o.items) && o.items.length) {
         items = o.items.map(function (it) {
-          var n = A.lang === "en" ? (it.nameEn || it.name || it.nameAr) : (it.nameAr || it.name || it.nameEn);
+          var n = ar ? (it.nameAr || it.name || it.nameEn) : (it.nameEn || it.name || it.nameAr);
           var qty = it.qty != null ? it.qty : 1;
           var sku = it.sku ? String(it.sku) : "";
-          var piece = String(n || "").replace(/[\r\n;|]+/g, " ").trim();
-          if (sku) piece += " [" + sku + "]";
+          var piece = String(n || "").replace(/[\r\n|;,]+/g, " ").replace(/\s+/g, " ").trim();
+          if (sku) piece += " [" + sku.replace(/[\r\n|;,]+/g, " ") + "]";
           piece += " ×" + qty;
           return piece;
-        }).join(" | ");
+        }).join(" · ");
       } else {
-        items = String(o.itemsText || "").replace(/[\r\n]+/g, " ").trim();
+        items = String(o.itemsText || "").replace(/[\r\n]+/g, " ").replace(/\s+/g, " ").trim();
       }
       var when = "";
       try { when = o.at ? A.fmtDateTimeNum(o.at) : (o.at || ""); } catch (e) { when = o.at || ""; }
+      var totalVal = "";
+      if (o.total != null && o.total !== "") {
+        var nTot = Number(o.total);
+        totalVal = isFinite(nTot) ? nTot : String(o.total);
+      }
       rows.push([
-        o.id || "", when, st, o.name || "", o.phone || "", o.area || "",
-        o.total != null ? o.total : "", (A.paidLabel ? A.paidLabel(o) : A.payText(o)), items
+        String(o.id || ""),
+        String(when || ""),
+        String(stLabel || st || ""),
+        String(o.name || ""),
+        String(o.phone || ""),
+        String(o.area || ""),
+        totalVal,
+        String(A.paidLabel ? A.paidLabel(o) : (A.payText ? A.payText(o) : "")),
+        String(items || "")
       ]);
       count++;
     });
@@ -461,9 +478,11 @@
       A.setMsg("orderStatus", A.t("exportNone") || "");
       return;
     }
-    A.downloadXlsx("naqa-orders.xlsx", rows, "Orders");
+    if (A.downloadXlsx) A.downloadXlsx("naqa-orders.xlsx", rows, ar ? "الطلبات" : "Orders");
+    if (A.downloadCsv) A.downloadCsv("naqa-orders.csv", rows);
     A.setMsg("orderStatus", hasSel ? (A.t("exportOkSel") || A.t("exportOk")) : A.t("exportOk"));
   };
+
   A.importOrdersCsv = function (file) {
     if (!file) return;
     var reader = new FileReader();

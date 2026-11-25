@@ -34,14 +34,12 @@
     var editView = document.getElementById("editView");
     var open = A.editingId != null || (editView && !editView.hidden);
     if (!open) return false;
-    var qEl = document.getElementById("q");
-    var q = qEl ? qEl.value.trim() : "";
     if (!fromPop && A._editNavPushed) {
       A._editNavPushed = false;
       try { history.back(); return true; } catch (e) {}
     }
     A._editNavPushed = false;
-    A.paintList(q);
+    A.paintList("");
     try { history.replaceState({ naqa: "tab", tab: "products" }, "", "#/products"); } catch (e) {}
     return true;
   };

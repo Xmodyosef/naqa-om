@@ -107,7 +107,12 @@
       b.removeAttribute("aria-expanded");
     });
     document.querySelectorAll("#sideNav .side-group").forEach(function (g) {
-      g.classList.remove("open", "has-active-child");
+      var gtab = g.getAttribute("data-group") || "";
+      var child = (gtab === tab);
+      g.classList.toggle("open", child);
+      g.classList.toggle("has-active-child", child);
+      var main = g.querySelector(".side-main");
+      if (main) main.setAttribute("aria-expanded", child ? "true" : "false");
     });
     A.fillPageSubNav();
     if (A.updateOrdersBadge) A.updateOrdersBadge();

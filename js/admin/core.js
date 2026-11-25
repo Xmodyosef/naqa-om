@@ -16,7 +16,7 @@
     if (w.NAQA_PRODUCTS && w.NAQA_PRODUCTS.length) A.refreshProductsFromBundle();
   } catch (e) {}
   A.KEY = "naqa_overrides";
-  A.PIN = "naqa_admin_pin";
+  /* A.PIN retired */
   A.TOKEN = "naqa_gh_token"; /* legacy key name — cleared on logout; not used for publish */
 
   /** P1: Firebase session present (and matches A.fbUser if set). Soft — no UI wipe. */

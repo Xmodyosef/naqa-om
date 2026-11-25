@@ -4,7 +4,7 @@
   A.lang = "ar";
   try { if (localStorage.getItem("naqa_admin_lang") === "en") A.lang = "en"; } catch (e) {}
   /* One language file only. Must stay a blocking script so document.write runs while the page is parsing. */
-  document.write('<script src="js/admin/i18n/dict-' + A.lang + '.js?v=20261125def1"><\/script>');
+  document.write('<script src="js/admin/i18n/dict-' + A.lang + '.js?v=20261125rem1"><\/script>');
   A.t = function (k) {
     var pack = A.I18N[A.lang] || A.I18N.ar;
     return pack[k] != null ? pack[k] : (A.I18N.ar[k] || k);
@@ -69,57 +69,25 @@
     A.applyStockDelta(order, +1);
     order.stockDeducted = false;
   };
-  /* —— auth —— */
-  A.PIN_HASH = "naqa_admin_pin_hash";
-  A.PIN_FAIL = "naqa_admin_pin_fail";
+  /* —— session (Firebase is the login; PIN removed) —— */
   A.SESSION = "naqa_admin_session";
-  A.MAX_FAIL = 5;
-  A.LOCK_MS = 15 * 60 * 1000;
   A.SESSION_MS = 30 * 60 * 1000;
-  A.hashPin = function (pin) {
-    if (w.crypto && w.crypto.subtle) {
-      var data = new TextEncoder().encode("naqa-om|v1|" + String(pin));
-      return w.crypto.subtle.digest("SHA-256", data).then(function (buf) {
-        return Array.from(new Uint8Array(buf)).map(function (b) {
-          return b.toString(16).padStart(2, "0");
-        }).join("");
-      });
-    }
-    /* fallback for very old webviews */
-    var s = "naqa-om|v1|" + String(pin), h = 0;
-    for (var i = 0; i < s.length; i++) h = ((h << 5) - h + s.charCodeAt(i)) | 0;
-    return Promise.resolve("x" + Math.abs(h).toString(16));
-  };
-  A.lockInfo = function () {
-    try {
-      var raw = JSON.parse(localStorage.getItem(A.PIN_FAIL) || "null");
-      if (!raw) return { fails: 0, until: 0 };
-      return { fails: Number(raw.fails) || 0, until: Number(raw.until) || 0 };
-    } catch (e) { return { fails: 0, until: 0 }; }
-  };
-  A.setLockInfo = function (fails, until) {
-    localStorage.setItem(A.PIN_FAIL, JSON.stringify({ fails: fails, until: until || 0 }));
-  };
-  A.isLocked = function () {
-    var info = A.lockInfo();
-    return info.until && Date.now() < info.until;
-  };
   A.touchSession = function () {
-    localStorage.setItem(A.SESSION, String(Date.now()));
+    try { localStorage.setItem(A.SESSION, String(Date.now())); } catch (e) {}
   };
   A.sessionOk = function () {
     var t = Number(localStorage.getItem(A.SESSION) || 0);
     return t && (Date.now() - t) < A.SESSION_MS;
   };
   A.clearSession = function () {
-    localStorage.removeItem(A.SESSION);
+    try { localStorage.removeItem(A.SESSION); } catch (e) {}
     try {
+      sessionStorage.removeItem("naqa_gh_token");
+      localStorage.removeItem("naqa_gh_token");
       if (A.TOKEN) {
         sessionStorage.removeItem(A.TOKEN);
         localStorage.removeItem(A.TOKEN);
       }
-      sessionStorage.removeItem("naqa_gh_token");
-      localStorage.removeItem("naqa_gh_token");
     } catch (e) {}
   };
   A.applyChrome = function () {
@@ -134,16 +102,10 @@
       if (k) b.textContent = A.t(k);
     });
     if (A.syncOrdersTab) A.syncOrdersTab();
-    var pinFirst = !localStorage.getItem(A.PIN_HASH) && !localStorage.getItem(A.PIN);
     var lead = document.getElementById("pinLead");
     var note = document.getElementById("pinNote");
-    var fbOn = window.naqaFirebaseEnabled && naqaFirebaseEnabled();
-    if (lead) lead.textContent = fbOn ? A.t("fb_welcome") : (pinFirst ? A.t("pinFirstLead") : A.t("pinLead"));
-    if (note) note.textContent = fbOn ? A.t("fb_welcomeNote") : A.t("pinNote");
-    var pinInput = document.getElementById("pinInput");
-    if (pinInput) pinInput.placeholder = A.t("pinPh");
-    var pinGo = document.getElementById("pinGo");
-    if (pinGo) pinGo.textContent = pinFirst ? A.t("pinFirstBtn") : A.t("pinGo");
+    if (lead) lead.textContent = A.t("fb_welcome");
+    if (note) note.textContent = A.t("fb_welcomeNote");
     var langBtn = document.getElementById("adminLang");
     if (langBtn) langBtn.textContent = A.t("langBtn");
     var store = document.querySelector(".admin-top a.store");
@@ -174,7 +136,7 @@
   A.ensureLang = function (lang, done) {
     if (A.I18N && A.I18N[lang]) { done(); return; }
     var s = document.createElement("script");
-    s.src = "js/admin/i18n/dict-" + lang + ".js?v=20261125def1";
+    s.src = "js/admin/i18n/dict-" + lang + ".js?v=20261125rem1";
     s.onload = function () { done(); };
     s.onerror = function () { done(); };
     document.head.appendChild(s);

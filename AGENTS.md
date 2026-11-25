@@ -17,3 +17,4 @@ Project map: `docs/MAP.md` · Structure: `docs/STRUCTURE.md`
 9. **Search bar** — orders only, height 34px, width ≤ 220px. Never stretch `flex:1` / `width:100%`. Short AR+EN placeholder.
 10. **i18n** — never `document.write` in `js/admin/i18n.js`. Load `dict-ar.js` then `dict-en.js` before `i18n.js`. `A.t` must not throw if a pack is missing.
 11. **Auth boot** — do not start `fbBoot` with `renderAuthUI("booting")`. `enterOpen` must always call `loadAdminModules`.
+12. **No add-button flash** — `#addProductBtn` and `#ordersSearchWrap` start `hidden`. Only the URL hash may reveal them before deferred JS.

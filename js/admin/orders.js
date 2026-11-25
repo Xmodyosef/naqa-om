@@ -253,9 +253,9 @@
       + "}"
       + "</style></head><body>"
       + pages
-      + "<script>window.onload=function(){setTimeout(function(){window.print();},300);}<\\/script>"
+      + "<!-- pdf -->"
       + "</body></html>";
-    /* تنزيل ملف PDF حقيقي (مو رابط ولا نافذة طباعة فقط) */
+    /* تنزيل ملف PDF حقيقي — يظهر في الملفات / المشاركة على الآيفون */
     A.setMsg("orderStatus", A.t("o_pdfDownloading") || "…");
     var fileName = "naqa-orders";
     if (list.length === 1 && list[0] && list[0].id) {
@@ -268,7 +268,44 @@
           + String(d.getDate()).padStart(2, "0");
       } catch (eN) {}
     }
-    fileName += ".pdf";
+    if (!/\.pdf$/i.test(fileName)) fileName += ".pdf";
+
+    var deliverPdfFile = function (blob) {
+      var file;
+      try { file = new File([blob], fileName, { type: "application/pdf" }); }
+      catch (eF) { file = null; }
+      var doneMsg = A.t("o_pdfReady") || "PDF";
+      var openBlob = function () {
+        var url = URL.createObjectURL(blob);
+        var a = document.createElement("a");
+        a.href = url;
+        a.download = fileName;
+        a.target = "_blank";
+        a.rel = "noopener";
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        var ios = /iPad|iPhone|iPod/i.test(navigator.userAgent || "");
+        if (ios) {
+          try { window.open(url, "_blank"); } catch (eO) {}
+        }
+        setTimeout(function () { try { URL.revokeObjectURL(url); } catch (eU) {} }, 120000);
+        A.setMsg("orderStatus", doneMsg);
+      };
+      if (file && navigator.canShare && navigator.canShare({ files: [file] })) {
+        navigator.share({ files: [file], title: fileName }).then(function () {
+          A.setMsg("orderStatus", doneMsg);
+        }).catch(function (errShare) {
+          if (errShare && errShare.name === "AbortError") {
+            A.setMsg("orderStatus", "");
+            return;
+          }
+          openBlob();
+        });
+        return;
+      }
+      openBlob();
+    };
 
     var loadHtml2Pdf = function () {
       return new Promise(function (resolve, reject) {
@@ -287,45 +324,52 @@
 
     var host = document.createElement("div");
     host.id = "naqaPdfHost";
-    host.setAttribute("aria-hidden", "true");
-    host.style.cssText = "position:fixed;left:-10000px;top:0;width:210mm;background:#fff;z-index:-1;pointer-events:none;direction:" + dir + ";";
-    /* نحقن نفس CSS الصفحة + محتوى الطلبات فقط */
+    host.setAttribute("dir", dir);
+    host.style.cssText = "position:fixed;left:0;top:0;width:794px;max-width:100vw;background:#fff;z-index:90;overflow:auto;max-height:100vh;";
+    var veil = document.createElement("div");
+    veil.style.cssText = "position:fixed;inset:0;z-index:91;background:rgba(26,20,18,.55);color:#fff;display:flex;align-items:center;justify-content:center;font:800 1rem/1.4 'Noto Sans Arabic',system-ui,sans-serif;text-align:center;padding:24px;";
+    veil.textContent = A.t("o_pdfDownloading") || "…";
     var styleMatch = html.match(/<style>([\s\S]*?)<\/style>/i);
     var cssText = styleMatch ? styleMatch[1] : "";
     var styleEl = document.createElement("style");
     styleEl.textContent = cssText
-      + " #naqaPdfHost .page{box-shadow:none!important;margin:0!important;border-radius:0!important;}"
-      + " #naqaPdfHost{font-family:'Noto Naskh Arabic','Amiri','Traditional Arabic','Noto Sans Arabic',serif;}";
+      + " #naqaPdfHost .page{box-shadow:none!important;margin:0 auto 12px!important;border-radius:0!important;background:#fff!important;width:182mm!important;min-height:267mm!important;}";
     host.appendChild(styleEl);
     var wrap = document.createElement("div");
     wrap.innerHTML = pages;
     host.appendChild(wrap);
+    document.body.appendChild(veil);
     document.body.appendChild(host);
 
+    var cleanupHost = function () {
+      try { host.remove(); } catch (eR) {}
+      try { veil.remove(); } catch (eV) {}
+    };
+
     loadHtml2Pdf().then(function (html2pdf) {
-      var pages = host.querySelectorAll(".page");
-      var target = pages.length ? host : host;
       var opt = {
-        margin: [10, 10, 12, 10],
+        margin: [8, 8, 10, 8],
         filename: fileName,
-        image: { type: "jpeg", quality: 0.96 },
+        image: { type: "jpeg", quality: 0.95 },
         html2canvas: {
           scale: 2,
           useCORS: true,
           backgroundColor: "#ffffff",
           logging: false,
-          windowWidth: 794
+          windowWidth: 794,
+          scrollX: 0,
+          scrollY: 0
         },
         jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
-        pagebreak: { mode: ["css", "legacy"], after: ".page" }
+        pagebreak: { mode: ["css", "legacy"], before: ".page" }
       };
-      return html2pdf().set(opt).from(target).save();
-    }).then(function () {
-      A.setMsg("orderStatus", A.t("o_pdfReady") || "OK");
-      try { host.remove(); } catch (eR) {}
+      return html2pdf().set(opt).from(wrap).outputPdf("blob");
+    }).then(function (blob) {
+      cleanupHost();
+      if (!blob || !blob.size) throw new Error("empty pdf");
+      deliverPdfFile(blob);
     }).catch(function (err) {
-      try { host.remove(); } catch (eR2) {}
-      /* احتياط: لو CDN فشل، افتحي نافذة الطباعة / حفظ كـ PDF */
+      cleanupHost();
       try {
         var w = window.open("", "_blank");
         if (w) {
@@ -333,8 +377,8 @@
           w.document.write(html);
           w.document.close();
           A.setMsg("orderStatus", A.lang === "en"
-            ? "Opened print view — choose Save as PDF"
-            : "فتحنا معاينة الطباعة — اختاري «حفظ كـ PDF»");
+            ? "Could not save the file. Use Share → Save as PDF"
+            : "ما نزل الملف. من المشاركة اختاري «حفظ في الملفات» كـ PDF");
           return;
         }
       } catch (eW) {}

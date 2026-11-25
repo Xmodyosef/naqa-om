@@ -23,29 +23,10 @@
 <link rel="dns-prefetch" href="https://www.gstatic.com" />
 <link rel="preload" href="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js" as="script" />
 <link rel="preload" href="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js" as="script" />
-<link rel="preload" href="js/firebase-config.js?v=20261125boot1" as="script" />
-<link rel="preload" href="js/admin/firebase-gate.js?v=20261125boot1" as="script" />
-<link rel="stylesheet" href="css/admin.css?v=20261125boot1" />
-<script>
-/* One-shot cache purge — never blocks paint (async, no await) */
-(function () {
-  var KEY = "naqa_purge_20261125boot1";
-  try { if (sessionStorage.getItem(KEY) === "1") return; } catch (e) {}
-  var mark = function () { try { sessionStorage.setItem(KEY, "1"); } catch (e) {} };
-  try {
-    if ("serviceWorker" in navigator) {
-      navigator.serviceWorker.getRegistrations().then(function (regs) {
-        return Promise.all(regs.map(function (r) { return r.unregister(); }));
-      }).catch(function () {}).then(mark);
-    } else mark();
-    if (window.caches) {
-      caches.keys().then(function (keys) {
-        return Promise.all(keys.map(function (k) { return caches.delete(k); }));
-      }).catch(function () {});
-    }
-  } catch (e) { mark(); }
-})();
-</script>
+<link rel="preload" href="js/firebase-config.js?v=20261125stable1" as="script" />
+<link rel="preload" href="js/admin/firebase-gate.js?v=20261125stable1" as="script" />
+<link rel="stylesheet" href="css/admin.css?v=20261125stable1" />
+
 
 </head>
 <body class="naqa-locked">
@@ -220,15 +201,15 @@
   </main>
 </div>
 </div>
-<script defer src="js/config.js?v=20261125boot1"></script>
-<script defer src="js/firebase-config.js?v=20261125boot1"></script>
+<script defer src="js/config.js?v=20261125stable1"></script>
+<script defer src="js/firebase-config.js?v=20261125stable1"></script>
 <script defer src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
 <script defer src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
-<script defer src="js/admin.js?v=20261125boot1"></script>
-<script defer src="js/admin/core.js?v=20261125boot1"></script>
-<script defer src="js/admin/firebase-gate.js?v=20261125boot1"></script>
-<script defer src="js/admin/app.js?v=20261125boot1"></script>
-<script defer src="js/admin/i18n.js?v=20261125boot1"></script>
-<script defer src="js/admin/load-modules.js?v=20261125boot1"></script>
+<script defer src="js/admin.js?v=20261125stable1"></script>
+<script defer src="js/admin/core.js?v=20261125stable1"></script>
+<script defer src="js/admin/firebase-gate.js?v=20261125stable1"></script>
+<script defer src="js/admin/app.js?v=20261125stable1"></script>
+<script defer src="js/admin/i18n.js?v=20261125stable1"></script>
+<script defer src="js/admin/load-modules.js?v=20261125stable1"></script>
 </body>
 </html>

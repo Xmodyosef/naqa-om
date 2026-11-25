@@ -264,25 +264,27 @@
   }
 
   function enterOpen(user) {
-    if (_state === "open" && A.fbUser && user && A.fbUser.uid === user.uid) {
-      /* already open for this user — only refresh modules if needed */
-      return;
-    }
     A.fbUser = user;
     renderAuthUI("open");
     setBusy(false);
     try { if (A.touchSession) A.touchSession(); } catch (e) {}
     try { if (A.openAdmin) A.openAdmin(); } catch (e) {}
     function afterModules() {
+      try {
+        if (A.refreshProductsFromBundle) A.refreshProductsFromBundle();
+      } catch (e) {}
       try { if (A.openAdmin) A.openAdmin(); } catch (e) {}
       try {
-        if (A.currentTab === "products" && A.paintList) A.paintList("");
-        if (A.currentTab === "home" && A.paintDashboard) A.paintDashboard();
+        if (A.paintList) A.paintList("");
+        if (A.paintDashboard) A.paintDashboard();
+        if (A.paintOrders) A.paintOrders();
       } catch (e) {}
     }
-    /* Modules NEVER gate first paint — shell is already open */
+    /* Always ensure modules+catalog load (idempotent if already loaded) */
     if (A.loadAdminModules) {
       A.loadAdminModules().then(afterModules).catch(afterModules);
+    } else {
+      afterModules();
     }
   }
 
@@ -328,7 +330,8 @@
       rejectUser(t("fb_notAllowed", "هذا الحساب غير مصرّح له."));
       return;
     }
-    renderAuthUI("booting");
+    /* rare path: UID not in allow-list — verify email hash without blanking shell if already open */
+    if (_state !== "open") renderAuthUI("booting");
     allowedEmail(user).then(function (ok) {
       if (!ok) {
         rejectUser(t("fb_notAllowed", "هذا الحساب غير مصرّح له."));
@@ -471,7 +474,8 @@
   }
 
   A.fbBoot = function () {
-    renderAuthUI("booting");
+    /* Do NOT call renderAuthUI("booting") here — it flashes login/shell.
+       Keep HTML first-paint: guest form OR optimistic open. */
     applyAuthLang();
     naqaFixLoginFields();
     bindTogglePass();
@@ -503,32 +507,20 @@
      * - Watchdog 2.5s max on booting (not 15s).
      */
     var auth = firebase.auth();
-    /* Guest-first / optimistic-first: do NOT hold "booting" spinner unless we have no UI yet */
+    /* Keep first paint. Do not toggle booting/guest/open until onAuthStateChanged. */
+    var expect = false;
     try {
-      if (document.documentElement.classList.contains("naqa-expect-auth") ||
-          document.body.classList.contains("naqa-optimistic") ||
-          document.body.classList.contains("naqa-open")) {
-        /* keep shell visible; only soft-pending flag for diagnostics */
-        _state = "open";
-      } else {
-        renderAuthUI("guest");
-      }
-    } catch (e) {
-      renderAuthUI("guest");
-    }
+      expect = document.documentElement.classList.contains("naqa-expect-auth") ||
+        document.body.classList.contains("naqa-optimistic") ||
+        document.body.classList.contains("naqa-open");
+    } catch (e) {}
     var bootWatch = setTimeout(function () {
-      if (!_authReady && _state !== "open") {
-        _authReady = true;
-        renderAuthUI("guest", t("fb_timeout", "انتهت مهلة الاتصال. تحققي من النت وحدّثي الصفحة."), "err");
-      } else if (!_authReady && _state === "open") {
-        /* optimistic shell up but Firebase silent — soft message only */
-        _authReady = true;
-        try {
-          var msg = document.getElementById("pinMsg");
-          /* stay open; user can refresh if session really dead — onAuth will flip to guest */
-        } catch (e) {}
-      }
-    }, 4000);
+      if (_authReady) return;
+      _authReady = true;
+      if (expect && _state === "open" && A.fbUser) return;
+      /* No Firebase answer — show login once (no intermediate boot screen) */
+      renderAuthUI("guest", t("fb_timeout", "انتهت مهلة الاتصال. تحققي من النت وحدّثي الصفحة."), "err");
+    }, 8000);
 
     if (_unsubAuth) {
       try { _unsubAuth(); } catch (e) {}
@@ -544,7 +536,8 @@
       auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL).catch(function () {});
     } catch (e) {}
 
-    /* Same-tick hydrate when SDK already has user (reload with warm IndexedDB) */
+    /* Single authority: onAuthStateChanged (already registered above).
+       Optional same-tick if persistence already hydrated — never force guest first. */
     try {
       if (auth.currentUser) {
         _authReady = true;

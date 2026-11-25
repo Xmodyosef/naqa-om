@@ -453,9 +453,13 @@
     editView.hidden = true;
     editView.innerHTML = "";
     endEditMode();
+    /* Catalog must exist before filter/render */
+    if (!A.products || !A.products.length) {
+      try { if (A.refreshProductsFromBundle) A.refreshProductsFromBundle(); } catch (e) {}
+    }
     q = ""; /* product search disabled — use filters/pagination only */
     var low = 0, out = 0;
-    A.products.forEach(function (p) {
+    (A.products || []).forEach(function (p) {
       var m = A.merged(p);
       if (m.stock === "" || m.stock == null) return;
       var n = Number(m.stock);
@@ -466,7 +470,7 @@
       + '<p class="note">' + A.t("p_invNote") + '</p>'
       + '<small>' + A.t("p_low") + ': <b>' + low + '</b> · ' + A.t("p_out") + ': <b>' + out + '</b></small></div>';
     var view = A.productView || "all";
-    var matched = A.products.filter(function (p) {
+    var matched = (A.products || []).filter(function (p) {
       var m = A.merged(p);
       if (view === "hidden" && !m.hidden) return false;
       if (view === "shown" && m.hidden) return false;
@@ -525,6 +529,7 @@
         + "</div>";
     }
     var listEl = document.getElementById("list");
+    if (!listEl) return;
     listEl.innerHTML = inv + (html || '<p class="note">' + A.t("p_empty") + '</p>') + pager;
     fillStoredImgs(listEl);
     if (A.bindProductListClicks) A.bindProductListClicks();

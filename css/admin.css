@@ -1,8 +1,8 @@
-/* نقاء — لوحة. مود حبوب أعلى. boot1 = فتح فوري */
-@import url("admin/base.css?v=20261125boot1");
-@import url("admin/products-edit.css?v=20261125boot1");
-@import url("admin/login-gate.css?v=20261125boot1");
-@import url("admin/nav.css?v=20261125boot1");
-@import url("admin/login-card.css?v=20261125boot1");
-@import url("admin/settings.css?v=20261125boot1");
-@import url("admin/products-list.css?v=20261125boot1");
+/* نقاء admin — stable1 */
+@import url("admin/base.css?v=20261125stable1");
+@import url("admin/products-edit.css?v=20261125stable1");
+@import url("admin/login-gate.css?v=20261125stable1");
+@import url("admin/nav.css?v=20261125stable1");
+@import url("admin/login-card.css?v=20261125stable1");
+@import url("admin/settings.css?v=20261125stable1");
+@import url("admin/products-list.css?v=20261125stable1");

@@ -220,3 +220,23 @@ button.stat.sales-link{width:100%;margin-top:4px}
 
 .orders-count-line{margin:8px 0 6px;font:700 .78rem/1.3 inherit;color:#8d3048}
 .orders-filter-inline .pdf-one{background:#5a2a38!important}
+
+
+/* Search full width beside print */
+.orders-top-tools .search-wrap.search-wide,
+body.naqa-open .orders-top-tools .search-wrap.search-wide{
+  flex:1 1 220px!important;
+  max-width:none!important;
+  min-width:140px!important;
+  width:auto!important;
+}
+.orders-top-tools .pdf-by-search{
+  flex:0 0 auto;
+  border:0;border-radius:999px;cursor:pointer;
+  background:#5a2a38;color:#fff;font:700 .75rem/1 inherit;
+  padding:10px 14px;white-space:nowrap;height:40px;
+}
+.orders-top-tools .pdf-by-search:disabled{
+  opacity:.45;cursor:not-allowed;filter:grayscale(.2);
+}
+.orders-top-tools .pdf-by-search:not(:disabled):hover{background:#8d3048}

@@ -1,5 +1,5 @@
-/* Naqa SW — 20261125pdf4: network-first admin */
-const CACHE = "naqa-shell-20261125pdf4";
+/* Naqa SW — 20261125pdf5: network-first admin */
+const CACHE = "naqa-shell-20261125pdf5";
 const PRECACHE = ["./", "./index.html", "./manifest.webmanifest", "./logo.svg"];
 
 self.addEventListener("install", (e) => {

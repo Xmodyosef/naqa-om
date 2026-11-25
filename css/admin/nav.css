@@ -265,7 +265,7 @@ body.naqa-open .search-wrap {
   display: flex;
   flex: 1 1 280px;
   width: auto;
-  max-width: min(380px, 70vw);
+  max-width: min(560px, 100%);
   min-width: 160px;
   height: 40px;
   min-height: 40px;
@@ -376,3 +376,9 @@ body.naqa-open .btn-add[hidden] {
 }
 
 /* مود واحد فقط: top-parents + childNav — لا سايدبار */
+
+body.naqa-open .orders-top-tools .search-wrap {
+  flex: 1 1 auto;
+  max-width: none;
+  min-width: 160px;
+}

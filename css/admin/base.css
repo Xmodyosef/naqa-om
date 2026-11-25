@@ -16,7 +16,7 @@ body.naqa-open .tabs{display:flex!important}
 .row{display:flex;gap:10px;align-items:center}
 .row img,.ph{width:56px;height:56px;border-radius:12px;object-fit:contain;background:#f6f1ee;flex:0 0 auto}
 .ph{display:block}.ph.big{width:100%;height:160px}
-.row div{flex:1;min-width:0}
+.row > div{flex:1;min-width:0}
 .row strong{display:block;font-size:.92rem}
 .row small{display:block;color:var(--muted);font-size:.75rem}
 .edit-btn,.mini,button.primary,.back,.savebar button{border:0;border-radius:12px;padding:10px 12px;font-weight:800;background:#1f1a17;color:#fff}
@@ -70,4 +70,46 @@ body.naqa-open .tabs{display:flex!important}
 #editView .edit-card label{
   font-size: calc(var(--edit-fs, 16px) * 0.88) !important;
   color: var(--muted);
+}
+
+/* Product cards: never inherit broken .row flex on nested text */
+#list .prod-card.row{
+  display:grid !important;
+  grid-template-columns:56px minmax(0,1fr) auto;
+  gap:10px 12px;
+  align-items:start;
+}
+#list .prod-card.row > .prod-thumb{flex:none !important;width:56px}
+#list .prod-card.row > .prod-body{min-width:0;max-width:100%}
+#list .prod-card .prod-title{
+  display:block;
+  white-space:normal !important;
+  word-break:normal !important;
+  overflow-wrap:anywhere;
+  line-height:1.4;
+  font-size:.88rem;
+  font-weight:800;
+}
+#list .prod-card .prod-meta{
+  display:flex;flex-wrap:wrap;gap:2px 8px;margin-top:4px;
+  font-size:.72rem;color:#9a7b72;font-weight:600;
+}
+#list .prod-card .prod-price-row{
+  display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;margin-top:6px;
+}
+#list .prod-card .prod-actions{
+  display:flex;flex-direction:column;gap:6px;align-items:stretch;
+}
+@media(max-width:600px){
+  #list .prod-card.row{
+    grid-template-columns:52px minmax(0,1fr);
+    grid-template-areas:"thumb body" "actions actions";
+  }
+  #list .prod-card.row > .prod-thumb{grid-area:thumb}
+  #list .prod-card.row > .prod-body{grid-area:body}
+  #list .prod-card.row > .prod-actions{
+    grid-area:actions;flex-direction:row;
+  }
+  #list .prod-card .prod-actions .edit-btn,
+  #list .prod-card .prod-actions .hide-btn{flex:1;text-align:center}
 }

@@ -25,9 +25,10 @@ body.naqa-open .admin-shell{
 .side-nav{
   order:2;
   flex:0 0 auto;
-  width:fit-content;
-  max-width:fit-content;
-  min-width:0;
+  /* fixed rail — labels full, no collapse to letters-only */
+  width:168px;
+  max-width:168px;
+  min-width:168px;
   direction:rtl;
   position:sticky;
   top:0;

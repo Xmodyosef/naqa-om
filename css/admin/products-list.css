@@ -1,6 +1,6 @@
 /* ========== STEP5b: product cards — title one flow, not word-per-line ========== */
 /* Override .row flex which broke nested prod-body / title width */
-html body.naqa-open #list .prod-card.row {
+#list .prod-card.row {
   display: grid !important;
   grid-template-columns: 56px minmax(0, 1fr) auto;
   grid-template-areas: "thumb body actions";
@@ -9,17 +9,17 @@ html body.naqa-open #list .prod-card.row {
   padding: 12px;
   margin: 8px 0;
 }
-html body.naqa-open #list .prod-card.row > div {
+#list .prod-card.row > div {
   flex: none !important;
   min-width: 0;
 }
-html body.naqa-open #list .prod-thumb {
+#list .prod-thumb {
   grid-area: thumb;
   width: 56px;
   flex: 0 0 56px !important;
 }
-html body.naqa-open #list .prod-thumb img,
-html body.naqa-open #list .prod-thumb .ph {
+#list .prod-thumb img,
+#list .prod-thumb .ph {
   width: 56px !important;
   height: 56px !important;
   border-radius: 12px;
@@ -27,14 +27,14 @@ html body.naqa-open #list .prod-thumb .ph {
   background: #f6f1ee;
   display: block;
 }
-html body.naqa-open #list .prod-body {
+#list .prod-body {
   grid-area: body;
   display: block !important;
   min-width: 0 !important;
   max-width: 100%;
   overflow: hidden;
 }
-html body.naqa-open #list .prod-title {
+#list .prod-title {
   display: block;
   font-size: .88rem;
   font-weight: 800;
@@ -47,7 +47,7 @@ html body.naqa-open #list .prod-title {
   word-wrap: break-word;
   hyphens: none;
 }
-html body.naqa-open #list .prod-meta {
+#list .prod-meta {
   display: flex;
   flex-wrap: wrap;
   gap: 2px 8px;
@@ -57,16 +57,16 @@ html body.naqa-open #list .prod-meta {
   font-weight: 600;
   line-height: 1.35;
 }
-html body.naqa-open #list .prod-meta span {
+#list .prod-meta span {
   display: inline;
   white-space: nowrap;
 }
-html body.naqa-open #list .prod-meta span:not(:last-child)::after {
+#list .prod-meta span:not(:last-child)::after {
   content: " ·";
   margin-inline-start: 2px;
   opacity: .7;
 }
-html body.naqa-open #list .prod-price-row {
+#list .prod-price-row {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -74,28 +74,28 @@ html body.naqa-open #list .prod-price-row {
   margin-top: 6px;
   font-size: .78rem;
 }
-html body.naqa-open #list .prod-price {
+#list .prod-price {
   font-weight: 800;
   font-size: .9rem;
   white-space: nowrap;
 }
-html body.naqa-open #list .prod-price small {
+#list .prod-price small {
   font-weight: 700;
   font-size: .68rem;
   color: #9a7b72;
 }
-html body.naqa-open #list .prod-tax,
-html body.naqa-open #list .prod-stock,
-html body.naqa-open #list .prod-hid {
+#list .prod-tax,
+#list .prod-stock,
+#list .prod-hid {
   font-size: .72rem;
   font-weight: 700;
   color: #9a7b72;
   white-space: nowrap;
 }
-html body.naqa-open #list .prod-hid {
+#list .prod-hid {
   color: #b05c6e;
 }
-html body.naqa-open #list .prod-actions {
+#list .prod-actions {
   grid-area: actions;
   display: flex;
   flex-direction: column;
@@ -106,7 +106,7 @@ html body.naqa-open #list .prod-actions {
   width: auto;
   min-width: 0;
 }
-html body.naqa-open #list .prod-actions .edit-btn {
+#list .prod-actions .edit-btn {
   margin: 0 !important;
   min-height: 36px;
   min-width: 0;
@@ -116,36 +116,36 @@ html body.naqa-open #list .prod-actions .edit-btn {
   white-space: nowrap;
 }
 @media (max-width: 600px) {
-  html body.naqa-open #list .prod-card.row {
+  #list .prod-card.row {
     grid-template-columns: 52px minmax(0, 1fr);
     grid-template-areas:
       "thumb body"
       "actions actions";
     gap: 8px 10px;
   }
-  html body.naqa-open #list .prod-thumb {
+  #list .prod-thumb {
     width: 52px;
   }
-  html body.naqa-open #list .prod-thumb img,
-  html body.naqa-open #list .prod-thumb .ph {
+  #list .prod-thumb img,
+  #list .prod-thumb .ph {
     width: 52px !important;
     height: 52px !important;
   }
-  html body.naqa-open #list .prod-title {
+  #list .prod-title {
     font-size: .84rem;
     line-height: 1.35;
   }
-  html body.naqa-open #list .prod-actions {
+  #list .prod-actions {
     flex-direction: row;
   }
-  html body.naqa-open #list .prod-actions .edit-btn {
+  #list .prod-actions .edit-btn {
     flex: 1;
     text-align: center;
     min-height: 40px;
   }
 }
 /* edit form hide row */
-html body.naqa-open .hide-row {
+.hide-row {
   margin-top: 12px;
   padding: 12px;
   border-radius: 12px;
@@ -154,7 +154,7 @@ html body.naqa-open .hide-row {
   font-weight: 800;
   gap: 10px;
 }
-html body.naqa-open .hide-row input {
+.hide-row input {
   width: 18px;
   height: 18px;
 }
@@ -162,7 +162,7 @@ html body.naqa-open .hide-row input {
 
 
 /* Hide / show on product card */
-html body.naqa-open #list .prod-actions .hide-btn {
+#list .prod-actions .hide-btn {
   flex: 0 0 auto;
   border: 1px solid #e0d0cc;
   border-radius: 12px;
@@ -173,12 +173,12 @@ html body.naqa-open #list .prod-actions .hide-btn {
   color: #5c3d42;
   cursor: pointer;
 }
-html body.naqa-open #list .prod-actions .hide-btn.is-hidden-on {
+#list .prod-actions .hide-btn.is-hidden-on {
   background: #f3e4e7;
   border-color: #c46b7c;
   color: #8d3048;
 }
-html body.naqa-open #list .prod-actions {
+#list .prod-actions {
   display: flex;
   flex-wrap: wrap;
   gap: 6px;

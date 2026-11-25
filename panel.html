@@ -4,12 +4,36 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="robots" content="noindex, nofollow" />
-<meta http-equiv="refresh" content="0;url=admin.html?v=20261125p0a" />
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
 <title>لوحة نقاء</title>
-<script>location.replace("admin.html?v=20261125p0a");</script>
+<script>
+(function () {
+  var go = function () {
+    location.replace("admin.html?v=20261125purge2&_=" + Date.now());
+  };
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.getRegistrations()
+      .then(function (regs) {
+        return Promise.all(regs.map(function (r) { return r.unregister(); }));
+      })
+      .catch(function () {})
+      .then(function () {
+        if (!window.caches) return;
+        return caches.keys().then(function (keys) {
+          return Promise.all(keys.map(function (k) { return caches.delete(k); }));
+        });
+      })
+      .catch(function () {})
+      .then(go, go);
+  } else {
+    go();
+  }
+})();
+</script>
 </head>
-<body style="font-family:system-ui;padding:24px;text-align:center">
-  <p>جاري فتح اللوحة… / Opening admin…</p>
-  <p><a href="admin.html?v=20261125p0a">Admin</a></p>
+<body style="font-family:system-ui,sans-serif;padding:24px;text-align:center;background:#fdf8f6;color:#1f1a17">
+  <p>جاري فتح اللوحة بنسخة نظيفة…</p>
+  <p style="font-size:.85rem;color:#6b625c"><a href="admin.html?v=20261125purge2">افتحي اللوحة مباشرة</a></p>
 </body>
 </html>

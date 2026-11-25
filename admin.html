@@ -6,6 +6,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@400;600;700;800&display=swap" rel="stylesheet" />
 <meta name="robots" content="noindex, nofollow" />
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=5, user-scalable=yes, viewport-fit=cover, interactive-widget=resizes-content" />
 <title>لوحة تحكم نقاء</title>
 
@@ -19,7 +21,32 @@
   } catch (e) {}
 })();
 </script>
-<link rel="stylesheet" href="css/admin.css?v=20261125cleanNav" />
+<link rel="stylesheet" href="css/admin.css?v=20261125purge2" />
+
+
+<script>
+/* One-shot: kill old SW + caches so 2-day work is not overwritten by stale shell */
+(function () {
+  var KEY = "naqa_purge_20261125purge2";
+  try { if (sessionStorage.getItem(KEY) === "1") return; } catch (e) {}
+  var mark = function () { try { sessionStorage.setItem(KEY, "1"); } catch (e) {} };
+  var run = function () {
+    var tasks = [];
+    if ("serviceWorker" in navigator) {
+      tasks.push(navigator.serviceWorker.getRegistrations().then(function (regs) {
+        return Promise.all(regs.map(function (r) { return r.unregister(); }));
+      }));
+    }
+    if (window.caches) {
+      tasks.push(caches.keys().then(function (keys) {
+        return Promise.all(keys.map(function (k) { return caches.delete(k); }));
+      }));
+    }
+    Promise.all(tasks).catch(function () {}).then(mark);
+  };
+  try { run(); } catch (e) { mark(); }
+})();
+</script>
 
 </head>
 <body class="naqa-locked naqa-auth-pending">
@@ -182,15 +209,15 @@
   </main>
 </div>
 </div>
-<script defer src="js/config.js?v=20261125cleanNav"></script>
-<script defer src="js/firebase-config.js?v=20261125cleanNav"></script>
+<script defer src="js/config.js?v=20261125purge2"></script>
+<script defer src="js/firebase-config.js?v=20261125purge2"></script>
 <script defer src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
 <script defer src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
-<script defer src="js/admin.js?v=20261125cleanNav"></script>
-<script defer src="js/admin/core.js?v=20261125cleanNav"></script>
-<script src="js/admin/i18n.js?v=20261125cleanNav"></script>
-<script defer src="js/admin/app.js?v=20261125cleanNav"></script>
-<script defer src="js/admin/load-modules.js?v=20261125cleanNav"></script>
-<script defer src="js/admin/firebase-gate.js?v=20261125cleanNav"></script>
+<script defer src="js/admin.js?v=20261125purge2"></script>
+<script defer src="js/admin/core.js?v=20261125purge2"></script>
+<script src="js/admin/i18n.js?v=20261125purge2"></script>
+<script defer src="js/admin/app.js?v=20261125purge2"></script>
+<script defer src="js/admin/load-modules.js?v=20261125purge2"></script>
+<script defer src="js/admin/firebase-gate.js?v=20261125purge2"></script>
 </body>
 </html>

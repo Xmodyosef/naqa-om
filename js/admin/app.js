@@ -103,6 +103,8 @@
     if (top) top.hidden = !(tab === "products" || tab === "orders");
     var add = document.getElementById("addProductBtn");
     if (add) add.hidden = tab !== "products";
+    var search = document.getElementById("ordersSearchWrap");
+    if (search) search.hidden = tab !== "orders";
   };
 
   A.sectionHash = function () {

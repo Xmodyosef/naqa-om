@@ -60,6 +60,11 @@ body.naqa-open .tabs{display:flex!important}
 #reviewsBox input, #reviewsBox textarea, #reviewsBox select,
 .search-wrap input{
   font-size:16px!important;
+  height:34px!important;
+  max-height:34px!important;
+  padding-top:0!important;
+  padding-bottom:0!important;
+  line-height:34px!important;
 }
 /* Product edit fields follow zoom scale — do NOT lock to 16px */
 #editView .edit-card input,
@@ -112,4 +117,18 @@ body.naqa-open .tabs{display:flex!important}
   }
   #list .prod-card .prod-actions .edit-btn,
   #list .prod-card .prod-actions .hide-btn{flex:1;text-align:center}
+}
+
+.compact-search{
+  width:min(220px, 70vw);
+  max-width:220px;
+  height:34px;
+  border:1px solid #eadfd9;
+  border-radius:999px;
+  padding:0 12px;
+  margin-top:8px;
+  font-size:16px;
+  line-height:34px;
+  background:#fff;
+  color:#1f1a17;
 }

@@ -231,37 +231,49 @@ body.naqa-open .admin-wrap {
   padding: 12px 14px 88px;
 }
 
-/* ===== شريط البحث / إضافة ===== */
+/* ===== شريط البحث / إضافة — مدمج، مو بعرض الصفحة ===== */
 body.naqa-open .top-bar {
   display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
+  flex-wrap: nowrap;
+  gap: 8px;
   align-items: center;
-  margin: 0 0 12px;
+  justify-content: flex-start;
+  margin: 0 0 10px;
+  max-width: 100%;
 }
 body.naqa-open .top-bar[hidden] {
   display: none !important;
 }
 body.naqa-open .search-wrap {
   display: flex;
-  flex: 1 1 200px;
-  min-width: 0;
-  min-height: 44px;
+  flex: 0 1 220px;
+  width: 220px;
+  max-width: min(220px, 58vw);
+  min-width: 132px;
+  height: 34px;
+  min-height: 34px;
+  max-height: 34px;
   border: 1px solid #eadfd9;
-  border-radius: 12px;
+  border-radius: 999px;
   overflow: hidden;
   background: #fff;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  box-shadow: none;
+}
+body.naqa-open .search-wrap[hidden] {
+  display: none !important;
 }
 body.naqa-open .search-wrap:focus-within {
   border-color: #c46b7c;
-  box-shadow: 0 0 0 3px rgba(196, 107, 124, 0.15);
+  box-shadow: 0 0 0 2px rgba(196, 107, 124, 0.18);
 }
 body.naqa-open .search-wrap input {
   flex: 1;
+  width: 100%;
+  height: 34px;
   border: 0;
-  padding: 11px 14px;
-  font: 500 0.88rem/1 inherit;
+  padding: 0 12px;
+  margin: 0;
+  font: 500 16px/34px inherit; /* 16px يمنع زووم iOS بدون تضخيم الصندوق */
   outline: 0;
   color: #1f1a17;
   background: transparent;
@@ -269,28 +281,33 @@ body.naqa-open .search-wrap input {
 }
 body.naqa-open .search-wrap input::placeholder {
   color: #b9aaa6;
+  font-size: 13px;
 }
 body.naqa-open .search-btn {
   border: 0;
-  border-inline-start: 1px solid #eadfd9;
-  background: #fdf8f6;
-  color: #1f1a17;
-  padding: 0 14px;
+  background: transparent;
+  color: #8d3048;
+  width: 30px;
+  min-width: 30px;
+  height: 34px;
+  padding: 0;
   cursor: pointer;
-  font: 800 0.8rem inherit;
-  white-space: nowrap;
+  font-size: 14px;
+  line-height: 34px;
 }
 body.naqa-open .btn-add {
   border: 0;
   background: #c46b7c;
   color: #fff;
-  padding: 11px 18px;
-  border-radius: 12px;
+  height: 34px;
+  padding: 0 12px;
+  border-radius: 999px;
   font-weight: 800;
-  font-size: 0.82rem;
+  font-size: 0.75rem;
   cursor: pointer;
   white-space: nowrap;
-  box-shadow: 0 2px 6px rgba(196, 107, 124, 0.3);
+  box-shadow: none;
+  flex: 0 0 auto;
 }
 body.naqa-open .btn-add:hover {
   background: #8d3048;
@@ -326,14 +343,17 @@ body.naqa-open .btn-add[hidden] {
     font-size: 0.72rem !important;
   }
   body.naqa-open .top-bar {
-    flex-direction: column;
-    align-items: stretch;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
   }
   body.naqa-open .search-wrap {
-    width: 100%;
+    width: 168px;
+    max-width: 52vw;
+    flex-basis: 168px;
   }
   body.naqa-open .btn-add {
-    width: 100%;
+    width: auto;
     text-align: center;
   }
 }

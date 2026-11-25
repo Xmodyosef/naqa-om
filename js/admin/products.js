@@ -387,6 +387,18 @@
     document.getElementById("backList").onclick = function () {
       A.closeEdit(false);
     };
+    var zIn = document.getElementById("editZoomIn");
+    var zOut = document.getElementById("editZoomOut");
+    if (zIn) zIn.onclick = function () {
+      __editScale = Math.min(1.6, Math.round((__editScale + 0.1) * 10) / 10);
+      applyEditScale();
+    };
+    if (zOut) zOut.onclick = function () {
+      __editScale = Math.max(0.85, Math.round((__editScale - 0.1) * 10) / 10);
+      applyEditScale();
+    };
+    __editScale = 1;
+    applyEditScale();
     document.getElementById("saveEdit").onclick = function () { A.saveEdit(); };
     var taxSel = document.getElementById("f_taxMode");
     var taxWrap = document.getElementById("f_taxCustomWrap");

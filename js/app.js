@@ -534,3 +534,18 @@ document.addEventListener("click", function(e){
   if(k === "off") k = "eoy";
   if(typeof openCatalog === "function") openCatalog(k);
 });
+
+document.addEventListener("click", function(e){
+  var b = e.target.closest && e.target.closest(".campaign-all[data-brand], .campaign-banner[data-brand]");
+  if(!b) return;
+  var brand = b.getAttribute("data-brand");
+  if(!brand) return;
+  e.preventDefault();
+  e.stopPropagation();
+  currentBrand = brand; currentCatalog=""; currentCat="all"; currentConcern="";
+  if(typeof wishView!=="undefined") wishView=false; query=""; catalogBrowse=true;
+  window.__naqaShelfFilter="";
+  try{ history.pushState({naqa:"brand"},"","#b/"+encodeURIComponent(brand)); }catch(err){}
+  if(typeof render==="function") render();
+  var prod=document.getElementById("products"); if(prod) prod.scrollIntoView({behavior:"smooth",block:"start"});
+});

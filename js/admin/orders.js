@@ -1,5 +1,27 @@
 (function (w) {
   var A = w.NaqaAdmin;
+  A.orderDatePreset = A.orderDatePreset || "all";
+  A.applyOrderDatePreset = function (v) {
+    A.orderDatePreset = v || "all";
+    var today = A.dayKey(new Date());
+    if (v === "all" || !v) {
+      A.orderDateFrom = "";
+      A.orderDateTo = "";
+      return;
+    }
+    if (v === "today") {
+      A.orderDateFrom = today;
+      A.orderDateTo = today;
+      return;
+    }
+    var days = Number(v) || 0;
+    if (days > 0) {
+      var d = new Date();
+      d.setDate(d.getDate() - (days - 1));
+      A.orderDateFrom = A.dayKey(d);
+      A.orderDateTo = today;
+    }
+  };
   A.paintStatusBar = function () {
         if (A.updateOrdersBadge) A.updateOrdersBadge();
   };
@@ -151,27 +173,37 @@
     if (tools) {
       if (!tools._ready) {
         tools._ready = true;
-        tools.addEventListener("click", function (e) {
+        tools.addEventListener("change", function (e) {
           var t = e.target;
-          if (t.id === "waOrdersReport") A.waShareText(A.buildOrdersReport(A.orderFilter === "all" ? "new" : A.orderFilter));
-          if (t.id === "exportOrdersCsv") A.exportOrdersCsv();
-        });
-        tools.addEventListener("toggle", function (e) {
-          if (e.target && e.target.id === "ordersToolsPanel") {
-            A.ordersToolsOpen = !!e.target.open;
+          if (!t) return;
+          if (t.id === "ordDatePreset") {
+            A.applyOrderDatePreset(t.value);
+            A.paintOrders();
+            return;
           }
-        }, true);
+          if (t.id === "ordToolsAct") {
+            var act = t.value;
+            t.value = "";
+            if (act === "wa") A.waShareText(A.buildOrdersReport(A.orderFilter === "all" ? "new" : A.orderFilter));
+            if (act === "csv") A.exportOrdersCsv();
+          }
+        });
       }
-      var openAttr = A.ordersToolsOpen ? " open" : "";
+      var preset = A.orderDatePreset || "all";
       tools.innerHTML =
-        '<details class="orders-filter-pill" id="ordersToolsPanel"' + openAttr + '>'
-        + '<summary class="status-one filter-sum">' + A.esc(A.t("o_tools") || "فلتر") + '</summary>'
-        + '<div class="tools-body">'
-        + A.dateFilterHtml("ordDate", "order", { noClear: true })
-        + '<button type="button" class="mini" id="waOrdersReport" style="background:#25D366;color:#fff">' + A.t("o_waSum") + '</button>'
-        + '<button type="button" class="mini" id="exportOrdersCsv">' + A.t("exportCsv") + '</button>'
-        + '</div></details>';
-      A.bindDateFilter("ordDate", function () { A.paintOrders(); }, "order");
+        '<div class="orders-filter-inline" id="ordersToolsPanel">'
+        + '<select class="status-one filter-one" id="ordDatePreset" aria-label="' + A.esc(A.t("o_tools") || "فلتر") + '">'
+        + '<option value="all"' + (preset === "all" ? " selected" : "") + '>' + A.esc(A.t("f_all") || "الكل") + '</option>'
+        + '<option value="today"' + (preset === "today" ? " selected" : "") + '>' + A.esc(A.t("f_today") || "اليوم") + '</option>'
+        + '<option value="7"' + (preset === "7" ? " selected" : "") + '>' + A.esc(A.t("f_7d") || "٧ أيام") + '</option>'
+        + '<option value="30"' + (preset === "30" ? " selected" : "") + '>' + A.esc(A.t("f_30d") || "٣٠ يوم") + '</option>'
+        + '</select>'
+        + '<select class="status-one filter-one" id="ordToolsAct" aria-label="' + A.esc(A.t("f_toolsAct") || "أدوات") + '">'
+        + '<option value="">' + A.esc(A.t("f_actNone") || "أدوات…") + '</option>'
+        + '<option value="wa">' + A.esc(A.t("f_actWa") || A.t("o_waSum")) + '</option>'
+        + '<option value="csv">' + A.esc(A.t("f_actCsv") || A.t("exportCsv")) + '</option>'
+        + '</select>'
+        + '</div>';
     }
     var box = document.getElementById("ordersList");
     if (!box) return;

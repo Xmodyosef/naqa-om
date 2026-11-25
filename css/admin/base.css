@@ -169,30 +169,20 @@ button.stat.sales-link{width:100%;margin-top:4px}
 
 
 
-/* Orders top: search + filter pill */
+/* Orders top: search + filter (same as status-one) */
 .orders-top-tools{display:flex;align-items:center;gap:8px;flex:1 1 auto;min-width:0}
 .orders-top-tools[hidden]{display:none!important}
-.orders-tools-slot{flex:0 0 auto;position:relative}
-.orders-filter-pill{position:relative}
-.orders-filter-pill>summary.filter-sum{
-  list-style:none;cursor:pointer;user-select:none;
+.orders-tools-slot{flex:0 0 auto}
+.orders-filter-inline{display:flex;align-items:center;gap:6px;flex-wrap:nowrap}
+.orders-filter-inline .filter-one,
+.orders-filter-inline select.status-one{
   appearance:none;-webkit-appearance:none;border:0;border-radius:999px;
-  padding:8px 14px;font:700 .72rem/1 inherit;background:#f3e6e9;color:#8d3048;
-  max-width:none;display:inline-flex;align-items:center;gap:6px
+  padding:8px 22px 8px 12px;font:700 .72rem/1 inherit;cursor:pointer;
+  background:#f3e6e9 url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'><path fill='%238d3048' d='M0 0l5 6 5-6z'/></svg>") no-repeat left 8px center;
+  color:#8d3048;max-width:none;min-width:0;height:auto
 }
-.orders-filter-pill>summary.filter-sum::-webkit-details-marker{display:none}
-.orders-filter-pill>summary.filter-sum::after{content:"▾";font-size:.65rem;opacity:.8}
-.orders-filter-pill[open]>summary.filter-sum{background:#8d3048;color:#fff}
-.orders-filter-pill[open]>summary.filter-sum::after{content:"▴";color:#fff}
-.orders-filter-pill .tools-body{
-  position:absolute;inset-inline-start:0;top:calc(100% + 6px);z-index:40;
-  min-width:min(320px,86vw);max-width:92vw;
-  background:#fff;border:1px solid var(--line);border-radius:14px;
-  box-shadow:0 10px 28px rgba(31,26,23,.12);padding:12px;
-  display:flex;flex-wrap:wrap;gap:8px;align-items:center
+[dir="ltr"] .orders-filter-inline .filter-one,
+[dir="ltr"] .orders-filter-inline select.status-one{
+  background-position:right 8px center;padding:8px 12px 8px 22px
 }
-.orders-filter-pill .tools-body .mini{
-  border:1px solid var(--line);background:#fff;border-radius:999px;
-  padding:8px 12px;font-weight:700;font-size:.78rem
-}
-.date-filter input[type=date]{font-family:"IBM Plex Sans",system-ui,sans-serif;direction:ltr}
+

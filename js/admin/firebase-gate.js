@@ -539,7 +539,11 @@
         return;
       }
       allowedEmail(user).then(function (ok) {
-        if (!ok) {
+        var uidOk = true;
+        try {
+          if (w.naqaIsAdminUid) uidOk = naqaIsAdminUid(user.uid);
+        } catch (e) { uidOk = true; }
+        if (!ok || !uidOk) {
           A.fbUser = null;
           firebase.auth().signOut().then(function () {
             preventSilentReentry();
@@ -553,6 +557,8 @@
         unlockUI();
         if (A.touchSession) A.touchSession();
         if (A.openAdmin) A.openAdmin();
+        /* load cloud overrides after secure session */
+        try { if (A.loadOverridesCloud) A.loadOverridesCloud(); } catch (e2) {}
         setMsg("");
         setBusy(false);
       });

@@ -311,26 +311,34 @@
     var input = document.getElementById("globalSearch");
     if (!input) return;
     var tab = A.currentTab || "home";
+    var en = A.lang === "en";
+    function label(key, arText, enText) {
+      var v = "";
+      try { v = A.t ? A.t(key) : ""; } catch (e) { v = ""; }
+      /* avoid showing raw keys like c_phoneSearch */
+      if (!v || v === key || /^[a-z][a-z0-9_]*$/i.test(String(v))) v = en ? enText : arText;
+      return v;
+    }
     if (tab === "products") {
-      var ph = A.t("p_search") || (A.lang === "en" ? "Name, SKU, brand…" : "اسم أو SKU أو ماركة…");
+      var ph = label("p_search", "اسم أو SKU أو ماركة…", "Name, SKU, brand…");
       input.placeholder = ph;
       input.setAttribute("aria-label", ph);
       input.setAttribute("data-i18n-placeholder", "p_search");
       if (document.activeElement !== input) input.value = A.productQuery || "";
     } else if (tab === "reviews") {
-      var ph3 = A.t("r_phoneSearch") || (A.lang === "en" ? "Mobile number" : "رقم الجوال");
+      var ph3 = label("r_phoneSearch", "البحث برقم الجوال", "Search by mobile number");
       input.placeholder = ph3;
       input.setAttribute("aria-label", ph3);
       input.setAttribute("data-i18n-placeholder", "r_phoneSearch");
       if (document.activeElement !== input) input.value = A.reviewQuery || "";
     } else if (tab === "customers") {
-      var ph4 = A.t("c_phoneSearch") || A.t("r_phoneSearch") || (A.lang === "en" ? "Mobile number" : "رقم الجوال");
+      var ph4 = label("c_phoneSearch", "البحث برقم الجوال", "Search by mobile number");
       input.placeholder = ph4;
       input.setAttribute("aria-label", ph4);
       input.setAttribute("data-i18n-placeholder", "c_phoneSearch");
       if (document.activeElement !== input) input.value = A.customerQuery || "";
     } else if (tab === "orders") {
-      var ph2 = A.t("o_search") || (A.lang === "en" ? "Number, name, phone" : "رقم أو اسم أو جوال");
+      var ph2 = label("o_search", "رقم أو اسم أو جوال", "Order, name, phone");
       input.placeholder = ph2;
       input.setAttribute("aria-label", ph2);
       input.setAttribute("data-i18n-placeholder", "o_search");

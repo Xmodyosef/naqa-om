@@ -107,6 +107,7 @@
   };
 
   A.paintCustomers = function () {
+    try { if (A.syncSearchPlaceholder) A.syncSearchPlaceholder(); } catch (e0) {}
     var box = document.getElementById("customersList");
     if (!box) return;
     var ar = A.lang !== "en";

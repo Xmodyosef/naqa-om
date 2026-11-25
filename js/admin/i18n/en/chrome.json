@@ -171,5 +171,6 @@
   "pageNext": "Next",
   "hideNeedTok": "Hidden on this device only. Add the publish token in Settings so it hides on the store for everyone.",
   "fb_signedIn": "Signed in. The email address is not shown here.",
-  "f_chart": "Sales over recent days"
+  "f_chart": "Sales over recent days",
+  "o_search": "Search by order no., customer name, or phone…"
 }

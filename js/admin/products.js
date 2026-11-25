@@ -213,7 +213,7 @@
     editView.hidden = true;
     editView.innerHTML = "";
     endEditMode();
-    q = (q || "").toLowerCase();
+    q = ""; /* product search disabled — use filters/pagination only */
     var low = 0, out = 0;
     A.products.forEach(function (p) {
       var m = A.merged(p);
@@ -393,7 +393,7 @@
       A.setMsg("status", A.t("p_imgsFull"));
       return;
     }
-    if (A.paintList) A.paintList(document.getElementById("q") ? document.getElementById("q").value.trim() : "");
+    if (A.paintList) A.paintList("");
     if (A.publishLive) A.publishLive();
     else A.setMsg("status", A.t("p_saved"));
   };

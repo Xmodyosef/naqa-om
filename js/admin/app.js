@@ -208,7 +208,7 @@
     if (A.loadOverridesCloud) {
       A.loadOverridesCloud().then(function () {
         if (A.currentTab === "products" && A.paintList) {
-          A.paintList(document.getElementById("q") ? document.getElementById("q").value.trim() : "");
+          A.paintList("");
         }
         if (A.paintDashboard) A.paintDashboard();
       });
@@ -285,27 +285,16 @@
 
   A.addProduct = function () {
     A.go("products", A.productView || "all", { push: true });
-    var q = document.getElementById("q");
-    if (q) {
-      q.focus();
-      try { q.scrollIntoView({ block: "nearest" }); } catch (e) {}
+    var list = document.getElementById("listView") || document.getElementById("productsTab");
+    if (list) {
+      try { list.scrollIntoView({ block: "nearest" }); } catch (e) {}
     }
   };
 
   A.runGlobalSearch = function () {
+    /* Search is orders-only (product list search removed by request). */
     var input = document.getElementById("globalSearch");
-    var scope = document.getElementById("searchScope");
     var q = input ? input.value.trim() : "";
-    var which = scope ? scope.value : "orders";
-    if (which === "products") {
-      A.orderQuery = "";
-      var box = document.getElementById("q");
-      if (box) box.value = q;
-      A.productPage = 1;
-      A.go("products", A.productView || "all", { push: true, page: 1 });
-      if (A.paintList) A.paintList(q);
-      return;
-    }
     A.orderQuery = q;
     A.go("orders", A.orderFilter || A.currentSub || "all", { push: true });
     if (A.paintOrders) A.paintOrders();

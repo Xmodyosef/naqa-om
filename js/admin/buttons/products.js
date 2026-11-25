@@ -1,17 +1,8 @@
-/* زر المنتجات: بحث القائمة، الصفحات، فتح التعديل. عطل هنا ما يوقف باقي الأزرار. */
+/* زر المنتجات: الصفحات، فتح التعديل. (بحث المنتجات أُلغي — البحث للطلبات فقط) */
 (function (w) {
   var A = w.NaqaAdmin;
   if (!A) return;
   function safe(fn) { try { fn(); } catch (err) { try { console.error("naqa products btn", err); } catch (e) {} } }
-  var q = document.getElementById("q");
-  if (q) q.addEventListener("input", function (e) {
-    safe(function () {
-      A.productPage = 1;
-      A.paintList(e.target.value.trim());
-      try { history.replaceState({ naqa: "sec", tab: "products", page: 1 }, "", A.sectionHash()); } catch (err) {}
-      A.syncNav();
-    });
-  });
   var list = document.getElementById("list");
   if (list) list.addEventListener("click", function (e) {
     safe(function () {
@@ -20,7 +11,7 @@
         var n = parseInt(pg.getAttribute("data-page"), 10);
         if (!n || n < 1) return;
         A.productPage = n;
-        A.paintList(document.getElementById("q") ? document.getElementById("q").value.trim() : "");
+        A.paintList("");
         try { history.pushState({ naqa: "sec", tab: "products", page: n }, "", A.sectionHash()); } catch (err) {}
         var box = document.getElementById("productsTab");
         if (box && box.scrollIntoView) box.scrollIntoView({ block: "start" });
@@ -44,8 +35,7 @@
   var A = w.NaqaAdmin; if (!A || !A.bindTab) return;
   A.bindTab("products", function () {
     if (A.paintList && A.editingId == null) {
-      var q = document.getElementById("q");
-      A.paintList(q ? q.value.trim() : "");
+      A.paintList("");
     }
   });
 })(window);

@@ -149,8 +149,12 @@
     var store = document.querySelector(".admin-top a.store");
     if (store) store.textContent = A.t("storeLink");
     if (A.fbApplyLabels) A.fbApplyLabels();
-    var q = document.getElementById("q");
-    if (q) q.placeholder = A.t("p_search");
+    /* product search removed */
+    var gSearch = document.getElementById("globalSearch");
+    if (gSearch) gSearch.placeholder = A.t("o_search") || (A.lang === "en" ? "Search by order no., customer, or phone…" : "ابحثي برقم الطلب أو اسم الزبونة أو الهاتف…");
+    var gBtn = document.getElementById("globalSearchBtn");
+    if (gBtn) gBtn.setAttribute("aria-label", A.lang === "en" ? "Search orders" : "بحث الطلبات");
+
     var pNote = document.getElementById("productsListNote");
     if (pNote) pNote.textContent = A.t("p_listNote");
     var oLead = document.getElementById("ordersLead");

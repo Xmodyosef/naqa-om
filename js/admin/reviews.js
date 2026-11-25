@@ -95,7 +95,10 @@
       return fetch("data/reviews.json?v=" + Date.now()).then(function (r) { return r.ok ? r.json() : []; }).then(function (remote) {
         if (Array.isArray(remote)) {
           remote.forEach(function (r) {
-            if (!A.reviews.some(function (x) { return x.id === r.id; })) A.reviews.push(r);
+            if (!r || !r.id) return;
+            var hit = A.reviews.find(function (x) { return x.id === r.id; });
+            if (!hit) A.reviews.push(r);
+            else if (!hit.phone && r.phone) hit.phone = r.phone;
           });
         }
       }).catch(function () {});
@@ -115,67 +118,52 @@
       }).catch(function () {});
     }
     Promise.resolve().then(mergeRemoteJson).then(mergeCloud).then(draw).catch(draw);
+    function phoneDigits(s) {
+      return String(s || "").replace(/\D/g, "");
+    }
+    function matchPhone(r, q) {
+      q = String(q || "").trim();
+      if (!q) return true;
+      var d = phoneDigits(q);
+      var p = phoneDigits(r && r.phone);
+      if (d) return p.indexOf(d) >= 0;
+      return String((r && r.phone) || "").indexOf(q) >= 0;
+    }
+    A.exportReviewsCsv = function () {
+      var ar = A.lang !== "en";
+      var head = ar
+        ? ["الجوال", "الاسم", "SKU", "النجوم", "عربي", "English", "الطلب"]
+        : ["phone", "name", "SKU", "stars", "Arabic", "English", "order"];
+      var rows = [head];
+      var q = A.reviewQuery || "";
+      (A.reviews || []).filter(function (r) { return matchPhone(r, q); }).forEach(function (r) {
+        rows.push([r.phone || "", r.name || "", r.sku || "", r.stars || "", r.ar || "", r.en || "", r.order || ""]);
+      });
+      A.downloadCsv("naqa-reviews.csv", rows);
+    };
     function draw() {
-      var opts = (A.products || w.products || []).map(function (p) {
-        return '<option value="' + A.esc(p.sku || "") + '">' + A.esc((p.sku || "") + " · " + (p.brand || "") ) + "</option>";
-      }).join("");
-      var rows = (A.reviews || []).filter(function (r) { return A.inDateRange(r.at); }).map(function (r) {
+      var q = A.reviewQuery || "";
+      var rows = (A.reviews || []).filter(function (r) { return matchPhone(r, q); }).map(function (r) {
         var imgSrc = r.photo || (r.photoB64 ? ("data:image/jpeg;base64," + r.photoB64) : "");
         var img = imgSrc ? '<img src="' + A.esc(imgSrc) + '" alt="" style="width:64px;height:64px;object-fit:cover;border-radius:10px">' : "";
-        var when = r.at ? A.fmtDateNum(r.at) : "";
         var sample = r.sample ? (' <span class="tax-mark">' + (A.lang === "en" ? "Preview" : "تجريبي") + '</span>') : "";
-        var ord = r.order ? (" · " + r.order) : "";
-        return '<div class="row"><div>' + img + '<strong>' + A.esc(r.name || "") + " " + stars(r.stars) + sample + '</strong><small>' + A.esc(r.sku || "") + ord + (when ? " · " + A.esc(when) : "") + " · " + A.esc((r.ar || r.en || "").slice(0, 80)) + '</small></div>'
-          + '<button type="button" class="mini" data-rv-off="' + A.esc(r.id) + '">' + (r.on === false ? A.t("r_show") : A.t("r_hide")) + '</button>'
-          + '<button type="button" class="mini" data-rv-del="' + A.esc(r.id) + '">' + A.t("del") + '</button></div>';
-      }).join("") || '<p class="note">' + A.t("r_empty") + '</p>';
+        var phone = r.phone ? (' · ' + A.esc(r.phone)) : "";
+        var ord = r.order ? (" · " + A.esc(r.order)) : "";
+        return '<div class="row"><div>' + img + '<strong>' + A.esc(r.name || "") + " " + stars(r.stars) + sample + '</strong><small>' + A.esc(r.sku || "") + phone + ord + " · " + A.esc((r.ar || r.en || "").slice(0, 80)) + '</small></div></div>';
+      }).join("");
+      if (!rows) {
+        rows = '<p class="note">' + A.esc(q
+          ? (A.t("r_phoneEmpty") || (A.lang === "en" ? "No review for this number" : "ما في تقييم لهذا الرقم"))
+          : (A.t("r_empty") || (A.lang === "en" ? "No reviews yet." : "لا تقييمات بعد."))) + '</p>';
+      }
       box.innerHTML = '<div class="panel"><h2>' + A.t("r_title") + '</h2>'
-        + (A.t("r_note") ? ('<p class="note">' + A.t("r_note") + '</p>') : '')
-        + A.dateFilterHtml("revDate")
-        + '<div class="status-bar" style="margin:8px 0;flex-wrap:wrap;gap:6px">'
-        + '<button type="button" class="primary" id="publishReviewsBtn">' + (A.t("r_publish") || (A.lang === "en" ? "Publish to store" : "انشري للمتجر")) + '</button>'
-        + '<button type="button" class="mini" id="exportReviewsCsv">' + A.t("exportCsv") + '</button></div>'
-        + '<label>' + A.t("r_sku") + '<input id="rvSku" list="rvSkus" placeholder="SKU"></label><datalist id="rvSkus">' + opts + '</datalist>'
-        + '<label>' + A.t("r_nick") + '<input id="rvName" maxlength="24"></label>'
-        + '<label>' + A.t("r_stars") + '<select id="rvStars"><option>5</option><option>4</option><option>3</option><option>2</option><option>1</option></select></label>'
-        + '<label>' + A.t("r_ar") + '<textarea id="rvAr" rows="3"></textarea></label>'
-        + '<label>' + A.t("r_en") + '<textarea id="rvEn" rows="3"></textarea></label>'
-        + '<label>' + A.t("r_photo") + '<input id="rvFile" type="file" accept="image/*"></label>'
-        + '<button type="button" class="primary" id="rvAdd" style="width:100%;margin-top:8px">' + A.t("r_add") + '</button>'
-        + '</div>' + rows;
-      document.getElementById("rvAdd").onclick = addReview;
-      var pubBtn = document.getElementById("publishReviewsBtn");
-      if (pubBtn) pubBtn.onclick = function () {
-        if (A.setMsg) A.setMsg("reviewStatus", A.lang === "en" ? "Publishing…" : "جاري النشر…");
-        A.publishReviews();
-      };
-      A.bindDateFilter("revDate", draw);
-      var er = document.getElementById("exportReviewsCsv");
-      if (er) er.onclick = function () {
-        var rows = [["id", "at", "sku", "name", "stars", "ar", "en", "on"]];
-        (A.reviews || []).filter(function (r) { return A.inDateRange(r.at); }).forEach(function (r) {
-          rows.push([r.id || "", r.at || "", r.sku || "", r.name || "", r.stars || "", r.ar || "", r.en || "", r.on === false ? "off" : "on"]);
-        });
-        A.downloadCsv("naqa-reviews.csv", rows);
-      };
-      box.querySelectorAll("[data-rv-del]").forEach(function (b) {
-        b.onclick = function () {
-          if (!confirm(A.t("delConfirm"))) return;
-          A.reviews = A.reviews.filter(function (r) { return r.id !== b.dataset.rvDel; });
-          saveLocal();
-          draw();
-        };
-      });
-      box.querySelectorAll("[data-rv-off]").forEach(function (b) {
-        b.onclick = function () {
-          A.reviews.forEach(function (r) { if (r.id === b.dataset.rvOff) r.on = r.on === false; });
-          saveLocal();
-          draw();
-        };
-      });
+        + '<div id="reviewStatus" class="msg"></div>'
+        + rows
+        + '</div>';
     }
   };
-  function addReview() {
+  
+    function addReview() {
     var sku = document.getElementById("rvSku").value.trim();
     var name = document.getElementById("rvName").value.trim();
     var ar = document.getElementById("rvAr").value.trim();

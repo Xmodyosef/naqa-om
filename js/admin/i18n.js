@@ -143,10 +143,9 @@
     if (store) store.textContent = A.t("storeLink");
     if (A.fbApplyLabels) A.fbApplyLabels();
     /* product search removed */
-    var gSearch = document.getElementById("globalSearch");
-    if (gSearch) gSearch.placeholder = A.t("o_search") || (A.lang === "en" ? "Order, name, phone" : "رقم أو اسم أو جوال");
     var gBtn = document.getElementById("globalSearchBtn");
-    if (gBtn) { gBtn.textContent = "⌕"; gBtn.setAttribute("aria-label", A.lang === "en" ? "Search orders" : "بحث الطلبات"); }
+    if (gBtn) { gBtn.textContent = "⌕"; gBtn.setAttribute("aria-label", A.lang === "en" ? "Search" : "بحث"); }
+    if (A.syncSearchPlaceholder) A.syncSearchPlaceholder();
 
     var oLead = document.getElementById("ordersLead");
     if (oLead) {
@@ -182,7 +181,7 @@
   A.ensureLang = function (lang, done) {
     if (A.I18N && A.I18N[lang]) { done(); return; }
     var s = document.createElement("script");
-    s.src = "js/admin/i18n/dict-" + lang + ".js?v=20261125i18n1";
+    s.src = "js/admin/i18n/dict-" + lang + ".js?v=20261125rv6";
     s.onload = function () { done(); };
     s.onerror = function () { done(); };
     document.head.appendChild(s);

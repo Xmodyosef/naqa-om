@@ -23,9 +23,9 @@
 <link rel="dns-prefetch" href="https://www.gstatic.com" />
 <link rel="preload" href="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js" as="script" />
 <link rel="preload" href="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js" as="script" />
-<link rel="preload" href="js/firebase-config.js?v=20261125rv5" as="script" />
-<link rel="preload" href="js/admin/firebase-gate.js?v=20261125rv5" as="script" />
-<link rel="stylesheet" href="css/admin.css?v=20261125rv5" />
+<link rel="preload" href="js/firebase-config.js?v=20261125rv6" as="script" />
+<link rel="preload" href="js/admin/firebase-gate.js?v=20261125rv6" as="script" />
+<link rel="stylesheet" href="css/admin.css?v=20261125rv6" />
 
 
 </head>
@@ -173,12 +173,12 @@
       var ot = document.getElementById("ordersTopTools");
       var excel = document.getElementById("excelWrap");
       if (tab === "products" && add) add.hidden = false;
-      if (excel) excel.hidden = tab !== "products";
-      if (tab === "orders" || tab === "products") {
+      if (excel) excel.hidden = !(tab === "products" || tab === "reviews");
+      if (tab === "orders" || tab === "products" || tab === "reviews") {
         if (search) search.hidden = false;
-        if (ot) ot.hidden = !(tab === "orders" || tab === "products");
+        if (ot) ot.hidden = false;
       }
-      if (top && (tab === "products" || tab === "orders")) top.hidden = false;
+      if (top && (tab === "products" || tab === "orders" || tab === "reviews")) top.hidden = false;
     })();
     </script>
   <div id="childNav" class="top-children" data-nav-mode="pills-top" hidden aria-label="فلاتر القسم">
@@ -233,17 +233,17 @@
   </main>
 </div>
 </div>
-<script defer src="js/config.js?v=20261125rv5"></script>
-<script defer src="js/firebase-config.js?v=20261125rv5"></script>
+<script defer src="js/config.js?v=20261125rv6"></script>
+<script defer src="js/firebase-config.js?v=20261125rv6"></script>
 <script defer src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
 <script defer src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
-<script defer src="js/admin.js?v=20261125rv5"></script>
-<script defer src="js/admin/core.js?v=20261125rv5"></script>
-<script defer src="js/admin/firebase-gate.js?v=20261125rv5"></script>
-<script defer src="js/admin/app.js?v=20261125rv5"></script>
-<script defer src="js/admin/i18n/dict-ar.js?v=20261125rv5"></script>
-<script defer src="js/admin/i18n/dict-en.js?v=20261125rv5"></script>
-<script defer src="js/admin/i18n.js?v=20261125rv5"></script>
-<script defer src="js/admin/load-modules.js?v=20261125rv5"></script>
+<script defer src="js/admin.js?v=20261125rv6"></script>
+<script defer src="js/admin/core.js?v=20261125rv6"></script>
+<script defer src="js/admin/firebase-gate.js?v=20261125rv6"></script>
+<script defer src="js/admin/app.js?v=20261125rv6"></script>
+<script defer src="js/admin/i18n/dict-ar.js?v=20261125rv6"></script>
+<script defer src="js/admin/i18n/dict-en.js?v=20261125rv6"></script>
+<script defer src="js/admin/i18n.js?v=20261125rv6"></script>
+<script defer src="js/admin/load-modules.js?v=20261125rv6"></script>
 </body>
 </html>

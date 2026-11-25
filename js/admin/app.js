@@ -147,14 +147,15 @@
     if (A.refreshChildNav) A.refreshChildNav();
     if (A.updateOrdersBadge) A.updateOrdersBadge();
     var top = document.getElementById("topBar");
-    if (top) top.hidden = !(tab === "products" || tab === "orders");
+    if (top) top.hidden = !(tab === "products" || tab === "orders" || tab === "reviews");
     var add = document.getElementById("addProductBtn");
     if (add) add.hidden = tab !== "products";
     var excel = document.getElementById("excelWrap");
     if (excel) {
-      excel.hidden = tab !== "products";
-      /* close menu when leaving products */
-      if (tab !== "products") {
+      excel.hidden = !(tab === "products" || tab === "reviews");
+      var imp = document.getElementById("excelImportBtn");
+      if (imp) imp.hidden = tab === "reviews";
+      if (tab !== "products" && tab !== "reviews") {
         var em = document.getElementById("excelMenu");
         var eb = document.getElementById("excelMenuBtn");
         if (em) em.hidden = true;
@@ -162,9 +163,9 @@
       }
     }
     var search = document.getElementById("ordersSearchWrap");
-    if (search) search.hidden = !(tab === "orders" || tab === "products");
+    if (search) search.hidden = !(tab === "orders" || tab === "products" || tab === "reviews");
     var ot = document.getElementById("ordersTopTools");
-    if (ot) ot.hidden = !(tab === "orders" || tab === "products");
+    if (ot) ot.hidden = !(tab === "orders" || tab === "products" || tab === "reviews");
     var otSlot = document.getElementById("ordersTools");
     if (otSlot) otSlot.hidden = tab !== "orders";
   };
@@ -314,6 +315,12 @@
       input.setAttribute("aria-label", ph);
       input.setAttribute("data-i18n-placeholder", "p_search");
       if (document.activeElement !== input) input.value = A.productQuery || "";
+    } else if (tab === "reviews") {
+      var ph3 = A.t("r_phoneSearch") || (A.lang === "en" ? "Mobile number" : "رقم الجوال");
+      input.placeholder = ph3;
+      input.setAttribute("aria-label", ph3);
+      input.setAttribute("data-i18n-placeholder", "r_phoneSearch");
+      if (document.activeElement !== input) input.value = A.reviewQuery || "";
     } else if (tab === "orders") {
       var ph2 = A.t("o_search") || (A.lang === "en" ? "Number, name, phone" : "رقم أو اسم أو جوال");
       input.placeholder = ph2;
@@ -347,6 +354,11 @@
       if (A.paintList) A.paintList(q);
       return;
     }
+    if (tab === "reviews") {
+      A.reviewQuery = q;
+      if (A.paintReviews) A.paintReviews();
+      return;
+    }
     A.orderQuery = q;
     A.go("orders", A.orderFilter || A.currentSub || "all", { push: true });
     if (A.paintOrders) A.paintOrders();
@@ -362,9 +374,15 @@
     });
     var __prodSearchT = 0;
     gInput.addEventListener("input", function () {
-      if ((A.currentTab || "") !== "products") return;
+      var tabNow = A.currentTab || "";
+      if (tabNow !== "products" && tabNow !== "reviews") return;
       clearTimeout(__prodSearchT);
       __prodSearchT = setTimeout(function () {
+        if (tabNow === "reviews") {
+          A.reviewQuery = gInput.value.trim();
+          if (A.paintReviews) A.paintReviews();
+          return;
+        }
         A.productQuery = gInput.value.trim();
         A.productPage = 1;
         if (A.paintList) A.paintList(A.productQuery);

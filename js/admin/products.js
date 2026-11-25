@@ -518,12 +518,14 @@
         e.preventDefault();
         e.stopPropagation();
         if (menu) menu.hidden = true;
-        if (A.exportProductsCsv) A.exportProductsCsv();
+        if ((A.currentTab || "") === "reviews" && A.exportReviewsCsv) A.exportReviewsCsv();
+        else if (A.exportProductsCsv) A.exportProductsCsv();
         return;
       }
       if (t.closest("#excelImportBtn")) {
         e.preventDefault();
         e.stopPropagation();
+        if ((A.currentTab || "") === "reviews") return;
         if (menu) menu.hidden = true;
         var file = document.getElementById("excelImportFile");
         if (file) file.click();

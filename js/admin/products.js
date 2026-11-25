@@ -368,14 +368,20 @@
           return;
         }
         if (del) {
+          e.preventDefault();
+          e.stopPropagation();
           var ix = +del.getAttribute("data-img-del");
+          if (isNaN(ix) || ix < 0 || ix >= (A._editImgs || []).length) return;
           var gone = A._editImgs[ix];
-          if (gone && (A._editBaseImgs || []).indexOf(gone) >= 0) {
-            A._editRemoved = A._editRemoved || {};
+          A._editRemoved = A._editRemoved || {};
+          if (gone) {
+            var gKey = A.normImgPath ? A.normImgPath(gone) : gone;
+            A._editRemoved[gKey] = 1;
             A._editRemoved[gone] = 1;
           }
           A._editImgs.splice(ix, 1);
           A.paintImgGallery();
+          return;
         }
       });
     }
@@ -404,9 +410,7 @@
           chain = chain.then(function () {
             return shrinkToB64(one).then(function (packed) { return saveFsImage(packed.b64).then(function (url) { A._fsPreview = A._fsPreview || {}; A._fsPreview[url] = URL.createObjectURL(packed.blob); return url; }); }).then(function (url) {
               added.push(url);
-              var baseUp = A._editBaseImgs || [];
-              var gallery = (A._editImgs || []).concat([url]);
-              A._editImgs = normImgs(A.keepImgs ? A.keepImgs(baseUp, gallery, A._editRemoved || {}) : gallery);
+              A._editImgs = normImgs((A._editImgs || []).concat([url]));
               A.paintImgGallery();
             });
           });
@@ -431,9 +435,7 @@
         A.setMsg("status", A.t("p_imgsMax"));
         return;
       }
-      var baseUrl = A._editBaseImgs || [];
-      var gUrl = (A._editImgs || []).concat([u]);
-      A._editImgs = normImgs(A.keepImgs ? A.keepImgs(baseUrl, gUrl, A._editRemoved || {}) : gUrl);
+      A._editImgs = normImgs((A._editImgs || []).concat([u]));
       if (inp) inp.value = "";
       A.paintImgGallery();
     };
@@ -544,9 +546,14 @@
       A._editNavPushed = true;
     }
 
-    A._editRemoved = {};
     A._editBaseImgs = Array.isArray(p.imgs) ? p.imgs.filter(Boolean).slice() : [];
-    A._editImgs = normImgs(A.keepImgs ? A.keepImgs(A._editBaseImgs, m.imgs || [], {}) : (m.imgs || []));
+    A._editRemoved = {};
+    var oPrev = A.overrides[p.id] || A.overrides[String(p.id)] || {};
+    (oPrev.removedImgs || []).forEach(function (u) {
+      A._editRemoved[A.normImgPath ? A.normImgPath(u) : u] = 1;
+    });
+    /* Gallery = what user currently has. Wipe-repair only if old bad data. */
+    A._editImgs = normImgs(m.imgs || A._editBaseImgs || []);
 
     var catOpts = A.CATS.map(function (c) {
       return '<option value="' + A.esc(c) + '"' + (m.cat === c ? " selected" : "") + ">" + A.esc(c) + "</option>";
@@ -664,18 +671,32 @@
       taxCustom: taxMode === "custom" ? taxCustom : undefined,
       descAr: A.val("f_descAr"), descEn: A.val("f_descEn"), useAr: A.val("f_useAr"), useEn: A.val("f_useEn"),
       skinAr: A.val("f_skinAr"), skinEn: A.val("f_skinEn"),
-      imgs: (function () {
-        var p0 = A.products.find(function (x) { return String(x.id) === String(A.editingId); });
-        var base = (A._editBaseImgs && A._editBaseImgs.length)
-          ? A._editBaseImgs
-          : (p0 && Array.isArray(p0.imgs) ? p0.imgs.filter(Boolean) : []);
-        var finalImgs = A.keepImgs
-          ? A.keepImgs(base, A._editImgs || [], A._editRemoved || {})
-          : (A._editImgs || []);
-        return normImgs(finalImgs);
-      })(),
+      imgs: normImgs(A._editImgs || []),
       hidden: !!(document.getElementById("f_hidden") && document.getElementById("f_hidden").checked)
     };
+    /* intentional catalog deletes — so load never re-adds them as a "wipe repair" */
+    (function () {
+      var p0 = A.products.find(function (x) { return String(x.id) === String(A.editingId); });
+      var base = (A._editBaseImgs && A._editBaseImgs.length)
+        ? A._editBaseImgs
+        : (p0 && Array.isArray(p0.imgs) ? p0.imgs.filter(Boolean) : []);
+      var gallery = next.imgs || [];
+      var gset = {};
+      gallery.forEach(function (u) {
+        var k = A.normImgPath ? A.normImgPath(u) : u;
+        gset[k] = 1; gset[u] = 1;
+      });
+      var removed = [];
+      base.forEach(function (u) {
+        var k = A.normImgPath ? A.normImgPath(u) : u;
+        if (!gset[k] && !gset[u]) removed.push(k || u);
+      });
+      Object.keys(A._editRemoved || {}).forEach(function (k) {
+        if (removed.indexOf(k) < 0 && !gset[k]) removed.push(k);
+      });
+      if (removed.length) next.removedImgs = removed.slice(0, 20);
+      else delete next.removedImgs;
+    })();
     if (next.price != null && (isNaN(next.price) || next.price < 0)) { A.setMsg("status", A.t("p_priceBad")); return; }
     if (next.was != null && (isNaN(next.was) || next.was < 0)) { A.setMsg("status", A.t("p_priceBad")); return; }
     if (next.stock != null && (isNaN(next.stock) || next.stock < 0)) { A.setMsg("status", A.t("p_stockBad")); return; }
@@ -684,21 +705,18 @@
     if (next.stock == null || isNaN(next.stock)) delete next.stock;
     if (next.taxMode === "vat5") delete next.taxMode;
     if (next.taxCustom == null || isNaN(next.taxCustom) || next.taxMode !== "custom") delete next.taxCustom;
-    if (!next.imgs || !next.imgs.length) {
-      var pBase = A.products.find(function (x) { return String(x.id) === String(A.editingId); });
-      var base0 = (A._editBaseImgs && A._editBaseImgs.length)
-        ? A._editBaseImgs
-        : (pBase && pBase.imgs) || [];
-      var rem0 = A._editRemoved || {};
-      var restored = (base0 || []).filter(function (u) { return u && !rem0[u]; }).slice(0, 6);
-      if (restored.length) next.imgs = restored;
-      else delete next.imgs;
-    }
+    /* empty gallery is valid (user deleted all). Keep [] so store does not fall back to full catalog. */
+    if (!Array.isArray(next.imgs)) next.imgs = [];
     if (!next.hidden) delete next.hidden;
     Object.keys(next).forEach(function (k) { if (next[k] === "" || next[k] === undefined) delete next[k]; });
     var ok = String(A.editingId);
     if (Object.keys(next).length) {
-      A.overrides[ok] = next;
+      var prevO = A.overrides[ok] || A.overrides[A.editingId] || {};
+      A.overrides[ok] = Object.assign({}, prevO, next);
+      /* explicit empty imgs must win */
+      if (Array.isArray(next.imgs)) A.overrides[ok].imgs = next.imgs;
+      if (next.removedImgs) A.overrides[ok].removedImgs = next.removedImgs;
+      else delete A.overrides[ok].removedImgs;
       if (A.overrides[A.editingId] && String(A.editingId) !== ok) delete A.overrides[A.editingId];
     } else {
       delete A.overrides[ok];

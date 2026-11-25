@@ -557,8 +557,7 @@
         unlockUI();
         if (A.touchSession) A.touchSession();
         if (A.openAdmin) A.openAdmin();
-        /* load cloud overrides after secure session */
-        try { if (A.loadOverridesCloud) A.loadOverridesCloud(); } catch (e2) {}
+        /* openAdmin loads overrides once — avoid double fetch (heavy login) */
         setMsg("");
         setBusy(false);
       });

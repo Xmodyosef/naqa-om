@@ -76,14 +76,57 @@ function productLink(id){
   return location.origin + siteBasePath() + "p/" + id + "/";
 }
 
-function naqaKeepImgs(base, saved){
-  /* RULE (LOCKED): catalog photos always stay unless intentionally absent from both
-     gallery and base; new uploads prepend. Never drop media/* on merge. */
-  base=(base||[]).filter(Boolean);
-  saved=(saved||[]).filter(Boolean);
+function naqaNormImgPath(u){
+  u=String(u||"").trim();
+  if(!u) return "";
+  try{
+    if(/^https?:\/\//i.test(u)){
+      var path=u.replace(/^https?:\/\/[^/]+/i,"");
+      var base="";
+      try{ base=(location.pathname||"").replace(/\/[^/]*$/,"/"); }catch(e){}
+      if(base && path.indexOf(base)===0) path=path.slice(base.length);
+      if (path.charAt(0) === "/") path = path.slice(1);
+      if(/^media\//i.test(path)) return path;
+    }
+  }catch(e){}
+  return u.replace(/^\.\//,"").replace(/^\//,"");
+}
+function naqaIsCatalogImg(u){
+  u=naqaNormImgPath(u);
+  return /^media\//i.test(u)||/^p\//i.test(u);
+}
+function naqaIsWipeImgs(base, saved){
+  base=(base||[]).map(naqaNormImgPath).filter(Boolean);
+  saved=(saved||[]).map(naqaNormImgPath).filter(Boolean);
+  if(!base.length||!saved.length) return false;
+  var set={}; base.forEach(function(u){ set[u]=1; });
+  if(saved.some(function(u){ return set[u]; })) return false;
+  return saved.every(function(u){ return !naqaIsCatalogImg(u); });
+}
+function naqaKeepImgs(base, saved, removed){
+  removed=removed||{};
+  var rem={};
+  Object.keys(removed).forEach(function(k){ rem[naqaNormImgPath(k)]=1; });
+  base=(base||[]).map(naqaNormImgPath).filter(Boolean);
+  saved=(saved||[]).map(function(u){ return String(u||"").trim(); }).filter(Boolean);
   var out=[], seen={};
-  function add(u){ if(!u||seen[u]||out.length>=6) return; seen[u]=1; out.push(u); }
-  saved.forEach(add);
+  function add(raw){
+    var u=String(raw||"").trim();
+    if(!u) return;
+    var key=naqaNormImgPath(u);
+    if(!key||seen[key]||rem[key]||out.length>=6) return;
+    seen[key]=1;
+    out.push(u.indexOf("fs:")===0||/^https:\/\//i.test(u)?u:key);
+  }
+  if(naqaIsWipeImgs(base, saved)){
+    saved.forEach(add);
+    base.forEach(add);
+    return out;
+  }
+  if(saved.length){
+    saved.forEach(add);
+    return out;
+  }
   base.forEach(add);
   return out;
 }
@@ -101,7 +144,9 @@ function mergeOverrides(map){
     ["nameAr","nameEn","descAr","descEn","useAr","useEn","skinAr","skinEn","brand","cat","sku","em"].forEach(function(k){
       if(o[k]!=null && o[k]!=="") p[k]=o[k];
     });
-    if(Array.isArray(o.imgs) && o.imgs.length) p.imgs=naqaKeepImgs(p.imgs, o.imgs);
+    var rem={}; (o.removedImgs||[]).forEach(function(u){ rem[naqaNormImgPath(u)]=1; });
+    if(Array.isArray(o.imgs)) p.imgs=naqaKeepImgs(p.imgs, o.imgs, rem);
+    else if(o.removedImgs && o.removedImgs.length) p.imgs=(p.imgs||[]).filter(function(u){ return u && !rem[naqaNormImgPath(u)]; });
   });
 }
 

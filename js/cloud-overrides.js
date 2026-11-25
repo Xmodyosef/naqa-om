@@ -50,6 +50,17 @@
         var v = o[k];
         if (v === undefined || v === null || v === "") return;
         if (typeof v === "function") return;
+        if (k === "removedImgs") {
+          if (!Array.isArray(v)) return;
+          var rm = v.filter(function (u) {
+            if (typeof u !== "string") return false;
+            u = u.trim();
+            if (!u || u.indexOf("..") >= 0) return false;
+            return /^media\//i.test(u) || /^p\//i.test(u);
+          }).slice(0, 20);
+          if (rm.length) n.removedImgs = rm;
+          return;
+        }
         if (k === "imgs") {
           if (!Array.isArray(v)) return;
           var urls = v.filter(function (u) {
@@ -65,7 +76,8 @@
             if (/^p\//i.test(u)) return true;
             return false;
           }).map(function (u) { return u.trim(); }).slice(0, 6);
-          if (urls.length) n.imgs = urls;
+          /* always keep imgs key when provided (even empty = user cleared gallery) */
+          n.imgs = urls;
           return;
         }
         if (typeof v === "number" && !isFinite(v)) return;
@@ -127,7 +139,7 @@
       return Promise.reject(new Error("too-large:" + size));
     }
 
-    return user.getIdToken(true).then(function () {
+    return user.getIdToken(/* forceRefresh */ false).then(function () {
       try {
         if (firebase.firestore.FieldValue && firebase.firestore.FieldValue.serverTimestamp) {
           payload.updatedAt = firebase.firestore.FieldValue.serverTimestamp();
@@ -140,7 +152,8 @@
   var A = w.NaqaAdmin = w.NaqaAdmin || {};
 
   A.loadOverridesCloud = function () {
-    return w.naqaLoadCloudOverrides().then(function (map) {
+    if (A._loadOverridesPromise) return A._loadOverridesPromise;
+    A._loadOverridesPromise = w.naqaLoadCloudOverrides().then(function (map) {
       if (!map) return false;
       var local = A.overrides || {};
       var merged = Object.assign({}, map);
@@ -155,20 +168,16 @@
         }
       });
       A.overrides = merged;
-      var repaired = false;
       try {
-        if (A.repairAllProductImgs) repaired = !!A.repairAllProductImgs();
-      } catch (e) { repaired = false; }
+        if (A.repairAllProductImgs) A.repairAllProductImgs();
+      } catch (e) {}
       try { localStorage.setItem(A.KEY || "naqa_overrides", JSON.stringify(A.overrides)); } catch (e) {}
-      if (repaired) {
-        try {
-          if (currentUser()) {
-            return A.syncOverridesCloud().then(function () { return true; }).catch(function () { return true; });
-          }
-        } catch (e) {}
-      }
       return true;
-    }).catch(function () { return false; });
+    }).catch(function () { return false; }).then(function (v) {
+      A._loadOverridesPromise = null;
+      return v;
+    });
+    return A._loadOverridesPromise;
   };
 
   A.syncOverridesCloud = function () {

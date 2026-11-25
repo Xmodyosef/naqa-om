@@ -1,35 +1,19 @@
-# قاعدة صور المنتج / Product images rule (LOCKED)
+# Product images rule (LOCKED)
 
-**حازمة — لا تُكسر ولا تُنسى. Permanent — do not break or forget.**
+## Behavior
+1. **Gallery is truth on Save** — what you see in the edit screen is what is stored.
+2. **✕ deletes only that photo** — other photos stay. No magic re-injection of catalog shots on save.
+3. **Intentional deletes** are stored in `removedImgs` so reload does not bring them back.
+4. **Wipe repair** only when stored imgs are *only* `fs:`/`https` while the product still has `media/*` catalog (old bug). Never on intentional delete.
+5. **Cloud sanitize** allows `media/*`, `fs:`, `https://` and `removedImgs`.
 
-## العربية
-- صورة جديدة = **تنضاف** مع صور المنتج الحالية.
-- **ما تمسح** باقي الصور أبداً عند الرفع أو اللصق.
-- الحذف فقط بزر **✕** يدوياً (صورة صورة).
-- تنطبق على **كل المنتجات** في اللوحة والمتجر (عربي وإنجليزي).
-- عند التحميل: أي حفظ قديم مسح الصور يُصلح تلقائياً (`keepImgs` / `naqaKeepImgs` / `repairAllProductImgs`).
-- عند الحفظ: نفس القاعدة تُطبَّق قبل الكتابة — ما ينعاد المسح بالغلط.
+## Login performance
+- Overrides load **once** (deduped promise).
+- No auto cloud rewrite after repair.
+- `getIdToken(false)` — no forced refresh every save.
 
-## English
-- A new photo is **added** next to the current product photos.
-- Upload/paste must **never wipe** the rest of the gallery.
-- Remove only with the **✕** button (one photo at a time).
-- Applies to **every product** on admin and storefront (AR and EN).
-- On load: any past wipe is repaired (`keepImgs` / `naqaKeepImgs` / `repairAllProductImgs`).
-- On save: the same rule runs before write — accidental wipe cannot be stored again.
-
-## Code anchors (do not remove)
-- `js/admin/core.js` → `A.keepImgs`, `A.repairAllProductImgs`, `A.merged`
-- `js/admin/products.js` → upload / URL / saveEdit / delete with `A._editRemoved`
-- `js/core.js` → `naqaKeepImgs` in `mergeOverrides`
-- `js/cloud-overrides.js` → repair on `A.loadOverridesCloud`
-
-If someone “fixes” images by replacing the whole `imgs` array with only the new file — **reject that change**.
-
-## Cloud sanitize (critical)
-`sanitizeMap` in `js/cloud-overrides.js` MUST allow:
-- `https://…`
-- `fs:…`
-- `media/…` catalog paths
-
-If `media/` is stripped, every Save after a delete (or any save) drops catalog photos from Firestore and the gallery looks empty.
+## Code
+- `js/admin/core.js` — keepImgs / isWipeImgs / merged / repairAllProductImgs
+- `js/admin/products.js` — openEdit / delete / saveEdit
+- `js/cloud-overrides.js` — sanitize + load
+- `js/core.js` — storefront merge

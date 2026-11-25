@@ -143,24 +143,72 @@
     var _cap = (typeof ORDERS_CAP === "number" && ORDERS_CAP > 0) ? ORDERS_CAP : 300;
     localStorage.setItem(A.ORDERS_KEY, JSON.stringify(A.orders.slice(0, _cap)));
   };
-  /* RULE (LOCKED): a photo is never lost unless deleted with ✕.
-     Gallery order first; every catalog path not in A._editRemoved is always kept.
-     Cloud must also allow media/* paths (see cloud-overrides sanitizeMap). */
+  /* RULE (LOCKED) — product images
+     1) The on-screen gallery (_editImgs) is the source of truth on Save.
+     2) Deleting with ✕ removes only that photo; Save stores exactly what remains.
+     3) Catalog media/* paths are valid and must never be stripped in cloud sanitize.
+     4) Wipe repair only when a stored list has zero catalog paths but the product has some
+        (old bug). Intentional deletes are stored in removedImgs and are respected.
+  */
+  A.normImgPath = function (u) {
+    u = String(u || "").trim();
+    if (!u) return "";
+    try {
+      if (/^https?:\/\//i.test(u)) {
+        var path = u.replace(/^https?:\/\/[^/]+/i, "");
+        var base = "";
+        try { base = (location.pathname || "").replace(/\/[^/]*$/, "/"); } catch (e) {}
+        if (base && path.indexOf(base) === 0) path = path.slice(base.length);
+        if (path.charAt(0) === "/") path = path.slice(1);
+        if (/^media\//i.test(path)) return path;
+      }
+    } catch (e) {}
+    return u.replace(/^\.\//, "").replace(/^\//, "");
+  };
+  A.isCatalogImg = function (u) {
+    u = A.normImgPath(u);
+    return /^media\//i.test(u) || /^p\//i.test(u);
+  };
+  A.isWipeImgs = function (base, saved) {
+    base = (base || []).map(A.normImgPath).filter(Boolean);
+    saved = (saved || []).map(A.normImgPath).filter(Boolean);
+    if (!base.length || !saved.length) return false;
+    var baseSet = {};
+    base.forEach(function (u) { baseSet[u] = 1; });
+    var hit = saved.some(function (u) { return baseSet[u]; });
+    if (hit) return false;
+    /* saved has only non-catalog (fs:/https) while product had catalog → old wipe */
+    return saved.every(function (u) { return !A.isCatalogImg(u); });
+  };
   A.keepImgs = function (base, saved, removed) {
     removed = removed || {};
-    base = (base || []).filter(Boolean);
-    saved = (saved || []).filter(Boolean);
+    var rem = {};
+    Object.keys(removed).forEach(function (k) { rem[A.normImgPath(k)] = 1; });
+    base = (base || []).map(A.normImgPath).filter(Boolean);
+    saved = (saved || []).map(function (u) { return String(u || "").trim(); }).filter(Boolean);
     var out = [], seen = {};
-    function add(u) {
-      if (!u || seen[u] || removed[u] || out.length >= 6) return;
-      seen[u] = 1;
-      out.push(u);
+    function add(raw) {
+      var u = String(raw || "").trim();
+      if (!u) return;
+      var key = A.normImgPath(u);
+      if (!key || seen[key] || rem[key] || out.length >= 6) return;
+      seen[key] = 1;
+      out.push(u.indexOf("fs:") === 0 || /^https:\/\//i.test(u) ? u : key);
     }
-    saved.forEach(add);
+    if (A.isWipeImgs(base, saved)) {
+      saved.forEach(add);
+      base.forEach(add);
+      return out;
+    }
+    if (saved.length) {
+      saved.forEach(add);
+      return out;
+    }
     base.forEach(add);
     return out;
   };
   A.repairAllProductImgs = function () {
+    /* in-memory only — never auto-write to cloud (that made login heavy + could loop) */
     var map = A.overrides || {};
     var fixed = false;
     (A.products || []).forEach(function (p) {
@@ -169,7 +217,10 @@
       var o = map[id] || map[p.id];
       if (!o || !Array.isArray(o.imgs) || !o.imgs.length) return;
       var base = Array.isArray(p.imgs) ? p.imgs.filter(Boolean) : [];
-      var next = A.keepImgs(base, o.imgs);
+      var rem = {};
+      (o.removedImgs || []).forEach(function (u) { rem[A.normImgPath(u)] = 1; });
+      if (!A.isWipeImgs(base, o.imgs)) return;
+      var next = A.keepImgs(base, o.imgs, rem);
       try {
         if (JSON.stringify(next) === JSON.stringify(o.imgs)) return;
       } catch (e) {}
@@ -185,8 +236,14 @@
     var o = A.overrides[p.id] || A.overrides[String(p.id)] || {};
     var baseImgs = Array.isArray(p.imgs) ? p.imgs.filter(Boolean) : [];
     var m = Object.assign({}, p, o);
-    var savedImgs = Array.isArray(o.imgs) ? o.imgs.filter(Boolean) : [];
-    m.imgs = savedImgs.length ? A.keepImgs(baseImgs, savedImgs) : baseImgs.slice(0, 6);
+    var rem = {};
+    (o.removedImgs || []).forEach(function (u) { rem[A.normImgPath(u)] = 1; });
+    if (Array.isArray(o.imgs)) {
+      if (A.isWipeImgs(baseImgs, o.imgs)) m.imgs = A.keepImgs(baseImgs, o.imgs, rem);
+      else m.imgs = o.imgs.map(function (u) { return String(u || "").trim(); }).filter(Boolean).slice(0, 6);
+    } else {
+      m.imgs = baseImgs.filter(function (u) { return u && !rem[A.normImgPath(u)]; }).slice(0, 6);
+    }
     if (m.stock == null || m.stock === "") m.stock = 3;
     if (m.was == null) m.was = "";
     return m;

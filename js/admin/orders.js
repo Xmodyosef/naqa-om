@@ -181,8 +181,8 @@
         + "</div>"
         + (o.note ? ("<div class='note-line'><span class='k'>" + A.esc(A.t("note") || "Note") + ":</span> " + A.esc(o.note) + "</div>") : "")
         + itemsHtml
-        + "<div class='summary'><div class='sum-title'>" + A.esc(A.t("o_pdfSummary") || "Summary") + "</div>" + sumRows + "</div>"
-        + "<footer class='foot'>" + A.esc(A.lang === "en" ? "Thank you · Naqa" : "شكراً لتعاملكم · نقاء") + "</footer>"
+        + "<div class='summary'>" + sumRows + "</div>"
+        + "<footer class='foot'>" + A.esc(A.t("o_pdfThanks") || (A.lang === "en" ? "Thank you for your order · Naqa" : "نشكركِ من أعماق القلب على طلبكِ · نقاء")) + "</footer>"
         + "</section>";
     }).join("");
 
@@ -228,7 +228,7 @@
       + ".sum-title{font-size:10pt;font-weight:800;color:#8d3048;margin-bottom:8px;text-align:center}"
       + ".sum-row{display:flex;justify-content:space-between;gap:18px;font-size:11pt;padding:4px 0}"
       + ".sum-row.grand{margin-top:6px;padding-top:8px;border-top:2px solid #8d3048;font-size:13.5pt;font-weight:800;color:#8d3048}"
-      + ".foot{margin-top:22px;padding-top:10px;border-top:1px dashed #d9c8c2;text-align:center;font-size:10.5pt;color:#8a7f78}"
+      + ".foot{margin-top:28px;padding:14px 16px 6px;border-top:1px solid #e2d4cf;text-align:center;font-size:11pt;line-height:1.7;color:#5c3a40;font-weight:600;max-width:92%;margin-inline:auto}"
       + "pre.note{white-space:pre-wrap;font-size:10.5pt;background:#faf6f4;padding:10px;border-radius:8px}"
       + ".empty-items{color:#8a7f78;font-size:10.5pt;text-align:center}"
       + "@media print{body{padding:0}.page{max-width:none;min-height:0}}"

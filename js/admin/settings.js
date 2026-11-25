@@ -38,6 +38,14 @@
       return show + "@" + domain;
     }
     var emailShow = maskEmail(email);
+    var adminUid = "";
+    try {
+      if (w.firebase && firebase.auth && firebase.auth().currentUser) {
+        adminUid = firebase.auth().currentUser.uid || "";
+      } else if (A.fbUser && A.fbUser.uid) {
+        adminUid = A.fbUser.uid;
+      }
+    } catch (e3) {}
     var wa = String(w.WA_NUMBER || "96879088349");
     var bankName = (w.BANK_NAME || "").trim();
     var bankIban = (w.BANK_IBAN || "").trim();
@@ -74,6 +82,11 @@
       +     '<li>' + (ar ? "الدخول: إيميل + كلمة سر (Firebase) فقط." : "Sign-in: email + password (Firebase) only.") + '</li>'
       +     '<li>' + (ar ? "أسعار/كمية/إخفاء: تُحفظ على حسابك بعد الدخول." : "Price/stock/hide: saved to your account after sign-in.") + '</li>'
       +     '<li>' + (ar ? "الطلبات وأسماء العملاء: على هذا الجهاز (ما تُرفع للمتجر العام)." : "Orders & customer names: on this device (not public on the store).") + '</li>'
+      +     '<li>' + (ar ? "Firestore: قراءة عامة للتعديلات المنشورة فقط؛ الكتابة بعد الدخول." : "Firestore: public read for published overrides only; write after sign-in.") + '</li>'
+      +     (adminUid
+            ? ('<li>' + (ar ? "معرّف الجهاز للحماية (UID) — للتشديد في قواعد Firestore:" : "Admin UID for Firestore rules:")
+              + ' <code dir="ltr" style="font-size:.75rem;user-select:all">' + A.esc(adminUid) + '</code></li>')
+            : '')
       +     '<li>' + (ar ? "ما في رمز GitHub ولا PIN في الإعدادات." : "No GitHub token or PIN in Settings.") + '</li>'
       +   '</ul>'
       + '</section>'

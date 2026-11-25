@@ -1,0 +1,62 @@
+rules_version = '2';
+/**
+ * Naqa · Firestore security rules
+ * Collections used by the app:
+ *   naqa/overrides  — product price/stock/hidden map (public READ for store)
+ *   naqa/reviews    — approved reviews list (public READ for store)
+ *
+ * WRITE: signed-in Firebase user only.
+ * Tighten later: set adminUids() to your Authentication → Users → User UID(s).
+ * Paste this file into Firebase Console → Firestore → Rules → Publish.
+ */
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function signedIn() {
+      return request.auth != null && request.auth.uid != null;
+    }
+
+    /** Optional hard lock: list of admin UIDs. Empty list = any signed-in user. */
+    function adminUids() {
+      return [
+        // Example: 'AbCdEf1234567890'
+      ];
+    }
+
+    function isAdmin() {
+      return signedIn()
+        && (adminUids().size() == 0 || request.auth.uid in adminUids());
+    }
+
+    function onlyKnownKeys(keys) {
+      return request.resource.data.keys().hasOnly(keys);
+    }
+
+    /* —— public product overrides —— */
+    match /naqa/overrides {
+      allow read: if true;
+      allow create, update: if isAdmin()
+        && onlyKnownKeys(['map', 'updatedAt', 'updatedBy'])
+        && request.resource.data.map is map
+        && request.resource.data.updatedBy is string
+        && request.resource.data.updatedBy == request.auth.uid;
+      allow delete: if false;
+    }
+
+    /* —— public approved reviews —— */
+    match /naqa/reviews {
+      allow read: if true;
+      allow create, update: if isAdmin()
+        && onlyKnownKeys(['list', 'updatedAt', 'updatedBy'])
+        && request.resource.data.list is list
+        && request.resource.data.updatedBy is string
+        && request.resource.data.updatedBy == request.auth.uid;
+      allow delete: if false;
+    }
+
+    /* —— deny everything else —— */
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

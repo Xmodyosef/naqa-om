@@ -1,4 +1,4 @@
-/* نقاء admin nav — مود حبوب أعلى (EXP1 pills)
+/* نقاء admin nav — مود حبوب أعلى (pills-top)
    آباء = صف حبوب فوق | أبناء = صف حبوب منفصل | بدون سايدبار
    v=20261125pills1 */
 
@@ -299,10 +299,6 @@ body.naqa-open .btn-add[hidden] {
   display: none !important;
 }
 
-/* pageSubNav معطّل في مود الحبوب */
-body.naqa-open #pageSubNav {
-  display: none !important;
-}
 
 /* ===== موبايل ===== */
 @media (max-width: 600px) {
@@ -342,9 +338,4 @@ body.naqa-open #pageSubNav {
   }
 }
 
-/* ===== إلغاء أي بقايا سايدبار قديمة (دفاع) ===== */
-body.naqa-open .side-group,
-body.naqa-open .side-subs,
-body.naqa-open .side-nav:not(.top-parents) {
-  display: none !important;
-}
+/* مود واحد فقط: top-parents + childNav — لا سايدبار */

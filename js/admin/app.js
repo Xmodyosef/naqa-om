@@ -38,16 +38,8 @@
     return "all";
   };
 
-  /* EXP1: parents top row, children separate row (#childNav) */
-  A.fillPageSubNav = function () {
-    var bar = document.getElementById("pageSubNav");
-    if (bar) {
-      bar.innerHTML = "";
-      bar.hidden = true;
-    }
-  };
-
-  A.refreshSideSubs = function () {
+  /* Nav mode: pills-top — parents #sideNav, children #childNav */
+  A.refreshChildNav = function () {
     var tab = A.currentTab || "home";
     var active = "all";
     if (tab === "orders") active = A.orderFilter || A.currentSub || "all";
@@ -87,8 +79,7 @@
         set.classList.toggle("show", open);
       });
     }
-    A.fillPageSubNav();
-    if (A.refreshSideSubs) A.refreshSideSubs();
+    if (A.refreshChildNav) A.refreshChildNav();
     if (A.updateOrdersBadge) A.updateOrdersBadge();
     var top = document.getElementById("topBar");
     if (top) top.hidden = !(tab === "products" || tab === "orders");
@@ -260,7 +251,7 @@
 
 
 
-  /* EXP1: child buttons in #childNav (separate from parents) */
+  /* Child pills clicks */
   var childNav = document.getElementById("childNav");
   if (childNav && childNav.getAttribute("data-sub-bound") !== "1") {
     childNav.setAttribute("data-sub-bound", "1");
@@ -277,16 +268,6 @@
     });
   }
 
-  var pageSub = document.getElementById("pageSubNav");
-  if (pageSub) pageSub.addEventListener("click", function (e) {
-    var b = e.target.closest("[data-page-sub]");
-    if (!b) return;
-    var tab = b.getAttribute("data-page-tab") || A.currentTab;
-    var sub = b.getAttribute("data-page-sub");
-    var same = tab === A.currentTab && sub === A.currentSub;
-    if (tab === "products" && sub !== A.productView) A.productPage = 1;
-    A.go(tab, sub, { push: !same, page: (tab === "products" && sub !== A.productView) ? 1 : A.productPage });
-  });
 
   /* Browser back / edge-swipe: leave edit → list; else apply hash tab */
   window.addEventListener("popstate", function () {

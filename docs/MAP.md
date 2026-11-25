@@ -83,7 +83,6 @@ bash scripts/build-store.sh
 
 ## ٦) محذوف / بلا فائدة (لا تبحثين عنها)
 
-- `preview-nav.html`, `preview-salla.html` — تجارب قديمة
 - `js/admin/i18n/ar/*.json`, `js/admin/i18n/en/*.json` — بقايا غير مستخدمة (الترجمة من dict فقط)
 
 

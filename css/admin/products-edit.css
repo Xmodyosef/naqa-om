@@ -1,9 +1,9 @@
 /* Product edit — iPhone 11+ text zoom (NOT Safari page zoom) */
 body.naqa-editing .savebar,
 body.naqa-editing .admin-top,
-body.naqa-editing .side-nav,
+body.naqa-editing #sideNav.top-parents,
 body.naqa-editing .top-bar,
-body.naqa-editing #pageSubNav{display:none!important}
+body.naqa-editing #childNav{display:none!important}
 body.naqa-editing .admin-shell{display:block!important}
 body.naqa-editing .admin-main{max-width:none!important;margin:0!important;padding:0!important}
 body.naqa-editing #productsTab{padding:0!important;margin:0!important}

@@ -144,16 +144,18 @@ button.stat.sales-link{width:100%;margin-top:4px}
 .order-head{display:flex;align-items:center;gap:8px;padding:10px 12px}
 .order-sum{flex:1;min-width:0;display:flex;align-items:center;gap:10px;padding:4px 0;background:transparent;border:0;font:inherit;color:inherit;cursor:pointer;text-align:start}
 .order-id{font-weight:800;white-space:nowrap}
-.status-one{appearance:none;-webkit-appearance:none;border:0;border-radius:999px;padding:6px 22px 6px 10px;font:800 .72rem/1 inherit;cursor:pointer;background:#1f1a17 url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'><path fill='white' d='M0 0l5 6 5-6z'/></svg>") no-repeat left 8px center;color:#fff;max-width:9.2rem}
+.status-one{appearance:none;-webkit-appearance:none;border:0;border-radius:999px;padding:6px 22px 6px 10px;font:700 .72rem/1 inherit;cursor:pointer;background:#f3e6e9 url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'><path fill='%238d3048' d='M0 0l5 6 5-6z'/></svg>") no-repeat left 8px center;color:#8d3048;max-width:9.2rem}
 [dir="ltr"] .status-one{background-position:right 8px center;padding:6px 10px 6px 22px}
-.status-one.new{background-color:#8d3048}
-.status-one.prep{background-color:#b56a2b}
-.status-one.ship{background-color:#2f6f8f}
-.status-one.delivered{background-color:#2f7d4a}
-.status-one.cancel{background-color:#8a817c}
+.status-one.new,.status-one.prep,.status-one.ship,.status-one.delivered{background-color:#f3e6e9;color:#8d3048}
+.status-one.cancel{background-color:#eee9e6;color:#7a726e}
 .order-when{flex:1;color:var(--muted);font-size:.82rem;min-width:0}
 .order-tot{font-weight:800;white-space:nowrap}
-.order-fees{display:flex;gap:14px}
+.order-totals{margin:12px 0 4px;padding-top:10px;border-top:1px solid var(--line);display:grid;gap:6px}
+.tot-row{display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:.84rem;color:var(--muted)}
+.tot-row b{font-weight:800;color:var(--fg);font-variant-numeric:tabular-nums}
+.tot-row.disc b{color:#8d3048}
+.tot-row.grand{margin-top:4px;padding-top:8px;border-top:1px dashed var(--line);font-size:.92rem;color:var(--fg)}
+.tot-row.grand b{font-size:1rem;color:#8d3048}
 .order-body{padding:0 14px 14px}
 .order-body[hidden]{display:none!important}
 .order .items li.line{display:flex;gap:8px;align-items:flex-start}

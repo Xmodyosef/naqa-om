@@ -108,6 +108,40 @@
     return { qty: qty, unit: unit, was: was, off: off, tax: tax, mark: mark };
   };
 
+
+  A.fmtMoney = function (n) {
+    n = Number(n);
+    if (!isFinite(n)) return "—";
+    var s = n.toFixed(3).replace(/\.?0+$/, "");
+    if (s === "-0") s = "0";
+    return s;
+  };
+
+  A.orderTotals = function (o) {
+    var paid = 0, discount = 0, tax = 0;
+    (o.items || []).forEach(function (it) {
+      var v = A.itemTaxView(it);
+      paid += v.unit * v.qty;
+      if (v.off > 0 && isFinite(v.was) && v.was > v.unit) discount += (v.was - v.unit) * v.qty;
+      tax += v.tax;
+    });
+    if (!(o.items && o.items.length) && o.subtotal != null) paid = Number(o.subtotal) || 0;
+    var del = o.delivery != null ? Number(o.delivery) : 0;
+    var cod = o.codFee != null ? Number(o.codFee) : 0;
+    if (!isFinite(del)) del = 0;
+    if (!isFinite(cod)) cod = 0;
+    var grand = o.total != null ? Number(o.total) : (paid + del + cod);
+    return {
+      paid: paid,
+      discount: discount,
+      beforeTax: Math.max(0, paid - tax),
+      tax: tax,
+      del: del,
+      cod: cod,
+      grand: grand
+    };
+  };
+
   A.paintOrders = function () {
     try { A.syncOrdersTab(); } catch (e) {}
     A.orders.forEach(function (o) { o.status = A.normalizeStatus(o.status); });
@@ -184,7 +218,7 @@
           var name = (A.lang === "en" ? (it.nameEn || it.name || it.nameAr) : (it.nameAr || it.name || it.nameEn)) || "";
           var tax = A.itemTaxView(it);
           var thumb = it.img ? ('<img src="' + A.esc(it.img) + '" alt="" class="line-thumb">') : "";
-          var money = function (n) { return A.esc(Number(n).toFixed(3)); };
+          var money = function (n) { return A.esc(A.fmtMoney(n)); };
           var priceBit = "";
           if (tax.off > 0) {
             priceBit = '<s class="price-was">' + money(tax.was) + '</s>'
@@ -211,11 +245,21 @@
           return '<option value="' + k + '"' + (st === k ? " selected" : "") + '>' + A.esc(A.statusLabel(k)) + '</option>';
         }).join("") + '</select>';
       var open = A.openOrderIds && A.openOrderIds[o.id];
-      var tot = o.total != null ? Number(o.total).toFixed(3) + " " + A.t("omr") : "—";
-      var del = o.delivery != null ? Number(o.delivery) : 0;
-      var cod = o.codFee != null ? Number(o.codFee) : 0;
-      var fees = '<small class="order-fees"><span>' + A.t("o_del") + ' <b>' + A.esc(del.toFixed(3)) + '</b></span>'
-        + '<span>' + A.t("o_cod") + ' <b>' + A.esc(cod.toFixed(3)) + '</b></span></small>';
+      var sums = A.orderTotals(o);
+      var tot = A.fmtMoney(sums.grand) + " " + A.t("omr");
+      var totRows = "";
+      totRows += '<div class="tot-row"><span>' + A.t("o_preTax") + '</span><b>' + A.esc(A.fmtMoney(sums.beforeTax)) + '</b></div>';
+      if (sums.discount > 0.0005) {
+        totRows += '<div class="tot-row disc"><span>' + A.t("o_disc") + '</span><b>−' + A.esc(A.fmtMoney(sums.discount)) + '</b></div>';
+      }
+      if (sums.del > 0.0005) {
+        totRows += '<div class="tot-row"><span>' + A.t("o_del") + '</span><b>' + A.esc(A.fmtMoney(sums.del)) + '</b></div>';
+      }
+      if (sums.cod > 0.0005) {
+        totRows += '<div class="tot-row"><span>' + A.t("o_cod") + '</span><b>' + A.esc(A.fmtMoney(sums.cod)) + '</b></div>';
+      }
+      totRows += '<div class="tot-row grand"><span>' + A.t("o_grand") + '</span><b>' + A.esc(A.fmtMoney(sums.grand)) + ' ' + A.t("omr") + '</b></div>';
+      var totals = '<div class="order-totals">' + totRows + '</div>';
       return '<article class="order" data-oid="' + A.esc(o.id) + '">'
         + '<div class="order-head">'
         + '<b class="order-id">' + A.esc(o.id) + '</b>'
@@ -226,10 +270,10 @@
         + '</button></div>'
         + '<div class="order-body"' + (open ? "" : " hidden") + '>'
         + "<small>" + A.esc(o.name || "—") + " · " + A.esc(o.phone || "—") + " · " + A.esc(o.area || "—") + "</small>"
-        + fees
         + "<small>" + A.t("payLine") + ": <b>" + A.esc(A.payText(o)) + "</b></small>"
         + (o.note ? ("<small>" + A.t("note") + ": " + A.esc(o.note) + "</small>") : "")
         + items
+        + totals
         + '<div class="actions">'
         + (A.payState(o) === "pending" ? ('<button type="button" class="mini" data-pay="' + A.esc(o.id) + '">' + A.t("confirmPay") + '</button>') : "")
         + (phoneDigits ? ('<a class="mini" style="background:#25D366;display:inline-block;color:#fff;text-decoration:none;text-align:center" href="https://wa.me/968' + A.esc(phoneDigits) + '" target="_blank" rel="noopener">' + A.t("wa") + '</a>') : "")

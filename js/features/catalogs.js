@@ -187,113 +187,50 @@ function catalogThumbHTML(list, c){
 }
 
 function campaignProductHTML(p){
+  /* kept for potential reuse; homepage no longer shows product rails */
   if(!p) return "";
   var imgs = (typeof pimgs === "function") ? pimgs(p) : (p.imgs || []);
   var src = imgs[0] || "";
   var name = (typeof pname === "function") ? pname(p) : (p.nameAr || p.nameEn || "");
-  var catLab = "";
-  try{
-    if(typeof T === "function" && typeof catLabel !== "undefined")
-      catLab = T(catLabel[p.cat] || "all");
-    else catLab = p.cat || "";
-  }catch(e){ catLab = p.cat || ""; }
   var price = (typeof money === "function") ? money(p.price) : (p.price + "");
-  var old = "";
-  if(p.was > p.price){
-    old = (typeof money === "function") ? money(p.was) : (p.was + "");
-  }
   return '<article class="camp-product" data-id="'+p.id+'">'
-    + '<button type="button" class="camp-product-media" data-open="'+p.id+'" aria-label="'+esc(name)+'">'
-    + (src
-        ? '<img src="'+esc(src)+'" alt="" loading="lazy" decoding="async" width="200" height="200">'
-        : '<span class="camp-product-em">'+(p.em||"✨")+'</span>')
-    + '</button>'
-    + '<div class="camp-product-body">'
-    + '<small>'+esc(catLab)+'</small>'
-    + '<button type="button" class="camp-product-name" data-open="'+p.id+'">'+esc(name)+'</button>'
-    + '<span class="camp-product-price">'+price
-    + (old ? ' <i class="camp-old">'+old+'</i>' : '')
-    + '</span>'
-    + '</div></article>';
+    + '<button type="button" class="camp-product-media" data-open="'+p.id+'">'
+    + (src ? '<img src="'+esc(src)+'" alt="" loading="lazy">' : '')
+    + '</button><div class="camp-product-body"><button type="button" class="camp-product-name" data-open="'+p.id+'">'+esc(name)+'</button>'
+    + '<span class="camp-product-price">'+price+'</span></div></article>';
 }
 
+/** Homepage = banners only (no product grid / no product rails under banners). */
 function getHomeCampaigns(){
   var en = (typeof lang !== "undefined" && lang === "en");
-  return [
-    {
-      id: "hot",
-      tone: "best",
-      ar: "الأكثر مبيعًا", en: "Bestsellers",
-      subAr: "اختيارات نقاء التي تحبها العميلات", subEn: "Customer favourites this week",
-      eyeAr: "اختيارات الأسبوع", eyeEn: "This week's picks",
-      bodyAr: "روتينات ومنتجات عليها إقبال كبير.", bodyEn: "Routines and products customers love.",
-      chipsAr: ["عناية","وجه","شفاه","شعر"], chipsEn: ["Care","Face","Lips","Hair"],
-      ctaAr: "عرض الكل ←", ctaEn: "View all →",
-      art: "media/products/p3_0.webp",
-      list: function(){ return catalogList("hot", 8); }
-    },
-    {
-      id: "eoy",
-      tone: "year",
-      ar: "عروض وتخفيضات", en: "Deals & offers",
-      subAr: "أسعار مشطوبة على منتجات مختارة", subEn: "Marked-down picks for the season",
-      eyeAr: "موسم العروض", eyeEn: "Offer season",
-      bodyAr: "هدايا، عناية، ومكياج بأسعار أجمل.", bodyEn: "Gifts, care, and makeup for less.",
-      chipsAr: ["عروض","عناية","وجه","أدوات"], chipsEn: ["Deals","Care","Face","Tools"],
-      ctaAr: "استكشفي العروض ←", ctaEn: "Explore deals →",
-      art: "media/products/p23_0.webp",
-      list: function(){ return catalogList("eoy", 8); }
-    },
-    {
-      id: "sale30",
-      tone: "sale",
-      ar: "خصم 30٪", en: "30% off",
-      subAr: "تخفيضات مختارة لفترة محدودة", subEn: "Selected markdowns for a limited time",
-      eyeAr: "لا تفوّتي الفرصة", eyeEn: "Don't miss it",
-      bodyAr: "اختاري روتينك المفضل بخصم أوضح.", bodyEn: "Build your routine with clearer savings.",
-      chipsAr: ["وجه","شفاه","عيون","شعر"], chipsEn: ["Face","Lips","Eyes","Hair"],
-      ctaAr: "شاهدي المنتجات ←", ctaEn: "See products →",
-      art: "media/products/p6_0.webp",
-      list: function(){
-        var list = (typeof products !== "undefined" ? products : []).filter(function(p){
-          return p && !p.hidden && p.was > p.price && naqaOffPct(p) >= 0.2;
-        });
-        list.sort(function(a,b){ return naqaOffPct(b) - naqaOffPct(a); });
-        return list.slice(0, 8);
+  var out = [];
+  getNaqaCatalogs().forEach(function(c){
+    if(!c.home) return;
+    var list = [];
+    try{ list = catalogList(c.id, 6) || []; }catch(e){ list = []; }
+    if(!list.length && c.id !== "all") return;
+    var art = c.cover || "";
+    try{
+      if(list[0]){
+        var g0 = (typeof pimgs === "function") ? pimgs(list[0]) : (list[0].imgs||[]);
+        if(g0 && g0[0]) art = g0[0];
       }
-    },
-    {
-      id: "korean",
-      tone: "korean",
-      ar: "منتجات كورية", en: "K-beauty",
-      subAr: "روتينات آسيوية لبشرة تحب العناية", subEn: "Korean skincare favourites",
-      eyeAr: "K-Beauty edit", eyeEn: "K-Beauty edit",
-      bodyAr: "سيرومات، أقنعة، وترطيب بلمسة كورية ناعمة.", bodyEn: "Serums, masks, and soft Korean hydration.",
-      chipsAr: ["سيرومات","أقنعة","ترطيب","واقي شمس"], chipsEn: ["Serums","Masks","Hydration","SPF"],
-      ctaAr: "تسوّقي الكوري ←", ctaEn: "Shop K-beauty →",
-      art: "media/products/p15_0.webp",
-      list: function(){ return catalogList("korean", 8); }
-    },
-    {
-      id: "essence",
-      tone: "essence",
-      ar: "ماركة Essence", en: "Essence brand",
-      subAr: "مكياج مرح وسهل للاستخدام اليومي", subEn: "Playful everyday makeup",
-      eyeAr: "New in · Essence", eyeEn: "New in · Essence",
-      bodyAr: "لمسات للعيون، الشفاه، والوجه.", bodyEn: "Looks for eyes, lips, and face.",
-      chipsAr: ["عيون","شفاه","وجه","أدوات"], chipsEn: ["Eyes","Lips","Face","Tools"],
-      ctaAr: "شاهدي الماركة ←", ctaEn: "View brand →",
-      art: "media/products/p1_0.webp",
-      list: function(){
-        var list = (typeof products !== "undefined" ? products : []).filter(function(p){
-          return p && !p.hidden && /essence/i.test(String(p.brand||""));
-        });
-        list.sort(function(a,b){ return b.id - a.id; });
-        return list.slice(0, 8);
-      },
-      openBrand: "essence"
-    }
-  ];
+    }catch(e){}
+    out.push({
+      id: c.id,
+      tone: c.tone || "all",
+      ar: c.ar, en: c.en,
+      subAr: c.subAr || "", subEn: c.subEn || "",
+      eyeAr: c.em || "✦", eyeEn: c.em || "✦",
+      bodyAr: c.subAr || "", bodyEn: c.subEn || "",
+      chipsAr: [], chipsEn: [],
+      ctaAr: "تسوّقي الآن ←", ctaEn: "Shop now →",
+      art: art,
+      cover: c.cover || "",
+      list: function(){ return catalogList(c.id, 8); }
+    });
+  });
+  return out;
 }
 
 function renderHomeCatalogs(){
@@ -306,102 +243,42 @@ function renderHomeCatalogs(){
   }
   box.hidden = false;
   var en = (typeof lang !== "undefined" && lang === "en");
-  var html = '<div class="home-campaigns" id="homeCatalog">';
-
-  /* top category chips — same idea as preview */
-  var topCats = [
-    { cat:"عناية", ar:"عناية", en:"Care", em:"🫧" },
-    { cat:"وجه", ar:"وجه", en:"Face", em:"✨" },
-    { cat:"شفاه", ar:"شفاه", en:"Lips", em:"💄" },
-    { cat:"عيون", ar:"عيون", en:"Eyes", em:"👁" },
-    { cat:"حواجب", ar:"حواجب", en:"Brows", em:"〰️" },
-    { cat:"عطور", ar:"عطور", en:"Scents", em:"🌸" },
-    { cat:"أدوات", ar:"أدوات", en:"Tools", em:"🖌" },
-    { cat:"شعر", ar:"شعر", en:"Hair", em:"💇" }
-  ];
-  html += '<div class="top-cats" aria-label="'+(en?"Categories":"الأصناف")+'">';
-  topCats.forEach(function(c){
-    html += '<button type="button" class="top-cat" data-cat-jump="'+esc(c.cat)+'">'
-      + '<b aria-hidden="true">'+c.em+'</b>'
-      + (en ? c.en : c.ar)
-      + '</button>';
-  });
-  html += '</div>';
+  var html = '<div class="home-campaigns home-banners-only" id="homeCatalog">';
+  html += '<p class="home-ban-lead">'+(en
+    ? "Pick a collection — every section is a banner."
+    : "اختاري مجموعة — كل شيء يظهر كبنر.")+'</p>';
 
   getHomeCampaigns().forEach(function(c){
-    var list = [];
-    try{ list = c.list() || []; }catch(e){ list = []; }
-    if(!list.length) return;
     var title = en ? c.en : c.ar;
-    var sub = en ? c.subEn : c.subAr;
+    var sub = en ? (c.subEn || c.bodyEn) : (c.subAr || c.bodyAr);
     var eye = en ? c.eyeEn : c.eyeAr;
-    var body = en ? c.bodyEn : c.bodyAr;
     var cta = en ? c.ctaEn : c.ctaAr;
-    var chips = en ? c.chipsEn : c.chipsAr;
-    var art = c.art;
-    // prefer a real packshot from the list if art missing
-    try{
-      var g0 = (typeof pimgs === "function") ? pimgs(list[0]) : (list[0].imgs||[]);
-      if(g0 && g0[0]) art = g0[0];
-      if(list[1]){
-        var g1 = (typeof pimgs === "function") ? pimgs(list[1]) : (list[1].imgs||[]);
-        if(g1 && g1[0] && c.tone === "best") art = g1[0];
-      }
-    }catch(e){}
+    var art = c.art || c.cover || "";
+    var openAttr = ' data-open-catalog="'+esc(c.id)+'"';
 
-    var openAttr = c.openBrand
-      ? ' data-brand="'+esc(c.openBrand)+'"'
-      : ' data-open-catalog="'+esc(c.id === "sale30" ? "eoy" : c.id)+'"';
+    /* Full-bleed photo banner when cover exists; gradient fallback */
+    var styleBg = "";
+    if(c.cover){
+      styleBg = " style=\"background-image:linear-gradient(90deg,rgba(40,12,22,.72) 0%,rgba(40,12,22,.35) 55%,rgba(40,12,22,.15) 100%),url('"
+        + esc(c.cover)
+        + "');background-size:cover;background-position:center;\"";
+    }
 
-    html += '<section class="campaign" id="camp-'+esc(c.id)+'">'
-      + '<div class="campaign-head">'
-      + '<div><h2>'+esc(title)+'</h2><p>'+esc(sub)+'</p></div>'
-      + '<button type="button" class="campaign-all"'+openAttr+'>'+esc(cta)+'</button>'
-      + '</div>'
-      + '<button type="button" class="campaign-banner tone-'+esc(c.tone)+'"'+openAttr+'>'
+    html += '<section class="campaign campaign-solo" id="camp-'+esc(c.id)+'">'
+      + '<button type="button" class="campaign-banner tone-'+esc(c.tone)+'"'+openAttr+styleBg+'>'
       + '<div class="campaign-copy">'
       + '<small>'+esc(eye)+'</small>'
       + '<h3>'+esc(title)+'</h3>'
-      + '<p>'+esc(body)+'</p>'
-      + '<div class="chips">'
-      + chips.map(function(ch){ return '<span class="chip">'+esc(ch)+'</span>'; }).join("")
-      + '</div></div>'
-      + (art ? '<img class="campaign-art" src="'+esc(art)+'" alt="" loading="lazy" decoding="async" width="270" height="260">' : '')
-      + '</button>'
-      + '<div class="campaign-products">'
-      + list.slice(0,4).map(campaignProductHTML).join("")
-      + '</div></section>';
+      + (sub ? '<p>'+esc(sub)+'</p>' : '')
+      + '<span class="chip chip-cta">'+esc(cta)+'</span>'
+      + '</div>'
+      + (art && !c.cover ? '<img class="campaign-art" src="'+esc(art)+'" alt="" loading="lazy" decoding="async" width="270" height="260">' : '')
+      + (art && c.cover ? '<img class="campaign-art" src="'+esc(art)+'" alt="" loading="lazy" decoding="async" width="270" height="260">' : '')
+      + '</button></section>';
   });
 
   html += '</div>';
   box.innerHTML = html;
-
-  /* bind category jump chips if app didn't already */
-  try{
-    box.querySelectorAll("[data-cat-jump]").forEach(function(btn){
-      if(btn.__naqaJump) return;
-      btn.__naqaJump = true;
-      btn.addEventListener("click", function(e){
-        e.preventDefault();
-        var cat = btn.getAttribute("data-cat-jump");
-        if(!cat) return;
-        currentCatalog = "";
-        currentBrand = "";
-        currentConcern = "";
-        if(typeof wishView !== "undefined") wishView = false;
-        query = "";
-        currentCat = cat;
-        catalogBrowse = true;
-        document.querySelectorAll("#cats [data-cat]").forEach(function(x){
-          x.classList.toggle("on", x.dataset.cat === cat);
-        });
-        try{ history.pushState({ naqa:"cat" }, "", "#c/"+encodeURIComponent(cat)); }catch(err){}
-        if(typeof render === "function") render();
-        var prod = document.getElementById("products");
-        if(prod) prod.scrollIntoView({ behavior:"smooth", block:"start" });
-      });
-    });
-  }catch(e){}
 }
 
 function renderShelves(){

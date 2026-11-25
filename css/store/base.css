@@ -1240,3 +1240,31 @@ html[data-theme="night"] .top-cat b{ background:rgba(196,107,124,.15); }
 html[data-theme="night"] .camp-product{ background:#1a1614; }
 html[data-theme="night"] .camp-product-media{ background:#151210; }
 html[data-theme="night"] .campaign-banner{ box-shadow:none; }
+
+/* —— Banners-only homepage (no product rails) —— */
+.home-banners-only .campaign{ margin-top: 14px; }
+.home-banners-only .campaign:first-of-type{ margin-top: 8px; }
+.home-ban-lead{
+  margin: 4px 0 12px; font-size: .8rem; font-weight: 700; color: var(--muted);
+}
+.home-banners-only .campaign-banner{
+  min-height: 168px; border-radius: 22px; width: 100%;
+  display: block; text-align: start;
+}
+.home-banners-only .campaign-copy{ max-width: 70%; }
+.home-banners-only .campaign-products{ display: none !important; }
+.home-banners-only .campaign-head{ display: none; }
+.home-banners-only .top-cats{ display: none; }
+.home-banners-only .chip-cta{
+  display: inline-block; margin-top: 6px;
+  background: rgba(255,255,255,.22); border-color: rgba(255,255,255,.5);
+  font-weight: 800;
+}
+.home-banners-only .campaign-art{
+  left: 4%; bottom: -28px; width: min(220px, 36vw); max-height: 220px;
+}
+@media (max-width:700px){
+  .home-banners-only .campaign-banner{ min-height: 150px; border-radius: 18px; padding: 18px 16px; }
+  .home-banners-only .campaign-copy{ max-width: 75%; }
+  .home-banners-only .campaign-art{ width: 130px; bottom: -14px; left: 2%; }
+}

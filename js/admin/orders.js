@@ -783,11 +783,12 @@
         + '<div class="order-head">'
         + '<label class="order-pick-lab"><input type="checkbox" class="order-pick" data-oid="' + A.esc(o.id) + '"' + (picked ? " checked" : "") + ' aria-label="select"></label>'
         + '<b class="order-id">' + A.esc(o.id) + '</b>'
-        + statusPick
         + '<button type="button" class="order-sum" data-open-order="' + A.esc(o.id) + '" aria-expanded="' + (open ? "true" : "false") + '">'
         + '<span class="order-when">' + A.esc(when) + '</span>'
         + '<b class="order-tot">' + A.esc(tot) + '</b>'
-        + '</button></div>'
+        + '</button>'
+        + statusPick
+        + '</div>'
         + '<div class="order-body"' + (open ? "" : " hidden") + '>'
         + "<small>" + A.esc(o.name || "—") + " · " + A.esc(o.phone || "—") + " · " + A.esc(o.area || "—") + "</small>"
         + "<small>" + A.t("payLine") + ": <b>" + A.esc(A.payText(o)) + "</b></small>"

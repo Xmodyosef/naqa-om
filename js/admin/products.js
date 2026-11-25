@@ -535,7 +535,15 @@
       ? ["المعرف", "SKU", "الاسم عربي", "الاسم EN", "الماركة", "التصنيف", "السعر", "قبل الخصم", "المخزون", "مخفي", "ضريبة"]
       : ["id", "SKU", "nameAr", "nameEn", "brand", "cat", "price", "was", "stock", "hidden", "tax"];
     var rows = [head];
+    var selectedIds = Object.keys(A.productSel || {}).filter(function (id) { return A.productSel[id]; });
+    var onlySelected = selectedIds.length > 0;
+    var selSet = null;
+    if (onlySelected) {
+      selSet = Object.create(null);
+      selectedIds.forEach(function (id) { selSet[String(id)] = true; });
+    }
     (A.products || []).forEach(function (p) {
+      if (onlySelected && !selSet[String(p.id)]) return;
       var m = A.merged(p);
       rows.push([
         p.id,
@@ -551,13 +559,24 @@
         A.taxLabel ? A.taxLabel(m) : ""
       ]);
     });
+    var nExport = rows.length - 1;
     /* real .xlsx spreadsheet when available; CSV fallback only */
     if (A.downloadXlsx) {
       A.downloadXlsx("naqa-products.xlsx", rows, ar ? "المنتجات" : "Products");
     } else if (A.downloadCsv) {
       A.downloadCsv("naqa-products.csv", rows);
     }
-    A.setMsg("status", A.t("exportOk") || (ar ? "تم التصدير · Excel" : "Exported · Excel"));
+    var msg = A.t("exportOk") || (ar ? "تم التصدير · Excel" : "Exported · Excel");
+    if (onlySelected) {
+      msg = ar
+        ? ("تم تصدير " + nExport + " منتج محدد · Excel")
+        : ("Exported " + nExport + " selected · Excel");
+    } else {
+      msg = ar
+        ? ("تم تصدير " + nExport + " منتج · Excel")
+        : ("Exported " + nExport + " products · Excel");
+    }
+    A.setMsg("status", msg);
   };
 
   A.bulkSetHidden = function (hide) {
@@ -763,16 +782,17 @@
 
     var selCount = Object.keys(A.productSel || {}).filter(function (id) { return A.productSel[id]; }).length;
 
-    /* search + filters in top/childNav. tools: bulk only (no sort name/high-low) */
+    /* selection bar for Excel export — no hide/show bulk */
+    var allMatchedIds = matched.map(function (p) { return String(p.id); });
+    var allMatchedOn = matched.length > 0 && allMatchedIds.every(function (id) { return !!(A.productSel && A.productSel[id]); });
     var tools =
       '<div class="prod-tools" id="prodTools">'
-      + '<div class="prod-bulk' + (selCount ? " on" : "") + '" id="prodBulk">'
-      +   '<label class="prod-check-all"><input type="checkbox" id="prodCheckAll"' + (selCount && selCount === matched.length ? " checked" : "") + '> ' + A.esc(A.t("p_selectAll") || (A.lang === "en" ? "Select all page" : "تحديد صفحة")) + '</label>'
-      +   '<span class="prod-sel-n">' + selCount + '</span>'
-      +   '<button type="button" class="mini" id="prodBulkHide">' + A.esc(A.t("p_bulkHide") || (A.lang === "en" ? "Hide" : "إخفاء")) + '</button>'
-      +   '<button type="button" class="mini" id="prodBulkShow">' + A.esc(A.t("p_bulkShow") || (A.lang === "en" ? "Show" : "إظهار")) + '</button>'
-      +   '<button type="button" class="mini" id="prodBulkDisc">' + A.esc(A.t("p_bulkDisc") || (A.lang === "en" ? "Discount %" : "خصم ٪")) + '</button>'
-      +   '<button type="button" class="mini" id="prodBulkClear">' + A.esc(A.t("clearSelected") || (A.lang === "en" ? "Clear" : "إلغاء التحديد")) + '</button>'
+      + '<div class="prod-bulk on prod-sel-bar" id="prodBulk">'
+      +   '<label class="prod-check-all"><input type="checkbox" id="prodCheckAll"' + (allMatchedOn ? " checked" : "") + '> '
+      +     A.esc(A.t("p_selectAll") || (A.lang === "en" ? "Select all" : "تحديد الكل"))
+      +   '</label>'
+      +   (selCount ? ('<span class="prod-sel-n" title="' + A.esc(A.lang === "en" ? "Selected" : "محدد") + '">' + selCount + '</span>') : '<span class="prod-sel-n is-zero">0</span>')
+      +   (selCount ? ('<button type="button" class="mini prod-sel-clear" id="prodBulkClear">' + A.esc(A.t("clearSelected") || (A.lang === "en" ? "Clear" : "إلغاء التحديد")) + '</button>') : '')
       + '</div>'
       + '</div>';
 
@@ -1174,9 +1194,29 @@
         else delete A.productSel[pid];
         var bulk = document.getElementById("prodBulk");
         var n = Object.keys(A.productSel).filter(function (k) { return A.productSel[k]; }).length;
-        if (bulk) bulk.classList.toggle("on", n > 0);
+        if (bulk) bulk.classList.add("on");
         var sn = bulk && bulk.querySelector(".prod-sel-n");
-        if (sn) sn.textContent = String(n);
+        if (sn) {
+          sn.textContent = String(n);
+          sn.classList.toggle("is-zero", n === 0);
+        }
+        /* show/hide clear without full repaint */
+        var clearBtn = document.getElementById("prodBulkClear");
+        if (n > 0 && !clearBtn && bulk) {
+          clearBtn = document.createElement("button");
+          clearBtn.type = "button";
+          clearBtn.className = "mini prod-sel-clear";
+          clearBtn.id = "prodBulkClear";
+          clearBtn.textContent = A.t("clearSelected") || (A.lang === "en" ? "Clear" : "إلغاء التحديد");
+          clearBtn.onclick = function () { A.productSel = {}; A.paintList(A.productQuery || ""); };
+          bulk.appendChild(clearBtn);
+        } else if (n === 0 && clearBtn) {
+          clearBtn.remove();
+        }
+        var checkAll = document.getElementById("prodCheckAll");
+        if (checkAll) {
+          /* leave indeterminate/checked state light — full sync on next paint */
+        }
         return;
       }
       if (t.getAttribute && t.getAttribute("data-qk-price") != null) {
@@ -1209,9 +1249,6 @@
     var exp = document.getElementById("exportProductsBtn");
     var goLow = document.getElementById("prodGoLow");
     var checkAll = document.getElementById("prodCheckAll");
-    var bHide = document.getElementById("prodBulkHide");
-    var bShow = document.getElementById("prodBulkShow");
-    var bDisc = document.getElementById("prodBulkDisc");
     var bClear = document.getElementById("prodBulkClear");
 
     function runSearch() {
@@ -1243,22 +1280,30 @@
     };
     if (checkAll) checkAll.onchange = function () {
       A.productSel = A.productSel || {};
-      var boxes = document.querySelectorAll("#list [data-pick]");
-      Array.prototype.forEach.call(boxes, function (box) {
-        box.checked = !!checkAll.checked;
-        var id = String(box.getAttribute("data-pick"));
-        if (checkAll.checked) A.productSel[id] = true;
-        else delete A.productSel[id];
-      });
-      var bulk = document.getElementById("prodBulk");
-      var n = Object.keys(A.productSel).filter(function (k) { return A.productSel[k]; }).length;
-      if (bulk) bulk.classList.toggle("on", n > 0);
-      var sn = bulk && bulk.querySelector(".prod-sel-n");
-      if (sn) sn.textContent = String(n);
+      /* تحديد الكل = كل نتائج الفلتر/البحث الحالية (مو الصفحة فقط) */
+      var list = (A.products || []).slice();
+      var q = String(A.productQuery || "").trim().toLowerCase();
+      var view = A.productView || "all";
+      var ids = list.filter(function (p) {
+        var m = A.merged(p);
+        if (view === "hidden" && !m.hidden) return false;
+        if (view === "shown" && m.hidden) return false;
+        if (view === "stock") {
+          if (m.stock === "" || m.stock == null) return false;
+          var sn = Number(m.stock);
+          if (!(sn >= 0 && sn <= 2)) return false;
+        }
+        if (!q) return true;
+        var blob = [m.nameAr, m.nameEn, m.brand, m.sku, m.cat, p.id].join(" ").toLowerCase();
+        return blob.indexOf(q) >= 0;
+      }).map(function (p) { return String(p.id); });
+      if (checkAll.checked) {
+        ids.forEach(function (id) { A.productSel[id] = true; });
+      } else {
+        ids.forEach(function (id) { delete A.productSel[id]; });
+      }
+      A.paintList(A.productQuery || "");
     };
-    if (bHide) bHide.onclick = function () { A.bulkSetHidden(true); };
-    if (bShow) bShow.onclick = function () { A.bulkSetHidden(false); };
-    if (bDisc) bDisc.onclick = function () { A.bulkDiscountPct(); };
     if (bClear) bClear.onclick = function () {
       A.productSel = {};
       A.paintList(A.productQuery || "");

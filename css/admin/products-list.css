@@ -267,8 +267,31 @@
   #list .prod-actions .edit-btn{flex:1 1 auto}
 }
 
-/* no sort bar — export moved next to low-stock filter */
-.prod-tools-row:empty{display:none}
-.prod-tools:has(.prod-bulk:not(.on)):not(:has(.prod-tools-row > *)){margin:0}
-.prod-tools:not(:has(.prod-bulk.on)){display:none}
-.prod-tools:has(.prod-bulk.on){display:flex}
+
+/* شريط التحديد — ظاهر دائماً لتصدير Excel */
+.prod-tools{display:flex !important;margin:0 0 12px}
+.prod-bulk.prod-sel-bar,
+.prod-bulk.on.prod-sel-bar{
+  display:flex !important;
+  flex-wrap:wrap;
+  gap:8px;
+  align-items:center;
+  padding:8px 12px;
+  border-radius:12px;
+  background:#faf6f4;
+  border:1px solid #eadfd9;
+}
+.prod-sel-n.is-zero{
+  background:#e8ddd9;
+  color:#7a6a66;
+}
+.prod-sel-clear{
+  border:1px solid #eadfd9;
+  background:#fff;
+  color:#8d3048;
+  border-radius:999px;
+  padding:6px 12px;
+  font:700 .72rem inherit;
+  cursor:pointer;
+}
+.prod-sel-clear:hover{border-color:#c46b7c;background:#fff8f7}

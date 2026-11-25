@@ -33,39 +33,39 @@ function naqaIsSerum(p){
  */
 function getNaqaCatalogs(){
   return [
-    /* —— Featured deals / discovery —— */
-    { id:"hot", cover:"media/catalogs/hot.webp", ar:"الأكثر طلباً", en:"Bestsellers", em:"★", tone:"hot", featured:true, group:"deal",
+    /* 10 homepage banners (Nice One style) — full page width, products below */
+    { id:"hot", cover:"media/catalogs/hot.webp", ar:"الأكثر طلباً", en:"Bestsellers", em:"★", tone:"hot", home:true, group:"deal",
       subAr:"مختارات عليها طلب", subEn:"Customer favourites",
       sort:"new", match:function(p){ return !!p.hot; } },
-    { id:"eoy", cover:"media/catalogs/eoy.webp", ar:"عروض وتخفيضات", en:"Deals & offers", em:"٪", tone:"deal", featured:true, group:"deal",
+    { id:"eoy", cover:"media/catalogs/eoy.webp", ar:"عروض وتخفيضات", en:"Deals & offers", em:"٪", tone:"deal", home:true, group:"deal",
       subAr:"أسعار مشطوبة الآن", subEn:"Marked-down prices",
       sort:"off", match:function(p){ return p.was > p.price; } },
-    { id:"u10", cover:"media/catalogs/u10.webp", ar:"تحت ١٠ ر.ع", en:"Under 10 OMR", em:"١٠", tone:"price", featured:true, group:"deal",
+    { id:"u10", cover:"media/catalogs/u10.webp", ar:"تحت ١٠ ر.ع", en:"Under 10 OMR", em:"١٠", tone:"price", home:true, group:"deal",
       subAr:"أسعار يومية لطيفة", subEn:"Everyday prices",
       sort:"price-asc", match:function(p){ return Number(p.price) < 10; } },
-    { id:"korean", cover:"media/catalogs/korean.webp", ar:"عناية كورية", en:"K-beauty", em:"🌸", tone:"care", featured:true, group:"deal",
+    { id:"korean", cover:"media/catalogs/korean.webp", ar:"عناية كورية", en:"K-beauty", em:"🌸", tone:"care", home:true, group:"deal",
       subAr:"سيروم وماسكات كورية", subEn:"Korean skincare picks",
       sort:"new", match:function(p){ return !!NAQA_K_BEAUTY[p.brand]; } },
-
-    /* —— Shop by section —— */
-    { id:"care", cover:"media/catalogs/care.webp", ar:"عناية بالبشرة", en:"Skincare", em:"✨", tone:"care", featured:true, group:"deal",
+    { id:"care", cover:"media/catalogs/care.webp", ar:"عناية بالبشرة", en:"Skincare", em:"✨", tone:"care", home:true, group:"shop",
       subAr:"غسول · سيروم · مرطب", subEn:"Cleanse · treat · moisturise",
       sort:"new", match:function(p){ return p.cat === "عناية"; } },
-    { id:"face", cover:"media/catalogs/face.webp", ar:"مكياج الوجه", en:"Face makeup", em:"💄", tone:"makeup", group:"shop",
+    { id:"face", cover:"media/catalogs/face.webp", ar:"مكياج الوجه", en:"Face makeup", em:"💄", tone:"makeup", home:true, group:"shop",
       subAr:"فاونديشن · كونسيلر", subEn:"Foundation · concealer",
       sort:"new", match:function(p){ return p.cat === "وجه"; } },
-    { id:"lips", cover:"media/catalogs/lips.webp", ar:"الشفاه", en:"Lips", em:"💋", tone:"makeup", group:"shop",
+    { id:"lips", cover:"media/catalogs/lips.webp", ar:"الشفاه", en:"Lips", em:"💋", tone:"makeup", home:true, group:"shop",
       subAr:"أحمر · ملمع · ليب كير", subEn:"Lipstick · gloss · care",
       sort:"new", match:function(p){ return p.cat === "شفاه"; } },
-    { id:"eyes", cover:"media/catalogs/eyes.webp", ar:"العيون والحواجب", en:"Eyes & brows", em:"👁", tone:"makeup", group:"shop",
+    { id:"eyes", cover:"media/catalogs/eyes.webp", ar:"العيون والحواجب", en:"Eyes & brows", em:"👁", tone:"makeup", home:true, group:"shop",
       subAr:"مسكرة · آيلاينر · ظلال", subEn:"Mascara · liner · shadow",
       sort:"new", match:function(p){ return p.cat === "عيون" || p.cat === "حواجب"; } },
-    { id:"hair", cover:"media/catalogs/hair.webp", ar:"العناية بالشعر", en:"Hair care", em:"🧴", tone:"hair", group:"shop",
+    { id:"hair", cover:"media/catalogs/hair.webp", ar:"العناية بالشعر", en:"Hair care", em:"🧴", tone:"hair", home:true, group:"shop",
       subAr:"Olaplex · Cantu · L'Oréal", subEn:"Olaplex · Cantu · L'Oréal",
       sort:"new", match:function(p){ return p.cat === "شعر"; } },
-    { id:"straight", cover:"media/catalogs/straight.webp", ar:"استشوارات وفرد", en:"Straighteners", em:"💇", tone:"tools", group:"shop",
+    { id:"straight", cover:"media/catalogs/straight.webp", ar:"استشوارات وفرد", en:"Straighteners", em:"💇", tone:"tools", home:true, group:"shop",
       subAr:"GHD · BaByliss · أدوات", subEn:"GHD · BaByliss tools",
       sort:"price-desc", match:function(p){ return naqaIsStraightener(p); } },
+
+    /* Extra catalogs (openable, not on the 10-banner home strip) */
     { id:"tools", cover:"media/catalogs/tools.webp", ar:"أدوات التجميل", en:"Beauty tools", em:"🔧", tone:"tools", group:"shop",
       subAr:"أدوات · أجهزة", subEn:"Tools & devices",
       sort:"new", match:function(p){ return p.cat === "أدوات"; } },
@@ -204,17 +204,16 @@ function catalogTileHTML(c, size){
     + '</div></button>';
 }
 
-function catalogBannerHTML(c, size){
+function catalogBannerHTML(c){
   var list = catalogList(c.id, 1);
   if(!list.length && c.id !== "all") return "";
   var name = lang==="en" ? c.en : c.ar;
   var sub = lang==="en" ? c.subEn : c.subAr;
   var n = catalogList(c.id).length;
-  var sizeCls = size === "feat" ? " home-ban--feat" : " home-ban--grid";
   var img = c.cover
-    ? '<img src="'+esc(c.cover)+'" alt="" loading="lazy" decoding="async" width="600" height="260">'
+    ? '<img src="'+esc(c.cover)+'" alt="" loading="lazy" decoding="async" width="1180" height="160">'
     : '<span class="home-ban-fallback" aria-hidden="true">'+c.em+'</span>';
-  return '<button type="button" class="home-ban tone-'+esc(c.tone||"care")+sizeCls+'" data-open-catalog="'+esc(c.id)+'">'
+  return '<button type="button" class="home-ban" data-open-catalog="'+esc(c.id)+'">'
     + img
     + '<span class="home-ban-copy">'
     + '<b>'+esc(name)+'</b>'
@@ -232,34 +231,16 @@ function renderHomeCatalogs(){
     return;
   }
   box.hidden = false;
-  var cats = getNaqaCatalogs();
+  var cats = getNaqaCatalogs().filter(function(c){ return !!c.home; }).slice(0, 10);
   var en = (typeof lang !== "undefined" && lang === "en");
-  var html = '<div class="home-catalog home-catalog--banners" id="homeCatalog">';
-
-  /* Promo banners — deals / care / Korean like Nice One */
-  var featured = cats.filter(function(c){ return c.featured; });
-  if(featured.length){
-    html += '<div class="home-cat-section-head home-cat-section-head--slim">'
-      + '<h3>'+(en?"Offers & picks":"عروض ومختارات")+'</h3>'
-      + '<span>'+(en?"Swipe":"اسحبي")+'</span>'
-      + '</div>';
-    html += '<div class="home-ban-row" role="list">';
-    featured.forEach(function(c){ html += catalogBannerHTML(c, "feat"); });
-    html += '</div>';
-  }
-
-  /* Category banners — one banner per shop type */
-  var shop = cats.filter(function(c){ return !c.featured; });
-  if(shop.length){
-    html += '<div class="home-cat-section-head home-cat-section-head--slim">'
-      + '<h3>'+(en?"Shop by type":"تسوقي حسب النوع")+'</h3>'
-      + '</div>';
-    html += '<div class="home-ban-grid">';
-    shop.forEach(function(c){ html += catalogBannerHTML(c, "grid"); });
-    html += '</div>';
-  }
-
-  html += '</div>';
+  var html = '<div class="home-catalog home-catalog--banners" id="homeCatalog">'
+    + '<div class="home-cat-section-head home-cat-section-head--slim">'
+    + '<h3>'+(en?"Catalogs":"الكتالوجات")+'</h3>'
+    + '<span>'+(en?"10 collections":"١٠ مجموعات")+'</span>'
+    + '</div>'
+    + '<div class="home-ban-stack">';
+  cats.forEach(function(c){ html += catalogBannerHTML(c); });
+  html += '</div></div>';
   box.innerHTML = html;
 }
 

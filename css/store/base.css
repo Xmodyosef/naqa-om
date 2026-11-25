@@ -352,7 +352,7 @@ body.chrome-hide header{box-shadow:0 4px 14px rgba(0,0,0,.12)}
 /* ===== p0a CLS + touch (web.dev CLS + Lighthouse target-size) ===== */
 .ship-bar{min-height:36px;contain:layout}
 .hero{min-height:148px;contain:layout}
-#products{min-height:48vh}
+#products{min-height:0}
 #grid{min-height:280px;contain:layout}
 #shelves{min-height:0}
 .card{contain:layout style;content-visibility:auto;contain-intrinsic-size:auto 360px}

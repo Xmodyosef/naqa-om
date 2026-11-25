@@ -1,4 +1,4 @@
-/* Brand: ACM · 3 products · edit AR/EN fields here */
+/* Brand: ACM · 3 products · imgs auto-wired 2026-11-25 */
 window.NAQA_PRODUCTS = window.NAQA_PRODUCTS || [];
 window.NAQA_PRODUCTS.push(
 {
@@ -33,8 +33,8 @@ window.NAQA_PRODUCTS.push(
   "price": 6.3,
   "em": "✨",
   "imgs": [
-    "media/products/p107_0.webp",
     "media/products/p107_1.webp",
+    "media/products/p107_0.webp",
     "media/products/p107_2.webp",
     "media/products/p107_3.webp"
   ],

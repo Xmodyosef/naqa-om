@@ -1,4 +1,4 @@
-/* Brand: SHEGLAM · 27 products · edit AR/EN fields here */
+/* Brand: SHEGLAM · 27 products · imgs auto-wired 2026-11-25 */
 window.NAQA_PRODUCTS = window.NAQA_PRODUCTS || [];
 window.NAQA_PRODUCTS.push(
 {
@@ -324,8 +324,8 @@ window.NAQA_PRODUCTS.push(
   "was": 11.001,
   "em": "✨",
   "imgs": [
-    "media/products/p127_0.webp",
     "media/products/p127_1.webp",
+    "media/products/p127_0.webp",
     "media/products/p127_2.webp",
     "media/products/p127_3.webp"
   ],
@@ -587,9 +587,9 @@ window.NAQA_PRODUCTS.push(
   "price": 3.8,
   "em": "✨",
   "imgs": [
+    "media/products/p160_2.webp",
     "media/products/p160_0.webp",
     "media/products/p160_1.webp",
-    "media/products/p160_2.webp",
     "media/products/p160_3.webp",
     "media/products/p160_4.webp"
   ],

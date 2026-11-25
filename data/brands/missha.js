@@ -1,4 +1,4 @@
-/* Brand: MISSHA · 5 products · edit AR/EN fields here */
+/* Brand: MISSHA · 5 products · imgs auto-wired 2026-11-25 */
 window.NAQA_PRODUCTS = window.NAQA_PRODUCTS || [];
 window.NAQA_PRODUCTS.push(
 {
@@ -10,9 +10,9 @@ window.NAQA_PRODUCTS.push(
   "was": 7.572,
   "em": "✨",
   "imgs": [
+    "media/products/p70_2.webp",
     "media/products/p70_0.webp",
     "media/products/p70_1.webp",
-    "media/products/p70_2.webp",
     "media/products/p70_3.webp"
   ],
   "nameAr": "بي بي كريم بيرفكت إم من ميشا - رقم21 - 50مل",
@@ -34,8 +34,8 @@ window.NAQA_PRODUCTS.push(
   "was": 7.572,
   "em": "✨",
   "imgs": [
-    "media/products/p71_0.webp",
     "media/products/p71_1.webp",
+    "media/products/p71_0.webp",
     "media/products/p71_2.webp",
     "media/products/p71_3.webp"
   ],
@@ -58,8 +58,8 @@ window.NAQA_PRODUCTS.push(
   "was": 7.572,
   "em": "✨",
   "imgs": [
-    "media/products/p72_0.webp",
     "media/products/p72_1.webp",
+    "media/products/p72_0.webp",
     "media/products/p72_2.webp",
     "media/products/p72_3.webp"
   ],
@@ -83,10 +83,7 @@ window.NAQA_PRODUCTS.push(
   "hot": true,
   "em": "✨",
   "imgs": [
-    "media/products/p74_0.webp",
-    "media/products/p74_1.webp",
-    "media/products/p74_2.webp",
-    "media/products/p74_3.webp"
+    "media/products/p74_0.webp"
   ],
   "nameAr": "فرشاة الخدود والهايلايتر ميشا آرتيستول 206",
   "nameEn": "Missha Artistool Cheek Highlighter Brush 206",
@@ -107,6 +104,7 @@ window.NAQA_PRODUCTS.push(
   "em": "✨",
   "imgs": [
     "media/products/p182_0.webp",
+    "media/products/p182_1.webp",
     "media/products/p182_2.webp",
     "media/products/p182_3.webp"
   ],

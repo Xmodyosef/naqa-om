@@ -1,4 +1,4 @@
-/* Brand: K18 · 3 products · edit AR/EN fields here */
+/* Brand: K18 · 3 products · imgs auto-wired 2026-11-25 */
 window.NAQA_PRODUCTS = window.NAQA_PRODUCTS || [];
 window.NAQA_PRODUCTS.push(
 {
@@ -9,11 +9,11 @@ window.NAQA_PRODUCTS.push(
   "price": 12.6,
   "em": "✨",
   "imgs": [
+    "media/products/p170_4.webp",
     "media/products/p170_0.webp",
     "media/products/p170_1.webp",
     "media/products/p170_2.webp",
-    "media/products/p170_3.webp",
-    "media/products/p170_4.webp"
+    "media/products/p170_3.webp"
   ],
   "nameAr": "ماسك كيه 18 ليف إن لإصلاح الشعر الجزيئي المتقدم - 15مل",
   "nameEn": "K18 Leave-in Molecular Repair Hair Mask - 50ml",

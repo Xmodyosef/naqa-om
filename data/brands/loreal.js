@@ -1,4 +1,4 @@
-/* Brand: L'oréal · 12 products · barcodes from public retail listings */
+/* Brand: L'oréal · 12 products · imgs auto-wired 2026-11-25 */
 window.NAQA_PRODUCTS = window.NAQA_PRODUCTS || [];
 window.NAQA_PRODUCTS.push(
 {
@@ -114,7 +114,9 @@ window.NAQA_PRODUCTS.push(
   "sku": "3600523980018",
   "price": 4.5,
   "em": "✨",
-  "imgs": [],
+  "imgs": [
+    "media/products/p320_0.webp"
+  ],
   "nameAr": "لوريال بلسم دريم لونج",
   "nameEn": "L'Oréal Elvive Dream Lengths Conditioner",
   "descAr": "لوريال بلسم دريم لونج — منتج أصلي ضمن كتالوج نقاء المتنوع.",
@@ -153,7 +155,13 @@ window.NAQA_PRODUCTS.push(
   "sku": "3600523201001",
   "price": 5.5,
   "em": "✨",
-  "imgs": [],
+  "imgs": [
+    "media/products/p80_0.webp",
+    "media/products/p80_1.webp",
+    "media/products/p80_2.webp",
+    "media/products/p80_3.webp",
+    "media/products/p80_4.webp"
+  ],
   "nameAr": "لوريال زيت إلسيف إكستراأورديناري",
   "nameEn": "L'Oréal Elvive Extraordinary Oil",
   "descAr": "لوريال زيت إلسيف إكستراأورديناري — منتج أصلي ضمن كتالوج نقاء المتنوع.",
@@ -172,7 +180,13 @@ window.NAQA_PRODUCTS.push(
   "sku": "3600522863000",
   "price": 4.2,
   "em": "✨",
-  "imgs": [],
+  "imgs": [
+    "media/products/p80_0.webp",
+    "media/products/p80_1.webp",
+    "media/products/p80_2.webp",
+    "media/products/p80_3.webp",
+    "media/products/p80_4.webp"
+  ],
   "nameAr": "لوريال بخاخ حماية حرارية",
   "nameEn": "L'Oréal Elvive Heat Protect Spray",
   "descAr": "لوريال بخاخ حماية حرارية — منتج أصلي ضمن كتالوج نقاء المتنوع.",
@@ -190,7 +204,13 @@ window.NAQA_PRODUCTS.push(
   "sku": "3600523981002",
   "price": 5.9,
   "em": "✨",
-  "imgs": [],
+  "imgs": [
+    "media/products/p80_0.webp",
+    "media/products/p80_1.webp",
+    "media/products/p80_2.webp",
+    "media/products/p80_3.webp",
+    "media/products/p80_4.webp"
+  ],
   "nameAr": "لوريال فاونديشن ترو ماتش",
   "nameEn": "L'Oréal True Match Foundation",
   "descAr": "لوريال فاونديشن ترو ماتش — منتج أصلي ضمن كتالوج نقاء المتنوع.",
@@ -209,7 +229,13 @@ window.NAQA_PRODUCTS.push(
   "sku": "3600523981012",
   "price": 4.8,
   "em": "✨",
-  "imgs": [],
+  "imgs": [
+    "media/products/p80_0.webp",
+    "media/products/p80_1.webp",
+    "media/products/p80_2.webp",
+    "media/products/p80_3.webp",
+    "media/products/p80_4.webp"
+  ],
   "nameAr": "لوريال كونسيلر ترو ماتش",
   "nameEn": "L'Oréal True Match Concealer",
   "descAr": "لوريال كونسيلر ترو ماتش — منتج أصلي ضمن كتالوج نقاء المتنوع.",

@@ -1,4 +1,4 @@
-/* Brand: Vaseline · 1 products · edit AR/EN fields here */
+/* Brand: Vaseline · 1 products · imgs auto-wired 2026-11-25 */
 window.NAQA_PRODUCTS = window.NAQA_PRODUCTS || [];
 window.NAQA_PRODUCTS.push(
 {
@@ -11,8 +11,8 @@ window.NAQA_PRODUCTS.push(
   "hot": true,
   "em": "✨",
   "imgs": [
-    "media/products/p124_0.webp",
     "media/products/p124_1.webp",
+    "media/products/p124_0.webp",
     "media/products/p124_2.webp",
     "media/products/p124_3.webp"
   ],

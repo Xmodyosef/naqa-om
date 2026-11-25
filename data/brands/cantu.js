@@ -1,4 +1,4 @@
-/* Brand: Cantu · 18 products · barcodes from public retail listings */
+/* Brand: Cantu · 18 products · imgs auto-wired */
 window.NAQA_PRODUCTS = window.NAQA_PRODUCTS || [];
 window.NAQA_PRODUCTS.push(
 {
@@ -128,7 +128,9 @@ window.NAQA_PRODUCTS.push(
 },
 {
   "em": "💨",
-  "imgs": [],
+  "imgs": [
+    "media/products/p255_0.webp"
+  ],
   "stock": 3,
   "brand": "Cantu",
   "sku": "817513016202",
@@ -166,7 +168,9 @@ window.NAQA_PRODUCTS.push(
 },
 {
   "em": "📌",
-  "imgs": [],
+  "imgs": [
+    "media/products/p250_0.webp"
+  ],
   "stock": 3,
   "brand": "Cantu",
   "sku": "817513015694",
@@ -184,7 +188,9 @@ window.NAQA_PRODUCTS.push(
 },
 {
   "em": "🧼",
-  "imgs": [],
+  "imgs": [
+    "media/products/p250_0.webp"
+  ],
   "stock": 3,
   "brand": "Cantu",
   "sku": "817513010149",
@@ -202,7 +208,9 @@ window.NAQA_PRODUCTS.push(
 },
 {
   "em": "🌿",
-  "imgs": [],
+  "imgs": [
+    "media/products/p259_0.webp"
+  ],
   "stock": 3,
   "brand": "Cantu",
   "sku": "817513015328",
@@ -287,7 +295,9 @@ window.NAQA_PRODUCTS.push(
   "sku": "817513010057",
   "price": 2.9,
   "em": "✨",
-  "imgs": [],
+  "imgs": [
+    "media/products/p295_0.webp"
+  ],
   "nameAr": "كانتو جل تويست آند لوك",
   "nameEn": "Cantu Moisturizing Twist & Lock Gel",
   "descAr": "كانتو جل تويست آند لوك — منتج أصلي ضمن كتالوج نقاء المتنوع.",
@@ -305,7 +315,9 @@ window.NAQA_PRODUCTS.push(
   "sku": "817513010064",
   "price": 2.8,
   "em": "✨",
-  "imgs": [],
+  "imgs": [
+    "media/products/p251_0.webp"
+  ],
   "nameAr": "كانتو بخاخ لمعان جوز الهند",
   "nameEn": "Cantu Coconut Oil Shine & Hold Mist 8oz",
   "descAr": "كانتو بخاخ لمعان جوز الهند — منتج أصلي ضمن كتالوج نقاء المتنوع.",
@@ -324,7 +336,9 @@ window.NAQA_PRODUCTS.push(
   "sku": "817513010210",
   "price": 3.5,
   "em": "✨",
-  "imgs": [],
+  "imgs": [
+    "media/products/p250_0.webp"
+  ],
   "nameAr": "كانتو زيت فروة وشعر",
   "nameEn": "Cantu Shea Butter Hair & Scalp Oil",
   "descAr": "كانتو زيت فروة وشعر — منتج أصلي ضمن كتالوج نقاء المتنوع.",
@@ -342,7 +356,9 @@ window.NAQA_PRODUCTS.push(
   "sku": "817513010220",
   "price": 2.9,
   "em": "✨",
-  "imgs": [],
+  "imgs": [
+    "media/products/p250_0.webp"
+  ],
   "nameAr": "كانتو بخاخ فك التشابك",
   "nameEn": "Cantu Natural Hair Detangler Spray",
   "descAr": "كانتو بخاخ فك التشابك — منتج أصلي ضمن كتالوج نقاء المتنوع.",

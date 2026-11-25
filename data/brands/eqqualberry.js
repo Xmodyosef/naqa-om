@@ -1,4 +1,4 @@
-/* Brand: EQQUALBERRY · 3 products · edit AR/EN fields here */
+/* Brand: EQQUALBERRY · 3 products · imgs auto-wired 2026-11-25 */
 window.NAQA_PRODUCTS = window.NAQA_PRODUCTS || [];
 window.NAQA_PRODUCTS.push(
 {
@@ -9,11 +9,11 @@ window.NAQA_PRODUCTS.push(
   "price": 23.2,
   "em": "✨",
   "imgs": [
+    "media/products/p22_4.webp",
     "media/products/p22_0.webp",
     "media/products/p22_1.webp",
     "media/products/p22_2.webp",
-    "media/products/p22_3.webp",
-    "media/products/p22_4.webp"
+    "media/products/p22_3.webp"
   ],
   "nameAr": "مجموعة جلو فلتر بفيتامين سي لإشراقة وتفتيح البشرة من إيكوال بيري - 3قطع",
   "nameEn": "Eqqualberry Vitamin Illuminating Glow Filter Set - 3pcs",
@@ -57,11 +57,11 @@ window.NAQA_PRODUCTS.push(
   "price": 7.3,
   "em": "✨",
   "imgs": [
+    "media/products/p28_4.webp",
     "media/products/p28_0.webp",
     "media/products/p28_1.webp",
     "media/products/p28_2.webp",
-    "media/products/p28_3.webp",
-    "media/products/p28_4.webp"
+    "media/products/p28_3.webp"
   ],
   "nameAr": "سيروم الباكوشيول لشد وتكثيف البشرة من إيكوال بيري – 30مل",
   "nameEn": "Eqqualberry Bakuchiol Plumping Serum - 30ml",

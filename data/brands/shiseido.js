@@ -1,4 +1,4 @@
-/* Brand: Shiseido · 2 products · edit AR/EN fields here */
+/* Brand: Shiseido · 2 products · imgs auto-wired 2026-11-25 */
 window.NAQA_PRODUCTS = window.NAQA_PRODUCTS || [];
 window.NAQA_PRODUCTS.push(
 {
@@ -32,7 +32,9 @@ window.NAQA_PRODUCTS.push(
   "em": "✨",
   "imgs": [
     "media/products/p186_0.webp",
-    "media/products/p186_1.webp"
+    "media/products/p186_1.webp",
+    "media/products/p186_2.webp",
+    "media/products/p186_3.webp"
   ],
   "nameAr": "بلسم فينو بريميوم تاتش من شيسيدو - 550مل",
   "nameEn": "Fino Premium Touch Conditioner - 550ml",

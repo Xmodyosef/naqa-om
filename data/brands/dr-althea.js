@@ -1,4 +1,4 @@
-/* Brand: Dr.Althea · 8 products · edit AR/EN fields here */
+/* Brand: Dr.Althea · 8 products · imgs auto-wired 2026-11-25 */
 window.NAQA_PRODUCTS = window.NAQA_PRODUCTS || [];
 window.NAQA_PRODUCTS.push(
 {
@@ -33,9 +33,9 @@ window.NAQA_PRODUCTS.push(
   "price": 13.2,
   "em": "✨",
   "imgs": [
+    "media/products/p18_2.webp",
     "media/products/p18_0.webp",
     "media/products/p18_1.webp",
-    "media/products/p18_2.webp",
     "media/products/p18_3.webp",
     "media/products/p18_4.webp"
   ],
@@ -57,11 +57,11 @@ window.NAQA_PRODUCTS.push(
   "price": 6.7,
   "em": "✨",
   "imgs": [
+    "media/products/p21_4.webp",
     "media/products/p21_0.webp",
     "media/products/p21_1.webp",
     "media/products/p21_2.webp",
-    "media/products/p21_3.webp",
-    "media/products/p21_4.webp"
+    "media/products/p21_3.webp"
   ],
   "nameAr": "سيروم دكتور ألثيا أكوا مارين العميق لترطيب البشرة - 30مل",
   "nameEn": "Dr.Althea Aqua Marine Deep Serum - 30ml",
@@ -129,10 +129,10 @@ window.NAQA_PRODUCTS.push(
   "price": 7.6,
   "em": "✨",
   "imgs": [
+    "media/products/p94_3.webp",
     "media/products/p94_0.webp",
     "media/products/p94_1.webp",
     "media/products/p94_2.webp",
-    "media/products/p94_3.webp",
     "media/products/p94_4.webp"
   ],
   "nameAr": "رولر العين دكتور ألثيا بالريتينول لتجديد وشد محيط العين - 25مل",
@@ -153,9 +153,9 @@ window.NAQA_PRODUCTS.push(
   "price": 7.3,
   "em": "✨",
   "imgs": [
+    "media/products/p165_2.webp",
     "media/products/p165_0.webp",
     "media/products/p165_1.webp",
-    "media/products/p165_2.webp",
     "media/products/p165_3.webp"
   ],
   "nameAr": "سيرم فيتامين سي المعزز من دكتور ألثيا - 30مل",
@@ -176,8 +176,8 @@ window.NAQA_PRODUCTS.push(
   "price": 7.3,
   "em": "✨",
   "imgs": [
-    "media/products/p198_0.webp",
     "media/products/p198_1.webp",
+    "media/products/p198_0.webp",
     "media/products/p198_2.webp",
     "media/products/p198_3.webp"
   ],

@@ -1,4 +1,4 @@
-/* Brand: Makeup Revolution · 20 products · verified barcodes + packshots */
+/* Brand: Makeup Revolution · 20 products · imgs auto-wired 2026-11-25 */
 window.NAQA_PRODUCTS = window.NAQA_PRODUCTS || [];
 window.NAQA_PRODUCTS.push(
 {
@@ -46,7 +46,7 @@ window.NAQA_PRODUCTS.push(
   "brand": "Makeup Revolution",
   "stock": 3,
   "imgs": [
-    "media/products/p220_0.webp"
+    "media/products/p222_0.webp"
   ],
   "id": 222,
   "sku": "5057566336970",
@@ -66,7 +66,7 @@ window.NAQA_PRODUCTS.push(
   "brand": "Makeup Revolution",
   "stock": 3,
   "imgs": [
-    "media/products/p220_0.webp"
+    "media/products/p223_0.webp"
   ],
   "id": 223,
   "sku": "5057566296090",
@@ -349,7 +349,7 @@ window.NAQA_PRODUCTS.push(
   "brand": "Makeup Revolution",
   "stock": 3,
   "imgs": [
-    "media/products/p274_0.webp"
+    "media/products/p278_0.webp"
   ],
   "id": 277,
   "sku": "5057566085922",
@@ -369,7 +369,7 @@ window.NAQA_PRODUCTS.push(
   "brand": "Makeup Revolution",
   "stock": 3,
   "imgs": [
-    "media/products/p224_0.webp"
+    "media/products/p268_0.webp"
   ],
   "id": 267,
   "sku": "5057566079211",

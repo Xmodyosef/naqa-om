@@ -1,4 +1,4 @@
-/* Brand: Aromatica · 1 products · edit AR/EN fields here */
+/* Brand: Aromatica · 1 products · imgs auto-wired 2026-11-25 */
 window.NAQA_PRODUCTS = window.NAQA_PRODUCTS || [];
 window.NAQA_PRODUCTS.push(
 {
@@ -9,10 +9,10 @@ window.NAQA_PRODUCTS.push(
   "price": 9.7,
   "em": "✨",
   "imgs": [
+    "media/products/p178_3.webp",
     "media/products/p178_0.webp",
     "media/products/p178_1.webp",
     "media/products/p178_2.webp",
-    "media/products/p178_3.webp",
     "media/products/p178_4.webp"
   ],
   "nameAr": "مجموعة اروماتيكا روزماري التجريبية لتنقية فروة الرأس",

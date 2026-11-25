@@ -1,4 +1,4 @@
-/* Brand: Medicube · 20 products · edit AR/EN fields here */
+/* Brand: Medicube · 20 products · imgs auto-wired 2026-11-25 */
 window.NAQA_PRODUCTS = window.NAQA_PRODUCTS || [];
 window.NAQA_PRODUCTS.push(
 {
@@ -83,7 +83,8 @@ window.NAQA_PRODUCTS.push(
   "imgs": [
     "media/products/p30_0.webp",
     "media/products/p30_1.webp",
-    "media/products/p30_2.webp"
+    "media/products/p30_2.webp",
+    "media/products/p30_4.webp"
   ],
   "nameAr": "سيروم ميديكيوب تريبل كولاجين لشد البشرة - 55مل",
   "nameEn": "Medicube Triple Collagen Serum - 55ml",
@@ -127,9 +128,9 @@ window.NAQA_PRODUCTS.push(
   "price": 5.7,
   "em": "✨",
   "imgs": [
+    "media/products/p35_2.webp",
     "media/products/p35_0.webp",
     "media/products/p35_1.webp",
-    "media/products/p35_2.webp",
     "media/products/p35_3.webp",
     "media/products/p35_4.webp"
   ],
@@ -223,10 +224,10 @@ window.NAQA_PRODUCTS.push(
   "price": 7.3,
   "em": "✨",
   "imgs": [
+    "media/products/p59_3.webp",
     "media/products/p59_0.webp",
     "media/products/p59_1.webp",
     "media/products/p59_2.webp",
-    "media/products/p59_3.webp",
     "media/products/p59_4.webp"
   ],
   "nameAr": "قناع ميديكوب الليلي الوردي بالكافيين لترطيب وشد البشرة - 75مل",
@@ -420,6 +421,7 @@ window.NAQA_PRODUCTS.push(
   "em": "✨",
   "imgs": [
     "media/products/p193_0.webp",
+    "media/products/p193_1.webp",
     "media/products/p193_2.webp",
     "media/products/p193_3.webp",
     "media/products/p193_4.webp"
@@ -442,10 +444,10 @@ window.NAQA_PRODUCTS.push(
   "price": 7.9,
   "em": "✨",
   "imgs": [
+    "media/products/p196_3.webp",
     "media/products/p196_0.webp",
     "media/products/p196_1.webp",
     "media/products/p196_2.webp",
-    "media/products/p196_3.webp",
     "media/products/p196_4.webp"
   ],
   "nameAr": "سيروم ميديكوب ون داي إكسوسوم شوت 2000 لتجديد ونضارة البشرة - 30مل",

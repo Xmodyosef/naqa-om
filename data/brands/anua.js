@@ -1,4 +1,4 @@
-/* Brand: Anua · 17 products · edit AR/EN fields here */
+/* Brand: Anua · 17 products · imgs auto-wired 2026-11-25 */
 window.NAQA_PRODUCTS = window.NAQA_PRODUCTS || [];
 window.NAQA_PRODUCTS.push(
 {
@@ -11,10 +11,10 @@ window.NAQA_PRODUCTS.push(
   "hot": true,
   "em": "✨",
   "imgs": [
+    "media/products/p3_3.webp",
     "media/products/p3_0.webp",
     "media/products/p3_1.webp",
     "media/products/p3_2.webp",
-    "media/products/p3_3.webp",
     "media/products/p3_4.webp"
   ],
   "nameAr": "سيروم انوا نياسيناميد 10% لتصحيح البقع الداكنة - 30مل",
@@ -35,10 +35,10 @@ window.NAQA_PRODUCTS.push(
   "price": 5.3,
   "em": "✨",
   "imgs": [
+    "media/products/p37_3.webp",
     "media/products/p37_0.webp",
     "media/products/p37_1.webp",
     "media/products/p37_2.webp",
-    "media/products/p37_3.webp",
     "media/products/p37_4.webp"
   ],
   "nameAr": "غسول انوا الرغوي للتنظيف العميق للمسام بخلاصة الهارتليف - 150مل",
@@ -83,11 +83,11 @@ window.NAQA_PRODUCTS.push(
   "price": 7.9,
   "em": "✨",
   "imgs": [
+    "media/products/p56_4.webp",
     "media/products/p56_0.webp",
     "media/products/p56_1.webp",
     "media/products/p56_2.webp",
-    "media/products/p56_3.webp",
-    "media/products/p56_4.webp"
+    "media/products/p56_3.webp"
   ],
   "nameAr": "بخاخ سيروم انوا بي دي آر إن بالكولاجين - 100مل",
   "nameEn": "Anua PDRN Collagen Glow Facial Serum Spray - 100ml",
@@ -107,11 +107,11 @@ window.NAQA_PRODUCTS.push(
   "price": 6.7,
   "em": "✨",
   "imgs": [
+    "media/products/p57_4.webp",
     "media/products/p57_0.webp",
     "media/products/p57_1.webp",
     "media/products/p57_2.webp",
-    "media/products/p57_3.webp",
-    "media/products/p57_4.webp"
+    "media/products/p57_3.webp"
   ],
   "nameAr": "بخاخ سيروم انوا بي دي آر إن بالكولاجين ميني - 30مل",
   "nameEn": "PDRN Collagen Glow Facial Serum Spray Mini - 30ml",

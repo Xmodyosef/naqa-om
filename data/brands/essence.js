@@ -1,4 +1,4 @@
-/* Brand: essence · 20 products · verified barcodes + packshots */
+/* Brand: essence · 20 products · imgs auto-wired 2026-11-25 */
 window.NAQA_PRODUCTS = window.NAQA_PRODUCTS || [];
 window.NAQA_PRODUCTS.push(
 {
@@ -11,9 +11,9 @@ window.NAQA_PRODUCTS.push(
   "hot": true,
   "em": "✨",
   "imgs": [
+    "media/products/p100_3.webp",
     "media/products/p100_0.webp",
     "media/products/p100_1.webp",
-    "media/products/p100_3.webp",
     "media/products/p100_4.webp"
   ],
   "nameAr": "ماسكارا لاش برنسيس من إيسنس - 12مل",
@@ -35,9 +35,9 @@ window.NAQA_PRODUCTS.push(
   "was": 2.572,
   "em": "✨",
   "imgs": [
+    "media/products/p109_2.webp",
     "media/products/p109_0.webp",
     "media/products/p109_1.webp",
-    "media/products/p109_2.webp",
     "media/products/p109_3.webp"
   ],
   "nameAr": "ماسكارا لاش برنسيس سكلبتد فوليوم من إيسنس - 12مل",

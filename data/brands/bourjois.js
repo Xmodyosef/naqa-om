@@ -1,4 +1,4 @@
-/* Brand: Bourjois · 20 products · verified barcodes + packshots */
+/* Brand: Bourjois · 20 products · imgs auto-wired 2026-11-25 */
 window.NAQA_PRODUCTS = window.NAQA_PRODUCTS || [];
 window.NAQA_PRODUCTS.push(
 {
@@ -107,7 +107,7 @@ window.NAQA_PRODUCTS.push(
 {
   "em": "💧",
   "imgs": [
-    "media/products/p244_0.webp"
+    "media/products/p242_0.webp"
   ],
   "stock": 3,
   "brand": "Bourjois",
@@ -132,7 +132,7 @@ window.NAQA_PRODUCTS.push(
   "price": 5.5,
   "em": "✨",
   "imgs": [
-    "media/products/p242_0.webp"
+    "media/products/p279_0.webp"
   ],
   "nameAr": "برجواز فاونديشن هيلثي ميكس 52W",
   "nameEn": "Bourjois Healthy Mix Foundation 52W Vanilla 30ml",
@@ -274,7 +274,7 @@ window.NAQA_PRODUCTS.push(
   "price": 3.9,
   "em": "✨",
   "imgs": [
-    "media/products/p240_0.webp"
+    "media/products/p291_0.webp"
   ],
   "nameAr": "برجواز كحل كونتور كلوبنق 001",
   "nameEn": "Bourjois Contour Clubbing Waterproof Liner 001 Ultra Black",
@@ -295,7 +295,7 @@ window.NAQA_PRODUCTS.push(
   "price": 3.9,
   "em": "✨",
   "imgs": [
-    "media/products/p240_0.webp"
+    "media/products/p291_0.webp"
   ],
   "nameAr": "برجواز كحل كونتور كلوبنق 041",
   "nameEn": "Bourjois Contour Clubbing Waterproof Liner 041",
@@ -335,7 +335,7 @@ window.NAQA_PRODUCTS.push(
   "price": 3.4,
   "em": "✨",
   "imgs": [
-    "media/products/p240_0.webp"
+    "media/products/p288_0.webp"
   ],
   "nameAr": "برجواز روج فلفت 07",
   "nameEn": "Bourjois Rouge Velvet The Lipstick 07",
@@ -355,7 +355,7 @@ window.NAQA_PRODUCTS.push(
   "price": 3.4,
   "em": "✨",
   "imgs": [
-    "media/products/p240_0.webp"
+    "media/products/p288_0.webp"
   ],
   "nameAr": "برجواز روج فلفت 12",
   "nameEn": "Bourjois Rouge Velvet The Lipstick 12",

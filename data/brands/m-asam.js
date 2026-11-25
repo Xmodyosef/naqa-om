@@ -1,4 +1,4 @@
-/* Brand: M.Asam · 1 products · edit AR/EN fields here */
+/* Brand: M.Asam · 1 products · imgs auto-wired 2026-11-25 */
 window.NAQA_PRODUCTS = window.NAQA_PRODUCTS || [];
 window.NAQA_PRODUCTS.push(
 {
@@ -11,7 +11,8 @@ window.NAQA_PRODUCTS.push(
   "imgs": [
     "media/products/p133_0.webp",
     "media/products/p133_1.webp",
-    "media/products/p133_2.webp"
+    "media/products/p133_2.webp",
+    "media/products/p133_3.webp"
   ],
   "nameAr": "ماجيك فينيش بلسم الشفاه ام اسام - 18ج",
   "nameEn": "M.Asam Magic Finish Volume Lip Balm - 18g",

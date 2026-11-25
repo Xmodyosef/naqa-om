@@ -1,4 +1,4 @@
-/* Brand: Neutrogena · 1 products · edit AR/EN fields here */
+/* Brand: Neutrogena · 1 products · imgs auto-wired 2026-11-25 */
 window.NAQA_PRODUCTS = window.NAQA_PRODUCTS || [];
 window.NAQA_PRODUCTS.push(
 {
@@ -9,9 +9,9 @@ window.NAQA_PRODUCTS.push(
   "price": 6.7,
   "em": "✨",
   "imgs": [
+    "media/products/p175_2.webp",
     "media/products/p175_0.webp",
     "media/products/p175_1.webp",
-    "media/products/p175_2.webp",
     "media/products/p175_3.webp",
     "media/products/p175_4.webp"
   ],

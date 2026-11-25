@@ -1,4 +1,4 @@
-/* Brand: Schwarzkopf · 12 products · barcodes from public retail listings */
+/* Brand: Schwarzkopf · 12 products · imgs auto-wired 2026-11-25 */
 window.NAQA_PRODUCTS = window.NAQA_PRODUCTS || [];
 window.NAQA_PRODUCTS.push(
 {
@@ -117,7 +117,9 @@ window.NAQA_PRODUCTS.push(
   "sku": "7610300225299",
   "price": 2.7,
   "em": "✨",
-  "imgs": [],
+  "imgs": [
+    "media/products/p307_0.webp"
+  ],
   "nameAr": "شوارزكوف بخاخ فرد فلاتجليجت",
   "nameEn": "Schwarzkopf got2b Flachgelegt Straightening Spray",
   "descAr": "شوارزكوف بخاخ فرد فلاتجليجت — منتج أصلي ضمن كتالوج نقاء المتنوع.",
@@ -135,7 +137,9 @@ window.NAQA_PRODUCTS.push(
   "sku": "4015000520539",
   "price": 2.8,
   "em": "✨",
-  "imgs": [],
+  "imgs": [
+    "media/products/p307_0.webp"
+  ],
   "nameAr": "شوارزكوف بخاخ حماية حرارية",
   "nameEn": "Schwarzkopf got2b Hitzewelle Heat Protection Spray",
   "descAr": "شوارزكوف بخاخ حماية حرارية — منتج أصلي ضمن كتالوج نقاء المتنوع.",
@@ -154,7 +158,12 @@ window.NAQA_PRODUCTS.push(
   "sku": "052336996151",
   "price": 2.5,
   "em": "✨",
-  "imgs": [],
+  "imgs": [
+    "media/products/p187_0.webp",
+    "media/products/p187_1.webp",
+    "media/products/p187_2.webp",
+    "media/products/p187_3.webp"
+  ],
   "nameAr": "شوارزكوف فايبر جم كايوتك",
   "nameEn": "Schwarzkopf got2b Chaotic Fiber Gum",
   "descAr": "شوارزكوف فايبر جم كايوتك — منتج أصلي ضمن كتالوج نقاء المتنوع.",
@@ -172,7 +181,12 @@ window.NAQA_PRODUCTS.push(
   "sku": "052336902541",
   "price": 2.7,
   "em": "✨",
-  "imgs": [],
+  "imgs": [
+    "media/products/p187_0.webp",
+    "media/products/p187_1.webp",
+    "media/products/p187_2.webp",
+    "media/products/p187_3.webp"
+  ],
   "nameAr": "شوارزكوف كريم كيرل كينكير",
   "nameEn": "Schwarzkopf got2b Kinkier Curl Cream",
   "descAr": "شوارزكوف كريم كيرل كينكير — منتج أصلي ضمن كتالوج نقاء المتنوع.",
@@ -190,7 +204,12 @@ window.NAQA_PRODUCTS.push(
   "sku": "052336994805",
   "price": 2.6,
   "em": "✨",
-  "imgs": [],
+  "imgs": [
+    "media/products/p187_0.webp",
+    "media/products/p187_1.webp",
+    "media/products/p187_2.webp",
+    "media/products/p187_3.webp"
+  ],
   "nameAr": "شوارزكوف سيروم لمعان",
   "nameEn": "Schwarzkopf got2b Anti-Frizz Shine Serum",
   "descAr": "شوارزكوف سيروم لمعان — منتج أصلي ضمن كتالوج نقاء المتنوع.",
@@ -209,7 +228,9 @@ window.NAQA_PRODUCTS.push(
   "sku": "052336999404",
   "price": 2.8,
   "em": "✨",
-  "imgs": [],
+  "imgs": [
+    "media/products/p307_0.webp"
+  ],
   "nameAr": "شوارزكوف بخاخ بيتش تريبن",
   "nameEn": "Schwarzkopf got2b Beach Trippin Salt Spray",
   "descAr": "شوارزكوف بخاخ بيتش تريبن — منتج أصلي ضمن كتالوج نقاء المتنوع.",
@@ -227,7 +248,9 @@ window.NAQA_PRODUCTS.push(
   "sku": "052336990791",
   "price": 2.9,
   "em": "✨",
-  "imgs": [],
+  "imgs": [
+    "media/products/p307_0.webp"
+  ],
   "nameAr": "شوارزكوف بخاخ تثبيت فريز",
   "nameEn": "Schwarzkopf got2b Freeze Hairspray",
   "descAr": "شوارزكوف بخاخ تثبيت فريز — منتج أصلي ضمن كتالوج نقاء المتنوع.",

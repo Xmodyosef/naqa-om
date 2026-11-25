@@ -263,22 +263,7 @@
         + '</div></div></article>';
     };
     list.sort(function (a, b) { return String(b.at || "").localeCompare(String(a.at || "")); });
-    var days = [];
-    var byDay = {};
-    list.forEach(function (o) {
-      var day = A.dayKey(o.at) || "—";
-      if (!byDay[day]) { byDay[day] = []; days.push(day); }
-      byDay[day].push(o);
-    });
-    box.innerHTML = days.map(function (day) {
-      var label = day;
-      try {
-        if (day && day !== "—") {
-          label = A.fmtDateNum(day + "T12:00:00");
-        }
-      } catch (e) {}
-      return '<h3 class="order-day">' + A.esc(label) + ' · ' + byDay[day].length + '</h3>'
-        + byDay[day].map(cardHtml).join("");
-    }).join("");
+    /* No day headers — each order already shows its own date/time */
+    box.innerHTML = list.map(cardHtml).join("");
   };
 })(window);

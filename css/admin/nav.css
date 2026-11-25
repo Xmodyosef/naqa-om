@@ -457,3 +457,48 @@ body.naqa-open #childNav .btn-excel .excel-label {
   color: #1d6f42;
 }
 /* keep filter pills rose; excel is soft green — same pill shape, same height */
+
+
+/* Excel wrap + dropdown (Import / Export) */
+body.naqa-open #childNav .excel-wrap {
+  position: relative;
+  display: inline-flex;
+  flex: 0 0 auto;
+  margin-inline-start: 4px;
+}
+body.naqa-open #childNav .btn-excel .excel-chev {
+  font-size: 0.65rem;
+  opacity: 0.75;
+  margin-inline-start: 2px;
+}
+body.naqa-open #childNav .excel-menu {
+  position: absolute;
+  top: calc(100% + 6px);
+  inset-inline-end: 0;
+  z-index: 80;
+  min-width: 9.5rem;
+  padding: 6px;
+  border-radius: 12px;
+  background: #fff;
+  border: 1px solid #c9e4d4;
+  box-shadow: 0 8px 24px rgba(33, 115, 70, 0.16);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+body.naqa-open #childNav .excel-menu[hidden] {
+  display: none !important;
+}
+body.naqa-open #childNav .excel-menu-item {
+  border: 0;
+  background: #f3fbf6;
+  color: #1d6f42;
+  font: 800 0.78rem/1.2 inherit;
+  text-align: start;
+  padding: 10px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+body.naqa-open #childNav .excel-menu-item:hover {
+  background: #e7f5ec;
+}

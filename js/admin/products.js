@@ -516,24 +516,61 @@
   };
 
 
-  /* Excel button lives in childNav (static) — bind once */
-  if (typeof document !== "undefined" && !window.__naqaExportProductsBound) {
-    window.__naqaExportProductsBound = true;
+  /* Excel menu: open → Export / Import */
+  if (typeof document !== "undefined" && !window.__naqaExcelMenuBound) {
+    window.__naqaExcelMenuBound = true;
     document.addEventListener("click", function (e) {
-      var btn = e.target && e.target.closest && e.target.closest("#exportProductsBtn");
-      if (!btn) return;
-      e.preventDefault();
-      e.stopPropagation();
-      if (A.exportProductsCsv) A.exportProductsCsv();
+      var t = e.target;
+      if (!t || !t.closest) return;
+      var menuBtn = t.closest("#excelMenuBtn");
+      var menu = document.getElementById("excelMenu");
+      var wrap = document.getElementById("excelWrap");
+      if (menuBtn) {
+        e.preventDefault();
+        e.stopPropagation();
+        if (!menu) return;
+        var open = menu.hidden;
+        menu.hidden = !open;
+        menuBtn.setAttribute("aria-expanded", open ? "true" : "false");
+        return;
+      }
+      if (t.closest("#excelExportBtn")) {
+        e.preventDefault();
+        e.stopPropagation();
+        if (menu) menu.hidden = true;
+        if (A.exportProductsCsv) A.exportProductsCsv();
+        return;
+      }
+      if (t.closest("#excelImportBtn")) {
+        e.preventDefault();
+        e.stopPropagation();
+        if (menu) menu.hidden = true;
+        var file = document.getElementById("excelImportFile");
+        if (file) file.click();
+        return;
+      }
+      /* click outside closes menu */
+      if (menu && !menu.hidden && wrap && !wrap.contains(t)) {
+        menu.hidden = true;
+        var b = document.getElementById("excelMenuBtn");
+        if (b) b.setAttribute("aria-expanded", "false");
+      }
     }, true);
+    document.addEventListener("change", function (e) {
+      var fileEl = e.target;
+      if (!fileEl || fileEl.id !== "excelImportFile") return;
+      var f = fileEl.files && fileEl.files[0];
+      fileEl.value = "";
+      if (f && A.importProductsFile) A.importProductsFile(f);
+    });
   }
 
   A.exportProductsCsv = function () {
     if (A.requireAuth && !A.requireAuth("status")) return;
     var ar = A.lang !== "en";
     var head = ar
-      ? ["المعرف", "SKU", "الاسم عربي", "الاسم EN", "الماركة", "التصنيف", "السعر", "قبل الخصم", "المخزون", "مخفي", "ضريبة"]
-      : ["id", "SKU", "nameAr", "nameEn", "brand", "cat", "price", "was", "stock", "hidden", "tax"];
+      ? ["المعرف", "SKU", "الاسم عربي", "الاسم EN", "الماركة", "التصنيف", "السعر", "قبل الخصم", "المخزون", "مخفي"]
+      : ["id", "SKU", "nameAr", "nameEn", "brand", "cat", "price", "was", "stock", "hidden"];
     var rows = [head];
     var selectedIds = Object.keys(A.productSel || {}).filter(function (id) { return A.productSel[id]; });
     var onlySelected = selectedIds.length > 0;
@@ -555,8 +592,7 @@
         m.price != null ? m.price : "",
         m.was != null ? m.was : "",
         m.stock != null ? m.stock : "",
-        m.hidden ? (ar ? "نعم" : "yes") : (ar ? "لا" : "no"),
-        A.taxLabel ? A.taxLabel(m) : ""
+        m.hidden ? (ar ? "نعم" : "yes") : (ar ? "لا" : "no")
       ]);
     });
     var nExport = rows.length - 1;
@@ -577,6 +613,111 @@
         : ("Exported " + nExport + " products · Excel");
     }
     A.setMsg("status", msg);
+  };
+
+
+  A.importProductsFile = function (file) {
+    if (A.requireAuth && !A.requireAuth("status")) return;
+    if (!file) return;
+    var ar = A.lang !== "en";
+    var name = String(file.name || "").toLowerCase();
+    if (/\.xlsx?$/.test(name) && !/\.csv$/.test(name)) {
+      A.setMsg("status", ar
+        ? "الاستيراد يدعم CSV. من Excel: ملف → حفظ باسم → CSV، ثم استوردي الملف."
+        : "Import supports CSV. In Excel: File → Save As → CSV, then import.");
+      return;
+    }
+    var reader = new FileReader();
+    reader.onload = function () {
+      try {
+        var text = String(reader.result || "");
+        var table = A.parseCsv ? A.parseCsv(text) : null;
+        if (!table || !table.length) {
+          A.setMsg("status", A.t("importFail") || (ar ? "ملف الاستيراد غير صالح" : "Import file is invalid"));
+          return;
+        }
+        var head = (table[0] || []).map(function (h) { return String(h || "").trim().toLowerCase(); });
+        function col() {
+          var aliases = Array.prototype.slice.call(arguments);
+          for (var i = 0; i < aliases.length; i++) {
+            var a = String(aliases[i]).toLowerCase();
+            var ix = head.indexOf(a);
+            if (ix >= 0) return ix;
+          }
+          return -1;
+        }
+        var iId = col("id", "المعرف");
+        var iSku = col("sku");
+        var iPrice = col("price", "السعر");
+        var iWas = col("was", "قبل الخصم");
+        var iStock = col("stock", "المخزون");
+        var iHidden = col("hidden", "مخفي");
+        if (iId < 0 && iSku < 0) {
+          A.setMsg("status", ar ? "الملف يحتاج عمود المعرف أو SKU." : "File needs id or SKU column.");
+          return;
+        }
+        var byId = Object.create(null);
+        var bySku = Object.create(null);
+        (A.products || []).forEach(function (p) {
+          byId[String(p.id)] = p;
+          if (p.sku) bySku[String(p.sku).toLowerCase()] = p;
+        });
+        var n = 0;
+        for (var r = 1; r < table.length; r++) {
+          var row = table[r] || [];
+          if (!row.length) continue;
+          var p = null;
+          if (iId >= 0 && row[iId] != null && String(row[iId]).trim() !== "") {
+            p = byId[String(row[iId]).trim()];
+          }
+          if (!p && iSku >= 0 && row[iSku] != null && String(row[iSku]).trim() !== "") {
+            p = bySku[String(row[iSku]).trim().toLowerCase()];
+          }
+          if (!p) continue;
+          var id = String(p.id);
+          var existing = A.overrides[id] || A.overrides[p.id] || {};
+          var next = Object.assign({}, existing);
+          var changed = false;
+          if (iPrice >= 0 && row[iPrice] != null && String(row[iPrice]).trim() !== "") {
+            var pr = Number(String(row[iPrice]).replace(",", "."));
+            if (isFinite(pr) && pr >= 0) { next.price = pr; changed = true; }
+          }
+          if (iWas >= 0 && row[iWas] != null && String(row[iWas]).trim() !== "") {
+            var w = Number(String(row[iWas]).replace(",", "."));
+            if (isFinite(w) && w >= 0) { next.was = w; changed = true; }
+          }
+          if (iStock >= 0 && row[iStock] != null && String(row[iStock]).trim() !== "") {
+            var st = Number(String(row[iStock]).replace(",", "."));
+            if (isFinite(st) && st >= 0) { next.stock = Math.floor(st); changed = true; }
+          }
+          if (iHidden >= 0 && row[iHidden] != null && String(row[iHidden]).trim() !== "") {
+            var hv = String(row[iHidden]).trim().toLowerCase();
+            var isHid = (hv === "1" || hv === "true" || hv === "yes" || hv === "نعم" || hv === "y");
+            var isShow = (hv === "0" || hv === "false" || hv === "no" || hv === "لا" || hv === "n");
+            if (isHid) { next.hidden = true; changed = true; }
+            else if (isShow) { delete next.hidden; changed = true; }
+          }
+          if (changed) {
+            if (Object.keys(next).length) A.overrides[id] = next;
+            else { delete A.overrides[id]; delete A.overrides[p.id]; }
+            n += 1;
+          }
+        }
+        try { localStorage.setItem(A.KEY || "naqa_overrides", JSON.stringify(A.overrides)); } catch (e1) {}
+        if (A.syncOverridesCloud) A.syncOverridesCloud();
+        if (A.paintList) A.paintList(A.productQuery || "");
+        if (A.refreshChildNav) A.refreshChildNav();
+        A.setMsg("status", n
+          ? ((A.t("importOk") || (ar ? "تم الاستيراد" : "Imported")) + " · " + n)
+          : (ar ? "ما تغيّر شيء من الملف." : "Nothing changed from the file."));
+      } catch (err) {
+        A.setMsg("status", A.t("importFail") || (ar ? "ملف الاستيراد غير صالح" : "Import file is invalid"));
+      }
+    };
+    reader.onerror = function () {
+      A.setMsg("status", A.t("importFail") || (ar ? "ملف الاستيراد غير صالح" : "Import file is invalid"));
+    };
+    reader.readAsText(file);
   };
 
   A.bulkSetHidden = function (hide) {
@@ -828,14 +969,10 @@
         +     '<span>SKU ' + A.esc(m.sku || "—") + '</span>'
         +     (m.hidden ? '<span class="prod-hid">' + A.esc(A.t("p_hidden") || "مخفي") + '</span>' : '')
         +   '</div>'
-        +   '<div class="prod-price-row prod-quick">'
-        +     '<label class="qk"><span>' + A.esc(A.t("p_price") || (A.lang === "en" ? "Price" : "السعر")) + '</span>'
-        +       '<input type="number" min="0" step="0.001" inputmode="decimal" data-qk-price="' + p.id + '" value="' + A.esc(m.price != null ? m.price : "") + '">'
-        +       '<small>' + A.esc(A.t("omr") || "ر.ع") + '</small></label>'
+        +   '<div class="prod-price-row prod-readonly">'
+        +     '<span class="pr-price">' + A.esc(m.price != null ? m.price : "—") + ' <small>' + A.esc(A.t("omr") || "ر.ع") + '</small></span>'
         +     (m.was != null && wasN > 0 ? ('<span class="prod-was"><s>' + A.esc(m.was) + '</s></span>') : '')
-        +     '<label class="qk' + stockCls + '"><span>' + A.esc(A.t("p_stock") || "المخزون") + '</span>'
-        +       '<input type="number" min="0" step="1" inputmode="numeric" data-qk-stock="' + p.id + '" value="' + A.esc(stock) + '"></label>'
-        +     (taxTxt ? '<span class="prod-tax">' + A.esc(taxTxt) + '</span>' : '')
+        +     '<span class="pr-stock' + stockCls + '">' + A.esc(A.t("p_stock") || "المخزون") + ': <b>' + A.esc(stock === "" ? "—" : stock) + '</b></span>'
         +   '</div>'
         + '</div>'
         + '<div class="prod-actions">'
@@ -1246,7 +1383,7 @@
     var search = document.getElementById("prodSearch");
     var sBtn = document.getElementById("prodSearchBtn");
     var sortEl = document.getElementById("prodSort");
-    var exp = document.getElementById("exportProductsBtn");
+    /* Excel menu is bound globally (#excelMenuBtn) */
     var goLow = document.getElementById("prodGoLow");
     var checkAll = document.getElementById("prodCheckAll");
     var bClear = document.getElementById("prodBulkClear");
@@ -1273,7 +1410,7 @@
       A.productPage = 1;
       A.paintList(A.productQuery || "");
     };
-    if (exp) exp.onclick = function () { A.exportProductsCsv(); };
+
     if (goLow) goLow.onclick = function () {
       if (A.go) A.go("products", "stock", { push: true, page: 1 });
       else { A.productView = "stock"; A.productPage = 1; A.paintList(A.productQuery || ""); }

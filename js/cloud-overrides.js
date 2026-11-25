@@ -271,7 +271,10 @@
         if (typeof naqaUnhideIfEmptyCatalog === "function") naqaUnhideIfEmptyCatalog();
         /* User request: all quantities = 3 until inventory is managed carefully */
         if (typeof products !== "undefined" && products && products.length) {
-          products.forEach(function (p) { p.stock = 3; });
+          products.forEach(function (p) {
+            p.stock = 3;
+            p.hidden = false; /* restore catalog after accidental cloud hide */
+          });
         }
       } catch (e) {}
       var done = function () {

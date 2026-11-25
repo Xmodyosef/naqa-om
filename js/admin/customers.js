@@ -38,7 +38,6 @@
       + '<input id="custQ" type="search" placeholder="' + A.t("c_search") + '" value="' + A.esc(A._customerQuery || "") + '" class="compact-search" />'
       + A.dateFilterHtml("custDate")
       + '<div class="status-bar" style="margin-top:8px">'
-      + '<button type="button" class="mini" id="copyCustomers">' + A.t("c_copy") + '</button>'
       + '<button type="button" class="mini" id="waCustomers" style="background:#25D366;color:#fff">' + A.t("c_wa") + '</button>'
       + '<button type="button" class="mini" id="exportCustomersCsv">' + A.t("exportCsv") + '</button>'
       + '</div>'
@@ -79,11 +78,6 @@
           try { again.setSelectionRange(again.value.length, again.value.length); } catch (e) {}
         }
       });
-    }
-    var cc = document.getElementById("copyCustomers");
-    if (cc && !cc._bound) {
-      cc._bound = true;
-      cc.onclick = function () { A.copyText(A.buildCustomersReport(), "custStatus"); };
     }
     var wc = document.getElementById("waCustomers");
     if (wc && !wc._bound) {

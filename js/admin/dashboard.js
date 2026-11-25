@@ -61,6 +61,6 @@
       + '<div class="panel"><h2>' + A.t("d_recent") + '</h2>' + recent + '</div>'
       + '<div class="panel"><h2>' + A.t("d_lowTitle") + '</h2>' + lowHtml
       + '<button type="button" class="mini" data-go-tab="products" data-go-sub="stock" style="margin-top:8px">' + A.t("p_stockAll") + ' · ' + lowStock + '</button></div>'
-      + '<p class="note">' + A.t("d_note") + '</p>';
+      ;
   };
 })(window);

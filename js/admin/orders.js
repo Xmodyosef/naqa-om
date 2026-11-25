@@ -153,8 +153,6 @@
         tools._ready = true;
         tools.addEventListener("click", function (e) {
           var t = e.target;
-          if (t.id === "copyAllOrders") A.copyText(A.buildOrdersReport("all"), "orderStatus");
-          if (t.id === "copyNewOrders") A.copyText(A.buildOrdersReport("new"), "orderStatus");
           if (t.id === "waOrdersReport") A.waShareText(A.buildOrdersReport(A.orderFilter === "all" ? "new" : A.orderFilter));
           if (t.id === "exportOrdersCsv") A.exportOrdersCsv();
           if (t.id === "importWaOrders") {
@@ -180,8 +178,6 @@
         + '<summary>' + A.esc(A.t("o_tools") || (A.lang === "en" ? "Filter & tools" : "فلتر وأدوات")) + '</summary>'
         + '<div class="tools-body">'
         + A.dateFilterHtml("ordDate", "order")
-        + '<button type="button" class="mini" id="copyAllOrders">' + A.t("o_copyAll") + '</button>'
-        + '<button type="button" class="mini" id="copyNewOrders">' + A.t("o_copyNew") + '</button>'
         + '<button type="button" class="mini" id="waOrdersReport" style="background:#25D366;color:#fff">' + A.t("o_waSum") + '</button>'
         + '<button type="button" class="mini" id="exportOrdersCsv">' + A.t("exportCsv") + '</button>'
         + '<button type="button" class="mini" id="importWaOrders">' + A.t("o_waPaste") + '</button>'

@@ -79,7 +79,6 @@
     box.innerHTML =
       A.dateFilterHtml("finDate")
       + '<div class="status-bar" style="margin:0 0 10px">'
-      + '<button type="button" class="mini" id="copyFinance">' + A.t("f_copy") + '</button>'
       + '<button type="button" class="mini" id="waFinance" style="background:#25D366;color:#fff">' + A.t("f_wa") + '</button>'
       + '<button type="button" class="mini" id="exportFinanceCsv">' + A.t("exportCsv") + '</button>'
       + '</div>'
@@ -98,10 +97,8 @@
       + chartHtml
       + '<div class="panel"><h2>' + A.t("f_areas") + '</h2>' + areaHtml + '</div>'
       + '<div class="panel"><h2>' + A.t("f_prods") + '</h2>' + prodHtml + '</div>'
-      + '<p class="note" id="financeStatus">' + A.t("f_note") + '</p>';
+      + '<p class="status" id="financeStatus"></p>';
     A.bindDateFilter("finDate", function () { A.paintFinance(); });
-    var cf = document.getElementById("copyFinance");
-    if (cf) cf.onclick = function () { A.copyText(A.buildFinanceReport(), "financeStatus"); };
     var wf = document.getElementById("waFinance");
     if (wf) wf.onclick = function () { A.waShareText(A.buildFinanceReport()); };
     var ef = document.getElementById("exportFinanceCsv");

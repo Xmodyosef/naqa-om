@@ -209,14 +209,6 @@
       return;
     }
     A.touchSession();
-    if (A.loadOverridesCloud) {
-      A.loadOverridesCloud().then(function () {
-        if (A.currentTab === "products" && A.paintList) {
-          A.paintList("");
-        }
-        if (A.paintDashboard) A.paintDashboard();
-      });
-    }
     try {
       document.body.classList.remove("naqa-locked");
       document.body.classList.add("naqa-open");
@@ -227,8 +219,23 @@
     if (tabs) tabs.hidden = false;
     var wa = document.getElementById("waOrders");
     if (wa) wa.href = "https://wa.me/" + (w.WA_NUMBER || "96879088349");
-    A.loadRemoteOrders();
-    A.applyRoute((location.hash || "").replace(/^#\/?/, ""));
+    /* Route/UI first so the shell feels instant */
+    try { A.applyRoute((location.hash || "").replace(/^#\/?/, "")); } catch (e) {}
+    /* Cloud + orders in background (do not block first paint) */
+    var afterData = function () {
+      try {
+        if (A.currentTab === "products" && A.paintList) A.paintList("");
+        if (A.currentTab === "home" && A.paintDashboard) A.paintDashboard();
+      } catch (e) {}
+    };
+    if (A.loadOverridesCloud) {
+      A.loadOverridesCloud().then(afterData).catch(afterData);
+    }
+    if (A.loadRemoteOrders) {
+      setTimeout(function () {
+        try { A.loadRemoteOrders(); } catch (e) {}
+      }, 0);
+    }
   };
 
   /* PIN login removed — Firebase only */

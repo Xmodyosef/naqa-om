@@ -554,12 +554,21 @@
           return;
         }
         A.fbUser = user;
-        unlockUI();
-        if (A.touchSession) A.touchSession();
-        if (A.openAdmin) A.openAdmin();
-        /* openAdmin loads overrides once — avoid double fetch (heavy login) */
-        setMsg("");
-        setBusy(false);
+        setPending(true);
+        var finish = function () {
+          unlockUI();
+          if (A.touchSession) A.touchSession();
+          if (A.openAdmin) A.openAdmin();
+          setMsg("");
+          setBusy(false);
+          setPending(false);
+        };
+        /* Heavy modules (catalog + tabs) load only after auth — keeps gate light */
+        if (A.loadAdminModules) {
+          A.loadAdminModules().then(finish).catch(finish);
+        } else {
+          finish();
+        }
       });
     });
   };

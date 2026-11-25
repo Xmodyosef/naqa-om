@@ -1,7 +1,16 @@
 /* Shared state + helpers for Naqa admin modules */
 (function (w) {
   var A = w.NaqaAdmin = w.NaqaAdmin || {};
-  A.products = (w.NAQA_PRODUCTS || []).map(function (p) { return Object.assign({ imgs: [] }, p); });
+  A.products = (w.NAQA_PRODUCTS || []).map(function (p) { return Object.assign({ imgs: [] }, p);
+  A.refreshProductsFromBundle = function () {
+    try {
+      if (w.NAQA_PRODUCTS && w.NAQA_PRODUCTS.length) {
+        A.products = w.NAQA_PRODUCTS;
+      }
+    } catch (e) {}
+    return A.products || [];
+  };
+ });
   A.KEY = "naqa_overrides";
   A.PIN = "naqa_admin_pin";
   A.TOKEN = "naqa_gh_token";
@@ -372,7 +381,13 @@
     w.open(url, "_blank");
   };
   A.loadRemoteOrders = function () {
-    return fetch("data/orders.json?v=" + Date.now()).then(function (r) { return r.ok ? r.json() : []; }).then(function (remote) {
+    if (A._ordersRemoteLoading) return A._ordersRemoteLoading;
+    if (A._ordersRemoteLoadedAt && (Date.now() - A._ordersRemoteLoadedAt) < 60000) {
+      return Promise.resolve(A.orders || []);
+    }
+    A._ordersRemoteLoading = fetch("data/orders.json?v=" + (A._ordersRemoteVer || "1")).then(function (r) { return r.ok ? r.json() : []; }).then(function (remote) {
+      A._ordersRemoteLoadedAt = Date.now();
+      A._ordersRemoteLoading = null;
       if (!Array.isArray(remote)) return;
       var by = {};
       A.orders.forEach(function (o) { if (o && o.id) by[o.id] = o; });
@@ -388,6 +403,11 @@
       if (A.paintDashboard) A.paintDashboard();
       if (A.paintCustomers) A.paintCustomers();
       if (A.paintFinance) A.paintFinance();
-    }).catch(function () {});
+      return A.orders;
+    }).catch(function () {
+      A._ordersRemoteLoading = null;
+      return A.orders || [];
+    });
+    return A._ordersRemoteLoading;
   };
 })(window);

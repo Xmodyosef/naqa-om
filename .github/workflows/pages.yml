@@ -3,8 +3,10 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+# Site uses legacy branch Pages (main /). Keep this workflow as a no-op
+# so it does not fight the branch build with actions/deploy-pages.
 jobs:
-  skip:
+  note:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Pages uses main branch (legacy). No Actions deploy."
+      - run: echo "Pages source = main branch (legacy). No Actions deploy."

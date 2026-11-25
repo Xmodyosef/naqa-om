@@ -3,11 +3,15 @@
   A.I18N = A.I18N || {};
   A.lang = "ar";
   try { if (localStorage.getItem("naqa_admin_lang") === "en") A.lang = "en"; } catch (e) {}
-  /* One language file only. Must stay a blocking script so document.write runs while the page is parsing. */
-  document.write('<script src="js/admin/i18n/dict-' + A.lang + '.js?v=20261125stable1"><\/script>');
+  /* Dictionaries: dict-ar.js + dict-en.js loaded as defer scripts in admin.html (before this file). */
   A.t = function (k) {
-    var pack = A.I18N[A.lang] || A.I18N.ar;
-    return pack[k] != null ? pack[k] : (A.I18N.ar[k] || k);
+    try {
+      var packs = A.I18N || {};
+      var pack = packs[A.lang] || packs.ar || {};
+      if (pack && pack[k] != null) return pack[k];
+      if (packs.ar && packs.ar[k] != null) return packs.ar[k];
+    } catch (e) {}
+    return k;
   };
   A.statusLabel = function (k) { return A.t("st_" + k); };
   A.payState = function (o) {
@@ -139,7 +143,7 @@
   A.ensureLang = function (lang, done) {
     if (A.I18N && A.I18N[lang]) { done(); return; }
     var s = document.createElement("script");
-    s.src = "js/admin/i18n/dict-" + lang + ".js?v=20261125stable1";
+    s.src = "js/admin/i18n/dict-" + lang + ".js?v=20261125i18n1";
     s.onload = function () { done(); };
     s.onerror = function () { done(); };
     document.head.appendChild(s);

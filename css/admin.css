@@ -1,8 +1,8 @@
-/* نقاء admin — stable1 */
-@import url("admin/base.css?v=20261125stable1");
-@import url("admin/products-edit.css?v=20261125stable1");
-@import url("admin/login-gate.css?v=20261125stable1");
-@import url("admin/nav.css?v=20261125stable1");
-@import url("admin/login-card.css?v=20261125stable1");
-@import url("admin/settings.css?v=20261125stable1");
-@import url("admin/products-list.css?v=20261125stable1");
+/* نقاء admin — i18n1: dict via script tags, safe A.t */
+@import url("admin/base.css?v=20261125i18n1");
+@import url("admin/products-edit.css?v=20261125i18n1");
+@import url("admin/login-gate.css?v=20261125i18n1");
+@import url("admin/nav.css?v=20261125i18n1");
+@import url("admin/login-card.css?v=20261125i18n1");
+@import url("admin/settings.css?v=20261125i18n1");
+@import url("admin/products-list.css?v=20261125i18n1");

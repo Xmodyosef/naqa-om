@@ -5,11 +5,29 @@
   A.paintSection = function (tab) {
     var jobs = A._paints || {};
     var fn = jobs[tab];
-    if (!fn) return;
+    var el = document.getElementById(tab + "Tab");
+    if (el) {
+      var old = el.querySelector(".section-error");
+      if (old) try { old.remove(); } catch (e0) {}
+    }
+    if (!fn) {
+      /* modules not loaded yet — try direct paints if present */
+      try {
+        if (tab === "products" && A.paintList) { A.paintList(""); return; }
+        if (tab === "home" && A.paintDashboard) { A.paintDashboard(); return; }
+        if (tab === "orders" && A.paintOrders) { A.paintOrders(); return; }
+        if (tab === "customers" && A.paintCustomers) { A.paintCustomers(); return; }
+        if (tab === "finance" && A.paintFinance) { A.paintFinance(); return; }
+        if (tab === "settings" && A.paintSettings) { A.paintSettings(); return; }
+        if (tab === "reviews" && A.paintReviews) { A.paintReviews(); return; }
+      } catch (err0) {
+        try { console.error("naqa section fallback", tab, err0); } catch (e1) {}
+      }
+      return;
+    }
     try { fn(); }
     catch (err) {
       try { console.error("naqa section", tab, err); } catch (e) {}
-      var el = document.getElementById(tab + "Tab");
       if (!el) return;
       var note = el.querySelector(".section-error");
       if (!note) {
@@ -17,7 +35,7 @@
         note.className = "note section-error";
         el.insertBefore(note, el.firstChild);
       }
-      note.textContent = A.lang === "en"
+      note.textContent = (A.lang === "en")
         ? "This section has an error. The other buttons still work."
         : "هذا القسم فيه خطأ. باقي الأزرار تشتغل.";
     }

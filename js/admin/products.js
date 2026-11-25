@@ -1,3 +1,4 @@
+/* Hide/overrides: docs/ENGINEERING-RULES.md §2 — data-hide + explicit delete hidden + cloud sync */
 (function (w) {
   var A = w.NaqaAdmin;
   var MAX_IMGS = 6;

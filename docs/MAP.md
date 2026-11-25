@@ -85,3 +85,7 @@ bash scripts/build-store.sh
 
 - `preview-nav.html`, `preview-salla.html` — تجارب قديمة
 - `js/admin/i18n/ar/*.json`, `js/admin/i18n/en/*.json` — بقايا غير مستخدمة (الترجمة من dict فقط)
+
+
+## قواعد دائمة
+- **[ENGINEERING-RULES.md](./ENGINEERING-RULES.md)** — لا تكرري أخطاء الإخفاء / i18n / core / وميض المتجر.

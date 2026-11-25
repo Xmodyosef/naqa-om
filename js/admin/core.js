@@ -1,3 +1,4 @@
+/* Products load: docs/ENGINEERING-RULES.md §3 — refreshProductsFromBundle must stay top-level */
 /* Shared state + helpers for Naqa admin modules */
 (function (w) {
   var A = w.NaqaAdmin = w.NaqaAdmin || {};

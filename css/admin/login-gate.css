@@ -1,3 +1,25 @@
+/* P1 hard lock — panel shell never visible without .naqa-open */
+body.naqa-locked #tools,
+body.naqa-locked #tools.admin-shell,
+body.naqa-locked .admin-shell,
+body.naqa-locked .side-nav,
+body.naqa-locked .admin-main,
+body.naqa-locked #pageSubNav,
+body.naqa-locked #savebar,
+body.naqa-locked #tabs,
+body.naqa-locked #vatAdminBar,
+body.naqa-locked #adminTitle {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+body:not(.naqa-open) #tools,
+body:not(.naqa-open) .admin-shell {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+body.naqa-locked .admin-top a.store { display: inline-block; }
 /* ===== Auth gate — professional Naqa login ===== */
 body.naqa-locked #adminTitle,
 body.naqa-locked #tabs,

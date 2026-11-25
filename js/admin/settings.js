@@ -124,12 +124,14 @@
   };
 
   A.publishLive = function () {
+    if (A.requireAuth && !A.requireAuth("settingsStatus")) return Promise.resolve(false);
     if (A.syncOverridesCloud) return A.syncOverridesCloud();
     try { localStorage.setItem(A.KEY, JSON.stringify(A.overrides || {})); } catch (e) {}
     if (A.setMsg) A.setMsg("status", A.lang === "en" ? "Saved on this device" : "انحفظ على الجهاز");
   };
 
   A.publish = function () {
+    if (A.requireAuth && !A.requireAuth("settingsStatus")) return Promise.resolve(false);
     if (A.editingId != null && document.getElementById("editView") && !document.getElementById("editView").hidden && A.saveEdit) {
       A.saveEdit({ skipPublish: true });
     }

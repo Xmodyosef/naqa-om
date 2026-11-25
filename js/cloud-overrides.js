@@ -69,6 +69,9 @@
   };
 
   A.syncOverridesCloud = function () {
+    if (A.requireAuth && !A.requireAuth("status")) {
+      return Promise.resolve(false);
+    }
     var map = A.overrides || {};
     try { localStorage.setItem(A.KEY || "naqa_overrides", JSON.stringify(map)); } catch (e) {}
     return w.naqaSaveCloudOverrides(map).then(function () {

@@ -102,6 +102,8 @@
     try {
       document.body.classList.add("naqa-locked");
       document.body.classList.remove("naqa-open");
+      document.body.classList.remove("naqa-editing");
+      document.documentElement.classList.remove("naqa-editing");
     } catch (e) {}
     if ($("tools")) $("tools").hidden = true;
     if ($("tabs")) $("tabs").hidden = true;

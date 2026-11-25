@@ -389,6 +389,8 @@
   };
 
   A.openEdit = function (id, opts) {
+    if (A.requireAuth && !A.requireAuth("status")) return;
+
     opts = opts || {};
     var p = A.products.find(function (x) { return x.id == id; });
     if (!p) return;
@@ -483,6 +485,8 @@
 
 
   A.toggleHide = function (id) {
+    if (A.requireAuth && !A.requireAuth("status")) return;
+
     var p = A.products.find(function (x) { return String(x.id) === String(id); });
     if (!p) return;
     var key = String(id);
@@ -506,6 +510,8 @@
     else A.setMsg("status", A.t("p_saved"));
   };
   A.saveEdit = function (opts) {
+    if (A.requireAuth && !A.requireAuth("status")) return;
+
     opts = opts || {};
     if (A.editingId == null) return;
     var taxModeEl = document.getElementById("f_taxMode");

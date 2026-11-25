@@ -224,10 +224,16 @@
       document.body.classList.remove("naqa-locked");
       document.body.classList.add("naqa-open");
     } catch (e) {}
-    document.getElementById("pin").hidden = true;
-    document.getElementById("tools").hidden = false;
+    var pin = document.getElementById("pin");
+    if (pin) pin.hidden = true;
+    var tools = document.getElementById("tools");
+    if (tools) tools.hidden = false;
     var tabs = document.getElementById("tabs");
     if (tabs) tabs.hidden = false;
+    try {
+      document.body.classList.remove("naqa-locked", "naqa-auth-pending");
+      document.body.classList.add("naqa-open");
+    } catch (e) {}
     var wa = document.getElementById("waOrders");
     if (wa) wa.href = "https://wa.me/" + (w.WA_NUMBER || "96879088349");
     /* Route/UI first so the shell feels instant */

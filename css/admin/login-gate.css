@@ -1,249 +1,152 @@
-/* P1 hard lock — panel shell never visible without .naqa-open */
-body.naqa-locked #tools,
-body.naqa-locked #tools.admin-shell,
-body.naqa-locked .admin-shell,
-body.naqa-locked .side-nav,
-body.naqa-locked .admin-main,
-body.naqa-locked #pageSubNav,
-body.naqa-locked #savebar,
-body.naqa-locked #tabs,
-body.naqa-locked #vatAdminBar,
-body.naqa-locked #adminTitle {
-  display: none !important;
-  visibility: hidden !important;
-  pointer-events: none !important;
-}
+/* Auth FSM: booting | guest | open — single source of truth */
+
+/* Default shell hidden until open */
 body:not(.naqa-open) #tools,
 body:not(.naqa-open) .admin-shell {
   display: none !important;
-  visibility: hidden !important;
-  pointer-events: none !important;
-}
-body.naqa-locked .admin-top a.store { display: inline-block; }
-/* ===== Auth gate — professional Naqa login ===== */
-body.naqa-locked #adminTitle,
-body.naqa-locked #tabs,
-body.naqa-locked #vatAdminBar,
-body.naqa-locked #tools,
-body.naqa-locked #savebar{display:none!important}
-body.naqa-locked .admin-top{border-bottom:0;padding-bottom:8px}
-body.naqa-locked .admin-wrap{max-width:440px;margin:0 auto;padding:0 16px 40px}
-body.naqa-locked .pin-card{
-  margin-top:28px;
-  padding:28px 22px 22px;
-  border-radius:18px;
-  box-shadow:0 12px 40px rgba(45,20,28,.08);
-  border:1px solid #efe4df;
-  background:#fff;
-}
-body.naqa-open #adminTitle{display:block}
-
-.pin-card #pinLead{
-  font:800 1.35rem/1.25 "Noto Kufi Arabic",sans-serif;
-  color:#2a1a1e;
-  margin:0 0 6px;
-  text-align:center;
-}
-.pin-card #pinNote{
-  text-align:center;
-  color:#8a7f78;
-  font-size:.88rem;
-  margin:0 0 18px;
-  line-height:1.5;
-}
-.auth-hint{
-  text-align:center;
-  margin:0 0 14px!important;
-  color:#9a7b72;
-  font-size:.82rem;
-  line-height:1.45;
 }
 
-/* Fields */
-.pin-card .fb-lab{
-  display:block;margin:0 0 12px;font-size:.8rem;font-weight:700;color:#4a3a36;
-}
-.pin-card .fb-lab input,
-.pass-wrap input{
-  width:100%;box-sizing:border-box;margin-top:6px;
-  padding:13px 14px;border:1.5px solid #e8ddd8;border-radius:12px;
-  font:600 .95rem "Noto Kufi Arabic",sans-serif;color:#1f1a17;
-  background:#fdfaf8;transition:border-color .15s,box-shadow .15s;
-}
-.pin-card .fb-lab input:focus,
-.pass-wrap input:focus{
-  outline:0;border-color:#c46b7c;
-  box-shadow:0 0 0 3px rgba(196,107,124,.18);background:#fff;
-}
-.pass-wrap{position:relative;display:block}
-.pass-wrap input{padding-inline-end:48px}
-.pass-toggle{
-  position:absolute;inset-inline-end:6px;top:50%;transform:translateY(-35%);
-  border:0;background:transparent;cursor:pointer;font-size:1rem;
-  width:36px;height:36px;border-radius:8px;opacity:.7;
-}
-.pass-toggle:hover{opacity:1;background:#f5eeea}
-
-/* Primary + Google */
-.auth-btn{
-  position:relative;display:flex;align-items:center;justify-content:center;gap:10px;
-  width:100%;min-height:48px;border-radius:12px;font-weight:800;font-size:.95rem;
-  cursor:pointer;transition:transform .12s,box-shadow .15s,background .15s,opacity .15s;
-}
-.auth-btn:active:not(:disabled){transform:scale(.985)}
-.auth-btn:disabled{opacity:.55;cursor:wait}
-
-.pin-card .btn-primary.auth-btn,
-.pin-card .btn-primary{
-  margin-top:6px;width:100%;border:0;border-radius:12px;padding:13px 16px;
-  font-weight:800;background:#c46b7c;color:#fff;
-  box-shadow:0 4px 14px rgba(196,107,124,.35);
-}
-.pin-card .btn-primary:hover:not(:disabled){background:#8d3048}
-
-.auth-or{
-  display:flex;align-items:center;gap:12px;margin:16px 0 12px;color:#b9aaa6;font-size:.78rem;font-weight:700;
-}
-.auth-or::before,.auth-or::after{content:"";flex:1;height:1px;background:#efe4df}
-.auth-or span{flex-shrink:0}
-
-.pin-card .btn-google.auth-btn,
-.pin-card .btn-google{
-  margin-top:0;width:100%;border:1px solid #747775;border-radius:12px;padding:12px 16px;
-  font-weight:700;background:#fff;color:#1f1f1f;
-  box-shadow:0 1px 3px rgba(0,0,0,.04);
-}
-.pin-card .btn-google:hover:not(:disabled){background:#faf7f5;border-color:#d9cbc5}
-.btn-google .g-ico{display:inline-flex;flex-shrink:0}
-
-.auth-btn-spin{
-  width:16px;height:16px;border:2px solid currentColor;border-right-color:transparent;
-  border-radius:50%;animation:naqaSpin .7s linear infinite;
-}
-@keyframes naqaSpin{to{transform:rotate(360deg)}}
-
-.pin-card .fb-links{
-  display:flex;flex-wrap:wrap;gap:6px 16px;justify-content:center;margin-top:14px;
-}
-.pin-card .btn-link{
-  border:0;background:transparent;color:#c46b7c;font-weight:800;font-size:.82rem;
-  text-decoration:none;padding:6px 4px;cursor:pointer;
-}
-.pin-card .btn-link:hover{text-decoration:underline;color:#8d3048}
-
-/* Status */
-.pin-card #pinMsg{
-  min-height:1.3em;margin-top:14px;text-align:center;font-weight:700;font-size:.86rem;line-height:1.45;
-  color:#b05c6e;
-}
-.pin-card #pinMsg.is-ok{color:#2f7a4a}
-.pin-card #pinMsg.is-info{color:#6b5a54}
-.pin-card #pinMsg.is-err{color:#b05c6e}
-
-/* Official notes */
-.auth-notes{
-  margin-top:18px;padding:12px 14px;border-radius:12px;background:#faf6f4;
-  border:1px solid #f0e6e1;font-size:.72rem;line-height:1.55;color:#7a6a64;
-}
-.auth-notes p{margin:0 0 6px}
-.auth-notes p:last-child{margin:0}
-.auth-notes strong{color:#5a3a42;font-weight:800}
-
-/* Boot */
-body.naqa-auth-pending #pin{display:none!important}
-body.naqa-auth-pending #authBoot{display:block!important}
-.auth-boot{text-align:center;padding:56px 20px;color:#9a7b72;font-weight:700}
-body.naqa-open #authBoot{display:none!important}
-#fbForm{margin:0}
-#fbLogin{margin-top:4px}
-
-/* ===== p0a: Google-first + no-flash helpers ===== */
-.auth-btn-primary-google{
-  margin-top:4px !important;
-  min-height:52px !important;
-  border:2px solid #c46b7c !important;
-  box-shadow:0 4px 14px rgba(196,107,124,.22) !important;
-}
-.auth-email-details{
-  margin-top:4px;
-  border:1px solid #efe4df;
-  border-radius:12px;
-  background:#fdfaf8;
-  padding:0 12px 10px;
-}
-.auth-email-details > summary{
-  cursor:pointer;
-  list-style:none;
-  font-weight:800;
-  font-size:.88rem;
-  color:#5a3a42;
-  padding:12px 4px;
-  text-align:center;
-}
-.auth-email-details > summary::-webkit-details-marker{display:none}
-.auth-email-details[open] > summary{border-bottom:1px solid #efe4df;margin-bottom:10px}
-/* Contrast: notes / muted on white */
-.auth-hint,.pin-card #pinNote,.auth-notes{color:#5c4f4a !important}
-.pin-card #pinMsg.is-info{color:#5c4f4a !important}
-/* Auth pending: never show tools or pin */
-body.naqa-auth-pending #tools,
-body.naqa-auth-pending .admin-shell{display:none !important}
-body.naqa-open main.admin-main{display:block}
-
-/* login1: classic email-first, Google secondary */
-.auth-btn-primary-google{ /* legacy class no longer used as primary */ }
-.auth-email-details{display:none !important}
-#fbForm{margin:0 0 8px}
-#fbGoogle{margin-top:4px}
-#fbNoteSave{display:block !important}
-
-/* login2: email form always visible, Google secondary */
-.auth-email-details{display:contents !important}
-#fbEmailDetails > summary{display:none !important}
-#fbForm{display:block !important; margin:0 0 8px}
-.auth-btn-primary-google{border:1px solid #747775 !important; box-shadow:0 1px 3px rgba(0,0,0,.04) !important; min-height:48px !important}
-#fbNoteSave{display:block !important}
-#fbCreate{display:none !important}
-
-
-/* Login card only when locked, auth resolved, not open */
-body.naqa-locked:not(.naqa-auth-pending):not(.naqa-open) #pin {
-  display: block !important;
-  visibility: visible !important;
-}
-
-/* ===== unhang1: boot cannot trap the panel ===== */
-body.naqa-auth-pending #pin,
-body.naqa-auth-pending #fbLogin {
-  display: none !important;
-  visibility: hidden !important;
-  pointer-events: none !important;
-}
-body.naqa-auth-pending #authBoot {
-  display: block !important;
-  visibility: visible !important;
-}
-body.naqa-auth-pending #tools,
-body.naqa-auth-pending .admin-shell {
-  display: none !important;
-}
-/* After unlock: force shell visible even if a stale class remains */
 body.naqa-open #tools,
-body.naqa-open .admin-shell,
-body.naqa-open main.admin-main {
+body.naqa-open .admin-shell {
   display: block !important;
   visibility: visible !important;
   pointer-events: auto !important;
 }
-body.naqa-open #pin,
-body.naqa-open #authBoot {
+
+/* Booting */
+body.naqa-auth-pending #authBoot {
+  display: block !important;
+}
+body.naqa-auth-pending #pin,
+body.naqa-auth-pending #tools {
   display: none !important;
 }
-/* expect-auth only hides pin while STILL pending — not after fail */
-html.naqa-expect-auth body.naqa-auth-pending #pin {
-  display: none !important;
-}
+
+/* Guest: show pin only */
 body.naqa-locked:not(.naqa-auth-pending):not(.naqa-open) #pin {
   display: block !important;
   visibility: visible !important;
 }
+body.naqa-locked:not(.naqa-auth-pending):not(.naqa-open) #authBoot {
+  display: none !important;
+}
+
+/* Open: hide gate */
+body.naqa-open #pin,
+body.naqa-open #authBoot {
+  display: none !important;
+}
+
+.auth-boot {
+  text-align: center;
+  padding: 48px 16px;
+  color: #6b5a54;
+  font-weight: 700;
+}
+
+/* Login card */
+.pin-card {
+  max-width: 420px;
+  margin: 24px auto;
+  padding: 22px 18px 20px;
+  background: #fff;
+  border: 1px solid #efe4df;
+  border-radius: 16px;
+  box-shadow: 0 8px 28px rgba(40, 20, 24, .06);
+}
+.pin-card #pinLead {
+  margin: 0 0 6px;
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #2a1a1e;
+  text-align: center;
+}
+.pin-card #pinNote {
+  margin: 0 0 14px;
+  text-align: center;
+  color: #6b5a54;
+  font-size: .9rem;
+}
+.auth-hint { margin: 0 0 12px; text-align: center; font-size: .85rem; color: #5c4f4a; }
+.auth-form { display: flex; flex-direction: column; gap: 10px; }
+.fb-lab { display: flex; flex-direction: column; gap: 6px; font-size: .82rem; font-weight: 700; color: #4a3c38; }
+.fb-lab input {
+  border: 1px solid #e7d9d3;
+  border-radius: 12px;
+  padding: 12px 14px;
+  font: inherit;
+  background: #fff;
+}
+.pass-wrap { position: relative; display: flex; align-items: center; }
+.pass-wrap input { width: 100%; padding-inline-end: 44px; }
+.pass-toggle {
+  position: absolute;
+  inset-inline-end: 8px;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  font-size: 1rem;
+  line-height: 1;
+  padding: 6px;
+}
+.auth-btn {
+  min-height: 48px;
+  border-radius: 12px;
+  font-weight: 800;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+}
+.btn-primary.auth-btn {
+  border: 0;
+  background: #c46b7c;
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(196,107,124,.3);
+}
+.btn-primary.auth-btn:disabled { opacity: .65; cursor: wait; }
+.btn-google.auth-btn {
+  width: 100%;
+  border: 1px solid #747775;
+  background: #fff;
+  color: #1f1f1f;
+  font-weight: 600;
+}
+.btn-google .g-ico { display: inline-flex; }
+.auth-btn-spin {
+  width: 16px; height: 16px;
+  border: 2px solid rgba(255,255,255,.35);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: naqaSpin .7s linear infinite;
+}
+.btn-google .auth-btn-spin {
+  border-color: rgba(0,0,0,.15);
+  border-top-color: #333;
+}
+@keyframes naqaSpin { to { transform: rotate(360deg); } }
+.fb-links { display: flex; justify-content: center; margin: 8px 0 4px; }
+.btn-link {
+  border: 0; background: none; color: #8d3048;
+  font: inherit; font-weight: 700; font-size: .85rem; cursor: pointer; text-decoration: underline;
+}
+.auth-or {
+  display: flex; align-items: center; gap: 10px;
+  margin: 12px 0; color: #9a8b86; font-size: .8rem; font-weight: 700;
+}
+.auth-or::before, .auth-or::after {
+  content: ""; flex: 1; height: 1px; background: #efe4df;
+}
+.auth-notes { margin-top: 12px; }
+.auth-notes p {
+  margin: 0 0 6px; font-size: .78rem; color: #7a6b66; line-height: 1.45; text-align: center;
+}
+.pin-card #pinMsg {
+  margin: 12px 0 0; text-align: center; font-size: .88rem; font-weight: 700; min-height: 1.2em;
+}
+.pin-card #pinMsg.is-ok { color: #2f7a4a; }
+.pin-card #pinMsg.is-info { color: #6b5a54; }
+.pin-card #pinMsg.is-err { color: #b05c6e; }
+#adminTitle { display: none; }
+body.naqa-open #adminTitle { display: block; }

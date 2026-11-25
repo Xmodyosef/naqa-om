@@ -2,11 +2,10 @@
   "use strict";
 
   /**
-   * Naqa Admin Auth Gate
-   * Based on:
-   * - Firebase Auth (email/password + Google) official web APIs
-   * - Credential Management API (PasswordCredential / FederatedCredential)
-   * - Google Web Fundamentals: save credentials after successful sign-in
+   * Naqa Admin Auth Gate — finite state machine (no UI races)
+   * States: booting | guest | open
+   * Evidence-based rewrite: previous hang was lockUI/setPending/showFbOnly/openAdmin
+   * fighting over body classes while unlockUI never cleared #tools[hidden].
    */
 
   var A = w.NaqaAdmin = w.NaqaAdmin || {};
@@ -15,6 +14,8 @@
   var AUTH_HINT_KEY = "naqa_admin_authed";
   var _busy = false;
   var _authReady = false;
+  var _state = "booting"; /* booting | guest | open */
+  var _unsubAuth = null;
 
   function $(id) { return document.getElementById(id); }
 
@@ -26,10 +27,6 @@
     try { localStorage.removeItem(AUTH_HINT_KEY); } catch (e) {}
     try { document.documentElement.classList.remove("naqa-expect-auth"); } catch (e) {}
   }
-  function hasAuthHint() {
-    try { return localStorage.getItem(AUTH_HINT_KEY) === "1"; } catch (e) { return false; }
-  }
-
 
   function t(key, fallback) {
     try {
@@ -41,7 +38,6 @@
     return fallback != null ? fallback : key;
   }
 
-  /** kind: err | ok | info */
   function setMsg(text, kind) {
     var msg = $("pinMsg");
     if (!msg) return;
@@ -54,7 +50,7 @@
 
   function setBusy(on, which) {
     _busy = !!on;
-    ["fbGo", "fbGoogle", "fbReset", "fbCreate", "fbTogglePass"].forEach(function (id) {
+    ["fbGo", "fbGoogle", "fbReset", "fbTogglePass"].forEach(function (id) {
       var el = $(id);
       if (el) el.disabled = !!on && id !== "fbTogglePass";
     });
@@ -95,121 +91,122 @@
     });
   }
 
-  /** Always firebaseapp.com — always in Authorized domains (Firebase docs). */
   function adminContinueUrl() {
     return "https://naqa-om.firebaseapp.com";
   }
 
-  function setPending(on) {
-    try {
-      if (on) document.body.classList.add("naqa-auth-pending");
-      else document.body.classList.remove("naqa-auth-pending");
-    } catch (e) {}
+  /**
+   * Single UI renderer — only entry that mutates gate/shell visibility.
+   * booting: boot text only
+   * guest: login form only
+   * open: admin shell only
+   */
+  function renderAuthUI(state, msgText, msgKind) {
+    _state = state;
     var boot = $("authBoot");
-    if (boot) {
-      boot.hidden = !on;
-      var tx = $("authBootText");
-      if (tx) tx.textContent = t("fb_booting", "جاري فتح اللوحة…");
-    }
-    /* Iron rule: while pending, login card is never visible */
-    if (on && $("pin")) $("pin").hidden = true;
-  }
+    var pin = $("pin");
+    var tools = $("tools");
+    var tabs = $("tabs");
+    var body = document.body;
 
-  function lockUI() {
     try {
-      document.body.classList.add("naqa-locked");
-      document.body.classList.remove("naqa-open");
-      document.body.classList.remove("naqa-editing");
-      document.documentElement.classList.remove("naqa-editing");
+      body.classList.remove("naqa-auth-pending", "naqa-locked", "naqa-open");
     } catch (e) {}
-    if ($("tools")) $("tools").hidden = true;
-    if ($("tabs")) $("tabs").hidden = true;
-    /* Do not flash login during Firebase restore — only after auth is ready */
-    if ($("pin")) $("pin").hidden = !_authReady;
-    if (!_authReady) {
-      setPending(true);
-    } else if ($("authBoot")) {
-      $("authBoot").hidden = true;
-    }
-  }
 
-  function unlockUI() {
-    try {
-      document.body.classList.remove("naqa-locked");
-      document.body.classList.add("naqa-open");
-      document.body.classList.remove("naqa-auth-pending");
-    } catch (e) {}
+    if (state === "booting") {
+      try { body.classList.add("naqa-locked", "naqa-auth-pending"); } catch (e) {}
+      if (boot) {
+        boot.hidden = false;
+        var tx = $("authBootText");
+        if (tx) tx.textContent = t("fb_booting", "جاري فتح اللوحة…");
+      }
+      if (pin) pin.hidden = true;
+      if (tools) tools.hidden = true;
+      if (tabs) tabs.hidden = true;
+      return;
+    }
+
+    if (state === "guest") {
+      clearAuthed();
+      try { body.classList.add("naqa-locked"); } catch (e) {}
+      if (boot) boot.hidden = true;
+      if (pin) pin.hidden = false;
+      if (tools) tools.hidden = true;
+      if (tabs) tabs.hidden = true;
+      if ($("fbLogin")) $("fbLogin").hidden = false;
+      if ($("pinRow")) $("pinRow").hidden = true;
+      try {
+        var last = localStorage.getItem(EMAIL_KEY) || "";
+        if (last && $("fbEmail") && !$("fbEmail").value) $("fbEmail").value = last;
+      } catch (e) {}
+      applyAuthLang();
+      if (msgText) setMsg(msgText, msgKind || "err");
+      return;
+    }
+
+    /* open */
     markAuthed();
-    if ($("pin")) $("pin").hidden = true;
-    if ($("authBoot")) $("authBoot").hidden = true;
+    try { body.classList.add("naqa-open"); } catch (e) {}
+    if (boot) boot.hidden = true;
+    if (pin) pin.hidden = true;
+    if (tools) tools.hidden = false; /* critical: attribute + CSS */
+    if (tabs) tabs.hidden = false;
+    setMsg("");
   }
 
-  function showPinOnly() {
-    if ($("fbLogin")) $("fbLogin").hidden = true;
-    if ($("pinRow")) $("pinRow").hidden = false;
-    if ($("pin")) $("pin").hidden = !_authReady;
-    A.fbApplyLabels && A.fbApplyLabels();
+  function applyAuthLang() {
+    var lead = $("pinLead");
+    if (lead) lead.textContent = t("fb_welcome", "مرحباً بكِ في لوحة نقاء ✨");
+    var note = $("pinNote");
+    if (note) note.textContent = t("fb_note", "ادخلي بحسابك لإدارة الطلبات والمنتجات.");
+    var hint = $("fbPassHint");
+    if (hint) hint.textContent = t("fb_hint", "ادخلي بالإيميل وكلمة السر المحفوظة على جهازك.");
+    if ($("fbEmailLabel")) $("fbEmailLabel").textContent = t("fb_email", "البريد الإلكتروني");
+    if ($("fbPassLabel")) $("fbPassLabel").textContent = t("fb_pass", "كلمة المرور");
+    if ($("fbGoLabel")) $("fbGoLabel").textContent = t("fb_go", "تسجيل الدخول");
+    else if ($("fbGo")) $("fbGo").textContent = t("fb_go", "تسجيل الدخول");
+    if ($("fbGoogleLabel")) $("fbGoogleLabel").textContent = t("fb_google", "المتابعة مع Google");
+    if ($("fbReset")) $("fbReset").textContent = t("fb_forgot", "نسيت كلمة المرور؟");
+    if ($("fbOr")) $("fbOr").textContent = t("fb_or", "أو");
+    if ($("fbNoteSession")) $("fbNoteSession").textContent = t("fb_session", "تبقى الجلسة على هذا الجهاز حتى تسجّلي الخروج.");
+    if ($("fbNoteSave")) $("fbNoteSave").textContent = t("fb_save", "بعد دخول ناجح قد يقترح المتصفح حفظ الإيميل وكلمة السر.");
+    if ($("fbNoteGoogle")) $("fbNoteGoogle").textContent = t("fb_googleNote", "Google اختياري. النطاق: xmodyosef.github.io");
+    A.fbApplyLabels = applyAuthLang;
   }
-
-  function showFbOnly() {
-    if ($("fbLogin")) $("fbLogin").hidden = false;
-    if ($("pinRow")) $("pinRow").hidden = true;
-    /* Only reveal gate when auth resolved with no user */
-    if ($("pin")) $("pin").hidden = !_authReady;
-    if (_authReady) {
-      try { document.body.classList.remove("naqa-auth-pending"); } catch (e) {}
-      if ($("authBoot")) $("authBoot").hidden = true;
-    }
-    A.fbApplyLabels();
-    try {
-      var last = localStorage.getItem(EMAIL_KEY) || "";
-      if (last && $("fbEmail") && !$("fbEmail").value) $("fbEmail").value = last;
-    } catch (e) {}
-  }
-
 
   function mapAuthError(err, context) {
     var code = (err && err.code) || "";
-    if (code === "auth/popup-blocked") return t("fb_popup", "");
-    if (code === "auth/popup-closed-by-user" || code === "auth/cancelled-popup-request") return t("fb_popupClosed", "");
-    if (code === "auth/operation-not-allowed") return t("fb_providerOff", "");
+    if (code === "auth/popup-blocked") return t("fb_popup", "اسمحي بالنوافذ المنبثقة.");
+    if (code === "auth/popup-closed-by-user" || code === "auth/cancelled-popup-request") return t("fb_popupClosed", "أُغلقت نافذة Google.");
+    if (code === "auth/operation-not-allowed") return t("fb_providerOff", "فعّلي الطريقة في Firebase Authentication.");
     if (code === "auth/unauthorized-domain" || code === "auth/unauthorized-continue-uri" || code === "auth/invalid-continue-uri") {
-      return t("fb_domain", "أضيفي xmodyosef.github.io في Firebase → Authentication → Settings → Authorized domains.");
+      return t("fb_domain", "أضيفي xmodyosef.github.io في Firebase → Authorized domains.");
     }
-    if (code === "auth/user-not-found") {
-      return context === "reset" ? t("fb_resetNoUser", "") : t("fb_badOrCreate", "");
-    }
+    if (code === "auth/user-not-found") return t("fb_badOrCreate", "الإيميل أو كلمة السر غير صحيحة.");
     if (code === "auth/wrong-password" || code === "auth/invalid-credential" || code === "auth/invalid-email") {
-      return t("fb_badOrCreate", "");
+      return t("fb_badOrCreate", "الإيميل أو كلمة السر غير صحيحة.");
     }
-    if (code === "auth/email-already-in-use") return t("fb_exists", "");
-    if (code === "auth/weak-password") return t("fb_passShort", "");
-    if (code === "auth/too-many-requests") return t("fb_rate", "");
-    if (code === "auth/network-request-failed") return t("fb_network", "");
-    if (code === "auth/account-exists-with-different-credential") return t("fb_existsDiff", "");
-    if (context === "google") return t("fb_googleOff", "") + (code ? " (" + code.replace("auth/", "") + ")" : "");
-    if (context === "reset") return t("fb_resetFail", "") + (code ? " (" + code.replace("auth/", "") + ")" : "");
-    if (context === "create") {
-      return t("fb_createFail", "") + (code ? " (" + code.replace("auth/", "") + ")" : "");
-    }
-    return t("fb_bad", "") + (code ? " (" + code.replace("auth/", "") + ")" : "");
+    if (code === "auth/too-many-requests") return t("fb_rate", "محاولات كثيرة. انتظري قليلاً.");
+    if (code === "auth/network-request-failed") return t("fb_network", "مشكلة شبكة. تحققي من الإنترنت.");
+    if (context === "google") return t("fb_googleOff", "تعذّر Google.") + (code ? " (" + code.replace("auth/", "") + ")" : "");
+    if (context === "reset") return t("fb_resetFail", "تعذّر إرسال رابط الاستعادة.") + (code ? " (" + code.replace("auth/", "") + ")" : "");
+    return t("fb_bad", "تعذّر تسجيل الدخول.") + (code ? " (" + code.replace("auth/", "") + ")" : "");
   }
 
   function needEmailPass() {
     var email = ($("fbEmail") && $("fbEmail").value || "").trim();
     var pass = ($("fbPass") && $("fbPass").value || "");
     if (!email || !pass) {
-      setMsg(t("fb_need", ""), "err");
+      setMsg(t("fb_need", "أدخلي الإيميل وكلمة السر."), "err");
       return null;
     }
     if (pass.length < 6) {
-      setMsg(t("fb_passShort", ""), "err");
+      setMsg(t("fb_passShort", "كلمة السر 6 أحرف على الأقل."), "err");
       return null;
     }
     return { email: email, pass: pass };
   }
 
-  /** Google Credential Management API — save password after successful auth */
   function offerPasswordSave(email, pass) {
     try {
       if (!email || !pass) return;
@@ -217,14 +214,13 @@
         var cred = new w.PasswordCredential({
           id: email,
           password: pass,
-          name: (A.lang === "en" ? "Naqa · Admin" : "نقاء · لوحة التحكم")
+          name: A.lang === "en" ? "Naqa · Admin" : "نقاء · لوحة التحكم"
         });
         navigator.credentials.store(cred).catch(function () {});
       }
     } catch (e) {}
   }
 
-  /** FederatedCredential after Google sign-in (Chrome/Android) */
   function offerGoogleSave(user) {
     try {
       if (!user || !user.email) return;
@@ -249,42 +245,67 @@
   }
 
   function sendPasswordReset(email) {
-    function once(withUrl) {
-      if (withUrl) {
+    return firebase.auth().sendPasswordResetEmail(email).catch(function (err) {
+      var c = (err && err.code) || "";
+      if (c === "auth/unauthorized-continue-uri" || c === "auth/invalid-continue-uri" || c === "auth/missing-continue-uri") {
         return firebase.auth().sendPasswordResetEmail(email, {
           url: adminContinueUrl(),
           handleCodeInApp: false
         });
       }
-      return firebase.auth().sendPasswordResetEmail(email);
-    }
-    /* Prefer no custom continue URL first (avoids unauthorized-continue-uri), then firebaseapp */
-    return once(false).catch(function (err) {
-      var c = (err && err.code) || "";
-      if (c === "auth/unauthorized-continue-uri" || c === "auth/invalid-continue-uri" || c === "auth/missing-continue-uri") {
-        return once(true);
-      }
       throw err;
     });
   }
 
-  function guideAfterLoginFail(email, err) {
-    var base = mapAuthError(err, "login");
-    if (!email || !firebase.auth().fetchSignInMethodsForEmail) {
-      setMsg(base, "err");
+  function enterOpen(user) {
+    A.fbUser = user;
+    renderAuthUI("open");
+    setBusy(false);
+    try { if (A.touchSession) A.touchSession(); } catch (e) {}
+    try { if (A.openAdmin) A.openAdmin(); } catch (e) {}
+    function afterModules() {
+      try { if (A.openAdmin) A.openAdmin(); } catch (e) {}
+      try {
+        if (A.currentTab === "products" && A.paintList) A.paintList("");
+        if (A.currentTab === "home" && A.paintDashboard) A.paintDashboard();
+      } catch (e) {}
+    }
+    if (A.loadAdminModules) {
+      A.loadAdminModules().then(afterModules).catch(afterModules);
+    }
+  }
+
+  function rejectUser(msg) {
+    A.fbUser = null;
+    clearAuthed();
+    preventSilentReentry();
+    firebase.auth().signOut().catch(function () {}).then(function () {
+      _authReady = true;
+      renderAuthUI("guest", msg || t("fb_notAllowed", "هذا الحساب غير مصرّح له."), "err");
+      setBusy(false);
+    });
+  }
+
+  function handleUser(user) {
+    if (!user) {
+      A.fbUser = null;
+      renderAuthUI("guest");
       return;
     }
-    firebase.auth().fetchSignInMethodsForEmail(email).then(function (methods) {
-      methods = methods || [];
-      if (methods.indexOf("google.com") >= 0 && methods.indexOf("password") < 0) {
-        setMsg(t("fb_useGoogle", "هذا الحساب مربوط بـ Google. اضغطي «المتابعة مع Google»."), "info");
-      } else if (methods.indexOf("password") >= 0) {
-        setMsg(t("fb_badPassHint", "كلمة المرور غير صحيحة. جرّبي «نسيت كلمة المرور؟»."), "err");
-      } else {
-        setMsg(base, "err");
+    /* keep booting until allow-list resolves */
+    renderAuthUI("booting");
+    allowedEmail(user).then(function (ok) {
+      var uidOk = true;
+      try {
+        if (w.naqaIsAdminUid) uidOk = naqaIsAdminUid(user.uid);
+      } catch (e) { uidOk = true; }
+      if (!ok || !uidOk) {
+        rejectUser(t("fb_notAllowed", "هذا الحساب غير مصرّح له."));
+        return;
       }
+      enterOpen(user);
     }).catch(function () {
-      setMsg(base, "err");
+      renderAuthUI("guest", t("fb_bad", "تعذّر التحقق من الحساب."), "err");
     });
   }
 
@@ -293,115 +314,76 @@
     var cred = needEmailPass();
     if (!cred) return;
     setBusy(true, "fbGo");
-    setMsg(t("fb_wait", ""), "info");
+    setMsg(t("fb_wait", "جاري التحقق…"), "info");
     allowedEmail(cred.email).then(function (ok) {
       if (!ok) {
-        setMsg(t("fb_notAllowed", ""), "err");
+        setMsg(t("fb_notAllowed", "هذا الحساب غير مصرّح له."), "err");
         setBusy(false);
         return;
       }
       return firebase.auth().signInWithEmailAndPassword(cred.email, cred.pass).then(function () {
-        setMsg(t("fb_signedIn", "تم تسجيل الدخول."), "ok");
         try { localStorage.setItem(EMAIL_KEY, cred.email); } catch (e) {}
         offerPasswordSave(cred.email, cred.pass);
+        /* onAuthStateChanged will enterOpen */
       }).catch(function (err) {
-        guideAfterLoginFail(cred.email, err);
-      }).finally(function () { setBusy(false); });
-    });
-  }
-
-  function doCreate() {
-    if (_busy) return;
-    var cred = needEmailPass();
-    if (!cred) return;
-    setBusy(true, "fbGo");
-    setMsg(t("fb_waitCreate", ""), "info");
-    allowedEmail(cred.email).then(function (ok) {
-      if (!ok) { setMsg(t("fb_notAllowed", ""), "err"); setBusy(false); return; }
-      try { if ($("fbPass")) $("fbPass").setAttribute("autocomplete", "new-password"); } catch (e) {}
-      firebase.auth().createUserWithEmailAndPassword(cred.email, cred.pass).then(function () {
-        setMsg(t("fb_created", ""), "ok");
-        try { localStorage.setItem(EMAIL_KEY, cred.email); } catch (e) {}
-        offerPasswordSave(cred.email, cred.pass);
-      }).catch(function (err) {
-        var code = (err && err.code) || "";
-        if (code === "auth/email-already-in-use") {
-          setMsg(t("fb_existsSendReset", "الحساب موجود. نرسل رابط تعيين كلمة المرور…"), "info");
-          return sendPasswordReset(cred.email).then(function () {
-            setMsg(t("fb_resetSent", ""), "ok");
-          }).catch(function (e2) {
-            setMsg(mapAuthError(e2, "reset"), "err");
-          });
-        }
-        setMsg(mapAuthError(err, "create"), "err");
-      }).finally(function () {
-        try { if ($("fbPass")) $("fbPass").setAttribute("autocomplete", "current-password"); } catch (e) {}
+        setMsg(mapAuthError(err, "login"), "err");
         setBusy(false);
       });
+    }).catch(function () {
+      setMsg(t("fb_bad", "تعذّر تسجيل الدخول."), "err");
+      setBusy(false);
     });
   }
 
   function doGoogle() {
     if (_busy) return;
     setBusy(true, "fbGoogle");
-    setMsg(t("fb_waitGoogle", ""), "info");
+    setMsg(t("fb_wait", "جاري التحقق…"), "info");
     var provider = new firebase.auth.GoogleAuthProvider();
     provider.setCustomParameters({ prompt: "select_account" });
-    provider.addScope("email");
-    provider.addScope("profile");
-    /* Hosted on GitHub Pages, not Firebase Hosting.
-       Official: https://firebase.google.com/docs/auth/web/redirect-best-practices
-       Option 2 — signInWithPopup. Redirect needs a same-site /__/auth proxy,
-       which Pages cannot provide, and it is what flashed the handler URL. */
     firebase.auth().signInWithPopup(provider).then(function (result) {
-      offerGoogleSave((result && result.user) || firebase.auth().currentUser);
-      setMsg("", "ok");
-      setBusy(false);
+      offerGoogleSave((result && result.user) || null);
+      /* onAuthStateChanged handles allow-list + open */
     }).catch(function (err) {
-      setMsg(mapAuthError(err, "google"), "err");
       setBusy(false);
+      setMsg(mapAuthError(err, "google"), "err");
     });
   }
 
   function doReset() {
     if (_busy) return;
     var email = ($("fbEmail") && $("fbEmail").value || "").trim();
-    if (!email) { setMsg(t("fb_resetNeed", ""), "err"); return; }
+    if (!email) {
+      setMsg(t("fb_needEmail", "أدخلي الإيميل أولاً."), "err");
+      return;
+    }
     setBusy(true);
-    setMsg(t("fb_waitReset", ""), "info");
+    setMsg(t("fb_wait", "جاري الإرسال…"), "info");
     allowedEmail(email).then(function (ok) {
-      if (!ok) { setMsg(t("fb_notAllowed", ""), "err"); setBusy(false); return; }
-      /* If account is Google-only, password reset is not applicable */
-      var chain = Promise.resolve(null);
-      if (firebase.auth().fetchSignInMethodsForEmail) {
-        chain = firebase.auth().fetchSignInMethodsForEmail(email).catch(function () { return null; });
+      if (!ok) {
+        setMsg(t("fb_notAllowed", "هذا الحساب غير مصرّح له."), "err");
+        setBusy(false);
+        return null;
       }
-      return chain.then(function (methods) {
-        if (methods && methods.indexOf("google.com") >= 0 && methods.indexOf("password") < 0) {
-          setMsg(t("fb_useGoogle", "هذا الحساب مربوط بـ Google. اضغطي «المتابعة مع Google»."), "info");
-          setBusy(false);
-          return;
-        }
-        return sendPasswordReset(email).then(function () {
-          setMsg(t("fb_resetSent", ""), "ok");
-        }).catch(function (err) {
-          setMsg(mapAuthError(err, "reset"), "err");
-        }).finally(function () { setBusy(false); });
-      });
+      return sendPasswordReset(email).then(function () {
+        setMsg(t("fb_resetSent", "تم إرسال رابط استعادة كلمة السر إلى بريدك."), "ok");
+      }).catch(function (err) {
+        setMsg(mapAuthError(err, "reset"), "err");
+      }).finally(function () { setBusy(false); });
     });
   }
 
   A.fbSignOut = function () {
-    if (!w.firebase || !firebase.auth) return Promise.resolve();
+    if (!w.firebase || !firebase.auth) {
+      renderAuthUI("guest");
+      return Promise.resolve();
+    }
     return firebase.auth().signOut().then(function () {
       A.fbUser = null;
       clearAuthed();
       preventSilentReentry();
       _authReady = true;
-      lockUI();
-      setPending(false);
-      showFbOnly();
-      setMsg(t("fb_signedOut", ""), "info");
+      renderAuthUI("guest", t("fb_signedOut", "تم تسجيل الخروج."), "info");
     });
   };
 
@@ -413,10 +395,6 @@
         email.type = "email";
         email.name = "username";
         email.setAttribute("autocomplete", "username");
-        email.setAttribute("inputmode", "email");
-        email.setAttribute("autocapitalize", "off");
-        email.setAttribute("autocorrect", "off");
-        email.setAttribute("spellcheck", "false");
       } catch (e) {}
     }
     if (pass) {
@@ -424,7 +402,6 @@
         pass.type = "password";
         pass.name = "password";
         pass.setAttribute("autocomplete", "current-password");
-        pass.setAttribute("autocapitalize", "off");
       } catch (e) {}
     }
   }
@@ -437,69 +414,11 @@
     tog.onclick = function () {
       var show = pass.type === "password";
       pass.type = show ? "text" : "password";
-      tog.setAttribute("aria-label", show ? t("fb_hidePass", "إخفاء كلمة المرور") : t("fb_showPass", "إظهار كلمة المرور"));
       tog.textContent = show ? "🙈" : "👁";
     };
   }
 
-  A.fbBoot = function () {
-    if (!w.naqaFirebaseEnabled || !naqaFirebaseEnabled()) {
-      _authReady = true;
-      clearAuthed();
-      setPending(false);
-      lockUI();
-      showFbOnly();
-      setMsg(t("fb_loadFail", "Firebase غير مفعّل."), "err");
-      return;
-    }
-    if (!w.firebase || !firebase.apps) {
-      _authReady = true;
-      clearAuthed();
-      setPending(false);
-      lockUI();
-      showFbOnly();
-      setMsg(t("fb_loadFail", ""), "err");
-      return;
-    }
-    try {
-      if (!firebase.apps.length) firebase.initializeApp(w.NAQA_FIREBASE);
-    } catch (e) {
-      _authReady = true;
-      clearAuthed();
-      setPending(false);
-      lockUI();
-      showFbOnly();
-      setMsg(t("fb_loadFail", ""), "err");
-      return;
-    }
-
-    _authReady = false;
-    setPending(true);
-    if ($("pin")) $("pin").hidden = true;
-    applyAuthLang();
-
-    try {
-      /* LOCAL: stay signed in across tabs/reloads until explicit sign-out (Firebase docs) */
-      firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL);
-    } catch (e) {}
-
-    /* DO NOT showFbOnly here — that caused the login flash on every reload */
-    naqaFixLoginFields();
-    bindTogglePass();
-    /* Prepare form DOM (still hidden by pending CSS) so autofill can bind */
-    if ($("fbLogin")) $("fbLogin").hidden = false;
-
-    firebase.auth().getRedirectResult().then(function (result) {
-      if (result && result.user) offerGoogleSave(result.user);
-    }).catch(function (err) {
-      /* Ignore empty redirect errors; only surface real Google redirect failures after auth ready */
-      var c = (err && err.code) || "";
-      if (c && c !== "auth/null-user") {
-        /* stay pending; onAuthStateChanged decides gate vs panel */
-        console.warn("[naqa-auth] redirect", c);
-      }
-    });
-
+  function bindForms() {
     var form = $("fbForm");
     if (form && !form._bound) {
       form._bound = true;
@@ -508,140 +427,83 @@
         doLogin();
       });
     }
-    var go = $("fbGo");
-    if (go && !go._bound && (!form || go.type !== "submit")) {
-      go._bound = true;
-      go.onclick = function (ev) {
-        if (ev) ev.preventDefault();
-        doLogin();
-      };
-    }
-
-    var create = $("fbCreate");
-    if (create && !create._bound) {
-      create._bound = true;
-      create.onclick = function () { doCreate(); };
-    }
-
     var google = $("fbGoogle");
     if (google && !google._bound) {
       google._bound = true;
       google.onclick = function () { doGoogle(); };
     }
-
     var reset = $("fbReset");
     if (reset && !reset._bound) {
       reset._bound = true;
       reset.onclick = function () { doReset(); };
     }
+  }
 
-    firebase.auth().onAuthStateChanged(function (user) {
+  A.fbBoot = function () {
+    renderAuthUI("booting");
+    applyAuthLang();
+    naqaFixLoginFields();
+    bindTogglePass();
+    bindForms();
+
+    if (!w.naqaFirebaseEnabled || !naqaFirebaseEnabled()) {
       _authReady = true;
+      renderAuthUI("guest", t("fb_loadFail", "Firebase غير مفعّل."), "err");
+      return;
+    }
+    if (!w.firebase || !firebase.apps) {
+      _authReady = true;
+      renderAuthUI("guest", t("fb_loadFail", "مكتبة Firebase لم تُحمّل."), "err");
+      return;
+    }
+    try {
+      if (!firebase.apps.length) firebase.initializeApp(w.NAQA_FIREBASE);
+    } catch (e) {
+      _authReady = true;
+      renderAuthUI("guest", t("fb_loadFail", "فشل تهيئة Firebase."), "err");
+      return;
+    }
 
-      if (!user) {
-        A.fbUser = null;
-        clearAuthed();
-        lockUI();
-        setPending(false);
-        showFbOnly();
-        return;
+    /* Watchdog: hard fail out of booting (engineering safety, not guess) */
+    var bootWatch = setTimeout(function () {
+      if (_state === "booting") {
+        _authReady = true;
+        renderAuthUI("guest", t("fb_timeout", "انتهت مهلة الاتصال. تحققي من النت وحدّثي الصفحة."), "err");
       }
-      /* User restored — hide pin, validate, OPEN shell first, modules in background */
-      if ($("pin")) $("pin").hidden = true;
-      setPending(true);
-      var safety = setTimeout(function () {
-        /* Never stay on «جاري فتح اللوحة» forever */
-        try {
-          if (document.body.classList.contains("naqa-auth-pending")) {
-            if (A.fbUser) {
-              unlockUI();
-              setPending(false);
-              try { if (A.openAdmin) A.openAdmin(); } catch (e) {}
-            } else {
-              clearAuthed();
-              setPending(false);
-              lockUI();
-              showFbOnly();
-              setMsg(t("fb_timeout", "تعذّر فتح اللوحة. حدّثي الصفحة أو سجّلي الدخول من جديد."), "err");
-            }
-          }
-        } catch (e) {}
-      }, 10000);
+    }, 15000);
 
-      allowedEmail(user).then(function (ok) {
-        var uidOk = true;
-        try {
-          if (w.naqaIsAdminUid) uidOk = naqaIsAdminUid(user.uid);
-        } catch (e) { uidOk = true; }
-        if (!ok || !uidOk) {
-          A.fbUser = null;
-          clearAuthed();
-          clearTimeout(safety);
-          firebase.auth().signOut().then(function () {
-            preventSilentReentry();
-            _authReady = true;
-            lockUI();
-            setPending(false);
-            showFbOnly();
-            setMsg(t("fb_notAllowed", ""), "err");
-            setBusy(false);
-          });
-          return;
-        }
-        A.fbUser = user;
-        markAuthed();
-        /* CRITICAL: unlock immediately — do not wait for products.bundle */
-        unlockUI();
-        setPending(false);
-        clearTimeout(safety);
-        setMsg("");
-        setBusy(false);
-        try { if (A.touchSession) A.touchSession(); } catch (e) {}
-        try { if (A.openAdmin) A.openAdmin(); } catch (e) {}
-
-        function afterModules() {
-          try { if (A.openAdmin) A.openAdmin(); } catch (e) {}
-          try {
-            if (A.currentTab === "products" && A.paintList) A.paintList("");
-            if (A.currentTab === "home" && A.paintDashboard) A.paintDashboard();
-          } catch (e) {}
-        }
-        if (A.loadAdminModules) {
-          A.loadAdminModules().then(afterModules).catch(afterModules);
-        }
-      }).catch(function () {
-        clearTimeout(safety);
-        clearAuthed();
-        setPending(false);
-        lockUI();
-        showFbOnly();
-        setMsg(t("fb_bad", "تعذّر التحقق من الحساب."), "err");
+    /**
+     * Firebase docs: setPersistence returns a Promise — register auth listener AFTER it.
+     * Previous code called setPersistence without chaining (race).
+     */
+    var auth = firebase.auth();
+    var startListen = function () {
+      if (_unsubAuth) return;
+      _unsubAuth = auth.onAuthStateChanged(function (user) {
+        _authReady = true;
+        clearTimeout(bootWatch);
+        handleUser(user || null);
       });
-    });
+    };
 
-    /* Global boot watchdog (Firebase never ready / offline) */
-    setTimeout(function () {
-      if (_authReady) return;
-      try {
-        if (document.body.classList.contains("naqa-auth-pending")) {
-          _authReady = true;
-          clearAuthed();
-          setPending(false);
-          lockUI();
-          showFbOnly();
-          setMsg(t("fb_timeout", "تعذّر الاتصال. تحققي من النت وحدّثي الصفحة."), "err");
-        }
-      } catch (e) {}
-    }, 12000);
+    try {
+      auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL)
+        .then(startListen)
+        .catch(function () { startListen(); });
+    } catch (e) {
+      startListen();
+    }
+
+    auth.getRedirectResult().then(function (result) {
+      if (result && result.user) offerGoogleSave(result.user);
+    }).catch(function () {});
   };
 
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", function () {
-      try { naqaFixLoginFields(); } catch (e) {}
-      setTimeout(A.fbBoot, 20);
+      setTimeout(A.fbBoot, 0);
     });
   } else {
-    try { naqaFixLoginFields(); } catch (e) {}
-    setTimeout(A.fbBoot, 20);
+    setTimeout(A.fbBoot, 0);
   }
 })(window);

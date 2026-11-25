@@ -5,7 +5,7 @@
   A.refreshProductsFromBundle = function () {
     try {
       if (w.NAQA_PRODUCTS && w.NAQA_PRODUCTS.length) {
-        A.products = w.NAQA_PRODUCTS;
+        A.products = (w.NAQA_PRODUCTS || []).map(function (p) { return Object.assign({ imgs: [] }, p); });
       }
     } catch (e) {}
     return A.products || [];

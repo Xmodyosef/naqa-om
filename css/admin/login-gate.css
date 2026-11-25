@@ -189,3 +189,10 @@ body.naqa-open #authBoot{display:none!important}
 body.naqa-auth-pending #tools,
 body.naqa-auth-pending .admin-shell{display:none !important}
 body.naqa-open main.admin-main{display:block}
+
+/* login1: classic email-first, Google secondary */
+.auth-btn-primary-google{ /* legacy class no longer used as primary */ }
+.auth-email-details{display:none !important}
+#fbForm{margin:0 0 8px}
+#fbGoogle{margin-top:4px}
+#fbNoteSave{display:block !important}

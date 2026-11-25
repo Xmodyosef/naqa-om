@@ -128,7 +128,10 @@
 
     if (state === "guest") {
       clearAuthed();
-      try { body.classList.add("naqa-locked"); } catch (e) {}
+      try {
+        body.classList.remove("naqa-optimistic");
+        body.classList.add("naqa-locked");
+      } catch (e) {}
       if (boot) boot.hidden = true;
       if (pin) pin.hidden = false;
       if (tools) tools.hidden = true;
@@ -146,7 +149,10 @@
 
     /* open */
     markAuthed();
-    try { body.classList.add("naqa-open"); } catch (e) {}
+    try {
+      body.classList.remove("naqa-optimistic");
+      body.classList.add("naqa-open");
+    } catch (e) {}
     if (boot) boot.hidden = true;
     if (pin) pin.hidden = true;
     if (tools) tools.hidden = false; /* critical: attribute + CSS */
@@ -497,12 +503,32 @@
      * - Watchdog 2.5s max on booting (not 15s).
      */
     var auth = firebase.auth();
+    /* Guest-first / optimistic-first: do NOT hold "booting" spinner unless we have no UI yet */
+    try {
+      if (document.documentElement.classList.contains("naqa-expect-auth") ||
+          document.body.classList.contains("naqa-optimistic") ||
+          document.body.classList.contains("naqa-open")) {
+        /* keep shell visible; only soft-pending flag for diagnostics */
+        _state = "open";
+      } else {
+        renderAuthUI("guest");
+      }
+    } catch (e) {
+      renderAuthUI("guest");
+    }
     var bootWatch = setTimeout(function () {
-      if (_state === "booting") {
+      if (!_authReady && _state !== "open") {
         _authReady = true;
         renderAuthUI("guest", t("fb_timeout", "انتهت مهلة الاتصال. تحققي من النت وحدّثي الصفحة."), "err");
+      } else if (!_authReady && _state === "open") {
+        /* optimistic shell up but Firebase silent — soft message only */
+        _authReady = true;
+        try {
+          var msg = document.getElementById("pinMsg");
+          /* stay open; user can refresh if session really dead — onAuth will flip to guest */
+        } catch (e) {}
       }
-    }, 2500);
+    }, 4000);
 
     if (_unsubAuth) {
       try { _unsubAuth(); } catch (e) {}

@@ -6,13 +6,11 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@400;600;700;800&display=swap" rel="stylesheet" />
 <meta name="robots" content="noindex, nofollow" />
-<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-<meta http-equiv="Pragma" content="no-cache" />
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=5, user-scalable=yes, viewport-fit=cover, interactive-widget=resizes-content" />
 <title>لوحة تحكم نقاء</title>
 
 <script>
-/* First paint: if last session was open, never show login card before Firebase restores */
+/* Instant first paint class — no wait for Firebase */
 (function () {
   try {
     if (localStorage.getItem("naqa_admin_authed") === "1") {
@@ -21,35 +19,48 @@
   } catch (e) {}
 })();
 </script>
-<link rel="stylesheet" href="css/admin.css?v=20261125purge2" />
-
-
+<link rel="preconnect" href="https://www.gstatic.com" crossorigin />
+<link rel="dns-prefetch" href="https://www.gstatic.com" />
+<link rel="preload" href="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js" as="script" />
+<link rel="preload" href="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js" as="script" />
+<link rel="preload" href="js/firebase-config.js?v=20261125boot1" as="script" />
+<link rel="preload" href="js/admin/firebase-gate.js?v=20261125boot1" as="script" />
+<link rel="stylesheet" href="css/admin.css?v=20261125boot1" />
 <script>
-/* One-shot: kill old SW + caches so 2-day work is not overwritten by stale shell */
+/* One-shot cache purge — never blocks paint (async, no await) */
 (function () {
-  var KEY = "naqa_purge_20261125purge2";
+  var KEY = "naqa_purge_20261125boot1";
   try { if (sessionStorage.getItem(KEY) === "1") return; } catch (e) {}
   var mark = function () { try { sessionStorage.setItem(KEY, "1"); } catch (e) {} };
-  var run = function () {
-    var tasks = [];
+  try {
     if ("serviceWorker" in navigator) {
-      tasks.push(navigator.serviceWorker.getRegistrations().then(function (regs) {
+      navigator.serviceWorker.getRegistrations().then(function (regs) {
         return Promise.all(regs.map(function (r) { return r.unregister(); }));
-      }));
-    }
+      }).catch(function () {}).then(mark);
+    } else mark();
     if (window.caches) {
-      tasks.push(caches.keys().then(function (keys) {
+      caches.keys().then(function (keys) {
         return Promise.all(keys.map(function (k) { return caches.delete(k); }));
-      }));
+      }).catch(function () {});
     }
-    Promise.all(tasks).catch(function () {}).then(mark);
-  };
-  try { run(); } catch (e) { mark(); }
+  } catch (e) { mark(); }
 })();
 </script>
 
 </head>
-<body class="naqa-locked naqa-auth-pending">
+<body class="naqa-locked">
+<script>
+/* Same tick as body: show login OR shell — never force "جاري فتح" */
+(function () {
+  try {
+    if (document.documentElement.classList.contains("naqa-expect-auth")) {
+      document.body.className = "naqa-open naqa-optimistic";
+    } else {
+      document.body.className = "naqa-locked";
+    }
+  } catch (e) {}
+})();
+</script>
 <div class="admin-top">
   <div style="display:flex;justify-content:space-between;align-items:center;gap:8px">
     <a class="store" href="index.html">← المتجر</a>
@@ -58,15 +69,15 @@
   <h1 id="adminTitle">لوحة تحكم نقاء</h1>
 </div>
 <div class="admin-wrap">
-  <div id="authBoot" class="auth-boot">
-    <p id="authBootText">جاري فتح اللوحة…</p>
+  <div id="authBoot" class="auth-boot" hidden>
+    <p id="authBootText">لحظات…</p>
   </div>
-  <div class="pin-card" id="pin" hidden>
+  <div class="pin-card" id="pin">
     <p id="pinLead">مرحباً بكِ في لوحة نقاء ✨</p>
     <p class="note" id="pinNote">ادخلي بحسابك لإدارة الطلبات والمنتجات.</p>
 
     <!-- STEP2: Firebase is the only primary login when enabled -->
-    <div id="fbLogin" hidden>
+    <div id="fbLogin">
       <p class="auth-hint note" id="fbPassHint">ادخلي بالإيميل وكلمة السر المحفوظة على جهازك.</p>
 
       <!-- Email/password first: browser can autofill saved credentials -->
@@ -209,15 +220,15 @@
   </main>
 </div>
 </div>
-<script defer src="js/config.js?v=20261125purge2"></script>
-<script defer src="js/firebase-config.js?v=20261125purge2"></script>
+<script defer src="js/config.js?v=20261125boot1"></script>
+<script defer src="js/firebase-config.js?v=20261125boot1"></script>
 <script defer src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
 <script defer src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
-<script defer src="js/admin.js?v=20261125purge2"></script>
-<script defer src="js/admin/core.js?v=20261125purge2"></script>
-<script src="js/admin/i18n.js?v=20261125purge2"></script>
-<script defer src="js/admin/app.js?v=20261125purge2"></script>
-<script defer src="js/admin/load-modules.js?v=20261125purge2"></script>
-<script defer src="js/admin/firebase-gate.js?v=20261125purge2"></script>
+<script defer src="js/admin.js?v=20261125boot1"></script>
+<script defer src="js/admin/core.js?v=20261125boot1"></script>
+<script defer src="js/admin/firebase-gate.js?v=20261125boot1"></script>
+<script defer src="js/admin/app.js?v=20261125boot1"></script>
+<script defer src="js/admin/i18n.js?v=20261125boot1"></script>
+<script defer src="js/admin/load-modules.js?v=20261125boot1"></script>
 </body>
 </html>

@@ -1,5 +1,5 @@
-/* Naqa SW — 20261125purge2: network-first admin; wipe all previous shell caches */
-const CACHE = "naqa-shell-20261125purge2";
+/* Naqa SW — 20261125boot1: network-first admin */
+const CACHE = "naqa-shell-20261125boot1";
 const PRECACHE = ["./", "./index.html", "./manifest.webmanifest", "./logo.svg"];
 
 self.addEventListener("install", (e) => {

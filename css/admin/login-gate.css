@@ -155,3 +155,52 @@ body.naqa-open #adminTitle { display: block; }
 body.naqa-open #authBoot{display:none!important;visibility:hidden!important}
 body.naqa-open #pin{display:none!important}
 body.naqa-open #tools,body.naqa-open .admin-shell{display:block!important;visibility:visible!important;pointer-events:auto!important}
+
+/* ===== boot1: no endless "جاري فتح" =====
+   - Returning admin (html.naqa-expect-auth): shell open immediately
+   - Guest (no hint): show login form immediately while Firebase loads
+   - pending only while we are actually resolving a session
+*/
+html.naqa-expect-auth body.naqa-optimistic #authBoot,
+html.naqa-expect-auth body.naqa-open #authBoot {
+  display: none !important;
+  visibility: hidden !important;
+}
+html.naqa-expect-auth body.naqa-optimistic #pin,
+html.naqa-expect-auth body.naqa-open #pin {
+  display: none !important;
+}
+html.naqa-expect-auth body.naqa-optimistic #tools,
+html.naqa-expect-auth body.naqa-optimistic .admin-shell,
+html.naqa-expect-auth body.naqa-open #tools,
+html.naqa-expect-auth body.naqa-open .admin-shell {
+  display: block !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+}
+/* Guest first paint: login card, never boot spinner */
+body.naqa-locked:not(.naqa-auth-pending):not(.naqa-open) #authBoot {
+  display: none !important;
+}
+body.naqa-locked:not(.naqa-auth-pending):not(.naqa-open) #pin {
+  display: block !important;
+  visibility: visible !important;
+}
+/* Soft skeleton while optimistic open waits for data */
+body.naqa-optimistic #homeTab:empty::before,
+body.naqa-open.naqa-optimistic #dashBox:empty::before {
+  content: "…";
+  display: block;
+  padding: 24px;
+  color: #9a8b86;
+  text-align: center;
+  font-weight: 700;
+}
+
+body.naqa-locked:not(.naqa-auth-pending):not(.naqa-open) #fbLogin {
+  display: block !important;
+}
+body.naqa-open #fbLogin,
+body.naqa-optimistic #fbLogin {
+  display: none !important;
+}

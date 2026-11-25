@@ -17,3 +17,8 @@
 - `js/admin/products.js` — openEdit / delete / saveEdit
 - `js/cloud-overrides.js` — sanitize + load
 - `js/core.js` — storefront merge
+
+
+## Arabic + English
+Same code path for Arabic and English. No separate AR/EN image save.
+Switch language with the admin language button — edit form reloads labels via `setLang` → `openEdit`.

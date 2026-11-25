@@ -174,7 +174,7 @@
   A.ensureLang = function (lang, done) {
     if (A.I18N && A.I18N[lang]) { done(); return; }
     var s = document.createElement("script");
-    s.src = "js/admin/i18n/dict-" + lang + ".js?v=20261125img8";
+    s.src = "js/admin/i18n/dict-" + lang + ".js?v=20261125en2";
     s.onload = function () { done(); };
     s.onerror = function () { done(); };
     document.head.appendChild(s);
@@ -184,9 +184,14 @@
     localStorage.setItem("naqa_admin_lang", A.lang);
     A.ensureLang(A.lang, function () {
       A.applyChrome();
+      var editingId = A.editingId;
       if (document.getElementById("tools") && !document.getElementById("tools").hidden && A.setTab) {
         if (A.go) A.go(A.currentTab || "home", A.currentSub || (A.defaultSub ? A.defaultSub(A.currentTab || "home") : ""), { fromPop: true, keepPage: true, page: A.productPage });
         else if (A.setTab) A.setTab(A.currentTab || "home");
+      }
+      /* re-open product edit so image/save UI is fully AR or EN */
+      if (editingId != null && A.openEdit) {
+        try { A.openEdit(editingId, { fromPop: true }); } catch (e) {}
       }
     });
   };

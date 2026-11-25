@@ -312,10 +312,10 @@
         + main
         + '<img src="' + A.esc(showImgSrc(src)) + '" data-src="' + A.esc(src) + '" alt="" loading="lazy">'
         + '<div class="img-gal-actions">'
-        + (i > 0 ? '<button type="button" data-img-main="' + i + '">★</button>' : "")
-        + (i > 0 ? '<button type="button" data-img-up="' + i + '">‹</button>' : "")
-        + (i < imgs.length - 1 ? '<button type="button" data-img-down="' + i + '">›</button>' : "")
-        + '<button type="button" data-img-del="' + i + '">✕</button>'
+        + (i > 0 ? '<button type="button" data-img-main="' + i + '" title="' + A.esc(A.t("p_imgsSetMain")) + '" aria-label="' + A.esc(A.t("p_imgsSetMain")) + '">★</button>' : "")
+        + (i > 0 ? '<button type="button" data-img-up="' + i + '" title="' + A.esc(A.t("p_imgsUp")) + '" aria-label="' + A.esc(A.t("p_imgsUp")) + '">‹</button>' : "")
+        + (i < imgs.length - 1 ? '<button type="button" data-img-down="' + i + '" title="' + A.esc(A.t("p_imgsDown")) + '" aria-label="' + A.esc(A.t("p_imgsDown")) + '">›</button>' : "")
+        + '<button type="button" data-img-del="' + i + '" title="' + A.esc(A.t("p_imgsDel")) + '" aria-label="' + A.esc(A.t("p_imgsDel")) + '">✕</button>'
         + '</div></div>';
     }).join("");
     if (imgs.length < MAX_IMGS) {
@@ -488,7 +488,7 @@
       var stockCls = (m.stock !== "" && m.stock != null && stockN <= 0) ? ' style="color:#b05c6e;font-weight:800"' : (m.stock != null && m.stock !== "" && stockN <= 3 ? ' style="color:#c9a227;font-weight:800"' : "");
       var hid = m.hidden ? " · " + A.t("p_hidden") : "";
       var vol = m.vol || m.volume || m.size || m.unit || "";
-      var title = String(m.nameAr || m.nameEn || "").replace(/\s+/g, " ").trim();
+      var title = String((A.lang === "en" ? (m.nameEn || m.nameAr) : (m.nameAr || m.nameEn)) || "").replace(/\s+/g, " ").trim();
       var taxTxt = A.taxLabel ? A.taxLabel(m) : (A.t("tax_vat5") || "");
       return '<article class="prod-card row' + (m.hidden ? " is-hidden" : "") + '" data-open="' + p.id + '">'
         + '<div class="prod-thumb">' + thumb + '</div>'

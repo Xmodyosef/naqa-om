@@ -674,60 +674,180 @@ body.naqa-open .side-nav .side-sub:hover:not(.on) {
 }
 
 
-/* ===== NAQA PARENT-CHILD LOCK pc3 ===== */
-/* Force children under open/active parent — final authority */
-#sideNav .side-group.open > .side-subs,
-#sideNav .side-group:has(> .side-main.on) > .side-subs {
+/* ===== EXP1 top parents + separate children (20261125top1) ===== */
+body.naqa-open .admin-shell,
+body.naqa-open .admin-shell-top {
   display: flex !important;
   flex-direction: column !important;
-  visibility: visible !important;
-  opacity: 1 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  min-height: 0 !important;
+  border-radius: 16px;
+  overflow: visible !important;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  direction: rtl;
+}
+body.naqa-open .top-parents,
+body.naqa-open #sideNav.top-parents {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  align-items: center;
+  gap: 4px;
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  padding: 8px 6px !important;
+  margin: 0 0 0 !important;
+  background: #fff !important;
+  border: 1px solid #eadfd9 !important;
+  border-radius: 14px 14px 0 0 !important;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  -webkit-overflow-scrolling: touch;
+  position: relative !important;
+  top: auto !important;
+  bottom: auto !important;
+  inset: auto !important;
   height: auto !important;
   max-height: none !important;
-  overflow: visible !important;
-  gap: 2px;
-  margin-top: 4px;
-  padding: 4px 0 6px;
-  background: #1f1215;
-  border-radius: 8px;
-  position: relative;
-  z-index: 2;
+  box-shadow: none !important;
 }
-#sideNav .side-group:not(.open):not(:has(> .side-main.on)) > .side-subs {
+body.naqa-open .top-parents::before { display: none !important; content: none !important; }
+body.naqa-open .top-parents .side-main {
+  display: inline-flex !important;
+  flex-direction: row !important;
+  align-items: center;
+  gap: 6px;
+  flex: 0 0 auto !important;
+  min-height: 40px;
+  padding: 10px 14px !important;
+  margin: 0 !important;
+  border: 0 !important;
+  border-radius: 10px !important;
+  background: transparent !important;
+  color: #6b5c57 !important;
+  font: 800 .82rem/1.2 inherit !important;
+  box-shadow: none !important;
+  white-space: nowrap;
+  cursor: pointer;
+  width: auto !important;
+}
+body.naqa-open .top-parents .side-main .side-ico { display: none !important; }
+body.naqa-open .top-parents .side-main .chev { display: none !important; }
+body.naqa-open .top-parents .side-main .side-lbl {
+  display: inline !important;
+  color: inherit !important;
+  font: inherit !important;
+  white-space: nowrap !important;
+  overflow: visible !important;
+}
+body.naqa-open .top-parents .side-main.on {
+  color: #8d3048 !important;
+  box-shadow: inset 0 -3px 0 #c46b7c !important;
+  background: transparent !important;
+}
+body.naqa-open .top-parents .side-main:hover {
+  background: #faf6f4 !important;
+  color: #8d3048 !important;
+}
+body.naqa-open .top-parents .side-badge {
+  position: static !important;
+  margin-inline-start: 4px;
+  background: #c46b7c;
+  color: #fff;
+  font-size: .65rem;
+  font-weight: 800;
+  padding: 1px 6px;
+  border-radius: 999px;
+}
+/* Children row — separate from parents */
+body.naqa-open .top-children,
+body.naqa-open #childNav {
+  display: none;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 8px;
+  width: 100%;
+  padding: 10px 10px;
+  background: #faf6f4;
+  border: 1px solid #eadfd9;
+  border-top: 0;
+  border-radius: 0;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+body.naqa-open #childNav.show,
+body.naqa-open #childNav:not([hidden]) {
+  display: flex !important;
+}
+body.naqa-open #childNav[hidden] {
   display: none !important;
 }
-#sideNav .side-sub {
-  display: block !important;
+body.naqa-open #childNav .child-set {
+  display: none;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 8px;
   width: 100%;
-  box-sizing: border-box;
-  text-align: start;
-  border: 0;
-  background: transparent;
-  color: #e0d4d0 !important;
-  font: 700 .72rem/1.3 inherit;
-  padding: 8px 10px 8px 16px;
-  border-radius: 8px;
+}
+body.naqa-open #childNav .child-set.show,
+body.naqa-open #childNav .child-set:not([hidden]) {
+  display: flex !important;
+}
+body.naqa-open #childNav .child-set[hidden] {
+  display: none !important;
+}
+body.naqa-open #childNav .side-sub {
+  display: inline-flex !important;
+  align-items: center;
+  flex: 0 0 auto;
+  border: 1px solid #eadfd9 !important;
+  background: #fff !important;
+  color: #4a3a36 !important;
+  padding: 8px 14px !important;
+  border-radius: 999px !important;
+  font: 700 .78rem/1.2 inherit !important;
   cursor: pointer;
   white-space: nowrap;
+  width: auto !important;
+  text-align: center !important;
+  box-shadow: none !important;
 }
-#sideNav .side-sub.on {
-  background: rgba(196,107,124,.28) !important;
+body.naqa-open #childNav .side-sub.on {
+  background: #c46b7c !important;
+  border-color: #c46b7c !important;
   color: #fff !important;
-  box-shadow: inset 3px 0 0 #c46b7c;
   font-weight: 800;
 }
-#sideNav .side-sub:hover {
-  background: rgba(255,255,255,.08) !important;
-  color: #fff !important;
+body.naqa-open #childNav .side-sub:hover:not(.on) {
+  border-color: #c46b7c;
+  color: #8d3048;
 }
-#sideNav .chev {
-  display: inline-block !important;
-  margin-inline-start: auto;
-  font-size: .7rem;
-  opacity: .9;
+/* Main fills rest */
+body.naqa-open .admin-main {
+  width: 100% !important;
+  max-width: 100% !important;
+  flex: 1 1 auto !important;
+  min-width: 0 !important;
+  padding: 12px 4px 24px !important;
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 0 14px 14px !important;
 }
-#sideNav .side-group.open > .side-main .chev,
-#sideNav .side-group:has(> .side-main.on) > .side-main .chev {
-  transform: rotate(180deg);
-  color: #c46b7c;
+body.naqa-open .admin-wrap {
+  max-width: 1100px;
+  padding-bottom: 80px;
+}
+@media (max-width: 600px) {
+  body.naqa-open .top-parents .side-main {
+    padding: 10px 12px !important;
+    font-size: .78rem !important;
+  }
+  body.naqa-open #childNav .side-sub {
+    padding: 7px 12px !important;
+    font-size: .72rem !important;
+  }
 }

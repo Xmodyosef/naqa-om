@@ -38,7 +38,7 @@
     return "all";
   };
 
-  /* LOCKED: parent + children under parent in sidebar (Salla-style). No page chips. */
+  /* EXP1: parents top row, children separate row (#childNav) */
   A.fillPageSubNav = function () {
     var bar = document.getElementById("pageSubNav");
     if (bar) {
@@ -52,8 +52,7 @@
     var active = "all";
     if (tab === "orders") active = A.orderFilter || A.currentSub || "all";
     else if (tab === "products") active = A.productView || A.currentSub || "all";
-    else if (tab === "settings") active = A.currentSub || "general";
-    document.querySelectorAll("#sideNav .side-sub").forEach(function (b) {
+    document.querySelectorAll("#childNav .side-sub, #sideNav .side-sub").forEach(function (b) {
       var bt = b.getAttribute("data-tab") || "";
       var bs = b.getAttribute("data-sub") || "";
       var on = bt === tab && bs === active;
@@ -61,25 +60,6 @@
       if (on) b.setAttribute("aria-current", "page");
       else b.removeAttribute("aria-current");
     });
-  };
-
-
-  A.updateOrdersBadge = function () {
-    var el = document.getElementById("ordersBadge");
-    if (!el) return;
-    var n = 0;
-    try {
-      (A.orders || []).forEach(function (o) {
-        if (A.normalizeStatus(o.status) === "new") n++;
-      });
-    } catch (e) {}
-    if (n > 0) {
-      el.hidden = false;
-      el.textContent = n > 99 ? "99+" : String(n);
-    } else {
-      el.hidden = true;
-      el.textContent = "0";
-    }
   };
 
   A.syncNav = function () {
@@ -91,28 +71,21 @@
       if (on) b.setAttribute("aria-current", "page");
       else b.removeAttribute("aria-current");
     });
-    document.querySelectorAll("#sideNav .side-group").forEach(function (g) {
-      var gtab = g.getAttribute("data-group") || "";
-      var child = (gtab === tab);
-      g.classList.toggle("open", child);
-      g.classList.toggle("has-active-child", child);
-      var main = g.querySelector(".side-main");
-      if (main) main.setAttribute("aria-expanded", child ? "true" : "false");
-      /* Force children under parent (CSS + inline) */
-      var subs = g.querySelector(".side-subs");
-      if (subs) {
-        if (child) {
-          subs.hidden = false;
-          subs.removeAttribute("hidden");
-          subs.style.setProperty("display", "flex", "important");
-          subs.style.setProperty("flex-direction", "column", "important");
-          subs.style.setProperty("visibility", "visible", "important");
-        } else {
-          subs.hidden = true;
-          subs.style.setProperty("display", "none", "important");
-        }
-      }
-    });
+    /* Children: separate row — show set for orders/products only */
+    var childNav = document.getElementById("childNav");
+    var hasKids = (tab === "orders" || tab === "products");
+    if (childNav) {
+      childNav.hidden = !hasKids;
+      if (hasKids) childNav.removeAttribute("hidden");
+      childNav.classList.toggle("show", hasKids);
+      childNav.querySelectorAll(".child-set").forEach(function (set) {
+        var forTab = set.getAttribute("data-for") || "";
+        var open = forTab === tab;
+        set.hidden = !open;
+        if (open) set.removeAttribute("hidden");
+        set.classList.toggle("show", open);
+      });
+    }
     A.fillPageSubNav();
     if (A.refreshSideSubs) A.refreshSideSubs();
     if (A.updateOrdersBadge) A.updateOrdersBadge();
@@ -286,13 +259,13 @@
 
 
 
-  /* Parent/child: child buttons in sidebar */
-  var sideNav = document.getElementById("sideNav");
-  if (sideNav && sideNav.getAttribute("data-sub-bound") !== "1") {
-    sideNav.setAttribute("data-sub-bound", "1");
-    sideNav.addEventListener("click", function (e) {
+  /* EXP1: child buttons in #childNav (separate from parents) */
+  var childNav = document.getElementById("childNav");
+  if (childNav && childNav.getAttribute("data-sub-bound") !== "1") {
+    childNav.setAttribute("data-sub-bound", "1");
+    childNav.addEventListener("click", function (e) {
       var subBtn = e.target.closest(".side-sub");
-      if (!subBtn || !sideNav.contains(subBtn)) return;
+      if (!subBtn || !childNav.contains(subBtn)) return;
       e.preventDefault();
       e.stopPropagation();
       var tab = subBtn.getAttribute("data-tab") || A.currentTab;

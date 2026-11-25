@@ -63,7 +63,6 @@
           n[k] = v;
           return;
         }
-        /* skip nested objects/arrays except simple primitives above */
       });
       if (Object.keys(n).length) out[String(id)] = n;
     });
@@ -78,7 +77,6 @@
     return msg || "unknown";
   }
 
-  /** Load overrides map from cloud → Promise<object|null> */
   w.naqaLoadCloudOverrides = function () {
     if (!ensureApp()) return Promise.resolve(null);
     var db = fs();
@@ -91,13 +89,17 @@
     }).catch(function () { return null; });
   };
 
-  /** Save full overrides map (admin, must be signed in) */
   w.naqaSaveCloudOverrides = function (map) {
     if (!ensureApp()) return Promise.reject(new Error("no-firebase"));
     var db = fs();
     if (!db) return Promise.reject(new Error("no-firestore"));
     var user = currentUser();
     if (!user) return Promise.reject(new Error("not-signed-in"));
+    try {
+      if (w.naqaIsAdminUid && !naqaIsAdminUid(user.uid)) {
+        return Promise.reject(new Error("not-admin"));
+      }
+    } catch (e) {}
 
     var clean = sanitizeMap(map);
     var payload = {
@@ -115,7 +117,6 @@
       return Promise.reject(new Error("too-large:" + size));
     }
 
-    /* Refresh token then write — avoids stale auth edge cases */
     return user.getIdToken(true).then(function () {
       try {
         if (firebase.firestore.FieldValue && firebase.firestore.FieldValue.serverTimestamp) {
@@ -126,13 +127,11 @@
     });
   };
 
-  /* —— Admin hooks —— */
   var A = w.NaqaAdmin = w.NaqaAdmin || {};
 
   A.loadOverridesCloud = function () {
     return w.naqaLoadCloudOverrides().then(function (map) {
       if (!map) return false;
-      /* Cloud wins for shared fields; keep local data:image imgs if present */
       var local = A.overrides || {};
       var merged = Object.assign({}, map);
       Object.keys(local).forEach(function (id) {
@@ -168,7 +167,9 @@
       var detail = errText(err);
       try { console.warn("[naqa] cloud sync failed", err); } catch (e) {}
 
-      if (code === "not-signed-in" || fcode === "permission-denied" && !currentUser()) {
+      if (code === "not-admin") {
+        if (A.setMsg) A.setMsg("status", ar ? "هذا الحساب غير مصرّح له بالكتابة." : "This account is not allowed to write.");
+      } else if (code === "not-signed-in" || (fcode === "permission-denied" && !currentUser())) {
         if (A.setMsg) A.setMsg("status", ar ? "ادخلي بحسابك أولاً." : "Sign in first.");
       } else if (code === "no-firestore" || code === "no-firebase") {
         if (A.setMsg) A.setMsg("status", ar
@@ -196,7 +197,6 @@
     });
   };
 
-  /* Replace GitHub publish with cloud save */
   A.publishLive = function () {
     return A.syncOverridesCloud();
   };
@@ -215,7 +215,6 @@
     });
   };
 
-  /* Storefront: apply cloud overrides after boot */
   w.naqaBootCloudOverridesForStore = function () {
     if (typeof mergeOverrides !== "function") return;
     w.naqaLoadCloudOverrides().then(function (map) {

@@ -1,3 +1,55 @@
+
+function cartLineQty(id){
+  id = Number(id);
+  try{
+    var row = (typeof cart!=="undefined" && cart)? cart.find(function(c){ return Number(c.id)===id; }) : null;
+    return row ? Number(row.qty)||0 : 0;
+  }catch(e){ return 0; }
+}
+/** Add button or qty stepper once item is in cart */
+function productCartControls(id, opts){
+  opts = opts || {};
+  id = Number(id);
+  var p = (typeof products!=="undefined") ? products.find(function(x){ return Number(x.id)===id; }) : null;
+  var out = p && p.stock!=null && Number(p.stock)<=0;
+  var q = cartLineQty(id);
+  var sheet = !!opts.sheet;
+  var en = (typeof lang!=="undefined" && lang==="en");
+  if(out && q<=0){
+    return '<button class="btn-add'+(sheet?' card-add':'')+'" type="button" disabled>'+(en?"Out":"نفد")+'</button>';
+  }
+  if(q>0){
+    return '<div class="inline-qty'+(sheet?' sheet-inline-qty':'')+'" data-inline-qty="'+id+'" role="group" aria-label="'+(typeof T==="function"?T("qty"):"qty")+'">'
+      +'<button type="button" data-dec="'+id+'" aria-label="'+(en?"Decrease":"تقليل")+'">−</button>'
+      +'<b aria-live="polite">'+q+'</b>'
+      +'<button type="button" data-inc="'+id+'" aria-label="'+(en?"Increase":"زيادة")+'">+</button>'
+      +'</div>';
+  }
+  return '<button class="btn-add'+(sheet?' card-add':'')+'" data-add="'+id+'" type="button">'+(typeof T==="function"?T("add"):"أضف")+'</button>';
+}
+function refreshSheetCartControls(){
+  try{
+    if(typeof openProductId==="undefined" || !openProductId) return;
+    var box = document.getElementById("sheetActions");
+    if(!box) return;
+    var p = products.find(function(x){ return Number(x.id)===Number(openProductId); });
+    if(!p) return;
+    var wishOn = typeof isWish==="function" && isWish(p.id) ? " on" : "";
+    var qv = typeof sheetMode!=="undefined" && sheetMode==="qv";
+    var en = (typeof lang!=="undefined" && lang==="en");
+    box.innerHTML =
+      '<button class="btn-wish-sheet'+wishOn+'" data-wish="'+p.id+'" type="button">♥ '+(en?"Save":"حفظ")+'</button>'
+      + productCartControls(p.id, { sheet:true })
+      + (qv ? '<button class="btn-open" data-open="'+p.id+'" type="button">'+(typeof T==="function"?T("open"):"")+'</button>' : "");
+  }catch(e){}
+}
+function refreshProductCartUI(){
+  try{
+    if(typeof render==="function") render();
+  }catch(e){}
+  refreshSheetCartControls();
+}
+
 /* render: cards, shelves, grid, lang */
 function offPct(p){
   if(!(p.was>p.price)) return 0;
@@ -40,7 +92,7 @@ function cardHTML(p){
     +priceHTML(p)
     +'<div class="card-actions">'
     +'<button class="btn-qv" data-qv="'+p.id+'" type="button">'+T("qv")+'</button>'
-    +'<button class="btn-add" data-add="'+p.id+'" type="button"'+(out?' disabled':'')+'>'+(out?(lang==="en"?"Out":"نفد"):T("add"))+'</button>'
+    +productCartControls(p.id, {})
     +'<button class="btn-open" data-open="'+p.id+'" type="button">'+T("open")+'</button>'
     +'</div></div></article>';
 }

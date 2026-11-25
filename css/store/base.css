@@ -370,3 +370,33 @@ body.chrome-hide header{box-shadow:0 4px 14px rgba(0,0,0,.12)}
 .qty-pick button{min-width:44px;min-height:44px}
 .icon-btn,.lang-btn{min-width:44px;min-height:44px}
 .shelf-head h2,.shelf-head h3{font-size:1.05rem;margin:0}
+
+/* Add → qty stepper on cards/sheet */
+.inline-qty{
+  display:inline-flex;align-items:center;justify-content:center;gap:0;
+  border:1px solid var(--line);border-radius:12px;overflow:hidden;
+  background:var(--card);min-height:42px;flex:1;
+}
+.inline-qty button{
+  width:40px;min-width:40px;height:42px;border:0;background:transparent;
+  color:var(--fg);font-weight:800;font-size:1.15rem;cursor:pointer;
+}
+.inline-qty button:active{background:rgba(141,48,72,.08)}
+.inline-qty b{
+  min-width:28px;text-align:center;font-weight:800;font-size:1rem;
+  color:var(--rose-deep);
+}
+.sheet-actions .inline-qty,
+.sheet-inline-qty{
+  grid-column:2;width:100%;
+  background:var(--rose-deep);border-color:var(--rose-deep);
+}
+.sheet-actions .inline-qty button,
+.sheet-inline-qty button{color:#fff;height:48px}
+.sheet-actions .inline-qty b,
+.sheet-inline-qty b{color:#fff;font-size:1.1rem}
+.card-actions .inline-qty{flex:1.2}
+html[data-theme="night"] .inline-qty{background:var(--card);border-color:var(--line)}
+html[data-theme="night"] .sheet-actions .inline-qty{
+  background:var(--rose-deep);border-color:var(--rose-deep);
+}

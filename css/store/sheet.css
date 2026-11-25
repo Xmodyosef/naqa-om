@@ -73,6 +73,8 @@
   padding:10px 0 12px}
 .sheet-actions .btn-wish-sheet{align-self:stretch}
 .sheet-actions .card-add{padding:14px 12px;border-radius:14px;background:var(--rose-deep);color:#fff;font-weight:800;font-size:1rem}
+.sheet-actions .inline-qty{border-radius:14px;min-height:48px}
+.sheet-actions .btn-add.card-add{grid-column:2}
 .sheet-actions .btn-open{grid-column:1/-1}
 
 

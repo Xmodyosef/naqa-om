@@ -25,13 +25,13 @@ async function openSheet(id, mode, reset){
     </button>`).join("");
   const qv=sheetMode==="qv";
   $("#sheet").classList.toggle("qv", qv);
-  const addLabel=(p.stock!=null && Number(p.stock)<=0)?(lang==="en"?"Out of stock":"نفد"):T("add");
-  const addDisabled=(p.stock!=null && Number(p.stock)<=0)?"disabled":"";
   const wishOn=typeof isWish==="function"&&isWish(p.id)?"on":"";
+  const cartCtrl=typeof productCartControls==="function"?productCartControls(p.id,{sheet:true}):
+    (`<button class="btn-add card-add" data-add="${p.id}" type="button">${T("add")}</button>`);
   const actions=`
     <div class="sheet-actions" id="sheetActions">
       <button class="btn-wish-sheet ${wishOn}" data-wish="${p.id}" type="button">♥ ${lang==="en"?"Save":"حفظ"}</button>
-      <button class="btn-add card-add" data-add="${p.id}" ${addDisabled} type="button">${addLabel}</button>
+      ${cartCtrl}
       ${qv? `<button class="btn-open" data-open="${p.id}" type="button">${T("open")}</button>`:""}
     </div>`;
   $("#sheetCard").innerHTML=`

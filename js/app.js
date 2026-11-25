@@ -17,11 +17,11 @@ $("#cartBody").addEventListener("click", e=>{
       const p=products.find(x=>x.id===it.id);
       if(p && p.stock!=null && it.qty>=Number(p.stock)){
         if(typeof toast==="function") toast(T("stockLimit"));
-      } else { it.qty++; saveCart(); renderCart(); }
+      } else { it.qty++; saveCart(); renderCart(); try{ if(typeof refreshProductCartUI==="function") refreshProductCartUI(); }catch(e){} }
     }
     return;
   }
-  if(dec){ const it=cart.find(i=>i.id===+dec.dataset.dec); if(it){ it.qty--; if(it.qty<=0) cart=cart.filter(x=>x.id!==it.id);} saveCart(); renderCart(); }
+  if(dec){ const it=cart.find(i=>i.id===+dec.dataset.dec); if(it){ it.qty--; if(it.qty<=0) cart=cart.filter(x=>x.id!==it.id);} saveCart(); renderCart(); try{ if(typeof refreshProductCartUI==="function") refreshProductCartUI(); }catch(e){} }
   if(rm){ cart=cart.filter(x=>x.id!==+rm.dataset.rm); saveCart(); renderCart(); }
 });
 $("#wishBtn").onclick=()=>{

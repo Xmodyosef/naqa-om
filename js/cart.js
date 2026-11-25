@@ -138,6 +138,8 @@ function addToCart(id, qty, quiet){
       ? ("Added · this item ×"+lineQty+" · cart "+cartN)
       : ("انضاف · هذا المنتج ×"+lineQty+" · السلة "+cartN));
   }
+  try{ if(typeof refreshProductCartUI==="function") refreshProductCartUI();
+       else if(typeof refreshSheetCartControls==="function") refreshSheetCartControls(); }catch(e){}
 }
 
 function renderCart(){
@@ -203,6 +205,7 @@ function renderCart(){
   }).join("")+shipLine;
   $("#cartTotal").textContent=money(grand);
   updatePaySum();
+  try{ if(typeof refreshSheetCartControls==="function") refreshSheetCartControls(); }catch(e){}
 }
 
 function openCart(){

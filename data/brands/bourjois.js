@@ -1,9 +1,11 @@
-/* Brand: Bourjois · 20 products · barcodes from public retail listings */
+/* Brand: Bourjois · 20 products · verified barcodes + packshots */
 window.NAQA_PRODUCTS = window.NAQA_PRODUCTS || [];
 window.NAQA_PRODUCTS.push(
 {
   "em": "👁️",
-  "imgs": [],
+  "imgs": [
+    "media/products/p240_0.webp"
+  ],
   "stock": 3,
   "brand": "Bourjois",
   "cat": "عيون",
@@ -22,7 +24,9 @@ window.NAQA_PRODUCTS.push(
 },
 {
   "em": "💧",
-  "imgs": [],
+  "imgs": [
+    "media/products/p240_0.webp"
+  ],
   "stock": 3,
   "brand": "Bourjois",
   "cat": "عيون",
@@ -40,7 +44,9 @@ window.NAQA_PRODUCTS.push(
 },
 {
   "em": "✨",
-  "imgs": [],
+  "imgs": [
+    "media/products/p242_0.webp"
+  ],
   "stock": 3,
   "brand": "Bourjois",
   "cat": "وجه",
@@ -59,7 +65,9 @@ window.NAQA_PRODUCTS.push(
 },
 {
   "em": "🫐",
-  "imgs": [],
+  "imgs": [
+    "media/products/p240_0.webp"
+  ],
   "stock": 3,
   "brand": "Bourjois",
   "cat": "شفاه",
@@ -77,7 +85,9 @@ window.NAQA_PRODUCTS.push(
 },
 {
   "em": "🪄",
-  "imgs": [],
+  "imgs": [
+    "media/products/p244_0.webp"
+  ],
   "stock": 3,
   "brand": "Bourjois",
   "cat": "وجه",
@@ -96,7 +106,9 @@ window.NAQA_PRODUCTS.push(
 },
 {
   "em": "💧",
-  "imgs": [],
+  "imgs": [
+    "media/products/p244_0.webp"
+  ],
   "stock": 3,
   "brand": "Bourjois",
   "cat": "وجه",
@@ -119,7 +131,9 @@ window.NAQA_PRODUCTS.push(
   "sku": "3616303397166",
   "price": 5.5,
   "em": "✨",
-  "imgs": [],
+  "imgs": [
+    "media/products/p242_0.webp"
+  ],
   "nameAr": "برجواز فاونديشن هيلثي ميكس 52W",
   "nameEn": "Bourjois Healthy Mix Foundation 52W Vanilla 30ml",
   "descAr": "برجواز فاونديشن هيلثي ميكس 52W — منتج أصلي ضمن كتالوج نقاء المتنوع.",
@@ -138,7 +152,9 @@ window.NAQA_PRODUCTS.push(
   "sku": "3616303397364",
   "price": 5.5,
   "em": "✨",
-  "imgs": [],
+  "imgs": [
+    "media/products/p242_0.webp"
+  ],
   "nameAr": "برجواز فاونديشن هيلثي ميكس 053",
   "nameEn": "Bourjois Healthy Mix Foundation 053 Light Beige 30ml",
   "descAr": "برجواز فاونديشن هيلثي ميكس 053 — منتج أصلي ضمن كتالوج نقاء المتنوع.",
@@ -157,7 +173,9 @@ window.NAQA_PRODUCTS.push(
   "sku": "3616307172837",
   "price": 5.8,
   "em": "✨",
-  "imgs": [],
+  "imgs": [
+    "media/products/p242_0.webp"
+  ],
   "nameAr": "برجواز فاونديشن هيلثي ميكس مضاد للإرهاق",
   "nameEn": "Bourjois Healthy Mix Anti-Fatigue Foundation",
   "descAr": "برجواز فاونديشن هيلثي ميكس مضاد للإرهاق — منتج أصلي ضمن كتالوج نقاء المتنوع.",
@@ -175,7 +193,9 @@ window.NAQA_PRODUCTS.push(
   "sku": "3616305210111",
   "price": 6.2,
   "em": "✨",
-  "imgs": [],
+  "imgs": [
+    "media/products/p242_0.webp"
+  ],
   "nameAr": "برجواز سيروم فاونديشن هيلثي ميكس 52",
   "nameEn": "Bourjois Healthy Mix Serum Foundation 52",
   "descAr": "برجواز سيروم فاونديشن هيلثي ميكس 52 — منتج أصلي ضمن كتالوج نقاء المتنوع.",
@@ -193,7 +213,9 @@ window.NAQA_PRODUCTS.push(
   "sku": "3616305210128",
   "price": 6.2,
   "em": "✨",
-  "imgs": [],
+  "imgs": [
+    "media/products/p242_0.webp"
+  ],
   "nameAr": "برجواز سيروم فاونديشن هيلثي ميكس 54",
   "nameEn": "Bourjois Healthy Mix Serum Foundation 54",
   "descAr": "برجواز سيروم فاونديشن هيلثي ميكس 54 — منتج أصلي ضمن كتالوج نقاء المتنوع.",
@@ -211,7 +233,9 @@ window.NAQA_PRODUCTS.push(
   "sku": "3616303397401",
   "price": 5.5,
   "em": "✨",
-  "imgs": [],
+  "imgs": [
+    "media/products/p242_0.webp"
+  ],
   "nameAr": "برجواز فاونديشن هيلثي ميكس 54",
   "nameEn": "Bourjois Healthy Mix Foundation 54 Beige",
   "descAr": "برجواز فاونديشن هيلثي ميكس 54 — منتج أصلي ضمن كتالوج نقاء المتنوع.",
@@ -229,7 +253,9 @@ window.NAQA_PRODUCTS.push(
   "sku": "3616303397418",
   "price": 5.5,
   "em": "✨",
-  "imgs": [],
+  "imgs": [
+    "media/products/p242_0.webp"
+  ],
   "nameAr": "برجواز فاونديشن هيلثي ميكس 55",
   "nameEn": "Bourjois Healthy Mix Foundation 55 Dark Beige",
   "descAr": "برجواز فاونديشن هيلثي ميكس 55 — منتج أصلي ضمن كتالوج نقاء المتنوع.",
@@ -247,7 +273,9 @@ window.NAQA_PRODUCTS.push(
   "sku": "3616303400100",
   "price": 3.9,
   "em": "✨",
-  "imgs": [],
+  "imgs": [
+    "media/products/p240_0.webp"
+  ],
   "nameAr": "برجواز كحل كونتور كلوبنق 001",
   "nameEn": "Bourjois Contour Clubbing Waterproof Liner 001 Ultra Black",
   "descAr": "برجواز كحل كونتور كلوبنق 001 — منتج أصلي ضمن كتالوج نقاء المتنوع.",
@@ -266,7 +294,9 @@ window.NAQA_PRODUCTS.push(
   "sku": "3616303400117",
   "price": 3.9,
   "em": "✨",
-  "imgs": [],
+  "imgs": [
+    "media/products/p240_0.webp"
+  ],
   "nameAr": "برجواز كحل كونتور كلوبنق 041",
   "nameEn": "Bourjois Contour Clubbing Waterproof Liner 041",
   "descAr": "برجواز كحل كونتور كلوبنق 041 — منتج أصلي ضمن كتالوج نقاء المتنوع.",
@@ -284,7 +314,9 @@ window.NAQA_PRODUCTS.push(
   "sku": "3616303500202",
   "price": 3.4,
   "em": "✨",
-  "imgs": [],
+  "imgs": [
+    "media/products/p240_0.webp"
+  ],
   "nameAr": "برجواز روج فلفت 01",
   "nameEn": "Bourjois Rouge Velvet The Lipstick 01",
   "descAr": "برجواز روج فلفت 01 — منتج أصلي ضمن كتالوج نقاء المتنوع.",
@@ -302,7 +334,9 @@ window.NAQA_PRODUCTS.push(
   "sku": "3616303500219",
   "price": 3.4,
   "em": "✨",
-  "imgs": [],
+  "imgs": [
+    "media/products/p240_0.webp"
+  ],
   "nameAr": "برجواز روج فلفت 07",
   "nameEn": "Bourjois Rouge Velvet The Lipstick 07",
   "descAr": "برجواز روج فلفت 07 — منتج أصلي ضمن كتالوج نقاء المتنوع.",
@@ -320,7 +354,9 @@ window.NAQA_PRODUCTS.push(
   "sku": "3616303500226",
   "price": 3.4,
   "em": "✨",
-  "imgs": [],
+  "imgs": [
+    "media/products/p240_0.webp"
+  ],
   "nameAr": "برجواز روج فلفت 12",
   "nameEn": "Bourjois Rouge Velvet The Lipstick 12",
   "descAr": "برجواز روج فلفت 12 — منتج أصلي ضمن كتالوج نقاء المتنوع.",
@@ -335,12 +371,14 @@ window.NAQA_PRODUCTS.push(
   "id": 291,
   "brand": "Bourjois",
   "cat": "وجه",
-  "sku": "3616303600303",
+  "sku": "3616303915124",
   "price": 4.1,
   "em": "✨",
-  "imgs": [],
-  "nameAr": "برجواز بلاش ليتل راوند بوت 15",
-  "nameEn": "Bourjois Little Round Pot Blush 15 Rose Eclat",
+  "imgs": [
+    "media/products/p291_0.webp"
+  ],
+  "nameAr": "بودرة Healthy Mix — 03 Rose Beige",
+  "nameEn": "Bourjois Healthy Mix Powder 03 Rose Beige",
   "descAr": "برجواز بلاش ليتل راوند بوت 15 — منتج أصلي ضمن كتالوج نقاء المتنوع.",
   "descEn": "Bourjois Little Round Pot Blush 15 Rose Eclat — authentic listing in Naqa’s curated catalog.",
   "useAr": "١) بشرة نظيفة ومرطّبة.\n٢) كمية قليلة ووزّعي جيداً.\n٣) ابنِي التغطية بطبقات.\n٤) ثبّتي عند الحاجة.",
@@ -357,7 +395,9 @@ window.NAQA_PRODUCTS.push(
   "sku": "3616303600310",
   "price": 4.1,
   "em": "✨",
-  "imgs": [],
+  "imgs": [
+    "media/products/p291_0.webp"
+  ],
   "nameAr": "برجواز بلاش ليتل راوند بوت 34",
   "nameEn": "Bourjois Little Round Pot Blush 34 Rose d'Or",
   "descAr": "برجواز بلاش ليتل راوند بوت 34 — منتج أصلي ضمن كتالوج نقاء المتنوع.",

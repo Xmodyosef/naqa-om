@@ -159,3 +159,29 @@ html body.naqa-open .hide-row input {
   height: 18px;
 }
 /* ========== end STEP5b ========== */
+
+
+/* Hide / show on product card */
+html body.naqa-open #list .prod-actions .hide-btn {
+  flex: 0 0 auto;
+  border: 1px solid #e0d0cc;
+  border-radius: 12px;
+  padding: 8px 10px;
+  font-weight: 800;
+  font-size: .72rem;
+  background: #fff;
+  color: #5c3d42;
+  cursor: pointer;
+}
+html body.naqa-open #list .prod-actions .hide-btn.is-hidden-on {
+  background: #f3e4e7;
+  border-color: #c46b7c;
+  color: #8d3048;
+}
+html body.naqa-open #list .prod-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+  justify-content: flex-end;
+}

@@ -508,6 +508,9 @@
         +   '</div>'
         + '</div>'
         + '<div class="prod-actions">'
+        +   '<button type="button" class="hide-btn' + (m.hidden ? ' is-hidden-on' : '') + '" data-hide="' + p.id + '">'
+        +     A.t(m.hidden ? "p_show" : "p_hide")
+        +   '</button>'
         +   '<button type="button" class="edit-btn" data-open="' + p.id + '">' + A.t("p_edit") + '</button>'
         + '</div>'
         + '</article>';
@@ -523,6 +526,7 @@
     var listEl = document.getElementById("list");
     listEl.innerHTML = inv + (html || '<p class="note">' + A.t("p_empty") + '</p>') + pager;
     fillStoredImgs(listEl);
+    if (A.bindProductListClicks) A.bindProductListClicks();
   };
 
   A.openEdit = function (id, opts) {
@@ -630,14 +634,20 @@
 
   A.toggleHide = function (id) {
     if (A.requireAuth && !A.requireAuth("status")) return;
-
-    var p = A.products.find(function (x) { return String(x.id) === String(id); });
-    if (!p) return;
+    if (!A.products || !A.products.length) {
+      if (A.refreshProductsFromBundle) A.refreshProductsFromBundle();
+    }
+    var p = (A.products || []).find(function (x) { return String(x.id) === String(id); });
+    if (!p) {
+      A.setMsg("status", A.lang === "en" ? "Product not found." : "المنتج غير موجود.");
+      return;
+    }
     var key = String(id);
     var existing = A.overrides[id] || A.overrides[key] || {};
     var next = Object.assign({}, existing);
-    if (next.hidden) delete next.hidden;
-    else next.hidden = true;
+    var willHide = !next.hidden;
+    if (willHide) next.hidden = true;
+    else delete next.hidden;
     if (Object.keys(next).length) {
       A.overrides[key] = next;
       if (A.overrides[id] && String(id) !== key) delete A.overrides[id];
@@ -645,13 +655,17 @@
       delete A.overrides[key];
       delete A.overrides[id];
     }
-    try { localStorage.setItem(A.KEY, JSON.stringify(A.overrides)); } catch (e) {
+    try { localStorage.setItem(A.KEY || "naqa_overrides", JSON.stringify(A.overrides)); } catch (e) {
       A.setMsg("status", A.t("p_imgsFull"));
       return;
     }
     if (A.paintList) A.paintList("");
-    if (A.publishLive) A.publishLive();
-    else A.setMsg("status", A.t("p_saved"));
+    var msg = willHide
+      ? (A.lang === "en" ? "Hidden on the store." : "صار مخفي في المتجر.")
+      : (A.lang === "en" ? "Visible on the store." : "صار ظاهر في المتجر.");
+    A.setMsg("status", msg);
+    if (A.syncOverridesCloud) A.syncOverridesCloud();
+    else if (A.publishLive) A.publishLive();
   };
   A.saveEdit = function (opts) {
     if (A.requireAuth && !A.requireAuth("status")) return;
@@ -755,4 +769,36 @@
       try { localStorage.setItem(A.KEY, JSON.stringify(A.overrides)); } catch (e) {}
     });
   };
+
+  /* List clicks: hide / edit / pager — bound here so it works after deferred load */
+  A.bindProductListClicks = function () {
+    var list = document.getElementById("list");
+    if (!list || list._naqaProdBound) return;
+    list._naqaProdBound = true;
+    list.addEventListener("click", function (e) {
+      var pg = e.target.closest("[data-page]");
+      if (pg && !pg.disabled) {
+        e.preventDefault();
+        var n = parseInt(pg.getAttribute("data-page"), 10);
+        if (!n || n < 1) return;
+        A.productPage = n;
+        A.paintList("");
+        try { history.pushState({ naqa: "sec", tab: "products", page: n }, "", A.sectionHash ? A.sectionHash() : "#/products"); } catch (err) {}
+        return;
+      }
+      var hide = e.target.closest("[data-hide]");
+      if (hide) {
+        e.preventDefault();
+        e.stopPropagation();
+        if (A.toggleHide) A.toggleHide(hide.getAttribute("data-hide"));
+        return;
+      }
+      var open = e.target.closest("[data-open]");
+      if (open) {
+        e.preventDefault();
+        if (A.openEdit) A.openEdit(open.getAttribute("data-open"));
+      }
+    });
+  };
+  try { A.bindProductListClicks(); } catch (e) {}
 })(window);

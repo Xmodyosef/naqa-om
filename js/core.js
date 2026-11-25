@@ -77,11 +77,12 @@ function productLink(id){
 }
 
 function naqaKeepImgs(base, saved){
+  /* RULE: never replace a product gallery with only new uploads — keep catalog shots. */
   base=(base||[]).filter(Boolean);
   saved=(saved||[]).filter(Boolean);
-  if(!saved.length) return base.slice(0,5);
+  if(!saved.length) return base.slice(0,6);
   var kept=saved.some(function(u){ return base.indexOf(u)>=0; });
-  if(kept) return saved.slice(0,5);
+  if(kept) return saved.slice(0,6);
   var out=[], seen={};
   function add(u){ if(!u||seen[u]||out.length>=6) return; seen[u]=1; out.push(u); }
   saved.forEach(add);

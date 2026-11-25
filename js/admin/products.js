@@ -369,6 +369,11 @@
         }
         if (del) {
           var ix = +del.getAttribute("data-img-del");
+          var gone = A._editImgs[ix];
+          if (gone && (A._editBaseImgs || []).indexOf(gone) >= 0) {
+            A._editRemoved = A._editRemoved || {};
+            A._editRemoved[gone] = 1;
+          }
           A._editImgs.splice(ix, 1);
           A.paintImgGallery();
         }
@@ -399,7 +404,9 @@
           chain = chain.then(function () {
             return shrinkToB64(one).then(function (packed) { return saveFsImage(packed.b64).then(function (url) { A._fsPreview = A._fsPreview || {}; A._fsPreview[url] = URL.createObjectURL(packed.blob); return url; }); }).then(function (url) {
               added.push(url);
-              A._editImgs = normImgs((A._editImgs || []).concat([url]));
+              var baseUp = A._editBaseImgs || [];
+              var gallery = (A._editImgs || []).concat([url]);
+              A._editImgs = normImgs(A.keepImgs ? A.keepImgs(baseUp, gallery, A._editRemoved || {}) : gallery);
               A.paintImgGallery();
             });
           });
@@ -424,7 +431,9 @@
         A.setMsg("status", A.t("p_imgsMax"));
         return;
       }
-      A._editImgs = normImgs((A._editImgs || []).concat([u]));
+      var baseUrl = A._editBaseImgs || [];
+      var gUrl = (A._editImgs || []).concat([u]);
+      A._editImgs = normImgs(A.keepImgs ? A.keepImgs(baseUrl, gUrl, A._editRemoved || {}) : gUrl);
       if (inp) inp.value = "";
       A.paintImgGallery();
     };
@@ -535,6 +544,8 @@
       A._editNavPushed = true;
     }
 
+    A._editRemoved = {};
+    A._editBaseImgs = Array.isArray(p.imgs) ? p.imgs.filter(Boolean).slice() : [];
     A._editImgs = normImgs(m.imgs || []);
 
     var catOpts = A.CATS.map(function (c) {
@@ -653,7 +664,12 @@
       taxCustom: taxMode === "custom" ? taxCustom : undefined,
       descAr: A.val("f_descAr"), descEn: A.val("f_descEn"), useAr: A.val("f_useAr"), useEn: A.val("f_useEn"),
       skinAr: A.val("f_skinAr"), skinEn: A.val("f_skinEn"),
-      imgs: normImgs(A._editImgs),
+      imgs: (function () {
+        var base = A._editBaseImgs || [];
+        var p0 = A.products.find(function (x) { return String(x.id) === String(A.editingId); });
+        if (p0 && Array.isArray(p0.imgs) && p0.imgs.length) base = p0.imgs.filter(Boolean);
+        return normImgs(A.keepImgs ? A.keepImgs(base, A._editImgs || [], A._editRemoved || {}) : (A._editImgs || []));
+      })(),
       hidden: !!(document.getElementById("f_hidden") && document.getElementById("f_hidden").checked)
     };
     if (next.price != null && (isNaN(next.price) || next.price < 0)) { A.setMsg("status", A.t("p_priceBad")); return; }

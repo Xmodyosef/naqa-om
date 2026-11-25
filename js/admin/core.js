@@ -143,24 +143,54 @@
     var _cap = (typeof ORDERS_CAP === "number" && ORDERS_CAP > 0) ? ORDERS_CAP : 300;
     localStorage.setItem(A.ORDERS_KEY, JSON.stringify(A.orders.slice(0, _cap)));
   };
-  A.keepImgs = function (base, saved) {
-    base = (base || []).filter(Boolean);
+  /* RULE: a new photo never wipes the product gallery.
+     - New/uploaded urls go first.
+     - Catalog shots stay unless the admin deletes them with ✕ (tracked in A._editRemoved).
+     - Applies to every product on load, save, and store merge. */
+  A.keepImgs = function (base, saved, removed) {
+    removed = removed || {};
+    base = (base || []).filter(function (u) { return u && !removed[u]; });
     saved = (saved || []).filter(Boolean);
-    if (!saved.length) return base.slice(0, 5);
-    var kept = saved.some(function (u) { return base.indexOf(u) >= 0; });
-    if (kept) return saved.slice(0, 5);
+    if (!saved.length) return base.slice(0, 6);
+    var hasOriginal = saved.some(function (u) { return base.indexOf(u) >= 0; });
+    if (hasOriginal) return saved.slice(0, 6);
     var out = [], seen = {};
-    function add(u) { if (!u || seen[u] || out.length >= 6) return; seen[u] = 1; out.push(u); }
+    function add(u) {
+      if (!u || seen[u] || removed[u] || out.length >= 6) return;
+      seen[u] = 1;
+      out.push(u);
+    }
     saved.forEach(add);
     base.forEach(add);
     return out;
+  };
+  A.repairAllProductImgs = function () {
+    var map = A.overrides || {};
+    var fixed = false;
+    (A.products || []).forEach(function (p) {
+      if (!p) return;
+      var id = String(p.id);
+      var o = map[id] || map[p.id];
+      if (!o || !Array.isArray(o.imgs) || !o.imgs.length) return;
+      var base = Array.isArray(p.imgs) ? p.imgs.filter(Boolean) : [];
+      var next = A.keepImgs(base, o.imgs);
+      try {
+        if (JSON.stringify(next) === JSON.stringify(o.imgs)) return;
+      } catch (e) {}
+      o.imgs = next;
+      map[id] = o;
+      if (map[p.id] && String(p.id) !== id) delete map[p.id];
+      fixed = true;
+    });
+    A.overrides = map;
+    return fixed;
   };
   A.merged = function (p) {
     var o = A.overrides[p.id] || A.overrides[String(p.id)] || {};
     var baseImgs = Array.isArray(p.imgs) ? p.imgs.filter(Boolean) : [];
     var m = Object.assign({}, p, o);
     var savedImgs = Array.isArray(o.imgs) ? o.imgs.filter(Boolean) : [];
-    m.imgs = savedImgs.length ? A.keepImgs(baseImgs, savedImgs) : baseImgs.slice(0, 5);
+    m.imgs = savedImgs.length ? A.keepImgs(baseImgs, savedImgs) : baseImgs.slice(0, 6);
     if (m.stock == null || m.stock === "") m.stock = 3;
     if (m.was == null) m.was = "";
     return m;

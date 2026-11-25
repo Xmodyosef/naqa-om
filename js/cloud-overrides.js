@@ -147,7 +147,18 @@
         }
       });
       A.overrides = merged;
+      var repaired = false;
+      try {
+        if (A.repairAllProductImgs) repaired = !!A.repairAllProductImgs();
+      } catch (e) { repaired = false; }
       try { localStorage.setItem(A.KEY || "naqa_overrides", JSON.stringify(A.overrides)); } catch (e) {}
+      if (repaired) {
+        try {
+          if (currentUser()) {
+            return A.syncOverridesCloud().then(function () { return true; }).catch(function () { return true; });
+          }
+        } catch (e) {}
+      }
       return true;
     }).catch(function () { return false; });
   };

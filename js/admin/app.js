@@ -134,8 +134,6 @@
   };
 
   A.go = function (tab, sub, opts) {
-    if (A.requireAuth && !A.requireAuth()) return;
-
     opts = opts || {};
     if (TABS.indexOf(tab) < 0) return;
     if (tab === "orders") {
@@ -180,8 +178,6 @@
   };
 
   A.applyRoute = function (raw) {
-    if (A.requireAuth && !A.requireAuth()) return;
-
     raw = String(raw || (location.hash || "").replace(/^#\/?/, "") || "");
     var editMatch = raw.match(/^products\/edit\/([^/]+)/);
     if (editMatch) {
@@ -208,16 +204,8 @@
   };
 
   A.openAdmin = function () {
-    /* P1: never unlock without live Firebase session */
+    /* P1: only open when Firebase has a current user (called after allowedEmail) */
     if (!A.isAuthed || !A.isAuthed()) {
-      try {
-        document.body.classList.add("naqa-locked");
-        document.body.classList.remove("naqa-open");
-        var tools0 = document.getElementById("tools");
-        if (tools0) tools0.hidden = true;
-        var pin0 = document.getElementById("pin");
-        if (pin0) pin0.hidden = false;
-      } catch (e) {}
       return;
     }
     A.touchSession();

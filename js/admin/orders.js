@@ -590,6 +590,7 @@
           A.orderDatePreset = "custom";
           A.orderDateFrom = (document.getElementById("ordDateFrom") || {}).value || "";
           A.orderDateTo = (document.getElementById("ordDateTo") || {}).value || "";
+          if (A.paintDateFaces) A.paintDateFaces();
           /* لا نعيد بناء أدوات التاريخ — فقط نحدّث القائمة */
           A.paintOrders({ skipTools: true });
           return;
@@ -629,20 +630,35 @@
     tools.innerHTML =
       '<div class="orders-filter-inline" id="ordersToolsPanel">'
       + '<label class="date-one-wrap" title="' + A.esc(A.t("f_from") || "من") + '">'
-      + '<span class="date-one-lab">' + A.esc(A.t("f_from") || "من") + '</span>'
+      + '<span class="date-one-show" id="ordDateFromShow">' + A.esc(A.t("f_from") || "من") + '</span>'
       + '<input type="date" lang="en" dir="ltr" class="date-one" id="ordDateFrom" value="' + A.esc(from) + '" aria-label="' + A.esc(A.t("f_from") || "من") + '">'
       + '</label>'
       + '<label class="date-one-wrap" title="' + A.esc(A.t("f_to") || "إلى") + '">'
-      + '<span class="date-one-lab">' + A.esc(A.t("f_to") || "إلى") + '</span>'
+      + '<span class="date-one-show" id="ordDateToShow">' + A.esc(A.t("f_to") || "إلى") + '</span>'
       + '<input type="date" lang="en" dir="ltr" class="date-one" id="ordDateTo" value="' + A.esc(to) + '" aria-label="' + A.esc(A.t("f_to") || "إلى") + '">'
       + '</label>'
       + '<label class="pick-all-lab" title="' + A.esc(A.t("selectAllOrders") || "تحديد الكل") + '">'
-      + '<input type="checkbox" id="ordSelectAll"><span class="pick-all-txt">' + A.esc(A.t("selectAllOrders") || "الكل") + '</span></label>'
+      + '<input type="checkbox" id="ordSelectAll"><span class="pick-all-txt">' + A.esc(A.t("selectAllOrders") || "تحديد الكل") + '</span></label>'
       + '<button type="button" class="export-one" id="exportOrdersCsv">' + A.esc(A.t("exportExcel") || "Excel") + '</button>'
       + '</div>';
     A.syncExportLabel();
+    if (A.paintDateFaces) A.paintDateFaces();
   };
 
+  A.paintDateFaces = function () {
+    var fmt = function (iso, empty) {
+      if (!iso) return empty;
+      var parts = String(iso).split("-");
+      if (parts.length === 3) return parts[2] + "/" + parts[1] + "/" + parts[0];
+      return iso;
+    };
+    var fromEl = document.getElementById("ordDateFrom");
+    var toEl = document.getElementById("ordDateTo");
+    var fromShow = document.getElementById("ordDateFromShow");
+    var toShow = document.getElementById("ordDateToShow");
+    if (fromShow) fromShow.textContent = fmt(fromEl && fromEl.value, A.t("f_from") || "من");
+    if (toShow) toShow.textContent = fmt(toEl && toEl.value, A.t("f_to") || "إلى");
+  };
 
   /* زر الطباعة ثابت بجانب البحث */
   if (!A._pdfBtnBound) {

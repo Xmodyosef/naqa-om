@@ -520,6 +520,7 @@
         if (menu) menu.hidden = true;
         if ((A.currentTab || "") === "reviews" && A.exportReviewsCsv) A.exportReviewsCsv();
         else if ((A.currentTab || "") === "customers" && A.exportCustomersCsv) A.exportCustomersCsv();
+        else if ((A.currentTab || "") === "finance" && A.exportFinanceCsv) A.exportFinanceCsv();
         else if (A.exportProductsCsv) A.exportProductsCsv();
         return;
       }

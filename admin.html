@@ -25,7 +25,7 @@
 <link rel="preload" href="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js" as="script" />
 <link rel="preload" href="js/firebase-config.js?v=20261125rvsend" as="script" />
 <link rel="preload" href="js/admin/firebase-gate.js?v=20261125rvsend" as="script" />
-<link rel="stylesheet" href="css/admin.css?v=20261125ph" />
+<link rel="stylesheet" href="css/admin.css?v=20261125fin" />
 
 
 </head>
@@ -173,8 +173,8 @@
       var ot = document.getElementById("ordersTopTools");
       var excel = document.getElementById("excelWrap");
       if (tab === "products" && add) add.hidden = false;
-      if (excel) excel.hidden = !(tab === "products" || tab === "reviews" || tab === "customers");
-      if (tab === "orders" || tab === "products" || tab === "reviews" || tab === "customers") {
+      if (excel) excel.hidden = !(tab === "products" || tab === "reviews" || tab === "customers" || tab === "finance");
+      if (tab === "orders" || tab === "products" || tab === "reviews" || tab === "customers" || tab === "finance") {
         if (search) search.hidden = false;
         if (ot) ot.hidden = false;
       }
@@ -240,10 +240,10 @@
 <script defer src="js/admin.js?v=20261125rvsend"></script>
 <script defer src="js/admin/core.js?v=20261125rvsend"></script>
 <script defer src="js/admin/firebase-gate.js?v=20261125rvsend"></script>
-<script defer src="js/admin/app.js?v=20261125ph"></script>
-<script defer src="js/admin/i18n/dict-ar.js?v=20261125ph"></script>
-<script defer src="js/admin/i18n/dict-en.js?v=20261125ph"></script>
-<script defer src="js/admin/i18n.js?v=20261125ph"></script>
-<script defer src="js/admin/load-modules.js?v=20261125ph"></script>
+<script defer src="js/admin/app.js?v=20261125fin"></script>
+<script defer src="js/admin/i18n/dict-ar.js?v=20261125fin"></script>
+<script defer src="js/admin/i18n/dict-en.js?v=20261125fin"></script>
+<script defer src="js/admin/i18n.js?v=20261125fin"></script>
+<script defer src="js/admin/load-modules.js?v=20261125fin"></script>
 </body>
 </html>

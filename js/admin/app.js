@@ -45,6 +45,8 @@
   A.ORDER_SUBS = ["new", "prep", "ship", "delivered", "cancel"];
   A.currentTab = A.currentTab || "home";
   A.customerQuery = A.customerQuery || "";
+  A.financeOpenArea = A.financeOpenArea || "";
+  A.financeOpenProd = A.financeOpenProd || "";
   A.reviewQuery = A.reviewQuery || "";
   A.currentSub = A.currentSub || "";
   A.productView = A.productView || "all";
@@ -149,15 +151,15 @@
     if (A.refreshChildNav) A.refreshChildNav();
     if (A.updateOrdersBadge) A.updateOrdersBadge();
     var top = document.getElementById("topBar");
-    if (top) top.hidden = !(tab === "products" || tab === "orders" || tab === "reviews" || tab === "customers");
+    if (top) top.hidden = !(tab === "products" || tab === "orders" || tab === "reviews" || tab === "customers" || tab === "finance");
     var add = document.getElementById("addProductBtn");
     if (add) add.hidden = tab !== "products";
     var excel = document.getElementById("excelWrap");
     if (excel) {
-      excel.hidden = !(tab === "products" || tab === "reviews" || tab === "customers");
+      excel.hidden = !(tab === "products" || tab === "reviews" || tab === "customers" || tab === "finance");
       var imp = document.getElementById("excelImportBtn");
-      if (imp) imp.hidden = (tab === "reviews" || tab === "customers");
-      if (tab !== "products" && tab !== "reviews" && tab !== "customers") {
+      if (imp) imp.hidden = (tab === "reviews" || tab === "customers" || tab === "finance");
+      if (tab !== "products" && tab !== "reviews" && tab !== "customers" && tab !== "finance") {
         var em = document.getElementById("excelMenu");
         var eb = document.getElementById("excelMenuBtn");
         if (em) em.hidden = true;
@@ -167,9 +169,9 @@
     var search = document.getElementById("ordersSearchWrap");
     if (search) search.hidden = !(tab === "orders" || tab === "products" || tab === "reviews" || tab === "customers");
     var ot = document.getElementById("ordersTopTools");
-    if (ot) ot.hidden = !(tab === "orders" || tab === "products" || tab === "reviews" || tab === "customers");
+    if (ot) ot.hidden = !(tab === "orders" || tab === "products" || tab === "reviews" || tab === "customers" || tab === "finance");
     var otSlot = document.getElementById("ordersTools");
-    if (otSlot) otSlot.hidden = tab !== "orders";
+    if (otSlot) otSlot.hidden = !(tab === "orders" || tab === "finance");
   };
 
   A.sectionHash = function () {

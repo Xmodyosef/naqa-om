@@ -672,7 +672,8 @@
         });
       }
     /* ابني الأدوات مرة واحدة فقط — إلا إذا ناقص زر PDF (نسخة قديمة) */
-    if (tools.querySelector("#ordersToolsPanel")) {
+    /* لو كنا في المالية واستبدلنا الأدوات — أعد بناء أدوات الطلبات */
+    if (tools.querySelector("#ordersToolsPanel") && !tools.querySelector("#financeToolsPanel")) {
       A.syncExportLabel();
       return;
     }

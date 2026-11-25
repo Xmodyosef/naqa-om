@@ -28,3 +28,19 @@
   color:var(--rose, #c46b7c);
   font-weight:800;
 }
+
+/* Finance clickable rows */
+.fin-hit{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  width:100%;
+  text-align:start;
+  cursor:pointer;
+}
+.fin-hit .fin-rev{
+  color:var(--rose,#c46b7c);
+  font-variant-numeric:tabular-nums;
+  flex-shrink:0;
+}

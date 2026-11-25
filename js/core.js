@@ -42,6 +42,7 @@ function applyRoute(){
     const clr=$("#searchClear"); if(clr) clr.hidden=!query;
     document.querySelectorAll("#cats [data-cat]").forEach(x=>x.classList.toggle("on", x.dataset.cat==="all"));
     render();
+    if(window.__naqaReturnY != null){ if(typeof naqaRestoreShopScroll==="function") naqaRestoreShopScroll(); return; }
     const prod=$("#products"); if(prod) prod.scrollIntoView({behavior:"smooth", block:"start"});
     return;
   }
@@ -50,6 +51,7 @@ function applyRoute(){
     const s=$("#search"); if(s) s.value="";
     document.querySelectorAll("#cats [data-cat]").forEach(x=>x.classList.toggle("on", x.dataset.cat==="all"));
     render();
+    if(window.__naqaReturnY != null){ if(typeof naqaRestoreShopScroll==="function") naqaRestoreShopScroll(); return; }
     const prod=$("#products"); if(prod) prod.scrollIntoView({behavior:"smooth"});
     return;
   }
@@ -58,13 +60,16 @@ function applyRoute(){
     const s=$("#search"); if(s) s.value="";
     document.querySelectorAll("#cats [data-cat]").forEach(x=>x.classList.toggle("on", x.dataset.cat===currentCat));
     render();
+    if(window.__naqaReturnY != null){ if(typeof naqaRestoreShopScroll==="function") naqaRestoreShopScroll(); return; }
     const prod=$("#products"); if(prod) prod.scrollIntoView({behavior:"smooth"});
     return;
   }
   // shop/products: never auto-scroll here — was fighting user scroll + causing image thrash
-  if(h==="shop"||h==="products"){
+  if(h==="shop"||h==="products"||h===""||h==="top"){
+    if(window.__naqaReturnY != null && typeof naqaRestoreShopScroll==="function") naqaRestoreShopScroll();
     return;
   }
+  if(window.__naqaReturnY != null && typeof naqaRestoreShopScroll==="function") naqaRestoreShopScroll();
 }
 
 const products=(window.NAQA_PRODUCTS||[]).map(p=>Object.assign({imgs:[]},p));

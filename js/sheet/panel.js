@@ -9,8 +9,26 @@ function unlockBodyScroll(){
   document.body.classList.remove("sheet-open");
   if(window.naqaScrollLock) naqaScrollLock.unlock();
 }
+function naqaRememberShopScroll(){
+  if(window.__naqaReturnY != null) return;
+  window.__naqaReturnY = window.scrollY || document.documentElement.scrollTop || 0;
+  try{ if("scrollRestoration" in history) history.scrollRestoration = "manual"; }catch(e){}
+}
+function naqaRestoreShopScroll(){
+  var y = window.__naqaReturnY;
+  if(y == null) return;
+  window.__naqaReturnY = null;
+  function go(){ window.scrollTo(0, y); }
+  go();
+  requestAnimationFrame(go);
+  setTimeout(go, 60);
+  setTimeout(go, 180);
+}
+window.naqaRestoreShopScroll = naqaRestoreShopScroll;
+
 async function openSheet(id, mode, reset){
   const p=products.find(x=>x.id===id); if(!p) return;
+  naqaRememberShopScroll();
   openProductId=id; sheetMode=mode||"full";
   if(reset!==false){ galleryIndex=0; pickQty=1; }
   const sameBrand=products.filter(x=>x.brand===p.brand && x.id!==p.id);
@@ -79,6 +97,11 @@ function closeSheet(fromRoute){
   if(!fromRoute && routeHash().indexOf("p/")===0){
     try{ history.back(); }catch(e){}
   }
+  /* رجوع من المنتج: نفس مكان التمرير، مو بداية الصفحة */
+  setTimeout(function(){
+    if(routeHash().indexOf("p/")===0) return;
+    if(typeof naqaRestoreShopScroll==="function") naqaRestoreShopScroll();
+  }, 0);
 }
 
 function openLightbox(src){

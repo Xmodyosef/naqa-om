@@ -66,8 +66,17 @@
 .sug-vis img{width:100%;height:100px;object-fit:contain}
 .sug-name{display:block;font-size:.78rem;font-weight:700;margin-top:6px}
 .sug-price{color:var(--rose-deep);font-weight:800;font-size:.85rem}
-.sheet-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:14px}
-.sheet-actions .card-add{grid-column:1/-1;padding:12px;border-radius:12px;background:var(--fg);color:#fff;font-weight:700}
+.sheet-brand-row{display:flex;align-items:center;margin:10px 0 4px}
+.sheet-brand-row .brand-icon-only{margin:0}
+.sheet-actions{display:grid;grid-template-columns:auto 1fr;gap:8px;margin:12px 0 8px;position:sticky;bottom:0;z-index:5;
+  background:linear-gradient(180deg,transparent 0%,var(--card) 18%,var(--card) 100%);
+  padding:10px 0 12px}
+.sheet-actions .btn-wish-sheet{align-self:stretch}
+.sheet-actions .card-add{padding:14px 12px;border-radius:14px;background:var(--rose-deep);color:#fff;font-weight:800;font-size:1rem}
+.sheet-actions .btn-open{grid-column:1/-1}
+.sheet-actions-foot{position:static;background:none;padding:16px 0 8px;margin-top:18px;grid-template-columns:1fr}
+.sheet-actions-foot .card-add{grid-column:1/-1}
+
 
 .lightbox{position:fixed;inset:0;z-index:120;background:rgba(10,8,6,.94);display:none;align-items:center;justify-content:center;padding:12px}
 .lightbox.show{display:flex}

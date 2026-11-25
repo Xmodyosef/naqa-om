@@ -83,18 +83,22 @@ html[dir="ltr"] .wish-btn{left:auto;right:10px}
 .btn-add:disabled{opacity:.45}
 
 .reviews-block{margin:16px 0 8px;padding-top:8px;border-top:1px solid var(--line)}
-.reviews-block h4{margin:0 0 6px}
-.review-empty{color:var(--muted);font-size:.88rem;margin:0 0 8px}
+.reviews-block h4{margin:0 0 8px;font-size:1.12rem}
+.review-empty{color:var(--muted);font-size:1rem;margin:0 0 8px;line-height:1.7}
 .review-card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:12px;margin:8px 0;color:var(--fg)}
-.review-card header{display:flex;justify-content:space-between;gap:8px;font-weight:800}
-.review-card p{margin:6px 0 0;font-size:.92rem}
+.review-card header{display:flex;justify-content:space-between;gap:8px;font-weight:800;font-size:1.02rem}
+.review-card p{margin:6px 0 0;font-size:1.05rem;line-height:1.75}
 .review-photo{width:100%;max-height:280px;object-fit:cover;border-radius:12px;margin-top:8px;background:#f6f1ee}
 .star-pick{display:flex;gap:6px;margin:8px 0}
 .star-pick button{width:40px;height:40px;border-radius:12px;border:1px solid var(--line);background:var(--card);color:var(--muted);font-size:1.15rem}
 .star-pick button.on{background:var(--rose-deep);color:#fff;border-color:var(--rose-deep);box-shadow:0 2px 8px rgba(141,48,72,.28)}
 .reviews-block,.review-card-form,.review-overlay{
   font-family:"Noto Naskh Arabic","Noto Kufi Arabic","Segoe UI",Tahoma,serif;
+  font-size:1.05rem;
 }
+.review-card-form{font-size:1.05rem}
+.review-card-form input,.review-card-form textarea{font-size:1.05rem}
+
 .reviews-block .block-h,.review-card-form h3{font-family:inherit;font-weight:700}
 .review-card header span:last-child,
 .review-pill,.rv-stars{color:var(--rose-deep)}

@@ -33,10 +33,27 @@
     btn.textContent = n ? (label + " (" + n + ")") : label;
   };
 
-  A.exportOrdersCsv = function () {
+  A.selectedOrderIds = A.selectedOrderIds || {};
+  A.exportOrdersCsv = function (opts) {
+    opts = opts || {};
     var rows = [["id", "at", "status", "name", "phone", "area", "total", "payment", "items"]];
+    var sel = A.selectedOrderIds || {};
+    var hasSel = Object.keys(sel).some(function (k) { return !!sel[k]; });
+    var count = 0;
     (A.orders || []).forEach(function (o) {
-      if (A.ordersInRange && !A.ordersInRange(o.at)) return;
+      if (!o || !o.id) return;
+      if (hasSel) {
+        if (!sel[o.id]) return;
+      } else {
+        if (A.ordersInRange && !A.ordersInRange(o.at)) return;
+        if (!(A.orderFilter === "all" || A.normalizeStatus(o.status) === A.orderFilter)) return;
+        var q = String(A.orderQuery || "").trim().toLowerCase();
+        if (q) {
+          var bits = [o.id, o.name, o.phone, o.city, o.area, o.address, o.note];
+          (o.items || []).forEach(function (it) { bits.push(it.name, it.nameAr, it.sku); });
+          if (bits.join(" ").toLowerCase().indexOf(q) < 0) return;
+        }
+      }
       var st = A.normalizeStatus(o.status);
       var items = "";
       if (Array.isArray(o.items) && o.items.length) {
@@ -47,13 +64,20 @@
       } else {
         items = o.itemsText || "";
       }
+      var when = "";
+      try { when = o.at ? A.fmtDateTimeNum(o.at) : (o.at || ""); } catch (e) { when = o.at || ""; }
       rows.push([
-        o.id || "", o.at || "", st, o.name || "", o.phone || "", o.area || "",
+        o.id || "", when, st, o.name || "", o.phone || "", o.area || "",
         o.total != null ? o.total : "", A.payText(o), items
       ]);
+      count++;
     });
+    if (count === 0) {
+      A.setMsg("orderStatus", A.t("exportNone") || "");
+      return;
+    }
     A.downloadCsv("naqa-orders.csv", rows);
-    A.setMsg("orderStatus", A.t("exportOk"));
+    A.setMsg("orderStatus", hasSel ? (A.t("exportOkSel") || A.t("exportOk")) : A.t("exportOk"));
   };
   A.importOrdersCsv = function (file) {
     if (!file) return;
@@ -176,33 +200,59 @@
         tools.addEventListener("change", function (e) {
           var t = e.target;
           if (!t) return;
-          if (t.id === "ordDatePreset") {
-            A.applyOrderDatePreset(t.value);
+          if (t.id === "ordDateFrom" || t.id === "ordDateTo") {
+            A.orderDatePreset = "custom";
+            A.orderDateFrom = (document.getElementById("ordDateFrom") || {}).value || "";
+            A.orderDateTo = (document.getElementById("ordDateTo") || {}).value || "";
             A.paintOrders();
             return;
           }
-          if (t.id === "ordToolsAct") {
-            var act = t.value;
-            t.value = "";
-            if (act === "wa") A.waShareText(A.buildOrdersReport(A.orderFilter === "all" ? "new" : A.orderFilter));
-            if (act === "csv") A.exportOrdersCsv();
+          if (t.id === "ordSelectAll") {
+            var on = !!t.checked;
+            A.selectedOrderIds = A.selectedOrderIds || {};
+            var listNow = document.querySelectorAll("#ordersList .order-pick");
+            listNow.forEach(function (cb) {
+              var id = cb.getAttribute("data-oid");
+              cb.checked = on;
+              if (id) A.selectedOrderIds[id] = on;
+            });
+            var exp = document.getElementById("exportOrdersCsv");
+            if (exp) {
+              var n = 0;
+              Object.keys(A.selectedOrderIds).forEach(function (k) { if (A.selectedOrderIds[k]) n++; });
+              exp.textContent = n ? ((A.t("exportSelected") || "تصدير المحدد") + " (" + n + ")") : (A.t("exportExcel") || A.t("exportCsv") || "تصدير Excel");
+            }
+            return;
+          }
+        });
+        tools.addEventListener("click", function (e) {
+          var t = e.target;
+          if (!t) return;
+          if (t.id === "exportOrdersCsv" || t.closest && t.closest("#exportOrdersCsv")) {
+            A.exportOrdersCsv();
           }
         });
       }
-      var preset = A.orderDatePreset || "all";
+      var from = A.orderDateFrom || "";
+      var to = A.orderDateTo || "";
+      var selCount = 0;
+      Object.keys(A.selectedOrderIds || {}).forEach(function (k) { if (A.selectedOrderIds[k]) selCount++; });
+      var exportLabel = selCount
+        ? ((A.t("exportSelected") || "تصدير المحدد") + " (" + selCount + ")")
+        : (A.t("exportExcel") || A.t("exportCsv") || "تصدير Excel");
       tools.innerHTML =
         '<div class="orders-filter-inline" id="ordersToolsPanel">'
-        + '<select class="status-one filter-one" id="ordDatePreset" aria-label="' + A.esc(A.t("o_tools") || "فلتر") + '">'
-        + '<option value="all"' + (preset === "all" ? " selected" : "") + '>' + A.esc(A.t("f_all") || "الكل") + '</option>'
-        + '<option value="today"' + (preset === "today" ? " selected" : "") + '>' + A.esc(A.t("f_today") || "اليوم") + '</option>'
-        + '<option value="7"' + (preset === "7" ? " selected" : "") + '>' + A.esc(A.t("f_7d") || "٧ أيام") + '</option>'
-        + '<option value="30"' + (preset === "30" ? " selected" : "") + '>' + A.esc(A.t("f_30d") || "٣٠ يوم") + '</option>'
-        + '</select>'
-        + '<select class="status-one filter-one" id="ordToolsAct" aria-label="' + A.esc(A.t("f_toolsAct") || "أدوات") + '">'
-        + '<option value="">' + A.esc(A.t("f_actNone") || "أدوات…") + '</option>'
-        + '<option value="wa">' + A.esc(A.t("f_actWa") || A.t("o_waSum")) + '</option>'
-        + '<option value="csv">' + A.esc(A.t("f_actCsv") || A.t("exportCsv")) + '</option>'
-        + '</select>'
+        + '<label class="date-one-wrap" title="' + A.esc(A.t("f_from") || "من") + '">'
+        + '<span class="date-one-lab">' + A.esc(A.t("f_from") || "من") + '</span>'
+        + '<input type="date" lang="en" dir="ltr" class="status-one filter-one date-one" id="ordDateFrom" value="' + A.esc(from) + '" aria-label="' + A.esc(A.t("f_from") || "من") + '">'
+        + '</label>'
+        + '<label class="date-one-wrap" title="' + A.esc(A.t("f_to") || "إلى") + '">'
+        + '<span class="date-one-lab">' + A.esc(A.t("f_to") || "إلى") + '</span>'
+        + '<input type="date" lang="en" dir="ltr" class="status-one filter-one date-one" id="ordDateTo" value="' + A.esc(to) + '" aria-label="' + A.esc(A.t("f_to") || "إلى") + '">'
+        + '</label>'
+        + '<label class="pick-all-lab"><input type="checkbox" id="ordSelectAll" ' + (selCount ? 'checked' : '') + '> '
+        + A.esc(A.t("selectAllOrders") || "تحديد الكل") + '</label>'
+        + '<button type="button" class="status-one filter-one export-one" id="exportOrdersCsv">' + A.esc(exportLabel) + '</button>'
         + '</div>';
     }
     var box = document.getElementById("ordersList");
@@ -275,8 +325,10 @@
       }
       totRows += '<div class="tot-row grand"><span>' + A.t("o_grand") + '</span><b>' + A.esc(A.fmtMoney(sums.grand)) + ' ' + A.t("omr") + '</b></div>';
       var totals = '<div class="order-totals">' + totRows + '</div>';
+      var picked = !!(A.selectedOrderIds && A.selectedOrderIds[o.id]);
       return '<article class="order" data-oid="' + A.esc(o.id) + '">'
         + '<div class="order-head">'
+        + '<label class="order-pick-lab"><input type="checkbox" class="order-pick" data-oid="' + A.esc(o.id) + '"' + (picked ? " checked" : "") + ' aria-label="select"></label>'
         + '<b class="order-id">' + A.esc(o.id) + '</b>'
         + statusPick
         + '<button type="button" class="order-sum" data-open-order="' + A.esc(o.id) + '" aria-expanded="' + (open ? "true" : "false") + '">'

@@ -186,3 +186,21 @@ button.stat.sales-link{width:100%;margin-top:4px}
   background-position:right 8px center;padding:8px 12px 8px 22px
 }
 
+
+/* Order date inputs + pick + export (status-one style) */
+.orders-filter-inline{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.date-one-wrap{display:inline-flex;align-items:center;gap:4px;background:#f3e6e9;border-radius:999px;padding:2px 6px 2px 4px}
+.date-one-lab{font:700 .68rem/1 inherit;color:#8d3048;padding-inline:4px;white-space:nowrap}
+.orders-filter-inline input.date-one{
+  appearance:none;-webkit-appearance:none;border:0;background:transparent;
+  color:#8d3048;font:700 .72rem/1 "IBM Plex Sans",system-ui,sans-serif;
+  padding:6px 4px;min-width:7.2rem;max-width:9.5rem;direction:ltr
+}
+.orders-filter-inline .export-one{
+  background:#8d3048!important;color:#fff!important;
+  background-image:none!important;padding:8px 14px!important
+}
+.pick-all-lab{display:inline-flex;align-items:center;gap:4px;font:700 .72rem inherit;color:#8d3048;white-space:nowrap}
+.order-pick-lab{display:inline-flex;align-items:center;margin:0;cursor:pointer}
+.order-pick-lab input{width:16px;height:16px;accent-color:#8d3048}
+.order-head{display:flex;flex-wrap:wrap;align-items:center;gap:6px 8px}

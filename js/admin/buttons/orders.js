@@ -7,6 +7,7 @@
   if (ordersList) ordersList.addEventListener("click", function (e) {
     safe(function () {
       if (e.target.closest("[data-st-pick]")) return;
+      if (e.target.closest(".order-pick-lab") || e.target.classList.contains("order-pick")) return;
       var opener = e.target.closest("[data-open-order]");
       if (opener && !e.target.closest("[data-st],[data-pay],a")) {
         var oid = opener.getAttribute("data-open-order");
@@ -50,6 +51,24 @@
 
   if (ordersList) ordersList.addEventListener("change", function (e) {
     safe(function () {
+      if (e.target && e.target.classList && e.target.classList.contains("order-pick")) {
+        A.selectedOrderIds = A.selectedOrderIds || {};
+        var id = e.target.getAttribute("data-oid");
+        if (id) A.selectedOrderIds[id] = !!e.target.checked;
+        /* refresh export label without full repaint if possible */
+        var exp = document.getElementById("exportOrdersCsv");
+        if (exp) {
+          var n = 0; Object.keys(A.selectedOrderIds).forEach(function (k) { if (A.selectedOrderIds[k]) n++; });
+          exp.textContent = n ? ((A.t("exportSelected") || "تصدير المحدد") + " (" + n + ")") : (A.t("exportExcel") || A.t("exportCsv") || "تصدير Excel");
+        }
+        var all = document.getElementById("ordSelectAll");
+        if (all) {
+          var boxes = document.querySelectorAll("#ordersList .order-pick");
+          var allOn = boxes.length && Array.prototype.every.call(boxes, function (b) { return b.checked; });
+          all.checked = !!allOn;
+        }
+        return;
+      }
       var pick = e.target.closest("[data-st-pick]");
       if (!pick) return;
       var id = pick.getAttribute("data-oid");

@@ -146,7 +146,7 @@
       try { history.back(); return true; } catch (e) {}
     }
     A._editNavPushed = false;
-    A.paintList("");
+    A.paintList(A.productQuery || "");
     try { history.replaceState({ naqa: "tab", tab: "products" }, "", "#/products"); } catch (e) {}
     return true;
   };
@@ -442,6 +442,217 @@
     };
   }
 
+  /* ---- products tools: search / sort / export / bulk / custom inject ---- */
+  A.productQuery = A.productQuery || "";
+  A.productSort = A.productSort || "name";
+  A.productSel = A.productSel || {};
+
+  A.injectCustomProducts = function () {
+    var map = A.overrides || {};
+    Object.keys(map).forEach(function (id) {
+      var o = map[id];
+      if (!o || !o._new) return;
+      var exists = (A.products || []).some(function (x) { return String(x.id) === String(id); });
+      if (exists) return;
+      A.products.unshift({
+        id: id,
+        brand: o.brand || "",
+        cat: o.cat || ((A.CATS && A.CATS[0]) || "عناية"),
+        sku: o.sku || "",
+        price: o.price != null ? Number(o.price) : 0,
+        was: o.was != null ? Number(o.was) : undefined,
+        stock: o.stock != null ? Number(o.stock) : 3,
+        imgs: Array.isArray(o.imgs) ? o.imgs.slice(0, 6) : [],
+        nameAr: o.nameAr || "",
+        nameEn: o.nameEn || "",
+        descAr: o.descAr || "",
+        descEn: o.descEn || "",
+        useAr: o.useAr || "",
+        useEn: o.useEn || "",
+        skinAr: o.skinAr || "",
+        skinEn: o.skinEn || "",
+        hot: !!o.hot,
+        hidden: !!o.hidden,
+        _new: true
+      });
+    });
+  };
+
+  A.skuTaken = function (sku, exceptId) {
+    sku = String(sku || "").trim().toLowerCase();
+    if (!sku) return false;
+    return (A.products || []).some(function (p) {
+      if (String(p.id) === String(exceptId)) return false;
+      var m = A.merged(p);
+      return String(m.sku || "").trim().toLowerCase() === sku;
+    });
+  };
+
+  A.persistOverridePatch = function (id, patch) {
+    if (A.requireAuth && !A.requireAuth("status")) return false;
+    var key = String(id);
+    var existing = A.overrides[id] || A.overrides[key] || {};
+    var next = Object.assign({}, existing, patch || {});
+    Object.keys(next).forEach(function (k) {
+      if (next[k] === "" || next[k] === undefined) delete next[k];
+    });
+    /* explicit false/clear for hidden/hot */
+    if (patch && Object.prototype.hasOwnProperty.call(patch, "hidden") && !patch.hidden) delete next.hidden;
+    if (patch && Object.prototype.hasOwnProperty.call(patch, "hot") && !patch.hot) delete next.hot;
+    if (Object.keys(next).length) {
+      A.overrides[key] = next;
+      if (A.overrides[id] && String(id) !== key) delete A.overrides[id];
+    } else {
+      delete A.overrides[key];
+      delete A.overrides[id];
+    }
+    try { localStorage.setItem(A.KEY || "naqa_overrides", JSON.stringify(A.overrides)); } catch (e) {
+      A.setMsg("status", A.t("p_imgsFull"));
+      return false;
+    }
+    if (A.syncOverridesCloud) A.syncOverridesCloud();
+    else if (A.publishLive) A.publishLive();
+    return true;
+  };
+
+  A.exportProductsCsv = function () {
+    if (A.requireAuth && !A.requireAuth("status")) return;
+    var ar = A.lang !== "en";
+    var head = ar
+      ? ["المعرف", "SKU", "الاسم عربي", "الاسم EN", "الماركة", "التصنيف", "السعر", "قبل الخصم", "المخزون", "مخفي", "مميز", "ضريبة"]
+      : ["id", "SKU", "nameAr", "nameEn", "brand", "cat", "price", "was", "stock", "hidden", "hot", "tax"];
+    var rows = [head];
+    (A.products || []).forEach(function (p) {
+      var m = A.merged(p);
+      rows.push([
+        p.id,
+        m.sku || "",
+        m.nameAr || "",
+        m.nameEn || "",
+        m.brand || "",
+        m.cat || "",
+        m.price != null ? m.price : "",
+        m.was != null ? m.was : "",
+        m.stock != null ? m.stock : "",
+        m.hidden ? (ar ? "نعم" : "yes") : (ar ? "لا" : "no"),
+        m.hot ? (ar ? "نعم" : "yes") : (ar ? "لا" : "no"),
+        A.taxLabel ? A.taxLabel(m) : ""
+      ]);
+    });
+    if (A.downloadXlsx) A.downloadXlsx("naqa-products.xlsx", rows, ar ? "المنتجات" : "Products");
+    if (A.downloadCsv) A.downloadCsv("naqa-products.csv", rows);
+    A.setMsg("status", A.t("exportOk") || (ar ? "تم التصدير" : "Exported"));
+  };
+
+  A.bulkSetHidden = function (hide) {
+    if (A.requireAuth && !A.requireAuth("status")) return;
+    var ids = Object.keys(A.productSel || {}).filter(function (id) { return A.productSel[id]; });
+    if (!ids.length) {
+      A.setMsg("status", A.t("p_bulkNone") || (A.lang === "en" ? "Select products first." : "حددي منتجات أولاً."));
+      return;
+    }
+    ids.forEach(function (id) {
+      var existing = A.overrides[id] || A.overrides[String(id)] || {};
+      var next = Object.assign({}, existing);
+      if (hide) next.hidden = true;
+      else delete next.hidden;
+      if (Object.keys(next).length) A.overrides[String(id)] = next;
+      else { delete A.overrides[String(id)]; delete A.overrides[id]; }
+    });
+    try { localStorage.setItem(A.KEY || "naqa_overrides", JSON.stringify(A.overrides)); } catch (e) {}
+    A.productSel = {};
+    if (A.paintList) A.paintList(A.productQuery || "");
+    if (A.syncOverridesCloud) A.syncOverridesCloud();
+    A.setMsg("status", hide
+      ? (A.lang === "en" ? "Hidden selected on the store." : "انخفت المنتجات المحددة.")
+      : (A.lang === "en" ? "Shown selected on the store." : "ظهرت المنتجات المحددة."));
+  };
+
+  A.bulkDiscountPct = function () {
+    if (A.requireAuth && !A.requireAuth("status")) return;
+    var ids = Object.keys(A.productSel || {}).filter(function (id) { return A.productSel[id]; });
+    if (!ids.length) {
+      A.setMsg("status", A.t("p_bulkNone") || (A.lang === "en" ? "Select products first." : "حددي منتجات أولاً."));
+      return;
+    }
+    var raw = window.prompt(A.t("p_bulkDiscAsk") || (A.lang === "en" ? "Discount % (e.g. 10):" : "نسبة الخصم % (مثال 10):"), "10");
+    if (raw == null) return;
+    var pct = Number(String(raw).replace(",", ".").replace("%", "").trim());
+    if (!isFinite(pct) || pct <= 0 || pct >= 100) {
+      A.setMsg("status", A.t("p_bulkDiscBad") || (A.lang === "en" ? "Invalid %." : "نسبة غير صالحة."));
+      return;
+    }
+    ids.forEach(function (id) {
+      var p = (A.products || []).find(function (x) { return String(x.id) === String(id); });
+      if (!p) return;
+      var m = A.merged(p);
+      var base = Number(m.was != null && m.was > 0 ? m.was : m.price);
+      if (!isFinite(base) || base <= 0) return;
+      var price = Math.round(base * (1 - pct / 100) * 1000) / 1000;
+      var existing = A.overrides[id] || A.overrides[String(id)] || {};
+      var next = Object.assign({}, existing, { was: base, price: price });
+      A.overrides[String(id)] = next;
+    });
+    try { localStorage.setItem(A.KEY || "naqa_overrides", JSON.stringify(A.overrides)); } catch (e) {}
+    A.productSel = {};
+    if (A.paintList) A.paintList(A.productQuery || "");
+    if (A.syncOverridesCloud) A.syncOverridesCloud();
+    A.setMsg("status", A.lang === "en" ? ("Applied −" + pct + "%") : ("تم تطبيق −" + pct + "٪"));
+  };
+
+  A.toggleHot = function (id) {
+    if (A.requireAuth && !A.requireAuth("status")) return;
+    var p = (A.products || []).find(function (x) { return String(x.id) === String(id); });
+    if (!p) return;
+    var m = A.merged(p);
+    var nextHot = !m.hot;
+    if (!A.persistOverridePatch(id, { hot: nextHot })) return;
+    /* keep live object in sync for admin list */
+    p.hot = nextHot;
+    if (A.paintList) A.paintList(A.productQuery || "");
+    A.setMsg("status", nextHot
+      ? (A.lang === "en" ? "Marked as featured." : "صار مميّز (الأكثر مبيعاً).")
+      : (A.lang === "en" ? "Featured removed." : "أُلغي الوسم المميّز."));
+  };
+
+  A.quickSaveField = function (id, field, raw) {
+    if (A.requireAuth && !A.requireAuth("status")) return;
+    var val = String(raw == null ? "" : raw).trim().replace(",", ".");
+    var num = val === "" ? undefined : Number(val);
+    if (num != null && (isNaN(num) || num < 0)) {
+      A.setMsg("status", field === "stock" ? A.t("p_stockBad") : A.t("p_priceBad"));
+      if (A.paintList) A.paintList(A.productQuery || "");
+      return;
+    }
+    var patch = {};
+    patch[field] = num;
+    if (!A.persistOverridePatch(id, patch)) return;
+    A.setMsg("status", A.t("p_saved") || (A.lang === "en" ? "Saved." : "انحفظ."));
+    if (A.paintList) A.paintList(A.productQuery || "");
+  };
+
+  A.openNewProduct = function () {
+    if (A.requireAuth && !A.requireAuth("status")) return;
+    var id = "n" + Date.now();
+    var base = {
+      id: id,
+      brand: "",
+      cat: (A.CATS && A.CATS[0]) || "عناية",
+      sku: "",
+      price: 0,
+      stock: 3,
+      imgs: [],
+      nameAr: "",
+      nameEn: "",
+      _new: true
+    };
+    A.products = A.products || [];
+    A.products.unshift(base);
+    A.overrides[String(id)] = Object.assign({}, A.overrides[String(id)] || {}, { _new: true, stock: 3, price: 0 });
+    try { localStorage.setItem(A.KEY || "naqa_overrides", JSON.stringify(A.overrides)); } catch (e) {}
+    A.openEdit(id);
+  };
+
   A.paintList = function (q) {
     A.editingId = null;
     A._editImgs = [];
@@ -453,11 +664,15 @@
     editView.hidden = true;
     editView.innerHTML = "";
     endEditMode();
-    /* Catalog must exist before filter/render */
     if (!A.products || !A.products.length) {
       try { if (A.refreshProductsFromBundle) A.refreshProductsFromBundle(); } catch (e) {}
     }
-    q = ""; /* product search disabled — use filters/pagination only */
+    try { A.injectCustomProducts(); } catch (e2) {}
+
+    if (q == null || q === undefined) q = A.productQuery || "";
+    else A.productQuery = String(q);
+    q = String(A.productQuery || "").trim().toLowerCase();
+
     var view = A.productView || "all";
     var inv = "";
     var matched = (A.products || []).filter(function (p) {
@@ -467,47 +682,118 @@
       if (view === "stock") {
         if (m.stock === "" || m.stock == null) return false;
         var sn = Number(m.stock);
-        if (sn !== 0 && sn !== 1) return false;
+        if (!(sn >= 0 && sn <= 3)) return false;
       }
-      var blob = [m.nameAr, m.nameEn, m.brand, m.sku, p.id].join(" ").toLowerCase();
-      return !q || blob.indexOf(q) >= 0;
+      if (!q) return true;
+      var blob = [m.nameAr, m.nameEn, m.brand, m.sku, m.cat, p.id].join(" ").toLowerCase();
+      return blob.indexOf(q) >= 0;
     });
+
+    /* sort */
+    var sort = A.productSort || "name";
+    matched.sort(function (a, b) {
+      var ma = A.merged(a), mb = A.merged(b);
+      if (sort === "priceAsc") return (Number(ma.price) || 0) - (Number(mb.price) || 0);
+      if (sort === "priceDesc") return (Number(mb.price) || 0) - (Number(ma.price) || 0);
+      if (sort === "stockAsc") {
+        var sa = ma.stock == null || ma.stock === "" ? 9999 : Number(ma.stock);
+        var sb = mb.stock == null || mb.stock === "" ? 9999 : Number(mb.stock);
+        return sa - sb;
+      }
+      if (sort === "stockDesc") {
+        var sa2 = ma.stock == null || ma.stock === "" ? -1 : Number(ma.stock);
+        var sb2 = mb.stock == null || mb.stock === "" ? -1 : Number(mb.stock);
+        return sb2 - sa2;
+      }
+      if (sort === "hidden") return (mb.hidden ? 1 : 0) - (ma.hidden ? 1 : 0);
+      if (sort === "hot") return (mb.hot ? 1 : 0) - (ma.hot ? 1 : 0);
+      var na = String((A.lang === "en" ? (ma.nameEn || ma.nameAr) : (ma.nameAr || ma.nameEn)) || "").toLowerCase();
+      var nb = String((A.lang === "en" ? (mb.nameEn || mb.nameAr) : (mb.nameAr || mb.nameEn)) || "").toLowerCase();
+      return na.localeCompare(nb, A.lang === "en" ? "en" : "ar");
+    });
+
+    var lowCount = (A.products || []).filter(function (p) {
+      var m = A.merged(p);
+      if (m.stock === "" || m.stock == null) return false;
+      var n = Number(m.stock);
+      return n >= 0 && n <= 3;
+    }).length;
+
+    var selCount = Object.keys(A.productSel || {}).filter(function (id) { return A.productSel[id]; }).length;
+
+    var tools =
+      '<div class="prod-tools" id="prodTools">'
+      + '<div class="prod-tools-row">'
+      +   '<div class="prod-search-wrap">'
+      +     '<input type="search" id="prodSearch" value="' + A.esc(A.productQuery || "") + '" placeholder="' + A.esc(A.t("p_search") || (A.lang === "en" ? "Name, SKU, brand…" : "اسم أو SKU أو ماركة…")) + '" autocomplete="off" aria-label="' + A.esc(A.t("p_search") || "بحث") + '">'
+      +     '<button type="button" class="search-btn" id="prodSearchBtn" aria-label="search">⌕</button>'
+      +   '</div>'
+      +   '<select id="prodSort" class="prod-sort" aria-label="' + A.esc(A.t("p_sort") || "فرز") + '">'
+      +     '<option value="name"' + (sort === "name" ? " selected" : "") + '>' + A.esc(A.t("p_sortName") || (A.lang === "en" ? "Name" : "الاسم")) + '</option>'
+      +     '<option value="priceAsc"' + (sort === "priceAsc" ? " selected" : "") + '>' + A.esc(A.t("p_sortPriceAsc") || (A.lang === "en" ? "Price ↑" : "السعر ↑")) + '</option>'
+      +     '<option value="priceDesc"' + (sort === "priceDesc" ? " selected" : "") + '>' + A.esc(A.t("p_sortPriceDesc") || (A.lang === "en" ? "Price ↓" : "السعر ↓")) + '</option>'
+      +     '<option value="stockAsc"' + (sort === "stockAsc" ? " selected" : "") + '>' + A.esc(A.t("p_sortStockAsc") || (A.lang === "en" ? "Stock ↑" : "المخزون ↑")) + '</option>'
+      +     '<option value="stockDesc"' + (sort === "stockDesc" ? " selected" : "") + '>' + A.esc(A.t("p_sortStockDesc") || (A.lang === "en" ? "Stock ↓" : "المخزون ↓")) + '</option>'
+      +     '<option value="hidden"' + (sort === "hidden" ? " selected" : "") + '>' + A.esc(A.t("p_sortHidden") || (A.lang === "en" ? "Hidden first" : "المخفي أولاً")) + '</option>'
+      +     '<option value="hot"' + (sort === "hot" ? " selected" : "") + '>' + A.esc(A.t("p_sortHot") || (A.lang === "en" ? "Featured first" : "المميّز أولاً")) + '</option>'
+      +   '</select>'
+      +   '<button type="button" class="export-one" id="exportProductsBtn">' + A.esc(A.t("p_export") || (A.lang === "en" ? "Export Excel" : "تصدير Excel")) + '</button>'
+      + '</div>'
+      + (lowCount ? ('<p class="prod-low-alert">' + A.esc((A.t("p_lowAlert") || (A.lang === "en" ? "{n} low-stock items (≤3)" : "{n} منتج بمخزون منخفض (≤٣)")).replace("{n}", String(lowCount))) + ' · <button type="button" class="linkish" id="prodGoLow">' + A.esc(A.t("p_lowShow") || (A.lang === "en" ? "Show" : "عرض")) + '</button></p>') : '')
+      + '<div class="prod-bulk' + (selCount ? " on" : "") + '" id="prodBulk">'
+      +   '<label class="prod-check-all"><input type="checkbox" id="prodCheckAll"' + (selCount && selCount === matched.length ? " checked" : "") + '> ' + A.esc(A.t("p_selectAll") || (A.lang === "en" ? "Select all page" : "تحديد صفحة")) + '</label>'
+      +   '<span class="prod-sel-n">' + selCount + '</span>'
+      +   '<button type="button" class="mini" id="prodBulkHide">' + A.esc(A.t("p_bulkHide") || (A.lang === "en" ? "Hide" : "إخفاء")) + '</button>'
+      +   '<button type="button" class="mini" id="prodBulkShow">' + A.esc(A.t("p_bulkShow") || (A.lang === "en" ? "Show" : "إظهار")) + '</button>'
+      +   '<button type="button" class="mini" id="prodBulkDisc">' + A.esc(A.t("p_bulkDisc") || (A.lang === "en" ? "Discount %" : "خصم ٪")) + '</button>'
+      +   '<button type="button" class="mini" id="prodBulkClear">' + A.esc(A.t("clearSelected") || (A.lang === "en" ? "Clear" : "إلغاء التحديد")) + '</button>'
+      + '</div>'
+      + '</div>';
+
     var per = 50;
     var pages = Math.max(1, Math.ceil(matched.length / per));
     var page = A.productPage || 1;
-    if (page < 1) page = 1;
     if (page > pages) page = pages;
+    if (page < 1) page = 1;
     A.productPage = page;
     var slice = matched.slice((page - 1) * per, page * per);
+
     var html = slice.map(function (p) {
       var m = A.merged(p);
       var img = (m.imgs && m.imgs[0]) || "";
       var thumb = img ? '<img src="' + A.esc(img.indexOf("fs:") === 0 ? "" : img) + '" data-src="' + A.esc(img) + '" alt="">' : '<div class="ph"></div>';
-      var stock = m.stock === "" || m.stock == null ? "—" : m.stock;
+      var stock = m.stock === "" || m.stock == null ? "" : m.stock;
       var stockN = Number(m.stock);
-      var stockCls = (m.stock !== "" && m.stock != null && stockN <= 0) ? ' style="color:#b05c6e;font-weight:800"' : (m.stock != null && m.stock !== "" && stockN <= 3 ? ' style="color:#c9a227;font-weight:800"' : "");
-      var hid = m.hidden ? " · " + A.t("p_hidden") : "";
-      var vol = m.vol || m.volume || m.size || m.unit || "";
+      var stockCls = (m.stock !== "" && m.stock != null && stockN <= 0) ? " is-out" : (m.stock != null && m.stock !== "" && stockN <= 3 ? " is-low" : "");
       var title = String((A.lang === "en" ? (m.nameEn || m.nameAr) : (m.nameAr || m.nameEn)) || "").replace(/\s+/g, " ").trim();
       var taxTxt = A.taxLabel ? A.taxLabel(m) : (A.t("tax_vat5") || "");
-      return '<article class="prod-card row' + (m.hidden ? " is-hidden" : "") + '" data-pid="' + p.id + '">'
+      var wasN = Number(m.was);
+      var priceN = Number(m.price);
+      var off = (m.was != null && wasN > priceN && priceN >= 0) ? Math.round((1 - priceN / wasN) * 100) : 0;
+      var checked = !!(A.productSel && A.productSel[String(p.id)]);
+      return '<article class="prod-card row' + (m.hidden ? " is-hidden" : "") + (m.hot ? " is-hot" : "") + '" data-pid="' + p.id + '">'
+        + '<label class="prod-pick"><input type="checkbox" data-pick="' + p.id + '"' + (checked ? " checked" : "") + ' aria-label="select"></label>'
         + '<div class="prod-thumb">' + thumb + '</div>'
         + '<div class="prod-body">'
-        +   '<div class="prod-title">' + A.esc(title) + '</div>'
+        +   '<div class="prod-title">' + A.esc(title || (A.lang === "en" ? "(untitled)" : "(بدون اسم)")) + (m.hot ? ' <span class="prod-hot-tag">' + A.esc(A.t("p_hotTag") || (A.lang === "en" ? "Featured" : "مميّز")) + '</span>' : '') + (off ? ' <span class="prod-off-tag">−' + off + '%</span>' : '') + '</div>'
         +   '<div class="prod-meta">'
         +     (m.brand ? '<span>' + A.esc(m.brand) + '</span>' : '')
         +     (m.cat ? '<span>' + A.esc(m.cat) + '</span>' : '')
-        +     (vol ? '<span>' + A.esc(vol) + '</span>' : '')
         +     '<span>SKU ' + A.esc(m.sku || "—") + '</span>'
+        +     (m.hidden ? '<span class="prod-hid">' + A.esc(A.t("p_hidden") || "مخفي") + '</span>' : '')
         +   '</div>'
-        +   '<div class="prod-price-row">'
-        +     '<span class="prod-price">' + A.esc(m.price) + ' <small>' + A.t("omr") + '</small></span>'
+        +   '<div class="prod-price-row prod-quick">'
+        +     '<label class="qk"><span>' + A.esc(A.t("p_priceLab") || (A.lang === "en" ? "Price" : "السعر")) + '</span>'
+        +       '<input type="number" min="0" step="0.001" inputmode="decimal" data-qk-price="' + p.id + '" value="' + A.esc(m.price != null ? m.price : "") + '">'
+        +       '<small>' + A.esc(A.t("omr") || "ر.ع") + '</small></label>'
+        +     (m.was != null && wasN > 0 ? ('<span class="prod-was"><s>' + A.esc(m.was) + '</s></span>') : '')
+        +     '<label class="qk' + stockCls + '"><span>' + A.esc(A.t("p_stock") || "المخزون") + '</span>'
+        +       '<input type="number" min="0" step="1" inputmode="numeric" data-qk-stock="' + p.id + '" value="' + A.esc(stock) + '"></label>'
         +     (taxTxt ? '<span class="prod-tax">' + A.esc(taxTxt) + '</span>' : '')
-        +     '<span class="prod-stock"' + stockCls + '>' + A.t("p_stock") + ' ' + A.esc(stock) + '</span>'
-        +     (hid ? '<span class="prod-hid">' + A.esc(hid.replace(/^ · /, "")) + '</span>' : '')
         +   '</div>'
         + '</div>'
         + '<div class="prod-actions">'
+        +   '<button type="button" class="hot-btn' + (m.hot ? " on" : "") + '" data-hot="' + p.id + '">' + A.esc(m.hot ? (A.t("p_unhot") || (A.lang === "en" ? "Unfeature" : "إلغاء مميّز")) : (A.t("p_hot") || (A.lang === "en" ? "Feature" : "مميّز"))) + '</button>'
         +   '<button type="button" class="hide-btn' + (m.hidden ? ' is-hidden-on' : '') + '" data-hide="' + p.id + '">'
         +     A.t(m.hidden ? "p_show" : "p_hide")
         +   '</button>'
@@ -515,6 +801,7 @@
         + '</div>'
         + '</article>';
     }).join("");
+
     var pager = "";
     if (matched.length) {
       pager = '<div class="pager" id="prodPager">'
@@ -525,9 +812,10 @@
     }
     var listEl = document.getElementById("list");
     if (!listEl) return;
-    listEl.innerHTML = inv + ((view === "stock" ? (html || '<p class="note">' + A.t("p_stockEmpty") + '</p>') : (html || '<p class="note">' + A.t("p_empty") + '</p>'))) + pager;
+    listEl.innerHTML = tools + inv + ((view === "stock" ? (html || '<p class="note">' + A.t("p_stockEmpty") + '</p>') : (html || '<p class="note">' + A.t("p_empty") + '</p>'))) + pager;
     fillStoredImgs(listEl);
     if (A.bindProductListClicks) A.bindProductListClicks();
+    if (A.bindProductTools) A.bindProductTools();
   };
 
   A.openEdit = function (id, opts) {
@@ -602,6 +890,7 @@
       + '</select></label>'
       + '<label id="f_taxCustomWrap"' + ((m.taxMode || "vat5") === "custom" ? "" : " hidden") + '>' + A.t("tax_customRate") + '<input id="f_taxCustom" type="number" min="0" max="100" step="0.1" value="' + A.esc(m.taxCustom != null ? m.taxCustom : "") + '" placeholder="%"></label>'
       + '<label class="hide-row"><input id="f_hidden" type="checkbox"' + (m.hidden ? " checked" : "") + '> ' + A.t("p_hide") + '</label>'
+      + '<label class="hide-row"><input id="f_hot" type="checkbox"' + (m.hot ? " checked" : "") + '> ' + (A.t("p_hot") || (A.lang === "en" ? "Featured (best seller)" : "مميّز (الأكثر مبيعاً)")) + '</label>'
       + '<label>' + A.t("p_descAr") + '<textarea id="f_descAr" rows="4">' + A.esc(m.descAr || "") + '</textarea></label>'
       + '<label>' + A.t("p_descEn") + '<textarea id="f_descEn" rows="4">' + A.esc(m.descEn || "") + '</textarea></label>'
       + '<label>' + A.t("p_useAr") + '<textarea id="f_useAr" rows="4">' + A.esc(m.useAr || "") + '</textarea></label>'
@@ -686,7 +975,7 @@
       A.setMsg("status", A.t("p_imgsFull"));
       return;
     }
-    if (A.paintList) A.paintList("");
+    if (A.paintList) A.paintList(A.productQuery || "");
     var msg = willHide
       ? (A.lang === "en" ? "Hidden on the store." : "صار مخفي في المتجر.")
       : (A.lang === "en" ? "Visible on the store." : "صار ظاهر في المتجر.");
@@ -741,6 +1030,18 @@
     if (next.price != null && (isNaN(next.price) || next.price < 0)) { A.setMsg("status", A.t("p_priceBad")); return; }
     if (next.was != null && (isNaN(next.was) || next.was < 0)) { A.setMsg("status", A.t("p_priceBad")); return; }
     if (next.stock != null && (isNaN(next.stock) || next.stock < 0)) { A.setMsg("status", A.t("p_stockBad")); return; }
+    if (next.sku && A.skuTaken && A.skuTaken(next.sku, A.editingId)) {
+      A.setMsg("status", A.t("p_skuDup") || (A.lang === "en" ? "SKU already used on another product." : "هذا الـ SKU مستخدم لمنتج آخر."));
+      return;
+    }
+    /* keep custom product flag so store injects it */
+    (function () {
+      var p0 = A.products.find(function (x) { return String(x.id) === String(A.editingId); });
+      var prev = A.overrides[String(A.editingId)] || A.overrides[A.editingId] || {};
+      if ((p0 && p0._new) || prev._new) next._new = true;
+      var hotEl = document.getElementById("f_hot");
+      if (hotEl) next.hot = !!hotEl.checked;
+    })();
     if (next.price == null || isNaN(next.price)) delete next.price;
     if (next.was == null || isNaN(next.was)) delete next.was;
     if (next.stock == null || isNaN(next.stock)) delete next.stock;
@@ -749,6 +1050,7 @@
     /* empty gallery is valid (user deleted all). Keep [] so store does not fall back to full catalog. */
     if (!Array.isArray(next.imgs)) next.imgs = [];
     if (!next.hidden) delete next.hidden;
+    if (!next.hot) delete next.hot;
     Object.keys(next).forEach(function (k) { if (next[k] === "" || next[k] === undefined) delete next[k]; });
     var ok = String(A.editingId);
     if (Object.keys(next).length) {
@@ -760,6 +1062,8 @@
       else delete A.overrides[ok].removedImgs;
       /* unhide must clear prevO.hidden — Object.assign keeps it if next has no key */
       if (!next.hidden) delete A.overrides[ok].hidden;
+      if (!next.hot) delete A.overrides[ok].hot;
+      else A.overrides[ok].hot = true;
       if (A.overrides[A.editingId] && String(A.editingId) !== ok) delete A.overrides[A.editingId];
     } else {
       delete A.overrides[ok];
@@ -770,8 +1074,21 @@
       return;
     }
     if (opts && opts.skipPublish) return;
+    /* keep in-memory catalog fields in sync for new/custom products */
+    try {
+      var live = A.products.find(function (x) { return String(x.id) === String(A.editingId); });
+      if (live) {
+        Object.keys(next).forEach(function (k) {
+          if (k === "removedImgs") return;
+          live[k] = next[k];
+        });
+        if (!next.hidden) delete live.hidden;
+        if (!next.hot) live.hot = false;
+      }
+    } catch (eLive) {}
     A.closeEdit(false);
-    if (A.publishLive) A.publishLive();
+    if (A.syncOverridesCloud) A.syncOverridesCloud();
+    else if (A.publishLive) A.publishLive();
     else A.setMsg("status", A.t("p_saved"));
   };
 
@@ -780,14 +1097,16 @@
     return Promise.resolve();
   };
 
-  /* List clicks: hide / edit / pager — bound here so it works after deferred load */
+  /* List clicks: hide / edit / pager / hot / pick — bound here so it works after deferred load */
   A.bindProductListClicks = function () {
     var list = document.getElementById("list");
     if (!list) return;
-    /* Always (re)attach ONE canonical handler — removes stale multi-toggle from buttons.bundle */
     if (list._naqaProdHandler) {
       try { list.removeEventListener("click", list._naqaProdHandler, true); } catch (e) {}
       try { list.removeEventListener("click", list._naqaProdHandler, false); } catch (e2) {}
+    }
+    if (list._naqaProdChange) {
+      try { list.removeEventListener("change", list._naqaProdChange, true); } catch (e3) {}
     }
     function onListClick(e) {
       var hide = e.target.closest("[data-hide]");
@@ -798,6 +1117,14 @@
         if (A.toggleHide) A.toggleHide(hide.getAttribute("data-hide"));
         return;
       }
+      var hot = e.target.closest("[data-hot]");
+      if (hot) {
+        e.preventDefault();
+        e.stopPropagation();
+        if (e.stopImmediatePropagation) e.stopImmediatePropagation();
+        if (A.toggleHot) A.toggleHot(hot.getAttribute("data-hot"));
+        return;
+      }
       var pg = e.target.closest("[data-page]");
       if (pg && !pg.disabled) {
         e.preventDefault();
@@ -805,7 +1132,7 @@
         var n = parseInt(pg.getAttribute("data-page"), 10);
         if (!n || n < 1) return;
         A.productPage = n;
-        A.paintList("");
+        A.paintList(A.productQuery || "");
         try { history.pushState({ naqa: "sec", tab: "products", page: n }, "", A.sectionHash ? A.sectionHash() : "#/products"); } catch (err) {}
         return;
       }
@@ -816,10 +1143,106 @@
         if (A.openEdit) A.openEdit(open.getAttribute("data-open"));
       }
     }
+    function onListChange(e) {
+      var t = e.target;
+      if (!t) return;
+      if (t.getAttribute && t.getAttribute("data-pick") != null) {
+        var pid = String(t.getAttribute("data-pick"));
+        A.productSel = A.productSel || {};
+        if (t.checked) A.productSel[pid] = true;
+        else delete A.productSel[pid];
+        var bulk = document.getElementById("prodBulk");
+        var n = Object.keys(A.productSel).filter(function (k) { return A.productSel[k]; }).length;
+        if (bulk) bulk.classList.toggle("on", n > 0);
+        var sn = bulk && bulk.querySelector(".prod-sel-n");
+        if (sn) sn.textContent = String(n);
+        return;
+      }
+      if (t.getAttribute && t.getAttribute("data-qk-price") != null) {
+        A.quickSaveField(t.getAttribute("data-qk-price"), "price", t.value);
+        return;
+      }
+      if (t.getAttribute && t.getAttribute("data-qk-stock") != null) {
+        A.quickSaveField(t.getAttribute("data-qk-stock"), "stock", t.value);
+        return;
+      }
+    }
     list._naqaProdHandler = onListClick;
-    /* capture phase first so we beat duplicate bubble listeners */
+    list._naqaProdChange = onListChange;
     list.addEventListener("click", onListClick, true);
+    list.addEventListener("change", onListChange, true);
+    /* blur-save for number fields (mobile keyboards) */
+    list.addEventListener("focusout", function (e) {
+      var t = e.target;
+      if (!t || !t.getAttribute) return;
+      if (t.getAttribute("data-qk-price") != null) A.quickSaveField(t.getAttribute("data-qk-price"), "price", t.value);
+      if (t.getAttribute("data-qk-stock") != null) A.quickSaveField(t.getAttribute("data-qk-stock"), "stock", t.value);
+    }, true);
     list._naqaProdBound = true;
   };
+
+  A.bindProductTools = function () {
+    var search = document.getElementById("prodSearch");
+    var sBtn = document.getElementById("prodSearchBtn");
+    var sortEl = document.getElementById("prodSort");
+    var exp = document.getElementById("exportProductsBtn");
+    var goLow = document.getElementById("prodGoLow");
+    var checkAll = document.getElementById("prodCheckAll");
+    var bHide = document.getElementById("prodBulkHide");
+    var bShow = document.getElementById("prodBulkShow");
+    var bDisc = document.getElementById("prodBulkDisc");
+    var bClear = document.getElementById("prodBulkClear");
+
+    function runSearch() {
+      A.productQuery = search ? search.value.trim() : "";
+      A.productPage = 1;
+      A.paintList(A.productQuery);
+    }
+    if (sBtn) sBtn.onclick = runSearch;
+    if (search) {
+      search.onkeydown = function (e) {
+        if (e.key === "Enter") { e.preventDefault(); runSearch(); }
+      };
+      /* live filter (debounced) */
+      var t = 0;
+      search.oninput = function () {
+        clearTimeout(t);
+        t = setTimeout(runSearch, 220);
+      };
+    }
+    if (sortEl) sortEl.onchange = function () {
+      A.productSort = sortEl.value || "name";
+      A.productPage = 1;
+      A.paintList(A.productQuery || "");
+    };
+    if (exp) exp.onclick = function () { A.exportProductsCsv(); };
+    if (goLow) goLow.onclick = function () {
+      if (A.go) A.go("products", "stock", { push: true, page: 1 });
+      else { A.productView = "stock"; A.productPage = 1; A.paintList(A.productQuery || ""); }
+    };
+    if (checkAll) checkAll.onchange = function () {
+      A.productSel = A.productSel || {};
+      var boxes = document.querySelectorAll("#list [data-pick]");
+      Array.prototype.forEach.call(boxes, function (box) {
+        box.checked = !!checkAll.checked;
+        var id = String(box.getAttribute("data-pick"));
+        if (checkAll.checked) A.productSel[id] = true;
+        else delete A.productSel[id];
+      });
+      var bulk = document.getElementById("prodBulk");
+      var n = Object.keys(A.productSel).filter(function (k) { return A.productSel[k]; }).length;
+      if (bulk) bulk.classList.toggle("on", n > 0);
+      var sn = bulk && bulk.querySelector(".prod-sel-n");
+      if (sn) sn.textContent = String(n);
+    };
+    if (bHide) bHide.onclick = function () { A.bulkSetHidden(true); };
+    if (bShow) bShow.onclick = function () { A.bulkSetHidden(false); };
+    if (bDisc) bDisc.onclick = function () { A.bulkDiscountPct(); };
+    if (bClear) bClear.onclick = function () {
+      A.productSel = {};
+      A.paintList(A.productQuery || "");
+    };
+  };
+
   try { A.bindProductListClicks(); } catch (e) {}
 })(window);

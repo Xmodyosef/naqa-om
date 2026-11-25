@@ -148,6 +148,38 @@ function naqaKeepImgs(base, saved, removed){
 }
 function mergeOverrides(map){
   if(!map) map={};
+  /* Inject admin-created products (_new) into live catalog */
+  Object.keys(map).forEach(function(id){
+    var o=map[id];
+    if(!o || !o._new) return;
+    var exists=products.some(function(p){ return String(p.id)===String(id); });
+    if(exists) return;
+    var nid=id;
+    if(/^\d+$/.test(String(id))) nid=Number(id);
+    products.push({
+      id:nid,
+      brand:o.brand||"",
+      cat:o.cat||"",
+      sku:o.sku||"",
+      price:o.price!=null&&o.price!==""?Number(o.price):0,
+      was:o.was!=null&&o.was!==""?Number(o.was):undefined,
+      stock:o.stock!=null&&o.stock!==""?Number(o.stock):3,
+      imgs:Array.isArray(o.imgs)?o.imgs.filter(Boolean).slice(0,6):[],
+      nameAr:o.nameAr||"",
+      nameEn:o.nameEn||"",
+      descAr:o.descAr||"",
+      descEn:o.descEn||"",
+      useAr:o.useAr||"",
+      useEn:o.useEn||"",
+      skinAr:o.skinAr||"",
+      skinEn:o.skinEn||"",
+      hot:!!o.hot,
+      hidden:!!o.hidden,
+      taxMode:o.taxMode,
+      taxCustom:o.taxCustom,
+      _new:true
+    });
+  });
   products.forEach(function(p){
     var o=map[p.id]||map[String(p.id)];
     if(!o){ return; } /* never force-visible on empty/partial map — prevents flash */
@@ -155,6 +187,7 @@ function mergeOverrides(map){
     if(o.was!=null && o.was!=="") p.was=Number(o.was);
     if(o.stock!=null && o.stock!=="") p.stock=Number(o.stock);
     if(Object.prototype.hasOwnProperty.call(o, "hidden")) p.hidden=!!o.hidden;
+    if(Object.prototype.hasOwnProperty.call(o, "hot")) p.hot=!!o.hot;
     if(o.taxMode==="exempt"||o.taxMode==="custom"||o.taxMode==="vat5") p.taxMode=o.taxMode; else if(o.taxMode==null) delete p.taxMode;
     if(o.taxCustom!=null && o.taxCustom!=="") p.taxCustom=Number(o.taxCustom); else if(o.taxMode!=="custom") delete p.taxCustom;
     ["nameAr","nameEn","descAr","descEn","useAr","useEn","skinAr","skinEn","brand","cat","sku","em"].forEach(function(k){

@@ -90,7 +90,7 @@
       else shown += 1;
       if (m && m.stock !== "" && m.stock != null) {
         var sn = Number(m.stock);
-        if (sn === 0 || sn === 1) stockAlert += 1;
+        if (sn >= 0 && sn <= 3) stockAlert += 1;
       }
     });
     var pc = { all: allp, shown: shown, hidden: hid, stock: stockAlert };
@@ -292,9 +292,12 @@
 
   A.addProduct = function () {
     A.go("products", A.productView || "all", { push: true });
-    var list = document.getElementById("listView") || document.getElementById("productsTab");
-    if (list) {
-      try { list.scrollIntoView({ block: "nearest" }); } catch (e) {}
+    if (A.openNewProduct) A.openNewProduct();
+    else {
+      var list = document.getElementById("listView") || document.getElementById("productsTab");
+      if (list) {
+        try { list.scrollIntoView({ block: "nearest" }); } catch (e) {}
+      }
     }
   };
 

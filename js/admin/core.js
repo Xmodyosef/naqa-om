@@ -45,6 +45,8 @@
   A.orders = [];
   A.dateFrom = A.dateFrom || "";
   A.dateTo = A.dateTo || "";
+  A.orderDateFrom = A.orderDateFrom || "";
+  A.orderDateTo = A.orderDateTo || "";
   A.dayKey = function (d) {
     if (!d) return "";
     try {
@@ -59,21 +61,25 @@
     if (A.dateTo && (!day || day > A.dateTo)) return false;
     return true;
   };
-  A.dateFilterHtml = function (prefix) {
+  A.dateFilterHtml = function (prefix, bag) {
+    var from = bag === "order" ? (A.orderDateFrom || "") : (A.dateFrom || "");
+    var to = bag === "order" ? (A.orderDateTo || "") : (A.dateTo || "");
     return '<div class="date-filter status-bar" style="flex-wrap:wrap;gap:8px;align-items:center">'
       + '<label style="display:flex;gap:6px;align-items:center;font-size:13px">' + A.t("dateFrom")
-      + ' <input type="date" id="' + prefix + 'From" value="' + A.esc(A.dateFrom || "") + '" style="border:1px solid #efe4df;border-radius:10px;padding:8px"></label>'
+      + ' <input type="date" id="' + prefix + 'From" value="' + A.esc(from) + '" style="border:1px solid #efe4df;border-radius:10px;padding:8px"></label>'
       + '<label style="display:flex;gap:6px;align-items:center;font-size:13px">' + A.t("dateTo")
-      + ' <input type="date" id="' + prefix + 'To" value="' + A.esc(A.dateTo || "") + '" style="border:1px solid #efe4df;border-radius:10px;padding:8px"></label>'
+      + ' <input type="date" id="' + prefix + 'To" value="' + A.esc(to) + '" style="border:1px solid #efe4df;border-radius:10px;padding:8px"></label>'
       + '<button type="button" class="mini" id="' + prefix + 'Clear">' + A.t("dateClear") + '</button>'
       + '</div>';
   };
-  A.bindDateFilter = function (prefix, onChange) {
+  A.bindDateFilter = function (prefix, onChange, bag) {
     function sync() {
       var f = document.getElementById(prefix + "From");
       var t = document.getElementById(prefix + "To");
-      A.dateFrom = (f && f.value) || "";
-      A.dateTo = (t && t.value) || "";
+      var fv = (f && f.value) || "";
+      var tv = (t && t.value) || "";
+      if (bag === "order") { A.orderDateFrom = fv; A.orderDateTo = tv; }
+      else { A.dateFrom = fv; A.dateTo = tv; }
       if (onChange) onChange();
     }
     var f = document.getElementById(prefix + "From");
@@ -81,7 +87,17 @@
     var c = document.getElementById(prefix + "Clear");
     if (f) f.onchange = sync;
     if (t) t.onchange = sync;
-    if (c) c.onclick = function () { A.dateFrom = ""; A.dateTo = ""; if (onChange) onChange(); };
+    if (c) c.onclick = function () {
+      if (bag === "order") { A.orderDateFrom = ""; A.orderDateTo = ""; }
+      else { A.dateFrom = ""; A.dateTo = ""; }
+      if (onChange) onChange();
+    };
+  };
+  A.ordersInRange = function (at) {
+    var day = A.dayKey(at);
+    if (A.orderDateFrom && (!day || day < A.orderDateFrom)) return false;
+    if (A.orderDateTo && (!day || day > A.orderDateTo)) return false;
+    return true;
   };
   A.csvCell = function (v) {
     v = String(v == null ? "" : v);

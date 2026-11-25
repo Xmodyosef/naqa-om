@@ -79,15 +79,19 @@
       if (nNew > 0) badge.hidden = false;
       else badge.hidden = true;
     }
-    var shown = 0, hid = 0, allp = 0;
+    var shown = 0, hid = 0, allp = 0, stockAlert = 0;
     (A.products || []).forEach(function (p) {
       allp += 1;
       var m = p;
       try { if (A.merged) m = A.merged(p); } catch (e2) {}
       if (m && m.hidden) hid += 1;
       else shown += 1;
+      if (m && m.stock !== "" && m.stock != null) {
+        var sn = Number(m.stock);
+        if (sn === 0 || sn === 1) stockAlert += 1;
+      }
     });
-    var pc = { all: allp, shown: shown, hidden: hid };
+    var pc = { all: allp, shown: shown, hidden: hid, stock: stockAlert };
     document.querySelectorAll('#childNav [data-for="products"] .sub-count').forEach(function (el) {
       var k = el.getAttribute("data-for-sub") || "";
       el.textContent = String(pc[k] || 0);
@@ -169,7 +173,7 @@
       if (sub !== "all" && A.ORDER_SUBS.indexOf(sub) < 0) sub = "all";
       A.orderFilter = sub;
     } else if (tab === "products") {
-      if (sub !== "all" && sub !== "shown" && sub !== "hidden") sub = "all";
+      if (sub !== "all" && sub !== "shown" && sub !== "hidden" && sub !== "stock") sub = "all";
       if (A.productView !== sub && !opts.keepPage) A.productPage = opts.page || 1;
       A.productView = sub;
       if (opts.page) A.productPage = opts.page;
@@ -226,7 +230,7 @@
     var sub = parts[1] || A.defaultSub(tab);
     var page = 1;
     if (tab === "products") {
-      if (sub !== "all" && sub !== "shown" && sub !== "hidden") sub = "all";
+      if (sub !== "all" && sub !== "shown" && sub !== "hidden" && sub !== "stock") sub = "all";
       page = parseInt(parts[2], 10) || 1;
     }
     A.go(tab, sub, { fromPop: true, page: page, keepPage: true });

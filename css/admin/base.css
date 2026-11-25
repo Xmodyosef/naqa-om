@@ -132,3 +132,7 @@ body.naqa-open .tabs{display:flex!important}
   background:#fff;
   color:#1f1a17;
 }
+
+button.stat.stat-link{width:100%;text-align:inherit;font:inherit;color:inherit;cursor:pointer}
+button.stat.stat-link strong{display:block}
+.order-day{margin:16px 0 6px;font-size:13px;font-weight:800;color:#8d3048}

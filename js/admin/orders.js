@@ -14,7 +14,7 @@
   A.exportOrdersCsv = function () {
     var rows = [["id", "at", "status", "name", "phone", "area", "total", "payment", "items"]];
     (A.orders || []).forEach(function (o) {
-      if (!A.inDateRange(o.at)) return;
+      if (A.ordersInRange && !A.ordersInRange(o.at)) return;
       var st = A.normalizeStatus(o.status);
       var items = "";
       if (Array.isArray(o.items) && o.items.length) {
@@ -115,7 +115,7 @@
         });
       }
       tools.innerHTML =
-        A.dateFilterHtml("ordDate")
+        A.dateFilterHtml("ordDate", "order")
         + '<button type="button" class="mini" id="copyAllOrders">' + A.t("o_copyAll") + '</button>'
         + '<button type="button" class="mini" id="copyNewOrders">' + A.t("o_copyNew") + '</button>'
         + '<button type="button" class="mini" id="waOrdersReport" style="background:#25D366;color:#fff">' + A.t("o_waSum") + '</button>'
@@ -123,12 +123,12 @@
         + '<button type="button" class="mini" id="importOrdersBtn">' + A.t("importCsv") + '</button>'
         + '<button type="button" class="mini" id="importWaOrders">' + (A.lang === "en" ? "Paste WhatsApp" : "لصق واتساب") + '</button>'
         + '<input id="importOrdersFile" type="file" accept=".csv,text/csv" hidden>';
-      A.bindDateFilter("ordDate", function () { A.paintOrders(); });
+      A.bindDateFilter("ordDate", function () { A.paintOrders(); }, "order");
     }
     var box = document.getElementById("ordersList");
     if (!box) return;
     var list = A.orders.filter(function (o) {
-      if (!A.inDateRange(o.at)) return false;
+      if (A.ordersInRange && !A.ordersInRange(o.at)) return false;
       if (!(A.orderFilter === "all" || A.normalizeStatus(o.status) === A.orderFilter)) return false;
       var q = String(A.orderQuery || "").trim().toLowerCase();
       if (!q) return true;
@@ -144,7 +144,7 @@
       box.innerHTML = '<p class="note">' + A.t("o_emptyFilter") + '</p>';
       return;
     }
-    box.innerHTML = list.map(function (o) {
+    var cardHtml = function (o) {
       var st = A.normalizeStatus(o.status);
       var items = "";
       if (Array.isArray(o.items) && o.items.length) {
@@ -178,6 +178,24 @@
         + (A.payState(o) === "pending" ? ('<button type="button" class="mini" data-pay="' + A.esc(o.id) + '">' + A.t("confirmPay") + '</button>') : "")
         + (phoneDigits ? ('<a class="mini" style="background:#25D366;display:inline-block;color:#fff;text-decoration:none;text-align:center" href="https://wa.me/968' + A.esc(phoneDigits) + '" target="_blank" rel="noopener">' + A.t("wa") + '</a>') : "")
         + '</div></article>';
+    };
+    list.sort(function (a, b) { return String(b.at || "").localeCompare(String(a.at || "")); });
+    var days = [];
+    var byDay = {};
+    list.forEach(function (o) {
+      var day = A.dayKey(o.at) || "—";
+      if (!byDay[day]) { byDay[day] = []; days.push(day); }
+      byDay[day].push(o);
+    });
+    box.innerHTML = days.map(function (day) {
+      var label = day;
+      try {
+        if (day && day !== "—") {
+          label = new Date(day + "T12:00:00").toLocaleDateString(A.lang === "en" ? "en-GB" : "ar-OM", { weekday: "short", year: "numeric", month: "short", day: "numeric" });
+        }
+      } catch (e) {}
+      return '<h3 class="order-day">' + A.esc(label) + ' · ' + byDay[day].length + '</h3>'
+        + byDay[day].map(cardHtml).join("");
     }).join("");
   };
 })(window);

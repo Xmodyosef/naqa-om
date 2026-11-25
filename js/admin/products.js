@@ -467,13 +467,18 @@
       else if (n <= 3) low++;
     });
     var inv = '<div class="panel" style="margin-bottom:10px"><h2>' + A.t("p_invTitle") + '</h2>'
-      + '<p class="note">' + A.t("p_invNote") + '</p>'
+      + '<p class="note">' + (view === "stock" ? A.t("p_stockHint") : A.t("p_invNote")) + '</p>'
       + '<small>' + A.t("p_low") + ': <b>' + low + '</b> · ' + A.t("p_out") + ': <b>' + out + '</b></small></div>';
     var view = A.productView || "all";
     var matched = (A.products || []).filter(function (p) {
       var m = A.merged(p);
       if (view === "hidden" && !m.hidden) return false;
       if (view === "shown" && m.hidden) return false;
+      if (view === "stock") {
+        if (m.stock === "" || m.stock == null) return false;
+        var sn = Number(m.stock);
+        if (sn !== 0 && sn !== 1) return false;
+      }
       var blob = [m.nameAr, m.nameEn, m.brand, m.sku, p.id].join(" ").toLowerCase();
       return !q || blob.indexOf(q) >= 0;
     });
@@ -530,7 +535,7 @@
     }
     var listEl = document.getElementById("list");
     if (!listEl) return;
-    listEl.innerHTML = inv + (html || '<p class="note">' + A.t("p_empty") + '</p>') + pager;
+    listEl.innerHTML = inv + ((view === "stock" ? (html || '<p class="note">' + A.t("p_stockEmpty") + '</p>') : (html || '<p class="note">' + A.t("p_empty") + '</p>'))) + pager;
     fillStoredImgs(listEl);
     if (A.bindProductListClicks) A.bindProductListClicks();
   };

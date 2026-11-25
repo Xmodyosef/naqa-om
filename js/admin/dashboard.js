@@ -25,7 +25,7 @@
     A.products.forEach(function (p) {
       var m = A.merged(p);
       if (m.hidden) hidden++;
-      if (m.stock !== "" && m.stock != null && Number(m.stock) <= 3) {
+      if (m.stock !== "" && m.stock != null && (Number(m.stock) === 0 || Number(m.stock) === 1)) {
         lowStock++;
         lowList.push({ name: m.nameAr || m.nameEn, stock: Number(m.stock), sku: m.sku });
       }
@@ -47,20 +47,32 @@
           return '<div class="cust-row"><div><strong>' + A.esc(l.name) + '</strong><small>SKU ' + A.esc(l.sku || "—") + '</small></div><strong>' + l.stock + ' ' + A.t("d_left") + '</strong></div>';
         }).join("")
       : '<p class="note">' + A.t("d_noLow") + '</p>';
+    function stat(n, label, tab, sub) {
+      return '<button type="button" class="stat stat-link" data-go-tab="' + tab + '" data-go-sub="' + sub + '"><strong>' + n + '</strong><span>' + label + '</span></button>';
+    }
+    if (!box._goBound) {
+      box._goBound = true;
+      box.addEventListener("click", function (e) {
+        var b = e.target.closest("[data-go-tab]");
+        if (!b || !A.go) return;
+        A.go(b.getAttribute("data-go-tab"), b.getAttribute("data-go-sub") || "", { push: true });
+      });
+    }
     box.innerHTML =
       '<div class="stat-grid">'
-      + '<div class="stat"><strong>' + sales.toFixed(3) + '</strong><span>' + A.t("d_sales") + '</span></div>'
-      + '<div class="stat"><strong>' + active + '</strong><span>' + A.t("d_orders") + '</span></div>'
-      + '<div class="stat"><strong>' + neu + '</strong><span>' + A.t("d_new") + '</span></div>'
-      + '<div class="stat"><strong>' + prep + '</strong><span>' + A.t("d_prep") + '</span></div>'
-      + '<div class="stat"><strong>' + ship + '</strong><span>' + A.t("d_ship") + '</span></div>'
-      + '<div class="stat"><strong>' + delivered + '</strong><span>' + A.t("d_done") + '</span></div>'
-      + '<div class="stat"><strong>' + lowStock + '</strong><span>' + A.t("d_low") + '</span></div>'
-      + '<div class="stat"><strong>' + hidden + '</strong><span>' + A.t("d_hidden") + '</span></div>'
+      + stat(sales.toFixed(3), A.t("d_sales"), "finance", "")
+      + stat(active, A.t("d_orders"), "orders", "all")
+      + stat(neu, A.t("d_new"), "orders", "new")
+      + stat(prep, A.t("d_prep"), "orders", "prep")
+      + stat(ship, A.t("d_ship"), "orders", "ship")
+      + stat(delivered, A.t("d_done"), "orders", "delivered")
+      + stat(lowStock, A.t("d_low"), "products", "stock")
+      + stat(hidden, A.t("d_hidden"), "products", "hidden")
       + '</div>'
       + '<div class="panel"><h2>' + A.t("d_recent") + '</h2>' + recent + '</div>'
       + '<div class="panel"><h2>' + A.t("d_top") + '</h2>' + topHtml + '</div>'
-      + '<div class="panel"><h2>' + A.t("d_lowTitle") + '</h2>' + lowHtml + '</div>'
+      + '<div class="panel"><h2>' + A.t("d_lowTitle") + '</h2>' + lowHtml
+      + '<button type="button" class="mini" data-go-tab="products" data-go-sub="stock" style="margin-top:8px">' + A.t("p_stockAll") + '</button></div>'
       + '<p class="note">' + A.t("d_note") + '</p>';
   };
 })(window);

@@ -163,7 +163,7 @@ A.refreshProductsFromBundle = function () {
 ---
 
 
-### 8.1 أبناء الأزرار (فلاتر فقط) — 2026-11-25
+### 8.1 أبناء الأزرار (فلاتر فقط) — **LOCKED** 2026-11-25
 
 مصادر راجعناها فعلاً (مو ألف موقع): [Shopify Polaris Index filters](https://polaris-react.shopify.com/components/selection-and-input/index-filters) و[Zid order tabs](https://help.zid.sa/en/orders).
 
@@ -224,6 +224,7 @@ node --check js/app.js
 | 11 | «هذا القسم فيه خطأ» في المنتجات والباقي | `i18n.js` بـ `defer` + `document.write` → القاموس ما يتحمّل و`A.t` ينهار | `dict-ar.js` و `dict-en.js` سكربتات قبل `i18n.js`؛ `A.t` ما ترمي خطأ |
 | 12 | شريط البحث ضخم ويزحم الصفحة | `flex:1` + عرض 100% على الجوال + نص طويل + زر «بحث» | بحث الطلبات فقط، ارتفاع 34px، عرض ≤220px |
 | 13 | **LOCKED** تحديث الصفحة يظهر «إضافة منتج» ثم يختفي | الزر بلا `hidden` والجلسة تفتح اللوحة قبل `syncNav` | الزر والبحث `hidden` في HTML، سكربت فوري يفتحهما حسب الـ hash فقط |
+| 14 | **LOCKED** أبناء الطلبات والمنتجات بدون عدد | الفلاتر نص فقط | كل حبة `.sub-count`؛ شارة الأب = الجديد فقط؛ الترجمة على span داخلي |
 
 
 ---

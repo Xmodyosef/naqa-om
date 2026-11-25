@@ -204,3 +204,27 @@ body.naqa-open main.admin-main{display:block}
 .auth-btn-primary-google{border:1px solid #747775 !important; box-shadow:0 1px 3px rgba(0,0,0,.04) !important; min-height:48px !important}
 #fbNoteSave{display:block !important}
 #fbCreate{display:none !important}
+
+/* ===== flash1: NEVER flash login on reload when session expected ===== */
+html.naqa-expect-auth body:not(.naqa-open) #pin,
+body.naqa-auth-pending #pin,
+body.naqa-auth-pending #fbLogin {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+html.naqa-expect-auth body:not(.naqa-open) #authBoot,
+body.naqa-auth-pending #authBoot {
+  display: block !important;
+  visibility: visible !important;
+}
+html.naqa-expect-auth body:not(.naqa-open) #tools,
+html.naqa-expect-auth body:not(.naqa-open) .admin-shell,
+body.naqa-auth-pending #tools {
+  display: none !important;
+}
+/* Login card only when locked, auth resolved, not open */
+body.naqa-locked:not(.naqa-auth-pending):not(.naqa-open) #pin {
+  display: block !important;
+  visibility: visible !important;
+}

@@ -8,7 +8,18 @@
 <meta name="robots" content="noindex, nofollow" />
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=5, user-scalable=yes, viewport-fit=cover, interactive-widget=resizes-content" />
 <title>لوحة تحكم نقاء</title>
-<link rel="stylesheet" href="css/admin.css?v=20261125login2" />
+
+<script>
+/* First paint: if last session was open, never show login card before Firebase restores */
+(function () {
+  try {
+    if (localStorage.getItem("naqa_admin_authed") === "1") {
+      document.documentElement.classList.add("naqa-expect-auth");
+    }
+  } catch (e) {}
+})();
+</script>
+<link rel="stylesheet" href="css/admin.css?v=20261125flash1" />
 </head>
 <body class="naqa-locked naqa-auth-pending">
 <div class="admin-top">
@@ -19,7 +30,7 @@
   <h1 id="adminTitle">لوحة تحكم نقاء</h1>
 </div>
 <div class="admin-wrap">
-  <div id="authBoot" class="auth-boot" hidden>
+  <div id="authBoot" class="auth-boot">
     <p id="authBootText">جاري فتح اللوحة…</p>
   </div>
   <div class="pin-card" id="pin" hidden>
@@ -167,15 +178,15 @@
   </main>
 </div>
 </div>
-<script defer src="js/config.js?v=20261125login2"></script>
-<script defer src="js/firebase-config.js?v=20261125login2"></script>
+<script defer src="js/config.js?v=20261125flash1"></script>
+<script defer src="js/firebase-config.js?v=20261125flash1"></script>
 <script defer src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
 <script defer src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
-<script defer src="js/admin.js?v=20261125login2"></script>
-<script defer src="js/admin/core.js?v=20261125login2"></script>
-<script src="js/admin/i18n.js?v=20261125login2"></script>
-<script defer src="js/admin/app.js?v=20261125login2"></script>
-<script defer src="js/admin/load-modules.js?v=20261125login2"></script>
-<script defer src="js/admin/firebase-gate.js?v=20261125login2"></script>
+<script defer src="js/admin.js?v=20261125flash1"></script>
+<script defer src="js/admin/core.js?v=20261125flash1"></script>
+<script src="js/admin/i18n.js?v=20261125flash1"></script>
+<script defer src="js/admin/app.js?v=20261125flash1"></script>
+<script defer src="js/admin/load-modules.js?v=20261125flash1"></script>
+<script defer src="js/admin/firebase-gate.js?v=20261125flash1"></script>
 </body>
 </html>

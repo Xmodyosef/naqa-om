@@ -12,10 +12,24 @@
   var A = w.NaqaAdmin = w.NaqaAdmin || {};
   A.fbUser = null;
   var EMAIL_KEY = "naqa_admin_last_email";
+  var AUTH_HINT_KEY = "naqa_admin_authed";
   var _busy = false;
   var _authReady = false;
 
   function $(id) { return document.getElementById(id); }
+
+  function markAuthed() {
+    try { localStorage.setItem(AUTH_HINT_KEY, "1"); } catch (e) {}
+    try { document.documentElement.classList.add("naqa-expect-auth"); } catch (e) {}
+  }
+  function clearAuthed() {
+    try { localStorage.removeItem(AUTH_HINT_KEY); } catch (e) {}
+    try { document.documentElement.classList.remove("naqa-expect-auth"); } catch (e) {}
+  }
+  function hasAuthHint() {
+    try { return localStorage.getItem(AUTH_HINT_KEY) === "1"; } catch (e) { return false; }
+  }
+
 
   function t(key, fallback) {
     try {
@@ -97,6 +111,8 @@
       var tx = $("authBootText");
       if (tx) tx.textContent = t("fb_booting", "جاري فتح اللوحة…");
     }
+    /* Iron rule: while pending, login card is never visible */
+    if (on && $("pin")) $("pin").hidden = true;
   }
 
   function lockUI() {
@@ -108,8 +124,13 @@
     } catch (e) {}
     if ($("tools")) $("tools").hidden = true;
     if ($("tabs")) $("tabs").hidden = true;
-    if ($("pin")) $("pin").hidden = false;
-    if ($("authBoot")) $("authBoot").hidden = true;
+    /* Do not flash login during Firebase restore — only after auth is ready */
+    if ($("pin")) $("pin").hidden = !_authReady;
+    if (!_authReady) {
+      setPending(true);
+    } else if ($("authBoot")) {
+      $("authBoot").hidden = true;
+    }
   }
 
   function unlockUI() {
@@ -118,76 +139,34 @@
       document.body.classList.add("naqa-open");
       document.body.classList.remove("naqa-auth-pending");
     } catch (e) {}
+    markAuthed();
     if ($("pin")) $("pin").hidden = true;
     if ($("authBoot")) $("authBoot").hidden = true;
   }
 
   function showPinOnly() {
-    setPending(false);
     if ($("fbLogin")) $("fbLogin").hidden = true;
     if ($("pinRow")) $("pinRow").hidden = false;
-    if ($("pin")) $("pin").hidden = false;
+    if ($("pin")) $("pin").hidden = !_authReady;
+    A.fbApplyLabels && A.fbApplyLabels();
   }
-
-  function applyAuthLang() {
-    try {
-      if (w.firebase && firebase.auth) {
-        firebase.auth().languageCode = (A.lang === "en") ? "en" : "ar";
-      }
-    } catch (e) {}
-  }
-
-  A.fbApplyLabels = function () {
-    if (!w.naqaFirebaseEnabled || !naqaFirebaseEnabled()) return;
-    applyAuthLang();
-    var lead = $("pinLead");
-    if (lead) lead.textContent = t("fb_welcome", t("fb_lead", ""));
-    var note = $("pinNote");
-    if (note) note.textContent = t("fb_welcomeNote", t("fb_note", ""));
-    var hint = $("fbPassHint");
-    if (hint) hint.textContent = t("fb_passHint", "");
-    var eL = $("fbEmailLabel");
-    if (eL) eL.textContent = t("fb_email", "البريد الإلكتروني");
-    var pL = $("fbPassLabel");
-    if (pL) pL.textContent = t("fb_pass", "كلمة المرور");
-    var goL = $("fbGoLabel");
-    if (goL) goL.textContent = t("fb_go", "تسجيل الدخول");
-    else if ($("fbGo")) $("fbGo").textContent = t("fb_go", "تسجيل الدخول");
-    var gL = $("fbGoogleLabel");
-    if (gL) gL.textContent = t("fb_google", "المتابعة مع Google");
-    else if ($("fbGoogle")) $("fbGoogle").textContent = t("fb_google", "المتابعة مع Google");
-    if ($("fbReset")) $("fbReset").textContent = t("fb_forgot", "نسيت كلمة المرور؟");
-    if ($("fbCreate")) $("fbCreate").textContent = t("fb_create", "إنشاء كلمة مرور جديدة");
-    if ($("fbOr")) $("fbOr").textContent = t("fb_or", "أو");
-    var sum = $("fbEmailSummary");
-    if (sum) sum.textContent = t("fb_emailDetails", A.lang === "en" ? "Sign in with email" : "دخول بالإيميل وكلمة السر");
-    if ($("fbNoteSave")) $("fbNoteSave").textContent = t("fb_noteSave", "");
-    if ($("fbNoteGoogle")) {
-      $("fbNoteGoogle").innerHTML = t("fb_noteGoogleHtml",
-        "الدخول عبر Google يفتح نافذة الحساب. إذا أُغلقت فوراً، اسمحي بالنوافذ المنبثقة. أبقي النطاق <strong>xmodyosef.github.io</strong> ضمن Authorized domains.");
-    }
-    if ($("fbNoteSession")) $("fbNoteSession").textContent = t("fb_noteSession", "");
-    var boot = $("authBootText");
-    if (boot) boot.textContent = t("fb_booting", "جاري فتح اللوحة…");
-    var emailEl = $("fbEmail");
-    if (emailEl) emailEl.placeholder = t("fb_emailPh", "name@email.com");
-    if ($("fbPass")) $("fbPass").placeholder = t("fb_passPh", "••••••••");
-    var tog = $("fbTogglePass");
-    if (tog) tog.setAttribute("aria-label", t("fb_showPass", "إظهار كلمة المرور"));
-  };
 
   function showFbOnly() {
     if ($("fbLogin")) $("fbLogin").hidden = false;
     if ($("pinRow")) $("pinRow").hidden = true;
-    /* Only reveal gate after auth resolved with no user — prevents login flash */
-    if ($("pin")) $("pin").hidden = false;
-    try { document.body.classList.remove("naqa-auth-pending"); } catch (e) {}
+    /* Only reveal gate when auth resolved with no user */
+    if ($("pin")) $("pin").hidden = !_authReady;
+    if (_authReady) {
+      try { document.body.classList.remove("naqa-auth-pending"); } catch (e) {}
+      if ($("authBoot")) $("authBoot").hidden = true;
+    }
     A.fbApplyLabels();
     try {
       var last = localStorage.getItem(EMAIL_KEY) || "";
       if (last && $("fbEmail") && !$("fbEmail").value) $("fbEmail").value = last;
     } catch (e) {}
   }
+
 
   function mapAuthError(err, context) {
     var code = (err && err.code) || "";
@@ -416,7 +395,9 @@
     if (!w.firebase || !firebase.auth) return Promise.resolve();
     return firebase.auth().signOut().then(function () {
       A.fbUser = null;
+      clearAuthed();
       preventSilentReentry();
+      _authReady = true;
       lockUI();
       setPending(false);
       showFbOnly();
@@ -483,6 +464,7 @@
       return;
     }
 
+    _authReady = false;
     setPending(true);
     if ($("pin")) $("pin").hidden = true;
     applyAuthLang();
@@ -492,16 +474,21 @@
       firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL);
     } catch (e) {}
 
-    showFbOnly();
+    /* DO NOT showFbOnly here — that caused the login flash on every reload */
     naqaFixLoginFields();
     bindTogglePass();
+    /* Prepare form DOM (still hidden by pending CSS) so autofill can bind */
+    if ($("fbLogin")) $("fbLogin").hidden = false;
 
     firebase.auth().getRedirectResult().then(function (result) {
       if (result && result.user) offerGoogleSave(result.user);
     }).catch(function (err) {
-      setPending(false);
-      lockUI();
-      setMsg(mapAuthError(err, "google"), "err");
+      /* Ignore empty redirect errors; only surface real Google redirect failures after auth ready */
+      var c = (err && err.code) || "";
+      if (c && c !== "auth/null-user") {
+        /* stay pending; onAuthStateChanged decides gate vs panel */
+        console.warn("[naqa-auth] redirect", c);
+      }
     });
 
     var form = $("fbForm");
@@ -544,6 +531,7 @@
 
       if (!user) {
         A.fbUser = null;
+        clearAuthed();
         lockUI();
         setPending(false);
         showFbOnly();
@@ -559,9 +547,13 @@
         } catch (e) { uidOk = true; }
         if (!ok || !uidOk) {
           A.fbUser = null;
+          clearAuthed();
           firebase.auth().signOut().then(function () {
             preventSilentReentry();
+            _authReady = true;
             lockUI();
+            setPending(false);
+            showFbOnly();
             setMsg(t("fb_notAllowed", ""), "err");
             setBusy(false);
           });

@@ -147,21 +147,27 @@ button.stat.sales-link{width:100%;margin-top:4px}
 .order-id,.order-tot{font-size:.78rem;font-weight:800;line-height:1.2;white-space:nowrap}
 .order-when{flex:1;color:var(--muted);font-size:.68rem;min-width:0;white-space:nowrap}
 
-/* مدفوع + حالة الطلب: نفس حجم خط سطر الطلب، حواف ضيقة، الألوان كما هي */
+/* مدفوع + حالة الطلب: نفس ارتفاع زر «تصدير الطلبات» (36px)، عرض حسب النص */
 .pay-flag,
 .status-one{
   appearance:none;-webkit-appearance:none;-moz-appearance:none;
   border:0;outline:0;background-image:none;
-  font-family:inherit;font-size:.78rem;font-weight:800;line-height:1.15;
+  font-family:"Noto Sans Arabic","IBM Plex Sans",system-ui,sans-serif;
+  font-size:.72rem;font-weight:800;line-height:1;
   width:auto;min-width:0;max-width:none;
-  height:auto;min-height:0;
-  padding:2px 6px;box-sizing:border-box;
+  height:36px;min-height:36px;
+  padding:0 10px;box-sizing:border-box;
   border-radius:999px;text-align:center;text-align-last:center;
   margin:0;flex:0 0 auto;white-space:nowrap;cursor:pointer;
   vertical-align:middle
 }
-.pay-flag{display:inline-flex;align-items:center;justify-content:center;gap:0}
-.status-one{display:inline-block;line-height:1.15;vertical-align:middle;padding-inline:6px}
+.pay-flag{
+  display:inline-flex;align-items:center;justify-content:center;gap:0
+}
+.status-one{
+  display:inline-flex;align-items:center;justify-content:center;
+  line-height:1;padding:0 10px
+}
 .status-one::-ms-expand{display:none}
 .pay-flag.on{background:#e5f6ea;color:#1b7a38}
 .pay-flag.off{background:#f6e4e8;color:#8d3048}

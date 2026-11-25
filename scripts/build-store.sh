@@ -5,7 +5,7 @@ APP=(js/config.js js/scroll-lock.js js/theme.js js/brands-logos.js js/core.js js
 : > /tmp/app.concat.js
 for f in "${APP[@]}"; do cat "$f" >> /tmp/app.concat.js; echo ";" >> /tmp/app.concat.js; done
 npx terser /tmp/app.concat.js -c passes=2 -m --safari10 -o js/store.min.js
-npx terser data/products.bundle.js -c -m --safari10 -o data/products.min.js
+node scripts/build-products-bundle.js
 # css
 python3 - <<'PY'
 import re

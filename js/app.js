@@ -321,6 +321,13 @@ function boot(){
     /* First paint after cache (if any). Cloud re-render when ready. */
     render();
     applyRoute();
+    /* Lazy product copy (desc/use/skin) — keeps first paint light */
+    fetch("data/products.detail.json?v=20261125clean1").then(function(res){ return res.ok ? res.json() : null; }).then(function(d){
+      if (d && typeof naqaMergeProductDetails === "function") {
+        naqaMergeProductDetails(d);
+        try { if (typeof render === "function") render(); } catch (e) {}
+      }
+    }).catch(function(){});
     /* Prefer Firestore via store-cloud-boot; also keep static file as fallback */
     fetch("data/overrides.json?v="+Date.now()).then(function(res){ return res.ok ? res.json() : {}; }).then(function(j){
       if (j && typeof j === "object" && Object.keys(j).length) naqaApplyOverrides(j);

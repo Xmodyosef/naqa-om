@@ -24,12 +24,14 @@ assert(
 assert(read("js/config.js").includes("ORDERS_CAP = 300"), "ORDERS_CAP 300");
 assert(read("order.html").includes("slice(0,300)"), "order.html cap 300");
 
-const code = read("data/products.bundle.js");
+const code = read(fs.existsSync(path.join(root,"data/products.admin.min.js"))?"data/products.admin.min.js":"data/products.bundle.js");
 const ctx = { window: {} };
 vm.createContext(ctx);
 vm.runInContext(code, ctx);
 const P = ctx.window.NAQA_PRODUCTS;
 assert(P.length && P.every((p) => Number(p.stock) === 3), "catalog stock default 3");
+assert(fs.existsSync(path.join(root,"data/products.min.js")), "cards products.min.js exists");
+assert(fs.existsSync(path.join(root,"data/products.detail.json")), "detail json exists");
 
 const dry = read("js/features/wish-concerns.js").split('id:"dry"')[1].slice(0, 180);
 assert(!/moist|ترطيب/.test(dry), "dry quiz without moist/ترطيب");
@@ -75,4 +77,10 @@ for (const f of ["js/cart.js", "js/core.js", "js/store.min.js", "js/admin/core.j
 }
 
 console.log(fail ? "\nFAILED " + fail : "\nALL PASSED");
-process.exit(fail ? 1 : 0);
+if (fail) process.exit(1);
+/* chain admin suite */
+try {
+  require("child_process").execSync("node scripts/verify-admin.js", { stdio: "inherit", cwd: root });
+} catch (e) {
+  process.exit(1);
+}

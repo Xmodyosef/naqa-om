@@ -92,7 +92,7 @@
             ? ('<li>' + (ar ? "معرّف الجهاز للحماية (UID) — للتشديد في قواعد Firestore:" : "Admin UID for Firestore rules:")
               + ' <code dir="ltr" style="font-size:.75rem;user-select:all">' + A.esc(adminUid) + '</code></li>')
             : '')
-      +     '<li>' + (ar ? "ما في رمز GitHub ولا PIN في الإعدادات." : "No GitHub token or PIN in Settings.") + '</li>'
+      +     '<li>' + (ar ? "الدخول فقط بحساب Firebase (إيميل/كلمة سر)." : "Sign-in is Firebase only (email/password).") + '</li>'
       +   '</ul>'
       +   '<div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:12px">'
       +     '<button type="button" class="mini" id="btnPullOrders">' + (ar ? "سحب الطلبات من الحساب" : "Pull orders from account") + '</button>'

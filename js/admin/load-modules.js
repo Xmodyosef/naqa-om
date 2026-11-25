@@ -2,14 +2,14 @@
 (function (w) {
   "use strict";
   var A = w.NaqaAdmin = w.NaqaAdmin || {};
-  var V = "20261125lt1";
+  var V = "20261125clean1";
   var loaded = false;
   var inflight = null;
   var SCRIPT_MS = 12000;
 
   var MODULES = [
     "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js",
-    "data/products.bundle.js?v=" + V,
+    "data/products.admin.min.js?v=" + V,
     "js/admin/products.js?v=" + V,
     "js/admin/orders.js?v=" + V,
     "js/admin/cloud-orders.js?v=" + V,

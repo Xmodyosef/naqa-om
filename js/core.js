@@ -59,6 +59,22 @@ function applyRoute(){
 }
 
 const products=(window.NAQA_PRODUCTS||[]).map(p=>Object.assign({imgs:[]},p));
+/** Merge lazy product copy (desc/use/skin) after first paint. */
+function naqaMergeProductDetails(map){
+  if(!map||typeof map!=="object")return;
+  products.forEach(function(p){
+    var d=map[String(p.id)]||map[p.id];
+    if(!d)return;
+    if(d.descAr!=null)p.descAr=d.descAr;
+    if(d.descEn!=null)p.descEn=d.descEn;
+    if(d.useAr!=null)p.useAr=d.useAr;
+    if(d.useEn!=null)p.useEn=d.useEn;
+    if(d.skinAr!=null)p.skinAr=d.skinAr;
+    if(d.skinEn!=null)p.skinEn=d.skinEn;
+  });
+}
+window.naqaMergeProductDetails=naqaMergeProductDetails;
+
 /** Base path of the store (project pages: /naqa-om/). Never strip the last folder when there is no trailing slash. */
 function siteBasePath(){
   var path = location.pathname || "/";

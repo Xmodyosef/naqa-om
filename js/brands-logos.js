@@ -54,4 +54,6 @@ const BRAND_LOGO={
 "YC":"media/brands/yc.png",
 "epii":"media/brands/epii.png",
 "essence":"media/brands/essence.png",
+"Makeup Revolution":"media/brands/revolution.png",
+"Bourjois":"media/brands/bourjois.png",
 };

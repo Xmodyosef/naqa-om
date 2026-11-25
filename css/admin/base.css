@@ -161,6 +161,20 @@ button.stat.sales-link{width:100%;margin-top:4px}
 .pay-flag{flex:0 0 auto;border-radius:999px;padding:4px 8px;font:800 .66rem/1 inherit;white-space:nowrap}
 .pay-flag.on{background:#e5f6ea;color:#1b7a38}
 .pay-flag.off{background:#f6e4e8;color:#8d3048}
+.pay-flag,.status-one{
+  font-family:"Noto Sans Arabic","IBM Plex Sans",system-ui,sans-serif;
+  font-size:1rem;font-weight:800;line-height:1;
+  width:8.6rem;min-width:8.6rem;height:36px;
+  padding:0 8px;box-sizing:border-box;
+  border-radius:999px;text-align:center;
+  display:inline-flex;align-items:center;justify-content:center
+}
+.status-one{max-width:none;margin-inline-start:0;text-align-last:center;display:inline-block}
+.pay-flag.on{background:#e5f6ea;color:#1b7a38}
+.pay-flag.off{background:#f6e4e8;color:#8d3048}
+.status-one,.status-one.new,.status-one.prep,.status-one.ship,.status-one.delivered{background-color:#f3e6e9;color:#8d3048}
+.status-one.cancel{background-color:#eee9e6;color:#7a726e}
+
 .export-menu{position:relative;flex:0 0 auto}
 .export-pop{position:absolute;top:calc(100% + 6px);inset-inline-end:0;z-index:40;background:#fff;border:1px solid #eadfdc;border-radius:12px;box-shadow:0 8px 24px rgba(40,20,24,.16);min-width:8.5rem;padding:6px;display:grid;gap:4px}
 .export-pop[hidden]{display:none!important}

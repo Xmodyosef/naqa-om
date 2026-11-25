@@ -169,38 +169,51 @@ button.stat.sales-link{width:100%;margin-top:4px}
 
 
 
-/* Orders top: search + filter (same as status-one) */
-.orders-top-tools{display:flex;align-items:center;gap:8px;flex:1 1 auto;min-width:0}
+/* Orders top: compact search + date + export */
+.orders-top-tools{display:flex;align-items:center;gap:6px;flex:1 1 auto;min-width:0;flex-wrap:wrap}
 .orders-top-tools[hidden]{display:none!important}
-.orders-tools-slot{flex:0 0 auto}
-.orders-filter-inline{display:flex;align-items:center;gap:6px;flex-wrap:nowrap}
-.orders-filter-inline .filter-one,
-.orders-filter-inline select.status-one{
-  appearance:none;-webkit-appearance:none;border:0;border-radius:999px;
-  padding:8px 22px 8px 12px;font:700 .72rem/1 inherit;cursor:pointer;
-  background:#f3e6e9 url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'><path fill='%238d3048' d='M0 0l5 6 5-6z'/></svg>") no-repeat left 8px center;
-  color:#8d3048;max-width:none;min-width:0;height:auto
+.orders-tools-slot{flex:0 1 auto;min-width:0;max-width:100%}
+.orders-filter-inline{
+  display:flex;align-items:center;gap:4px;flex-wrap:wrap;
+  max-width:100%
 }
-[dir="ltr"] .orders-filter-inline .filter-one,
-[dir="ltr"] .orders-filter-inline select.status-one{
-  background-position:right 8px center;padding:8px 12px 8px 22px
+.date-one-wrap{
+  display:inline-flex;align-items:center;gap:2px;
+  background:#f3e6e9;border-radius:999px;padding:1px 4px;
+  max-width:7.6rem
 }
-
-
-/* Order date inputs + pick + export (status-one style) */
-.orders-filter-inline{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
-.date-one-wrap{display:inline-flex;align-items:center;gap:4px;background:#f3e6e9;border-radius:999px;padding:2px 6px 2px 4px}
-.date-one-lab{font:700 .68rem/1 inherit;color:#8d3048;padding-inline:4px;white-space:nowrap}
+.date-one-lab{
+  font:700 .62rem/1 inherit;color:#8d3048;padding-inline:2px;white-space:nowrap
+}
 .orders-filter-inline input.date-one{
   appearance:none;-webkit-appearance:none;border:0;background:transparent;
-  color:#8d3048;font:700 .72rem/1 "IBM Plex Sans",system-ui,sans-serif;
-  padding:6px 4px;min-width:7.2rem;max-width:9.5rem;direction:ltr
+  color:#8d3048;font:700 .68rem/1 "IBM Plex Sans",system-ui,sans-serif;
+  padding:4px 0;width:6.4rem;min-width:0;max-width:6.4rem;direction:ltr;
+  box-sizing:border-box
+}
+/* hide bulky native date icon overflow on WebKit */
+.orders-filter-inline input.date-one::-webkit-calendar-picker-indicator{
+  opacity:.55;width:12px;height:12px;padding:0;margin:0;cursor:pointer
 }
 .orders-filter-inline .export-one{
-  background:#8d3048!important;color:#fff!important;
-  background-image:none!important;padding:8px 14px!important
+  border:0;border-radius:999px;cursor:pointer;
+  background:#8d3048;color:#fff;font:700 .68rem/1 inherit;
+  padding:7px 10px;white-space:nowrap;flex:0 0 auto
 }
-.pick-all-lab{display:inline-flex;align-items:center;gap:4px;font:700 .72rem inherit;color:#8d3048;white-space:nowrap}
+.pick-all-lab{
+  display:inline-flex;align-items:center;gap:3px;
+  font:700 .65rem inherit;color:#8d3048;white-space:nowrap;
+  background:#f3e6e9;border-radius:999px;padding:5px 8px;cursor:pointer
+}
+.pick-all-lab input{width:14px;height:14px;accent-color:#8d3048;margin:0}
+.pick-all-txt{max-width:3.2rem;overflow:hidden;text-overflow:ellipsis}
 .order-pick-lab{display:inline-flex;align-items:center;margin:0;cursor:pointer}
 .order-pick-lab input{width:16px;height:16px;accent-color:#8d3048}
 .order-head{display:flex;flex-wrap:wrap;align-items:center;gap:6px 8px}
+@media (max-width:420px){
+  .date-one-wrap{max-width:7rem}
+  .orders-filter-inline input.date-one{width:5.8rem;max-width:5.8rem;font-size:.64rem}
+  .pick-all-txt{display:none}
+  .orders-filter-inline .export-one{padding:7px 8px;font-size:.64rem}
+}
+

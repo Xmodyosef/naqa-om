@@ -188,73 +188,89 @@
     };
   };
 
-  A.paintOrders = function () {
+  A.syncExportLabel = function () {
+    var exp = document.getElementById("exportOrdersCsv");
+    if (!exp) return;
+    var n = 0;
+    Object.keys(A.selectedOrderIds || {}).forEach(function (k) { if (A.selectedOrderIds[k]) n++; });
+    exp.textContent = n
+      ? ((A.t("exportSelected") || "تصدير المحدد") + " (" + n + ")")
+      : (A.t("exportExcel") || "Excel");
+    var all = document.getElementById("ordSelectAll");
+    if (all) {
+      var boxes = document.querySelectorAll("#ordersList .order-pick");
+      all.checked = !!(boxes.length && Array.prototype.every.call(boxes, function (b) { return b.checked; }));
+    }
+  };
+
+  A.ensureOrdersTools = function () {
+    var tools = document.getElementById("ordersTools");
+    if (!tools) return;
+    if (!tools._ready) {
+      tools._ready = true;
+      tools.addEventListener("change", function (e) {
+        var t = e.target;
+        if (!t) return;
+        if (t.id === "ordDateFrom" || t.id === "ordDateTo") {
+          A.orderDatePreset = "custom";
+          A.orderDateFrom = (document.getElementById("ordDateFrom") || {}).value || "";
+          A.orderDateTo = (document.getElementById("ordDateTo") || {}).value || "";
+          /* لا نعيد بناء أدوات التاريخ — فقط نحدّث القائمة */
+          A.paintOrders({ skipTools: true });
+          return;
+        }
+        if (t.id === "ordSelectAll") {
+          var on = !!t.checked;
+          A.selectedOrderIds = A.selectedOrderIds || {};
+          document.querySelectorAll("#ordersList .order-pick").forEach(function (cb) {
+            var id = cb.getAttribute("data-oid");
+            cb.checked = on;
+            if (id) A.selectedOrderIds[id] = on;
+          });
+          A.syncExportLabel();
+          return;
+        }
+      });
+      tools.addEventListener("click", function (e) {
+        var t = e.target;
+        if (!t) return;
+        if (t.id === "exportOrdersCsv" || (t.closest && t.closest("#exportOrdersCsv"))) {
+          A.exportOrdersCsv();
+        }
+      });
+    }
+    /* ابني الأدوات مرة واحدة فقط حتى لا يختطف منتقي التاريخ */
+    if (tools.querySelector("#ordersToolsPanel")) {
+      A.syncExportLabel();
+      return;
+    }
+    var from = A.orderDateFrom || "";
+    var to = A.orderDateTo || "";
+    tools.innerHTML =
+      '<div class="orders-filter-inline" id="ordersToolsPanel">'
+      + '<label class="date-one-wrap" title="' + A.esc(A.t("f_from") || "من") + '">'
+      + '<span class="date-one-lab">' + A.esc(A.t("f_from") || "من") + '</span>'
+      + '<input type="date" lang="en" dir="ltr" class="date-one" id="ordDateFrom" value="' + A.esc(from) + '" aria-label="' + A.esc(A.t("f_from") || "من") + '">'
+      + '</label>'
+      + '<label class="date-one-wrap" title="' + A.esc(A.t("f_to") || "إلى") + '">'
+      + '<span class="date-one-lab">' + A.esc(A.t("f_to") || "إلى") + '</span>'
+      + '<input type="date" lang="en" dir="ltr" class="date-one" id="ordDateTo" value="' + A.esc(to) + '" aria-label="' + A.esc(A.t("f_to") || "إلى") + '">'
+      + '</label>'
+      + '<label class="pick-all-lab" title="' + A.esc(A.t("selectAllOrders") || "تحديد الكل") + '">'
+      + '<input type="checkbox" id="ordSelectAll"><span class="pick-all-txt">' + A.esc(A.t("selectAllOrders") || "الكل") + '</span></label>'
+      + '<button type="button" class="export-one" id="exportOrdersCsv">' + A.esc(A.t("exportExcel") || "Excel") + '</button>'
+      + '</div>';
+    A.syncExportLabel();
+  };
+
+  A.paintOrders = function (opts) {
+    opts = opts || {};
     try { A.syncOrdersTab(); } catch (e) {}
     A.orders.forEach(function (o) { o.status = A.normalizeStatus(o.status); });
     try { if (A.updateOrdersBadge) A.updateOrdersBadge(); } catch (e2) {}
     A.paintStatusBar();
-    var tools = document.getElementById("ordersTools");
-    if (tools) {
-      if (!tools._ready) {
-        tools._ready = true;
-        tools.addEventListener("change", function (e) {
-          var t = e.target;
-          if (!t) return;
-          if (t.id === "ordDateFrom" || t.id === "ordDateTo") {
-            A.orderDatePreset = "custom";
-            A.orderDateFrom = (document.getElementById("ordDateFrom") || {}).value || "";
-            A.orderDateTo = (document.getElementById("ordDateTo") || {}).value || "";
-            A.paintOrders();
-            return;
-          }
-          if (t.id === "ordSelectAll") {
-            var on = !!t.checked;
-            A.selectedOrderIds = A.selectedOrderIds || {};
-            var listNow = document.querySelectorAll("#ordersList .order-pick");
-            listNow.forEach(function (cb) {
-              var id = cb.getAttribute("data-oid");
-              cb.checked = on;
-              if (id) A.selectedOrderIds[id] = on;
-            });
-            var exp = document.getElementById("exportOrdersCsv");
-            if (exp) {
-              var n = 0;
-              Object.keys(A.selectedOrderIds).forEach(function (k) { if (A.selectedOrderIds[k]) n++; });
-              exp.textContent = n ? ((A.t("exportSelected") || "تصدير المحدد") + " (" + n + ")") : (A.t("exportExcel") || A.t("exportCsv") || "تصدير Excel");
-            }
-            return;
-          }
-        });
-        tools.addEventListener("click", function (e) {
-          var t = e.target;
-          if (!t) return;
-          if (t.id === "exportOrdersCsv" || t.closest && t.closest("#exportOrdersCsv")) {
-            A.exportOrdersCsv();
-          }
-        });
-      }
-      var from = A.orderDateFrom || "";
-      var to = A.orderDateTo || "";
-      var selCount = 0;
-      Object.keys(A.selectedOrderIds || {}).forEach(function (k) { if (A.selectedOrderIds[k]) selCount++; });
-      var exportLabel = selCount
-        ? ((A.t("exportSelected") || "تصدير المحدد") + " (" + selCount + ")")
-        : (A.t("exportExcel") || A.t("exportCsv") || "تصدير Excel");
-      tools.innerHTML =
-        '<div class="orders-filter-inline" id="ordersToolsPanel">'
-        + '<label class="date-one-wrap" title="' + A.esc(A.t("f_from") || "من") + '">'
-        + '<span class="date-one-lab">' + A.esc(A.t("f_from") || "من") + '</span>'
-        + '<input type="date" lang="en" dir="ltr" class="status-one filter-one date-one" id="ordDateFrom" value="' + A.esc(from) + '" aria-label="' + A.esc(A.t("f_from") || "من") + '">'
-        + '</label>'
-        + '<label class="date-one-wrap" title="' + A.esc(A.t("f_to") || "إلى") + '">'
-        + '<span class="date-one-lab">' + A.esc(A.t("f_to") || "إلى") + '</span>'
-        + '<input type="date" lang="en" dir="ltr" class="status-one filter-one date-one" id="ordDateTo" value="' + A.esc(to) + '" aria-label="' + A.esc(A.t("f_to") || "إلى") + '">'
-        + '</label>'
-        + '<label class="pick-all-lab"><input type="checkbox" id="ordSelectAll" ' + (selCount ? 'checked' : '') + '> '
-        + A.esc(A.t("selectAllOrders") || "تحديد الكل") + '</label>'
-        + '<button type="button" class="status-one filter-one export-one" id="exportOrdersCsv">' + A.esc(exportLabel) + '</button>'
-        + '</div>';
-    }
+    if (!opts.skipTools) A.ensureOrdersTools();
+    else A.syncExportLabel();
     var box = document.getElementById("ordersList");
     if (!box) return;
     var list = A.orders.filter(function (o) {

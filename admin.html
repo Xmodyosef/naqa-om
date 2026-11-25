@@ -23,9 +23,9 @@
 <link rel="dns-prefetch" href="https://www.gstatic.com" />
 <link rel="preload" href="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js" as="script" />
 <link rel="preload" href="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js" as="script" />
-<link rel="preload" href="js/firebase-config.js?v=20261125prod2" as="script" />
-<link rel="preload" href="js/admin/firebase-gate.js?v=20261125prod2" as="script" />
-<link rel="stylesheet" href="css/admin.css?v=20261125prod2" />
+<link rel="preload" href="js/firebase-config.js?v=20261125prod3" as="script" />
+<link rel="preload" href="js/admin/firebase-gate.js?v=20261125prod3" as="script" />
+<link rel="stylesheet" href="css/admin.css?v=20261125prod3" />
 
 
 </head>
@@ -137,22 +137,6 @@
       <span class="side-lbl" data-i18n="tab_settings">الإعدادات</span>
     </button>
   </nav>
-  <div id="childNav" class="top-children" data-nav-mode="pills-top" hidden aria-label="فلاتر القسم">
-    <div class="child-set" data-for="orders" hidden>
-      <button type="button" class="side-sub" data-tab="orders" data-sub="all"><span data-i18n="sub_all">الكل</span><span class="sub-count" data-for-sub="all">0</span></button>
-      <button type="button" class="side-sub" data-tab="orders" data-sub="new"><span data-i18n="st_new">جديد</span><span class="sub-count" data-for-sub="new">0</span></button>
-      <button type="button" class="side-sub" data-tab="orders" data-sub="prep"><span data-i18n="st_prep">جاري التجهيز</span><span class="sub-count" data-for-sub="prep">0</span></button>
-      <button type="button" class="side-sub" data-tab="orders" data-sub="ship"><span data-i18n="st_ship">جاري التوصيل</span><span class="sub-count" data-for-sub="ship">0</span></button>
-      <button type="button" class="side-sub" data-tab="orders" data-sub="delivered"><span data-i18n="st_delivered">تم التوصيل</span><span class="sub-count" data-for-sub="delivered">0</span></button>
-      <button type="button" class="side-sub" data-tab="orders" data-sub="cancel"><span data-i18n="st_cancel">ملغي</span><span class="sub-count" data-for-sub="cancel">0</span></button>
-    </div>
-    <div class="child-set" data-for="products" hidden>
-      <button type="button" class="side-sub" data-tab="products" data-sub="all"><span data-i18n="sub_all">الكل</span><span class="sub-count" data-for-sub="all">0</span></button>
-      <button type="button" class="side-sub" data-tab="products" data-sub="shown"><span data-i18n="sub_shown">ظاهر</span><span class="sub-count" data-for-sub="shown">0</span></button>
-      <button type="button" class="side-sub" data-tab="products" data-sub="hidden"><span data-i18n="sub_hidden">مخفي</span><span class="sub-count" data-for-sub="hidden">0</span></button>
-      <button type="button" class="side-sub" data-tab="products" data-sub="stock"><span data-i18n="sub_stock">مخزون منخفض</span><span class="sub-count" data-for-sub="stock">0</span></button>
-    </div>
-  </div>
   <main class="admin-main" id="adminMain" role="main">
     <div class="top-bar" id="topBar" hidden>
       <div class="orders-top-tools" id="ordersTopTools" hidden>
@@ -174,13 +158,29 @@
       var search = document.getElementById("ordersSearchWrap");
       var ot = document.getElementById("ordersTopTools");
       if (tab === "products" && add) add.hidden = false;
-      if (tab === "orders") {
+      if (tab === "orders" || tab === "products") {
         if (search) search.hidden = false;
-        if (ot) ot.hidden = false;
+        if (ot) ot.hidden = !(tab === "orders" || tab === "products");
       }
       if (top && (tab === "products" || tab === "orders")) top.hidden = false;
     })();
     </script>
+  <div id="childNav" class="top-children" data-nav-mode="pills-top" hidden aria-label="فلاتر القسم">
+    <div class="child-set" data-for="orders" hidden>
+      <button type="button" class="side-sub" data-tab="orders" data-sub="all"><span data-i18n="sub_all">الكل</span><span class="sub-count" data-for-sub="all">0</span></button>
+      <button type="button" class="side-sub" data-tab="orders" data-sub="new"><span data-i18n="st_new">جديد</span><span class="sub-count" data-for-sub="new">0</span></button>
+      <button type="button" class="side-sub" data-tab="orders" data-sub="prep"><span data-i18n="st_prep">جاري التجهيز</span><span class="sub-count" data-for-sub="prep">0</span></button>
+      <button type="button" class="side-sub" data-tab="orders" data-sub="ship"><span data-i18n="st_ship">جاري التوصيل</span><span class="sub-count" data-for-sub="ship">0</span></button>
+      <button type="button" class="side-sub" data-tab="orders" data-sub="delivered"><span data-i18n="st_delivered">تم التوصيل</span><span class="sub-count" data-for-sub="delivered">0</span></button>
+      <button type="button" class="side-sub" data-tab="orders" data-sub="cancel"><span data-i18n="st_cancel">ملغي</span><span class="sub-count" data-for-sub="cancel">0</span></button>
+    </div>
+    <div class="child-set" data-for="products" hidden>
+      <button type="button" class="side-sub" data-tab="products" data-sub="all"><span data-i18n="sub_all">الكل</span><span class="sub-count" data-for-sub="all">0</span></button>
+      <button type="button" class="side-sub" data-tab="products" data-sub="shown"><span data-i18n="sub_shown">ظاهر</span><span class="sub-count" data-for-sub="shown">0</span></button>
+      <button type="button" class="side-sub" data-tab="products" data-sub="hidden"><span data-i18n="sub_hidden">مخفي</span><span class="sub-count" data-for-sub="hidden">0</span></button>
+      <button type="button" class="side-sub" data-tab="products" data-sub="stock"><span data-i18n="sub_stock">مخزون منخفض</span><span class="sub-count" data-for-sub="stock">0</span></button>
+    </div>
+  </div>
 <div id="homeTab" class="admin-section" hidden>
       <div id="dashBox"></div>
     </div>
@@ -216,17 +216,17 @@
   </main>
 </div>
 </div>
-<script defer src="js/config.js?v=20261125prod2"></script>
-<script defer src="js/firebase-config.js?v=20261125prod2"></script>
+<script defer src="js/config.js?v=20261125prod3"></script>
+<script defer src="js/firebase-config.js?v=20261125prod3"></script>
 <script defer src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
 <script defer src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
-<script defer src="js/admin.js?v=20261125prod2"></script>
-<script defer src="js/admin/core.js?v=20261125prod2"></script>
-<script defer src="js/admin/firebase-gate.js?v=20261125prod2"></script>
-<script defer src="js/admin/app.js?v=20261125prod2"></script>
-<script defer src="js/admin/i18n/dict-ar.js?v=20261125prod2"></script>
-<script defer src="js/admin/i18n/dict-en.js?v=20261125prod2"></script>
-<script defer src="js/admin/i18n.js?v=20261125prod2"></script>
-<script defer src="js/admin/load-modules.js?v=20261125prod2"></script>
+<script defer src="js/admin.js?v=20261125prod3"></script>
+<script defer src="js/admin/core.js?v=20261125prod3"></script>
+<script defer src="js/admin/firebase-gate.js?v=20261125prod3"></script>
+<script defer src="js/admin/app.js?v=20261125prod3"></script>
+<script defer src="js/admin/i18n/dict-ar.js?v=20261125prod3"></script>
+<script defer src="js/admin/i18n/dict-en.js?v=20261125prod3"></script>
+<script defer src="js/admin/i18n.js?v=20261125prod3"></script>
+<script defer src="js/admin/load-modules.js?v=20261125prod3"></script>
 </body>
 </html>

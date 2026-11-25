@@ -90,7 +90,8 @@
       else shown += 1;
       if (m && m.stock !== "" && m.stock != null) {
         var sn = Number(m.stock);
-        if (sn >= 0 && sn <= 3) stockAlert += 1;
+        /* catalog default is 3 — «منخفض» = 0..2 only (not every product) */
+        if (sn >= 0 && sn <= 2) stockAlert += 1;
       }
     });
     var pc = { all: allp, shown: shown, hidden: hid, stock: stockAlert };
@@ -101,6 +102,7 @@
   };
 
   A.refreshChildNav = function () {
+    try { if (A.syncSearchPlaceholder) A.syncSearchPlaceholder(); } catch (eSp) {}
     var tab = A.currentTab || "home";
     var active = "all";
     if (tab === "orders") active = A.orderFilter || A.currentSub || "all";
@@ -149,9 +151,11 @@
     var add = document.getElementById("addProductBtn");
     if (add) add.hidden = tab !== "products";
     var search = document.getElementById("ordersSearchWrap");
-    if (search) search.hidden = tab !== "orders";
+    if (search) search.hidden = !(tab === "orders" || tab === "products");
     var ot = document.getElementById("ordersTopTools");
-    if (ot) ot.hidden = tab !== "orders";
+    if (ot) ot.hidden = !(tab === "orders" || tab === "products");
+    var otSlot = document.getElementById("ordersTools");
+    if (otSlot) otSlot.hidden = tab !== "orders";
   };
 
   A.sectionHash = function () {
@@ -285,6 +289,26 @@
       setTimeout(function () {
         try { A.loadRemoteOrders(); } catch (e) {}
       }, 0);
+    }
+  };
+
+
+  A.syncSearchPlaceholder = function () {
+    var input = document.getElementById("globalSearch");
+    if (!input) return;
+    var tab = A.currentTab || "home";
+    if (tab === "products") {
+      var ph = A.t("p_search") || (A.lang === "en" ? "Name, SKU, brand…" : "اسم أو SKU أو ماركة…");
+      input.placeholder = ph;
+      input.setAttribute("aria-label", ph);
+      input.setAttribute("data-i18n-placeholder", "p_search");
+      if (document.activeElement !== input) input.value = A.productQuery || "";
+    } else if (tab === "orders") {
+      var ph2 = A.t("o_search") || (A.lang === "en" ? "Number, name, phone" : "رقم أو اسم أو جوال");
+      input.placeholder = ph2;
+      input.setAttribute("aria-label", ph2);
+      input.setAttribute("data-i18n-placeholder", "o_search");
+      if (document.activeElement !== input) input.value = A.orderQuery || "";
     }
   };
 

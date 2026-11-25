@@ -635,7 +635,7 @@
           if (labs[i].querySelector("[data-qk-stock]")) {
             labs[i].classList.remove("is-low", "is-out");
             if (num != null && num <= 0) labs[i].classList.add("is-out");
-            else if (num != null && num <= 3) labs[i].classList.add("is-low");
+            else if (num != null && num <= 2) labs[i].classList.add("is-low");
           }
         }
       }
@@ -715,7 +715,7 @@
       if (view === "stock") {
         if (m.stock === "" || m.stock == null) return false;
         var sn = Number(m.stock);
-        if (!(sn >= 0 && sn <= 3)) return false;
+        if (!(sn >= 0 && sn <= 2)) return false;
       }
       if (!q) return true;
       var blob = [m.nameAr, m.nameEn, m.brand, m.sku, m.cat, p.id].join(" ").toLowerCase();
@@ -745,22 +745,12 @@
       return na.localeCompare(nb, A.lang === "en" ? "en" : "ar");
     });
 
-    var lowCount = (A.products || []).filter(function (p) {
-      var m = A.merged(p);
-      if (m.stock === "" || m.stock == null) return false;
-      var n = Number(m.stock);
-      return n >= 0 && n <= 3;
-    }).length;
-
     var selCount = Object.keys(A.productSel || {}).filter(function (id) { return A.productSel[id]; }).length;
 
+    /* search lives in top bar (same as orders). tools: sort + export + bulk only */
     var tools =
       '<div class="prod-tools" id="prodTools">'
       + '<div class="prod-tools-row">'
-      +   '<div class="prod-search-wrap">'
-      +     '<input type="search" id="prodSearch" value="' + A.esc(A.productQuery || "") + '" placeholder="' + A.esc(A.t("p_search") || (A.lang === "en" ? "Name, SKU, brand…" : "اسم أو SKU أو ماركة…")) + '" autocomplete="off" aria-label="' + A.esc(A.t("p_search") || "بحث") + '">'
-      +     '<button type="button" class="search-btn" id="prodSearchBtn" aria-label="search">⌕</button>'
-      +   '</div>'
       +   '<select id="prodSort" class="prod-sort" aria-label="' + A.esc(A.t("p_sort") || "فرز") + '">'
       +     '<option value="name"' + (sort === "name" ? " selected" : "") + '>' + A.esc(A.t("p_sortName") || (A.lang === "en" ? "Name" : "الاسم")) + '</option>'
       +     '<option value="priceAsc"' + (sort === "priceAsc" ? " selected" : "") + '>' + A.esc(A.t("p_sortPriceAsc") || (A.lang === "en" ? "Price ↑" : "السعر ↑")) + '</option>'
@@ -768,11 +758,9 @@
       +     '<option value="stockAsc"' + (sort === "stockAsc" ? " selected" : "") + '>' + A.esc(A.t("p_sortStockAsc") || (A.lang === "en" ? "Stock ↑" : "المخزون ↑")) + '</option>'
       +     '<option value="stockDesc"' + (sort === "stockDesc" ? " selected" : "") + '>' + A.esc(A.t("p_sortStockDesc") || (A.lang === "en" ? "Stock ↓" : "المخزون ↓")) + '</option>'
       +     '<option value="hidden"' + (sort === "hidden" ? " selected" : "") + '>' + A.esc(A.t("p_sortHidden") || (A.lang === "en" ? "Hidden first" : "المخفي أولاً")) + '</option>'
-      +     '<option value="hot"' + (sort === "hot" ? " selected" : "") + '>' + A.esc(A.t("p_sortHot") || (A.lang === "en" ? "Featured first" : "المميّز أولاً")) + '</option>'
       +   '</select>'
       +   '<button type="button" class="export-one" id="exportProductsBtn">' + A.esc(A.t("p_export") || (A.lang === "en" ? "Export Excel" : "تصدير Excel")) + '</button>'
       + '</div>'
-      + (lowCount ? ('<p class="prod-low-alert">' + A.esc((A.t("p_lowAlert") || (A.lang === "en" ? "{n} low-stock items (≤3)" : "{n} منتج بمخزون منخفض (≤٣)")).replace("{n}", String(lowCount))) + ' · <button type="button" class="linkish" id="prodGoLow">' + A.esc(A.t("p_lowShow") || (A.lang === "en" ? "Show" : "عرض")) + '</button></p>') : '')
       + '<div class="prod-bulk' + (selCount ? " on" : "") + '" id="prodBulk">'
       +   '<label class="prod-check-all"><input type="checkbox" id="prodCheckAll"' + (selCount && selCount === matched.length ? " checked" : "") + '> ' + A.esc(A.t("p_selectAll") || (A.lang === "en" ? "Select all page" : "تحديد صفحة")) + '</label>'
       +   '<span class="prod-sel-n">' + selCount + '</span>'
@@ -797,18 +785,18 @@
       var thumb = img ? '<img src="' + A.esc(img.indexOf("fs:") === 0 ? "" : img) + '" data-src="' + A.esc(img) + '" alt="">' : '<div class="ph"></div>';
       var stock = m.stock === "" || m.stock == null ? "" : m.stock;
       var stockN = Number(m.stock);
-      var stockCls = (m.stock !== "" && m.stock != null && stockN <= 0) ? " is-out" : (m.stock != null && m.stock !== "" && stockN <= 3 ? " is-low" : "");
+      var stockCls = (m.stock !== "" && m.stock != null && stockN <= 0) ? " is-out" : (m.stock != null && m.stock !== "" && stockN <= 2 ? " is-low" : "");
       var title = String((A.lang === "en" ? (m.nameEn || m.nameAr) : (m.nameAr || m.nameEn)) || "").replace(/\s+/g, " ").trim();
       var taxTxt = A.taxLabel ? A.taxLabel(m) : (A.t("tax_vat5") || "");
       var wasN = Number(m.was);
       var priceN = Number(m.price);
       var off = (m.was != null && wasN > priceN && priceN >= 0) ? Math.round((1 - priceN / wasN) * 100) : 0;
       var checked = !!(A.productSel && A.productSel[String(p.id)]);
-      return '<article class="prod-card row' + (m.hidden ? " is-hidden" : "") + (m.hot ? " is-hot" : "") + '" data-pid="' + p.id + '">'
+      return '<article class="prod-card row' + (m.hidden ? " is-hidden" : "") + '" data-pid="' + p.id + '">'
         + '<label class="prod-pick"><input type="checkbox" data-pick="' + p.id + '"' + (checked ? " checked" : "") + ' aria-label="select"></label>'
         + '<div class="prod-thumb">' + thumb + '</div>'
         + '<div class="prod-body">'
-        +   '<div class="prod-title">' + A.esc(title || (A.lang === "en" ? "(untitled)" : "(بدون اسم)")) + (m.hot ? ' <span class="prod-hot-tag">' + A.esc(A.t("p_hotTag") || (A.lang === "en" ? "Featured" : "مميّز")) + '</span>' : '') + (off ? ' <span class="prod-off-tag">−' + off + '%</span>' : '') + '</div>'
+        +   '<div class="prod-title">' + A.esc(title || (A.lang === "en" ? "(untitled)" : "(بدون اسم)")) + (off ? ' <span class="prod-off-tag">−' + off + '%</span>' : '') + '</div>'
         +   '<div class="prod-meta">'
         +     (m.brand ? '<span>' + A.esc(m.brand) + '</span>' : '')
         +     (m.cat ? '<span>' + A.esc(m.cat) + '</span>' : '')
@@ -816,7 +804,7 @@
         +     (m.hidden ? '<span class="prod-hid">' + A.esc(A.t("p_hidden") || "مخفي") + '</span>' : '')
         +   '</div>'
         +   '<div class="prod-price-row prod-quick">'
-        +     '<label class="qk"><span>' + A.esc(A.t("p_priceLab") || (A.lang === "en" ? "Price" : "السعر")) + '</span>'
+        +     '<label class="qk"><span>' + A.esc(A.t("p_price") || (A.lang === "en" ? "Price" : "السعر")) + '</span>'
         +       '<input type="number" min="0" step="0.001" inputmode="decimal" data-qk-price="' + p.id + '" value="' + A.esc(m.price != null ? m.price : "") + '">'
         +       '<small>' + A.esc(A.t("omr") || "ر.ع") + '</small></label>'
         +     (m.was != null && wasN > 0 ? ('<span class="prod-was"><s>' + A.esc(m.was) + '</s></span>') : '')
@@ -826,11 +814,7 @@
         +   '</div>'
         + '</div>'
         + '<div class="prod-actions">'
-        +   '<button type="button" class="hot-btn' + (m.hot ? " on" : "") + '" data-hot="' + p.id + '">' + A.esc(m.hot ? (A.t("p_unhot") || (A.lang === "en" ? "Unfeature" : "إلغاء مميّز")) : (A.t("p_hot") || (A.lang === "en" ? "Feature" : "مميّز"))) + '</button>'
-        +   '<button type="button" class="hide-btn' + (m.hidden ? ' is-hidden-on' : '') + '" data-hide="' + p.id + '">'
-        +     A.t(m.hidden ? "p_show" : "p_hide")
-        +   '</button>'
-        +   '<button type="button" class="edit-btn" data-open="' + p.id + '">' + A.t("p_edit") + '</button>'
+        +   '<button type="button" class="edit-btn" data-open="' + p.id + '">' + A.esc(A.t("p_editProduct") || (A.lang === "en" ? "Edit product" : "تعديل المنتج")) + '</button>'
         + '</div>'
         + '</article>';
     }).join("");
@@ -924,7 +908,6 @@
       + '</select></label>'
       + '<label id="f_taxCustomWrap"' + ((m.taxMode || "vat5") === "custom" ? "" : " hidden") + '>' + A.t("tax_customRate") + '<input id="f_taxCustom" type="number" min="0" max="100" step="0.1" value="' + A.esc(m.taxCustom != null ? m.taxCustom : "") + '" placeholder="%"></label>'
       + '<label class="hide-row"><input id="f_hidden" type="checkbox"' + (m.hidden ? " checked" : "") + '> ' + A.t("p_hide") + '</label>'
-      + '<label class="hide-row"><input id="f_hot" type="checkbox"' + (m.hot ? " checked" : "") + '> ' + (A.t("p_hot") || (A.lang === "en" ? "Featured (best seller)" : "مميّز (الأكثر مبيعاً)")) + '</label>'
       + '<label>' + A.t("p_descAr") + '<textarea id="f_descAr" rows="4">' + A.esc(m.descAr || "") + '</textarea></label>'
       + '<label>' + A.t("p_descEn") + '<textarea id="f_descEn" rows="4">' + A.esc(m.descEn || "") + '</textarea></label>'
       + '<label>' + A.t("p_useAr") + '<textarea id="f_useAr" rows="4">' + A.esc(m.useAr || "") + '</textarea></label>'
@@ -1073,8 +1056,7 @@
       var p0 = A.products.find(function (x) { return String(x.id) === String(A.editingId); });
       var prev = A.overrides[String(A.editingId)] || A.overrides[A.editingId] || {};
       if ((p0 && p0._new) || prev._new) next._new = true;
-      var hotEl = document.getElementById("f_hot");
-      if (hotEl) next.hot = !!hotEl.checked;
+      /* featured UI removed from list — keep hot only if already in overrides */
     })();
     if (next.price == null || isNaN(next.price)) delete next.price;
     if (next.was == null || isNaN(next.was)) delete next.was;

@@ -382,3 +382,29 @@ body.naqa-open .orders-top-tools .search-wrap {
   max-width: none;
   min-width: 160px;
 }
+
+
+/* childNav under search */
+body.naqa-open #adminMain > #childNav.top-children,
+body.naqa-open #adminMain > #childNav {
+  margin: 0 0 12px;
+}
+body.naqa-open #adminMain > .top-bar {
+  margin-bottom: 8px;
+}
+/* products: search uses same orders search-wrap sizing */
+body.naqa-open .orders-top-tools {
+  display: flex;
+  flex: 1 1 auto;
+  min-width: 0;
+  align-items: center;
+  gap: 8px;
+}
+body.naqa-open .orders-top-tools[hidden] {
+  display: none !important;
+}
+body.naqa-open #ordersTopTools:not([hidden]) {
+  display: flex !important;
+  flex: 1 1 auto;
+  min-width: 0;
+}

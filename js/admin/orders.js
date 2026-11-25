@@ -168,6 +168,7 @@
         + "<div class='order-title'>"
         + "<div class='oid'><span>" + A.esc(A.lang === "en" ? "Order No." : "رقم الطلب") + "</span><b>" + A.esc(o.id) + "</b></div>"
         + "<span class='st'>" + A.esc(A.statusLabel(st)) + "</span>"
+        + "<span class='st pay " + (A.isOrderPaid && A.isOrderPaid(o) ? "ok" : "no") + "'>" + A.esc(A.paidLabel ? A.paidLabel(o) : "") + "</span>"
         + "<span class='when'>" + A.esc(when) + "</span>"
         + "</div>"
         + "<div class='body-block'>"
@@ -177,7 +178,7 @@
         + "<div class='cell'><div class='k'>" + A.esc(A.t("o_pdfArea") || "Area") + "</div><div class='v'>" + A.esc(o.area || "—") + "</div></div>"
         + "<div class='cell'><div class='k'>" + A.esc(A.t("o_pdfCity") || "City") + "</div><div class='v'>" + A.esc(o.city || "—") + "</div></div>"
         + ((o.address || o.addr) ? ("<div class='cell span2'><div class='k'>" + A.esc(A.t("o_pdfAddress") || "Address") + "</div><div class='v'>" + A.esc(o.address || o.addr) + "</div></div>") : "")
-        + "<div class='cell'><div class='k'>" + A.esc(A.t("payLine") || "Payment") + "</div><div class='v'>" + A.esc(payLabel(o)) + "</div></div>"
+        + "<div class='cell'><div class='k'>" + A.esc(A.t("payLine") || "Payment") + "</div><div class='v'>" + A.esc(A.paidLabel ? A.paidLabel(o) : payLabel(o)) + "</div></div>"
         + "<div class='cell'><div class='k'>" + A.esc(A.t("o_pdfStatus") || "Status") + "</div><div class='v'>" + A.esc(A.statusLabel(st)) + "</div></div>"
         + "</div>"
         + (o.note ? ("<div class='note-line'><span class='k'>" + A.esc(A.t("note") || "Note") + ":</span> " + A.esc(o.note) + "</div>") : "")
@@ -213,7 +214,7 @@
       + "padding:12px 14px;background:#fdf8f6;border:1px solid #efe4df;border-radius:10px;flex:0 0 auto}"
       + ".oid span{display:block;font-size:9.5pt;color:#8a7f78;font-weight:700}"
       + ".oid b{font-size:16pt;font-weight:800;color:#1a1412}"
-      + ".st{background:#8d3048;color:#fff;border-radius:999px;padding:6px 16px;font-size:10.5pt;font-weight:800}"
+      + ".st{background:#8d3048;color:#fff;border-radius:999px;padding:6px 16px;font-size:10.5pt;font-weight:800}"+ ".st.pay.ok{background:#1d7a3a}"+ ".st.pay.no{background:#a33b52}"
       + ".when{margin-inline-start:auto;font-size:11pt;color:#5c534e;font-variant-numeric:tabular-nums}"
       + ".grid{display:grid;grid-template-columns:1fr 1fr;gap:12px 20px;margin:0 0 16px;flex:0 0 auto}"
       + ".cell.span2{grid-column:1 / -1}"
@@ -433,7 +434,7 @@
       try { when = o.at ? A.fmtDateTimeNum(o.at) : (o.at || ""); } catch (e) { when = o.at || ""; }
       rows.push([
         o.id || "", when, st, o.name || "", o.phone || "", o.area || "",
-        o.total != null ? o.total : "", A.payText(o), items
+        o.total != null ? o.total : "", (A.paidLabel ? A.paidLabel(o) : A.payText(o)), items
       ]);
       count++;
     });
@@ -555,20 +556,10 @@
 
   A.syncExportLabel = function () {
     var n = A.countSelectedOrders ? A.countSelectedOrders() : 0;
-    var exp = document.getElementById("exportOrdersCsv");
+    var exp = document.getElementById("exportOrdersBtn");
     if (exp) {
-      exp.textContent = n
-        ? ((A.t("exportSelected") || "تصدير المحدد") + " (" + n + ")")
-        : (A.t("exportExcel") || "Excel");
-    }
-    var pdf = document.getElementById("printOrdersPdf");
-    if (pdf) {
-      pdf.disabled = n < 1;
-      pdf.title = n < 1
-        ? (A.t("o_printNeedSel") || "Select orders first")
-        : (A.t("printPdfTitle") || "Print PDF");
-      var lab = A.t("printPdf") || "PDF";
-      pdf.textContent = n ? (lab + " (" + n + ")") : lab;
+      var base = A.t("exportOrders") || "تصدير الطلبات";
+      exp.textContent = n ? (base + " (" + n + ")") : base;
     }
     var all = document.getElementById("ordSelectAll");
     if (all) {
@@ -611,15 +602,37 @@
       tools.addEventListener("click", function (e) {
         var t = e.target;
         if (!t) return;
-        if (t.id === "exportOrdersCsv" || (t.closest && t.closest("#exportOrdersCsv"))) {
+        var pop = document.getElementById("exportPop");
+        if (t.id === "exportOrdersBtn" || (t.closest && t.closest("#exportOrdersBtn"))) {
+          if (pop) {
+            pop.hidden = !pop.hidden;
+            var b = document.getElementById("exportOrdersBtn");
+            if (b) b.setAttribute("aria-expanded", pop.hidden ? "false" : "true");
+          }
+          return;
+        }
+        if (t.id === "exportPickExcel") {
+          if (pop) pop.hidden = true;
           A.exportOrdersCsv();
           return;
         }
-        if (t.id === "printOrdersPdf" || (t.closest && t.closest("#printOrdersPdf"))) {
+        if (t.id === "exportPickPdf") {
+          if (pop) pop.hidden = true;
           A.printOrdersPdf();
         }
       });
     }
+      if (!A._exportPopBound) {
+        A._exportPopBound = true;
+        document.addEventListener("click", function (ev) {
+          var popEl = document.getElementById("exportPop");
+          if (!popEl || popEl.hidden) return;
+          if (ev.target && ev.target.closest && ev.target.closest(".export-menu")) return;
+          popEl.hidden = true;
+          var b = document.getElementById("exportOrdersBtn");
+          if (b) b.setAttribute("aria-expanded", "false");
+        });
+      }
     /* ابني الأدوات مرة واحدة فقط — إلا إذا ناقص زر PDF (نسخة قديمة) */
     if (tools.querySelector("#ordersToolsPanel")) {
       A.syncExportLabel();
@@ -639,7 +652,12 @@
       + '</label>'
       + '<label class="pick-all-lab" title="' + A.esc(A.t("selectAllOrders") || "تحديد الكل") + '">'
       + '<input type="checkbox" id="ordSelectAll"><span class="pick-all-txt">' + A.esc(A.t("selectAllOrders") || "تحديد الكل") + '</span></label>'
-      + '<button type="button" class="export-one" id="exportOrdersCsv">' + A.esc(A.t("exportExcel") || "Excel") + '</button>'
+      + '<div class="export-menu">'
+      + '<button type="button" class="export-one" id="exportOrdersBtn" aria-haspopup="true" aria-expanded="false">' + A.esc(A.t("exportOrders") || "تصدير الطلبات") + '</button>'
+      + '<div class="export-pop" id="exportPop" hidden>'
+      + '<button type="button" id="exportPickPdf">' + A.esc(A.t("exportAsPdf") || "PDF") + '</button>'
+      + '<button type="button" id="exportPickExcel">' + A.esc(A.t("exportAsExcel") || "Excel") + '</button>'
+      + '</div></div>'
       + '</div>';
     A.syncExportLabel();
     if (A.paintDateFaces) A.paintDateFaces();
@@ -755,7 +773,7 @@
       }
       var when = "";
       try {
-        when = o.at ? A.fmtDateTimeNum(o.at) : "";
+        when = o.at ? A.fmtDateNum(o.at) : "";
       } catch (e) { when = o.at || ""; }
       var phoneDigits = String(o.phone || "").replace(/\D/g, "").replace(/^968/, "");
       var statusPick = '<select class="status-one ' + A.esc(st) + '" data-st-pick data-oid="' + A.esc(o.id) + '" aria-label="' + A.esc(A.t("statusTo")) + '">'
@@ -787,11 +805,12 @@
         + '<span class="order-when">' + A.esc(when) + '</span>'
         + '<b class="order-tot">' + A.esc(tot) + '</b>'
         + '</button>'
+        + '<span class="pay-flag ' + (A.isOrderPaid && A.isOrderPaid(o) ? "on" : "off") + '">' + A.esc(A.paidLabel ? A.paidLabel(o) : "") + '</span>'
         + statusPick
         + '</div>'
         + '<div class="order-body"' + (open ? "" : " hidden") + '>'
         + "<small>" + A.esc(o.name || "—") + " · " + A.esc(o.phone || "—") + " · " + A.esc(o.area || "—") + "</small>"
-        + "<small>" + A.t("payLine") + ": <b>" + A.esc(A.payText(o)) + "</b></small>"
+        + "<small>" + A.esc(A.t("payLine")) + ": <b>" + A.esc(A.paidLabel ? A.paidLabel(o) : A.payText(o)) + "</b></small>"
         + (o.note ? ("<small>" + A.t("note") + ": " + A.esc(o.note) + "</small>") : "")
         + items
         + totals

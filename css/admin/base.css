@@ -156,8 +156,17 @@ button.stat.sales-link{width:100%;margin-top:4px}
 [dir="ltr"] .status-one{padding:6px 10px}
 .status-one.new,.status-one.prep,.status-one.ship,.status-one.delivered{background-color:#f3e6e9;color:#8d3048}
 .status-one.cancel{background-color:#eee9e6;color:#7a726e}
-.order-when{flex:1;color:var(--muted);font-size:.82rem;min-width:0}
+.order-when{flex:1;color:var(--muted);font-size:.68rem;min-width:0;white-space:nowrap}
 .order-tot{font-weight:800;white-space:nowrap}
+.pay-flag{flex:0 0 auto;border-radius:999px;padding:4px 8px;font:800 .66rem/1 inherit;white-space:nowrap}
+.pay-flag.on{background:#e5f6ea;color:#1b7a38}
+.pay-flag.off{background:#f6e4e8;color:#8d3048}
+.export-menu{position:relative;flex:0 0 auto}
+.export-pop{position:absolute;top:calc(100% + 6px);inset-inline-end:0;z-index:40;background:#fff;border:1px solid #eadfdc;border-radius:12px;box-shadow:0 8px 24px rgba(40,20,24,.16);min-width:8.5rem;padding:6px;display:grid;gap:4px}
+.export-pop[hidden]{display:none!important}
+.export-pop button{border:0;background:#fdf8f6;color:#8d3048;border-radius:8px;padding:9px 10px;font:800 .78rem/1 inherit;cursor:pointer;text-align:start}
+.export-pop button:hover,.export-pop button:active{background:#8d3048;color:#fff}
+
 .order-totals{margin:12px 0 4px;padding-top:10px;border-top:1px solid var(--line);display:grid;gap:6px}
 .tot-row{display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:.84rem;color:var(--muted)}
 .tot-row b{font-weight:800;color:var(--fg);font-variant-numeric:tabular-nums}

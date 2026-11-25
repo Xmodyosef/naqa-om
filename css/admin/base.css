@@ -166,3 +166,11 @@ button.stat.sales-link{width:100%;margin-top:4px}
 .off-mark{color:#8d3048;font-weight:800}
 .tax-mark{font-weight:800;font-size:11px;line-height:1.4;background:#f4e4e8;color:#8d3048;border-radius:6px;padding:1px 6px}
 .tax-amt{font-weight:800;color:var(--fg)}
+
+.orders-tools-panel{margin:8px 0 12px;border:1px solid var(--line);border-radius:14px;background:#fff;overflow:hidden}
+.orders-tools-panel>summary{list-style:none;cursor:pointer;padding:12px 14px;font-weight:800;font-size:.88rem;display:flex;align-items:center;justify-content:space-between;gap:8px;user-select:none;color:var(--fg)}
+.orders-tools-panel>summary::-webkit-details-marker{display:none}
+.orders-tools-panel>summary::after{content:"▾";color:var(--muted);font-size:.75rem;transition:transform .15s}
+.orders-tools-panel[open]>summary::after{transform:rotate(180deg)}
+.orders-tools-panel .tools-body{display:flex;flex-wrap:wrap;gap:8px;padding:0 12px 12px;align-items:center}
+.orders-tools-panel .tools-body .mini{border:1px solid var(--line);background:#fff;border-radius:999px;padding:8px 12px;font-weight:800;font-size:.78rem}

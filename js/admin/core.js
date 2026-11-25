@@ -64,7 +64,7 @@
   A.dateFilterHtml = function (prefix, bag) {
     var from = bag === "order" ? (A.orderDateFrom || "") : (A.dateFrom || "");
     var to = bag === "order" ? (A.orderDateTo || "") : (A.dateTo || "");
-    return '<div class="date-filter status-bar" style="flex-wrap:wrap;gap:8px;align-items:center">'
+    return '<div class="date-filter" style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;width:100%">'
       + '<label style="display:flex;gap:6px;align-items:center;font-size:13px">' + A.t("dateFrom")
       + ' <input type="date" id="' + prefix + 'From" value="' + A.esc(from) + '" style="border:1px solid #efe4df;border-radius:10px;padding:8px"></label>'
       + '<label style="display:flex;gap:6px;align-items:center;font-size:13px">' + A.t("dateTo")

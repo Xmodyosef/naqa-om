@@ -157,38 +157,35 @@
           if (t.id === "copyNewOrders") A.copyText(A.buildOrdersReport("new"), "orderStatus");
           if (t.id === "waOrdersReport") A.waShareText(A.buildOrdersReport(A.orderFilter === "all" ? "new" : A.orderFilter));
           if (t.id === "exportOrdersCsv") A.exportOrdersCsv();
-          if (t.id === "importOrdersBtn") {
-            var inp = document.getElementById("importOrdersFile");
-            if (inp) inp.click();
-          }
           if (t.id === "importWaOrders") {
             var raw = window.prompt(A.lang === "en"
               ? "Paste WhatsApp order text (name / phone / area / total):"
               : "الصقي نص طلب واتساب (الاسم / الجوال / المنطقة / الإجمالي):", "");
             if (raw == null) return;
             var n = A.importWhatsAppOrdersText ? A.importWhatsAppOrdersText(raw) : 0;
-            A.setMsg("orderStatus", n
-              ? (A.lang === "en" ? ("Imported " + n + " order(s) from WhatsApp paste.") : ("استوردنا " + n + " طلب من واتساب."))
-              : (A.lang === "en" ? "No order fields found in paste." : "ما لقينا اسم/جوال في النص."));
+            if (n) A.setMsg("orderStatus", A.lang === "en" ? ("Imported " + n + " order(s).") : ("استوردنا " + n + " طلب."));
+            else A.setMsg("orderStatus", "");
             A.paintOrders();
           }
         });
-        tools.addEventListener("change", function (e) {
-          if (e.target && e.target.id === "importOrdersFile") {
-            A.importOrdersCsv(e.target.files && e.target.files[0]);
-            e.target.value = "";
+        tools.addEventListener("toggle", function (e) {
+          if (e.target && e.target.id === "ordersToolsPanel") {
+            A.ordersToolsOpen = !!e.target.open;
           }
-        });
+        }, true);
       }
+      var openAttr = A.ordersToolsOpen ? " open" : "";
       tools.innerHTML =
-        A.dateFilterHtml("ordDate", "order")
+        '<details class="orders-tools-panel" id="ordersToolsPanel"' + openAttr + '>'
+        + '<summary>' + A.esc(A.t("o_tools") || (A.lang === "en" ? "Filter & tools" : "فلتر وأدوات")) + '</summary>'
+        + '<div class="tools-body">'
+        + A.dateFilterHtml("ordDate", "order")
         + '<button type="button" class="mini" id="copyAllOrders">' + A.t("o_copyAll") + '</button>'
         + '<button type="button" class="mini" id="copyNewOrders">' + A.t("o_copyNew") + '</button>'
         + '<button type="button" class="mini" id="waOrdersReport" style="background:#25D366;color:#fff">' + A.t("o_waSum") + '</button>'
         + '<button type="button" class="mini" id="exportOrdersCsv">' + A.t("exportCsv") + '</button>'
-        + '<button type="button" class="mini" id="importOrdersBtn">' + A.t("importCsv") + '</button>'
-        + '<button type="button" class="mini" id="importWaOrders">' + (A.lang === "en" ? "Paste WhatsApp" : "لصق واتساب") + '</button>'
-        + '<input id="importOrdersFile" type="file" accept=".csv,text/csv" hidden>';
+        + '<button type="button" class="mini" id="importWaOrders">' + A.t("o_waPaste") + '</button>'
+        + '</div></details>';
       A.bindDateFilter("ordDate", function () { A.paintOrders(); }, "order");
     }
     var box = document.getElementById("ordersList");
@@ -207,7 +204,8 @@
       return;
     }
     if (!list.length) {
-      box.innerHTML = '<p class="note">' + A.t("o_emptyFilter") + '</p>';
+      var emptyF = A.t("o_emptyFilter") || "";
+      box.innerHTML = emptyF ? ('<p class="note">' + emptyF + '</p>') : "";
       return;
     }
     var cardHtml = function (o) {

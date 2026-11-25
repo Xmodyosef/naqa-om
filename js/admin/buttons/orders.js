@@ -22,7 +22,7 @@
       if (payBtn) {
         A.confirmPayment(payBtn.getAttribute("data-pay"));
         A.paintOrders();
-        A.setMsg("orderStatus", A.t("confirmedMsg"));
+        var cm = A.t("confirmedMsg") || ""; if (cm) A.setMsg("orderStatus", cm); else A.setMsg("orderStatus", "");
         return;
       }
       var st = e.target.closest("[data-st]");

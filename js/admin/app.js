@@ -345,9 +345,21 @@
   var gInput = document.getElementById("globalSearch");
   var addBtn = document.getElementById("addProductBtn");
   if (gBtn) gBtn.addEventListener("click", function () { A.runGlobalSearch(); });
-  if (gInput) gInput.addEventListener("keydown", function (e) {
-    if (e.key === "Enter") { e.preventDefault(); A.runGlobalSearch(); }
-  });
+  if (gInput) {
+    gInput.addEventListener("keydown", function (e) {
+      if (e.key === "Enter") { e.preventDefault(); A.runGlobalSearch(); }
+    });
+    var __prodSearchT = 0;
+    gInput.addEventListener("input", function () {
+      if ((A.currentTab || "") !== "products") return;
+      clearTimeout(__prodSearchT);
+      __prodSearchT = setTimeout(function () {
+        A.productQuery = gInput.value.trim();
+        A.productPage = 1;
+        if (A.paintList) A.paintList(A.productQuery);
+      }, 220);
+    });
+  }
   if (addBtn) addBtn.addEventListener("click", function () { A.addProduct(); });
 
 

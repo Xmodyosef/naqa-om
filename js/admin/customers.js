@@ -1,18 +1,32 @@
 (function (w) {
   var A = w.NaqaAdmin;
-  A._customerQuery = "";
-  A.paintCustomers = function () {
-    var box = document.getElementById("customersList");
-    if (!box) return;
+
+  function phoneDigits(s) {
+    return String(s || "").replace(/\D/g, "");
+  }
+  function matchPhone(c, q) {
+    q = String(q || "").trim();
+    if (!q) return true;
+    var d = phoneDigits(q);
+    var p = phoneDigits(c && c.phone);
+    if (d) return p.indexOf(d) >= 0;
+    return String((c && c.phone) || "").indexOf(q) >= 0;
+  }
+  function buildMap() {
     var map = {};
-    A.orders.forEach(function (o) {
-      if (!A.inDateRange(o.at)) return;
-      if (A.normalizeStatus(o.status) === "cancel") return;
+    (A.orders || []).forEach(function (o) {
+      if (A.normalizeStatus && A.normalizeStatus(o.status) === "cancel") return;
+      if (String(o.status || "") === "cancel") return;
       var key = String(o.phone || ("n:" + (o.name || o.id)));
       if (!map[key]) {
         map[key] = {
-          name: o.name || "—", phone: o.phone || "—", area: o.area || "—",
-          count: 0, total: 0, last: o.at || "", orders: []
+          name: o.name || "—",
+          phone: o.phone || "—",
+          area: o.area || "—",
+          count: 0,
+          total: 0,
+          last: o.at || "",
+          orders: []
         };
       }
       map[key].count += 1;
@@ -22,91 +36,87 @@
         map[key].last = o.at || "";
         map[key].area = o.area || map[key].area;
         map[key].name = o.name || map[key].name;
+        map[key].phone = o.phone || map[key].phone;
       }
     });
-    var list = Object.keys(map).map(function (k) { return map[k]; });
-    list.sort(function (a, b) { return b.total - a.total; });
-    var q = (A._customerQuery || "").toLowerCase().trim();
-    if (q) {
-      list = list.filter(function (c) {
-        return [c.name, c.phone, c.area].join(" ").toLowerCase().indexOf(q) >= 0;
-      });
-    }
-    var head =
-      '<div class="panel"><h2>' + A.t("c_title") + ' (' + Object.keys(map).length + ')</h2>'
-      + (A.t("c_note") ? ('<p class="note">' + A.t("c_note") + '</p>') : '')
-      + '<input id="custQ" type="search" placeholder="' + A.t("c_search") + '" value="' + A.esc(A._customerQuery || "") + '" class="compact-search" />'
-      + A.dateFilterHtml("custDate")
-      + '<div class="status-bar" style="margin-top:8px">'
-      + '<button type="button" class="mini" id="waCustomers" style="background:#25D366;color:#fff">' + A.t("c_wa") + '</button>'
-      + '<button type="button" class="mini" id="exportCustomersCsv">' + A.t("exportCsv") + '</button>'
-      + '</div>'
-      + '<p class="status" id="custStatus"></p>'
-      + '</div>';
-    if (!Object.keys(map).length) {
-      box.innerHTML = head + '<p class="note">' + A.t("c_empty") + '</p>';
-      bindCust();
-      return;
-    }
-    if (!list.length) {
-      box.innerHTML = head + '<p class="note">' + A.t("c_noRes") + '</p>';
-      bindCust();
-      return;
-    }
-    box.innerHTML = head + list.map(function (c) {
-      var phoneDigits = String(c.phone || "").replace(/\D/g, "").replace(/^968/, "");
-      var when = c.last ? A.fmtDateNum(c.last) : "—";
-      return '<div class="cust-row"><div><strong>' + A.esc(c.name) + '</strong>'
-        + '<small>' + A.esc(c.phone) + ' · ' + A.esc(c.area) + '</small>'
-        + '<small>' + c.count + ' ' + A.t("c_orders") + ' · ' + c.total.toFixed(3) + ' ' + A.t("omr") + ' · ' + A.t("c_last") + ' ' + A.esc(when) + '</small>'
-        + '<small style="color:#8a7f78">' + A.esc((c.orders || []).slice(0, 3).join(" · ")) + (c.orders.length > 3 ? "…" : "") + '</small></div>'
-        + (phoneDigits ? ('<a class="mini" style="background:#25D366;color:#fff;text-decoration:none" href="https://wa.me/968' + A.esc(phoneDigits) + '" target="_blank" rel="noopener">' + A.t("wa") + '</a>') : "")
-        + "</div>";
-    }).join("");
-    bindCust();
-  };
-  function bindCust() {
-    var el = document.getElementById("custQ");
-    if (el && !el._bound) {
-      el._bound = true;
-      el.addEventListener("input", function () {
-        A._customerQuery = el.value;
-        A.paintCustomers();
-        var again = document.getElementById("custQ");
-        if (again) {
-          again.focus();
-          try { again.setSelectionRange(again.value.length, again.value.length); } catch (e) {}
-        }
-      });
-    }
-    var wc = document.getElementById("waCustomers");
-    if (wc && !wc._bound) {
-      wc._bound = true;
-      wc.onclick = function () { A.waShareText(A.buildCustomersReport()); };
-    }
-    var ec = document.getElementById("exportCustomersCsv");
-    if (ec && !ec._bound) {
-      ec._bound = true;
-      ec.onclick = function () {
-        var map = {};
-        A.orders.forEach(function (o) {
-          if (!A.inDateRange(o.at)) return;
-          if (A.normalizeStatus(o.status) === "cancel") return;
-          var key = String(o.phone || ("n:" + (o.name || o.id)));
-          if (!map[key]) map[key] = { name: o.name || "", phone: o.phone || "", area: o.area || "", count: 0, total: 0, last: o.at || "" };
-          map[key].count += 1;
-          map[key].total += Number(o.total) || 0;
-          if ((o.at || "") > map[key].last) map[key].last = o.at || "";
-        });
-        var rows = [["name", "phone", "area", "orders", "total", "last"]];
-        Object.keys(map).forEach(function (k) {
-          var c = map[k];
-          rows.push([c.name, c.phone, c.area, c.count, c.total.toFixed(3), c.last]);
-        });
-        A.downloadCsv("naqa-customers.csv", rows);
-        A.setMsg("custStatus", A.t("exportOk"));
-      };
-    }
-    A.bindDateFilter("custDate", function () { A.paintCustomers(); });
+    return map;
   }
+  function customersList(map) {
+    var list = Object.keys(map || {}).map(function (k) { return map[k]; });
+    list.sort(function (a, b) { return b.total - a.total; });
+    var q = A.customerQuery || "";
+    if (q) list = list.filter(function (c) { return matchPhone(c, q); });
+    return list;
+  }
+
+  A.exportCustomersCsv = function () {
+    var ar = A.lang !== "en";
+    var head = ar
+      ? ["الجوال", "الاسم", "المنطقة", "الطلبات", "الإجمالي"]
+      : ["phone", "name", "area", "orders", "total"];
+    var rows = [head];
+    var map = buildMap();
+    customersList(map).forEach(function (c) {
+      rows.push([
+        c.phone || "",
+        c.name || "",
+        c.area || "",
+        c.count || 0,
+        (Number(c.total) || 0).toFixed(3)
+      ]);
+    });
+    A.downloadCsv("naqa-customers.csv", rows);
+    if (A.setMsg) A.setMsg("custStatus", A.t("exportOk") || (ar ? "تم التصدير" : "Exported"));
+  };
+
+  A.paintCustomers = function () {
+    var box = document.getElementById("customersList");
+    if (!box) return;
+    var map = buildMap();
+    var allN = Object.keys(map).length;
+    var list = customersList(map);
+    var q = A.customerQuery || "";
+    var ar = A.lang !== "en";
+
+    var emptyMsg = allN
+      ? (q
+        ? (A.t("c_phoneEmpty") || (ar ? "ما في عميل لهذا الرقم" : "No customer for this number"))
+        : (A.t("c_noRes") || (ar ? "ما في نتائج." : "No results.")))
+      : (A.t("c_empty") || (ar ? "ما في عملاء بعد." : "No customers yet."));
+
+    var rows = list.map(function (c) {
+      var when = c.last && A.fmtDateNum ? A.fmtDateNum(c.last) : (c.last || "—");
+      var phone = c.phone && c.phone !== "—" ? A.esc(c.phone) : "—";
+      var meta = (c.count || 0) + " " + (A.t("c_orders") || (ar ? "طلب" : "orders"))
+        + " · " + (Number(c.total) || 0).toFixed(3) + " " + (A.t("omr") || "OMR")
+        + (c.area && c.area !== "—" ? (" · " + A.esc(c.area)) : "")
+        + (when && when !== "—" ? (" · " + A.esc(when)) : "");
+      return '<button type="button" class="row rv-hit cust-hit" data-cust-phone="' + A.esc(String(c.phone || "")) + '">'
+        + '<div><strong>' + A.esc(c.name || "—") + '</strong>'
+        + '<small class="cust-phone">' + phone + '</small>'
+        + '<small>' + meta + '</small></div></button>';
+    }).join("");
+
+    if (!rows) {
+      rows = '<p class="note">' + A.esc(emptyMsg) + '</p>';
+    }
+
+    box.innerHTML = '<div class="panel"><h2>' + (A.t("c_title") || (ar ? "العملاء" : "Customers"))
+      + (allN ? (' <span class="sub-count-inline">(' + allN + ')</span>') : '')
+      + '</h2>'
+      + '<div id="custStatus" class="msg"></div>'
+      + rows
+      + '</div>';
+
+    /* Optional: tap customer → filter that phone in search */
+    box.querySelectorAll("[data-cust-phone]").forEach(function (b) {
+      b.onclick = function () {
+        var ph = b.getAttribute("data-cust-phone") || "";
+        A.customerQuery = ph === "—" ? "" : ph;
+        var input = document.getElementById("globalSearch");
+        if (input) input.value = A.customerQuery;
+        A.paintCustomers();
+      };
+    });
+  };
 })(window);

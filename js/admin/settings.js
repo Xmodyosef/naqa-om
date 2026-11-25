@@ -151,8 +151,8 @@
       +     '<button type="button" class="set-pill set-pill-solid" id="btnToggleLang">' + (ar ? "English" : "العربية") + '</button>'
       +   '</div>'
       +   '<p class="set-card-hint">' + (ar
-          ? "كلمة السر من شاشة الدخول فقط. بعد الدخول الحفظ يزامن تلقائياً."
-          : "Password only on the login screen. After sign-in, saves sync automatically.") + '</p>'
+          ? "تُدار كلمة السر من شاشة الدخول فقط. بعد تسجيل الدخول تتم المزامنة تلقائياً."
+          : "Password is managed only on the sign-in screen. After sign-in, sync runs automatically.") + '</p>'
       +   '<div class="set-actions set-actions-end">'
       +     '<button type="button" class="set-pill set-pill-danger" id="btnLogout">' + (ar ? "خروج من اللوحة" : "Sign out") + '</button>'
       +   '</div>'

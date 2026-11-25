@@ -128,7 +128,7 @@
           + '<button type="button" class="mini" data-rv-del="' + A.esc(r.id) + '">' + A.t("del") + '</button></div>';
       }).join("") || '<p class="note">' + A.t("r_empty") + '</p>';
       box.innerHTML = '<div class="panel"><h2>' + A.t("r_title") + '</h2>'
-        + '<p class="note">' + A.t("r_note") + '</p>'
+        + (A.t("r_note") ? ('<p class="note">' + A.t("r_note") + '</p>') : '')
         + A.dateFilterHtml("revDate")
         + '<div class="status-bar" style="margin:8px 0;flex-wrap:wrap;gap:6px">'
         + '<button type="button" class="primary" id="publishReviewsBtn">' + (A.t("r_publish") || (A.lang === "en" ? "Publish to store" : "انشري للمتجر")) + '</button>'

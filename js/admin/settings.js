@@ -71,8 +71,8 @@
             + '<div class="set-row" id="emailRevealRow" hidden><span class="set-k">Email</span><span class="set-v" dir="ltr" id="emailRevealVal">' + A.esc(emailMasked) + '</span></div>')
           : ('<p class="note">' + (ar ? "ما في جلسة ظاهرة — ارجعي لشاشة الدخول." : "No session — return to sign-in.") + '</p>'))
       +   '<p class="note">' + (ar
-          ? "كلمة السر تُدار من شاشة الدخول (نسيت كلمة السر؟). الحفظ بعد الدخول يزامن المنتجات مع حسابك تلقائياً — بدون رموز إضافية."
-          : "Password is managed on the login screen (Forgot password?). After sign-in, product saves sync to your account automatically — no extra tokens.") + '</p>'
+          ? "كلمة السر من شاشة الدخول. الحفظ بعد الدخول يزامن تلقائياً."
+          : "Password from the login screen. Saves sync after sign-in.") + '</p>'
       +   '<button type="button" class="mini" id="btnThemeToggle" style="width:100%;margin-top:8px">' + (ar ? "تبديل الوضع الليلي" : "Toggle dark mode") + '</button>'
       +   '<button type="button" class="mini" id="btnCmdPalette" style="width:100%;margin-top:6px">' + (ar ? "لوحة أوامر (Ctrl+K)" : "Command palette (Ctrl+K)") + '</button>'
       +   '<button type="button" class="logout" id="btnLogout" style="width:100%;margin-top:10px;border:0;border-radius:12px;padding:14px;font-weight:800">'
@@ -81,26 +81,15 @@
       + '</section>'
 
       + '<section class="panel settings-sec">'
-      +   '<h2>' + (ar ? "الخصوصية والحماية" : "Privacy & security") + '</h2>'
+      +   '<h2>' + (ar ? "الخصوصية" : "Privacy") + '</h2>'
       +   '<p class="note">' + A.t("setSecure") + '</p>'
-      +   '<ul class="set-bullets" style="margin:8px 0 0;padding-inline-start:1.2em;font-size:.82rem;line-height:1.55;color:var(--muted)">'
-      +     '<li>' + (ar ? "الدخول: إيميل + كلمة سر (Firebase) فقط." : "Sign-in: email + password (Firebase) only.") + '</li>'
-      +     '<li>' + (ar ? "أسعار/كمية/إخفاء: تُحفظ على حسابك بعد الدخول." : "Price/stock/hide: saved to your account after sign-in.") + '</li>'
-      +     '<li>' + (ar ? "الطلبات وأسماء العملاء: على هذا الجهاز (ما تُرفع للمتجر العام)." : "Orders & customer names: on this device (not public on the store).") + '</li>'
-      +     '<li>' + (ar ? "Firestore: قراءة عامة للتعديلات المنشورة فقط؛ الكتابة بعد الدخول." : "Firestore: public read for published overrides only; write after sign-in.") + '</li>'
-      +     (adminUid
-            ? ('<li>' + (ar ? "معرّف الجهاز للحماية (UID) — للتشديد في قواعد Firestore:" : "Admin UID for Firestore rules:")
-              + ' <code dir="ltr" style="font-size:.75rem;user-select:all">' + A.esc(adminUid) + '</code></li>')
-            : '')
-      +     '<li>' + (ar ? "الدخول فقط بحساب Firebase (إيميل/كلمة سر)." : "Sign-in is Firebase only (email/password).") + '</li>'
-      +   '</ul>'
-      +   '<div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:12px">'
-      +     '<button type="button" class="mini" id="btnPullOrders">' + (ar ? "سحب الطلبات من الحساب" : "Pull orders from account") + '</button>'
-      +     '<button type="button" class="mini" id="btnPushOrders">' + (ar ? "رفع الطلبات للحساب" : "Push orders to account") + '</button>'
-      +   '</div>'
       +   '<p class="note">' + (ar
-          ? "الطلبات خاصة بحسابك فقط (مو عامة على المتجر). بعد نشر قواعد Firestore للـ orders_private."
-          : "Orders stay private to your admin account (not public on the store). Requires Firestore rules for orders_private.") + '</p>'
+          ? "الطلبات على هذا الجهاز. للمزامنة: سحب أو رفع."
+          : "Orders stay on this device. Sync with pull or push.") + '</p>'
+      +   '<div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:10px">'
+      +     '<button type="button" class="mini" id="btnPullOrders">' + (ar ? "سحب الطلبات" : "Pull orders") + '</button>'
+      +     '<button type="button" class="mini" id="btnPushOrders">' + (ar ? "رفع الطلبات" : "Push orders") + '</button>'
+      +   '</div>'
       + '</section>'
 
       + '<section class="panel settings-sec">'

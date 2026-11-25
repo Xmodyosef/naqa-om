@@ -458,18 +458,8 @@
       try { if (A.refreshProductsFromBundle) A.refreshProductsFromBundle(); } catch (e) {}
     }
     q = ""; /* product search disabled — use filters/pagination only */
-    var low = 0, out = 0;
-    (A.products || []).forEach(function (p) {
-      var m = A.merged(p);
-      if (m.stock === "" || m.stock == null) return;
-      var n = Number(m.stock);
-      if (n <= 0) out++;
-      else if (n <= 3) low++;
-    });
-    var inv = '<div class="panel" style="margin-bottom:10px"><h2>' + A.t("p_invTitle") + '</h2>'
-      + '<p class="note">' + (view === "stock" ? A.t("p_stockHint") : A.t("p_invNote")) + '</p>'
-      + '<small>' + A.t("p_low") + ': <b>' + low + '</b> · ' + A.t("p_out") + ': <b>' + out + '</b></small></div>';
     var view = A.productView || "all";
+    var inv = "";
     var matched = (A.products || []).filter(function (p) {
       var m = A.merged(p);
       if (view === "hidden" && !m.hidden) return false;

@@ -34,7 +34,7 @@
     }
     var head =
       '<div class="panel"><h2>' + A.t("c_title") + ' (' + Object.keys(map).length + ')</h2>'
-      + '<p class="note">' + A.t("c_note") + '</p>'
+      + (A.t("c_note") ? ('<p class="note">' + A.t("c_note") + '</p>') : '')
       + '<input id="custQ" type="search" placeholder="' + A.t("c_search") + '" value="' + A.esc(A._customerQuery || "") + '" class="compact-search" />'
       + A.dateFilterHtml("custDate")
       + '<div class="status-bar" style="margin-top:8px">'

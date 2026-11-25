@@ -140,12 +140,24 @@
     var gBtn = document.getElementById("globalSearchBtn");
     if (gBtn) { gBtn.textContent = "⌕"; gBtn.setAttribute("aria-label", A.lang === "en" ? "Search orders" : "بحث الطلبات"); }
 
-    var pNote = document.getElementById("productsListNote");
-    if (pNote) pNote.textContent = A.t("p_listNote");
     var oLead = document.getElementById("ordersLead");
-    if (oLead) oLead.textContent = A.t("o_lead");
+    if (oLead) {
+      var lead = A.t("o_lead") || "";
+      oLead.textContent = lead;
+      oLead.hidden = !lead;
+    }
     var oWa = document.getElementById("waOrders");
-    if (oWa) oWa.textContent = A.t("o_waOpen");
+    if (oWa) {
+      var waTxt = A.t("o_waOpen") || "";
+      oWa.textContent = waTxt;
+      oWa.hidden = !waTxt;
+    }
+    var pNote = document.getElementById("productsListNote");
+    if (pNote) {
+      var pn = A.t("p_listNote") || "";
+      pNote.textContent = pn;
+      pNote.hidden = !pn;
+    }
     var addBtn = document.getElementById("addProductBtn");
     if (addBtn) addBtn.textContent = A.t("p_add");
 

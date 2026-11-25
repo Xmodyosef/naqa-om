@@ -4,7 +4,14 @@
 .sheet-card{position:absolute;inset:0;background:var(--card);color:var(--fg);overflow:auto;-webkit-overflow-scrolling:touch;
   padding:14px 16px 48px;max-width:680px;margin:0 auto;left:0;right:0}
 .qv .sheet-card{inset:auto 0 0 0;max-height:92vh;border-radius:22px 22px 0 0;padding:8px 16px 36px;overflow:auto}
-.text-back{font-weight:800;color:var(--rose-deep);margin-bottom:10px;font-size:1rem}
+.text-back{
+  display:inline-flex;align-items:center;gap:6px;
+  font-weight:800;font-size:1.2rem;line-height:1.2;
+  color:var(--fg);margin:0 0 12px;padding:0;
+  background:none;border:none;border-radius:0;
+  font-family:inherit;cursor:pointer;
+}
+.text-back:hover{opacity:.75}
 .qv .carousel{margin:0 0 10px}
 .qv .carousel-track,.qv .carousel-slide{height:min(78vw,420px)!important}
 .qv .carousel-slide img{width:100%;height:100%;object-fit:contain;object-position:center;padding:10px;box-sizing:border-box;background:#faf7f5}

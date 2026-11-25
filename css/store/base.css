@@ -127,9 +127,17 @@ body.has-cart-bar{padding-bottom:88px}
   padding:5px 10px;border-radius:999px;pointer-events:none}
 html[lang="en"] .price-badge{display:none}
 .brand-link{display:inline-flex;align-items:center;gap:8px;color:var(--rose-deep);font-weight:800;text-decoration:none;font-size:.9rem;max-width:100%}
+.brand-icon-only{display:inline-flex;align-items:center;justify-content:center;padding:0;margin:0 0 8px;border:0;background:transparent}
+.brand-icon-only .brand-logo,.brand-icon-only .brand-mono{width:48px;height:48px;min-width:48px;border-radius:14px;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+.brand-icon-only:hover .brand-logo,.brand-icon-only:hover .brand-mono{outline:2px solid var(--rose-deep);outline-offset:2px}
+.brand-name-only{border:0;background:none;padding:0;text-decoration:underline;text-underline-offset:3px}
 .brand-link span{text-decoration:underline;text-underline-offset:3px}
 .brand-logo{width:44px;height:44px;min-width:44px;min-height:44px;border-radius:12px;object-fit:contain;background:var(--card);border:1px solid var(--line);padding:4px;box-sizing:border-box;display:block;flex-shrink:0}
 .card-brand.brand-link{display:inline-flex;align-items:center;gap:8px;color:var(--rose-deep);font-weight:800;text-decoration:none;font-size:.9rem;max-width:100%}
+.brand-icon-only{display:inline-flex;align-items:center;justify-content:center;padding:0;margin:0 0 8px;border:0;background:transparent}
+.brand-icon-only .brand-logo,.brand-icon-only .brand-mono{width:48px;height:48px;min-width:48px;border-radius:14px;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+.brand-icon-only:hover .brand-logo,.brand-icon-only:hover .brand-mono{outline:2px solid var(--rose-deep);outline-offset:2px}
+.brand-name-only{border:0;background:none;padding:0;text-decoration:underline;text-underline-offset:3px}
 .qty-pick{display:flex;align-items:center;gap:8px;margin:10px 0 4px}
 .qty-pick span{font-weight:800;margin-inline-end:6px}
 .qty-pick button{width:36px;height:36px;border-radius:10px;background:var(--card);border:1px solid var(--line);color:var(--fg);font-weight:800;font-size:1.1rem}
@@ -302,6 +310,7 @@ html[data-theme="night"] .theme-btn{background:var(--card);color:var(--fg)}
 html[data-theme="night"] .quiz-thumb{background:#181412}
 html[data-theme="night"] .overlay{background:rgba(0,0,0,.55)}
 html[data-theme="night"] .text-back{color:var(--fg)}
+html[data-theme="night"] .brand-icon-only:hover .brand-logo,html[data-theme="night"] .brand-icon-only:hover .brand-mono{outline-color:var(--rose)}
 html[data-theme="night"] .foot-brand,
 html[data-theme="night"] footer{color:var(--fg)}
 html[data-theme="night"] footer p,

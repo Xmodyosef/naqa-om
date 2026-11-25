@@ -26,20 +26,19 @@ async function openSheet(id, mode, reset){
   const qv=sheetMode==="qv";
   $("#sheet").classList.toggle("qv", qv);
   $("#sheetCard").innerHTML=`
-    ${qv? carouselHTML(p, galleryIndex) : ""}
     <button class="text-back" id="closeSheet" type="button" aria-label="${T("back")}">‹ ${T("back")}</button>
-    ${brandMark(p.brand)}
+    ${brandMark(p.brand, { iconOnly: true })}
     ${typeof reviewHTML==="function"?reviewHTML(p):""}
     <h3 id="sheetTitle" style="margin:4px 0 2px">${esc(pname(p))}</h3>
     ${priceHTML(p)}
+    ${qv? carouselHTML(p, galleryIndex) : carouselHTML(p, galleryIndex)}
     <div class="qty-pick" role="group" aria-label="${T("qty")}"><span id="qtyLab">${T("qty")}</span><button type="button" data-q="-1" aria-label="${lang==="en"?"Decrease quantity":"تقليل الكمية"}">−</button><b id="pickQty" aria-live="polite">1</b><button type="button" data-q="1" aria-label="${lang==="en"?"Increase quantity":"زيادة الكمية"}">+</button></div>
-    ${qv? "" : carouselHTML(p, galleryIndex)}
     <span class="skin-pill">${T("skinT")}: ${esc(pskin(p))}</span>
     ${typeof shadeHTML==="function"?shadeHTML(p):""}
     ${typeof ingHTML==="function"?ingHTML(p):""}
-    ${qv? `<p class="long" style="margin-top:12px">${brandMark(p.brand)} — ${esc(pdesc(p))}</p>` : `
+    ${qv? `<p class="long" style="margin-top:12px">${esc(pdesc(p))}</p>` : `
       <h4 class="block-h">${T("about")}</h4>
-      <p class="long">${brandMark(p.brand)} — ${esc(pdesc(p))}</p>
+      <p class="long">${esc(pdesc(p))}</p>
       <h4 class="block-h">${T("how")}</h4>
       <p class="long steps">${typeof nl2br==="function"?nl2br(puse(p)):esc(puse(p))}</p>
       <div class="tip-box">${lang==="en"?"Tip: patch-test new actives and always pair brightening/acids with daytime SPF.":"نصيحة: اختبري المكوّنات الجديدة على منطقة صغيرة، وواقي الشمس ضروري مع التفتيح/التقشير."}</div>

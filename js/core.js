@@ -145,8 +145,12 @@ function mergeOverrides(map){
       if(o[k]!=null && o[k]!=="") p[k]=o[k];
     });
     var rem={}; (o.removedImgs||[]).forEach(function(u){ rem[naqaNormImgPath(u)]=1; });
-    if(Array.isArray(o.imgs)) p.imgs=naqaKeepImgs(p.imgs, o.imgs, rem);
-    else if(o.removedImgs && o.removedImgs.length) p.imgs=(p.imgs||[]).filter(function(u){ return u && !rem[naqaNormImgPath(u)]; });
+    if(Array.isArray(o.imgs)){
+      if(naqaIsWipeImgs(p.imgs, o.imgs)) p.imgs=naqaKeepImgs(p.imgs, o.imgs, rem);
+      else p.imgs=o.imgs.map(function(u){ return String(u||"").trim(); }).filter(Boolean).slice(0,6);
+    } else if(o.removedImgs && o.removedImgs.length){
+      p.imgs=(p.imgs||[]).filter(function(u){ return u && !rem[naqaNormImgPath(u)]; });
+    }
   });
 }
 

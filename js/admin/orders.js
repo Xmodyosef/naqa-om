@@ -206,23 +206,31 @@
         when = o.at ? new Date(o.at).toLocaleString(A.lang === "en" ? "en-GB" : "ar-OM", { day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" }) : "";
       } catch (e) { when = o.at || ""; }
       var phoneDigits = String(o.phone || "").replace(/\D/g, "").replace(/^968/, "");
-      var statusBtns = A.STATUS_ORDER.map(function (k) {
-        return '<button type="button" class="mini' + (st === k ? " on" : (k === "cancel" ? " ghost" : "")) + '" data-st="' + k + '" data-oid="' + A.esc(o.id) + '">' + A.statusLabel(k) + '</button>';
-      }).join("");
+      var statusPick = '<select class="status-one ' + A.esc(st) + '" data-st-pick data-oid="' + A.esc(o.id) + '" aria-label="' + A.esc(A.t("statusTo")) + '">'
+        + A.STATUS_ORDER.map(function (k) {
+          return '<option value="' + k + '"' + (st === k ? " selected" : "") + '>' + A.esc(A.statusLabel(k)) + '</option>';
+        }).join("") + '</select>';
       var open = A.openOrderIds && A.openOrderIds[o.id];
       var tot = o.total != null ? Number(o.total).toFixed(3) + " " + A.t("omr") : "—";
+      var del = o.delivery != null ? Number(o.delivery) : 0;
+      var cod = o.codFee != null ? Number(o.codFee) : 0;
+      var fees = '<small class="order-fees"><span>' + A.t("o_del") + ' <b>' + A.esc(del.toFixed(3)) + '</b></span>'
+        + '<span>' + A.t("o_cod") + ' <b>' + A.esc(cod.toFixed(3)) + '</b></span></small>';
       return '<article class="order" data-oid="' + A.esc(o.id) + '">'
-        + '<button type="button" class="order-sum" data-open-order="' + A.esc(o.id) + '" aria-expanded="' + (open ? "true" : "false") + '">'
+        + '<div class="order-head">'
         + '<b class="order-id">' + A.esc(o.id) + '</b>'
+        + statusPick
+        + '<button type="button" class="order-sum" data-open-order="' + A.esc(o.id) + '" aria-expanded="' + (open ? "true" : "false") + '">'
         + '<span class="order-when">' + A.esc(when) + '</span>'
         + '<b class="order-tot">' + A.esc(tot) + '</b>'
-        + '</button>'
+        + '</button></div>'
         + '<div class="order-body"' + (open ? "" : " hidden") + '>'
         + "<small>" + A.esc(o.name || "—") + " · " + A.esc(o.phone || "—") + " · " + A.esc(o.area || "—") + "</small>"
+        + fees
         + "<small>" + A.t("payLine") + ": <b>" + A.esc(A.payText(o)) + "</b></small>"
         + (o.note ? ("<small>" + A.t("note") + ": " + A.esc(o.note) + "</small>") : "")
         + items
-        + '<div class="actions">' + statusBtns
+        + '<div class="actions">'
         + (A.payState(o) === "pending" ? ('<button type="button" class="mini" data-pay="' + A.esc(o.id) + '">' + A.t("confirmPay") + '</button>') : "")
         + (phoneDigits ? ('<a class="mini" style="background:#25D366;display:inline-block;color:#fff;text-decoration:none;text-align:center" href="https://wa.me/968' + A.esc(phoneDigits) + '" target="_blank" rel="noopener">' + A.t("wa") + '</a>') : "")
         + '</div></div></article>';

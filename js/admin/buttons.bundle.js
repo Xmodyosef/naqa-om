@@ -55,12 +55,14 @@
   var ordersList = document.getElementById("ordersList");
   if (ordersList) ordersList.addEventListener("click", function (e) {
     safe(function () {
+      if (e.target.closest("[data-st-pick]")) return;
       var opener = e.target.closest("[data-open-order]");
       if (opener && !e.target.closest("[data-st],[data-pay],a")) {
         var oid = opener.getAttribute("data-open-order");
         A.openOrderIds = A.openOrderIds || {};
         A.openOrderIds[oid] = !A.openOrderIds[oid];
-        var body = opener.parentElement && opener.parentElement.querySelector(".order-body");
+        var art = opener.closest(".order");
+        var body = art && art.querySelector(".order-body");
         if (body) body.hidden = !A.openOrderIds[oid];
         opener.setAttribute("aria-expanded", A.openOrderIds[oid] ? "true" : "false");
         return;
@@ -94,6 +96,30 @@
       A.setMsg("orderStatus", A.t("statusTo") + " " + id + " → " + (A.statusLabel(next) || next));
     });
   });
+
+  if (ordersList) ordersList.addEventListener("change", function (e) {
+    safe(function () {
+      var pick = e.target.closest("[data-st-pick]");
+      if (!pick) return;
+      var id = pick.getAttribute("data-oid");
+      var next = pick.value;
+      var prev = "new";
+      A.orders.forEach(function (o) { if (String(o.id) === String(id)) prev = A.normalizeStatus(o.status); });
+      if (next === prev) return;
+      if (next === "cancel" && !confirm(A.t("cancelConfirm") + "\n" + id)) { pick.value = prev; return; }
+      A.orders.forEach(function (o) {
+        if (String(o.id) !== String(id)) return;
+        o.status = next;
+        if (next === "cancel" && prev !== "cancel") A.restoreStockForOrder(o);
+        else if (next !== "cancel" && prev === "cancel") A.deductStockForOrder(o);
+        else if (next !== "cancel" && !o.stockDeducted && (next === "prep" || next === "ship" || next === "delivered")) A.deductStockForOrder(o);
+      });
+      A.saveOrders();
+      A.paintOrders();
+      A.setMsg("orderStatus", A.t("statusTo") + " " + id + " → " + (A.statusLabel(next) || next));
+    });
+  });
+
   var statusBarEl = document.getElementById("statusBar");
   if (statusBarEl) statusBarEl.addEventListener("click", function (e) {
     safe(function () {

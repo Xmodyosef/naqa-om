@@ -9,10 +9,7 @@ window.NAQA_PRODUCTS.push(
   "price": 1.26,
   "em": "✨",
   "imgs": [
-    "media/products/p76_0.webp",
-    "media/products/p76_1.webp",
-    "media/products/p76_2.webp",
-    "media/products/p76_3.webp"
+    "media/products/p76_0.webp"
   ],
   "nameAr": "غسول الوجه بالذهب لتبييض وشد البشرة - 100مل",
   "nameEn": "Yc Whitening Gold Caviar Face Wash",

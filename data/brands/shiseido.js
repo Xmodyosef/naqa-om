@@ -9,9 +9,7 @@ window.NAQA_PRODUCTS.push(
   "price": 4.7,
   "em": "✨",
   "imgs": [
-    "media/products/p183_0.webp",
-    "media/products/p183_1.webp",
-    "media/products/p183_2.webp"
+    "media/products/p183_0.webp"
   ],
   "nameAr": "شامبو فينو بريميوم تاتش من شيسيدو - 550مل",
   "nameEn": "Fino Premium Touch Shampoo - 550ml",
@@ -31,10 +29,7 @@ window.NAQA_PRODUCTS.push(
   "price": 4.7,
   "em": "✨",
   "imgs": [
-    "media/products/p186_0.webp",
-    "media/products/p186_1.webp",
-    "media/products/p186_2.webp",
-    "media/products/p186_3.webp"
+    "media/products/p186_0.webp"
   ],
   "nameAr": "بلسم فينو بريميوم تاتش من شيسيدو - 550مل",
   "nameEn": "Fino Premium Touch Conditioner - 550ml",

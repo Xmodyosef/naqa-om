@@ -9,11 +9,7 @@ window.NAQA_PRODUCTS.push(
   "price": 6.7,
   "em": "✨",
   "imgs": [
-    "media/products/p24_0.webp",
-    "media/products/p24_1.webp",
-    "media/products/p24_2.webp",
-    "media/products/p24_3.webp",
-    "media/products/p24_4.webp"
+    "media/products/p24_0.webp"
   ],
   "nameAr": "سيرم جلو ديب من بيوتي اوف جوسون بالأرز والألفا أربوتين - 30مل",
   "nameEn": "Beauty of Joseon Glow Deep Serum Rice + Alpha-Arbutin - 30ml",
@@ -33,11 +29,7 @@ window.NAQA_PRODUCTS.push(
   "price": 5.7,
   "em": "✨",
   "imgs": [
-    "media/products/p34_0.webp",
-    "media/products/p34_1.webp",
-    "media/products/p34_2.webp",
-    "media/products/p34_3.webp",
-    "media/products/p34_4.webp"
+    "media/products/p34_0.webp"
   ],
   "nameAr": "واقي شمس بيوتي أوف جوسون رايس بروبيوتيك معامل حماية 50+ - 50 مل",
   "nameEn": "Beauty of Joseon Relief Sun Rice + Probiotics SPF50+ PA++++ - 50ml",
@@ -57,8 +49,7 @@ window.NAQA_PRODUCTS.push(
   "price": 6.7,
   "em": "✨",
   "imgs": [
-    "media/products/p103_0.webp",
-    "media/products/p103_1.webp"
+    "media/products/p103_0.webp"
   ],
   "nameAr": "سيرم العين المجدد بالجينسنغ والريتينال من بيوتي اوف جوسون - 30مل",
   "nameEn": "Beauty of Joseon Revive Eye Serum Ginseng + Retinal - 30ml",

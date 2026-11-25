@@ -9,11 +9,7 @@ window.NAQA_PRODUCTS.push(
   "price": 6.7,
   "em": "✨",
   "imgs": [
-    "media/products/p13_0.webp",
-    "media/products/p13_1.webp",
-    "media/products/p13_2.webp",
-    "media/products/p13_3.webp",
-    "media/products/p13_4.webp"
+    "media/products/p13_0.webp"
   ],
   "nameAr": "سيروم دكتور ألثيا 345 لتهدئة البشرة - 30مل",
   "nameEn": "Dr.Althea 345 Relief Serum - 30ml",
@@ -33,11 +29,7 @@ window.NAQA_PRODUCTS.push(
   "price": 13.2,
   "em": "✨",
   "imgs": [
-    "media/products/p18_2.webp",
-    "media/products/p18_0.webp",
-    "media/products/p18_1.webp",
-    "media/products/p18_3.webp",
-    "media/products/p18_4.webp"
+    "media/products/p18_0.webp"
   ],
   "nameAr": "مجموعة دكتور ألثيا للعناية بعد الحبوب والترطيب المكثف - 2قطع",
   "nameEn": "Dr.Althea 147 Barrier Cream - 50ml",
@@ -57,11 +49,7 @@ window.NAQA_PRODUCTS.push(
   "price": 6.7,
   "em": "✨",
   "imgs": [
-    "media/products/p21_4.webp",
-    "media/products/p21_0.webp",
-    "media/products/p21_1.webp",
-    "media/products/p21_2.webp",
-    "media/products/p21_3.webp"
+    "media/products/p21_0.webp"
   ],
   "nameAr": "سيروم دكتور ألثيا أكوا مارين العميق لترطيب البشرة - 30مل",
   "nameEn": "Dr.Althea Aqua Marine Deep Serum - 30ml",
@@ -81,11 +69,7 @@ window.NAQA_PRODUCTS.push(
   "price": 6.7,
   "em": "✨",
   "imgs": [
-    "media/products/p47_0.webp",
-    "media/products/p47_1.webp",
-    "media/products/p47_2.webp",
-    "media/products/p47_3.webp",
-    "media/products/p47_4.webp"
+    "media/products/p47_0.webp"
   ],
   "nameAr": "كريم دكتور ألثيا ميلاكلير لتفتيح البشرة - 20ج",
   "nameEn": "Dr.Althea Melaclear Cream - 20g",
@@ -105,11 +89,7 @@ window.NAQA_PRODUCTS.push(
   "price": 7.6,
   "em": "✨",
   "imgs": [
-    "media/products/p58_0.webp",
-    "media/products/p58_1.webp",
-    "media/products/p58_2.webp",
-    "media/products/p58_3.webp",
-    "media/products/p58_4.webp"
+    "media/products/p58_0.webp"
   ],
   "nameAr": "رذاذ كريم دكتور ألثيا 345 لتهدئة وترطيب البشرة - 100مل",
   "nameEn": "Dr.Althea 345 Relief Cream Mist - 100ml",
@@ -129,11 +109,7 @@ window.NAQA_PRODUCTS.push(
   "price": 7.6,
   "em": "✨",
   "imgs": [
-    "media/products/p94_3.webp",
-    "media/products/p94_0.webp",
-    "media/products/p94_1.webp",
-    "media/products/p94_2.webp",
-    "media/products/p94_4.webp"
+    "media/products/p94_0.webp"
   ],
   "nameAr": "رولر العين دكتور ألثيا بالريتينول لتجديد وشد محيط العين - 25مل",
   "nameEn": "Dr.Althea 345 Relief Retinol Eye Roller - 25ml",
@@ -153,10 +129,7 @@ window.NAQA_PRODUCTS.push(
   "price": 7.3,
   "em": "✨",
   "imgs": [
-    "media/products/p165_2.webp",
-    "media/products/p165_0.webp",
-    "media/products/p165_1.webp",
-    "media/products/p165_3.webp"
+    "media/products/p165_0.webp"
   ],
   "nameAr": "سيرم فيتامين سي المعزز من دكتور ألثيا - 30مل",
   "nameEn": "Dr. Althea Vitamin C Boosting Serum - 30ml",
@@ -176,10 +149,7 @@ window.NAQA_PRODUCTS.push(
   "price": 7.3,
   "em": "✨",
   "imgs": [
-    "media/products/p198_1.webp",
-    "media/products/p198_0.webp",
-    "media/products/p198_2.webp",
-    "media/products/p198_3.webp"
+    "media/products/p198_0.webp"
   ],
   "nameAr": "كريم دكتور ألثيا 345 رليف لترطيب وتهدئة البشرة - 50مل",
   "nameEn": "Dr.Althea Skincare — B0105",

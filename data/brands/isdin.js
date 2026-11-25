@@ -9,10 +9,7 @@ window.NAQA_PRODUCTS.push(
   "price": 7.9,
   "em": "✨",
   "imgs": [
-    "media/products/p108_2.webp",
-    "media/products/p108_0.webp",
-    "media/products/p108_1.webp",
-    "media/products/p108_3.webp"
+    "media/products/p108_0.webp"
   ],
   "nameAr": "واقي شمس إيسدين فوتو بروتكتور المائي ماجيك - 50مل",
   "nameEn": "ISDIN Photoprotector Water Magic SPF50 - 50ml",

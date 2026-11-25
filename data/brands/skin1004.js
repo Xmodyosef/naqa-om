@@ -9,11 +9,7 @@ window.NAQA_PRODUCTS.push(
   "price": 6.3,
   "em": "✨",
   "imgs": [
-    "media/products/p17_0.webp",
-    "media/products/p17_1.webp",
-    "media/products/p17_2.webp",
-    "media/products/p17_3.webp",
-    "media/products/p17_4.webp"
+    "media/products/p17_0.webp"
   ],
   "nameAr": "كريم سنتيلا المهدئ للبشرة من سكين1004 - 75مل",
   "nameEn": "Skin1004 Centella Soothing Cream - 75ml",
@@ -33,11 +29,7 @@ window.NAQA_PRODUCTS.push(
   "price": 6.7,
   "em": "✨",
   "imgs": [
-    "media/products/p20_0.webp",
-    "media/products/p20_1.webp",
-    "media/products/p20_2.webp",
-    "media/products/p20_3.webp",
-    "media/products/p20_4.webp"
+    "media/products/p20_0.webp"
   ],
   "nameAr": "كريم تفتيح البشرة بالكبسولات من سكين1004 - 75مل",
   "nameEn": "Skin1004 Tone Brightening Capsule Cream - 75ml",
@@ -57,10 +49,7 @@ window.NAQA_PRODUCTS.push(
   "price": 6.3,
   "em": "✨",
   "imgs": [
-    "media/products/p65_0.webp",
-    "media/products/p65_1.webp",
-    "media/products/p65_2.webp",
-    "media/products/p65_3.webp"
+    "media/products/p65_0.webp"
   ],
   "nameAr": "زيت التنظيف الخفيف مدغشقر سنتيلا من سكين1004 - 200مل",
   "nameEn": "Centella Light Cleansing Oil - 200ml",
@@ -80,10 +69,7 @@ window.NAQA_PRODUCTS.push(
   "price": 9.9,
   "em": "✨",
   "imgs": [
-    "media/products/p66_1.webp",
-    "media/products/p66_0.webp",
-    "media/products/p66_2.webp",
-    "media/products/p66_3.webp"
+    "media/products/p66_0.webp"
   ],
   "nameAr": "مجموعة سنتيلا للتنظيف المزدوج من سكين1004 - 2قطع",
   "nameEn": "Skin1004 Double Cleansing Duo",
@@ -103,10 +89,7 @@ window.NAQA_PRODUCTS.push(
   "price": 6.7,
   "em": "✨",
   "imgs": [
-    "media/products/p106_1.webp",
-    "media/products/p106_0.webp",
-    "media/products/p106_2.webp",
-    "media/products/p106_3.webp"
+    "media/products/p106_0.webp"
   ],
   "nameAr": "كريم العين بروبيوتيك سنتيلا باكوشيول من سكين1004 - 20مل",
   "nameEn": "SKIN1004 Probio-Cica Bakuchiol Eye Cream - 20ml",
@@ -126,11 +109,7 @@ window.NAQA_PRODUCTS.push(
   "price": 6.7,
   "em": "✨",
   "imgs": [
-    "media/products/p147_0.webp",
-    "media/products/p147_1.webp",
-    "media/products/p147_2.webp",
-    "media/products/p147_3.webp",
-    "media/products/p147_4.webp"
+    "media/products/p147_0.webp"
   ],
   "nameAr": "تونر سكين1004 لتفتيح البشرة المعزز - 210مل",
   "nameEn": "Skin1004 Tone Brightening Boosting Toner - 210ml",
@@ -150,9 +129,7 @@ window.NAQA_PRODUCTS.push(
   "price": 5.7,
   "em": "✨",
   "imgs": [
-    "media/products/p200_0.webp",
-    "media/products/p200_1.webp",
-    "media/products/p200_2.webp"
+    "media/products/p200_0.webp"
   ],
   "nameAr": "سيرم الحماية من الشمس المائي هيالو-سنتيلا من سكين1004 - 50مل",
   "nameEn": "Hyalu-Cica Water-Fit Sun Serum - 50ml",

@@ -9,11 +9,7 @@ window.NAQA_PRODUCTS.push(
   "price": 8.7,
   "em": "✨",
   "imgs": [
-    "media/products/p195_0.webp",
-    "media/products/p195_1.webp",
-    "media/products/p195_2.webp",
-    "media/products/p195_3.webp",
-    "media/products/p195_4.webp"
+    "media/products/p195_0.webp"
   ],
   "nameAr": "كريم بيوديرما بيجمنتبيو لتفتيح المناطق الحساسة وتوحيد اللون - 75مل",
   "nameEn": "Bioderma Pigmentbio Sensitive Areas - 75ml",

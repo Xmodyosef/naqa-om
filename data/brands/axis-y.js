@@ -10,11 +10,7 @@ window.NAQA_PRODUCTS.push(
   "was": 7.572,
   "em": "✨",
   "imgs": [
-    "media/products/p4_0.webp",
-    "media/products/p4_1.webp",
-    "media/products/p4_2.webp",
-    "media/products/p4_3.webp",
-    "media/products/p4_4.webp"
+    "media/products/p4_0.webp"
   ],
   "nameAr": "سيرم تصحيح البقع الداكنة من اكسيس واي - 50مل",
   "nameEn": "Axis-Y Dark Spot Correcting Glow Serum - 50ml",
@@ -34,11 +30,7 @@ window.NAQA_PRODUCTS.push(
   "price": 5.7,
   "em": "✨",
   "imgs": [
-    "media/products/p48_3.webp",
-    "media/products/p48_0.webp",
-    "media/products/p48_1.webp",
-    "media/products/p48_2.webp",
-    "media/products/p48_4.webp"
+    "media/products/p48_0.webp"
   ],
   "nameAr": "كريم تصحيح البقع الداكنة من اكسيس واي - 50مل",
   "nameEn": "Axis-Y Dark Spot Correcting Glow Cream - 50ml",
@@ -58,11 +50,7 @@ window.NAQA_PRODUCTS.push(
   "price": 5.3,
   "em": "✨",
   "imgs": [
-    "media/products/p51_0.webp",
-    "media/products/p51_1.webp",
-    "media/products/p51_2.webp",
-    "media/products/p51_3.webp",
-    "media/products/p51_4.webp"
+    "media/products/p51_0.webp"
   ],
   "nameAr": "كريم تفتيح مكثف 2.5% لتوحيد لون البشرة من اكسيس واي - 50مل",
   "nameEn": "Axis-Y TXA 2.5% Intensive Brightening Cream - 50ml",
@@ -82,11 +70,7 @@ window.NAQA_PRODUCTS.push(
   "price": 9,
   "em": "✨",
   "imgs": [
-    "media/products/p97_3.webp",
-    "media/products/p97_0.webp",
-    "media/products/p97_1.webp",
-    "media/products/p97_2.webp",
-    "media/products/p97_4.webp"
+    "media/products/p97_0.webp"
   ],
   "nameAr": "مجموعة اكسيس واي الثنائية لبشرة زجاجية",
   "nameEn": "AXIS-Y Glass Skin Duo Set",

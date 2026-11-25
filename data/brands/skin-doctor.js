@@ -9,10 +9,7 @@ window.NAQA_PRODUCTS.push(
   "price": 2.52,
   "em": "✨",
   "imgs": [
-    "media/products/p185_0.webp",
-    "media/products/p185_1.webp",
-    "media/products/p185_2.webp",
-    "media/products/p185_3.webp"
+    "media/products/p185_0.webp"
   ],
   "nameAr": "سيرم الشعر بالكيراتين الحريري اللامع - 100مل",
   "nameEn": "Keratin Silkiness Shine Hair Serum - 100ml",

@@ -9,11 +9,7 @@ window.NAQA_PRODUCTS.push(
   "price": 7.6,
   "em": "✨",
   "imgs": [
-    "media/products/p7_0.webp",
-    "media/products/p7_1.webp",
-    "media/products/p7_2.webp",
-    "media/products/p7_3.webp",
-    "media/products/p7_4.webp"
+    "media/products/p7_0.webp"
   ],
   "nameAr": "كريم إيه سي إم المكثف لتفتيح البقع الداكنة - 40مل",
   "nameEn": "ACM Advanced Intensive Anti-Dark Spot Cream - 40ml",
@@ -33,10 +29,7 @@ window.NAQA_PRODUCTS.push(
   "price": 6.3,
   "em": "✨",
   "imgs": [
-    "media/products/p107_1.webp",
-    "media/products/p107_0.webp",
-    "media/products/p107_2.webp",
-    "media/products/p107_3.webp"
+    "media/products/p107_0.webp"
   ],
   "nameAr": "جل محيط العين ديبيوايت لتفتيح الهالات من إيه سي إم - 15مل",
   "nameEn": "Acm Depiwhite Eye Contour Gel",
@@ -56,10 +49,7 @@ window.NAQA_PRODUCTS.push(
   "price": 7.6,
   "em": "✨",
   "imgs": [
-    "media/products/p190_0.webp",
-    "media/products/p190_1.webp",
-    "media/products/p190_2.webp",
-    "media/products/p190_3.webp"
+    "media/products/p190_0.webp"
   ],
   "nameAr": "لوشن إي سي إم نوفوفان رياكشنال لعلاج تساقط الشعر – 100مل",
   "nameEn": "ACM Novophane Reactional anti-hair loss lotion - 100ml",

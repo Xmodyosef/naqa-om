@@ -8,7 +8,9 @@ window.NAQA_PRODUCTS.push(
   "sku": "11700031",
   "price": 25.305,
   "em": "✨",
-  "imgs": ["media/products/p332_0.webp"],
+  "imgs": [
+    "media/products/p332_0.webp"
+  ],
   "nameAr": "مملس الشعر نوفا دوناتيلا | MK-101 | أسود مطفي",
   "nameEn": "Nuova Donatella Hair Straightener | MK-101 | Matte Black",
   "descAr": "مكواة نوفا دوناتيلا MK-101 بألواح تيتانيوم صلب 1 إنش، تسخين MCH سريع، شاشة LCD وحرارة قابلة للتعديل 80–250°م. جهد عالمي 110–240ف وكابل 2.5م. سعر النزيه عمان 25.305 ر.ع.",
@@ -27,7 +29,9 @@ window.NAQA_PRODUCTS.push(
   "sku": "11700030",
   "price": 23.835,
   "em": "✨",
-  "imgs": ["media/products/p333_0.webp"],
+  "imgs": [
+    "media/products/p333_0.webp"
+  ],
   "nameAr": "مكواة فرد الشعر نوفا دوناتيلا ذات اللوحة العريضة | MK-136 | أسود مطفي",
   "nameEn": "Nuova Donatella Wide Plate Hair Straightener | MK-136 | Matte Black",
   "descAr": "MK-136 بألواح أعرض (≈1.75 إنش) تيتانيوم صلب أسود — أسرع للخصل الكثيفة. شاشة LCD وحرارة 80–250°م وتسخين MCH. مناسبة للشعر الطويل. سعر مرجعي من النزيه/الوجه.",

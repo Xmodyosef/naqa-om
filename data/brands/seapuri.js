@@ -9,10 +9,7 @@ window.NAQA_PRODUCTS.push(
   "price": 7.9,
   "em": "✨",
   "imgs": [
-    "media/products/p184_0.webp",
-    "media/products/p184_1.webp",
-    "media/products/p184_2.webp",
-    "media/products/p184_3.webp"
+    "media/products/p184_0.webp"
   ],
   "nameAr": "سيروم سيبوري سكالبي لعلاج فروة الرأس وتخفيف التساقط - 20مل",
   "nameEn": "Seapuri Scalpy Hair Serum - 20ml",

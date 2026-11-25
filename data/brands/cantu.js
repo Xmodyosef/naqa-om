@@ -9,10 +9,7 @@ window.NAQA_PRODUCTS.push(
   "price": 2.7,
   "em": "✨",
   "imgs": [
-    "media/products/p189_0.webp",
-    "media/products/p189_1.webp",
-    "media/products/p189_2.webp",
-    "media/products/p189_3.webp"
+    "media/products/p189_0.webp"
   ],
   "nameAr": "مرطب شعر الاطفال من كانتو - 283ج",
   "nameEn": "Cantu Kids Leave-In Conditioner - 283g",
@@ -169,7 +166,7 @@ window.NAQA_PRODUCTS.push(
 {
   "em": "📌",
   "imgs": [
-    "media/products/p250_0.webp"
+    "media/products/p257_0.webp"
   ],
   "stock": 3,
   "brand": "Cantu",
@@ -189,7 +186,7 @@ window.NAQA_PRODUCTS.push(
 {
   "em": "🧼",
   "imgs": [
-    "media/products/p250_0.webp"
+    "media/products/p258_0.webp"
   ],
   "stock": 3,
   "brand": "Cantu",
@@ -337,7 +334,7 @@ window.NAQA_PRODUCTS.push(
   "price": 3.5,
   "em": "✨",
   "imgs": [
-    "media/products/p250_0.webp"
+    "media/products/p297_0.webp"
   ],
   "nameAr": "كانتو زيت فروة وشعر",
   "nameEn": "Cantu Shea Butter Hair & Scalp Oil",

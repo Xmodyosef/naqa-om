@@ -6,9 +6,11 @@ window.NAQA_PRODUCTS.push(
   "brand": "BaByliss PRO",
   "cat": "أدوات",
   "sku": "3030050091656",
-  "price": 56.070,
+  "price": 56.07,
   "em": "✨",
-  "imgs": ["media/products/p334_0.webp"],
+  "imgs": [
+    "media/products/p334_0.webp"
+  ],
   "nameAr": "بيبي ليس برو مملس الشعر 28مم | EP Technology 5.0 | أيوني",
   "nameEn": "BaByliss PRO 28mm Straightener | EP Technology 5.0 | Ionic",
   "descAr": "مملس بيبي ليس برو 28مم بتقنية EP 5.0 وأيونات سالبة — ألواح 28×110مم، 5 درجات حتى 230°م، تسخين سريع وكابل 2.7م. احترافي للفرد والتمويج. سعر النزيه عمان 56.070 ر.ع. (SKU النزيه 13570024).",

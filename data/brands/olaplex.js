@@ -9,11 +9,7 @@ window.NAQA_PRODUCTS.push(
   "price": 12.7,
   "em": "✨",
   "imgs": [
-    "media/products/p171_0.webp",
-    "media/products/p171_1.webp",
-    "media/products/p171_2.webp",
-    "media/products/p171_3.webp",
-    "media/products/p171_4.webp"
+    "media/products/p171_0.webp"
   ],
   "nameAr": "زيت اولابلكس رقم 7 لتغذية وحماية الشعر - 30مل",
   "nameEn": "Olaplex No.7 Bonding Oil - 30ml",
@@ -33,10 +29,7 @@ window.NAQA_PRODUCTS.push(
   "price": 12.7,
   "em": "✨",
   "imgs": [
-    "media/products/p172_0.webp",
-    "media/products/p172_2.webp",
-    "media/products/p172_3.webp",
-    "media/products/p172_4.webp"
+    "media/products/p172_0.webp"
   ],
   "nameAr": "بلسم اولابلكس رقم 5 للصيانة والترطيب وتعزيز قوة الشعر - 250مل",
   "nameEn": "Olaplex No.5 Bond Maintenance Conditioner - 250ml",

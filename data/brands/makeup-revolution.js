@@ -26,7 +26,7 @@ window.NAQA_PRODUCTS.push(
   "brand": "Makeup Revolution",
   "stock": 3,
   "imgs": [
-    "media/products/p220_0.webp"
+    "media/products/p223_0.webp"
   ],
   "id": 221,
   "sku": "5057566337021",
@@ -46,7 +46,7 @@ window.NAQA_PRODUCTS.push(
   "brand": "Makeup Revolution",
   "stock": 3,
   "imgs": [
-    "media/products/p222_0.webp"
+    "media/products/p223_0.webp"
   ],
   "id": 222,
   "sku": "5057566336970",
@@ -329,7 +329,7 @@ window.NAQA_PRODUCTS.push(
   "brand": "Makeup Revolution",
   "stock": 3,
   "imgs": [
-    "media/products/p274_0.webp"
+    "media/products/p276_0.webp"
   ],
   "id": 276,
   "sku": "5057566164894",
@@ -349,7 +349,7 @@ window.NAQA_PRODUCTS.push(
   "brand": "Makeup Revolution",
   "stock": 3,
   "imgs": [
-    "media/products/p278_0.webp"
+    "media/products/p277_0.webp"
   ],
   "id": 277,
   "sku": "5057566085922",
@@ -369,7 +369,7 @@ window.NAQA_PRODUCTS.push(
   "brand": "Makeup Revolution",
   "stock": 3,
   "imgs": [
-    "media/products/p268_0.webp"
+    "media/products/p267_0.webp"
   ],
   "id": 267,
   "sku": "5057566079211",

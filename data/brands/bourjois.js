@@ -25,7 +25,7 @@ window.NAQA_PRODUCTS.push(
 {
   "em": "💧",
   "imgs": [
-    "media/products/p240_0.webp"
+    "media/products/p241_0.webp"
   ],
   "stock": 3,
   "brand": "Bourjois",
@@ -66,7 +66,7 @@ window.NAQA_PRODUCTS.push(
 {
   "em": "🫐",
   "imgs": [
-    "media/products/p240_0.webp"
+    "media/products/p243_0.webp"
   ],
   "stock": 3,
   "brand": "Bourjois",
@@ -107,7 +107,7 @@ window.NAQA_PRODUCTS.push(
 {
   "em": "💧",
   "imgs": [
-    "media/products/p242_0.webp"
+    "media/products/p245_0.webp"
   ],
   "stock": 3,
   "brand": "Bourjois",
@@ -194,7 +194,7 @@ window.NAQA_PRODUCTS.push(
   "price": 6.2,
   "em": "✨",
   "imgs": [
-    "media/products/p242_0.webp"
+    "media/products/p282_0.webp"
   ],
   "nameAr": "برجواز سيروم فاونديشن هيلثي ميكس 52",
   "nameEn": "Bourjois Healthy Mix Serum Foundation 52",
@@ -214,7 +214,7 @@ window.NAQA_PRODUCTS.push(
   "price": 6.2,
   "em": "✨",
   "imgs": [
-    "media/products/p242_0.webp"
+    "media/products/p283_0.webp"
   ],
   "nameAr": "برجواز سيروم فاونديشن هيلثي ميكس 54",
   "nameEn": "Bourjois Healthy Mix Serum Foundation 54",
@@ -274,7 +274,7 @@ window.NAQA_PRODUCTS.push(
   "price": 3.9,
   "em": "✨",
   "imgs": [
-    "media/products/p291_0.webp"
+    "media/products/p282_0.webp"
   ],
   "nameAr": "برجواز كحل كونتور كلوبنق 001",
   "nameEn": "Bourjois Contour Clubbing Waterproof Liner 001 Ultra Black",
@@ -295,7 +295,7 @@ window.NAQA_PRODUCTS.push(
   "price": 3.9,
   "em": "✨",
   "imgs": [
-    "media/products/p291_0.webp"
+    "media/products/p282_0.webp"
   ],
   "nameAr": "برجواز كحل كونتور كلوبنق 041",
   "nameEn": "Bourjois Contour Clubbing Waterproof Liner 041",
@@ -335,7 +335,7 @@ window.NAQA_PRODUCTS.push(
   "price": 3.4,
   "em": "✨",
   "imgs": [
-    "media/products/p288_0.webp"
+    "media/products/p289_0.webp"
   ],
   "nameAr": "برجواز روج فلفت 07",
   "nameEn": "Bourjois Rouge Velvet The Lipstick 07",
@@ -355,7 +355,7 @@ window.NAQA_PRODUCTS.push(
   "price": 3.4,
   "em": "✨",
   "imgs": [
-    "media/products/p288_0.webp"
+    "media/products/p290_0.webp"
   ],
   "nameAr": "برجواز روج فلفت 12",
   "nameEn": "Bourjois Rouge Velvet The Lipstick 12",

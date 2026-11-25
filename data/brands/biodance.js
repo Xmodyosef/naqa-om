@@ -9,11 +9,7 @@ window.NAQA_PRODUCTS.push(
   "price": 6.7,
   "em": "✨",
   "imgs": [
-    "media/products/p6_0.webp",
-    "media/products/p6_1.webp",
-    "media/products/p6_2.webp",
-    "media/products/p6_3.webp",
-    "media/products/p6_4.webp"
+    "media/products/p6_0.webp"
   ],
   "nameAr": "قناع بيوكولاجين ريل ديب من بيودانس - 34ج ×4 قطع",
   "nameEn": "Biodance Bio-Collagen Real Deep Mask - 34g × 4ea",

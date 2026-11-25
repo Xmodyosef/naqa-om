@@ -9,11 +9,7 @@ window.NAQA_PRODUCTS.push(
   "price": 7.3,
   "em": "✨",
   "imgs": [
-    "media/products/p26_0.webp",
-    "media/products/p26_1.webp",
-    "media/products/p26_2.webp",
-    "media/products/p26_3.webp",
-    "media/products/p26_4.webp"
+    "media/products/p26_0.webp"
   ],
   "nameAr": "تونر نومبوزين رقم 9 ناد+ بي دي آر إن لتفتيح وإشراقة البشرة - 150مل",
   "nameEn": "Numbuzin No.9 NAD+ PDRN Glow Boosting Toner - 150ml",
@@ -33,11 +29,7 @@ window.NAQA_PRODUCTS.push(
   "price": 7.3,
   "em": "✨",
   "imgs": [
-    "media/products/p27_0.webp",
-    "media/products/p27_1.webp",
-    "media/products/p27_2.webp",
-    "media/products/p27_3.webp",
-    "media/products/p27_4.webp"
+    "media/products/p27_0.webp"
   ],
   "nameAr": "وسادات نومبوزين رقم 5 المركزة بفيتامين نياسيناميد - 70 قطعة",
   "nameEn": "Numbuzin No.5 Vitamin Niacinamide Concentrated Pads- 70pads",
@@ -57,11 +49,7 @@ window.NAQA_PRODUCTS.push(
   "price": 6.9,
   "em": "✨",
   "imgs": [
-    "media/products/p91_0.webp",
-    "media/products/p91_1.webp",
-    "media/products/p91_2.webp",
-    "media/products/p91_3.webp",
-    "media/products/p91_4.webp"
+    "media/products/p91_0.webp"
   ],
   "nameAr": "كريم العين نومبوزين رقم 9 بالريتينول لشد منطقة اسفل العين - 10مل",
   "nameEn": "Numbuzin No.9 Retinol Intense Eye Cream - 30ml",
@@ -81,11 +69,7 @@ window.NAQA_PRODUCTS.push(
   "price": 7.6,
   "em": "✨",
   "imgs": [
-    "media/products/p148_0.webp",
-    "media/products/p148_1.webp",
-    "media/products/p148_2.webp",
-    "media/products/p148_3.webp",
-    "media/products/p148_4.webp"
+    "media/products/p148_0.webp"
   ],
   "nameAr": "تونر نومبوزين رقم 1 العشبي لتهدئة البشرة - 300مل",
   "nameEn": "Numbuzin No.1 Pure-Full Calming Herb Toner - 300ml",

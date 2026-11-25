@@ -9,10 +9,7 @@ window.NAQA_PRODUCTS.push(
   "price": 6.7,
   "em": "✨",
   "imgs": [
-    "media/products/p67_0.webp",
-    "media/products/p67_1.webp",
-    "media/products/p67_2.webp",
-    "media/products/p67_3.webp"
+    "media/products/p67_0.webp"
   ],
   "nameAr": "لوشن كوسركس فائق الترطيب والخالي من الزيوت - 100مل",
   "nameEn": "Cosrx Oil Free Ultra Moisturizing Lotion",
@@ -32,11 +29,7 @@ window.NAQA_PRODUCTS.push(
   "price": 7.6,
   "em": "✨",
   "imgs": [
-    "media/products/p93_0.webp",
-    "media/products/p93_1.webp",
-    "media/products/p93_2.webp",
-    "media/products/p93_3.webp",
-    "media/products/p93_4.webp"
+    "media/products/p93_0.webp"
   ],
   "nameAr": "قناع اسفل العين الهيدروجيل بالببتيد والكولاجين من كوسركس - 60 قطعة",
   "nameEn": "Cosrx The Peptide Collagen Hydrogel Eye Patch",
@@ -56,11 +49,7 @@ window.NAQA_PRODUCTS.push(
   "price": 7.9,
   "em": "✨",
   "imgs": [
-    "media/products/p179_0.webp",
-    "media/products/p179_1.webp",
-    "media/products/p179_2.webp",
-    "media/products/p179_3.webp",
-    "media/products/p179_4.webp"
+    "media/products/p179_0.webp"
   ],
   "nameAr": "سيروم كوسركس ببتيد 132 لاصلاح وتغذية الشعر التالف - 28مل",
   "nameEn": "Cosrx Peptide-132 Ultra Perfect Hair Bonding Oil Serum - 28ml",

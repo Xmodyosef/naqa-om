@@ -10,10 +10,7 @@ window.NAQA_PRODUCTS.push(
   "was": 11.858,
   "em": "✨",
   "imgs": [
-    "media/products/p73_0.webp",
-    "media/products/p73_1.webp",
-    "media/products/p73_2.webp",
-    "media/products/p73_3.webp"
+    "media/products/p73_0.webp"
   ],
   "nameAr": "كريم أساس ماسك فيت ريد كوشن من تيرتير 23N رملي - 18ج",
   "nameEn": "TIRTIR Mask Fit Red Cushion Foundation 23N Sand - 18g",
@@ -33,10 +30,7 @@ window.NAQA_PRODUCTS.push(
   "price": 8.3,
   "em": "✨",
   "imgs": [
-    "media/products/p75_0.webp",
-    "media/products/p75_1.webp",
-    "media/products/p75_2.webp",
-    "media/products/p75_3.webp"
+    "media/products/p75_0.webp"
   ],
   "nameAr": "كريم أساس ماسك فيت ريد كوشن من تيرتير 17N فانيليا - 18ج",
   "nameEn": "Tirtir Mask Fit Red Cushion 17n Vanilla",

@@ -9,11 +9,7 @@ window.NAQA_PRODUCTS.push(
   "price": 4.9,
   "em": "✨",
   "imgs": [
-    "media/products/p38_0.webp",
-    "media/products/p38_1.webp",
-    "media/products/p38_2.webp",
-    "media/products/p38_3.webp",
-    "media/products/p38_4.webp"
+    "media/products/p38_0.webp"
   ],
   "nameAr": "مقشر اكيور لتفتيح الوجه - 118مل",
   "nameEn": "Acure Brightening Facial Scrub - 118ml",

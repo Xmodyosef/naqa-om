@@ -9,10 +9,7 @@ window.NAQA_PRODUCTS.push(
   "price": 3.6,
   "em": "✨",
   "imgs": [
-    "media/products/p181_0.webp",
-    "media/products/p181_1.webp",
-    "media/products/p181_2.webp",
-    "media/products/p181_3.webp"
+    "media/products/p181_0.webp"
   ],
   "nameAr": "جل جوت تو بي لتثبيت الحواجب والبيبي هير 2 في 1 - 16مل",
   "nameEn": "Got2B Glued for Brows & Edges 2 in 1 Wand Eyebrow Gel - 16ml",
@@ -32,10 +29,7 @@ window.NAQA_PRODUCTS.push(
   "price": 1.7,
   "em": "✨",
   "imgs": [
-    "media/products/p187_0.webp",
-    "media/products/p187_1.webp",
-    "media/products/p187_2.webp",
-    "media/products/p187_3.webp"
+    "media/products/p187_0.webp"
   ],
   "nameAr": "جل تثبيت الشعر جوت تو بي المقاوم للماء - 35ج",
   "nameEn": "Schwarzkopf Got2b Glued Hair Styling Spiking Gel - 35g",
@@ -118,7 +112,7 @@ window.NAQA_PRODUCTS.push(
   "price": 2.7,
   "em": "✨",
   "imgs": [
-    "media/products/p307_0.webp"
+    "media/products/p316_0.webp"
   ],
   "nameAr": "شوارزكوف بخاخ فرد فلاتجليجت",
   "nameEn": "Schwarzkopf got2b Flachgelegt Straightening Spray",
@@ -138,7 +132,7 @@ window.NAQA_PRODUCTS.push(
   "price": 2.8,
   "em": "✨",
   "imgs": [
-    "media/products/p307_0.webp"
+    "media/products/p316_0.webp"
   ],
   "nameAr": "شوارزكوف بخاخ حماية حرارية",
   "nameEn": "Schwarzkopf got2b Hitzewelle Heat Protection Spray",
@@ -159,10 +153,7 @@ window.NAQA_PRODUCTS.push(
   "price": 2.5,
   "em": "✨",
   "imgs": [
-    "media/products/p187_0.webp",
-    "media/products/p187_1.webp",
-    "media/products/p187_2.webp",
-    "media/products/p187_3.webp"
+    "media/products/p312_0.webp"
   ],
   "nameAr": "شوارزكوف فايبر جم كايوتك",
   "nameEn": "Schwarzkopf got2b Chaotic Fiber Gum",
@@ -182,10 +173,7 @@ window.NAQA_PRODUCTS.push(
   "price": 2.7,
   "em": "✨",
   "imgs": [
-    "media/products/p187_0.webp",
-    "media/products/p187_1.webp",
-    "media/products/p187_2.webp",
-    "media/products/p187_3.webp"
+    "media/products/p312_0.webp"
   ],
   "nameAr": "شوارزكوف كريم كيرل كينكير",
   "nameEn": "Schwarzkopf got2b Kinkier Curl Cream",
@@ -205,10 +193,7 @@ window.NAQA_PRODUCTS.push(
   "price": 2.6,
   "em": "✨",
   "imgs": [
-    "media/products/p187_0.webp",
-    "media/products/p187_1.webp",
-    "media/products/p187_2.webp",
-    "media/products/p187_3.webp"
+    "media/products/p312_0.webp"
   ],
   "nameAr": "شوارزكوف سيروم لمعان",
   "nameEn": "Schwarzkopf got2b Anti-Frizz Shine Serum",
@@ -229,7 +214,7 @@ window.NAQA_PRODUCTS.push(
   "price": 2.8,
   "em": "✨",
   "imgs": [
-    "media/products/p307_0.webp"
+    "media/products/p315_0.webp"
   ],
   "nameAr": "شوارزكوف بخاخ بيتش تريبن",
   "nameEn": "Schwarzkopf got2b Beach Trippin Salt Spray",
@@ -249,7 +234,7 @@ window.NAQA_PRODUCTS.push(
   "price": 2.9,
   "em": "✨",
   "imgs": [
-    "media/products/p307_0.webp"
+    "media/products/p316_0.webp"
   ],
   "nameAr": "شوارزكوف بخاخ تثبيت فريز",
   "nameEn": "Schwarzkopf got2b Freeze Hairspray",

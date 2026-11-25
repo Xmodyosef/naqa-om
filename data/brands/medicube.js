@@ -9,11 +9,7 @@ window.NAQA_PRODUCTS.push(
   "price": 7.6,
   "em": "✨",
   "imgs": [
-    "media/products/p8_0.webp",
-    "media/products/p8_1.webp",
-    "media/products/p8_2.webp",
-    "media/products/p8_3.webp",
-    "media/products/p8_4.webp"
+    "media/products/p8_0.webp"
   ],
   "nameAr": "كريم ميديكيوب بالكبسولات الوردي بالكولاجين بي دي آر إن لشد ونضارة البشرة – 50مل",
   "nameEn": "Medicube PDRN Pink Collagen Capsule Cream - 55g",
@@ -33,11 +29,7 @@ window.NAQA_PRODUCTS.push(
   "price": 7.9,
   "em": "✨",
   "imgs": [
-    "media/products/p14_0.webp",
-    "media/products/p14_1.webp",
-    "media/products/p14_2.webp",
-    "media/products/p14_3.webp",
-    "media/products/p14_4.webp"
+    "media/products/p14_0.webp"
   ],
   "nameAr": "قطع قطنية ميديكيوب بفيتامين سي لتفتيح البشرة - 70قطعة",
   "nameEn": "Medicube Deep Vita C Pad - 150g",
@@ -57,11 +49,7 @@ window.NAQA_PRODUCTS.push(
   "price": 7.3,
   "em": "✨",
   "imgs": [
-    "media/products/p23_0.webp",
-    "media/products/p23_1.webp",
-    "media/products/p23_2.webp",
-    "media/products/p23_3.webp",
-    "media/products/p23_4.webp"
+    "media/products/p23_0.webp"
   ],
   "nameAr": "سيروم ميديكيوب زيرو بور لتقليل المسام سريع المفعول - 30مل",
   "nameEn": "Medicube Zero Pore One-day Serum - 30ml",
@@ -81,10 +69,7 @@ window.NAQA_PRODUCTS.push(
   "price": 6.3,
   "em": "✨",
   "imgs": [
-    "media/products/p30_0.webp",
-    "media/products/p30_1.webp",
-    "media/products/p30_2.webp",
-    "media/products/p30_4.webp"
+    "media/products/p30_0.webp"
   ],
   "nameAr": "سيروم ميديكيوب تريبل كولاجين لشد البشرة - 55مل",
   "nameEn": "Medicube Triple Collagen Serum - 55ml",
@@ -104,11 +89,7 @@ window.NAQA_PRODUCTS.push(
   "price": 7.3,
   "em": "✨",
   "imgs": [
-    "media/products/p33_0.webp",
-    "media/products/p33_1.webp",
-    "media/products/p33_2.webp",
-    "media/products/p33_3.webp",
-    "media/products/p33_4.webp"
+    "media/products/p33_0.webp"
   ],
   "nameAr": "تونر ميديكيوب بي دي آر إن الوردي بالببتيد لتوهج البشرة - 250مل",
   "nameEn": "Medicube PDRN Pink Peptide Toner - 250ml",
@@ -128,11 +109,7 @@ window.NAQA_PRODUCTS.push(
   "price": 5.7,
   "em": "✨",
   "imgs": [
-    "media/products/p35_2.webp",
-    "media/products/p35_0.webp",
-    "media/products/p35_1.webp",
-    "media/products/p35_3.webp",
-    "media/products/p35_4.webp"
+    "media/products/p35_0.webp"
   ],
   "nameAr": "قناع ميديكيوب زيرو بور بالطين لتنقية المسام وإزالة الرؤوس السوداء + فرشاة - 100ج",
   "nameEn": "Medicube Zero Pore Blackhead Mud Mask + Brush",
@@ -152,11 +129,7 @@ window.NAQA_PRODUCTS.push(
   "price": 7.3,
   "em": "✨",
   "imgs": [
-    "media/products/p39_0.webp",
-    "media/products/p39_1.webp",
-    "media/products/p39_2.webp",
-    "media/products/p39_3.webp",
-    "media/products/p39_4.webp"
+    "media/products/p39_0.webp"
   ],
   "nameAr": "قناع ميديكيوب الليلي بالكولاجين لشد وترطيب البشرة - 75مل",
   "nameEn": "Medicube Collagen Night Wrapping Mask - 75ml",
@@ -176,11 +149,7 @@ window.NAQA_PRODUCTS.push(
   "price": 7.3,
   "em": "✨",
   "imgs": [
-    "media/products/p46_0.webp",
-    "media/products/p46_1.webp",
-    "media/products/p46_2.webp",
-    "media/products/p46_3.webp",
-    "media/products/p46_4.webp"
+    "media/products/p46_0.webp"
   ],
   "nameAr": "قناع ميديكوب الليلي بالكوجيك والكركم لتفتيح البشرة - 75مل",
   "nameEn": "Medicube Kojic Acid Turmeric Night Wrapping Mask - 75ml",
@@ -200,11 +169,7 @@ window.NAQA_PRODUCTS.push(
   "price": 6.3,
   "em": "✨",
   "imgs": [
-    "media/products/p52_0.webp",
-    "media/products/p52_1.webp",
-    "media/products/p52_2.webp",
-    "media/products/p52_3.webp",
-    "media/products/p52_4.webp"
+    "media/products/p52_0.webp"
   ],
   "nameAr": "كريم الجيلي بحمض الهيالورونيك والسيراميد لترطيب البشرة من ميديكيوب - 50مل",
   "nameEn": "Medicube Hyaluronic Ceramide Moisturizing Jelly Cream - 50ml",
@@ -224,11 +189,7 @@ window.NAQA_PRODUCTS.push(
   "price": 7.3,
   "em": "✨",
   "imgs": [
-    "media/products/p59_3.webp",
-    "media/products/p59_0.webp",
-    "media/products/p59_1.webp",
-    "media/products/p59_2.webp",
-    "media/products/p59_4.webp"
+    "media/products/p59_0.webp"
   ],
   "nameAr": "قناع ميديكوب الليلي الوردي بالكافيين لترطيب وشد البشرة - 75مل",
   "nameEn": "Medicube PDRN Pink Caffeine Night Wrapping Mask - 75ml",
@@ -248,11 +209,7 @@ window.NAQA_PRODUCTS.push(
   "price": 6.3,
   "em": "✨",
   "imgs": [
-    "media/products/p60_0.webp",
-    "media/products/p60_1.webp",
-    "media/products/p60_2.webp",
-    "media/products/p60_3.webp",
-    "media/products/p60_4.webp"
+    "media/products/p60_0.webp"
   ],
   "nameAr": "زيت تنظيف ميديكيوب زيرو بور لإزالة الرؤوس السوداء وتنقية المسام - 205مل",
   "nameEn": "Medicube Zero Pore Blackhead Deep Cleansing Oil - 205ml",
@@ -272,11 +229,7 @@ window.NAQA_PRODUCTS.push(
   "price": 9.7,
   "em": "✨",
   "imgs": [
-    "media/products/p77_0.webp",
-    "media/products/p77_1.webp",
-    "media/products/p77_2.webp",
-    "media/products/p77_3.webp",
-    "media/products/p77_4.webp"
+    "media/products/p77_0.webp"
   ],
   "nameAr": "كريم الرقبة بي دي آر إن بالكولاجين مع أداة غوا شا من ميديكيوب - 90ج",
   "nameEn": "Medicube PDRN Collagen Neck Cream with Gua Sha",
@@ -296,11 +249,7 @@ window.NAQA_PRODUCTS.push(
   "price": 7.3,
   "em": "✨",
   "imgs": [
-    "media/products/p120_0.webp",
-    "media/products/p120_1.webp",
-    "media/products/p120_2.webp",
-    "media/products/p120_3.webp",
-    "media/products/p120_4.webp"
+    "media/products/p120_0.webp"
   ],
   "nameAr": "بلسم ميديكيوب الوردي متعدد الاستخدامات للوجه بالكولاجين وبي دي آر إن - 10ج",
   "nameEn": "Medicube Eye — DB-7451402043472",
@@ -320,11 +269,7 @@ window.NAQA_PRODUCTS.push(
   "price": 7.6,
   "em": "✨",
   "imgs": [
-    "media/products/p121_0.webp",
-    "media/products/p121_1.webp",
-    "media/products/p121_2.webp",
-    "media/products/p121_3.webp",
-    "media/products/p121_4.webp"
+    "media/products/p121_0.webp"
   ],
   "nameAr": "بالم ميديكيوب سوبر سيكا للتقشير وتنظيف البشرة - 100مل",
   "nameEn": "Medicube Super Cica Exfoliating Cleansing Balm",
@@ -345,10 +290,7 @@ window.NAQA_PRODUCTS.push(
   "was": 7.001,
   "em": "✨",
   "imgs": [
-    "media/products/p126_0.webp",
-    "media/products/p126_1.webp",
-    "media/products/p126_2.webp",
-    "media/products/p126_3.webp"
+    "media/products/p126_0.webp"
   ],
   "nameAr": "ماسك الشفاه الليلي ميديكيوب بي دي آر إن لترميم وترطيب الشفاه - 10ج",
   "nameEn": "Medicube PDRN Lip Sleeping Mask - 10g",
@@ -369,11 +311,7 @@ window.NAQA_PRODUCTS.push(
   "was": 12.429,
   "em": "✨",
   "imgs": [
-    "media/products/p167_0.webp",
-    "media/products/p167_1.webp",
-    "media/products/p167_2.webp",
-    "media/products/p167_3.webp",
-    "media/products/p167_4.webp"
+    "media/products/p167_0.webp"
   ],
   "nameAr": "شامبو ميديكيوب بالروزماري بي دي أر إن المنعش لتكثيف الشعر - 400مل",
   "nameEn": "Medicube Rosemary PDRN Cooling Thickening Shampoo - 400ml",
@@ -394,11 +332,7 @@ window.NAQA_PRODUCTS.push(
   "was": 9.858,
   "em": "✨",
   "imgs": [
-    "media/products/p168_0.webp",
-    "media/products/p168_1.webp",
-    "media/products/p168_2.webp",
-    "media/products/p168_3.webp",
-    "media/products/p168_4.webp"
+    "media/products/p168_0.webp"
   ],
   "nameAr": "بلسم ميديكيوب بالروزماري بي دي أر إن للشعر وفروة الرأس - 250مل",
   "nameEn": "Medicube Rosemary PDRN Hair & Scalp Conditioner - 250ml",
@@ -420,11 +354,7 @@ window.NAQA_PRODUCTS.push(
   "hot": true,
   "em": "✨",
   "imgs": [
-    "media/products/p193_0.webp",
-    "media/products/p193_1.webp",
-    "media/products/p193_2.webp",
-    "media/products/p193_3.webp",
-    "media/products/p193_4.webp"
+    "media/products/p193_0.webp"
   ],
   "nameAr": "فرشاة ميديكيوب متعددة الاستخدام لإزالة الرؤوس السوداء وتنظيف المسام",
   "nameEn": "Medicube Multi Blackhead Pore Brush",
@@ -444,11 +374,7 @@ window.NAQA_PRODUCTS.push(
   "price": 7.9,
   "em": "✨",
   "imgs": [
-    "media/products/p196_3.webp",
-    "media/products/p196_0.webp",
-    "media/products/p196_1.webp",
-    "media/products/p196_2.webp",
-    "media/products/p196_4.webp"
+    "media/products/p196_0.webp"
   ],
   "nameAr": "سيروم ميديكوب ون داي إكسوسوم شوت 2000 لتجديد ونضارة البشرة - 30مل",
   "nameEn": "Medicube Beauty Tool — I0218",
@@ -468,10 +394,7 @@ window.NAQA_PRODUCTS.push(
   "price": 7.6,
   "em": "✨",
   "imgs": [
-    "media/products/p199_0.webp",
-    "media/products/p199_1.webp",
-    "media/products/p199_2.webp",
-    "media/products/p199_3.webp"
+    "media/products/p199_0.webp"
   ],
   "nameAr": "وسادات ميديكيوب زيرو لتضييق المسام وتنظيف البشرة - 70 قطعة",
   "nameEn": "Medicube Zero Pore Pad - 70 pads",

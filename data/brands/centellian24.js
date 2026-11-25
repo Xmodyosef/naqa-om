@@ -9,11 +9,7 @@ window.NAQA_PRODUCTS.push(
   "price": 5.7,
   "em": "✨",
   "imgs": [
-    "media/products/p40_0.webp",
-    "media/products/p40_1.webp",
-    "media/products/p40_2.webp",
-    "media/products/p40_3.webp",
-    "media/products/p40_4.webp"
+    "media/products/p40_0.webp"
   ],
   "nameAr": "كريم ماديكا تايم ريفيرس لإصلاح البشرة وتقليل التجاعيد من سنتيليان24 - 50مل",
   "nameEn": "Centellian24 Madeca Cream Time Reverse - 50ml",

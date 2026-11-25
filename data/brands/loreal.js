@@ -9,11 +9,7 @@ window.NAQA_PRODUCTS.push(
   "price": 5.7,
   "em": "✨",
   "imgs": [
-    "media/products/p80_0.webp",
-    "media/products/p80_1.webp",
-    "media/products/p80_2.webp",
-    "media/products/p80_3.webp",
-    "media/products/p80_4.webp"
+    "media/products/p80_0.webp"
   ],
   "nameAr": "رذاذ تثبيت المكياج إنفاليبل من لوريال باريس حتى 36ساعة - 75مل",
   "nameEn": "L'Oréal Paris Infallible Setting Spray 36H - 75ml",
@@ -115,7 +111,7 @@ window.NAQA_PRODUCTS.push(
   "price": 4.5,
   "em": "✨",
   "imgs": [
-    "media/products/p320_0.webp"
+    "media/products/p321_0.webp"
   ],
   "nameAr": "لوريال بلسم دريم لونج",
   "nameEn": "L'Oréal Elvive Dream Lengths Conditioner",
@@ -156,11 +152,7 @@ window.NAQA_PRODUCTS.push(
   "price": 5.5,
   "em": "✨",
   "imgs": [
-    "media/products/p80_0.webp",
-    "media/products/p80_1.webp",
-    "media/products/p80_2.webp",
-    "media/products/p80_3.webp",
-    "media/products/p80_4.webp"
+    "media/products/p323_0.webp"
   ],
   "nameAr": "لوريال زيت إلسيف إكستراأورديناري",
   "nameEn": "L'Oréal Elvive Extraordinary Oil",
@@ -181,11 +173,7 @@ window.NAQA_PRODUCTS.push(
   "price": 4.2,
   "em": "✨",
   "imgs": [
-    "media/products/p80_0.webp",
-    "media/products/p80_1.webp",
-    "media/products/p80_2.webp",
-    "media/products/p80_3.webp",
-    "media/products/p80_4.webp"
+    "media/products/p323_0.webp"
   ],
   "nameAr": "لوريال بخاخ حماية حرارية",
   "nameEn": "L'Oréal Elvive Heat Protect Spray",
@@ -205,11 +193,7 @@ window.NAQA_PRODUCTS.push(
   "price": 5.9,
   "em": "✨",
   "imgs": [
-    "media/products/p80_0.webp",
-    "media/products/p80_1.webp",
-    "media/products/p80_2.webp",
-    "media/products/p80_3.webp",
-    "media/products/p80_4.webp"
+    "media/products/p325_0.webp"
   ],
   "nameAr": "لوريال فاونديشن ترو ماتش",
   "nameEn": "L'Oréal True Match Foundation",
@@ -230,11 +214,7 @@ window.NAQA_PRODUCTS.push(
   "price": 4.8,
   "em": "✨",
   "imgs": [
-    "media/products/p80_0.webp",
-    "media/products/p80_1.webp",
-    "media/products/p80_2.webp",
-    "media/products/p80_3.webp",
-    "media/products/p80_4.webp"
+    "media/products/p325_0.webp"
   ],
   "nameAr": "لوريال كونسيلر ترو ماتش",
   "nameEn": "L'Oréal True Match Concealer",

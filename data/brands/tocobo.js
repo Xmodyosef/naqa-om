@@ -9,11 +9,7 @@ window.NAQA_PRODUCTS.push(
   "price": 5.7,
   "em": "✨",
   "imgs": [
-    "media/products/p42_0.webp",
-    "media/products/p42_1.webp",
-    "media/products/p42_2.webp",
-    "media/products/p42_3.webp",
-    "media/products/p42_4.webp"
+    "media/products/p42_0.webp"
   ],
   "nameAr": "جل كريم سيكا لترميم وتهدئة البشرة من توكوبو - 75مل",
   "nameEn": "Tocobo Cica Calming Gel Cream - 75ml",

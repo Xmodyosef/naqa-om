@@ -6,9 +6,11 @@ window.NAQA_PRODUCTS.push(
   "brand": "GHD",
   "cat": "أدوات",
   "sku": "5060569862766",
-  "price": 182.000,
+  "price": 182,
   "em": "✨",
-  "imgs": ["media/products/p328_0.webp"],
+  "imgs": [
+    "media/products/p328_0.webp"
+  ],
   "nameAr": "جي إتش دي مكواة فرد الشعر بلاتينيوم+ | أسود | 26مم",
   "nameEn": "ghd Platinum+ Professional Hair Straightener | 26mm Plate | Black",
   "descAr": "مملس جي إتش دي بلاتينيوم+ الذكي — تقنية Ultra-Zone تتكيّف مع سُمك شعرك وسرعة التصفيف وتحافظ على 185°م. لمعان أكثر وتكسّر أقل. جهد عالمي وكابل 2.7م. أسعار مرجعية من كتالوج النزيه عمان.",
@@ -25,9 +27,11 @@ window.NAQA_PRODUCTS.push(
   "brand": "GHD",
   "cat": "أدوات",
   "sku": "5060829515890",
-  "price": 132.090,
+  "price": 132.09,
   "em": "✨",
-  "imgs": ["media/products/p329_0.webp"],
+  "imgs": [
+    "media/products/p329_0.webp"
+  ],
   "nameAr": "جي إتش دي ميني سليم مكواة فرد الشعر | 15مم | أسود",
   "nameEn": "ghd Mini Slim Hair Straightener | 15mm Plate | Black",
   "descAr": "جي إتش دي ميني بألواح أرفع بـ40٪ (15مم) — مثالي للشعر القصير والفرنجي واللمسات الدقيقة. Dual-Zone عند 185°م ولمعان أعلى. خفيف للسفر. سعر من النزيه عمان.",
@@ -46,7 +50,9 @@ window.NAQA_PRODUCTS.push(
   "sku": "5060829515142",
   "price": 199.185,
   "em": "✨",
-  "imgs": ["media/products/p330_0.webp"],
+  "imgs": [
+    "media/products/p330_0.webp"
+  ],
   "nameAr": "جي إتش دي كرونوس مكواة فرد الشعر | أسود | 26مم",
   "nameEn": "ghd Chronos Professional Hair Straightener | 26mm Plate | Black",
   "descAr": "كرونوس — أحدث جي إتش دي بتقنية HD Motion-Responsive لتسريحة أسرع ولمعان أعلى وثبات حتى 24 ساعة. حرارة مثالية 185°م. سعر النزيه عمان 199.185 ر.ع.",
@@ -63,9 +69,11 @@ window.NAQA_PRODUCTS.push(
   "brand": "GHD",
   "cat": "أدوات",
   "sku": "5060703499377",
-  "price": 143.300,
+  "price": 143.3,
   "em": "✨",
-  "imgs": ["media/products/p331_0.webp"],
+  "imgs": [
+    "media/products/p331_0.webp"
+  ],
   "nameAr": "جي إتش دي ماكس مكواة فرد الشعر بألواح عريضة | 42مم | أسود",
   "nameEn": "ghd Max Wide Plate Hair Straightener | 42mm Plate | Black",
   "descAr": "جي إتش دي ماكس بألواح أعرض ≈70٪ (42مم) — أسرع للشعر الطويل والكثيف والمجعد. Dual-Zone عند 185°م ولمعان عالٍ. مثالي لتصفيف أسرع بنصف الوقت.",

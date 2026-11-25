@@ -9,10 +9,7 @@ window.NAQA_PRODUCTS.push(
   "price": 5.7,
   "em": "✨",
   "imgs": [
-    "media/products/p104_0.webp",
-    "media/products/p104_1.webp",
-    "media/products/p104_2.webp",
-    "media/products/p104_3.webp"
+    "media/products/p104_0.webp"
   ],
   "nameAr": "كريم العين ريتينال 4% سيول 1988 من ك-سيكريت - 30مل",
   "nameEn": "K-Secret Seoul 1988 Retinal 4% Eye Cream - 30ml",
@@ -32,10 +29,7 @@ window.NAQA_PRODUCTS.push(
   "price": 5.7,
   "em": "✨",
   "imgs": [
-    "media/products/p123_0.webp",
-    "media/products/p123_1.webp",
-    "media/products/p123_2.webp",
-    "media/products/p123_3.webp"
+    "media/products/p123_0.webp"
   ],
   "nameAr": "سيروم الريتينال 2% والجينسنغ الأسود سيول 1988 من ك-سيكريت - 30مل",
   "nameEn": "K-Secret Seoul 1988 Retinal 2% Black Ginseng Serum - 30ml",

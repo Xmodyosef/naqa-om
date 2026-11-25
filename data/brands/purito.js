@@ -9,11 +9,7 @@ window.NAQA_PRODUCTS.push(
   "price": 7.3,
   "em": "✨",
   "imgs": [
-    "media/products/p163_0.webp",
-    "media/products/p163_1.webp",
-    "media/products/p163_2.webp",
-    "media/products/p163_3.webp",
-    "media/products/p163_4.webp"
+    "media/products/p163_0.webp"
   ],
   "nameAr": "لوشن بيوريتو بزبدة الشيا لترطيب الجسم كوتون دريم لايت - 300مل",
   "nameEn": "Purito Luminous Moisture Shea Butter Body Lotion Cotton Dreamlight - 300ml",
@@ -33,11 +29,7 @@ window.NAQA_PRODUCTS.push(
   "price": 7.3,
   "em": "✨",
   "imgs": [
-    "media/products/p164_0.webp",
-    "media/products/p164_1.webp",
-    "media/products/p164_2.webp",
-    "media/products/p164_3.webp",
-    "media/products/p164_4.webp"
+    "media/products/p164_0.webp"
   ],
   "nameAr": "لوشن بيوريتو بزبدة الشيا لترطيب الجسم ميدنايت رومانس - 300مل",
   "nameEn": "Purito Luminous Moisture Shea Butter Body Lotion Midnight Romance - 300ml",

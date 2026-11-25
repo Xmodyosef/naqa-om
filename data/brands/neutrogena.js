@@ -9,11 +9,7 @@ window.NAQA_PRODUCTS.push(
   "price": 6.7,
   "em": "✨",
   "imgs": [
-    "media/products/p175_2.webp",
-    "media/products/p175_0.webp",
-    "media/products/p175_1.webp",
-    "media/products/p175_3.webp",
-    "media/products/p175_4.webp"
+    "media/products/p175_0.webp"
   ],
   "nameAr": "شامبو وبلسم نيتروجينا تي/جيل 2 في 1 لعلاج مشاكل فروة الرأس - 250مل",
   "nameEn": "Neutrogena T/Gel 2In1 Scalp 250Ml Shampoo And Conditioner - 250ml",

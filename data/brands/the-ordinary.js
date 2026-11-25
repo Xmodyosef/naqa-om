@@ -9,11 +9,7 @@ window.NAQA_PRODUCTS.push(
   "price": 6.3,
   "em": "✨",
   "imgs": [
-    "media/products/p53_0.webp",
-    "media/products/p53_1.webp",
-    "media/products/p53_2.webp",
-    "media/products/p53_3.webp",
-    "media/products/p53_4.webp"
+    "media/products/p53_0.webp"
   ],
   "nameAr": "ذا اورديناري سيروم الريتينول 0.5% في سكوالين - 30مل",
   "nameEn": "The Ordinary Retinol 0.5% in Squalane - 30ml",
@@ -33,11 +29,7 @@ window.NAQA_PRODUCTS.push(
   "price": 6.3,
   "em": "✨",
   "imgs": [
-    "media/products/p54_0.webp",
-    "media/products/p54_1.webp",
-    "media/products/p54_2.webp",
-    "media/products/p54_3.webp",
-    "media/products/p54_4.webp"
+    "media/products/p54_0.webp"
   ],
   "nameAr": "سيروم ذا اورديناري بحمض الهيالورونيك 2% وفيتامين B5 والسيراميدات",
   "nameEn": "Hyaluronic Acid %2 +B5 with Ceramides - 30ml",
@@ -57,11 +49,7 @@ window.NAQA_PRODUCTS.push(
   "price": 6.3,
   "em": "✨",
   "imgs": [
-    "media/products/p55_0.webp",
-    "media/products/p55_1.webp",
-    "media/products/p55_2.webp",
-    "media/products/p55_3.webp",
-    "media/products/p55_4.webp"
+    "media/products/p55_0.webp"
   ],
   "nameAr": "ذا اورديناري سيروم الريتينول 1% في سكوالين - 30مل",
   "nameEn": "The Ordinary Retinol 1% in Squalane - 30ml",
@@ -81,10 +69,7 @@ window.NAQA_PRODUCTS.push(
   "price": 8.7,
   "em": "✨",
   "imgs": [
-    "media/products/p105_0.webp",
-    "media/products/p105_1.webp",
-    "media/products/p105_2.webp",
-    "media/products/p105_3.webp"
+    "media/products/p105_0.webp"
   ],
   "nameAr": "ذا اورديناري سيروم متعدد الببتيدات للرموش والحواجب - 5مل",
   "nameEn": "The Ordinary Multi Peptide Lash And Brow Serum",
@@ -106,11 +91,7 @@ window.NAQA_PRODUCTS.push(
   "hot": true,
   "em": "✨",
   "imgs": [
-    "media/products/p166_0.webp",
-    "media/products/p166_1.webp",
-    "media/products/p166_2.webp",
-    "media/products/p166_3.webp",
-    "media/products/p166_4.webp"
+    "media/products/p166_0.webp"
   ],
   "nameAr": "سيرم تكثيف الشعر من ذا اورديناري - 60مل",
   "nameEn": "The Ordinary Multi-Peptide Serum for Hair Density - 60ml",
@@ -130,11 +111,7 @@ window.NAQA_PRODUCTS.push(
   "price": 5.9,
   "em": "✨",
   "imgs": [
-    "media/products/p194_0.webp",
-    "media/products/p194_1.webp",
-    "media/products/p194_2.webp",
-    "media/products/p194_3.webp",
-    "media/products/p194_4.webp"
+    "media/products/p194_0.webp"
   ],
   "nameAr": "ذا اورديناري سيروم حمض الساليسيليك 2٪ لتنقية المسام - 30مل",
   "nameEn": "The Ordinary Salicylic Acid 2% Solution - 30ml",

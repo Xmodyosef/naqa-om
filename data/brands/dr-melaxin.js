@@ -9,11 +9,7 @@ window.NAQA_PRODUCTS.push(
   "price": 7.3,
   "em": "✨",
   "imgs": [
-    "media/products/p191_0.webp",
-    "media/products/p191_1.webp",
-    "media/products/p191_2.webp",
-    "media/products/p191_3.webp",
-    "media/products/p191_4.webp"
+    "media/products/p191_0.webp"
   ],
   "nameAr": "أمبول دكتور ميلاكسين برايت رايس للتقشير والتوهج - 80مل",
   "nameEn": "Dr.Melaxin Peel Shot Glow White Rice Ampoule - 80ml",

@@ -9,11 +9,7 @@ window.NAQA_PRODUCTS.push(
   "price": 12.6,
   "em": "✨",
   "imgs": [
-    "media/products/p170_4.webp",
-    "media/products/p170_0.webp",
-    "media/products/p170_1.webp",
-    "media/products/p170_2.webp",
-    "media/products/p170_3.webp"
+    "media/products/p170_0.webp"
   ],
   "nameAr": "ماسك كيه 18 ليف إن لإصلاح الشعر الجزيئي المتقدم - 15مل",
   "nameEn": "K18 Leave-in Molecular Repair Hair Mask - 50ml",
@@ -33,11 +29,7 @@ window.NAQA_PRODUCTS.push(
   "price": 14.7,
   "em": "✨",
   "imgs": [
-    "media/products/p177_0.webp",
-    "media/products/p177_1.webp",
-    "media/products/p177_2.webp",
-    "media/products/p177_3.webp",
-    "media/products/p177_4.webp"
+    "media/products/p177_0.webp"
   ],
   "nameAr": "شامبو كيه 18 داميج شيلد لحماية الشعر والحفاظ على توازن درجة الحموضة - 250مل",
   "nameEn": "K18 Damage Shield pH protective shampoo - 250ml",
@@ -57,11 +49,7 @@ window.NAQA_PRODUCTS.push(
   "price": 15.7,
   "em": "✨",
   "imgs": [
-    "media/products/p180_0.webp",
-    "media/products/p180_1.webp",
-    "media/products/p180_2.webp",
-    "media/products/p180_3.webp",
-    "media/products/p180_4.webp"
+    "media/products/p180_0.webp"
   ],
   "nameAr": "بخاخ كيه 18 الواقي من الحرارة لتنعيم الشعر - 118مل",
   "nameEn": "K18 HeatBounce Conditioning Heat Protectant - 118ml",

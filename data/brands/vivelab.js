@@ -10,11 +10,7 @@ window.NAQA_PRODUCTS.push(
   "was": 18,
   "em": "✨",
   "imgs": [
-    "media/products/p169_0.webp",
-    "media/products/p169_1.webp",
-    "media/products/p169_2.webp",
-    "media/products/p169_3.webp",
-    "media/products/p169_4.webp"
+    "media/products/p169_0.webp"
   ],
   "nameAr": "سيروم الشعر وفروة الرأس والحواجب من فايف لاب - 15مل",
   "nameEn": "ViveLab Revive Therapy Hair Scalp & Brow Ampoule - 15ml",
@@ -34,11 +30,7 @@ window.NAQA_PRODUCTS.push(
   "price": 16,
   "em": "✨",
   "imgs": [
-    "media/products/p173_0.webp",
-    "media/products/p173_1.webp",
-    "media/products/p173_2.webp",
-    "media/products/p173_3.webp",
-    "media/products/p173_4.webp"
+    "media/products/p173_0.webp"
   ],
   "nameAr": "سيروم مكثف لإنبات الشعر وتقوية فروة الرأس من فايف لاب - 15مل",
   "nameEn": "ViveLab Scalp Spioxyl React Shot 600 - 15ml",
@@ -58,11 +50,7 @@ window.NAQA_PRODUCTS.push(
   "price": 31.5,
   "em": "✨",
   "imgs": [
-    "media/products/p174_0.webp",
-    "media/products/p174_1.webp",
-    "media/products/p174_2.webp",
-    "media/products/p174_3.webp",
-    "media/products/p174_4.webp"
+    "media/products/p174_0.webp"
   ],
   "nameAr": "سيروم الشعر وفروة الرأس والحواجب من فايف لاب - 3 عبوات × 15مل",
   "nameEn": "ViveLab Revive Therapy Hair Scalp & Brow Ampoule - 3×15ml Pack",

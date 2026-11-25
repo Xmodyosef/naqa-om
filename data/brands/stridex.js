@@ -9,11 +9,7 @@ window.NAQA_PRODUCTS.push(
   "price": 4.2,
   "em": "✨",
   "imgs": [
-    "media/products/p19_1.webp",
-    "media/products/p19_0.webp",
-    "media/products/p19_2.webp",
-    "media/products/p19_3.webp",
-    "media/products/p19_4.webp"
+    "media/products/p19_0.webp"
   ],
   "nameAr": "ستريديكس قطع قطنية للسيطرة على حب الشباب - 55قطعة",
   "nameEn": "Stridex Maximum Single-Step Acne Control - 55 Pads",

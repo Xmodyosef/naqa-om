@@ -9,11 +9,7 @@ window.NAQA_PRODUCTS.push(
   "price": 8.3,
   "em": "✨",
   "imgs": [
-    "media/products/p45_0.webp",
-    "media/products/p45_1.webp",
-    "media/products/p45_2.webp",
-    "media/products/p45_3.webp",
-    "media/products/p45_4.webp"
+    "media/products/p45_0.webp"
   ],
   "nameAr": "جل التنظيف المضاد للتصبغات من يوسيرين - 200مل",
   "nameEn": "Eucerin Anti-Pigment Cleansing Gel - 200ml",
@@ -33,11 +29,7 @@ window.NAQA_PRODUCTS.push(
   "price": 7.9,
   "em": "✨",
   "imgs": [
-    "media/products/p161_0.webp",
-    "media/products/p161_1.webp",
-    "media/products/p161_2.webp",
-    "media/products/p161_3.webp",
-    "media/products/p161_4.webp"
+    "media/products/p161_0.webp"
   ],
   "nameAr": "لوشن تخفيف الخشونة من يوسيرين - 500مل",
   "nameEn": "Eucerin‏ Roughness Relief Lotion - 500ml",

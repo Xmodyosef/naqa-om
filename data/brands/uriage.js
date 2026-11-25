@@ -9,11 +9,7 @@ window.NAQA_PRODUCTS.push(
   "price": 4.7,
   "em": "✨",
   "imgs": [
-    "media/products/p162_0.webp",
-    "media/products/p162_1.webp",
-    "media/products/p162_2.webp",
-    "media/products/p162_3.webp",
-    "media/products/p162_4.webp"
+    "media/products/p162_0.webp"
   ],
   "nameAr": "مزيل عرق رول أون باور 3 من يورياج – 50مل",
   "nameEn": "Uriage Power 3 Roll-On Deodorant - 50ml",

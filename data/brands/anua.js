@@ -11,11 +11,7 @@ window.NAQA_PRODUCTS.push(
   "hot": true,
   "em": "✨",
   "imgs": [
-    "media/products/p3_3.webp",
-    "media/products/p3_0.webp",
-    "media/products/p3_1.webp",
-    "media/products/p3_2.webp",
-    "media/products/p3_4.webp"
+    "media/products/p3_0.webp"
   ],
   "nameAr": "سيروم انوا نياسيناميد 10% لتصحيح البقع الداكنة - 30مل",
   "nameEn": "Anua Niacinamide 10% + TXA 4% Dark Spot Correcting Serum - 30ml",
@@ -35,11 +31,7 @@ window.NAQA_PRODUCTS.push(
   "price": 5.3,
   "em": "✨",
   "imgs": [
-    "media/products/p37_3.webp",
-    "media/products/p37_0.webp",
-    "media/products/p37_1.webp",
-    "media/products/p37_2.webp",
-    "media/products/p37_4.webp"
+    "media/products/p37_0.webp"
   ],
   "nameAr": "غسول انوا الرغوي للتنظيف العميق للمسام بخلاصة الهارتليف - 150مل",
   "nameEn": "Anua Heartleaf Quercetinol Pore Deep Cleansing Foam - 150ml",
@@ -59,11 +51,7 @@ window.NAQA_PRODUCTS.push(
   "price": 7.3,
   "em": "✨",
   "imgs": [
-    "media/products/p44_0.webp",
-    "media/products/p44_1.webp",
-    "media/products/p44_2.webp",
-    "media/products/p44_3.webp",
-    "media/products/p44_4.webp"
+    "media/products/p44_0.webp"
   ],
   "nameAr": "زيت انوا هارت ليف لتنظيف البشرة والتحكم بالمسام - 200مل",
   "nameEn": "Anua Heartleaf Pore Control Cleansing Oil - 200ml",
@@ -83,11 +71,7 @@ window.NAQA_PRODUCTS.push(
   "price": 7.9,
   "em": "✨",
   "imgs": [
-    "media/products/p56_4.webp",
-    "media/products/p56_0.webp",
-    "media/products/p56_1.webp",
-    "media/products/p56_2.webp",
-    "media/products/p56_3.webp"
+    "media/products/p56_0.webp"
   ],
   "nameAr": "بخاخ سيروم انوا بي دي آر إن بالكولاجين - 100مل",
   "nameEn": "Anua PDRN Collagen Glow Facial Serum Spray - 100ml",
@@ -107,11 +91,7 @@ window.NAQA_PRODUCTS.push(
   "price": 6.7,
   "em": "✨",
   "imgs": [
-    "media/products/p57_4.webp",
-    "media/products/p57_0.webp",
-    "media/products/p57_1.webp",
-    "media/products/p57_2.webp",
-    "media/products/p57_3.webp"
+    "media/products/p57_0.webp"
   ],
   "nameAr": "بخاخ سيروم انوا بي دي آر إن بالكولاجين ميني - 30مل",
   "nameEn": "PDRN Collagen Glow Facial Serum Spray Mini - 30ml",
@@ -131,11 +111,7 @@ window.NAQA_PRODUCTS.push(
   "price": 7.3,
   "em": "✨",
   "imgs": [
-    "media/products/p61_0.webp",
-    "media/products/p61_1.webp",
-    "media/products/p61_2.webp",
-    "media/products/p61_3.webp",
-    "media/products/p61_4.webp"
+    "media/products/p61_0.webp"
   ],
   "nameAr": "تونر انوا بيتش 77 بالنياسين لتفتيح وترطيب البشرة - 250مل",
   "nameEn": "Anua Peach 77 Niacin Essence Toner - 250ml",
@@ -155,11 +131,7 @@ window.NAQA_PRODUCTS.push(
   "price": 7.3,
   "em": "✨",
   "imgs": [
-    "media/products/p62_0.webp",
-    "media/products/p62_1.webp",
-    "media/products/p62_2.webp",
-    "media/products/p62_3.webp",
-    "media/products/p62_4.webp"
+    "media/products/p62_0.webp"
   ],
   "nameAr": "واقي شمس انوا غير مرئي بلمسة مطفية - 50مل",
   "nameEn": "Anua Invisible Matte Finish Sunscreen - 50ml",
@@ -179,11 +151,7 @@ window.NAQA_PRODUCTS.push(
   "price": 4.9,
   "em": "✨",
   "imgs": [
-    "media/products/p63_0.webp",
-    "media/products/p63_1.webp",
-    "media/products/p63_2.webp",
-    "media/products/p63_3.webp",
-    "media/products/p63_4.webp"
+    "media/products/p63_0.webp"
   ],
   "nameAr": "لصقات انوا فائقة النحافة لتغطية البقع - 75 رقعة",
   "nameEn": "Anua Ultra-Thin Spot Cover Patch - 75 patches",
@@ -203,10 +171,7 @@ window.NAQA_PRODUCTS.push(
   "price": 7.3,
   "em": "✨",
   "imgs": [
-    "media/products/p68_0.webp",
-    "media/products/p68_1.webp",
-    "media/products/p68_2.webp",
-    "media/products/p68_3.webp"
+    "media/products/p68_0.webp"
   ],
   "nameAr": "بودرة أنوا رايس إنزيم لتنظيف وتفتيح البشرة - 40ج",
   "nameEn": "Anua Rice Enzyme Brightening Cleansing Powder",
@@ -226,10 +191,7 @@ window.NAQA_PRODUCTS.push(
   "price": 7.3,
   "em": "✨",
   "imgs": [
-    "media/products/p69_0.webp",
-    "media/products/p69_1.webp",
-    "media/products/p69_2.webp",
-    "media/products/p69_3.webp"
+    "media/products/p69_0.webp"
   ],
   "nameAr": "زيت انوا هارت ليف اللطيف لتنظيف البشرة والتحكم بالمسام - 200مل",
   "nameEn": "Anua Heartleaf Mild Pore Control Cleansing Oil - 200ml",
@@ -249,11 +211,7 @@ window.NAQA_PRODUCTS.push(
   "price": 7.1,
   "em": "✨",
   "imgs": [
-    "media/products/p96_0.webp",
-    "media/products/p96_1.webp",
-    "media/products/p96_2.webp",
-    "media/products/p96_3.webp",
-    "media/products/p96_4.webp"
+    "media/products/p96_0.webp"
   ],
   "nameAr": "وسادات انوا نيايسناميد 5 وتي إكس إيه لتفتيح البشرة - 60 قطعة",
   "nameEn": "Anua Niacinamide 5 Txa Brightening Pad",
@@ -273,11 +231,7 @@ window.NAQA_PRODUCTS.push(
   "price": 7.6,
   "em": "✨",
   "imgs": [
-    "media/products/p99_0.webp",
-    "media/products/p99_1.webp",
-    "media/products/p99_2.webp",
-    "media/products/p99_3.webp",
-    "media/products/p99_4.webp"
+    "media/products/p99_0.webp"
   ],
   "nameAr": "كريم العين أنوا بالريتينول 0.1 والكافيين لتجديد وإشراقة محيط العين - 30ج",
   "nameEn": "Anua Retinol 0 1 Caffeine Revitalizing Eye Cream",
@@ -297,11 +251,7 @@ window.NAQA_PRODUCTS.push(
   "price": 7.3,
   "em": "✨",
   "imgs": [
-    "media/products/p146_0.webp",
-    "media/products/p146_1.webp",
-    "media/products/p146_2.webp",
-    "media/products/p146_3.webp",
-    "media/products/p146_4.webp"
+    "media/products/p146_0.webp"
   ],
   "nameAr": "تونر انوا هارت ليف 77 لتهدئة البشرة - 250مل",
   "nameEn": "Anua Heartleaf 77 Soothing Toner - 250ml",
@@ -321,11 +271,7 @@ window.NAQA_PRODUCTS.push(
   "price": 7.6,
   "em": "✨",
   "imgs": [
-    "media/products/p149_0.webp",
-    "media/products/p149_1.webp",
-    "media/products/p149_2.webp",
-    "media/products/p149_3.webp",
-    "media/products/p149_4.webp"
+    "media/products/p149_0.webp"
   ],
   "nameAr": "كريم انوا بالهيالورونيك للترطيب العميق وتجديد البشرة - 60مل",
   "nameEn": "Anua PDRN Hyaluronic Acid 100 Moisturizing Cream - 60ml",
@@ -345,11 +291,7 @@ window.NAQA_PRODUCTS.push(
   "price": 8.7,
   "em": "✨",
   "imgs": [
-    "media/products/p150_0.webp",
-    "media/products/p150_1.webp",
-    "media/products/p150_2.webp",
-    "media/products/p150_3.webp",
-    "media/products/p150_4.webp"
+    "media/products/p150_0.webp"
   ],
   "nameAr": "كريم انوا بالكولاجين والريتينول لشد وتجديد البشرة - 80مل",
   "nameEn": "Anua Collagen Retinol Refining Gua Sha Cream - 80ml",
@@ -369,11 +311,7 @@ window.NAQA_PRODUCTS.push(
   "price": 7.9,
   "em": "✨",
   "imgs": [
-    "media/products/p151_0.webp",
-    "media/products/p151_1.webp",
-    "media/products/p151_2.webp",
-    "media/products/p151_3.webp",
-    "media/products/p151_4.webp"
+    "media/products/p151_0.webp"
   ],
   "nameAr": "تونر انوا اللطيف بحمض البي إتش إيه 2% للتقشير - 150مل",
   "nameEn": "Annua BHA 2% Gentle Exfoliating Toner - 150ml",
@@ -393,11 +331,7 @@ window.NAQA_PRODUCTS.push(
   "price": 8.6,
   "em": "✨",
   "imgs": [
-    "media/products/p152_0.webp",
-    "media/products/p152_1.webp",
-    "media/products/p152_2.webp",
-    "media/products/p152_3.webp",
-    "media/products/p152_4.webp"
+    "media/products/p152_0.webp"
   ],
   "nameAr": "سيروم انوا نانو ريتينول 0.3٪ مع النياسيناميد لتجديد البشرة - 30مل",
   "nameEn": "Anua Nano Retinol 0.3% + Niacin Renewing Serum - 30ml",

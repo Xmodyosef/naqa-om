@@ -247,7 +247,7 @@ function getHomeCampaigns(){
     {
       id: "sale30",
       tone: "sale",
-      ar: "خصم قوي", en: "Big discount",
+      ar: "خصم 30٪", en: "30% off",
       subAr: "تخفيضات مختارة لفترة محدودة", subEn: "Selected markdowns for a limited time",
       eyeAr: "لا تفوّتي الفرصة", eyeEn: "Don't miss it",
       bodyAr: "اختاري روتينك المفضل بخصم أوضح.", bodyEn: "Build your routine with clearer savings.",

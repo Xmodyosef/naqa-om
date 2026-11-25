@@ -32,7 +32,9 @@ window.NAQA_PRODUCTS.push(
   "sku": "3600522862899",
   "price": 4.8,
   "em": "✨",
-  "imgs": [],
+  "imgs": [
+    "media/products/p317_0.webp"
+  ],
   "nameAr": "لوريال شامبو إلسيف هيالورونيك",
   "nameEn": "L'Oréal Elvive Hyaluron Plump Shampoo",
   "descAr": "لوريال شامبو إلسيف هيالورونيك — منتج أصلي ضمن كتالوج نقاء المتنوع.",
@@ -51,7 +53,9 @@ window.NAQA_PRODUCTS.push(
   "sku": "3600522862905",
   "price": 4.8,
   "em": "✨",
-  "imgs": [],
+  "imgs": [
+    "media/products/p318_0.webp"
+  ],
   "nameAr": "لوريال بلسم إلسيف هيالورونيك",
   "nameEn": "L'Oréal Elvive Hyaluron Plump Conditioner",
   "descAr": "لوريال بلسم إلسيف هيالورونيك — منتج أصلي ضمن كتالوج نقاء المتنوع.",
@@ -70,7 +74,9 @@ window.NAQA_PRODUCTS.push(
   "sku": "3600522862912",
   "price": 5.2,
   "em": "✨",
-  "imgs": [],
+  "imgs": [
+    "media/products/p319_0.webp"
+  ],
   "nameAr": "لوريال ماسك إلسيف هيالورونيك",
   "nameEn": "L'Oréal Elvive Hyaluron Plump Mask",
   "descAr": "لوريال ماسك إلسيف هيالورونيك — منتج أصلي ضمن كتالوج نقاء المتنوع.",
@@ -88,7 +94,9 @@ window.NAQA_PRODUCTS.push(
   "sku": "3600523980001",
   "price": 4.5,
   "em": "✨",
-  "imgs": [],
+  "imgs": [
+    "media/products/p320_0.webp"
+  ],
   "nameAr": "لوريال شامبو دريم لونج",
   "nameEn": "L'Oréal Elvive Dream Lengths Shampoo",
   "descAr": "لوريال شامبو دريم لونج — منتج أصلي ضمن كتالوج نقاء المتنوع.",
@@ -124,7 +132,9 @@ window.NAQA_PRODUCTS.push(
   "sku": "3600523980025",
   "price": 4.9,
   "em": "✨",
-  "imgs": [],
+  "imgs": [
+    "media/products/p322_0.webp"
+  ],
   "nameAr": "لوريال ليف إن دريم لونج",
   "nameEn": "L'Oréal Elvive Dream Lengths Leave-In",
   "descAr": "لوريال ليف إن دريم لونج — منتج أصلي ضمن كتالوج نقاء المتنوع.",
@@ -217,7 +227,9 @@ window.NAQA_PRODUCTS.push(
   "sku": "30149644",
   "price": 4.6,
   "em": "✨",
-  "imgs": [],
+  "imgs": [
+    "media/products/p327_0.webp"
+  ],
   "nameAr": "لوريال ماسكارا لاش باراديس",
   "nameEn": "L'Oréal Voluminous Lash Paradise Mascara",
   "descAr": "لوريال ماسكارا لاش باراديس — منتج أصلي ضمن كتالوج نقاء المتنوع.",

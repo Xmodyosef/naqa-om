@@ -11,7 +11,6 @@ window.NAQA_PRODUCTS.push(
   "imgs": [
     "media/products/p104_0.webp",
     "media/products/p104_1.webp",
-    "media/products/p104_2.webp",
     "media/products/p104_3.webp"
   ],
   "nameAr": "كريم العين ريتينال 4% سيول 1988 من ك-سيكريت - 30مل",

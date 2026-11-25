@@ -26,7 +26,9 @@ window.NAQA_PRODUCTS.push(
 },
 {
   "em": "🧴",
-  "imgs": [],
+  "imgs": [
+    "media/products/p250_0.webp"
+  ],
   "stock": 3,
   "brand": "Cantu",
   "sku": "817513010019",
@@ -45,7 +47,9 @@ window.NAQA_PRODUCTS.push(
 },
 {
   "em": "🥥",
-  "imgs": [],
+  "imgs": [
+    "media/products/p251_0.webp"
+  ],
   "stock": 3,
   "brand": "Cantu",
   "sku": "817513010033",
@@ -64,7 +68,9 @@ window.NAQA_PRODUCTS.push(
 },
 {
   "em": "🌀",
-  "imgs": [],
+  "imgs": [
+    "media/products/p252_0.webp"
+  ],
   "stock": 3,
   "brand": "Cantu",
   "sku": "817513010125",
@@ -82,7 +88,9 @@ window.NAQA_PRODUCTS.push(
 },
 {
   "em": "💆",
-  "imgs": [],
+  "imgs": [
+    "media/products/p253_0.webp"
+  ],
   "stock": 3,
   "brand": "Cantu",
   "sku": "817513010040",
@@ -100,7 +108,9 @@ window.NAQA_PRODUCTS.push(
 },
 {
   "em": "✨",
-  "imgs": [],
+  "imgs": [
+    "media/products/p254_0.webp"
+  ],
   "stock": 3,
   "brand": "Cantu",
   "sku": "817513015175",
@@ -136,7 +146,9 @@ window.NAQA_PRODUCTS.push(
 },
 {
   "em": "🧴",
-  "imgs": [],
+  "imgs": [
+    "media/products/p256_0.webp"
+  ],
   "stock": 3,
   "brand": "Cantu",
   "sku": "817513016219",
@@ -208,7 +220,9 @@ window.NAQA_PRODUCTS.push(
 },
 {
   "em": "👶",
-  "imgs": [],
+  "imgs": [
+    "media/products/p260_0.webp"
+  ],
   "stock": 3,
   "brand": "Cantu",
   "sku": "817513015441",
@@ -231,7 +245,9 @@ window.NAQA_PRODUCTS.push(
   "sku": "817513010132",
   "price": 3.2,
   "em": "✨",
-  "imgs": [],
+  "imgs": [
+    "media/products/p293_0.webp"
+  ],
   "nameAr": "كانتو ليف إن بزبدة الشيا 12أونصة",
   "nameEn": "Cantu Shea Butter Leave-In Conditioning Cream 12oz",
   "descAr": "كانتو ليف إن بزبدة الشيا 12أونصة — منتج أصلي ضمن كتالوج نقاء المتنوع.",
@@ -250,7 +266,9 @@ window.NAQA_PRODUCTS.push(
   "sku": "817513010002",
   "price": 3,
   "em": "✨",
-  "imgs": [],
+  "imgs": [
+    "media/products/p294_0.webp"
+  ],
   "nameAr": "كانتو منشط تجعيد بزبدة الشيا",
   "nameEn": "Cantu Shea Butter Curl Activator Cream",
   "descAr": "كانتو منشط تجعيد بزبدة الشيا — منتج أصلي ضمن كتالوج نقاء المتنوع.",

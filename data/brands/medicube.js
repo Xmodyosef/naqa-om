@@ -83,9 +83,7 @@ window.NAQA_PRODUCTS.push(
   "imgs": [
     "media/products/p30_0.webp",
     "media/products/p30_1.webp",
-    "media/products/p30_2.webp",
-    "media/products/p30_3.webp",
-    "media/products/p30_4.webp"
+    "media/products/p30_2.webp"
   ],
   "nameAr": "سيروم ميديكيوب تريبل كولاجين لشد البشرة - 55مل",
   "nameEn": "Medicube Triple Collagen Serum - 55ml",
@@ -422,7 +420,6 @@ window.NAQA_PRODUCTS.push(
   "em": "✨",
   "imgs": [
     "media/products/p193_0.webp",
-    "media/products/p193_1.webp",
     "media/products/p193_2.webp",
     "media/products/p193_3.webp",
     "media/products/p193_4.webp"

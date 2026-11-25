@@ -11,8 +11,7 @@ window.NAQA_PRODUCTS.push(
   "imgs": [
     "media/products/p188_0.webp",
     "media/products/p188_1.webp",
-    "media/products/p188_2.webp",
-    "media/products/p188_3.webp"
+    "media/products/p188_2.webp"
   ],
   "nameAr": "فرشاة السيليكون المقاومة للماء لتدليك فروة الرأس - 1 قطعة",
   "nameEn": "Silicone Hair Scalp Massager",

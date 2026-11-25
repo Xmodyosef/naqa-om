@@ -11,7 +11,10 @@ window.NAQA_PRODUCTS.push(
   "hot": true,
   "em": "✨",
   "imgs": [
-    "media/products/p100_0.webp"
+    "media/products/p100_0.webp",
+    "media/products/p100_1.webp",
+    "media/products/p100_3.webp",
+    "media/products/p100_4.webp"
   ],
   "nameAr": "ماسكارا لاش برنسيس من إيسنس - 12مل",
   "nameEn": "essence Lash Princess False Lash Effect Mascara - 12ml",
@@ -32,7 +35,10 @@ window.NAQA_PRODUCTS.push(
   "was": 2.572,
   "em": "✨",
   "imgs": [
-    "media/products/p109_0.webp"
+    "media/products/p109_0.webp",
+    "media/products/p109_1.webp",
+    "media/products/p109_2.webp",
+    "media/products/p109_3.webp"
   ],
   "nameAr": "ماسكارا لاش برنسيس سكلبتد فوليوم من إيسنس - 12مل",
   "nameEn": "essence Lash Princess Sculpted Volume Mascara - 12ml",
@@ -53,7 +59,10 @@ window.NAQA_PRODUCTS.push(
   "was": 2.572,
   "em": "✨",
   "imgs": [
-    "media/products/p110_0.webp"
+    "media/products/p110_0.webp",
+    "media/products/p110_1.webp",
+    "media/products/p110_2.webp",
+    "media/products/p110_3.webp"
   ],
   "nameAr": "ماسكارا لاش برنسيس بتأثير الرموش الاصطناعية والمقاومة للماء من إيسنس - 12مل",
   "nameEn": "essence Lash Princess False Lash Waterproof Mascara - 12ml",
@@ -74,7 +83,10 @@ window.NAQA_PRODUCTS.push(
   "was": 2.572,
   "em": "✨",
   "imgs": [
-    "media/products/p111_0.webp"
+    "media/products/p111_0.webp",
+    "media/products/p111_1.webp",
+    "media/products/p111_2.webp",
+    "media/products/p111_3.webp"
   ],
   "nameAr": "ماسكارا آي لوف إكستريم المقاومة للماء من إيسنس - 12مل",
   "nameEn": "essence I Love Extreme Waterproof Mascara - 12ml",
@@ -94,7 +106,10 @@ window.NAQA_PRODUCTS.push(
   "price": 1.8,
   "em": "✨",
   "imgs": [
-    "media/products/p100_0.webp"
+    "media/products/p119_0.webp",
+    "media/products/p119_1.webp",
+    "media/products/p119_2.webp",
+    "media/products/p119_3.webp"
   ],
   "nameAr": "ماسكارا جيت بيغ لاشز فوليوم المقاومة للماء من إيسنس - 12مل",
   "nameEn": "essence Get Big Lashes Volume Waterproof Mascara - 12ml",
@@ -171,7 +186,7 @@ window.NAQA_PRODUCTS.push(
 {
   "em": "🍬",
   "imgs": [
-    "media/products/p203_0.webp"
+    "media/products/p204_0.webp"
   ],
   "stock": 3,
   "brand": "essence",
@@ -191,7 +206,7 @@ window.NAQA_PRODUCTS.push(
 {
   "em": "💧",
   "imgs": [
-    "media/products/p202_0.webp"
+    "media/products/p205_0.webp"
   ],
   "stock": 3,
   "brand": "essence",

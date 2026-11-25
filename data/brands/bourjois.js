@@ -153,7 +153,7 @@ window.NAQA_PRODUCTS.push(
   "price": 5.5,
   "em": "✨",
   "imgs": [
-    "media/products/p242_0.webp"
+    "media/products/p280_0.webp"
   ],
   "nameAr": "برجواز فاونديشن هيلثي ميكس 053",
   "nameEn": "Bourjois Healthy Mix Foundation 053 Light Beige 30ml",
@@ -174,7 +174,7 @@ window.NAQA_PRODUCTS.push(
   "price": 5.8,
   "em": "✨",
   "imgs": [
-    "media/products/p242_0.webp"
+    "media/products/p281_0.webp"
   ],
   "nameAr": "برجواز فاونديشن هيلثي ميكس مضاد للإرهاق",
   "nameEn": "Bourjois Healthy Mix Anti-Fatigue Foundation",
@@ -234,7 +234,7 @@ window.NAQA_PRODUCTS.push(
   "price": 5.5,
   "em": "✨",
   "imgs": [
-    "media/products/p242_0.webp"
+    "media/products/p284_0.webp"
   ],
   "nameAr": "برجواز فاونديشن هيلثي ميكس 54",
   "nameEn": "Bourjois Healthy Mix Foundation 54 Beige",
@@ -254,7 +254,7 @@ window.NAQA_PRODUCTS.push(
   "price": 5.5,
   "em": "✨",
   "imgs": [
-    "media/products/p242_0.webp"
+    "media/products/p285_0.webp"
   ],
   "nameAr": "برجواز فاونديشن هيلثي ميكس 55",
   "nameEn": "Bourjois Healthy Mix Foundation 55 Dark Beige",
@@ -315,7 +315,7 @@ window.NAQA_PRODUCTS.push(
   "price": 3.4,
   "em": "✨",
   "imgs": [
-    "media/products/p240_0.webp"
+    "media/products/p288_0.webp"
   ],
   "nameAr": "برجواز روج فلفت 01",
   "nameEn": "Bourjois Rouge Velvet The Lipstick 01",

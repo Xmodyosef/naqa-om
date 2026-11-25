@@ -54,7 +54,9 @@ window.NAQA_PRODUCTS.push(
   "sku": "4015000516341",
   "price": 2.8,
   "em": "✨",
-  "imgs": [],
+  "imgs": [
+    "media/products/p307_0.webp"
+  ],
   "nameAr": "شوارزكوف بخاخ جوت تو بي فريز 300مل",
   "nameEn": "Schwarzkopf got2b Glued Freeze Spray 300ml",
   "descAr": "شوارزكوف بخاخ جوت تو بي فريز 300مل — منتج أصلي ضمن كتالوج نقاء المتنوع.",
@@ -73,7 +75,9 @@ window.NAQA_PRODUCTS.push(
   "sku": "052336903326",
   "price": 2.9,
   "em": "✨",
-  "imgs": [],
+  "imgs": [
+    "media/products/p308_0.webp"
+  ],
   "nameAr": "شوارزكوف بخاخ بلاستينج فريز",
   "nameEn": "Schwarzkopf got2b Glued Blasting Freeze Spray",
   "descAr": "شوارزكوف بخاخ بلاستينج فريز — منتج أصلي ضمن كتالوج نقاء المتنوع.",
@@ -92,7 +96,9 @@ window.NAQA_PRODUCTS.push(
   "sku": "3178041308243",
   "price": 2.6,
   "em": "✨",
-  "imgs": [],
+  "imgs": [
+    "media/products/p309_0.webp"
+  ],
   "nameAr": "شوارزكوف معجون فينومينال 100مل",
   "nameEn": "Schwarzkopf got2b Phenomenal Styling Paste 100ml",
   "descAr": "شوارزكوف معجون فينومينال 100مل — منتج أصلي ضمن كتالوج نقاء المتنوع.",

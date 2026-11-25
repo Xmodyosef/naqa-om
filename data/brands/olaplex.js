@@ -34,7 +34,6 @@ window.NAQA_PRODUCTS.push(
   "em": "✨",
   "imgs": [
     "media/products/p172_0.webp",
-    "media/products/p172_1.webp",
     "media/products/p172_2.webp",
     "media/products/p172_3.webp",
     "media/products/p172_4.webp"
@@ -56,7 +55,9 @@ window.NAQA_PRODUCTS.push(
   "sku": "850018802840",
   "price": 14.9,
   "em": "✨",
-  "imgs": [],
+  "imgs": [
+    "media/products/p299_0.webp"
+  ],
   "nameAr": "أولابلكس رقم 3 هير بيرفكتور 100مل",
   "nameEn": "Olaplex No.3 Hair Perfector 100ml",
   "descAr": "أولابلكس رقم 3 هير بيرفكتور 100مل — منتج أصلي ضمن كتالوج نقاء المتنوع.",
@@ -75,7 +76,9 @@ window.NAQA_PRODUCTS.push(
   "sku": "0896364002664",
   "price": 22.5,
   "em": "✨",
-  "imgs": [],
+  "imgs": [
+    "media/products/p300_0.webp"
+  ],
   "nameAr": "أولابلكس رقم 3 هير بيرفكتور 250مل",
   "nameEn": "Olaplex No.3 Hair Perfector 250ml",
   "descAr": "أولابلكس رقم 3 هير بيرفكتور 250مل — منتج أصلي ضمن كتالوج نقاء المتنوع.",
@@ -93,7 +96,9 @@ window.NAQA_PRODUCTS.push(
   "sku": "850018802673",
   "price": 13.5,
   "em": "✨",
-  "imgs": [],
+  "imgs": [
+    "media/products/p301_0.webp"
+  ],
   "nameAr": "أولابلكس رقم 4 شامبو بوند مينتننس 250مل",
   "nameEn": "Olaplex No.4 Bond Maintenance Shampoo 250ml",
   "descAr": "أولابلكس رقم 4 شامبو بوند مينتننس 250مل — منتج أصلي ضمن كتالوج نقاء المتنوع.",
@@ -112,7 +117,9 @@ window.NAQA_PRODUCTS.push(
   "sku": "850018802697",
   "price": 12.9,
   "em": "✨",
-  "imgs": [],
+  "imgs": [
+    "media/products/p302_0.webp"
+  ],
   "nameAr": "أولابلكس رقم 6 بوند سموذر 100مل",
   "nameEn": "Olaplex No.6 Bond Smoother 100ml",
   "descAr": "أولابلكس رقم 6 بوند سموذر 100مل — منتج أصلي ضمن كتالوج نقاء المتنوع.",
@@ -131,7 +138,9 @@ window.NAQA_PRODUCTS.push(
   "sku": "850018802703",
   "price": 12.5,
   "em": "✨",
-  "imgs": [],
+  "imgs": [
+    "media/products/p303_0.webp"
+  ],
   "nameAr": "أولابلكس رقم 8 ماسك مرطب مكثف",
   "nameEn": "Olaplex No.8 Bond Intense Moisture Mask",
   "descAr": "أولابلكس رقم 8 ماسك مرطب مكثف — منتج أصلي ضمن كتالوج نقاء المتنوع.",
@@ -150,7 +159,9 @@ window.NAQA_PRODUCTS.push(
   "sku": "850018802710",
   "price": 11.9,
   "em": "✨",
-  "imgs": [],
+  "imgs": [
+    "media/products/p304_0.webp"
+  ],
   "nameAr": "أولابلكس رقم 9 سيروم حماية",
   "nameEn": "Olaplex No.9 Bond Protector Nourishing Serum",
   "descAr": "أولابلكس رقم 9 سيروم حماية — منتج أصلي ضمن كتالوج نقاء المتنوع.",
@@ -168,7 +179,9 @@ window.NAQA_PRODUCTS.push(
   "sku": "850018802727",
   "price": 14,
   "em": "✨",
-  "imgs": [],
+  "imgs": [
+    "media/products/p305_0.webp"
+  ],
   "nameAr": "أولابلكس رقم 0 علاج الروابط",
   "nameEn": "Olaplex No.0 Intensive Bond Building Treatment",
   "descAr": "أولابلكس رقم 0 علاج الروابط — منتج أصلي ضمن كتالوج نقاء المتنوع.",
@@ -186,7 +199,9 @@ window.NAQA_PRODUCTS.push(
   "sku": "850018802680",
   "price": 13.5,
   "em": "✨",
-  "imgs": [],
+  "imgs": [
+    "media/products/p306_0.webp"
+  ],
   "nameAr": "أولابلكس رقم 4P شامبو تونينج",
   "nameEn": "Olaplex No.4P Blonde Enhancer Toning Shampoo",
   "descAr": "أولابلكس رقم 4P شامبو تونينج — منتج أصلي ضمن كتالوج نقاء المتنوع.",

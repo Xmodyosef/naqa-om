@@ -59,8 +59,7 @@ window.NAQA_PRODUCTS.push(
   "imgs": [
     "media/products/p65_0.webp",
     "media/products/p65_1.webp",
-    "media/products/p65_2.webp",
-    "media/products/p65_3.webp"
+    "media/products/p65_2.webp"
   ],
   "nameAr": "زيت التنظيف الخفيف مدغشقر سنتيلا من سكين1004 - 200مل",
   "nameEn": "Centella Light Cleansing Oil - 200ml",
@@ -105,7 +104,6 @@ window.NAQA_PRODUCTS.push(
   "imgs": [
     "media/products/p106_0.webp",
     "media/products/p106_1.webp",
-    "media/products/p106_2.webp",
     "media/products/p106_3.webp"
   ],
   "nameAr": "كريم العين بروبيوتيك سنتيلا باكوشيول من سكين1004 - 20مل",
@@ -128,7 +126,6 @@ window.NAQA_PRODUCTS.push(
   "imgs": [
     "media/products/p147_0.webp",
     "media/products/p147_1.webp",
-    "media/products/p147_2.webp",
     "media/products/p147_3.webp",
     "media/products/p147_4.webp"
   ],
@@ -152,8 +149,7 @@ window.NAQA_PRODUCTS.push(
   "imgs": [
     "media/products/p200_0.webp",
     "media/products/p200_1.webp",
-    "media/products/p200_2.webp",
-    "media/products/p200_3.webp"
+    "media/products/p200_2.webp"
   ],
   "nameAr": "سيرم الحماية من الشمس المائي هيالو-سنتيلا من سكين1004 - 50مل",
   "nameEn": "Hyalu-Cica Water-Fit Sun Serum - 50ml",

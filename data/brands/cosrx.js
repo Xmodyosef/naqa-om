@@ -11,8 +11,7 @@ window.NAQA_PRODUCTS.push(
   "imgs": [
     "media/products/p67_0.webp",
     "media/products/p67_1.webp",
-    "media/products/p67_2.webp",
-    "media/products/p67_3.webp"
+    "media/products/p67_2.webp"
   ],
   "nameAr": "لوشن كوسركس فائق الترطيب والخالي من الزيوت - 100مل",
   "nameEn": "Cosrx Oil Free Ultra Moisturizing Lotion",

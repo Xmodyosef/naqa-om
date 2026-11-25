@@ -58,9 +58,7 @@ window.NAQA_PRODUCTS.push(
   "em": "✨",
   "imgs": [
     "media/products/p103_0.webp",
-    "media/products/p103_1.webp",
-    "media/products/p103_2.webp",
-    "media/products/p103_3.webp"
+    "media/products/p103_1.webp"
   ],
   "nameAr": "سيرم العين المجدد بالجينسنغ والريتينال من بيوتي اوف جوسون - 30مل",
   "nameEn": "Beauty of Joseon Revive Eye Serum Ginseng + Retinal - 30ml",

@@ -11,8 +11,7 @@ window.NAQA_PRODUCTS.push(
   "imgs": [
     "media/products/p133_0.webp",
     "media/products/p133_1.webp",
-    "media/products/p133_2.webp",
-    "media/products/p133_3.webp"
+    "media/products/p133_2.webp"
   ],
   "nameAr": "ماجيك فينيش بلسم الشفاه ام اسام - 18ج",
   "nameEn": "M.Asam Magic Finish Volume Lip Balm - 18g",

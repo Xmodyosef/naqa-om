@@ -107,7 +107,6 @@ window.NAQA_PRODUCTS.push(
   "em": "✨",
   "imgs": [
     "media/products/p182_0.webp",
-    "media/products/p182_1.webp",
     "media/products/p182_2.webp",
     "media/products/p182_3.webp"
   ],

@@ -4,10 +4,14 @@
 
   var __editScale = 1;
   var __pinch = null;
+  var __pinchDocBound = false;
+  var __zoomToastTimer = null;
+
   function clampScale(n) {
-    n = Number(n) || 1;
-    if (n < 0.9) n = 0.9;
-    if (n > 2) n = 2;
+    n = Number(n);
+    if (!isFinite(n)) n = 1;
+    if (n < 1) n = 1;
+    if (n > 2.2) n = 2.2;
     return Math.round(n * 100) / 100;
   }
   function distTouches(a, b) {
@@ -15,60 +19,78 @@
     var dy = a.clientY - b.clientY;
     return Math.sqrt(dx * dx + dy * dy) || 1;
   }
+  function showZoomToast() {
+    var el = document.getElementById("editZoomToast");
+    if (!el) return;
+    el.textContent = Math.round(__editScale * 100) + "%";
+    el.classList.add("on");
+    clearTimeout(__zoomToastTimer);
+    __zoomToastTimer = setTimeout(function () {
+      try { el.classList.remove("on"); } catch (e) {}
+    }, 700);
+  }
   function applyEditScale() {
     __editScale = clampScale(__editScale);
     var root = document.getElementById("editView");
+    var body = document.getElementById("editSheetBody");
+    var pct = document.getElementById("editZoomPct");
     if (root) {
-      /* iPhone-safe: change real font-size (CSS zoom is unreliable on iOS forms) */
       root.style.setProperty("--edit-fs", (16 * __editScale) + "px");
       root.style.setProperty("--edit-pad", (12 * __editScale) + "px");
-      root.style.zoom = ""; /* clear any prior zoom */
     }
-    var pct = document.getElementById("editZoomPct");
+    if (body) {
+      /* iOS Safari: element zoom scales layout + text (visible change) */
+      try { body.style.zoom = String(__editScale); } catch (e1) {}
+      /* Fallback if zoom ignored: transform */
+      if (!("zoom" in body.style) || body.style.zoom === "" || body.style.zoom === "normal") {
+        body.style.transform = "scale(" + __editScale + ")";
+        body.style.transformOrigin = "top center";
+        body.style.width = (100 / __editScale) + "%";
+        body.style.marginInline = "auto";
+      } else {
+        body.style.transform = "";
+        body.style.width = "";
+        body.style.marginInline = "";
+      }
+    }
     if (pct) pct.textContent = Math.round(__editScale * 100) + "%";
+    showZoomToast();
     try { localStorage.setItem("naqa_edit_scale", String(__editScale)); } catch (e) {}
   }
   function loadEditScale() {
     try {
       var s = parseFloat(localStorage.getItem("naqa_edit_scale") || "1");
-      __editScale = clampScale(isFinite(s) ? s : 1);
+      __editScale = clampScale(isFinite(s) && s >= 1 ? s : 1);
     } catch (e) { __editScale = 1; }
   }
-  function bindEditPinch(root) {
-    if (!root || root._pinchBound) return;
-    root._pinchBound = true;
-    root.addEventListener("touchstart", function (e) {
-      if (e.touches.length === 2) {
-        __pinch = {
-          d0: distTouches(e.touches[0], e.touches[1]),
-          s0: __editScale
-        };
-      }
-    }, { passive: true });
-    root.addEventListener("touchmove", function (e) {
-      if (!__pinch || e.touches.length !== 2) return;
-      var d = distTouches(e.touches[0], e.touches[1]);
-      __editScale = clampScale(__pinch.s0 * (d / __pinch.d0));
-      applyEditScale();
-    }, { passive: true });
-    root.addEventListener("touchend", function (e) {
-      if (!e.touches || e.touches.length < 2) __pinch = null;
-    }, { passive: true });
-    root.addEventListener("touchcancel", function () { __pinch = null; }, { passive: true });
-  }
-  function wireZoomButtons() {
-    function bump(delta) {
-      __editScale = clampScale(__editScale + delta);
-      applyEditScale();
+  function onPinchStart(e) {
+    if (!document.body.classList.contains("naqa-editing")) return;
+    if (e.touches && e.touches.length === 2) {
+      __pinch = {
+        d0: distTouches(e.touches[0], e.touches[1]),
+        s0: __editScale
+      };
     }
-    ["editZoomIn", "editZoomInFloat"].forEach(function (id) {
-      var b = document.getElementById(id);
-      if (b) b.onclick = function () { bump(0.1); };
-    });
-    ["editZoomOut", "editZoomOutFloat"].forEach(function (id) {
-      var b = document.getElementById(id);
-      if (b) b.onclick = function () { bump(-0.1); };
-    });
+  }
+  function onPinchMove(e) {
+    if (!__pinch || !e.touches || e.touches.length !== 2) return;
+    if (!document.body.classList.contains("naqa-editing")) return;
+    try { e.preventDefault(); } catch (err) {}
+    var d = distTouches(e.touches[0], e.touches[1]);
+    __editScale = clampScale(__pinch.s0 * (d / __pinch.d0));
+    applyEditScale();
+  }
+  function onPinchEnd(e) {
+    if (!e.touches || e.touches.length < 2) __pinch = null;
+  }
+  function bindDocPinch() {
+    if (__pinchDocBound) return;
+    __pinchDocBound = true;
+    document.addEventListener("touchstart", onPinchStart, { passive: true, capture: true });
+    /* passive:false so preventDefault works — required for custom pinch on iOS */
+    document.addEventListener("touchmove", onPinchMove, { passive: false, capture: true });
+    document.addEventListener("touchend", onPinchEnd, { passive: true, capture: true });
+    document.addEventListener("touchcancel", onPinchEnd, { passive: true, capture: true });
   }
   function endEditMode() {
     try {
@@ -76,6 +98,12 @@
       document.documentElement.classList.remove("naqa-editing");
     } catch (e) {}
     __pinch = null;
+    var body = document.getElementById("editSheetBody");
+    if (body) {
+      body.style.zoom = "";
+      body.style.transform = "";
+      body.style.width = "";
+    }
   }
 
   function startEditMode() {
@@ -83,12 +111,9 @@
       document.body.classList.add("naqa-editing");
       document.documentElement.classList.add("naqa-editing");
     } catch (e) {}
+    bindDocPinch();
     loadEditScale();
-    applyEditScale();
     try {
-      var ev = document.getElementById("editView");
-      bindEditPinch(ev);
-      if (ev && ev.scrollIntoView) ev.scrollIntoView({ block: "start" });
       window.scrollTo(0, 0);
     } catch (e) {}
   }
@@ -393,16 +418,9 @@
       '<div class="edit-sheet-head">'
       + '<button type="button" class="back" id="backList">' + A.t("p_back") + '</button>'
       + '<h2>' + A.esc(title) + '</h2>'
-      + '<div class="edit-zoom" role="group" aria-label="' + (A.lang === "en" ? "Text size" : "حجم الخط") + '">'
-      + '<button type="button" id="editZoomOut" aria-label="-">−</button>'
-      + '<span class="edit-zoom-pct" id="editZoomPct">100%</span>'
-      + '<button type="button" id="editZoomIn" aria-label="+">+</button>'
+      + '<span class="edit-zoom-pct" id="editZoomPct" title="' + (A.lang === "en" ? "Pinch with two fingers" : "قرّصي بإصبعين للتكبير") + '">100%</span>'
       + '</div>'
-      + '</div>'
-      + '<div class="edit-zoom-float" id="editZoomFloat" aria-hidden="false">'
-      + '<button type="button" class="out" id="editZoomOutFloat" aria-label="-">−</button>'
-      + '<button type="button" id="editZoomInFloat" aria-label="+">+</button>'
-      + '</div>'
+      + '<div class="edit-zoom-toast" id="editZoomToast" aria-live="polite">100%</div>'
       + '<div class="edit-sheet-body" id="editSheetBody">'
       + '<div class="edit-card">'
       + '<span class="img-gal-label">' + A.t("p_imgs") + '</span>'
@@ -455,8 +473,6 @@
     };
     loadEditScale();
     applyEditScale();
-    wireZoomButtons();
-    bindEditPinch(editView);
     document.getElementById("saveEdit").onclick = function () { A.saveEdit(); };
     var taxSel = document.getElementById("f_taxMode");
     var taxWrap = document.getElementById("f_taxCustomWrap");

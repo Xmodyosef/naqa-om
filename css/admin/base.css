@@ -55,10 +55,19 @@ body.naqa-open .tabs{display:flex!important}
 .admin-main > [id$="Tab"]:not([hidden]) { display: block; }
 #topBar[hidden] { display: none !important; }
 
-/* Prevent iOS focus zoom on admin forms (still allows pinch zoom) */
-.edit-card input,.edit-card textarea,.edit-card select,
+/* Prevent iOS *auto* focus-zoom (font >= 16). Product edit uses --edit-fs / zoom. */
 .pin-card input, .settings input, .settings textarea, .settings select,
 #reviewsBox input, #reviewsBox textarea, #reviewsBox select,
 .search-wrap input{
   font-size:16px!important;
+}
+/* Product edit fields follow zoom scale — do NOT lock to 16px */
+#editView .edit-card input,
+#editView .edit-card textarea,
+#editView .edit-card select{
+  font-size: var(--edit-fs, 16px) !important;
+}
+#editView .edit-card label{
+  font-size: calc(var(--edit-fs, 16px) * 0.88) !important;
+  color: var(--muted);
 }

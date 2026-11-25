@@ -1,22 +1,17 @@
-/* —— Product edit: iPhone-safe text zoom ——
-   Browser pinch often fails inside admin shells on iOS.
-   We scale with --edit-fs (px) + custom 2-finger pinch + big +/− buttons. */
-body.naqa-editing .savebar{display:none!important}
-body.naqa-editing .admin-top{display:none!important}
+/* Product edit — iPhone 11+ text zoom (NOT Safari page zoom) */
+body.naqa-editing .savebar,
+body.naqa-editing .admin-top,
 body.naqa-editing .side-nav,
 body.naqa-editing .top-bar,
 body.naqa-editing #pageSubNav{display:none!important}
 body.naqa-editing .admin-shell{display:block!important}
 body.naqa-editing .admin-main{max-width:none!important;margin:0!important;padding:0!important}
 body.naqa-editing #productsTab{padding:0!important;margin:0!important}
-/* Allow page scroll freely while editing */
 html.naqa-editing,
 body.naqa-editing{
   overflow:auto!important;
-  overflow-x:auto!important;
   height:auto!important;
   position:static!important;
-  touch-action:pan-x pan-y pinch-zoom!important;
   -webkit-text-size-adjust:100%;
 }
 
@@ -30,126 +25,81 @@ body.naqa-editing{
   min-height:100dvh;
   background:var(--bg);
   z-index:5;
-  /* critical for iOS custom + browser gestures */
-  touch-action:pan-x pan-y pinch-zoom;
-  -webkit-user-select:text;
-  user-select:text;
-  --edit-fs: 16px;
-  --edit-pad: 12px;
-  font-size: var(--edit-fs);
-  padding-bottom: calc(72px + env(safe-area-inset-bottom, 0px));
+  --edit-fs:16px;
+  --edit-pad:12px;
+  padding-bottom:calc(88px + env(safe-area-inset-bottom, 0px));
+  /* leave pinch to our JS (document listener) */
+  touch-action:pan-x pan-y;
 }
-
-/* Everything inside inherits scaled font */
-#editView label,
-#editView .note,
-#editView .img-gal-label,
-#editView .img-gal-note,
-#editView .img-gal-add,
-#editView .mini,
-#editView .edit-sheet-head h2{
-  font-size: 1em;
-}
-#editView input,
-#editView textarea,
-#editView select{
-  font-size: var(--edit-fs) !important;
-  line-height: 1.4;
-  max-width: 100%;
-  padding: calc(var(--edit-fs) * 0.7) calc(var(--edit-fs) * 0.75);
-  border-radius: 12px;
-  box-sizing: border-box;
-  touch-action: pan-x pan-y pinch-zoom;
-}
-#editView textarea{ min-height: calc(var(--edit-fs) * 5.5); }
 
 .edit-sheet-head{
-  position: sticky;
-  top: 0;
-  z-index: 20;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 12px;
-  padding-top: max(10px, env(safe-area-inset-top, 0px));
-  background: #fdf8f6;
-  border-bottom: 1px solid var(--line);
+  position:sticky;
+  top:0;
+  z-index:30;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:12px 14px;
+  padding-top:max(12px, env(safe-area-inset-top, 0px));
+  background:#fdf8f6;
+  border-bottom:1px solid var(--line);
 }
 .edit-sheet-head .back{
-  flex: 0 0 auto;
-  white-space: nowrap;
-  font-size: 15px;
-  font-weight: 800;
-  min-height: 40px;
-  padding: 8px 12px;
-  border-radius: 10px;
-  border: 1px solid var(--line);
-  background: #fff;
+  flex:0 0 auto;
+  white-space:nowrap;
+  min-height:44px;
+  padding:10px 14px;
+  border-radius:12px;
+  border:0;
+  background:#1f1a17;
+  color:#fff;
+  font-weight:800;
 }
 .edit-sheet-head h2{
-  margin: 0;
-  flex: 1;
-  min-width: 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  font-size: 15px;
+  margin:0;
+  flex:1;
+  min-width:0;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  font-size:1rem;
 }
-.edit-zoom{
-  display: flex;
-  gap: 6px;
-  flex: 0 0 auto;
-  align-items: center;
+.edit-sheet-head .edit-zoom-pct{
+  flex:0 0 auto;
+  font-size:13px;
+  font-weight:800;
+  color:var(--rose,#8d3048);
+  min-width:3.2em;
+  text-align:center;
 }
-.edit-zoom .edit-zoom-pct{
-  min-width: 40px;
-  text-align: center;
-  font-size: 12px;
-  font-weight: 800;
-  color: var(--muted);
-}
-.edit-zoom button{
-  width: 44px;
-  height: 44px;
-  border: 1px solid var(--line);
-  border-radius: 12px;
-  background: #fff;
-  font-weight: 900;
-  font-size: 22px;
-  line-height: 1;
-  cursor: pointer;
-  color: var(--rose, #8d3048);
-  box-shadow: 0 1px 3px rgba(0,0,0,.08);
-  /* buttons themselves don't need pinch */
-  touch-action: manipulation;
-  -webkit-tap-highlight-color: transparent;
-}
-.edit-zoom button:active{ background: #efe4df; }
 
 .edit-sheet-body{
-  display: block;
-  overflow: visible;
-  max-height: none;
-  padding: var(--edit-pad) 14px 28px;
-  touch-action: pan-x pan-y pinch-zoom;
+  display:block;
+  overflow:visible;
+  padding:12px 14px 24px;
+  /* zoom applied via JS: element.style.zoom — works on iOS Safari */
+  transform-origin:top center;
 }
-.edit-sheet-body .edit-card{ margin: 0 0 12px; }
+.edit-sheet-body .edit-card{margin:0 0 12px}
 
 .edit-sheet-foot{
-  position: sticky;
-  bottom: 0;
-  z-index: 20;
-  padding: 10px 14px;
-  padding-bottom: max(10px, env(safe-area-inset-bottom, 0px));
-  background: rgba(253,248,246,.98);
-  border-top: 1px solid var(--line);
+  position:sticky;
+  bottom:0;
+  z-index:30;
+  padding:10px 14px;
+  padding-bottom:max(10px, env(safe-area-inset-bottom, 0px));
+  background:rgba(253,248,246,.98);
+  border-top:1px solid var(--line);
 }
 .edit-sheet-foot .primary{
-  width: 100%;
-  display: block;
-  min-height: 48px;
-  font-size: 16px;
-  font-weight: 800;
+  width:100%;
+  min-height:48px;
+  font-size:16px;
+  font-weight:800;
+  border:0;
+  border-radius:12px;
+  background:#1f1a17;
+  color:#fff;
 }
 
 /* Image gallery */
@@ -164,34 +114,27 @@ body.naqa-editing{
 .img-gal-actions{position:absolute;left:0;right:0;bottom:0;display:flex;gap:2px;justify-content:center;flex-wrap:wrap;padding:4px;background:linear-gradient(transparent,rgba(0,0,0,.55));z-index:2}
 .img-gal-actions button{border:0;border-radius:8px;padding:4px 6px;font-size:.65rem;font-weight:800;background:rgba(255,255,255,.95);color:#1f1a17;min-width:28px}
 .img-gal-add{aspect-ratio:1;border:1.5px dashed #d4c4bc;border-radius:14px;background:#faf6f3;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;cursor:pointer;font-weight:800;color:var(--muted);text-align:center;padding:8px}
-.img-gal-add:active{background:#efe4df}
 .img-gal-tools{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 8px}
-.img-gal-tools .mini{margin:0}
 .img-gal-url-row{display:flex;gap:6px;margin:0 0 8px}
 .img-gal-url-row input{flex:1;border:1px solid var(--line);border-radius:12px;padding:10px 12px}
-.img-gal-url-row button{flex:0 0 auto}
 #f_imgFile{display:none}
 
-/* Floating zoom bar for iPhone (always reachable) */
-.edit-zoom-float{
-  position: fixed;
-  inset-inline-end: 12px;
-  bottom: calc(72px + env(safe-area-inset-bottom, 0px));
-  z-index: 50;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+/* Toast hint when pinch works */
+.edit-zoom-toast{
+  position:fixed;
+  left:50%;
+  bottom:calc(100px + env(safe-area-inset-bottom, 0px));
+  transform:translateX(-50%);
+  z-index:60;
+  background:rgba(31,26,23,.92);
+  color:#fff;
+  font-weight:800;
+  font-size:14px;
+  padding:10px 16px;
+  border-radius:999px;
+  pointer-events:none;
+  opacity:0;
+  transition:opacity .2s;
+  white-space:nowrap;
 }
-.edit-zoom-float button{
-  width: 52px;
-  height: 52px;
-  border: 0;
-  border-radius: 16px;
-  background: #8d3048;
-  color: #fff;
-  font-size: 26px;
-  font-weight: 900;
-  box-shadow: 0 4px 14px rgba(141,48,72,.35);
-  touch-action: manipulation;
-}
-.edit-zoom-float button.out{ background: #5c3a42; }
+.edit-zoom-toast.on{opacity:1}

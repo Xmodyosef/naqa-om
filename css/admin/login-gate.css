@@ -196,3 +196,11 @@ body.naqa-open main.admin-main{display:block}
 #fbForm{margin:0 0 8px}
 #fbGoogle{margin-top:4px}
 #fbNoteSave{display:block !important}
+
+/* login2: email form always visible, Google secondary */
+.auth-email-details{display:contents !important}
+#fbEmailDetails > summary{display:none !important}
+#fbForm{display:block !important; margin:0 0 8px}
+.auth-btn-primary-google{border:1px solid #747775 !important; box-shadow:0 1px 3px rgba(0,0,0,.04) !important; min-height:48px !important}
+#fbNoteSave{display:block !important}
+#fbCreate{display:none !important}

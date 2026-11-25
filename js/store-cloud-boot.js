@@ -31,9 +31,36 @@
       } catch (e) {}
     }).catch(function () {});
   }
+
+  function applyStoreContact(d) {
+    if (!d) return;
+    var wa = String(d.wa || "").replace(/\D/g, "");
+    var bn = String(d.bankName || "").trim();
+    var bi = String(d.bankIban || "").trim();
+    if (wa) {
+      try { window.NAQA_WA = wa; window.WA_NUMBER = wa; } catch (e) {}
+      ["waFloat", "waHero", "waFooter"].forEach(function (id) {
+        var a = document.getElementById(id);
+        if (a) a.href = "https://wa.me/" + wa;
+      });
+      document.querySelectorAll('a[data-naqa-wa="store"]').forEach(function (a) {
+        a.href = "https://wa.me/" + wa;
+      });
+    }
+    try { window.NAQA_BANK_NAME = bn; window.BANK_NAME = bn; } catch (e2) {}
+    try { window.NAQA_BANK_IBAN = bi; window.BANK_IBAN = bi; } catch (e3) {}
+  }
+  function pullStoreContact() {
+    if (!ensureFb() || !firebase.firestore) return;
+    firebase.firestore().collection("naqa").doc("store").get().then(function (snap) {
+      if (!snap.exists) return;
+      applyStoreContact(snap.data() || {});
+    }).catch(function () {});
+  }
   function tick() {
     runOverrides();
     pullReviews();
+    pullStoreContact();
   }
   /* Immediate + short retries (Firebase SDK may still be initializing) */
   tick();

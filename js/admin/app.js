@@ -287,7 +287,7 @@
       document.body.classList.add("naqa-open");
     } catch (e) {}
     var wa = document.getElementById("waOrders");
-    if (wa) wa.href = "https://wa.me/" + (w.WA_NUMBER || "96879088349");
+    if (wa) { var n = A.storeWaNumber ? A.storeWaNumber() : ""; if (n) wa.href = "https://wa.me/" + n; }
     /* Route/UI first so the shell feels instant */
     try { A.applyRoute((location.hash || "").replace(/^#\/?/, "")); } catch (e) {}
     /* Cloud + orders in background (do not block first paint) */

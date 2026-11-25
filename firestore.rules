@@ -7,6 +7,7 @@ rules_version = '2';
  * Collections (store + admin):
  *   naqa/overrides      — price / stock / hidden / imgs …  PUBLIC read · admin write
  *   naqa/reviews        — approved reviews list             PUBLIC read · admin write
+ *   naqa/store          — WhatsApp + bank name + IBAN        PUBLIC read · admin write
  *   naqa/orders_private — admin orders bag                  ADMIN only (no public)
  *   naqa_imgs/{id}      — optional image blobs              PUBLIC read · admin write
  *
@@ -111,6 +112,23 @@ service cloud.firestore {
         && request.resource.data.at is number
         && id.matches('^rv[a-z0-9]+$');
       allow read, update, delete: if isAdmin();
+    }
+
+
+    /* —— Public store: WhatsApp + bank shown on the site —— */
+    match /naqa/store {
+      allow read: if true;
+      allow create, update: if isAdmin()
+        && onlyKnownKeys(['wa', 'bankName', 'bankIban', 'updatedAt', 'updatedBy'])
+        && request.resource.data.wa is string
+        && request.resource.data.wa.size() >= 8
+        && request.resource.data.wa.size() <= 16
+        && request.resource.data.bankName is string
+        && request.resource.data.bankName.size() <= 80
+        && request.resource.data.bankIban is string
+        && request.resource.data.bankIban.size() <= 42
+        && stampOk();
+      allow delete: if false;
     }
 
     /* Deny everything else */

@@ -602,8 +602,19 @@
       A.t("rep_finDate") + ": " + A.fmtDateTimeNum(new Date())
     ].join("\n");
   };
+
+  A.storeWaNumber = function () {
+    try {
+      var o = JSON.parse(localStorage.getItem("naqa_store_cfg") || "null");
+      if (o && o.wa) {
+        var d = String(o.wa).replace(/\D/g, "");
+        if (d) return d;
+      }
+    } catch (e) {}
+    return String(w.WA_NUMBER || w.NAQA_WA || "").replace(/\D/g, "");
+  };
   A.waShareText = function (text) {
-    var url = "https://wa.me/" + (w.WA_NUMBER || "96879088349") + "?text=" + encodeURIComponent(text);
+    var url = "https://wa.me/" + (A.storeWaNumber ? A.storeWaNumber() : "") + "?text=" + encodeURIComponent(text);
     w.open(url, "_blank");
   };
   A.loadRemoteOrders = function () {

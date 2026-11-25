@@ -817,7 +817,7 @@
       try {
         when = o.at ? A.fmtDateNum(o.at) : "";
       } catch (e) { when = o.at || ""; }
-      var phoneDigits = String(o.phone || "").replace(/\D/g, "").replace(/^968/, "");
+      var phoneDigits = String(o.phone || "").replace(/\D/g, "").replace(/^00/, "");
       var statusPick = '<select class="status-one ' + A.esc(st) + '" data-st-pick data-oid="' + A.esc(o.id) + '" aria-label="' + A.esc(A.t("statusTo")) + '">'
         + A.STATUS_ORDER.map(function (k) {
           return '<option value="' + k + '"' + (st === k ? " selected" : "") + '>' + A.esc(A.statusLabel(k)) + '</option>';
@@ -858,7 +858,7 @@
         + totals
         + '<div class="actions">'
         + (A.payState(o) === "pending" ? ('<button type="button" class="mini" data-pay="' + A.esc(o.id) + '">' + A.t("confirmPay") + '</button>') : "")
-        + (phoneDigits ? ('<a class="mini" style="background:#25D366;display:inline-block;color:#fff;text-decoration:none;text-align:center" href="https://wa.me/968' + A.esc(phoneDigits) + '" target="_blank" rel="noopener">' + A.t("wa") + '</a>') : "")
+        + (phoneDigits ? ('<a class="mini" style="background:#25D366;display:inline-block;color:#fff;text-decoration:none;text-align:center" href="https://wa.me/' + A.esc(phoneDigits) + '" target="_blank" rel="noopener">' + A.t("wa") + '</a>') : "")
         + '</div></div></article>';
     };
     list.sort(function (a, b) { return String(b.at || "").localeCompare(String(a.at || "")); });

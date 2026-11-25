@@ -1,6 +1,7 @@
 (function (w) {
   var A = w.NaqaAdmin;
   var STORE_KEY = "naqa_store_cfg";
+  var storeOpen = false;
 
   function scrubLegacyTokens() {
     try {
@@ -27,9 +28,9 @@
 
   function defaultStore() {
     return {
-      wa: String(w.WA_NUMBER || "96879088349").replace(/\D/g, "") || "96879088349",
-      bankName: String(w.BANK_NAME || "").trim(),
-      bankIban: String(w.BANK_IBAN || "").trim()
+      wa: String(w.NAQA_WA || w.WA_NUMBER || "").replace(/\D/g, ""),
+      bankName: String(w.NAQA_BANK_NAME || w.BANK_NAME || "").trim(),
+      bankIban: String(w.NAQA_BANK_IBAN || w.BANK_IBAN || "").trim()
     };
   }
 
@@ -51,10 +52,10 @@
     if (!cfg) return;
     var wa = String(cfg.wa || "").replace(/\D/g, "");
     if (wa) {
-      try { w.WA_NUMBER = wa; } catch (e) {}
+      try { w.WA_NUMBER = wa; w.NAQA_WA = wa; } catch (e) {}
     }
-    try { w.BANK_NAME = String(cfg.bankName || ""); } catch (e2) {}
-    try { w.BANK_IBAN = String(cfg.bankIban || ""); } catch (e3) {}
+    try { w.BANK_NAME = String(cfg.bankName || ""); w.NAQA_BANK_NAME = w.BANK_NAME; } catch (e2) {}
+    try { w.BANK_IBAN = String(cfg.bankIban || ""); w.NAQA_BANK_IBAN = w.BANK_IBAN; } catch (e3) {}
     try {
       var a = document.getElementById("waAdmin");
       if (a && wa) a.href = "https://wa.me/" + wa;
@@ -118,21 +119,33 @@
     box.innerHTML =
       '<div class="settings-stack">'
 
-      /* ① المتجر — قابل للتعديل */
+      /* ① المتجر — ملخص مغلق، التعديل يفتح ثم يُغلق بعد الحفظ */
       + '<section class="set-card" id="setStoreCard">'
       +   '<div class="set-card-head"><span class="set-card-ico" aria-hidden="true">◈</span><h2 class="set-card-title">' + (ar ? "المتجر" : "Store") + '</h2></div>'
-      +   '<p class="set-card-note">' + (ar ? "بيانات واتساب والبنك تظهر للزبون. عدّل الحقول ثم احفظ." : "WhatsApp and bank details appear to customers. Edit the fields, then save.") + '</p>'
-      +   '<div class="set-fields">'
-      +     '<label class="set-field"><span class="set-field-lab">' + (ar ? "واتساب (مع مفتاح الدولة)" : "WhatsApp (with country code)") + '</span>'
-      +       '<input type="tel" id="setWa" class="set-input" dir="ltr" inputmode="numeric" autocomplete="tel" placeholder="9687xxxxxxx" value="' + A.esc(cfg.wa) + '" /></label>'
-      +     '<label class="set-field"><span class="set-field-lab">' + (ar ? "اسم البنك" : "Bank name") + '</span>'
-      +       '<input type="text" id="setBankName" class="set-input" autocomplete="organization" placeholder="' + (ar ? "مثال: بنك مسقط" : "e.g. Bank Muscat") + '" value="' + A.esc(cfg.bankName) + '" /></label>'
-      +     '<label class="set-field"><span class="set-field-lab">IBAN</span>'
-      +       '<input type="text" id="setBankIban" class="set-input set-mono" dir="ltr" autocomplete="off" placeholder="OM…" value="' + A.esc(cfg.bankIban) + '" /></label>'
+      +   '<div class="set-list">'
+      +     '<div class="set-row"><span class="set-k">' + (ar ? "واتساب" : "WhatsApp") + '</span><span class="set-v set-mono" dir="ltr">' + (cfg.wa ? ("+" + A.esc(cfg.wa)) : (ar ? "غير محدد" : "Not set")) + '</span></div>'
+      +     '<div class="set-row"><span class="set-k">' + (ar ? "اسم البنك" : "Bank name") + '</span><span class="set-v">' + A.esc(cfg.bankName || (ar ? "غير محدد" : "Not set")) + '</span></div>'
+      +     '<div class="set-row"><span class="set-k">IBAN</span><span class="set-v set-mono" dir="ltr">' + A.esc(cfg.bankIban || (ar ? "غير محدد" : "Not set")) + '</span></div>'
       +   '</div>'
-      +   '<div class="set-actions set-actions-row">'
-      +     '<button type="button" class="set-pill set-pill-solid" id="btnSaveStore">' + (ar ? "حفظ بيانات المتجر" : "Save store details") + '</button>'
-      +   '</div>'
+      +   (storeOpen
+          ? ('<div class="set-fields" id="storeFields">'
+            + '<label class="set-field"><span class="set-field-lab">' + (ar ? "واتساب" : "WhatsApp") + '</span>'
+            +   '<input type="tel" id="setWa" class="set-input" dir="ltr" inputmode="tel" autocomplete="tel" placeholder="' + (ar ? "رقم مع مفتاح الدولة" : "Number with country code") + '" value="' + A.esc(cfg.wa) + '" /></label>'
+            + '<label class="set-field"><span class="set-field-lab">' + (ar ? "اسم البنك" : "Bank name") + '</span>'
+            +   '<input type="text" id="setBankName" class="set-input" autocomplete="organization" value="' + A.esc(cfg.bankName) + '" /></label>'
+            + '<label class="set-field"><span class="set-field-lab">IBAN</span>'
+            +   '<input type="text" id="setBankIban" class="set-input set-mono" dir="ltr" autocomplete="off" value="' + A.esc(cfg.bankIban) + '" /></label>'
+            + '</div>'
+            + '<div class="set-actions set-actions-row">'
+            +   '<button type="button" class="set-pill set-pill-solid" id="btnSaveStore">' + (ar ? "حفظ" : "Save") + '</button>'
+            +   '<button type="button" class="set-pill set-pill-ghost" id="btnCloseStore">' + (ar ? "إغلاق" : "Close") + '</button>'
+            + '</div>')
+          : ('<div class="set-actions set-actions-row">'
+            + '<button type="button" class="set-pill set-pill-solid" id="btnEditStore">' + (ar ? "تعديل واتساب والبنك" : "Edit WhatsApp and bank") + '</button>'
+            + '</div>'))
+      +   '<p class="set-card-hint">' + (ar
+          ? "الرقم يُحدَّث في أيقونة واتساب بالموقع وفي الطلبات. بدون رقم ثابت."
+          : "The number updates the site WhatsApp icon and orders. No fixed number.") + '</p>'
       +   '<p class="set-status" id="storeStatus" role="status" aria-live="polite"></p>'
       + '</section>'
 
@@ -148,7 +161,7 @@
       +   '</div>'
       +   '<div class="set-actions set-actions-row">'
       +     (email ? '<button type="button" class="set-pill set-pill-ghost" id="btnRevealEmail">' + (ar ? "إظهار / إخفاء البريد" : "Show / hide email") + '</button>' : '')
-      +     '<button type="button" class="set-pill set-pill-solid" id="btnToggleLang">' + (ar ? "English" : "العربية") + '</button>'
+      +     '<button type="button" class="set-pill set-pill-solid" id="btnToggleLang">' + A.esc(A.t("langBtn") || (ar ? "English" : "Arabic")) + '</button>'
       +   '</div>'
       +   '<p class="set-card-hint">' + (ar
           ? "تُدار كلمة السر من شاشة الدخول فقط. بعد تسجيل الدخول تتم المزامنة تلقائياً."
@@ -234,6 +247,10 @@
     }
 
     /* حفظ المتجر */
+    var editBtn = document.getElementById("btnEditStore");
+    if (editBtn) editBtn.onclick = function () { storeOpen = true; A.paintSettings(); };
+    var closeStore = document.getElementById("btnCloseStore");
+    if (closeStore) closeStore.onclick = function () { storeOpen = false; A.paintSettings(); };
     var saveBtn = document.getElementById("btnSaveStore");
     if (saveBtn) {
       saveBtn.onclick = function () {
@@ -241,8 +258,8 @@
         var bnEl = document.getElementById("setBankName");
         var biEl = document.getElementById("setBankIban");
         var wa = (waEl && waEl.value || "").replace(/\D/g, "");
-        if (wa.length < 8) {
-          A.setMsg("storeStatus", ar ? "رقم واتساب غير مكتمل." : "WhatsApp number looks incomplete.");
+        if (wa.length < 8 || wa.length > 16) {
+          A.setMsg("storeStatus", ar ? "أدخل رقم واتساب كاملاً مع مفتاح الدولة." : "Enter the full WhatsApp number with country code.");
           return;
         }
         var saved = saveStoreCfg({
@@ -250,13 +267,16 @@
           bankName: bnEl ? bnEl.value : "",
           bankIban: biEl ? biEl.value : ""
         });
-        if (waEl) waEl.value = saved.wa;
-        if (biEl) biEl.value = saved.bankIban;
-        A.setMsg("storeStatus", ar ? "تم حفظ بيانات المتجر ✓" : "Store details saved ✓");
+        storeOpen = false;
+        A.paintSettings();
+        A.setMsg("storeStatus", ar ? "تم الحفظ. الرقم مربوط بالموقع والطلبات." : "Saved. The number is linked to the site and orders.");
         try {
-          if (A.activity && A.activity.log) A.activity.log(ar ? "حفظ بيانات المتجر" : "Store details saved", "WhatsApp · Bank");
-          if (A.activity && A.activity.render) A.activity.render(document.getElementById("activityBox"));
+          if (A.activity && A.activity.log) A.activity.log(ar ? "حفظ بيانات المتجر" : "Store details saved", saved.wa || "");
         } catch (eL) {}
+        try {
+          var waOrders = document.getElementById("waOrders");
+          if (waOrders && saved.wa) waOrders.href = "https://wa.me/" + saved.wa;
+        } catch (eW) {}
       };
     }
 

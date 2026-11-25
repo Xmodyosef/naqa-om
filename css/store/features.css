@@ -90,8 +90,24 @@ html[dir="ltr"] .wish-btn{left:auto;right:10px}
 .review-card p{margin:6px 0 0;font-size:.92rem}
 .review-photo{width:100%;max-height:280px;object-fit:cover;border-radius:12px;margin-top:8px;background:#f6f1ee}
 .star-pick{display:flex;gap:6px;margin:8px 0}
-.star-pick button{width:40px;height:40px;border-radius:12px;border:1px solid var(--line);background:var(--card);color:var(--fg);font-size:1.1rem}
-.star-pick button.on{background:#1f1a17;color:#fff;border-color:#1f1a17}
+.star-pick button{width:40px;height:40px;border-radius:12px;border:1px solid var(--line);background:var(--card);color:var(--muted);font-size:1.15rem}
+.star-pick button.on{background:var(--rose-deep);color:#fff;border-color:var(--rose-deep);box-shadow:0 2px 8px rgba(141,48,72,.28)}
+.reviews-block,.review-card-form,.review-overlay{
+  font-family:"Noto Naskh Arabic","Noto Kufi Arabic","Segoe UI",Tahoma,serif;
+}
+.reviews-block .block-h,.review-card-form h3{font-family:inherit;font-weight:700}
+.review-card header span:last-child,
+.review-pill,.rv-stars{color:var(--rose-deep)}
+.review-card-form #rvSend,
+.review-card-form button.btn-add#rvSend{
+  background:var(--rose-deep)!important;color:#fff!important;border:0;
+  border-radius:12px;padding:12px;font-weight:700;
+  font-family:"Noto Naskh Arabic","Noto Kufi Arabic",serif;
+}
+.review-card-form #rvSend:hover{filter:brightness(.95)}
+.review-card-form input,.review-card-form textarea,.review-card-form label{
+  font-family:"Noto Naskh Arabic","Noto Kufi Arabic",serif;
+}
 .review-overlay{position:fixed;inset:0;z-index:130;background:rgba(20,12,10,.45);display:flex;align-items:flex-end;justify-content:center}
 .review-overlay[hidden]{display:none}
 .review-card-form{width:min(520px,100%);max-height:92vh;overflow:auto;background:var(--card);color:var(--fg);border-radius:22px 22px 0 0;padding:16px 16px 28px}

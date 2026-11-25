@@ -58,7 +58,7 @@ function reviewHTML(p) {
   var label = (typeof lang !== "undefined" && lang === "en")
     ? (list.length + (list.length === 1 ? " review" : " reviews"))
     : (list.length + " تقييم");
-  return '<div class="review-pill">' + avg.toFixed(1) + " ★ · " + label + "</div>";
+  return '<div class="review-pill"><span class="rv-stars" aria-hidden="true">★</span> ' + avg.toFixed(1) + " · " + label + "</div>";
 }
 
 function reviewsSection(p) {
@@ -66,7 +66,7 @@ function reviewsSection(p) {
   var list = reviewsFor(p);
   var cards = list.map(function (r) {
     var photo = r.photo ? '<img class="review-photo" src="' + esc(r.photo) + '" alt="' + (en ? "Review photo" : "صورة التقييم") + '">' : "";
-    return '<article class="review-card"><header><span>' + esc(r.name || (en ? "Customer" : "زبونة")) + '</span><span>' + "★".repeat(Math.max(1, Math.min(5, Number(r.stars) || 0))) + '</span></header><p>' + esc(reviewText(r)) + '</p>' + photo + '</article>';
+    return '<article class="review-card"><header><span>' + esc(r.name || (en ? "Customer" : "زبونة")) + '</span><span class="rv-stars" aria-hidden="true">' + "★".repeat(Math.max(1, Math.min(5, Number(r.stars) || 0))) + '</span></header><p>' + esc(reviewText(r)) + '</p>' + photo + '</article>';
   }).join("");
   var empty = list.length ? "" : '<p class="review-empty">' + (en ? "No reviews yet. Be the first." : "لا تقييمات بعد. كوني الأولى.") + "</p>";
   var thanks = en
@@ -93,7 +93,7 @@ function ensureReviewForm() {
     + '<label id="lblPhoto"></label><input id="rvPhoto" type="file" accept="image/*">'
     + '<p class="review-empty" id="rvMsg"></p>'
     + '<div style="display:flex;gap:8px;margin-top:12px">'
-    + '<button type="submit" class="btn-add" id="rvSend" style="flex:1;border:0;border-radius:12px;padding:12px;font-weight:800;background:#1f1a17;color:#fff"></button>'
+    + '<button type="submit" class="btn-add" id="rvSend" style="flex:1;border:0;border-radius:12px;padding:12px;font-weight:700"></button>'
     + '<button type="button" id="rvClose" style="border:1px solid var(--line);border-radius:12px;padding:12px;font-weight:800;background:#fff"></button>'
     + '</div></form>';
   document.body.appendChild(el);

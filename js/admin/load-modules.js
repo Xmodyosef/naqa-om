@@ -2,7 +2,7 @@
 (function (w) {
   "use strict";
   var A = w.NaqaAdmin = w.NaqaAdmin || {};
-  var V = "20261125hide1";
+  var V = "20261125hide2";
   var loaded = false;
   var inflight = null;
 
@@ -40,8 +40,11 @@
       inflight = null;
       try {
         if (A.refreshProductsFromBundle) A.refreshProductsFromBundle();
-        else if (w.NAQA_PRODUCTS) A.products = w.NAQA_PRODUCTS;
+        else if (w.NAQA_PRODUCTS) {
+          A.products = (w.NAQA_PRODUCTS || []).map(function (p) { return Object.assign({ imgs: [] }, p); });
+        }
       } catch (e) {}
+      try { if (A.bindProductListClicks) A.bindProductListClicks(); } catch (e) {}
       return true;
     }).catch(function (err) {
       inflight = null;

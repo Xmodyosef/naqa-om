@@ -1,16 +1,19 @@
 /* Shared state + helpers for Naqa admin modules */
 (function (w) {
   var A = w.NaqaAdmin = w.NaqaAdmin || {};
-  A.products = (w.NAQA_PRODUCTS || []).map(function (p) { return Object.assign({ imgs: [] }, p);
+  A.products = [];
   A.refreshProductsFromBundle = function () {
     try {
-      if (w.NAQA_PRODUCTS && w.NAQA_PRODUCTS.length) {
-        A.products = (w.NAQA_PRODUCTS || []).map(function (p) { return Object.assign({ imgs: [] }, p); });
-      }
-    } catch (e) {}
-    return A.products || [];
+      var src = w.NAQA_PRODUCTS || [];
+      A.products = src.map(function (p) { return Object.assign({ imgs: [] }, p); });
+    } catch (e) {
+      A.products = A.products || [];
+    }
+    return A.products;
   };
- });
+  try {
+    if (w.NAQA_PRODUCTS && w.NAQA_PRODUCTS.length) A.refreshProductsFromBundle();
+  } catch (e) {}
   A.KEY = "naqa_overrides";
   A.PIN = "naqa_admin_pin";
   A.TOKEN = "naqa_gh_token";

@@ -248,7 +248,13 @@
   w.naqaBootCloudOverridesForStore = function () {
     if (typeof mergeOverrides !== "function") return;
     w.naqaLoadCloudOverrides().then(function (map) {
-      if (!map || !Object.keys(map).length) return;
+      if (!map) map = {};
+      try {
+        if (Object.keys(map).length) {
+          sessionStorage.setItem("naqa_ov_pub_v1", JSON.stringify(map));
+        }
+      } catch (e) {}
+      if (!Object.keys(map).length) return;
       try { mergeOverrides(map); } catch (e) {}
       var done = function () {
         try { if (typeof render === "function") render(); } catch (e) {}

@@ -297,23 +297,34 @@ document.addEventListener("focusin", function(e){
 function boot(){
   try{
     if(!products.length) throw new Error("products.js missing");
-    /* Public store: only remote overrides (+ Firestore via store-cloud-boot). Never localStorage. */
-    function naqaApplyOverrides(remote){
+    /* Public store: cloud overrides. Cache last map so hidden products do not flash. */
+    var OV_CACHE = "naqa_ov_pub_v1";
+    function naqaApplyOverrides(remote, opts){
+      opts = opts || {};
       var map = (remote && typeof remote === "object") ? remote : {};
       if (typeof mergeOverrides === "function") mergeOverrides(map);
-      if (typeof render === "function") render();
+      try {
+        if (Object.keys(map).length) sessionStorage.setItem(OV_CACHE, JSON.stringify(map));
+      } catch (e) {}
+      if (opts.render !== false && typeof render === "function") render();
     }
-    naqaApplyOverrides({});
-    fetch("https://raw.githubusercontent.com/Xmodyosef/naqa-om/main/data/overrides.json?v="+Date.now()).then(function(res){ return res.ok ? res.json() : {}; }).then(naqaApplyOverrides).catch(function(){
-      return fetch("data/overrides.json?v="+Date.now()).then(function(res){ return res.ok ? res.json() : {}; }).then(naqaApplyOverrides);
-    });
+    /* Instant: last known public overrides (session) — kills flash of hidden items */
+    try {
+      var cached = JSON.parse(sessionStorage.getItem(OV_CACHE) || "null");
+      if (cached && typeof cached === "object") naqaApplyOverrides(cached, { render: false });
+    } catch (e) {}
     const wa="https://wa.me/"+WA_NUMBER;
     $("#waFooter").href=wa; $("#waFloat").href=wa; $("#waHero").href=wa;
     $("#yr").textContent=new Date().getFullYear();
     if(typeof featuresBoot==="function") featuresBoot();
     if(typeof fillAreas==="function") fillAreas();
+    /* First paint after cache (if any). Cloud re-render when ready. */
     render();
     applyRoute();
+    /* Prefer Firestore via store-cloud-boot; also keep static file as fallback */
+    fetch("data/overrides.json?v="+Date.now()).then(function(res){ return res.ok ? res.json() : {}; }).then(function(j){
+      if (j && typeof j === "object" && Object.keys(j).length) naqaApplyOverrides(j);
+    }).catch(function(){});
   }catch(err){
     const b=document.createElement("div");
     b.style.cssText="padding:20px;background:#fee;color:#900;direction:rtl";

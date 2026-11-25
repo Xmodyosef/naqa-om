@@ -1,4 +1,4 @@
-/* After store boot: pull live price/stock/hide + reviews from Firestore (public read). */
+/* After store scripts: pull live price/stock/hide + reviews from Firestore (public read). */
 (function () {
   function ensureFb() {
     try {
@@ -35,13 +35,16 @@
     runOverrides();
     pullReviews();
   }
+  /* Immediate + short retries (Firebase SDK may still be initializing) */
+  tick();
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", function () {
-      setTimeout(tick, 400);
+      tick();
+      setTimeout(tick, 200);
+      setTimeout(tick, 800);
     });
   } else {
-    setTimeout(tick, 400);
+    setTimeout(tick, 200);
+    setTimeout(tick, 800);
   }
-  setTimeout(tick, 1500);
-  setTimeout(tick, 3500);
 })();

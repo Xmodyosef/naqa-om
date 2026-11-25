@@ -134,11 +134,11 @@ function mergeOverrides(map){
   if(!map) map={};
   products.forEach(function(p){
     var o=map[p.id]||map[String(p.id)];
-    if(!o){ p.hidden=false; return; }
+    if(!o){ return; } /* never force-visible on empty/partial map — prevents flash */
     if(o.price!=null && o.price!=="") p.price=Number(o.price);
     if(o.was!=null && o.was!=="") p.was=Number(o.was);
     if(o.stock!=null && o.stock!=="") p.stock=Number(o.stock);
-    p.hidden=!!o.hidden;
+    if(Object.prototype.hasOwnProperty.call(o, "hidden")) p.hidden=!!o.hidden;
     if(o.taxMode==="exempt"||o.taxMode==="custom"||o.taxMode==="vat5") p.taxMode=o.taxMode; else if(o.taxMode==null) delete p.taxMode;
     if(o.taxCustom!=null && o.taxCustom!=="") p.taxCustom=Number(o.taxCustom); else if(o.taxMode!=="custom") delete p.taxCustom;
     ["nameAr","nameEn","descAr","descEn","useAr","useEn","skinAr","skinEn","brand","cat","sku","em"].forEach(function(k){

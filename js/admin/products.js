@@ -629,6 +629,32 @@
     if (taxSel && taxWrap) {
       taxSel.onchange = function () { taxWrap.hidden = taxSel.value !== "custom"; };
     }
+    /* Hide checkbox: apply + sync immediately (same as list hide button) */
+    var hidEl = document.getElementById("f_hidden");
+    if (hidEl) {
+      hidEl.onchange = function () {
+        var id = A.editingId;
+        if (id == null) return;
+        var key = String(id);
+        var existing = A.overrides[id] || A.overrides[key] || {};
+        var next = Object.assign({}, existing);
+        if (hidEl.checked) next.hidden = true;
+        else delete next.hidden;
+        if (Object.keys(next).length) {
+          A.overrides[key] = next;
+          if (A.overrides[id] && String(id) !== key) delete A.overrides[id];
+        } else {
+          delete A.overrides[key];
+          delete A.overrides[id];
+        }
+        try { localStorage.setItem(A.KEY || "naqa_overrides", JSON.stringify(A.overrides)); } catch (e) {}
+        A.setMsg("status", hidEl.checked
+          ? (A.lang === "en" ? "Hidden on the store." : "صار مخفي في المتجر.")
+          : (A.lang === "en" ? "Visible on the store." : "صار ظاهر في المتجر."));
+        if (A.syncOverridesCloud) A.syncOverridesCloud();
+        else if (A.publishLive) A.publishLive();
+      };
+    }
   };
 
 
@@ -731,6 +757,8 @@
       if (Array.isArray(next.imgs)) A.overrides[ok].imgs = next.imgs;
       if (next.removedImgs) A.overrides[ok].removedImgs = next.removedImgs;
       else delete A.overrides[ok].removedImgs;
+      /* unhide must clear prevO.hidden — Object.assign keeps it if next has no key */
+      if (!next.hidden) delete A.overrides[ok].hidden;
       if (A.overrides[A.editingId] && String(A.editingId) !== ok) delete A.overrides[A.editingId];
     } else {
       delete A.overrides[ok];

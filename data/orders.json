@@ -1,1 +1,857 @@
-[]
+[
+  {
+    "id": "NQ-2401",
+    "at": "2026-11-24T09:10:00+04:00",
+    "updatedAt": "2026-11-24T09:10:00+04:00",
+    "status": "new",
+    "name": "مها السيابية",
+    "phone": "92110441",
+    "area": "بوشر",
+    "items": [
+      {
+        "id": 7,
+        "sku": "3760095250441",
+        "name": "كريم إيه سي إم المكثف لتفتيح البقع الداكنة - 40مل",
+        "nameAr": "كريم إيه سي إم المكثف لتفتيح البقع الداكنة - 40مل",
+        "nameEn": "ACM Advanced Intensive Anti-Dark Spot Cream - 40ml",
+        "price": 7.6,
+        "qty": 2,
+        "line": 15.2,
+        "img": "media/products/p7_0.webp"
+      },
+      {
+        "id": 14,
+        "sku": "8800256109661",
+        "name": "قطع قطنية ميديكيوب بفيتامين سي لتفتيح البشرة - 70قطعة",
+        "nameAr": "قطع قطنية ميديكيوب بفيتامين سي لتفتيح البشرة - 70قطعة",
+        "nameEn": "Medicube Deep Vita C Pad - 150g",
+        "price": 7.9,
+        "qty": 1,
+        "line": 7.9,
+        "img": "media/products/p14_0.webp"
+      }
+    ],
+    "subtotal": 23.1,
+    "delivery": 2,
+    "codFee": 1.5,
+    "shipping": 3.5,
+    "total": 26.6,
+    "vat": 1.267,
+    "payment": "cod",
+    "source": "demo"
+  },
+  {
+    "id": "NQ-2402",
+    "at": "2026-11-24T14:40:00+04:00",
+    "updatedAt": "2026-11-24T14:40:00+04:00",
+    "status": "new",
+    "name": "ليلى البوسعيدي",
+    "phone": "91220883",
+    "area": "السيب",
+    "items": [
+      {
+        "id": 8,
+        "sku": "8800256118885",
+        "name": "كريم ميديكيوب بالكبسولات الوردي بالكولاجين بي دي آر إن لشد ونضارة البشرة – 50مل",
+        "nameAr": "كريم ميديكيوب بالكبسولات الوردي بالكولاجين بي دي آر إن لشد ونضارة البشرة – 50مل",
+        "nameEn": "Medicube PDRN Pink Collagen Capsule Cream - 55g",
+        "price": 7.6,
+        "qty": 1,
+        "line": 7.6,
+        "img": "media/products/p8_0.webp"
+      }
+    ],
+    "subtotal": 7.6,
+    "delivery": 2,
+    "codFee": 0,
+    "shipping": 2,
+    "total": 9.6,
+    "vat": 0.457,
+    "payment": "transfer",
+    "source": "demo"
+  },
+  {
+    "id": "NQ-2403",
+    "at": "2026-11-23T11:05:00+04:00",
+    "updatedAt": "2026-11-23T11:05:00+04:00",
+    "status": "new",
+    "name": "سارة الكندية",
+    "phone": "93551720",
+    "area": "مطرح",
+    "items": [
+      {
+        "id": 9,
+        "sku": "8809875907412",
+        "name": "سيروم سيليماكس لتفتيح البقع وتنقية المسام - 30مل",
+        "nameAr": "سيروم سيليماكس لتفتيح البقع وتنقية المسام - 30مل",
+        "nameEn": "Celimax Pore+Dark Spot Brightening Serum - 30ml",
+        "price": 5.7,
+        "qty": 1,
+        "line": 5.7,
+        "img": "media/products/p9_0.webp"
+      }
+    ],
+    "subtotal": 5.7,
+    "delivery": 2,
+    "codFee": 1.5,
+    "shipping": 3.5,
+    "total": 9.2,
+    "vat": 0.438,
+    "payment": "cod",
+    "source": "demo"
+  },
+  {
+    "id": "NQ-2404",
+    "at": "2026-11-22T16:20:00+04:00",
+    "updatedAt": "2026-11-22T16:20:00+04:00",
+    "status": "new",
+    "name": "نورة الرواحية",
+    "phone": "94412006",
+    "area": "الخوير",
+    "items": [
+      {
+        "id": 10,
+        "sku": "8809700320805",
+        "name": "سيروم ذا فيتا أ ريتينول شوت لشد البشرة من سيليماكس - 30مل",
+        "nameAr": "سيروم ذا فيتا أ ريتينول شوت لشد البشرة من سيليماكس - 30مل",
+        "nameEn": "Celimax The Vita-A Retinol Shot Tightening Serum - 30ml",
+        "price": 6.3,
+        "qty": 2,
+        "line": 12.6,
+        "img": "media/products/p10_0.webp"
+      }
+    ],
+    "subtotal": 12.6,
+    "delivery": 2,
+    "codFee": 0,
+    "shipping": 2,
+    "total": 14.6,
+    "vat": 0.695,
+    "payment": "transfer",
+    "source": "demo"
+  },
+  {
+    "id": "NQ-2405",
+    "at": "2026-11-18T10:15:00+04:00",
+    "updatedAt": "2026-11-18T10:15:00+04:00",
+    "status": "new",
+    "name": "فاطمة الشحية",
+    "phone": "95660318",
+    "area": "المعبيلة",
+    "items": [
+      {
+        "id": 11,
+        "sku": "8809743546323",
+        "name": "وسادات سيليماكس لتفتيح البقع وتنقية المسام - 40 قطعة",
+        "nameAr": "وسادات سيليماكس لتفتيح البقع وتنقية المسام - 40 قطعة",
+        "nameEn": "Celimax Pore+Dark Spot Brightening Pad - 40 Pads",
+        "price": 6.5,
+        "qty": 1,
+        "line": 6.5,
+        "img": "media/products/p11_0.webp"
+      },
+      {
+        "id": 18,
+        "sku": "8809447251363",
+        "name": "مجموعة دكتور ألثيا للعناية بعد الحبوب والترطيب المكثف - 2قطع",
+        "nameAr": "مجموعة دكتور ألثيا للعناية بعد الحبوب والترطيب المكثف - 2قطع",
+        "nameEn": "Dr.Althea 147 Barrier Cream - 50ml",
+        "price": 13.2,
+        "qty": 1,
+        "line": 13.2,
+        "img": "media/products/p18_0.webp"
+      }
+    ],
+    "subtotal": 19.7,
+    "delivery": 2,
+    "codFee": 1.5,
+    "shipping": 3.5,
+    "total": 23.2,
+    "vat": 1.105,
+    "payment": "cod",
+    "source": "demo"
+  },
+  {
+    "id": "NQ-2406",
+    "at": "2026-11-24T08:30:00+04:00",
+    "updatedAt": "2026-11-24T08:30:00+04:00",
+    "status": "prep",
+    "name": "مريم الحبسية",
+    "phone": "96771452",
+    "area": "صحار",
+    "items": [
+      {
+        "id": 6,
+        "sku": "8809937361060",
+        "name": "قناع بيوكولاجين ريل ديب من بيودانس - 34ج ×4 قطع",
+        "nameAr": "قناع بيوكولاجين ريل ديب من بيودانس - 34ج ×4 قطع",
+        "nameEn": "Biodance Bio-Collagen Real Deep Mask - 34g × 4ea",
+        "price": 6.7,
+        "qty": 1,
+        "line": 6.7,
+        "img": "media/products/p6_0.webp"
+      },
+      {
+        "id": 12,
+        "sku": "8809562192763",
+        "name": "سيروم أرينسيا بالريتينال لتعزيز تجديد البشرة - 30مل",
+        "nameAr": "سيروم أرينسيا بالريتينال لتعزيز تجديد البشرة - 30مل",
+        "nameEn": "Arencia Retinal Booster Shot - 30ml",
+        "price": 6.7,
+        "qty": 1,
+        "line": 6.7,
+        "img": "media/products/p12_0.webp"
+      }
+    ],
+    "subtotal": 13.4,
+    "delivery": 2,
+    "codFee": 1.5,
+    "shipping": 3.5,
+    "total": 16.9,
+    "vat": 0.805,
+    "payment": "cod",
+    "source": "demo"
+  },
+  {
+    "id": "NQ-2407",
+    "at": "2026-11-23T13:12:00+04:00",
+    "updatedAt": "2026-11-23T13:12:00+04:00",
+    "status": "prep",
+    "name": "آمنة المعمرية",
+    "phone": "97882019",
+    "area": "صلالة",
+    "items": [
+      {
+        "id": 1,
+        "sku": "8809562192770",
+        "name": "سيروم أرينسيا بفيتامين سي لتعزيز إشراقة البشرة - 30مل",
+        "nameAr": "سيروم أرينسيا بفيتامين سي لتعزيز إشراقة البشرة - 30مل",
+        "nameEn": "Arencia Vitamin C Booster Shot - 30ml",
+        "price": 6.7,
+        "qty": 1,
+        "line": 6.7,
+        "img": "media/products/p1_0.webp"
+      },
+      {
+        "id": 3,
+        "sku": "8809640734526",
+        "name": "سيروم انوا نياسيناميد 10% لتصحيح البقع الداكنة - 30مل",
+        "nameAr": "سيروم انوا نياسيناميد 10% لتصحيح البقع الداكنة - 30مل",
+        "nameEn": "Anua Niacinamide 10% + TXA 4% Dark Spot Correcting Serum - 30ml",
+        "price": 6.7,
+        "qty": 1,
+        "line": 6.7,
+        "img": "media/products/p3_0.webp"
+      },
+      {
+        "id": 13,
+        "sku": "8809447257051",
+        "name": "سيروم دكتور ألثيا 345 لتهدئة البشرة - 30مل",
+        "nameAr": "سيروم دكتور ألثيا 345 لتهدئة البشرة - 30مل",
+        "nameEn": "Dr.Althea 345 Relief Serum - 30ml",
+        "price": 6.7,
+        "qty": 2,
+        "line": 13.4,
+        "img": "media/products/p13_0.webp"
+      }
+    ],
+    "subtotal": 26.8,
+    "delivery": 2,
+    "codFee": 0,
+    "shipping": 2,
+    "total": 28.8,
+    "vat": 1.371,
+    "payment": "transfer",
+    "source": "demo"
+  },
+  {
+    "id": "NQ-2408",
+    "at": "2026-11-21T18:45:00+04:00",
+    "updatedAt": "2026-11-21T18:45:00+04:00",
+    "status": "prep",
+    "name": "حنان العبرية",
+    "phone": "98993144",
+    "area": "نزوى",
+    "items": [
+      {
+        "id": 2,
+        "sku": "8809700320812",
+        "name": "سيروم ذا فيتا أ ريتينال شوت لشد البشرة من سيليماكس - 15مل",
+        "nameAr": "سيروم ذا فيتا أ ريتينال شوت لشد البشرة من سيليماكس - 15مل",
+        "nameEn": "Celimax The Vita A Retinal Shot Tightening Booster - 15ml",
+        "price": 5.7,
+        "qty": 1,
+        "line": 5.7,
+        "img": "media/products/p2_0.webp"
+      },
+      {
+        "id": 14,
+        "sku": "8800256109661",
+        "name": "قطع قطنية ميديكيوب بفيتامين سي لتفتيح البشرة - 70قطعة",
+        "nameAr": "قطع قطنية ميديكيوب بفيتامين سي لتفتيح البشرة - 70قطعة",
+        "nameEn": "Medicube Deep Vita C Pad - 150g",
+        "price": 7.9,
+        "qty": 1,
+        "line": 7.9,
+        "img": "media/products/p14_0.webp"
+      }
+    ],
+    "subtotal": 13.6,
+    "delivery": 2,
+    "codFee": 1.5,
+    "shipping": 3.5,
+    "total": 17.1,
+    "vat": 0.814,
+    "payment": "cod",
+    "source": "demo"
+  },
+  {
+    "id": "NQ-2409",
+    "at": "2026-11-19T09:55:00+04:00",
+    "updatedAt": "2026-11-19T09:55:00+04:00",
+    "status": "prep",
+    "name": "ريم البلوشي",
+    "phone": "92334077",
+    "area": "عبري",
+    "items": [
+      {
+        "id": 3,
+        "sku": "8809640734526",
+        "name": "سيروم انوا نياسيناميد 10% لتصحيح البقع الداكنة - 30مل",
+        "nameAr": "سيروم انوا نياسيناميد 10% لتصحيح البقع الداكنة - 30مل",
+        "nameEn": "Anua Niacinamide 10% + TXA 4% Dark Spot Correcting Serum - 30ml",
+        "price": 6.7,
+        "qty": 1,
+        "line": 6.7,
+        "img": "media/products/p3_0.webp"
+      },
+      {
+        "id": 5,
+        "sku": "3337875816809",
+        "name": "بلسم البشرة الجافة سيكابلاست بوم بي 5 لاروش بوزيه - 40مل",
+        "nameAr": "بلسم البشرة الجافة سيكابلاست بوم بي 5 لاروش بوزيه - 40مل",
+        "nameEn": "Cicaplast Balm B5 For Dry Skin Irritations - 40ml",
+        "price": 6.9,
+        "qty": 1,
+        "line": 6.9,
+        "img": "media/products/p5_0.webp"
+      },
+      {
+        "id": 15,
+        "sku": "8800280690371",
+        "name": "لصقات أبيب هارتليف لتهدئة البقع الموضعية - 78 قطعة",
+        "nameAr": "لصقات أبيب هارتليف لتهدئة البقع الموضعية - 78 قطعة",
+        "nameEn": "Abib Heartleaf Calming Spot Patch - 78 patches",
+        "price": 3.9,
+        "qty": 1,
+        "line": 3.9,
+        "img": "media/products/p15_0.webp"
+      },
+      {
+        "id": 22,
+        "sku": "8809875456477",
+        "name": "مجموعة جلو فلتر بفيتامين سي لإشراقة وتفتيح البشرة من إيكوال بيري - 3قطع",
+        "nameAr": "مجموعة جلو فلتر بفيتامين سي لإشراقة وتفتيح البشرة من إيكوال بيري - 3قطع",
+        "nameEn": "Eqqualberry Vitamin Illuminating Glow Filter Set - 3pcs",
+        "price": 23.2,
+        "qty": 1,
+        "line": 23.2,
+        "img": "media/products/p22_0.webp"
+      }
+    ],
+    "subtotal": 40.7,
+    "delivery": 0,
+    "codFee": 1.5,
+    "shipping": 1.5,
+    "total": 42.2,
+    "vat": 2.01,
+    "payment": "cod",
+    "source": "demo"
+  },
+  {
+    "id": "NQ-2410",
+    "at": "2026-11-24T12:05:00+04:00",
+    "updatedAt": "2026-11-24T12:05:00+04:00",
+    "status": "ship",
+    "name": "دانة الهنائية",
+    "phone": "93445108",
+    "area": "البريمي",
+    "items": [
+      {
+        "id": 4,
+        "sku": "8809634610034",
+        "name": "سيرم تصحيح البقع الداكنة من اكسيس واي - 50مل",
+        "nameAr": "سيرم تصحيح البقع الداكنة من اكسيس واي - 50مل",
+        "nameEn": "Axis-Y Dark Spot Correcting Glow Serum - 50ml",
+        "price": 5.3,
+        "qty": 1,
+        "line": 5.3,
+        "img": "media/products/p4_0.webp"
+      },
+      {
+        "id": 16,
+        "sku": "8809562193302",
+        "name": "سيروم أرينسيا إريزر شوت بحمض الجليكوليك - 30مل",
+        "nameAr": "سيروم أرينسيا إريزر شوت بحمض الجليكوليك - 30مل",
+        "nameEn": "Arencia Eraser Shot Glycolic Acid Booster - 30ml",
+        "price": 6.7,
+        "qty": 2,
+        "line": 13.4,
+        "img": "media/products/p16_0.webp"
+      }
+    ],
+    "subtotal": 18.7,
+    "delivery": 2,
+    "codFee": 0,
+    "shipping": 2,
+    "total": 20.7,
+    "vat": 0.986,
+    "payment": "transfer",
+    "source": "demo"
+  },
+  {
+    "id": "NQ-2411",
+    "at": "2026-11-22T15:30:00+04:00",
+    "updatedAt": "2026-11-22T15:30:00+04:00",
+    "status": "ship",
+    "name": "شيخة المقبالية",
+    "phone": "94556291",
+    "area": "صور",
+    "items": [
+      {
+        "id": 5,
+        "sku": "3337875816809",
+        "name": "بلسم البشرة الجافة سيكابلاست بوم بي 5 لاروش بوزيه - 40مل",
+        "nameAr": "بلسم البشرة الجافة سيكابلاست بوم بي 5 لاروش بوزيه - 40مل",
+        "nameEn": "Cicaplast Balm B5 For Dry Skin Irritations - 40ml",
+        "price": 6.9,
+        "qty": 1,
+        "line": 6.9,
+        "img": "media/products/p5_0.webp"
+      },
+      {
+        "id": 1,
+        "sku": "8809562192770",
+        "name": "سيروم أرينسيا بفيتامين سي لتعزيز إشراقة البشرة - 30مل",
+        "nameAr": "سيروم أرينسيا بفيتامين سي لتعزيز إشراقة البشرة - 30مل",
+        "nameEn": "Arencia Vitamin C Booster Shot - 30ml",
+        "price": 6.7,
+        "qty": 1,
+        "line": 6.7,
+        "img": "media/products/p1_0.webp"
+      },
+      {
+        "id": 17,
+        "sku": "8809576261134",
+        "name": "كريم سنتيلا المهدئ للبشرة من سكين1004 - 75مل",
+        "nameAr": "كريم سنتيلا المهدئ للبشرة من سكين1004 - 75مل",
+        "nameEn": "Skin1004 Centella Soothing Cream - 75ml",
+        "price": 6.3,
+        "qty": 1,
+        "line": 6.3,
+        "img": "media/products/p17_0.webp"
+      }
+    ],
+    "subtotal": 19.9,
+    "delivery": 2,
+    "codFee": 1.5,
+    "shipping": 3.5,
+    "total": 23.4,
+    "vat": 1.114,
+    "payment": "cod",
+    "source": "demo"
+  },
+  {
+    "id": "NQ-2412",
+    "at": "2026-11-20T11:40:00+04:00",
+    "updatedAt": "2026-11-20T11:40:00+04:00",
+    "status": "ship",
+    "name": "لطيفة السعدية",
+    "phone": "95667330",
+    "area": "الرستاق",
+    "items": [
+      {
+        "id": 6,
+        "sku": "8809937361060",
+        "name": "قناع بيوكولاجين ريل ديب من بيودانس - 34ج ×4 قطع",
+        "nameAr": "قناع بيوكولاجين ريل ديب من بيودانس - 34ج ×4 قطع",
+        "nameEn": "Biodance Bio-Collagen Real Deep Mask - 34g × 4ea",
+        "price": 6.7,
+        "qty": 1,
+        "line": 6.7,
+        "img": "media/products/p6_0.webp"
+      },
+      {
+        "id": 18,
+        "sku": "8809447251363",
+        "name": "مجموعة دكتور ألثيا للعناية بعد الحبوب والترطيب المكثف - 2قطع",
+        "nameAr": "مجموعة دكتور ألثيا للعناية بعد الحبوب والترطيب المكثف - 2قطع",
+        "nameEn": "Dr.Althea 147 Barrier Cream - 50ml",
+        "price": 13.2,
+        "qty": 1,
+        "line": 13.2,
+        "img": "media/products/p18_0.webp"
+      }
+    ],
+    "subtotal": 19.9,
+    "delivery": 2,
+    "codFee": 1.5,
+    "shipping": 3.5,
+    "total": 23.4,
+    "vat": 1.114,
+    "payment": "cod",
+    "source": "demo"
+  },
+  {
+    "id": "NQ-2413",
+    "at": "2026-11-17T17:05:00+04:00",
+    "updatedAt": "2026-11-17T17:05:00+04:00",
+    "status": "ship",
+    "name": "هند الغافرية",
+    "phone": "96778415",
+    "area": "بركاء",
+    "items": [
+      {
+        "id": 1,
+        "sku": "8809562192770",
+        "name": "سيروم أرينسيا بفيتامين سي لتعزيز إشراقة البشرة - 30مل",
+        "nameAr": "سيروم أرينسيا بفيتامين سي لتعزيز إشراقة البشرة - 30مل",
+        "nameEn": "Arencia Vitamin C Booster Shot - 30ml",
+        "price": 6.7,
+        "qty": 1,
+        "line": 6.7,
+        "img": "media/products/p1_0.webp"
+      },
+      {
+        "id": 3,
+        "sku": "8809640734526",
+        "name": "سيروم انوا نياسيناميد 10% لتصحيح البقع الداكنة - 30مل",
+        "nameAr": "سيروم انوا نياسيناميد 10% لتصحيح البقع الداكنة - 30مل",
+        "nameEn": "Anua Niacinamide 10% + TXA 4% Dark Spot Correcting Serum - 30ml",
+        "price": 6.7,
+        "qty": 1,
+        "line": 6.7,
+        "img": "media/products/p3_0.webp"
+      },
+      {
+        "id": 19,
+        "sku": "041388097015",
+        "name": "ستريديكس قطع قطنية للسيطرة على حب الشباب - 55قطعة",
+        "nameAr": "ستريديكس قطع قطنية للسيطرة على حب الشباب - 55قطعة",
+        "nameEn": "Stridex Maximum Single-Step Acne Control - 55 Pads",
+        "price": 4.2,
+        "qty": 2,
+        "line": 8.4,
+        "img": "media/products/p19_0.webp"
+      },
+      {
+        "id": 26,
+        "sku": "8809652589794",
+        "name": "تونر نومبوزين رقم 9 ناد+ بي دي آر إن لتفتيح وإشراقة البشرة - 150مل",
+        "nameAr": "تونر نومبوزين رقم 9 ناد+ بي دي آر إن لتفتيح وإشراقة البشرة - 150مل",
+        "nameEn": "Numbuzin No.9 NAD+ PDRN Glow Boosting Toner - 150ml",
+        "price": 7.3,
+        "qty": 1,
+        "line": 7.3,
+        "img": "media/products/p26_0.webp"
+      }
+    ],
+    "subtotal": 29.1,
+    "delivery": 2,
+    "codFee": 0,
+    "shipping": 2,
+    "total": 31.1,
+    "vat": 1.481,
+    "payment": "transfer",
+    "source": "demo"
+  },
+  {
+    "id": "NQ-2414",
+    "at": "2026-11-21T10:00:00+04:00",
+    "updatedAt": "2026-11-21T10:00:00+04:00",
+    "status": "delivered",
+    "name": "جواهر اليعقوبية",
+    "phone": "97889502",
+    "area": "السويق",
+    "items": [
+      {
+        "id": 2,
+        "sku": "8809700320812",
+        "name": "سيروم ذا فيتا أ ريتينال شوت لشد البشرة من سيليماكس - 15مل",
+        "nameAr": "سيروم ذا فيتا أ ريتينال شوت لشد البشرة من سيليماكس - 15مل",
+        "nameEn": "Celimax The Vita A Retinal Shot Tightening Booster - 15ml",
+        "price": 5.7,
+        "qty": 1,
+        "line": 5.7,
+        "img": "media/products/p2_0.webp"
+      },
+      {
+        "id": 20,
+        "sku": "8809576261615",
+        "name": "كريم تفتيح البشرة بالكبسولات من سكين1004 - 75مل",
+        "nameAr": "كريم تفتيح البشرة بالكبسولات من سكين1004 - 75مل",
+        "nameEn": "Skin1004 Tone Brightening Capsule Cream - 75ml",
+        "price": 6.7,
+        "qty": 1,
+        "line": 6.7,
+        "img": "media/products/p20_0.webp"
+      }
+    ],
+    "subtotal": 12.4,
+    "delivery": 2,
+    "codFee": 1.5,
+    "shipping": 3.5,
+    "total": 15.9,
+    "vat": 0.757,
+    "payment": "cod",
+    "source": "demo"
+  },
+  {
+    "id": "NQ-2415",
+    "at": "2026-11-19T14:25:00+04:00",
+    "updatedAt": "2026-11-19T14:25:00+04:00",
+    "status": "delivered",
+    "name": "سمية الصقرية",
+    "phone": "98990664",
+    "area": "المصنعة",
+    "items": [
+      {
+        "id": 3,
+        "sku": "8809640734526",
+        "name": "سيروم انوا نياسيناميد 10% لتصحيح البقع الداكنة - 30مل",
+        "nameAr": "سيروم انوا نياسيناميد 10% لتصحيح البقع الداكنة - 30مل",
+        "nameEn": "Anua Niacinamide 10% + TXA 4% Dark Spot Correcting Serum - 30ml",
+        "price": 6.7,
+        "qty": 1,
+        "line": 6.7,
+        "img": "media/products/p3_0.webp"
+      },
+      {
+        "id": 5,
+        "sku": "3337875816809",
+        "name": "بلسم البشرة الجافة سيكابلاست بوم بي 5 لاروش بوزيه - 40مل",
+        "nameAr": "بلسم البشرة الجافة سيكابلاست بوم بي 5 لاروش بوزيه - 40مل",
+        "nameEn": "Cicaplast Balm B5 For Dry Skin Irritations - 40ml",
+        "price": 6.9,
+        "qty": 1,
+        "line": 6.9,
+        "img": "media/products/p5_0.webp"
+      },
+      {
+        "id": 21,
+        "sku": "8809447256191",
+        "name": "سيروم دكتور ألثيا أكوا مارين العميق لترطيب البشرة - 30مل",
+        "nameAr": "سيروم دكتور ألثيا أكوا مارين العميق لترطيب البشرة - 30مل",
+        "nameEn": "Dr.Althea Aqua Marine Deep Serum - 30ml",
+        "price": 6.7,
+        "qty": 1,
+        "line": 6.7,
+        "img": "media/products/p21_0.webp"
+      }
+    ],
+    "subtotal": 20.3,
+    "delivery": 2,
+    "codFee": 0,
+    "shipping": 2,
+    "total": 22.3,
+    "vat": 1.062,
+    "payment": "transfer",
+    "source": "demo",
+    "paymentStatus": "confirmed"
+  },
+  {
+    "id": "NQ-2416",
+    "at": "2026-11-16T09:18:00+04:00",
+    "updatedAt": "2026-11-16T09:18:00+04:00",
+    "status": "delivered",
+    "name": "عائشة الزدجالية",
+    "phone": "92101773",
+    "area": "إبراء",
+    "items": [
+      {
+        "id": 4,
+        "sku": "8809634610034",
+        "name": "سيرم تصحيح البقع الداكنة من اكسيس واي - 50مل",
+        "nameAr": "سيرم تصحيح البقع الداكنة من اكسيس واي - 50مل",
+        "nameEn": "Axis-Y Dark Spot Correcting Glow Serum - 50ml",
+        "price": 5.3,
+        "qty": 1,
+        "line": 5.3,
+        "img": "media/products/p4_0.webp"
+      },
+      {
+        "id": 22,
+        "sku": "8809875456477",
+        "name": "مجموعة جلو فلتر بفيتامين سي لإشراقة وتفتيح البشرة من إيكوال بيري - 3قطع",
+        "nameAr": "مجموعة جلو فلتر بفيتامين سي لإشراقة وتفتيح البشرة من إيكوال بيري - 3قطع",
+        "nameEn": "Eqqualberry Vitamin Illuminating Glow Filter Set - 3pcs",
+        "price": 23.2,
+        "qty": 2,
+        "line": 46.4,
+        "img": "media/products/p22_0.webp"
+      }
+    ],
+    "subtotal": 51.7,
+    "delivery": 0,
+    "codFee": 1.5,
+    "shipping": 1.5,
+    "total": 53.2,
+    "vat": 2.533,
+    "payment": "cod",
+    "source": "demo"
+  },
+  {
+    "id": "NQ-2417",
+    "at": "2026-11-15T19:40:00+04:00",
+    "updatedAt": "2026-11-15T19:40:00+04:00",
+    "status": "delivered",
+    "name": "خلود الهاشمية",
+    "phone": "93212886",
+    "area": "بهلاء",
+    "items": [
+      {
+        "id": 5,
+        "sku": "3337875816809",
+        "name": "بلسم البشرة الجافة سيكابلاست بوم بي 5 لاروش بوزيه - 40مل",
+        "nameAr": "بلسم البشرة الجافة سيكابلاست بوم بي 5 لاروش بوزيه - 40مل",
+        "nameEn": "Cicaplast Balm B5 For Dry Skin Irritations - 40ml",
+        "price": 6.9,
+        "qty": 1,
+        "line": 6.9,
+        "img": "media/products/p5_0.webp"
+      },
+      {
+        "id": 1,
+        "sku": "8809562192770",
+        "name": "سيروم أرينسيا بفيتامين سي لتعزيز إشراقة البشرة - 30مل",
+        "nameAr": "سيروم أرينسيا بفيتامين سي لتعزيز إشراقة البشرة - 30مل",
+        "nameEn": "Arencia Vitamin C Booster Shot - 30ml",
+        "price": 6.7,
+        "qty": 1,
+        "line": 6.7,
+        "img": "media/products/p1_0.webp"
+      },
+      {
+        "id": 23,
+        "sku": "8809982769828",
+        "name": "سيروم ميديكيوب زيرو بور لتقليل المسام سريع المفعول - 30مل",
+        "nameAr": "سيروم ميديكيوب زيرو بور لتقليل المسام سريع المفعول - 30مل",
+        "nameEn": "Medicube Zero Pore One-day Serum - 30ml",
+        "price": 7.3,
+        "qty": 1,
+        "line": 7.3,
+        "img": "media/products/p23_0.webp"
+      },
+      {
+        "id": 30,
+        "sku": "8800256114351",
+        "name": "سيروم ميديكيوب تريبل كولاجين لشد البشرة - 55مل",
+        "nameAr": "سيروم ميديكيوب تريبل كولاجين لشد البشرة - 55مل",
+        "nameEn": "Medicube Triple Collagen Serum - 55ml",
+        "price": 6.3,
+        "qty": 1,
+        "line": 6.3,
+        "img": "media/products/p30_0.webp"
+      }
+    ],
+    "subtotal": 27.2,
+    "delivery": 2,
+    "codFee": 0,
+    "shipping": 2,
+    "total": 29.2,
+    "vat": 1.39,
+    "payment": "transfer",
+    "source": "demo",
+    "paymentStatus": "confirmed"
+  },
+  {
+    "id": "NQ-2418",
+    "at": "2026-11-23T20:10:00+04:00",
+    "updatedAt": "2026-11-23T20:10:00+04:00",
+    "status": "cancel",
+    "name": "بدرية الكيومية",
+    "phone": "94323940",
+    "area": "الخوض",
+    "items": [
+      {
+        "id": 24,
+        "sku": "8809738312728",
+        "name": "سيرم جلو ديب من بيوتي اوف جوسون بالأرز والألفا أربوتين - 30مل",
+        "nameAr": "سيرم جلو ديب من بيوتي اوف جوسون بالأرز والألفا أربوتين - 30مل",
+        "nameEn": "Beauty of Joseon Glow Deep Serum Rice + Alpha-Arbutin - 30ml",
+        "price": 6.7,
+        "qty": 1,
+        "line": 6.7,
+        "img": "media/products/p24_0.webp"
+      }
+    ],
+    "subtotal": 6.7,
+    "delivery": 2,
+    "codFee": 1.5,
+    "shipping": 3.5,
+    "total": 10.2,
+    "vat": 0.486,
+    "payment": "cod",
+    "source": "demo"
+  },
+  {
+    "id": "NQ-2419",
+    "at": "2026-11-20T08:50:00+04:00",
+    "updatedAt": "2026-11-20T08:50:00+04:00",
+    "status": "cancel",
+    "name": "وفاء النبهانية",
+    "phone": "95434015",
+    "area": "القرم",
+    "items": [
+      {
+        "id": 25,
+        "sku": "8809875457801",
+        "name": "سيروم الببتيدات لشد ونضارة البشرة من إيكوال بيري - 50مل",
+        "nameAr": "سيروم الببتيدات لشد ونضارة البشرة من إيكوال بيري - 50مل",
+        "nameEn": "Eqqualberry NAD+ Peptide Boosting Serum - 50ml",
+        "price": 7.6,
+        "qty": 2,
+        "line": 15.2,
+        "img": "media/products/p25_0.webp"
+      }
+    ],
+    "subtotal": 15.2,
+    "delivery": 2,
+    "codFee": 0,
+    "shipping": 2,
+    "total": 17.2,
+    "vat": 0.819,
+    "payment": "transfer",
+    "source": "demo"
+  },
+  {
+    "id": "NQ-2420",
+    "at": "2026-11-14T13:33:00+04:00",
+    "updatedAt": "2026-11-14T13:33:00+04:00",
+    "status": "cancel",
+    "name": "زمزم اللمكية",
+    "phone": "96545128",
+    "area": "غلا",
+    "items": [
+      {
+        "id": 26,
+        "sku": "8809652589794",
+        "name": "تونر نومبوزين رقم 9 ناد+ بي دي آر إن لتفتيح وإشراقة البشرة - 150مل",
+        "nameAr": "تونر نومبوزين رقم 9 ناد+ بي دي آر إن لتفتيح وإشراقة البشرة - 150مل",
+        "nameEn": "Numbuzin No.9 NAD+ PDRN Glow Boosting Toner - 150ml",
+        "price": 7.3,
+        "qty": 1,
+        "line": 7.3,
+        "img": "media/products/p26_0.webp"
+      }
+    ],
+    "subtotal": 7.3,
+    "delivery": 2,
+    "codFee": 1.5,
+    "shipping": 3.5,
+    "total": 10.8,
+    "vat": 0.514,
+    "payment": "cod",
+    "source": "demo"
+  }
+]

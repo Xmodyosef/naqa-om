@@ -65,8 +65,27 @@
   };
   A.deductStockForOrder = function (order) {
     if (!order || order.stockDeducted) return;
+    if (!A.products || !A.products.length) return;
     A.applyStockDelta(order, -1);
     order.stockDeducted = true;
+  };
+  A.settleOrderStock = function () {
+    if (!A.products || !A.products.length) return;
+    var changed = false;
+    (A.orders || []).forEach(function (o) {
+      var st = A.normalizeStatus(o.status);
+      if (!o.stockDeducted && (st === "prep" || st === "ship" || st === "delivered")) {
+        A.deductStockForOrder(o);
+        if (o.stockDeducted) changed = true;
+      }
+    });
+    if (changed) {
+      if (A.saveOrders) A.saveOrders();
+      try { if (A.syncOverridesCloud) A.syncOverridesCloud(); } catch (e) {}
+      if (A.paintList && A.currentTab === "products") A.paintList("");
+      if (A.paintDashboard && A.currentTab === "home") A.paintDashboard();
+      if (A.updateOrdersBadge) A.updateOrdersBadge();
+    }
   };
   A.restoreStockForOrder = function (order) {
     if (!order || !order.stockDeducted) return;

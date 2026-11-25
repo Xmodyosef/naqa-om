@@ -411,7 +411,7 @@
     if (A._ordersRemoteLoadedAt && (Date.now() - A._ordersRemoteLoadedAt) < 60000) {
       return Promise.resolve(A.orders || []);
     }
-    A._ordersRemoteLoading = fetch("data/orders.json?v=" + (A._ordersRemoteVer || "1")).then(function (r) { return r.ok ? r.json() : []; }).then(function (remote) {
+    A._ordersRemoteLoading = fetch("data/orders.json?v=20261125ord1").then(function (r) { return r.ok ? r.json() : []; }).then(function (remote) {
       A._ordersRemoteLoadedAt = Date.now();
       A._ordersRemoteLoading = null;
       if (!Array.isArray(remote)) return;
@@ -419,11 +419,15 @@
       A.orders.forEach(function (o) { if (o && o.id) by[o.id] = o; });
       remote.forEach(function (o) {
         if (!o || !o.id) return;
-        by[o.id] = Object.assign({}, by[o.id] || {}, o);
+        var prev = by[o.id];
+        var merged = Object.assign({}, prev || {}, o);
+        if (prev && prev.stockDeducted) merged.stockDeducted = true;
+        by[o.id] = merged;
       });
       A.orders = Object.keys(by).map(function (k) { return by[k]; });
       A.orders.sort(function (a, b) { return (b.at || "").localeCompare(a.at || ""); });
       A.orders.forEach(function (o) { o.status = A.normalizeStatus(o.status); });
+      if (A.settleOrderStock) A.settleOrderStock();
       A.saveOrders();
       if (A.paintOrders) A.paintOrders();
       if (A.paintDashboard) A.paintDashboard();

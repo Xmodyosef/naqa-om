@@ -2,7 +2,7 @@
 (function (w) {
   "use strict";
   var A = w.NaqaAdmin = w.NaqaAdmin || {};
-  var V = "20261125home1";
+  var V = "20261125ord1";
   var loaded = false;
   var inflight = null;
   var SCRIPT_MS = 12000;
@@ -73,6 +73,7 @@
         }
       } catch (e) {}
       try { if (A.bindProductListClicks) A.bindProductListClicks(); } catch (e) {}
+      try { if (A.settleOrderStock) A.settleOrderStock(); } catch (e) {}
       try {
         if (A.paintList) A.paintList("");
         if (A.paintDashboard) A.paintDashboard();

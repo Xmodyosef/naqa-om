@@ -34,15 +34,17 @@
         var cur = by[o.id];
         if (!cur) by[o.id] = o;
         else {
-          /* newer at wins for status merge */
           var a = String(cur.updatedAt || cur.at || "");
           var b = String(o.updatedAt || o.at || "");
-          by[o.id] = b >= a ? Object.assign({}, cur, o) : Object.assign({}, o, cur);
+          var merged = b >= a ? Object.assign({}, cur, o) : Object.assign({}, o, cur);
+          if (cur.stockDeducted || o.stockDeducted) merged.stockDeducted = true;
+          by[o.id] = merged;
         }
       });
       A.orders = Object.keys(by).map(function (k) { return by[k]; });
       A.orders.sort(function (a, b) { return String(b.at || "").localeCompare(String(a.at || "")); });
       A.orders.forEach(function (o) { o.status = A.normalizeStatus(o.status); });
+      if (A.settleOrderStock) A.settleOrderStock();
       if (A.saveOrders) A.saveOrders();
       if (A.updateOrdersBadge) A.updateOrdersBadge();
       return true;
@@ -66,6 +68,13 @@
         payment: o.payment || o.pay || "",
         itemsText: o.itemsText || "",
         items: Array.isArray(o.items) ? o.items.slice(0, 40) : [],
+        subtotal: o.subtotal != null ? Number(o.subtotal) : null,
+        delivery: o.delivery != null ? Number(o.delivery) : null,
+        codFee: o.codFee != null ? Number(o.codFee) : null,
+        shipping: o.shipping != null ? Number(o.shipping) : null,
+        vat: o.vat != null ? Number(o.vat) : null,
+        stockDeducted: !!o.stockDeducted,
+        paymentStatus: o.paymentStatus || "",
         updatedAt: o.updatedAt || o.at || new Date().toISOString()
       };
     }).filter(function (o) { return o.id; });

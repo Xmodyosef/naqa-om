@@ -286,7 +286,7 @@ function loadReviews() {
 function reviewsFor(p) {
   if (!p) return [];
   return NAQA_REVIEWS.filter(function (r) {
-    if (!r) return false;
+    if (!r || r.on === false || r.sample) return false;
     if (r.pid != null && Number(r.pid) === Number(p.id)) return true;
     return r.sku && p.sku && String(r.sku) === String(p.sku);
   });

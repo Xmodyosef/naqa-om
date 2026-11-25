@@ -25,7 +25,7 @@
     });
   }
   function publicList() {
-    return (A.reviews || []).filter(function (r) { return r.on !== false; }).map(function (r) {
+    return (A.reviews || []).filter(function (r) { return r.on !== false && !r.sample; }).map(function (r) {
       var photo = r.photo || "";
       if (!photo && r.photoB64 && r.photoB64.length < 700000) {
         photo = "data:image/jpeg;base64," + r.photoB64;
@@ -123,7 +123,9 @@
         var imgSrc = r.photo || (r.photoB64 ? ("data:image/jpeg;base64," + r.photoB64) : "");
         var img = imgSrc ? '<img src="' + A.esc(imgSrc) + '" alt="" style="width:64px;height:64px;object-fit:cover;border-radius:10px">' : "";
         var when = r.at ? A.fmtDateNum(r.at) : "";
-        return '<div class="row"><div>' + img + '<strong>' + A.esc(r.name || "") + " " + stars(r.stars) + '</strong><small>' + A.esc(r.sku || "") + (when ? " · " + A.esc(when) : "") + " · " + A.esc((r.ar || r.en || "").slice(0, 80)) + '</small></div>'
+        var sample = r.sample ? (' <span class="tax-mark">' + (A.lang === "en" ? "Preview" : "تجريبي") + '</span>') : "";
+        var ord = r.order ? (" · " + r.order) : "";
+        return '<div class="row"><div>' + img + '<strong>' + A.esc(r.name || "") + " " + stars(r.stars) + sample + '</strong><small>' + A.esc(r.sku || "") + ord + (when ? " · " + A.esc(when) : "") + " · " + A.esc((r.ar || r.en || "").slice(0, 80)) + '</small></div>'
           + '<button type="button" class="mini" data-rv-off="' + A.esc(r.id) + '">' + (r.on === false ? A.t("r_show") : A.t("r_hide")) + '</button>'
           + '<button type="button" class="mini" data-rv-del="' + A.esc(r.id) + '">' + A.t("del") + '</button></div>';
       }).join("") || '<p class="note">' + A.t("r_empty") + '</p>';

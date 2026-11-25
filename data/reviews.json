@@ -1,1 +1,72 @@
-[]
+[
+  {
+    "id": "rv-nq2414-2",
+    "sku": "8809700320812",
+    "pid": 2,
+    "name": "جواهر",
+    "stars": 5,
+    "ar": "جربته أسبوعين، البشرة أهدى والملمس أنعم. راح أعيد الطلب.",
+    "en": "Two weeks in, my skin feels calmer and smoother. I'll reorder.",
+    "photo": "",
+    "at": "2026-11-23",
+    "on": true,
+    "sample": true,
+    "order": "NQ-2414"
+  },
+  {
+    "id": "rv-nq2415-3",
+    "sku": "8809640734526",
+    "pid": 3,
+    "name": "سمية",
+    "stars": 5,
+    "ar": "البقع الخفيفة صارت أهدى، والقوام خفيف ما يثقل.",
+    "en": "Light dark spots look softer, and the texture is light.",
+    "photo": "",
+    "at": "2026-11-22",
+    "on": true,
+    "sample": true,
+    "order": "NQ-2415"
+  },
+  {
+    "id": "rv-nq2416-4",
+    "sku": "8809634610034",
+    "pid": 4,
+    "name": "عائشة",
+    "stars": 4,
+    "ar": "حبيته على البقع، ينشرب بسرعة وما لزّق.",
+    "en": "Liked it on dark spots. It sinks in fast and isn't sticky.",
+    "photo": "",
+    "at": "2026-11-20",
+    "on": true,
+    "sample": true,
+    "order": "NQ-2416"
+  },
+  {
+    "id": "rv-nq2417-1",
+    "sku": "8809562192770",
+    "pid": 1,
+    "name": "خلود",
+    "stars": 5,
+    "ar": "الإشراقة باينة من أول أسبوع، والريحة خفيفة.",
+    "en": "Brightness showed in the first week, and the scent is light.",
+    "photo": "",
+    "at": "2026-11-18",
+    "on": true,
+    "sample": true,
+    "order": "NQ-2417"
+  },
+  {
+    "id": "rv-nq2415-5",
+    "sku": "3337875816809",
+    "pid": 5,
+    "name": "سمية",
+    "stars": 5,
+    "ar": "للبشرة الجافة ممتاز، يهدّي بسرعة.",
+    "en": "Great on dry skin. It calms quickly.",
+    "photo": "",
+    "at": "2026-11-21",
+    "on": true,
+    "sample": true,
+    "order": "NQ-2415"
+  }
+]

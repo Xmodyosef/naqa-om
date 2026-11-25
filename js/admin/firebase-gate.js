@@ -444,22 +444,31 @@
 
   A.fbBoot = function () {
     if (!w.naqaFirebaseEnabled || !naqaFirebaseEnabled()) {
+      _authReady = true;
+      clearAuthed();
       setPending(false);
-      showPinOnly();
-      if ($("pin")) $("pin").hidden = false;
+      lockUI();
+      showFbOnly();
+      setMsg(t("fb_loadFail", "Firebase غير مفعّل."), "err");
       return;
     }
     if (!w.firebase || !firebase.apps) {
+      _authReady = true;
+      clearAuthed();
       setPending(false);
-      showPinOnly();
+      lockUI();
+      showFbOnly();
       setMsg(t("fb_loadFail", ""), "err");
       return;
     }
     try {
       if (!firebase.apps.length) firebase.initializeApp(w.NAQA_FIREBASE);
     } catch (e) {
+      _authReady = true;
+      clearAuthed();
       setPending(false);
-      showPinOnly();
+      lockUI();
+      showFbOnly();
       setMsg(t("fb_loadFail", ""), "err");
       return;
     }
@@ -537,9 +546,28 @@
         showFbOnly();
         return;
       }
-      /* User restored (LOCAL persistence) — never flash the pin card */
-      setPending(true);
+      /* User restored — hide pin, validate, OPEN shell first, modules in background */
       if ($("pin")) $("pin").hidden = true;
+      setPending(true);
+      var safety = setTimeout(function () {
+        /* Never stay on «جاري فتح اللوحة» forever */
+        try {
+          if (document.body.classList.contains("naqa-auth-pending")) {
+            if (A.fbUser) {
+              unlockUI();
+              setPending(false);
+              try { if (A.openAdmin) A.openAdmin(); } catch (e) {}
+            } else {
+              clearAuthed();
+              setPending(false);
+              lockUI();
+              showFbOnly();
+              setMsg(t("fb_timeout", "تعذّر فتح اللوحة. حدّثي الصفحة أو سجّلي الدخول من جديد."), "err");
+            }
+          }
+        } catch (e) {}
+      }, 10000);
+
       allowedEmail(user).then(function (ok) {
         var uidOk = true;
         try {
@@ -548,6 +576,7 @@
         if (!ok || !uidOk) {
           A.fbUser = null;
           clearAuthed();
+          clearTimeout(safety);
           firebase.auth().signOut().then(function () {
             preventSilentReentry();
             _authReady = true;
@@ -560,23 +589,50 @@
           return;
         }
         A.fbUser = user;
-        setPending(true);
-        var finish = function () {
-          unlockUI();
-          if (A.touchSession) A.touchSession();
-          if (A.openAdmin) A.openAdmin();
-          setMsg("");
-          setBusy(false);
-          setPending(false);
-        };
-        /* Heavy modules (catalog + tabs) load only after auth — keeps gate light */
-        if (A.loadAdminModules) {
-          A.loadAdminModules().then(finish).catch(finish);
-        } else {
-          finish();
+        markAuthed();
+        /* CRITICAL: unlock immediately — do not wait for products.bundle */
+        unlockUI();
+        setPending(false);
+        clearTimeout(safety);
+        setMsg("");
+        setBusy(false);
+        try { if (A.touchSession) A.touchSession(); } catch (e) {}
+        try { if (A.openAdmin) A.openAdmin(); } catch (e) {}
+
+        function afterModules() {
+          try { if (A.openAdmin) A.openAdmin(); } catch (e) {}
+          try {
+            if (A.currentTab === "products" && A.paintList) A.paintList("");
+            if (A.currentTab === "home" && A.paintDashboard) A.paintDashboard();
+          } catch (e) {}
         }
+        if (A.loadAdminModules) {
+          A.loadAdminModules().then(afterModules).catch(afterModules);
+        }
+      }).catch(function () {
+        clearTimeout(safety);
+        clearAuthed();
+        setPending(false);
+        lockUI();
+        showFbOnly();
+        setMsg(t("fb_bad", "تعذّر التحقق من الحساب."), "err");
       });
     });
+
+    /* Global boot watchdog (Firebase never ready / offline) */
+    setTimeout(function () {
+      if (_authReady) return;
+      try {
+        if (document.body.classList.contains("naqa-auth-pending")) {
+          _authReady = true;
+          clearAuthed();
+          setPending(false);
+          lockUI();
+          showFbOnly();
+          setMsg(t("fb_timeout", "تعذّر الاتصال. تحققي من النت وحدّثي الصفحة."), "err");
+        }
+      } catch (e) {}
+    }, 12000);
   };
 
   if (document.readyState === "loading") {

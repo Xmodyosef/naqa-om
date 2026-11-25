@@ -209,10 +209,16 @@
   };
 
   A.openAdmin = function () {
-    /* P1: only open when Firebase has a current user (called after allowedEmail) */
-    if (!A.isAuthed || !A.isAuthed()) {
-      return;
+    /* Accept gate-validated fbUser even if isAuthed races */
+    var ok = false;
+    try { ok = !!(A.fbUser && A.fbUser.uid); } catch (e) {}
+    try { if (!ok && A.isAuthed) ok = !!A.isAuthed(); } catch (e) {}
+    if (!ok) {
+      try {
+        if (window.firebase && firebase.auth && firebase.auth().currentUser) ok = true;
+      } catch (e) {}
     }
+    if (!ok) return;
     A.touchSession();
     try {
       document.body.classList.remove("naqa-locked");

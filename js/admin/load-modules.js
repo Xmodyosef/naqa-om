@@ -2,9 +2,10 @@
 (function (w) {
   "use strict";
   var A = w.NaqaAdmin = w.NaqaAdmin || {};
-  var V = "20261125flash1";
+  var V = "20261125unhang1";
   var loaded = false;
   var inflight = null;
+  var SCRIPT_MS = 12000;
 
   var MODULES = [
     "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js",
@@ -24,11 +25,29 @@
 
   function loadScript(src) {
     return new Promise(function (resolve, reject) {
+      var done = false;
       var s = document.createElement("script");
       s.src = src;
       s.async = false;
-      s.onload = function () { resolve(src); };
-      s.onerror = function () { reject(new Error("load-fail:" + src)); };
+      var timer = setTimeout(function () {
+        if (done) return;
+        done = true;
+        try { console.warn("[naqa] script timeout", src); } catch (e) {}
+        resolve(src); /* skip hung file — do not block panel forever */
+      }, SCRIPT_MS);
+      s.onload = function () {
+        if (done) return;
+        done = true;
+        clearTimeout(timer);
+        resolve(src);
+      };
+      s.onerror = function () {
+        if (done) return;
+        done = true;
+        clearTimeout(timer);
+        try { console.warn("[naqa] script fail", src); } catch (e) {}
+        resolve(src); /* continue chain */
+      };
       document.head.appendChild(s);
     });
   }

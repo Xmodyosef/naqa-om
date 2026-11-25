@@ -205,25 +205,44 @@ body.naqa-open main.admin-main{display:block}
 #fbNoteSave{display:block !important}
 #fbCreate{display:none !important}
 
-/* ===== flash1: NEVER flash login on reload when session expected ===== */
-html.naqa-expect-auth body:not(.naqa-open) #pin,
+
+/* Login card only when locked, auth resolved, not open */
+body.naqa-locked:not(.naqa-auth-pending):not(.naqa-open) #pin {
+  display: block !important;
+  visibility: visible !important;
+}
+
+/* ===== unhang1: boot cannot trap the panel ===== */
 body.naqa-auth-pending #pin,
 body.naqa-auth-pending #fbLogin {
   display: none !important;
   visibility: hidden !important;
   pointer-events: none !important;
 }
-html.naqa-expect-auth body:not(.naqa-open) #authBoot,
 body.naqa-auth-pending #authBoot {
   display: block !important;
   visibility: visible !important;
 }
-html.naqa-expect-auth body:not(.naqa-open) #tools,
-html.naqa-expect-auth body:not(.naqa-open) .admin-shell,
-body.naqa-auth-pending #tools {
+body.naqa-auth-pending #tools,
+body.naqa-auth-pending .admin-shell {
   display: none !important;
 }
-/* Login card only when locked, auth resolved, not open */
+/* After unlock: force shell visible even if a stale class remains */
+body.naqa-open #tools,
+body.naqa-open .admin-shell,
+body.naqa-open main.admin-main {
+  display: block !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+}
+body.naqa-open #pin,
+body.naqa-open #authBoot {
+  display: none !important;
+}
+/* expect-auth only hides pin while STILL pending — not after fail */
+html.naqa-expect-auth body.naqa-auth-pending #pin {
+  display: none !important;
+}
 body.naqa-locked:not(.naqa-auth-pending):not(.naqa-open) #pin {
   display: block !important;
   visibility: visible !important;

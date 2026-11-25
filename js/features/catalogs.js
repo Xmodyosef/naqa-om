@@ -195,34 +195,42 @@ function catalogThumbHTML(list, c){
 }
 
 function campaignProductHTML(p){
-  /* kept for potential reuse; homepage no longer shows product rails */
   if(!p) return "";
   var imgs = (typeof pimgs === "function") ? pimgs(p) : (p.imgs || []);
   var src = imgs[0] || "";
   var name = (typeof pname === "function") ? pname(p) : (p.nameAr || p.nameEn || "");
+  var brand = p.brand || "";
   var price = (typeof money === "function") ? money(p.price) : (p.price + "");
+  var old = "";
+  if(p.was > p.price){
+    old = (typeof money === "function") ? money(p.was) : (p.was + "");
+  }
   return '<article class="camp-product" data-id="'+p.id+'">'
-    + '<button type="button" class="camp-product-media" data-open="'+p.id+'">'
-    + (src ? '<img src="'+esc(src)+'" alt="" loading="lazy">' : '')
-    + '</button><div class="camp-product-body"><button type="button" class="camp-product-name" data-open="'+p.id+'">'+esc(name)+'</button>'
-    + '<span class="camp-product-price">'+price+'</span></div></article>';
+    + '<button type="button" class="camp-product-media" data-open="'+p.id+'" aria-label="'+esc(name)+'">'
+    + (src
+        ? '<img src="'+esc(src)+'" alt="" loading="lazy" decoding="async" width="180" height="180">'
+        : '<span class="camp-product-em">'+(p.em||"✨")+'</span>')
+    + '</button>'
+    + '<div class="camp-product-body">'
+    + (brand ? '<small>'+esc(brand)+'</small>' : '')
+    + '<button type="button" class="camp-product-name" data-open="'+p.id+'">'+esc(name)+'</button>'
+    + '<span class="camp-product-price">'+price
+    + (old ? ' <i class="camp-old">'+old+'</i>' : '')
+    + '</span></div></article>';
 }
 
-/** Homepage = banners only (no product grid / no product rails under banners). */
+/** 15 campaigns: banner then product rail (Nice One style) */
 function getHomeCampaigns(){
-  var en = (typeof lang !== "undefined" && lang === "en");
   var out = [];
   getNaqaCatalogs().forEach(function(c){
     if(!c.home) return;
     var list = [];
-    try{ list = catalogList(c.id, 6) || []; }catch(e){ list = []; }
-    if(!list.length && c.id !== "all") return;
+    try{ list = catalogList(c.id, 12) || []; }catch(e){ list = []; }
+    if(!list.length) return;
     var art = c.cover || "";
     try{
-      if(list[0]){
-        var g0 = (typeof pimgs === "function") ? pimgs(list[0]) : (list[0].imgs||[]);
-        if(g0 && g0[0]) art = g0[0];
-      }
+      var g0 = (typeof pimgs === "function") ? pimgs(list[0]) : (list[0].imgs||[]);
+      if(g0 && g0[0]) art = g0[0];
     }catch(e){}
     out.push({
       id: c.id,
@@ -230,15 +238,63 @@ function getHomeCampaigns(){
       ar: c.ar, en: c.en,
       subAr: c.subAr || "", subEn: c.subEn || "",
       eyeAr: c.em || "✦", eyeEn: c.em || "✦",
-      bodyAr: c.subAr || "", bodyEn: c.subEn || "",
-      chipsAr: [], chipsEn: [],
-      ctaAr: "تسوّقي الآن ←", ctaEn: "Shop now →",
+      ctaAr: "عرض الكل ←", ctaEn: "View all →",
       art: art,
       cover: c.cover || "",
-      list: function(){ return catalogList(c.id, 8); }
+      list: list
     });
   });
   return out;
+}
+
+function naqaStartCampRails(root){
+  if(!root || root.__naqaRails) return;
+  root.__naqaRails = true;
+  var rails = root.querySelectorAll(".campaign-rail");
+  rails.forEach(function(rail){
+    if(rail.__naqaSpin) return;
+    rail.__naqaSpin = true;
+    var track = rail.querySelector(".campaign-products");
+    if(!track) return;
+    /* duplicate children for seamless loop when few items */
+    var kids = Array.prototype.slice.call(track.children);
+    if(kids.length && kids.length < 16){
+      kids.forEach(function(node){
+        var clone = node.cloneNode(true);
+        clone.setAttribute("aria-hidden","true");
+        clone.querySelectorAll("button").forEach(function(b){ b.tabIndex = -1; });
+        track.appendChild(clone);
+      });
+    }
+    var paused = false;
+    var dir = (document.documentElement.getAttribute("dir") === "rtl") ? -1 : 1;
+    /* RTL scrollLeft quirks: use scrollBy positive toward "start" content flow */
+    var timer = setInterval(function(){
+      if(paused || document.hidden) return;
+      if(!document.body.contains(track)){ clearInterval(timer); return; }
+      var max = track.scrollWidth - track.clientWidth;
+      if(max <= 8) return;
+      track.scrollLeft += 1.2 * dir;
+      /* loop */
+      if(dir < 0){
+        /* rtl: when near end, wrap */
+        if(Math.abs(track.scrollLeft) >= max - 2 || track.scrollLeft <= 2 - max){
+          /* keep moving; reset mid */
+        }
+        if(track.scrollLeft <= 1){
+          track.scrollLeft = max / 2;
+        } else if(track.scrollLeft >= max - 1){
+          track.scrollLeft = max / 2;
+        }
+      } else {
+        if(track.scrollLeft >= max - 1) track.scrollLeft = 0;
+      }
+    }, 30);
+    track.addEventListener("pointerenter", function(){ paused = true; });
+    track.addEventListener("pointerleave", function(){ paused = false; });
+    track.addEventListener("touchstart", function(){ paused = true; }, {passive:true});
+    track.addEventListener("touchend", function(){ setTimeout(function(){ paused = false; }, 1800); }, {passive:true});
+  });
 }
 
 function renderHomeCatalogs(){
@@ -251,28 +307,30 @@ function renderHomeCatalogs(){
   }
   box.hidden = false;
   var en = (typeof lang !== "undefined" && lang === "en");
-  var html = '<div class="home-campaigns home-banners-only" id="homeCatalog">';
-  html += '<p class="home-ban-lead">'+(en
-    ? "Pick a collection — every section is a banner."
-    : "اختاري مجموعة — كل شيء يظهر كبنر.")+'</p>';
+  var html = '<div class="home-campaigns home-rails" id="homeCatalog">';
 
   getHomeCampaigns().forEach(function(c){
+    var list = c.list || [];
+    if(!list.length) return;
     var title = en ? c.en : c.ar;
-    var sub = en ? (c.subEn || c.bodyEn) : (c.subAr || c.bodyAr);
+    var sub = en ? c.subEn : c.subAr;
     var eye = en ? c.eyeEn : c.eyeAr;
     var cta = en ? c.ctaEn : c.ctaAr;
     var art = c.art || c.cover || "";
     var openAttr = ' data-open-catalog="'+esc(c.id)+'"';
 
-    /* Full-bleed photo banner when cover exists; gradient fallback */
     var styleBg = "";
     if(c.cover){
-      styleBg = " style=\"background-image:linear-gradient(90deg,rgba(40,12,22,.72) 0%,rgba(40,12,22,.35) 55%,rgba(40,12,22,.15) 100%),url('"
-        + esc(c.cover)
-        + "');background-size:cover;background-position:center;\"";
+      styleBg = " style=\"background-image:linear-gradient(100deg,rgba(32,12,20,.78) 0%,rgba(32,12,20,.4) 55%,rgba(32,12,20,.18) 100%),url('" + esc(c.cover) + "');background-size:cover;background-position:center;\"";
     }
 
-    html += '<section class="campaign campaign-solo" id="camp-'+esc(c.id)+'">'
+    html += '<section class="campaign" id="camp-'+esc(c.id)+'">'
+      + '<div class="campaign-head">'
+      + '<div><h2>'+esc(title)+'</h2>'
+      + (sub ? '<p>'+esc(sub)+'</p>' : '')
+      + '</div>'
+      + '<button type="button" class="campaign-all"'+openAttr+'>'+esc(cta)+'</button>'
+      + '</div>'
       + '<button type="button" class="campaign-banner tone-'+esc(c.tone)+'"'+openAttr+styleBg+'>'
       + '<div class="campaign-copy">'
       + '<small>'+esc(eye)+'</small>'
@@ -280,13 +338,18 @@ function renderHomeCatalogs(){
       + (sub ? '<p>'+esc(sub)+'</p>' : '')
       + '<span class="chip chip-cta">'+esc(cta)+'</span>'
       + '</div>'
-      + (art && !c.cover ? '<img class="campaign-art" src="'+esc(art)+'" alt="" loading="lazy" decoding="async" width="270" height="260">' : '')
-      + (art && c.cover ? '<img class="campaign-art" src="'+esc(art)+'" alt="" loading="lazy" decoding="async" width="270" height="260">' : '')
-      + '</button></section>';
+      + (art ? '<img class="campaign-art" src="'+esc(art)+'" alt="" loading="lazy" decoding="async" width="240" height="240">' : '')
+      + '</button>'
+      + '<div class="campaign-rail" data-camp="'+esc(c.id)+'">'
+      + '<div class="campaign-products" role="list">'
+      + list.slice(0, 10).map(campaignProductHTML).join("")
+      + '</div></div>'
+      + '</section>';
   });
 
   html += '</div>';
   box.innerHTML = html;
+  try{ naqaStartCampRails(box); }catch(e){}
 }
 
 function renderShelves(){

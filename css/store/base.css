@@ -1249,30 +1249,73 @@ html[data-theme="night"] .camp-product{ background:#1a1614; }
 html[data-theme="night"] .camp-product-media{ background:#151210; }
 html[data-theme="night"] .campaign-banner{ box-shadow:none; }
 
-/* —— Banners-only homepage (no product rails) —— */
-.home-banners-only .campaign{ margin-top: 14px; }
-.home-banners-only .campaign:first-of-type{ margin-top: 8px; }
-.home-ban-lead{
-  margin: 4px 0 12px; font-size: .8rem; font-weight: 700; color: var(--muted);
+
+/* —— Home rails: banner + circular product strip (Nice One style) —— */
+.home-rails{ margin: 4px 0 28px; }
+.home-rails .campaign{ margin-top: 28px; }
+.home-rails .campaign:first-child{ margin-top: 10px; }
+.home-rails .campaign-head{
+  display:flex; align-items:flex-end; justify-content:space-between; gap:12px; margin-bottom:10px;
 }
-.home-banners-only .campaign-banner{
-  min-height: 168px; border-radius: 22px; width: 100%;
-  display: block; text-align: start;
+.home-rails .campaign-head h2{ margin:0; font-size:1.15rem; font-weight:800; }
+.home-rails .campaign-head p{ margin:3px 0 0; color:var(--muted); font-size:.76rem; font-weight:600; }
+.home-rails .campaign-all{
+  border:0; background:transparent; color:var(--wine,#702337); font:inherit; font-weight:800;
+  font-size:.82rem; cursor:pointer; white-space:nowrap; padding:6px 0;
 }
-.home-banners-only .campaign-copy{ max-width: 70%; }
-.home-banners-only .campaign-products{ display: none !important; }
-.home-banners-only .campaign-head{ display: none; }
-.home-banners-only .top-cats{ display: none; }
-.home-banners-only .chip-cta{
-  display: inline-block; margin-top: 6px;
-  background: rgba(255,255,255,.22); border-color: rgba(255,255,255,.5);
-  font-weight: 800;
+.home-rails .campaign-banner{
+  width:100%; min-height:158px; border-radius:20px; border:0; color:#fff;
+  position:relative; overflow:hidden; text-align:start; cursor:pointer;
+  padding:22px 20px; display:block;
 }
-.home-banners-only .campaign-art{
-  left: 4%; bottom: -28px; width: min(220px, 36vw); max-height: 220px;
+.home-rails .campaign-copy{ position:relative; z-index:1; max-width:62%; }
+.home-rails .campaign-copy small{ font-size:.7rem; opacity:.9; font-weight:700; }
+.home-rails .campaign-copy h3{ margin:4px 0; font-size:clamp(1.1rem,3vw,1.45rem); font-weight:800; line-height:1.35; }
+.home-rails .campaign-copy p{ margin:0 0 8px; font-size:.78rem; line-height:1.6; opacity:.92; font-weight:600; }
+.home-rails .chip-cta{
+  display:inline-block; background:rgba(255,255,255,.2); border:1px solid rgba(255,255,255,.45);
+  border-radius:999px; padding:5px 12px; font-size:.72rem; font-weight:800;
 }
+.home-rails .campaign-art{
+  position:absolute; left:3%; bottom:-24px; width:min(210px,34vw); max-height:210px;
+  object-fit:contain; filter:drop-shadow(0 12px 18px rgba(0,0,0,.28)); pointer-events:none; z-index:1;
+}
+.home-rails .campaign-rail{ margin-top:12px; position:relative; }
+.home-rails .campaign-products{
+  display:flex !important; flex-wrap:nowrap; gap:10px; overflow-x:auto; overflow-y:hidden;
+  scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch; padding:4px 2px 10px;
+  scrollbar-width:none;
+}
+.home-rails .campaign-products::-webkit-scrollbar{ display:none; height:0; }
+.home-rails .camp-product{
+  flex:0 0 auto; width:148px; scroll-snap-align:start;
+  background:var(--paper,#fffdfb); border:1px solid var(--line,#eadeda);
+  border-radius:16px; overflow:hidden; box-shadow:0 4px 14px rgba(60,20,30,.05);
+}
+.home-rails .camp-product-media{
+  display:block; width:100%; border:0; background:#f7f0ed; cursor:pointer; padding:0;
+}
+.home-rails .camp-product-media img{
+  display:block; width:100%; height:140px; object-fit:contain; padding:8px;
+}
+.home-rails .camp-product-body{ padding:8px 10px 11px; display:flex; flex-direction:column; gap:2px; }
+.home-rails .camp-product-body small{ color:var(--rose,#c46b7c); font-size:.65rem; font-weight:800; }
+.home-rails .camp-product-name{
+  border:0; background:transparent; text-align:start; font:inherit; font-size:.78rem; font-weight:700;
+  color:var(--ink,#251b1b); cursor:pointer; line-height:1.35;
+  display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;
+  min-height:2.5em; padding:0;
+}
+.home-rails .camp-product-price{ color:var(--rose-deep,#8b2f45); font-size:.84rem; font-weight:800; }
+.home-rails .camp-old{ text-decoration:line-through; color:#a48d8d; font-size:.7rem; font-weight:600; font-style:normal; margin-inline-start:4px; }
 @media (max-width:700px){
-  .home-banners-only .campaign-banner{ min-height: 150px; border-radius: 18px; padding: 18px 16px; }
-  .home-banners-only .campaign-copy{ max-width: 75%; }
-  .home-banners-only .campaign-art{ width: 130px; bottom: -14px; left: 2%; }
+  .home-rails .campaign{ margin-top:22px; }
+  .home-rails .campaign-banner{ min-height:140px; border-radius:16px; padding:16px; }
+  .home-rails .campaign-copy{ max-width:72%; }
+  .home-rails .campaign-art{ width:120px; bottom:-12px; }
+  .home-rails .camp-product{ width:132px; border-radius:14px; }
+  .home-rails .camp-product-media img{ height:118px; }
 }
+html[data-theme="night"] .home-rails .camp-product{ background:#1a1614; border-color:#2a2420; }
+html[data-theme="night"] .home-rails .camp-product-media{ background:#151210; }
+html[data-theme="night"] .home-rails .camp-product-name{ color:#f5ebe8; }

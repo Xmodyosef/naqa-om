@@ -34,48 +34,48 @@ function naqaIsSerum(p){
 function getNaqaCatalogs(){
   return [
     /* —— Featured deals / discovery —— */
-    { id:"hot", ar:"الأكثر طلباً", en:"Bestsellers", em:"★", tone:"hot", featured:true, group:"deal",
+    { id:"hot", cover:"media/catalogs/hot.webp", ar:"الأكثر طلباً", en:"Bestsellers", em:"★", tone:"hot", featured:true, group:"deal",
       subAr:"مختارات عليها طلب", subEn:"Customer favourites",
       sort:"new", match:function(p){ return !!p.hot; } },
-    { id:"eoy", ar:"عروض وتخفيضات", en:"Deals & offers", em:"٪", tone:"deal", featured:true, group:"deal",
+    { id:"eoy", cover:"media/catalogs/eoy.webp", ar:"عروض وتخفيضات", en:"Deals & offers", em:"٪", tone:"deal", featured:true, group:"deal",
       subAr:"أسعار مشطوبة الآن", subEn:"Marked-down prices",
       sort:"off", match:function(p){ return p.was > p.price; } },
-    { id:"u10", ar:"تحت ١٠ ر.ع", en:"Under 10 OMR", em:"١٠", tone:"price", featured:true, group:"deal",
+    { id:"u10", cover:"media/catalogs/u10.webp", ar:"تحت ١٠ ر.ع", en:"Under 10 OMR", em:"١٠", tone:"price", featured:true, group:"deal",
       subAr:"أسعار يومية لطيفة", subEn:"Everyday prices",
       sort:"price-asc", match:function(p){ return Number(p.price) < 10; } },
-    { id:"korean", ar:"عناية كورية", en:"K-beauty", em:"🌸", tone:"care", featured:true, group:"deal",
+    { id:"korean", cover:"media/catalogs/korean.webp", ar:"عناية كورية", en:"K-beauty", em:"🌸", tone:"care", featured:true, group:"deal",
       subAr:"سيروم وماسكات كورية", subEn:"Korean skincare picks",
       sort:"new", match:function(p){ return !!NAQA_K_BEAUTY[p.brand]; } },
 
     /* —— Shop by section —— */
-    { id:"care", ar:"عناية بالبشرة", en:"Skincare", em:"✨", tone:"care", group:"shop",
+    { id:"care", cover:"media/catalogs/care.webp", ar:"عناية بالبشرة", en:"Skincare", em:"✨", tone:"care", group:"shop",
       subAr:"غسول · سيروم · مرطب", subEn:"Cleanse · treat · moisturise",
       sort:"new", match:function(p){ return p.cat === "عناية"; } },
-    { id:"face", ar:"مكياج الوجه", en:"Face makeup", em:"💄", tone:"makeup", group:"shop",
+    { id:"face", cover:"media/catalogs/face.webp", ar:"مكياج الوجه", en:"Face makeup", em:"💄", tone:"makeup", group:"shop",
       subAr:"فاونديشن · كونسيلر", subEn:"Foundation · concealer",
       sort:"new", match:function(p){ return p.cat === "وجه"; } },
-    { id:"lips", ar:"الشفاه", en:"Lips", em:"💋", tone:"makeup", group:"shop",
+    { id:"lips", cover:"media/catalogs/lips.webp", ar:"الشفاه", en:"Lips", em:"💋", tone:"makeup", group:"shop",
       subAr:"أحمر · ملمع · ليب كير", subEn:"Lipstick · gloss · care",
       sort:"new", match:function(p){ return p.cat === "شفاه"; } },
-    { id:"eyes", ar:"العيون والحواجب", en:"Eyes & brows", em:"👁", tone:"makeup", group:"shop",
+    { id:"eyes", cover:"media/catalogs/eyes.webp", ar:"العيون والحواجب", en:"Eyes & brows", em:"👁", tone:"makeup", group:"shop",
       subAr:"مسكرة · آيلاينر · ظلال", subEn:"Mascara · liner · shadow",
       sort:"new", match:function(p){ return p.cat === "عيون" || p.cat === "حواجب"; } },
-    { id:"hair", ar:"العناية بالشعر", en:"Hair care", em:"🧴", tone:"hair", group:"shop",
+    { id:"hair", cover:"media/catalogs/hair.webp", ar:"العناية بالشعر", en:"Hair care", em:"🧴", tone:"hair", group:"shop",
       subAr:"Olaplex · Cantu · L'Oréal", subEn:"Olaplex · Cantu · L'Oréal",
       sort:"new", match:function(p){ return p.cat === "شعر"; } },
-    { id:"straight", ar:"استشوارات وفرد", en:"Straighteners", em:"💇", tone:"tools", group:"shop",
+    { id:"straight", cover:"media/catalogs/straight.webp", ar:"استشوارات وفرد", en:"Straighteners", em:"💇", tone:"tools", group:"shop",
       subAr:"GHD · BaByliss · أدوات", subEn:"GHD · BaByliss tools",
       sort:"price-desc", match:function(p){ return naqaIsStraightener(p); } },
-    { id:"tools", ar:"أدوات التجميل", en:"Beauty tools", em:"🔧", tone:"tools", group:"shop",
+    { id:"tools", cover:"media/catalogs/tools.webp", ar:"أدوات التجميل", en:"Beauty tools", em:"🔧", tone:"tools", group:"shop",
       subAr:"أدوات · أجهزة", subEn:"Tools & devices",
       sort:"new", match:function(p){ return p.cat === "أدوات"; } },
-    { id:"serum", ar:"سيرومات", en:"Serums", em:"💧", tone:"care", group:"shop",
+    { id:"serum", cover:"media/catalogs/serum.webp", ar:"سيرومات", en:"Serums", em:"💧", tone:"care", group:"shop",
       subAr:"نضارة · تصبغ · ترطيب", subEn:"Glow · spots · hydration",
       sort:"new", match:function(p){ return naqaIsSerum(p); } },
-    { id:"new", ar:"وصل حديثاً", en:"New arrivals", em:"✦", tone:"new", group:"shop",
+    { id:"new", cover:"media/catalogs/new.webp", ar:"وصل حديثاً", en:"New arrivals", em:"✦", tone:"new", group:"shop",
       subAr:"آخر الإضافات", subEn:"Latest drops",
       sort:"new", match:function(p){ return Number(p.id) >= 250; } },
-    { id:"all", ar:"كل المنتجات", en:"All products", em:"▣", tone:"all", group:"shop",
+    { id:"all", cover:"media/catalogs/all.webp", ar:"كل المنتجات", en:"All products", em:"▣", tone:"all", group:"shop",
       subAr:"الكتالوج الكامل", subEn:"Full catalog",
       sort:"new", match:function(){ return true; } }
   ];
@@ -165,7 +165,12 @@ function backToCatalogs(){
 }
 
 /** Mosaic cover: 1 big + up to 3 small, or single if few images */
-function catalogThumbHTML(list){
+function catalogThumbHTML(list, c){
+  if(c && c.cover){
+    return '<div class="cat-cover cat-cover-art" aria-hidden="true">'
+      + '<img src="'+esc(c.cover)+'" alt="" loading="lazy" decoding="async" width="640" height="570">'
+      + '</div>';
+  }
   var imgs = [];
   (list || []).forEach(function(p){
     if(imgs.length >= 4) return;
@@ -189,7 +194,7 @@ function catalogTileHTML(c, size){
   var n = catalogList(c.id).length;
   var sizeCls = size === "hero" ? " home-cat-card--hero" : "";
   return '<button type="button" class="home-cat-card tone-'+esc(c.tone||"care")+sizeCls+'" data-open-catalog="'+esc(c.id)+'">'
-    + catalogThumbHTML(list)
+    + catalogThumbHTML(list, c)
     + '<div class="home-cat-body">'
     + '<div class="home-cat-topline"><span class="home-cat-em" aria-hidden="true">'+c.em+'</span>'
     + '<i class="home-cat-n">'+n+(lang==="en"?" items":" منتج")+'</i></div>'

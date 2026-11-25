@@ -44,3 +44,18 @@
   font-variant-numeric:tabular-nums;
   flex-shrink:0;
 }
+
+/* Finance clickable lists */
+.finance-tools{margin:0 0 12px}
+.fin-area-hit,.fin-prod-hit,.fin-order-hit{
+  width:100%;
+  text-align:start;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  cursor:pointer;
+}
+.fin-area-hit strong:last-child,
+.fin-prod-hit strong:last-child,
+.fin-order-hit strong:last-child{white-space:nowrap;color:var(--rose,#c46b7c)}

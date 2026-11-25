@@ -1,41 +1,53 @@
 (function (w) {
   var A = w.NaqaAdmin;
+  A.finDateFrom = A.finDateFrom || "";
+  A.finDateTo = A.finDateTo || "";
+  A.financeOpen = A.financeOpen || null; /* { type: "area"|"product", key: string } */
 
+  function ar() { return A.lang !== "en"; }
+  function omr() { return A.t("omr") || (ar() ? "ر.ع" : "OMR"); }
   function whenOf(o) {
     if (!o || !o.at) return "—";
-    try {
-      if (A.fmtDateTimeNum) return A.fmtDateTimeNum(o.at);
-      if (A.fmtDateNum) return A.fmtDateNum(o.at);
-    } catch (e) {}
+    if (A.fmtDateTimeNum) return A.fmtDateTimeNum(o.at);
+    if (A.fmtDateNum) return A.fmtDateNum(o.at);
     return String(o.at);
   }
   function statusText(st) {
     st = A.normalizeStatus ? A.normalizeStatus(st) : st;
     if (A.statusLabel) return A.statusLabel(st) || st || "—";
-    var ar = A.lang !== "en";
-    var map = {
-      new: ar ? "جديد" : "New",
-      prep: ar ? "تجهيز" : "Preparing",
-      ship: ar ? "توصيل" : "Shipping",
-      delivered: ar ? "تم" : "Delivered",
-      cancel: ar ? "ملغي" : "Cancelled"
-    };
-    return map[st] || st || "—";
+    return st || "—";
   }
-  function productOfItem(it) {
+  function inFinRange(at) {
+    var day = A.dayKey ? A.dayKey(at) : String(at || "").slice(0, 10);
+    if (A.finDateFrom && (!day || day < A.finDateFrom)) return false;
+    if (A.finDateTo && (!day || day > A.finDateTo)) return false;
+    return true;
+  }
+  function activeOrders() {
+    return (A.orders || []).filter(function (o) {
+      if (!o) return false;
+      if (!inFinRange(o.at)) return false;
+      var st = A.normalizeStatus ? A.normalizeStatus(o.status) : String(o.status || "");
+      return st !== "cancel";
+    });
+  }
+  function productKey(it) {
+    return String((it && (it.sku || it.id || it.name || it.nameAr)) || "?");
+  }
+  function productByKey(key) {
     var list = A.products || w.products || [];
-    if (!it) return null;
+    var k = String(key || "").toLowerCase();
     return list.find(function (p) {
       if (!p) return false;
-      if (it.id != null && Number(p.id) === Number(it.id)) return true;
-      if (it.pid != null && Number(p.id) === Number(it.pid)) return true;
-      return it.sku && String(p.sku) === String(it.sku);
+      if (String(p.sku || "").toLowerCase() === k) return true;
+      if (String(p.id) === String(key)) return true;
+      return false;
     }) || null;
   }
   function productTitle(p, fallback) {
     if (!p) return fallback || "—";
-    var en = A.lang === "en";
-    return String((en ? (p.nameEn || p.nameAr) : (p.nameAr || p.nameEn)) || p.brand || p.sku || fallback || "—");
+    if (ar()) return p.nameAr || p.nameEn || p.brand || p.sku || fallback || "—";
+    return p.nameEn || p.nameAr || p.brand || p.sku || fallback || "—";
   }
   function lineRev(it) {
     if (!it) return 0;
@@ -44,53 +56,8 @@
     var pr = Number(it.price) || 0;
     return q * pr;
   }
-  function activeOrdersInRange() {
-    var out = [];
-    (A.orders || []).forEach(function (o) {
-      if (!o) return;
-      if (!A.inDateRange(o.at)) return;
-      if (A.normalizeStatus(o.status) === "cancel") return;
-      out.push(o);
-    });
-    out.sort(function (a, b) { return String(b.at || "").localeCompare(String(a.at || "")); });
-    return out;
-  }
 
-  /** من / إلى — نفس شكل الطلبات في الشريط العلوي */
-  A.ensureFinanceTools = function () {
-    var tools = document.getElementById("ordersTools");
-    if (!tools) return;
-    var from = A.dateFrom || "";
-    var to = A.dateTo || "";
-    var ar = A.lang !== "en";
-    tools.hidden = false;
-    tools.innerHTML =
-      '<div class="orders-filter-inline" id="financeToolsPanel">'
-      + '<label class="date-one-wrap" title="' + A.esc(A.t("f_from") || (ar ? "من" : "From")) + '">'
-      + '<span class="date-one-show" id="finDateFromShow">' + A.esc(A.t("f_from") || (ar ? "من" : "From")) + '</span>'
-      + '<input type="date" lang="en" dir="ltr" class="date-one" id="finDateFrom" value="' + A.esc(from) + '" aria-label="' + A.esc(A.t("f_from") || (ar ? "من" : "From")) + '">'
-      + '</label>'
-      + '<label class="date-one-wrap" title="' + A.esc(A.t("f_to") || (ar ? "إلى" : "To")) + '">'
-      + '<span class="date-one-show" id="finDateToShow">' + A.esc(A.t("f_to") || (ar ? "إلى" : "To")) + '</span>'
-      + '<input type="date" lang="en" dir="ltr" class="date-one" id="finDateTo" value="' + A.esc(to) + '" aria-label="' + A.esc(A.t("f_to") || (ar ? "إلى" : "To")) + '">'
-      + '</label>'
-      + '</div>';
-    A.paintFinanceDateFaces();
-    if (!tools._finBound) {
-      tools._finBound = true;
-      tools.addEventListener("change", function (e) {
-        var t = e.target;
-        if (!t) return;
-        if (t.id !== "finDateFrom" && t.id !== "finDateTo") return;
-        A.dateFrom = (document.getElementById("finDateFrom") || {}).value || "";
-        A.dateTo = (document.getElementById("finDateTo") || {}).value || "";
-        A.paintFinanceDateFaces();
-        if (A.currentTab === "finance" && A.paintFinance) A.paintFinance();
-      });
-    }
-  };
-
-  A.paintFinanceDateFaces = function () {
+  function paintDateFaces() {
     var fmt = function (iso, empty) {
       if (!iso) return empty;
       var parts = String(iso).split("-");
@@ -101,17 +68,53 @@
     var toEl = document.getElementById("finDateTo");
     var fromShow = document.getElementById("finDateFromShow");
     var toShow = document.getElementById("finDateToShow");
-    if (fromShow) fromShow.textContent = fmt(fromEl && fromEl.value, A.t("f_from") || "من");
-    if (toShow) toShow.textContent = fmt(toEl && toEl.value, A.t("f_to") || "إلى");
-  };
+    if (fromShow) fromShow.textContent = fmt(fromEl && fromEl.value, A.t("f_from") || (ar() ? "من" : "From"));
+    if (toShow) toShow.textContent = fmt(toEl && toEl.value, A.t("f_to") || (ar() ? "إلى" : "To"));
+  }
+
+  function toolsHtml() {
+    var from = A.finDateFrom || "";
+    var to = A.finDateTo || "";
+    return '<div class="orders-filter-inline finance-tools" id="financeToolsPanel">'
+      + '<label class="date-one-wrap" title="' + A.esc(A.t("f_from") || (ar() ? "من" : "From")) + '">'
+      + '<span class="date-one-show" id="finDateFromShow">' + A.esc(A.t("f_from") || (ar() ? "من" : "From")) + '</span>'
+      + '<input type="date" lang="en" dir="ltr" class="date-one" id="finDateFrom" value="' + A.esc(from) + '" aria-label="' + A.esc(A.t("f_from") || "من") + '">'
+      + '</label>'
+      + '<label class="date-one-wrap" title="' + A.esc(A.t("f_to") || (ar() ? "إلى" : "To")) + '">'
+      + '<span class="date-one-show" id="finDateToShow">' + A.esc(A.t("f_to") || (ar() ? "إلى" : "To")) + '</span>'
+      + '<input type="date" lang="en" dir="ltr" class="date-one" id="finDateTo" value="' + A.esc(to) + '" aria-label="' + A.esc(A.t("f_to") || "إلى") + '">'
+      + '</label>'
+      + '<button type="button" class="export-one" id="exportFinanceCsv">' + A.esc(A.t("exportCsv") || A.t("exportExcel") || (ar() ? "تصدير Excel" : "Export Excel")) + '</button>'
+      + '</div>';
+  }
+
+  function bindTools() {
+    paintDateFaces();
+    function syncDates() {
+      var f = document.getElementById("finDateFrom");
+      var t = document.getElementById("finDateTo");
+      A.finDateFrom = (f && f.value) || "";
+      A.finDateTo = (t && t.value) || "";
+      paintDateFaces();
+      A.paintFinance();
+    }
+    var f = document.getElementById("finDateFrom");
+    var t = document.getElementById("finDateTo");
+    if (f) f.onchange = syncDates;
+    if (t) t.onchange = syncDates;
+    var ex = document.getElementById("exportFinanceCsv");
+    if (ex) ex.onclick = function () { A.exportFinanceCsv(); };
+  }
 
   A.exportFinanceCsv = function () {
-    var ar = A.lang !== "en";
-    var head = ar
-      ? ["رقم الطلب", "التاريخ", "الحالة", "الاسم", "الجوال", "المنطقة", "الإجمالي"]
-      : ["order", "date", "status", "name", "phone", "area", "total"];
+    var head = ar()
+      ? ["رقم الطلب", "التاريخ", "الحالة", "الاسم", "الجوال", "المنطقة", "المنتجات", "الإجمالي"]
+      : ["order", "date", "status", "name", "phone", "area", "items", "total"];
     var rows = [head];
-    activeOrdersInRange().forEach(function (o) {
+    activeOrders().forEach(function (o) {
+      var items = (o.items || []).map(function (it) {
+        return (it.name || it.nameAr || it.sku || "") + "×" + (it.qty || 1);
+      }).join(" | ");
       rows.push([
         o.id || "",
         whenOf(o),
@@ -119,123 +122,161 @@
         o.name || "",
         o.phone || "",
         o.area || o.city || "",
-        o.total != null ? Number(o.total).toFixed(3) : ""
+        items,
+        (Number(o.total) || 0).toFixed(3)
       ]);
     });
     A.downloadCsv("naqa-finance.csv", rows);
-    if (A.setMsg) A.setMsg("financeStatus", A.t("exportOk") || (ar ? "تم التصدير" : "Exported"));
+    A.setMsg("financeStatus", A.t("exportOk") || (ar() ? "تم التصدير" : "Exported"));
   };
+
+  function paintAreaDetail(areaName) {
+    var box = document.getElementById("financeBox");
+    if (!box) return;
+    var list = activeOrders().filter(function (o) {
+      return String(o.area || o.city || "—") === String(areaName);
+    });
+    var total = 0;
+    list.forEach(function (o) { total += Number(o.total) || 0; });
+    var back = ar() ? "رجوع" : "Back";
+    var labOrder = ar() ? "الطلب" : "Order";
+    var labDate = ar() ? "التاريخ" : "Date";
+    var labName = ar() ? "الاسم" : "Name";
+    var labPhone = ar() ? "الجوال" : "Mobile";
+    var labSt = ar() ? "الحالة" : "Status";
+    var labTot = ar() ? "الإجمالي" : "Total";
+    var cards = list.map(function (o) {
+      var oid = o.id || "—";
+      return '<button type="button" class="row rv-hit fin-order-hit" data-fin-order="' + A.esc(String(oid)) + '">'
+        + '<div><strong>' + A.esc(labOrder + " " + oid) + '</strong>'
+        + '<small>' + A.esc(labName + ": " + (o.name || "—")) + '</small>'
+        + '<small class="cust-phone">' + A.esc(labPhone + ": " + (o.phone || "—")) + '</small>'
+        + '<small>' + A.esc(labDate + ": " + whenOf(o)) + " · " + statusText(o.status) + '</small></div>'
+        + '<strong>' + (Number(o.total) || 0).toFixed(3) + " " + omr() + '</strong></button>';
+    }).join("");
+    if (!cards) cards = '<p class="note">' + (ar() ? "ما في طلبات لهذه المنطقة في المدى." : "No orders for this area in range.") + '</p>';
+    box.innerHTML = toolsHtml()
+      + '<div class="panel">'
+      + '<button type="button" class="mini" id="finBack">' + A.esc(back) + '</button>'
+      + '<h2>' + A.esc(areaName || "—") + '</h2>'
+      + '<p class="rv-meta"><span>' + (ar() ? "عدد الطلبات" : "Orders") + '</span> ' + list.length
+      + ' · <span>' + labTot + '</span> <strong>' + total.toFixed(3) + " " + omr() + '</strong></p>'
+      + cards
+      + '</div>'
+      + '<p class="status" id="financeStatus"></p>';
+    bindTools();
+    var backBtn = document.getElementById("finBack");
+    if (backBtn) {
+      backBtn.onclick = function () {
+        A.financeOpen = null;
+        A.paintFinance();
+      };
+    }
+    box.querySelectorAll("[data-fin-order]").forEach(function (b) {
+      b.onclick = function () {
+        var id = b.getAttribute("data-fin-order") || "";
+        A.orderQuery = id;
+        if (A.go) A.go("orders", "all", { push: true });
+      };
+    });
+  }
+
+  function paintProductDetail(key) {
+    var box = document.getElementById("financeBox");
+    if (!box) return;
+    var p = productByKey(key);
+    var title = productTitle(p, key);
+    var qty = 0, rev = 0;
+    var orderHits = [];
+    activeOrders().forEach(function (o) {
+      var hit = false, q = 0, r = 0;
+      (o.items || []).forEach(function (it) {
+        if (productKey(it) !== String(key) && String(it.sku || "") !== String(key) && String(it.id) !== String(key)) return;
+        /* loose match on sku or stored key */
+        var same = productKey(it) === String(key)
+          || (it.sku && String(it.sku) === String(key))
+          || (it.id != null && String(it.id) === String(key));
+        if (!same && p && (String(it.sku) === String(p.sku) || String(it.id) === String(p.id))) same = true;
+        if (!same) return;
+        hit = true;
+        q += Number(it.qty) || 0;
+        r += lineRev(it);
+      });
+      if (hit) {
+        qty += q;
+        rev += r;
+        orderHits.push({ o: o, qty: q, rev: r });
+      }
+    });
+    var back = ar() ? "رجوع" : "Back";
+    var labOrder = ar() ? "الطلب" : "Order";
+    var labDate = ar() ? "التاريخ" : "Date";
+    var labQty = ar() ? "الكمية" : "Qty";
+    var labRev = ar() ? "الإيراد" : "Revenue";
+    var cards = orderHits.map(function (h) {
+      var o = h.o;
+      var oid = o.id || "—";
+      return '<button type="button" class="row rv-hit fin-order-hit" data-fin-order="' + A.esc(String(oid)) + '">'
+        + '<div><strong>' + A.esc(labOrder + " " + oid) + '</strong>'
+        + '<small>' + A.esc(labDate + ": " + whenOf(o)) + " · " + statusText(o.status) + '</small>'
+        + '<small>' + A.esc(labQty + ": " + h.qty) + '</small></div>'
+        + '<strong>' + h.rev.toFixed(3) + " " + omr() + '</strong></button>';
+    }).join("");
+    if (!cards) cards = '<p class="note">' + (ar() ? "ما في طلبات لهذا المنتج في المدى." : "No orders for this product in range.") + '</p>';
+    var editBtn = p
+      ? ('<button type="button" class="export-one" id="finOpenProduct">' + A.esc(A.t("p_editProduct") || (ar() ? "تعديل المنتج" : "Edit product")) + '</button>')
+      : "";
+    box.innerHTML = toolsHtml()
+      + '<div class="panel">'
+      + '<button type="button" class="mini" id="finBack">' + A.esc(back) + '</button>'
+      + '<h2>' + A.esc(title) + '</h2>'
+      + (p && p.sku ? ('<p class="rv-meta"><span>SKU</span> ' + A.esc(p.sku) + '</p>') : "")
+      + '<p class="rv-meta"><span>' + labQty + '</span> ' + qty
+      + ' · <span>' + labRev + '</span> <strong>' + rev.toFixed(3) + " " + omr() + '</strong></p>'
+      + (editBtn ? ('<div style="margin:10px 0">' + editBtn + '</div>') : "")
+      + '<h3 class="cust-orders-h">' + (ar() ? "الطلبات التي تتضمن المنتج" : "Orders with this product") + '</h3>'
+      + cards
+      + '</div>'
+      + '<p class="status" id="financeStatus"></p>';
+    bindTools();
+    var backBtn = document.getElementById("finBack");
+    if (backBtn) {
+      backBtn.onclick = function () {
+        A.financeOpen = null;
+        A.paintFinance();
+      };
+    }
+    var ep = document.getElementById("finOpenProduct");
+    if (ep && p) {
+      ep.onclick = function () {
+        if (A.go) A.go("products", "all", { push: true });
+        setTimeout(function () {
+          if (A.openEdit) A.openEdit(p.id);
+        }, 40);
+      };
+    }
+    box.querySelectorAll("[data-fin-order]").forEach(function (b) {
+      b.onclick = function () {
+        var id = b.getAttribute("data-fin-order") || "";
+        A.orderQuery = id;
+        if (A.go) A.go("orders", "all", { push: true });
+      };
+    });
+  }
 
   A.paintFinance = function () {
     var box = document.getElementById("financeBox");
     if (!box) return;
-    var ar = A.lang !== "en";
-    try { A.ensureFinanceTools(); } catch (e0) {}
 
-    var openArea = A.financeOpenArea || "";
-    var openProd = A.financeOpenProd || "";
-
-    /* —— تفاصيل منطقة —— */
-    if (openArea) {
-      var areaOrders = activeOrdersInRange().filter(function (o) {
-        return String(o.area || o.city || "—") === String(openArea);
-      });
-      var areaTot = 0;
-      areaOrders.forEach(function (o) { areaTot += Number(o.total) || 0; });
-      var cards = areaOrders.map(function (o) {
-        return '<article class="rv-card cust-order-card">'
-          + '<p class="rv-meta"><span>' + (ar ? "الطلب" : "Order") + '</span> '
-          + '<button type="button" class="rv-link" data-fin-order="' + A.esc(String(o.id || "")) + '">' + A.esc(String(o.id || "—")) + '</button></p>'
-          + '<p class="rv-meta"><span>' + (ar ? "التاريخ" : "Date") + '</span> ' + A.esc(whenOf(o)) + '</p>'
-          + '<p class="rv-meta"><span>' + (ar ? "الاسم" : "Name") + '</span> ' + A.esc(o.name || "—") + '</p>'
-          + '<p class="rv-meta"><span>' + (ar ? "الجوال" : "Mobile") + '</span> ' + A.esc(o.phone || "—") + '</p>'
-          + '<p class="rv-meta"><span>' + (ar ? "الحالة" : "Status") + '</span> ' + A.esc(statusText(o.status)) + '</p>'
-          + '<p class="rv-meta"><span>' + (ar ? "المبلغ" : "Amount") + '</span> <strong>' + (Number(o.total) || 0).toFixed(3) + ' ' + (A.t("omr") || "OMR") + '</strong></p>'
-          + '</article>';
-      }).join("") || ('<p class="note">' + (ar ? "ما في طلبات لهذه المنطقة في الفترة." : "No orders for this area in range.") + '</p>');
-
-      box.innerHTML = '<div class="panel">'
-        + '<button type="button" class="mini" id="finBack">' + (ar ? "رجوع" : "Back") + '</button>'
-        + '<h2>' + A.esc(openArea) + '</h2>'
-        + '<p class="note">' + areaOrders.length + ' ' + (A.t("f_orderN") || (ar ? "طلب" : "orders"))
-        + ' · ' + (ar ? "الإجمالي" : "Total") + ' <strong>' + areaTot.toFixed(3) + ' ' + (A.t("omr") || "OMR") + '</strong></p>'
-        + cards
-        + '</div>';
-      var back = document.getElementById("finBack");
-      if (back) back.onclick = function () { A.financeOpenArea = ""; A.paintFinance(); };
-      box.querySelectorAll("[data-fin-order]").forEach(function (b) {
-        b.onclick = function () {
-          A.orderQuery = b.getAttribute("data-fin-order") || "";
-          if (A.go) A.go("orders", "all", { push: true });
-        };
-      });
+    if (A.financeOpen && A.financeOpen.type === "area") {
+      paintAreaDetail(A.financeOpen.key);
+      return;
+    }
+    if (A.financeOpen && A.financeOpen.type === "product") {
+      paintProductDetail(A.financeOpen.key);
       return;
     }
 
-    /* —— تفاصيل منتج —— */
-    if (openProd) {
-      var pid = openProd;
-      var matched = [];
-      var qtyAll = 0, revAll = 0;
-      var pMeta = null;
-      activeOrdersInRange().forEach(function (o) {
-        (o.items || []).forEach(function (it) {
-          var p = productOfItem(it);
-          var key = p ? String(p.id) : String(it.sku || it.name || "");
-          if (key !== String(pid) && String(it.sku || "") !== String(pid)) return;
-          if (p && !pMeta) pMeta = p;
-          var lr = lineRev(it);
-          qtyAll += Number(it.qty) || 0;
-          revAll += lr;
-          matched.push({ order: o, item: it, rev: lr });
-        });
-      });
-      var title = productTitle(pMeta, matched[0] && (matched[0].item.name || matched[0].item.sku) || pid);
-      var sku = (pMeta && pMeta.sku) || (matched[0] && matched[0].item.sku) || "";
-      var cardsP = matched.map(function (m) {
-        var o = m.order;
-        var it = m.item;
-        return '<article class="rv-card cust-order-card">'
-          + '<p class="rv-meta"><span>' + (ar ? "الطلب" : "Order") + '</span> '
-          + '<button type="button" class="rv-link" data-fin-order="' + A.esc(String(o.id || "")) + '">' + A.esc(String(o.id || "—")) + '</button></p>'
-          + '<p class="rv-meta"><span>' + (ar ? "التاريخ" : "Date") + '</span> ' + A.esc(whenOf(o)) + '</p>'
-          + '<p class="rv-meta"><span>' + (ar ? "الكمية" : "Qty") + '</span> ×' + (Number(it.qty) || 0) + '</p>'
-          + '<p class="rv-meta"><span>' + (ar ? "المبلغ" : "Amount") + '</span> <strong>' + m.rev.toFixed(3) + ' ' + (A.t("omr") || "OMR") + '</strong></p>'
-          + '<p class="rv-meta"><span>' + (ar ? "الزبون" : "Customer") + '</span> ' + A.esc(o.name || "—") + ' · ' + A.esc(o.phone || "") + '</p>'
-          + '</article>';
-      }).join("") || ('<p class="note">' + (ar ? "ما في مبيعات لهذا المنتج في الفترة." : "No sales for this product in range.") + '</p>');
-
-      var editBtn = pMeta
-        ? ('<button type="button" class="mini" id="finOpenProduct" style="margin-inline-start:8px">' + (ar ? "تعديل المنتج" : "Edit product") + '</button>')
-        : "";
-
-      box.innerHTML = '<div class="panel">'
-        + '<button type="button" class="mini" id="finBack">' + (ar ? "رجوع" : "Back") + '</button>'
-        + editBtn
-        + '<h2>' + A.esc(title) + '</h2>'
-        + (sku ? ('<p class="note">SKU: ' + A.esc(sku) + '</p>') : "")
-        + '<p class="note">×' + qtyAll + ' · ' + (ar ? "الإيراد" : "Revenue") + ' <strong>' + revAll.toFixed(3) + ' ' + (A.t("omr") || "OMR") + '</strong></p>'
-        + cardsP
-        + '</div>';
-      var back2 = document.getElementById("finBack");
-      if (back2) back2.onclick = function () { A.financeOpenProd = ""; A.paintFinance(); };
-      var ep = document.getElementById("finOpenProduct");
-      if (ep && pMeta) {
-        ep.onclick = function () {
-          if (A.go) A.go("products", "all", { push: true });
-          if (A.openEdit) A.openEdit(pMeta.id);
-        };
-      }
-      box.querySelectorAll("[data-fin-order]").forEach(function (b) {
-        b.onclick = function () {
-          A.orderQuery = b.getAttribute("data-fin-order") || "";
-          if (A.go) A.go("orders", "all", { push: true });
-        };
-      });
-      return;
-    }
-
-    /* —— لوحة المالية الرئيسية —— */
     var sales = 0, count = 0, cancel = 0, todaySales = 0, todayCount = 0;
     var delivered = 0, ship = 0, prep = 0, neu = 0;
     var byArea = {}, byProduct = {};
@@ -248,7 +289,7 @@
     })();
 
     (A.orders || []).forEach(function (o) {
-      if (!A.inDateRange(o.at)) return;
+      if (!inFinRange(o.at)) return;
       var st = A.normalizeStatus(o.status);
       var day = A.dayKey(o.at);
       if (st === "cancel") { cancel++; return; }
@@ -265,27 +306,16 @@
       byArea[area].n++;
       byArea[area].rev += tot;
       (o.items || []).forEach(function (it) {
-        var p = productOfItem(it);
-        var key = p ? String(p.id) : String(it.sku || it.name || "?");
-        if (!byProduct[key]) {
-          byProduct[key] = {
-            key: key,
-            name: productTitle(p, it.name || it.nameAr || it.sku || key),
-            sku: (p && p.sku) || it.sku || "",
-            pid: p ? p.id : null,
-            qty: 0,
-            rev: 0
-          };
-        }
-        byProduct[key].qty += Number(it.qty) || 0;
-        byProduct[key].rev += lineRev(it);
+        var k = productKey(it);
+        if (!byProduct[k]) byProduct[k] = { key: k, name: it.name || it.nameAr || k, sku: it.sku || "", id: it.id, qty: 0, rev: 0 };
+        byProduct[k].qty += Number(it.qty) || 0;
+        byProduct[k].rev += lineRev(it);
+        if (!byProduct[k].name && it.name) byProduct[k].name = it.name;
       });
     });
 
     var byDay = {};
-    (A.orders || []).forEach(function (o) {
-      if (!A.inDateRange(o.at)) return;
-      if (A.normalizeStatus(o.status) === "cancel") return;
+    activeOrders().forEach(function (o) {
       var d = A.dayKey(o.at);
       if (!d) return;
       byDay[d] = (byDay[d] || 0) + (Number(o.total) || 0);
@@ -316,24 +346,27 @@
 
     var areaHtml = areas.length
       ? areas.map(function (a) {
-          return '<button type="button" class="row rv-hit fin-hit" data-fin-area="' + A.esc(a.name) + '">'
+          return '<button type="button" class="row rv-hit fin-area-hit" data-fin-area="' + A.esc(a.name) + '">'
             + '<div><strong>' + A.esc(a.name) + '</strong>'
-            + '<small>' + a.n + ' ' + (A.t("f_orderN") || (ar ? "طلب" : "orders")) + '</small></div>'
-            + '<strong class="fin-rev">' + a.rev.toFixed(3) + '</strong></button>';
+            + '<small>' + a.n + " " + (A.t("f_orderN") || (ar() ? "طلب" : "orders")) + '</small></div>'
+            + '<strong>' + a.rev.toFixed(3) + " " + omr() + '</strong></button>';
         }).join("")
-      : '<p class="note">' + A.t("f_noAreas") + '</p>';
+      : '<p class="note">' + (A.t("f_noAreas") || (ar() ? "ما في بيانات مناطق بعد." : "No area data yet.")) + '</p>';
 
     var prodHtml = products.length
       ? products.map(function (p) {
-          return '<button type="button" class="row rv-hit fin-hit" data-fin-prod="' + A.esc(String(p.key)) + '">'
-            + '<div><strong>' + A.esc(p.name) + '</strong>'
-            + '<small>' + (p.sku ? ("SKU " + A.esc(p.sku) + " · ") : "") + "×" + p.qty + '</small></div>'
-            + '<strong class="fin-rev">' + p.rev.toFixed(3) + '</strong></button>';
+          var label = p.name || p.key;
+          var prod = productByKey(p.sku || p.key);
+          if (prod) label = productTitle(prod, label);
+          return '<button type="button" class="row rv-hit fin-prod-hit" data-fin-prod="' + A.esc(p.key) + '">'
+            + '<div><strong>' + A.esc(label) + '</strong>'
+            + '<small>×' + p.qty + (p.sku ? (" · " + A.esc(p.sku)) : "") + '</small></div>'
+            + '<strong>' + p.rev.toFixed(3) + " " + omr() + '</strong></button>';
         }).join("")
-      : '<p class="note">' + A.t("f_noProds") + '</p>';
+      : '<p class="note">' + (A.t("f_noProds") || (ar() ? "ما في تفصيل منتجات بعد." : "No product data yet.")) + '</p>';
 
     box.innerHTML =
-      '<div id="financeStatus" class="msg"></div>'
+      toolsHtml()
       + '<div class="stat-grid">'
       + '<div class="stat"><strong>' + todaySales.toFixed(3) + '</strong><span>' + A.t("f_todaySales") + '</span></div>'
       + '<div class="stat"><strong>' + todayCount + '</strong><span>' + A.t("f_todayOrders") + '</span></div>'
@@ -347,24 +380,20 @@
       + '<div class="stat"><strong>' + cancel + '</strong><span>' + A.t("f_cancel") + '</span></div>'
       + '</div>'
       + chartHtml
-      + '<div class="panel"><h2>' + A.t("f_areas") + '</h2>'
-      + '<p class="note">' + (ar ? "اضغطي المنطقة لعرض طلباتها والإجمالي." : "Tap an area to see its orders and totals.") + '</p>'
-      + areaHtml + '</div>'
-      + '<div class="panel"><h2>' + A.t("f_prods") + '</h2>'
-      + '<p class="note">' + (ar ? "اضغطي المنتج لعرض التفاصيل والمبيعات." : "Tap a product for sales detail.") + '</p>'
-      + prodHtml + '</div>';
+      + '<div class="panel"><h2>' + A.t("f_areas") + '</h2>' + areaHtml + '</div>'
+      + '<div class="panel"><h2>' + A.t("f_prods") + '</h2>' + prodHtml + '</div>'
+      + '<p class="status" id="financeStatus"></p>';
 
+    bindTools();
     box.querySelectorAll("[data-fin-area]").forEach(function (b) {
       b.onclick = function () {
-        A.financeOpenArea = b.getAttribute("data-fin-area") || "";
-        A.financeOpenProd = "";
+        A.financeOpen = { type: "area", key: b.getAttribute("data-fin-area") || "" };
         A.paintFinance();
       };
     });
     box.querySelectorAll("[data-fin-prod]").forEach(function (b) {
       b.onclick = function () {
-        A.financeOpenProd = b.getAttribute("data-fin-prod") || "";
-        A.financeOpenArea = "";
+        A.financeOpen = { type: "product", key: b.getAttribute("data-fin-prod") || "" };
         A.paintFinance();
       };
     });

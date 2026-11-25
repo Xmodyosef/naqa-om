@@ -143,7 +143,7 @@
   A.downloadXls = function (filename, rows, sheetName) {
     function esc(v) {
       return String(v == null ? "" : v)
-        .replace(/&/g, "&").replace(/</g, "<").replace(/>/g, ">").replace(/"/g, """);
+        .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
     }
     var name = String(sheetName || "Orders").replace(/[\\/?*\[\]:]/g, " ").slice(0, 31) || "Orders";
     var xml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>"

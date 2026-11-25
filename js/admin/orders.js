@@ -80,6 +80,7 @@
   A.paintOrders = function () {
     try { A.syncOrdersTab(); } catch (e) {}
     A.orders.forEach(function (o) { o.status = A.normalizeStatus(o.status); });
+    try { if (A.updateOrdersBadge) A.updateOrdersBadge(); } catch (e2) {}
     A.paintStatusBar();
     var tools = document.getElementById("ordersTools");
     if (tools) {
@@ -94,6 +95,17 @@
           if (t.id === "importOrdersBtn") {
             var inp = document.getElementById("importOrdersFile");
             if (inp) inp.click();
+          }
+          if (t.id === "importWaOrders") {
+            var raw = window.prompt(A.lang === "en"
+              ? "Paste WhatsApp order text (name / phone / area / total):"
+              : "الصقي نص طلب واتساب (الاسم / الجوال / المنطقة / الإجمالي):", "");
+            if (raw == null) return;
+            var n = A.importWhatsAppOrdersText ? A.importWhatsAppOrdersText(raw) : 0;
+            A.setMsg("orderStatus", n
+              ? (A.lang === "en" ? ("Imported " + n + " order(s) from WhatsApp paste.") : ("استوردنا " + n + " طلب من واتساب."))
+              : (A.lang === "en" ? "No order fields found in paste." : "ما لقينا اسم/جوال في النص."));
+            A.paintOrders();
           }
         });
         tools.addEventListener("change", function (e) {
@@ -110,6 +122,7 @@
         + '<button type="button" class="mini" id="waOrdersReport" style="background:#25D366;color:#fff">' + A.t("o_waSum") + '</button>'
         + '<button type="button" class="mini" id="exportOrdersCsv">' + A.t("exportCsv") + '</button>'
         + '<button type="button" class="mini" id="importOrdersBtn">' + A.t("importCsv") + '</button>'
+        + '<button type="button" class="mini" id="importWaOrders">' + (A.lang === "en" ? "Paste WhatsApp" : "لصق واتساب") + '</button>'
         + '<input id="importOrdersFile" type="file" accept=".csv,text/csv" hidden>';
       A.bindDateFilter("ordDate", function () { A.paintOrders(); });
     }

@@ -37,7 +37,8 @@
       var show = local.length <= 2 ? local[0] + "•" : local.slice(0, 2) + "•••";
       return show + "@" + domain;
     }
-    var emailShow = maskEmail(email);
+    var emailShow = email ? (A.lang === "en" ? "Signed in ✓" : "مسجّلة دخول ✓") : "";
+    var emailMasked = maskEmail(email);
     var adminUid = "";
     try {
       if (w.firebase && firebase.auth && firebase.auth().currentUser) {
@@ -65,11 +66,15 @@
       + '<section class="panel settings-sec">'
       +   '<h2>' + (ar ? "الحساب" : "Account") + '</h2>'
       +   (email
-          ? ('<div class="set-row"><span class="set-k">' + (ar ? "مسجّلة كـ" : "Signed in as") + '</span><span class="set-v" dir="ltr">' + A.esc(emailShow) + '</span></div>')
+          ? ('<div class="set-row"><span class="set-k">' + (ar ? "الحساب" : "Account") + '</span><span class="set-v">' + A.esc(emailShow) + '</span></div>'
+            + '<button type="button" class="mini" id="btnRevealEmail" style="margin-top:6px">' + (ar ? "إظهار البريد المقنّع" : "Show masked email") + '</button>'
+            + '<div class="set-row" id="emailRevealRow" hidden><span class="set-k">Email</span><span class="set-v" dir="ltr" id="emailRevealVal">' + A.esc(emailMasked) + '</span></div>')
           : ('<p class="note">' + (ar ? "ما في جلسة ظاهرة — ارجعي لشاشة الدخول." : "No session — return to sign-in.") + '</p>'))
       +   '<p class="note">' + (ar
           ? "كلمة السر تُدار من شاشة الدخول (نسيت كلمة السر؟). الحفظ بعد الدخول يزامن المنتجات مع حسابك تلقائياً — بدون رموز إضافية."
           : "Password is managed on the login screen (Forgot password?). After sign-in, product saves sync to your account automatically — no extra tokens.") + '</p>'
+      +   '<button type="button" class="mini" id="btnThemeToggle" style="width:100%;margin-top:8px">' + (ar ? "تبديل الوضع الليلي" : "Toggle dark mode") + '</button>'
+      +   '<button type="button" class="mini" id="btnCmdPalette" style="width:100%;margin-top:6px">' + (ar ? "لوحة أوامر (Ctrl+K)" : "Command palette (Ctrl+K)") + '</button>'
       +   '<button type="button" class="logout" id="btnLogout" style="width:100%;margin-top:10px;border:0;border-radius:12px;padding:14px;font-weight:800">'
       +     (ar ? "خروج من اللوحة" : "Sign out") + '</button>'
       +   '<p class="note" id="settingsStatus" role="status" style="margin-top:8px"></p>'
@@ -89,10 +94,44 @@
             : '')
       +     '<li>' + (ar ? "ما في رمز GitHub ولا PIN في الإعدادات." : "No GitHub token or PIN in Settings.") + '</li>'
       +   '</ul>'
+      +   '<div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:12px">'
+      +     '<button type="button" class="mini" id="btnPullOrders">' + (ar ? "سحب الطلبات من الحساب" : "Pull orders from account") + '</button>'
+      +     '<button type="button" class="mini" id="btnPushOrders">' + (ar ? "رفع الطلبات للحساب" : "Push orders to account") + '</button>'
+      +   '</div>'
+      +   '<p class="note">' + (ar
+          ? "الطلبات خاصة بحسابك فقط (مو عامة على المتجر). بعد نشر قواعد Firestore للـ orders_private."
+          : "Orders stay private to your admin account (not public on the store). Requires Firestore rules for orders_private.") + '</p>'
+      + '</section>'
+
+      + '<section class="panel settings-sec">'
+      +   '<h2>' + (ar ? "سجل النشاط" : "Activity") + '</h2>'
+      +   '<div id="activityBox"></div>'
       + '</section>'
 
       + '</div>';
 
+    try { if (A.activity && A.activity.render) A.activity.render(document.getElementById("activityBox")); } catch (eAct) {}
+    var pullO = document.getElementById("btnPullOrders");
+    if (pullO) pullO.onclick = function () {
+      if (!A.pullOrdersCloud) return;
+      A.setMsg("settingsStatus", ar ? "جاري السحب…" : "Pulling…");
+      A.pullOrdersCloud().then(function (ok) {
+        A.setMsg("settingsStatus", ok ? (ar ? "تم سحب الطلبات ✓" : "Orders pulled ✓") : (ar ? "ما في طلبات سحابية أو فشل السحب." : "No cloud orders or pull failed."));
+        if (ok && A.paintOrders) A.paintOrders();
+      });
+    };
+    var pushO = document.getElementById("btnPushOrders");
+    if (pushO) pushO.onclick = function () {
+      if (!A.pushOrdersCloud) return;
+      A.setMsg("settingsStatus", ar ? "جاري الرفع…" : "Pushing…");
+      A.pushOrdersCloud().then(function (ok) {
+        A.setMsg("settingsStatus", ok ? (ar ? "تم رفع الطلبات ✓" : "Orders pushed ✓") : (ar ? "فشل الرفع — راجعي القواعد وتسجيل الدخول." : "Push failed — check rules + sign-in."));
+      });
+    };
+    var th = document.getElementById("btnThemeToggle");
+    if (th) th.onclick = function () { if (A.toggleAdminTheme) A.toggleAdminTheme(); };
+    var cmd = document.getElementById("btnCmdPalette");
+    if (cmd) cmd.onclick = function () { if (A.openCommandPalette) A.openCommandPalette(); };
     var logout = document.getElementById("btnLogout");
     if (logout) logout.onclick = function () {
       var ask = A.t("setOutAsk") || (ar ? "خروج من لوحة التحكم؟" : "Leave the admin?");

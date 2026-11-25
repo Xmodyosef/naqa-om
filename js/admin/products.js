@@ -491,7 +491,7 @@
       var vol = m.vol || m.volume || m.size || m.unit || "";
       var title = String((A.lang === "en" ? (m.nameEn || m.nameAr) : (m.nameAr || m.nameEn)) || "").replace(/\s+/g, " ").trim();
       var taxTxt = A.taxLabel ? A.taxLabel(m) : (A.t("tax_vat5") || "");
-      return '<article class="prod-card row' + (m.hidden ? " is-hidden" : "") + '" data-open="' + p.id + '">'
+      return '<article class="prod-card row' + (m.hidden ? " is-hidden" : "") + '" data-pid="' + p.id + '">'
         + '<div class="prod-thumb">' + thumb + '</div>'
         + '<div class="prod-body">'
         +   '<div class="prod-title">' + A.esc(title) + '</div>'
@@ -802,12 +802,25 @@
   /* List clicks: hide / edit / pager — bound here so it works after deferred load */
   A.bindProductListClicks = function () {
     var list = document.getElementById("list");
-    if (!list || list._naqaProdBound) return;
-    list._naqaProdBound = true;
-    list.addEventListener("click", function (e) {
+    if (!list) return;
+    /* Always (re)attach ONE canonical handler — removes stale multi-toggle from buttons.bundle */
+    if (list._naqaProdHandler) {
+      try { list.removeEventListener("click", list._naqaProdHandler, true); } catch (e) {}
+      try { list.removeEventListener("click", list._naqaProdHandler, false); } catch (e2) {}
+    }
+    function onListClick(e) {
+      var hide = e.target.closest("[data-hide]");
+      if (hide) {
+        e.preventDefault();
+        e.stopPropagation();
+        if (e.stopImmediatePropagation) e.stopImmediatePropagation();
+        if (A.toggleHide) A.toggleHide(hide.getAttribute("data-hide"));
+        return;
+      }
       var pg = e.target.closest("[data-page]");
       if (pg && !pg.disabled) {
         e.preventDefault();
+        if (e.stopImmediatePropagation) e.stopImmediatePropagation();
         var n = parseInt(pg.getAttribute("data-page"), 10);
         if (!n || n < 1) return;
         A.productPage = n;
@@ -815,19 +828,17 @@
         try { history.pushState({ naqa: "sec", tab: "products", page: n }, "", A.sectionHash ? A.sectionHash() : "#/products"); } catch (err) {}
         return;
       }
-      var hide = e.target.closest("[data-hide]");
-      if (hide) {
-        e.preventDefault();
-        e.stopPropagation();
-        if (A.toggleHide) A.toggleHide(hide.getAttribute("data-hide"));
-        return;
-      }
-      var open = e.target.closest("[data-open]");
+      var open = e.target.closest("button[data-open], .edit-btn[data-open]");
       if (open) {
         e.preventDefault();
+        if (e.stopImmediatePropagation) e.stopImmediatePropagation();
         if (A.openEdit) A.openEdit(open.getAttribute("data-open"));
       }
-    });
+    }
+    list._naqaProdHandler = onListClick;
+    /* capture phase first so we beat duplicate bubble listeners */
+    list.addEventListener("click", onListClick, true);
+    list._naqaProdBound = true;
   };
   try { A.bindProductListClicks(); } catch (e) {}
 })(window);

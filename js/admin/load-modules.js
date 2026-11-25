@@ -2,7 +2,7 @@
 (function (w) {
   "use strict";
   var A = w.NaqaAdmin = w.NaqaAdmin || {};
-  var V = "20261125hide2";
+  var V = "20261125arch1";
   var loaded = false;
   var inflight = null;
 
@@ -10,6 +10,8 @@
     "data/products.bundle.js?v=" + V,
     "js/admin/products.js?v=" + V,
     "js/admin/orders.js?v=" + V,
+    "js/admin/cloud-orders.js?v=" + V,
+    "js/admin/ux-extras.js?v=" + V,
     "js/admin/customers.js?v=" + V,
     "js/admin/finance.js?v=" + V,
     "js/admin/dashboard.js?v=" + V,

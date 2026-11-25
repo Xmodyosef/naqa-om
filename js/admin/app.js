@@ -222,6 +222,7 @@
     /* Route/UI first so the shell feels instant */
     try { A.applyRoute((location.hash || "").replace(/^#\/?/, "")); } catch (e) {}
     /* Cloud + orders in background (do not block first paint) */
+    try { if (A.pullOrdersCloud) A.pullOrdersCloud().then(function (ok) { if (ok && A.paintOrders && A.currentTab === "orders") A.paintOrders(); if (A.updateOrdersBadge) A.updateOrdersBadge(); }); } catch (e) {}
     var afterData = function () {
       try {
         if (A.currentTab === "products" && A.paintList) A.paintList("");

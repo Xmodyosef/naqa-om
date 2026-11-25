@@ -575,3 +575,69 @@ body.naqa-open .btn-add {
 }
 /* ========== end STEP3 nav ========== */
 
+
+/* Orders badge on sidebar */
+.side-badge {
+  margin-inline-start: auto;
+  background: #c46b7c;
+  color: #fff;
+  font-size: 0.65rem;
+  font-weight: 800;
+  padding: 1px 7px;
+  border-radius: 999px;
+  min-width: 1.2rem;
+  text-align: center;
+}
+.side-main { position: relative; }
+
+/* Command palette */
+.naqa-cmd {
+  position: fixed; inset: 0; z-index: 9999;
+  background: rgba(20,12,14,.45);
+  display: flex; align-items: flex-start; justify-content: center;
+  padding: 12vh 16px 16px;
+}
+.naqa-cmd-card {
+  width: min(520px, 100%);
+  background: #fff; border-radius: 14px;
+  box-shadow: 0 20px 50px rgba(0,0,0,.25);
+  padding: 12px;
+}
+.naqa-cmd-card input {
+  width: 100%; border: 1px solid #efe4df; border-radius: 10px;
+  padding: 12px 14px; font: inherit; outline: 0;
+}
+.naqa-cmd-list { margin-top: 8px; max-height: 50vh; overflow: auto; }
+.naqa-cmd-item {
+  display: block; width: 100%; text-align: start;
+  border: 0; background: transparent; padding: 10px 12px;
+  border-radius: 8px; cursor: pointer; font: inherit; font-weight: 600;
+}
+.naqa-cmd-item:hover, .naqa-cmd-item:focus { background: #f7eeeb; }
+
+/* Dark admin shell */
+html[data-admin-theme="dark"] body,
+body.admin-dark {
+  --bg: #1a1412;
+  --panel: #241d1a;
+  --text: #f5eeea;
+  --line: #3a2f2a;
+  --muted: #a89b94;
+  background: var(--bg);
+  color: var(--text);
+}
+body.admin-dark .side-nav { background: #140e10; }
+body.admin-dark .panel,
+body.admin-dark .stat,
+body.admin-dark .prod-card {
+  background: var(--panel);
+  border-color: var(--line);
+  color: var(--text);
+}
+body.admin-dark input,
+body.admin-dark select,
+body.admin-dark textarea {
+  background: #1f1816;
+  color: var(--text);
+  border-color: var(--line);
+}

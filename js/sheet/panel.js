@@ -25,10 +25,7 @@ async function openSheet(id, mode, reset){
     </button>`).join("");
   const qv=sheetMode==="qv";
   $("#sheet").classList.toggle("qv", qv);
-  const hint=qv?T("swipe"):T("swipeFull");
   $("#sheetCard").innerHTML=`
-    <div class="sheet-handle" aria-hidden="true"></div>
-    <p class="swipe-hint">${hint}</p>
     ${qv? carouselHTML(p, galleryIndex) : ""}
     <button class="text-back" id="closeSheet" type="button" aria-label="${T("back")}">‹ ${T("back")}</button>
     ${brandMark(p.brand)}

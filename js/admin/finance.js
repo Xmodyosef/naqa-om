@@ -106,28 +106,82 @@
     if (ex) ex.onclick = function () { A.exportFinanceCsv(); };
   }
 
+  /** دفتر مبيعات محاسبي: صف لكل بند منتج + أعمدة المبالغ */
   A.exportFinanceCsv = function () {
     var head = ar()
-      ? ["رقم الطلب", "التاريخ", "الحالة", "الاسم", "الجوال", "المنطقة", "المنتجات", "الإجمالي"]
-      : ["order", "date", "status", "name", "phone", "area", "items", "total"];
+      ? [
+          "التاريخ", "رقم الطلب", "الحالة", "طريقة الدفع",
+          "اسم الزبون", "الجوال", "المنطقة",
+          "المنتج", "SKU", "الكمية", "سعر الوحدة", "إجمالي البند",
+          "المجموع الفرعي", "التوصيل", "رسوم COD", "الضريبة", "الخصم", "إجمالي الطلب"
+        ]
+      : [
+          "date", "order_id", "status", "payment",
+          "customer", "phone", "area",
+          "product", "sku", "qty", "unit_price", "line_total",
+          "subtotal", "delivery", "cod_fee", "tax", "discount", "order_total"
+        ];
     var rows = [head];
+    var sumLines = 0, sumOrders = 0, orderSeen = {};
     activeOrders().forEach(function (o) {
-      var items = (o.items || []).map(function (it) {
-        return (it.name || it.nameAr || it.sku || "") + "×" + (it.qty || 1);
-      }).join(" | ");
-      rows.push([
-        o.id || "",
-        whenOf(o),
-        statusText(o.status),
-        o.name || "",
-        o.phone || "",
-        o.area || o.city || "",
-        items,
-        (Number(o.total) || 0).toFixed(3)
-      ]);
+      var sub = Number(o.subtotal);
+      if (!isFinite(sub)) sub = 0;
+      var del = Number(o.delivery) || 0;
+      var cod = Number(o.codFee) || 0;
+      var tax = Number(o.vat != null ? o.vat : o.tax) || 0;
+      var disc = Number(o.discount) || 0;
+      var grand = Number(o.total) || 0;
+      if (!sub && grand) {
+        /* تقدير: المجموع الفرعي ≈ الإجمالي - توصيل - COD - ضريبة + خصم */
+        sub = grand - del - cod - tax + disc;
+      }
+      var pay = "";
+      if (A.payText) {
+        try { pay = String(A.payText(o) || ""); } catch (e) { pay = o.payment || ""; }
+      } else {
+        pay = o.payment || o.pay || "";
+      }
+      var items = Array.isArray(o.items) && o.items.length ? o.items : [{ name: "—", qty: 1, price: grand, line: grand, sku: "" }];
+      items.forEach(function (it, idx) {
+        var q = Number(it.qty) || 0;
+        var line = lineRev(it);
+        var unit = q ? (line / q) : (Number(it.price) || 0);
+        sumLines += line;
+        rows.push([
+          whenOf(o),
+          o.id || "",
+          statusText(o.status),
+          pay,
+          o.name || "",
+          o.phone || "",
+          o.area || o.city || "",
+          it.name || it.nameAr || it.nameEn || "",
+          it.sku || "",
+          q,
+          unit.toFixed(3),
+          line.toFixed(3),
+          /* مبالغ الطلب تظهر في أول صف فقط لتجنب تضخيم المجاميع في إكسل */
+          idx === 0 ? sub.toFixed(3) : "",
+          idx === 0 ? del.toFixed(3) : "",
+          idx === 0 ? cod.toFixed(3) : "",
+          idx === 0 ? tax.toFixed(3) : "",
+          idx === 0 ? disc.toFixed(3) : "",
+          idx === 0 ? grand.toFixed(3) : ""
+        ]);
+      });
+      if (!orderSeen[o.id]) {
+        orderSeen[o.id] = 1;
+        sumOrders += grand;
+      }
     });
-    A.downloadCsv("naqa-finance.csv", rows);
-    A.setMsg("financeStatus", A.t("exportOk") || (ar() ? "تم التصدير" : "Exported"));
+    rows.push([]);
+    rows.push(ar()
+      ? ["ملخص", "", "", "", "", "", "", "", "", "", "مجموع البنود", sumLines.toFixed(3), "", "", "", "", "", "مجموع الطلبات", sumOrders.toFixed(3)]
+      : ["summary", "", "", "", "", "", "", "", "", "", "lines_sum", sumLines.toFixed(3), "", "", "", "", "", "orders_sum", sumOrders.toFixed(3)]
+    );
+    var fname = "naqa-sales-" + (A.finDateFrom || "all") + (A.finDateTo ? ("_" + A.finDateTo) : "") + ".csv";
+    A.downloadCsv(fname, rows);
+    A.setMsg("financeStatus", A.t("exportOk") || (ar() ? "تم تصدير دفتر المبيعات ✓" : "Sales journal exported ✓"));
   };
 
   function paintAreaDetail(areaName) {

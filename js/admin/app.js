@@ -151,15 +151,15 @@
     if (A.refreshChildNav) A.refreshChildNav();
     if (A.updateOrdersBadge) A.updateOrdersBadge();
     var top = document.getElementById("topBar");
-    if (top) top.hidden = !(tab === "products" || tab === "orders" || tab === "reviews" || tab === "customers" || tab === "finance");
+    if (top) top.hidden = !(tab === "products" || tab === "orders" || tab === "reviews" || tab === "customers");
     var add = document.getElementById("addProductBtn");
     if (add) add.hidden = tab !== "products";
     var excel = document.getElementById("excelWrap");
     if (excel) {
-      excel.hidden = !(tab === "products" || tab === "reviews" || tab === "customers" || tab === "finance");
+      excel.hidden = !(tab === "products" || tab === "reviews" || tab === "customers");
       var imp = document.getElementById("excelImportBtn");
-      if (imp) imp.hidden = (tab === "reviews" || tab === "customers" || tab === "finance");
-      if (tab !== "products" && tab !== "reviews" && tab !== "customers" && tab !== "finance") {
+      if (imp) imp.hidden = (tab === "reviews" || tab === "customers");
+      if (tab !== "products" && tab !== "reviews" && tab !== "customers") {
         var em = document.getElementById("excelMenu");
         var eb = document.getElementById("excelMenuBtn");
         if (em) em.hidden = true;
@@ -169,9 +169,9 @@
     var search = document.getElementById("ordersSearchWrap");
     if (search) search.hidden = !(tab === "orders" || tab === "products" || tab === "reviews" || tab === "customers");
     var ot = document.getElementById("ordersTopTools");
-    if (ot) ot.hidden = !(tab === "orders" || tab === "products" || tab === "reviews" || tab === "customers" || tab === "finance");
+    if (ot) ot.hidden = !(tab === "orders" || tab === "products" || tab === "reviews" || tab === "customers");
     var otSlot = document.getElementById("ordersTools");
-    if (otSlot) otSlot.hidden = !(tab === "orders" || tab === "finance");
+    if (otSlot) otSlot.hidden = tab !== "orders";
   };
 
   A.sectionHash = function () {

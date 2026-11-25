@@ -2,7 +2,7 @@
 (function (w) {
   "use strict";
   var A = w.NaqaAdmin = w.NaqaAdmin || {};
-  var V = "20261125clean1";
+  var V = "20261125sec1";
   var loaded = false;
   var inflight = null;
   var SCRIPT_MS = 12000;
@@ -55,9 +55,15 @@
   A.loadAdminModules = function () {
     if (loaded) return Promise.resolve(true);
     if (inflight) return inflight;
-    inflight = MODULES.reduce(function (chain, src) {
+    /* Phase A: Firestore SDK + full catalog (order required).
+       Phase B: remaining admin modules in parallel for faster open. */
+    var phaseA = MODULES.slice(0, 2);
+    var phaseB = MODULES.slice(2);
+    inflight = phaseA.reduce(function (chain, src) {
       return chain.then(function () { return loadScript(src); });
     }, Promise.resolve()).then(function () {
+      return Promise.all(phaseB.map(function (src) { return loadScript(src); }));
+    }).then(function () {
       loaded = true;
       inflight = null;
       try {

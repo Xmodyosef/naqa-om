@@ -115,5 +115,15 @@ assert(html.includes('id="tools"'), "tools shell");
 assert(html.includes("firebase-gate.js"), "loads firebase-gate");
 assert(html.includes("load-modules.js"), "loads load-modules");
 
+
+// esc must neutralize quotes used in attribute context
+const escSrc = read("js/admin/core.js");
+assert(/split\("'"\)\.join\("&#39;"\)/.test(escSrc) || escSrc.includes("&#39;"), "A.esc escapes single quotes");
+assert(escSrc.includes('&" + "gt;') || escSrc.includes("gt;"), "A.esc escapes >");
+assert(read("js/admin/load-modules.js").includes("Promise.all"), "modules phase parallel Promise.all");
+assert(read("js/admin/i18n.js").includes("p_add"), "applyChrome sets p_add");
+assert(read("admin.html").includes('data-i18n="p_add"'), "add product i18n attr");
+assert(read("admin.html").includes('data-i18n="o_waOpen"'), "wa orders i18n attr");
+
 console.log(fail ? "\nFAILED " + fail : "\nALL ADMIN CHECKS PASSED");
 process.exit(fail ? 1 : 0);

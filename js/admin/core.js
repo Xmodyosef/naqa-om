@@ -140,8 +140,14 @@
     if (!Array.isArray(A.orders)) A.orders = [];
   } catch (e) { A.orders = []; }
 
+  /* Escape for HTML text + attribute context (incl. single quotes). */
   A.esc = function (v) {
-    return String(v == null ? "" : v).split("&").join("&" + "amp;").split("<").join("&" + "lt;").split('"').join("&" + "quot;");
+    return String(v == null ? "" : v)
+      .split("&").join("&" + "amp;")
+      .split("<").join("&" + "lt;")
+      .split(">").join("&" + "gt;")
+      .split('"').join("&" + "quot;")
+      .split("'").join("&#39;");
   };
   A.val = function (id) {
     var el = document.getElementById(id);

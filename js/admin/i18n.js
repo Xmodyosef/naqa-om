@@ -4,7 +4,7 @@
   A.lang = "ar";
   try { if (localStorage.getItem("naqa_admin_lang") === "en") A.lang = "en"; } catch (e) {}
   /* One language file only. Must stay a blocking script so document.write runs while the page is parsing. */
-  document.write('<script src="js/admin/i18n/dict-' + A.lang + '.js?v=20261125clean1"><\/script>');
+  document.write('<script src="js/admin/i18n/dict-' + A.lang + '.js?v=20261125sec1"><\/script>');
   A.t = function (k) {
     var pack = A.I18N[A.lang] || A.I18N.ar;
     return pack[k] != null ? pack[k] : (A.I18N.ar[k] || k);
@@ -123,6 +123,9 @@
     if (oLead) oLead.textContent = A.t("o_lead");
     var oWa = document.getElementById("waOrders");
     if (oWa) oWa.textContent = A.t("o_waOpen");
+    var addBtn = document.getElementById("addProductBtn");
+    if (addBtn) addBtn.textContent = A.t("p_add");
+
     var oTitle = document.querySelector("#ordersTab .wa-box strong");
     if (oTitle) oTitle.textContent = A.t("o_tab");
     // refresh order tool buttons if already built
@@ -136,7 +139,7 @@
   A.ensureLang = function (lang, done) {
     if (A.I18N && A.I18N[lang]) { done(); return; }
     var s = document.createElement("script");
-    s.src = "js/admin/i18n/dict-" + lang + ".js?v=20261125clean1";
+    s.src = "js/admin/i18n/dict-" + lang + ".js?v=20261125sec1";
     s.onload = function () { done(); };
     s.onerror = function () { done(); };
     document.head.appendChild(s);

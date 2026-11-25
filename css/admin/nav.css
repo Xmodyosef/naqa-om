@@ -525,3 +525,31 @@ body.naqa-open #excelMenuBtn.btn-excel {
   color: #fff;
 }
 
+
+/* أيقونات الشريط: نفس لون نص المنتجات (#5a4a46) والنشيط أبيض */
+body.naqa-open #sideNav.top-parents .side-main .side-ico,
+body.naqa-open #sideNav.top-parents .side-main .side-ico svg,
+body.naqa-open #sideNav.top-parents .side-main .side-ico img {
+  color: #5a4a46 !important;
+  fill: currentColor !important;
+  opacity: 1 !important;
+}
+body.naqa-open #sideNav.top-parents .side-main.on .side-ico,
+body.naqa-open #sideNav.top-parents .side-main.on .side-ico svg {
+  color: #fff !important;
+  fill: currentColor !important;
+}
+body.naqa-open #sideNav.top-parents .side-main:hover .side-ico {
+  color: #8d3048 !important;
+}
+/* Excel أيقونة: مربع أبيض + حرف وردي مثل هوية المنتجات */
+#excelMenuBtn .excel-ico {
+  background: #fff !important;
+}
+#excelMenuBtn .excel-ico svg rect { fill: #fff !important; }
+#excelMenuBtn .excel-ico svg path { fill: #c46b7c !important; }
+/* أيقونة البحث في الشريط */
+body.naqa-open .search-btn,
+body.naqa-open #globalSearchBtn {
+  color: #fff !important;
+}

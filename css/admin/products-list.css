@@ -315,3 +315,26 @@
 .prod-readonly .pr-qty.is-low .pr-val{color:#b45309}
 .prod-readonly .pr-qty.is-out .pr-val{color:#b91c1c}
 .prod-readonly .prod-was{font-size:.72rem;color:#a89b94}
+
+/* ===== أيقونات/أزرار المنتجات = نفس لون كلمة «المنتجات» ===== */
+#list .prod-actions .edit-btn,
+#list .prod-actions .hide-btn,
+#list .prod-actions .hot-btn {
+  background: #fff !important;
+  border: 1px solid #eadfd9 !important;
+  color: #5a4a46 !important; /* نفس لون نص حبة المنتجات غير النشطة */
+  font-weight: 800 !important;
+}
+#list .prod-actions .edit-btn:hover,
+#list .prod-actions .hide-btn:hover,
+#list .prod-actions .hot-btn:hover {
+  border-color: #c46b7c !important;
+  color: #8d3048 !important;
+  background: #fdf6f7 !important;
+}
+#list .prod-actions .hide-btn.is-hidden-on,
+#list .prod-actions .hot-btn.on {
+  background: #fde8ee !important;
+  border-color: #c46b7c !important;
+  color: #8d3048 !important;
+}

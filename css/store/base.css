@@ -453,7 +453,7 @@ html[dir="ltr"] .card-price-float{ /* same absolute end */ }
 }
 .card-v2 .card-name{
   font-size:.9rem; font-weight:800; line-height:1.35;
-  display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical;
+  display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical;
   overflow:hidden; text-align:start; width:100%;
   border:0; background:none; padding:0; color:var(--fg);
   cursor:pointer;
@@ -1461,3 +1461,85 @@ html[data-theme="night"] .hero-trust li{ background: rgba(255,255,255,.04); bord
   .home-rails .campaign-banner { min-height: 220px !important; }
 }
 .campaign-banner { min-height: 280px; }
+
+/* === P2 medium: social proof, offers, card benefit, names === */
+.social-proof{
+  display:grid; grid-template-columns:repeat(4,1fr); gap:10px;
+  margin: 10px 0 14px; padding: 12px 10px;
+  background: linear-gradient(135deg, rgba(141,48,72,.06), rgba(255,255,255,.8));
+  border:1px solid var(--line); border-radius:18px;
+}
+.social-proof .sp-item{
+  display:flex; flex-direction:column; align-items:center; gap:2px; text-align:center;
+  padding:8px 4px;
+}
+.social-proof b{ font-size:1.05rem; font-weight:800; color:var(--rose-deep); }
+.social-proof span{ font-size:.68rem; font-weight:600; color:var(--muted); line-height:1.3; }
+@media (max-width:600px){
+  .social-proof{ grid-template-columns:repeat(2,1fr); gap:8px; }
+}
+
+.offers-bar{
+  display:flex; gap:8px; overflow-x:auto; padding: 4px 0 12px;
+  -webkit-overflow-scrolling:touch; scrollbar-width:none;
+}
+.offers-bar::-webkit-scrollbar{ display:none; }
+.offer-chip{
+  flex:0 0 auto; border:1px solid var(--line); background:#fff;
+  border-radius:999px; padding:10px 14px; font-weight:700; font-size:.82rem;
+  color:var(--fg); white-space:nowrap; cursor:pointer;
+  box-shadow: 0 2px 8px rgba(112,35,55,.06);
+}
+.offer-chip:hover, .offer-chip:focus-visible{
+  border-color:var(--rose-deep); color:var(--rose-deep); outline:none;
+}
+html[data-theme="night"] .offer-chip{ background:#1a1412; color:var(--fg); }
+
+.trust-row{
+  display:flex; flex-wrap:wrap; gap:8px; justify-content:center;
+  margin: 6px 0 12px;
+}
+.trust-item{
+  display:flex; align-items:center; gap:6px;
+  background: rgba(141,48,72,.07); border:1px solid rgba(141,48,72,.12);
+  border-radius:999px; padding:8px 12px;
+  font-size:.78rem; font-weight:700; color:var(--fg);
+}
+.trust-item b{ font-size:.95rem; }
+.trust-item span{ color:var(--muted); font-weight:600; }
+
+.card-benefit{
+  margin: 2px 0 4px; padding:0;
+  font-size:.72rem; line-height:1.4; color:var(--muted); font-weight:600;
+  display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;
+  min-height: 1.4em;
+}
+.card-v2 .card-name, .card-name{
+  display:-webkit-box !important;
+  -webkit-line-clamp: 3 !important;
+  -webkit-box-orient: vertical !important;
+  overflow: hidden !important;
+  white-space: normal !important;
+  text-overflow: unset !important;
+  line-height: 1.35 !important;
+  max-height: none !important;
+}
+.camp-product-name{
+  white-space: normal !important;
+  display:-webkit-box !important;
+  -webkit-line-clamp: 2 !important;
+  -webkit-box-orient: vertical !important;
+  overflow: hidden !important;
+}
+.review-pill{
+  display:inline-flex; align-items:center; gap:4px;
+  font-size:.7rem; font-weight:700; color:#b45309;
+  background: rgba(251,191,36,.15); border-radius:999px; padding:3px 8px; margin: 2px 0 4px;
+}
+.rv-stars{ color:#d97706; }
+html[data-theme="night"] .social-proof{
+  background: linear-gradient(135deg, rgba(141,48,72,.15), rgba(0,0,0,.2));
+}
+html[data-theme="night"] .trust-item{
+  background: rgba(255,255,255,.05); border-color: rgba(255,255,255,.1);
+}

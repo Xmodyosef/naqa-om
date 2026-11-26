@@ -111,6 +111,23 @@ function visual(p, idx){
   }
   return '<span class="card-em" style="font-size:2rem;display:grid;place-items:center;height:100%">'+ (p.em||'✨') +'</span>';
 }
+
+/** Short benefit line under product name (card) */
+function cardBenefit(p){
+  if(!p) return "";
+  var en = (typeof lang!=="undefined" && lang==="en");
+  var raw = en
+    ? (p.skinEn || p.descEn || p.em || "")
+    : (p.skinAr || p.descAr || p.em || "");
+  raw = String(raw||"").replace(/\s+/g," ").trim();
+  if(!raw) return "";
+  // first sentence / first ~70 chars
+  var cut = raw.split(/[.。!?؟\n]/)[0] || raw;
+  if(cut.length > 72) cut = cut.slice(0, 70).replace(/\s+\S*$/,"") + "…";
+  if(cut.length < 8) return "";
+  return cut;
+}
+
 function cardHTML(p){
   const pct=offPct(p);
   const tags=(pct?'<span class="tag-off">'+esc(T("offTag")(pct))+'</span>':'')+(p.hot?'<span class="tag-hot">'+esc(T("hot"))+'</span>':'')+(p.stock!=null && Number(p.stock)<=0?'<span class="tag-out">'+(lang==="en"?"Out of stock":"نفد")+'</span>':'');
@@ -129,7 +146,9 @@ function cardHTML(p){
     +'<span class="card-cat-pill">'+catLab+'</span>'
     +'</div>'
     +'<button class="card-name" data-open="'+p.id+'" type="button">'+esc(pname(p))+'</button>'
+    +(function(){ var b=cardBenefit(p); return b?('<p class="card-benefit">'+esc(b)+'</p>'):''; })()
     +(p.stock!=null && Number(p.stock)<=2?('<div class="card-code">'+(lang==="en"?"Low stock · ":"مخزون منخفض · ")+p.stock+'</div>'):'')
+    +(typeof reviewHTML==='function'?reviewHTML(p):'')
     +priceHTML(p)
     +'<div class="card-actions card-actions-v2">'
     +productCartControls(p.id, {})

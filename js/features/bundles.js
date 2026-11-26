@@ -48,17 +48,57 @@ function addBundle(id) {
   openCart();
 }
 
+
+function refreshSocialProof() {
+  var en = lang === "en";
+  var map = en
+    ? { spProducts: ["products", "Authentic products"], spBrands: ["brands", "Brands"], spShip: ["Oman", "Delivery nationwide"], spOrder: ["WhatsApp", "Order in minutes"] }
+    : { spProducts: ["منتج أصلي", null], spBrands: ["ماركة", null], spShip: ["عُمان", "توصيل لكل الولايات"], spOrder: ["واتساب", "طلب خلال دقائق"] };
+  // keep numeric b/counts; only update span labels
+  try {
+    var root = document.getElementById("socialProof"); if (!root) return;
+    var spans = root.querySelectorAll(".sp-item span");
+    var labels = en
+      ? ["Authentic products", "Brands", "Delivery nationwide", "Order in minutes"]
+      : ["منتج أصلي", "ماركة", "توصيل لكل الولايات", "طلب خلال دقائق"];
+    spans.forEach(function (s, i) { if (labels[i]) s.textContent = labels[i]; });
+    var chips = document.querySelectorAll("#offersBar .offer-chip");
+    if (chips.length >= 4) {
+      if (en) {
+        chips[0].textContent = "% Deals & offers";
+        chips[1].textContent = "★ Bestsellers";
+        chips[2].textContent = "Under 10 OMR";
+        chips[3].textContent = "🌸 K-beauty";
+      } else {
+        chips[0].textContent = "٪ عروض وتخفيضات";
+        chips[1].textContent = "★ الأكثر طلباً";
+        chips[2].textContent = "تحت ١٠ ر.ع";
+        chips[3].textContent = "🌸 عناية كورية";
+      }
+    }
+  } catch (e) {}
+}
+
 function renderTrust() {
   var el = $("#trustRow"); if (!el) return;
   var items = lang === "en"
-    ? [["✓", "100% authentic"], ["🇴🇲", "Oman delivery"], ["💬", "WhatsApp order"], ["🚚", "Free ship over 30 OMR"], ["✨", "Skin quiz"]]
-    : [["✓", "أصلي ١٠٠٪"], ["🇴🇲", "توصيل عُمان"], ["💬", "طلب واتساب"], ["🚚", "مجاني فوق ٣٠ ر.ع"], ["✨", "اختبار بشرة"]];
+    ? [["✓", "100% authentic"], ["🇴🇲", "Oman delivery"], ["💬", "WhatsApp order"], ["🚚", "Free ship over 30 OMR"], ["⭐", "Real reviews"], ["✨", "Skin quiz"]]
+    : [["✓", "أصلي ١٠٠٪"], ["🇴🇲", "توصيل عُمان"], ["💬", "طلب واتساب"], ["🚚", "مجاني فوق ٣٠ ر.ع"], ["⭐", "تقييمات حقيقية"], ["✨", "اختبار بشرة"]];
   el.innerHTML = items.map(function (x) {
     return '<div class="trust-item"><b>' + x[0] + "</b><span>" + x[1] + "</span></div>";
   }).join("");
+  // social proof counts
+  try {
+    var n = (typeof products !== "undefined" && products) ? products.filter(function(p){return !p.hidden;}).length : 0;
+    var brands = {};
+    if (n) products.forEach(function(p){ if(p.brand) brands[p.brand]=1; });
+    var bc = Object.keys(brands).length;
+    var spP = document.getElementById("spProducts");
+    var spB = document.getElementById("spBrands");
+    if (spP && n) spP.textContent = "+" + n;
+    if (spB && bc) spB.textContent = "+" + bc;
+  } catch (e) {}
 }
 
-function reviewHTML(p) {
-  return "";
-}
+/* reviewHTML: use js/features/reviews.js */
 

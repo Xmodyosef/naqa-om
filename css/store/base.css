@@ -1632,3 +1632,19 @@ html[data-theme="night"] .sheet-detail{
     max-width: 55%;
   }
 }
+
+/* B3 pro v2 — copy stays left, products stay visible */
+.campaign-copy{ max-width: 38% !important; }
+.home-rails .campaign-copy{ max-width: 40% !important; }
+.campaign-banner, .home-rails .campaign-banner{
+  background-position: center right !important;
+  min-height: 300px !important;
+  height: clamp(260px, 34vw, 340px) !important;
+}
+@media (max-width:700px){
+  .campaign-copy, .home-rails .campaign-copy{ max-width: 52% !important; }
+  .campaign-banner, .home-rails .campaign-banner{
+    height: 230px !important;
+    min-height: 210px !important;
+  }
+}

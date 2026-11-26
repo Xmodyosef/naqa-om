@@ -321,7 +321,7 @@ function renderHomeCatalogs(){
 
     var styleBg = "";
     if(c.cover){
-      styleBg = " style=\"background-image:linear-gradient(100deg,rgba(32,12,20,.78) 0%,rgba(32,12,20,.4) 55%,rgba(32,12,20,.18) 100%),url('" + esc(c.cover) + "');background-size:cover;background-position:center;\"";
+      styleBg = " style=\"background-image:linear-gradient(105deg,rgba(20,8,14,.82) 0%,rgba(20,8,14,.45) 48%,rgba(20,8,14,.15) 100%),url('" + esc(c.cover) + "');background-size:cover;background-position:center;\"";
     }
 
     html += '<section class="campaign" id="camp-'+esc(c.id)+'">'

@@ -1319,3 +1319,81 @@ html[data-theme="night"] .campaign-banner{ box-shadow:none; }
 html[data-theme="night"] .home-rails .camp-product{ background:#1a1614; border-color:#2a2420; }
 html[data-theme="night"] .home-rails .camp-product-media{ background:#151210; }
 html[data-theme="night"] .home-rails .camp-product-name{ color:#f5ebe8; }
+
+/* —— Stronger premium banners (v2) —— */
+.home-rails .campaign{ margin-top: 32px; }
+.home-rails .campaign-head h2{
+  font-size: clamp(1.15rem, 2.6vw, 1.4rem);
+  letter-spacing: -0.02em;
+}
+.home-rails .campaign-banner{
+  min-height: 200px;
+  border-radius: 24px;
+  box-shadow: 0 18px 40px rgba(60,20,30,.14), 0 2px 0 rgba(255,255,255,.08) inset;
+  transition: transform .25s ease, box-shadow .25s ease;
+  isolation: isolate;
+}
+.home-rails .campaign-banner:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 22px 48px rgba(60,20,30,.18);
+}
+.home-rails .campaign-banner:after{
+  content:""; position:absolute; inset:0; pointer-events:none;
+  background: radial-gradient(ellipse at 85% 20%, rgba(255,255,255,.22), transparent 55%),
+              linear-gradient(180deg, transparent 60%, rgba(0,0,0,.12));
+  z-index:0;
+}
+.home-rails .campaign-copy{ max-width: 58%; z-index:2; }
+.home-rails .campaign-copy small{
+  display:inline-block; padding:3px 10px; border-radius:999px;
+  background:rgba(255,255,255,.18); border:1px solid rgba(255,255,255,.28);
+  font-size:.68rem; letter-spacing:.02em;
+}
+.home-rails .campaign-copy h3{
+  font-size: clamp(1.25rem, 3.4vw, 1.75rem);
+  text-shadow: 0 2px 12px rgba(0,0,0,.25);
+  margin: 10px 0 6px;
+}
+.home-rails .campaign-copy p{ font-size:.82rem; opacity:.95; max-width: 34ch; }
+.home-rails .chip-cta{
+  margin-top: 4px;
+  background: rgba(255,255,255,.92);
+  color: #5a2030;
+  border: 0;
+  padding: 7px 14px;
+  font-size: .76rem;
+  box-shadow: 0 4px 14px rgba(0,0,0,.15);
+}
+.home-rails .campaign-art{
+  left: 2%;
+  bottom: -18px;
+  width: min(250px, 38vw);
+  max-height: 240px;
+  filter: drop-shadow(0 16px 28px rgba(0,0,0,.35));
+  z-index:2;
+}
+.home-rails .campaign-rail{ margin-top: 14px; }
+.home-rails .camp-product{
+  width: 156px;
+  border-radius: 18px;
+  border: 1px solid rgba(234,222,218,.9);
+  box-shadow: 0 8px 20px rgba(60,20,30,.06);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.home-rails .camp-product:hover{
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(60,20,30,.12);
+}
+.home-rails .camp-product-media{ background: #fff; }
+.home-rails .camp-product-media img{
+  height: 148px;
+  padding: 10px;
+  object-fit: contain;
+}
+@media (max-width:700px){
+  .home-rails .campaign-banner{ min-height: 168px; border-radius: 18px; }
+  .home-rails .campaign-copy{ max-width: 70%; }
+  .home-rails .campaign-art{ width: 128px; bottom: -10px; }
+  .home-rails .camp-product{ width: 136px; }
+  .home-rails .camp-product-media img{ height: 122px; }
+}

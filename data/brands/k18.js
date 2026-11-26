@@ -1,7 +1,7 @@
-// k18.js — short Apple-like copy
-(function(){
-var A = window.NAQA_PRODUCTS || (window.NAQA_PRODUCTS = []);
-A.push({
+/* Brand: K18 · 3 products · edit AR/EN fields here */
+window.NAQA_PRODUCTS = window.NAQA_PRODUCTS || [];
+window.NAQA_PRODUCTS.push(
+{
   "id": 170,
   "brand": "K18",
   "cat": "شعر",
@@ -13,15 +13,15 @@ A.push({
   ],
   "nameAr": "ماسك كيه 18 ليف إن لإصلاح الشعر الجزيئي المتقدم - 15مل",
   "nameEn": "K18 Leave-in Molecular Repair Hair Mask - 50ml",
-  "descAr": "ماسك كيه 18 ليف إن لإصلاح الشعر من K18. عناية بسيطة للشعر. 15 مل.",
-  "descEn": "K18 Leave by K18. Simple hair care. 15 ml.",
-  "useAr": "١) حسب نوع المنتج.\n٢) كمية قليلة تكفي.",
-  "useEn": "1) As directed.\n2) A little goes far.",
-  "skinAr": "حسب نوع الشعر.",
-  "skinEn": "Depends on hair type.",
+  "descAr": "ماسك كيه 18 ليف إن لإصلاح الشعر الجزيئي المتقدم من K18. أنظف وأطرى مع الأسابيع. الحجم ≈ 15 مل. يناسب الشعر المجهد. أي لسع مستمر؟ خفّفي أو راجعي مختصاً.",
+  "descEn": "K18 Leave by K18. Respects scalp and lengths. Size ≈ 50 ml. Suits scalp that needs air. Give it two steady weeks before you decide.",
+  "useAr": "١) شامبو للفروة، بلسم للأطراف، سيروم حسب العبوة.\n٢) ابدئي بقليل.\n٣) لا تُشبعي الخصل.\n٤) أسبوعان–ثلاثة للفرق الأوضح.",
+  "useEn": "1) Shampoo scalp, condition lengths, leave-in as labeled.\n2) Start small.\n3) Don’t drench the hair.\n4) Two–three weeks for a clearer change.",
+  "skinAr": "الشعر المجهد",
+  "skinEn": "scalp that needs air",
   "stock": 3
-});
-A.push({
+},
+{
   "id": 177,
   "brand": "K18",
   "cat": "شعر",
@@ -33,15 +33,15 @@ A.push({
   ],
   "nameAr": "شامبو كيه 18 داميج شيلد لحماية الشعر والحفاظ على توازن درجة الحموضة - 250مل",
   "nameEn": "K18 Damage Shield pH protective shampoo - 250ml",
-  "descAr": "شامبو كيه 18 داميج شيلد لحماية من K18. عناية بسيطة للشعر. 250 مل.",
-  "descEn": "K18 Damage Shield pH protective shampoo by K18. Simple hair care. 250 ml.",
-  "useAr": "١) حسب نوع المنتج.\n٢) كمية قليلة تكفي.",
-  "useEn": "1) As directed.\n2) A little goes far.",
-  "skinAr": "حسب نوع الشعر.",
-  "skinEn": "Depends on hair type.",
+  "descAr": "اختاري شامبو كيه 18 داميج شيلد لحماية الشعر والحفاظ على تو… حين تريدين نتيجة بلا تعقيد. من K18، يسهّل التصفيف. الحجم ≈ 250 مل. مُخصص تقريباً لـالشعر المجهد. أي لسع مستمر؟ خفّفي أو راجعي مختصاً.",
+  "descEn": "Reach for K18 Damage Shield pH protective shampoo when you want results without a maze. From K18, makes styling simpler. Size ≈ 250 ml. Aimed at stressed hair. Give it two steady weeks before you decide.",
+  "useAr": "١) شامبو للفروة، بلسم للأطراف، سيروم حسب العبوة.\n٢) ابدئي بقليل.\n٣) لا تُشبعي الخصل.\n٤) أسبوعان–ثلاثة للفرق الأوضح.",
+  "useEn": "1) Shampoo scalp, condition lengths, leave-in as labeled.\n2) Start small.\n3) Don’t drench the hair.\n4) Two–three weeks for a clearer change.",
+  "skinAr": "الشعر المجهد",
+  "skinEn": "stressed hair",
   "stock": 3
-});
-A.push({
+},
+{
   "id": 180,
   "brand": "K18",
   "cat": "شعر",
@@ -53,12 +53,12 @@ A.push({
   ],
   "nameAr": "بخاخ كيه 18 الواقي من الحرارة لتنعيم الشعر - 118مل",
   "nameEn": "K18 HeatBounce Conditioning Heat Protectant - 118ml",
-  "descAr": "بخاخ كيه 18 الواقي من الحرارة من K18. عناية بسيطة للشعر. 118 مل.",
-  "descEn": "K18 HeatBounce Conditioning Heat by K18. Simple hair care. 118 ml.",
-  "useAr": "١) حسب نوع المنتج.\n٢) كمية قليلة تكفي.",
-  "useEn": "1) As directed.\n2) A little goes far.",
-  "skinAr": "حسب نوع الشعر.",
-  "skinEn": "Depends on hair type.",
+  "descAr": "لمسة K18 في بخاخ كيه 18 الواقي من الحرارة لتنعيم الشعر: أنظف وأطرى مع الأسابيع. صيغة مباشرة تُحترم مع الوقت. الحجم ≈ 118 مل. يناسب حسب الشعر والفروة. انتظمي أسبوعين قبل الحكم النهائي.",
+  "descEn": "K18's touch in K18 HeatBounce Conditioning Heat Protectant: cleaner and softer over weeks. A direct formula that earns trust over time. Size ≈ 118 ml. Fits match hair and scalp. Give it two steady weeks before you decide.",
+  "useAr": "١) شامبو للفروة، بلسم للأطراف، سيروم حسب العبوة.\n٢) ابدئي بقليل.\n٣) لا تُشبعي الخصل.\n٤) أسبوعان–ثلاثة للفرق الأوضح.",
+  "useEn": "1) Shampoo scalp, condition lengths, leave-in as labeled.\n2) Start small.\n3) Don’t drench the hair.\n4) Two–three weeks for a clearer change.",
+  "skinAr": "حسب الشعر والفروة",
+  "skinEn": "match hair and scalp",
   "stock": 3
-});
-})();
+}
+);

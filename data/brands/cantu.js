@@ -1,7 +1,7 @@
-// cantu.js — short Apple-like copy
-(function(){
-var A = window.NAQA_PRODUCTS || (window.NAQA_PRODUCTS = []);
-A.push({
+/* Brand: Cantu · 18 products · edit AR/EN fields here */
+window.NAQA_PRODUCTS = window.NAQA_PRODUCTS || [];
+window.NAQA_PRODUCTS.push(
+{
   "id": 189,
   "brand": "Cantu",
   "cat": "شعر",
@@ -13,15 +13,15 @@ A.push({
   ],
   "nameAr": "مرطب شعر الاطفال من كانتو - 283ج",
   "nameEn": "Cantu Kids Leave-In Conditioner - 283g",
-  "descAr": "مرطب شعر الاطفال من كانتو من Cantu. عناية بسيطة للشعر. 283 ج.",
-  "descEn": "Cantu Kids Leave by Cantu. Simple hair care. 283 g.",
-  "useAr": "١) حسب نوع المنتج.\n٢) كمية قليلة تكفي.",
-  "useEn": "1) As directed.\n2) A little goes far.",
-  "skinAr": "حسب نوع الشعر.",
-  "skinEn": "Depends on hair type.",
+  "descAr": "اختاري مرطب شعر الاطفال من كانتو حين تريدين نتيجة بلا تعقيد. من Cantu، أنظف وأطرى مع الأسابيع. الحجم ≈ 283 ج. مُخصص تقريباً لـفروة تحتاج انتعاشاً. الجمال الأهدأ يأتي من روتين قصير ثابت.",
+  "descEn": "Reach for Cantu Kids Leave when you want results without a maze. From Cantu, respects scalp and lengths. Size ≈ 283 g. Aimed at scalp that needs air. Quiet beauty loves a short, steady routine.",
+  "useAr": "١) شامبو للفروة، بلسم للأطراف، سيروم حسب العبوة.\n٢) ابدئي بقليل.\n٣) لا تُشبعي الخصل.\n٤) أسبوعان–ثلاثة للفرق الأوضح.",
+  "useEn": "1) Shampoo scalp, condition lengths, leave-in as labeled.\n2) Start small.\n3) Don’t drench the hair.\n4) Two–three weeks for a clearer change.",
+  "skinAr": "فروة تحتاج انتعاشاً",
+  "skinEn": "scalp that needs air",
   "stock": 3
-});
-A.push({
+},
+{
   "em": "🧴",
   "imgs": [
     "media/products/p250_0.webp"
@@ -34,15 +34,15 @@ A.push({
   "hot": true,
   "nameAr": "لوشن كريمي لترطيب الشعر بزبدة الشيا — 355مل",
   "nameEn": "Cantu Shea Butter Conditioning Creamy Hair Lotion 12oz",
-  "descAr": "لوشن كريمي لترطيب الشعر بزبدة الشيا من Cantu. عناية بسيطة للشعر. 355 مل.",
-  "descEn": "Cantu Shea Butter Conditioning Creamy by Cantu. Simple hair care. 355 ml.",
-  "useAr": "١) حسب نوع المنتج.\n٢) كمية قليلة تكفي.",
-  "useEn": "1) As directed.\n2) A little goes far.",
-  "skinAr": "حسب نوع الشعر.",
-  "skinEn": "Depends on hair type.",
+  "descAr": "اختاري لوشن كريمي لترطيب الشعر بزبدة الشيا حين تريدين نتيجة بلا تعقيد. من Cantu، أنظف وأطرى مع الأسابيع بفضل زبدة الشيا. الحجم ≈ 355 مل. مُخصص تقريباً لـالشعر المجهد. انتظمي أسبوعين قبل الحكم النهائي.",
+  "descEn": "Reach for Cantu Shea Butter Conditioning Creamy Hair Lotion 12oz when you want results without a maze. From Cantu, respects scalp and lengths thanks to shea butter. Size ≈ 355 ml. Aimed at stressed hair. Quiet beauty loves a short, steady routine.",
+  "useAr": "١) شامبو للفروة، بلسم للأطراف، سيروم حسب العبوة.\n٢) ابدئي بقليل.\n٣) لا تُشبعي الخصل.\n٤) أسبوعان–ثلاثة للفرق الأوضح.",
+  "useEn": "1) Shampoo scalp, condition lengths, leave-in as labeled.\n2) Start small.\n3) Don’t drench the hair.\n4) Two–three weeks for a clearer change.",
+  "skinAr": "الشعر المجهد",
+  "skinEn": "stressed hair",
   "id": 250
-});
-A.push({
+},
+{
   "em": "🥥",
   "imgs": [
     "media/products/p251_0.webp"
@@ -55,15 +55,15 @@ A.push({
   "hot": true,
   "nameAr": "كريم تجعيد بجوز الهند وزبدة الشيا — 340جم",
   "nameEn": "Cantu Shea Butter Coconut Curling Cream 12oz",
-  "descAr": "كريم تجعيد بجوز الهند وزبدة الشيا من Cantu. عناية بسيطة للشعر. 340 ج.",
-  "descEn": "Cantu Shea Butter Coconut Curling Cream by Cantu. Simple hair care. 340 g.",
-  "useAr": "١) حسب نوع المنتج.\n٢) كمية قليلة تكفي.",
-  "useEn": "1) As directed.\n2) A little goes far.",
-  "skinAr": "حسب نوع الشعر.",
-  "skinEn": "Depends on hair type.",
+  "descAr": "رقيق في الإحساس، صادق في الدور — كريم تجعيد بجوز الهند وزبدة الشيا. علامة Cantu تعتمد لمسة زبدة الشيا. يفهم الفروة والأطراف. الحجم ≈ 340 ج. يناسب حسب الشعر والفروة. خزّنيها في مكان معتدل وأغلقي الغطاء.",
+  "descEn": "Soft to the touch, honest in role — Cantu Shea Butter Coconut Curling Cream 12oz. Cantu leans on shea butter. Cleaner and softer over weeks. Size ≈ 340 g. Best with match hair and scalp. Keep it cool-ish and cap it tight.",
+  "useAr": "١) شامبو للفروة، بلسم للأطراف، سيروم حسب العبوة.\n٢) ابدئي بقليل.\n٣) لا تُشبعي الخصل.\n٤) أسبوعان–ثلاثة للفرق الأوضح.",
+  "useEn": "1) Shampoo scalp, condition lengths, leave-in as labeled.\n2) Start small.\n3) Don’t drench the hair.\n4) Two–three weeks for a clearer change.",
+  "skinAr": "حسب الشعر والفروة",
+  "skinEn": "match hair and scalp",
   "id": 251
-});
-A.push({
+},
+{
   "em": "🌀",
   "imgs": [
     "media/products/p252_0.webp"
@@ -75,15 +75,15 @@ A.push({
   "price": 5,
   "nameAr": "كسترد تجعيد بزبدة الشيا",
   "nameEn": "Cantu Shea Butter Curling Custard",
-  "descAr": "كسترد تجعيد بزبدة الشيا من Cantu. عناية بسيطة للشعر.",
-  "descEn": "Cantu Shea Butter Curling Custard by Cantu. Simple hair care.",
-  "useAr": "١) حسب نوع المنتج.\n٢) كمية قليلة تكفي.",
-  "useEn": "1) As directed.\n2) A little goes far.",
-  "skinAr": "حسب نوع الشعر.",
-  "skinEn": "Depends on hair type.",
+  "descAr": "رقيق في الإحساس، صادق في الدور — كسترد تجعيد بزبدة الشيا. علامة Cantu تعتمد لمسة زبدة الشيا. يفهم الفروة والأطراف. يناسب فروة تحتاج انتعاشاً. الجمال الأهدأ يأتي من روتين قصير ثابت.",
+  "descEn": "Soft to the touch, honest in role — Cantu Shea Butter Curling Custard. Cantu leans on shea butter. Makes styling simpler. Best with stressed hair. Give it two steady weeks before you decide.",
+  "useAr": "١) شامبو للفروة، بلسم للأطراف، سيروم حسب العبوة.\n٢) ابدئي بقليل.\n٣) لا تُشبعي الخصل.\n٤) أسبوعان–ثلاثة للفرق الأوضح.",
+  "useEn": "1) Shampoo scalp, condition lengths, leave-in as labeled.\n2) Start small.\n3) Don’t drench the hair.\n4) Two–three weeks for a clearer change.",
+  "skinAr": "فروة تحتاج انتعاشاً",
+  "skinEn": "stressed hair",
   "id": 252
-});
-A.push({
+},
+{
   "em": "💆",
   "imgs": [
     "media/products/p253_0.webp"
@@ -95,15 +95,15 @@ A.push({
   "price": 5.5,
   "nameAr": "ماسك علاج عميق بزبدة الشيا — 340جم",
   "nameEn": "Cantu Shea Butter Deep Treatment Masque 12oz",
-  "descAr": "ماسك علاج عميق بزبدة الشيا من Cantu. عناية بسيطة للشعر. 340 ج.",
-  "descEn": "Cantu Shea Butter Deep Treatment Masque by Cantu. Simple hair care. 340 g.",
-  "useAr": "١) حسب نوع المنتج.\n٢) كمية قليلة تكفي.",
-  "useEn": "1) As directed.\n2) A little goes far.",
-  "skinAr": "حسب نوع الشعر.",
-  "skinEn": "Depends on hair type.",
+  "descAr": "اختاري ماسك علاج عميق بزبدة الشيا حين تريدين نتيجة بلا تعقيد. من Cantu، يفهم الفروة والأطراف بفضل زبدة الشيا. الحجم ≈ 340 ج. مُخصص تقريباً لـالشعر المجهد. أي لسع مستمر؟ خفّفي أو راجعي مختصاً.",
+  "descEn": "Reach for Cantu Shea Butter Deep Treatment Masque 12oz when you want results without a maze. From Cantu, respects scalp and lengths thanks to shea butter. Size ≈ 340 g. Aimed at stressed hair. Quiet beauty loves a short, steady routine.",
+  "useAr": "١) شامبو للفروة، بلسم للأطراف، سيروم حسب العبوة.\n٢) ابدئي بقليل.\n٣) لا تُشبعي الخصل.\n٤) أسبوعان–ثلاثة للفرق الأوضح.",
+  "useEn": "1) Shampoo scalp, condition lengths, leave-in as labeled.\n2) Start small.\n3) Don’t drench the hair.\n4) Two–three weeks for a clearer change.",
+  "skinAr": "الشعر المجهد",
+  "skinEn": "stressed hair",
   "id": 253
-});
-A.push({
+},
+{
   "em": "✨",
   "imgs": [
     "media/products/p254_0.webp"
@@ -115,15 +115,15 @@ A.push({
   "price": 5.8,
   "nameAr": "كريم إصلاح leave-in بزيت الأرغان — 453جم",
   "nameEn": "Cantu Argan Oil Leave-In Conditioning Repair Cream 16oz",
-  "descAr": "كريم إصلاح leave من Cantu. عناية بسيطة للشعر. 453 ج.",
-  "descEn": "Cantu Argan Oil Leave by Cantu. Simple hair care. 453 g.",
-  "useAr": "١) حسب نوع المنتج.\n٢) كمية قليلة تكفي.",
-  "useEn": "1) As directed.\n2) A little goes far.",
-  "skinAr": "حسب نوع الشعر.",
-  "skinEn": "Depends on hair type.",
+  "descAr": "كريم إصلاح leave من Cantu. أنظف وأطرى مع الأسابيع. الحجم ≈ 453 ج. يناسب فروة تحتاج انتعاشاً. خزّنيها في مكان معتدل وأغلقي الغطاء.",
+  "descEn": "Cantu Argan Oil Leave by Cantu. Respects scalp and lengths. Size ≈ 453 g. Suits scalp that needs air. Give it two steady weeks before you decide.",
+  "useAr": "١) شامبو للفروة، بلسم للأطراف، سيروم حسب العبوة.\n٢) ابدئي بقليل.\n٣) لا تُشبعي الخصل.\n٤) أسبوعان–ثلاثة للفرق الأوضح.",
+  "useEn": "1) Shampoo scalp, condition lengths, leave-in as labeled.\n2) Start small.\n3) Don’t drench the hair.\n4) Two–three weeks for a clearer change.",
+  "skinAr": "فروة تحتاج انتعاشاً",
+  "skinEn": "scalp that needs air",
   "id": 254
-});
-A.push({
+},
+{
   "em": "💨",
   "imgs": [
     "media/products/p255_0.webp"
@@ -135,15 +135,15 @@ A.push({
   "price": 4.2,
   "nameAr": "رذاذ leave-in مرطّب بزبدة الشيا — 237مل",
   "nameEn": "Cantu Shea Butter Hydrating Leave-in Conditioning Mist 8oz",
-  "descAr": "رذاذ leave من Cantu. عناية بسيطة للشعر. 237 مل.",
-  "descEn": "Cantu Shea Butter Hydrating Leave by Cantu. Simple hair care. 237 ml.",
-  "useAr": "١) حسب نوع المنتج.\n٢) كمية قليلة تكفي.",
-  "useEn": "1) As directed.\n2) A little goes far.",
-  "skinAr": "حسب نوع الشعر.",
-  "skinEn": "Depends on hair type.",
+  "descAr": "رقيق في الإحساس، صادق في الدور — رذاذ leave. علامة Cantu تعتمد لمسة زبدة الشيا. يفهم الفروة والأطراف. الحجم ≈ 237 مل. يناسب حسب الشعر والفروة. انتظمي أسبوعين قبل الحكم النهائي.",
+  "descEn": "Soft to the touch, honest in role — Cantu Shea Butter Hydrating Leave. Cantu leans on shea butter. Cleaner and softer over weeks. Size ≈ 237 ml. Best with scalp that needs air. Ongoing sting? Ease off or ask a pro.",
+  "useAr": "١) شامبو للفروة، بلسم للأطراف، سيروم حسب العبوة.\n٢) ابدئي بقليل.\n٣) لا تُشبعي الخصل.\n٤) أسبوعان–ثلاثة للفرق الأوضح.",
+  "useEn": "1) Shampoo scalp, condition lengths, leave-in as labeled.\n2) Start small.\n3) Don’t drench the hair.\n4) Two–three weeks for a clearer change.",
+  "skinAr": "حسب الشعر والفروة",
+  "skinEn": "scalp that needs air",
   "id": 255
-});
-A.push({
+},
+{
   "em": "🧴",
   "imgs": [
     "media/products/p256_0.webp"
@@ -155,15 +155,15 @@ A.push({
   "price": 4.4,
   "nameAr": "لوشن leave-in ملطّف — 295مل",
   "nameEn": "Cantu Shea Butter Smoothing Leave-In Conditioning Lotion 10oz",
-  "descAr": "لوشن leave من Cantu. عناية بسيطة للشعر. 295 مل.",
-  "descEn": "Cantu Shea Butter Smoothing Leave by Cantu. Simple hair care. 295 ml.",
-  "useAr": "١) حسب نوع المنتج.\n٢) كمية قليلة تكفي.",
-  "useEn": "1) As directed.\n2) A little goes far.",
-  "skinAr": "حسب نوع الشعر.",
-  "skinEn": "Depends on hair type.",
+  "descAr": "لوشن leave من Cantu. أنظف وأطرى مع الأسابيع، مع حضور زبدة الشيا لـتغذية غنية وملمس مخملي. الحجم ≈ 295 مل. يناسب الشعر المجهد. خزّنيها في مكان معتدل وأغلقي الغطاء.",
+  "descEn": "Cantu Shea Butter Smoothing Leave by Cantu. Makes styling simpler, with shea butter for rich, velvet-soft nourishment. Size ≈ 295 ml. Suits scalp that needs air. Ongoing sting? Ease off or ask a pro.",
+  "useAr": "١) شامبو للفروة، بلسم للأطراف، سيروم حسب العبوة.\n٢) ابدئي بقليل.\n٣) لا تُشبعي الخصل.\n٤) أسبوعان–ثلاثة للفرق الأوضح.",
+  "useEn": "1) Shampoo scalp, condition lengths, leave-in as labeled.\n2) Start small.\n3) Don’t drench the hair.\n4) Two–three weeks for a clearer change.",
+  "skinAr": "الشعر المجهد",
+  "skinEn": "scalp that needs air",
   "id": 256
-});
-A.push({
+},
+{
   "em": "📌",
   "imgs": [
     "media/products/p257_0.webp"
@@ -175,15 +175,15 @@ A.push({
   "price": 3.2,
   "nameAr": "جل الحواف Edge Gel تثبيت قوي — 64جم",
   "nameEn": "Cantu Shea Edge Gel Extra Hold 2.25oz",
-  "descAr": "جل الحواف Edge Gel تثبيت قوي من Cantu. عناية بسيطة للشعر. 64 ج.",
-  "descEn": "Cantu Shea Edge Gel Extra Hold 2.25oz by Cantu. Simple hair care. 64 g.",
-  "useAr": "١) حسب نوع المنتج.\n٢) كمية قليلة تكفي.",
-  "useEn": "1) As directed.\n2) A little goes far.",
-  "skinAr": "حسب نوع الشعر.",
-  "skinEn": "Depends on hair type.",
+  "descAr": "Cantu × عناية يومية: جل الحواف Edge Gel تثبيت قوي. يُبرز زبدة الشيا من أجل تغذية غنية وملمس مخملي. الملمس: يفهم الفروة والأطراف. الحجم ≈ 64 ج. الشعر المجهد. الجمال الأهدأ يأتي من روتين قصير ثابت.",
+  "descEn": "Cantu for daily care: Cantu Shea Edge Gel Extra Hold 2.25oz. It brings shea butter for rich, velvet-soft nourishment. Feel: respects scalp and lengths. Size ≈ 64 g. Stressed hair. Quiet beauty loves a short, steady routine.",
+  "useAr": "١) شامبو للفروة، بلسم للأطراف، سيروم حسب العبوة.\n٢) ابدئي بقليل.\n٣) لا تُشبعي الخصل.\n٤) أسبوعان–ثلاثة للفرق الأوضح.",
+  "useEn": "1) Shampoo scalp, condition lengths, leave-in as labeled.\n2) Start small.\n3) Don’t drench the hair.\n4) Two–three weeks for a clearer change.",
+  "skinAr": "الشعر المجهد",
+  "skinEn": "stressed hair",
   "id": 257
-});
-A.push({
+},
+{
   "em": "🧼",
   "imgs": [
     "media/products/p258_0.webp"
@@ -195,15 +195,15 @@ A.push({
   "price": 4.8,
   "nameAr": "غسول Co-Wash مكيّف كامل",
   "nameEn": "Cantu Complete Conditioning Co-Wash",
-  "descAr": "غسول Co من Cantu. عناية بسيطة للشعر.",
-  "descEn": "Cantu Complete Conditioning Co by Cantu. Simple hair care.",
-  "useAr": "١) حسب نوع المنتج.\n٢) كمية قليلة تكفي.",
-  "useEn": "1) As directed.\n2) A little goes far.",
-  "skinAr": "حسب نوع الشعر.",
-  "skinEn": "Depends on hair type.",
+  "descAr": "Cantu × عناية يومية: غسول Co. يُركّز على راحة الاستخدام. الملمس: يسهّل التصفيف. فروة تحتاج انتعاشاً. الجمال الأهدأ يأتي من روتين قصير ثابت.",
+  "descEn": "Cantu for daily care: Cantu Complete Conditioning Co. Comfort-first use. Feel: respects scalp and lengths. Scalp that needs air. Give it two steady weeks before you decide.",
+  "useAr": "١) شامبو للفروة، بلسم للأطراف، سيروم حسب العبوة.\n٢) ابدئي بقليل.\n٣) لا تُشبعي الخصل.\n٤) أسبوعان–ثلاثة للفرق الأوضح.",
+  "useEn": "1) Shampoo scalp, condition lengths, leave-in as labeled.\n2) Start small.\n3) Don’t drench the hair.\n4) Two–three weeks for a clearer change.",
+  "skinAr": "فروة تحتاج انتعاشاً",
+  "skinEn": "scalp that needs air",
   "id": 258
-});
-A.push({
+},
+{
   "em": "🌿",
   "imgs": [
     "media/products/p259_0.webp"
@@ -215,15 +215,15 @@ A.push({
   "price": 4.6,
   "nameAr": "بلسم كريمي مرطّب خالٍ من السلفات",
   "nameEn": "Cantu Sulfate-Free Hydrating Cream Conditioner",
-  "descAr": "بلسم كريمي مرطّب خالٍ من السلفات من Cantu. عناية بسيطة للشعر.",
-  "descEn": "Cantu Sulfate by Cantu. Simple hair care.",
-  "useAr": "١) حسب نوع المنتج.\n٢) كمية قليلة تكفي.",
-  "useEn": "1) As directed.\n2) A little goes far.",
-  "skinAr": "حسب نوع الشعر.",
-  "skinEn": "Depends on hair type.",
+  "descAr": "لماذا Cantu هنا؟ لأن بلسم كريمي مرطّب خالٍ من السلفات يقدّم خطوة واحدة واضحة: يفهم الفروة والأطراف. بدون ضجيج وعود طويلة. لـالشعر المجهد. أي لسع مستمر؟ خفّفي أو راجعي مختصاً.",
+  "descEn": "Why Cantu? Because Cantu Sulfate does one clear job: respects scalp and lengths. No long promise list. For stressed hair. Keep it cool-ish and cap it tight.",
+  "useAr": "١) شامبو للفروة، بلسم للأطراف، سيروم حسب العبوة.\n٢) ابدئي بقليل.\n٣) لا تُشبعي الخصل.\n٤) أسبوعان–ثلاثة للفرق الأوضح.",
+  "useEn": "1) Shampoo scalp, condition lengths, leave-in as labeled.\n2) Start small.\n3) Don’t drench the hair.\n4) Two–three weeks for a clearer change.",
+  "skinAr": "الشعر المجهد",
+  "skinEn": "stressed hair",
   "id": 259
-});
-A.push({
+},
+{
   "em": "👶",
   "imgs": [
     "media/products/p260_0.webp"
@@ -235,15 +235,15 @@ A.push({
   "price": 3.9,
   "nameAr": "ماسك أطفال لفك التشابك — 177مل",
   "nameEn": "Cantu Care for Kids Detangler Masque 6oz",
-  "descAr": "ماسك أطفال لفك التشابك من Cantu. عناية بسيطة للشعر. 177 مل.",
-  "descEn": "Cantu Care for Kids Detangler Masque 6oz by Cantu. Simple hair care. 177 ml.",
-  "useAr": "١) حسب نوع المنتج.\n٢) كمية قليلة تكفي.",
-  "useEn": "1) As directed.\n2) A little goes far.",
-  "skinAr": "حسب نوع الشعر.",
-  "skinEn": "Depends on hair type.",
+  "descAr": "Cantu × عناية يومية: ماسك أطفال لفك التشابك. يُركّز على راحة الاستخدام. الملمس: يفهم الفروة والأطراف. الحجم ≈ 177 مل. الشعر المجهد. خزّنيها في مكان معتدل وأغلقي الغطاء.",
+  "descEn": "Cantu for daily care: Cantu Care for Kids Detangler Masque 6oz. Comfort-first use. Feel: respects scalp and lengths. Size ≈ 177 ml. Stressed hair. Keep it cool-ish and cap it tight.",
+  "useAr": "١) شامبو للفروة، بلسم للأطراف، سيروم حسب العبوة.\n٢) ابدئي بقليل.\n٣) لا تُشبعي الخصل.\n٤) أسبوعان–ثلاثة للفرق الأوضح.",
+  "useEn": "1) Shampoo scalp, condition lengths, leave-in as labeled.\n2) Start small.\n3) Don’t drench the hair.\n4) Two–three weeks for a clearer change.",
+  "skinAr": "الشعر المجهد",
+  "skinEn": "stressed hair",
   "id": 260
-});
-A.push({
+},
+{
   "id": 293,
   "brand": "Cantu",
   "cat": "شعر",
@@ -255,16 +255,16 @@ A.push({
   ],
   "nameAr": "كانتو ليف إن بزبدة الشيا 12أونصة",
   "nameEn": "Cantu Shea Butter Leave-In Conditioning Cream 12oz",
-  "descAr": "كانتو ليف إن بزبدة الشيا 12أونصة من Cantu. عناية بسيطة للشعر.",
-  "descEn": "Cantu Shea Butter Leave by Cantu. Simple hair care.",
-  "useAr": "١) حسب نوع المنتج.\n٢) كمية قليلة تكفي.",
-  "useEn": "1) As directed.\n2) A little goes far.",
-  "skinAr": "حسب نوع الشعر.",
-  "skinEn": "Depends on hair type.",
+  "descAr": "رقيق في الإحساس، صادق في الدور — كانتو ليف إن بزبدة الشيا 12أونصة. علامة Cantu تعتمد لمسة زبدة الشيا. أنظف وأطرى مع الأسابيع. يناسب حسب الشعر والفروة. انتظمي أسبوعين قبل الحكم النهائي.",
+  "descEn": "Soft to the touch, honest in role — Cantu Shea Butter Leave. Cantu leans on shea butter. Cleaner and softer over weeks. Best with scalp that needs air. Ongoing sting? Ease off or ask a pro.",
+  "useAr": "١) شامبو للفروة، بلسم للأطراف، سيروم حسب العبوة.\n٢) ابدئي بقليل.\n٣) لا تُشبعي الخصل.\n٤) أسبوعان–ثلاثة للفرق الأوضح.",
+  "useEn": "1) Shampoo scalp, condition lengths, leave-in as labeled.\n2) Start small.\n3) Don’t drench the hair.\n4) Two–three weeks for a clearer change.",
+  "skinAr": "حسب الشعر والفروة",
+  "skinEn": "scalp that needs air",
   "stock": 3,
   "hot": true
-});
-A.push({
+},
+{
   "id": 294,
   "brand": "Cantu",
   "cat": "شعر",
@@ -276,16 +276,16 @@ A.push({
   ],
   "nameAr": "كانتو منشط تجعيد بزبدة الشيا",
   "nameEn": "Cantu Shea Butter Curl Activator Cream",
-  "descAr": "كانتو منشط تجعيد بزبدة الشيا من Cantu. عناية بسيطة للشعر.",
-  "descEn": "Cantu Shea Butter Curl Activator Cream by Cantu. Simple hair care.",
-  "useAr": "١) حسب نوع المنتج.\n٢) كمية قليلة تكفي.",
-  "useEn": "1) As directed.\n2) A little goes far.",
-  "skinAr": "حسب نوع الشعر.",
-  "skinEn": "Depends on hair type.",
+  "descAr": "لمسة Cantu في كانتو منشط تجعيد بزبدة الشيا: يفهم الفروة والأطراف. يُذكر فيه زبدة الشيا لدعم تغذية غنية وملمس مخملي. يناسب حسب الشعر والفروة. انتظمي أسبوعين قبل الحكم النهائي.",
+  "descEn": "Cantu's touch in Cantu Shea Butter Curl Activator Cream: makes styling simpler. Notes of shea butter support rich, velvet-soft nourishment. Fits match hair and scalp. Quiet beauty loves a short, steady routine.",
+  "useAr": "١) شامبو للفروة، بلسم للأطراف، سيروم حسب العبوة.\n٢) ابدئي بقليل.\n٣) لا تُشبعي الخصل.\n٤) أسبوعان–ثلاثة للفرق الأوضح.",
+  "useEn": "1) Shampoo scalp, condition lengths, leave-in as labeled.\n2) Start small.\n3) Don’t drench the hair.\n4) Two–three weeks for a clearer change.",
+  "skinAr": "حسب الشعر والفروة",
+  "skinEn": "match hair and scalp",
   "stock": 3,
   "hot": true
-});
-A.push({
+},
+{
   "id": 295,
   "brand": "Cantu",
   "cat": "شعر",
@@ -297,15 +297,15 @@ A.push({
   ],
   "nameAr": "كانتو جل تويست آند لوك",
   "nameEn": "Cantu Moisturizing Twist & Lock Gel",
-  "descAr": "كانتو جل تويست آند لوك من Cantu. عناية بسيطة للشعر.",
-  "descEn": "Cantu Moisturizing Twist & Lock Gel by Cantu. Simple hair care.",
-  "useAr": "١) حسب نوع المنتج.\n٢) كمية قليلة تكفي.",
-  "useEn": "1) As directed.\n2) A little goes far.",
-  "skinAr": "حسب نوع الشعر.",
-  "skinEn": "Depends on hair type.",
+  "descAr": "اختاري كانتو جل تويست آند لوك حين تريدين نتيجة بلا تعقيد. من Cantu، يسهّل التصفيف. مُخصص تقريباً لـالشعر المجهد. أي لسع مستمر؟ خفّفي أو راجعي مختصاً.",
+  "descEn": "Reach for Cantu Moisturizing Twist & Lock Gel when you want results without a maze. From Cantu, cleaner and softer over weeks. Aimed at scalp that needs air. Keep it cool-ish and cap it tight.",
+  "useAr": "١) شامبو للفروة، بلسم للأطراف، سيروم حسب العبوة.\n٢) ابدئي بقليل.\n٣) لا تُشبعي الخصل.\n٤) أسبوعان–ثلاثة للفرق الأوضح.",
+  "useEn": "1) Shampoo scalp, condition lengths, leave-in as labeled.\n2) Start small.\n3) Don’t drench the hair.\n4) Two–three weeks for a clearer change.",
+  "skinAr": "الشعر المجهد",
+  "skinEn": "scalp that needs air",
   "stock": 3
-});
-A.push({
+},
+{
   "id": 296,
   "brand": "Cantu",
   "cat": "شعر",
@@ -317,16 +317,16 @@ A.push({
   ],
   "nameAr": "كانتو بخاخ لمعان جوز الهند",
   "nameEn": "Cantu Coconut Oil Shine & Hold Mist 8oz",
-  "descAr": "كانتو بخاخ لمعان جوز الهند من Cantu. عناية بسيطة للشعر.",
-  "descEn": "Cantu Coconut Oil Shine & Hold Mist 8oz by Cantu. Simple hair care.",
-  "useAr": "١) حسب نوع المنتج.\n٢) كمية قليلة تكفي.",
-  "useEn": "1) As directed.\n2) A little goes far.",
-  "skinAr": "حسب نوع الشعر.",
-  "skinEn": "Depends on hair type.",
+  "descAr": "كانتو بخاخ لمعان جوز الهند. قصة قصيرة: تنظيف/عناية/حماية حسب نوعه، وCantu هنا لتسهيل اليوم. أنظف وأطرى مع الأسابيع. حسب الشعر والفروة. خزّنيها في مكان معتدل وأغلقي الغطاء.",
+  "descEn": "Cantu Coconut Oil Shine & Hold Mist 8oz. Short story: cleanse, treat, or protect as labeled — Cantu keeps the day simple. Respects scalp and lengths. Scalp that needs air. Quiet beauty loves a short, steady routine.",
+  "useAr": "١) شامبو للفروة، بلسم للأطراف، سيروم حسب العبوة.\n٢) ابدئي بقليل.\n٣) لا تُشبعي الخصل.\n٤) أسبوعان–ثلاثة للفرق الأوضح.",
+  "useEn": "1) Shampoo scalp, condition lengths, leave-in as labeled.\n2) Start small.\n3) Don’t drench the hair.\n4) Two–three weeks for a clearer change.",
+  "skinAr": "حسب الشعر والفروة",
+  "skinEn": "scalp that needs air",
   "stock": 3,
   "hot": true
-});
-A.push({
+},
+{
   "id": 297,
   "brand": "Cantu",
   "cat": "شعر",
@@ -338,15 +338,15 @@ A.push({
   ],
   "nameAr": "كانتو زيت فروة وشعر",
   "nameEn": "Cantu Shea Butter Hair & Scalp Oil",
-  "descAr": "كانتو زيت فروة وشعر من Cantu. عناية بسيطة للشعر.",
-  "descEn": "Cantu Shea Butter Hair & Scalp Oil by Cantu. Simple hair care.",
-  "useAr": "١) حسب نوع المنتج.\n٢) كمية قليلة تكفي.",
-  "useEn": "1) As directed.\n2) A little goes far.",
-  "skinAr": "حسب نوع الشعر.",
-  "skinEn": "Depends on hair type.",
+  "descAr": "لمسة Cantu في كانتو زيت فروة وشعر: يسهّل التصفيف. يُذكر فيه زبدة الشيا لدعم تغذية غنية وملمس مخملي. يناسب فروة تحتاج انتعاشاً. خزّنيها في مكان معتدل وأغلقي الغطاء.",
+  "descEn": "Cantu's touch in Cantu Shea Butter Hair & Scalp Oil: makes styling simpler. Notes of shea butter support rich, velvet-soft nourishment. Fits stressed hair. Keep it cool-ish and cap it tight.",
+  "useAr": "١) شامبو للفروة، بلسم للأطراف، سيروم حسب العبوة.\n٢) ابدئي بقليل.\n٣) لا تُشبعي الخصل.\n٤) أسبوعان–ثلاثة للفرق الأوضح.",
+  "useEn": "1) Shampoo scalp, condition lengths, leave-in as labeled.\n2) Start small.\n3) Don’t drench the hair.\n4) Two–three weeks for a clearer change.",
+  "skinAr": "فروة تحتاج انتعاشاً",
+  "skinEn": "stressed hair",
   "stock": 3
-});
-A.push({
+},
+{
   "id": 298,
   "brand": "Cantu",
   "cat": "شعر",
@@ -358,12 +358,12 @@ A.push({
   ],
   "nameAr": "كانتو بخاخ فك التشابك",
   "nameEn": "Cantu Natural Hair Detangler Spray",
-  "descAr": "كانتو بخاخ فك التشابك من Cantu. عناية بسيطة للشعر.",
-  "descEn": "Cantu Natural Hair Detangler Spray by Cantu. Simple hair care.",
-  "useAr": "١) حسب نوع المنتج.\n٢) كمية قليلة تكفي.",
-  "useEn": "1) As directed.\n2) A little goes far.",
-  "skinAr": "حسب نوع الشعر.",
-  "skinEn": "Depends on hair type.",
+  "descAr": "اختاري كانتو بخاخ فك التشابك حين تريدين نتيجة بلا تعقيد. من Cantu، يفهم الفروة والأطراف. مُخصص تقريباً لـالشعر المجهد. الجمال الأهدأ يأتي من روتين قصير ثابت.",
+  "descEn": "Reach for Cantu Natural Hair Detangler Spray when you want results without a maze. From Cantu, respects scalp and lengths. Aimed at stressed hair. Quiet beauty loves a short, steady routine.",
+  "useAr": "١) شامبو للفروة، بلسم للأطراف، سيروم حسب العبوة.\n٢) ابدئي بقليل.\n٣) لا تُشبعي الخصل.\n٤) أسبوعان–ثلاثة للفرق الأوضح.",
+  "useEn": "1) Shampoo scalp, condition lengths, leave-in as labeled.\n2) Start small.\n3) Don’t drench the hair.\n4) Two–three weeks for a clearer change.",
+  "skinAr": "الشعر المجهد",
+  "skinEn": "stressed hair",
   "stock": 3
-});
-})();
+}
+);

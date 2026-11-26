@@ -1,7 +1,7 @@
-// la-roche-posay.js — short Apple-like copy
-(function(){
-var A = window.NAQA_PRODUCTS || (window.NAQA_PRODUCTS = []);
-A.push({
+/* Brand: La Roche-Posay · 1 products · edit AR/EN fields here */
+window.NAQA_PRODUCTS = window.NAQA_PRODUCTS || [];
+window.NAQA_PRODUCTS.push(
+{
   "id": 5,
   "brand": "La Roche-Posay",
   "cat": "عناية",
@@ -14,12 +14,12 @@ A.push({
   ],
   "nameAr": "بلسم البشرة الجافة سيكابلاست بوم بي 5 لاروش بوزيه - 40مل",
   "nameEn": "Cicaplast Balm B5 For Dry Skin Irritations - 40ml",
-  "descAr": "بلسم البشرة الجافة سيكابلاست بوم بي من La Roche-Posay. عناية هادئة. 40 مل.",
-  "descEn": "Cicaplast Balm B5 For Dry Skin Irritations by La Roche-Posay. Quiet care. 40 ml.",
-  "useAr": "١) ضمن روتينك.\n٢) كمية قليلة.",
-  "useEn": "1) In your routine.\n2) Small amount.",
-  "skinAr": "حسب نوع البشرة.",
-  "skinEn": "Match skin type.",
+  "descAr": "بلسم البشرة الجافة سيكابلاست بوم بي 5 لاروش بوزيه من La Roche-Posay. غني ومطمئن، مع حضور خلاصة مهدّئة لـهدوء للاحمرار والتهيج الخفيف. الحجم ≈ 40 مل. يناسب البقع الجافة. خزّنيها في مكان معتدل وأغلقي الغطاء.",
+  "descEn": "Cicaplast Balm B5 For Dry Skin Irritations by La Roche-Posay. A rescue layer for thirsty spots, with calming botanicals for calm for mild redness. Size ≈ 40 ml. Suits dry patches. Give it two steady weeks before you decide.",
+  "useAr": "١) على الجفاف أو آخر طبقة.\n٢) طبقة رقيقة.\n٣) أعيدي ليلاً.\n٤) بعيداً عن العين ما لم يُذكر.",
+  "useEn": "1) On dry spots or as last step.\n2) Thin layer.\n3) Again at night if needed.\n4) Away from eyes unless labeled.",
+  "skinAr": "البقع الجافة",
+  "skinEn": "dry patches",
   "stock": 3
-});
-})();
+}
+);

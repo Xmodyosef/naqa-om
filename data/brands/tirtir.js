@@ -1,7 +1,7 @@
-// tirtir.js — short Apple-like copy
-(function(){
-var A = window.NAQA_PRODUCTS || (window.NAQA_PRODUCTS = []);
-A.push({
+/* Brand: TIRTIR · 2 products · edit AR/EN fields here */
+window.NAQA_PRODUCTS = window.NAQA_PRODUCTS || [];
+window.NAQA_PRODUCTS.push(
+{
   "id": 73,
   "brand": "TIRTIR",
   "cat": "وجه",
@@ -14,15 +14,15 @@ A.push({
   ],
   "nameAr": "كريم أساس ماسك فيت ريد كوشن من تيرتير 23N رملي - 18ج",
   "nameEn": "TIRTIR Mask Fit Red Cushion Foundation 23N Sand - 18g",
-  "descAr": "كريم أساس ماسك فيت ريد كوشن من من TIRTIR. تغطية خفيفة طبيعية. 18 ج.",
-  "descEn": "TIRTIR Mask Fit Red Cushion Foundation by TIRTIR. Light natural coverage. 18 g.",
-  "useAr": "١) بعد العناية.\n٢) وزّعي برفق.",
-  "useEn": "1) After skincare.\n2) Blend lightly.",
-  "skinAr": "اختاري درجتك.",
-  "skinEn": "Pick your shade.",
+  "descAr": "TIRTIR × عناية يومية: كريم أساس ماسك فيت ريد كوشن من تيرتير 23N رملي. يُركّز على راحة الاستخدام. الملمس: يندمج ولا يرسم قناعاً. الحجم ≈ 18 ج. مكياج يومي هادئ. الجمال الأهدأ يأتي من روتين قصير ثابت.",
+  "descEn": "TIRTIR for daily care: TIRTIR Mask Fit Red Cushion Foundation 23N Sand. Comfort-first use. Feel: blends instead of masking. Size ≈ 18 g. Combo to dry. Quiet beauty loves a short, steady routine.",
+  "useAr": "١) بشرة مرطّبة (+ SPF نهاراً).\n٢) كمية قليلة ووزّعي.\n٣) غطّي بطبقات خفيفة.\n٤) ثبّتي عند الحاجة.",
+  "useEn": "1) Moisturized skin (+ SPF by day).\n2) Start small and blend.\n3) Build in thin layers.\n4) Set for longer wear.",
+  "skinAr": "مكياج يومي هادئ",
+  "skinEn": "combo to dry",
   "stock": 3
-});
-A.push({
+},
+{
   "id": 75,
   "brand": "TIRTIR",
   "cat": "وجه",
@@ -34,12 +34,12 @@ A.push({
   ],
   "nameAr": "كريم أساس ماسك فيت ريد كوشن من تيرتير 17N فانيليا - 18ج",
   "nameEn": "Tirtir Mask Fit Red Cushion 17n Vanilla",
-  "descAr": "كريم أساس ماسك فيت ريد كوشن من من TIRTIR. تغطية خفيفة طبيعية. 18 ج.",
-  "descEn": "Tirtir Mask Fit Red Cushion 17n Vanilla by TIRTIR. Light natural coverage. 18 g.",
-  "useAr": "١) بعد العناية.\n٢) وزّعي برفق.",
-  "useEn": "1) After skincare.\n2) Blend lightly.",
-  "skinAr": "اختاري درجتك.",
-  "skinEn": "Pick your shade.",
+  "descAr": "لمسة TIRTIR في كريم أساس ماسك فيت ريد كوشن من تيرتير 17N فانيليا: يندمج ولا يرسم قناعاً. صيغة مباشرة تُحترم مع الوقت. الحجم ≈ 18 ج. يناسب اختبري التطابق على الفك. انتظمي أسبوعين قبل الحكم النهائي.",
+  "descEn": "TIRTIR's touch in Tirtir Mask Fit Red Cushion 17n Vanilla: finish is yours to choose. A direct formula that earns trust over time. Size ≈ 18 g. Fits quiet everyday makeup. Give it two steady weeks before you decide.",
+  "useAr": "١) بشرة مرطّبة (+ SPF نهاراً).\n٢) كمية قليلة ووزّعي.\n٣) غطّي بطبقات خفيفة.\n٤) ثبّتي عند الحاجة.",
+  "useEn": "1) Moisturized skin (+ SPF by day).\n2) Start small and blend.\n3) Build in thin layers.\n4) Set for longer wear.",
+  "skinAr": "اختبري التطابق على الفك",
+  "skinEn": "quiet everyday makeup",
   "stock": 3
-});
-})();
+}
+);

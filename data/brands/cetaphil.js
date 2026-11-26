@@ -1,7 +1,7 @@
-// cetaphil.js — short Apple-like copy
-(function(){
-var A = window.NAQA_PRODUCTS || (window.NAQA_PRODUCTS = []);
-A.push({
+/* Brand: Cetaphil · 1 products · edit AR/EN fields here */
+window.NAQA_PRODUCTS = window.NAQA_PRODUCTS || [];
+window.NAQA_PRODUCTS.push(
+{
   "id": 49,
   "brand": "Cetaphil",
   "cat": "عناية",
@@ -13,12 +13,12 @@ A.push({
   ],
   "nameAr": "غسول سيتافيل للبشرة العادية الى الجافة والحساسة - 237مل",
   "nameEn": "Cetaphil Gentle Skin Cleanser - 237ml",
-  "descAr": "غسول سيتافيل للبشرة العادية الى من Cetaphil. ينظّف بلطف. 237 مل.",
-  "descEn": "Cetaphil Gentle Skin Cleanser by Cetaphil. Gentle cleanse. 237 ml.",
-  "useAr": "١) على بشرة رطبة.\n٢) دلكي واشطفي.",
-  "useEn": "1) Damp skin.\n2) Massage, rinse.",
-  "skinAr": "معظم أنواع البشرة.",
-  "skinEn": "Most skin types.",
+  "descAr": "اختاري غسول سيتافيل للبشرة العادية الى الجافة والحساسة حين تريدين نتيجة بلا تعقيد. من Cetaphil، بدون شدّ مزعج بعد الشطف. الحجم ≈ 237 مل. مُخصص تقريباً لـالدهنية والمختلطة. الجمال الأهدأ يأتي من روتين قصير ثابت.",
+  "descEn": "Reach for Cetaphil Gentle Skin Cleanser when you want results without a maze. From Cetaphil, cleans and leaves skin at ease. Size ≈ 237 ml. Aimed at after makeup as step one. Ongoing sting? Ease off or ask a pro.",
+  "useAr": "١) ماء فاتر.\n٢) ٢٠–٣٠ ثانية تدليك ثم شطف كامل.\n٣) تربيت للتجفيف.\n٤) مكياج ثقيل: زيتي أولاً ثم هذا.",
+  "useEn": "1) Lukewarm water.\n2) 20–30 seconds, full rinse.\n3) Pat dry.\n4) Heavy makeup: oil first, then this.",
+  "skinAr": "الدهنية والمختلطة",
+  "skinEn": "after makeup as step one",
   "stock": 3
-});
-})();
+}
+);

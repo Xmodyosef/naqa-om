@@ -1,7 +1,7 @@
-// dr-althea.js — short Apple-like copy
-(function(){
-var A = window.NAQA_PRODUCTS || (window.NAQA_PRODUCTS = []);
-A.push({
+/* Brand: Dr.Althea · 8 products · edit AR/EN fields here */
+window.NAQA_PRODUCTS = window.NAQA_PRODUCTS || [];
+window.NAQA_PRODUCTS.push(
+{
   "id": 13,
   "brand": "Dr.Althea",
   "cat": "عناية",
@@ -13,15 +13,15 @@ A.push({
   ],
   "nameAr": "سيروم دكتور ألثيا 345 لتهدئة البشرة - 30مل",
   "nameEn": "Dr.Althea 345 Relief Serum - 30ml",
-  "descAr": "سيروم دكتور ألثيا 345 لتهدئة البشرة من Dr.Althea. خطوة مركّزة. 30 مل.",
-  "descEn": "Dr.Althea 345 Relief Serum by Dr.Althea. Focused step. 30 ml.",
-  "useAr": "١) بعد التنظيف.\n٢) قطرات قليلة.",
-  "useEn": "1) After cleanse.\n2) Few drops.",
-  "skinAr": "حسب احتياجك.",
-  "skinEn": "Match your need.",
+  "descAr": "سيروم دكتور ألثيا 345 لتهدئة البشرة. قصة قصيرة: تنظيف/عناية/حماية حسب نوعه، وDr.Althea هنا لتسهيل اليوم. مائي بلمسة حريرية. الحجم ≈ 30 مل. معظم الأنواع — ابدئي بقطرات. خزّنيها في مكان معتدل وأغلقي الغطاء.",
+  "descEn": "Dr.Althea 345 Relief Serum. Short story: cleanse, treat, or protect as labeled — Dr.Althea keeps the day simple. Melts in without a sticky film. Size ≈ 30 ml. Dry and thirsty. Quiet beauty loves a short, steady routine.",
+  "useAr": "١) بشرة نظيفة، بعد التونر إن وُجد.\n٢) ٢–٣ قطرات — اضغطي من الوسط للخارج.\n٣) مرطب فوقه. صباحاً: SPF.\n٤) الريتينول/الأحماض: ليلاً وبالتدريج.",
+  "useEn": "1) Clean skin; toner first if you use one.\n2) 2–3 drops — press from center out.\n3) Cream on top. AM: SPF.\n4) Retinoids/acids: night, slowly.",
+  "skinAr": "معظم الأنواع — ابدئي بقطرات",
+  "skinEn": "dry and thirsty",
   "stock": 3
-});
-A.push({
+},
+{
   "id": 18,
   "brand": "Dr.Althea",
   "cat": "عناية",
@@ -33,15 +33,15 @@ A.push({
   ],
   "nameAr": "مجموعة دكتور ألثيا للعناية بعد الحبوب والترطيب المكثف - 2قطع",
   "nameEn": "Dr.Althea 147 Barrier Cream - 50ml",
-  "descAr": "مجموعة دكتور ألثيا للعناية بعد من Dr.Althea. ترطيب مريح. 50 مل.",
-  "descEn": "Dr.Althea 147 Barrier Cream by Dr.Althea. Quiet moisture. 50 ml.",
-  "useAr": "١) بعد السيروم.\n٢) طبقة خفيفة.",
-  "useEn": "1) After serum.\n2) Thin layer.",
-  "skinAr": "غالباً عادية إلى جافة.",
-  "skinEn": "Often normal–dry.",
+  "descAr": "اختاري مجموعة دكتور ألثيا للعناية بعد الحبوب والترطيب المك… حين تريدين نتيجة بلا تعقيد. من Dr.Althea، مخملي على الخدود الجافة. الحجم ≈ 50 مل. مُخصص تقريباً لـمساءً لمعظم الأنواع. انتظمي أسبوعين قبل الحكم النهائي.",
+  "descEn": "Reach for Dr.Althea 147 Barrier Cream when you want results without a maze. From Dr.Althea, velvet on dry cheeks. Size ≈ 50 ml. Aimed at sensitive dry skin. Ongoing sting? Ease off or ask a pro.",
+  "useAr": "١) دفّئي الكمية بين الأصابع.\n٢) ربّتي حتى تختفي.\n٣) القليل اليومي أهدى من الكثير مرة واحدة.",
+  "useEn": "1) After serum or right after cleanse.\n2) Pea-size for face + a little neck.\n3) SPF over it in the morning.\n4) Extra on dry cheeks at night.",
+  "skinAr": "مساءً لمعظم الأنواع",
+  "skinEn": "sensitive dry skin",
   "stock": 3
-});
-A.push({
+},
+{
   "id": 21,
   "brand": "Dr.Althea",
   "cat": "عناية",
@@ -53,15 +53,15 @@ A.push({
   ],
   "nameAr": "سيروم دكتور ألثيا أكوا مارين العميق لترطيب البشرة - 30مل",
   "nameEn": "Dr.Althea Aqua Marine Deep Serum - 30ml",
-  "descAr": "سيروم دكتور ألثيا أكوا مارين العميق من Dr.Althea. خطوة مركّزة. 30 مل.",
-  "descEn": "Dr.Althea Aqua Marine Deep Serum by Dr.Althea. Focused step. 30 ml.",
-  "useAr": "١) بعد التنظيف.\n٢) قطرات قليلة.",
-  "useEn": "1) After cleanse.\n2) Few drops.",
-  "skinAr": "حسب احتياجك.",
-  "skinEn": "Match your need.",
+  "descAr": "Dr.Althea × عناية يومية: سيروم دكتور ألثيا أكوا مارين العميق لترطيب البشرة. يُركّز على راحة الاستخدام. الملمس: خفيف وسريع الامتصاص. الحجم ≈ 30 مل. مع SPF يومي عند التفتيح. انتظمي أسبوعين قبل الحكم النهائي.",
+  "descEn": "Dr.Althea for daily care: Dr.Althea Aqua Marine Deep Serum. Comfort-first use. Feel: light and quick to settle. Size ≈ 30 ml. Daily SPF when brightening. Ongoing sting? Ease off or ask a pro.",
+  "useAr": "١) بشرة نظيفة، بعد التونر إن وُجد.\n٢) ٢–٣ قطرات — اضغطي من الوسط للخارج.\n٣) مرطب فوقه. صباحاً: SPF.\n٤) الريتينول/الأحماض: ليلاً وبالتدريج.",
+  "useEn": "1) Clean skin; toner first if you use one.\n2) 2–3 drops — press from center out.\n3) Cream on top. AM: SPF.\n4) Retinoids/acids: night, slowly.",
+  "skinAr": "مع SPF يومي عند التفتيح",
+  "skinEn": "daily SPF when brightening",
   "stock": 3
-});
-A.push({
+},
+{
   "id": 47,
   "brand": "Dr.Althea",
   "cat": "عناية",
@@ -73,15 +73,15 @@ A.push({
   ],
   "nameAr": "كريم دكتور ألثيا ميلاكلير لتفتيح البشرة - 20ج",
   "nameEn": "Dr.Althea Melaclear Cream - 20g",
-  "descAr": "كريم دكتور ألثيا ميلاكلير لتفتيح من Dr.Althea. ترطيب مريح. 20 ج.",
-  "descEn": "Dr.Althea Melaclear Cream by Dr.Althea. Quiet moisture. 20 g.",
-  "useAr": "١) بعد السيروم.\n٢) طبقة خفيفة.",
-  "useEn": "1) After serum.\n2) Thin layer.",
-  "skinAr": "غالباً عادية إلى جافة.",
-  "skinEn": "Often normal–dry.",
+  "descAr": "رقيق في الإحساس، صادق في الدور — كريم دكتور ألثيا ميلاكلير لتفتيح البشرة. علامة Dr.Althea. غني لكن يتنفس. الحجم ≈ 20 ج. يناسب مساءً لمعظم الأنواع. خزّنيها في مكان معتدل وأغلقي الغطاء.",
+  "descEn": "Soft to the touch, honest in role — Dr.Althea Melaclear Cream. Dr.Althea. Velvet on dry cheeks. Size ≈ 20 g. Best with nights for most types. Keep it cool-ish and cap it tight.",
+  "useAr": "١) دفّئي الكمية بين الأصابع.\n٢) ربّتي حتى تختفي.\n٣) القليل اليومي أهدى من الكثير مرة واحدة.",
+  "useEn": "1) After serum or right after cleanse.\n2) Pea-size for face + a little neck.\n3) SPF over it in the morning.\n4) Extra on dry cheeks at night.",
+  "skinAr": "مساءً لمعظم الأنواع",
+  "skinEn": "nights for most types",
   "stock": 3
-});
-A.push({
+},
+{
   "id": 58,
   "brand": "Dr.Althea",
   "cat": "عناية",
@@ -93,15 +93,15 @@ A.push({
   ],
   "nameAr": "رذاذ كريم دكتور ألثيا 345 لتهدئة وترطيب البشرة - 100مل",
   "nameEn": "Dr.Althea 345 Relief Cream Mist - 100ml",
-  "descAr": "رذاذ كريم دكتور ألثيا 345 لتهدئة من Dr.Althea. ترطيب مريح. 100 مل.",
-  "descEn": "Dr.Althea 345 Relief Cream Mist by Dr.Althea. Quiet moisture. 100 ml.",
-  "useAr": "١) بعد السيروم.\n٢) طبقة خفيفة.",
-  "useEn": "1) After serum.\n2) Thin layer.",
-  "skinAr": "غالباً عادية إلى جافة.",
-  "skinEn": "Often normal–dry.",
+  "descAr": "رذاذ كريم دكتور ألثيا 345 لتهدئة وترطيب البشرة من Dr.Althea. كريمي يغلّف بلطف. الحجم ≈ 100 مل. يناسب مساءً لمعظم الأنواع. انتظمي أسبوعين قبل الحكم النهائي.",
+  "descEn": "Dr.Althea 345 Relief Cream Mist by Dr.Althea. Rich yet breathable. Size ≈ 100 ml. Suits sensitive dry skin. Quiet beauty loves a short, steady routine.",
+  "useAr": "١) دفّئي الكمية بين الأصابع.\n٢) ربّتي حتى تختفي.\n٣) القليل اليومي أهدى من الكثير مرة واحدة.",
+  "useEn": "1) After serum or right after cleanse.\n2) Pea-size for face + a little neck.\n3) SPF over it in the morning.\n4) Extra on dry cheeks at night.",
+  "skinAr": "مساءً لمعظم الأنواع",
+  "skinEn": "sensitive dry skin",
   "stock": 3
-});
-A.push({
+},
+{
   "id": 94,
   "brand": "Dr.Althea",
   "cat": "عناية",
@@ -113,15 +113,15 @@ A.push({
   ],
   "nameAr": "رولر العين دكتور ألثيا بالريتينول لتجديد وشد محيط العين - 25مل",
   "nameEn": "Dr.Althea 345 Relief Retinol Eye Roller - 25ml",
-  "descAr": "رولر العين دكتور ألثيا بالريتينول من Dr.Althea. عناية هادئة. 25 مل.",
-  "descEn": "Dr.Althea 345 Relief Retinol Eye Roller by Dr.Althea. Quiet care. 25 ml.",
-  "useAr": "١) ضمن روتينك.\n٢) كمية قليلة.",
-  "useEn": "1) In your routine.\n2) Small amount.",
-  "skinAr": "حسب نوع البشرة.",
-  "skinEn": "Match skin type.",
+  "descAr": "رولر العين دكتور ألثيا بالريتينول لتجديد وشد محيط ا…. قصة قصيرة: تنظيف/عناية/حماية حسب نوعه، وDr.Althea هنا لتسهيل اليوم. متوازن ومباشر. ريتينويد → ملمس أنعم ومظهر خطوط أدق. الحجم ≈ 25 مل. معظم الأنواع. الجمال الأهدأ يأتي من روتين قصير ثابت.",
+  "descEn": "Dr.Althea 345 Relief Retinol Eye Roller. Short story: cleanse, treat, or protect as labeled — Dr.Althea keeps the day simple. Comfortable with steady use. Retinoid care → smoother texture and a softer look of fine lines. Size ≈ 25 ml. Watch week one. Give it two steady weeks before you decide.",
+  "useAr": "١) نظّفي → عالجي → احمي.\n٢) كمية معتدلة.\n٣) راقبي الأسبوع الأول.\n٤) SPF مع التفتيح أو الأحماض.",
+  "useEn": "1) Cleanse → treat → protect.\n2) Moderate amount.\n3) Watch week one.\n4) SPF with brightening or acids.",
+  "skinAr": "معظم الأنواع",
+  "skinEn": "watch week one",
   "stock": 3
-});
-A.push({
+},
+{
   "id": 165,
   "brand": "Dr.Althea",
   "cat": "عناية",
@@ -133,15 +133,15 @@ A.push({
   ],
   "nameAr": "سيرم فيتامين سي المعزز من دكتور ألثيا - 30مل",
   "nameEn": "Dr. Althea Vitamin C Boosting Serum - 30ml",
-  "descAr": "سيرم فيتامين سي المعزز من دكتور من Dr.Althea. خطوة مركّزة. 30 مل.",
-  "descEn": "Dr. Althea Vitamin C Boosting Serum by Dr.Althea. Focused step. 30 ml.",
-  "useAr": "١) بعد التنظيف.\n٢) قطرات قليلة.",
-  "useEn": "1) After cleanse.\n2) Few drops.",
-  "skinAr": "حسب احتياجك.",
-  "skinEn": "Match your need.",
+  "descAr": "سيرم فيتامين سي المعزز من دكتور ألثيا. قصة قصيرة: تنظيف/عناية/حماية حسب نوعه، وDr.Althea هنا لتسهيل اليوم. يذوب على البشرة دون لزوجة. فيتامين سي → إشراقة صباحية أوضح. الحجم ≈ 30 مل. الجافة والعطشى. أي لسع مستمر؟ خفّفي أو راجعي مختصاً.",
+  "descEn": "Dr. Althea Vitamin C Boosting Serum. Short story: cleanse, treat, or protect as labeled — Dr.Althea keeps the day simple. Light and quick to settle. Vitamin C → a clearer morning glow. Size ≈ 30 ml. Daily SPF when brightening. Quiet beauty loves a short, steady routine.",
+  "useAr": "١) بشرة نظيفة، بعد التونر إن وُجد.\n٢) ٢–٣ قطرات — اضغطي من الوسط للخارج.\n٣) مرطب فوقه. صباحاً: SPF.\n٤) الريتينول/الأحماض: ليلاً وبالتدريج.",
+  "useEn": "1) Clean skin; toner first if you use one.\n2) 2–3 drops — press from center out.\n3) Cream on top. AM: SPF.\n4) Retinoids/acids: night, slowly.",
+  "skinAr": "الجافة والعطشى",
+  "skinEn": "daily SPF when brightening",
   "stock": 3
-});
-A.push({
+},
+{
   "id": 198,
   "brand": "Dr.Althea",
   "cat": "عناية",
@@ -153,12 +153,12 @@ A.push({
   ],
   "nameAr": "كريم دكتور ألثيا 345 رليف لترطيب وتهدئة البشرة - 50مل",
   "nameEn": "Dr.Althea Skincare — B0105",
-  "descAr": "كريم دكتور ألثيا 345 رليف لترطيب من Dr.Althea. ترطيب مريح. 50 مل.",
-  "descEn": "Dr.Althea Skincare by Dr.Althea. Quiet moisture. 50 ml.",
-  "useAr": "١) بعد السيروم.\n٢) طبقة خفيفة.",
-  "useEn": "1) After serum.\n2) Thin layer.",
-  "skinAr": "غالباً عادية إلى جافة.",
-  "skinEn": "Often normal–dry.",
+  "descAr": "Dr.Althea × عناية يومية: كريم دكتور ألثيا 345 رليف لترطيب وتهدئة البشرة. يُركّز على راحة الاستخدام. الملمس: مخملي على الخدود الجافة. الحجم ≈ 50 مل. الجافة والمحتاجة. أي لسع مستمر؟ خفّفي أو راجعي مختصاً.",
+  "descEn": "Dr.Althea for daily care: Dr.Althea Skincare. Comfort-first use. Feel: velvet on dry cheeks. Size ≈ 50 ml. Sensitive dry skin. Quiet beauty loves a short, steady routine.",
+  "useAr": "١) بعد السيروم أو مباشرة بعد الغسول.\n٢) حبة بازيلاء للوجه + قليل للرقبة.\n٣) صباحاً SPF فوقه.\n٤) مساءً زيدي على الخدود الجافة.",
+  "useEn": "1) After serum or right after cleanse.\n2) Pea-size for face + a little neck.\n3) SPF over it in the morning.\n4) Extra on dry cheeks at night.",
+  "skinAr": "الجافة والمحتاجة",
+  "skinEn": "sensitive dry skin",
   "stock": 3
-});
-})();
+}
+);

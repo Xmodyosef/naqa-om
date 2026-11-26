@@ -1,7 +1,7 @@
-// liangyan.js — short Apple-like copy
-(function(){
-var A = window.NAQA_PRODUCTS || (window.NAQA_PRODUCTS = []);
-A.push({
+/* Brand: LIANGYAN · 1 products · edit AR/EN fields here */
+window.NAQA_PRODUCTS = window.NAQA_PRODUCTS || [];
+window.NAQA_PRODUCTS.push(
+{
   "id": 188,
   "brand": "LIANGYAN",
   "cat": "شعر",
@@ -13,12 +13,12 @@ A.push({
   ],
   "nameAr": "فرشاة السيليكون المقاومة للماء لتدليك فروة الرأس - 1 قطعة",
   "nameEn": "Silicone Hair Scalp Massager",
-  "descAr": "فرشاة السيليكون المقاومة للماء من LIANGYAN. عناية بسيطة للشعر.",
-  "descEn": "Silicone Hair Scalp Massager by LIANGYAN. Simple hair care.",
-  "useAr": "١) حسب نوع المنتج.\n٢) كمية قليلة تكفي.",
-  "useEn": "1) As directed.\n2) A little goes far.",
-  "skinAr": "حسب نوع الشعر.",
-  "skinEn": "Depends on hair type.",
+  "descAr": "لماذا LIANGYAN هنا؟ لأن فرشاة السيليكون المقاومة للماء لتدليك فروة الرأس يقدّم خطوة واحدة واضحة: يفهم الفروة والأطراف. بدون ضجيج وعود طويلة. الحجم ≈ 1 قطعة. لـفروة تحتاج انتعاشاً. أي لسع مستمر؟ خفّفي أو راجعي مختصاً.",
+  "descEn": "Why LIANGYAN? Because Silicone Hair Scalp Massager does one clear job: makes styling simpler. No long promise list. For scalp that needs air. Keep it cool-ish and cap it tight.",
+  "useAr": "١) شامبو للفروة، بلسم للأطراف، سيروم حسب العبوة.\n٢) ابدئي بقليل.\n٣) لا تُشبعي الخصل.\n٤) أسبوعان–ثلاثة للفرق الأوضح.",
+  "useEn": "1) Shampoo scalp, condition lengths, leave-in as labeled.\n2) Start small.\n3) Don’t drench the hair.\n4) Two–three weeks for a clearer change.",
+  "skinAr": "فروة تحتاج انتعاشاً",
+  "skinEn": "scalp that needs air",
   "stock": 3
-});
-})();
+}
+);

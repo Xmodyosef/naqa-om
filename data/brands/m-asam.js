@@ -1,7 +1,7 @@
-// m-asam.js — short Apple-like copy
-(function(){
-var A = window.NAQA_PRODUCTS || (window.NAQA_PRODUCTS = []);
-A.push({
+/* Brand: M.Asam · 1 products · edit AR/EN fields here */
+window.NAQA_PRODUCTS = window.NAQA_PRODUCTS || [];
+window.NAQA_PRODUCTS.push(
+{
   "id": 133,
   "brand": "M.Asam",
   "cat": "شفاه",
@@ -13,12 +13,12 @@ A.push({
   ],
   "nameAr": "ماجيك فينيش بلسم الشفاه ام اسام - 18ج",
   "nameEn": "M.Asam Magic Finish Volume Lip Balm - 18g",
-  "descAr": "ماجيك فينيش بلسم الشفاه ام اسام من M.Asam. لون ناعم ومريح. 18 ج.",
-  "descEn": "M.Asam Magic Finish Volume Lip Balm by M.Asam. Soft colour. 18 g.",
-  "useAr": "١) على شفاه نظيفة.\n٢) أعدِي عند الحاجة.",
-  "useEn": "1) Clean lips.\n2) Reapply as needed.",
-  "skinAr": "لكل درجات الشفاه.",
-  "skinEn": "All lip tones.",
+  "descAr": "لمسة M.Asam في ماجيك فينيش بلسم الشفاه ام اسام: مريح للحديث والقهوة. صيغة مباشرة تُحترم مع الوقت. الحجم ≈ 18 ج. يناسب الشفاه الجافة. خزّنيها في مكان معتدل وأغلقي الغطاء.",
+  "descEn": "M.Asam's touch in M.Asam Magic Finish Volume Lip Balm: comfortable through talk and coffee. A direct formula that earns trust over time. Size ≈ 18 g. Fits daily without fuss. Give it two steady weeks before you decide.",
+  "useAr": "١) شفاه نظيفة.\n٢) من الوسط للخارج.\n٣) لمسة خلال اليوم.\n٤) ليلاً أغنى إن كان مرطباً.",
+  "useEn": "1) Clean lips.\n2) Center to outer edge.\n3) Touch up through the day.\n4) Richer layer at night if balm/mask.",
+  "skinAr": "الشفاه الجافة",
+  "skinEn": "daily without fuss",
   "stock": 3
-});
-})();
+}
+);

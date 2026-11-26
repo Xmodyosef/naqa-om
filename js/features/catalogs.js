@@ -35,56 +35,56 @@ function getNaqaCatalogs(){
   return [
     /* Homepage banners only — full width; products open after click */
     { id:"hot", cover:"media/catalogs/hot.webp", ar:"الأكثر طلباً", en:"Bestsellers", em:"★", tone:"hot", home:true, group:"deal",
-      subAr:"مختارات اليوم", subEn:"Picks",
+      subAr:"الأكثر طلباً هذا الأسبوع — جاهزة للشحن", subEn:"This week's most wanted — ready to ship",
       sort:"new", match:function(p){ return !!p.hot; } },
     { id:"eoy", cover:"media/catalogs/eoy.webp", ar:"عروض وتخفيضات", en:"Deals & offers", em:"٪", tone:"deal", home:true, group:"deal",
-      subAr:"خصم الآن", subEn:"Sale",
+      subAr:"أسعار مشطوبة لفترة محدودة", subEn:"Marked-down prices for a limited time",
       sort:"off", match:function(p){ return p.was > p.price; } },
     { id:"u10", cover:"media/catalogs/u10.webp", ar:"تحت ١٠ ر.ع", en:"Under 10 OMR", em:"١٠", tone:"price", home:true, group:"deal",
-      subAr:"أقل من ١٠", subEn:"Under 10",
+      subAr:"قطع مختارة بأقل من ١٠ ر.ع", subEn:"Curated picks under 10 OMR",
       sort:"price-asc", match:function(p){ return Number(p.price) < 10; } },
     { id:"korean", cover:"media/catalogs/korean.webp", ar:"عناية كورية", en:"K-beauty", em:"🌸", tone:"care", home:true, group:"deal",
-      subAr:"عناية كورية", subEn:"K-beauty",
+      subAr:"سيروم وماسكات كورية بنتائج واضحة", subEn:"Korean serums & masks with clear results",
       sort:"new", match:function(p){ return !!NAQA_K_BEAUTY[p.brand]; } },
     { id:"care", cover:"media/catalogs/care.webp", ar:"عناية بالبشرة", en:"Skincare", em:"✨", tone:"care", home:true, group:"shop",
-      subAr:"عناية يومية", subEn:"Skincare",
+      subAr:"غسول · سيروم · مرطب — روتين كامل", subEn:"Cleanse · treat · moisturise — full routine",
       sort:"new", match:function(p){ return p.cat === "عناية"; } },
     { id:"face", cover:"media/catalogs/face.webp", ar:"مكياج الوجه", en:"Face makeup", em:"💄", tone:"makeup", home:true, group:"shop",
-      subAr:"وجه", subEn:"Face",
+      subAr:"فاونديشن وكونسيلر لمظهر طبيعي", subEn:"Foundation & concealer for a natural finish",
       sort:"new", match:function(p){ return p.cat === "وجه"; } },
     { id:"lips", cover:"media/catalogs/lips.webp", ar:"الشفاه", en:"Lips", em:"💋", tone:"makeup", home:true, group:"shop",
-      subAr:"شفاه", subEn:"Lips",
+      subAr:"أحمر وملمع وليب كير بدرجات متنوعة", subEn:"Colour, gloss & care in everyday shades",
       sort:"new", match:function(p){ return p.cat === "شفاه"; } },
     { id:"eyes", cover:"media/catalogs/eyes.webp", ar:"العيون والحواجب", en:"Eyes & brows", em:"👁", tone:"makeup", home:true, group:"shop",
-      subAr:"عيون", subEn:"Eyes",
+      subAr:"مسكرة وآيلاينر وظلال بتثبيت يومي", subEn:"Mascara, liner & shadow that holds",
       sort:"new", match:function(p){ return p.cat === "عيون" || p.cat === "حواجب"; } },
     { id:"hair", cover:"media/catalogs/hair.webp", ar:"العناية بالشعر", en:"Hair care", em:"🧴", tone:"hair", home:true, group:"shop",
-      subAr:"Hair", subEn:"Hair",
+      subAr:"Olaplex وCantu وL'Oréal لإصلاح وترطيب", subEn:"Olaplex, Cantu & L'Oréal repair & moisture",
       sort:"new", match:function(p){ return p.cat === "شعر"; } },
     { id:"straight", cover:"media/catalogs/straight.webp", ar:"استشوارات وفرد", en:"Straighteners", em:"💇", tone:"tools", home:true, group:"shop",
-      subAr:"فرد", subEn:"Tools",
+      subAr:"استشوارات وأدوات حرارية بجودة عالية", subEn:"Straighteners & heat tools, pro quality",
       sort:"price-desc", match:function(p){ return naqaIsStraightener(p); } },
 
     /* Extra catalogs (openable, not on the 10-banner home strip) */
     /* +5 extra home banners */
     { id:"serum", cover:"media/catalogs/serum.webp", ar:"سيرومات", en:"Serums", em:"💧", tone:"care", home:true, group:"shop",
-      subAr:"سيرومات", subEn:"Serums",
+      subAr:"نضارة وتصبغ وترطيب في خطوة واحدة", subEn:"Glow, spots & hydration in one step",
       sort:"new", match:function(p){ return naqaIsSerum(p); } },
     { id:"new", cover:"media/catalogs/new.webp", ar:"وصل حديثاً", en:"New arrivals", em:"✦", tone:"new", home:true, group:"shop",
-      subAr:"جديد", subEn:"New",
+      subAr:"آخر الإضافات وصلت للمتجر", subEn:"Latest drops just landed",
       sort:"new", match:function(p){ return Number(p.id) >= 250; } },
     { id:"tools", cover:"media/catalogs/tools.webp", ar:"أدوات التجميل", en:"Beauty tools", em:"🔧", tone:"tools", home:true, group:"shop",
-      subAr:"أدوات", subEn:"Tools",
+      subAr:"فرش وأجهزة تكمّل روتينك", subEn:"Brushes & devices for your routine",
       sort:"new", match:function(p){ return p.cat === "أدوات"; } },
     { id:"sheglam", cover:"media/catalogs/sheglam.webp", ar:"ماركة SHEGLAM", en:"SHEGLAM", em:"💎", tone:"makeup", home:true, group:"shop",
-      subAr:"SHEGLAM", subEn:"SHEGLAM",
+      subAr:"مكياج ترندي بأسعار مناسبة يومياً", subEn:"Trendy makeup at everyday prices",
       sort:"new", match:function(p){ return /sheglam/i.test(String(p.brand||"")); } },
     { id:"olaplex", cover:"media/catalogs/olaplex.webp", ar:"Olaplex للشعر", en:"Olaplex hair", em:"🧪", tone:"hair", home:true, group:"shop",
-      subAr:"Olaplex", subEn:"Olaplex",
+      subAr:"إصلاح الروابط وحماية من الحرارة", subEn:"Bond repair & heat protection",
       sort:"new", match:function(p){ return /olaplex/i.test(String(p.brand||"")); } },
 
     { id:"all", cover:"media/catalogs/all.webp", ar:"كل المنتجات", en:"All products", em:"▣", tone:"all", group:"shop",
-      subAr:"الكل", subEn:"All",
+      subAr:"تصفّحي الكتالوج الكامل", subEn:"Browse the full catalog",
       sort:"new", match:function(){ return true; } }
   ];
 }
@@ -241,7 +241,7 @@ function getHomeCampaigns(){
       ar: c.ar, en: c.en,
       subAr: c.subAr || "", subEn: c.subEn || "",
       eyeAr: c.em || "✦", eyeEn: c.em || "✦",
-      ctaAr: "الكل", ctaEn: "All",
+      ctaAr: "شاهدي الكل ←", ctaEn: "View all →",
       art: art,
       cover: c.cover || "",
       list: list
@@ -339,9 +339,8 @@ function renderHomeCatalogs(){
       + '<small>'+esc(eye)+'</small>'
       + '<h3>'+esc(title)+'</h3>'
       + (sub ? '<p>'+esc(sub)+'</p>' : '')
-      + '<span class="chip chip-cta">'+esc(cta)+'</span>'
+      + '<div class="chips"><span class="chip chip-cta">'+esc(cta)+'</span></div>'
       + '</div>'
-      /* full-bleed shelf cover already carries products; no floating duplicate art */
       + '</button>'
       + '<div class="campaign-rail" data-camp="'+esc(c.id)+'">'
       + '<div class="campaign-products" role="list">'

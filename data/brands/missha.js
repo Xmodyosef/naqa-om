@@ -1,7 +1,7 @@
-// missha.js — short Apple-like copy
-(function(){
-var A = window.NAQA_PRODUCTS || (window.NAQA_PRODUCTS = []);
-A.push({
+/* Brand: MISSHA · 5 products · edit AR/EN fields here */
+window.NAQA_PRODUCTS = window.NAQA_PRODUCTS || [];
+window.NAQA_PRODUCTS.push(
+{
   "id": 70,
   "brand": "MISSHA",
   "cat": "وجه",
@@ -14,15 +14,15 @@ A.push({
   ],
   "nameAr": "بي بي كريم بيرفكت إم من ميشا - رقم21 - 50مل",
   "nameEn": "MISSHA Perfect M BB Cream #21 SPF42 - 50ml",
-  "descAr": "بي بي كريم بيرفكت إم من ميشا من MISSHA. تغطية خفيفة طبيعية. 50 مل.",
-  "descEn": "MISSHA Perfect M BB Cream #21 SPF42 by MISSHA. Light natural coverage. 50 ml.",
-  "useAr": "١) بعد العناية.\n٢) وزّعي برفق.",
-  "useEn": "1) After skincare.\n2) Blend lightly.",
-  "skinAr": "اختاري درجتك.",
-  "skinEn": "Pick your shade.",
+  "descAr": "بي بي كريم بيرفكت إم من ميشا من MISSHA. نهاري لا يثقل، مع حضور حماية SPF لـدرع نهاري أساسي. الحجم ≈ 50 مل. يناسب تحت المكياج. خزّنيها في مكان معتدل وأغلقي الغطاء.",
+  "descEn": "MISSHA Perfect M BB Cream #21 SPF42 by MISSHA. Daytime without heaviness, with SPF protection for essential daytime defense. Size ≈ 50 ml. Suits after morning care. Give it two steady weeks before you decide.",
+  "useAr": "١) آخر عناية صباحية.\n٢) كمية إصبعين تقريباً للوجه والرقبة.\n٣) دقيقة قبل المكياج.\n٤) أعيدي في الشمس الطويلة.",
+  "useEn": "1) Last morning step.\n2) About two fingers for face and neck.\n3) One minute before makeup.\n4) Reapply in long sun.",
+  "skinAr": "تحت المكياج",
+  "skinEn": "after morning care",
   "stock": 3
-});
-A.push({
+},
+{
   "id": 71,
   "brand": "MISSHA",
   "cat": "وجه",
@@ -35,15 +35,15 @@ A.push({
   ],
   "nameAr": "بي بي كريم بيرفكت إم من ميشا - رقم27 - 50مل",
   "nameEn": "MISSHA Perfect M BB Cream #27 SPF42 - 50ml",
-  "descAr": "بي بي كريم بيرفكت إم من ميشا من MISSHA. تغطية خفيفة طبيعية. 50 مل.",
-  "descEn": "MISSHA Perfect M BB Cream #27 SPF42 by MISSHA. Light natural coverage. 50 ml.",
-  "useAr": "١) بعد العناية.\n٢) وزّعي برفق.",
-  "useEn": "1) After skincare.\n2) Blend lightly.",
-  "skinAr": "اختاري درجتك.",
-  "skinEn": "Pick your shade.",
+  "descAr": "لمسة MISSHA في بي بي كريم بيرفكت إم من ميشا: درع يومي بملمس مريح. يُذكر فيه حماية SPF لدعم درع نهاري أساسي. الحجم ≈ 50 مل. يناسب بعد العناية الصباحية. أي لسع مستمر؟ خفّفي أو راجعي مختصاً.",
+  "descEn": "MISSHA's touch in MISSHA Perfect M BB Cream #27 SPF42: protects and sits under makeup. Notes of SPF protection support essential daytime defense. Size ≈ 50 ml. Fits under makeup. Ongoing sting? Ease off or ask a pro.",
+  "useAr": "١) آخر عناية صباحية.\n٢) كمية إصبعين تقريباً للوجه والرقبة.\n٣) دقيقة قبل المكياج.\n٤) أعيدي في الشمس الطويلة.",
+  "useEn": "1) Last morning step.\n2) About two fingers for face and neck.\n3) One minute before makeup.\n4) Reapply in long sun.",
+  "skinAr": "بعد العناية الصباحية",
+  "skinEn": "under makeup",
   "stock": 3
-});
-A.push({
+},
+{
   "id": 72,
   "brand": "MISSHA",
   "cat": "وجه",
@@ -56,15 +56,15 @@ A.push({
   ],
   "nameAr": "بي بي كريم بيرفكت إم من ميشا - رقم25 - 50مل",
   "nameEn": "MISSHA Perfect M BB Cream #25 SPF42 - 50ml",
-  "descAr": "بي بي كريم بيرفكت إم من ميشا من MISSHA. تغطية خفيفة طبيعية. 50 مل.",
-  "descEn": "MISSHA Perfect M BB Cream #25 SPF42 by MISSHA. Light natural coverage. 50 ml.",
-  "useAr": "١) بعد العناية.\n٢) وزّعي برفق.",
-  "useEn": "1) After skincare.\n2) Blend lightly.",
-  "skinAr": "اختاري درجتك.",
-  "skinEn": "Pick your shade.",
+  "descAr": "رقيق في الإحساس، صادق في الدور — بي بي كريم بيرفكت إم من ميشا. علامة MISSHA تعتمد لمسة حماية SPF. يحمي ويناسب المكياج فوقه. الحجم ≈ 50 مل. يناسب تحت المكياج. الجمال الأهدأ يأتي من روتين قصير ثابت.",
+  "descEn": "Soft to the touch, honest in role — MISSHA Perfect M BB Cream #25 SPF42. MISSHA leans on SPF protection. Protects and sits under makeup. Size ≈ 50 ml. Best with all skin by day. Ongoing sting? Ease off or ask a pro.",
+  "useAr": "١) آخر عناية صباحية.\n٢) كمية إصبعين تقريباً للوجه والرقبة.\n٣) دقيقة قبل المكياج.\n٤) أعيدي في الشمس الطويلة.",
+  "useEn": "1) Last morning step.\n2) About two fingers for face and neck.\n3) One minute before makeup.\n4) Reapply in long sun.",
+  "skinAr": "تحت المكياج",
+  "skinEn": "all skin by day",
   "stock": 3
-});
-A.push({
+},
+{
   "id": 74,
   "brand": "MISSHA",
   "cat": "أدوات",
@@ -78,15 +78,15 @@ A.push({
   ],
   "nameAr": "فرشاة الخدود والهايلايتر ميشا آرتيستول 206",
   "nameEn": "Missha Artistool Cheek Highlighter Brush 206",
-  "descAr": "فرشاة الخدود والهايلايتر ميشا من MISSHA. أداة يومية.",
-  "descEn": "Missha Artistool Cheek Highlighter Brush by MISSHA. Everyday tool.",
-  "useAr": "١) على بشرة/شعر نظيف.\n٢) اتبعي الإرشاد.",
-  "useEn": "1) Clean skin/hair.\n2) Follow guide.",
-  "skinAr": "للاستخدام اليومي.",
-  "skinEn": "Daily use.",
+  "descAr": "فرشاة الخدود والهايلايتر ميشا آرتيستول 206 من MISSHA. يبني التغطية بهدوء. يناسب مكياج يومي هادئ. أي لسع مستمر؟ خفّفي أو راجعي مختصاً.",
+  "descEn": "Missha Artistool Cheek Highlighter Brush 206 by MISSHA. Blends instead of masking. Suits quiet everyday makeup. Keep it cool-ish and cap it tight.",
+  "useAr": "١) بشرة مرطّبة (+ SPF نهاراً).\n٢) كمية قليلة ووزّعي.\n٣) غطّي بطبقات خفيفة.\n٤) ثبّتي عند الحاجة.",
+  "useEn": "1) Moisturized skin (+ SPF by day).\n2) Start small and blend.\n3) Build in thin layers.\n4) Set for longer wear.",
+  "skinAr": "مكياج يومي هادئ",
+  "skinEn": "quiet everyday makeup",
   "stock": 3
-});
-A.push({
+},
+{
   "id": 182,
   "brand": "MISSHA",
   "cat": "شعر",
@@ -98,12 +98,12 @@ A.push({
   ],
   "nameAr": "فرشاة الظلال ميشا آرتيستول 306",
   "nameEn": "Missha Artistool Shadow Brush 306",
-  "descAr": "فرشاة الظلال ميشا آرتيستول 306 من MISSHA. عناية بسيطة للشعر.",
-  "descEn": "Missha Artistool Shadow Brush 306 by MISSHA. Simple hair care.",
-  "useAr": "١) حسب نوع المنتج.\n٢) كمية قليلة تكفي.",
-  "useEn": "1) As directed.\n2) A little goes far.",
-  "skinAr": "حسب نوع الشعر.",
-  "skinEn": "Depends on hair type.",
+  "descAr": "MISSHA × عناية يومية: فرشاة الظلال ميشا آرتيستول 306. يُركّز على راحة الاستخدام. الملمس: يفهم الفروة والأطراف. حسب الشعر والفروة. خزّنيها في مكان معتدل وأغلقي الغطاء.",
+  "descEn": "MISSHA for daily care: Missha Artistool Shadow Brush 306. Comfort-first use. Feel: respects scalp and lengths. Stressed hair. Give it two steady weeks before you decide.",
+  "useAr": "١) شامبو للفروة، بلسم للأطراف، سيروم حسب العبوة.\n٢) ابدئي بقليل.\n٣) لا تُشبعي الخصل.\n٤) أسبوعان–ثلاثة للفرق الأوضح.",
+  "useEn": "1) Shampoo scalp, condition lengths, leave-in as labeled.\n2) Start small.\n3) Don’t drench the hair.\n4) Two–three weeks for a clearer change.",
+  "skinAr": "حسب الشعر والفروة",
+  "skinEn": "stressed hair",
   "stock": 3
-});
-})();
+}
+);

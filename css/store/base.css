@@ -1603,3 +1603,32 @@ html[data-theme="night"] .sheet-detail{
 @media (max-width:480px){
   .sheet-detail-grid{ grid-template-columns: 1fr 1fr; }
 }
+
+/* B3 pro banners — clearer product stage */
+.home-rails .campaign-banner,
+.campaign-banner{
+  min-height: 280px !important;
+  height: clamp(240px, 32vw, 320px) !important;
+  background-size: cover !important;
+  background-position: center right !important;
+  border-radius: 22px !important;
+  overflow: hidden !important;
+  box-shadow: 0 12px 32px rgba(40,15,25,.12) !important;
+}
+.home-rails .campaign-banner .campaign-copy,
+.campaign-banner .campaign-copy{
+  max-width: min(46%, 420px);
+  text-shadow: 0 2px 18px rgba(0,0,0,.35);
+}
+@media (max-width: 700px){
+  .home-rails .campaign-banner,
+  .campaign-banner{
+    height: 220px !important;
+    min-height: 200px !important;
+    background-position: 70% center !important;
+  }
+  .home-rails .campaign-banner .campaign-copy,
+  .campaign-banner .campaign-copy{
+    max-width: 55%;
+  }
+}

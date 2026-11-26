@@ -1178,7 +1178,7 @@ html[data-theme="night"] .home-ban{ box-shadow: none; }
 .campaign-banner.tone-new{ background:linear-gradient(120deg,#4a2040,#a06090 52%,#e8c0d0); }
 .campaign-banner.tone-all{ background:linear-gradient(120deg,#3a2a2a,#8a6060 52%,#e0c0b0); }
 
-.campaign-copy{ position:relative; z-index:1; max-width:46%; }
+.campaign-copy{ position:relative; z-index:1; max-width:46%; font-family:"Noto Kufi Arabic","Noto Naskh Arabic","Noto Sans Arabic",Tahoma,Arial,sans-serif; }
 .campaign-copy small{ font-size:.68rem; opacity:.88; font-weight:700; }
 .campaign-copy h3{ font-size:clamp(1.45rem, 3.8vw, 2rem); margin:8px 0 8px; line-height:1.25; font-weight:800; letter-spacing:-.02em; text-shadow:0 2px 18px rgba(0,0,0,.22); }
 .campaign-copy p{ font-size:.85rem; line-height:1.65; margin:0 0 16px; opacity:.94; font-weight:600; max-width:32ch; }
@@ -1399,4 +1399,11 @@ html[data-theme="night"] .home-rails .camp-product-name{ color:#f5ebe8; }
 .campaign-banner{ min-height:280px; }
 @media (max-width:700px){
   .campaign-banner{ min-height:230px; }
+}
+
+/* banner text fix — avoid tofu squares */
+.campaign-copy, .campaign-copy h3, .campaign-copy p, .campaign-copy .chip, .campaign-head h2 {
+  font-family: "Noto Kufi Arabic", "Noto Naskh Arabic", "Noto Sans Arabic", Tahoma, Arial, sans-serif !important;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }

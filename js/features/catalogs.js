@@ -241,7 +241,7 @@ function getHomeCampaigns(){
       ar: c.ar, en: c.en,
       subAr: c.subAr || "", subEn: c.subEn || "",
       eyeAr: c.em || "✦", eyeEn: c.em || "✦",
-      ctaAr: "شاهدي الكل ←", ctaEn: "View all →",
+      ctaAr: "شاهدي الكل", ctaEn: "View all",
       art: art,
       cover: c.cover || "",
       list: list

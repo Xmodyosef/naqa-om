@@ -1,3 +1,4 @@
+var NAQA_BANNER_HEROES = {"straight": [329, 310, 332], "tools": [193, 328, 333], "olaplex": [171, 172, 299], "sheglam": [84, 154, 158], "eyes": [116, 111, 93], "lips": [157, 204, 133], "eoy": [1, 71, 122], "face": [72, 197, 80], "hot": [293, 166, 224], "serum": [105, 185, 103], "hair": [189, 188, 176], "new": [255, 275, 291], "korean": [60, 148, 65], "care": [76, 67, 27], "u10": [113, 88, 34], "all": [82, 47, 32]};
 var catalogBrowse = false;
 /* Home catalogs — clean tile grid (Nice One / Nazih style). No product dumps on home. */
 var currentCatalog = "";
@@ -225,7 +226,13 @@ function getHomeCampaigns(){
   getNaqaCatalogs().forEach(function(c){
     if(!c.home) return;
     var list = [];
-    try{ list = catalogList(c.id, 12) || []; }catch(e){ list = []; }
+    try{ list = catalogList(c.id, 18) || []; }catch(e){ list = []; }
+    var heroes = (typeof NAQA_BANNER_HEROES !== "undefined" && NAQA_BANNER_HEROES[c.id]) || [];
+    if(heroes.length){
+      var skip = {};
+      heroes.forEach(function(id){ skip[id] = 1; });
+      list = list.filter(function(p){ return p && !skip[p.id]; });
+    }
     if(!list.length) return;
     /* banner art = designed cover (product shelf). Fallback to first product. */
     var art = c.cover || "";
@@ -259,16 +266,7 @@ function naqaStartCampRails(root){
     rail.__naqaSpin = true;
     var track = rail.querySelector(".campaign-products");
     if(!track) return;
-    /* duplicate children for seamless loop when few items */
-    var kids = Array.prototype.slice.call(track.children);
-    if(kids.length && kids.length < 16){
-      kids.forEach(function(node){
-        var clone = node.cloneNode(true);
-        clone.setAttribute("aria-hidden","true");
-        clone.querySelectorAll("button").forEach(function(b){ b.tabIndex = -1; });
-        track.appendChild(clone);
-      });
-    }
+    /* no cloned duplicates — each card is a real product */
     var paused = false;
     var dir = (document.documentElement.getAttribute("dir") === "rtl") ? -1 : 1;
     /* RTL scrollLeft quirks: use scrollBy positive toward "start" content flow */

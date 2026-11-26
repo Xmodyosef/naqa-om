@@ -20,10 +20,10 @@ const outDir = path.join(root, "p");
 
 function esc(s) {
   return String(s == null ? "" : s)
-    .replace(/&/g, "&")
-    .replace(/</g, "<")
-    .replace(/>/g, ">")
-    .replace(/"/g, """);
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/\"/g, "&quot;");
 }
 
 function pageFor(p) {
@@ -34,22 +34,40 @@ function pageFor(p) {
   const url = base + "/p/" + p.id + "/";
   const price = Number(p.price);
   const brand = p.brand || "Naqa";
+  const fullDesc = String(p.descAr || p.descEn || name).replace(/\s+/g, " ").trim();
+  const useTxt = String(p.useAr || p.useEn || "").replace(/\s+/g, " ").trim();
+  const skin = String(p.skinAr || p.skinEn || "").trim();
+  const cat = p.cat || "منتجات";
   const ld = {
     "@context": "https://schema.org",
-    "@type": "Product",
-    name: name,
-    description: desc,
-    image: img,
-    sku: p.sku || String(p.id),
-    brand: { "@type": "Brand", name: brand },
-    offers: {
-      "@type": "Offer",
-      url: url,
-      priceCurrency: "OMR",
-      price: price.toFixed(3),
-      availability: "https://schema.org/InStock",
-      itemCondition: "https://schema.org/NewCondition"
-    }
+    "@graph": [
+      {
+        "@type": "Product",
+        name: name,
+        description: fullDesc.slice(0, 5000),
+        image: img,
+        sku: p.sku || String(p.id),
+        brand: { "@type": "Brand", name: brand },
+        category: cat,
+        offers: {
+          "@type": "Offer",
+          url: url,
+          priceCurrency: "OMR",
+          price: price.toFixed(3),
+          availability: "https://schema.org/InStock",
+          itemCondition: "https://schema.org/NewCondition",
+          seller: { "@type": "Organization", name: "نقاء | Naqa" }
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "نقاء", item: base + "/" },
+          { "@type": "ListItem", position: 2, name: cat, item: base + "/#shop" },
+          { "@type": "ListItem", position: 3, name: name, item: url }
+        ]
+      }
+    ]
   };
   return `<!DOCTYPE html>
 <html lang="ar" dir="rtl">
@@ -83,15 +101,19 @@ function pageFor(p) {
 <body>
 <div class="wrap">
   <p><a href="${esc(base)}/">← نقاء</a> · <span class="meta">${esc(brand)}</span></p>
+  <nav class="meta" aria-label="مسار الصفحة"><a href="${esc(base)}/">نقاء</a> · ${esc(cat)} · ${esc(brand)}</nav>
   <div class="card">
-    <img class="hero" src="${esc(img)}" alt="${esc(name)}" width="720" height="720" />
+    <img class="hero" src="${esc(img)}" alt="${esc(name)}" width="720" height="720" loading="eager" decoding="async" />
     <h1>${esc(name)}</h1>
-    <p class="meta">${esc(nameEn)} · SKU ${esc(p.sku || "—")}</p>
+    <p class="meta">${esc(nameEn)} · ${esc(brand)} · SKU ${esc(p.sku || "—")}</p>
     <p class="price">${price.toFixed(3)} ر.ع <span class="meta">شامل الضريبة ٥٪</span></p>
-    <p>${esc((p.descAr || p.descEn || "").slice(0, 600))}</p>
+    <h2 style="font-size:1rem;margin:14px 0 6px">الوصف</h2>
+    <p>${esc(fullDesc)}</p>
+    ${skin ? `<p class="meta"><strong>الأنسب لـ:</strong> ${esc(skin)}</p>` : ""}
+    ${useTxt ? `<h2 style="font-size:1rem;margin:14px 0 6px">طريقة الاستخدام</h2><p style="white-space:pre-line">${esc(useTxt)}</p>` : ""}
     <a class="btn" href="${esc(base)}/#p/${p.id}">افتحي في المتجر</a>
   </div>
-  <p class="muted">نقاء · عناية ومكياج · توصيل داخل عُمان · طلب واتساب</p>
+  <p class="muted">نقاء · عناية ومكياج أصلية · توصيل داخل عُمان · طلب واتساب · أسعار شاملة الضريبة ٥٪</p>
 </div>
 </body>
 </html>
@@ -118,12 +140,14 @@ for (const p of products) {
   urls.push(`${base}/p/${p.id}/`);
 }
 
+const today = new Date().toISOString().slice(0, 10);
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${urls
   .map(
     (u, i) => `  <url>
     <loc>${u}</loc>
+    <lastmod>${today}</lastmod>
     <changefreq>${i === 0 ? "daily" : "weekly"}</changefreq>
     <priority>${i === 0 ? "1.0" : "0.7"}</priority>
   </url>`

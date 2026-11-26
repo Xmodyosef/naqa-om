@@ -147,3 +147,34 @@ body.naqa-scroll-lock .carousel-track{
   overscroll-behavior:none;
   touch-action:none;
 }
+
+/* P3 a11y: scroll margin for sticky header, reduced motion for rails */
+:target, :focus, :focus-visible{
+  scroll-margin-top: 88px;
+  scroll-margin-bottom: 72px;
+}
+@media (prefers-reduced-motion: reduce){
+  .ship-marquee, .ship-track,
+  .campaign-products,
+  .home-rails .campaign-products{
+    animation: none !important;
+    scroll-behavior: auto !important;
+  }
+  html{ scroll-behavior: auto !important; }
+}
+/* FAQ details keyboard friendly */
+.faq-item summary{
+  cursor:pointer;
+  list-style:none;
+  min-height:44px;
+  display:flex;
+  align-items:center;
+  font-weight:800;
+}
+.faq-item summary::-webkit-details-marker{ display:none; }
+.faq-item summary:focus-visible{
+  outline:3px solid var(--focus);
+  outline-offset:2px;
+  border-radius:10px;
+}
+.faq-item[open] summary{ color: var(--rose-deep,#8d3048); }

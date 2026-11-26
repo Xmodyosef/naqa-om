@@ -49,6 +49,38 @@ function addBundle(id) {
 }
 
 
+function refreshFaqLang() {
+  var en = lang === "en";
+  var t = document.getElementById("faqTitle");
+  var lead = document.querySelector("#faqHome .faq-lead");
+  if (t) t.textContent = en ? "FAQ" : "أسئلة شائعة";
+  if (lead) lead.textContent = en
+    ? "Quick answers before you order — authenticity, delivery, WhatsApp, and VAT."
+    : "إجابات سريعة قبل الطلب — أصالة، توصيل، واتساب، والضريبة.";
+  var items = document.querySelectorAll("#faqHome .faq-item");
+  var ar = [
+    ["هل المنتجات أصلية؟", "نعم. نقاء يبيع منتجات عناية ومكياج أصلية من ماركات معروفة، مع وصف واستخدام واضح لكل منتج."],
+    ["هل يوجد توصيل داخل عُمان؟", "نعم. التوصيل لجميع ولايات السلطنة. فوق ٣٠ ر.ع شحن مجاني، وتحت ذلك رسوم ٢ ر.ع."],
+    ["كيف أطلب؟", "أضيفي للسلة وأكملي الطلب، أو تواصلي واتساب لإتمام الطلب خلال دقائق."],
+    ["هل الأسعار شاملة الضريبة؟", "نعم. الأسعار شاملة ضريبة القيمة المضافة ٥٪."],
+    ["هل يتوفر الدفع عند الاستلام؟", "نعم. الدفع عند الاستلام متاح، مع خيار التحويل البنكي عند تفعيله."]
+  ];
+  var enQ = [
+    ["Are products authentic?", "Yes. Naqa sells authentic skincare and makeup from known brands, with clear description and usage for each product."],
+    ["Do you deliver in Oman?", "Yes. Delivery covers all governorates. Free shipping over 30 OMR; 2 OMR fee under that."],
+    ["How do I order?", "Add items to cart and checkout, or message us on WhatsApp to finish in minutes."],
+    ["Are prices VAT-inclusive?", "Yes. Displayed prices include 5% VAT."],
+    ["Is cash on delivery available?", "Yes. Cash on delivery is available, plus bank transfer when enabled."]
+  ];
+  var src = en ? enQ : ar;
+  items.forEach(function (el, i) {
+    if (!src[i]) return;
+    var s = el.querySelector("summary");
+    var p = el.querySelector("p");
+    if (s) s.textContent = src[i][0];
+    if (p) p.textContent = src[i][1];
+  });
+}
 function refreshSocialProof() {
   var en = lang === "en";
   var map = en

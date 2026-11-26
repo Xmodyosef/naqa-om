@@ -103,11 +103,15 @@ function priceHTML(p){
   return '<div class="card-price"><span class="off">−'+pct+'%</span>'+money(p.price)+' <s class="was">'+money(p.was)+'</s>'+vat+'</div>';
 }
 
-function visual(p, idx){
+function visual(p, idx, opts){
+  opts = opts || {};
   const imgs=pimgs(p); const i=idx||0;
   if(imgs[i]){
-    /* fixed width/height + contain stops scroll flash / reflow */
-    return '<img src="'+esc(imgs[i])+'" alt="'+esc(pname(p))+'" width="800" height="800" loading="eager" decoding="async" fetchpriority="low" draggable="false" style="width:100%;height:100%;object-fit:contain;object-position:center">';
+    /* First few cards: eager for LCP; rest lazy. sizes for responsive. */
+    var eager = !!opts.eager;
+    var loading = eager ? 'eager' : 'lazy';
+    var prio = eager ? 'high' : 'low';
+    return '<img src="'+esc(imgs[i])+'" alt="'+esc(pname(p))+'" width="800" height="800" loading="'+loading+'" decoding="async" fetchpriority="'+prio+'" sizes="(max-width:600px) 50vw, (max-width:1000px) 33vw, 220px" draggable="false" style="width:100%;height:100%;object-fit:contain;object-position:center">';
   }
   return '<span class="card-em" style="font-size:2rem;display:grid;place-items:center;height:100%">'+ (p.em||'✨') +'</span>';
 }
@@ -137,7 +141,7 @@ function cardHTML(p){
     +'<div class="card-visual" data-open="'+p.id+'">'
     +'<button type="button" class="wish-btn'+(typeof isWish==='function'&&isWish(p.id)?' on':'')+'" data-wish="'+p.id+'" aria-label="'+(lang==="en"?"Save to wishlist":"حفظ في المفضلة")+'">♥</button>'
     +'<span class="card-cart-chip'+(qty?' show':'')+'" data-chip="'+p.id+'">'+(qty?('×'+qty):'')+'</span>'
-    +tags+visual(p,0)
+    +tags+visual(p,0,{eager:false})
     +'<div class="card-price-float">'+money(p.price)+'</div>'
     +'</div>'
     +'<div class="card-body">'

@@ -2,7 +2,30 @@ User-agent: *
 Allow: /
 Disallow: /admin.html
 Disallow: /order.html
+Disallow: /panel.html
 Disallow: /js/admin/
 Disallow: /css/admin.css
+Disallow: /data/orders.json
+
+# Common AI / answer crawlers (allow public catalog)
+User-agent: GPTBot
+Allow: /
+Disallow: /admin.html
+Disallow: /js/admin/
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
 
 Sitemap: https://xmodyosef.github.io/naqa-om/sitemap.xml

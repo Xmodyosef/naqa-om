@@ -1543,3 +1543,63 @@ html[data-theme="night"] .social-proof{
 html[data-theme="night"] .trust-item{
   background: rgba(255,255,255,.05); border-color: rgba(255,255,255,.1);
 }
+
+/* === P3: FAQ, sheet details, content === */
+.faq-home{
+  margin: 28px 0 12px;
+  padding: 18px 16px 8px;
+  background: linear-gradient(180deg, rgba(141,48,72,.05), transparent);
+  border: 1px solid var(--line);
+  border-radius: 22px;
+}
+.faq-title{
+  margin: 0 0 6px;
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--fg);
+}
+.faq-lead{
+  margin: 0 0 14px;
+  color: var(--muted);
+  font-size: .88rem;
+  font-weight: 600;
+}
+.faq-list{ display:flex; flex-direction:column; gap:8px; }
+.faq-item{
+  background: var(--card,#fff);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 4px 12px 8px;
+}
+.faq-item p{
+  margin: 0 0 10px;
+  color: var(--muted);
+  font-size: .9rem;
+  line-height: 1.55;
+  font-weight: 600;
+}
+.sheet-detail-grid{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin: 10px 0 14px;
+}
+.sheet-detail{
+  background: rgba(141,48,72,.05);
+  border: 1px solid rgba(141,48,72,.1);
+  border-radius: 12px;
+  padding: 10px 12px;
+  display:flex; flex-direction:column; gap:2px;
+}
+.sheet-detail b{ font-size:.72rem; color:var(--muted); font-weight:700; }
+.sheet-detail span{ font-size:.88rem; font-weight:700; color:var(--fg); word-break:break-word; }
+html[data-theme="night"] .faq-home{
+  background: linear-gradient(180deg, rgba(141,48,72,.12), transparent);
+}
+html[data-theme="night"] .faq-item,
+html[data-theme="night"] .sheet-detail{
+  background: rgba(255,255,255,.04);
+}
+@media (max-width:480px){
+  .sheet-detail-grid{ grid-template-columns: 1fr 1fr; }
+}

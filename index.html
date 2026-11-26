@@ -4,7 +4,8 @@
 <meta charset="UTF-8" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@400;600;700;800&family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@400;600;700;800&family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+<noscript><link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@400;600;700;800&family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet" /></noscript>
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
 <meta http-equiv="Pragma" content="no-cache" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1, maximum-scale=5, user-scalable=yes, viewport-fit=cover" />
@@ -15,6 +16,11 @@
 <meta name="author" content="Naqa Oman" />
 <meta name="robots" content="index,follow" />
 <link rel="canonical" id="canonical" href="https://xmodyosef.github.io/naqa-om/" />
+<link rel="alternate" hreflang="ar-OM" href="https://xmodyosef.github.io/naqa-om/" />
+<link rel="alternate" hreflang="ar" href="https://xmodyosef.github.io/naqa-om/" />
+<link rel="alternate" hreflang="en" href="https://xmodyosef.github.io/naqa-om/" />
+<link rel="alternate" hreflang="x-default" href="https://xmodyosef.github.io/naqa-om/" />
+
 <!-- Open Graph -->
 <meta property="og:type" content="website" />
 <meta property="og:locale" content="ar_OM" />
@@ -44,24 +50,102 @@
 <meta name="application-name" content="نقاء | Naqa" />
 
 <title>نقاء · عناية ومكياج | Naqa Oman</title>
-<link rel="stylesheet" href="css/store.min.css?v=20261126med" />
+<link rel="preload" href="css/store.min.css?v=20261126p3" as="style" />
+<link rel="stylesheet" href="css/store.min.css?v=20261126p3" />
+<link rel="preload" href="media/catalogs/hot.webp" as="image" type="image/webp" fetchpriority="high" />
 
-<script type="application/ld+json">
+
+<script type="application/ld+json" id="ldStore">
 {
   "@context": "https://schema.org",
-  "@type": "Store",
-  "name": "نقاء | Naqa",
-  "alternateName": "Naqa Beauty Oman",
-  "url": "https://xmodyosef.github.io/naqa-om/",
-  "image": "https://xmodyosef.github.io/naqa-om/media/icons/icon-512.png",
-  "description": "متجر عناية ومكياج مع توصيل داخل عُمان وطلب واتساب.",
-  "address": {
-    "@type": "PostalAddress",
-    "addressCountry": "OM"
-  },
-  "currenciesAccepted": "OMR",
-  "paymentAccepted": "Cash, WhatsApp order",
-  "inLanguage": ["ar", "en"]
+  "@graph": [
+    {
+      "@type": ["Store", "Organization"],
+      "@id": "https://xmodyosef.github.io/naqa-om/#organization",
+      "name": "نقاء | Naqa",
+      "alternateName": ["Naqa Beauty Oman", "Naqa Oman"],
+      "url": "https://xmodyosef.github.io/naqa-om/",
+      "logo": "https://xmodyosef.github.io/naqa-om/media/icons/icon-512.png",
+      "image": "https://xmodyosef.github.io/naqa-om/media/og/og-home.jpg",
+      "description": "متجر عناية ومكياج أصلي مع توصيل لجميع ولايات عُمان وطلب سريع عبر واتساب.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "OM"
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "Oman"
+      },
+      "currenciesAccepted": "OMR",
+      "paymentAccepted": "Cash on delivery, Bank transfer, WhatsApp order",
+      "inLanguage": ["ar", "en"],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "customer service",
+        "availableLanguage": ["ar", "en"],
+        "url": "https://wa.me/96879088349"
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://xmodyosef.github.io/naqa-om/#website",
+      "url": "https://xmodyosef.github.io/naqa-om/",
+      "name": "نقاء | Naqa",
+      "publisher": { "@id": "https://xmodyosef.github.io/naqa-om/#organization" },
+      "inLanguage": ["ar", "en"],
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://xmodyosef.github.io/naqa-om/?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://xmodyosef.github.io/naqa-om/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "هل المنتجات أصلية؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "نعم. نقاء يبيع منتجات عناية ومكياج أصلية من ماركات معروفة، مع وصف واستخدام واضح لكل منتج."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "هل يوجد توصيل داخل عُمان؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "نعم. التوصيل لجميع ولايات السلطنة. الطلبات فوق 30 ر.ع شحن مجاني. تحت 30 ر.ع رسوم توصيل 2 ر.ع."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "كيف أطلب من نقاء؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "أضيفي المنتجات للسلة وأكملي الطلب، أو تواصلي عبر واتساب لإتمام الطلب بسرعة."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "هل الأسعار شاملة الضريبة؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "نعم. الأسعار المعروضة شاملة ضريبة القيمة المضافة 5٪."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "هل يمكن الدفع عند الاستلام؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "نعم. يتوفر الدفع عند الاستلام، مع خيار التحويل البنكي عند تفعيله."
+          }
+        }
+      ]
+    }
+  ]
 }
 </script>
 
@@ -179,6 +263,34 @@
   <div class="brand-bar" id="brandBar" hidden></div>
   <div class="grid" id="grid"></div>
   <div class="empty" id="empty" hidden></div>
+
+  <section class="faq-home" id="faqHome" aria-labelledby="faqTitle">
+    <h2 id="faqTitle" class="faq-title">أسئلة شائعة</h2>
+    <p class="faq-lead">إجابات سريعة قبل الطلب — أصالة، توصيل، واتساب، والضريبة.</p>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>هل المنتجات أصلية؟</summary>
+        <p>نعم. نقاء يبيع منتجات عناية ومكياج أصلية من ماركات معروفة، مع وصف واستخدام واضح لكل منتج.</p>
+      </details>
+      <details class="faq-item">
+        <summary>هل يوجد توصيل داخل عُمان؟</summary>
+        <p>نعم. التوصيل لجميع ولايات السلطنة. فوق ٣٠ ر.ع شحن مجاني، وتحت ذلك رسوم ٢ ر.ع.</p>
+      </details>
+      <details class="faq-item">
+        <summary>كيف أطلب؟</summary>
+        <p>أضيفي للسلة وأكملي الطلب، أو تواصلي واتساب لإتمام الطلب خلال دقائق.</p>
+      </details>
+      <details class="faq-item">
+        <summary>هل الأسعار شاملة الضريبة؟</summary>
+        <p>نعم. الأسعار شاملة ضريبة القيمة المضافة ٥٪.</p>
+      </details>
+      <details class="faq-item">
+        <summary>هل يتوفر الدفع عند الاستلام؟</summary>
+        <p>نعم. الدفع عند الاستلام متاح، مع خيار التحويل البنكي عند تفعيله.</p>
+      </details>
+    </div>
+  </section>
+
 </main>
 
 <footer role="contentinfo">
@@ -265,15 +377,15 @@
     </div>
   </div>
 </div>
-<script defer src="data/products.min.js?v=20261126med"></script>
+<script defer src="data/products.min.js?v=20261126p3"></script>
 
-<script defer src="js/firebase-config.js?v=20261126med"></script>
+<script defer src="js/firebase-config.js?v=20261126p3"></script>
 <script defer src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
 <script defer src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
-<script defer src="js/cloud-overrides.js?v=20261126med"></script>
-<script defer src="js/store-cloud-boot.js?v=20261126med"></script>
+<script defer src="js/cloud-overrides.js?v=20261126p3"></script>
+<script defer src="js/store-cloud-boot.js?v=20261126p3"></script>
 
-<script defer src="js/store.min.js?v=20261126med"></script>
+<script defer src="js/store.min.js?v=20261126p3"></script>
 
 <script>
 if ('serviceWorker' in navigator) {

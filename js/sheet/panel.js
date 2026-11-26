@@ -166,9 +166,15 @@ async function openSheet(id, mode, reset){
     ${qv? `<p class="long" style="margin-top:12px">${esc(pdesc(p))}</p>` : `
       <h4 class="block-h">${T("about")}</h4>
       <p class="long">${esc(pdesc(p))}</p>
+      <div class="sheet-detail-grid" aria-label="${lang==="en"?"Product details":"تفاصيل المنتج"}">
+        <div class="sheet-detail"><b>${lang==="en"?"Brand":"الماركة"}</b><span>${esc(p.brand||"—")}</span></div>
+        <div class="sheet-detail"><b>${lang==="en"?"Category":"التصنيف"}</b><span>${esc((typeof catLabel!=="undefined"&&catLabel[p.cat])? (typeof T==="function"?T(catLabel[p.cat]):p.cat) : (p.cat||"—"))}</span></div>
+        <div class="sheet-detail"><b>SKU</b><span>${esc(p.sku||"—")}</span></div>
+        <div class="sheet-detail"><b>${lang==="en"?"Best for":"الأنسب لـ"}</b><span>${esc(typeof pskin==="function"?pskin(p):(p.skinAr||p.skinEn||"—"))}</span></div>
+      </div>
       <h4 class="block-h">${T("how")}</h4>
       <p class="long steps">${typeof nl2br==="function"?nl2br(puse(p)):esc(puse(p))}</p>
-      <div class="tip-box">${lang==="en"?"Tip: patch-test new actives and always pair brightening/acids with daytime SPF.":"نصيحة: اختبري المكوّنات الجديدة على منطقة صغيرة، وواقي الشمس ضروري مع التفتيح/التقشير."}</div>
+      <div class="tip-box">${lang==="en"?"Tip: patch-test new actives and always pair brightening/acids with daytime SPF. Store in a cool place and close the cap well.":"نصيحة: اختبري المكوّنات الجديدة على منطقة صغيرة، وواقي الشمس ضروري مع التفتيح/التقشير. خزّني المنتج بمكان معتدل وأغلقي الغطاء جيداً."}</div>
       ${typeof reviewsSection==="function"?reviewsSection(p):""}
       ${typeof naqaPairSectionHTML==="function"?naqaPairSectionHTML(p):""}
       ${typeof naqaSameBrandHTML==="function"?naqaSameBrandHTML(p):""}

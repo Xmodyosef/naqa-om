@@ -272,6 +272,9 @@ function naqaStartCampRails(root){
     var paused = false;
     var dir = (document.documentElement.getAttribute("dir") === "rtl") ? -1 : 1;
     /* RTL scrollLeft quirks: use scrollBy positive toward "start" content flow */
+    var reduce = false;
+    try{ reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches; }catch(e){}
+    if(reduce) return;
     var timer = setInterval(function(){
       if(paused || document.hidden) return;
       if(!document.body.contains(track)){ clearInterval(timer); return; }

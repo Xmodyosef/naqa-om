@@ -1304,7 +1304,7 @@ html[data-theme="night"] .campaign-banner{ box-shadow:none; }
 .home-rails .camp-old{ text-decoration:line-through; color:#a48d8d; font-size:.7rem; font-weight:600; font-style:normal; margin-inline-start:4px; }
 @media (max-width:700px){
   .home-rails .campaign{ margin-top:22px; }
-  .home-rails .campaign-banner{ min-height:140px; border-radius:16px; padding:16px; }
+  .home-rails .campaign-banner{ min-height:200px; border-radius:16px; padding:16px; }
   .home-rails .campaign-copy{ max-width:72%; }
   .home-rails .campaign-art{ width:120px; bottom:-12px; }
   .home-rails .camp-product{ width:132px; border-radius:14px; }
@@ -1385,7 +1385,7 @@ html[data-theme="night"] .home-rails .camp-product-name{ color:#f5ebe8; }
   object-fit: contain;
 }
 @media (max-width:700px){
-  .home-rails .campaign-banner{ min-height: 168px; border-radius: 18px; }
+  .home-rails .campaign-banner{ min-height:220px; border-radius: 18px; }
   .home-rails .campaign-copy{ max-width: 70%; }
   .home-rails .campaign-art{ width: 128px; bottom: -10px; }
   .home-rails .camp-product{ width: 136px; }
@@ -1394,8 +1394,8 @@ html[data-theme="night"] .home-rails .camp-product-name{ color:#f5ebe8; }
 
 /* naqa packshot polish */
 .card-visual{ background:#fff !important; }
-.card-visual img{ background:#fff !important; padding:14px !important; object-fit:contain !important; }
-.camp-product-media{ background:#fff !important; padding:12px !important; }
+.card-visual img{ background:#fff !important; padding:4px !important; object-fit:contain !important; }
+.camp-product-media{ background:#fff !important; padding:4px !important; }
 .campaign-banner{ min-height:280px; }
 @media (max-width:700px){
   .campaign-banner{ min-height:230px; }
@@ -1408,18 +1408,6 @@ html[data-theme="night"] .home-rails .camp-product-name{ color:#f5ebe8; }
   text-rendering: optimizeLegibility;
 }
 
-/* critical P1 card fill — product larger in frame */
-.card-visual img, .card-v2 .card-visual img, .shelf-row .card-visual img {
-  padding: 4px !important;
-  background: #fff !important;
-  object-fit: contain !important;
-}
-.camp-product-media { padding: 4px !important; }
-.camp-product-media img { padding: 2px !important; }
-.home-rails .campaign-banner { min-height: 260px !important; }
-@media (max-width:700px){
-  .home-rails .campaign-banner { min-height: 200px !important; padding: 18px 16px !important; }
-}
 
 /* hero-strong P1 */
 .hero-strong{
@@ -1453,3 +1441,23 @@ html[data-theme="night"] .hero-strong{
   background: linear-gradient(135deg, #1a1412 0%, #2a1c1e 100%);
 }
 html[data-theme="night"] .hero-trust li{ background: rgba(255,255,255,.04); border-color: rgba(255,255,255,.08); }
+
+/* P1-1 final: product fills the card */
+.card-visual img, .card-v2 .card-visual img, .shelf-row .card-visual img {
+  padding: 2px !important;
+  background: #fff !important;
+  object-fit: contain !important;
+}
+.camp-product-media { padding: 2px !important; background:#fff !important; }
+.camp-product-media img { padding: 2px !important; height: 190px !important; }
+.home-rails .camp-product-media img { height: 150px !important; padding: 2px !important; }
+@media (max-width:700px){
+  .camp-product-media img, .home-rails .camp-product-media img { height: 140px !important; }
+}
+
+/* P1-4 banner height */
+.home-rails .campaign-banner { min-height: 280px !important; }
+@media (max-width:700px){
+  .home-rails .campaign-banner { min-height: 220px !important; }
+}
+.campaign-banner { min-height: 280px; }

@@ -45,8 +45,7 @@ window.NAQA_PRODUCTS.push(
 {
   "brand": "Makeup Revolution",
   "stock": 3,
-  "imgs": [
-    "media/products/p222_0.webp"
+  "imgs": [ "media/products/p222_0.webp"
   ],
   "id": 222,
   "sku": "5057566336970",
@@ -65,8 +64,7 @@ window.NAQA_PRODUCTS.push(
 {
   "brand": "Makeup Revolution",
   "stock": 3,
-  "imgs": [
-    "media/products/p223_0.webp"
+  "imgs": [ "media/products/p223_0.webp"
   ],
   "id": 223,
   "sku": "5057566296090",

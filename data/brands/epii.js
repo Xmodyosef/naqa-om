@@ -13,12 +13,12 @@ A.push({
   ],
   "nameAr": "كريم إيبي دبل أب لترميم حاجز البشرة بالإكتوين والبانثينول - 50مل",
   "nameEn": "Epii Double Up Cream Ectoin & Panthenol - 50ml",
-  "descAr": "كريم إيبي دبل أب لترميم حاجز البشرة بالإكت من epii. ترطيب مريح لليوم. 50 مل.",
-  "descEn": "Epii Double Up Cream Ectoin & Panthenol by epii. Quiet daily moisture. 50 ml.",
-  "useAr": "١) بعد السيروم.\n٢) طبقة خفيفة تكفي.",
-  "useEn": "1) After serum.\n2) Thin layer is enough.",
-  "skinAr": "للبشرة العادية إلى الجافة غالباً.",
-  "skinEn": "Often normal to dry skin.",
+  "descAr": "كريم إيبي دبل أب لترميم حاجز البشرة من epii. ترطيب مريح. 50 مل.",
+  "descEn": "Epii Double Up Cream Ectoin & Panthenol by epii. Quiet moisture. 50 ml.",
+  "useAr": "١) بعد السيروم.\n٢) طبقة خفيفة.",
+  "useEn": "1) After serum.\n2) Thin layer.",
+  "skinAr": "غالباً عادية إلى جافة.",
+  "skinEn": "Often normal–dry.",
   "stock": 3
 });
 })();

@@ -13,12 +13,12 @@ A.push({
   ],
   "nameAr": "فرشاة السيليكون المقاومة للماء لتدليك فروة الرأس - 1 قطعة",
   "nameEn": "Silicone Hair Scalp Massager",
-  "descAr": "فرشاة السيليكون المقاومة للماء لتدليك فروة من LIANGYAN. عناية بسيطة للشعر.",
-  "descEn": "Silicone Hair Scalp Massager by LIANGYAN. Simple daily hair care.",
-  "useAr": "١) على شعر رطب أو جاف حسب النوع.\n٢) لا تُغرقي الكمية.",
-  "useEn": "1) Damp or dry as directed.\n2) A little goes far.",
-  "skinAr": "حسب نوع الشعر والفروة.",
-  "skinEn": "Depends on hair and scalp.",
+  "descAr": "فرشاة السيليكون المقاومة للماء من LIANGYAN. عناية بسيطة للشعر.",
+  "descEn": "Silicone Hair Scalp Massager by LIANGYAN. Simple hair care.",
+  "useAr": "١) حسب نوع المنتج.\n٢) كمية قليلة تكفي.",
+  "useEn": "1) As directed.\n2) A little goes far.",
+  "skinAr": "حسب نوع الشعر.",
+  "skinEn": "Depends on hair type.",
   "stock": 3
 });
 })();

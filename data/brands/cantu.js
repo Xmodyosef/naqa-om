@@ -14,11 +14,11 @@ A.push({
   "nameAr": "مرطب شعر الاطفال من كانتو - 283ج",
   "nameEn": "Cantu Kids Leave-In Conditioner - 283g",
   "descAr": "مرطب شعر الاطفال من كانتو من Cantu. عناية بسيطة للشعر. 283 ج.",
-  "descEn": "Cantu Kids Leave by Cantu. Simple daily hair care. 283 g.",
-  "useAr": "١) على شعر رطب أو جاف حسب النوع.\n٢) لا تُغرقي الكمية.",
-  "useEn": "1) Damp or dry as directed.\n2) A little goes far.",
-  "skinAr": "حسب نوع الشعر والفروة.",
-  "skinEn": "Depends on hair and scalp.",
+  "descEn": "Cantu Kids Leave by Cantu. Simple hair care. 283 g.",
+  "useAr": "١) حسب نوع المنتج.\n٢) كمية قليلة تكفي.",
+  "useEn": "1) As directed.\n2) A little goes far.",
+  "skinAr": "حسب نوع الشعر.",
+  "skinEn": "Depends on hair type.",
   "stock": 3
 });
 A.push({
@@ -35,11 +35,11 @@ A.push({
   "nameAr": "لوشن كريمي لترطيب الشعر بزبدة الشيا — 355مل",
   "nameEn": "Cantu Shea Butter Conditioning Creamy Hair Lotion 12oz",
   "descAr": "لوشن كريمي لترطيب الشعر بزبدة الشيا من Cantu. عناية بسيطة للشعر. 355 مل.",
-  "descEn": "Cantu Shea Butter Conditioning Creamy Hair Lotio by Cantu. Simple daily hair care. 355 ml.",
-  "useAr": "١) على شعر رطب أو جاف حسب النوع.\n٢) لا تُغرقي الكمية.",
-  "useEn": "1) Damp or dry as directed.\n2) A little goes far.",
-  "skinAr": "حسب نوع الشعر والفروة.",
-  "skinEn": "Depends on hair and scalp.",
+  "descEn": "Cantu Shea Butter Conditioning Creamy by Cantu. Simple hair care. 355 ml.",
+  "useAr": "١) حسب نوع المنتج.\n٢) كمية قليلة تكفي.",
+  "useEn": "1) As directed.\n2) A little goes far.",
+  "skinAr": "حسب نوع الشعر.",
+  "skinEn": "Depends on hair type.",
   "id": 250
 });
 A.push({
@@ -56,11 +56,11 @@ A.push({
   "nameAr": "كريم تجعيد بجوز الهند وزبدة الشيا — 340جم",
   "nameEn": "Cantu Shea Butter Coconut Curling Cream 12oz",
   "descAr": "كريم تجعيد بجوز الهند وزبدة الشيا من Cantu. عناية بسيطة للشعر. 340 ج.",
-  "descEn": "Cantu Shea Butter Coconut Curling Cream 12oz by Cantu. Simple daily hair care. 340 g.",
-  "useAr": "١) على شعر رطب أو جاف حسب النوع.\n٢) لا تُغرقي الكمية.",
-  "useEn": "1) Damp or dry as directed.\n2) A little goes far.",
-  "skinAr": "حسب نوع الشعر والفروة.",
-  "skinEn": "Depends on hair and scalp.",
+  "descEn": "Cantu Shea Butter Coconut Curling Cream by Cantu. Simple hair care. 340 g.",
+  "useAr": "١) حسب نوع المنتج.\n٢) كمية قليلة تكفي.",
+  "useEn": "1) As directed.\n2) A little goes far.",
+  "skinAr": "حسب نوع الشعر.",
+  "skinEn": "Depends on hair type.",
   "id": 251
 });
 A.push({
@@ -76,11 +76,11 @@ A.push({
   "nameAr": "كسترد تجعيد بزبدة الشيا",
   "nameEn": "Cantu Shea Butter Curling Custard",
   "descAr": "كسترد تجعيد بزبدة الشيا من Cantu. عناية بسيطة للشعر.",
-  "descEn": "Cantu Shea Butter Curling Custard by Cantu. Simple daily hair care.",
-  "useAr": "١) على شعر رطب أو جاف حسب النوع.\n٢) لا تُغرقي الكمية.",
-  "useEn": "1) Damp or dry as directed.\n2) A little goes far.",
-  "skinAr": "حسب نوع الشعر والفروة.",
-  "skinEn": "Depends on hair and scalp.",
+  "descEn": "Cantu Shea Butter Curling Custard by Cantu. Simple hair care.",
+  "useAr": "١) حسب نوع المنتج.\n٢) كمية قليلة تكفي.",
+  "useEn": "1) As directed.\n2) A little goes far.",
+  "skinAr": "حسب نوع الشعر.",
+  "skinEn": "Depends on hair type.",
   "id": 252
 });
 A.push({
@@ -96,11 +96,11 @@ A.push({
   "nameAr": "ماسك علاج عميق بزبدة الشيا — 340جم",
   "nameEn": "Cantu Shea Butter Deep Treatment Masque 12oz",
   "descAr": "ماسك علاج عميق بزبدة الشيا من Cantu. عناية بسيطة للشعر. 340 ج.",
-  "descEn": "Cantu Shea Butter Deep Treatment Masque 12oz by Cantu. Simple daily hair care. 340 g.",
-  "useAr": "١) على شعر رطب أو جاف حسب النوع.\n٢) لا تُغرقي الكمية.",
-  "useEn": "1) Damp or dry as directed.\n2) A little goes far.",
-  "skinAr": "حسب نوع الشعر والفروة.",
-  "skinEn": "Depends on hair and scalp.",
+  "descEn": "Cantu Shea Butter Deep Treatment Masque by Cantu. Simple hair care. 340 g.",
+  "useAr": "١) حسب نوع المنتج.\n٢) كمية قليلة تكفي.",
+  "useEn": "1) As directed.\n2) A little goes far.",
+  "skinAr": "حسب نوع الشعر.",
+  "skinEn": "Depends on hair type.",
   "id": 253
 });
 A.push({
@@ -116,11 +116,11 @@ A.push({
   "nameAr": "كريم إصلاح leave-in بزيت الأرغان — 453جم",
   "nameEn": "Cantu Argan Oil Leave-In Conditioning Repair Cream 16oz",
   "descAr": "كريم إصلاح leave من Cantu. عناية بسيطة للشعر. 453 ج.",
-  "descEn": "Cantu Argan Oil Leave by Cantu. Simple daily hair care. 453 g.",
-  "useAr": "١) على شعر رطب أو جاف حسب النوع.\n٢) لا تُغرقي الكمية.",
-  "useEn": "1) Damp or dry as directed.\n2) A little goes far.",
-  "skinAr": "حسب نوع الشعر والفروة.",
-  "skinEn": "Depends on hair and scalp.",
+  "descEn": "Cantu Argan Oil Leave by Cantu. Simple hair care. 453 g.",
+  "useAr": "١) حسب نوع المنتج.\n٢) كمية قليلة تكفي.",
+  "useEn": "1) As directed.\n2) A little goes far.",
+  "skinAr": "حسب نوع الشعر.",
+  "skinEn": "Depends on hair type.",
   "id": 254
 });
 A.push({
@@ -136,11 +136,11 @@ A.push({
   "nameAr": "رذاذ leave-in مرطّب بزبدة الشيا — 237مل",
   "nameEn": "Cantu Shea Butter Hydrating Leave-in Conditioning Mist 8oz",
   "descAr": "رذاذ leave من Cantu. عناية بسيطة للشعر. 237 مل.",
-  "descEn": "Cantu Shea Butter Hydrating Leave by Cantu. Simple daily hair care. 237 ml.",
-  "useAr": "١) على شعر رطب أو جاف حسب النوع.\n٢) لا تُغرقي الكمية.",
-  "useEn": "1) Damp or dry as directed.\n2) A little goes far.",
-  "skinAr": "حسب نوع الشعر والفروة.",
-  "skinEn": "Depends on hair and scalp.",
+  "descEn": "Cantu Shea Butter Hydrating Leave by Cantu. Simple hair care. 237 ml.",
+  "useAr": "١) حسب نوع المنتج.\n٢) كمية قليلة تكفي.",
+  "useEn": "1) As directed.\n2) A little goes far.",
+  "skinAr": "حسب نوع الشعر.",
+  "skinEn": "Depends on hair type.",
   "id": 255
 });
 A.push({
@@ -156,11 +156,11 @@ A.push({
   "nameAr": "لوشن leave-in ملطّف — 295مل",
   "nameEn": "Cantu Shea Butter Smoothing Leave-In Conditioning Lotion 10oz",
   "descAr": "لوشن leave من Cantu. عناية بسيطة للشعر. 295 مل.",
-  "descEn": "Cantu Shea Butter Smoothing Leave by Cantu. Simple daily hair care. 295 ml.",
-  "useAr": "١) على شعر رطب أو جاف حسب النوع.\n٢) لا تُغرقي الكمية.",
-  "useEn": "1) Damp or dry as directed.\n2) A little goes far.",
-  "skinAr": "حسب نوع الشعر والفروة.",
-  "skinEn": "Depends on hair and scalp.",
+  "descEn": "Cantu Shea Butter Smoothing Leave by Cantu. Simple hair care. 295 ml.",
+  "useAr": "١) حسب نوع المنتج.\n٢) كمية قليلة تكفي.",
+  "useEn": "1) As directed.\n2) A little goes far.",
+  "skinAr": "حسب نوع الشعر.",
+  "skinEn": "Depends on hair type.",
   "id": 256
 });
 A.push({
@@ -176,11 +176,11 @@ A.push({
   "nameAr": "جل الحواف Edge Gel تثبيت قوي — 64جم",
   "nameEn": "Cantu Shea Edge Gel Extra Hold 2.25oz",
   "descAr": "جل الحواف Edge Gel تثبيت قوي من Cantu. عناية بسيطة للشعر. 64 ج.",
-  "descEn": "Cantu Shea Edge Gel Extra Hold 2.25oz by Cantu. Simple daily hair care. 64 g.",
-  "useAr": "١) على شعر رطب أو جاف حسب النوع.\n٢) لا تُغرقي الكمية.",
-  "useEn": "1) Damp or dry as directed.\n2) A little goes far.",
-  "skinAr": "حسب نوع الشعر والفروة.",
-  "skinEn": "Depends on hair and scalp.",
+  "descEn": "Cantu Shea Edge Gel Extra Hold 2.25oz by Cantu. Simple hair care. 64 g.",
+  "useAr": "١) حسب نوع المنتج.\n٢) كمية قليلة تكفي.",
+  "useEn": "1) As directed.\n2) A little goes far.",
+  "skinAr": "حسب نوع الشعر.",
+  "skinEn": "Depends on hair type.",
   "id": 257
 });
 A.push({
@@ -196,11 +196,11 @@ A.push({
   "nameAr": "غسول Co-Wash مكيّف كامل",
   "nameEn": "Cantu Complete Conditioning Co-Wash",
   "descAr": "غسول Co من Cantu. عناية بسيطة للشعر.",
-  "descEn": "Cantu Complete Conditioning Co by Cantu. Simple daily hair care.",
-  "useAr": "١) على شعر رطب أو جاف حسب النوع.\n٢) لا تُغرقي الكمية.",
-  "useEn": "1) Damp or dry as directed.\n2) A little goes far.",
-  "skinAr": "حسب نوع الشعر والفروة.",
-  "skinEn": "Depends on hair and scalp.",
+  "descEn": "Cantu Complete Conditioning Co by Cantu. Simple hair care.",
+  "useAr": "١) حسب نوع المنتج.\n٢) كمية قليلة تكفي.",
+  "useEn": "1) As directed.\n2) A little goes far.",
+  "skinAr": "حسب نوع الشعر.",
+  "skinEn": "Depends on hair type.",
   "id": 258
 });
 A.push({
@@ -216,11 +216,11 @@ A.push({
   "nameAr": "بلسم كريمي مرطّب خالٍ من السلفات",
   "nameEn": "Cantu Sulfate-Free Hydrating Cream Conditioner",
   "descAr": "بلسم كريمي مرطّب خالٍ من السلفات من Cantu. عناية بسيطة للشعر.",
-  "descEn": "Cantu Sulfate by Cantu. Simple daily hair care.",
-  "useAr": "١) على شعر رطب أو جاف حسب النوع.\n٢) لا تُغرقي الكمية.",
-  "useEn": "1) Damp or dry as directed.\n2) A little goes far.",
-  "skinAr": "حسب نوع الشعر والفروة.",
-  "skinEn": "Depends on hair and scalp.",
+  "descEn": "Cantu Sulfate by Cantu. Simple hair care.",
+  "useAr": "١) حسب نوع المنتج.\n٢) كمية قليلة تكفي.",
+  "useEn": "1) As directed.\n2) A little goes far.",
+  "skinAr": "حسب نوع الشعر.",
+  "skinEn": "Depends on hair type.",
   "id": 259
 });
 A.push({
@@ -236,11 +236,11 @@ A.push({
   "nameAr": "ماسك أطفال لفك التشابك — 177مل",
   "nameEn": "Cantu Care for Kids Detangler Masque 6oz",
   "descAr": "ماسك أطفال لفك التشابك من Cantu. عناية بسيطة للشعر. 177 مل.",
-  "descEn": "Cantu Care for Kids Detangler Masque 6oz by Cantu. Simple daily hair care. 177 ml.",
-  "useAr": "١) على شعر رطب أو جاف حسب النوع.\n٢) لا تُغرقي الكمية.",
-  "useEn": "1) Damp or dry as directed.\n2) A little goes far.",
-  "skinAr": "حسب نوع الشعر والفروة.",
-  "skinEn": "Depends on hair and scalp.",
+  "descEn": "Cantu Care for Kids Detangler Masque 6oz by Cantu. Simple hair care. 177 ml.",
+  "useAr": "١) حسب نوع المنتج.\n٢) كمية قليلة تكفي.",
+  "useEn": "1) As directed.\n2) A little goes far.",
+  "skinAr": "حسب نوع الشعر.",
+  "skinEn": "Depends on hair type.",
   "id": 260
 });
 A.push({
@@ -256,11 +256,11 @@ A.push({
   "nameAr": "كانتو ليف إن بزبدة الشيا 12أونصة",
   "nameEn": "Cantu Shea Butter Leave-In Conditioning Cream 12oz",
   "descAr": "كانتو ليف إن بزبدة الشيا 12أونصة من Cantu. عناية بسيطة للشعر.",
-  "descEn": "Cantu Shea Butter Leave by Cantu. Simple daily hair care.",
-  "useAr": "١) على شعر رطب أو جاف حسب النوع.\n٢) لا تُغرقي الكمية.",
-  "useEn": "1) Damp or dry as directed.\n2) A little goes far.",
-  "skinAr": "حسب نوع الشعر والفروة.",
-  "skinEn": "Depends on hair and scalp.",
+  "descEn": "Cantu Shea Butter Leave by Cantu. Simple hair care.",
+  "useAr": "١) حسب نوع المنتج.\n٢) كمية قليلة تكفي.",
+  "useEn": "1) As directed.\n2) A little goes far.",
+  "skinAr": "حسب نوع الشعر.",
+  "skinEn": "Depends on hair type.",
   "stock": 3,
   "hot": true
 });
@@ -277,11 +277,11 @@ A.push({
   "nameAr": "كانتو منشط تجعيد بزبدة الشيا",
   "nameEn": "Cantu Shea Butter Curl Activator Cream",
   "descAr": "كانتو منشط تجعيد بزبدة الشيا من Cantu. عناية بسيطة للشعر.",
-  "descEn": "Cantu Shea Butter Curl Activator Cream by Cantu. Simple daily hair care.",
-  "useAr": "١) على شعر رطب أو جاف حسب النوع.\n٢) لا تُغرقي الكمية.",
-  "useEn": "1) Damp or dry as directed.\n2) A little goes far.",
-  "skinAr": "حسب نوع الشعر والفروة.",
-  "skinEn": "Depends on hair and scalp.",
+  "descEn": "Cantu Shea Butter Curl Activator Cream by Cantu. Simple hair care.",
+  "useAr": "١) حسب نوع المنتج.\n٢) كمية قليلة تكفي.",
+  "useEn": "1) As directed.\n2) A little goes far.",
+  "skinAr": "حسب نوع الشعر.",
+  "skinEn": "Depends on hair type.",
   "stock": 3,
   "hot": true
 });
@@ -298,11 +298,11 @@ A.push({
   "nameAr": "كانتو جل تويست آند لوك",
   "nameEn": "Cantu Moisturizing Twist & Lock Gel",
   "descAr": "كانتو جل تويست آند لوك من Cantu. عناية بسيطة للشعر.",
-  "descEn": "Cantu Moisturizing Twist & Lock Gel by Cantu. Simple daily hair care.",
-  "useAr": "١) على شعر رطب أو جاف حسب النوع.\n٢) لا تُغرقي الكمية.",
-  "useEn": "1) Damp or dry as directed.\n2) A little goes far.",
-  "skinAr": "حسب نوع الشعر والفروة.",
-  "skinEn": "Depends on hair and scalp.",
+  "descEn": "Cantu Moisturizing Twist & Lock Gel by Cantu. Simple hair care.",
+  "useAr": "١) حسب نوع المنتج.\n٢) كمية قليلة تكفي.",
+  "useEn": "1) As directed.\n2) A little goes far.",
+  "skinAr": "حسب نوع الشعر.",
+  "skinEn": "Depends on hair type.",
   "stock": 3
 });
 A.push({
@@ -318,11 +318,11 @@ A.push({
   "nameAr": "كانتو بخاخ لمعان جوز الهند",
   "nameEn": "Cantu Coconut Oil Shine & Hold Mist 8oz",
   "descAr": "كانتو بخاخ لمعان جوز الهند من Cantu. عناية بسيطة للشعر.",
-  "descEn": "Cantu Coconut Oil Shine & Hold Mist 8oz by Cantu. Simple daily hair care.",
-  "useAr": "١) على شعر رطب أو جاف حسب النوع.\n٢) لا تُغرقي الكمية.",
-  "useEn": "1) Damp or dry as directed.\n2) A little goes far.",
-  "skinAr": "حسب نوع الشعر والفروة.",
-  "skinEn": "Depends on hair and scalp.",
+  "descEn": "Cantu Coconut Oil Shine & Hold Mist 8oz by Cantu. Simple hair care.",
+  "useAr": "١) حسب نوع المنتج.\n٢) كمية قليلة تكفي.",
+  "useEn": "1) As directed.\n2) A little goes far.",
+  "skinAr": "حسب نوع الشعر.",
+  "skinEn": "Depends on hair type.",
   "stock": 3,
   "hot": true
 });
@@ -339,11 +339,11 @@ A.push({
   "nameAr": "كانتو زيت فروة وشعر",
   "nameEn": "Cantu Shea Butter Hair & Scalp Oil",
   "descAr": "كانتو زيت فروة وشعر من Cantu. عناية بسيطة للشعر.",
-  "descEn": "Cantu Shea Butter Hair & Scalp Oil by Cantu. Simple daily hair care.",
-  "useAr": "١) على شعر رطب أو جاف حسب النوع.\n٢) لا تُغرقي الكمية.",
-  "useEn": "1) Damp or dry as directed.\n2) A little goes far.",
-  "skinAr": "حسب نوع الشعر والفروة.",
-  "skinEn": "Depends on hair and scalp.",
+  "descEn": "Cantu Shea Butter Hair & Scalp Oil by Cantu. Simple hair care.",
+  "useAr": "١) حسب نوع المنتج.\n٢) كمية قليلة تكفي.",
+  "useEn": "1) As directed.\n2) A little goes far.",
+  "skinAr": "حسب نوع الشعر.",
+  "skinEn": "Depends on hair type.",
   "stock": 3
 });
 A.push({
@@ -359,11 +359,11 @@ A.push({
   "nameAr": "كانتو بخاخ فك التشابك",
   "nameEn": "Cantu Natural Hair Detangler Spray",
   "descAr": "كانتو بخاخ فك التشابك من Cantu. عناية بسيطة للشعر.",
-  "descEn": "Cantu Natural Hair Detangler Spray by Cantu. Simple daily hair care.",
-  "useAr": "١) على شعر رطب أو جاف حسب النوع.\n٢) لا تُغرقي الكمية.",
-  "useEn": "1) Damp or dry as directed.\n2) A little goes far.",
-  "skinAr": "حسب نوع الشعر والفروة.",
-  "skinEn": "Depends on hair and scalp.",
+  "descEn": "Cantu Natural Hair Detangler Spray by Cantu. Simple hair care.",
+  "useAr": "١) حسب نوع المنتج.\n٢) كمية قليلة تكفي.",
+  "useEn": "1) As directed.\n2) A little goes far.",
+  "skinAr": "حسب نوع الشعر.",
+  "skinEn": "Depends on hair type.",
   "stock": 3
 });
 })();

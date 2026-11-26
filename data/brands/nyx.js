@@ -15,12 +15,12 @@ A.push({
   ],
   "nameAr": "برايمر فائق التثبيت ذا فيس جلو من نيكس - 35مل",
   "nameEn": "NYX The Face Glue Gripping Primer - 35ml",
-  "descAr": "برايمر فائق التثبيت ذا فيس جلو من نيكس من NYX. تغطية خفيفة لمظهر طبيعي. 35 مل.",
-  "descEn": "NYX The Face Glue Gripping Primer by NYX. Light coverage, natural finish. 35 ml.",
+  "descAr": "برايمر فائق التثبيت ذا فيس جلو من من NYX. تغطية خفيفة طبيعية. 35 مل.",
+  "descEn": "NYX The Face Glue Gripping Primer by NYX. Light natural coverage. 35 ml.",
   "useAr": "١) بعد العناية.\n٢) وزّعي برفق.",
   "useEn": "1) After skincare.\n2) Blend lightly.",
-  "skinAr": "لكل درجات البشرة — اختاري الدرجة المناسبة.",
-  "skinEn": "All skin tones — pick your shade.",
+  "skinAr": "اختاري درجتك.",
+  "skinEn": "Pick your shade.",
   "stock": 3
 });
 })();

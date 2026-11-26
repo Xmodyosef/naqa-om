@@ -13,12 +13,12 @@ A.push({
   ],
   "nameAr": "مزيل عرق رول أون باور 3 من يورياج – 50مل",
   "nameEn": "Uriage Power 3 Roll-On Deodorant - 50ml",
-  "descAr": "مزيل عرق رول أون باور 3 من يورياج من Uriage. عناية واضحة وهادئة. 50 مل.",
-  "descEn": "Uriage Power 3 Roll by Uriage. Clear, quiet care. 50 ml.",
-  "useAr": "١) ضمن روتينك اليومي.\n٢) كمية قليلة تكفي.",
-  "useEn": "1) In your daily routine.\n2) Small amount is enough.",
+  "descAr": "مزيل عرق رول أون باور 3 من يورياج من Uriage. عناية هادئة. 50 مل.",
+  "descEn": "Uriage Power 3 Roll by Uriage. Quiet care. 50 ml.",
+  "useAr": "١) ضمن روتينك.\n٢) كمية قليلة.",
+  "useEn": "1) In your routine.\n2) Small amount.",
   "skinAr": "حسب نوع البشرة.",
-  "skinEn": "Match to your skin type.",
+  "skinEn": "Match skin type.",
   "stock": 3
 });
 })();

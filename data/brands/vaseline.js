@@ -16,9 +16,9 @@ A.push({
   "nameAr": "فازلين مرطب الشفاه الأصلي - 20ج",
   "nameEn": "Vaseline Lip Therapy Original - 20g",
   "descAr": "فازلين مرطب الشفاه الأصلي من Vaseline. لون ناعم ومريح. 20 ج.",
-  "descEn": "Vaseline Lip Therapy Original by Vaseline. Soft colour, comfortable wear. 20 g.",
+  "descEn": "Vaseline Lip Therapy Original by Vaseline. Soft colour. 20 g.",
   "useAr": "١) على شفاه نظيفة.\n٢) أعدِي عند الحاجة.",
-  "useEn": "1) On clean lips.\n2) Reapply as needed.",
+  "useEn": "1) Clean lips.\n2) Reapply as needed.",
   "skinAr": "لكل درجات الشفاه.",
   "skinEn": "All lip tones.",
   "stock": 3

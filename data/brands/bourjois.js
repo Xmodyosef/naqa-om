@@ -14,12 +14,12 @@ A.push({
   "hot": true,
   "nameAr": "ماسكارا Healthy Mix النظيفة — 7مل",
   "nameEn": "Bourjois HEALTHY MIX Clean Mascara 7ml",
-  "descAr": "ماسكارا Healthy Mix النظيفة من Bourjois. تحديد واضح دون ثقل. 7 مل.",
-  "descEn": "Bourjois HEALTHY MIX Clean Mascara 7ml by Bourjois. Clean definition, no heaviness. 7 ml.",
-  "useAr": "١) من الجذور للأطراف.\n٢) طبقة واحدة كافية.",
-  "useEn": "1) Roots to tips.\n2) One coat is enough.",
-  "skinAr": "لكل الرموش. اختبري إن كانت العيون حسّاسة.",
-  "skinEn": "All lash types. Patch-test if sensitive.",
+  "descAr": "ماسكارا Healthy Mix النظيفة من Bourjois. تحديد واضح. 7 مل.",
+  "descEn": "Bourjois HEALTHY MIX Clean Mascara 7ml by Bourjois. Clean definition. 7 ml.",
+  "useAr": "١) من الجذور للأطراف.\n٢) طبقة واحدة.",
+  "useEn": "1) Roots to tips.\n2) One coat.",
+  "skinAr": "لكل الرموش.",
+  "skinEn": "All lash types.",
   "id": 240
 });
 A.push({
@@ -34,12 +34,12 @@ A.push({
   "price": 5.2,
   "nameAr": "ماسكارا Healthy Mix مقاومة للماء — حجم — 10مل",
   "nameEn": "Bourjois HEALTHY MIX Waterproof Volume Mascara 10ml",
-  "descAr": "ماسكارا Healthy Mix مقاومة للماء من Bourjois. تحديد واضح دون ثقل. 10 مل.",
-  "descEn": "Bourjois HEALTHY MIX Waterproof Volume Mascara 1 by Bourjois. Clean definition, no heaviness. 10 ml.",
-  "useAr": "١) من الجذور للأطراف.\n٢) طبقة واحدة كافية.",
-  "useEn": "1) Roots to tips.\n2) One coat is enough.",
-  "skinAr": "لكل الرموش. اختبري إن كانت العيون حسّاسة.",
-  "skinEn": "All lash types. Patch-test if sensitive.",
+  "descAr": "ماسكارا Healthy Mix مقاومة للماء من Bourjois. تحديد واضح. 10 مل.",
+  "descEn": "Bourjois HEALTHY MIX Waterproof Volume by Bourjois. Clean definition. 10 ml.",
+  "useAr": "١) من الجذور للأطراف.\n٢) طبقة واحدة.",
+  "useEn": "1) Roots to tips.\n2) One coat.",
+  "skinAr": "لكل الرموش.",
+  "skinEn": "All lash types.",
   "id": 241
 });
 A.push({
@@ -55,12 +55,12 @@ A.push({
   "hot": true,
   "nameAr": "فاونديشن سيروم Healthy Mix — 57N Bronze — 30مل",
   "nameEn": "Bourjois HEALTHY MIX Serum Foundation 57N Bronze 30ml",
-  "descAr": "فاونديشن سيروم Healthy Mix من Bourjois. تغطية خفيفة لمظهر طبيعي. 30 مل.",
-  "descEn": "Bourjois HEALTHY MIX Serum Foundation 57N Bronze by Bourjois. Light coverage, natural finish. 30 ml.",
+  "descAr": "فاونديشن سيروم Healthy Mix من Bourjois. تغطية خفيفة طبيعية. 30 مل.",
+  "descEn": "Bourjois HEALTHY MIX Serum Foundation 57N by Bourjois. Light natural coverage. 30 ml.",
   "useAr": "١) بعد العناية.\n٢) وزّعي برفق.",
   "useEn": "1) After skincare.\n2) Blend lightly.",
-  "skinAr": "لكل درجات البشرة — اختاري الدرجة المناسبة.",
-  "skinEn": "All skin tones — pick your shade.",
+  "skinAr": "اختاري درجتك.",
+  "skinEn": "Pick your shade.",
   "id": 242
 });
 A.push({
@@ -76,9 +76,9 @@ A.push({
   "nameAr": "بلسم شفاه Healthy Mix Lip Sorbet — 05 Ice Berry",
   "nameEn": "Bourjois HEALTHY MIX Lip Sorbet 05 Ice Berry 7.4g",
   "descAr": "بلسم شفاه Healthy Mix Lip Sorbet من Bourjois. لون ناعم ومريح. 7.4 ج.",
-  "descEn": "Bourjois HEALTHY MIX Lip Sorbet 05 Ice Berry 7.4 by Bourjois. Soft colour, comfortable wear. 7.4 g.",
+  "descEn": "Bourjois HEALTHY MIX Lip Sorbet 05 Ice by Bourjois. Soft colour. 7.4 g.",
   "useAr": "١) على شفاه نظيفة.\n٢) أعدِي عند الحاجة.",
-  "useEn": "1) On clean lips.\n2) Reapply as needed.",
+  "useEn": "1) Clean lips.\n2) Reapply as needed.",
   "skinAr": "لكل درجات الشفاه.",
   "skinEn": "All lip tones.",
   "id": 243
@@ -96,12 +96,12 @@ A.push({
   "hot": true,
   "nameAr": "برايمر Healthy Mix Clean — 30مل",
   "nameEn": "Bourjois HEALTHY MIX Clean Primer 30ml",
-  "descAr": "برايمر Healthy Mix Clean من Bourjois. تغطية خفيفة لمظهر طبيعي. 30 مل.",
-  "descEn": "Bourjois HEALTHY MIX Clean Primer 30ml by Bourjois. Light coverage, natural finish. 30 ml.",
+  "descAr": "برايمر Healthy Mix Clean من Bourjois. تغطية خفيفة طبيعية. 30 مل.",
+  "descEn": "Bourjois HEALTHY MIX Clean Primer 30ml by Bourjois. Light natural coverage. 30 ml.",
   "useAr": "١) بعد العناية.\n٢) وزّعي برفق.",
   "useEn": "1) After skincare.\n2) Blend lightly.",
-  "skinAr": "لكل درجات البشرة — اختاري الدرجة المناسبة.",
-  "skinEn": "All skin tones — pick your shade.",
+  "skinAr": "اختاري درجتك.",
+  "skinEn": "Pick your shade.",
   "id": 244
 });
 A.push({
@@ -116,12 +116,12 @@ A.push({
   "price": 4.9,
   "nameAr": "سيروم برايمر Healthy Mix مرطّب ومضيء — 30مل",
   "nameEn": "Bourjois HEALTHY MIX Serum Moisturizing Glow Primer 30ml",
-  "descAr": "سيروم برايمر Healthy Mix مرطّب ومضيء من Bourjois. تغطية خفيفة لمظهر طبيعي. 30 مل.",
-  "descEn": "Bourjois HEALTHY MIX Serum Moisturizing Glow Pri by Bourjois. Light coverage, natural finish. 30 ml.",
+  "descAr": "سيروم برايمر Healthy Mix مرطّب ومضيء من Bourjois. تغطية خفيفة طبيعية. 30 مل.",
+  "descEn": "Bourjois HEALTHY MIX Serum Moisturizing by Bourjois. Light natural coverage. 30 ml.",
   "useAr": "١) بعد العناية.\n٢) وزّعي برفق.",
   "useEn": "1) After skincare.\n2) Blend lightly.",
-  "skinAr": "لكل درجات البشرة — اختاري الدرجة المناسبة.",
-  "skinEn": "All skin tones — pick your shade.",
+  "skinAr": "اختاري درجتك.",
+  "skinEn": "Pick your shade.",
   "id": 245
 });
 A.push({
@@ -136,12 +136,12 @@ A.push({
   ],
   "nameAr": "برجواز فاونديشن هيلثي ميكس 52W",
   "nameEn": "Bourjois Healthy Mix Foundation 52W Vanilla 30ml",
-  "descAr": "برجواز فاونديشن هيلثي ميكس 52W من Bourjois. تغطية خفيفة لمظهر طبيعي. 30 مل.",
-  "descEn": "Bourjois Healthy Mix Foundation 52W Vanilla 30ml by Bourjois. Light coverage, natural finish. 30 ml.",
+  "descAr": "برجواز فاونديشن هيلثي ميكس 52W من Bourjois. تغطية خفيفة طبيعية. 30 مل.",
+  "descEn": "Bourjois Healthy Mix Foundation 52W by Bourjois. Light natural coverage. 30 ml.",
   "useAr": "١) بعد العناية.\n٢) وزّعي برفق.",
   "useEn": "1) After skincare.\n2) Blend lightly.",
-  "skinAr": "لكل درجات البشرة — اختاري الدرجة المناسبة.",
-  "skinEn": "All skin tones — pick your shade.",
+  "skinAr": "اختاري درجتك.",
+  "skinEn": "Pick your shade.",
   "stock": 3,
   "hot": true
 });
@@ -157,12 +157,12 @@ A.push({
   ],
   "nameAr": "برجواز فاونديشن هيلثي ميكس 053",
   "nameEn": "Bourjois Healthy Mix Foundation 053 Light Beige 30ml",
-  "descAr": "برجواز فاونديشن هيلثي ميكس 053 من Bourjois. تغطية خفيفة لمظهر طبيعي. 30 مل.",
-  "descEn": "Bourjois Healthy Mix Foundation 053 Light Beige  by Bourjois. Light coverage, natural finish. 30 ml.",
+  "descAr": "برجواز فاونديشن هيلثي ميكس 053 من Bourjois. تغطية خفيفة طبيعية. 30 مل.",
+  "descEn": "Bourjois Healthy Mix Foundation 053 Light by Bourjois. Light natural coverage. 30 ml.",
   "useAr": "١) بعد العناية.\n٢) وزّعي برفق.",
   "useEn": "1) After skincare.\n2) Blend lightly.",
-  "skinAr": "لكل درجات البشرة — اختاري الدرجة المناسبة.",
-  "skinEn": "All skin tones — pick your shade.",
+  "skinAr": "اختاري درجتك.",
+  "skinEn": "Pick your shade.",
   "stock": 3,
   "hot": true
 });
@@ -178,12 +178,12 @@ A.push({
   ],
   "nameAr": "برجواز فاونديشن هيلثي ميكس مضاد للإرهاق",
   "nameEn": "Bourjois Healthy Mix Anti-Fatigue Foundation",
-  "descAr": "برجواز فاونديشن هيلثي ميكس مضاد للإرهاق من Bourjois. تغطية خفيفة لمظهر طبيعي.",
-  "descEn": "Bourjois Healthy Mix Anti by Bourjois. Light coverage, natural finish.",
+  "descAr": "برجواز فاونديشن هيلثي ميكس مضاد من Bourjois. تغطية خفيفة طبيعية.",
+  "descEn": "Bourjois Healthy Mix Anti by Bourjois. Light natural coverage.",
   "useAr": "١) بعد العناية.\n٢) وزّعي برفق.",
   "useEn": "1) After skincare.\n2) Blend lightly.",
-  "skinAr": "لكل درجات البشرة — اختاري الدرجة المناسبة.",
-  "skinEn": "All skin tones — pick your shade.",
+  "skinAr": "اختاري درجتك.",
+  "skinEn": "Pick your shade.",
   "stock": 3
 });
 A.push({
@@ -198,12 +198,12 @@ A.push({
   ],
   "nameAr": "برجواز سيروم فاونديشن هيلثي ميكس 52",
   "nameEn": "Bourjois Healthy Mix Serum Foundation 52",
-  "descAr": "برجواز سيروم فاونديشن هيلثي ميكس 52 من Bourjois. تغطية خفيفة لمظهر طبيعي.",
-  "descEn": "Bourjois Healthy Mix Serum Foundation 52 by Bourjois. Light coverage, natural finish.",
+  "descAr": "برجواز سيروم فاونديشن هيلثي ميكس 52 من Bourjois. تغطية خفيفة طبيعية.",
+  "descEn": "Bourjois Healthy Mix Serum Foundation 52 by Bourjois. Light natural coverage.",
   "useAr": "١) بعد العناية.\n٢) وزّعي برفق.",
   "useEn": "1) After skincare.\n2) Blend lightly.",
-  "skinAr": "لكل درجات البشرة — اختاري الدرجة المناسبة.",
-  "skinEn": "All skin tones — pick your shade.",
+  "skinAr": "اختاري درجتك.",
+  "skinEn": "Pick your shade.",
   "stock": 3
 });
 A.push({
@@ -218,12 +218,12 @@ A.push({
   ],
   "nameAr": "برجواز سيروم فاونديشن هيلثي ميكس 54",
   "nameEn": "Bourjois Healthy Mix Serum Foundation 54",
-  "descAr": "برجواز سيروم فاونديشن هيلثي ميكس 54 من Bourjois. تغطية خفيفة لمظهر طبيعي.",
-  "descEn": "Bourjois Healthy Mix Serum Foundation 54 by Bourjois. Light coverage, natural finish.",
+  "descAr": "برجواز سيروم فاونديشن هيلثي ميكس 54 من Bourjois. تغطية خفيفة طبيعية.",
+  "descEn": "Bourjois Healthy Mix Serum Foundation 54 by Bourjois. Light natural coverage.",
   "useAr": "١) بعد العناية.\n٢) وزّعي برفق.",
   "useEn": "1) After skincare.\n2) Blend lightly.",
-  "skinAr": "لكل درجات البشرة — اختاري الدرجة المناسبة.",
-  "skinEn": "All skin tones — pick your shade.",
+  "skinAr": "اختاري درجتك.",
+  "skinEn": "Pick your shade.",
   "stock": 3
 });
 A.push({
@@ -238,12 +238,12 @@ A.push({
   ],
   "nameAr": "برجواز فاونديشن هيلثي ميكس 54",
   "nameEn": "Bourjois Healthy Mix Foundation 54 Beige",
-  "descAr": "برجواز فاونديشن هيلثي ميكس 54 من Bourjois. تغطية خفيفة لمظهر طبيعي.",
-  "descEn": "Bourjois Healthy Mix Foundation 54 Beige by Bourjois. Light coverage, natural finish.",
+  "descAr": "برجواز فاونديشن هيلثي ميكس 54 من Bourjois. تغطية خفيفة طبيعية.",
+  "descEn": "Bourjois Healthy Mix Foundation 54 Beige by Bourjois. Light natural coverage.",
   "useAr": "١) بعد العناية.\n٢) وزّعي برفق.",
   "useEn": "1) After skincare.\n2) Blend lightly.",
-  "skinAr": "لكل درجات البشرة — اختاري الدرجة المناسبة.",
-  "skinEn": "All skin tones — pick your shade.",
+  "skinAr": "اختاري درجتك.",
+  "skinEn": "Pick your shade.",
   "stock": 3
 });
 A.push({
@@ -258,12 +258,12 @@ A.push({
   ],
   "nameAr": "برجواز فاونديشن هيلثي ميكس 55",
   "nameEn": "Bourjois Healthy Mix Foundation 55 Dark Beige",
-  "descAr": "برجواز فاونديشن هيلثي ميكس 55 من Bourjois. تغطية خفيفة لمظهر طبيعي.",
-  "descEn": "Bourjois Healthy Mix Foundation 55 Dark Beige by Bourjois. Light coverage, natural finish.",
+  "descAr": "برجواز فاونديشن هيلثي ميكس 55 من Bourjois. تغطية خفيفة طبيعية.",
+  "descEn": "Bourjois Healthy Mix Foundation 55 Dark by Bourjois. Light natural coverage.",
   "useAr": "١) بعد العناية.\n٢) وزّعي برفق.",
   "useEn": "1) After skincare.\n2) Blend lightly.",
-  "skinAr": "لكل درجات البشرة — اختاري الدرجة المناسبة.",
-  "skinEn": "All skin tones — pick your shade.",
+  "skinAr": "اختاري درجتك.",
+  "skinEn": "Pick your shade.",
   "stock": 3
 });
 A.push({
@@ -278,12 +278,12 @@ A.push({
   ],
   "nameAr": "برجواز كحل كونتور كلوبنق 001",
   "nameEn": "Bourjois Contour Clubbing Waterproof Liner 001 Ultra Black",
-  "descAr": "برجواز كحل كونتور كلوبنق 001 من Bourjois. عناية واضحة وهادئة.",
-  "descEn": "Bourjois Contour Clubbing Waterproof Liner 001 U by Bourjois. Clear, quiet care.",
-  "useAr": "١) ضمن روتينك اليومي.\n٢) كمية قليلة تكفي.",
-  "useEn": "1) In your daily routine.\n2) Small amount is enough.",
+  "descAr": "برجواز كحل كونتور كلوبنق 001 من Bourjois. عناية هادئة.",
+  "descEn": "Bourjois Contour Clubbing Waterproof by Bourjois. Quiet care.",
+  "useAr": "١) ضمن روتينك.\n٢) كمية قليلة.",
+  "useEn": "1) In your routine.\n2) Small amount.",
   "skinAr": "حسب نوع البشرة.",
-  "skinEn": "Match to your skin type.",
+  "skinEn": "Match skin type.",
   "stock": 3,
   "hot": true
 });
@@ -299,12 +299,12 @@ A.push({
   ],
   "nameAr": "برجواز كحل كونتور كلوبنق 041",
   "nameEn": "Bourjois Contour Clubbing Waterproof Liner 041",
-  "descAr": "برجواز كحل كونتور كلوبنق 041 من Bourjois. عناية واضحة وهادئة.",
-  "descEn": "Bourjois Contour Clubbing Waterproof Liner 041 by Bourjois. Clear, quiet care.",
-  "useAr": "١) ضمن روتينك اليومي.\n٢) كمية قليلة تكفي.",
-  "useEn": "1) In your daily routine.\n2) Small amount is enough.",
+  "descAr": "برجواز كحل كونتور كلوبنق 041 من Bourjois. عناية هادئة.",
+  "descEn": "Bourjois Contour Clubbing Waterproof by Bourjois. Quiet care.",
+  "useAr": "١) ضمن روتينك.\n٢) كمية قليلة.",
+  "useEn": "1) In your routine.\n2) Small amount.",
   "skinAr": "حسب نوع البشرة.",
-  "skinEn": "Match to your skin type.",
+  "skinEn": "Match skin type.",
   "stock": 3
 });
 A.push({
@@ -320,9 +320,9 @@ A.push({
   "nameAr": "برجواز روج فلفت 01",
   "nameEn": "Bourjois Rouge Velvet The Lipstick 01",
   "descAr": "برجواز روج فلفت 01 من Bourjois. لون ناعم ومريح.",
-  "descEn": "Bourjois Rouge Velvet The Lipstick 01 by Bourjois. Soft colour, comfortable wear.",
+  "descEn": "Bourjois Rouge Velvet The Lipstick 01 by Bourjois. Soft colour.",
   "useAr": "١) على شفاه نظيفة.\n٢) أعدِي عند الحاجة.",
-  "useEn": "1) On clean lips.\n2) Reapply as needed.",
+  "useEn": "1) Clean lips.\n2) Reapply as needed.",
   "skinAr": "لكل درجات الشفاه.",
   "skinEn": "All lip tones.",
   "stock": 3
@@ -340,9 +340,9 @@ A.push({
   "nameAr": "برجواز روج فلفت 07",
   "nameEn": "Bourjois Rouge Velvet The Lipstick 07",
   "descAr": "برجواز روج فلفت 07 من Bourjois. لون ناعم ومريح.",
-  "descEn": "Bourjois Rouge Velvet The Lipstick 07 by Bourjois. Soft colour, comfortable wear.",
+  "descEn": "Bourjois Rouge Velvet The Lipstick 07 by Bourjois. Soft colour.",
   "useAr": "١) على شفاه نظيفة.\n٢) أعدِي عند الحاجة.",
-  "useEn": "1) On clean lips.\n2) Reapply as needed.",
+  "useEn": "1) Clean lips.\n2) Reapply as needed.",
   "skinAr": "لكل درجات الشفاه.",
   "skinEn": "All lip tones.",
   "stock": 3
@@ -360,9 +360,9 @@ A.push({
   "nameAr": "برجواز روج فلفت 12",
   "nameEn": "Bourjois Rouge Velvet The Lipstick 12",
   "descAr": "برجواز روج فلفت 12 من Bourjois. لون ناعم ومريح.",
-  "descEn": "Bourjois Rouge Velvet The Lipstick 12 by Bourjois. Soft colour, comfortable wear.",
+  "descEn": "Bourjois Rouge Velvet The Lipstick 12 by Bourjois. Soft colour.",
   "useAr": "١) على شفاه نظيفة.\n٢) أعدِي عند الحاجة.",
-  "useEn": "1) On clean lips.\n2) Reapply as needed.",
+  "useEn": "1) Clean lips.\n2) Reapply as needed.",
   "skinAr": "لكل درجات الشفاه.",
   "skinEn": "All lip tones.",
   "stock": 3
@@ -379,12 +379,12 @@ A.push({
   ],
   "nameAr": "بودرة Healthy Mix — 03 Rose Beige",
   "nameEn": "Bourjois Healthy Mix Powder 03 Rose Beige",
-  "descAr": "بودرة Healthy Mix من Bourjois. تغطية خفيفة لمظهر طبيعي.",
-  "descEn": "Bourjois Healthy Mix Powder 03 Rose Beige by Bourjois. Light coverage, natural finish.",
+  "descAr": "بودرة Healthy Mix من Bourjois. تغطية خفيفة طبيعية.",
+  "descEn": "Bourjois Healthy Mix Powder 03 Rose Beige by Bourjois. Light natural coverage.",
   "useAr": "١) بعد العناية.\n٢) وزّعي برفق.",
   "useEn": "1) After skincare.\n2) Blend lightly.",
-  "skinAr": "لكل درجات البشرة — اختاري الدرجة المناسبة.",
-  "skinEn": "All skin tones — pick your shade.",
+  "skinAr": "اختاري درجتك.",
+  "skinEn": "Pick your shade.",
   "stock": 3,
   "hot": true
 });
@@ -400,12 +400,12 @@ A.push({
   ],
   "nameAr": "برجواز بلاش ليتل راوند بوت 34",
   "nameEn": "Bourjois Little Round Pot Blush 34 Rose d'Or",
-  "descAr": "برجواز بلاش ليتل راوند بوت 34 من Bourjois. تغطية خفيفة لمظهر طبيعي.",
-  "descEn": "Bourjois Little Round Pot Blush 34 Rose d'Or by Bourjois. Light coverage, natural finish.",
+  "descAr": "برجواز بلاش ليتل راوند بوت 34 من Bourjois. تغطية خفيفة طبيعية.",
+  "descEn": "Bourjois Little Round Pot Blush 34 Rose by Bourjois. Light natural coverage.",
   "useAr": "١) بعد العناية.\n٢) وزّعي برفق.",
   "useEn": "1) After skincare.\n2) Blend lightly.",
-  "skinAr": "لكل درجات البشرة — اختاري الدرجة المناسبة.",
-  "skinEn": "All skin tones — pick your shade.",
+  "skinAr": "اختاري درجتك.",
+  "skinEn": "Pick your shade.",
   "stock": 3
 });
 })();

@@ -14,11 +14,11 @@ A.push({
   "nameAr": "شامبو فينو بريميوم تاتش من شيسيدو - 550مل",
   "nameEn": "Fino Premium Touch Shampoo - 550ml",
   "descAr": "شامبو فينو بريميوم تاتش من شيسيدو من Shiseido. عناية بسيطة للشعر. 550 مل.",
-  "descEn": "Fino Premium Touch Shampoo by Shiseido. Simple daily hair care. 550 ml.",
-  "useAr": "١) على شعر رطب أو جاف حسب النوع.\n٢) لا تُغرقي الكمية.",
-  "useEn": "1) Damp or dry as directed.\n2) A little goes far.",
-  "skinAr": "حسب نوع الشعر والفروة.",
-  "skinEn": "Depends on hair and scalp.",
+  "descEn": "Fino Premium Touch Shampoo by Shiseido. Simple hair care. 550 ml.",
+  "useAr": "١) حسب نوع المنتج.\n٢) كمية قليلة تكفي.",
+  "useEn": "1) As directed.\n2) A little goes far.",
+  "skinAr": "حسب نوع الشعر.",
+  "skinEn": "Depends on hair type.",
   "stock": 3
 });
 A.push({
@@ -34,11 +34,11 @@ A.push({
   "nameAr": "بلسم فينو بريميوم تاتش من شيسيدو - 550مل",
   "nameEn": "Fino Premium Touch Conditioner - 550ml",
   "descAr": "بلسم فينو بريميوم تاتش من شيسيدو من Shiseido. عناية بسيطة للشعر. 550 مل.",
-  "descEn": "Fino Premium Touch Conditioner by Shiseido. Simple daily hair care. 550 ml.",
-  "useAr": "١) على شعر رطب أو جاف حسب النوع.\n٢) لا تُغرقي الكمية.",
-  "useEn": "1) Damp or dry as directed.\n2) A little goes far.",
-  "skinAr": "حسب نوع الشعر والفروة.",
-  "skinEn": "Depends on hair and scalp.",
+  "descEn": "Fino Premium Touch Conditioner by Shiseido. Simple hair care. 550 ml.",
+  "useAr": "١) حسب نوع المنتج.\n٢) كمية قليلة تكفي.",
+  "useEn": "1) As directed.\n2) A little goes far.",
+  "skinAr": "حسب نوع الشعر.",
+  "skinEn": "Depends on hair type.",
   "stock": 3
 });
 })();

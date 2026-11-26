@@ -13,12 +13,12 @@ A.push({
   ],
   "nameAr": "ستريديكس قطع قطنية للسيطرة على حب الشباب - 55قطعة",
   "nameEn": "Stridex Maximum Single-Step Acne Control - 55 Pads",
-  "descAr": "ستريديكس قطع قطنية للسيطرة على حب الشباب من Stridex. عناية واضحة وهادئة.",
-  "descEn": "Stridex Maximum Single by Stridex. Clear, quiet care.",
-  "useAr": "١) ضمن روتينك اليومي.\n٢) كمية قليلة تكفي.",
-  "useEn": "1) In your daily routine.\n2) Small amount is enough.",
+  "descAr": "ستريديكس قطع قطنية للسيطرة على حب من Stridex. عناية هادئة.",
+  "descEn": "Stridex Maximum Single by Stridex. Quiet care.",
+  "useAr": "١) ضمن روتينك.\n٢) كمية قليلة.",
+  "useEn": "1) In your routine.\n2) Small amount.",
   "skinAr": "حسب نوع البشرة.",
-  "skinEn": "Match to your skin type.",
+  "skinEn": "Match skin type.",
   "stock": 3
 });
 })();

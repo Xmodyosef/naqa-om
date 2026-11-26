@@ -13,11 +13,11 @@ A.push({
   ],
   "nameAr": "غسول سيتافيل للبشرة العادية الى الجافة والحساسة - 237مل",
   "nameEn": "Cetaphil Gentle Skin Cleanser - 237ml",
-  "descAr": "غسول سيتافيل للبشرة العادية الى الجافة وال من Cetaphil. ينظّف بلطف دون شد. 237 مل.",
-  "descEn": "Cetaphil Gentle Skin Cleanser by Cetaphil. Gentle cleanse, no tight feel. 237 ml.",
+  "descAr": "غسول سيتافيل للبشرة العادية الى من Cetaphil. ينظّف بلطف. 237 مل.",
+  "descEn": "Cetaphil Gentle Skin Cleanser by Cetaphil. Gentle cleanse. 237 ml.",
   "useAr": "١) على بشرة رطبة.\n٢) دلكي واشطفي.",
-  "useEn": "1) On damp skin.\n2) Massage, rinse.",
-  "skinAr": "مناسب لمعظم أنواع البشرة.",
+  "useEn": "1) Damp skin.\n2) Massage, rinse.",
+  "skinAr": "معظم أنواع البشرة.",
   "skinEn": "Most skin types.",
   "stock": 3
 });

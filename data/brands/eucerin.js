@@ -13,12 +13,12 @@ A.push({
   ],
   "nameAr": "جل التنظيف المضاد للتصبغات من يوسيرين - 200مل",
   "nameEn": "Eucerin Anti-Pigment Cleansing Gel - 200ml",
-  "descAr": "جل التنظيف المضاد للتصبغات من يوسيرين من Eucerin. عناية واضحة وهادئة. 200 مل.",
-  "descEn": "Eucerin Anti by Eucerin. Clear, quiet care. 200 ml.",
-  "useAr": "١) ضمن روتينك اليومي.\n٢) كمية قليلة تكفي.",
-  "useEn": "1) In your daily routine.\n2) Small amount is enough.",
+  "descAr": "جل التنظيف المضاد للتصبغات من من Eucerin. عناية هادئة. 200 مل.",
+  "descEn": "Eucerin Anti by Eucerin. Quiet care. 200 ml.",
+  "useAr": "١) ضمن روتينك.\n٢) كمية قليلة.",
+  "useEn": "1) In your routine.\n2) Small amount.",
   "skinAr": "حسب نوع البشرة.",
-  "skinEn": "Match to your skin type.",
+  "skinEn": "Match skin type.",
   "stock": 3
 });
 A.push({
@@ -33,12 +33,12 @@ A.push({
   ],
   "nameAr": "لوشن تخفيف الخشونة من يوسيرين - 500مل",
   "nameEn": "Eucerin‏ Roughness Relief Lotion - 500ml",
-  "descAr": "لوشن تخفيف الخشونة من يوسيرين من Eucerin. عناية واضحة وهادئة. 500 مل.",
-  "descEn": "Eucerin‏ Roughness Relief Lotion by Eucerin. Clear, quiet care. 500 ml.",
-  "useAr": "١) ضمن روتينك اليومي.\n٢) كمية قليلة تكفي.",
-  "useEn": "1) In your daily routine.\n2) Small amount is enough.",
+  "descAr": "لوشن تخفيف الخشونة من يوسيرين من Eucerin. عناية هادئة. 500 مل.",
+  "descEn": "Eucerin‏ Roughness Relief Lotion by Eucerin. Quiet care. 500 ml.",
+  "useAr": "١) ضمن روتينك.\n٢) كمية قليلة.",
+  "useEn": "1) In your routine.\n2) Small amount.",
   "skinAr": "حسب نوع البشرة.",
-  "skinEn": "Match to your skin type.",
+  "skinEn": "Match skin type.",
   "stock": 3
 });
 })();

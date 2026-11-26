@@ -13,12 +13,12 @@ A.push({
   ],
   "nameAr": "قناع بيوكولاجين ريل ديب من بيودانس - 34ج ×4 قطع",
   "nameEn": "Biodance Bio-Collagen Real Deep Mask - 34g × 4ea",
-  "descAr": "قناع بيوكولاجين ريل ديب من بيودانس من Biodance. عناية واضحة وهادئة. 34 ج.",
-  "descEn": "Biodance Bio by Biodance. Clear, quiet care. 34 g.",
-  "useAr": "١) ضمن روتينك اليومي.\n٢) كمية قليلة تكفي.",
-  "useEn": "1) In your daily routine.\n2) Small amount is enough.",
+  "descAr": "قناع بيوكولاجين ريل ديب من بيودانس من Biodance. عناية هادئة. 34 ج.",
+  "descEn": "Biodance Bio by Biodance. Quiet care. 34 g.",
+  "useAr": "١) ضمن روتينك.\n٢) كمية قليلة.",
+  "useEn": "1) In your routine.\n2) Small amount.",
   "skinAr": "حسب نوع البشرة.",
-  "skinEn": "Match to your skin type.",
+  "skinEn": "Match skin type.",
   "stock": 3
 });
 })();

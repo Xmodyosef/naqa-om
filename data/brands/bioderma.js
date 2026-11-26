@@ -13,12 +13,12 @@ A.push({
   ],
   "nameAr": "كريم بيوديرما بيجمنتبيو لتفتيح المناطق الحساسة وتوحيد اللون - 75مل",
   "nameEn": "Bioderma Pigmentbio Sensitive Areas - 75ml",
-  "descAr": "كريم بيوديرما بيجمنتبيو لتفتيح المناطق الح من Bioderma. ترطيب مريح لليوم. 75 مل.",
-  "descEn": "Bioderma Pigmentbio Sensitive Areas by Bioderma. Quiet daily moisture. 75 ml.",
-  "useAr": "١) بعد السيروم.\n٢) طبقة خفيفة تكفي.",
-  "useEn": "1) After serum.\n2) Thin layer is enough.",
-  "skinAr": "للبشرة العادية إلى الجافة غالباً.",
-  "skinEn": "Often normal to dry skin.",
+  "descAr": "كريم بيوديرما بيجمنتبيو لتفتيح من Bioderma. ترطيب مريح. 75 مل.",
+  "descEn": "Bioderma Pigmentbio Sensitive Areas by Bioderma. Quiet moisture. 75 ml.",
+  "useAr": "١) بعد السيروم.\n٢) طبقة خفيفة.",
+  "useEn": "1) After serum.\n2) Thin layer.",
+  "skinAr": "غالباً عادية إلى جافة.",
+  "skinEn": "Often normal–dry.",
   "stock": 3
 });
 })();

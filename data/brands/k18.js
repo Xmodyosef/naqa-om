@@ -13,12 +13,12 @@ A.push({
   ],
   "nameAr": "ماسك كيه 18 ليف إن لإصلاح الشعر الجزيئي المتقدم - 15مل",
   "nameEn": "K18 Leave-in Molecular Repair Hair Mask - 50ml",
-  "descAr": "ماسك كيه 18 ليف إن لإصلاح الشعر الجزيئي ال من K18. عناية بسيطة للشعر. 15 مل.",
-  "descEn": "K18 Leave by K18. Simple daily hair care. 15 ml.",
-  "useAr": "١) على شعر رطب أو جاف حسب النوع.\n٢) لا تُغرقي الكمية.",
-  "useEn": "1) Damp or dry as directed.\n2) A little goes far.",
-  "skinAr": "حسب نوع الشعر والفروة.",
-  "skinEn": "Depends on hair and scalp.",
+  "descAr": "ماسك كيه 18 ليف إن لإصلاح الشعر من K18. عناية بسيطة للشعر. 15 مل.",
+  "descEn": "K18 Leave by K18. Simple hair care. 15 ml.",
+  "useAr": "١) حسب نوع المنتج.\n٢) كمية قليلة تكفي.",
+  "useEn": "1) As directed.\n2) A little goes far.",
+  "skinAr": "حسب نوع الشعر.",
+  "skinEn": "Depends on hair type.",
   "stock": 3
 });
 A.push({
@@ -33,12 +33,12 @@ A.push({
   ],
   "nameAr": "شامبو كيه 18 داميج شيلد لحماية الشعر والحفاظ على توازن درجة الحموضة - 250مل",
   "nameEn": "K18 Damage Shield pH protective shampoo - 250ml",
-  "descAr": "شامبو كيه 18 داميج شيلد لحماية الشعر والحف من K18. عناية بسيطة للشعر. 250 مل.",
-  "descEn": "K18 Damage Shield pH protective shampoo by K18. Simple daily hair care. 250 ml.",
-  "useAr": "١) على شعر رطب أو جاف حسب النوع.\n٢) لا تُغرقي الكمية.",
-  "useEn": "1) Damp or dry as directed.\n2) A little goes far.",
-  "skinAr": "حسب نوع الشعر والفروة.",
-  "skinEn": "Depends on hair and scalp.",
+  "descAr": "شامبو كيه 18 داميج شيلد لحماية من K18. عناية بسيطة للشعر. 250 مل.",
+  "descEn": "K18 Damage Shield pH protective shampoo by K18. Simple hair care. 250 ml.",
+  "useAr": "١) حسب نوع المنتج.\n٢) كمية قليلة تكفي.",
+  "useEn": "1) As directed.\n2) A little goes far.",
+  "skinAr": "حسب نوع الشعر.",
+  "skinEn": "Depends on hair type.",
   "stock": 3
 });
 A.push({
@@ -53,12 +53,12 @@ A.push({
   ],
   "nameAr": "بخاخ كيه 18 الواقي من الحرارة لتنعيم الشعر - 118مل",
   "nameEn": "K18 HeatBounce Conditioning Heat Protectant - 118ml",
-  "descAr": "بخاخ كيه 18 الواقي من الحرارة لتنعيم الشعر من K18. عناية بسيطة للشعر. 118 مل.",
-  "descEn": "K18 HeatBounce Conditioning Heat Protectant by K18. Simple daily hair care. 118 ml.",
-  "useAr": "١) على شعر رطب أو جاف حسب النوع.\n٢) لا تُغرقي الكمية.",
-  "useEn": "1) Damp or dry as directed.\n2) A little goes far.",
-  "skinAr": "حسب نوع الشعر والفروة.",
-  "skinEn": "Depends on hair and scalp.",
+  "descAr": "بخاخ كيه 18 الواقي من الحرارة من K18. عناية بسيطة للشعر. 118 مل.",
+  "descEn": "K18 HeatBounce Conditioning Heat by K18. Simple hair care. 118 ml.",
+  "useAr": "١) حسب نوع المنتج.\n٢) كمية قليلة تكفي.",
+  "useEn": "1) As directed.\n2) A little goes far.",
+  "skinAr": "حسب نوع الشعر.",
+  "skinEn": "Depends on hair type.",
   "stock": 3
 });
 })();

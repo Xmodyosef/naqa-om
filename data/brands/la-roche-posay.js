@@ -14,12 +14,12 @@ A.push({
   ],
   "nameAr": "بلسم البشرة الجافة سيكابلاست بوم بي 5 لاروش بوزيه - 40مل",
   "nameEn": "Cicaplast Balm B5 For Dry Skin Irritations - 40ml",
-  "descAr": "بلسم البشرة الجافة سيكابلاست بوم بي 5 لارو من La Roche-Posay. عناية واضحة وهادئة. 40 مل.",
-  "descEn": "Cicaplast Balm B5 For Dry Skin Irritations by La Roche-Posay. Clear, quiet care. 40 ml.",
-  "useAr": "١) ضمن روتينك اليومي.\n٢) كمية قليلة تكفي.",
-  "useEn": "1) In your daily routine.\n2) Small amount is enough.",
+  "descAr": "بلسم البشرة الجافة سيكابلاست بوم بي من La Roche-Posay. عناية هادئة. 40 مل.",
+  "descEn": "Cicaplast Balm B5 For Dry Skin Irritations by La Roche-Posay. Quiet care. 40 ml.",
+  "useAr": "١) ضمن روتينك.\n٢) كمية قليلة.",
+  "useEn": "1) In your routine.\n2) Small amount.",
   "skinAr": "حسب نوع البشرة.",
-  "skinEn": "Match to your skin type.",
+  "skinEn": "Match skin type.",
   "stock": 3
 });
 })();

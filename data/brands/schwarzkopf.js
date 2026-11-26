@@ -13,12 +13,12 @@ A.push({
   ],
   "nameAr": "جل جوت تو بي لتثبيت الحواجب والبيبي هير 2 في 1 - 16مل",
   "nameEn": "Got2B Glued for Brows & Edges 2 in 1 Wand Eyebrow Gel - 16ml",
-  "descAr": "جل جوت تو بي لتثبيت الحواجب والبيبي هير 2  من Schwarzkopf. عناية بسيطة للشعر. 16 مل.",
-  "descEn": "Got2B Glued for Brows & Edges 2 in 1 Wand Eyebro by Schwarzkopf. Simple daily hair care. 16 ml.",
-  "useAr": "١) على شعر رطب أو جاف حسب النوع.\n٢) لا تُغرقي الكمية.",
-  "useEn": "1) Damp or dry as directed.\n2) A little goes far.",
-  "skinAr": "حسب نوع الشعر والفروة.",
-  "skinEn": "Depends on hair and scalp.",
+  "descAr": "جل جوت تو بي لتثبيت الحواجب والبيبي من Schwarzkopf. عناية بسيطة للشعر. 16 مل.",
+  "descEn": "Got2B Glued for Brows & Edges 2 in 1 Wand by Schwarzkopf. Simple hair care. 16 ml.",
+  "useAr": "١) حسب نوع المنتج.\n٢) كمية قليلة تكفي.",
+  "useEn": "1) As directed.\n2) A little goes far.",
+  "skinAr": "حسب نوع الشعر.",
+  "skinEn": "Depends on hair type.",
   "stock": 3
 });
 A.push({
@@ -33,12 +33,12 @@ A.push({
   ],
   "nameAr": "جل تثبيت الشعر جوت تو بي المقاوم للماء - 35ج",
   "nameEn": "Schwarzkopf Got2b Glued Hair Styling Spiking Gel - 35g",
-  "descAr": "جل تثبيت الشعر جوت تو بي المقاوم للماء من Schwarzkopf. عناية بسيطة للشعر. 35 ج.",
-  "descEn": "Schwarzkopf Got2b Glued Hair Styling Spiking Gel by Schwarzkopf. Simple daily hair care. 35 g.",
-  "useAr": "١) على شعر رطب أو جاف حسب النوع.\n٢) لا تُغرقي الكمية.",
-  "useEn": "1) Damp or dry as directed.\n2) A little goes far.",
-  "skinAr": "حسب نوع الشعر والفروة.",
-  "skinEn": "Depends on hair and scalp.",
+  "descAr": "جل تثبيت الشعر جوت تو بي المقاوم من Schwarzkopf. عناية بسيطة للشعر. 35 ج.",
+  "descEn": "Schwarzkopf Got2b Glued Hair Styling by Schwarzkopf. Simple hair care. 35 g.",
+  "useAr": "١) حسب نوع المنتج.\n٢) كمية قليلة تكفي.",
+  "useEn": "1) As directed.\n2) A little goes far.",
+  "skinAr": "حسب نوع الشعر.",
+  "skinEn": "Depends on hair type.",
   "stock": 3
 });
 A.push({
@@ -54,11 +54,11 @@ A.push({
   "nameAr": "شوارزكوف بخاخ جوت تو بي فريز 300مل",
   "nameEn": "Schwarzkopf got2b Glued Freeze Spray 300ml",
   "descAr": "شوارزكوف بخاخ جوت تو بي فريز 300مل من Schwarzkopf. عناية بسيطة للشعر. 300 مل.",
-  "descEn": "Schwarzkopf got2b Glued Freeze Spray 300ml by Schwarzkopf. Simple daily hair care. 300 ml.",
-  "useAr": "١) على شعر رطب أو جاف حسب النوع.\n٢) لا تُغرقي الكمية.",
-  "useEn": "1) Damp or dry as directed.\n2) A little goes far.",
-  "skinAr": "حسب نوع الشعر والفروة.",
-  "skinEn": "Depends on hair and scalp.",
+  "descEn": "Schwarzkopf got2b Glued Freeze Spray 300ml by Schwarzkopf. Simple hair care. 300 ml.",
+  "useAr": "١) حسب نوع المنتج.\n٢) كمية قليلة تكفي.",
+  "useEn": "1) As directed.\n2) A little goes far.",
+  "skinAr": "حسب نوع الشعر.",
+  "skinEn": "Depends on hair type.",
   "stock": 3,
   "hot": true
 });
@@ -75,11 +75,11 @@ A.push({
   "nameAr": "شوارزكوف بخاخ بلاستينج فريز",
   "nameEn": "Schwarzkopf got2b Glued Blasting Freeze Spray",
   "descAr": "شوارزكوف بخاخ بلاستينج فريز من Schwarzkopf. عناية بسيطة للشعر.",
-  "descEn": "Schwarzkopf got2b Glued Blasting Freeze Spray by Schwarzkopf. Simple daily hair care.",
-  "useAr": "١) على شعر رطب أو جاف حسب النوع.\n٢) لا تُغرقي الكمية.",
-  "useEn": "1) Damp or dry as directed.\n2) A little goes far.",
-  "skinAr": "حسب نوع الشعر والفروة.",
-  "skinEn": "Depends on hair and scalp.",
+  "descEn": "Schwarzkopf got2b Glued Blasting Freeze by Schwarzkopf. Simple hair care.",
+  "useAr": "١) حسب نوع المنتج.\n٢) كمية قليلة تكفي.",
+  "useEn": "1) As directed.\n2) A little goes far.",
+  "skinAr": "حسب نوع الشعر.",
+  "skinEn": "Depends on hair type.",
   "stock": 3,
   "hot": true
 });
@@ -96,11 +96,11 @@ A.push({
   "nameAr": "شوارزكوف معجون فينومينال 100مل",
   "nameEn": "Schwarzkopf got2b Phenomenal Styling Paste 100ml",
   "descAr": "شوارزكوف معجون فينومينال 100مل من Schwarzkopf. عناية بسيطة للشعر. 100 مل.",
-  "descEn": "Schwarzkopf got2b Phenomenal Styling Paste 100ml by Schwarzkopf. Simple daily hair care. 100 ml.",
-  "useAr": "١) على شعر رطب أو جاف حسب النوع.\n٢) لا تُغرقي الكمية.",
-  "useEn": "1) Damp or dry as directed.\n2) A little goes far.",
-  "skinAr": "حسب نوع الشعر والفروة.",
-  "skinEn": "Depends on hair and scalp.",
+  "descEn": "Schwarzkopf got2b Phenomenal Styling by Schwarzkopf. Simple hair care. 100 ml.",
+  "useAr": "١) حسب نوع المنتج.\n٢) كمية قليلة تكفي.",
+  "useEn": "1) As directed.\n2) A little goes far.",
+  "skinAr": "حسب نوع الشعر.",
+  "skinEn": "Depends on hair type.",
   "stock": 3,
   "hot": true
 });
@@ -117,11 +117,11 @@ A.push({
   "nameAr": "شوارزكوف بخاخ فرد فلاتجليجت",
   "nameEn": "Schwarzkopf got2b Flachgelegt Straightening Spray",
   "descAr": "شوارزكوف بخاخ فرد فلاتجليجت من Schwarzkopf. عناية بسيطة للشعر.",
-  "descEn": "Schwarzkopf got2b Flachgelegt Straightening Spra by Schwarzkopf. Simple daily hair care.",
-  "useAr": "١) على شعر رطب أو جاف حسب النوع.\n٢) لا تُغرقي الكمية.",
-  "useEn": "1) Damp or dry as directed.\n2) A little goes far.",
-  "skinAr": "حسب نوع الشعر والفروة.",
-  "skinEn": "Depends on hair and scalp.",
+  "descEn": "Schwarzkopf got2b Flachgelegt by Schwarzkopf. Simple hair care.",
+  "useAr": "١) حسب نوع المنتج.\n٢) كمية قليلة تكفي.",
+  "useEn": "1) As directed.\n2) A little goes far.",
+  "skinAr": "حسب نوع الشعر.",
+  "skinEn": "Depends on hair type.",
   "stock": 3
 });
 A.push({
@@ -137,11 +137,11 @@ A.push({
   "nameAr": "شوارزكوف بخاخ حماية حرارية",
   "nameEn": "Schwarzkopf got2b Hitzewelle Heat Protection Spray",
   "descAr": "شوارزكوف بخاخ حماية حرارية من Schwarzkopf. عناية بسيطة للشعر.",
-  "descEn": "Schwarzkopf got2b Hitzewelle Heat Protection Spr by Schwarzkopf. Simple daily hair care.",
-  "useAr": "١) على شعر رطب أو جاف حسب النوع.\n٢) لا تُغرقي الكمية.",
-  "useEn": "1) Damp or dry as directed.\n2) A little goes far.",
-  "skinAr": "حسب نوع الشعر والفروة.",
-  "skinEn": "Depends on hair and scalp.",
+  "descEn": "Schwarzkopf got2b Hitzewelle Heat by Schwarzkopf. Simple hair care.",
+  "useAr": "١) حسب نوع المنتج.\n٢) كمية قليلة تكفي.",
+  "useEn": "1) As directed.\n2) A little goes far.",
+  "skinAr": "حسب نوع الشعر.",
+  "skinEn": "Depends on hair type.",
   "stock": 3,
   "hot": true
 });
@@ -158,11 +158,11 @@ A.push({
   "nameAr": "شوارزكوف فايبر جم كايوتك",
   "nameEn": "Schwarzkopf got2b Chaotic Fiber Gum",
   "descAr": "شوارزكوف فايبر جم كايوتك من Schwarzkopf. عناية بسيطة للشعر.",
-  "descEn": "Schwarzkopf got2b Chaotic Fiber Gum by Schwarzkopf. Simple daily hair care.",
-  "useAr": "١) على شعر رطب أو جاف حسب النوع.\n٢) لا تُغرقي الكمية.",
-  "useEn": "1) Damp or dry as directed.\n2) A little goes far.",
-  "skinAr": "حسب نوع الشعر والفروة.",
-  "skinEn": "Depends on hair and scalp.",
+  "descEn": "Schwarzkopf got2b Chaotic Fiber Gum by Schwarzkopf. Simple hair care.",
+  "useAr": "١) حسب نوع المنتج.\n٢) كمية قليلة تكفي.",
+  "useEn": "1) As directed.\n2) A little goes far.",
+  "skinAr": "حسب نوع الشعر.",
+  "skinEn": "Depends on hair type.",
   "stock": 3
 });
 A.push({
@@ -178,11 +178,11 @@ A.push({
   "nameAr": "شوارزكوف كريم كيرل كينكير",
   "nameEn": "Schwarzkopf got2b Kinkier Curl Cream",
   "descAr": "شوارزكوف كريم كيرل كينكير من Schwarzkopf. عناية بسيطة للشعر.",
-  "descEn": "Schwarzkopf got2b Kinkier Curl Cream by Schwarzkopf. Simple daily hair care.",
-  "useAr": "١) على شعر رطب أو جاف حسب النوع.\n٢) لا تُغرقي الكمية.",
-  "useEn": "1) Damp or dry as directed.\n2) A little goes far.",
-  "skinAr": "حسب نوع الشعر والفروة.",
-  "skinEn": "Depends on hair and scalp.",
+  "descEn": "Schwarzkopf got2b Kinkier Curl Cream by Schwarzkopf. Simple hair care.",
+  "useAr": "١) حسب نوع المنتج.\n٢) كمية قليلة تكفي.",
+  "useEn": "1) As directed.\n2) A little goes far.",
+  "skinAr": "حسب نوع الشعر.",
+  "skinEn": "Depends on hair type.",
   "stock": 3
 });
 A.push({
@@ -198,11 +198,11 @@ A.push({
   "nameAr": "شوارزكوف سيروم لمعان",
   "nameEn": "Schwarzkopf got2b Anti-Frizz Shine Serum",
   "descAr": "شوارزكوف سيروم لمعان من Schwarzkopf. عناية بسيطة للشعر.",
-  "descEn": "Schwarzkopf got2b Anti by Schwarzkopf. Simple daily hair care.",
-  "useAr": "١) على شعر رطب أو جاف حسب النوع.\n٢) لا تُغرقي الكمية.",
-  "useEn": "1) Damp or dry as directed.\n2) A little goes far.",
-  "skinAr": "حسب نوع الشعر والفروة.",
-  "skinEn": "Depends on hair and scalp.",
+  "descEn": "Schwarzkopf got2b Anti by Schwarzkopf. Simple hair care.",
+  "useAr": "١) حسب نوع المنتج.\n٢) كمية قليلة تكفي.",
+  "useEn": "1) As directed.\n2) A little goes far.",
+  "skinAr": "حسب نوع الشعر.",
+  "skinEn": "Depends on hair type.",
   "stock": 3,
   "hot": true
 });
@@ -219,11 +219,11 @@ A.push({
   "nameAr": "شوارزكوف بخاخ بيتش تريبن",
   "nameEn": "Schwarzkopf got2b Beach Trippin Salt Spray",
   "descAr": "شوارزكوف بخاخ بيتش تريبن من Schwarzkopf. عناية بسيطة للشعر.",
-  "descEn": "Schwarzkopf got2b Beach Trippin Salt Spray by Schwarzkopf. Simple daily hair care.",
-  "useAr": "١) على شعر رطب أو جاف حسب النوع.\n٢) لا تُغرقي الكمية.",
-  "useEn": "1) Damp or dry as directed.\n2) A little goes far.",
-  "skinAr": "حسب نوع الشعر والفروة.",
-  "skinEn": "Depends on hair and scalp.",
+  "descEn": "Schwarzkopf got2b Beach Trippin Salt Spray by Schwarzkopf. Simple hair care.",
+  "useAr": "١) حسب نوع المنتج.\n٢) كمية قليلة تكفي.",
+  "useEn": "1) As directed.\n2) A little goes far.",
+  "skinAr": "حسب نوع الشعر.",
+  "skinEn": "Depends on hair type.",
   "stock": 3
 });
 A.push({
@@ -239,11 +239,11 @@ A.push({
   "nameAr": "شوارزكوف بخاخ تثبيت فريز",
   "nameEn": "Schwarzkopf got2b Freeze Hairspray",
   "descAr": "شوارزكوف بخاخ تثبيت فريز من Schwarzkopf. عناية بسيطة للشعر.",
-  "descEn": "Schwarzkopf got2b Freeze Hairspray by Schwarzkopf. Simple daily hair care.",
-  "useAr": "١) على شعر رطب أو جاف حسب النوع.\n٢) لا تُغرقي الكمية.",
-  "useEn": "1) Damp or dry as directed.\n2) A little goes far.",
-  "skinAr": "حسب نوع الشعر والفروة.",
-  "skinEn": "Depends on hair and scalp.",
+  "descEn": "Schwarzkopf got2b Freeze Hairspray by Schwarzkopf. Simple hair care.",
+  "useAr": "١) حسب نوع المنتج.\n٢) كمية قليلة تكفي.",
+  "useEn": "1) As directed.\n2) A little goes far.",
+  "skinAr": "حسب نوع الشعر.",
+  "skinEn": "Depends on hair type.",
   "stock": 3
 });
 })();

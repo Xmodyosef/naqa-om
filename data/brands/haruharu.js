@@ -13,12 +13,12 @@ A.push({
   ],
   "nameAr": "تونر حمض الهيالورونيك بالأرز الأسود من هارو هارو - 300مل",
   "nameEn": "HaruHaru Black Rice Hyaluronic Toner - 300ml",
-  "descAr": "تونر حمض الهيالورونيك بالأرز الأسود من هار من HaruHaru. عناية واضحة وهادئة. 300 مل.",
-  "descEn": "HaruHaru Black Rice Hyaluronic Toner by HaruHaru. Clear, quiet care. 300 ml.",
-  "useAr": "١) ضمن روتينك اليومي.\n٢) كمية قليلة تكفي.",
-  "useEn": "1) In your daily routine.\n2) Small amount is enough.",
+  "descAr": "تونر حمض الهيالورونيك بالأرز الأسود من HaruHaru. عناية هادئة. 300 مل.",
+  "descEn": "HaruHaru Black Rice Hyaluronic Toner by HaruHaru. Quiet care. 300 ml.",
+  "useAr": "١) ضمن روتينك.\n٢) كمية قليلة.",
+  "useEn": "1) In your routine.\n2) Small amount.",
   "skinAr": "حسب نوع البشرة.",
-  "skinEn": "Match to your skin type.",
+  "skinEn": "Match skin type.",
   "stock": 3
 });
 A.push({
@@ -33,12 +33,12 @@ A.push({
   ],
   "nameAr": "جل التنظيف اللطيف 5.5 بالارز الأسود من هارو هارو - 100مل",
   "nameEn": "HaruHaru Black Rice Moisture 5.5 Soft Cleansing Gel - 100ml",
-  "descAr": "جل التنظيف اللطيف 5.5 بالارز الأسود من هار من HaruHaru. عناية واضحة وهادئة. 100 مل.",
-  "descEn": "HaruHaru Black Rice Moisture 5.5 Soft Cleansing  by HaruHaru. Clear, quiet care. 100 ml.",
-  "useAr": "١) ضمن روتينك اليومي.\n٢) كمية قليلة تكفي.",
-  "useEn": "1) In your daily routine.\n2) Small amount is enough.",
+  "descAr": "جل التنظيف اللطيف 5.5 بالارز الأسود من HaruHaru. عناية هادئة. 100 مل.",
+  "descEn": "HaruHaru Black Rice Moisture 5.5 Soft by HaruHaru. Quiet care. 100 ml.",
+  "useAr": "١) ضمن روتينك.\n٢) كمية قليلة.",
+  "useEn": "1) In your routine.\n2) Small amount.",
   "skinAr": "حسب نوع البشرة.",
-  "skinEn": "Match to your skin type.",
+  "skinEn": "Match skin type.",
   "stock": 3
 });
 })();

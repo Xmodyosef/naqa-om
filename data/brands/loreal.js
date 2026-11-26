@@ -13,12 +13,12 @@ A.push({
   ],
   "nameAr": "رذاذ تثبيت المكياج إنفاليبل من لوريال باريس حتى 36ساعة - 75مل",
   "nameEn": "L'Oréal Paris Infallible Setting Spray 36H - 75ml",
-  "descAr": "رذاذ تثبيت المكياج إنفاليبل من لوريال باري من L'oréal. تغطية خفيفة لمظهر طبيعي. 75 مل.",
-  "descEn": "L'Oréal Paris Infallible Setting Spray 36H by L'oréal. Light coverage, natural finish. 75 ml.",
+  "descAr": "رذاذ تثبيت المكياج إنفاليبل من من L'oréal. تغطية خفيفة طبيعية. 75 مل.",
+  "descEn": "L'Oréal Paris Infallible Setting Spray 36H by L'oréal. Light natural coverage. 75 ml.",
   "useAr": "١) بعد العناية.\n٢) وزّعي برفق.",
   "useEn": "1) After skincare.\n2) Blend lightly.",
-  "skinAr": "لكل درجات البشرة — اختاري الدرجة المناسبة.",
-  "skinEn": "All skin tones — pick your shade.",
+  "skinAr": "اختاري درجتك.",
+  "skinEn": "Pick your shade.",
   "stock": 3
 });
 A.push({
@@ -34,11 +34,11 @@ A.push({
   "nameAr": "لوريال شامبو إلسيف هيالورونيك",
   "nameEn": "L'Oréal Elvive Hyaluron Plump Shampoo",
   "descAr": "لوريال شامبو إلسيف هيالورونيك من L'oréal. عناية بسيطة للشعر.",
-  "descEn": "L'Oréal Elvive Hyaluron Plump Shampoo by L'oréal. Simple daily hair care.",
-  "useAr": "١) على شعر رطب أو جاف حسب النوع.\n٢) لا تُغرقي الكمية.",
-  "useEn": "1) Damp or dry as directed.\n2) A little goes far.",
-  "skinAr": "حسب نوع الشعر والفروة.",
-  "skinEn": "Depends on hair and scalp.",
+  "descEn": "L'Oréal Elvive Hyaluron Plump Shampoo by L'oréal. Simple hair care.",
+  "useAr": "١) حسب نوع المنتج.\n٢) كمية قليلة تكفي.",
+  "useEn": "1) As directed.\n2) A little goes far.",
+  "skinAr": "حسب نوع الشعر.",
+  "skinEn": "Depends on hair type.",
   "stock": 3,
   "hot": true
 });
@@ -55,11 +55,11 @@ A.push({
   "nameAr": "لوريال بلسم إلسيف هيالورونيك",
   "nameEn": "L'Oréal Elvive Hyaluron Plump Conditioner",
   "descAr": "لوريال بلسم إلسيف هيالورونيك من L'oréal. عناية بسيطة للشعر.",
-  "descEn": "L'Oréal Elvive Hyaluron Plump Conditioner by L'oréal. Simple daily hair care.",
-  "useAr": "١) على شعر رطب أو جاف حسب النوع.\n٢) لا تُغرقي الكمية.",
-  "useEn": "1) Damp or dry as directed.\n2) A little goes far.",
-  "skinAr": "حسب نوع الشعر والفروة.",
-  "skinEn": "Depends on hair and scalp.",
+  "descEn": "L'Oréal Elvive Hyaluron Plump Conditioner by L'oréal. Simple hair care.",
+  "useAr": "١) حسب نوع المنتج.\n٢) كمية قليلة تكفي.",
+  "useEn": "1) As directed.\n2) A little goes far.",
+  "skinAr": "حسب نوع الشعر.",
+  "skinEn": "Depends on hair type.",
   "stock": 3,
   "hot": true
 });
@@ -76,11 +76,11 @@ A.push({
   "nameAr": "لوريال ماسك إلسيف هيالورونيك",
   "nameEn": "L'Oréal Elvive Hyaluron Plump Mask",
   "descAr": "لوريال ماسك إلسيف هيالورونيك من L'oréal. عناية بسيطة للشعر.",
-  "descEn": "L'Oréal Elvive Hyaluron Plump Mask by L'oréal. Simple daily hair care.",
-  "useAr": "١) على شعر رطب أو جاف حسب النوع.\n٢) لا تُغرقي الكمية.",
-  "useEn": "1) Damp or dry as directed.\n2) A little goes far.",
-  "skinAr": "حسب نوع الشعر والفروة.",
-  "skinEn": "Depends on hair and scalp.",
+  "descEn": "L'Oréal Elvive Hyaluron Plump Mask by L'oréal. Simple hair care.",
+  "useAr": "١) حسب نوع المنتج.\n٢) كمية قليلة تكفي.",
+  "useEn": "1) As directed.\n2) A little goes far.",
+  "skinAr": "حسب نوع الشعر.",
+  "skinEn": "Depends on hair type.",
   "stock": 3
 });
 A.push({
@@ -96,11 +96,11 @@ A.push({
   "nameAr": "لوريال شامبو دريم لونج",
   "nameEn": "L'Oréal Elvive Dream Lengths Shampoo",
   "descAr": "لوريال شامبو دريم لونج من L'oréal. عناية بسيطة للشعر.",
-  "descEn": "L'Oréal Elvive Dream Lengths Shampoo by L'oréal. Simple daily hair care.",
-  "useAr": "١) على شعر رطب أو جاف حسب النوع.\n٢) لا تُغرقي الكمية.",
-  "useEn": "1) Damp or dry as directed.\n2) A little goes far.",
-  "skinAr": "حسب نوع الشعر والفروة.",
-  "skinEn": "Depends on hair and scalp.",
+  "descEn": "L'Oréal Elvive Dream Lengths Shampoo by L'oréal. Simple hair care.",
+  "useAr": "١) حسب نوع المنتج.\n٢) كمية قليلة تكفي.",
+  "useEn": "1) As directed.\n2) A little goes far.",
+  "skinAr": "حسب نوع الشعر.",
+  "skinEn": "Depends on hair type.",
   "stock": 3
 });
 A.push({
@@ -116,11 +116,11 @@ A.push({
   "nameAr": "لوريال بلسم دريم لونج",
   "nameEn": "L'Oréal Elvive Dream Lengths Conditioner",
   "descAr": "لوريال بلسم دريم لونج من L'oréal. عناية بسيطة للشعر.",
-  "descEn": "L'Oréal Elvive Dream Lengths Conditioner by L'oréal. Simple daily hair care.",
-  "useAr": "١) على شعر رطب أو جاف حسب النوع.\n٢) لا تُغرقي الكمية.",
-  "useEn": "1) Damp or dry as directed.\n2) A little goes far.",
-  "skinAr": "حسب نوع الشعر والفروة.",
-  "skinEn": "Depends on hair and scalp.",
+  "descEn": "L'Oréal Elvive Dream Lengths Conditioner by L'oréal. Simple hair care.",
+  "useAr": "١) حسب نوع المنتج.\n٢) كمية قليلة تكفي.",
+  "useEn": "1) As directed.\n2) A little goes far.",
+  "skinAr": "حسب نوع الشعر.",
+  "skinEn": "Depends on hair type.",
   "stock": 3
 });
 A.push({
@@ -136,11 +136,11 @@ A.push({
   "nameAr": "لوريال ليف إن دريم لونج",
   "nameEn": "L'Oréal Elvive Dream Lengths Leave-In",
   "descAr": "لوريال ليف إن دريم لونج من L'oréal. عناية بسيطة للشعر.",
-  "descEn": "L'Oréal Elvive Dream Lengths Leave by L'oréal. Simple daily hair care.",
-  "useAr": "١) على شعر رطب أو جاف حسب النوع.\n٢) لا تُغرقي الكمية.",
-  "useEn": "1) Damp or dry as directed.\n2) A little goes far.",
-  "skinAr": "حسب نوع الشعر والفروة.",
-  "skinEn": "Depends on hair and scalp.",
+  "descEn": "L'Oréal Elvive Dream Lengths Leave by L'oréal. Simple hair care.",
+  "useAr": "١) حسب نوع المنتج.\n٢) كمية قليلة تكفي.",
+  "useEn": "1) As directed.\n2) A little goes far.",
+  "skinAr": "حسب نوع الشعر.",
+  "skinEn": "Depends on hair type.",
   "stock": 3,
   "hot": true
 });
@@ -157,11 +157,11 @@ A.push({
   "nameAr": "لوريال زيت إلسيف إكستراأورديناري",
   "nameEn": "L'Oréal Elvive Extraordinary Oil",
   "descAr": "لوريال زيت إلسيف إكستراأورديناري من L'oréal. عناية بسيطة للشعر.",
-  "descEn": "L'Oréal Elvive Extraordinary Oil by L'oréal. Simple daily hair care.",
-  "useAr": "١) على شعر رطب أو جاف حسب النوع.\n٢) لا تُغرقي الكمية.",
-  "useEn": "1) Damp or dry as directed.\n2) A little goes far.",
-  "skinAr": "حسب نوع الشعر والفروة.",
-  "skinEn": "Depends on hair and scalp.",
+  "descEn": "L'Oréal Elvive Extraordinary Oil by L'oréal. Simple hair care.",
+  "useAr": "١) حسب نوع المنتج.\n٢) كمية قليلة تكفي.",
+  "useEn": "1) As directed.\n2) A little goes far.",
+  "skinAr": "حسب نوع الشعر.",
+  "skinEn": "Depends on hair type.",
   "stock": 3,
   "hot": true
 });
@@ -178,11 +178,11 @@ A.push({
   "nameAr": "لوريال بخاخ حماية حرارية",
   "nameEn": "L'Oréal Elvive Heat Protect Spray",
   "descAr": "لوريال بخاخ حماية حرارية من L'oréal. عناية بسيطة للشعر.",
-  "descEn": "L'Oréal Elvive Heat Protect Spray by L'oréal. Simple daily hair care.",
-  "useAr": "١) على شعر رطب أو جاف حسب النوع.\n٢) لا تُغرقي الكمية.",
-  "useEn": "1) Damp or dry as directed.\n2) A little goes far.",
-  "skinAr": "حسب نوع الشعر والفروة.",
-  "skinEn": "Depends on hair and scalp.",
+  "descEn": "L'Oréal Elvive Heat Protect Spray by L'oréal. Simple hair care.",
+  "useAr": "١) حسب نوع المنتج.\n٢) كمية قليلة تكفي.",
+  "useEn": "1) As directed.\n2) A little goes far.",
+  "skinAr": "حسب نوع الشعر.",
+  "skinEn": "Depends on hair type.",
   "stock": 3
 });
 A.push({
@@ -197,12 +197,12 @@ A.push({
   ],
   "nameAr": "لوريال فاونديشن ترو ماتش",
   "nameEn": "L'Oréal True Match Foundation",
-  "descAr": "لوريال فاونديشن ترو ماتش من L'oréal. تغطية خفيفة لمظهر طبيعي.",
-  "descEn": "L'Oréal True Match Foundation by L'oréal. Light coverage, natural finish.",
+  "descAr": "لوريال فاونديشن ترو ماتش من L'oréal. تغطية خفيفة طبيعية.",
+  "descEn": "L'Oréal True Match Foundation by L'oréal. Light natural coverage.",
   "useAr": "١) بعد العناية.\n٢) وزّعي برفق.",
   "useEn": "1) After skincare.\n2) Blend lightly.",
-  "skinAr": "لكل درجات البشرة — اختاري الدرجة المناسبة.",
-  "skinEn": "All skin tones — pick your shade.",
+  "skinAr": "اختاري درجتك.",
+  "skinEn": "Pick your shade.",
   "stock": 3,
   "hot": true
 });
@@ -218,12 +218,12 @@ A.push({
   ],
   "nameAr": "لوريال كونسيلر ترو ماتش",
   "nameEn": "L'Oréal True Match Concealer",
-  "descAr": "لوريال كونسيلر ترو ماتش من L'oréal. تغطية خفيفة لمظهر طبيعي.",
-  "descEn": "L'Oréal True Match Concealer by L'oréal. Light coverage, natural finish.",
+  "descAr": "لوريال كونسيلر ترو ماتش من L'oréal. تغطية خفيفة طبيعية.",
+  "descEn": "L'Oréal True Match Concealer by L'oréal. Light natural coverage.",
   "useAr": "١) بعد العناية.\n٢) وزّعي برفق.",
   "useEn": "1) After skincare.\n2) Blend lightly.",
-  "skinAr": "لكل درجات البشرة — اختاري الدرجة المناسبة.",
-  "skinEn": "All skin tones — pick your shade.",
+  "skinAr": "اختاري درجتك.",
+  "skinEn": "Pick your shade.",
   "stock": 3
 });
 A.push({
@@ -238,12 +238,12 @@ A.push({
   ],
   "nameAr": "لوريال ماسكارا لاش باراديس",
   "nameEn": "L'Oréal Voluminous Lash Paradise Mascara",
-  "descAr": "لوريال ماسكارا لاش باراديس من L'oréal. تحديد واضح دون ثقل.",
-  "descEn": "L'Oréal Voluminous Lash Paradise Mascara by L'oréal. Clean definition, no heaviness.",
-  "useAr": "١) من الجذور للأطراف.\n٢) طبقة واحدة كافية.",
-  "useEn": "1) Roots to tips.\n2) One coat is enough.",
-  "skinAr": "لكل الرموش. اختبري إن كانت العيون حسّاسة.",
-  "skinEn": "All lash types. Patch-test if sensitive.",
+  "descAr": "لوريال ماسكارا لاش باراديس من L'oréal. تحديد واضح.",
+  "descEn": "L'Oréal Voluminous Lash Paradise Mascara by L'oréal. Clean definition.",
+  "useAr": "١) من الجذور للأطراف.\n٢) طبقة واحدة.",
+  "useEn": "1) Roots to tips.\n2) One coat.",
+  "skinAr": "لكل الرموش.",
+  "skinEn": "All lash types.",
   "stock": 3,
   "hot": true
 });

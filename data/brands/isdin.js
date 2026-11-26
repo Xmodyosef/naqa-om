@@ -13,12 +13,12 @@ A.push({
   ],
   "nameAr": "واقي شمس إيسدين فوتو بروتكتور المائي ماجيك - 50مل",
   "nameEn": "ISDIN Photoprotector Water Magic SPF50 - 50ml",
-  "descAr": "واقي شمس إيسدين فوتو بروتكتور المائي ماجيك من ISDIN. حماية يومية بملمس خفيف. 50 مل.",
-  "descEn": "ISDIN Photoprotector Water Magic SPF50 by ISDIN. Everyday light SPF feel. 50 ml.",
-  "useAr": "١) آخر خطوة صباحاً.\n٢) جدّدي بعد التعرض الطويل.",
+  "descAr": "واقي شمس إيسدين فوتو بروتكتور من ISDIN. حماية يومية خفيفة. 50 مل.",
+  "descEn": "ISDIN Photoprotector Water Magic SPF50 by ISDIN. Light daily SPF. 50 ml.",
+  "useAr": "١) آخر خطوة صباحاً.\n٢) جدّدي عند الحاجة.",
   "useEn": "1) Last morning step.\n2) Reapply outdoors.",
-  "skinAr": "للاستخدام النهاري اليومي.",
-  "skinEn": "For daily daytime use.",
+  "skinAr": "للاستخدام النهاري.",
+  "skinEn": "Daytime use.",
   "stock": 3
 });
 })();

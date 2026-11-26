@@ -14,12 +14,12 @@ A.push({
   ],
   "nameAr": "بي بي كريم بيرفكت إم من ميشا - رقم21 - 50مل",
   "nameEn": "MISSHA Perfect M BB Cream #21 SPF42 - 50ml",
-  "descAr": "بي بي كريم بيرفكت إم من ميشا من MISSHA. تغطية خفيفة لمظهر طبيعي. 50 مل.",
-  "descEn": "MISSHA Perfect M BB Cream #21 SPF42 by MISSHA. Light coverage, natural finish. 50 ml.",
+  "descAr": "بي بي كريم بيرفكت إم من ميشا من MISSHA. تغطية خفيفة طبيعية. 50 مل.",
+  "descEn": "MISSHA Perfect M BB Cream #21 SPF42 by MISSHA. Light natural coverage. 50 ml.",
   "useAr": "١) بعد العناية.\n٢) وزّعي برفق.",
   "useEn": "1) After skincare.\n2) Blend lightly.",
-  "skinAr": "لكل درجات البشرة — اختاري الدرجة المناسبة.",
-  "skinEn": "All skin tones — pick your shade.",
+  "skinAr": "اختاري درجتك.",
+  "skinEn": "Pick your shade.",
   "stock": 3
 });
 A.push({
@@ -35,12 +35,12 @@ A.push({
   ],
   "nameAr": "بي بي كريم بيرفكت إم من ميشا - رقم27 - 50مل",
   "nameEn": "MISSHA Perfect M BB Cream #27 SPF42 - 50ml",
-  "descAr": "بي بي كريم بيرفكت إم من ميشا من MISSHA. تغطية خفيفة لمظهر طبيعي. 50 مل.",
-  "descEn": "MISSHA Perfect M BB Cream #27 SPF42 by MISSHA. Light coverage, natural finish. 50 ml.",
+  "descAr": "بي بي كريم بيرفكت إم من ميشا من MISSHA. تغطية خفيفة طبيعية. 50 مل.",
+  "descEn": "MISSHA Perfect M BB Cream #27 SPF42 by MISSHA. Light natural coverage. 50 ml.",
   "useAr": "١) بعد العناية.\n٢) وزّعي برفق.",
   "useEn": "1) After skincare.\n2) Blend lightly.",
-  "skinAr": "لكل درجات البشرة — اختاري الدرجة المناسبة.",
-  "skinEn": "All skin tones — pick your shade.",
+  "skinAr": "اختاري درجتك.",
+  "skinEn": "Pick your shade.",
   "stock": 3
 });
 A.push({
@@ -56,12 +56,12 @@ A.push({
   ],
   "nameAr": "بي بي كريم بيرفكت إم من ميشا - رقم25 - 50مل",
   "nameEn": "MISSHA Perfect M BB Cream #25 SPF42 - 50ml",
-  "descAr": "بي بي كريم بيرفكت إم من ميشا من MISSHA. تغطية خفيفة لمظهر طبيعي. 50 مل.",
-  "descEn": "MISSHA Perfect M BB Cream #25 SPF42 by MISSHA. Light coverage, natural finish. 50 ml.",
+  "descAr": "بي بي كريم بيرفكت إم من ميشا من MISSHA. تغطية خفيفة طبيعية. 50 مل.",
+  "descEn": "MISSHA Perfect M BB Cream #25 SPF42 by MISSHA. Light natural coverage. 50 ml.",
   "useAr": "١) بعد العناية.\n٢) وزّعي برفق.",
   "useEn": "1) After skincare.\n2) Blend lightly.",
-  "skinAr": "لكل درجات البشرة — اختاري الدرجة المناسبة.",
-  "skinEn": "All skin tones — pick your shade.",
+  "skinAr": "اختاري درجتك.",
+  "skinEn": "Pick your shade.",
   "stock": 3
 });
 A.push({
@@ -78,12 +78,12 @@ A.push({
   ],
   "nameAr": "فرشاة الخدود والهايلايتر ميشا آرتيستول 206",
   "nameEn": "Missha Artistool Cheek Highlighter Brush 206",
-  "descAr": "فرشاة الخدود والهايلايتر ميشا آرتيستول 206 من MISSHA. أداة عملية يومية.",
-  "descEn": "Missha Artistool Cheek Highlighter Brush 206 by MISSHA. Practical everyday tool.",
-  "useAr": "١) على بشرة/شعر نظيف.\n٢) اتبعي تعليمات الجهاز.",
-  "useEn": "1) On clean skin/hair.\n2) Follow device guide.",
-  "skinAr": "للاستخدام اليومي أو الأسبوعي.",
-  "skinEn": "Daily or weekly use.",
+  "descAr": "فرشاة الخدود والهايلايتر ميشا من MISSHA. أداة يومية.",
+  "descEn": "Missha Artistool Cheek Highlighter Brush by MISSHA. Everyday tool.",
+  "useAr": "١) على بشرة/شعر نظيف.\n٢) اتبعي الإرشاد.",
+  "useEn": "1) Clean skin/hair.\n2) Follow guide.",
+  "skinAr": "للاستخدام اليومي.",
+  "skinEn": "Daily use.",
   "stock": 3
 });
 A.push({
@@ -99,11 +99,11 @@ A.push({
   "nameAr": "فرشاة الظلال ميشا آرتيستول 306",
   "nameEn": "Missha Artistool Shadow Brush 306",
   "descAr": "فرشاة الظلال ميشا آرتيستول 306 من MISSHA. عناية بسيطة للشعر.",
-  "descEn": "Missha Artistool Shadow Brush 306 by MISSHA. Simple daily hair care.",
-  "useAr": "١) على شعر رطب أو جاف حسب النوع.\n٢) لا تُغرقي الكمية.",
-  "useEn": "1) Damp or dry as directed.\n2) A little goes far.",
-  "skinAr": "حسب نوع الشعر والفروة.",
-  "skinEn": "Depends on hair and scalp.",
+  "descEn": "Missha Artistool Shadow Brush 306 by MISSHA. Simple hair care.",
+  "useAr": "١) حسب نوع المنتج.\n٢) كمية قليلة تكفي.",
+  "useEn": "1) As directed.\n2) A little goes far.",
+  "skinAr": "حسب نوع الشعر.",
+  "skinEn": "Depends on hair type.",
   "stock": 3
 });
 })();

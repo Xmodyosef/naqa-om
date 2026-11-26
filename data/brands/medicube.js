@@ -13,12 +13,12 @@ A.push({
   ],
   "nameAr": "كريم ميديكيوب بالكبسولات الوردي بالكولاجين بي دي آر إن لشد ونضارة البشرة – 50مل",
   "nameEn": "Medicube PDRN Pink Collagen Capsule Cream - 55g",
-  "descAr": "كريم ميديكيوب بالكبسولات الوردي بالكولاجين من Medicube. ترطيب مريح لليوم. 50 مل.",
-  "descEn": "Medicube PDRN Pink Collagen Capsule Cream by Medicube. Quiet daily moisture. 50 ml.",
-  "useAr": "١) بعد السيروم.\n٢) طبقة خفيفة تكفي.",
-  "useEn": "1) After serum.\n2) Thin layer is enough.",
-  "skinAr": "للبشرة العادية إلى الجافة غالباً.",
-  "skinEn": "Often normal to dry skin.",
+  "descAr": "كريم ميديكيوب بالكبسولات الوردي من Medicube. ترطيب مريح. 50 مل.",
+  "descEn": "Medicube PDRN Pink Collagen Capsule Cream by Medicube. Quiet moisture. 50 ml.",
+  "useAr": "١) بعد السيروم.\n٢) طبقة خفيفة.",
+  "useEn": "1) After serum.\n2) Thin layer.",
+  "skinAr": "غالباً عادية إلى جافة.",
+  "skinEn": "Often normal–dry.",
   "stock": 3
 });
 A.push({
@@ -33,12 +33,12 @@ A.push({
   ],
   "nameAr": "قطع قطنية ميديكيوب بفيتامين سي لتفتيح البشرة - 70قطعة",
   "nameEn": "Medicube Deep Vita C Pad - 150g",
-  "descAr": "قطع قطنية ميديكيوب بفيتامين سي لتفتيح البش من Medicube. عناية واضحة وهادئة. 150 ج.",
-  "descEn": "Medicube Deep Vita C Pad by Medicube. Clear, quiet care. 150 g.",
-  "useAr": "١) ضمن روتينك اليومي.\n٢) كمية قليلة تكفي.",
-  "useEn": "1) In your daily routine.\n2) Small amount is enough.",
+  "descAr": "قطع قطنية ميديكيوب بفيتامين سي من Medicube. عناية هادئة. 150 ج.",
+  "descEn": "Medicube Deep Vita C Pad by Medicube. Quiet care. 150 g.",
+  "useAr": "١) ضمن روتينك.\n٢) كمية قليلة.",
+  "useEn": "1) In your routine.\n2) Small amount.",
   "skinAr": "حسب نوع البشرة.",
-  "skinEn": "Match to your skin type.",
+  "skinEn": "Match skin type.",
   "stock": 3
 });
 A.push({
@@ -53,12 +53,12 @@ A.push({
   ],
   "nameAr": "سيروم ميديكيوب زيرو بور لتقليل المسام سريع المفعول - 30مل",
   "nameEn": "Medicube Zero Pore One-day Serum - 30ml",
-  "descAr": "سيروم ميديكيوب زيرو بور لتقليل المسام سريع من Medicube. خطوة مركّزة وسريعة. 30 مل.",
-  "descEn": "Medicube Zero Pore One by Medicube. Focused step, fast finish. 30 ml.",
-  "useAr": "١) بعد التنظيف.\n٢) قطرات قليلة ثم رطّبي.",
-  "useEn": "1) After cleanse.\n2) Few drops, then moisturise.",
-  "skinAr": "حسب احتياج بشرتك.",
-  "skinEn": "Match to your skin need.",
+  "descAr": "سيروم ميديكيوب زيرو بور لتقليل من Medicube. خطوة مركّزة. 30 مل.",
+  "descEn": "Medicube Zero Pore One by Medicube. Focused step. 30 ml.",
+  "useAr": "١) بعد التنظيف.\n٢) قطرات قليلة.",
+  "useEn": "1) After cleanse.\n2) Few drops.",
+  "skinAr": "حسب احتياجك.",
+  "skinEn": "Match your need.",
   "stock": 3
 });
 A.push({
@@ -73,12 +73,12 @@ A.push({
   ],
   "nameAr": "سيروم ميديكيوب تريبل كولاجين لشد البشرة - 55مل",
   "nameEn": "Medicube Triple Collagen Serum - 55ml",
-  "descAr": "سيروم ميديكيوب تريبل كولاجين لشد البشرة من Medicube. خطوة مركّزة وسريعة. 55 مل.",
-  "descEn": "Medicube Triple Collagen Serum by Medicube. Focused step, fast finish. 55 ml.",
-  "useAr": "١) بعد التنظيف.\n٢) قطرات قليلة ثم رطّبي.",
-  "useEn": "1) After cleanse.\n2) Few drops, then moisturise.",
-  "skinAr": "حسب احتياج بشرتك.",
-  "skinEn": "Match to your skin need.",
+  "descAr": "سيروم ميديكيوب تريبل كولاجين لشد من Medicube. خطوة مركّزة. 55 مل.",
+  "descEn": "Medicube Triple Collagen Serum by Medicube. Focused step. 55 ml.",
+  "useAr": "١) بعد التنظيف.\n٢) قطرات قليلة.",
+  "useEn": "1) After cleanse.\n2) Few drops.",
+  "skinAr": "حسب احتياجك.",
+  "skinEn": "Match your need.",
   "stock": 3
 });
 A.push({
@@ -93,12 +93,12 @@ A.push({
   ],
   "nameAr": "تونر ميديكيوب بي دي آر إن الوردي بالببتيد لتوهج البشرة - 250مل",
   "nameEn": "Medicube PDRN Pink Peptide Toner - 250ml",
-  "descAr": "تونر ميديكيوب بي دي آر إن الوردي بالببتيد  من Medicube. عناية واضحة وهادئة. 250 مل.",
-  "descEn": "Medicube PDRN Pink Peptide Toner by Medicube. Clear, quiet care. 250 ml.",
-  "useAr": "١) ضمن روتينك اليومي.\n٢) كمية قليلة تكفي.",
-  "useEn": "1) In your daily routine.\n2) Small amount is enough.",
+  "descAr": "تونر ميديكيوب بي دي آر إن الوردي من Medicube. عناية هادئة. 250 مل.",
+  "descEn": "Medicube PDRN Pink Peptide Toner by Medicube. Quiet care. 250 ml.",
+  "useAr": "١) ضمن روتينك.\n٢) كمية قليلة.",
+  "useEn": "1) In your routine.\n2) Small amount.",
   "skinAr": "حسب نوع البشرة.",
-  "skinEn": "Match to your skin type.",
+  "skinEn": "Match skin type.",
   "stock": 3
 });
 A.push({
@@ -113,12 +113,12 @@ A.push({
   ],
   "nameAr": "قناع ميديكيوب زيرو بور بالطين لتنقية المسام وإزالة الرؤوس السوداء + فرشاة - 100ج",
   "nameEn": "Medicube Zero Pore Blackhead Mud Mask + Brush",
-  "descAr": "قناع ميديكيوب زيرو بور بالطين لتنقية المسا من Medicube. أداة عملية يومية. 100 ج.",
-  "descEn": "Medicube Zero Pore Blackhead Mud Mask + Brush by Medicube. Practical everyday tool. 100 g.",
-  "useAr": "١) على بشرة/شعر نظيف.\n٢) اتبعي تعليمات الجهاز.",
-  "useEn": "1) On clean skin/hair.\n2) Follow device guide.",
-  "skinAr": "للاستخدام اليومي أو الأسبوعي.",
-  "skinEn": "Daily or weekly use.",
+  "descAr": "قناع ميديكيوب زيرو بور بالطين من Medicube. أداة يومية. 100 ج.",
+  "descEn": "Medicube Zero Pore Blackhead Mud Mask + by Medicube. Everyday tool. 100 g.",
+  "useAr": "١) على بشرة/شعر نظيف.\n٢) اتبعي الإرشاد.",
+  "useEn": "1) Clean skin/hair.\n2) Follow guide.",
+  "skinAr": "للاستخدام اليومي.",
+  "skinEn": "Daily use.",
   "stock": 3
 });
 A.push({
@@ -133,12 +133,12 @@ A.push({
   ],
   "nameAr": "قناع ميديكيوب الليلي بالكولاجين لشد وترطيب البشرة - 75مل",
   "nameEn": "Medicube Collagen Night Wrapping Mask - 75ml",
-  "descAr": "قناع ميديكيوب الليلي بالكولاجين لشد وترطيب من Medicube. عناية واضحة وهادئة. 75 مل.",
-  "descEn": "Medicube Collagen Night Wrapping Mask by Medicube. Clear, quiet care. 75 ml.",
-  "useAr": "١) ضمن روتينك اليومي.\n٢) كمية قليلة تكفي.",
-  "useEn": "1) In your daily routine.\n2) Small amount is enough.",
+  "descAr": "قناع ميديكيوب الليلي بالكولاجين لشد من Medicube. عناية هادئة. 75 مل.",
+  "descEn": "Medicube Collagen Night Wrapping Mask by Medicube. Quiet care. 75 ml.",
+  "useAr": "١) ضمن روتينك.\n٢) كمية قليلة.",
+  "useEn": "1) In your routine.\n2) Small amount.",
   "skinAr": "حسب نوع البشرة.",
-  "skinEn": "Match to your skin type.",
+  "skinEn": "Match skin type.",
   "stock": 3
 });
 A.push({
@@ -153,12 +153,12 @@ A.push({
   ],
   "nameAr": "قناع ميديكوب الليلي بالكوجيك والكركم لتفتيح البشرة - 75مل",
   "nameEn": "Medicube Kojic Acid Turmeric Night Wrapping Mask - 75ml",
-  "descAr": "قناع ميديكوب الليلي بالكوجيك والكركم لتفتي من Medicube. عناية واضحة وهادئة. 75 مل.",
-  "descEn": "Medicube Kojic Acid Turmeric Night Wrapping Mask by Medicube. Clear, quiet care. 75 ml.",
-  "useAr": "١) ضمن روتينك اليومي.\n٢) كمية قليلة تكفي.",
-  "useEn": "1) In your daily routine.\n2) Small amount is enough.",
+  "descAr": "قناع ميديكوب الليلي بالكوجيك من Medicube. عناية هادئة. 75 مل.",
+  "descEn": "Medicube Kojic Acid Turmeric Night by Medicube. Quiet care. 75 ml.",
+  "useAr": "١) ضمن روتينك.\n٢) كمية قليلة.",
+  "useEn": "1) In your routine.\n2) Small amount.",
   "skinAr": "حسب نوع البشرة.",
-  "skinEn": "Match to your skin type.",
+  "skinEn": "Match skin type.",
   "stock": 3
 });
 A.push({
@@ -173,12 +173,12 @@ A.push({
   ],
   "nameAr": "كريم الجيلي بحمض الهيالورونيك والسيراميد لترطيب البشرة من ميديكيوب - 50مل",
   "nameEn": "Medicube Hyaluronic Ceramide Moisturizing Jelly Cream - 50ml",
-  "descAr": "كريم الجيلي بحمض الهيالورونيك والسيراميد ل من Medicube. ترطيب مريح لليوم. 50 مل.",
-  "descEn": "Medicube Hyaluronic Ceramide Moisturizing Jelly  by Medicube. Quiet daily moisture. 50 ml.",
-  "useAr": "١) بعد السيروم.\n٢) طبقة خفيفة تكفي.",
-  "useEn": "1) After serum.\n2) Thin layer is enough.",
-  "skinAr": "للبشرة العادية إلى الجافة غالباً.",
-  "skinEn": "Often normal to dry skin.",
+  "descAr": "كريم الجيلي بحمض الهيالورونيك من Medicube. ترطيب مريح. 50 مل.",
+  "descEn": "Medicube Hyaluronic Ceramide Moisturizing by Medicube. Quiet moisture. 50 ml.",
+  "useAr": "١) بعد السيروم.\n٢) طبقة خفيفة.",
+  "useEn": "1) After serum.\n2) Thin layer.",
+  "skinAr": "غالباً عادية إلى جافة.",
+  "skinEn": "Often normal–dry.",
   "stock": 3
 });
 A.push({
@@ -193,12 +193,12 @@ A.push({
   ],
   "nameAr": "قناع ميديكوب الليلي الوردي بالكافيين لترطيب وشد البشرة - 75مل",
   "nameEn": "Medicube PDRN Pink Caffeine Night Wrapping Mask - 75ml",
-  "descAr": "قناع ميديكوب الليلي الوردي بالكافيين لترطي من Medicube. عناية واضحة وهادئة. 75 مل.",
-  "descEn": "Medicube PDRN Pink Caffeine Night Wrapping Mask by Medicube. Clear, quiet care. 75 ml.",
-  "useAr": "١) ضمن روتينك اليومي.\n٢) كمية قليلة تكفي.",
-  "useEn": "1) In your daily routine.\n2) Small amount is enough.",
+  "descAr": "قناع ميديكوب الليلي الوردي من Medicube. عناية هادئة. 75 مل.",
+  "descEn": "Medicube PDRN Pink Caffeine Night by Medicube. Quiet care. 75 ml.",
+  "useAr": "١) ضمن روتينك.\n٢) كمية قليلة.",
+  "useEn": "1) In your routine.\n2) Small amount.",
   "skinAr": "حسب نوع البشرة.",
-  "skinEn": "Match to your skin type.",
+  "skinEn": "Match skin type.",
   "stock": 3
 });
 A.push({
@@ -213,12 +213,12 @@ A.push({
   ],
   "nameAr": "زيت تنظيف ميديكيوب زيرو بور لإزالة الرؤوس السوداء وتنقية المسام - 205مل",
   "nameEn": "Medicube Zero Pore Blackhead Deep Cleansing Oil - 205ml",
-  "descAr": "زيت تنظيف ميديكيوب زيرو بور لإزالة الرؤوس  من Medicube. عناية واضحة وهادئة. 205 مل.",
-  "descEn": "Medicube Zero Pore Blackhead Deep Cleansing Oil by Medicube. Clear, quiet care. 205 ml.",
-  "useAr": "١) ضمن روتينك اليومي.\n٢) كمية قليلة تكفي.",
-  "useEn": "1) In your daily routine.\n2) Small amount is enough.",
+  "descAr": "زيت تنظيف ميديكيوب زيرو بور لإزالة من Medicube. عناية هادئة. 205 مل.",
+  "descEn": "Medicube Zero Pore Blackhead Deep by Medicube. Quiet care. 205 ml.",
+  "useAr": "١) ضمن روتينك.\n٢) كمية قليلة.",
+  "useEn": "1) In your routine.\n2) Small amount.",
   "skinAr": "حسب نوع البشرة.",
-  "skinEn": "Match to your skin type.",
+  "skinEn": "Match skin type.",
   "stock": 3
 });
 A.push({
@@ -233,12 +233,12 @@ A.push({
   ],
   "nameAr": "كريم الرقبة بي دي آر إن بالكولاجين مع أداة غوا شا من ميديكيوب - 90ج",
   "nameEn": "Medicube PDRN Collagen Neck Cream with Gua Sha",
-  "descAr": "كريم الرقبة بي دي آر إن بالكولاجين مع أداة من Medicube. ترطيب مريح لليوم. 90 ج.",
-  "descEn": "Medicube PDRN Collagen Neck Cream with Gua Sha by Medicube. Quiet daily moisture. 90 g.",
-  "useAr": "١) بعد السيروم.\n٢) طبقة خفيفة تكفي.",
-  "useEn": "1) After serum.\n2) Thin layer is enough.",
-  "skinAr": "للبشرة العادية إلى الجافة غالباً.",
-  "skinEn": "Often normal to dry skin.",
+  "descAr": "كريم الرقبة بي دي آر إن بالكولاجين من Medicube. ترطيب مريح. 90 ج.",
+  "descEn": "Medicube PDRN Collagen Neck Cream with by Medicube. Quiet moisture. 90 g.",
+  "useAr": "١) بعد السيروم.\n٢) طبقة خفيفة.",
+  "useEn": "1) After serum.\n2) Thin layer.",
+  "skinAr": "غالباً عادية إلى جافة.",
+  "skinEn": "Often normal–dry.",
   "stock": 3
 });
 A.push({
@@ -253,12 +253,12 @@ A.push({
   ],
   "nameAr": "بلسم ميديكيوب الوردي متعدد الاستخدامات للوجه بالكولاجين وبي دي آر إن - 10ج",
   "nameEn": "Medicube Eye — DB-7451402043472",
-  "descAr": "بلسم ميديكيوب الوردي متعدد الاستخدامات للو من Medicube. تغطية خفيفة لمظهر طبيعي. 10 ج.",
-  "descEn": "Medicube Eye by Medicube. Light coverage, natural finish. 10 g.",
+  "descAr": "بلسم ميديكيوب الوردي متعدد من Medicube. تغطية خفيفة طبيعية. 10 ج.",
+  "descEn": "Medicube Eye by Medicube. Light natural coverage. 10 g.",
   "useAr": "١) بعد العناية.\n٢) وزّعي برفق.",
   "useEn": "1) After skincare.\n2) Blend lightly.",
-  "skinAr": "لكل درجات البشرة — اختاري الدرجة المناسبة.",
-  "skinEn": "All skin tones — pick your shade.",
+  "skinAr": "اختاري درجتك.",
+  "skinEn": "Pick your shade.",
   "stock": 3
 });
 A.push({
@@ -273,12 +273,12 @@ A.push({
   ],
   "nameAr": "بالم ميديكيوب سوبر سيكا للتقشير وتنظيف البشرة - 100مل",
   "nameEn": "Medicube Super Cica Exfoliating Cleansing Balm",
-  "descAr": "بالم ميديكيوب سوبر سيكا للتقشير وتنظيف الب من Medicube. عناية واضحة وهادئة. 100 مل.",
-  "descEn": "Medicube Super Cica Exfoliating Cleansing Balm by Medicube. Clear, quiet care. 100 ml.",
-  "useAr": "١) ضمن روتينك اليومي.\n٢) كمية قليلة تكفي.",
-  "useEn": "1) In your daily routine.\n2) Small amount is enough.",
+  "descAr": "بالم ميديكيوب سوبر سيكا للتقشير من Medicube. عناية هادئة. 100 مل.",
+  "descEn": "Medicube Super Cica Exfoliating Cleansing by Medicube. Quiet care. 100 ml.",
+  "useAr": "١) ضمن روتينك.\n٢) كمية قليلة.",
+  "useEn": "1) In your routine.\n2) Small amount.",
   "skinAr": "حسب نوع البشرة.",
-  "skinEn": "Match to your skin type.",
+  "skinEn": "Match skin type.",
   "stock": 3
 });
 A.push({
@@ -294,10 +294,10 @@ A.push({
   ],
   "nameAr": "ماسك الشفاه الليلي ميديكيوب بي دي آر إن لترميم وترطيب الشفاه - 10ج",
   "nameEn": "Medicube PDRN Lip Sleeping Mask - 10g",
-  "descAr": "ماسك الشفاه الليلي ميديكيوب بي دي آر إن لت من Medicube. لون ناعم ومريح. 10 ج.",
-  "descEn": "Medicube PDRN Lip Sleeping Mask by Medicube. Soft colour, comfortable wear. 10 g.",
+  "descAr": "ماسك الشفاه الليلي ميديكيوب بي دي من Medicube. لون ناعم ومريح. 10 ج.",
+  "descEn": "Medicube PDRN Lip Sleeping Mask by Medicube. Soft colour. 10 g.",
   "useAr": "١) على شفاه نظيفة.\n٢) أعدِي عند الحاجة.",
-  "useEn": "1) On clean lips.\n2) Reapply as needed.",
+  "useEn": "1) Clean lips.\n2) Reapply as needed.",
   "skinAr": "لكل درجات الشفاه.",
   "skinEn": "All lip tones.",
   "stock": 3
@@ -315,12 +315,12 @@ A.push({
   ],
   "nameAr": "شامبو ميديكيوب بالروزماري بي دي أر إن المنعش لتكثيف الشعر - 400مل",
   "nameEn": "Medicube Rosemary PDRN Cooling Thickening Shampoo - 400ml",
-  "descAr": "شامبو ميديكيوب بالروزماري بي دي أر إن المن من Medicube. عناية بسيطة للشعر. 400 مل.",
-  "descEn": "Medicube Rosemary PDRN Cooling Thickening Shampo by Medicube. Simple daily hair care. 400 ml.",
-  "useAr": "١) على شعر رطب أو جاف حسب النوع.\n٢) لا تُغرقي الكمية.",
-  "useEn": "1) Damp or dry as directed.\n2) A little goes far.",
-  "skinAr": "حسب نوع الشعر والفروة.",
-  "skinEn": "Depends on hair and scalp.",
+  "descAr": "شامبو ميديكيوب بالروزماري بي دي أر من Medicube. عناية بسيطة للشعر. 400 مل.",
+  "descEn": "Medicube Rosemary PDRN Cooling Thickening by Medicube. Simple hair care. 400 ml.",
+  "useAr": "١) حسب نوع المنتج.\n٢) كمية قليلة تكفي.",
+  "useEn": "1) As directed.\n2) A little goes far.",
+  "skinAr": "حسب نوع الشعر.",
+  "skinEn": "Depends on hair type.",
   "stock": 3
 });
 A.push({
@@ -336,12 +336,12 @@ A.push({
   ],
   "nameAr": "بلسم ميديكيوب بالروزماري بي دي أر إن للشعر وفروة الرأس - 250مل",
   "nameEn": "Medicube Rosemary PDRN Hair & Scalp Conditioner - 250ml",
-  "descAr": "بلسم ميديكيوب بالروزماري بي دي أر إن للشعر من Medicube. عناية بسيطة للشعر. 250 مل.",
-  "descEn": "Medicube Rosemary PDRN Hair & Scalp Conditioner by Medicube. Simple daily hair care. 250 ml.",
-  "useAr": "١) على شعر رطب أو جاف حسب النوع.\n٢) لا تُغرقي الكمية.",
-  "useEn": "1) Damp or dry as directed.\n2) A little goes far.",
-  "skinAr": "حسب نوع الشعر والفروة.",
-  "skinEn": "Depends on hair and scalp.",
+  "descAr": "بلسم ميديكيوب بالروزماري بي دي أر من Medicube. عناية بسيطة للشعر. 250 مل.",
+  "descEn": "Medicube Rosemary PDRN Hair & Scalp by Medicube. Simple hair care. 250 ml.",
+  "useAr": "١) حسب نوع المنتج.\n٢) كمية قليلة تكفي.",
+  "useEn": "1) As directed.\n2) A little goes far.",
+  "skinAr": "حسب نوع الشعر.",
+  "skinEn": "Depends on hair type.",
   "stock": 3
 });
 A.push({
@@ -358,12 +358,12 @@ A.push({
   ],
   "nameAr": "فرشاة ميديكيوب متعددة الاستخدام لإزالة الرؤوس السوداء وتنظيف المسام",
   "nameEn": "Medicube Multi Blackhead Pore Brush",
-  "descAr": "فرشاة ميديكيوب متعددة الاستخدام لإزالة الر من Medicube. أداة عملية يومية.",
-  "descEn": "Medicube Multi Blackhead Pore Brush by Medicube. Practical everyday tool.",
-  "useAr": "١) على بشرة/شعر نظيف.\n٢) اتبعي تعليمات الجهاز.",
-  "useEn": "1) On clean skin/hair.\n2) Follow device guide.",
-  "skinAr": "للاستخدام اليومي أو الأسبوعي.",
-  "skinEn": "Daily or weekly use.",
+  "descAr": "فرشاة ميديكيوب متعددة الاستخدام من Medicube. أداة يومية.",
+  "descEn": "Medicube Multi Blackhead Pore Brush by Medicube. Everyday tool.",
+  "useAr": "١) على بشرة/شعر نظيف.\n٢) اتبعي الإرشاد.",
+  "useEn": "1) Clean skin/hair.\n2) Follow guide.",
+  "skinAr": "للاستخدام اليومي.",
+  "skinEn": "Daily use.",
   "stock": 3
 });
 A.push({
@@ -378,12 +378,12 @@ A.push({
   ],
   "nameAr": "سيروم ميديكوب ون داي إكسوسوم شوت 2000 لتجديد ونضارة البشرة - 30مل",
   "nameEn": "Medicube Beauty Tool — I0218",
-  "descAr": "سيروم ميديكوب ون داي إكسوسوم شوت 2000 لتجد من Medicube. خطوة مركّزة وسريعة. 30 مل.",
-  "descEn": "Medicube Beauty Tool by Medicube. Focused step, fast finish. 30 ml.",
-  "useAr": "١) بعد التنظيف.\n٢) قطرات قليلة ثم رطّبي.",
-  "useEn": "1) After cleanse.\n2) Few drops, then moisturise.",
-  "skinAr": "حسب احتياج بشرتك.",
-  "skinEn": "Match to your skin need.",
+  "descAr": "سيروم ميديكوب ون داي إكسوسوم شوت من Medicube. خطوة مركّزة. 30 مل.",
+  "descEn": "Medicube Beauty Tool by Medicube. Focused step. 30 ml.",
+  "useAr": "١) بعد التنظيف.\n٢) قطرات قليلة.",
+  "useEn": "1) After cleanse.\n2) Few drops.",
+  "skinAr": "حسب احتياجك.",
+  "skinEn": "Match your need.",
   "stock": 3
 });
 A.push({
@@ -398,12 +398,12 @@ A.push({
   ],
   "nameAr": "وسادات ميديكيوب زيرو لتضييق المسام وتنظيف البشرة - 70 قطعة",
   "nameEn": "Medicube Zero Pore Pad - 70 pads",
-  "descAr": "وسادات ميديكيوب زيرو لتضييق المسام وتنظيف  من Medicube. عناية واضحة وهادئة.",
-  "descEn": "Medicube Zero Pore Pad by Medicube. Clear, quiet care.",
-  "useAr": "١) ضمن روتينك اليومي.\n٢) كمية قليلة تكفي.",
-  "useEn": "1) In your daily routine.\n2) Small amount is enough.",
+  "descAr": "وسادات ميديكيوب زيرو لتضييق المسام من Medicube. عناية هادئة.",
+  "descEn": "Medicube Zero Pore Pad by Medicube. Quiet care.",
+  "useAr": "١) ضمن روتينك.\n٢) كمية قليلة.",
+  "useEn": "1) In your routine.\n2) Small amount.",
   "skinAr": "حسب نوع البشرة.",
-  "skinEn": "Match to your skin type.",
+  "skinEn": "Match skin type.",
   "stock": 3
 });
 })();

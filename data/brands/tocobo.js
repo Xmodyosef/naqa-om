@@ -13,12 +13,12 @@ A.push({
   ],
   "nameAr": "جل كريم سيكا لترميم وتهدئة البشرة من توكوبو - 75مل",
   "nameEn": "Tocobo Cica Calming Gel Cream - 75ml",
-  "descAr": "جل كريم سيكا لترميم وتهدئة البشرة من توكوب من TOCOBO. ترطيب مريح لليوم. 75 مل.",
-  "descEn": "Tocobo Cica Calming Gel Cream by TOCOBO. Quiet daily moisture. 75 ml.",
-  "useAr": "١) بعد السيروم.\n٢) طبقة خفيفة تكفي.",
-  "useEn": "1) After serum.\n2) Thin layer is enough.",
-  "skinAr": "للبشرة العادية إلى الجافة غالباً.",
-  "skinEn": "Often normal to dry skin.",
+  "descAr": "جل كريم سيكا لترميم وتهدئة البشرة من TOCOBO. ترطيب مريح. 75 مل.",
+  "descEn": "Tocobo Cica Calming Gel Cream by TOCOBO. Quiet moisture. 75 ml.",
+  "useAr": "١) بعد السيروم.\n٢) طبقة خفيفة.",
+  "useEn": "1) After serum.\n2) Thin layer.",
+  "skinAr": "غالباً عادية إلى جافة.",
+  "skinEn": "Often normal–dry.",
   "stock": 3
 });
 })();

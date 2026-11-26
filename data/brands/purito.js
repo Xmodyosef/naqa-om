@@ -13,12 +13,12 @@ A.push({
   ],
   "nameAr": "لوشن بيوريتو بزبدة الشيا لترطيب الجسم كوتون دريم لايت - 300مل",
   "nameEn": "Purito Luminous Moisture Shea Butter Body Lotion Cotton Dreamlight - 300ml",
-  "descAr": "لوشن بيوريتو بزبدة الشيا لترطيب الجسم كوتو من Purito. عناية واضحة وهادئة. 300 مل.",
-  "descEn": "Purito Luminous Moisture Shea Butter Body Lotion by Purito. Clear, quiet care. 300 ml.",
-  "useAr": "١) ضمن روتينك اليومي.\n٢) كمية قليلة تكفي.",
-  "useEn": "1) In your daily routine.\n2) Small amount is enough.",
+  "descAr": "لوشن بيوريتو بزبدة الشيا لترطيب من Purito. عناية هادئة. 300 مل.",
+  "descEn": "Purito Luminous Moisture Shea Butter Body by Purito. Quiet care. 300 ml.",
+  "useAr": "١) ضمن روتينك.\n٢) كمية قليلة.",
+  "useEn": "1) In your routine.\n2) Small amount.",
   "skinAr": "حسب نوع البشرة.",
-  "skinEn": "Match to your skin type.",
+  "skinEn": "Match skin type.",
   "stock": 3
 });
 A.push({
@@ -33,12 +33,12 @@ A.push({
   ],
   "nameAr": "لوشن بيوريتو بزبدة الشيا لترطيب الجسم ميدنايت رومانس - 300مل",
   "nameEn": "Purito Luminous Moisture Shea Butter Body Lotion Midnight Romance - 300ml",
-  "descAr": "لوشن بيوريتو بزبدة الشيا لترطيب الجسم ميدن من Purito. عناية واضحة وهادئة. 300 مل.",
-  "descEn": "Purito Luminous Moisture Shea Butter Body Lotion by Purito. Clear, quiet care. 300 ml.",
-  "useAr": "١) ضمن روتينك اليومي.\n٢) كمية قليلة تكفي.",
-  "useEn": "1) In your daily routine.\n2) Small amount is enough.",
+  "descAr": "لوشن بيوريتو بزبدة الشيا لترطيب من Purito. عناية هادئة. 300 مل.",
+  "descEn": "Purito Luminous Moisture Shea Butter Body by Purito. Quiet care. 300 ml.",
+  "useAr": "١) ضمن روتينك.\n٢) كمية قليلة.",
+  "useEn": "1) In your routine.\n2) Small amount.",
   "skinAr": "حسب نوع البشرة.",
-  "skinEn": "Match to your skin type.",
+  "skinEn": "Match skin type.",
   "stock": 3
 });
 })();

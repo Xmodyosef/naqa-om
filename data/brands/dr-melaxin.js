@@ -13,12 +13,12 @@ A.push({
   ],
   "nameAr": "أمبول دكتور ميلاكسين برايت رايس للتقشير والتوهج - 80مل",
   "nameEn": "Dr.Melaxin Peel Shot Glow White Rice Ampoule - 80ml",
-  "descAr": "أمبول دكتور ميلاكسين برايت رايس للتقشير وا من Dr.Melaxin. عناية واضحة وهادئة. 80 مل.",
-  "descEn": "Dr.Melaxin Peel Shot Glow White Rice Ampoule by Dr.Melaxin. Clear, quiet care. 80 ml.",
-  "useAr": "١) ضمن روتينك اليومي.\n٢) كمية قليلة تكفي.",
-  "useEn": "1) In your daily routine.\n2) Small amount is enough.",
+  "descAr": "أمبول دكتور ميلاكسين برايت رايس من Dr.Melaxin. عناية هادئة. 80 مل.",
+  "descEn": "Dr.Melaxin Peel Shot Glow White Rice by Dr.Melaxin. Quiet care. 80 ml.",
+  "useAr": "١) ضمن روتينك.\n٢) كمية قليلة.",
+  "useEn": "1) In your routine.\n2) Small amount.",
   "skinAr": "حسب نوع البشرة.",
-  "skinEn": "Match to your skin type.",
+  "skinEn": "Match skin type.",
   "stock": 3
 });
 })();

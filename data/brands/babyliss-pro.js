@@ -13,12 +13,12 @@ A.push({
   ],
   "nameAr": "بيبي ليس برو مملس الشعر 28مم | EP Technology 5.0 | أيوني",
   "nameEn": "BaByliss PRO 28mm Straightener | EP Technology 5.0 | Ionic",
-  "descAr": "بيبي ليس برو مملس الشعر 28مم | EP Technolo من BaByliss PRO. عناية بسيطة للشعر.",
-  "descEn": "BaByliss PRO 28mm Straightener | EP Technology 5 by BaByliss PRO. Simple daily hair care.",
-  "useAr": "١) على شعر رطب أو جاف حسب النوع.\n٢) لا تُغرقي الكمية.",
-  "useEn": "1) Damp or dry as directed.\n2) A little goes far.",
-  "skinAr": "حسب نوع الشعر والفروة.",
-  "skinEn": "Depends on hair and scalp.",
+  "descAr": "بيبي ليس برو مملس الشعر 28مم | EP من BaByliss PRO. عناية بسيطة للشعر.",
+  "descEn": "BaByliss PRO 28mm Straightener | EP by BaByliss PRO. Simple hair care.",
+  "useAr": "١) حسب نوع المنتج.\n٢) كمية قليلة تكفي.",
+  "useEn": "1) As directed.\n2) A little goes far.",
+  "skinAr": "حسب نوع الشعر.",
+  "skinEn": "Depends on hair type.",
   "stock": 3,
   "hot": true
 });

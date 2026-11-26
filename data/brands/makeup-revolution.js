@@ -15,12 +15,12 @@ A.push({
   "em": "💦",
   "nameAr": "بخاخ Superdewy المرطّب — 150مل",
   "nameEn": "Makeup Revolution Superdewy Misting Spray 150ml",
-  "descAr": "بخاخ Superdewy المرطّب من Makeup Revolution. عناية واضحة وهادئة. 150 مل.",
-  "descEn": "Makeup Revolution Superdewy Misting Spray 150ml by Makeup Revolution. Clear, quiet care. 150 ml.",
-  "useAr": "١) ضمن روتينك اليومي.\n٢) كمية قليلة تكفي.",
-  "useEn": "1) In your daily routine.\n2) Small amount is enough.",
+  "descAr": "بخاخ Superdewy المرطّب من Makeup Revolution. عناية هادئة. 150 مل.",
+  "descEn": "Makeup Revolution Superdewy Misting Spray by Makeup Revolution. Quiet care. 150 ml.",
+  "useAr": "١) ضمن روتينك.\n٢) كمية قليلة.",
+  "useEn": "1) In your routine.\n2) Small amount.",
   "skinAr": "حسب نوع البشرة.",
-  "skinEn": "Match to your skin type."
+  "skinEn": "Match skin type."
 });
 A.push({
   "brand": "Makeup Revolution",
@@ -35,12 +35,12 @@ A.push({
   "em": "🧴",
   "nameAr": "مرطب ملوّن Superdewy — Tan — 55مل",
   "nameEn": "Makeup Revolution Superdewy Tinted Moisturizer Tan 55ml",
-  "descAr": "مرطب ملوّن Superdewy من Makeup Revolution. تغطية خفيفة لمظهر طبيعي. 55 مل.",
-  "descEn": "Makeup Revolution Superdewy Tinted Moisturizer T by Makeup Revolution. Light coverage, natural finish. 55 ml.",
+  "descAr": "مرطب ملوّن Superdewy من Makeup Revolution. تغطية خفيفة طبيعية. 55 مل.",
+  "descEn": "Makeup Revolution Superdewy Tinted by Makeup Revolution. Light natural coverage. 55 ml.",
   "useAr": "١) بعد العناية.\n٢) وزّعي برفق.",
   "useEn": "1) After skincare.\n2) Blend lightly.",
-  "skinAr": "لكل درجات البشرة — اختاري الدرجة المناسبة.",
-  "skinEn": "All skin tones — pick your shade."
+  "skinAr": "اختاري درجتك.",
+  "skinEn": "Pick your shade."
 });
 A.push({
   "brand": "Makeup Revolution",
@@ -55,12 +55,12 @@ A.push({
   "em": "🧴",
   "nameAr": "مرطب ملوّن Superdewy — 55مل",
   "nameEn": "Makeup Revolution Superdewy Tinted Moisturizer 55ml",
-  "descAr": "مرطب ملوّن Superdewy من Makeup Revolution. تغطية خفيفة لمظهر طبيعي. 55 مل.",
-  "descEn": "Makeup Revolution Superdewy Tinted Moisturizer 5 by Makeup Revolution. Light coverage, natural finish. 55 ml.",
+  "descAr": "مرطب ملوّن Superdewy من Makeup Revolution. تغطية خفيفة طبيعية. 55 مل.",
+  "descEn": "Makeup Revolution Superdewy Tinted by Makeup Revolution. Light natural coverage. 55 ml.",
   "useAr": "١) بعد العناية.\n٢) وزّعي برفق.",
   "useEn": "1) After skincare.\n2) Blend lightly.",
-  "skinAr": "لكل درجات البشرة — اختاري الدرجة المناسبة.",
-  "skinEn": "All skin tones — pick your shade."
+  "skinAr": "اختاري درجتك.",
+  "skinEn": "Pick your shade."
 });
 A.push({
   "brand": "Makeup Revolution",
@@ -75,12 +75,12 @@ A.push({
   "em": "🪄",
   "nameAr": "برايمر Superdewy كريمي — 8جم",
   "nameEn": "Makeup Revolution Superdewy Makeup Primer Base 8g",
-  "descAr": "برايمر Superdewy كريمي من Makeup Revolution. تغطية خفيفة لمظهر طبيعي. 8 ج.",
-  "descEn": "Makeup Revolution Superdewy Makeup Primer Base 8 by Makeup Revolution. Light coverage, natural finish. 8 g.",
+  "descAr": "برايمر Superdewy كريمي من Makeup Revolution. تغطية خفيفة طبيعية. 8 ج.",
+  "descEn": "Makeup Revolution Superdewy Makeup Primer by Makeup Revolution. Light natural coverage. 8 g.",
   "useAr": "١) بعد العناية.\n٢) وزّعي برفق.",
   "useEn": "1) After skincare.\n2) Blend lightly.",
-  "skinAr": "لكل درجات البشرة — اختاري الدرجة المناسبة.",
-  "skinEn": "All skin tones — pick your shade."
+  "skinAr": "اختاري درجتك.",
+  "skinEn": "Pick your shade."
 });
 A.push({
   "brand": "Makeup Revolution",
@@ -96,12 +96,12 @@ A.push({
   "em": "🟧",
   "nameAr": "فاونديشن Conceal & Define — F6 — 23مل",
   "nameEn": "Makeup Revolution Conceal & Define Foundation F6 23ml",
-  "descAr": "فاونديشن Conceal & Define من Makeup Revolution. تغطية خفيفة لمظهر طبيعي. 23 مل.",
-  "descEn": "Makeup Revolution Conceal & Define Foundation F6 by Makeup Revolution. Light coverage, natural finish. 23 ml.",
+  "descAr": "فاونديشن Conceal & Define من Makeup Revolution. تغطية خفيفة طبيعية. 23 مل.",
+  "descEn": "Makeup Revolution Conceal & Define by Makeup Revolution. Light natural coverage. 23 ml.",
   "useAr": "١) بعد العناية.\n٢) وزّعي برفق.",
   "useEn": "1) After skincare.\n2) Blend lightly.",
-  "skinAr": "لكل درجات البشرة — اختاري الدرجة المناسبة.",
-  "skinEn": "All skin tones — pick your shade."
+  "skinAr": "اختاري درجتك.",
+  "skinEn": "Pick your shade."
 });
 A.push({
   "brand": "Makeup Revolution",
@@ -116,12 +116,12 @@ A.push({
   "em": "🟧",
   "nameAr": "فاونديشن Conceal & Define — F2 — 23مل",
   "nameEn": "Makeup Revolution Conceal & Define Foundation F2 23ml",
-  "descAr": "فاونديشن Conceal & Define من Makeup Revolution. تغطية خفيفة لمظهر طبيعي. 23 مل.",
-  "descEn": "Makeup Revolution Conceal & Define Foundation F2 by Makeup Revolution. Light coverage, natural finish. 23 ml.",
+  "descAr": "فاونديشن Conceal & Define من Makeup Revolution. تغطية خفيفة طبيعية. 23 مل.",
+  "descEn": "Makeup Revolution Conceal & Define by Makeup Revolution. Light natural coverage. 23 ml.",
   "useAr": "١) بعد العناية.\n٢) وزّعي برفق.",
   "useEn": "1) After skincare.\n2) Blend lightly.",
-  "skinAr": "لكل درجات البشرة — اختاري الدرجة المناسبة.",
-  "skinEn": "All skin tones — pick your shade."
+  "skinAr": "اختاري درجتك.",
+  "skinEn": "Pick your shade."
 });
 A.push({
   "brand": "Makeup Revolution",
@@ -136,12 +136,12 @@ A.push({
   "em": "🟧",
   "nameAr": "فاونديشن Conceal & Define — F4 — 23مل",
   "nameEn": "Makeup Revolution Conceal & Define Foundation F4 23ml",
-  "descAr": "فاونديشن Conceal & Define من Makeup Revolution. تغطية خفيفة لمظهر طبيعي. 23 مل.",
-  "descEn": "Makeup Revolution Conceal & Define Foundation F4 by Makeup Revolution. Light coverage, natural finish. 23 ml.",
+  "descAr": "فاونديشن Conceal & Define من Makeup Revolution. تغطية خفيفة طبيعية. 23 مل.",
+  "descEn": "Makeup Revolution Conceal & Define by Makeup Revolution. Light natural coverage. 23 ml.",
   "useAr": "١) بعد العناية.\n٢) وزّعي برفق.",
   "useEn": "1) After skincare.\n2) Blend lightly.",
-  "skinAr": "لكل درجات البشرة — اختاري الدرجة المناسبة.",
-  "skinEn": "All skin tones — pick your shade."
+  "skinAr": "اختاري درجتك.",
+  "skinEn": "Pick your shade."
 });
 A.push({
   "brand": "Makeup Revolution",
@@ -156,12 +156,12 @@ A.push({
   "em": "🟧",
   "nameAr": "فاونديشن Conceal & Define — F7 — 23مل",
   "nameEn": "Makeup Revolution Conceal & Define Foundation F7 23ml",
-  "descAr": "فاونديشن Conceal & Define من Makeup Revolution. تغطية خفيفة لمظهر طبيعي. 23 مل.",
-  "descEn": "Makeup Revolution Conceal & Define Foundation F7 by Makeup Revolution. Light coverage, natural finish. 23 ml.",
+  "descAr": "فاونديشن Conceal & Define من Makeup Revolution. تغطية خفيفة طبيعية. 23 مل.",
+  "descEn": "Makeup Revolution Conceal & Define by Makeup Revolution. Light natural coverage. 23 ml.",
   "useAr": "١) بعد العناية.\n٢) وزّعي برفق.",
   "useEn": "1) After skincare.\n2) Blend lightly.",
-  "skinAr": "لكل درجات البشرة — اختاري الدرجة المناسبة.",
-  "skinEn": "All skin tones — pick your shade."
+  "skinAr": "اختاري درجتك.",
+  "skinEn": "Pick your shade."
 });
 A.push({
   "brand": "Makeup Revolution",
@@ -177,12 +177,12 @@ A.push({
   "em": "✨",
   "nameAr": "كونسيلر Conceal & Define — C10",
   "nameEn": "Makeup Revolution Conceal & Define Concealer C10",
-  "descAr": "كونسيلر Conceal & Define من Makeup Revolution. تغطية خفيفة لمظهر طبيعي.",
-  "descEn": "Makeup Revolution Conceal & Define Concealer C10 by Makeup Revolution. Light coverage, natural finish.",
+  "descAr": "كونسيلر Conceal & Define من Makeup Revolution. تغطية خفيفة طبيعية.",
+  "descEn": "Makeup Revolution Conceal & Define by Makeup Revolution. Light natural coverage.",
   "useAr": "١) بعد العناية.\n٢) وزّعي برفق.",
   "useEn": "1) After skincare.\n2) Blend lightly.",
-  "skinAr": "لكل درجات البشرة — اختاري الدرجة المناسبة.",
-  "skinEn": "All skin tones — pick your shade."
+  "skinAr": "اختاري درجتك.",
+  "skinEn": "Pick your shade."
 });
 A.push({
   "brand": "Makeup Revolution",
@@ -197,12 +197,12 @@ A.push({
   "em": "✨",
   "nameAr": "كونسيلر Conceal & Define — C11",
   "nameEn": "Makeup Revolution Conceal & Define Concealer C11",
-  "descAr": "كونسيلر Conceal & Define من Makeup Revolution. تغطية خفيفة لمظهر طبيعي.",
-  "descEn": "Makeup Revolution Conceal & Define Concealer C11 by Makeup Revolution. Light coverage, natural finish.",
+  "descAr": "كونسيلر Conceal & Define من Makeup Revolution. تغطية خفيفة طبيعية.",
+  "descEn": "Makeup Revolution Conceal & Define by Makeup Revolution. Light natural coverage.",
   "useAr": "١) بعد العناية.\n٢) وزّعي برفق.",
   "useEn": "1) After skincare.\n2) Blend lightly.",
-  "skinAr": "لكل درجات البشرة — اختاري الدرجة المناسبة.",
-  "skinEn": "All skin tones — pick your shade."
+  "skinAr": "اختاري درجتك.",
+  "skinEn": "Pick your shade."
 });
 A.push({
   "brand": "Makeup Revolution",
@@ -217,12 +217,12 @@ A.push({
   "em": "🌸",
   "nameAr": "بلاش سائل Superdewy — You Had Me At First Blush",
   "nameEn": "Makeup Revolution Superdewy Liquid Blush — You Had Me At First Blush",
-  "descAr": "بلاش سائل Superdewy من Makeup Revolution. تغطية خفيفة لمظهر طبيعي.",
-  "descEn": "Makeup Revolution Superdewy Liquid Blush by Makeup Revolution. Light coverage, natural finish.",
+  "descAr": "بلاش سائل Superdewy من Makeup Revolution. تغطية خفيفة طبيعية.",
+  "descEn": "Makeup Revolution Superdewy Liquid Blush by Makeup Revolution. Light natural coverage.",
   "useAr": "١) بعد العناية.\n٢) وزّعي برفق.",
   "useEn": "1) After skincare.\n2) Blend lightly.",
-  "skinAr": "لكل درجات البشرة — اختاري الدرجة المناسبة.",
-  "skinEn": "All skin tones — pick your shade."
+  "skinAr": "اختاري درجتك.",
+  "skinEn": "Pick your shade."
 });
 A.push({
   "brand": "Makeup Revolution",
@@ -237,12 +237,12 @@ A.push({
   "em": "🌸",
   "nameAr": "بلاش سائل Superdewy — Blush Me Up",
   "nameEn": "Makeup Revolution Superdewy Liquid Blush — Blush Me Up",
-  "descAr": "بلاش سائل Superdewy من Makeup Revolution. تغطية خفيفة لمظهر طبيعي.",
-  "descEn": "Makeup Revolution Superdewy Liquid Blush by Makeup Revolution. Light coverage, natural finish.",
+  "descAr": "بلاش سائل Superdewy من Makeup Revolution. تغطية خفيفة طبيعية.",
+  "descEn": "Makeup Revolution Superdewy Liquid Blush by Makeup Revolution. Light natural coverage.",
   "useAr": "١) بعد العناية.\n٢) وزّعي برفق.",
   "useEn": "1) After skincare.\n2) Blend lightly.",
-  "skinAr": "لكل درجات البشرة — اختاري الدرجة المناسبة.",
-  "skinEn": "All skin tones — pick your shade."
+  "skinAr": "اختاري درجتك.",
+  "skinEn": "Pick your shade."
 });
 A.push({
   "brand": "Makeup Revolution",
@@ -257,12 +257,12 @@ A.push({
   "em": "🌸",
   "nameAr": "بلاش سائل Superdewy — You Got Me Blushing",
   "nameEn": "Makeup Revolution Superdewy Liquid Blush — You Got Me Blushing",
-  "descAr": "بلاش سائل Superdewy من Makeup Revolution. تغطية خفيفة لمظهر طبيعي.",
-  "descEn": "Makeup Revolution Superdewy Liquid Blush by Makeup Revolution. Light coverage, natural finish.",
+  "descAr": "بلاش سائل Superdewy من Makeup Revolution. تغطية خفيفة طبيعية.",
+  "descEn": "Makeup Revolution Superdewy Liquid Blush by Makeup Revolution. Light natural coverage.",
   "useAr": "١) بعد العناية.\n٢) وزّعي برفق.",
   "useEn": "1) After skincare.\n2) Blend lightly.",
-  "skinAr": "لكل درجات البشرة — اختاري الدرجة المناسبة.",
-  "skinEn": "All skin tones — pick your shade."
+  "skinAr": "اختاري درجتك.",
+  "skinEn": "Pick your shade."
 });
 A.push({
   "brand": "Makeup Revolution",
@@ -277,12 +277,12 @@ A.push({
   "em": "💗",
   "nameAr": "بلاشر Reloaded — Rose Kiss",
   "nameEn": "Makeup Revolution Blusher Reloaded — Rose Kiss",
-  "descAr": "بلاشر Reloaded من Makeup Revolution. تغطية خفيفة لمظهر طبيعي.",
-  "descEn": "Makeup Revolution Blusher Reloaded by Makeup Revolution. Light coverage, natural finish.",
+  "descAr": "بلاشر Reloaded من Makeup Revolution. تغطية خفيفة طبيعية.",
+  "descEn": "Makeup Revolution Blusher Reloaded by Makeup Revolution. Light natural coverage.",
   "useAr": "١) بعد العناية.\n٢) وزّعي برفق.",
   "useEn": "1) After skincare.\n2) Blend lightly.",
-  "skinAr": "لكل درجات البشرة — اختاري الدرجة المناسبة.",
-  "skinEn": "All skin tones — pick your shade."
+  "skinAr": "اختاري درجتك.",
+  "skinEn": "Pick your shade."
 });
 A.push({
   "brand": "Makeup Revolution",
@@ -298,12 +298,12 @@ A.push({
   "em": "🎨",
   "nameAr": "باليت ظلال Reloaded — Euphoria",
   "nameEn": "Makeup Revolution Reloaded Palette — Euphoria 16.5g",
-  "descAr": "باليت ظلال Reloaded من Makeup Revolution. عناية واضحة وهادئة. 16.5 ج.",
-  "descEn": "Makeup Revolution Reloaded Palette by Makeup Revolution. Clear, quiet care. 16.5 g.",
-  "useAr": "١) ضمن روتينك اليومي.\n٢) كمية قليلة تكفي.",
-  "useEn": "1) In your daily routine.\n2) Small amount is enough.",
+  "descAr": "باليت ظلال Reloaded من Makeup Revolution. عناية هادئة. 16.5 ج.",
+  "descEn": "Makeup Revolution Reloaded Palette by Makeup Revolution. Quiet care. 16.5 g.",
+  "useAr": "١) ضمن روتينك.\n٢) كمية قليلة.",
+  "useEn": "1) In your routine.\n2) Small amount.",
   "skinAr": "حسب نوع البشرة.",
-  "skinEn": "Match to your skin type."
+  "skinEn": "Match skin type."
 });
 A.push({
   "brand": "Makeup Revolution",
@@ -318,12 +318,12 @@ A.push({
   "em": "🎨",
   "nameAr": "باليت ظلال Reloaded — Affection",
   "nameEn": "Makeup Revolution Reloaded Palette — Affection 16.5g",
-  "descAr": "باليت ظلال Reloaded من Makeup Revolution. عناية واضحة وهادئة. 16.5 ج.",
-  "descEn": "Makeup Revolution Reloaded Palette by Makeup Revolution. Clear, quiet care. 16.5 g.",
-  "useAr": "١) ضمن روتينك اليومي.\n٢) كمية قليلة تكفي.",
-  "useEn": "1) In your daily routine.\n2) Small amount is enough.",
+  "descAr": "باليت ظلال Reloaded من Makeup Revolution. عناية هادئة. 16.5 ج.",
+  "descEn": "Makeup Revolution Reloaded Palette by Makeup Revolution. Quiet care. 16.5 g.",
+  "useAr": "١) ضمن روتينك.\n٢) كمية قليلة.",
+  "useEn": "1) In your routine.\n2) Small amount.",
   "skinAr": "حسب نوع البشرة.",
-  "skinEn": "Match to your skin type."
+  "skinEn": "Match skin type."
 });
 A.push({
   "brand": "Makeup Revolution",
@@ -338,12 +338,12 @@ A.push({
   "em": "🎨",
   "nameAr": "باليت ظلال Reloaded — Blackout",
   "nameEn": "Makeup Revolution Reloaded Palette — Blackout 16.5g",
-  "descAr": "باليت ظلال Reloaded من Makeup Revolution. عناية واضحة وهادئة. 16.5 ج.",
-  "descEn": "Makeup Revolution Reloaded Palette by Makeup Revolution. Clear, quiet care. 16.5 g.",
-  "useAr": "١) ضمن روتينك اليومي.\n٢) كمية قليلة تكفي.",
-  "useEn": "1) In your daily routine.\n2) Small amount is enough.",
+  "descAr": "باليت ظلال Reloaded من Makeup Revolution. عناية هادئة. 16.5 ج.",
+  "descEn": "Makeup Revolution Reloaded Palette by Makeup Revolution. Quiet care. 16.5 g.",
+  "useAr": "١) ضمن روتينك.\n٢) كمية قليلة.",
+  "useEn": "1) In your routine.\n2) Small amount.",
   "skinAr": "حسب نوع البشرة.",
-  "skinEn": "Match to your skin type."
+  "skinEn": "Match skin type."
 });
 A.push({
   "brand": "Makeup Revolution",
@@ -358,12 +358,12 @@ A.push({
   "em": "✨",
   "nameAr": "هايلايتر Reloaded — Make an Impact",
   "nameEn": "Makeup Revolution Highlighter Reloaded — Make an Impact",
-  "descAr": "هايلايتر Reloaded من Makeup Revolution. تغطية خفيفة لمظهر طبيعي.",
-  "descEn": "Makeup Revolution Highlighter Reloaded by Makeup Revolution. Light coverage, natural finish.",
+  "descAr": "هايلايتر Reloaded من Makeup Revolution. تغطية خفيفة طبيعية.",
+  "descEn": "Makeup Revolution Highlighter Reloaded by Makeup Revolution. Light natural coverage.",
   "useAr": "١) بعد العناية.\n٢) وزّعي برفق.",
   "useEn": "1) After skincare.\n2) Blend lightly.",
-  "skinAr": "لكل درجات البشرة — اختاري الدرجة المناسبة.",
-  "skinEn": "All skin tones — pick your shade."
+  "skinAr": "اختاري درجتك.",
+  "skinEn": "Pick your shade."
 });
 A.push({
   "brand": "Makeup Revolution",
@@ -378,12 +378,12 @@ A.push({
   "em": "☀️",
   "nameAr": "برونزر Mega — 02 Warm",
   "nameEn": "Makeup Revolution Mega Bronzer 02 Warm",
-  "descAr": "برونزر Mega من Makeup Revolution. تغطية خفيفة لمظهر طبيعي.",
-  "descEn": "Makeup Revolution Mega Bronzer 02 Warm by Makeup Revolution. Light coverage, natural finish.",
+  "descAr": "برونزر Mega من Makeup Revolution. تغطية خفيفة طبيعية.",
+  "descEn": "Makeup Revolution Mega Bronzer 02 Warm by Makeup Revolution. Light natural coverage.",
   "useAr": "١) بعد العناية.\n٢) وزّعي برفق.",
   "useEn": "1) After skincare.\n2) Blend lightly.",
-  "skinAr": "لكل درجات البشرة — اختاري الدرجة المناسبة.",
-  "skinEn": "All skin tones — pick your shade."
+  "skinAr": "اختاري درجتك.",
+  "skinEn": "Pick your shade."
 });
 A.push({
   "brand": "Makeup Revolution",
@@ -398,11 +398,11 @@ A.push({
   "em": "☀️",
   "nameAr": "برونزر Mega — 01 Cool",
   "nameEn": "Makeup Revolution Mega Bronzer 01 Cool",
-  "descAr": "برونزر Mega من Makeup Revolution. تغطية خفيفة لمظهر طبيعي.",
-  "descEn": "Makeup Revolution Mega Bronzer 01 Cool by Makeup Revolution. Light coverage, natural finish.",
+  "descAr": "برونزر Mega من Makeup Revolution. تغطية خفيفة طبيعية.",
+  "descEn": "Makeup Revolution Mega Bronzer 01 Cool by Makeup Revolution. Light natural coverage.",
   "useAr": "١) بعد العناية.\n٢) وزّعي برفق.",
   "useEn": "1) After skincare.\n2) Blend lightly.",
-  "skinAr": "لكل درجات البشرة — اختاري الدرجة المناسبة.",
-  "skinEn": "All skin tones — pick your shade."
+  "skinAr": "اختاري درجتك.",
+  "skinEn": "Pick your shade."
 });
 })();

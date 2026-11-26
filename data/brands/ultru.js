@@ -13,10 +13,10 @@ A.push({
   ],
   "nameAr": "قناع اسفل العين هيدروجيل ام سوري فور ماي سكين للتفتيح - 60 قطعة",
   "nameEn": "I'm Sorry For My Skin Hydrogel Under-Eye Mask - 60pcs",
-  "descAr": "قناع اسفل العين هيدروجيل ام سوري فور ماي س من Ultru. لون ناعم ومريح.",
-  "descEn": "I'm Sorry For My Skin Hydrogel Under by Ultru. Soft colour, comfortable wear.",
+  "descAr": "قناع اسفل العين هيدروجيل ام سوري من Ultru. لون ناعم ومريح.",
+  "descEn": "I'm Sorry For My Skin Hydrogel Under by Ultru. Soft colour.",
   "useAr": "١) على شفاه نظيفة.\n٢) أعدِي عند الحاجة.",
-  "useEn": "1) On clean lips.\n2) Reapply as needed.",
+  "useEn": "1) Clean lips.\n2) Reapply as needed.",
   "skinAr": "لكل درجات الشفاه.",
   "skinEn": "All lip tones.",
   "stock": 3

@@ -13,12 +13,12 @@ A.push({
   ],
   "nameAr": "مقشر اكيور لتفتيح الوجه - 118مل",
   "nameEn": "Acure Brightening Facial Scrub - 118ml",
-  "descAr": "مقشر اكيور لتفتيح الوجه من Acure. تغطية خفيفة لمظهر طبيعي. 118 مل.",
-  "descEn": "Acure Brightening Facial Scrub by Acure. Light coverage, natural finish. 118 ml.",
+  "descAr": "مقشر اكيور لتفتيح الوجه من Acure. تغطية خفيفة طبيعية. 118 مل.",
+  "descEn": "Acure Brightening Facial Scrub by Acure. Light natural coverage. 118 ml.",
   "useAr": "١) بعد العناية.\n٢) وزّعي برفق.",
   "useEn": "1) After skincare.\n2) Blend lightly.",
-  "skinAr": "لكل درجات البشرة — اختاري الدرجة المناسبة.",
-  "skinEn": "All skin tones — pick your shade.",
+  "skinAr": "اختاري درجتك.",
+  "skinEn": "Pick your shade.",
   "stock": 3
 });
 })();

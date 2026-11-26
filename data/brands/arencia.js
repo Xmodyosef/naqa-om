@@ -15,12 +15,12 @@ A.push({
   ],
   "nameAr": "سيروم أرينسيا بفيتامين سي لتعزيز إشراقة البشرة - 30مل",
   "nameEn": "Arencia Vitamin C Booster Shot - 30ml",
-  "descAr": "سيروم أرينسيا بفيتامين سي لتعزيز إشراقة ال من Arencia. خطوة مركّزة وسريعة. 30 مل.",
-  "descEn": "Arencia Vitamin C Booster Shot by Arencia. Focused step, fast finish. 30 ml.",
-  "useAr": "١) بعد التنظيف.\n٢) قطرات قليلة ثم رطّبي.",
-  "useEn": "1) After cleanse.\n2) Few drops, then moisturise.",
-  "skinAr": "حسب احتياج بشرتك.",
-  "skinEn": "Match to your skin need.",
+  "descAr": "سيروم أرينسيا بفيتامين سي لتعزيز من Arencia. خطوة مركّزة. 30 مل.",
+  "descEn": "Arencia Vitamin C Booster Shot by Arencia. Focused step. 30 ml.",
+  "useAr": "١) بعد التنظيف.\n٢) قطرات قليلة.",
+  "useEn": "1) After cleanse.\n2) Few drops.",
+  "skinAr": "حسب احتياجك.",
+  "skinEn": "Match your need.",
   "stock": 3
 });
 A.push({
@@ -35,12 +35,12 @@ A.push({
   ],
   "nameAr": "سيروم أرينسيا بالريتينال لتعزيز تجديد البشرة - 30مل",
   "nameEn": "Arencia Retinal Booster Shot - 30ml",
-  "descAr": "سيروم أرينسيا بالريتينال لتعزيز تجديد البش من Arencia. خطوة مركّزة وسريعة. 30 مل.",
-  "descEn": "Arencia Retinal Booster Shot by Arencia. Focused step, fast finish. 30 ml.",
-  "useAr": "١) بعد التنظيف.\n٢) قطرات قليلة ثم رطّبي.",
-  "useEn": "1) After cleanse.\n2) Few drops, then moisturise.",
-  "skinAr": "حسب احتياج بشرتك.",
-  "skinEn": "Match to your skin need.",
+  "descAr": "سيروم أرينسيا بالريتينال لتعزيز من Arencia. خطوة مركّزة. 30 مل.",
+  "descEn": "Arencia Retinal Booster Shot by Arencia. Focused step. 30 ml.",
+  "useAr": "١) بعد التنظيف.\n٢) قطرات قليلة.",
+  "useEn": "1) After cleanse.\n2) Few drops.",
+  "skinAr": "حسب احتياجك.",
+  "skinEn": "Match your need.",
   "stock": 3
 });
 A.push({
@@ -55,12 +55,12 @@ A.push({
   ],
   "nameAr": "سيروم أرينسيا إريزر شوت بحمض الجليكوليك - 30مل",
   "nameEn": "Arencia Eraser Shot Glycolic Acid Booster - 30ml",
-  "descAr": "سيروم أرينسيا إريزر شوت بحمض الجليكوليك من Arencia. خطوة مركّزة وسريعة. 30 مل.",
-  "descEn": "Arencia Eraser Shot Glycolic Acid Booster by Arencia. Focused step, fast finish. 30 ml.",
-  "useAr": "١) بعد التنظيف.\n٢) قطرات قليلة ثم رطّبي.",
-  "useEn": "1) After cleanse.\n2) Few drops, then moisturise.",
-  "skinAr": "حسب احتياج بشرتك.",
-  "skinEn": "Match to your skin need.",
+  "descAr": "سيروم أرينسيا إريزر شوت بحمض من Arencia. خطوة مركّزة. 30 مل.",
+  "descEn": "Arencia Eraser Shot Glycolic Acid Booster by Arencia. Focused step. 30 ml.",
+  "useAr": "١) بعد التنظيف.\n٢) قطرات قليلة.",
+  "useEn": "1) After cleanse.\n2) Few drops.",
+  "skinAr": "حسب احتياجك.",
+  "skinEn": "Match your need.",
   "stock": 3
 });
 A.push({
@@ -75,12 +75,12 @@ A.push({
   ],
   "nameAr": "سيروم أرينسيا تي إكس إيه بوستر شوت - 30مل",
   "nameEn": "Arencia TXA Booster Shot - 30ml",
-  "descAr": "سيروم أرينسيا تي إكس إيه بوستر شوت من Arencia. خطوة مركّزة وسريعة. 30 مل.",
-  "descEn": "Arencia TXA Booster Shot by Arencia. Focused step, fast finish. 30 ml.",
-  "useAr": "١) بعد التنظيف.\n٢) قطرات قليلة ثم رطّبي.",
-  "useEn": "1) After cleanse.\n2) Few drops, then moisturise.",
-  "skinAr": "حسب احتياج بشرتك.",
-  "skinEn": "Match to your skin need.",
+  "descAr": "سيروم أرينسيا تي إكس إيه بوستر شوت من Arencia. خطوة مركّزة. 30 مل.",
+  "descEn": "Arencia TXA Booster Shot by Arencia. Focused step. 30 ml.",
+  "useAr": "١) بعد التنظيف.\n٢) قطرات قليلة.",
+  "useEn": "1) After cleanse.\n2) Few drops.",
+  "skinAr": "حسب احتياجك.",
+  "skinEn": "Match your need.",
   "stock": 3
 });
 A.push({
@@ -95,12 +95,12 @@ A.push({
   ],
   "nameAr": "سيروم أرينسيا إن إيه دي بلس بوستر شوت - 30مل",
   "nameEn": "Arencia NAD+ Booster Shot - 30ml",
-  "descAr": "سيروم أرينسيا إن إيه دي بلس بوستر شوت من Arencia. خطوة مركّزة وسريعة. 30 مل.",
-  "descEn": "Arencia NAD+ Booster Shot by Arencia. Focused step, fast finish. 30 ml.",
-  "useAr": "١) بعد التنظيف.\n٢) قطرات قليلة ثم رطّبي.",
-  "useEn": "1) After cleanse.\n2) Few drops, then moisturise.",
-  "skinAr": "حسب احتياج بشرتك.",
-  "skinEn": "Match to your skin need.",
+  "descAr": "سيروم أرينسيا إن إيه دي بلس بوستر من Arencia. خطوة مركّزة. 30 مل.",
+  "descEn": "Arencia NAD+ Booster Shot by Arencia. Focused step. 30 ml.",
+  "useAr": "١) بعد التنظيف.\n٢) قطرات قليلة.",
+  "useEn": "1) After cleanse.\n2) Few drops.",
+  "skinAr": "حسب احتياجك.",
+  "skinEn": "Match your need.",
   "stock": 3
 });
 A.push({
@@ -115,11 +115,11 @@ A.push({
   ],
   "nameAr": "غسول موشي بالأرز الأخضر الطازج من أرينسيا - 120ج",
   "nameEn": "Arencia Fresh Green Rice Mochi Cleanser - 120g",
-  "descAr": "غسول موشي بالأرز الأخضر الطازج من أرينسيا من Arencia. ينظّف بلطف دون شد. 120 ج.",
-  "descEn": "Arencia Fresh Green Rice Mochi Cleanser by Arencia. Gentle cleanse, no tight feel. 120 g.",
+  "descAr": "غسول موشي بالأرز الأخضر الطازج من من Arencia. ينظّف بلطف. 120 ج.",
+  "descEn": "Arencia Fresh Green Rice Mochi Cleanser by Arencia. Gentle cleanse. 120 g.",
   "useAr": "١) على بشرة رطبة.\n٢) دلكي واشطفي.",
-  "useEn": "1) On damp skin.\n2) Massage, rinse.",
-  "skinAr": "مناسب لمعظم أنواع البشرة.",
+  "useEn": "1) Damp skin.\n2) Massage, rinse.",
+  "skinAr": "معظم أنواع البشرة.",
   "skinEn": "Most skin types.",
   "stock": 3
 });
@@ -135,12 +135,12 @@ A.push({
   ],
   "nameAr": "سيروم أرينسيا بي دي أر إن بوستر شوت - 30مل",
   "nameEn": "Arencia PDRN Booster Shot Serum - 30ml",
-  "descAr": "سيروم أرينسيا بي دي أر إن بوستر شوت من Arencia. خطوة مركّزة وسريعة. 30 مل.",
-  "descEn": "Arencia PDRN Booster Shot Serum by Arencia. Focused step, fast finish. 30 ml.",
-  "useAr": "١) بعد التنظيف.\n٢) قطرات قليلة ثم رطّبي.",
-  "useEn": "1) After cleanse.\n2) Few drops, then moisturise.",
-  "skinAr": "حسب احتياج بشرتك.",
-  "skinEn": "Match to your skin need.",
+  "descAr": "سيروم أرينسيا بي دي أر إن بوستر شوت من Arencia. خطوة مركّزة. 30 مل.",
+  "descEn": "Arencia PDRN Booster Shot Serum by Arencia. Focused step. 30 ml.",
+  "useAr": "١) بعد التنظيف.\n٢) قطرات قليلة.",
+  "useEn": "1) After cleanse.\n2) Few drops.",
+  "skinAr": "حسب احتياجك.",
+  "skinEn": "Match your need.",
   "stock": 3
 });
 })();

@@ -14,11 +14,11 @@ A.push({
   "nameAr": "مملس الشعر نوفا دوناتيلا | MK-101 | أسود مطفي",
   "nameEn": "Nuova Donatella Hair Straightener | MK-101 | Matte Black",
   "descAr": "مملس الشعر نوفا دوناتيلا | MK من Nuova Donatella. عناية بسيطة للشعر.",
-  "descEn": "Nuova Donatella Hair Straightener | MK by Nuova Donatella. Simple daily hair care.",
-  "useAr": "١) على شعر رطب أو جاف حسب النوع.\n٢) لا تُغرقي الكمية.",
-  "useEn": "1) Damp or dry as directed.\n2) A little goes far.",
-  "skinAr": "حسب نوع الشعر والفروة.",
-  "skinEn": "Depends on hair and scalp.",
+  "descEn": "Nuova Donatella Hair Straightener | MK by Nuova Donatella. Simple hair care.",
+  "useAr": "١) حسب نوع المنتج.\n٢) كمية قليلة تكفي.",
+  "useEn": "1) As directed.\n2) A little goes far.",
+  "skinAr": "حسب نوع الشعر.",
+  "skinEn": "Depends on hair type.",
   "stock": 3,
   "hot": true
 });
@@ -34,12 +34,12 @@ A.push({
   ],
   "nameAr": "مكواة فرد الشعر نوفا دوناتيلا ذات اللوحة العريضة | MK-136 | أسود مطفي",
   "nameEn": "Nuova Donatella Wide Plate Hair Straightener | MK-136 | Matte Black",
-  "descAr": "مكواة فرد الشعر نوفا دوناتيلا ذات اللوحة ا من Nuova Donatella. عناية بسيطة للشعر.",
-  "descEn": "Nuova Donatella Wide Plate Hair Straightener | M by Nuova Donatella. Simple daily hair care.",
-  "useAr": "١) على شعر رطب أو جاف حسب النوع.\n٢) لا تُغرقي الكمية.",
-  "useEn": "1) Damp or dry as directed.\n2) A little goes far.",
-  "skinAr": "حسب نوع الشعر والفروة.",
-  "skinEn": "Depends on hair and scalp.",
+  "descAr": "مكواة فرد الشعر نوفا دوناتيلا ذات من Nuova Donatella. عناية بسيطة للشعر.",
+  "descEn": "Nuova Donatella Wide Plate Hair by Nuova Donatella. Simple hair care.",
+  "useAr": "١) حسب نوع المنتج.\n٢) كمية قليلة تكفي.",
+  "useEn": "1) As directed.\n2) A little goes far.",
+  "skinAr": "حسب نوع الشعر.",
+  "skinEn": "Depends on hair type.",
   "stock": 3
 });
 })();

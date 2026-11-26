@@ -13,10 +13,10 @@ A.push({
   ],
   "nameAr": "شامبو وبلسم نيتروجينا تي/جيل 2 في 1 لعلاج مشاكل فروة الرأس - 250مل",
   "nameEn": "Neutrogena T/Gel 2In1 Scalp 250Ml Shampoo And Conditioner - 250ml",
-  "descAr": "شامبو وبلسم نيتروجينا تي/جيل 2 في 1 لعلاج  من Neutrogena. لون ناعم ومريح. 250 مل.",
-  "descEn": "Neutrogena T/Gel 2In1 Scalp 250Ml Shampoo And Co by Neutrogena. Soft colour, comfortable wear. 250 ml.",
+  "descAr": "شامبو وبلسم نيتروجينا تي/جيل 2 في 1 من Neutrogena. لون ناعم ومريح. 250 مل.",
+  "descEn": "Neutrogena T/Gel 2In1 Scalp 250Ml Shampoo by Neutrogena. Soft colour. 250 ml.",
   "useAr": "١) على شفاه نظيفة.\n٢) أعدِي عند الحاجة.",
-  "useEn": "1) On clean lips.\n2) Reapply as needed.",
+  "useEn": "1) Clean lips.\n2) Reapply as needed.",
   "skinAr": "لكل درجات الشفاه.",
   "skinEn": "All lip tones.",
   "stock": 3

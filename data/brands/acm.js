@@ -13,12 +13,12 @@ A.push({
   ],
   "nameAr": "كريم إيه سي إم المكثف لتفتيح البقع الداكنة - 40مل",
   "nameEn": "ACM Advanced Intensive Anti-Dark Spot Cream - 40ml",
-  "descAr": "كريم إيه سي إم المكثف لتفتيح البقع الداكنة من ACM. ترطيب مريح لليوم. 40 مل.",
-  "descEn": "ACM Advanced Intensive Anti by ACM. Quiet daily moisture. 40 ml.",
-  "useAr": "١) بعد السيروم.\n٢) طبقة خفيفة تكفي.",
-  "useEn": "1) After serum.\n2) Thin layer is enough.",
-  "skinAr": "للبشرة العادية إلى الجافة غالباً.",
-  "skinEn": "Often normal to dry skin.",
+  "descAr": "كريم إيه سي إم المكثف لتفتيح البقع من ACM. ترطيب مريح. 40 مل.",
+  "descEn": "ACM Advanced Intensive Anti by ACM. Quiet moisture. 40 ml.",
+  "useAr": "١) بعد السيروم.\n٢) طبقة خفيفة.",
+  "useEn": "1) After serum.\n2) Thin layer.",
+  "skinAr": "غالباً عادية إلى جافة.",
+  "skinEn": "Often normal–dry.",
   "stock": 3
 });
 A.push({
@@ -33,12 +33,12 @@ A.push({
   ],
   "nameAr": "جل محيط العين ديبيوايت لتفتيح الهالات من إيه سي إم - 15مل",
   "nameEn": "Acm Depiwhite Eye Contour Gel",
-  "descAr": "جل محيط العين ديبيوايت لتفتيح الهالات من إ من ACM. عناية واضحة وهادئة. 15 مل.",
-  "descEn": "Acm Depiwhite Eye Contour Gel by ACM. Clear, quiet care. 15 ml.",
-  "useAr": "١) ضمن روتينك اليومي.\n٢) كمية قليلة تكفي.",
-  "useEn": "1) In your daily routine.\n2) Small amount is enough.",
+  "descAr": "جل محيط العين ديبيوايت لتفتيح من ACM. عناية هادئة. 15 مل.",
+  "descEn": "Acm Depiwhite Eye Contour Gel by ACM. Quiet care. 15 ml.",
+  "useAr": "١) ضمن روتينك.\n٢) كمية قليلة.",
+  "useEn": "1) In your routine.\n2) Small amount.",
   "skinAr": "حسب نوع البشرة.",
-  "skinEn": "Match to your skin type.",
+  "skinEn": "Match skin type.",
   "stock": 3
 });
 A.push({
@@ -53,12 +53,12 @@ A.push({
   ],
   "nameAr": "لوشن إي سي إم نوفوفان رياكشنال لعلاج تساقط الشعر – 100مل",
   "nameEn": "ACM Novophane Reactional anti-hair loss lotion - 100ml",
-  "descAr": "لوشن إي سي إم نوفوفان رياكشنال لعلاج تساقط من ACM. عناية بسيطة للشعر. 100 مل.",
-  "descEn": "ACM Novophane Reactional anti by ACM. Simple daily hair care. 100 ml.",
-  "useAr": "١) على شعر رطب أو جاف حسب النوع.\n٢) لا تُغرقي الكمية.",
-  "useEn": "1) Damp or dry as directed.\n2) A little goes far.",
-  "skinAr": "حسب نوع الشعر والفروة.",
-  "skinEn": "Depends on hair and scalp.",
+  "descAr": "لوشن إي سي إم نوفوفان رياكشنال من ACM. عناية بسيطة للشعر. 100 مل.",
+  "descEn": "ACM Novophane Reactional anti by ACM. Simple hair care. 100 ml.",
+  "useAr": "١) حسب نوع المنتج.\n٢) كمية قليلة تكفي.",
+  "useEn": "1) As directed.\n2) A little goes far.",
+  "skinAr": "حسب نوع الشعر.",
+  "skinEn": "Depends on hair type.",
   "stock": 3
 });
 })();

@@ -15,10 +15,10 @@ A.push({
   ],
   "nameAr": "قناع الشفاه المرطب الليلي بيري من لانيج - 20ج",
   "nameEn": "Laneige Lip Sleeping Mask [Berry] - 20g",
-  "descAr": "قناع الشفاه المرطب الليلي بيري من لانيج من LANEIGE. لون ناعم ومريح. 20 ج.",
-  "descEn": "Laneige Lip Sleeping Mask [Berry] by LANEIGE. Soft colour, comfortable wear. 20 g.",
+  "descAr": "قناع الشفاه المرطب الليلي بيري من من LANEIGE. لون ناعم ومريح. 20 ج.",
+  "descEn": "Laneige Lip Sleeping Mask [Berry] by LANEIGE. Soft colour. 20 g.",
   "useAr": "١) على شفاه نظيفة.\n٢) أعدِي عند الحاجة.",
-  "useEn": "1) On clean lips.\n2) Reapply as needed.",
+  "useEn": "1) Clean lips.\n2) Reapply as needed.",
   "skinAr": "لكل درجات الشفاه.",
   "skinEn": "All lip tones.",
   "stock": 3

@@ -14,11 +14,11 @@ A.push({
   "nameAr": "سيرم الشعر بالكيراتين الحريري اللامع - 100مل",
   "nameEn": "Keratin Silkiness Shine Hair Serum - 100ml",
   "descAr": "سيرم الشعر بالكيراتين الحريري اللامع من Skin Doctor. عناية بسيطة للشعر. 100 مل.",
-  "descEn": "Keratin Silkiness Shine Hair Serum by Skin Doctor. Simple daily hair care. 100 ml.",
-  "useAr": "١) على شعر رطب أو جاف حسب النوع.\n٢) لا تُغرقي الكمية.",
-  "useEn": "1) Damp or dry as directed.\n2) A little goes far.",
-  "skinAr": "حسب نوع الشعر والفروة.",
-  "skinEn": "Depends on hair and scalp.",
+  "descEn": "Keratin Silkiness Shine Hair Serum by Skin Doctor. Simple hair care. 100 ml.",
+  "useAr": "١) حسب نوع المنتج.\n٢) كمية قليلة تكفي.",
+  "useEn": "1) As directed.\n2) A little goes far.",
+  "skinAr": "حسب نوع الشعر.",
+  "skinEn": "Depends on hair type.",
   "stock": 3
 });
 })();

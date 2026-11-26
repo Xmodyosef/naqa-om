@@ -14,12 +14,12 @@ A.push({
   ],
   "nameAr": "سيروم الشعر وفروة الرأس والحواجب من فايف لاب - 15مل",
   "nameEn": "ViveLab Revive Therapy Hair Scalp & Brow Ampoule - 15ml",
-  "descAr": "سيروم الشعر وفروة الرأس والحواجب من فايف ل من ViveLab. عناية بسيطة للشعر. 15 مل.",
-  "descEn": "ViveLab Revive Therapy Hair Scalp & Brow Ampoule by ViveLab. Simple daily hair care. 15 ml.",
-  "useAr": "١) على شعر رطب أو جاف حسب النوع.\n٢) لا تُغرقي الكمية.",
-  "useEn": "1) Damp or dry as directed.\n2) A little goes far.",
-  "skinAr": "حسب نوع الشعر والفروة.",
-  "skinEn": "Depends on hair and scalp.",
+  "descAr": "سيروم الشعر وفروة الرأس والحواجب من من ViveLab. عناية بسيطة للشعر. 15 مل.",
+  "descEn": "ViveLab Revive Therapy Hair Scalp & Brow by ViveLab. Simple hair care. 15 ml.",
+  "useAr": "١) حسب نوع المنتج.\n٢) كمية قليلة تكفي.",
+  "useEn": "1) As directed.\n2) A little goes far.",
+  "skinAr": "حسب نوع الشعر.",
+  "skinEn": "Depends on hair type.",
   "stock": 3
 });
 A.push({
@@ -34,12 +34,12 @@ A.push({
   ],
   "nameAr": "سيروم مكثف لإنبات الشعر وتقوية فروة الرأس من فايف لاب - 15مل",
   "nameEn": "ViveLab Scalp Spioxyl React Shot 600 - 15ml",
-  "descAr": "سيروم مكثف لإنبات الشعر وتقوية فروة الرأس  من ViveLab. عناية بسيطة للشعر. 15 مل.",
-  "descEn": "ViveLab Scalp Spioxyl React Shot 600 by ViveLab. Simple daily hair care. 15 ml.",
-  "useAr": "١) على شعر رطب أو جاف حسب النوع.\n٢) لا تُغرقي الكمية.",
-  "useEn": "1) Damp or dry as directed.\n2) A little goes far.",
-  "skinAr": "حسب نوع الشعر والفروة.",
-  "skinEn": "Depends on hair and scalp.",
+  "descAr": "سيروم مكثف لإنبات الشعر وتقوية فروة من ViveLab. عناية بسيطة للشعر. 15 مل.",
+  "descEn": "ViveLab Scalp Spioxyl React Shot 600 by ViveLab. Simple hair care. 15 ml.",
+  "useAr": "١) حسب نوع المنتج.\n٢) كمية قليلة تكفي.",
+  "useEn": "1) As directed.\n2) A little goes far.",
+  "skinAr": "حسب نوع الشعر.",
+  "skinEn": "Depends on hair type.",
   "stock": 3
 });
 A.push({
@@ -54,12 +54,12 @@ A.push({
   ],
   "nameAr": "سيروم الشعر وفروة الرأس والحواجب من فايف لاب - 3 عبوات × 15مل",
   "nameEn": "ViveLab Revive Therapy Hair Scalp & Brow Ampoule - 3×15ml Pack",
-  "descAr": "سيروم الشعر وفروة الرأس والحواجب من فايف ل من ViveLab. عناية بسيطة للشعر. 15 مل.",
-  "descEn": "ViveLab Revive Therapy Hair Scalp & Brow Ampoule by ViveLab. Simple daily hair care. 15 ml.",
-  "useAr": "١) على شعر رطب أو جاف حسب النوع.\n٢) لا تُغرقي الكمية.",
-  "useEn": "1) Damp or dry as directed.\n2) A little goes far.",
-  "skinAr": "حسب نوع الشعر والفروة.",
-  "skinEn": "Depends on hair and scalp.",
+  "descAr": "سيروم الشعر وفروة الرأس والحواجب من من ViveLab. عناية بسيطة للشعر. 15 مل.",
+  "descEn": "ViveLab Revive Therapy Hair Scalp & Brow by ViveLab. Simple hair care. 15 ml.",
+  "useAr": "١) حسب نوع المنتج.\n٢) كمية قليلة تكفي.",
+  "useEn": "1) As directed.\n2) A little goes far.",
+  "skinAr": "حسب نوع الشعر.",
+  "skinEn": "Depends on hair type.",
   "stock": 3
 });
 })();

@@ -13,12 +13,12 @@ A.push({
   ],
   "nameAr": "تونر نومبوزين رقم 9 ناد+ بي دي آر إن لتفتيح وإشراقة البشرة - 150مل",
   "nameEn": "Numbuzin No.9 NAD+ PDRN Glow Boosting Toner - 150ml",
-  "descAr": "تونر نومبوزين رقم 9 ناد+ بي دي آر إن لتفتي من Numbuzin. عناية واضحة وهادئة. 150 مل.",
-  "descEn": "Numbuzin No.9 NAD+ PDRN Glow Boosting Toner by Numbuzin. Clear, quiet care. 150 ml.",
-  "useAr": "١) ضمن روتينك اليومي.\n٢) كمية قليلة تكفي.",
-  "useEn": "1) In your daily routine.\n2) Small amount is enough.",
+  "descAr": "تونر نومبوزين رقم 9 ناد+ بي دي آر من Numbuzin. عناية هادئة. 150 مل.",
+  "descEn": "Numbuzin No.9 NAD+ PDRN Glow Boosting by Numbuzin. Quiet care. 150 ml.",
+  "useAr": "١) ضمن روتينك.\n٢) كمية قليلة.",
+  "useEn": "1) In your routine.\n2) Small amount.",
   "skinAr": "حسب نوع البشرة.",
-  "skinEn": "Match to your skin type.",
+  "skinEn": "Match skin type.",
   "stock": 3
 });
 A.push({
@@ -33,12 +33,12 @@ A.push({
   ],
   "nameAr": "وسادات نومبوزين رقم 5 المركزة بفيتامين نياسيناميد - 70 قطعة",
   "nameEn": "Numbuzin No.5 Vitamin Niacinamide Concentrated Pads- 70pads",
-  "descAr": "وسادات نومبوزين رقم 5 المركزة بفيتامين نيا من Numbuzin. عناية واضحة وهادئة.",
-  "descEn": "Numbuzin No.5 Vitamin Niacinamide Concentrated P by Numbuzin. Clear, quiet care.",
-  "useAr": "١) ضمن روتينك اليومي.\n٢) كمية قليلة تكفي.",
-  "useEn": "1) In your daily routine.\n2) Small amount is enough.",
+  "descAr": "وسادات نومبوزين رقم 5 المركزة من Numbuzin. عناية هادئة.",
+  "descEn": "Numbuzin No.5 Vitamin Niacinamide by Numbuzin. Quiet care.",
+  "useAr": "١) ضمن روتينك.\n٢) كمية قليلة.",
+  "useEn": "1) In your routine.\n2) Small amount.",
   "skinAr": "حسب نوع البشرة.",
-  "skinEn": "Match to your skin type.",
+  "skinEn": "Match skin type.",
   "stock": 3
 });
 A.push({
@@ -53,12 +53,12 @@ A.push({
   ],
   "nameAr": "كريم العين نومبوزين رقم 9 بالريتينول لشد منطقة اسفل العين - 10مل",
   "nameEn": "Numbuzin No.9 Retinol Intense Eye Cream - 30ml",
-  "descAr": "كريم العين نومبوزين رقم 9 بالريتينول لشد م من Numbuzin. ترطيب مريح لليوم. 10 مل.",
-  "descEn": "Numbuzin No.9 Retinol Intense Eye Cream by Numbuzin. Quiet daily moisture. 10 ml.",
-  "useAr": "١) بعد السيروم.\n٢) طبقة خفيفة تكفي.",
-  "useEn": "1) After serum.\n2) Thin layer is enough.",
-  "skinAr": "للبشرة العادية إلى الجافة غالباً.",
-  "skinEn": "Often normal to dry skin.",
+  "descAr": "كريم العين نومبوزين رقم 9 من Numbuzin. ترطيب مريح. 10 مل.",
+  "descEn": "Numbuzin No.9 Retinol Intense Eye Cream by Numbuzin. Quiet moisture. 10 ml.",
+  "useAr": "١) بعد السيروم.\n٢) طبقة خفيفة.",
+  "useEn": "1) After serum.\n2) Thin layer.",
+  "skinAr": "غالباً عادية إلى جافة.",
+  "skinEn": "Often normal–dry.",
   "stock": 3
 });
 A.push({
@@ -73,12 +73,12 @@ A.push({
   ],
   "nameAr": "تونر نومبوزين رقم 1 العشبي لتهدئة البشرة - 300مل",
   "nameEn": "Numbuzin No.1 Pure-Full Calming Herb Toner - 300ml",
-  "descAr": "تونر نومبوزين رقم 1 العشبي لتهدئة البشرة من Numbuzin. عناية واضحة وهادئة. 300 مل.",
-  "descEn": "Numbuzin No.1 Pure by Numbuzin. Clear, quiet care. 300 ml.",
-  "useAr": "١) ضمن روتينك اليومي.\n٢) كمية قليلة تكفي.",
-  "useEn": "1) In your daily routine.\n2) Small amount is enough.",
+  "descAr": "تونر نومبوزين رقم 1 العشبي لتهدئة من Numbuzin. عناية هادئة. 300 مل.",
+  "descEn": "Numbuzin No.1 Pure by Numbuzin. Quiet care. 300 ml.",
+  "useAr": "١) ضمن روتينك.\n٢) كمية قليلة.",
+  "useEn": "1) In your routine.\n2) Small amount.",
   "skinAr": "حسب نوع البشرة.",
-  "skinEn": "Match to your skin type.",
+  "skinEn": "Match skin type.",
   "stock": 3
 });
 })();

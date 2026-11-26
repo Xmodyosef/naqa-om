@@ -14,12 +14,12 @@ A.push({
   ],
   "nameAr": "كريم أساس ماسك فيت ريد كوشن من تيرتير 23N رملي - 18ج",
   "nameEn": "TIRTIR Mask Fit Red Cushion Foundation 23N Sand - 18g",
-  "descAr": "كريم أساس ماسك فيت ريد كوشن من تيرتير 23N  من TIRTIR. تغطية خفيفة لمظهر طبيعي. 18 ج.",
-  "descEn": "TIRTIR Mask Fit Red Cushion Foundation 23N Sand by TIRTIR. Light coverage, natural finish. 18 g.",
+  "descAr": "كريم أساس ماسك فيت ريد كوشن من من TIRTIR. تغطية خفيفة طبيعية. 18 ج.",
+  "descEn": "TIRTIR Mask Fit Red Cushion Foundation by TIRTIR. Light natural coverage. 18 g.",
   "useAr": "١) بعد العناية.\n٢) وزّعي برفق.",
   "useEn": "1) After skincare.\n2) Blend lightly.",
-  "skinAr": "لكل درجات البشرة — اختاري الدرجة المناسبة.",
-  "skinEn": "All skin tones — pick your shade.",
+  "skinAr": "اختاري درجتك.",
+  "skinEn": "Pick your shade.",
   "stock": 3
 });
 A.push({
@@ -34,12 +34,12 @@ A.push({
   ],
   "nameAr": "كريم أساس ماسك فيت ريد كوشن من تيرتير 17N فانيليا - 18ج",
   "nameEn": "Tirtir Mask Fit Red Cushion 17n Vanilla",
-  "descAr": "كريم أساس ماسك فيت ريد كوشن من تيرتير 17N  من TIRTIR. تغطية خفيفة لمظهر طبيعي. 18 ج.",
-  "descEn": "Tirtir Mask Fit Red Cushion 17n Vanilla by TIRTIR. Light coverage, natural finish. 18 g.",
+  "descAr": "كريم أساس ماسك فيت ريد كوشن من من TIRTIR. تغطية خفيفة طبيعية. 18 ج.",
+  "descEn": "Tirtir Mask Fit Red Cushion 17n Vanilla by TIRTIR. Light natural coverage. 18 g.",
   "useAr": "١) بعد العناية.\n٢) وزّعي برفق.",
   "useEn": "1) After skincare.\n2) Blend lightly.",
-  "skinAr": "لكل درجات البشرة — اختاري الدرجة المناسبة.",
-  "skinEn": "All skin tones — pick your shade.",
+  "skinAr": "اختاري درجتك.",
+  "skinEn": "Pick your shade.",
   "stock": 3
 });
 })();

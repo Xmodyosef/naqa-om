@@ -313,7 +313,7 @@ window.NAQA_PRODUCTS.push(
   "price": 2.8,
   "em": "✨",
   "imgs": [
-    "media/products/p251_0.webp"
+    "media/products/p296_0.webp"
   ],
   "nameAr": "كانتو بخاخ لمعان جوز الهند",
   "nameEn": "Cantu Coconut Oil Shine & Hold Mist 8oz",
@@ -354,7 +354,7 @@ window.NAQA_PRODUCTS.push(
   "price": 2.9,
   "em": "✨",
   "imgs": [
-    "media/products/p250_0.webp"
+    "media/products/p298_0.webp"
   ],
   "nameAr": "كانتو بخاخ فك التشابك",
   "nameEn": "Cantu Natural Hair Detangler Spray",

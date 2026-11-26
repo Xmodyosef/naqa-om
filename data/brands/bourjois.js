@@ -274,7 +274,7 @@ window.NAQA_PRODUCTS.push(
   "price": 3.9,
   "em": "✨",
   "imgs": [
-    "media/products/p282_0.webp"
+    "media/products/p286_0.webp"
   ],
   "nameAr": "برجواز كحل كونتور كلوبنق 001",
   "nameEn": "Bourjois Contour Clubbing Waterproof Liner 001 Ultra Black",
@@ -295,7 +295,7 @@ window.NAQA_PRODUCTS.push(
   "price": 3.9,
   "em": "✨",
   "imgs": [
-    "media/products/p282_0.webp"
+    "media/products/p287_0.webp"
   ],
   "nameAr": "برجواز كحل كونتور كلوبنق 041",
   "nameEn": "Bourjois Contour Clubbing Waterproof Liner 041",
@@ -396,7 +396,7 @@ window.NAQA_PRODUCTS.push(
   "price": 4.1,
   "em": "✨",
   "imgs": [
-    "media/products/p291_0.webp"
+    "media/products/p292_0.webp"
   ],
   "nameAr": "برجواز بلاش ليتل راوند بوت 34",
   "nameEn": "Bourjois Little Round Pot Blush 34 Rose d'Or",

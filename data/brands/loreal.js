@@ -173,7 +173,7 @@ window.NAQA_PRODUCTS.push(
   "price": 4.2,
   "em": "✨",
   "imgs": [
-    "media/products/p323_0.webp"
+    "media/products/p324_0.webp"
   ],
   "nameAr": "لوريال بخاخ حماية حرارية",
   "nameEn": "L'Oréal Elvive Heat Protect Spray",
@@ -214,7 +214,7 @@ window.NAQA_PRODUCTS.push(
   "price": 4.8,
   "em": "✨",
   "imgs": [
-    "media/products/p325_0.webp"
+    "media/products/p326_0.webp"
   ],
   "nameAr": "لوريال كونسيلر ترو ماتش",
   "nameEn": "L'Oréal True Match Concealer",

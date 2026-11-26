@@ -112,7 +112,7 @@ window.NAQA_PRODUCTS.push(
   "price": 2.7,
   "em": "✨",
   "imgs": [
-    "media/products/p316_0.webp"
+    "media/products/p310_0.webp"
   ],
   "nameAr": "شوارزكوف بخاخ فرد فلاتجليجت",
   "nameEn": "Schwarzkopf got2b Flachgelegt Straightening Spray",
@@ -132,7 +132,7 @@ window.NAQA_PRODUCTS.push(
   "price": 2.8,
   "em": "✨",
   "imgs": [
-    "media/products/p316_0.webp"
+    "media/products/p311_0.webp"
   ],
   "nameAr": "شوارزكوف بخاخ حماية حرارية",
   "nameEn": "Schwarzkopf got2b Hitzewelle Heat Protection Spray",
@@ -173,7 +173,7 @@ window.NAQA_PRODUCTS.push(
   "price": 2.7,
   "em": "✨",
   "imgs": [
-    "media/products/p312_0.webp"
+    "media/products/p313_0.webp"
   ],
   "nameAr": "شوارزكوف كريم كيرل كينكير",
   "nameEn": "Schwarzkopf got2b Kinkier Curl Cream",
@@ -193,7 +193,7 @@ window.NAQA_PRODUCTS.push(
   "price": 2.6,
   "em": "✨",
   "imgs": [
-    "media/products/p312_0.webp"
+    "media/products/p314_0.webp"
   ],
   "nameAr": "شوارزكوف سيروم لمعان",
   "nameEn": "Schwarzkopf got2b Anti-Frizz Shine Serum",

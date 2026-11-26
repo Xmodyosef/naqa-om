@@ -19,7 +19,7 @@ window.NAQA_PRODUCTS.push(
   "useEn": "1) Shampoo scalp, condition lengths, leave-in as labeled.\n2) Start small.\n3) Don’t drench the hair.\n4) Two–three weeks for a clearer change.",
   "skinAr": "حسب الشعر والفروة",
   "skinEn": "match hair and scalp",
-  "stock": 2,
+  "stock": 3,
   "hot": true
 },
 {
@@ -40,7 +40,7 @@ window.NAQA_PRODUCTS.push(
   "useEn": "1) Shampoo scalp, condition lengths, leave-in as labeled.\n2) Start small.\n3) Don’t drench the hair.\n4) Two–three weeks for a clearer change.",
   "skinAr": "حسب الشعر والفروة",
   "skinEn": "scalp that needs air",
-  "stock": 2,
+  "stock": 3,
   "hot": true
 },
 {
@@ -61,7 +61,7 @@ window.NAQA_PRODUCTS.push(
   "useEn": "1) Shampoo scalp, condition lengths, leave-in as labeled.\n2) Start small.\n3) Don’t drench the hair.\n4) Two–three weeks for a clearer change.",
   "skinAr": "الشعر المجهد",
   "skinEn": "match hair and scalp",
-  "stock": 2,
+  "stock": 3,
   "hot": true
 },
 {
@@ -82,6 +82,6 @@ window.NAQA_PRODUCTS.push(
   "useEn": "1) Shampoo scalp, condition lengths, leave-in as labeled.\n2) Start small.\n3) Don’t drench the hair.\n4) Two–three weeks for a clearer change.",
   "skinAr": "فروة تحتاج انتعاشاً",
   "skinEn": "stressed hair",
-  "stock": 2
+  "stock": 3
 }
 );

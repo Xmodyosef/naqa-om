@@ -1327,7 +1327,7 @@ html[data-theme="night"] .home-rails .camp-product-name{ color:#f5ebe8; }
   letter-spacing: -0.02em;
 }
  .home-rails .campaign-banner{
-  min-height: 220px;
+  min-height: 236px;
   border-radius: 24px;
   box-shadow: 0 18px 40px rgba(60,20,30,.14), 0 2px 0 rgba(255,255,255,.08) inset;
   transition: transform .25s ease, box-shadow .25s ease;

@@ -223,15 +223,36 @@ function campaignProductHTML(p){
 /** 15 campaigns: banner then product rail (Nice One style) */
 function getHomeCampaigns(){
   var out = [];
+  /* a product appears once on the whole homepage — never in a banner and a rail, never in two rails */
+  var used = {};
+  if(typeof NAQA_BANNER_HEROES !== "undefined" && NAQA_BANNER_HEROES){
+    Object.keys(NAQA_BANNER_HEROES).forEach(function(k){
+      (NAQA_BANNER_HEROES[k] || []).forEach(function(id){ used[id] = 1; });
+    });
+  }
   getNaqaCatalogs().forEach(function(c){
     if(!c.home) return;
-    var list = [];
-    try{ list = catalogList(c.id, 18) || []; }catch(e){ list = []; }
+    var pool = [];
+    try{ pool = catalogList(c.id, 80) || []; }catch(e){ pool = []; }
     var heroes = (typeof NAQA_BANNER_HEROES !== "undefined" && NAQA_BANNER_HEROES[c.id]) || [];
-    if(heroes.length){
-      var skip = {};
-      heroes.forEach(function(id){ skip[id] = 1; });
-      list = list.filter(function(p){ return p && !skip[p.id]; });
+    var onBanner = {};
+    heroes.forEach(function(id){ onBanner[id] = 1; });
+    var fresh = [];
+    var again = [];
+    pool.forEach(function(p){
+      if(!p || onBanner[p.id]) return;
+      if(used[p.id]) again.push(p);
+      else fresh.push(p);
+    });
+    var list = fresh.slice(0, 8);
+    list.forEach(function(p){ used[p.id] = 1; });
+    /* tiny brands (Olaplex) may have nothing left — fill without repeating this banner */
+    if(list.length < 6){
+      again.forEach(function(p){
+        if(list.length >= 8) return;
+        if(list.some(function(x){ return x.id === p.id; })) return;
+        list.push(p);
+      });
     }
     if(!list.length) return;
     /* banner art = designed cover (product shelf). Fallback to first product. */
@@ -345,7 +366,7 @@ function renderHomeCatalogs(){
       + '</button>'
       + '<div class="campaign-rail" data-camp="'+esc(c.id)+'">'
       + '<div class="campaign-products" role="list">'
-      + list.slice(0, 10).map(campaignProductHTML).join("")
+      + list.slice(0, 8).map(campaignProductHTML).join("")
       + '</div></div>'
       + '</section>';
   });

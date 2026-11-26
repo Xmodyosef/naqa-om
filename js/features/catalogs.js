@@ -327,7 +327,7 @@ function renderHomeCatalogs(){
 
     var styleBg = "";
     if(c.cover){
-      styleBg = " style=\"background-image:linear-gradient(100deg,rgba(20,10,16,.78) 0%,rgba(20,10,16,.42) 38%,rgba(20,10,16,.08) 62%,rgba(20,10,16,0) 100%),url('" + esc(c.cover) + "');background-size:cover;background-position:center;\"";
+      styleBg = " style=\"background-image:url('" + esc(c.cover) + "');background-size:cover;background-position:center center;background-repeat:no-repeat;\"";
     }
 
     html += '<section class="campaign" id="camp-'+esc(c.id)+'">'

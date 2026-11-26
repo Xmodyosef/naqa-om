@@ -1,7 +1,7 @@
-/* Brand: Eucerin · 2 products · edit AR/EN fields here */
-window.NAQA_PRODUCTS = window.NAQA_PRODUCTS || [];
-window.NAQA_PRODUCTS.push(
-{
+// eucerin.js — short Apple-like copy
+(function(){
+var A = window.NAQA_PRODUCTS || (window.NAQA_PRODUCTS = []);
+A.push({
   "id": 45,
   "brand": "Eucerin",
   "cat": "عناية",
@@ -13,15 +13,15 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "جل التنظيف المضاد للتصبغات من يوسيرين - 200مل",
   "nameEn": "Eucerin Anti-Pigment Cleansing Gel - 200ml",
-  "descAr": "لماذا Eucerin هنا؟ لأن جل التنظيف المضاد للتصبغات من يوسيرين يقدّم خطوة واحدة واضحة: ينظّف ويترك البشرة مرتاحة. بدون ضجيج وعود طويلة. الحجم ≈ 200 مل. لـبعد مكياج كخطوة أولى. الجمال الأهدأ يأتي من روتين قصير ثابت.",
-  "descEn": "Why Eucerin? Because Eucerin Anti does one clear job: no tight squeak after rinse. No long promise list. Size ≈ 200 ml. For sensitive with a milder formula. Give it two steady weeks before you decide.",
-  "useAr": "١) أول خطوة صباحًا ومساءً.\n٢) تجنّبي الماء المغلي.\n٣) إن شدّ الوجه، قصّري الوقت.",
-  "useEn": "1) Lukewarm water.\n2) 20–30 seconds, full rinse.\n3) Pat dry.\n4) Heavy makeup: oil first, then this.",
-  "skinAr": "بعد مكياج كخطوة أولى",
-  "skinEn": "sensitive with a milder formula",
+  "descAr": "جل التنظيف المضاد للتصبغات من يوسيرين من Eucerin. عناية واضحة وهادئة. 200 مل.",
+  "descEn": "Eucerin Anti by Eucerin. Clear, quiet care. 200 ml.",
+  "useAr": "١) ضمن روتينك اليومي.\n٢) كمية قليلة تكفي.",
+  "useEn": "1) In your daily routine.\n2) Small amount is enough.",
+  "skinAr": "حسب نوع البشرة.",
+  "skinEn": "Match to your skin type.",
   "stock": 3
-},
-{
+});
+A.push({
   "id": 161,
   "brand": "Eucerin",
   "cat": "عناية",
@@ -33,12 +33,12 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "لوشن تخفيف الخشونة من يوسيرين - 500مل",
   "nameEn": "Eucerin‏ Roughness Relief Lotion - 500ml",
-  "descAr": "لماذا Eucerin هنا؟ لأن لوشن تخفيف الخشونة من يوسيرين يقدّم خطوة واحدة واضحة: يمتص بمعدل مريح للجسم. بدون ضجيج وعود طويلة. الحجم ≈ 500 مل. لـبعد الاستحمام. خزّنيها في مكان معتدل وأغلقي الغطاء.",
-  "descEn": "Why Eucerin? Because Eucerin‏ Roughness Relief Lotion does one clear job: absorbs at a body-friendly pace. No long promise list. Size ≈ 500 ml. For most types. Give it two steady weeks before you decide.",
-  "useAr": "١) بعد الحمام على بشرة نديّة.\n٢) من الأطراف للداخل.\n٣) ركّزي على الكوعين والساقين.\n٤) صباح أو مساء.",
-  "useEn": "1) After shower, skin still damp.\n2) Limbs toward center.\n3) Elbows and dry legs again.\n4) Morning or night.",
-  "skinAr": "بعد الاستحمام",
-  "skinEn": "most types",
+  "descAr": "لوشن تخفيف الخشونة من يوسيرين من Eucerin. عناية واضحة وهادئة. 500 مل.",
+  "descEn": "Eucerin‏ Roughness Relief Lotion by Eucerin. Clear, quiet care. 500 ml.",
+  "useAr": "١) ضمن روتينك اليومي.\n٢) كمية قليلة تكفي.",
+  "useEn": "1) In your daily routine.\n2) Small amount is enough.",
+  "skinAr": "حسب نوع البشرة.",
+  "skinEn": "Match to your skin type.",
   "stock": 3
-}
-);
+});
+})();

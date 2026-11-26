@@ -1,7 +1,7 @@
-/* Brand: Abib · 3 products · edit AR/EN fields here */
-window.NAQA_PRODUCTS = window.NAQA_PRODUCTS || [];
-window.NAQA_PRODUCTS.push(
-{
+// abib.js — short Apple-like copy
+(function(){
+var A = window.NAQA_PRODUCTS || (window.NAQA_PRODUCTS = []);
+A.push({
   "id": 15,
   "brand": "Abib",
   "cat": "عناية",
@@ -13,15 +13,15 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "لصقات أبيب هارتليف لتهدئة البقع الموضعية - 78 قطعة",
   "nameEn": "Abib Heartleaf Calming Spot Patch - 78 patches",
-  "descAr": "لمسة Abib في لصقات أبيب هارتليف لتهدئة البقع الموضعية: مريح مع الانتظام. يُذكر فيه خلاصة مهدّئة لدعم هدوء للاحمرار والتهيج الخفيف. الحجم ≈ 78 قطعة. يناسب أول أسبوع للمراقبة. الجمال الأهدأ يأتي من روتين قصير ثابت.",
-  "descEn": "Abib's touch in Abib Heartleaf Calming Spot Patch: comfortable with steady use. Notes of calming botanicals support calm for mild redness. Fits watch week one. Keep it cool-ish and cap it tight.",
-  "useAr": "١) نظّفي → عالجي → احمي.\n٢) كمية معتدلة.\n٣) راقبي الأسبوع الأول.\n٤) SPF مع التفتيح أو الأحماض.",
-  "useEn": "1) Cleanse → treat → protect.\n2) Moderate amount.\n3) Watch week one.\n4) SPF with brightening or acids.",
-  "skinAr": "أول أسبوع للمراقبة",
-  "skinEn": "watch week one",
+  "descAr": "لصقات أبيب هارتليف لتهدئة البقع الموضعية من Abib. عناية واضحة وهادئة.",
+  "descEn": "Abib Heartleaf Calming Spot Patch by Abib. Clear, quiet care.",
+  "useAr": "١) ضمن روتينك اليومي.\n٢) كمية قليلة تكفي.",
+  "useEn": "1) In your daily routine.\n2) Small amount is enough.",
+  "skinAr": "حسب نوع البشرة.",
+  "skinEn": "Match to your skin type.",
   "stock": 3
-},
-{
+});
+A.push({
   "id": 92,
   "brand": "Abib",
   "cat": "عناية",
@@ -33,15 +33,15 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "باتش أبيب بي دي آر إن والريتينال لإشراقة وتجديد منطقة العين – 60 قطعة",
   "nameEn": "Abib PDRN Collagen Retinal Eye Patch - 60pcs",
-  "descAr": "Abib × عناية يومية: باتش أبيب بي دي آر إن والريتينال لإشراقة وتجديد منط…. يُبرز ريتينويد من أجل ملمس أنعم ومظهر خطوط أدق. الملمس: متوازن ومباشر. الحجم ≈ 60 قطعة. معظم الأنواع. أي لسع مستمر؟ خفّفي أو راجعي مختصاً.",
-  "descEn": "Abib for daily care: Abib PDRN Collagen Retinal Eye Patch. It brings retinoid care for smoother texture and a softer look of fine lines. Feel: balanced and direct. Size ≈ 60 pcs. Match today’s need. Give it two steady weeks before you decide.",
-  "useAr": "١) نظّفي → عالجي → احمي.\n٢) كمية معتدلة.\n٣) راقبي الأسبوع الأول.\n٤) SPF مع التفتيح أو الأحماض.",
-  "useEn": "1) Cleanse → treat → protect.\n2) Moderate amount.\n3) Watch week one.\n4) SPF with brightening or acids.",
-  "skinAr": "معظم الأنواع",
-  "skinEn": "match today’s need",
+  "descAr": "باتش أبيب بي دي آر إن والريتينال لإشراقة و من Abib. عناية واضحة وهادئة.",
+  "descEn": "Abib PDRN Collagen Retinal Eye Patch by Abib. Clear, quiet care.",
+  "useAr": "١) ضمن روتينك اليومي.\n٢) كمية قليلة تكفي.",
+  "useEn": "1) In your daily routine.\n2) Small amount is enough.",
+  "skinAr": "حسب نوع البشرة.",
+  "skinEn": "Match to your skin type.",
   "stock": 3
-},
-{
+});
+A.push({
   "id": 98,
   "brand": "Abib",
   "cat": "عناية",
@@ -53,12 +53,12 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "باتش أبيب بالكولاجين وزهرة أريحا جيلي لمنطقة العين - 60 قطعة",
   "nameEn": "Abib Collagen Jericho Rose Jelly Eye Patch - 60pcs",
-  "descAr": "لماذا Abib هنا؟ لأن باتش أبيب بالكولاجين وزهرة أريحا جيلي لمنطقة العين يقدّم خطوة واحدة واضحة: متوازن ومباشر. المكوّن الأبرز: ببتيدات/كولاجين (مرونة ونضارة في المظهر). الحجم ≈ 60 قطعة. لـمعظم الأنواع. خزّنيها في مكان معتدل وأغلقي الغطاء.",
-  "descEn": "Why Abib? Because Abib Collagen Jericho Rose Jelly Eye Patch does one clear job: comfortable with steady use. Standout: peptides/collagen support (a springier, fresher look). Size ≈ 60 pcs. For watch week one. Give it two steady weeks before you decide.",
-  "useAr": "١) نظّفي → عالجي → احمي.\n٢) كمية معتدلة.\n٣) راقبي الأسبوع الأول.\n٤) SPF مع التفتيح أو الأحماض.",
-  "useEn": "1) Cleanse → treat → protect.\n2) Moderate amount.\n3) Watch week one.\n4) SPF with brightening or acids.",
-  "skinAr": "معظم الأنواع",
-  "skinEn": "watch week one",
+  "descAr": "باتش أبيب بالكولاجين وزهرة أريحا جيلي لمنط من Abib. عناية واضحة وهادئة.",
+  "descEn": "Abib Collagen Jericho Rose Jelly Eye Patch by Abib. Clear, quiet care.",
+  "useAr": "١) ضمن روتينك اليومي.\n٢) كمية قليلة تكفي.",
+  "useEn": "1) In your daily routine.\n2) Small amount is enough.",
+  "skinAr": "حسب نوع البشرة.",
+  "skinEn": "Match to your skin type.",
   "stock": 3
-}
-);
+});
+})();

@@ -1,7 +1,7 @@
-/* Brand: Medicube · 20 products · imgs auto-wired 2026-11-25 */
-window.NAQA_PRODUCTS = window.NAQA_PRODUCTS || [];
-window.NAQA_PRODUCTS.push(
-{
+// medicube.js — short Apple-like copy
+(function(){
+var A = window.NAQA_PRODUCTS || (window.NAQA_PRODUCTS = []);
+A.push({
   "id": 8,
   "brand": "Medicube",
   "cat": "عناية",
@@ -13,15 +13,15 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "كريم ميديكيوب بالكبسولات الوردي بالكولاجين بي دي آر إن لشد ونضارة البشرة – 50مل",
   "nameEn": "Medicube PDRN Pink Collagen Capsule Cream - 55g",
-  "descAr": "كريم ميديكيوب بالكبسولات الوردي بالكولاجين بي دي آر…. قصة قصيرة: تنظيف/عناية/حماية حسب نوعه، وMedicube هنا لتسهيل اليوم. كريمي يغلّف بلطف. ببتيدات/كولاجين → مرونة ونضارة في المظهر. الحجم ≈ 50 مل. مساءً لمعظم الأنواع. انتظمي أسبوعين قبل الحكم النهائي.",
-  "descEn": "Medicube PDRN Pink Collagen Capsule Cream. Short story: cleanse, treat, or protect as labeled — Medicube keeps the day simple. Velvet on dry cheeks. Peptides/collagen support → a springier, fresher look. Size ≈ 55 g. Sensitive dry skin. Quiet beauty loves a short, steady routine.",
-  "useAr": "١) بعد السيروم أو مباشرة بعد الغسول.\n٢) حبة بازيلاء للوجه + قليل للرقبة.\n٣) صباحاً SPF فوقه.\n٤) مساءً زيدي على الخدود الجافة.",
-  "useEn": "1) After serum or right after cleanse.\n2) Pea-size for face + a little neck.\n3) SPF over it in the morning.\n4) Extra on dry cheeks at night.",
-  "skinAr": "مساءً لمعظم الأنواع",
-  "skinEn": "sensitive dry skin",
+  "descAr": "كريم ميديكيوب بالكبسولات الوردي بالكولاجين من Medicube. ترطيب مريح لليوم. 50 مل.",
+  "descEn": "Medicube PDRN Pink Collagen Capsule Cream by Medicube. Quiet daily moisture. 50 ml.",
+  "useAr": "١) بعد السيروم.\n٢) طبقة خفيفة تكفي.",
+  "useEn": "1) After serum.\n2) Thin layer is enough.",
+  "skinAr": "للبشرة العادية إلى الجافة غالباً.",
+  "skinEn": "Often normal to dry skin.",
   "stock": 3
-},
-{
+});
+A.push({
   "id": 14,
   "brand": "Medicube",
   "cat": "عناية",
@@ -33,15 +33,15 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "قطع قطنية ميديكيوب بفيتامين سي لتفتيح البشرة - 70قطعة",
   "nameEn": "Medicube Deep Vita C Pad - 150g",
-  "descAr": "رقيق في الإحساس، صادق في الدور — قطع قطنية ميديكيوب بفيتامين سي لتفتيح البشرة. علامة Medicube تعتمد لمسة فيتامين سي. مائي ومنعش كرشة ماء. الحجم ≈ 150 ج. يناسب المتعطشة للماء. أي لسع مستمر؟ خفّفي أو راجعي مختصاً.",
-  "descEn": "Soft to the touch, honest in role — Medicube Deep Vita C Pad. Medicube leans on vitamin C. Hydrates without bulk. Size ≈ 150 g. Best with water-thirsty skin. Ongoing sting? Ease off or ask a pro.",
-  "useAr": "١) بشرة نظيفة.\n٢) مرّري التونر/الوسادة.\n٣) إن كان مقشّراً: ليس بالضرورة يومياً.",
-  "useEn": "1) Right after cleansing.\n2) Palms or pad — no dragging.\n3) No rinse → serum → cream.",
-  "skinAr": "المتعطشة للماء",
-  "skinEn": "water-thirsty skin",
+  "descAr": "قطع قطنية ميديكيوب بفيتامين سي لتفتيح البش من Medicube. عناية واضحة وهادئة. 150 ج.",
+  "descEn": "Medicube Deep Vita C Pad by Medicube. Clear, quiet care. 150 g.",
+  "useAr": "١) ضمن روتينك اليومي.\n٢) كمية قليلة تكفي.",
+  "useEn": "1) In your daily routine.\n2) Small amount is enough.",
+  "skinAr": "حسب نوع البشرة.",
+  "skinEn": "Match to your skin type.",
   "stock": 3
-},
-{
+});
+A.push({
   "id": 23,
   "brand": "Medicube",
   "cat": "عناية",
@@ -53,15 +53,15 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "سيروم ميديكيوب زيرو بور لتقليل المسام سريع المفعول - 30مل",
   "nameEn": "Medicube Zero Pore One-day Serum - 30ml",
-  "descAr": "لماذا Medicube هنا؟ لأن سيروم ميديكيوب زيرو بور لتقليل المسام سريع المفعول يقدّم خطوة واحدة واضحة: مائي بلمسة حريرية. بدون ضجيج وعود طويلة. الحجم ≈ 30 مل. لـمع SPF يومي عند التفتيح. انتظمي أسبوعين قبل الحكم النهائي.",
-  "descEn": "Why Medicube? Because Medicube Zero Pore One does one clear job: melts in without a sticky film. No long promise list. Size ≈ 30 ml. For most types — start with drops. Quiet beauty loves a short, steady routine.",
-  "useAr": "١) وجه نظيف ورطب قليلاً.\n٢) نقطة على الخد والجبهة والذقن، ثم توزيع.\n٣) دقيقة صبر ثم الكريم.\n٤) محيط العين فقط إن صُمّم لذلك.",
-  "useEn": "1) Clean skin; toner first if you use one.\n2) 2–3 drops — press from center out.\n3) Cream on top. AM: SPF.\n4) Retinoids/acids: night, slowly.",
-  "skinAr": "مع SPF يومي عند التفتيح",
-  "skinEn": "most types — start with drops",
+  "descAr": "سيروم ميديكيوب زيرو بور لتقليل المسام سريع من Medicube. خطوة مركّزة وسريعة. 30 مل.",
+  "descEn": "Medicube Zero Pore One by Medicube. Focused step, fast finish. 30 ml.",
+  "useAr": "١) بعد التنظيف.\n٢) قطرات قليلة ثم رطّبي.",
+  "useEn": "1) After cleanse.\n2) Few drops, then moisturise.",
+  "skinAr": "حسب احتياج بشرتك.",
+  "skinEn": "Match to your skin need.",
   "stock": 3
-},
-{
+});
+A.push({
   "id": 30,
   "brand": "Medicube",
   "cat": "عناية",
@@ -73,15 +73,15 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "سيروم ميديكيوب تريبل كولاجين لشد البشرة - 55مل",
   "nameEn": "Medicube Triple Collagen Serum - 55ml",
-  "descAr": "سيروم ميديكيوب تريبل كولاجين لشد البشرة من Medicube. مائي بلمسة حريرية، مع حضور ببتيدات/كولاجين لـمرونة ونضارة في المظهر. الحجم ≈ 55 مل. يناسب الجافة والعطشى. خزّنيها في مكان معتدل وأغلقي الغطاء.",
-  "descEn": "Medicube Triple Collagen Serum by Medicube. Melts in without a sticky film, with peptides/collagen support for a springier, fresher look. Size ≈ 55 ml. Suits dry and thirsty. Keep it cool-ish and cap it tight.",
-  "useAr": "١) بعد التنظيف.\n٢) طبقة خفيفة تكفي؛ لا تُغرقي.\n٣) أغلقي الترطيب.\n٤) إن لسع خفيفاً أول أيام، باعدي الاستخدام.",
-  "useEn": "1) Clean, slightly damp face.\n2) Dot cheeks, forehead, chin; spread.\n3) Wait a minute, then cream.\n4) Eye area only if the formula is made for it.",
-  "skinAr": "الجافة والعطشى",
-  "skinEn": "dry and thirsty",
+  "descAr": "سيروم ميديكيوب تريبل كولاجين لشد البشرة من Medicube. خطوة مركّزة وسريعة. 55 مل.",
+  "descEn": "Medicube Triple Collagen Serum by Medicube. Focused step, fast finish. 55 ml.",
+  "useAr": "١) بعد التنظيف.\n٢) قطرات قليلة ثم رطّبي.",
+  "useEn": "1) After cleanse.\n2) Few drops, then moisturise.",
+  "skinAr": "حسب احتياج بشرتك.",
+  "skinEn": "Match to your skin need.",
   "stock": 3
-},
-{
+});
+A.push({
   "id": 33,
   "brand": "Medicube",
   "cat": "عناية",
@@ -93,15 +93,15 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "تونر ميديكيوب بي دي آر إن الوردي بالببتيد لتوهج البشرة - 250مل",
   "nameEn": "Medicube PDRN Pink Peptide Toner - 250ml",
-  "descAr": "Medicube × عناية يومية: تونر ميديكيوب بي دي آر إن الوردي بالببتيد لتوهج الب…. يُبرز ببتيدات/كولاجين من أجل مرونة ونضارة في المظهر. الملمس: خفيف كأول طبقة. الحجم ≈ 250 مل. الدهنية المنتعشة. انتظمي أسبوعين قبل الحكم النهائي.",
-  "descEn": "Medicube for daily care: Medicube PDRN Pink Peptide Toner. It brings peptides/collagen support for a springier, fresher look. Feel: water-fresh like a soft splash. Size ≈ 250 ml. Sensitive. Ongoing sting? Ease off or ask a pro.",
-  "useAr": "١) فوراً بعد الغسول.\n٢) راحة اليد أو القطنة — بلا سحب.\n٣) بدون شطف → سيروم → مرطب.",
-  "useEn": "1) Right after cleansing.\n2) Palms or pad — no dragging.\n3) No rinse → serum → cream.",
-  "skinAr": "الدهنية المنتعشة",
-  "skinEn": "sensitive",
+  "descAr": "تونر ميديكيوب بي دي آر إن الوردي بالببتيد  من Medicube. عناية واضحة وهادئة. 250 مل.",
+  "descEn": "Medicube PDRN Pink Peptide Toner by Medicube. Clear, quiet care. 250 ml.",
+  "useAr": "١) ضمن روتينك اليومي.\n٢) كمية قليلة تكفي.",
+  "useEn": "1) In your daily routine.\n2) Small amount is enough.",
+  "skinAr": "حسب نوع البشرة.",
+  "skinEn": "Match to your skin type.",
   "stock": 3
-},
-{
+});
+A.push({
   "id": 35,
   "brand": "Medicube",
   "cat": "عناية",
@@ -113,15 +113,15 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "قناع ميديكيوب زيرو بور بالطين لتنقية المسام وإزالة الرؤوس السوداء + فرشاة - 100ج",
   "nameEn": "Medicube Zero Pore Blackhead Mud Mask + Brush",
-  "descAr": "اختاري قناع ميديكيوب زيرو بور بالطين لتنقية المسام وإزالة … حين تريدين نتيجة بلا تعقيد. من Medicube، راحة تُحسّ بعد الإزالة. الحجم ≈ 100 ج. مُخصص تقريباً لـالمرطّب للجافة. خزّنيها في مكان معتدل وأغلقي الغطاء.",
-  "descEn": "Reach for Medicube Zero Pore Blackhead Mud Mask + Brush when you want results without a maze. From Medicube, a short session, clearer after-feel. Size ≈ 100 g. Aimed at clay for oily. Ongoing sting? Ease off or ask a pro.",
-  "useAr": "١) ١–٣ مرات أسبوعياً.\n٢) ابتعدي عن الجروح.\n٣) أكملي روتينك بعد الجلسة.",
-  "useEn": "1) Clean skin.\n2) 10–20 minutes (or as labeled).\n3) Remove or pat in + cream.\n4) Clay/acids: not daily.",
-  "skinAr": "المرطّب للجافة",
-  "skinEn": "clay for oily",
+  "descAr": "قناع ميديكيوب زيرو بور بالطين لتنقية المسا من Medicube. أداة عملية يومية. 100 ج.",
+  "descEn": "Medicube Zero Pore Blackhead Mud Mask + Brush by Medicube. Practical everyday tool. 100 g.",
+  "useAr": "١) على بشرة/شعر نظيف.\n٢) اتبعي تعليمات الجهاز.",
+  "useEn": "1) On clean skin/hair.\n2) Follow device guide.",
+  "skinAr": "للاستخدام اليومي أو الأسبوعي.",
+  "skinEn": "Daily or weekly use.",
   "stock": 3
-},
-{
+});
+A.push({
   "id": 39,
   "brand": "Medicube",
   "cat": "عناية",
@@ -133,15 +133,15 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "قناع ميديكيوب الليلي بالكولاجين لشد وترطيب البشرة - 75مل",
   "nameEn": "Medicube Collagen Night Wrapping Mask - 75ml",
-  "descAr": "Medicube × عناية يومية: قناع ميديكيوب الليلي بالكولاجين لشد وترطيب البشرة. يُبرز ببتيدات/كولاجين من أجل مرونة ونضارة في المظهر. الملمس: خطوة أسبوعية تُنعش الروتين. الحجم ≈ 75 مل. الطين للدهنية. أي لسع مستمر؟ خفّفي أو راجعي مختصاً.",
-  "descEn": "Medicube for daily care: Medicube Collagen Night Wrapping Mask. It brings peptides/collagen support for a springier, fresher look. Feel: a short session, clearer after-feel. Size ≈ 75 ml. Sensitive — watch the clock. Ongoing sting? Ease off or ask a pro.",
-  "useAr": "١) بشرة نظيفة.\n٢) ١٠–٢٠ دقيقة (أو حسب العبوة).\n٣) إزالة أو تربيت الباقي + مرطب.\n٤) الطين/التقشير: ليس يومياً.",
-  "useEn": "1) Clean skin.\n2) 10–20 minutes (or as labeled).\n3) Remove or pat in + cream.\n4) Clay/acids: not daily.",
-  "skinAr": "الطين للدهنية",
-  "skinEn": "sensitive — watch the clock",
+  "descAr": "قناع ميديكيوب الليلي بالكولاجين لشد وترطيب من Medicube. عناية واضحة وهادئة. 75 مل.",
+  "descEn": "Medicube Collagen Night Wrapping Mask by Medicube. Clear, quiet care. 75 ml.",
+  "useAr": "١) ضمن روتينك اليومي.\n٢) كمية قليلة تكفي.",
+  "useEn": "1) In your daily routine.\n2) Small amount is enough.",
+  "skinAr": "حسب نوع البشرة.",
+  "skinEn": "Match to your skin type.",
   "stock": 3
-},
-{
+});
+A.push({
   "id": 46,
   "brand": "Medicube",
   "cat": "عناية",
@@ -153,15 +153,15 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "قناع ميديكوب الليلي بالكوجيك والكركم لتفتيح البشرة - 75مل",
   "nameEn": "Medicube Kojic Acid Turmeric Night Wrapping Mask - 75ml",
-  "descAr": "Medicube × عناية يومية: قناع ميديكوب الليلي بالكوجيك والكركم لتفتيح البشرة. يُركّز على راحة الاستخدام. الملمس: راحة تُحسّ بعد الإزالة. الحجم ≈ 75 مل. الطين للدهنية. الجمال الأهدأ يأتي من روتين قصير ثابت.",
-  "descEn": "Medicube for daily care: Medicube Kojic Acid Turmeric Night Wrapping Mask. Comfort-first use. Feel: a weekly pause that renews the routine. Size ≈ 75 ml. Sensitive — watch the clock. Keep it cool-ish and cap it tight.",
-  "useAr": "١) بشرة نظيفة.\n٢) ١٠–٢٠ دقيقة (أو حسب العبوة).\n٣) إزالة أو تربيت الباقي + مرطب.\n٤) الطين/التقشير: ليس يومياً.",
-  "useEn": "1) Clean skin.\n2) 10–20 minutes (or as labeled).\n3) Remove or pat in + cream.\n4) Clay/acids: not daily.",
-  "skinAr": "الطين للدهنية",
-  "skinEn": "sensitive — watch the clock",
+  "descAr": "قناع ميديكوب الليلي بالكوجيك والكركم لتفتي من Medicube. عناية واضحة وهادئة. 75 مل.",
+  "descEn": "Medicube Kojic Acid Turmeric Night Wrapping Mask by Medicube. Clear, quiet care. 75 ml.",
+  "useAr": "١) ضمن روتينك اليومي.\n٢) كمية قليلة تكفي.",
+  "useEn": "1) In your daily routine.\n2) Small amount is enough.",
+  "skinAr": "حسب نوع البشرة.",
+  "skinEn": "Match to your skin type.",
   "stock": 3
-},
-{
+});
+A.push({
   "id": 52,
   "brand": "Medicube",
   "cat": "عناية",
@@ -173,15 +173,15 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "كريم الجيلي بحمض الهيالورونيك والسيراميد لترطيب البشرة من ميديكيوب - 50مل",
   "nameEn": "Medicube Hyaluronic Ceramide Moisturizing Jelly Cream - 50ml",
-  "descAr": "رقيق في الإحساس، صادق في الدور — كريم الجيلي بحمض الهيالورونيك والسيراميد لترطيب الب…. علامة Medicube تعتمد لمسة هيالورونيك. كريمي يغلّف بلطف. الحجم ≈ 50 مل. يناسب مساءً لمعظم الأنواع. خزّنيها في مكان معتدل وأغلقي الغطاء.",
-  "descEn": "Soft to the touch, honest in role — Medicube Hyaluronic Ceramide Moisturizing Jelly Cream. Medicube leans on hyaluronic acid. Rich yet breathable. Size ≈ 50 ml. Best with nights for most types. Ongoing sting? Ease off or ask a pro.",
-  "useAr": "١) بعد السيروم أو مباشرة بعد الغسول.\n٢) حبة بازيلاء للوجه + قليل للرقبة.\n٣) صباحاً SPF فوقه.\n٤) مساءً زيدي على الخدود الجافة.",
-  "useEn": "1) After serum or right after cleanse.\n2) Pea-size for face + a little neck.\n3) SPF over it in the morning.\n4) Extra on dry cheeks at night.",
-  "skinAr": "مساءً لمعظم الأنواع",
-  "skinEn": "nights for most types",
+  "descAr": "كريم الجيلي بحمض الهيالورونيك والسيراميد ل من Medicube. ترطيب مريح لليوم. 50 مل.",
+  "descEn": "Medicube Hyaluronic Ceramide Moisturizing Jelly  by Medicube. Quiet daily moisture. 50 ml.",
+  "useAr": "١) بعد السيروم.\n٢) طبقة خفيفة تكفي.",
+  "useEn": "1) After serum.\n2) Thin layer is enough.",
+  "skinAr": "للبشرة العادية إلى الجافة غالباً.",
+  "skinEn": "Often normal to dry skin.",
   "stock": 3
-},
-{
+});
+A.push({
   "id": 59,
   "brand": "Medicube",
   "cat": "عناية",
@@ -193,15 +193,15 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "قناع ميديكوب الليلي الوردي بالكافيين لترطيب وشد البشرة - 75مل",
   "nameEn": "Medicube PDRN Pink Caffeine Night Wrapping Mask - 75ml",
-  "descAr": "لمسة Medicube في قناع ميديكوب الليلي الوردي بالكافيين لترطيب وشد الب…: جلسة قصيرة بنتيجة أوضح. يُذكر فيه ببتيدات/كولاجين لدعم مرونة ونضارة في المظهر. الحجم ≈ 75 مل. يناسب ١–٣ مرات أسبوعياً. خزّنيها في مكان معتدل وأغلقي الغطاء.",
-  "descEn": "Medicube's touch in Medicube PDRN Pink Caffeine Night Wrapping Mask: comfort you notice after removal. Notes of peptides/collagen support support a springier, fresher look. Size ≈ 75 ml. Fits 1–3 times a week. Keep it cool-ish and cap it tight.",
-  "useAr": "١) ١–٣ مرات أسبوعياً.\n٢) ابتعدي عن الجروح.\n٣) أكملي روتينك بعد الجلسة.",
-  "useEn": "1) Clean skin.\n2) 10–20 minutes (or as labeled).\n3) Remove or pat in + cream.\n4) Clay/acids: not daily.",
-  "skinAr": "١–٣ مرات أسبوعياً",
-  "skinEn": "1–3 times a week",
+  "descAr": "قناع ميديكوب الليلي الوردي بالكافيين لترطي من Medicube. عناية واضحة وهادئة. 75 مل.",
+  "descEn": "Medicube PDRN Pink Caffeine Night Wrapping Mask by Medicube. Clear, quiet care. 75 ml.",
+  "useAr": "١) ضمن روتينك اليومي.\n٢) كمية قليلة تكفي.",
+  "useEn": "1) In your daily routine.\n2) Small amount is enough.",
+  "skinAr": "حسب نوع البشرة.",
+  "skinEn": "Match to your skin type.",
   "stock": 3
-},
-{
+});
+A.push({
   "id": 60,
   "brand": "Medicube",
   "cat": "عناية",
@@ -213,15 +213,15 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "زيت تنظيف ميديكيوب زيرو بور لإزالة الرؤوس السوداء وتنقية المسام - 205مل",
   "nameEn": "Medicube Zero Pore Blackhead Deep Cleansing Oil - 205ml",
-  "descAr": "زيت تنظيف ميديكيوب زيرو بور لإزالة الرؤوس السوداء و…. قصة قصيرة: تنظيف/عناية/حماية حسب نوعه، وMedicube هنا لتسهيل اليوم. إحساس وجه « جديد » بهدوء. الحجم ≈ 205 مل. الدهنية والمختلطة. انتظمي أسبوعين قبل الحكم النهائي.",
-  "descEn": "Medicube Zero Pore Blackhead Deep Cleansing Oil. Short story: cleanse, treat, or protect as labeled — Medicube keeps the day simple. Cleans and leaves skin at ease. Size ≈ 205 ml. After makeup as step one. Ongoing sting? Ease off or ask a pro.",
-  "useAr": "١) ماء فاتر.\n٢) ٢٠–٣٠ ثانية تدليك ثم شطف كامل.\n٣) تربيت للتجفيف.\n٤) مكياج ثقيل: زيتي أولاً ثم هذا.",
-  "useEn": "1) Lukewarm water.\n2) 20–30 seconds, full rinse.\n3) Pat dry.\n4) Heavy makeup: oil first, then this.",
-  "skinAr": "الدهنية والمختلطة",
-  "skinEn": "after makeup as step one",
+  "descAr": "زيت تنظيف ميديكيوب زيرو بور لإزالة الرؤوس  من Medicube. عناية واضحة وهادئة. 205 مل.",
+  "descEn": "Medicube Zero Pore Blackhead Deep Cleansing Oil by Medicube. Clear, quiet care. 205 ml.",
+  "useAr": "١) ضمن روتينك اليومي.\n٢) كمية قليلة تكفي.",
+  "useEn": "1) In your daily routine.\n2) Small amount is enough.",
+  "skinAr": "حسب نوع البشرة.",
+  "skinEn": "Match to your skin type.",
   "stock": 3
-},
-{
+});
+A.push({
   "id": 77,
   "brand": "Medicube",
   "cat": "عناية",
@@ -233,15 +233,15 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "كريم الرقبة بي دي آر إن بالكولاجين مع أداة غوا شا من ميديكيوب - 90ج",
   "nameEn": "Medicube PDRN Collagen Neck Cream with Gua Sha",
-  "descAr": "كريم الرقبة بي دي آر إن بالكولاجين مع أداة غوا شا م…. قصة قصيرة: تنظيف/عناية/حماية حسب نوعه، وMedicube هنا لتسهيل اليوم. غني لكن يتنفس. ببتيدات/كولاجين → مرونة ونضارة في المظهر. الحجم ≈ 90 ج. المختلطة في الجو الجاف. انتظمي أسبوعين قبل الحكم النهائي.",
-  "descEn": "Medicube PDRN Collagen Neck Cream with Gua Sha. Short story: cleanse, treat, or protect as labeled — Medicube keeps the day simple. Velvet on dry cheeks. Peptides/collagen support → a springier, fresher look. Size ≈ 90 g. Combo in dry weather. Give it two steady weeks before you decide.",
-  "useAr": "١) بعد السيروم أو مباشرة بعد الغسول.\n٢) حبة بازيلاء للوجه + قليل للرقبة.\n٣) صباحاً SPF فوقه.\n٤) مساءً زيدي على الخدود الجافة.",
-  "useEn": "1) After serum or right after cleanse.\n2) Pea-size for face + a little neck.\n3) SPF over it in the morning.\n4) Extra on dry cheeks at night.",
-  "skinAr": "المختلطة في الجو الجاف",
-  "skinEn": "combo in dry weather",
+  "descAr": "كريم الرقبة بي دي آر إن بالكولاجين مع أداة من Medicube. ترطيب مريح لليوم. 90 ج.",
+  "descEn": "Medicube PDRN Collagen Neck Cream with Gua Sha by Medicube. Quiet daily moisture. 90 g.",
+  "useAr": "١) بعد السيروم.\n٢) طبقة خفيفة تكفي.",
+  "useEn": "1) After serum.\n2) Thin layer is enough.",
+  "skinAr": "للبشرة العادية إلى الجافة غالباً.",
+  "skinEn": "Often normal to dry skin.",
   "stock": 3
-},
-{
+});
+A.push({
   "id": 120,
   "brand": "Medicube",
   "cat": "عناية",
@@ -253,15 +253,15 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "بلسم ميديكيوب الوردي متعدد الاستخدامات للوجه بالكولاجين وبي دي آر إن - 10ج",
   "nameEn": "Medicube Eye — DB-7451402043472",
-  "descAr": "اختاري بلسم ميديكيوب الوردي متعدد الاستخدامات للوجه بالكول… حين تريدين نتيجة بلا تعقيد. من Medicube، غني ومطمئن بفضل ببتيدات/كولاجين. الحجم ≈ 10 ج. مُخصص تقريباً لـالبقع الجافة. خزّنيها في مكان معتدل وأغلقي الغطاء.",
-  "descEn": "Reach for Medicube Eye when you want results without a maze. From Medicube, a rescue layer for thirsty spots thanks to peptides/collagen support. Size ≈ 10 g. Aimed at sensitive and needy. Give it two steady weeks before you decide.",
-  "useAr": "١) على الجفاف أو آخر طبقة.\n٢) طبقة رقيقة.\n٣) أعيدي ليلاً.\n٤) بعيداً عن العين ما لم يُذكر.",
-  "useEn": "1) On dry spots or as last step.\n2) Thin layer.\n3) Again at night if needed.\n4) Away from eyes unless labeled.",
-  "skinAr": "البقع الجافة",
-  "skinEn": "sensitive and needy",
+  "descAr": "بلسم ميديكيوب الوردي متعدد الاستخدامات للو من Medicube. تغطية خفيفة لمظهر طبيعي. 10 ج.",
+  "descEn": "Medicube Eye by Medicube. Light coverage, natural finish. 10 g.",
+  "useAr": "١) بعد العناية.\n٢) وزّعي برفق.",
+  "useEn": "1) After skincare.\n2) Blend lightly.",
+  "skinAr": "لكل درجات البشرة — اختاري الدرجة المناسبة.",
+  "skinEn": "All skin tones — pick your shade.",
   "stock": 3
-},
-{
+});
+A.push({
   "id": 121,
   "brand": "Medicube",
   "cat": "عناية",
@@ -273,15 +273,15 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "بالم ميديكيوب سوبر سيكا للتقشير وتنظيف البشرة - 100مل",
   "nameEn": "Medicube Super Cica Exfoliating Cleansing Balm",
-  "descAr": "لمسة Medicube في بالم ميديكيوب سوبر سيكا للتقشير وتنظيف البشرة: إحساس وجه « جديد » بهدوء. يُذكر فيه خلاصة مهدّئة لدعم هدوء للاحمرار والتهيج الخفيف. الحجم ≈ 100 مل. يناسب بعد مكياج كخطوة أولى. الجمال الأهدأ يأتي من روتين قصير ثابت.",
-  "descEn": "Medicube's touch in Medicube Super Cica Exfoliating Cleansing Balm: no tight squeak after rinse. Notes of calming botanicals support calm for mild redness. Size ≈ 100 ml. Fits after makeup as step one. Quiet beauty loves a short, steady routine.",
-  "useAr": "١) ماء فاتر.\n٢) ٢٠–٣٠ ثانية تدليك ثم شطف كامل.\n٣) تربيت للتجفيف.\n٤) مكياج ثقيل: زيتي أولاً ثم هذا.",
-  "useEn": "1) Lukewarm water.\n2) 20–30 seconds, full rinse.\n3) Pat dry.\n4) Heavy makeup: oil first, then this.",
-  "skinAr": "بعد مكياج كخطوة أولى",
-  "skinEn": "after makeup as step one",
+  "descAr": "بالم ميديكيوب سوبر سيكا للتقشير وتنظيف الب من Medicube. عناية واضحة وهادئة. 100 مل.",
+  "descEn": "Medicube Super Cica Exfoliating Cleansing Balm by Medicube. Clear, quiet care. 100 ml.",
+  "useAr": "١) ضمن روتينك اليومي.\n٢) كمية قليلة تكفي.",
+  "useEn": "1) In your daily routine.\n2) Small amount is enough.",
+  "skinAr": "حسب نوع البشرة.",
+  "skinEn": "Match to your skin type.",
   "stock": 3
-},
-{
+});
+A.push({
   "id": 126,
   "brand": "Medicube",
   "cat": "شفاه",
@@ -294,15 +294,15 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "ماسك الشفاه الليلي ميديكيوب بي دي آر إن لترميم وترطيب الشفاه - 10ج",
   "nameEn": "Medicube PDRN Lip Sleeping Mask - 10g",
-  "descAr": "رقيق في الإحساس، صادق في الدور — ماسك الشفاه الليلي ميديكيوب بي دي آر إن لترميم وترط…. علامة Medicube تعتمد لمسة ببتيدات/كولاجين. مريح للحديث والقهوة. الحجم ≈ 10 ج. يناسب يومياً بلا إزعاج. انتظمي أسبوعين قبل الحكم النهائي.",
-  "descEn": "Soft to the touch, honest in role — Medicube PDRN Lip Sleeping Mask. Medicube leans on peptides/collagen support. Comfortable through talk and coffee. Size ≈ 10 g. Best with daily without fuss. Ongoing sting? Ease off or ask a pro.",
-  "useAr": "١) شفاه نظيفة.\n٢) من الوسط للخارج.\n٣) لمسة خلال اليوم.\n٤) ليلاً أغنى إن كان مرطباً.",
-  "useEn": "1) Clean lips.\n2) Center to outer edge.\n3) Touch up through the day.\n4) Richer layer at night if balm/mask.",
-  "skinAr": "يومياً بلا إزعاج",
-  "skinEn": "daily without fuss",
+  "descAr": "ماسك الشفاه الليلي ميديكيوب بي دي آر إن لت من Medicube. لون ناعم ومريح. 10 ج.",
+  "descEn": "Medicube PDRN Lip Sleeping Mask by Medicube. Soft colour, comfortable wear. 10 g.",
+  "useAr": "١) على شفاه نظيفة.\n٢) أعدِي عند الحاجة.",
+  "useEn": "1) On clean lips.\n2) Reapply as needed.",
+  "skinAr": "لكل درجات الشفاه.",
+  "skinEn": "All lip tones.",
   "stock": 3
-},
-{
+});
+A.push({
   "id": 167,
   "brand": "Medicube",
   "cat": "شعر",
@@ -315,15 +315,15 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "شامبو ميديكيوب بالروزماري بي دي أر إن المنعش لتكثيف الشعر - 400مل",
   "nameEn": "Medicube Rosemary PDRN Cooling Thickening Shampoo - 400ml",
-  "descAr": "اختاري شامبو ميديكيوب بالروزماري بي دي أر إن المنعش لتكثيف… حين تريدين نتيجة بلا تعقيد. من Medicube، أنظف وأطرى مع الأسابيع بفضل ببتيدات/كولاجين. الحجم ≈ 400 مل. مُخصص تقريباً لـفروة تحتاج انتعاشاً. الجمال الأهدأ يأتي من روتين قصير ثابت.",
-  "descEn": "Reach for Medicube Rosemary PDRN Cooling Thickening Shampoo when you want results without a maze. From Medicube, cleaner and softer over weeks thanks to peptides/collagen support. Size ≈ 400 ml. Aimed at match hair and scalp. Keep it cool-ish and cap it tight.",
-  "useAr": "١) شامبو للفروة، بلسم للأطراف، سيروم حسب العبوة.\n٢) ابدئي بقليل.\n٣) لا تُشبعي الخصل.\n٤) أسبوعان–ثلاثة للفرق الأوضح.",
-  "useEn": "1) Shampoo scalp, condition lengths, leave-in as labeled.\n2) Start small.\n3) Don’t drench the hair.\n4) Two–three weeks for a clearer change.",
-  "skinAr": "فروة تحتاج انتعاشاً",
-  "skinEn": "match hair and scalp",
+  "descAr": "شامبو ميديكيوب بالروزماري بي دي أر إن المن من Medicube. عناية بسيطة للشعر. 400 مل.",
+  "descEn": "Medicube Rosemary PDRN Cooling Thickening Shampo by Medicube. Simple daily hair care. 400 ml.",
+  "useAr": "١) على شعر رطب أو جاف حسب النوع.\n٢) لا تُغرقي الكمية.",
+  "useEn": "1) Damp or dry as directed.\n2) A little goes far.",
+  "skinAr": "حسب نوع الشعر والفروة.",
+  "skinEn": "Depends on hair and scalp.",
   "stock": 3
-},
-{
+});
+A.push({
   "id": 168,
   "brand": "Medicube",
   "cat": "شعر",
@@ -336,15 +336,15 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "بلسم ميديكيوب بالروزماري بي دي أر إن للشعر وفروة الرأس - 250مل",
   "nameEn": "Medicube Rosemary PDRN Hair & Scalp Conditioner - 250ml",
-  "descAr": "بلسم ميديكيوب بالروزماري بي دي أر إن للشعر وفروة ال…. قصة قصيرة: تنظيف/عناية/حماية حسب نوعه، وMedicube هنا لتسهيل اليوم. أنظف وأطرى مع الأسابيع. ببتيدات/كولاجين → مرونة ونضارة في المظهر. الحجم ≈ 250 مل. فروة تحتاج انتعاشاً. أي لسع مستمر؟ خفّفي أو راجعي مختصاً.",
-  "descEn": "Medicube Rosemary PDRN Hair & Scalp Conditioner. Short story: cleanse, treat, or protect as labeled — Medicube keeps the day simple. Makes styling simpler. Peptides/collagen support → a springier, fresher look. Size ≈ 250 ml. Match hair and scalp. Ongoing sting? Ease off or ask a pro.",
-  "useAr": "١) شامبو للفروة، بلسم للأطراف، سيروم حسب العبوة.\n٢) ابدئي بقليل.\n٣) لا تُشبعي الخصل.\n٤) أسبوعان–ثلاثة للفرق الأوضح.",
-  "useEn": "1) Shampoo scalp, condition lengths, leave-in as labeled.\n2) Start small.\n3) Don’t drench the hair.\n4) Two–three weeks for a clearer change.",
-  "skinAr": "فروة تحتاج انتعاشاً",
-  "skinEn": "match hair and scalp",
+  "descAr": "بلسم ميديكيوب بالروزماري بي دي أر إن للشعر من Medicube. عناية بسيطة للشعر. 250 مل.",
+  "descEn": "Medicube Rosemary PDRN Hair & Scalp Conditioner by Medicube. Simple daily hair care. 250 ml.",
+  "useAr": "١) على شعر رطب أو جاف حسب النوع.\n٢) لا تُغرقي الكمية.",
+  "useEn": "1) Damp or dry as directed.\n2) A little goes far.",
+  "skinAr": "حسب نوع الشعر والفروة.",
+  "skinEn": "Depends on hair and scalp.",
   "stock": 3
-},
-{
+});
+A.push({
   "id": 193,
   "brand": "Medicube",
   "cat": "أدوات",
@@ -358,15 +358,15 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "فرشاة ميديكيوب متعددة الاستخدام لإزالة الرؤوس السوداء وتنظيف المسام",
   "nameEn": "Medicube Multi Blackhead Pore Brush",
-  "descAr": "رقيق في الإحساس، صادق في الدور — فرشاة ميديكيوب متعددة الاستخدام لإزالة الرؤوس السود…. علامة Medicube. ينظّف ويترك البشرة مرتاحة. يناسب الحساسة بصيغة ألطف. خزّنيها في مكان معتدل وأغلقي الغطاء.",
-  "descEn": "Soft to the touch, honest in role — Medicube Multi Blackhead Pore Brush. Medicube. A quiet ‘reset’ face. Best with after makeup as step one. Give it two steady weeks before you decide.",
-  "useAr": "١) ماء فاتر.\n٢) ٢٠–٣٠ ثانية تدليك ثم شطف كامل.\n٣) تربيت للتجفيف.\n٤) مكياج ثقيل: زيتي أولاً ثم هذا.",
-  "useEn": "1) Lukewarm water.\n2) 20–30 seconds, full rinse.\n3) Pat dry.\n4) Heavy makeup: oil first, then this.",
-  "skinAr": "الحساسة بصيغة ألطف",
-  "skinEn": "after makeup as step one",
+  "descAr": "فرشاة ميديكيوب متعددة الاستخدام لإزالة الر من Medicube. أداة عملية يومية.",
+  "descEn": "Medicube Multi Blackhead Pore Brush by Medicube. Practical everyday tool.",
+  "useAr": "١) على بشرة/شعر نظيف.\n٢) اتبعي تعليمات الجهاز.",
+  "useEn": "1) On clean skin/hair.\n2) Follow device guide.",
+  "skinAr": "للاستخدام اليومي أو الأسبوعي.",
+  "skinEn": "Daily or weekly use.",
   "stock": 3
-},
-{
+});
+A.push({
   "id": 196,
   "brand": "Medicube",
   "cat": "عناية",
@@ -378,15 +378,15 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "سيروم ميديكوب ون داي إكسوسوم شوت 2000 لتجديد ونضارة البشرة - 30مل",
   "nameEn": "Medicube Beauty Tool — I0218",
-  "descAr": "لماذا Medicube هنا؟ لأن سيروم ميديكوب ون داي إكسوسوم شوت 2000 لتجديد ونضارة… يقدّم خطوة واحدة واضحة: خفيف وسريع الامتصاص. بدون ضجيج وعود طويلة. الحجم ≈ 30 مل. لـمعظم الأنواع — ابدئي بقطرات. أي لسع مستمر؟ خفّفي أو راجعي مختصاً.",
-  "descEn": "Why Medicube? Because Medicube Beauty Tool does one clear job: melts in without a sticky film. No long promise list. Size ≈ 30 ml. For daily SPF when brightening. Quiet beauty loves a short, steady routine.",
-  "useAr": "١) وجه نظيف ورطب قليلاً.\n٢) نقطة على الخد والجبهة والذقن، ثم توزيع.\n٣) دقيقة صبر ثم الكريم.\n٤) محيط العين فقط إن صُمّم لذلك.",
-  "useEn": "1) Clean skin; toner first if you use one.\n2) 2–3 drops — press from center out.\n3) Cream on top. AM: SPF.\n4) Retinoids/acids: night, slowly.",
-  "skinAr": "معظم الأنواع — ابدئي بقطرات",
-  "skinEn": "daily SPF when brightening",
+  "descAr": "سيروم ميديكوب ون داي إكسوسوم شوت 2000 لتجد من Medicube. خطوة مركّزة وسريعة. 30 مل.",
+  "descEn": "Medicube Beauty Tool by Medicube. Focused step, fast finish. 30 ml.",
+  "useAr": "١) بعد التنظيف.\n٢) قطرات قليلة ثم رطّبي.",
+  "useEn": "1) After cleanse.\n2) Few drops, then moisturise.",
+  "skinAr": "حسب احتياج بشرتك.",
+  "skinEn": "Match to your skin need.",
   "stock": 3
-},
-{
+});
+A.push({
   "id": 199,
   "brand": "Medicube",
   "cat": "عناية",
@@ -398,12 +398,12 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "وسادات ميديكيوب زيرو لتضييق المسام وتنظيف البشرة - 70 قطعة",
   "nameEn": "Medicube Zero Pore Pad - 70 pads",
-  "descAr": "وسادات ميديكيوب زيرو لتضييق المسام وتنظيف البشرة. قصة قصيرة: تنظيف/عناية/حماية حسب نوعه، وMedicube هنا لتسهيل اليوم. إحساس وجه « جديد » بهدوء. الحجم ≈ 70 قطعة. الحساسة بصيغة ألطف. انتظمي أسبوعين قبل الحكم النهائي.",
-  "descEn": "Medicube Zero Pore Pad. Short story: cleanse, treat, or protect as labeled — Medicube keeps the day simple. Cleans and leaves skin at ease. Size ≈ 70 pcs. Sensitive with a milder formula. Quiet beauty loves a short, steady routine.",
-  "useAr": "١) أول خطوة صباحًا ومساءً.\n٢) تجنّبي الماء المغلي.\n٣) إن شدّ الوجه، قصّري الوقت.",
-  "useEn": "1) Lukewarm water.\n2) 20–30 seconds, full rinse.\n3) Pat dry.\n4) Heavy makeup: oil first, then this.",
-  "skinAr": "الحساسة بصيغة ألطف",
-  "skinEn": "sensitive with a milder formula",
+  "descAr": "وسادات ميديكيوب زيرو لتضييق المسام وتنظيف  من Medicube. عناية واضحة وهادئة.",
+  "descEn": "Medicube Zero Pore Pad by Medicube. Clear, quiet care.",
+  "useAr": "١) ضمن روتينك اليومي.\n٢) كمية قليلة تكفي.",
+  "useEn": "1) In your daily routine.\n2) Small amount is enough.",
+  "skinAr": "حسب نوع البشرة.",
+  "skinEn": "Match to your skin type.",
   "stock": 3
-}
-);
+});
+})();

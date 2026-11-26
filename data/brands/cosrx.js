@@ -1,7 +1,7 @@
-/* Brand: Cosrx · 3 products · imgs auto-wired 2026-11-25 */
-window.NAQA_PRODUCTS = window.NAQA_PRODUCTS || [];
-window.NAQA_PRODUCTS.push(
-{
+// cosrx.js — short Apple-like copy
+(function(){
+var A = window.NAQA_PRODUCTS || (window.NAQA_PRODUCTS = []);
+A.push({
   "id": 67,
   "brand": "Cosrx",
   "cat": "عناية",
@@ -13,15 +13,15 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "لوشن كوسركس فائق الترطيب والخالي من الزيوت - 100مل",
   "nameEn": "Cosrx Oil Free Ultra Moisturizing Lotion",
-  "descAr": "لوشن كوسركس فائق الترطيب والخالي من الزيوت من Cosrx. يغطي مساحات أوسع. الحجم ≈ 100 مل. يناسب معظم الأنواع. الجمال الأهدأ يأتي من روتين قصير ثابت.",
-  "descEn": "Cosrx Oil Free Ultra Moisturizing Lotion by Cosrx. Absorbs at a body-friendly pace. Size ≈ 100 ml. Suits after shower. Quiet beauty loves a short, steady routine.",
-  "useAr": "١) بعد الحمام على بشرة نديّة.\n٢) من الأطراف للداخل.\n٣) ركّزي على الكوعين والساقين.\n٤) صباح أو مساء.",
-  "useEn": "1) After shower, skin still damp.\n2) Limbs toward center.\n3) Elbows and dry legs again.\n4) Morning or night.",
-  "skinAr": "معظم الأنواع",
-  "skinEn": "after shower",
+  "descAr": "لوشن كوسركس فائق الترطيب والخالي من الزيوت من Cosrx. عناية واضحة وهادئة. 100 مل.",
+  "descEn": "Cosrx Oil Free Ultra Moisturizing Lotion by Cosrx. Clear, quiet care. 100 ml.",
+  "useAr": "١) ضمن روتينك اليومي.\n٢) كمية قليلة تكفي.",
+  "useEn": "1) In your daily routine.\n2) Small amount is enough.",
+  "skinAr": "حسب نوع البشرة.",
+  "skinEn": "Match to your skin type.",
   "stock": 3
-},
-{
+});
+A.push({
   "id": 93,
   "brand": "Cosrx",
   "cat": "عيون",
@@ -33,15 +33,15 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "قناع اسفل العين الهيدروجيل بالببتيد والكولاجين من كوسركس - 60 قطعة",
   "nameEn": "Cosrx The Peptide Collagen Hydrogel Eye Patch",
-  "descAr": "لمسة Cosrx في قناع اسفل العين الهيدروجيل بالببتيد والكولاجين من ك…: ناعم على الشفاه. يُذكر فيه ببتيدات/كولاجين لدعم مرونة ونضارة في المظهر. الحجم ≈ 60 قطعة. يناسب يومياً بلا إزعاج. خزّنيها في مكان معتدل وأغلقي الغطاء.",
-  "descEn": "Cosrx's touch in Cosrx The Peptide Collagen Hydrogel Eye Patch: tint or shine by formula. Notes of peptides/collagen support support a springier, fresher look. Fits daily without fuss. Quiet beauty loves a short, steady routine.",
-  "useAr": "١) شفاه نظيفة.\n٢) من الوسط للخارج.\n٣) لمسة خلال اليوم.\n٤) ليلاً أغنى إن كان مرطباً.",
-  "useEn": "1) Clean lips.\n2) Center to outer edge.\n3) Touch up through the day.\n4) Richer layer at night if balm/mask.",
-  "skinAr": "يومياً بلا إزعاج",
-  "skinEn": "daily without fuss",
+  "descAr": "قناع اسفل العين الهيدروجيل بالببتيد والكول من Cosrx. لون ناعم ومريح.",
+  "descEn": "Cosrx The Peptide Collagen Hydrogel Eye Patch by Cosrx. Soft colour, comfortable wear.",
+  "useAr": "١) على شفاه نظيفة.\n٢) أعدِي عند الحاجة.",
+  "useEn": "1) On clean lips.\n2) Reapply as needed.",
+  "skinAr": "لكل درجات الشفاه.",
+  "skinEn": "All lip tones.",
   "stock": 3
-},
-{
+});
+A.push({
   "id": 179,
   "brand": "Cosrx",
   "cat": "شعر",
@@ -53,12 +53,12 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "سيروم كوسركس ببتيد 132 لاصلاح وتغذية الشعر التالف - 28مل",
   "nameEn": "Cosrx Peptide-132 Ultra Perfect Hair Bonding Oil Serum - 28ml",
-  "descAr": "Cosrx × عناية يومية: سيروم كوسركس ببتيد 132 لاصلاح وتغذية الشعر التالف. يُبرز ببتيدات/كولاجين من أجل مرونة ونضارة في المظهر. الملمس: يسهّل التصفيف. الحجم ≈ 28 مل. الشعر المجهد. الجمال الأهدأ يأتي من روتين قصير ثابت.",
-  "descEn": "Cosrx for daily care: Cosrx Peptide. It brings peptides/collagen support for a springier, fresher look. Feel: makes styling simpler. Size ≈ 28 ml. Scalp that needs air. Quiet beauty loves a short, steady routine.",
-  "useAr": "١) شامبو للفروة، بلسم للأطراف، سيروم حسب العبوة.\n٢) ابدئي بقليل.\n٣) لا تُشبعي الخصل.\n٤) أسبوعان–ثلاثة للفرق الأوضح.",
-  "useEn": "1) Shampoo scalp, condition lengths, leave-in as labeled.\n2) Start small.\n3) Don’t drench the hair.\n4) Two–three weeks for a clearer change.",
-  "skinAr": "الشعر المجهد",
-  "skinEn": "scalp that needs air",
+  "descAr": "سيروم كوسركس ببتيد 132 لاصلاح وتغذية الشعر من Cosrx. عناية بسيطة للشعر. 28 مل.",
+  "descEn": "Cosrx Peptide by Cosrx. Simple daily hair care. 28 ml.",
+  "useAr": "١) على شعر رطب أو جاف حسب النوع.\n٢) لا تُغرقي الكمية.",
+  "useEn": "1) Damp or dry as directed.\n2) A little goes far.",
+  "skinAr": "حسب نوع الشعر والفروة.",
+  "skinEn": "Depends on hair and scalp.",
   "stock": 3
-}
-);
+});
+})();

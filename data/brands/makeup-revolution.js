@@ -1,7 +1,7 @@
-/* Brand: Makeup Revolution · 20 products · imgs auto-wired 2026-11-25 */
-window.NAQA_PRODUCTS = window.NAQA_PRODUCTS || [];
-window.NAQA_PRODUCTS.push(
-{
+// makeup-revolution.js — short Apple-like copy
+(function(){
+var A = window.NAQA_PRODUCTS || (window.NAQA_PRODUCTS = []);
+A.push({
   "brand": "Makeup Revolution",
   "stock": 3,
   "imgs": [
@@ -15,14 +15,14 @@ window.NAQA_PRODUCTS.push(
   "em": "💦",
   "nameAr": "بخاخ Superdewy المرطّب — 150مل",
   "nameEn": "Makeup Revolution Superdewy Misting Spray 150ml",
-  "descAr": "رذاذ ترطيب فوري لنضارة ولمعان ندي.",
-  "descEn": "Hydrating mist for a fresh dewy glow.",
-  "useAr": "رُشّي من ٢٠ سم بعد المكياج.",
-  "useEn": "Mist from 20cm after makeup.",
-  "skinAr": "كل البشرة",
-  "skinEn": "All skin"
-},
-{
+  "descAr": "بخاخ Superdewy المرطّب من Makeup Revolution. عناية واضحة وهادئة. 150 مل.",
+  "descEn": "Makeup Revolution Superdewy Misting Spray 150ml by Makeup Revolution. Clear, quiet care. 150 ml.",
+  "useAr": "١) ضمن روتينك اليومي.\n٢) كمية قليلة تكفي.",
+  "useEn": "1) In your daily routine.\n2) Small amount is enough.",
+  "skinAr": "حسب نوع البشرة.",
+  "skinEn": "Match to your skin type."
+});
+A.push({
   "brand": "Makeup Revolution",
   "stock": 3,
   "imgs": [
@@ -35,14 +35,14 @@ window.NAQA_PRODUCTS.push(
   "em": "🧴",
   "nameAr": "مرطب ملوّن Superdewy — Tan — 55مل",
   "nameEn": "Makeup Revolution Superdewy Tinted Moisturizer Tan 55ml",
-  "descAr": "عناية + تغطية خفيفة بلمعان ندي.",
-  "descEn": "Skincare-meets-tint with dewy finish.",
-  "useAr": "وزّعي بأصابعك بعد المرطب.",
-  "useEn": "Blend with fingers after moisturizer.",
-  "skinAr": "عادية/جافة",
-  "skinEn": "Normal/dry"
-},
-{
+  "descAr": "مرطب ملوّن Superdewy من Makeup Revolution. تغطية خفيفة لمظهر طبيعي. 55 مل.",
+  "descEn": "Makeup Revolution Superdewy Tinted Moisturizer T by Makeup Revolution. Light coverage, natural finish. 55 ml.",
+  "useAr": "١) بعد العناية.\n٢) وزّعي برفق.",
+  "useEn": "1) After skincare.\n2) Blend lightly.",
+  "skinAr": "لكل درجات البشرة — اختاري الدرجة المناسبة.",
+  "skinEn": "All skin tones — pick your shade."
+});
+A.push({
   "brand": "Makeup Revolution",
   "stock": 3,
   "imgs": [
@@ -55,14 +55,14 @@ window.NAQA_PRODUCTS.push(
   "em": "🧴",
   "nameAr": "مرطب ملوّن Superdewy — 55مل",
   "nameEn": "Makeup Revolution Superdewy Tinted Moisturizer 55ml",
-  "descAr": "مرطب ملوّن خفيف لإشراقة طبيعية.",
-  "descEn": "Lightweight tinted moisturizer for soft glow.",
-  "useAr": "طبقة رقيقة على بشرة نظيفة.",
-  "useEn": "Thin layer on clean skin.",
-  "skinAr": "كل البشرة",
-  "skinEn": "All skin"
-},
-{
+  "descAr": "مرطب ملوّن Superdewy من Makeup Revolution. تغطية خفيفة لمظهر طبيعي. 55 مل.",
+  "descEn": "Makeup Revolution Superdewy Tinted Moisturizer 5 by Makeup Revolution. Light coverage, natural finish. 55 ml.",
+  "useAr": "١) بعد العناية.\n٢) وزّعي برفق.",
+  "useEn": "1) After skincare.\n2) Blend lightly.",
+  "skinAr": "لكل درجات البشرة — اختاري الدرجة المناسبة.",
+  "skinEn": "All skin tones — pick your shade."
+});
+A.push({
   "brand": "Makeup Revolution",
   "stock": 3,
   "imgs": [
@@ -75,14 +75,14 @@ window.NAQA_PRODUCTS.push(
   "em": "🪄",
   "nameAr": "برايمر Superdewy كريمي — 8جم",
   "nameEn": "Makeup Revolution Superdewy Makeup Primer Base 8g",
-  "descAr": "قاعدة كريمية تنعّم وتثبّت الأساس.",
-  "descEn": "Creamy primer that smooths and grips foundation.",
-  "useAr": "قبل الفاونديشن.",
-  "useEn": "Before foundation.",
-  "skinAr": "جافة/عادية",
-  "skinEn": "Dry/normal"
-},
-{
+  "descAr": "برايمر Superdewy كريمي من Makeup Revolution. تغطية خفيفة لمظهر طبيعي. 8 ج.",
+  "descEn": "Makeup Revolution Superdewy Makeup Primer Base 8 by Makeup Revolution. Light coverage, natural finish. 8 g.",
+  "useAr": "١) بعد العناية.\n٢) وزّعي برفق.",
+  "useEn": "1) After skincare.\n2) Blend lightly.",
+  "skinAr": "لكل درجات البشرة — اختاري الدرجة المناسبة.",
+  "skinEn": "All skin tones — pick your shade."
+});
+A.push({
   "brand": "Makeup Revolution",
   "stock": 3,
   "imgs": [
@@ -96,14 +96,14 @@ window.NAQA_PRODUCTS.push(
   "em": "🟧",
   "nameAr": "فاونديشن Conceal & Define — F6 — 23مل",
   "nameEn": "Makeup Revolution Conceal & Define Foundation F6 23ml",
-  "descAr": "تغطية عالية ديمي مات حتى ٢٤ ساعة.",
-  "descEn": "Full coverage demi-matte foundation up to 24h.",
-  "useAr": "بالفرشاة أو الإسفنجة.",
-  "useEn": "Brush or sponge.",
-  "skinAr": "كل البشرة",
-  "skinEn": "All skin"
-},
-{
+  "descAr": "فاونديشن Conceal & Define من Makeup Revolution. تغطية خفيفة لمظهر طبيعي. 23 مل.",
+  "descEn": "Makeup Revolution Conceal & Define Foundation F6 by Makeup Revolution. Light coverage, natural finish. 23 ml.",
+  "useAr": "١) بعد العناية.\n٢) وزّعي برفق.",
+  "useEn": "1) After skincare.\n2) Blend lightly.",
+  "skinAr": "لكل درجات البشرة — اختاري الدرجة المناسبة.",
+  "skinEn": "All skin tones — pick your shade."
+});
+A.push({
   "brand": "Makeup Revolution",
   "stock": 3,
   "imgs": [
@@ -116,14 +116,14 @@ window.NAQA_PRODUCTS.push(
   "em": "🟧",
   "nameAr": "فاونديشن Conceal & Define — F2 — 23مل",
   "nameEn": "Makeup Revolution Conceal & Define Foundation F2 23ml",
-  "descAr": "درجة فاتحة — تغطية عالية قابلة للبناء.",
-  "descEn": "Fair shade — full buildable coverage.",
-  "useAr": "بالفرشاة أو الإسفنجة.",
-  "useEn": "Brush or sponge.",
-  "skinAr": "بشرة فاتحة",
-  "skinEn": "Fair skin"
-},
-{
+  "descAr": "فاونديشن Conceal & Define من Makeup Revolution. تغطية خفيفة لمظهر طبيعي. 23 مل.",
+  "descEn": "Makeup Revolution Conceal & Define Foundation F2 by Makeup Revolution. Light coverage, natural finish. 23 ml.",
+  "useAr": "١) بعد العناية.\n٢) وزّعي برفق.",
+  "useEn": "1) After skincare.\n2) Blend lightly.",
+  "skinAr": "لكل درجات البشرة — اختاري الدرجة المناسبة.",
+  "skinEn": "All skin tones — pick your shade."
+});
+A.push({
   "brand": "Makeup Revolution",
   "stock": 3,
   "imgs": [
@@ -136,14 +136,14 @@ window.NAQA_PRODUCTS.push(
   "em": "🟧",
   "nameAr": "فاونديشن Conceal & Define — F4 — 23مل",
   "nameEn": "Makeup Revolution Conceal & Define Foundation F4 23ml",
-  "descAr": "درجة فاتحة-متوسطة — ديمي مات.",
-  "descEn": "Light-medium shade — demi-matte finish.",
-  "useAr": "بالفرشاة أو الإسفنجة.",
-  "useEn": "Brush or sponge.",
-  "skinAr": "فاتحة/متوسطة",
-  "skinEn": "Light/medium"
-},
-{
+  "descAr": "فاونديشن Conceal & Define من Makeup Revolution. تغطية خفيفة لمظهر طبيعي. 23 مل.",
+  "descEn": "Makeup Revolution Conceal & Define Foundation F4 by Makeup Revolution. Light coverage, natural finish. 23 ml.",
+  "useAr": "١) بعد العناية.\n٢) وزّعي برفق.",
+  "useEn": "1) After skincare.\n2) Blend lightly.",
+  "skinAr": "لكل درجات البشرة — اختاري الدرجة المناسبة.",
+  "skinEn": "All skin tones — pick your shade."
+});
+A.push({
   "brand": "Makeup Revolution",
   "stock": 3,
   "imgs": [
@@ -156,14 +156,14 @@ window.NAQA_PRODUCTS.push(
   "em": "🟧",
   "nameAr": "فاونديشن Conceal & Define — F7 — 23مل",
   "nameEn": "Makeup Revolution Conceal & Define Foundation F7 23ml",
-  "descAr": "درجة متوسطة — تغطية كاملة.",
-  "descEn": "Medium shade — full coverage.",
-  "useAr": "بالفرشاة أو الإسفنجة.",
-  "useEn": "Brush or sponge.",
-  "skinAr": "متوسطة",
-  "skinEn": "Medium skin"
-},
-{
+  "descAr": "فاونديشن Conceal & Define من Makeup Revolution. تغطية خفيفة لمظهر طبيعي. 23 مل.",
+  "descEn": "Makeup Revolution Conceal & Define Foundation F7 by Makeup Revolution. Light coverage, natural finish. 23 ml.",
+  "useAr": "١) بعد العناية.\n٢) وزّعي برفق.",
+  "useEn": "1) After skincare.\n2) Blend lightly.",
+  "skinAr": "لكل درجات البشرة — اختاري الدرجة المناسبة.",
+  "skinEn": "All skin tones — pick your shade."
+});
+A.push({
   "brand": "Makeup Revolution",
   "stock": 3,
   "imgs": [
@@ -177,14 +177,14 @@ window.NAQA_PRODUCTS.push(
   "em": "✨",
   "nameAr": "كونسيلر Conceal & Define — C10",
   "nameEn": "Makeup Revolution Conceal & Define Concealer C10",
-  "descAr": "تغطية عالية للمناطق تحت العين والشوائب.",
-  "descEn": "Full coverage for under-eyes and blemishes.",
-  "useAr": "نقطة ثم ادمجي.",
-  "useEn": "Dot then blend.",
-  "skinAr": "كل البشرة",
-  "skinEn": "All skin"
-},
-{
+  "descAr": "كونسيلر Conceal & Define من Makeup Revolution. تغطية خفيفة لمظهر طبيعي.",
+  "descEn": "Makeup Revolution Conceal & Define Concealer C10 by Makeup Revolution. Light coverage, natural finish.",
+  "useAr": "١) بعد العناية.\n٢) وزّعي برفق.",
+  "useEn": "1) After skincare.\n2) Blend lightly.",
+  "skinAr": "لكل درجات البشرة — اختاري الدرجة المناسبة.",
+  "skinEn": "All skin tones — pick your shade."
+});
+A.push({
   "brand": "Makeup Revolution",
   "stock": 3,
   "imgs": [
@@ -197,14 +197,14 @@ window.NAQA_PRODUCTS.push(
   "em": "✨",
   "nameAr": "كونسيلر Conceal & Define — C11",
   "nameEn": "Makeup Revolution Conceal & Define Concealer C11",
-  "descAr": "درجة أغمق للتغطية الكاملة.",
-  "descEn": "Deeper shade full-coverage concealer.",
-  "useAr": "نقطة ثم ادمجي.",
-  "useEn": "Dot then blend.",
-  "skinAr": "متوسطة/داكنة",
-  "skinEn": "Medium/deep"
-},
-{
+  "descAr": "كونسيلر Conceal & Define من Makeup Revolution. تغطية خفيفة لمظهر طبيعي.",
+  "descEn": "Makeup Revolution Conceal & Define Concealer C11 by Makeup Revolution. Light coverage, natural finish.",
+  "useAr": "١) بعد العناية.\n٢) وزّعي برفق.",
+  "useEn": "1) After skincare.\n2) Blend lightly.",
+  "skinAr": "لكل درجات البشرة — اختاري الدرجة المناسبة.",
+  "skinEn": "All skin tones — pick your shade."
+});
+A.push({
   "brand": "Makeup Revolution",
   "stock": 3,
   "imgs": [
@@ -217,14 +217,14 @@ window.NAQA_PRODUCTS.push(
   "em": "🌸",
   "nameAr": "بلاش سائل Superdewy — You Had Me At First Blush",
   "nameEn": "Makeup Revolution Superdewy Liquid Blush — You Had Me At First Blush",
-  "descAr": "بلاش سائل خفيف عالي الصبغة.",
-  "descEn": "Lightweight highly pigmented liquid blush.",
-  "useAr": "نقطة على الخدود وادمجي.",
-  "useEn": "Dot on cheeks and blend.",
-  "skinAr": "كل البشرة",
-  "skinEn": "All skin"
-},
-{
+  "descAr": "بلاش سائل Superdewy من Makeup Revolution. تغطية خفيفة لمظهر طبيعي.",
+  "descEn": "Makeup Revolution Superdewy Liquid Blush by Makeup Revolution. Light coverage, natural finish.",
+  "useAr": "١) بعد العناية.\n٢) وزّعي برفق.",
+  "useEn": "1) After skincare.\n2) Blend lightly.",
+  "skinAr": "لكل درجات البشرة — اختاري الدرجة المناسبة.",
+  "skinEn": "All skin tones — pick your shade."
+});
+A.push({
   "brand": "Makeup Revolution",
   "stock": 3,
   "imgs": [
@@ -237,14 +237,14 @@ window.NAQA_PRODUCTS.push(
   "em": "🌸",
   "nameAr": "بلاش سائل Superdewy — Blush Me Up",
   "nameEn": "Makeup Revolution Superdewy Liquid Blush — Blush Me Up",
-  "descAr": "بلاش سائل ندي ولامع.",
-  "descEn": "Dewy liquid blush for a fresh flush.",
-  "useAr": "نقطة على الخدود وادمجي.",
-  "useEn": "Dot on cheeks and blend.",
-  "skinAr": "كل البشرة",
-  "skinEn": "All skin"
-},
-{
+  "descAr": "بلاش سائل Superdewy من Makeup Revolution. تغطية خفيفة لمظهر طبيعي.",
+  "descEn": "Makeup Revolution Superdewy Liquid Blush by Makeup Revolution. Light coverage, natural finish.",
+  "useAr": "١) بعد العناية.\n٢) وزّعي برفق.",
+  "useEn": "1) After skincare.\n2) Blend lightly.",
+  "skinAr": "لكل درجات البشرة — اختاري الدرجة المناسبة.",
+  "skinEn": "All skin tones — pick your shade."
+});
+A.push({
   "brand": "Makeup Revolution",
   "stock": 3,
   "imgs": [
@@ -257,14 +257,14 @@ window.NAQA_PRODUCTS.push(
   "em": "🌸",
   "nameAr": "بلاش سائل Superdewy — You Got Me Blushing",
   "nameEn": "Makeup Revolution Superdewy Liquid Blush — You Got Me Blushing",
-  "descAr": "درجة ناعمة لخدود مشرقة.",
-  "descEn": "Soft shade for bright cheeks.",
-  "useAr": "نقطة على الخدود وادمجي.",
-  "useEn": "Dot on cheeks and blend.",
-  "skinAr": "كل البشرة",
-  "skinEn": "All skin"
-},
-{
+  "descAr": "بلاش سائل Superdewy من Makeup Revolution. تغطية خفيفة لمظهر طبيعي.",
+  "descEn": "Makeup Revolution Superdewy Liquid Blush by Makeup Revolution. Light coverage, natural finish.",
+  "useAr": "١) بعد العناية.\n٢) وزّعي برفق.",
+  "useEn": "1) After skincare.\n2) Blend lightly.",
+  "skinAr": "لكل درجات البشرة — اختاري الدرجة المناسبة.",
+  "skinEn": "All skin tones — pick your shade."
+});
+A.push({
   "brand": "Makeup Revolution",
   "stock": 3,
   "imgs": [
@@ -277,14 +277,14 @@ window.NAQA_PRODUCTS.push(
   "em": "💗",
   "nameAr": "بلاشر Reloaded — Rose Kiss",
   "nameEn": "Makeup Revolution Blusher Reloaded — Rose Kiss",
-  "descAr": "بودرة خدود قابلة للبناء.",
-  "descEn": "Buildable powder blush.",
-  "useAr": "بفرشاة على التفاح.",
-  "useEn": "Brush on apples of cheeks.",
-  "skinAr": "كل البشرة",
-  "skinEn": "All skin"
-},
-{
+  "descAr": "بلاشر Reloaded من Makeup Revolution. تغطية خفيفة لمظهر طبيعي.",
+  "descEn": "Makeup Revolution Blusher Reloaded by Makeup Revolution. Light coverage, natural finish.",
+  "useAr": "١) بعد العناية.\n٢) وزّعي برفق.",
+  "useEn": "1) After skincare.\n2) Blend lightly.",
+  "skinAr": "لكل درجات البشرة — اختاري الدرجة المناسبة.",
+  "skinEn": "All skin tones — pick your shade."
+});
+A.push({
   "brand": "Makeup Revolution",
   "stock": 3,
   "imgs": [
@@ -298,14 +298,14 @@ window.NAQA_PRODUCTS.push(
   "em": "🎨",
   "nameAr": "باليت ظلال Reloaded — Euphoria",
   "nameEn": "Makeup Revolution Reloaded Palette — Euphoria 16.5g",
-  "descAr": "١٥ درجة ليوم وسهرة — نباتي.",
-  "descEn": "15 shades for day and night — vegan.",
-  "useAr": "امزجي على الجفن.",
-  "useEn": "Blend on lids.",
-  "skinAr": "كل العيون",
-  "skinEn": "All eyes"
-},
-{
+  "descAr": "باليت ظلال Reloaded من Makeup Revolution. عناية واضحة وهادئة. 16.5 ج.",
+  "descEn": "Makeup Revolution Reloaded Palette by Makeup Revolution. Clear, quiet care. 16.5 g.",
+  "useAr": "١) ضمن روتينك اليومي.\n٢) كمية قليلة تكفي.",
+  "useEn": "1) In your daily routine.\n2) Small amount is enough.",
+  "skinAr": "حسب نوع البشرة.",
+  "skinEn": "Match to your skin type."
+});
+A.push({
   "brand": "Makeup Revolution",
   "stock": 3,
   "imgs": [
@@ -318,14 +318,14 @@ window.NAQA_PRODUCTS.push(
   "em": "🎨",
   "nameAr": "باليت ظلال Reloaded — Affection",
   "nameEn": "Makeup Revolution Reloaded Palette — Affection 16.5g",
-  "descAr": "درجات دافئة وردية/خوخية.",
-  "descEn": "Warm rose and peach tones.",
-  "useAr": "امزجي على الجفن.",
-  "useEn": "Blend on lids.",
-  "skinAr": "كل العيون",
-  "skinEn": "All eyes"
-},
-{
+  "descAr": "باليت ظلال Reloaded من Makeup Revolution. عناية واضحة وهادئة. 16.5 ج.",
+  "descEn": "Makeup Revolution Reloaded Palette by Makeup Revolution. Clear, quiet care. 16.5 g.",
+  "useAr": "١) ضمن روتينك اليومي.\n٢) كمية قليلة تكفي.",
+  "useEn": "1) In your daily routine.\n2) Small amount is enough.",
+  "skinAr": "حسب نوع البشرة.",
+  "skinEn": "Match to your skin type."
+});
+A.push({
   "brand": "Makeup Revolution",
   "stock": 3,
   "imgs": [
@@ -338,14 +338,14 @@ window.NAQA_PRODUCTS.push(
   "em": "🎨",
   "nameAr": "باليت ظلال Reloaded — Blackout",
   "nameEn": "Makeup Revolution Reloaded Palette — Blackout 16.5g",
-  "descAr": "درجات دخانية وداكنة.",
-  "descEn": "Smoky and deep shades.",
-  "useAr": "امزجي على الجفن.",
-  "useEn": "Blend on lids.",
-  "skinAr": "كل العيون",
-  "skinEn": "All eyes"
-},
-{
+  "descAr": "باليت ظلال Reloaded من Makeup Revolution. عناية واضحة وهادئة. 16.5 ج.",
+  "descEn": "Makeup Revolution Reloaded Palette by Makeup Revolution. Clear, quiet care. 16.5 g.",
+  "useAr": "١) ضمن روتينك اليومي.\n٢) كمية قليلة تكفي.",
+  "useEn": "1) In your daily routine.\n2) Small amount is enough.",
+  "skinAr": "حسب نوع البشرة.",
+  "skinEn": "Match to your skin type."
+});
+A.push({
   "brand": "Makeup Revolution",
   "stock": 3,
   "imgs": [
@@ -358,14 +358,14 @@ window.NAQA_PRODUCTS.push(
   "em": "✨",
   "nameAr": "هايلايتر Reloaded — Make an Impact",
   "nameEn": "Makeup Revolution Highlighter Reloaded — Make an Impact",
-  "descAr": "بودرة إضاءة لامعة.",
-  "descEn": "Radiant powder highlighter.",
-  "useAr": "على أعلى الخدود.",
-  "useEn": "On high points of face.",
-  "skinAr": "كل البشرة",
-  "skinEn": "All skin"
-},
-{
+  "descAr": "هايلايتر Reloaded من Makeup Revolution. تغطية خفيفة لمظهر طبيعي.",
+  "descEn": "Makeup Revolution Highlighter Reloaded by Makeup Revolution. Light coverage, natural finish.",
+  "useAr": "١) بعد العناية.\n٢) وزّعي برفق.",
+  "useEn": "1) After skincare.\n2) Blend lightly.",
+  "skinAr": "لكل درجات البشرة — اختاري الدرجة المناسبة.",
+  "skinEn": "All skin tones — pick your shade."
+});
+A.push({
   "brand": "Makeup Revolution",
   "stock": 3,
   "imgs": [
@@ -378,14 +378,14 @@ window.NAQA_PRODUCTS.push(
   "em": "☀️",
   "nameAr": "برونزر Mega — 02 Warm",
   "nameEn": "Makeup Revolution Mega Bronzer 02 Warm",
-  "descAr": "برونزر مات للكنتور الدافئ.",
-  "descEn": "Matte bronzer for warm contour.",
-  "useAr": "تحت عظام الخد.",
-  "useEn": "Under cheekbones.",
-  "skinAr": "كل البشرة",
-  "skinEn": "All skin"
-},
-{
+  "descAr": "برونزر Mega من Makeup Revolution. تغطية خفيفة لمظهر طبيعي.",
+  "descEn": "Makeup Revolution Mega Bronzer 02 Warm by Makeup Revolution. Light coverage, natural finish.",
+  "useAr": "١) بعد العناية.\n٢) وزّعي برفق.",
+  "useEn": "1) After skincare.\n2) Blend lightly.",
+  "skinAr": "لكل درجات البشرة — اختاري الدرجة المناسبة.",
+  "skinEn": "All skin tones — pick your shade."
+});
+A.push({
   "brand": "Makeup Revolution",
   "stock": 3,
   "imgs": [
@@ -398,11 +398,11 @@ window.NAQA_PRODUCTS.push(
   "em": "☀️",
   "nameAr": "برونزر Mega — 01 Cool",
   "nameEn": "Makeup Revolution Mega Bronzer 01 Cool",
-  "descAr": "برونزر مات بدرجات باردة.",
-  "descEn": "Matte bronzer with cool undertone.",
-  "useAr": "تحت عظام الخد.",
-  "useEn": "Under cheekbones.",
-  "skinAr": "كل البشرة",
-  "skinEn": "All skin"
-}
-);
+  "descAr": "برونزر Mega من Makeup Revolution. تغطية خفيفة لمظهر طبيعي.",
+  "descEn": "Makeup Revolution Mega Bronzer 01 Cool by Makeup Revolution. Light coverage, natural finish.",
+  "useAr": "١) بعد العناية.\n٢) وزّعي برفق.",
+  "useEn": "1) After skincare.\n2) Blend lightly.",
+  "skinAr": "لكل درجات البشرة — اختاري الدرجة المناسبة.",
+  "skinEn": "All skin tones — pick your shade."
+});
+})();

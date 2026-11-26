@@ -1,7 +1,7 @@
-/* Brand: LOLLIS · 21 products · imgs auto-wired 2026-11-25 */
-window.NAQA_PRODUCTS = window.NAQA_PRODUCTS || [];
-window.NAQA_PRODUCTS.push(
-{
+// lollis.js — short Apple-like copy
+(function(){
+var A = window.NAQA_PRODUCTS || (window.NAQA_PRODUCTS = []);
+A.push({
   "id": 112,
   "brand": "LOLLIS",
   "cat": "حواجب",
@@ -15,15 +15,15 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "قلم حواجب من لوليس - 303 رمادي",
   "nameEn": "LOLLIS Brow Pencil #303 Grey",
-  "descAr": "لمسة LOLLIS في قلم حواجب من لوليس: يحدّد بشكل طبيعي. صيغة مباشرة تُحترم مع الوقت. الحجم ≈ 303 ج. يناسب تحديد يومي خفيف. الجمال الأهدأ يأتي من روتين قصير ثابت.",
-  "descEn": "LOLLIS's touch in LOLLIS Brow Pencil #303 Grey: short strokes fill the gaps. A direct formula that earns trust over time. Size ≈ 303 g. Fits soft daily shape. Keep it cool-ish and cap it tight.",
-  "useAr": "١) مشط للشكل.\n٢) فراغات بخطوط قصيرة.\n٣) تثبيت إن لزم.\n٤) مسح الزائد بقطنة.",
-  "useEn": "1) Brush into shape.\n2) Short strokes in gaps.\n3) Set if needed.\n4) Clean extras with a swab.",
-  "skinAr": "تحديد يومي خفيف",
-  "skinEn": "soft daily shape",
+  "descAr": "قلم حواجب من لوليس من LOLLIS. عناية واضحة وهادئة. 303 ج.",
+  "descEn": "LOLLIS Brow Pencil #303 Grey by LOLLIS. Clear, quiet care. 303 g.",
+  "useAr": "١) ضمن روتينك اليومي.\n٢) كمية قليلة تكفي.",
+  "useEn": "1) In your daily routine.\n2) Small amount is enough.",
+  "skinAr": "حسب نوع البشرة.",
+  "skinEn": "Match to your skin type.",
   "stock": 3
-},
-{
+});
+A.push({
   "id": 113,
   "brand": "LOLLIS",
   "cat": "عيون",
@@ -36,15 +36,15 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "ظلال العيون لوليس ذا نودز - 01",
   "nameEn": "LOLLIS The Nudes Eyeshadow Palette #01",
-  "descAr": "رقيق في الإحساس، صادق في الدور — ظلال العيون لوليس ذا نودز. علامة LOLLIS. يمسك الرمش دون تكتل صاخب. يناسب كل الرموش. خزّنيها في مكان معتدل وأغلقي الغطاء.",
-  "descEn": "Soft to the touch, honest in role — LOLLIS The Nudes Eyeshadow Palette #01. LOLLIS. Easy morning, easy take-off. Best with day or night looks. Quiet beauty loves a short, steady routine.",
-  "useAr": "١) من الجذر للطرف بتعرج خفيف.\n٢) طبقة ثانية بعد الجفاف.\n٣) مزيل لطيف مساءً.\n٤) لا تشاركي الفرشاة.",
-  "useEn": "1) Root to tip, soft zigzag.\n2) Second coat after it sets.\n3) Gentle remover at night.\n4) Never share the wand.",
-  "skinAr": "كل الرموش",
-  "skinEn": "day or night looks",
+  "descAr": "ظلال العيون لوليس ذا نودز من LOLLIS. عناية واضحة وهادئة.",
+  "descEn": "LOLLIS The Nudes Eyeshadow Palette #01 by LOLLIS. Clear, quiet care.",
+  "useAr": "١) ضمن روتينك اليومي.\n٢) كمية قليلة تكفي.",
+  "useEn": "1) In your daily routine.\n2) Small amount is enough.",
+  "skinAr": "حسب نوع البشرة.",
+  "skinEn": "Match to your skin type.",
   "stock": 3
-},
-{
+});
+A.push({
   "id": 114,
   "brand": "LOLLIS",
   "cat": "عيون",
@@ -56,15 +56,15 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "ظلال العيون برايت نيون من لوليس",
   "nameEn": "LOLLIS Bright Neon Eyeshadow Palette",
-  "descAr": "ظلال العيون برايت نيون من لوليس من LOLLIS. سهل الصباح وسهل المساء. يناسب يوم أو سهرة. خزّنيها في مكان معتدل وأغلقي الغطاء.",
-  "descEn": "LOLLIS Bright Neon Eyeshadow Palette by LOLLIS. Easy morning, easy take-off. Suits all lashes. Quiet beauty loves a short, steady routine.",
-  "useAr": "١) من الجذر للطرف بتعرج خفيف.\n٢) طبقة ثانية بعد الجفاف.\n٣) مزيل لطيف مساءً.\n٤) لا تشاركي الفرشاة.",
-  "useEn": "1) Root to tip, soft zigzag.\n2) Second coat after it sets.\n3) Gentle remover at night.\n4) Never share the wand.",
-  "skinAr": "يوم أو سهرة",
-  "skinEn": "all lashes",
+  "descAr": "ظلال العيون برايت نيون من لوليس من LOLLIS. عناية واضحة وهادئة.",
+  "descEn": "LOLLIS Bright Neon Eyeshadow Palette by LOLLIS. Clear, quiet care.",
+  "useAr": "١) ضمن روتينك اليومي.\n٢) كمية قليلة تكفي.",
+  "useEn": "1) In your daily routine.\n2) Small amount is enough.",
+  "skinAr": "حسب نوع البشرة.",
+  "skinEn": "Match to your skin type.",
   "stock": 3
-},
-{
+});
+A.push({
   "id": 115,
   "brand": "LOLLIS",
   "cat": "حواجب",
@@ -77,15 +77,15 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "قلم حواجب من لوليس - 301 بيج",
   "nameEn": "LOLLIS Brow Pencil #301 Beige",
-  "descAr": "رقيق في الإحساس، صادق في الدور — قلم حواجب من لوليس. علامة LOLLIS. خطوط قصيرة تملأ الفراغ. يناسب تحديد يومي خفيف. خزّنيها في مكان معتدل وأغلقي الغطاء.",
-  "descEn": "Soft to the touch, honest in role — LOLLIS Brow Pencil #301 Beige. LOLLIS. Holds a normal day. Best with all brow tones. Ongoing sting? Ease off or ask a pro.",
-  "useAr": "١) مشط للشكل.\n٢) فراغات بخطوط قصيرة.\n٣) تثبيت إن لزم.\n٤) مسح الزائد بقطنة.",
-  "useEn": "1) Brush into shape.\n2) Short strokes in gaps.\n3) Set if needed.\n4) Clean extras with a swab.",
-  "skinAr": "تحديد يومي خفيف",
-  "skinEn": "all brow tones",
+  "descAr": "قلم حواجب من لوليس من LOLLIS. عناية واضحة وهادئة.",
+  "descEn": "LOLLIS Brow Pencil #301 Beige by LOLLIS. Clear, quiet care.",
+  "useAr": "١) ضمن روتينك اليومي.\n٢) كمية قليلة تكفي.",
+  "useEn": "1) In your daily routine.\n2) Small amount is enough.",
+  "skinAr": "حسب نوع البشرة.",
+  "skinEn": "Match to your skin type.",
   "stock": 3
-},
-{
+});
+A.push({
   "id": 116,
   "brand": "LOLLIS",
   "cat": "عيون",
@@ -97,15 +97,15 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "ايلاينر أﺳﻮد داﻛﻦ من لوليس - 4مل",
   "nameEn": "LOLLIS Dark Black Eyeliner - 4ml",
-  "descAr": "ايلاينر أﺳﻮد داﻛﻦ من لوليس من LOLLIS. سهل الصباح وسهل المساء. الحجم ≈ 4 مل. يناسب عيون حساسة؟ اختبري. خزّنيها في مكان معتدل وأغلقي الغطاء.",
-  "descEn": "LOLLIS Dark Black Eyeliner by LOLLIS. Separates, lengthens, or densifies. Size ≈ 4 ml. Suits all lashes. Keep it cool-ish and cap it tight.",
-  "useAr": "١) من الجذر للطرف بتعرج خفيف.\n٢) طبقة ثانية بعد الجفاف.\n٣) مزيل لطيف مساءً.\n٤) لا تشاركي الفرشاة.",
-  "useEn": "1) Root to tip, soft zigzag.\n2) Second coat after it sets.\n3) Gentle remover at night.\n4) Never share the wand.",
-  "skinAr": "عيون حساسة؟ اختبري",
-  "skinEn": "all lashes",
+  "descAr": "ايلاينر أﺳﻮد داﻛﻦ من لوليس من LOLLIS. عناية واضحة وهادئة. 4 مل.",
+  "descEn": "LOLLIS Dark Black Eyeliner by LOLLIS. Clear, quiet care. 4 ml.",
+  "useAr": "١) ضمن روتينك اليومي.\n٢) كمية قليلة تكفي.",
+  "useEn": "1) In your daily routine.\n2) Small amount is enough.",
+  "skinAr": "حسب نوع البشرة.",
+  "skinEn": "Match to your skin type.",
   "stock": 3
-},
-{
+});
+A.push({
   "id": 117,
   "brand": "LOLLIS",
   "cat": "حواجب",
@@ -118,15 +118,15 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "واكس تشكيل ورفع الحواجب بزيت الارغان من لوليس",
   "nameEn": "LOLLIS Brow Lift Wax with Argan Oil",
-  "descAr": "رقيق في الإحساس، صادق في الدور — واكس تشكيل ورفع الحواجب بزيت الارغان من لوليس. علامة LOLLIS. خطوط قصيرة تملأ الفراغ. يناسب كل درجات الحاجب. انتظمي أسبوعين قبل الحكم النهائي.",
-  "descEn": "Soft to the touch, honest in role — LOLLIS Brow Lift Wax with Argan Oil. LOLLIS. Holds a normal day. Best with soft daily shape. Give it two steady weeks before you decide.",
-  "useAr": "١) مشط للشكل.\n٢) فراغات بخطوط قصيرة.\n٣) تثبيت إن لزم.\n٤) مسح الزائد بقطنة.",
-  "useEn": "1) Brush into shape.\n2) Short strokes in gaps.\n3) Set if needed.\n4) Clean extras with a swab.",
-  "skinAr": "كل درجات الحاجب",
-  "skinEn": "soft daily shape",
+  "descAr": "واكس تشكيل ورفع الحواجب بزيت الارغان من لو من LOLLIS. عناية واضحة وهادئة.",
+  "descEn": "LOLLIS Brow Lift Wax with Argan Oil by LOLLIS. Clear, quiet care.",
+  "useAr": "١) ضمن روتينك اليومي.\n٢) كمية قليلة تكفي.",
+  "useEn": "1) In your daily routine.\n2) Small amount is enough.",
+  "skinAr": "حسب نوع البشرة.",
+  "skinEn": "Match to your skin type.",
   "stock": 3
-},
-{
+});
+A.push({
   "id": 118,
   "brand": "LOLLIS",
   "cat": "حواجب",
@@ -139,15 +139,15 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "قلم حواجب من لوليس - 302 بني",
   "nameEn": "LOLLIS Brow Pencil #302 Brown",
-  "descAr": "قلم حواجب من لوليس من LOLLIS. يحدّد بشكل طبيعي. يناسب كل درجات الحاجب. أي لسع مستمر؟ خفّفي أو راجعي مختصاً.",
-  "descEn": "LOLLIS Brow Pencil #302 Brown by LOLLIS. Short strokes fill the gaps. Suits soft daily shape. Give it two steady weeks before you decide.",
-  "useAr": "١) مشط للشكل.\n٢) فراغات بخطوط قصيرة.\n٣) تثبيت إن لزم.\n٤) مسح الزائد بقطنة.",
-  "useEn": "1) Brush into shape.\n2) Short strokes in gaps.\n3) Set if needed.\n4) Clean extras with a swab.",
-  "skinAr": "كل درجات الحاجب",
-  "skinEn": "soft daily shape",
+  "descAr": "قلم حواجب من لوليس من LOLLIS. عناية واضحة وهادئة.",
+  "descEn": "LOLLIS Brow Pencil #302 Brown by LOLLIS. Clear, quiet care.",
+  "useAr": "١) ضمن روتينك اليومي.\n٢) كمية قليلة تكفي.",
+  "useEn": "1) In your daily routine.\n2) Small amount is enough.",
+  "skinAr": "حسب نوع البشرة.",
+  "skinEn": "Match to your skin type.",
   "stock": 3
-},
-{
+});
+A.push({
   "id": 128,
   "brand": "LOLLIS",
   "cat": "شفاه",
@@ -159,15 +159,15 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "أحمر شفاه سائل مطفي من لوليس 10",
   "nameEn": "Lollis Matte Liquid Lipstick 10",
-  "descAr": "لماذا LOLLIS هنا؟ لأن أحمر شفاه سائل مطفي من لوليس 10 يقدّم خطوة واحدة واضحة: لون أو لمعان حسب الصيغة. بدون ضجيج وعود طويلة. لـالشفاه الجافة. الجمال الأهدأ يأتي من روتين قصير ثابت.",
-  "descEn": "Why LOLLIS? Because Lollis Matte Liquid Lipstick 10 does one clear job: comfortable through talk and coffee. No long promise list. For all lip tones. Quiet beauty loves a short, steady routine.",
-  "useAr": "١) شفاه نظيفة.\n٢) من الوسط للخارج.\n٣) لمسة خلال اليوم.\n٤) ليلاً أغنى إن كان مرطباً.",
-  "useEn": "1) Clean lips.\n2) Center to outer edge.\n3) Touch up through the day.\n4) Richer layer at night if balm/mask.",
-  "skinAr": "الشفاه الجافة",
-  "skinEn": "all lip tones",
+  "descAr": "أحمر شفاه سائل مطفي من لوليس 10 من LOLLIS. لون ناعم ومريح.",
+  "descEn": "Lollis Matte Liquid Lipstick 10 by LOLLIS. Soft colour, comfortable wear.",
+  "useAr": "١) على شفاه نظيفة.\n٢) أعدِي عند الحاجة.",
+  "useEn": "1) On clean lips.\n2) Reapply as needed.",
+  "skinAr": "لكل درجات الشفاه.",
+  "skinEn": "All lip tones.",
   "stock": 3
-},
-{
+});
+A.push({
   "id": 129,
   "brand": "LOLLIS",
   "cat": "شفاه",
@@ -179,15 +179,15 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "أحمر شفاه سائل مطفي من لوليس 14",
   "nameEn": "Lollis Matte Liquid Lipstick 14",
-  "descAr": "LOLLIS × عناية يومية: أحمر شفاه سائل مطفي من لوليس 14. يُركّز على راحة الاستخدام. الملمس: مريح للحديث والقهوة. كل درجات الشفاه. أي لسع مستمر؟ خفّفي أو راجعي مختصاً.",
-  "descEn": "LOLLIS for daily care: Lollis Matte Liquid Lipstick 14. Comfort-first use. Feel: soft on contact. Dry lips. Keep it cool-ish and cap it tight.",
-  "useAr": "١) شفاه نظيفة.\n٢) من الوسط للخارج.\n٣) لمسة خلال اليوم.\n٤) ليلاً أغنى إن كان مرطباً.",
-  "useEn": "1) Clean lips.\n2) Center to outer edge.\n3) Touch up through the day.\n4) Richer layer at night if balm/mask.",
-  "skinAr": "كل درجات الشفاه",
-  "skinEn": "dry lips",
+  "descAr": "أحمر شفاه سائل مطفي من لوليس 14 من LOLLIS. لون ناعم ومريح.",
+  "descEn": "Lollis Matte Liquid Lipstick 14 by LOLLIS. Soft colour, comfortable wear.",
+  "useAr": "١) على شفاه نظيفة.\n٢) أعدِي عند الحاجة.",
+  "useEn": "1) On clean lips.\n2) Reapply as needed.",
+  "skinAr": "لكل درجات الشفاه.",
+  "skinEn": "All lip tones.",
   "stock": 3
-},
-{
+});
+A.push({
   "id": 130,
   "brand": "LOLLIS",
   "cat": "شفاه",
@@ -199,15 +199,15 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "مرطب شفاه بالرمان من لوليس - 4ج",
   "nameEn": "Lollis Lip Care Pomegranate - 4g",
-  "descAr": "مرطب شفاه بالرمان من لوليس. قصة قصيرة: تنظيف/عناية/حماية حسب نوعه، وLOLLIS هنا لتسهيل اليوم. لون أو لمعان حسب الصيغة. الحجم ≈ 4 ج. الشفاه الجافة. انتظمي أسبوعين قبل الحكم النهائي.",
-  "descEn": "Lollis Lip Care Pomegranate. Short story: cleanse, treat, or protect as labeled — LOLLIS keeps the day simple. Comfortable through talk and coffee. Size ≈ 4 g. Daily without fuss. Keep it cool-ish and cap it tight.",
-  "useAr": "١) شفاه نظيفة.\n٢) من الوسط للخارج.\n٣) لمسة خلال اليوم.\n٤) ليلاً أغنى إن كان مرطباً.",
-  "useEn": "1) Clean lips.\n2) Center to outer edge.\n3) Touch up through the day.\n4) Richer layer at night if balm/mask.",
-  "skinAr": "الشفاه الجافة",
-  "skinEn": "daily without fuss",
+  "descAr": "مرطب شفاه بالرمان من لوليس من LOLLIS. لون ناعم ومريح. 4 ج.",
+  "descEn": "Lollis Lip Care Pomegranate by LOLLIS. Soft colour, comfortable wear. 4 g.",
+  "useAr": "١) على شفاه نظيفة.\n٢) أعدِي عند الحاجة.",
+  "useEn": "1) On clean lips.\n2) Reapply as needed.",
+  "skinAr": "لكل درجات الشفاه.",
+  "skinEn": "All lip tones.",
   "stock": 3
-},
-{
+});
+A.push({
   "id": 131,
   "brand": "LOLLIS",
   "cat": "شفاه",
@@ -219,15 +219,15 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "مرطب شفاه كلاسيكي من لوليس - 4ج",
   "nameEn": "Lollis Lip Care Classic - 4g",
-  "descAr": "رقيق في الإحساس، صادق في الدور — مرطب شفاه كلاسيكي من لوليس. علامة LOLLIS. مريح للحديث والقهوة. الحجم ≈ 4 ج. يناسب يومياً بلا إزعاج. انتظمي أسبوعين قبل الحكم النهائي.",
-  "descEn": "Soft to the touch, honest in role — Lollis Lip Care Classic. LOLLIS. Soft on contact. Size ≈ 4 g. Best with daily without fuss. Keep it cool-ish and cap it tight.",
-  "useAr": "١) شفاه نظيفة.\n٢) من الوسط للخارج.\n٣) لمسة خلال اليوم.\n٤) ليلاً أغنى إن كان مرطباً.",
-  "useEn": "1) Clean lips.\n2) Center to outer edge.\n3) Touch up through the day.\n4) Richer layer at night if balm/mask.",
-  "skinAr": "يومياً بلا إزعاج",
-  "skinEn": "daily without fuss",
+  "descAr": "مرطب شفاه كلاسيكي من لوليس من LOLLIS. لون ناعم ومريح. 4 ج.",
+  "descEn": "Lollis Lip Care Classic by LOLLIS. Soft colour, comfortable wear. 4 g.",
+  "useAr": "١) على شفاه نظيفة.\n٢) أعدِي عند الحاجة.",
+  "useEn": "1) On clean lips.\n2) Reapply as needed.",
+  "skinAr": "لكل درجات الشفاه.",
+  "skinEn": "All lip tones.",
   "stock": 3
-},
-{
+});
+A.push({
   "id": 132,
   "brand": "LOLLIS",
   "cat": "شفاه",
@@ -239,15 +239,15 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "مرطب شفاه بالفراولة من لوليس - 4ج",
   "nameEn": "Lollis Lip Care Strawberry - 4g",
-  "descAr": "لماذا LOLLIS هنا؟ لأن مرطب شفاه بالفراولة من لوليس يقدّم خطوة واحدة واضحة: لون أو لمعان حسب الصيغة. بدون ضجيج وعود طويلة. الحجم ≈ 4 ج. لـكل درجات الشفاه. خزّنيها في مكان معتدل وأغلقي الغطاء.",
-  "descEn": "Why LOLLIS? Because Lollis Lip Care Strawberry does one clear job: soft on contact. No long promise list. Size ≈ 4 g. For dry lips. Quiet beauty loves a short, steady routine.",
-  "useAr": "١) شفاه نظيفة.\n٢) من الوسط للخارج.\n٣) لمسة خلال اليوم.\n٤) ليلاً أغنى إن كان مرطباً.",
-  "useEn": "1) Clean lips.\n2) Center to outer edge.\n3) Touch up through the day.\n4) Richer layer at night if balm/mask.",
-  "skinAr": "كل درجات الشفاه",
-  "skinEn": "dry lips",
+  "descAr": "مرطب شفاه بالفراولة من لوليس من LOLLIS. لون ناعم ومريح. 4 ج.",
+  "descEn": "Lollis Lip Care Strawberry by LOLLIS. Soft colour, comfortable wear. 4 g.",
+  "useAr": "١) على شفاه نظيفة.\n٢) أعدِي عند الحاجة.",
+  "useEn": "1) On clean lips.\n2) Reapply as needed.",
+  "skinAr": "لكل درجات الشفاه.",
+  "skinEn": "All lip tones.",
   "stock": 3
-},
-{
+});
+A.push({
   "id": 134,
   "brand": "LOLLIS",
   "cat": "شفاه",
@@ -259,15 +259,15 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "أحمر شفاه سائل مطفي من لوليس 13",
   "nameEn": "Lollis Matte Liquid Lipstick 13",
-  "descAr": "LOLLIS × عناية يومية: أحمر شفاه سائل مطفي من لوليس 13. يُركّز على راحة الاستخدام. الملمس: مريح للحديث والقهوة. الشفاه الجافة. أي لسع مستمر؟ خفّفي أو راجعي مختصاً.",
-  "descEn": "LOLLIS for daily care: Lollis Matte Liquid Lipstick 13. Comfort-first use. Feel: comfortable through talk and coffee. Daily without fuss. Give it two steady weeks before you decide.",
-  "useAr": "١) شفاه نظيفة.\n٢) من الوسط للخارج.\n٣) لمسة خلال اليوم.\n٤) ليلاً أغنى إن كان مرطباً.",
-  "useEn": "1) Clean lips.\n2) Center to outer edge.\n3) Touch up through the day.\n4) Richer layer at night if balm/mask.",
-  "skinAr": "الشفاه الجافة",
-  "skinEn": "daily without fuss",
+  "descAr": "أحمر شفاه سائل مطفي من لوليس 13 من LOLLIS. لون ناعم ومريح.",
+  "descEn": "Lollis Matte Liquid Lipstick 13 by LOLLIS. Soft colour, comfortable wear.",
+  "useAr": "١) على شفاه نظيفة.\n٢) أعدِي عند الحاجة.",
+  "useEn": "1) On clean lips.\n2) Reapply as needed.",
+  "skinAr": "لكل درجات الشفاه.",
+  "skinEn": "All lip tones.",
   "stock": 3
-},
-{
+});
+A.push({
   "id": 135,
   "brand": "LOLLIS",
   "cat": "شفاه",
@@ -279,15 +279,15 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "أحمر شفاه سائل مطفي من لوليس 15",
   "nameEn": "Lollis Matte Liquid Lipstick 15",
-  "descAr": "أحمر شفاه سائل مطفي من لوليس 15 من LOLLIS. لون أو لمعان حسب الصيغة. يناسب يومياً بلا إزعاج. الجمال الأهدأ يأتي من روتين قصير ثابت.",
-  "descEn": "Lollis Matte Liquid Lipstick 15 by LOLLIS. Soft on contact. Suits all lip tones. Quiet beauty loves a short, steady routine.",
-  "useAr": "١) شفاه نظيفة.\n٢) من الوسط للخارج.\n٣) لمسة خلال اليوم.\n٤) ليلاً أغنى إن كان مرطباً.",
-  "useEn": "1) Clean lips.\n2) Center to outer edge.\n3) Touch up through the day.\n4) Richer layer at night if balm/mask.",
-  "skinAr": "يومياً بلا إزعاج",
-  "skinEn": "all lip tones",
+  "descAr": "أحمر شفاه سائل مطفي من لوليس 15 من LOLLIS. لون ناعم ومريح.",
+  "descEn": "Lollis Matte Liquid Lipstick 15 by LOLLIS. Soft colour, comfortable wear.",
+  "useAr": "١) على شفاه نظيفة.\n٢) أعدِي عند الحاجة.",
+  "useEn": "1) On clean lips.\n2) Reapply as needed.",
+  "skinAr": "لكل درجات الشفاه.",
+  "skinEn": "All lip tones.",
   "stock": 3
-},
-{
+});
+A.push({
   "id": 136,
   "brand": "LOLLIS",
   "cat": "شفاه",
@@ -299,15 +299,15 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "أحمر شفاه سائل مطفي من لوليس 16",
   "nameEn": "Lollis Matte Liquid Lipstick 16",
-  "descAr": "أحمر شفاه سائل مطفي من لوليس 16 من LOLLIS. ناعم على الشفاه. يناسب كل درجات الشفاه. خزّنيها في مكان معتدل وأغلقي الغطاء.",
-  "descEn": "Lollis Matte Liquid Lipstick 16 by LOLLIS. Comfortable through talk and coffee. Suits dry lips. Quiet beauty loves a short, steady routine.",
-  "useAr": "١) شفاه نظيفة.\n٢) من الوسط للخارج.\n٣) لمسة خلال اليوم.\n٤) ليلاً أغنى إن كان مرطباً.",
-  "useEn": "1) Clean lips.\n2) Center to outer edge.\n3) Touch up through the day.\n4) Richer layer at night if balm/mask.",
-  "skinAr": "كل درجات الشفاه",
-  "skinEn": "dry lips",
+  "descAr": "أحمر شفاه سائل مطفي من لوليس 16 من LOLLIS. لون ناعم ومريح.",
+  "descEn": "Lollis Matte Liquid Lipstick 16 by LOLLIS. Soft colour, comfortable wear.",
+  "useAr": "١) على شفاه نظيفة.\n٢) أعدِي عند الحاجة.",
+  "useEn": "1) On clean lips.\n2) Reapply as needed.",
+  "skinAr": "لكل درجات الشفاه.",
+  "skinEn": "All lip tones.",
   "stock": 3
-},
-{
+});
+A.push({
   "id": 137,
   "brand": "LOLLIS",
   "cat": "شفاه",
@@ -319,15 +319,15 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "أحمر شفاه سائل مطفي باللون الكامل من لوليس 101",
   "nameEn": "Matte Full Color Liquid Lipstick 101",
-  "descAr": "LOLLIS × عناية يومية: أحمر شفاه سائل مطفي باللون الكامل من لوليس 101. يُركّز على راحة الاستخدام. الملمس: لون أو لمعان حسب الصيغة. الشفاه الجافة. انتظمي أسبوعين قبل الحكم النهائي.",
-  "descEn": "LOLLIS for daily care: Matte Full Color Liquid Lipstick 101. Comfort-first use. Feel: soft on contact. All lip tones. Keep it cool-ish and cap it tight.",
-  "useAr": "١) شفاه نظيفة.\n٢) من الوسط للخارج.\n٣) لمسة خلال اليوم.\n٤) ليلاً أغنى إن كان مرطباً.",
-  "useEn": "1) Clean lips.\n2) Center to outer edge.\n3) Touch up through the day.\n4) Richer layer at night if balm/mask.",
-  "skinAr": "الشفاه الجافة",
-  "skinEn": "all lip tones",
+  "descAr": "أحمر شفاه سائل مطفي باللون الكامل من لوليس من LOLLIS. لون ناعم ومريح.",
+  "descEn": "Matte Full Color Liquid Lipstick 101 by LOLLIS. Soft colour, comfortable wear.",
+  "useAr": "١) على شفاه نظيفة.\n٢) أعدِي عند الحاجة.",
+  "useEn": "1) On clean lips.\n2) Reapply as needed.",
+  "skinAr": "لكل درجات الشفاه.",
+  "skinEn": "All lip tones.",
   "stock": 3
-},
-{
+});
+A.push({
   "id": 138,
   "brand": "LOLLIS",
   "cat": "شفاه",
@@ -339,15 +339,15 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "أحمر شفاه سائل مطفي باللون الكامل من لوليس 102",
   "nameEn": "Matte Full Color Liquid Lipstick 102",
-  "descAr": "لمسة LOLLIS في أحمر شفاه سائل مطفي باللون الكامل من لوليس 102: مريح للحديث والقهوة. صيغة مباشرة تُحترم مع الوقت. يناسب الشفاه الجافة. أي لسع مستمر؟ خفّفي أو راجعي مختصاً.",
-  "descEn": "LOLLIS's touch in Matte Full Color Liquid Lipstick 102: tint or shine by formula. A direct formula that earns trust over time. Fits all lip tones. Ongoing sting? Ease off or ask a pro.",
-  "useAr": "١) شفاه نظيفة.\n٢) من الوسط للخارج.\n٣) لمسة خلال اليوم.\n٤) ليلاً أغنى إن كان مرطباً.",
-  "useEn": "1) Clean lips.\n2) Center to outer edge.\n3) Touch up through the day.\n4) Richer layer at night if balm/mask.",
-  "skinAr": "الشفاه الجافة",
-  "skinEn": "all lip tones",
+  "descAr": "أحمر شفاه سائل مطفي باللون الكامل من لوليس من LOLLIS. لون ناعم ومريح.",
+  "descEn": "Matte Full Color Liquid Lipstick 102 by LOLLIS. Soft colour, comfortable wear.",
+  "useAr": "١) على شفاه نظيفة.\n٢) أعدِي عند الحاجة.",
+  "useEn": "1) On clean lips.\n2) Reapply as needed.",
+  "skinAr": "لكل درجات الشفاه.",
+  "skinEn": "All lip tones.",
   "stock": 3
-},
-{
+});
+A.push({
   "id": 139,
   "brand": "LOLLIS",
   "cat": "شفاه",
@@ -359,15 +359,15 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "أحمر شفاه سائل مطفي باللون الكامل من لوليس 110",
   "nameEn": "Matte Full Color Liquid Lipstick 110",
-  "descAr": "اختاري أحمر شفاه سائل مطفي باللون الكامل من لوليس 110 حين تريدين نتيجة بلا تعقيد. من LOLLIS، لون أو لمعان حسب الصيغة. مُخصص تقريباً لـيومياً بلا إزعاج. أي لسع مستمر؟ خفّفي أو راجعي مختصاً.",
-  "descEn": "Reach for Matte Full Color Liquid Lipstick 110 when you want results without a maze. From LOLLIS, tint or shine by formula. Aimed at dry lips. Quiet beauty loves a short, steady routine.",
-  "useAr": "١) شفاه نظيفة.\n٢) من الوسط للخارج.\n٣) لمسة خلال اليوم.\n٤) ليلاً أغنى إن كان مرطباً.",
-  "useEn": "1) Clean lips.\n2) Center to outer edge.\n3) Touch up through the day.\n4) Richer layer at night if balm/mask.",
-  "skinAr": "يومياً بلا إزعاج",
-  "skinEn": "dry lips",
+  "descAr": "أحمر شفاه سائل مطفي باللون الكامل من لوليس من LOLLIS. لون ناعم ومريح.",
+  "descEn": "Matte Full Color Liquid Lipstick 110 by LOLLIS. Soft colour, comfortable wear.",
+  "useAr": "١) على شفاه نظيفة.\n٢) أعدِي عند الحاجة.",
+  "useEn": "1) On clean lips.\n2) Reapply as needed.",
+  "skinAr": "لكل درجات الشفاه.",
+  "skinEn": "All lip tones.",
   "stock": 3
-},
-{
+});
+A.push({
   "id": 140,
   "brand": "LOLLIS",
   "cat": "شفاه",
@@ -379,15 +379,15 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "أحمر شفاه سائل مطفي باللون الكامل من لوليس 112",
   "nameEn": "Matte Full Color Liquid Lipstick 112",
-  "descAr": "أحمر شفاه سائل مطفي باللون الكامل من لوليس 112 من LOLLIS. مريح للحديث والقهوة. يناسب يومياً بلا إزعاج. أي لسع مستمر؟ خفّفي أو راجعي مختصاً.",
-  "descEn": "Matte Full Color Liquid Lipstick 112 by LOLLIS. Soft on contact. Suits daily without fuss. Give it two steady weeks before you decide.",
-  "useAr": "١) شفاه نظيفة.\n٢) من الوسط للخارج.\n٣) لمسة خلال اليوم.\n٤) ليلاً أغنى إن كان مرطباً.",
-  "useEn": "1) Clean lips.\n2) Center to outer edge.\n3) Touch up through the day.\n4) Richer layer at night if balm/mask.",
-  "skinAr": "يومياً بلا إزعاج",
-  "skinEn": "daily without fuss",
+  "descAr": "أحمر شفاه سائل مطفي باللون الكامل من لوليس من LOLLIS. لون ناعم ومريح.",
+  "descEn": "Matte Full Color Liquid Lipstick 112 by LOLLIS. Soft colour, comfortable wear.",
+  "useAr": "١) على شفاه نظيفة.\n٢) أعدِي عند الحاجة.",
+  "useEn": "1) On clean lips.\n2) Reapply as needed.",
+  "skinAr": "لكل درجات الشفاه.",
+  "skinEn": "All lip tones.",
   "stock": 3
-},
-{
+});
+A.push({
   "id": 141,
   "brand": "LOLLIS",
   "cat": "شفاه",
@@ -399,15 +399,15 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "أحمر شفاه سائل باللون الكامل من لوليس 005",
   "nameEn": "Lollis Full Color Lip Gloss 005 Biscuit",
-  "descAr": "لمسة LOLLIS في أحمر شفاه سائل باللون الكامل من لوليس 005: لون أو لمعان حسب الصيغة. صيغة مباشرة تُحترم مع الوقت. يناسب الشفاه الجافة. أي لسع مستمر؟ خفّفي أو راجعي مختصاً.",
-  "descEn": "LOLLIS's touch in Lollis Full Color Lip Gloss 005 Biscuit: soft on contact. A direct formula that earns trust over time. Fits dry lips. Give it two steady weeks before you decide.",
-  "useAr": "١) شفاه نظيفة.\n٢) من الوسط للخارج.\n٣) لمسة خلال اليوم.\n٤) ليلاً أغنى إن كان مرطباً.",
-  "useEn": "1) Clean lips.\n2) Center to outer edge.\n3) Touch up through the day.\n4) Richer layer at night if balm/mask.",
-  "skinAr": "الشفاه الجافة",
-  "skinEn": "dry lips",
+  "descAr": "أحمر شفاه سائل باللون الكامل من لوليس 005 من LOLLIS. لون ناعم ومريح.",
+  "descEn": "Lollis Full Color Lip Gloss 005 Biscuit by LOLLIS. Soft colour, comfortable wear.",
+  "useAr": "١) على شفاه نظيفة.\n٢) أعدِي عند الحاجة.",
+  "useEn": "1) On clean lips.\n2) Reapply as needed.",
+  "skinAr": "لكل درجات الشفاه.",
+  "skinEn": "All lip tones.",
   "stock": 3
-},
-{
+});
+A.push({
   "id": 142,
   "brand": "LOLLIS",
   "cat": "شفاه",
@@ -419,12 +419,12 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "أحمر شفاه سائل باللون الكامل من لوليس 010",
   "nameEn": "Lollis Full Color Lipgloss 010 Broken",
-  "descAr": "LOLLIS × عناية يومية: أحمر شفاه سائل باللون الكامل من لوليس 010. يُركّز على راحة الاستخدام. الملمس: مريح للحديث والقهوة. الشفاه الجافة. خزّنيها في مكان معتدل وأغلقي الغطاء.",
-  "descEn": "LOLLIS for daily care: Lollis Full Color Lipgloss 010 Broken. Comfort-first use. Feel: tint or shine by formula. Dry lips. Quiet beauty loves a short, steady routine.",
-  "useAr": "١) شفاه نظيفة.\n٢) من الوسط للخارج.\n٣) لمسة خلال اليوم.\n٤) ليلاً أغنى إن كان مرطباً.",
-  "useEn": "1) Clean lips.\n2) Center to outer edge.\n3) Touch up through the day.\n4) Richer layer at night if balm/mask.",
-  "skinAr": "الشفاه الجافة",
-  "skinEn": "dry lips",
+  "descAr": "أحمر شفاه سائل باللون الكامل من لوليس 010 من LOLLIS. لون ناعم ومريح.",
+  "descEn": "Lollis Full Color Lipgloss 010 Broken by LOLLIS. Soft colour, comfortable wear.",
+  "useAr": "١) على شفاه نظيفة.\n٢) أعدِي عند الحاجة.",
+  "useEn": "1) On clean lips.\n2) Reapply as needed.",
+  "skinAr": "لكل درجات الشفاه.",
+  "skinEn": "All lip tones.",
   "stock": 3
-}
-);
+});
+})();

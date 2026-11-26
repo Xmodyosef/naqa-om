@@ -1,7 +1,7 @@
-/* Brand: essence · 20 products · imgs auto-wired 2026-11-25 */
-window.NAQA_PRODUCTS = window.NAQA_PRODUCTS || [];
-window.NAQA_PRODUCTS.push(
-{
+// essence.js — short Apple-like copy
+(function(){
+var A = window.NAQA_PRODUCTS || (window.NAQA_PRODUCTS = []);
+A.push({
   "id": 100,
   "brand": "essence",
   "cat": "عيون",
@@ -15,15 +15,15 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "ماسكارا لاش برنسيس من إيسنس - 12مل",
   "nameEn": "essence Lash Princess False Lash Effect Mascara - 12ml",
-  "descAr": "اختاري ماسكارا لاش برنسيس من إيسنس حين تريدين نتيجة بلا تعقيد. من essence، يفرّق ويطوّل أو يكتّف. الحجم ≈ 12 مل. مُخصص تقريباً لـعيون حساسة؟ اختبري. الجمال الأهدأ يأتي من روتين قصير ثابت.",
-  "descEn": "Reach for essence Lash Princess False Lash Effect Mascara when you want results without a maze. From essence, easy morning, easy take-off. Size ≈ 12 ml. Aimed at sensitive eyes? patch-test. Ongoing sting? Ease off or ask a pro.",
-  "useAr": "١) من الجذر للطرف بتعرج خفيف.\n٢) طبقة ثانية بعد الجفاف.\n٣) مزيل لطيف مساءً.\n٤) لا تشاركي الفرشاة.",
-  "useEn": "1) Root to tip, soft zigzag.\n2) Second coat after it sets.\n3) Gentle remover at night.\n4) Never share the wand.",
-  "skinAr": "عيون حساسة؟ اختبري",
-  "skinEn": "sensitive eyes? patch-test",
+  "descAr": "ماسكارا لاش برنسيس من إيسنس من essence. تحديد واضح دون ثقل. 12 مل.",
+  "descEn": "essence Lash Princess False Lash Effect Mascara by essence. Clean definition, no heaviness. 12 ml.",
+  "useAr": "١) من الجذور للأطراف.\n٢) طبقة واحدة كافية.",
+  "useEn": "1) Roots to tips.\n2) One coat is enough.",
+  "skinAr": "لكل الرموش. اختبري إن كانت العيون حسّاسة.",
+  "skinEn": "All lash types. Patch-test if sensitive.",
   "stock": 3
-},
-{
+});
+A.push({
   "id": 109,
   "brand": "essence",
   "cat": "عيون",
@@ -36,15 +36,15 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "ماسكارا لاش برنسيس سكلبتد فوليوم من إيسنس - 12مل",
   "nameEn": "essence Lash Princess Sculpted Volume Mascara - 12ml",
-  "descAr": "ماسكارا لاش برنسيس سكلبتد فوليوم من إيسنس. قصة قصيرة: تنظيف/عناية/حماية حسب نوعه، وessence هنا لتسهيل اليوم. سهل الصباح وسهل المساء. الحجم ≈ 12 مل. كل الرموش. أي لسع مستمر؟ خفّفي أو راجعي مختصاً.",
-  "descEn": "essence Lash Princess Sculpted Volume Mascara. Short story: cleanse, treat, or protect as labeled — essence keeps the day simple. Holds lashes without loud clumps. Size ≈ 12 ml. Day or night looks. Give it two steady weeks before you decide.",
-  "useAr": "١) من الجذر للطرف بتعرج خفيف.\n٢) طبقة ثانية بعد الجفاف.\n٣) مزيل لطيف مساءً.\n٤) لا تشاركي الفرشاة.",
-  "useEn": "1) Root to tip, soft zigzag.\n2) Second coat after it sets.\n3) Gentle remover at night.\n4) Never share the wand.",
-  "skinAr": "كل الرموش",
-  "skinEn": "day or night looks",
+  "descAr": "ماسكارا لاش برنسيس سكلبتد فوليوم من إيسنس من essence. تحديد واضح دون ثقل. 12 مل.",
+  "descEn": "essence Lash Princess Sculpted Volume Mascara by essence. Clean definition, no heaviness. 12 ml.",
+  "useAr": "١) من الجذور للأطراف.\n٢) طبقة واحدة كافية.",
+  "useEn": "1) Roots to tips.\n2) One coat is enough.",
+  "skinAr": "لكل الرموش. اختبري إن كانت العيون حسّاسة.",
+  "skinEn": "All lash types. Patch-test if sensitive.",
   "stock": 3
-},
-{
+});
+A.push({
   "id": 110,
   "brand": "essence",
   "cat": "عيون",
@@ -57,15 +57,15 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "ماسكارا لاش برنسيس بتأثير الرموش الاصطناعية والمقاومة للماء من إيسنس - 12مل",
   "nameEn": "essence Lash Princess False Lash Waterproof Mascara - 12ml",
-  "descAr": "اختاري ماسكارا لاش برنسيس بتأثير الرموش الاصطناعية والمقاو… حين تريدين نتيجة بلا تعقيد. من essence، يفرّق ويطوّل أو يكتّف. الحجم ≈ 12 مل. مُخصص تقريباً لـعيون حساسة؟ اختبري. خزّنيها في مكان معتدل وأغلقي الغطاء.",
-  "descEn": "Reach for essence Lash Princess False Lash Waterproof Mascara when you want results without a maze. From essence, holds lashes without loud clumps. Size ≈ 12 ml. Aimed at all lashes. Keep it cool-ish and cap it tight.",
-  "useAr": "١) من الجذر للطرف بتعرج خفيف.\n٢) طبقة ثانية بعد الجفاف.\n٣) مزيل لطيف مساءً.\n٤) لا تشاركي الفرشاة.",
-  "useEn": "1) Root to tip, soft zigzag.\n2) Second coat after it sets.\n3) Gentle remover at night.\n4) Never share the wand.",
-  "skinAr": "عيون حساسة؟ اختبري",
-  "skinEn": "all lashes",
+  "descAr": "ماسكارا لاش برنسيس بتأثير الرموش الاصطناعي من essence. تحديد واضح دون ثقل. 12 مل.",
+  "descEn": "essence Lash Princess False Lash Waterproof Masc by essence. Clean definition, no heaviness. 12 ml.",
+  "useAr": "١) من الجذور للأطراف.\n٢) طبقة واحدة كافية.",
+  "useEn": "1) Roots to tips.\n2) One coat is enough.",
+  "skinAr": "لكل الرموش. اختبري إن كانت العيون حسّاسة.",
+  "skinEn": "All lash types. Patch-test if sensitive.",
   "stock": 3
-},
-{
+});
+A.push({
   "id": 111,
   "brand": "essence",
   "cat": "عيون",
@@ -78,15 +78,15 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "ماسكارا آي لوف إكستريم المقاومة للماء من إيسنس - 12مل",
   "nameEn": "essence I Love Extreme Waterproof Mascara - 12ml",
-  "descAr": "ماسكارا آي لوف إكستريم المقاومة للماء من إيسنس من essence. يفرّق ويطوّل أو يكتّف. الحجم ≈ 12 مل. يناسب يوم أو سهرة. خزّنيها في مكان معتدل وأغلقي الغطاء.",
-  "descEn": "essence I Love Extreme Waterproof Mascara by essence. Easy morning, easy take-off. Size ≈ 12 ml. Suits all lashes. Give it two steady weeks before you decide.",
-  "useAr": "١) من الجذر للطرف بتعرج خفيف.\n٢) طبقة ثانية بعد الجفاف.\n٣) مزيل لطيف مساءً.\n٤) لا تشاركي الفرشاة.",
-  "useEn": "1) Root to tip, soft zigzag.\n2) Second coat after it sets.\n3) Gentle remover at night.\n4) Never share the wand.",
-  "skinAr": "يوم أو سهرة",
-  "skinEn": "all lashes",
+  "descAr": "ماسكارا آي لوف إكستريم المقاومة للماء من إ من essence. تحديد واضح دون ثقل. 12 مل.",
+  "descEn": "essence I Love Extreme Waterproof Mascara by essence. Clean definition, no heaviness. 12 ml.",
+  "useAr": "١) من الجذور للأطراف.\n٢) طبقة واحدة كافية.",
+  "useEn": "1) Roots to tips.\n2) One coat is enough.",
+  "skinAr": "لكل الرموش. اختبري إن كانت العيون حسّاسة.",
+  "skinEn": "All lash types. Patch-test if sensitive.",
   "stock": 3
-},
-{
+});
+A.push({
   "id": 119,
   "brand": "essence",
   "cat": "عيون",
@@ -98,15 +98,15 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "ماسكارا جيت بيغ لاشز فوليوم المقاومة للماء من إيسنس - 12مل",
   "nameEn": "essence Get Big Lashes Volume Waterproof Mascara - 12ml",
-  "descAr": "رقيق في الإحساس، صادق في الدور — ماسكارا جيت بيغ لاشز فوليوم المقاومة للماء من إيسنس. علامة essence. يفرّق ويطوّل أو يكتّف. الحجم ≈ 12 مل. يناسب كل الرموش. أي لسع مستمر؟ خفّفي أو راجعي مختصاً.",
-  "descEn": "Soft to the touch, honest in role — essence Get Big Lashes Volume Waterproof Mascara. essence. Separates, lengthens, or densifies. Size ≈ 12 ml. Best with all lashes. Quiet beauty loves a short, steady routine.",
-  "useAr": "١) من الجذر للطرف بتعرج خفيف.\n٢) طبقة ثانية بعد الجفاف.\n٣) مزيل لطيف مساءً.\n٤) لا تشاركي الفرشاة.",
-  "useEn": "1) Root to tip, soft zigzag.\n2) Second coat after it sets.\n3) Gentle remover at night.\n4) Never share the wand.",
-  "skinAr": "كل الرموش",
-  "skinEn": "all lashes",
+  "descAr": "ماسكارا جيت بيغ لاشز فوليوم المقاومة للماء من essence. تحديد واضح دون ثقل. 12 مل.",
+  "descEn": "essence Get Big Lashes Volume Waterproof Mascara by essence. Clean definition, no heaviness. 12 ml.",
+  "useAr": "١) من الجذور للأطراف.\n٢) طبقة واحدة كافية.",
+  "useEn": "1) Roots to tips.\n2) One coat is enough.",
+  "skinAr": "لكل الرموش. اختبري إن كانت العيون حسّاسة.",
+  "skinEn": "All lash types. Patch-test if sensitive.",
   "stock": 3
-},
-{
+});
+A.push({
   "em": "✏️",
   "imgs": [
     "media/products/p201_0.webp"
@@ -119,15 +119,15 @@ window.NAQA_PRODUCTS.push(
   "hot": true,
   "nameAr": "قلم تحديد شفاه Line & Stain! تاتو — 01 Everyone's Nude-Pink",
   "nameEn": "essence Line & Stain! Tattoo Lip Liner 01 Everyone's Nude-Pink",
-  "descAr": "محدد شفاه بتأثير تاتو طويل الثبات من essence. تغطية قوية وخط دقيق دون ثقل. نباتي وخالٍ من القسوة.",
-  "descEn": "Long-wear tattoo-style lip liner from essence. Precise line, strong color, lightweight feel. Vegan and cruelty-free.",
-  "useAr": "١) حدّدي محيط الشفاه.\n٢) املكي اللون للداخل.\n٣) ثبّتي بأحمر أو جلوس.",
-  "useEn": "1) Outline the lips.\n2) Fill slightly inward.\n3) Finish with lipstick or gloss.",
-  "skinAr": "كل ألوان الشفاه",
-  "skinEn": "All lip tones",
+  "descAr": "قلم تحديد شفاه Line & Stain! تاتو من essence. لون ناعم ومريح.",
+  "descEn": "essence Line & Stain! Tattoo Lip Liner 01 Everyo by essence. Soft colour, comfortable wear.",
+  "useAr": "١) على شفاه نظيفة.\n٢) أعدِي عند الحاجة.",
+  "useEn": "1) On clean lips.\n2) Reapply as needed.",
+  "skinAr": "لكل درجات الشفاه.",
+  "skinEn": "All lip tones.",
   "id": 201
-},
-{
+});
+A.push({
   "em": "💋",
   "imgs": [
     "media/products/p202_0.webp"
@@ -139,15 +139,15 @@ window.NAQA_PRODUCTS.push(
   "price": 1.6,
   "nameAr": "جلوس Juicy Bomb لامع — عسلي",
   "nameEn": "essence JUICY BOMB Shiny Lip Gloss (Honey shimmer)",
-  "descAr": "جلوس لامع غير لزج من سلسلة Juicy Bomb. لمعان رطب ورائحة لطيفة. نباتي.",
-  "descEn": "Non-sticky shiny lip gloss from Juicy Bomb. Wet-look shine with a sweet finish. Vegan.",
-  "useAr": "طبّقي على الشفاه وحدها أو فوق لون.",
-  "useEn": "Apply alone or over lip color.",
-  "skinAr": "كل الشفاه",
-  "skinEn": "All lips",
+  "descAr": "جلوس Juicy Bomb لامع من essence. لون ناعم ومريح.",
+  "descEn": "essence JUICY BOMB Shiny Lip Gloss (Honey shimme by essence. Soft colour, comfortable wear.",
+  "useAr": "١) على شفاه نظيفة.\n٢) أعدِي عند الحاجة.",
+  "useEn": "1) On clean lips.\n2) Reapply as needed.",
+  "skinAr": "لكل درجات الشفاه.",
+  "skinEn": "All lip tones.",
   "id": 202
-},
-{
+});
+A.push({
   "em": "🎁",
   "imgs": [
     "media/products/p203_0.webp"
@@ -160,15 +160,15 @@ window.NAQA_PRODUCTS.push(
   "hot": true,
   "nameAr": "طقم Juicy Bomb لامع — 5 ألوان فواكه",
   "nameEn": "essence JUICY BOMB Shiny Lipgloss Set 02 (5×10ml)",
-  "descAr": "طقم ٥ جلوسي Juicy Bomb بألوان فواكه شهيرة. لمعان قوي بدون لزوجة.",
-  "descEn": "Set of 5 popular Juicy Bomb glosses. Ultra shine, no sticky feel.",
-  "useAr": "اختاري اللون وطبّقيه يومياً.",
-  "useEn": "Pick a shade and apply daily.",
-  "skinAr": "هدية / يومي",
-  "skinEn": "Gift / daily",
+  "descAr": "طقم Juicy Bomb لامع من essence. لون ناعم ومريح. 10 مل.",
+  "descEn": "essence JUICY BOMB Shiny Lipgloss Set 02 (5×10ml by essence. Soft colour, comfortable wear. 10 ml.",
+  "useAr": "١) على شفاه نظيفة.\n٢) أعدِي عند الحاجة.",
+  "useEn": "1) On clean lips.\n2) Reapply as needed.",
+  "skinAr": "لكل درجات الشفاه.",
+  "skinEn": "All lip tones.",
   "id": 203
-},
-{
+});
+A.push({
   "em": "🍬",
   "imgs": [
     "media/products/p204_0.webp"
@@ -180,15 +180,15 @@ window.NAQA_PRODUCTS.push(
   "price": 3.9,
   "nameAr": "طقم Juicy Bomb Sweet Treats",
   "nameEn": "essence JUICY BOMB Sweet Treats Lipgloss Set",
-  "descAr": "طقم جلوسي مستوحى من الحلويات: شوكو، مارشميلو، موز، كوكيز، توت.",
-  "descEn": "Dessert-inspired gloss set: choco, marshmallow, banana, cookie, raspberry.",
-  "useAr": "طبّقي طبقة رقيقة للمعان.",
-  "useEn": "Apply a thin layer for gloss.",
-  "skinAr": "كل الشفاه",
-  "skinEn": "All lips",
+  "descAr": "طقم Juicy Bomb Sweet Treats من essence. لون ناعم ومريح.",
+  "descEn": "essence JUICY BOMB Sweet Treats Lipgloss Set by essence. Soft colour, comfortable wear.",
+  "useAr": "١) على شفاه نظيفة.\n٢) أعدِي عند الحاجة.",
+  "useEn": "1) On clean lips.\n2) Reapply as needed.",
+  "skinAr": "لكل درجات الشفاه.",
+  "skinEn": "All lip tones.",
   "id": 204
-},
-{
+});
+A.push({
   "em": "💧",
   "imgs": [
     "media/products/p205_0.webp"
@@ -200,15 +200,15 @@ window.NAQA_PRODUCTS.push(
   "price": 4.5,
   "nameAr": "طقم زيوت شفاه Juicy Bomb — Glossy Days",
   "nameEn": "essence JUICY BOMB Lip Oil Set 01 Glossy Days Ahead",
-  "descAr": "خمسة زيوت شفاه لامعة بفيتامين E وجوجوبا. تغذية + لمعان.",
-  "descEn": "Five nourishing lip oils with vitamin E and jojoba. Care plus shine.",
-  "useAr": "مساج خفيف على الشفاه صباحاً ومساءً.",
-  "useEn": "Massage gently morning and night.",
-  "skinAr": "شفاه جافة",
-  "skinEn": "Dry lips",
+  "descAr": "طقم زيوت شفاه Juicy Bomb من essence. لون ناعم ومريح. 01 ج.",
+  "descEn": "essence JUICY BOMB Lip Oil Set 01 Glossy Days Ah by essence. Soft colour, comfortable wear. 01 g.",
+  "useAr": "١) على شفاه نظيفة.\n٢) أعدِي عند الحاجة.",
+  "useEn": "1) On clean lips.\n2) Reapply as needed.",
+  "skinAr": "لكل درجات الشفاه.",
+  "skinEn": "All lip tones.",
   "id": 205
-},
-{
+});
+A.push({
   "em": "👑",
   "imgs": [
     "media/products/p206_0.webp"
@@ -221,15 +221,15 @@ window.NAQA_PRODUCTS.push(
   "hot": true,
   "nameAr": "طقم Lash Princess (كيرلر + برايمر + ماسكارا)",
   "nameEn": "essence Lash Princess 3-Piece Set (curler + primer + mascara)",
-  "descAr": "طقم كامل لتأثير رموش الأميرة: كيرلر، برايمر، وماسكارا.",
-  "descEn": "Full Lash Princess kit: curler, primer and mascara for dramatic lashes.",
-  "useAr": "١) كيرلر ٢) برايمر ٣) ماسكارا بعد الجفاف.",
-  "useEn": "1) Curl 2) Primer 3) Mascara after set.",
-  "skinAr": "رموش",
-  "skinEn": "Lashes",
+  "descAr": "طقم Lash Princess (كيرلر + برايمر + ماسكار من essence. تحديد واضح دون ثقل.",
+  "descEn": "essence Lash Princess 3 by essence. Clean definition, no heaviness.",
+  "useAr": "١) من الجذور للأطراف.\n٢) طبقة واحدة كافية.",
+  "useEn": "1) Roots to tips.\n2) One coat is enough.",
+  "skinAr": "لكل الرموش. اختبري إن كانت العيون حسّاسة.",
+  "skinEn": "All lash types. Patch-test if sensitive.",
   "id": 206
-},
-{
+});
+A.push({
   "em": "🎀",
   "imgs": [
     "media/products/p207_0.webp"
@@ -241,15 +241,15 @@ window.NAQA_PRODUCTS.push(
   "price": 6.9,
   "nameAr": "طقم مكياج My Pink Things",
   "nameEn": "essence My Pink Things Makeup Set",
-  "descAr": "طقم متكامل بألوان وردية للوجه والعيون والشفاه — مثالي كهدية.",
-  "descEn": "Complete pink-themed makeup set for face, eyes and lips — great as a gift.",
-  "useAr": "اتبعي المنتجات حسب نوعها داخل الطقم.",
-  "useEn": "Use each item as labeled in the set.",
-  "skinAr": "كل البشرة",
-  "skinEn": "All skin",
+  "descAr": "طقم مكياج My Pink Things من essence. تغطية خفيفة لمظهر طبيعي.",
+  "descEn": "essence My Pink Things Makeup Set by essence. Light coverage, natural finish.",
+  "useAr": "١) بعد العناية.\n٢) وزّعي برفق.",
+  "useEn": "1) After skincare.\n2) Blend lightly.",
+  "skinAr": "لكل درجات البشرة — اختاري الدرجة المناسبة.",
+  "skinEn": "All skin tones — pick your shade.",
   "id": 207
-},
-{
+});
+A.push({
   "em": "🌸",
   "imgs": [
     "media/products/p208_0.webp"
@@ -261,15 +261,15 @@ window.NAQA_PRODUCTS.push(
   "price": 1.5,
   "nameAr": "جلوس Extreme Shine — 105 Flower Blossom — 5مل",
   "nameEn": "essence Extreme Shine Volume Lipgloss 105 Flower Blossom 5ml",
-  "descAr": "جلوس لامع يعطي مظهراً ممتلئاً بلون نصف شفاف. نباتي.",
-  "descEn": "Shiny lip gloss for a fuller look with sheer color. Vegan.",
-  "useAr": "طبّقي على الشفاه وحدها أو فوق أحمر.",
-  "useEn": "Apply alone or over lipstick.",
-  "skinAr": "كل الشفاه",
-  "skinEn": "All lips",
+  "descAr": "جلوس Extreme Shine من essence. لون ناعم ومريح. 5 مل.",
+  "descEn": "essence Extreme Shine Volume Lipgloss 105 Flower by essence. Soft colour, comfortable wear. 5 ml.",
+  "useAr": "١) على شفاه نظيفة.\n٢) أعدِي عند الحاجة.",
+  "useEn": "1) On clean lips.\n2) Reapply as needed.",
+  "skinAr": "لكل درجات الشفاه.",
+  "skinEn": "All lip tones.",
   "id": 208
-},
-{
+});
+A.push({
   "em": "🎨",
   "imgs": [
     "media/products/p209_0.webp"
@@ -282,15 +282,15 @@ window.NAQA_PRODUCTS.push(
   "hot": true,
   "nameAr": "باليت ظلال The Nude Edition المصغّرة — 3.6جم",
   "nameEn": "essence The Nude Edition Mini Eyeshadow Palette 3.6g",
-  "descAr": "٤ ظلال نود: ٣ مات و١ ميتاليك لعمل يومي أو سهرة.",
-  "descEn": "4 nude shades: 3 mattes + 1 metallic for day or night looks.",
-  "useAr": "أفتح درجة على الجفن، متوسطة في الثنية، أغمق في الزاوية.",
-  "useEn": "Lightest on lid, medium in crease, darkest outer corner.",
-  "skinAr": "كل ألوان العيون",
-  "skinEn": "All eye colors",
+  "descAr": "باليت ظلال The Nude Edition المصغّرة من essence. عناية واضحة وهادئة. 3.6 ج.",
+  "descEn": "essence The Nude Edition Mini Eyeshadow Palette  by essence. Clear, quiet care. 3.6 g.",
+  "useAr": "١) ضمن روتينك اليومي.\n٢) كمية قليلة تكفي.",
+  "useEn": "1) In your daily routine.\n2) Small amount is enough.",
+  "skinAr": "حسب نوع البشرة.",
+  "skinEn": "Match to your skin type.",
   "id": 209
-},
-{
+});
+A.push({
   "em": "🌫️",
   "imgs": [
     "media/products/p210_0.webp"
@@ -303,15 +303,15 @@ window.NAQA_PRODUCTS.push(
   "hot": true,
   "nameAr": "بودرة سائبة Fix & Last 14h — 9.5جم",
   "nameEn": "essence Fix & Last 14h Make-up Fixing Loose Powder 9.5g",
-  "descAr": "بودرة شفافة تثبّت المكياج حتى ١٤ ساعة بلمسة مات.",
-  "descEn": "Transparent loose powder that sets makeup up to 14h with matte finish.",
-  "useAr": "بالباف على مناطق اللمعان بعد الفاونديشن.",
-  "useEn": "With a puff on shine zones after foundation.",
-  "skinAr": "بشرة دهنية / مختلطة",
-  "skinEn": "Oily / combination",
+  "descAr": "بودرة سائبة Fix & Last 14h من essence. تغطية خفيفة لمظهر طبيعي. 9.5 ج.",
+  "descEn": "essence Fix & Last 14h Make by essence. Light coverage, natural finish. 9.5 g.",
+  "useAr": "١) بعد العناية.\n٢) وزّعي برفق.",
+  "useEn": "1) After skincare.\n2) Blend lightly.",
+  "skinAr": "لكل درجات البشرة — اختاري الدرجة المناسبة.",
+  "skinEn": "All skin tones — pick your shade.",
   "id": 210
-},
-{
+});
+A.push({
   "em": "〰️",
   "imgs": [
     "media/products/p211_0.webp"
@@ -323,15 +323,15 @@ window.NAQA_PRODUCTS.push(
   "price": 1.8,
   "nameAr": "بودرة حواجب Brow Powder Duo — 01 Light",
   "nameEn": "essence Brow Powder Duo 01 Light",
-  "descAr": "درجتان لملء وتحديد الحواجب مع فرشاة. نباتي.",
-  "descEn": "Two powders to fill and shape brows with brush. Vegan.",
-  "useAr": "املئي الفراغات بالدرجة المناسبة ثم مشّطي.",
-  "useEn": "Fill gaps with the right shade then comb through.",
-  "skinAr": "حواجب فاتحة",
-  "skinEn": "Light brows",
+  "descAr": "بودرة حواجب Brow Powder Duo من essence. عناية واضحة وهادئة.",
+  "descEn": "essence Brow Powder Duo 01 Light by essence. Clear, quiet care.",
+  "useAr": "١) ضمن روتينك اليومي.\n٢) كمية قليلة تكفي.",
+  "useEn": "1) In your daily routine.\n2) Small amount is enough.",
+  "skinAr": "حسب نوع البشرة.",
+  "skinEn": "Match to your skin type.",
   "id": 211
-},
-{
+});
+A.push({
   "em": "✏️",
   "imgs": [
     "media/products/p212_0.webp"
@@ -343,15 +343,15 @@ window.NAQA_PRODUCTS.push(
   "price": 1.4,
   "nameAr": "قلم حواجب Eyebrow Designer — 11 Deep Brown",
   "nameEn": "essence Eyebrow Designer Pencil 11 Deep Brown",
-  "descAr": "قلم حواجب مع فرشاة للتمشيط. يحدّد الشكل بدقة.",
-  "descEn": "Brow pencil with spoolie for precise shape and blend.",
-  "useAr": "خطوط خفيفة ثم مشّطي للدمج.",
-  "useEn": "Light strokes then comb to blend.",
-  "skinAr": "حواجب داكنة",
-  "skinEn": "Deep brows",
+  "descAr": "قلم حواجب Eyebrow Designer من essence. عناية واضحة وهادئة.",
+  "descEn": "essence Eyebrow Designer Pencil 11 Deep Brown by essence. Clear, quiet care.",
+  "useAr": "١) ضمن روتينك اليومي.\n٢) كمية قليلة تكفي.",
+  "useEn": "1) In your daily routine.\n2) Small amount is enough.",
+  "skinAr": "حسب نوع البشرة.",
+  "skinEn": "Match to your skin type.",
   "id": 212
-},
-{
+});
+A.push({
   "id": 261,
   "brand": "essence",
   "cat": "وجه",
@@ -363,15 +363,15 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "بودرة تثبيت أول أباوت مات",
   "nameEn": "essence All About Matt Fixing Compact Powder",
-  "descAr": "بودرة تثبيت أول أباوت مات — منتج أصلي ضمن كتالوج نقاء المتنوع.",
-  "descEn": "essence All About Matt Fixing Compact Powder — authentic listing in Naqa’s curated catalog.",
-  "useAr": "١) بشرة نظيفة ومرطّبة.\n٢) كمية قليلة ووزّعي جيداً.\n٣) ابنِي التغطية بطبقات.\n٤) ثبّتي عند الحاجة.",
-  "useEn": "1) Clean moisturized skin.\n2) Apply a little and blend.\n3) Build in thin layers.\n4) Set if needed.",
-  "skinAr": "كل أنواع البشرة",
-  "skinEn": "all skin types",
+  "descAr": "بودرة تثبيت أول أباوت مات من essence. تغطية خفيفة لمظهر طبيعي.",
+  "descEn": "essence All About Matt Fixing Compact Powder by essence. Light coverage, natural finish.",
+  "useAr": "١) بعد العناية.\n٢) وزّعي برفق.",
+  "useEn": "1) After skincare.\n2) Blend lightly.",
+  "skinAr": "لكل درجات البشرة — اختاري الدرجة المناسبة.",
+  "skinEn": "All skin tones — pick your shade.",
   "stock": 3
-},
-{
+});
+A.push({
   "id": 262,
   "brand": "essence",
   "cat": "وجه",
@@ -383,16 +383,16 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "بلاش بيبي جوت 10",
   "nameEn": "essence Baby Got Blush 10 Tickle Me Pink",
-  "descAr": "بلاش بيبي جوت 10 — منتج أصلي ضمن كتالوج نقاء المتنوع.",
-  "descEn": "essence Baby Got Blush 10 Tickle Me Pink — authentic listing in Naqa’s curated catalog.",
-  "useAr": "١) بشرة نظيفة ومرطّبة.\n٢) كمية قليلة ووزّعي جيداً.\n٣) ابنِي التغطية بطبقات.\n٤) ثبّتي عند الحاجة.",
-  "useEn": "1) Clean moisturized skin.\n2) Apply a little and blend.\n3) Build in thin layers.\n4) Set if needed.",
-  "skinAr": "كل أنواع البشرة",
-  "skinEn": "all skin types",
+  "descAr": "بلاش بيبي جوت 10 من essence. تغطية خفيفة لمظهر طبيعي.",
+  "descEn": "essence Baby Got Blush 10 Tickle Me Pink by essence. Light coverage, natural finish.",
+  "useAr": "١) بعد العناية.\n٢) وزّعي برفق.",
+  "useEn": "1) After skincare.\n2) Blend lightly.",
+  "skinAr": "لكل درجات البشرة — اختاري الدرجة المناسبة.",
+  "skinEn": "All skin tones — pick your shade.",
   "stock": 3,
   "hot": true
-},
-{
+});
+A.push({
   "id": 263,
   "brand": "essence",
   "cat": "وجه",
@@ -404,12 +404,12 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "بلاش بيبي جوت 20",
   "nameEn": "essence Baby Got Blush 20 Peaches & Cream",
-  "descAr": "بلاش بيبي جوت 20 — منتج أصلي ضمن كتالوج نقاء المتنوع.",
-  "descEn": "essence Baby Got Blush 20 Peaches & Cream — authentic listing in Naqa’s curated catalog.",
-  "useAr": "١) بشرة نظيفة ومرطّبة.\n٢) كمية قليلة ووزّعي جيداً.\n٣) ابنِي التغطية بطبقات.\n٤) ثبّتي عند الحاجة.",
-  "useEn": "1) Clean moisturized skin.\n2) Apply a little and blend.\n3) Build in thin layers.\n4) Set if needed.",
-  "skinAr": "كل أنواع البشرة",
-  "skinEn": "all skin types",
+  "descAr": "بلاش بيبي جوت 20 من essence. تغطية خفيفة لمظهر طبيعي.",
+  "descEn": "essence Baby Got Blush 20 Peaches & Cream by essence. Light coverage, natural finish.",
+  "useAr": "١) بعد العناية.\n٢) وزّعي برفق.",
+  "useEn": "1) After skincare.\n2) Blend lightly.",
+  "skinAr": "لكل درجات البشرة — اختاري الدرجة المناسبة.",
+  "skinEn": "All skin tones — pick your shade.",
   "stock": 3
-}
-);
+});
+})();

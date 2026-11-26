@@ -1,7 +1,7 @@
-/* Brand: Acure · 1 products · edit AR/EN fields here */
-window.NAQA_PRODUCTS = window.NAQA_PRODUCTS || [];
-window.NAQA_PRODUCTS.push(
-{
+// acure.js — short Apple-like copy
+(function(){
+var A = window.NAQA_PRODUCTS || (window.NAQA_PRODUCTS = []);
+A.push({
   "id": 38,
   "brand": "Acure",
   "cat": "عناية",
@@ -13,12 +13,12 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "مقشر اكيور لتفتيح الوجه - 118مل",
   "nameEn": "Acure Brightening Facial Scrub - 118ml",
-  "descAr": "رقيق في الإحساس، صادق في الدور — مقشر اكيور لتفتيح الوجه. علامة Acure. مرات قليلة في الأسبوع. الحجم ≈ 118 مل. يناسب بعيداً عن ريتينول قوي بنفس الليلة. خزّنيها في مكان معتدل وأغلقي الغطاء.",
-  "descEn": "Soft to the touch, honest in role — Acure Brightening Facial Scrub. Acure. Only a few times a week. Size ≈ 118 ml. Best with not with strong retinoid same night. Ongoing sting? Ease off or ask a pro.",
-  "useAr": "١) بشرة مبللة بعد الغسول.\n٢) دوائر ناعمة ثوانٍ.\n٣) شطف + ترطيب.\n٤) ١–٢× أسبوعياً فقط.",
-  "useEn": "1) Wet skin after cleanse.\n2) Soft circles, few seconds.\n3) Rinse + moisturize.\n4) Only 1–2× weekly.",
-  "skinAr": "بعيداً عن ريتينول قوي بنفس الليلة",
-  "skinEn": "not with strong retinoid same night",
+  "descAr": "مقشر اكيور لتفتيح الوجه من Acure. تغطية خفيفة لمظهر طبيعي. 118 مل.",
+  "descEn": "Acure Brightening Facial Scrub by Acure. Light coverage, natural finish. 118 ml.",
+  "useAr": "١) بعد العناية.\n٢) وزّعي برفق.",
+  "useEn": "1) After skincare.\n2) Blend lightly.",
+  "skinAr": "لكل درجات البشرة — اختاري الدرجة المناسبة.",
+  "skinEn": "All skin tones — pick your shade.",
   "stock": 3
-}
-);
+});
+})();

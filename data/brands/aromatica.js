@@ -1,7 +1,7 @@
-/* Brand: Aromatica · 1 products · imgs auto-wired 2026-11-25 */
-window.NAQA_PRODUCTS = window.NAQA_PRODUCTS || [];
-window.NAQA_PRODUCTS.push(
-{
+// aromatica.js — short Apple-like copy
+(function(){
+var A = window.NAQA_PRODUCTS || (window.NAQA_PRODUCTS = []);
+A.push({
   "id": 178,
   "brand": "Aromatica",
   "cat": "شعر",
@@ -13,12 +13,12 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "مجموعة اروماتيكا روزماري التجريبية لتنقية فروة الرأس",
   "nameEn": "Aromatica Rosemary Scalp Scaling Trial Kit",
-  "descAr": "مجموعة اروماتيكا روزماري التجريبية لتنقية فروة الرأس من Aromatica. أنظف وأطرى مع الأسابيع. يناسب فروة تحتاج انتعاشاً. أي لسع مستمر؟ خفّفي أو راجعي مختصاً.",
-  "descEn": "Aromatica Rosemary Scalp Scaling Trial Kit by Aromatica. Cleaner and softer over weeks. Suits scalp that needs air. Quiet beauty loves a short, steady routine.",
-  "useAr": "١) شامبو للفروة، بلسم للأطراف، سيروم حسب العبوة.\n٢) ابدئي بقليل.\n٣) لا تُشبعي الخصل.\n٤) أسبوعان–ثلاثة للفرق الأوضح.",
-  "useEn": "1) Shampoo scalp, condition lengths, leave-in as labeled.\n2) Start small.\n3) Don’t drench the hair.\n4) Two–three weeks for a clearer change.",
-  "skinAr": "فروة تحتاج انتعاشاً",
-  "skinEn": "scalp that needs air",
+  "descAr": "مجموعة اروماتيكا روزماري التجريبية لتنقية  من Aromatica. عناية بسيطة للشعر.",
+  "descEn": "Aromatica Rosemary Scalp Scaling Trial Kit by Aromatica. Simple daily hair care.",
+  "useAr": "١) على شعر رطب أو جاف حسب النوع.\n٢) لا تُغرقي الكمية.",
+  "useEn": "1) Damp or dry as directed.\n2) A little goes far.",
+  "skinAr": "حسب نوع الشعر والفروة.",
+  "skinEn": "Depends on hair and scalp.",
   "stock": 3
-}
-);
+});
+})();

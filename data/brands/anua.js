@@ -1,7 +1,7 @@
-/* Brand: Anua · 17 products · imgs auto-wired 2026-11-25 */
-window.NAQA_PRODUCTS = window.NAQA_PRODUCTS || [];
-window.NAQA_PRODUCTS.push(
-{
+// anua.js — short Apple-like copy
+(function(){
+var A = window.NAQA_PRODUCTS || (window.NAQA_PRODUCTS = []);
+A.push({
   "id": 3,
   "brand": "Anua",
   "cat": "عناية",
@@ -15,15 +15,15 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "سيروم انوا نياسيناميد 10% لتصحيح البقع الداكنة - 30مل",
   "nameEn": "Anua Niacinamide 10% + TXA 4% Dark Spot Correcting Serum - 30ml",
-  "descAr": "سيروم انوا نياسيناميد 10% لتصحيح البقع الداكنة من Anua. مائي بلمسة حريرية، مع حضور نياسيناميد لـتوحيد اللون ومظهر أنعم للمسام. الحجم ≈ 30 مل. يناسب الجافة والعطشى. أي لسع مستمر؟ خفّفي أو راجعي مختصاً.",
-  "descEn": "Anua Niacinamide 10% + TXA 4% Dark Spot Correcting Serum by Anua. Watery with a silk finish, with niacinamide for a more even tone and refined-looking pores. Size ≈ 30 ml. Suits most types — start with drops. Quiet beauty loves a short, steady routine.",
-  "useAr": "١) وجه نظيف ورطب قليلاً.\n٢) نقطة على الخد والجبهة والذقن، ثم توزيع.\n٣) دقيقة صبر ثم الكريم.\n٤) محيط العين فقط إن صُمّم لذلك.",
-  "useEn": "1) Clean, slightly damp face.\n2) Dot cheeks, forehead, chin; spread.\n3) Wait a minute, then cream.\n4) Eye area only if the formula is made for it.",
-  "skinAr": "الجافة والعطشى",
-  "skinEn": "most types — start with drops",
+  "descAr": "سيروم انوا نياسيناميد 10% لتصحيح البقع الد من Anua. خطوة مركّزة وسريعة. 30 مل.",
+  "descEn": "Anua Niacinamide 10% + TXA 4% Dark Spot Correcti by Anua. Focused step, fast finish. 30 ml.",
+  "useAr": "١) بعد التنظيف.\n٢) قطرات قليلة ثم رطّبي.",
+  "useEn": "1) After cleanse.\n2) Few drops, then moisturise.",
+  "skinAr": "حسب احتياج بشرتك.",
+  "skinEn": "Match to your skin need.",
   "stock": 3
-},
-{
+});
+A.push({
   "id": 37,
   "brand": "Anua",
   "cat": "عناية",
@@ -35,15 +35,15 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "غسول انوا الرغوي للتنظيف العميق للمسام بخلاصة الهارتليف - 150مل",
   "nameEn": "Anua Heartleaf Quercetinol Pore Deep Cleansing Foam - 150ml",
-  "descAr": "لماذا Anua هنا؟ لأن غسول انوا الرغوي للتنظيف العميق للمسام بخلاصة الهار… يقدّم خطوة واحدة واضحة: بدون شدّ مزعج بعد الشطف. المكوّن الأبرز: خلاصة مهدّئة (هدوء للاحمرار والتهيج الخفيف). الحجم ≈ 150 مل. لـالدهنية والمختلطة. خزّنيها في مكان معتدل وأغلقي الغطاء.",
-  "descEn": "Why Anua? Because Anua Heartleaf Quercetinol Pore Deep Cleansing Foam does one clear job: no tight squeak after rinse. Standout: calming botanicals (calm for mild redness). Size ≈ 150 ml. For oily and combination. Keep it cool-ish and cap it tight.",
-  "useAr": "١) أول خطوة صباحًا ومساءً.\n٢) تجنّبي الماء المغلي.\n٣) إن شدّ الوجه، قصّري الوقت.",
-  "useEn": "1) Lukewarm water.\n2) 20–30 seconds, full rinse.\n3) Pat dry.\n4) Heavy makeup: oil first, then this.",
-  "skinAr": "الدهنية والمختلطة",
-  "skinEn": "oily and combination",
+  "descAr": "غسول انوا الرغوي للتنظيف العميق للمسام بخل من Anua. ينظّف بلطف دون شد. 150 مل.",
+  "descEn": "Anua Heartleaf Quercetinol Pore Deep Cleansing F by Anua. Gentle cleanse, no tight feel. 150 ml.",
+  "useAr": "١) على بشرة رطبة.\n٢) دلكي واشطفي.",
+  "useEn": "1) On damp skin.\n2) Massage, rinse.",
+  "skinAr": "مناسب لمعظم أنواع البشرة.",
+  "skinEn": "Most skin types.",
   "stock": 3
-},
-{
+});
+A.push({
   "id": 44,
   "brand": "Anua",
   "cat": "عناية",
@@ -55,15 +55,15 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "زيت انوا هارت ليف لتنظيف البشرة والتحكم بالمسام - 200مل",
   "nameEn": "Anua Heartleaf Pore Control Cleansing Oil - 200ml",
-  "descAr": "Anua × عناية يومية: زيت انوا هارت ليف لتنظيف البشرة والتحكم بالمسام. يُبرز خلاصة مهدّئة من أجل هدوء للاحمرار والتهيج الخفيف. الملمس: ينظّف ويترك البشرة مرتاحة. الحجم ≈ 200 مل. بعد مكياج كخطوة أولى. أي لسع مستمر؟ خفّفي أو راجعي مختصاً.",
-  "descEn": "Anua for daily care: Anua Heartleaf Pore Control Cleansing Oil. It brings calming botanicals for calm for mild redness. Feel: cleans and leaves skin at ease. Size ≈ 200 ml. Oily and combination. Give it two steady weeks before you decide.",
-  "useAr": "١) ماء فاتر.\n٢) ٢٠–٣٠ ثانية تدليك ثم شطف كامل.\n٣) تربيت للتجفيف.\n٤) مكياج ثقيل: زيتي أولاً ثم هذا.",
-  "useEn": "1) Lukewarm water.\n2) 20–30 seconds, full rinse.\n3) Pat dry.\n4) Heavy makeup: oil first, then this.",
-  "skinAr": "بعد مكياج كخطوة أولى",
-  "skinEn": "oily and combination",
+  "descAr": "زيت انوا هارت ليف لتنظيف البشرة والتحكم با من Anua. عناية واضحة وهادئة. 200 مل.",
+  "descEn": "Anua Heartleaf Pore Control Cleansing Oil by Anua. Clear, quiet care. 200 ml.",
+  "useAr": "١) ضمن روتينك اليومي.\n٢) كمية قليلة تكفي.",
+  "useEn": "1) In your daily routine.\n2) Small amount is enough.",
+  "skinAr": "حسب نوع البشرة.",
+  "skinEn": "Match to your skin type.",
   "stock": 3
-},
-{
+});
+A.push({
   "id": 56,
   "brand": "Anua",
   "cat": "عناية",
@@ -75,15 +75,15 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "بخاخ سيروم انوا بي دي آر إن بالكولاجين - 100مل",
   "nameEn": "Anua PDRN Collagen Glow Facial Serum Spray - 100ml",
-  "descAr": "بخاخ سيروم انوا بي دي آر إن بالكولاجين من Anua. خفيف وسريع الامتصاص، مع حضور ببتيدات/كولاجين لـمرونة ونضارة في المظهر. الحجم ≈ 100 مل. يناسب الدهنية والمختلطة. الجمال الأهدأ يأتي من روتين قصير ثابت.",
-  "descEn": "Anua PDRN Collagen Glow Facial Serum Spray by Anua. Light and quick to settle, with peptides/collagen support for a springier, fresher look. Size ≈ 100 ml. Suits sensitive after a patch test. Ongoing sting? Ease off or ask a pro.",
-  "useAr": "١) وجه نظيف ورطب قليلاً.\n٢) نقطة على الخد والجبهة والذقن، ثم توزيع.\n٣) دقيقة صبر ثم الكريم.\n٤) محيط العين فقط إن صُمّم لذلك.",
-  "useEn": "1) Clean skin; toner first if you use one.\n2) 2–3 drops — press from center out.\n3) Cream on top. AM: SPF.\n4) Retinoids/acids: night, slowly.",
-  "skinAr": "الدهنية والمختلطة",
-  "skinEn": "sensitive after a patch test",
+  "descAr": "بخاخ سيروم انوا بي دي آر إن بالكولاجين من Anua. خطوة مركّزة وسريعة. 100 مل.",
+  "descEn": "Anua PDRN Collagen Glow Facial Serum Spray by Anua. Focused step, fast finish. 100 ml.",
+  "useAr": "١) بعد التنظيف.\n٢) قطرات قليلة ثم رطّبي.",
+  "useEn": "1) After cleanse.\n2) Few drops, then moisturise.",
+  "skinAr": "حسب احتياج بشرتك.",
+  "skinEn": "Match to your skin need.",
   "stock": 3
-},
-{
+});
+A.push({
   "id": 57,
   "brand": "Anua",
   "cat": "عناية",
@@ -95,15 +95,15 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "بخاخ سيروم انوا بي دي آر إن بالكولاجين ميني - 30مل",
   "nameEn": "PDRN Collagen Glow Facial Serum Spray Mini - 30ml",
-  "descAr": "بخاخ سيروم انوا بي دي آر إن بالكولاجين ميني. قصة قصيرة: تنظيف/عناية/حماية حسب نوعه، وAnua هنا لتسهيل اليوم. مائي بلمسة حريرية. ببتيدات/كولاجين → مرونة ونضارة في المظهر. الحجم ≈ 30 مل. الجافة والعطشى. خزّنيها في مكان معتدل وأغلقي الغطاء.",
-  "descEn": "PDRN Collagen Glow Facial Serum Spray Mini. Short story: cleanse, treat, or protect as labeled — Anua keeps the day simple. Watery with a silk finish. Peptides/collagen support → a springier, fresher look. Size ≈ 30 ml. Oily and combination. Ongoing sting? Ease off or ask a pro.",
-  "useAr": "١) بشرة نظيفة، بعد التونر إن وُجد.\n٢) ٢–٣ قطرات — اضغطي من الوسط للخارج.\n٣) مرطب فوقه. صباحاً: SPF.\n٤) الريتينول/الأحماض: ليلاً وبالتدريج.",
-  "useEn": "1) Clean skin; toner first if you use one.\n2) 2–3 drops — press from center out.\n3) Cream on top. AM: SPF.\n4) Retinoids/acids: night, slowly.",
-  "skinAr": "الجافة والعطشى",
-  "skinEn": "oily and combination",
+  "descAr": "بخاخ سيروم انوا بي دي آر إن بالكولاجين مين من Anua. خطوة مركّزة وسريعة. 30 مل.",
+  "descEn": "PDRN Collagen Glow Facial Serum Spray Mini by Anua. Focused step, fast finish. 30 ml.",
+  "useAr": "١) بعد التنظيف.\n٢) قطرات قليلة ثم رطّبي.",
+  "useEn": "1) After cleanse.\n2) Few drops, then moisturise.",
+  "skinAr": "حسب احتياج بشرتك.",
+  "skinEn": "Match to your skin need.",
   "stock": 3
-},
-{
+});
+A.push({
   "id": 61,
   "brand": "Anua",
   "cat": "عناية",
@@ -115,15 +115,15 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "تونر انوا بيتش 77 بالنياسين لتفتيح وترطيب البشرة - 250مل",
   "nameEn": "Anua Peach 77 Niacin Essence Toner - 250ml",
-  "descAr": "Anua × عناية يومية: تونر انوا بيتش 77 بالنياسين لتفتيح وترطيب البشرة. يُركّز على راحة الاستخدام. الملمس: مائي ومنعش كرشة ماء. الحجم ≈ 250 مل. المتعطشة للماء. خزّنيها في مكان معتدل وأغلقي الغطاء.",
-  "descEn": "Anua for daily care: Anua Peach 77 Niacin Essence Toner. Comfort-first use. Feel: hydrates without bulk. Size ≈ 250 ml. Sensitive. Quiet beauty loves a short, steady routine.",
-  "useAr": "١) بشرة نظيفة.\n٢) مرّري التونر/الوسادة.\n٣) إن كان مقشّراً: ليس بالضرورة يومياً.",
-  "useEn": "1) Right after cleansing.\n2) Palms or pad — no dragging.\n3) No rinse → serum → cream.",
-  "skinAr": "المتعطشة للماء",
-  "skinEn": "sensitive",
+  "descAr": "تونر انوا بيتش 77 بالنياسين لتفتيح وترطيب  من Anua. عناية واضحة وهادئة. 250 مل.",
+  "descEn": "Anua Peach 77 Niacin Essence Toner by Anua. Clear, quiet care. 250 ml.",
+  "useAr": "١) ضمن روتينك اليومي.\n٢) كمية قليلة تكفي.",
+  "useEn": "1) In your daily routine.\n2) Small amount is enough.",
+  "skinAr": "حسب نوع البشرة.",
+  "skinEn": "Match to your skin type.",
   "stock": 3
-},
-{
+});
+A.push({
   "id": 62,
   "brand": "Anua",
   "cat": "عناية",
@@ -135,15 +135,15 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "واقي شمس انوا غير مرئي بلمسة مطفية - 50مل",
   "nameEn": "Anua Invisible Matte Finish Sunscreen - 50ml",
-  "descAr": "واقي شمس انوا غير مرئي بلمسة مطفية من Anua. يحمي ويناسب المكياج فوقه، مع حضور حماية SPF لـدرع نهاري أساسي. الحجم ≈ 50 مل. يناسب تحت المكياج. انتظمي أسبوعين قبل الحكم النهائي.",
-  "descEn": "Anua Invisible Matte Finish Sunscreen by Anua. Protects and sits under makeup, with SPF protection for essential daytime defense. Size ≈ 50 ml. Suits after morning care. Give it two steady weeks before you decide.",
-  "useAr": "١) آخر عناية صباحية.\n٢) كمية إصبعين تقريباً للوجه والرقبة.\n٣) دقيقة قبل المكياج.\n٤) أعيدي في الشمس الطويلة.",
-  "useEn": "1) Last morning step.\n2) About two fingers for face and neck.\n3) One minute before makeup.\n4) Reapply in long sun.",
-  "skinAr": "تحت المكياج",
-  "skinEn": "after morning care",
+  "descAr": "واقي شمس انوا غير مرئي بلمسة مطفية من Anua. حماية يومية بملمس خفيف. 50 مل.",
+  "descEn": "Anua Invisible Matte Finish Sunscreen by Anua. Everyday light SPF feel. 50 ml.",
+  "useAr": "١) آخر خطوة صباحاً.\n٢) جدّدي بعد التعرض الطويل.",
+  "useEn": "1) Last morning step.\n2) Reapply outdoors.",
+  "skinAr": "للاستخدام النهاري اليومي.",
+  "skinEn": "For daily daytime use.",
   "stock": 3
-},
-{
+});
+A.push({
   "id": 63,
   "brand": "Anua",
   "cat": "عناية",
@@ -155,15 +155,15 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "لصقات انوا فائقة النحافة لتغطية البقع - 75 رقعة",
   "nameEn": "Anua Ultra-Thin Spot Cover Patch - 75 patches",
-  "descAr": "رقيق في الإحساس، صادق في الدور — لصقات انوا فائقة النحافة لتغطية البقع. علامة Anua. مريح مع الانتظام. يناسب حسب احتياج يومك. الجمال الأهدأ يأتي من روتين قصير ثابت.",
-  "descEn": "Soft to the touch, honest in role — Anua Ultra. Anua. Comfortable with steady use. Best with most types. Give it two steady weeks before you decide.",
-  "useAr": "١) نظّفي → عالجي → احمي.\n٢) كمية معتدلة.\n٣) راقبي الأسبوع الأول.\n٤) SPF مع التفتيح أو الأحماض.",
-  "useEn": "1) Cleanse → treat → protect.\n2) Moderate amount.\n3) Watch week one.\n4) SPF with brightening or acids.",
-  "skinAr": "حسب احتياج يومك",
-  "skinEn": "most types",
+  "descAr": "لصقات انوا فائقة النحافة لتغطية البقع من Anua. عناية واضحة وهادئة.",
+  "descEn": "Anua Ultra by Anua. Clear, quiet care.",
+  "useAr": "١) ضمن روتينك اليومي.\n٢) كمية قليلة تكفي.",
+  "useEn": "1) In your daily routine.\n2) Small amount is enough.",
+  "skinAr": "حسب نوع البشرة.",
+  "skinEn": "Match to your skin type.",
   "stock": 3
-},
-{
+});
+A.push({
   "id": 68,
   "brand": "Anua",
   "cat": "عناية",
@@ -175,15 +175,15 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "بودرة أنوا رايس إنزيم لتنظيف وتفتيح البشرة - 40ج",
   "nameEn": "Anua Rice Enzyme Brightening Cleansing Powder",
-  "descAr": "لمسة Anua في بودرة أنوا رايس إنزيم لتنظيف وتفتيح البشرة: لمسة نهائية حسب اختيارك. صيغة مباشرة تُحترم مع الوقت. الحجم ≈ 40 ج. يناسب مختلطة إلى جافة. أي لسع مستمر؟ خفّفي أو راجعي مختصاً.",
-  "descEn": "Anua's touch in Anua Rice Enzyme Brightening Cleansing Powder: blends instead of masking. A direct formula that earns trust over time. Size ≈ 40 g. Fits quiet everyday makeup. Quiet beauty loves a short, steady routine.",
-  "useAr": "١) بشرة مرطّبة (+ SPF نهاراً).\n٢) كمية قليلة ووزّعي.\n٣) غطّي بطبقات خفيفة.\n٤) ثبّتي عند الحاجة.",
-  "useEn": "1) Moisturized skin (+ SPF by day).\n2) Start small and blend.\n3) Build in thin layers.\n4) Set for longer wear.",
-  "skinAr": "مختلطة إلى جافة",
-  "skinEn": "quiet everyday makeup",
+  "descAr": "بودرة أنوا رايس إنزيم لتنظيف وتفتيح البشرة من Anua. عناية واضحة وهادئة. 40 ج.",
+  "descEn": "Anua Rice Enzyme Brightening Cleansing Powder by Anua. Clear, quiet care. 40 g.",
+  "useAr": "١) ضمن روتينك اليومي.\n٢) كمية قليلة تكفي.",
+  "useEn": "1) In your daily routine.\n2) Small amount is enough.",
+  "skinAr": "حسب نوع البشرة.",
+  "skinEn": "Match to your skin type.",
   "stock": 3
-},
-{
+});
+A.push({
   "id": 69,
   "brand": "Anua",
   "cat": "عناية",
@@ -195,15 +195,15 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "زيت انوا هارت ليف اللطيف لتنظيف البشرة والتحكم بالمسام - 200مل",
   "nameEn": "Anua Heartleaf Mild Pore Control Cleansing Oil - 200ml",
-  "descAr": "Anua × عناية يومية: زيت انوا هارت ليف اللطيف لتنظيف البشرة والتحكم بالم…. يُبرز خلاصة مهدّئة من أجل هدوء للاحمرار والتهيج الخفيف. الملمس: بدون شدّ مزعج بعد الشطف. الحجم ≈ 200 مل. صباحاً ومساءً. الجمال الأهدأ يأتي من روتين قصير ثابت.",
-  "descEn": "Anua for daily care: Anua Heartleaf Mild Pore Control Cleansing Oil. It brings calming botanicals for calm for mild redness. Feel: cleans and leaves skin at ease. Size ≈ 200 ml. After makeup as step one. Give it two steady weeks before you decide.",
-  "useAr": "١) ماء فاتر.\n٢) ٢٠–٣٠ ثانية تدليك ثم شطف كامل.\n٣) تربيت للتجفيف.\n٤) مكياج ثقيل: زيتي أولاً ثم هذا.",
-  "useEn": "1) Lukewarm water.\n2) 20–30 seconds, full rinse.\n3) Pat dry.\n4) Heavy makeup: oil first, then this.",
-  "skinAr": "صباحاً ومساءً",
-  "skinEn": "after makeup as step one",
+  "descAr": "زيت انوا هارت ليف اللطيف لتنظيف البشرة وال من Anua. عناية واضحة وهادئة. 200 مل.",
+  "descEn": "Anua Heartleaf Mild Pore Control Cleansing Oil by Anua. Clear, quiet care. 200 ml.",
+  "useAr": "١) ضمن روتينك اليومي.\n٢) كمية قليلة تكفي.",
+  "useEn": "1) In your daily routine.\n2) Small amount is enough.",
+  "skinAr": "حسب نوع البشرة.",
+  "skinEn": "Match to your skin type.",
   "stock": 3
-},
-{
+});
+A.push({
   "id": 96,
   "brand": "Anua",
   "cat": "عناية",
@@ -215,15 +215,15 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "وسادات انوا نيايسناميد 5 وتي إكس إيه لتفتيح البشرة - 60 قطعة",
   "nameEn": "Anua Niacinamide 5 Txa Brightening Pad",
-  "descAr": "لماذا Anua هنا؟ لأن وسادات انوا نيايسناميد 5 وتي إكس إيه لتفتيح البشرة يقدّم خطوة واحدة واضحة: خفيف كأول طبقة. المكوّن الأبرز: نياسيناميد (توحيد اللون ومظهر أنعم للمسام). الحجم ≈ 60 قطعة. لـبعد كل غسول. انتظمي أسبوعين قبل الحكم النهائي.",
-  "descEn": "Why Anua? Because Anua Niacinamide 5 Txa Brightening Pad does one clear job: hydrates without bulk. Standout: niacinamide (a more even tone and refined-looking pores). For after every cleanse. Quiet beauty loves a short, steady routine.",
-  "useAr": "١) فوراً بعد الغسول.\n٢) راحة اليد أو القطنة — بلا سحب.\n٣) بدون شطف → سيروم → مرطب.",
-  "useEn": "1) Right after cleansing.\n2) Palms or pad — no dragging.\n3) No rinse → serum → cream.",
-  "skinAr": "بعد كل غسول",
-  "skinEn": "after every cleanse",
+  "descAr": "وسادات انوا نيايسناميد 5 وتي إكس إيه لتفتي من Anua. عناية واضحة وهادئة.",
+  "descEn": "Anua Niacinamide 5 Txa Brightening Pad by Anua. Clear, quiet care.",
+  "useAr": "١) ضمن روتينك اليومي.\n٢) كمية قليلة تكفي.",
+  "useEn": "1) In your daily routine.\n2) Small amount is enough.",
+  "skinAr": "حسب نوع البشرة.",
+  "skinEn": "Match to your skin type.",
   "stock": 3
-},
-{
+});
+A.push({
   "id": 99,
   "brand": "Anua",
   "cat": "عناية",
@@ -235,15 +235,15 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "كريم العين أنوا بالريتينول 0.1 والكافيين لتجديد وإشراقة محيط العين - 30ج",
   "nameEn": "Anua Retinol 0 1 Caffeine Revitalizing Eye Cream",
-  "descAr": "كريم العين أنوا بالريتينول 0.1 والكافيين لتجديد وإش… من Anua. كريمي يغلّف بلطف، مع حضور ريتينويد لـملمس أنعم ومظهر خطوط أدق. الحجم ≈ 30 ج. يناسب مساءً لمعظم الأنواع. انتظمي أسبوعين قبل الحكم النهائي.",
-  "descEn": "Anua Retinol 0 1 Caffeine Revitalizing Eye Cream by Anua. Velvet on dry cheeks, with retinoid care for smoother texture and a softer look of fine lines. Size ≈ 30 g. Suits combo in dry weather. Ongoing sting? Ease off or ask a pro.",
-  "useAr": "١) بعد السيروم أو مباشرة بعد الغسول.\n٢) حبة بازيلاء للوجه + قليل للرقبة.\n٣) صباحاً SPF فوقه.\n٤) مساءً زيدي على الخدود الجافة.",
-  "useEn": "1) After serum or right after cleanse.\n2) Pea-size for face + a little neck.\n3) SPF over it in the morning.\n4) Extra on dry cheeks at night.",
-  "skinAr": "مساءً لمعظم الأنواع",
-  "skinEn": "combo in dry weather",
+  "descAr": "كريم العين أنوا بالريتينول 0.1 والكافيين ل من Anua. ترطيب مريح لليوم. 30 ج.",
+  "descEn": "Anua Retinol 0 1 Caffeine Revitalizing Eye Cream by Anua. Quiet daily moisture. 30 g.",
+  "useAr": "١) بعد السيروم.\n٢) طبقة خفيفة تكفي.",
+  "useEn": "1) After serum.\n2) Thin layer is enough.",
+  "skinAr": "للبشرة العادية إلى الجافة غالباً.",
+  "skinEn": "Often normal to dry skin.",
   "stock": 3
-},
-{
+});
+A.push({
   "id": 146,
   "brand": "Anua",
   "cat": "عناية",
@@ -255,15 +255,15 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "تونر انوا هارت ليف 77 لتهدئة البشرة - 250مل",
   "nameEn": "Anua Heartleaf 77 Soothing Toner - 250ml",
-  "descAr": "رقيق في الإحساس، صادق في الدور — تونر انوا هارت ليف 77 لتهدئة البشرة. علامة Anua تعتمد لمسة خلاصة مهدّئة. يرطّب دون إثقال. الحجم ≈ 250 مل. يناسب بعد كل غسول. أي لسع مستمر؟ خفّفي أو راجعي مختصاً.",
-  "descEn": "Soft to the touch, honest in role — Anua Heartleaf 77 Soothing Toner. Anua leans on calming botanicals. Water-fresh like a soft splash. Size ≈ 250 ml. Best with oily that wants a refresh. Give it two steady weeks before you decide.",
-  "useAr": "١) فوراً بعد الغسول.\n٢) راحة اليد أو القطنة — بلا سحب.\n٣) بدون شطف → سيروم → مرطب.",
-  "useEn": "1) Right after cleansing.\n2) Palms or pad — no dragging.\n3) No rinse → serum → cream.",
-  "skinAr": "بعد كل غسول",
-  "skinEn": "oily that wants a refresh",
+  "descAr": "تونر انوا هارت ليف 77 لتهدئة البشرة من Anua. عناية واضحة وهادئة. 250 مل.",
+  "descEn": "Anua Heartleaf 77 Soothing Toner by Anua. Clear, quiet care. 250 ml.",
+  "useAr": "١) ضمن روتينك اليومي.\n٢) كمية قليلة تكفي.",
+  "useEn": "1) In your daily routine.\n2) Small amount is enough.",
+  "skinAr": "حسب نوع البشرة.",
+  "skinEn": "Match to your skin type.",
   "stock": 3
-},
-{
+});
+A.push({
   "id": 149,
   "brand": "Anua",
   "cat": "عناية",
@@ -275,15 +275,15 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "كريم انوا بالهيالورونيك للترطيب العميق وتجديد البشرة - 60مل",
   "nameEn": "Anua PDRN Hyaluronic Acid 100 Moisturizing Cream - 60ml",
-  "descAr": "لماذا Anua هنا؟ لأن كريم انوا بالهيالورونيك للترطيب العميق وتجديد البشرة يقدّم خطوة واحدة واضحة: غني لكن يتنفس. المكوّن الأبرز: هيالورونيك (ترطيب خفيف وامتلاء لطيف). الحجم ≈ 60 مل. لـالمختلطة في الجو الجاف. الجمال الأهدأ يأتي من روتين قصير ثابت.",
-  "descEn": "Why Anua? Because Anua PDRN Hyaluronic Acid 100 Moisturizing Cream does one clear job: velvet on dry cheeks. Standout: hyaluronic acid (light hydration and a plump feel). Size ≈ 60 ml. For combo in dry weather. Ongoing sting? Ease off or ask a pro.",
-  "useAr": "١) بعد السيروم أو مباشرة بعد الغسول.\n٢) حبة بازيلاء للوجه + قليل للرقبة.\n٣) صباحاً SPF فوقه.\n٤) مساءً زيدي على الخدود الجافة.",
-  "useEn": "1) After serum or right after cleanse.\n2) Pea-size for face + a little neck.\n3) SPF over it in the morning.\n4) Extra on dry cheeks at night.",
-  "skinAr": "المختلطة في الجو الجاف",
-  "skinEn": "combo in dry weather",
+  "descAr": "كريم انوا بالهيالورونيك للترطيب العميق وتج من Anua. ترطيب مريح لليوم. 60 مل.",
+  "descEn": "Anua PDRN Hyaluronic Acid 100 Moisturizing Cream by Anua. Quiet daily moisture. 60 ml.",
+  "useAr": "١) بعد السيروم.\n٢) طبقة خفيفة تكفي.",
+  "useEn": "1) After serum.\n2) Thin layer is enough.",
+  "skinAr": "للبشرة العادية إلى الجافة غالباً.",
+  "skinEn": "Often normal to dry skin.",
   "stock": 3
-},
-{
+});
+A.push({
   "id": 150,
   "brand": "Anua",
   "cat": "عناية",
@@ -295,15 +295,15 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "كريم انوا بالكولاجين والريتينول لشد وتجديد البشرة - 80مل",
   "nameEn": "Anua Collagen Retinol Refining Gua Sha Cream - 80ml",
-  "descAr": "لمسة Anua في كريم انوا بالكولاجين والريتينول لشد وتجديد البشرة: مخملي على الخدود الجافة. يُذكر فيه ببتيدات/كولاجين لدعم مرونة ونضارة في المظهر. الحجم ≈ 80 مل. يناسب المختلطة في الجو الجاف. انتظمي أسبوعين قبل الحكم النهائي.",
-  "descEn": "Anua's touch in Anua Collagen Retinol Refining Gua Sha Cream: creamy wrap without a mask feel. Notes of peptides/collagen support support a springier, fresher look. Size ≈ 80 ml. Fits dry and needy. Quiet beauty loves a short, steady routine.",
-  "useAr": "١) دفّئي الكمية بين الأصابع.\n٢) ربّتي حتى تختفي.\n٣) القليل اليومي أهدى من الكثير مرة واحدة.",
-  "useEn": "1) After serum or right after cleanse.\n2) Pea-size for face + a little neck.\n3) SPF over it in the morning.\n4) Extra on dry cheeks at night.",
-  "skinAr": "المختلطة في الجو الجاف",
-  "skinEn": "dry and needy",
+  "descAr": "كريم انوا بالكولاجين والريتينول لشد وتجديد من Anua. ترطيب مريح لليوم. 80 مل.",
+  "descEn": "Anua Collagen Retinol Refining Gua Sha Cream by Anua. Quiet daily moisture. 80 ml.",
+  "useAr": "١) بعد السيروم.\n٢) طبقة خفيفة تكفي.",
+  "useEn": "1) After serum.\n2) Thin layer is enough.",
+  "skinAr": "للبشرة العادية إلى الجافة غالباً.",
+  "skinEn": "Often normal to dry skin.",
   "stock": 3
-},
-{
+});
+A.push({
   "id": 151,
   "brand": "Anua",
   "cat": "عناية",
@@ -315,15 +315,15 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "تونر انوا اللطيف بحمض البي إتش إيه 2% للتقشير - 150مل",
   "nameEn": "Annua BHA 2% Gentle Exfoliating Toner - 150ml",
-  "descAr": "لماذا Anua هنا؟ لأن تونر انوا اللطيف بحمض البي إتش إيه 2% للتقشير يقدّم خطوة واحدة واضحة: يرطّب دون إثقال. المكوّن الأبرز: BHA (مظهر مسام أنظف). الحجم ≈ 150 مل. لـالدهنية المنتعشة. خزّنيها في مكان معتدل وأغلقي الغطاء.",
-  "descEn": "Why Anua? Because Annua BHA 2% Gentle Exfoliating Toner does one clear job: a weightless first layer. Standout: BHA (a clearer look of pores). Size ≈ 150 ml. For sensitive. Ongoing sting? Ease off or ask a pro.",
-  "useAr": "١) فوراً بعد الغسول.\n٢) راحة اليد أو القطنة — بلا سحب.\n٣) بدون شطف → سيروم → مرطب.",
-  "useEn": "1) Right after cleansing.\n2) Palms or pad — no dragging.\n3) No rinse → serum → cream.",
-  "skinAr": "الدهنية المنتعشة",
-  "skinEn": "sensitive",
+  "descAr": "تونر انوا اللطيف بحمض البي إتش إيه 2% للتق من Anua. عناية واضحة وهادئة. 150 مل.",
+  "descEn": "Annua BHA 2% Gentle Exfoliating Toner by Anua. Clear, quiet care. 150 ml.",
+  "useAr": "١) ضمن روتينك اليومي.\n٢) كمية قليلة تكفي.",
+  "useEn": "1) In your daily routine.\n2) Small amount is enough.",
+  "skinAr": "حسب نوع البشرة.",
+  "skinEn": "Match to your skin type.",
   "stock": 3
-},
-{
+});
+A.push({
   "id": 152,
   "brand": "Anua",
   "cat": "عناية",
@@ -335,12 +335,12 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "سيروم انوا نانو ريتينول 0.3٪ مع النياسيناميد لتجديد البشرة - 30مل",
   "nameEn": "Anua Nano Retinol 0.3% + Niacin Renewing Serum - 30ml",
-  "descAr": "رقيق في الإحساس، صادق في الدور — سيروم انوا نانو ريتينول 0.3٪ مع النياسيناميد لتجديد…. علامة Anua تعتمد لمسة نياسيناميد. يذوب على البشرة دون لزوجة. الحجم ≈ 30 مل. يناسب الحساسة بعد اختبار بسيط. أي لسع مستمر؟ خفّفي أو راجعي مختصاً.",
-  "descEn": "Soft to the touch, honest in role — Anua Nano Retinol 0.3% + Niacin Renewing Serum. Anua leans on niacinamide. Melts in without a sticky film. Size ≈ 30 ml. Best with sensitive after a patch test. Give it two steady weeks before you decide.",
-  "useAr": "١) بشرة نظيفة، بعد التونر إن وُجد.\n٢) ٢–٣ قطرات — اضغطي من الوسط للخارج.\n٣) مرطب فوقه. صباحاً: SPF.\n٤) الريتينول/الأحماض: ليلاً وبالتدريج.",
-  "useEn": "1) Clean, slightly damp face.\n2) Dot cheeks, forehead, chin; spread.\n3) Wait a minute, then cream.\n4) Eye area only if the formula is made for it.",
-  "skinAr": "الحساسة بعد اختبار بسيط",
-  "skinEn": "sensitive after a patch test",
+  "descAr": "سيروم انوا نانو ريتينول 0.3٪ مع النياسينام من Anua. خطوة مركّزة وسريعة. 30 مل.",
+  "descEn": "Anua Nano Retinol 0.3% + Niacin Renewing Serum by Anua. Focused step, fast finish. 30 ml.",
+  "useAr": "١) بعد التنظيف.\n٢) قطرات قليلة ثم رطّبي.",
+  "useEn": "1) After cleanse.\n2) Few drops, then moisturise.",
+  "skinAr": "حسب احتياج بشرتك.",
+  "skinEn": "Match to your skin need.",
   "stock": 3
-}
-);
+});
+})();

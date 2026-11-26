@@ -1,7 +1,7 @@
-/* Brand: epii · 1 products · edit AR/EN fields here */
-window.NAQA_PRODUCTS = window.NAQA_PRODUCTS || [];
-window.NAQA_PRODUCTS.push(
-{
+// epii.js — short Apple-like copy
+(function(){
+var A = window.NAQA_PRODUCTS || (window.NAQA_PRODUCTS = []);
+A.push({
   "id": 41,
   "brand": "epii",
   "cat": "عناية",
@@ -13,12 +13,12 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "كريم إيبي دبل أب لترميم حاجز البشرة بالإكتوين والبانثينول - 50مل",
   "nameEn": "Epii Double Up Cream Ectoin & Panthenol - 50ml",
-  "descAr": "لماذا epii هنا؟ لأن كريم إيبي دبل أب لترميم حاجز البشرة بالإكتوين والبا… يقدّم خطوة واحدة واضحة: كريمي يغلّف بلطف. المكوّن الأبرز: بانثينول (ترطيب مهدّئ). الحجم ≈ 50 مل. لـالمختلطة في الجو الجاف. انتظمي أسبوعين قبل الحكم النهائي.",
-  "descEn": "Why epii? Because Epii Double Up Cream Ectoin & Panthenol does one clear job: creamy wrap without a mask feel. Standout: panthenol (soothing moisture). Size ≈ 50 ml. For sensitive dry skin. Quiet beauty loves a short, steady routine.",
-  "useAr": "١) دفّئي الكمية بين الأصابع.\n٢) ربّتي حتى تختفي.\n٣) القليل اليومي أهدى من الكثير مرة واحدة.",
-  "useEn": "1) After serum or right after cleanse.\n2) Pea-size for face + a little neck.\n3) SPF over it in the morning.\n4) Extra on dry cheeks at night.",
-  "skinAr": "المختلطة في الجو الجاف",
-  "skinEn": "sensitive dry skin",
+  "descAr": "كريم إيبي دبل أب لترميم حاجز البشرة بالإكت من epii. ترطيب مريح لليوم. 50 مل.",
+  "descEn": "Epii Double Up Cream Ectoin & Panthenol by epii. Quiet daily moisture. 50 ml.",
+  "useAr": "١) بعد السيروم.\n٢) طبقة خفيفة تكفي.",
+  "useEn": "1) After serum.\n2) Thin layer is enough.",
+  "skinAr": "للبشرة العادية إلى الجافة غالباً.",
+  "skinEn": "Often normal to dry skin.",
   "stock": 3
-}
-);
+});
+})();

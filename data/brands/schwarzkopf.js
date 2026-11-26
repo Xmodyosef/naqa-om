@@ -1,7 +1,7 @@
-/* Brand: Schwarzkopf · 12 products · imgs auto-wired 2026-11-25 */
-window.NAQA_PRODUCTS = window.NAQA_PRODUCTS || [];
-window.NAQA_PRODUCTS.push(
-{
+// schwarzkopf.js — short Apple-like copy
+(function(){
+var A = window.NAQA_PRODUCTS || (window.NAQA_PRODUCTS = []);
+A.push({
   "id": 181,
   "brand": "Schwarzkopf",
   "cat": "شعر",
@@ -13,15 +13,15 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "جل جوت تو بي لتثبيت الحواجب والبيبي هير 2 في 1 - 16مل",
   "nameEn": "Got2B Glued for Brows & Edges 2 in 1 Wand Eyebrow Gel - 16ml",
-  "descAr": "Schwarzkopf × عناية يومية: جل جوت تو بي لتثبيت الحواجب والبيبي هير 2 في 1. يُركّز على راحة الاستخدام. الملمس: يسهّل التصفيف. الحجم ≈ 16 مل. حسب الشعر والفروة. خزّنيها في مكان معتدل وأغلقي الغطاء.",
-  "descEn": "Schwarzkopf for daily care: Got2B Glued for Brows & Edges 2 in 1 Wand Eyebrow Gel. Comfort-first use. Feel: makes styling simpler. Size ≈ 16 ml. Scalp that needs air. Ongoing sting? Ease off or ask a pro.",
-  "useAr": "١) شامبو للفروة، بلسم للأطراف، سيروم حسب العبوة.\n٢) ابدئي بقليل.\n٣) لا تُشبعي الخصل.\n٤) أسبوعان–ثلاثة للفرق الأوضح.",
-  "useEn": "1) Shampoo scalp, condition lengths, leave-in as labeled.\n2) Start small.\n3) Don’t drench the hair.\n4) Two–three weeks for a clearer change.",
-  "skinAr": "حسب الشعر والفروة",
-  "skinEn": "scalp that needs air",
+  "descAr": "جل جوت تو بي لتثبيت الحواجب والبيبي هير 2  من Schwarzkopf. عناية بسيطة للشعر. 16 مل.",
+  "descEn": "Got2B Glued for Brows & Edges 2 in 1 Wand Eyebro by Schwarzkopf. Simple daily hair care. 16 ml.",
+  "useAr": "١) على شعر رطب أو جاف حسب النوع.\n٢) لا تُغرقي الكمية.",
+  "useEn": "1) Damp or dry as directed.\n2) A little goes far.",
+  "skinAr": "حسب نوع الشعر والفروة.",
+  "skinEn": "Depends on hair and scalp.",
   "stock": 3
-},
-{
+});
+A.push({
   "id": 187,
   "brand": "Schwarzkopf",
   "cat": "شعر",
@@ -33,15 +33,15 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "جل تثبيت الشعر جوت تو بي المقاوم للماء - 35ج",
   "nameEn": "Schwarzkopf Got2b Glued Hair Styling Spiking Gel - 35g",
-  "descAr": "رقيق في الإحساس، صادق في الدور — جل تثبيت الشعر جوت تو بي المقاوم للماء. علامة Schwarzkopf. أنظف وأطرى مع الأسابيع. الحجم ≈ 35 ج. يناسب فروة تحتاج انتعاشاً. انتظمي أسبوعين قبل الحكم النهائي.",
-  "descEn": "Soft to the touch, honest in role — Schwarzkopf Got2b Glued Hair Styling Spiking Gel. Schwarzkopf. Respects scalp and lengths. Size ≈ 35 g. Best with match hair and scalp. Keep it cool-ish and cap it tight.",
-  "useAr": "١) شامبو للفروة، بلسم للأطراف، سيروم حسب العبوة.\n٢) ابدئي بقليل.\n٣) لا تُشبعي الخصل.\n٤) أسبوعان–ثلاثة للفرق الأوضح.",
-  "useEn": "1) Shampoo scalp, condition lengths, leave-in as labeled.\n2) Start small.\n3) Don’t drench the hair.\n4) Two–three weeks for a clearer change.",
-  "skinAr": "فروة تحتاج انتعاشاً",
-  "skinEn": "match hair and scalp",
+  "descAr": "جل تثبيت الشعر جوت تو بي المقاوم للماء من Schwarzkopf. عناية بسيطة للشعر. 35 ج.",
+  "descEn": "Schwarzkopf Got2b Glued Hair Styling Spiking Gel by Schwarzkopf. Simple daily hair care. 35 g.",
+  "useAr": "١) على شعر رطب أو جاف حسب النوع.\n٢) لا تُغرقي الكمية.",
+  "useEn": "1) Damp or dry as directed.\n2) A little goes far.",
+  "skinAr": "حسب نوع الشعر والفروة.",
+  "skinEn": "Depends on hair and scalp.",
   "stock": 3
-},
-{
+});
+A.push({
   "id": 307,
   "brand": "Schwarzkopf",
   "cat": "شعر",
@@ -53,16 +53,16 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "شوارزكوف بخاخ جوت تو بي فريز 300مل",
   "nameEn": "Schwarzkopf got2b Glued Freeze Spray 300ml",
-  "descAr": "شوارزكوف بخاخ جوت تو بي فريز 300مل — منتج أصلي ضمن كتالوج نقاء المتنوع.",
-  "descEn": "Schwarzkopf got2b Glued Freeze Spray 300ml — authentic listing in Naqa’s curated catalog.",
-  "useAr": "١) شامبو للفروة وبلسم للأطوال.\n٢) ابدئي بقليل.\n٣) لا تُشبعي الخصل.\n٤) انتظمي أسبوعين–ثلاثة.",
-  "useEn": "1) Shampoo scalp, condition lengths.\n2) Start small.\n3) Don’t drench hair.\n4) Two–three weeks for clearer change.",
-  "skinAr": "كل أنواع الشعر",
-  "skinEn": "all hair types",
+  "descAr": "شوارزكوف بخاخ جوت تو بي فريز 300مل من Schwarzkopf. عناية بسيطة للشعر. 300 مل.",
+  "descEn": "Schwarzkopf got2b Glued Freeze Spray 300ml by Schwarzkopf. Simple daily hair care. 300 ml.",
+  "useAr": "١) على شعر رطب أو جاف حسب النوع.\n٢) لا تُغرقي الكمية.",
+  "useEn": "1) Damp or dry as directed.\n2) A little goes far.",
+  "skinAr": "حسب نوع الشعر والفروة.",
+  "skinEn": "Depends on hair and scalp.",
   "stock": 3,
   "hot": true
-},
-{
+});
+A.push({
   "id": 308,
   "brand": "Schwarzkopf",
   "cat": "شعر",
@@ -74,16 +74,16 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "شوارزكوف بخاخ بلاستينج فريز",
   "nameEn": "Schwarzkopf got2b Glued Blasting Freeze Spray",
-  "descAr": "شوارزكوف بخاخ بلاستينج فريز — منتج أصلي ضمن كتالوج نقاء المتنوع.",
-  "descEn": "Schwarzkopf got2b Glued Blasting Freeze Spray — authentic listing in Naqa’s curated catalog.",
-  "useAr": "١) شامبو للفروة وبلسم للأطوال.\n٢) ابدئي بقليل.\n٣) لا تُشبعي الخصل.\n٤) انتظمي أسبوعين–ثلاثة.",
-  "useEn": "1) Shampoo scalp, condition lengths.\n2) Start small.\n3) Don’t drench hair.\n4) Two–three weeks for clearer change.",
-  "skinAr": "كل أنواع الشعر",
-  "skinEn": "all hair types",
+  "descAr": "شوارزكوف بخاخ بلاستينج فريز من Schwarzkopf. عناية بسيطة للشعر.",
+  "descEn": "Schwarzkopf got2b Glued Blasting Freeze Spray by Schwarzkopf. Simple daily hair care.",
+  "useAr": "١) على شعر رطب أو جاف حسب النوع.\n٢) لا تُغرقي الكمية.",
+  "useEn": "1) Damp or dry as directed.\n2) A little goes far.",
+  "skinAr": "حسب نوع الشعر والفروة.",
+  "skinEn": "Depends on hair and scalp.",
   "stock": 3,
   "hot": true
-},
-{
+});
+A.push({
   "id": 309,
   "brand": "Schwarzkopf",
   "cat": "شعر",
@@ -95,16 +95,16 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "شوارزكوف معجون فينومينال 100مل",
   "nameEn": "Schwarzkopf got2b Phenomenal Styling Paste 100ml",
-  "descAr": "شوارزكوف معجون فينومينال 100مل — منتج أصلي ضمن كتالوج نقاء المتنوع.",
-  "descEn": "Schwarzkopf got2b Phenomenal Styling Paste 100ml — authentic listing in Naqa’s curated catalog.",
-  "useAr": "١) شامبو للفروة وبلسم للأطوال.\n٢) ابدئي بقليل.\n٣) لا تُشبعي الخصل.\n٤) انتظمي أسبوعين–ثلاثة.",
-  "useEn": "1) Shampoo scalp, condition lengths.\n2) Start small.\n3) Don’t drench hair.\n4) Two–three weeks for clearer change.",
-  "skinAr": "كل أنواع الشعر",
-  "skinEn": "all hair types",
+  "descAr": "شوارزكوف معجون فينومينال 100مل من Schwarzkopf. عناية بسيطة للشعر. 100 مل.",
+  "descEn": "Schwarzkopf got2b Phenomenal Styling Paste 100ml by Schwarzkopf. Simple daily hair care. 100 ml.",
+  "useAr": "١) على شعر رطب أو جاف حسب النوع.\n٢) لا تُغرقي الكمية.",
+  "useEn": "1) Damp or dry as directed.\n2) A little goes far.",
+  "skinAr": "حسب نوع الشعر والفروة.",
+  "skinEn": "Depends on hair and scalp.",
   "stock": 3,
   "hot": true
-},
-{
+});
+A.push({
   "id": 310,
   "brand": "Schwarzkopf",
   "cat": "شعر",
@@ -116,15 +116,15 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "شوارزكوف بخاخ فرد فلاتجليجت",
   "nameEn": "Schwarzkopf got2b Flachgelegt Straightening Spray",
-  "descAr": "شوارزكوف بخاخ فرد فلاتجليجت — منتج أصلي ضمن كتالوج نقاء المتنوع.",
-  "descEn": "Schwarzkopf got2b Flachgelegt Straightening Spray — authentic listing in Naqa’s curated catalog.",
-  "useAr": "١) شامبو للفروة وبلسم للأطوال.\n٢) ابدئي بقليل.\n٣) لا تُشبعي الخصل.\n٤) انتظمي أسبوعين–ثلاثة.",
-  "useEn": "1) Shampoo scalp, condition lengths.\n2) Start small.\n3) Don’t drench hair.\n4) Two–three weeks for clearer change.",
-  "skinAr": "كل أنواع الشعر",
-  "skinEn": "all hair types",
+  "descAr": "شوارزكوف بخاخ فرد فلاتجليجت من Schwarzkopf. عناية بسيطة للشعر.",
+  "descEn": "Schwarzkopf got2b Flachgelegt Straightening Spra by Schwarzkopf. Simple daily hair care.",
+  "useAr": "١) على شعر رطب أو جاف حسب النوع.\n٢) لا تُغرقي الكمية.",
+  "useEn": "1) Damp or dry as directed.\n2) A little goes far.",
+  "skinAr": "حسب نوع الشعر والفروة.",
+  "skinEn": "Depends on hair and scalp.",
   "stock": 3
-},
-{
+});
+A.push({
   "id": 311,
   "brand": "Schwarzkopf",
   "cat": "شعر",
@@ -136,16 +136,16 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "شوارزكوف بخاخ حماية حرارية",
   "nameEn": "Schwarzkopf got2b Hitzewelle Heat Protection Spray",
-  "descAr": "شوارزكوف بخاخ حماية حرارية — منتج أصلي ضمن كتالوج نقاء المتنوع.",
-  "descEn": "Schwarzkopf got2b Hitzewelle Heat Protection Spray — authentic listing in Naqa’s curated catalog.",
-  "useAr": "١) شامبو للفروة وبلسم للأطوال.\n٢) ابدئي بقليل.\n٣) لا تُشبعي الخصل.\n٤) انتظمي أسبوعين–ثلاثة.",
-  "useEn": "1) Shampoo scalp, condition lengths.\n2) Start small.\n3) Don’t drench hair.\n4) Two–three weeks for clearer change.",
-  "skinAr": "كل أنواع الشعر",
-  "skinEn": "all hair types",
+  "descAr": "شوارزكوف بخاخ حماية حرارية من Schwarzkopf. عناية بسيطة للشعر.",
+  "descEn": "Schwarzkopf got2b Hitzewelle Heat Protection Spr by Schwarzkopf. Simple daily hair care.",
+  "useAr": "١) على شعر رطب أو جاف حسب النوع.\n٢) لا تُغرقي الكمية.",
+  "useEn": "1) Damp or dry as directed.\n2) A little goes far.",
+  "skinAr": "حسب نوع الشعر والفروة.",
+  "skinEn": "Depends on hair and scalp.",
   "stock": 3,
   "hot": true
-},
-{
+});
+A.push({
   "id": 312,
   "brand": "Schwarzkopf",
   "cat": "شعر",
@@ -157,15 +157,15 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "شوارزكوف فايبر جم كايوتك",
   "nameEn": "Schwarzkopf got2b Chaotic Fiber Gum",
-  "descAr": "شوارزكوف فايبر جم كايوتك — منتج أصلي ضمن كتالوج نقاء المتنوع.",
-  "descEn": "Schwarzkopf got2b Chaotic Fiber Gum — authentic listing in Naqa’s curated catalog.",
-  "useAr": "١) شامبو للفروة وبلسم للأطوال.\n٢) ابدئي بقليل.\n٣) لا تُشبعي الخصل.\n٤) انتظمي أسبوعين–ثلاثة.",
-  "useEn": "1) Shampoo scalp, condition lengths.\n2) Start small.\n3) Don’t drench hair.\n4) Two–three weeks for clearer change.",
-  "skinAr": "كل أنواع الشعر",
-  "skinEn": "all hair types",
+  "descAr": "شوارزكوف فايبر جم كايوتك من Schwarzkopf. عناية بسيطة للشعر.",
+  "descEn": "Schwarzkopf got2b Chaotic Fiber Gum by Schwarzkopf. Simple daily hair care.",
+  "useAr": "١) على شعر رطب أو جاف حسب النوع.\n٢) لا تُغرقي الكمية.",
+  "useEn": "1) Damp or dry as directed.\n2) A little goes far.",
+  "skinAr": "حسب نوع الشعر والفروة.",
+  "skinEn": "Depends on hair and scalp.",
   "stock": 3
-},
-{
+});
+A.push({
   "id": 313,
   "brand": "Schwarzkopf",
   "cat": "شعر",
@@ -177,15 +177,15 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "شوارزكوف كريم كيرل كينكير",
   "nameEn": "Schwarzkopf got2b Kinkier Curl Cream",
-  "descAr": "شوارزكوف كريم كيرل كينكير — منتج أصلي ضمن كتالوج نقاء المتنوع.",
-  "descEn": "Schwarzkopf got2b Kinkier Curl Cream — authentic listing in Naqa’s curated catalog.",
-  "useAr": "١) شامبو للفروة وبلسم للأطوال.\n٢) ابدئي بقليل.\n٣) لا تُشبعي الخصل.\n٤) انتظمي أسبوعين–ثلاثة.",
-  "useEn": "1) Shampoo scalp, condition lengths.\n2) Start small.\n3) Don’t drench hair.\n4) Two–three weeks for clearer change.",
-  "skinAr": "كل أنواع الشعر",
-  "skinEn": "all hair types",
+  "descAr": "شوارزكوف كريم كيرل كينكير من Schwarzkopf. عناية بسيطة للشعر.",
+  "descEn": "Schwarzkopf got2b Kinkier Curl Cream by Schwarzkopf. Simple daily hair care.",
+  "useAr": "١) على شعر رطب أو جاف حسب النوع.\n٢) لا تُغرقي الكمية.",
+  "useEn": "1) Damp or dry as directed.\n2) A little goes far.",
+  "skinAr": "حسب نوع الشعر والفروة.",
+  "skinEn": "Depends on hair and scalp.",
   "stock": 3
-},
-{
+});
+A.push({
   "id": 314,
   "brand": "Schwarzkopf",
   "cat": "شعر",
@@ -197,16 +197,16 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "شوارزكوف سيروم لمعان",
   "nameEn": "Schwarzkopf got2b Anti-Frizz Shine Serum",
-  "descAr": "شوارزكوف سيروم لمعان — منتج أصلي ضمن كتالوج نقاء المتنوع.",
-  "descEn": "Schwarzkopf got2b Anti-Frizz Shine Serum — authentic listing in Naqa’s curated catalog.",
-  "useAr": "١) شامبو للفروة وبلسم للأطوال.\n٢) ابدئي بقليل.\n٣) لا تُشبعي الخصل.\n٤) انتظمي أسبوعين–ثلاثة.",
-  "useEn": "1) Shampoo scalp, condition lengths.\n2) Start small.\n3) Don’t drench hair.\n4) Two–three weeks for clearer change.",
-  "skinAr": "كل أنواع الشعر",
-  "skinEn": "all hair types",
+  "descAr": "شوارزكوف سيروم لمعان من Schwarzkopf. عناية بسيطة للشعر.",
+  "descEn": "Schwarzkopf got2b Anti by Schwarzkopf. Simple daily hair care.",
+  "useAr": "١) على شعر رطب أو جاف حسب النوع.\n٢) لا تُغرقي الكمية.",
+  "useEn": "1) Damp or dry as directed.\n2) A little goes far.",
+  "skinAr": "حسب نوع الشعر والفروة.",
+  "skinEn": "Depends on hair and scalp.",
   "stock": 3,
   "hot": true
-},
-{
+});
+A.push({
   "id": 315,
   "brand": "Schwarzkopf",
   "cat": "شعر",
@@ -218,15 +218,15 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "شوارزكوف بخاخ بيتش تريبن",
   "nameEn": "Schwarzkopf got2b Beach Trippin Salt Spray",
-  "descAr": "شوارزكوف بخاخ بيتش تريبن — منتج أصلي ضمن كتالوج نقاء المتنوع.",
-  "descEn": "Schwarzkopf got2b Beach Trippin Salt Spray — authentic listing in Naqa’s curated catalog.",
-  "useAr": "١) شامبو للفروة وبلسم للأطوال.\n٢) ابدئي بقليل.\n٣) لا تُشبعي الخصل.\n٤) انتظمي أسبوعين–ثلاثة.",
-  "useEn": "1) Shampoo scalp, condition lengths.\n2) Start small.\n3) Don’t drench hair.\n4) Two–three weeks for clearer change.",
-  "skinAr": "كل أنواع الشعر",
-  "skinEn": "all hair types",
+  "descAr": "شوارزكوف بخاخ بيتش تريبن من Schwarzkopf. عناية بسيطة للشعر.",
+  "descEn": "Schwarzkopf got2b Beach Trippin Salt Spray by Schwarzkopf. Simple daily hair care.",
+  "useAr": "١) على شعر رطب أو جاف حسب النوع.\n٢) لا تُغرقي الكمية.",
+  "useEn": "1) Damp or dry as directed.\n2) A little goes far.",
+  "skinAr": "حسب نوع الشعر والفروة.",
+  "skinEn": "Depends on hair and scalp.",
   "stock": 3
-},
-{
+});
+A.push({
   "id": 316,
   "brand": "Schwarzkopf",
   "cat": "شعر",
@@ -238,12 +238,12 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "شوارزكوف بخاخ تثبيت فريز",
   "nameEn": "Schwarzkopf got2b Freeze Hairspray",
-  "descAr": "شوارزكوف بخاخ تثبيت فريز — منتج أصلي ضمن كتالوج نقاء المتنوع.",
-  "descEn": "Schwarzkopf got2b Freeze Hairspray — authentic listing in Naqa’s curated catalog.",
-  "useAr": "١) شامبو للفروة وبلسم للأطوال.\n٢) ابدئي بقليل.\n٣) لا تُشبعي الخصل.\n٤) انتظمي أسبوعين–ثلاثة.",
-  "useEn": "1) Shampoo scalp, condition lengths.\n2) Start small.\n3) Don’t drench hair.\n4) Two–three weeks for clearer change.",
-  "skinAr": "كل أنواع الشعر",
-  "skinEn": "all hair types",
+  "descAr": "شوارزكوف بخاخ تثبيت فريز من Schwarzkopf. عناية بسيطة للشعر.",
+  "descEn": "Schwarzkopf got2b Freeze Hairspray by Schwarzkopf. Simple daily hair care.",
+  "useAr": "١) على شعر رطب أو جاف حسب النوع.\n٢) لا تُغرقي الكمية.",
+  "useEn": "1) Damp or dry as directed.\n2) A little goes far.",
+  "skinAr": "حسب نوع الشعر والفروة.",
+  "skinEn": "Depends on hair and scalp.",
   "stock": 3
-}
-);
+});
+})();

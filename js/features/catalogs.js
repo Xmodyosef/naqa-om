@@ -35,56 +35,56 @@ function getNaqaCatalogs(){
   return [
     /* Homepage banners only — full width; products open after click */
     { id:"hot", cover:"media/catalogs/hot.webp", ar:"الأكثر طلباً", en:"Bestsellers", em:"★", tone:"hot", home:true, group:"deal",
-      subAr:"مختارات عليها طلب", subEn:"Customer favourites",
+      subAr:"مختارات اليوم", subEn:"Picks",
       sort:"new", match:function(p){ return !!p.hot; } },
     { id:"eoy", cover:"media/catalogs/eoy.webp", ar:"عروض وتخفيضات", en:"Deals & offers", em:"٪", tone:"deal", home:true, group:"deal",
-      subAr:"أسعار مشطوبة الآن", subEn:"Marked-down prices",
+      subAr:"خصم الآن", subEn:"Sale",
       sort:"off", match:function(p){ return p.was > p.price; } },
     { id:"u10", cover:"media/catalogs/u10.webp", ar:"تحت ١٠ ر.ع", en:"Under 10 OMR", em:"١٠", tone:"price", home:true, group:"deal",
-      subAr:"أسعار يومية لطيفة", subEn:"Everyday prices",
+      subAr:"أقل من ١٠", subEn:"Under 10",
       sort:"price-asc", match:function(p){ return Number(p.price) < 10; } },
     { id:"korean", cover:"media/catalogs/korean.webp", ar:"عناية كورية", en:"K-beauty", em:"🌸", tone:"care", home:true, group:"deal",
-      subAr:"سيروم وماسكات كورية", subEn:"Korean skincare picks",
+      subAr:"عناية كورية", subEn:"K-beauty",
       sort:"new", match:function(p){ return !!NAQA_K_BEAUTY[p.brand]; } },
     { id:"care", cover:"media/catalogs/care.webp", ar:"عناية بالبشرة", en:"Skincare", em:"✨", tone:"care", home:true, group:"shop",
-      subAr:"غسول · سيروم · مرطب", subEn:"Cleanse · treat · moisturise",
+      subAr:"عناية يومية", subEn:"Skincare",
       sort:"new", match:function(p){ return p.cat === "عناية"; } },
     { id:"face", cover:"media/catalogs/face.webp", ar:"مكياج الوجه", en:"Face makeup", em:"💄", tone:"makeup", home:true, group:"shop",
-      subAr:"فاونديشن · كونسيلر", subEn:"Foundation · concealer",
+      subAr:"وجه", subEn:"Face",
       sort:"new", match:function(p){ return p.cat === "وجه"; } },
     { id:"lips", cover:"media/catalogs/lips.webp", ar:"الشفاه", en:"Lips", em:"💋", tone:"makeup", home:true, group:"shop",
-      subAr:"أحمر · ملمع · ليب كير", subEn:"Lipstick · gloss · care",
+      subAr:"شفاه", subEn:"Lips",
       sort:"new", match:function(p){ return p.cat === "شفاه"; } },
     { id:"eyes", cover:"media/catalogs/eyes.webp", ar:"العيون والحواجب", en:"Eyes & brows", em:"👁", tone:"makeup", home:true, group:"shop",
-      subAr:"مسكرة · آيلاينر · ظلال", subEn:"Mascara · liner · shadow",
+      subAr:"عيون", subEn:"Eyes",
       sort:"new", match:function(p){ return p.cat === "عيون" || p.cat === "حواجب"; } },
     { id:"hair", cover:"media/catalogs/hair.webp", ar:"العناية بالشعر", en:"Hair care", em:"🧴", tone:"hair", home:true, group:"shop",
-      subAr:"Olaplex · Cantu · L'Oréal", subEn:"Olaplex · Cantu · L'Oréal",
+      subAr:"Hair", subEn:"Hair",
       sort:"new", match:function(p){ return p.cat === "شعر"; } },
     { id:"straight", cover:"media/catalogs/straight.webp", ar:"استشوارات وفرد", en:"Straighteners", em:"💇", tone:"tools", home:true, group:"shop",
-      subAr:"GHD · BaByliss · أدوات", subEn:"GHD · BaByliss tools",
+      subAr:"فرد", subEn:"Tools",
       sort:"price-desc", match:function(p){ return naqaIsStraightener(p); } },
 
     /* Extra catalogs (openable, not on the 10-banner home strip) */
     /* +5 extra home banners */
     { id:"serum", cover:"media/catalogs/serum.webp", ar:"سيرومات", en:"Serums", em:"💧", tone:"care", home:true, group:"shop",
-      subAr:"نضارة · تصبغ · ترطيب", subEn:"Glow · spots · hydration",
+      subAr:"سيرومات", subEn:"Serums",
       sort:"new", match:function(p){ return naqaIsSerum(p); } },
     { id:"new", cover:"media/catalogs/new.webp", ar:"وصل حديثاً", en:"New arrivals", em:"✦", tone:"new", home:true, group:"shop",
-      subAr:"آخر الإضافات", subEn:"Latest drops",
+      subAr:"جديد", subEn:"New",
       sort:"new", match:function(p){ return Number(p.id) >= 250; } },
     { id:"tools", cover:"media/catalogs/tools.webp", ar:"أدوات التجميل", en:"Beauty tools", em:"🔧", tone:"tools", home:true, group:"shop",
-      subAr:"أدوات · أجهزة", subEn:"Tools & devices",
+      subAr:"أدوات", subEn:"Tools",
       sort:"new", match:function(p){ return p.cat === "أدوات"; } },
     { id:"sheglam", cover:"media/catalogs/sheglam.webp", ar:"ماركة SHEGLAM", en:"SHEGLAM", em:"💎", tone:"makeup", home:true, group:"shop",
-      subAr:"مكياج ترندي بأسعار حلوة", subEn:"Trendy makeup picks",
+      subAr:"SHEGLAM", subEn:"SHEGLAM",
       sort:"new", match:function(p){ return /sheglam/i.test(String(p.brand||"")); } },
     { id:"olaplex", cover:"media/catalogs/olaplex.webp", ar:"Olaplex للشعر", en:"Olaplex hair", em:"🧪", tone:"hair", home:true, group:"shop",
-      subAr:"إصلاح وحماية الشعر", subEn:"Repair & protect",
+      subAr:"Olaplex", subEn:"Olaplex",
       sort:"new", match:function(p){ return /olaplex/i.test(String(p.brand||"")); } },
 
     { id:"all", cover:"media/catalogs/all.webp", ar:"كل المنتجات", en:"All products", em:"▣", tone:"all", group:"shop",
-      subAr:"الكتالوج الكامل", subEn:"Full catalog",
+      subAr:"الكل", subEn:"All",
       sort:"new", match:function(){ return true; } }
   ];
 }
@@ -227,18 +227,21 @@ function getHomeCampaigns(){
     var list = [];
     try{ list = catalogList(c.id, 12) || []; }catch(e){ list = []; }
     if(!list.length) return;
+    /* banner art = designed cover (product shelf). Fallback to first product. */
     var art = c.cover || "";
-    try{
-      var g0 = (typeof pimgs === "function") ? pimgs(list[0]) : (list[0].imgs||[]);
-      if(g0 && g0[0]) art = g0[0];
-    }catch(e){}
+    if(!art){
+      try{
+        var g0 = (typeof pimgs === "function") ? pimgs(list[0]) : (list[0].imgs||[]);
+        if(g0 && g0[0]) art = g0[0];
+      }catch(e){}
+    }
     out.push({
       id: c.id,
       tone: c.tone || "all",
       ar: c.ar, en: c.en,
       subAr: c.subAr || "", subEn: c.subEn || "",
       eyeAr: c.em || "✦", eyeEn: c.em || "✦",
-      ctaAr: "عرض الكل ←", ctaEn: "View all →",
+      ctaAr: "الكل", ctaEn: "All",
       art: art,
       cover: c.cover || "",
       list: list
@@ -321,7 +324,7 @@ function renderHomeCatalogs(){
 
     var styleBg = "";
     if(c.cover){
-      styleBg = " style=\"background-image:linear-gradient(105deg,rgba(20,8,14,.82) 0%,rgba(20,8,14,.45) 48%,rgba(20,8,14,.15) 100%),url('" + esc(c.cover) + "');background-size:cover;background-position:center;\"";
+      styleBg = " style=\"background-image:linear-gradient(100deg,rgba(20,10,16,.78) 0%,rgba(20,10,16,.42) 38%,rgba(20,10,16,.08) 62%,rgba(20,10,16,0) 100%),url('" + esc(c.cover) + "');background-size:cover;background-position:center;\"";
     }
 
     html += '<section class="campaign" id="camp-'+esc(c.id)+'">'
@@ -338,7 +341,7 @@ function renderHomeCatalogs(){
       + (sub ? '<p>'+esc(sub)+'</p>' : '')
       + '<span class="chip chip-cta">'+esc(cta)+'</span>'
       + '</div>'
-      + (art ? '<img class="campaign-art" src="'+esc(art)+'" alt="" loading="lazy" decoding="async" width="240" height="240">' : '')
+      /* full-bleed shelf cover already carries products; no floating duplicate art */
       + '</button>'
       + '<div class="campaign-rail" data-camp="'+esc(c.id)+'">'
       + '<div class="campaign-products" role="list">'

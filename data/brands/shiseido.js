@@ -1,7 +1,7 @@
-/* Brand: Shiseido · 2 products · imgs auto-wired 2026-11-25 */
-window.NAQA_PRODUCTS = window.NAQA_PRODUCTS || [];
-window.NAQA_PRODUCTS.push(
-{
+// shiseido.js — short Apple-like copy
+(function(){
+var A = window.NAQA_PRODUCTS || (window.NAQA_PRODUCTS = []);
+A.push({
   "id": 183,
   "brand": "Shiseido",
   "cat": "شعر",
@@ -13,15 +13,15 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "شامبو فينو بريميوم تاتش من شيسيدو - 550مل",
   "nameEn": "Fino Premium Touch Shampoo - 550ml",
-  "descAr": "شامبو فينو بريميوم تاتش من شيسيدو من Shiseido. يسهّل التصفيف. الحجم ≈ 550 مل. يناسب الشعر المجهد. خزّنيها في مكان معتدل وأغلقي الغطاء.",
-  "descEn": "Fino Premium Touch Shampoo by Shiseido. Respects scalp and lengths. Size ≈ 550 ml. Suits stressed hair. Quiet beauty loves a short, steady routine.",
-  "useAr": "١) شامبو للفروة، بلسم للأطراف، سيروم حسب العبوة.\n٢) ابدئي بقليل.\n٣) لا تُشبعي الخصل.\n٤) أسبوعان–ثلاثة للفرق الأوضح.",
-  "useEn": "1) Shampoo scalp, condition lengths, leave-in as labeled.\n2) Start small.\n3) Don’t drench the hair.\n4) Two–three weeks for a clearer change.",
-  "skinAr": "الشعر المجهد",
-  "skinEn": "stressed hair",
+  "descAr": "شامبو فينو بريميوم تاتش من شيسيدو من Shiseido. عناية بسيطة للشعر. 550 مل.",
+  "descEn": "Fino Premium Touch Shampoo by Shiseido. Simple daily hair care. 550 ml.",
+  "useAr": "١) على شعر رطب أو جاف حسب النوع.\n٢) لا تُغرقي الكمية.",
+  "useEn": "1) Damp or dry as directed.\n2) A little goes far.",
+  "skinAr": "حسب نوع الشعر والفروة.",
+  "skinEn": "Depends on hair and scalp.",
   "stock": 3
-},
-{
+});
+A.push({
   "id": 186,
   "brand": "Shiseido",
   "cat": "شعر",
@@ -33,12 +33,12 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "بلسم فينو بريميوم تاتش من شيسيدو - 550مل",
   "nameEn": "Fino Premium Touch Conditioner - 550ml",
-  "descAr": "بلسم فينو بريميوم تاتش من شيسيدو من Shiseido. يسهّل التصفيف. الحجم ≈ 550 مل. يناسب الشعر المجهد. انتظمي أسبوعين قبل الحكم النهائي.",
-  "descEn": "Fino Premium Touch Conditioner by Shiseido. Cleaner and softer over weeks. Size ≈ 550 ml. Suits stressed hair. Keep it cool-ish and cap it tight.",
-  "useAr": "١) شامبو للفروة، بلسم للأطراف، سيروم حسب العبوة.\n٢) ابدئي بقليل.\n٣) لا تُشبعي الخصل.\n٤) أسبوعان–ثلاثة للفرق الأوضح.",
-  "useEn": "1) Shampoo scalp, condition lengths, leave-in as labeled.\n2) Start small.\n3) Don’t drench the hair.\n4) Two–three weeks for a clearer change.",
-  "skinAr": "الشعر المجهد",
-  "skinEn": "stressed hair",
+  "descAr": "بلسم فينو بريميوم تاتش من شيسيدو من Shiseido. عناية بسيطة للشعر. 550 مل.",
+  "descEn": "Fino Premium Touch Conditioner by Shiseido. Simple daily hair care. 550 ml.",
+  "useAr": "١) على شعر رطب أو جاف حسب النوع.\n٢) لا تُغرقي الكمية.",
+  "useEn": "1) Damp or dry as directed.\n2) A little goes far.",
+  "skinAr": "حسب نوع الشعر والفروة.",
+  "skinEn": "Depends on hair and scalp.",
   "stock": 3
-}
-);
+});
+})();

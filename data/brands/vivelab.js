@@ -1,7 +1,7 @@
-/* Brand: ViveLab · 3 products · edit AR/EN fields here */
-window.NAQA_PRODUCTS = window.NAQA_PRODUCTS || [];
-window.NAQA_PRODUCTS.push(
-{
+// vivelab.js — short Apple-like copy
+(function(){
+var A = window.NAQA_PRODUCTS || (window.NAQA_PRODUCTS = []);
+A.push({
   "id": 169,
   "brand": "ViveLab",
   "cat": "شعر",
@@ -14,15 +14,15 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "سيروم الشعر وفروة الرأس والحواجب من فايف لاب - 15مل",
   "nameEn": "ViveLab Revive Therapy Hair Scalp & Brow Ampoule - 15ml",
-  "descAr": "سيروم الشعر وفروة الرأس والحواجب من فايف لاب. قصة قصيرة: تنظيف/عناية/حماية حسب نوعه، وViveLab هنا لتسهيل اليوم. يفهم الفروة والأطراف. الحجم ≈ 15 مل. فروة تحتاج انتعاشاً. الجمال الأهدأ يأتي من روتين قصير ثابت.",
-  "descEn": "ViveLab Revive Therapy Hair Scalp & Brow Ampoule. Short story: cleanse, treat, or protect as labeled — ViveLab keeps the day simple. Respects scalp and lengths. Size ≈ 15 ml. Scalp that needs air. Keep it cool-ish and cap it tight.",
-  "useAr": "١) شامبو للفروة، بلسم للأطراف، سيروم حسب العبوة.\n٢) ابدئي بقليل.\n٣) لا تُشبعي الخصل.\n٤) أسبوعان–ثلاثة للفرق الأوضح.",
-  "useEn": "1) Shampoo scalp, condition lengths, leave-in as labeled.\n2) Start small.\n3) Don’t drench the hair.\n4) Two–three weeks for a clearer change.",
-  "skinAr": "فروة تحتاج انتعاشاً",
-  "skinEn": "scalp that needs air",
+  "descAr": "سيروم الشعر وفروة الرأس والحواجب من فايف ل من ViveLab. عناية بسيطة للشعر. 15 مل.",
+  "descEn": "ViveLab Revive Therapy Hair Scalp & Brow Ampoule by ViveLab. Simple daily hair care. 15 ml.",
+  "useAr": "١) على شعر رطب أو جاف حسب النوع.\n٢) لا تُغرقي الكمية.",
+  "useEn": "1) Damp or dry as directed.\n2) A little goes far.",
+  "skinAr": "حسب نوع الشعر والفروة.",
+  "skinEn": "Depends on hair and scalp.",
   "stock": 3
-},
-{
+});
+A.push({
   "id": 173,
   "brand": "ViveLab",
   "cat": "شعر",
@@ -34,15 +34,15 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "سيروم مكثف لإنبات الشعر وتقوية فروة الرأس من فايف لاب - 15مل",
   "nameEn": "ViveLab Scalp Spioxyl React Shot 600 - 15ml",
-  "descAr": "رقيق في الإحساس، صادق في الدور — سيروم مكثف لإنبات الشعر وتقوية فروة الرأس من فايف ل…. علامة ViveLab. يفهم الفروة والأطراف. الحجم ≈ 15 مل. يناسب حسب الشعر والفروة. أي لسع مستمر؟ خفّفي أو راجعي مختصاً.",
-  "descEn": "Soft to the touch, honest in role — ViveLab Scalp Spioxyl React Shot 600. ViveLab. Cleaner and softer over weeks. Size ≈ 15 ml. Best with scalp that needs air. Keep it cool-ish and cap it tight.",
-  "useAr": "١) شامبو للفروة، بلسم للأطراف، سيروم حسب العبوة.\n٢) ابدئي بقليل.\n٣) لا تُشبعي الخصل.\n٤) أسبوعان–ثلاثة للفرق الأوضح.",
-  "useEn": "1) Shampoo scalp, condition lengths, leave-in as labeled.\n2) Start small.\n3) Don’t drench the hair.\n4) Two–three weeks for a clearer change.",
-  "skinAr": "حسب الشعر والفروة",
-  "skinEn": "scalp that needs air",
+  "descAr": "سيروم مكثف لإنبات الشعر وتقوية فروة الرأس  من ViveLab. عناية بسيطة للشعر. 15 مل.",
+  "descEn": "ViveLab Scalp Spioxyl React Shot 600 by ViveLab. Simple daily hair care. 15 ml.",
+  "useAr": "١) على شعر رطب أو جاف حسب النوع.\n٢) لا تُغرقي الكمية.",
+  "useEn": "1) Damp or dry as directed.\n2) A little goes far.",
+  "skinAr": "حسب نوع الشعر والفروة.",
+  "skinEn": "Depends on hair and scalp.",
   "stock": 3
-},
-{
+});
+A.push({
   "id": 174,
   "brand": "ViveLab",
   "cat": "شعر",
@@ -54,12 +54,12 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "سيروم الشعر وفروة الرأس والحواجب من فايف لاب - 3 عبوات × 15مل",
   "nameEn": "ViveLab Revive Therapy Hair Scalp & Brow Ampoule - 3×15ml Pack",
-  "descAr": "لمسة ViveLab في سيروم الشعر وفروة الرأس والحواجب من فايف لاب: أنظف وأطرى مع الأسابيع. صيغة مباشرة تُحترم مع الوقت. الحجم ≈ 15 مل. يناسب حسب الشعر والفروة. الجمال الأهدأ يأتي من روتين قصير ثابت.",
-  "descEn": "ViveLab's touch in ViveLab Revive Therapy Hair Scalp & Brow Ampoule: cleaner and softer over weeks. A direct formula that earns trust over time. Size ≈ 15 ml. Fits stressed hair. Keep it cool-ish and cap it tight.",
-  "useAr": "١) شامبو للفروة، بلسم للأطراف، سيروم حسب العبوة.\n٢) ابدئي بقليل.\n٣) لا تُشبعي الخصل.\n٤) أسبوعان–ثلاثة للفرق الأوضح.",
-  "useEn": "1) Shampoo scalp, condition lengths, leave-in as labeled.\n2) Start small.\n3) Don’t drench the hair.\n4) Two–three weeks for a clearer change.",
-  "skinAr": "حسب الشعر والفروة",
-  "skinEn": "stressed hair",
+  "descAr": "سيروم الشعر وفروة الرأس والحواجب من فايف ل من ViveLab. عناية بسيطة للشعر. 15 مل.",
+  "descEn": "ViveLab Revive Therapy Hair Scalp & Brow Ampoule by ViveLab. Simple daily hair care. 15 ml.",
+  "useAr": "١) على شعر رطب أو جاف حسب النوع.\n٢) لا تُغرقي الكمية.",
+  "useEn": "1) Damp or dry as directed.\n2) A little goes far.",
+  "skinAr": "حسب نوع الشعر والفروة.",
+  "skinEn": "Depends on hair and scalp.",
   "stock": 3
-}
-);
+});
+})();

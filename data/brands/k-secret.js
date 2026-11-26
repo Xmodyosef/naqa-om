@@ -1,7 +1,7 @@
-/* Brand: K-Secret · 2 products · imgs auto-wired 2026-11-25 */
-window.NAQA_PRODUCTS = window.NAQA_PRODUCTS || [];
-window.NAQA_PRODUCTS.push(
-{
+// k-secret.js — short Apple-like copy
+(function(){
+var A = window.NAQA_PRODUCTS || (window.NAQA_PRODUCTS = []);
+A.push({
   "id": 104,
   "brand": "K-Secret",
   "cat": "عناية",
@@ -13,15 +13,15 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "كريم العين ريتينال 4% سيول 1988 من ك-سيكريت - 30مل",
   "nameEn": "K-Secret Seoul 1988 Retinal 4% Eye Cream - 30ml",
-  "descAr": "لمسة K-Secret في كريم العين ريتينال 4% سيول 1988 من ك: كريمي يغلّف بلطف. يُذكر فيه ريتينويد لدعم ملمس أنعم ومظهر خطوط أدق. الحجم ≈ 30 مل. يناسب الجافة والمحتاجة. الجمال الأهدأ يأتي من روتين قصير ثابت.",
-  "descEn": "K-Secret's touch in K: rich yet breathable. Notes of retinoid care support smoother texture and a softer look of fine lines. Size ≈ 30 ml. Fits sensitive dry skin. Keep it cool-ish and cap it tight.",
-  "useAr": "١) دفّئي الكمية بين الأصابع.\n٢) ربّتي حتى تختفي.\n٣) القليل اليومي أهدى من الكثير مرة واحدة.",
-  "useEn": "1) After serum or right after cleanse.\n2) Pea-size for face + a little neck.\n3) SPF over it in the morning.\n4) Extra on dry cheeks at night.",
-  "skinAr": "الجافة والمحتاجة",
-  "skinEn": "sensitive dry skin",
+  "descAr": "كريم العين ريتينال 4% سيول 1988 من ك من K-Secret. ترطيب مريح لليوم. 30 مل.",
+  "descEn": "K by K-Secret. Quiet daily moisture. 30 ml.",
+  "useAr": "١) بعد السيروم.\n٢) طبقة خفيفة تكفي.",
+  "useEn": "1) After serum.\n2) Thin layer is enough.",
+  "skinAr": "للبشرة العادية إلى الجافة غالباً.",
+  "skinEn": "Often normal to dry skin.",
   "stock": 3
-},
-{
+});
+A.push({
   "id": 123,
   "brand": "K-Secret",
   "cat": "عناية",
@@ -33,12 +33,12 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "سيروم الريتينال 2% والجينسنغ الأسود سيول 1988 من ك-سيكريت - 30مل",
   "nameEn": "K-Secret Seoul 1988 Retinal 2% Black Ginseng Serum - 30ml",
-  "descAr": "لماذا K-Secret هنا؟ لأن سيروم الريتينال 2% والجينسنغ الأسود سيول 1988 من ك يقدّم خطوة واحدة واضحة: خفيف وسريع الامتصاص. المكوّن الأبرز: ريتينويد (ملمس أنعم ومظهر خطوط أدق). الحجم ≈ 30 مل. لـمعظم الأنواع — ابدئي بقطرات. انتظمي أسبوعين قبل الحكم النهائي.",
-  "descEn": "Why K-Secret? Because K does one clear job: light and quick to settle. Standout: retinoid care (smoother texture and a softer look of fine lines). Size ≈ 30 ml. For daily SPF when brightening. Quiet beauty loves a short, steady routine.",
-  "useAr": "١) وجه نظيف ورطب قليلاً.\n٢) نقطة على الخد والجبهة والذقن، ثم توزيع.\n٣) دقيقة صبر ثم الكريم.\n٤) محيط العين فقط إن صُمّم لذلك.",
-  "useEn": "1) Clean skin; toner first if you use one.\n2) 2–3 drops — press from center out.\n3) Cream on top. AM: SPF.\n4) Retinoids/acids: night, slowly.",
-  "skinAr": "معظم الأنواع — ابدئي بقطرات",
-  "skinEn": "daily SPF when brightening",
+  "descAr": "سيروم الريتينال 2% والجينسنغ الأسود سيول 1 من K-Secret. خطوة مركّزة وسريعة. 30 مل.",
+  "descEn": "K by K-Secret. Focused step, fast finish. 30 ml.",
+  "useAr": "١) بعد التنظيف.\n٢) قطرات قليلة ثم رطّبي.",
+  "useEn": "1) After cleanse.\n2) Few drops, then moisturise.",
+  "skinAr": "حسب احتياج بشرتك.",
+  "skinEn": "Match to your skin need.",
   "stock": 3
-}
-);
+});
+})();

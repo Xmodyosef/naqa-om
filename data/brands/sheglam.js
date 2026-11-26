@@ -1,7 +1,7 @@
-/* Brand: SHEGLAM · 27 products · imgs auto-wired 2026-11-25 */
-window.NAQA_PRODUCTS = window.NAQA_PRODUCTS || [];
-window.NAQA_PRODUCTS.push(
-{
+// sheglam.js — short Apple-like copy
+(function(){
+var A = window.NAQA_PRODUCTS || (window.NAQA_PRODUCTS = []);
+A.push({
   "id": 78,
   "brand": "SHEGLAM",
   "cat": "وجه",
@@ -13,15 +13,15 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "برايمر ميلت تاتش فائق الترطيب من شيجلام - 30ج",
   "nameEn": "SHEGLAM Melt Touch Moisturizing Primer - 30g",
-  "descAr": "لماذا SHEGLAM هنا؟ لأن برايمر ميلت تاتش فائق الترطيب من شيجلام يقدّم خطوة واحدة واضحة: لمسة نهائية حسب اختيارك. بدون ضجيج وعود طويلة. الحجم ≈ 30 ج. لـمختلطة إلى جافة. خزّنيها في مكان معتدل وأغلقي الغطاء.",
-  "descEn": "Why SHEGLAM? Because SHEGLAM Melt Touch Moisturizing Primer does one clear job: finish is yours to choose. No long promise list. Size ≈ 30 g. For combo to dry. Give it two steady weeks before you decide.",
-  "useAr": "١) بشرة مرطّبة (+ SPF نهاراً).\n٢) كمية قليلة ووزّعي.\n٣) غطّي بطبقات خفيفة.\n٤) ثبّتي عند الحاجة.",
-  "useEn": "1) Moisturized skin (+ SPF by day).\n2) Start small and blend.\n3) Build in thin layers.\n4) Set for longer wear.",
-  "skinAr": "مختلطة إلى جافة",
-  "skinEn": "combo to dry",
+  "descAr": "برايمر ميلت تاتش فائق الترطيب من شيجلام من SHEGLAM. تغطية خفيفة لمظهر طبيعي. 30 ج.",
+  "descEn": "SHEGLAM Melt Touch Moisturizing Primer by SHEGLAM. Light coverage, natural finish. 30 g.",
+  "useAr": "١) بعد العناية.\n٢) وزّعي برفق.",
+  "useEn": "1) After skincare.\n2) Blend lightly.",
+  "skinAr": "لكل درجات البشرة — اختاري الدرجة المناسبة.",
+  "skinEn": "All skin tones — pick your shade.",
   "stock": 3
-},
-{
+});
+A.push({
   "id": 79,
   "brand": "SHEGLAM",
   "cat": "وجه",
@@ -33,15 +33,15 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "برايمر إيفن بيتر المصحح للون البشرة من شيجلام - أخضر - 30ج",
   "nameEn": "SHEGLAM Even Better Color-Correcting Primer Green - 30g",
-  "descAr": "لمسة SHEGLAM في برايمر إيفن بيتر المصحح للون البشرة من شيجلام: يبني التغطية بهدوء. صيغة مباشرة تُحترم مع الوقت. الحجم ≈ 30 ج. يناسب مختلطة إلى جافة. انتظمي أسبوعين قبل الحكم النهائي.",
-  "descEn": "SHEGLAM's touch in SHEGLAM Even Better Color: finish is yours to choose. A direct formula that earns trust over time. Size ≈ 30 g. Fits combo to dry. Give it two steady weeks before you decide.",
-  "useAr": "١) بشرة مرطّبة (+ SPF نهاراً).\n٢) كمية قليلة ووزّعي.\n٣) غطّي بطبقات خفيفة.\n٤) ثبّتي عند الحاجة.",
-  "useEn": "1) Moisturized skin (+ SPF by day).\n2) Start small and blend.\n3) Build in thin layers.\n4) Set for longer wear.",
-  "skinAr": "مختلطة إلى جافة",
-  "skinEn": "combo to dry",
+  "descAr": "برايمر إيفن بيتر المصحح للون البشرة من شيج من SHEGLAM. تغطية خفيفة لمظهر طبيعي. 30 ج.",
+  "descEn": "SHEGLAM Even Better Color by SHEGLAM. Light coverage, natural finish. 30 g.",
+  "useAr": "١) بعد العناية.\n٢) وزّعي برفق.",
+  "useEn": "1) After skincare.\n2) Blend lightly.",
+  "skinAr": "لكل درجات البشرة — اختاري الدرجة المناسبة.",
+  "skinEn": "All skin tones — pick your shade.",
   "stock": 3
-},
-{
+});
+A.push({
   "id": 81,
   "brand": "SHEGLAM",
   "cat": "وجه",
@@ -53,15 +53,15 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "برايمر كاميرا أون لتنعيم البشرة وتمويه المسام من شيجلام - 30ج",
   "nameEn": "SHEGLAM Camera On Pore-Smoothing Primer - 30g",
-  "descAr": "SHEGLAM × عناية يومية: برايمر كاميرا أون لتنعيم البشرة وتمويه المسام من شي…. يُركّز على راحة الاستخدام. الملمس: لمسة نهائية حسب اختيارك. الحجم ≈ 30 ج. اختبري التطابق على الفك. خزّنيها في مكان معتدل وأغلقي الغطاء.",
-  "descEn": "SHEGLAM for daily care: SHEGLAM Camera On Pore. Comfort-first use. Feel: builds coverage quietly. Size ≈ 30 g. Combo to dry. Ongoing sting? Ease off or ask a pro.",
-  "useAr": "١) بشرة مرطّبة (+ SPF نهاراً).\n٢) كمية قليلة ووزّعي.\n٣) غطّي بطبقات خفيفة.\n٤) ثبّتي عند الحاجة.",
-  "useEn": "1) Moisturized skin (+ SPF by day).\n2) Start small and blend.\n3) Build in thin layers.\n4) Set for longer wear.",
-  "skinAr": "اختبري التطابق على الفك",
-  "skinEn": "combo to dry",
+  "descAr": "برايمر كاميرا أون لتنعيم البشرة وتمويه الم من SHEGLAM. تغطية خفيفة لمظهر طبيعي. 30 ج.",
+  "descEn": "SHEGLAM Camera On Pore by SHEGLAM. Light coverage, natural finish. 30 g.",
+  "useAr": "١) بعد العناية.\n٢) وزّعي برفق.",
+  "useEn": "1) After skincare.\n2) Blend lightly.",
+  "skinAr": "لكل درجات البشرة — اختاري الدرجة المناسبة.",
+  "skinEn": "All skin tones — pick your shade.",
   "stock": 3
-},
-{
+});
+A.push({
   "id": 82,
   "brand": "SHEGLAM",
   "cat": "وجه",
@@ -73,15 +73,15 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "بلاشر كولور بلوم السائل من شيجلام - لوف كيك",
   "nameEn": "SHEGLAM Color Bloom Liquid Blush - Love Cake",
-  "descAr": "لماذا SHEGLAM هنا؟ لأن بلاشر كولور بلوم السائل من شيجلام يقدّم خطوة واحدة واضحة: يبني التغطية بهدوء. بدون ضجيج وعود طويلة. لـمختلطة إلى جافة. الجمال الأهدأ يأتي من روتين قصير ثابت.",
-  "descEn": "Why SHEGLAM? Because SHEGLAM Color Bloom Liquid Blush does one clear job: finish is yours to choose. No long promise list. For combo to dry. Give it two steady weeks before you decide.",
-  "useAr": "١) بشرة مرطّبة (+ SPF نهاراً).\n٢) كمية قليلة ووزّعي.\n٣) غطّي بطبقات خفيفة.\n٤) ثبّتي عند الحاجة.",
-  "useEn": "1) Moisturized skin (+ SPF by day).\n2) Start small and blend.\n3) Build in thin layers.\n4) Set for longer wear.",
-  "skinAr": "مختلطة إلى جافة",
-  "skinEn": "combo to dry",
+  "descAr": "بلاشر كولور بلوم السائل من شيجلام من SHEGLAM. تغطية خفيفة لمظهر طبيعي.",
+  "descEn": "SHEGLAM Color Bloom Liquid Blush by SHEGLAM. Light coverage, natural finish.",
+  "useAr": "١) بعد العناية.\n٢) وزّعي برفق.",
+  "useEn": "1) After skincare.\n2) Blend lightly.",
+  "skinAr": "لكل درجات البشرة — اختاري الدرجة المناسبة.",
+  "skinEn": "All skin tones — pick your shade.",
   "stock": 3
-},
-{
+});
+A.push({
   "id": 83,
   "brand": "SHEGLAM",
   "cat": "وجه",
@@ -93,15 +93,15 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "سبراي تثبيت لوكد إن من شيجلام",
   "nameEn": "SHEGLAM Locked In Setting Spray",
-  "descAr": "SHEGLAM × عناية يومية: سبراي تثبيت لوكد إن من شيجلام. يُركّز على راحة الاستخدام. الملمس: يبني التغطية بهدوء. مختلطة إلى جافة. الجمال الأهدأ يأتي من روتين قصير ثابت.",
-  "descEn": "SHEGLAM for daily care: SHEGLAM Locked In Setting Spray. Comfort-first use. Feel: builds coverage quietly. Quiet everyday makeup. Keep it cool-ish and cap it tight.",
-  "useAr": "١) بشرة مرطّبة (+ SPF نهاراً).\n٢) كمية قليلة ووزّعي.\n٣) غطّي بطبقات خفيفة.\n٤) ثبّتي عند الحاجة.",
-  "useEn": "1) Moisturized skin (+ SPF by day).\n2) Start small and blend.\n3) Build in thin layers.\n4) Set for longer wear.",
-  "skinAr": "مختلطة إلى جافة",
-  "skinEn": "quiet everyday makeup",
+  "descAr": "سبراي تثبيت لوكد إن من شيجلام من SHEGLAM. تغطية خفيفة لمظهر طبيعي.",
+  "descEn": "SHEGLAM Locked In Setting Spray by SHEGLAM. Light coverage, natural finish.",
+  "useAr": "١) بعد العناية.\n٢) وزّعي برفق.",
+  "useEn": "1) After skincare.\n2) Blend lightly.",
+  "skinAr": "لكل درجات البشرة — اختاري الدرجة المناسبة.",
+  "skinEn": "All skin tones — pick your shade.",
   "stock": 3
-},
-{
+});
+A.push({
   "id": 84,
   "brand": "SHEGLAM",
   "cat": "وجه",
@@ -113,15 +113,15 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "برايمر جود جريب المرطب من شيجلام - 45مل",
   "nameEn": "SHEGLAM Good Grip Hydrating Primer - 45ml",
-  "descAr": "برايمر جود جريب المرطب من شيجلام من SHEGLAM. لمسة نهائية حسب اختيارك. الحجم ≈ 45 مل. يناسب اختبري التطابق على الفك. انتظمي أسبوعين قبل الحكم النهائي.",
-  "descEn": "SHEGLAM Good Grip Hydrating Primer by SHEGLAM. Builds coverage quietly. Size ≈ 45 ml. Suits quiet everyday makeup. Keep it cool-ish and cap it tight.",
-  "useAr": "١) بشرة مرطّبة (+ SPF نهاراً).\n٢) كمية قليلة ووزّعي.\n٣) غطّي بطبقات خفيفة.\n٤) ثبّتي عند الحاجة.",
-  "useEn": "1) Moisturized skin (+ SPF by day).\n2) Start small and blend.\n3) Build in thin layers.\n4) Set for longer wear.",
-  "skinAr": "اختبري التطابق على الفك",
-  "skinEn": "quiet everyday makeup",
+  "descAr": "برايمر جود جريب المرطب من شيجلام من SHEGLAM. تغطية خفيفة لمظهر طبيعي. 45 مل.",
+  "descEn": "SHEGLAM Good Grip Hydrating Primer by SHEGLAM. Light coverage, natural finish. 45 ml.",
+  "useAr": "١) بعد العناية.\n٢) وزّعي برفق.",
+  "useEn": "1) After skincare.\n2) Blend lightly.",
+  "skinAr": "لكل درجات البشرة — اختاري الدرجة المناسبة.",
+  "skinEn": "All skin tones — pick your shade.",
   "stock": 3
-},
-{
+});
+A.push({
   "id": 85,
   "brand": "SHEGLAM",
   "cat": "وجه",
@@ -133,15 +133,15 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "سبراي تثبيت بريس ريفريش من شيجلام",
   "nameEn": "SHEGLAM Press Refresh Setting Spray",
-  "descAr": "اختاري سبراي تثبيت بريس ريفريش من شيجلام حين تريدين نتيجة بلا تعقيد. من SHEGLAM، يبني التغطية بهدوء. مُخصص تقريباً لـاختبري التطابق على الفك. الجمال الأهدأ يأتي من روتين قصير ثابت.",
-  "descEn": "Reach for SHEGLAM Press Refresh Setting Spray when you want results without a maze. From SHEGLAM, finish is yours to choose. Aimed at swatch along the jaw. Ongoing sting? Ease off or ask a pro.",
-  "useAr": "١) بشرة مرطّبة (+ SPF نهاراً).\n٢) كمية قليلة ووزّعي.\n٣) غطّي بطبقات خفيفة.\n٤) ثبّتي عند الحاجة.",
-  "useEn": "1) Moisturized skin (+ SPF by day).\n2) Start small and blend.\n3) Build in thin layers.\n4) Set for longer wear.",
-  "skinAr": "اختبري التطابق على الفك",
-  "skinEn": "swatch along the jaw",
+  "descAr": "سبراي تثبيت بريس ريفريش من شيجلام من SHEGLAM. تغطية خفيفة لمظهر طبيعي.",
+  "descEn": "SHEGLAM Press Refresh Setting Spray by SHEGLAM. Light coverage, natural finish.",
+  "useAr": "١) بعد العناية.\n٢) وزّعي برفق.",
+  "useEn": "1) After skincare.\n2) Blend lightly.",
+  "skinAr": "لكل درجات البشرة — اختاري الدرجة المناسبة.",
+  "skinEn": "All skin tones — pick your shade.",
   "stock": 3
-},
-{
+});
+A.push({
   "id": 86,
   "brand": "SHEGLAM",
   "cat": "وجه",
@@ -153,15 +153,15 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "ستيك كونتور وبرونزر باتري باف من شيجلام - جولدن صن",
   "nameEn": "SHEGLAM Butter Puff Contour Stick - Golden Sun",
-  "descAr": "SHEGLAM × عناية يومية: ستيك كونتور وبرونزر باتري باف من شيجلام. يُركّز على راحة الاستخدام. الملمس: يندمج ولا يرسم قناعاً. مختلطة إلى جافة. خزّنيها في مكان معتدل وأغلقي الغطاء.",
-  "descEn": "SHEGLAM for daily care: SHEGLAM Butter Puff Contour Stick. Comfort-first use. Feel: finish is yours to choose. Combo to dry. Keep it cool-ish and cap it tight.",
-  "useAr": "١) بشرة مرطّبة (+ SPF نهاراً).\n٢) كمية قليلة ووزّعي.\n٣) غطّي بطبقات خفيفة.\n٤) ثبّتي عند الحاجة.",
-  "useEn": "1) Moisturized skin (+ SPF by day).\n2) Start small and blend.\n3) Build in thin layers.\n4) Set for longer wear.",
-  "skinAr": "مختلطة إلى جافة",
-  "skinEn": "combo to dry",
+  "descAr": "ستيك كونتور وبرونزر باتري باف من شيجلام من SHEGLAM. تغطية خفيفة لمظهر طبيعي.",
+  "descEn": "SHEGLAM Butter Puff Contour Stick by SHEGLAM. Light coverage, natural finish.",
+  "useAr": "١) بعد العناية.\n٢) وزّعي برفق.",
+  "useEn": "1) After skincare.\n2) Blend lightly.",
+  "skinAr": "لكل درجات البشرة — اختاري الدرجة المناسبة.",
+  "skinEn": "All skin tones — pick your shade.",
   "stock": 3
-},
-{
+});
+A.push({
   "id": 87,
   "brand": "SHEGLAM",
   "cat": "وجه",
@@ -173,15 +173,15 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "سبراي تثبيت مات فريش من شيجلام",
   "nameEn": "SHEGLAM Matte Fresh Setting Spray",
-  "descAr": "SHEGLAM × عناية يومية: سبراي تثبيت مات فريش من شيجلام. يُركّز على راحة الاستخدام. الملمس: يندمج ولا يرسم قناعاً. مختلطة إلى جافة. أي لسع مستمر؟ خفّفي أو راجعي مختصاً.",
-  "descEn": "SHEGLAM for daily care: SHEGLAM Matte Fresh Setting Spray. Comfort-first use. Feel: builds coverage quietly. Quiet everyday makeup. Ongoing sting? Ease off or ask a pro.",
-  "useAr": "١) بشرة مرطّبة (+ SPF نهاراً).\n٢) كمية قليلة ووزّعي.\n٣) غطّي بطبقات خفيفة.\n٤) ثبّتي عند الحاجة.",
-  "useEn": "1) Moisturized skin (+ SPF by day).\n2) Start small and blend.\n3) Build in thin layers.\n4) Set for longer wear.",
-  "skinAr": "مختلطة إلى جافة",
-  "skinEn": "quiet everyday makeup",
+  "descAr": "سبراي تثبيت مات فريش من شيجلام من SHEGLAM. تغطية خفيفة لمظهر طبيعي.",
+  "descEn": "SHEGLAM Matte Fresh Setting Spray by SHEGLAM. Light coverage, natural finish.",
+  "useAr": "١) بعد العناية.\n٢) وزّعي برفق.",
+  "useEn": "1) After skincare.\n2) Blend lightly.",
+  "skinAr": "لكل درجات البشرة — اختاري الدرجة المناسبة.",
+  "skinEn": "All skin tones — pick your shade.",
   "stock": 3
-},
-{
+});
+A.push({
   "id": 88,
   "brand": "SHEGLAM",
   "cat": "وجه",
@@ -193,15 +193,15 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "بلاشر كولور بلوم السائل من شيجلام - أون بوينت",
   "nameEn": "SHEGLAM Color Bloom Liquid Blush - On Point",
-  "descAr": "رقيق في الإحساس، صادق في الدور — بلاشر كولور بلوم السائل من شيجلام. علامة SHEGLAM. لمسة نهائية حسب اختيارك. يناسب مكياج يومي هادئ. الجمال الأهدأ يأتي من روتين قصير ثابت.",
-  "descEn": "Soft to the touch, honest in role — SHEGLAM Color Bloom Liquid Blush. SHEGLAM. Finish is yours to choose. Best with combo to dry. Ongoing sting? Ease off or ask a pro.",
-  "useAr": "١) بشرة مرطّبة (+ SPF نهاراً).\n٢) كمية قليلة ووزّعي.\n٣) غطّي بطبقات خفيفة.\n٤) ثبّتي عند الحاجة.",
-  "useEn": "1) Moisturized skin (+ SPF by day).\n2) Start small and blend.\n3) Build in thin layers.\n4) Set for longer wear.",
-  "skinAr": "مكياج يومي هادئ",
-  "skinEn": "combo to dry",
+  "descAr": "بلاشر كولور بلوم السائل من شيجلام من SHEGLAM. تغطية خفيفة لمظهر طبيعي.",
+  "descEn": "SHEGLAM Color Bloom Liquid Blush by SHEGLAM. Light coverage, natural finish.",
+  "useAr": "١) بعد العناية.\n٢) وزّعي برفق.",
+  "useEn": "1) After skincare.\n2) Blend lightly.",
+  "skinAr": "لكل درجات البشرة — اختاري الدرجة المناسبة.",
+  "skinEn": "All skin tones — pick your shade.",
   "stock": 3
-},
-{
+});
+A.push({
   "id": 89,
   "brand": "SHEGLAM",
   "cat": "وجه",
@@ -213,15 +213,15 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "كونتور صن سكالب السائل من شيجلام - تاوني أمبر",
   "nameEn": "SHEGLAM Sun Sculpt Liquid Contour - Tawny Amber",
-  "descAr": "كونتور صن سكالب السائل من شيجلام من SHEGLAM. لمسة نهائية حسب اختيارك. يناسب اختبري التطابق على الفك. انتظمي أسبوعين قبل الحكم النهائي.",
-  "descEn": "SHEGLAM Sun Sculpt Liquid Contour by SHEGLAM. Blends instead of masking. Suits quiet everyday makeup. Quiet beauty loves a short, steady routine.",
-  "useAr": "١) بشرة مرطّبة (+ SPF نهاراً).\n٢) كمية قليلة ووزّعي.\n٣) غطّي بطبقات خفيفة.\n٤) ثبّتي عند الحاجة.",
-  "useEn": "1) Moisturized skin (+ SPF by day).\n2) Start small and blend.\n3) Build in thin layers.\n4) Set for longer wear.",
-  "skinAr": "اختبري التطابق على الفك",
-  "skinEn": "quiet everyday makeup",
+  "descAr": "كونتور صن سكالب السائل من شيجلام من SHEGLAM. تغطية خفيفة لمظهر طبيعي.",
+  "descEn": "SHEGLAM Sun Sculpt Liquid Contour by SHEGLAM. Light coverage, natural finish.",
+  "useAr": "١) بعد العناية.\n٢) وزّعي برفق.",
+  "useEn": "1) After skincare.\n2) Blend lightly.",
+  "skinAr": "لكل درجات البشرة — اختاري الدرجة المناسبة.",
+  "skinEn": "All skin tones — pick your shade.",
   "stock": 3
-},
-{
+});
+A.push({
   "id": 90,
   "brand": "SHEGLAM",
   "cat": "وجه",
@@ -233,15 +233,15 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "برايمر تريبل ثريت المصحح من شيجلام",
   "nameEn": "SHEGLAM Triple Threat Correcting Primer",
-  "descAr": "برايمر تريبل ثريت المصحح من شيجلام من SHEGLAM. يبني التغطية بهدوء. يناسب اختبري التطابق على الفك. الجمال الأهدأ يأتي من روتين قصير ثابت.",
-  "descEn": "SHEGLAM Triple Threat Correcting Primer by SHEGLAM. Finish is yours to choose. Suits combo to dry. Keep it cool-ish and cap it tight.",
-  "useAr": "١) بشرة مرطّبة (+ SPF نهاراً).\n٢) كمية قليلة ووزّعي.\n٣) غطّي بطبقات خفيفة.\n٤) ثبّتي عند الحاجة.",
-  "useEn": "1) Moisturized skin (+ SPF by day).\n2) Start small and blend.\n3) Build in thin layers.\n4) Set for longer wear.",
-  "skinAr": "اختبري التطابق على الفك",
-  "skinEn": "combo to dry",
+  "descAr": "برايمر تريبل ثريت المصحح من شيجلام من SHEGLAM. تغطية خفيفة لمظهر طبيعي.",
+  "descEn": "SHEGLAM Triple Threat Correcting Primer by SHEGLAM. Light coverage, natural finish.",
+  "useAr": "١) بعد العناية.\n٢) وزّعي برفق.",
+  "useEn": "1) After skincare.\n2) Blend lightly.",
+  "skinAr": "لكل درجات البشرة — اختاري الدرجة المناسبة.",
+  "skinEn": "All skin tones — pick your shade.",
   "stock": 3
-},
-{
+});
+A.push({
   "id": 122,
   "brand": "SHEGLAM",
   "cat": "شفاه",
@@ -255,15 +255,15 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "زيت شفاه جيلي واو المرطب من شيجلام - بيري إنفولفد",
   "nameEn": "SHEGLAM Jelly Wow Hydrating Lip Oil - Berry Involved",
-  "descAr": "زيت شفاه جيلي واو المرطب من شيجلام. قصة قصيرة: تنظيف/عناية/حماية حسب نوعه، وSHEGLAM هنا لتسهيل اليوم. ناعم على الشفاه. كل درجات الشفاه. أي لسع مستمر؟ خفّفي أو راجعي مختصاً.",
-  "descEn": "SHEGLAM Jelly Wow Hydrating Lip Oil. Short story: cleanse, treat, or protect as labeled — SHEGLAM keeps the day simple. Comfortable through talk and coffee. All lip tones. Quiet beauty loves a short, steady routine.",
-  "useAr": "١) شفاه نظيفة.\n٢) من الوسط للخارج.\n٣) لمسة خلال اليوم.\n٤) ليلاً أغنى إن كان مرطباً.",
-  "useEn": "1) Clean lips.\n2) Center to outer edge.\n3) Touch up through the day.\n4) Richer layer at night if balm/mask.",
-  "skinAr": "كل درجات الشفاه",
-  "skinEn": "all lip tones",
+  "descAr": "زيت شفاه جيلي واو المرطب من شيجلام من SHEGLAM. لون ناعم ومريح.",
+  "descEn": "SHEGLAM Jelly Wow Hydrating Lip Oil by SHEGLAM. Soft colour, comfortable wear.",
+  "useAr": "١) على شفاه نظيفة.\n٢) أعدِي عند الحاجة.",
+  "useEn": "1) On clean lips.\n2) Reapply as needed.",
+  "skinAr": "لكل درجات الشفاه.",
+  "skinEn": "All lip tones.",
   "stock": 3
-},
-{
+});
+A.push({
   "id": 127,
   "brand": "SHEGLAM",
   "cat": "شفاه",
@@ -276,15 +276,15 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "مجموعة تريو شفاه من شيجلام - 3قطع",
   "nameEn": "Sheglam Trio Lips Value Pack - 3pcs",
-  "descAr": "مجموعة تريو شفاه من شيجلام من SHEGLAM. لون أو لمعان حسب الصيغة. الحجم ≈ 3 قطعة. يناسب الشفاه الجافة. الجمال الأهدأ يأتي من روتين قصير ثابت.",
-  "descEn": "Sheglam Trio Lips Value Pack by SHEGLAM. Tint or shine by formula. Size ≈ 3 pcs. Suits dry lips. Give it two steady weeks before you decide.",
-  "useAr": "١) شفاه نظيفة.\n٢) من الوسط للخارج.\n٣) لمسة خلال اليوم.\n٤) ليلاً أغنى إن كان مرطباً.",
-  "useEn": "1) Clean lips.\n2) Center to outer edge.\n3) Touch up through the day.\n4) Richer layer at night if balm/mask.",
-  "skinAr": "الشفاه الجافة",
-  "skinEn": "dry lips",
+  "descAr": "مجموعة تريو شفاه من شيجلام من SHEGLAM. لون ناعم ومريح.",
+  "descEn": "Sheglam Trio Lips Value Pack by SHEGLAM. Soft colour, comfortable wear.",
+  "useAr": "١) على شفاه نظيفة.\n٢) أعدِي عند الحاجة.",
+  "useEn": "1) On clean lips.\n2) Reapply as needed.",
+  "skinAr": "لكل درجات الشفاه.",
+  "skinEn": "All lip tones.",
   "stock": 3
-},
-{
+});
+A.push({
   "id": 143,
   "brand": "SHEGLAM",
   "cat": "شفاه",
@@ -296,15 +296,15 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "بلمبر شفاه باوت بيرفكت شاين من شيجلام - فيرست كراش",
   "nameEn": "Sheglam Pout-Perfect Shine Lip Plumper - First Crush",
-  "descAr": "بلمبر شفاه باوت بيرفكت شاين من شيجلام من SHEGLAM. لون أو لمعان حسب الصيغة. يناسب الشفاه الجافة. خزّنيها في مكان معتدل وأغلقي الغطاء.",
-  "descEn": "Sheglam Pout by SHEGLAM. Soft on contact. Suits daily without fuss. Quiet beauty loves a short, steady routine.",
-  "useAr": "١) شفاه نظيفة.\n٢) من الوسط للخارج.\n٣) لمسة خلال اليوم.\n٤) ليلاً أغنى إن كان مرطباً.",
-  "useEn": "1) Clean lips.\n2) Center to outer edge.\n3) Touch up through the day.\n4) Richer layer at night if balm/mask.",
-  "skinAr": "الشفاه الجافة",
-  "skinEn": "daily without fuss",
+  "descAr": "بلمبر شفاه باوت بيرفكت شاين من شيجلام من SHEGLAM. لون ناعم ومريح.",
+  "descEn": "Sheglam Pout by SHEGLAM. Soft colour, comfortable wear.",
+  "useAr": "١) على شفاه نظيفة.\n٢) أعدِي عند الحاجة.",
+  "useEn": "1) On clean lips.\n2) Reapply as needed.",
+  "skinAr": "لكل درجات الشفاه.",
+  "skinEn": "All lip tones.",
   "stock": 3
-},
-{
+});
+A.push({
   "id": 144,
   "brand": "SHEGLAM",
   "cat": "شفاه",
@@ -316,15 +316,15 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "بلمبر شفاه باوت بيرفكت شاين من شيجلام - بيري سيزون",
   "nameEn": "Sheglam Pout-Perfect Shine Lip Plumper - Berry Season",
-  "descAr": "بلمبر شفاه باوت بيرفكت شاين من شيجلام من SHEGLAM. مريح للحديث والقهوة. يناسب يومياً بلا إزعاج. خزّنيها في مكان معتدل وأغلقي الغطاء.",
-  "descEn": "Sheglam Pout by SHEGLAM. Soft on contact. Suits all lip tones. Keep it cool-ish and cap it tight.",
-  "useAr": "١) شفاه نظيفة.\n٢) من الوسط للخارج.\n٣) لمسة خلال اليوم.\n٤) ليلاً أغنى إن كان مرطباً.",
-  "useEn": "1) Clean lips.\n2) Center to outer edge.\n3) Touch up through the day.\n4) Richer layer at night if balm/mask.",
-  "skinAr": "يومياً بلا إزعاج",
-  "skinEn": "all lip tones",
+  "descAr": "بلمبر شفاه باوت بيرفكت شاين من شيجلام من SHEGLAM. لون ناعم ومريح.",
+  "descEn": "Sheglam Pout by SHEGLAM. Soft colour, comfortable wear.",
+  "useAr": "١) على شفاه نظيفة.\n٢) أعدِي عند الحاجة.",
+  "useEn": "1) On clean lips.\n2) Reapply as needed.",
+  "skinAr": "لكل درجات الشفاه.",
+  "skinEn": "All lip tones.",
   "stock": 3
-},
-{
+});
+A.push({
   "id": 145,
   "brand": "SHEGLAM",
   "cat": "شفاه",
@@ -336,15 +336,15 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "جلوس جلاس لوك أير من شيجلام - هاي كي",
   "nameEn": "SHEGLAM Lip — ZA224",
-  "descAr": "رقيق في الإحساس، صادق في الدور — جلوس جلاس لوك أير من شيجلام. علامة SHEGLAM. مريح للحديث والقهوة. يناسب كل درجات الشفاه. انتظمي أسبوعين قبل الحكم النهائي.",
-  "descEn": "Soft to the touch, honest in role — SHEGLAM Lip. SHEGLAM. Tint or shine by formula. Size ≈ 224 g. Best with dry lips. Give it two steady weeks before you decide.",
-  "useAr": "١) شفاه نظيفة.\n٢) من الوسط للخارج.\n٣) لمسة خلال اليوم.\n٤) ليلاً أغنى إن كان مرطباً.",
-  "useEn": "1) Clean lips.\n2) Center to outer edge.\n3) Touch up through the day.\n4) Richer layer at night if balm/mask.",
-  "skinAr": "كل درجات الشفاه",
-  "skinEn": "dry lips",
+  "descAr": "جلوس جلاس لوك أير من شيجلام من SHEGLAM. لون ناعم ومريح.",
+  "descEn": "SHEGLAM Lip by SHEGLAM. Soft colour, comfortable wear.",
+  "useAr": "١) على شفاه نظيفة.\n٢) أعدِي عند الحاجة.",
+  "useEn": "1) On clean lips.\n2) Reapply as needed.",
+  "skinAr": "لكل درجات الشفاه.",
+  "skinEn": "All lip tones.",
   "stock": 3
-},
-{
+});
+A.push({
   "id": 153,
   "brand": "SHEGLAM",
   "cat": "شفاه",
@@ -356,15 +356,15 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "محدد شفاه سو ليبي من شيجلام - 522 ميستي روز",
   "nameEn": "Sheglam So Lippy Lip Liner - 522 Misty Rose",
-  "descAr": "رقيق في الإحساس، صادق في الدور — محدد شفاه سو ليبي من شيجلام. علامة SHEGLAM. مريح للحديث والقهوة. يناسب الشفاه الجافة. خزّنيها في مكان معتدل وأغلقي الغطاء.",
-  "descEn": "Soft to the touch, honest in role — Sheglam So Lippy Lip Liner. SHEGLAM. Soft on contact. Best with dry lips. Keep it cool-ish and cap it tight.",
-  "useAr": "١) شفاه نظيفة.\n٢) من الوسط للخارج.\n٣) لمسة خلال اليوم.\n٤) ليلاً أغنى إن كان مرطباً.",
-  "useEn": "1) Clean lips.\n2) Center to outer edge.\n3) Touch up through the day.\n4) Richer layer at night if balm/mask.",
-  "skinAr": "الشفاه الجافة",
-  "skinEn": "dry lips",
+  "descAr": "محدد شفاه سو ليبي من شيجلام من SHEGLAM. لون ناعم ومريح.",
+  "descEn": "Sheglam So Lippy Lip Liner by SHEGLAM. Soft colour, comfortable wear.",
+  "useAr": "١) على شفاه نظيفة.\n٢) أعدِي عند الحاجة.",
+  "useEn": "1) On clean lips.\n2) Reapply as needed.",
+  "skinAr": "لكل درجات الشفاه.",
+  "skinEn": "All lip tones.",
   "stock": 3
-},
-{
+});
+A.push({
   "id": 154,
   "brand": "SHEGLAM",
   "cat": "شفاه",
@@ -376,15 +376,15 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "مجموعة أحمر شفاه سائل مات ألور ميني من شيجلام - برايفت تور",
   "nameEn": "Sheglam Matte Allure Mini Liquid Lipstick Set - Private Tour",
-  "descAr": "رقيق في الإحساس، صادق في الدور — مجموعة أحمر شفاه سائل مات ألور ميني من شيجلام. علامة SHEGLAM. ناعم على الشفاه. يناسب الشفاه الجافة. الجمال الأهدأ يأتي من روتين قصير ثابت.",
-  "descEn": "Soft to the touch, honest in role — Sheglam Matte Allure Mini Liquid Lipstick Set. SHEGLAM. Tint or shine by formula. Best with all lip tones. Quiet beauty loves a short, steady routine.",
-  "useAr": "١) شفاه نظيفة.\n٢) من الوسط للخارج.\n٣) لمسة خلال اليوم.\n٤) ليلاً أغنى إن كان مرطباً.",
-  "useEn": "1) Clean lips.\n2) Center to outer edge.\n3) Touch up through the day.\n4) Richer layer at night if balm/mask.",
-  "skinAr": "الشفاه الجافة",
-  "skinEn": "all lip tones",
+  "descAr": "مجموعة أحمر شفاه سائل مات ألور ميني من شيج من SHEGLAM. لون ناعم ومريح.",
+  "descEn": "Sheglam Matte Allure Mini Liquid Lipstick Set by SHEGLAM. Soft colour, comfortable wear.",
+  "useAr": "١) على شفاه نظيفة.\n٢) أعدِي عند الحاجة.",
+  "useEn": "1) On clean lips.\n2) Reapply as needed.",
+  "skinAr": "لكل درجات الشفاه.",
+  "skinEn": "All lip tones.",
   "stock": 3
-},
-{
+});
+A.push({
   "id": 155,
   "brand": "SHEGLAM",
   "cat": "شفاه",
@@ -396,15 +396,15 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "محدد شفاه سو ليبي من شيجلام - 524 بت فيرست كوفي",
   "nameEn": "Sheglam So Lippy Lip Liner - 524 But First,Coffee",
-  "descAr": "اختاري محدد شفاه سو ليبي من شيجلام حين تريدين نتيجة بلا تعقيد. من SHEGLAM، مريح للحديث والقهوة. مُخصص تقريباً لـيومياً بلا إزعاج. أي لسع مستمر؟ خفّفي أو راجعي مختصاً.",
-  "descEn": "Reach for Sheglam So Lippy Lip Liner when you want results without a maze. From SHEGLAM, soft on contact. Aimed at dry lips. Keep it cool-ish and cap it tight.",
-  "useAr": "١) شفاه نظيفة.\n٢) من الوسط للخارج.\n٣) لمسة خلال اليوم.\n٤) ليلاً أغنى إن كان مرطباً.",
-  "useEn": "1) Clean lips.\n2) Center to outer edge.\n3) Touch up through the day.\n4) Richer layer at night if balm/mask.",
-  "skinAr": "يومياً بلا إزعاج",
-  "skinEn": "dry lips",
+  "descAr": "محدد شفاه سو ليبي من شيجلام من SHEGLAM. لون ناعم ومريح.",
+  "descEn": "Sheglam So Lippy Lip Liner by SHEGLAM. Soft colour, comfortable wear.",
+  "useAr": "١) على شفاه نظيفة.\n٢) أعدِي عند الحاجة.",
+  "useEn": "1) On clean lips.\n2) Reapply as needed.",
+  "skinAr": "لكل درجات الشفاه.",
+  "skinEn": "All lip tones.",
   "stock": 3
-},
-{
+});
+A.push({
   "id": 156,
   "brand": "SHEGLAM",
   "cat": "شفاه",
@@ -416,15 +416,15 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "محدد شفاه سو ليبي من شيجلام - 04 نيوترال",
   "nameEn": "Sheglam So Lippy Lip Liner - 04 Neutral",
-  "descAr": "SHEGLAM × عناية يومية: محدد شفاه سو ليبي من شيجلام. يُركّز على راحة الاستخدام. الملمس: لون أو لمعان حسب الصيغة. الشفاه الجافة. انتظمي أسبوعين قبل الحكم النهائي.",
-  "descEn": "SHEGLAM for daily care: Sheglam So Lippy Lip Liner. Comfort-first use. Feel: tint or shine by formula. Dry lips. Ongoing sting? Ease off or ask a pro.",
-  "useAr": "١) شفاه نظيفة.\n٢) من الوسط للخارج.\n٣) لمسة خلال اليوم.\n٤) ليلاً أغنى إن كان مرطباً.",
-  "useEn": "1) Clean lips.\n2) Center to outer edge.\n3) Touch up through the day.\n4) Richer layer at night if balm/mask.",
-  "skinAr": "الشفاه الجافة",
-  "skinEn": "dry lips",
+  "descAr": "محدد شفاه سو ليبي من شيجلام من SHEGLAM. لون ناعم ومريح.",
+  "descEn": "Sheglam So Lippy Lip Liner by SHEGLAM. Soft colour, comfortable wear.",
+  "useAr": "١) على شفاه نظيفة.\n٢) أعدِي عند الحاجة.",
+  "useEn": "1) On clean lips.\n2) Reapply as needed.",
+  "skinAr": "لكل درجات الشفاه.",
+  "skinEn": "All lip tones.",
   "stock": 3
-},
-{
+});
+A.push({
   "id": 157,
   "brand": "SHEGLAM",
   "cat": "شفاه",
@@ -436,15 +436,15 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "مجموعة أحمر شفاه سائل مات ألور ميني من شيجلام - سويت ثينج",
   "nameEn": "Sheglam Matte Allure Mini Liquid Lipstick Set - Sweet Thing",
-  "descAr": "لماذا SHEGLAM هنا؟ لأن مجموعة أحمر شفاه سائل مات ألور ميني من شيجلام يقدّم خطوة واحدة واضحة: مريح للحديث والقهوة. بدون ضجيج وعود طويلة. لـكل درجات الشفاه. الجمال الأهدأ يأتي من روتين قصير ثابت.",
-  "descEn": "Why SHEGLAM? Because Sheglam Matte Allure Mini Liquid Lipstick Set does one clear job: tint or shine by formula. No long promise list. For all lip tones. Give it two steady weeks before you decide.",
-  "useAr": "١) شفاه نظيفة.\n٢) من الوسط للخارج.\n٣) لمسة خلال اليوم.\n٤) ليلاً أغنى إن كان مرطباً.",
-  "useEn": "1) Clean lips.\n2) Center to outer edge.\n3) Touch up through the day.\n4) Richer layer at night if balm/mask.",
-  "skinAr": "كل درجات الشفاه",
-  "skinEn": "all lip tones",
+  "descAr": "مجموعة أحمر شفاه سائل مات ألور ميني من شيج من SHEGLAM. لون ناعم ومريح.",
+  "descEn": "Sheglam Matte Allure Mini Liquid Lipstick Set by SHEGLAM. Soft colour, comfortable wear.",
+  "useAr": "١) على شفاه نظيفة.\n٢) أعدِي عند الحاجة.",
+  "useEn": "1) On clean lips.\n2) Reapply as needed.",
+  "skinAr": "لكل درجات الشفاه.",
+  "skinEn": "All lip tones.",
   "stock": 3
-},
-{
+});
+A.push({
   "id": 158,
   "brand": "SHEGLAM",
   "cat": "شفاه",
@@ -456,15 +456,15 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "محدد شفاه سو ليبي من شيجلام - 526 موهافي",
   "nameEn": "Sheglam So Lippy Lip Liner - 526 Mojave",
-  "descAr": "محدد شفاه سو ليبي من شيجلام من SHEGLAM. مريح للحديث والقهوة. يناسب كل درجات الشفاه. الجمال الأهدأ يأتي من روتين قصير ثابت.",
-  "descEn": "Sheglam So Lippy Lip Liner by SHEGLAM. Tint or shine by formula. Suits all lip tones. Quiet beauty loves a short, steady routine.",
-  "useAr": "١) شفاه نظيفة.\n٢) من الوسط للخارج.\n٣) لمسة خلال اليوم.\n٤) ليلاً أغنى إن كان مرطباً.",
-  "useEn": "1) Clean lips.\n2) Center to outer edge.\n3) Touch up through the day.\n4) Richer layer at night if balm/mask.",
-  "skinAr": "كل درجات الشفاه",
-  "skinEn": "all lip tones",
+  "descAr": "محدد شفاه سو ليبي من شيجلام من SHEGLAM. لون ناعم ومريح.",
+  "descEn": "Sheglam So Lippy Lip Liner by SHEGLAM. Soft colour, comfortable wear.",
+  "useAr": "١) على شفاه نظيفة.\n٢) أعدِي عند الحاجة.",
+  "useEn": "1) On clean lips.\n2) Reapply as needed.",
+  "skinAr": "لكل درجات الشفاه.",
+  "skinEn": "All lip tones.",
   "stock": 3
-},
-{
+});
+A.push({
   "id": 159,
   "brand": "SHEGLAM",
   "cat": "وجه",
@@ -476,15 +476,15 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "بلاشر ثلاثي سويت تشيكس من شيجلام - سانسيت كروز",
   "nameEn": "Sheglam Sweet Cheeks Blush Trio-SunSet Cruise",
-  "descAr": "SHEGLAM × عناية يومية: بلاشر ثلاثي سويت تشيكس من شيجلام. يُركّز على راحة الاستخدام. الملمس: يبني التغطية بهدوء. مكياج يومي هادئ. خزّنيها في مكان معتدل وأغلقي الغطاء.",
-  "descEn": "SHEGLAM for daily care: Sheglam Sweet Cheeks Blush Trio. Comfort-first use. Feel: builds coverage quietly. Combo to dry. Give it two steady weeks before you decide.",
-  "useAr": "١) بشرة مرطّبة (+ SPF نهاراً).\n٢) كمية قليلة ووزّعي.\n٣) غطّي بطبقات خفيفة.\n٤) ثبّتي عند الحاجة.",
-  "useEn": "1) Moisturized skin (+ SPF by day).\n2) Start small and blend.\n3) Build in thin layers.\n4) Set for longer wear.",
-  "skinAr": "مكياج يومي هادئ",
-  "skinEn": "combo to dry",
+  "descAr": "بلاشر ثلاثي سويت تشيكس من شيجلام من SHEGLAM. تغطية خفيفة لمظهر طبيعي.",
+  "descEn": "Sheglam Sweet Cheeks Blush Trio by SHEGLAM. Light coverage, natural finish.",
+  "useAr": "١) بعد العناية.\n٢) وزّعي برفق.",
+  "useEn": "1) After skincare.\n2) Blend lightly.",
+  "skinAr": "لكل درجات البشرة — اختاري الدرجة المناسبة.",
+  "skinEn": "All skin tones — pick your shade.",
   "stock": 3
-},
-{
+});
+A.push({
   "id": 160,
   "brand": "SHEGLAM",
   "cat": "وجه",
@@ -496,15 +496,15 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "باليت بلاشر فلورال فلاش من شيجلام",
   "nameEn": "Sheglam Floral Flush Blush Palette",
-  "descAr": "لمسة SHEGLAM في باليت بلاشر فلورال فلاش من شيجلام: يندمج ولا يرسم قناعاً. صيغة مباشرة تُحترم مع الوقت. يناسب اختبري التطابق على الفك. أي لسع مستمر؟ خفّفي أو راجعي مختصاً.",
-  "descEn": "SHEGLAM's touch in Sheglam Floral Flush Blush Palette: blends instead of masking. A direct formula that earns trust over time. Fits quiet everyday makeup. Quiet beauty loves a short, steady routine.",
-  "useAr": "١) بشرة مرطّبة (+ SPF نهاراً).\n٢) كمية قليلة ووزّعي.\n٣) غطّي بطبقات خفيفة.\n٤) ثبّتي عند الحاجة.",
-  "useEn": "1) Moisturized skin (+ SPF by day).\n2) Start small and blend.\n3) Build in thin layers.\n4) Set for longer wear.",
-  "skinAr": "اختبري التطابق على الفك",
-  "skinEn": "quiet everyday makeup",
+  "descAr": "باليت بلاشر فلورال فلاش من شيجلام من SHEGLAM. تغطية خفيفة لمظهر طبيعي.",
+  "descEn": "Sheglam Floral Flush Blush Palette by SHEGLAM. Light coverage, natural finish.",
+  "useAr": "١) بعد العناية.\n٢) وزّعي برفق.",
+  "useEn": "1) After skincare.\n2) Blend lightly.",
+  "skinAr": "لكل درجات البشرة — اختاري الدرجة المناسبة.",
+  "skinEn": "All skin tones — pick your shade.",
   "stock": 3
-},
-{
+});
+A.push({
   "id": 176,
   "brand": "SHEGLAM",
   "cat": "شعر",
@@ -516,15 +516,15 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "سيروم شعر 24كيه جلو عالي اللمعان من شيجلام - 50مل",
   "nameEn": "Sheglam Hair 24K Glow High Shine Styling Serum - 50ml",
-  "descAr": "سيروم شعر 24كيه جلو عالي اللمعان من شيجلام. قصة قصيرة: تنظيف/عناية/حماية حسب نوعه، وSHEGLAM هنا لتسهيل اليوم. يفهم الفروة والأطراف. الحجم ≈ 50 مل. حسب الشعر والفروة. أي لسع مستمر؟ خفّفي أو راجعي مختصاً.",
-  "descEn": "Sheglam Hair 24K Glow High Shine Styling Serum. Short story: cleanse, treat, or protect as labeled — SHEGLAM keeps the day simple. Respects scalp and lengths. Size ≈ 50 ml. Match hair and scalp. Keep it cool-ish and cap it tight.",
-  "useAr": "١) شامبو للفروة، بلسم للأطراف، سيروم حسب العبوة.\n٢) ابدئي بقليل.\n٣) لا تُشبعي الخصل.\n٤) أسبوعان–ثلاثة للفرق الأوضح.",
-  "useEn": "1) Shampoo scalp, condition lengths, leave-in as labeled.\n2) Start small.\n3) Don’t drench the hair.\n4) Two–three weeks for a clearer change.",
-  "skinAr": "حسب الشعر والفروة",
-  "skinEn": "match hair and scalp",
+  "descAr": "سيروم شعر 24كيه جلو عالي اللمعان من شيجلام من SHEGLAM. عناية بسيطة للشعر. 50 مل.",
+  "descEn": "Sheglam Hair 24K Glow High Shine Styling Serum by SHEGLAM. Simple daily hair care. 50 ml.",
+  "useAr": "١) على شعر رطب أو جاف حسب النوع.\n٢) لا تُغرقي الكمية.",
+  "useEn": "1) Damp or dry as directed.\n2) A little goes far.",
+  "skinAr": "حسب نوع الشعر والفروة.",
+  "skinEn": "Depends on hair and scalp.",
   "stock": 3
-},
-{
+});
+A.push({
   "id": 197,
   "brand": "SHEGLAM",
   "cat": "وجه",
@@ -536,12 +536,12 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "بلاشر كولور بلوم السائل من شيجلام - ديفوتد",
   "nameEn": "Sheglam Color Bloom Liquid Blusher - Devoted",
-  "descAr": "لمسة SHEGLAM في بلاشر كولور بلوم السائل من شيجلام: لمسة نهائية حسب اختيارك. صيغة مباشرة تُحترم مع الوقت. يناسب مختلطة إلى جافة. خزّنيها في مكان معتدل وأغلقي الغطاء.",
-  "descEn": "SHEGLAM's touch in Sheglam Color Bloom Liquid Blusher: finish is yours to choose. A direct formula that earns trust over time. Fits combo to dry. Keep it cool-ish and cap it tight.",
-  "useAr": "١) بشرة مرطّبة (+ SPF نهاراً).\n٢) كمية قليلة ووزّعي.\n٣) غطّي بطبقات خفيفة.\n٤) ثبّتي عند الحاجة.",
-  "useEn": "1) Moisturized skin (+ SPF by day).\n2) Start small and blend.\n3) Build in thin layers.\n4) Set for longer wear.",
-  "skinAr": "مختلطة إلى جافة",
-  "skinEn": "combo to dry",
+  "descAr": "بلاشر كولور بلوم السائل من شيجلام من SHEGLAM. تغطية خفيفة لمظهر طبيعي.",
+  "descEn": "Sheglam Color Bloom Liquid Blusher by SHEGLAM. Light coverage, natural finish.",
+  "useAr": "١) بعد العناية.\n٢) وزّعي برفق.",
+  "useEn": "1) After skincare.\n2) Blend lightly.",
+  "skinAr": "لكل درجات البشرة — اختاري الدرجة المناسبة.",
+  "skinEn": "All skin tones — pick your shade.",
   "stock": 3
-}
-);
+});
+})();

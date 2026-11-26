@@ -1,7 +1,7 @@
-/* Brand: Vaseline · 1 products · imgs auto-wired 2026-11-25 */
-window.NAQA_PRODUCTS = window.NAQA_PRODUCTS || [];
-window.NAQA_PRODUCTS.push(
-{
+// vaseline.js — short Apple-like copy
+(function(){
+var A = window.NAQA_PRODUCTS || (window.NAQA_PRODUCTS = []);
+A.push({
   "id": 124,
   "brand": "Vaseline",
   "cat": "شفاه",
@@ -15,12 +15,12 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "فازلين مرطب الشفاه الأصلي - 20ج",
   "nameEn": "Vaseline Lip Therapy Original - 20g",
-  "descAr": "لمسة Vaseline في فازلين مرطب الشفاه الأصلي: مريح للحديث والقهوة. صيغة مباشرة تُحترم مع الوقت. الحجم ≈ 20 ج. يناسب الشفاه الجافة. انتظمي أسبوعين قبل الحكم النهائي.",
-  "descEn": "Vaseline's touch in Vaseline Lip Therapy Original: tint or shine by formula. A direct formula that earns trust over time. Size ≈ 20 g. Fits dry lips. Ongoing sting? Ease off or ask a pro.",
-  "useAr": "١) شفاه نظيفة.\n٢) من الوسط للخارج.\n٣) لمسة خلال اليوم.\n٤) ليلاً أغنى إن كان مرطباً.",
-  "useEn": "1) Clean lips.\n2) Center to outer edge.\n3) Touch up through the day.\n4) Richer layer at night if balm/mask.",
-  "skinAr": "الشفاه الجافة",
-  "skinEn": "dry lips",
+  "descAr": "فازلين مرطب الشفاه الأصلي من Vaseline. لون ناعم ومريح. 20 ج.",
+  "descEn": "Vaseline Lip Therapy Original by Vaseline. Soft colour, comfortable wear. 20 g.",
+  "useAr": "١) على شفاه نظيفة.\n٢) أعدِي عند الحاجة.",
+  "useEn": "1) On clean lips.\n2) Reapply as needed.",
+  "skinAr": "لكل درجات الشفاه.",
+  "skinEn": "All lip tones.",
   "stock": 3
-}
-);
+});
+})();

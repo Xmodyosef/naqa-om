@@ -1,7 +1,7 @@
-/* Brand: Dr.Melaxin · 1 products · edit AR/EN fields here */
-window.NAQA_PRODUCTS = window.NAQA_PRODUCTS || [];
-window.NAQA_PRODUCTS.push(
-{
+// dr-melaxin.js — short Apple-like copy
+(function(){
+var A = window.NAQA_PRODUCTS || (window.NAQA_PRODUCTS = []);
+A.push({
   "id": 191,
   "brand": "Dr.Melaxin",
   "cat": "عناية",
@@ -13,12 +13,12 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "أمبول دكتور ميلاكسين برايت رايس للتقشير والتوهج - 80مل",
   "nameEn": "Dr.Melaxin Peel Shot Glow White Rice Ampoule - 80ml",
-  "descAr": "لمسة Dr.Melaxin في أمبول دكتور ميلاكسين برايت رايس للتقشير والتوهج: تركيز في قطرات. صيغة مباشرة تُحترم مع الوقت. الحجم ≈ 80 مل. يناسب غالباً ليلاً. خزّنيها في مكان معتدل وأغلقي الغطاء.",
-  "descEn": "Dr.Melaxin's touch in Dr.Melaxin Peel Shot Glow White Rice Ampoule: always seal with cream. A direct formula that earns trust over time. Size ≈ 80 ml. Fits often at night. Keep it cool-ish and cap it tight.",
-  "useAr": "١) مساءً غالباً.\n٢) قطرات قليلة بالضغط.\n٣) كريم فوقها.\n٤) أول أسبوع: يوم بعد يوم.",
-  "useEn": "1) Often at night.\n2) Few drops, pressed in.\n3) Cream to seal.\n4) Week one: every other night.",
-  "skinAr": "غالباً ليلاً",
-  "skinEn": "often at night",
+  "descAr": "أمبول دكتور ميلاكسين برايت رايس للتقشير وا من Dr.Melaxin. عناية واضحة وهادئة. 80 مل.",
+  "descEn": "Dr.Melaxin Peel Shot Glow White Rice Ampoule by Dr.Melaxin. Clear, quiet care. 80 ml.",
+  "useAr": "١) ضمن روتينك اليومي.\n٢) كمية قليلة تكفي.",
+  "useEn": "1) In your daily routine.\n2) Small amount is enough.",
+  "skinAr": "حسب نوع البشرة.",
+  "skinEn": "Match to your skin type.",
   "stock": 3
-}
-);
+});
+})();

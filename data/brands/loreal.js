@@ -1,7 +1,7 @@
-/* Brand: L'oréal · 12 products · imgs auto-wired 2026-11-25 */
-window.NAQA_PRODUCTS = window.NAQA_PRODUCTS || [];
-window.NAQA_PRODUCTS.push(
-{
+// loreal.js — short Apple-like copy
+(function(){
+var A = window.NAQA_PRODUCTS || (window.NAQA_PRODUCTS = []);
+A.push({
   "id": 80,
   "brand": "L'oréal",
   "cat": "وجه",
@@ -13,15 +13,15 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "رذاذ تثبيت المكياج إنفاليبل من لوريال باريس حتى 36ساعة - 75مل",
   "nameEn": "L'Oréal Paris Infallible Setting Spray 36H - 75ml",
-  "descAr": "لماذا L'oréal هنا؟ لأن رذاذ تثبيت المكياج إنفاليبل من لوريال باريس حتى 36س… يقدّم خطوة واحدة واضحة: لمسة نهائية حسب اختيارك. بدون ضجيج وعود طويلة. الحجم ≈ 75 مل. لـمختلطة إلى جافة. خزّنيها في مكان معتدل وأغلقي الغطاء.",
-  "descEn": "Why L'oréal? Because L'Oréal Paris Infallible Setting Spray 36H does one clear job: blends instead of masking. No long promise list. Size ≈ 75 ml. For swatch along the jaw. Keep it cool-ish and cap it tight.",
-  "useAr": "١) بشرة مرطّبة (+ SPF نهاراً).\n٢) كمية قليلة ووزّعي.\n٣) غطّي بطبقات خفيفة.\n٤) ثبّتي عند الحاجة.",
-  "useEn": "1) Moisturized skin (+ SPF by day).\n2) Start small and blend.\n3) Build in thin layers.\n4) Set for longer wear.",
-  "skinAr": "مختلطة إلى جافة",
-  "skinEn": "swatch along the jaw",
+  "descAr": "رذاذ تثبيت المكياج إنفاليبل من لوريال باري من L'oréal. تغطية خفيفة لمظهر طبيعي. 75 مل.",
+  "descEn": "L'Oréal Paris Infallible Setting Spray 36H by L'oréal. Light coverage, natural finish. 75 ml.",
+  "useAr": "١) بعد العناية.\n٢) وزّعي برفق.",
+  "useEn": "1) After skincare.\n2) Blend lightly.",
+  "skinAr": "لكل درجات البشرة — اختاري الدرجة المناسبة.",
+  "skinEn": "All skin tones — pick your shade.",
   "stock": 3
-},
-{
+});
+A.push({
   "id": 317,
   "brand": "L'oréal",
   "cat": "شعر",
@@ -33,16 +33,16 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "لوريال شامبو إلسيف هيالورونيك",
   "nameEn": "L'Oréal Elvive Hyaluron Plump Shampoo",
-  "descAr": "لوريال شامبو إلسيف هيالورونيك — منتج أصلي ضمن كتالوج نقاء المتنوع.",
-  "descEn": "L'Oréal Elvive Hyaluron Plump Shampoo — authentic listing in Naqa’s curated catalog.",
-  "useAr": "١) شامبو للفروة وبلسم للأطوال.\n٢) ابدئي بقليل.\n٣) لا تُشبعي الخصل.\n٤) انتظمي أسبوعين–ثلاثة.",
-  "useEn": "1) Shampoo scalp, condition lengths.\n2) Start small.\n3) Don’t drench hair.\n4) Two–three weeks for clearer change.",
-  "skinAr": "كل أنواع الشعر",
-  "skinEn": "all hair types",
+  "descAr": "لوريال شامبو إلسيف هيالورونيك من L'oréal. عناية بسيطة للشعر.",
+  "descEn": "L'Oréal Elvive Hyaluron Plump Shampoo by L'oréal. Simple daily hair care.",
+  "useAr": "١) على شعر رطب أو جاف حسب النوع.\n٢) لا تُغرقي الكمية.",
+  "useEn": "1) Damp or dry as directed.\n2) A little goes far.",
+  "skinAr": "حسب نوع الشعر والفروة.",
+  "skinEn": "Depends on hair and scalp.",
   "stock": 3,
   "hot": true
-},
-{
+});
+A.push({
   "id": 318,
   "brand": "L'oréal",
   "cat": "شعر",
@@ -54,16 +54,16 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "لوريال بلسم إلسيف هيالورونيك",
   "nameEn": "L'Oréal Elvive Hyaluron Plump Conditioner",
-  "descAr": "لوريال بلسم إلسيف هيالورونيك — منتج أصلي ضمن كتالوج نقاء المتنوع.",
-  "descEn": "L'Oréal Elvive Hyaluron Plump Conditioner — authentic listing in Naqa’s curated catalog.",
-  "useAr": "١) شامبو للفروة وبلسم للأطوال.\n٢) ابدئي بقليل.\n٣) لا تُشبعي الخصل.\n٤) انتظمي أسبوعين–ثلاثة.",
-  "useEn": "1) Shampoo scalp, condition lengths.\n2) Start small.\n3) Don’t drench hair.\n4) Two–three weeks for clearer change.",
-  "skinAr": "كل أنواع الشعر",
-  "skinEn": "all hair types",
+  "descAr": "لوريال بلسم إلسيف هيالورونيك من L'oréal. عناية بسيطة للشعر.",
+  "descEn": "L'Oréal Elvive Hyaluron Plump Conditioner by L'oréal. Simple daily hair care.",
+  "useAr": "١) على شعر رطب أو جاف حسب النوع.\n٢) لا تُغرقي الكمية.",
+  "useEn": "1) Damp or dry as directed.\n2) A little goes far.",
+  "skinAr": "حسب نوع الشعر والفروة.",
+  "skinEn": "Depends on hair and scalp.",
   "stock": 3,
   "hot": true
-},
-{
+});
+A.push({
   "id": 319,
   "brand": "L'oréal",
   "cat": "شعر",
@@ -75,15 +75,15 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "لوريال ماسك إلسيف هيالورونيك",
   "nameEn": "L'Oréal Elvive Hyaluron Plump Mask",
-  "descAr": "لوريال ماسك إلسيف هيالورونيك — منتج أصلي ضمن كتالوج نقاء المتنوع.",
-  "descEn": "L'Oréal Elvive Hyaluron Plump Mask — authentic listing in Naqa’s curated catalog.",
-  "useAr": "١) شامبو للفروة وبلسم للأطوال.\n٢) ابدئي بقليل.\n٣) لا تُشبعي الخصل.\n٤) انتظمي أسبوعين–ثلاثة.",
-  "useEn": "1) Shampoo scalp, condition lengths.\n2) Start small.\n3) Don’t drench hair.\n4) Two–three weeks for clearer change.",
-  "skinAr": "كل أنواع الشعر",
-  "skinEn": "all hair types",
+  "descAr": "لوريال ماسك إلسيف هيالورونيك من L'oréal. عناية بسيطة للشعر.",
+  "descEn": "L'Oréal Elvive Hyaluron Plump Mask by L'oréal. Simple daily hair care.",
+  "useAr": "١) على شعر رطب أو جاف حسب النوع.\n٢) لا تُغرقي الكمية.",
+  "useEn": "1) Damp or dry as directed.\n2) A little goes far.",
+  "skinAr": "حسب نوع الشعر والفروة.",
+  "skinEn": "Depends on hair and scalp.",
   "stock": 3
-},
-{
+});
+A.push({
   "id": 320,
   "brand": "L'oréal",
   "cat": "شعر",
@@ -95,15 +95,15 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "لوريال شامبو دريم لونج",
   "nameEn": "L'Oréal Elvive Dream Lengths Shampoo",
-  "descAr": "لوريال شامبو دريم لونج — منتج أصلي ضمن كتالوج نقاء المتنوع.",
-  "descEn": "L'Oréal Elvive Dream Lengths Shampoo — authentic listing in Naqa’s curated catalog.",
-  "useAr": "١) شامبو للفروة وبلسم للأطوال.\n٢) ابدئي بقليل.\n٣) لا تُشبعي الخصل.\n٤) انتظمي أسبوعين–ثلاثة.",
-  "useEn": "1) Shampoo scalp, condition lengths.\n2) Start small.\n3) Don’t drench hair.\n4) Two–three weeks for clearer change.",
-  "skinAr": "كل أنواع الشعر",
-  "skinEn": "all hair types",
+  "descAr": "لوريال شامبو دريم لونج من L'oréal. عناية بسيطة للشعر.",
+  "descEn": "L'Oréal Elvive Dream Lengths Shampoo by L'oréal. Simple daily hair care.",
+  "useAr": "١) على شعر رطب أو جاف حسب النوع.\n٢) لا تُغرقي الكمية.",
+  "useEn": "1) Damp or dry as directed.\n2) A little goes far.",
+  "skinAr": "حسب نوع الشعر والفروة.",
+  "skinEn": "Depends on hair and scalp.",
   "stock": 3
-},
-{
+});
+A.push({
   "id": 321,
   "brand": "L'oréal",
   "cat": "شعر",
@@ -115,15 +115,15 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "لوريال بلسم دريم لونج",
   "nameEn": "L'Oréal Elvive Dream Lengths Conditioner",
-  "descAr": "لوريال بلسم دريم لونج — منتج أصلي ضمن كتالوج نقاء المتنوع.",
-  "descEn": "L'Oréal Elvive Dream Lengths Conditioner — authentic listing in Naqa’s curated catalog.",
-  "useAr": "١) شامبو للفروة وبلسم للأطوال.\n٢) ابدئي بقليل.\n٣) لا تُشبعي الخصل.\n٤) انتظمي أسبوعين–ثلاثة.",
-  "useEn": "1) Shampoo scalp, condition lengths.\n2) Start small.\n3) Don’t drench hair.\n4) Two–three weeks for clearer change.",
-  "skinAr": "كل أنواع الشعر",
-  "skinEn": "all hair types",
+  "descAr": "لوريال بلسم دريم لونج من L'oréal. عناية بسيطة للشعر.",
+  "descEn": "L'Oréal Elvive Dream Lengths Conditioner by L'oréal. Simple daily hair care.",
+  "useAr": "١) على شعر رطب أو جاف حسب النوع.\n٢) لا تُغرقي الكمية.",
+  "useEn": "1) Damp or dry as directed.\n2) A little goes far.",
+  "skinAr": "حسب نوع الشعر والفروة.",
+  "skinEn": "Depends on hair and scalp.",
   "stock": 3
-},
-{
+});
+A.push({
   "id": 322,
   "brand": "L'oréal",
   "cat": "شعر",
@@ -135,16 +135,16 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "لوريال ليف إن دريم لونج",
   "nameEn": "L'Oréal Elvive Dream Lengths Leave-In",
-  "descAr": "لوريال ليف إن دريم لونج — منتج أصلي ضمن كتالوج نقاء المتنوع.",
-  "descEn": "L'Oréal Elvive Dream Lengths Leave-In — authentic listing in Naqa’s curated catalog.",
-  "useAr": "١) شامبو للفروة وبلسم للأطوال.\n٢) ابدئي بقليل.\n٣) لا تُشبعي الخصل.\n٤) انتظمي أسبوعين–ثلاثة.",
-  "useEn": "1) Shampoo scalp, condition lengths.\n2) Start small.\n3) Don’t drench hair.\n4) Two–three weeks for clearer change.",
-  "skinAr": "كل أنواع الشعر",
-  "skinEn": "all hair types",
+  "descAr": "لوريال ليف إن دريم لونج من L'oréal. عناية بسيطة للشعر.",
+  "descEn": "L'Oréal Elvive Dream Lengths Leave by L'oréal. Simple daily hair care.",
+  "useAr": "١) على شعر رطب أو جاف حسب النوع.\n٢) لا تُغرقي الكمية.",
+  "useEn": "1) Damp or dry as directed.\n2) A little goes far.",
+  "skinAr": "حسب نوع الشعر والفروة.",
+  "skinEn": "Depends on hair and scalp.",
   "stock": 3,
   "hot": true
-},
-{
+});
+A.push({
   "id": 323,
   "brand": "L'oréal",
   "cat": "شعر",
@@ -156,16 +156,16 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "لوريال زيت إلسيف إكستراأورديناري",
   "nameEn": "L'Oréal Elvive Extraordinary Oil",
-  "descAr": "لوريال زيت إلسيف إكستراأورديناري — منتج أصلي ضمن كتالوج نقاء المتنوع.",
-  "descEn": "L'Oréal Elvive Extraordinary Oil — authentic listing in Naqa’s curated catalog.",
-  "useAr": "١) شامبو للفروة وبلسم للأطوال.\n٢) ابدئي بقليل.\n٣) لا تُشبعي الخصل.\n٤) انتظمي أسبوعين–ثلاثة.",
-  "useEn": "1) Shampoo scalp, condition lengths.\n2) Start small.\n3) Don’t drench hair.\n4) Two–three weeks for clearer change.",
-  "skinAr": "كل أنواع الشعر",
-  "skinEn": "all hair types",
+  "descAr": "لوريال زيت إلسيف إكستراأورديناري من L'oréal. عناية بسيطة للشعر.",
+  "descEn": "L'Oréal Elvive Extraordinary Oil by L'oréal. Simple daily hair care.",
+  "useAr": "١) على شعر رطب أو جاف حسب النوع.\n٢) لا تُغرقي الكمية.",
+  "useEn": "1) Damp or dry as directed.\n2) A little goes far.",
+  "skinAr": "حسب نوع الشعر والفروة.",
+  "skinEn": "Depends on hair and scalp.",
   "stock": 3,
   "hot": true
-},
-{
+});
+A.push({
   "id": 324,
   "brand": "L'oréal",
   "cat": "شعر",
@@ -177,15 +177,15 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "لوريال بخاخ حماية حرارية",
   "nameEn": "L'Oréal Elvive Heat Protect Spray",
-  "descAr": "لوريال بخاخ حماية حرارية — منتج أصلي ضمن كتالوج نقاء المتنوع.",
-  "descEn": "L'Oréal Elvive Heat Protect Spray — authentic listing in Naqa’s curated catalog.",
-  "useAr": "١) شامبو للفروة وبلسم للأطوال.\n٢) ابدئي بقليل.\n٣) لا تُشبعي الخصل.\n٤) انتظمي أسبوعين–ثلاثة.",
-  "useEn": "1) Shampoo scalp, condition lengths.\n2) Start small.\n3) Don’t drench hair.\n4) Two–three weeks for clearer change.",
-  "skinAr": "كل أنواع الشعر",
-  "skinEn": "all hair types",
+  "descAr": "لوريال بخاخ حماية حرارية من L'oréal. عناية بسيطة للشعر.",
+  "descEn": "L'Oréal Elvive Heat Protect Spray by L'oréal. Simple daily hair care.",
+  "useAr": "١) على شعر رطب أو جاف حسب النوع.\n٢) لا تُغرقي الكمية.",
+  "useEn": "1) Damp or dry as directed.\n2) A little goes far.",
+  "skinAr": "حسب نوع الشعر والفروة.",
+  "skinEn": "Depends on hair and scalp.",
   "stock": 3
-},
-{
+});
+A.push({
   "id": 325,
   "brand": "L'oréal",
   "cat": "وجه",
@@ -197,16 +197,16 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "لوريال فاونديشن ترو ماتش",
   "nameEn": "L'Oréal True Match Foundation",
-  "descAr": "لوريال فاونديشن ترو ماتش — منتج أصلي ضمن كتالوج نقاء المتنوع.",
-  "descEn": "L'Oréal True Match Foundation — authentic listing in Naqa’s curated catalog.",
-  "useAr": "١) بشرة نظيفة ومرطّبة.\n٢) كمية قليلة ووزّعي جيداً.\n٣) ابنِي التغطية بطبقات.\n٤) ثبّتي عند الحاجة.",
-  "useEn": "1) Clean moisturized skin.\n2) Apply a little and blend.\n3) Build in thin layers.\n4) Set if needed.",
-  "skinAr": "كل أنواع البشرة",
-  "skinEn": "all skin types",
+  "descAr": "لوريال فاونديشن ترو ماتش من L'oréal. تغطية خفيفة لمظهر طبيعي.",
+  "descEn": "L'Oréal True Match Foundation by L'oréal. Light coverage, natural finish.",
+  "useAr": "١) بعد العناية.\n٢) وزّعي برفق.",
+  "useEn": "1) After skincare.\n2) Blend lightly.",
+  "skinAr": "لكل درجات البشرة — اختاري الدرجة المناسبة.",
+  "skinEn": "All skin tones — pick your shade.",
   "stock": 3,
   "hot": true
-},
-{
+});
+A.push({
   "id": 326,
   "brand": "L'oréal",
   "cat": "وجه",
@@ -218,15 +218,15 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "لوريال كونسيلر ترو ماتش",
   "nameEn": "L'Oréal True Match Concealer",
-  "descAr": "لوريال كونسيلر ترو ماتش — منتج أصلي ضمن كتالوج نقاء المتنوع.",
-  "descEn": "L'Oréal True Match Concealer — authentic listing in Naqa’s curated catalog.",
-  "useAr": "١) بشرة نظيفة ومرطّبة.\n٢) كمية قليلة ووزّعي جيداً.\n٣) ابنِي التغطية بطبقات.\n٤) ثبّتي عند الحاجة.",
-  "useEn": "1) Clean moisturized skin.\n2) Apply a little and blend.\n3) Build in thin layers.\n4) Set if needed.",
-  "skinAr": "كل أنواع البشرة",
-  "skinEn": "all skin types",
+  "descAr": "لوريال كونسيلر ترو ماتش من L'oréal. تغطية خفيفة لمظهر طبيعي.",
+  "descEn": "L'Oréal True Match Concealer by L'oréal. Light coverage, natural finish.",
+  "useAr": "١) بعد العناية.\n٢) وزّعي برفق.",
+  "useEn": "1) After skincare.\n2) Blend lightly.",
+  "skinAr": "لكل درجات البشرة — اختاري الدرجة المناسبة.",
+  "skinEn": "All skin tones — pick your shade.",
   "stock": 3
-},
-{
+});
+A.push({
   "id": 327,
   "brand": "L'oréal",
   "cat": "عيون",
@@ -238,13 +238,13 @@ window.NAQA_PRODUCTS.push(
   ],
   "nameAr": "لوريال ماسكارا لاش باراديس",
   "nameEn": "L'Oréal Voluminous Lash Paradise Mascara",
-  "descAr": "لوريال ماسكارا لاش باراديس — منتج أصلي ضمن كتالوج نقاء المتنوع.",
-  "descEn": "L'Oréal Voluminous Lash Paradise Mascara — authentic listing in Naqa’s curated catalog.",
-  "useAr": "١) من الجذر للطرف بتعرج خفيف.\n٢) طبقة ثانية بعد الجفاف.\n٣) مزيل لطيف مساءً.\n٤) لا تشاركي الفرشاة.",
-  "useEn": "1) Root to tip, soft zigzag.\n2) Second coat after set.\n3) Gentle remover at night.\n4) Never share the wand.",
-  "skinAr": "كل العيون",
-  "skinEn": "all eyes",
+  "descAr": "لوريال ماسكارا لاش باراديس من L'oréal. تحديد واضح دون ثقل.",
+  "descEn": "L'Oréal Voluminous Lash Paradise Mascara by L'oréal. Clean definition, no heaviness.",
+  "useAr": "١) من الجذور للأطراف.\n٢) طبقة واحدة كافية.",
+  "useEn": "1) Roots to tips.\n2) One coat is enough.",
+  "skinAr": "لكل الرموش. اختبري إن كانت العيون حسّاسة.",
+  "skinEn": "All lash types. Patch-test if sensitive.",
   "stock": 3,
   "hot": true
-}
-);
+});
+})();

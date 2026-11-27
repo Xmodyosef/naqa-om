@@ -3,6 +3,7 @@
 متجر عناية ومكياج ثابت على GitHub Pages. الطلب عبر واتساب.
 
 **الحي على الإنتاج:** [docs/LIVE.md](docs/LIVE.md)  
+**طلب الفحص:** [docs/AUDIT-BRIEF.md](docs/AUDIT-BRIEF.md)  
 **قواعد الوكلاء:** [AGENTS.md](AGENTS.md) · [docs/ENGINEERING-RULES.md](docs/ENGINEERING-RULES.md) · [docs/DESIGN-LOCK.md](docs/DESIGN-LOCK.md)
 
 ## روابط

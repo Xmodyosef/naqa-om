@@ -1,4 +1,4 @@
-/* Naqa hero v2: product-led campaign slides with reliable native swipe. */
+/* Naqa hero v2: product-led slides. Same markup as catalogs.js first paint — no FOUC re-render. */
 function heroSwipeHTML() {
   var en = typeof lang !== "undefined" && lang === "en";
   var catalogs = ["hot", "eoy", "korean", "u10", "sheglam"];
@@ -152,10 +152,11 @@ function bindHeroSwipe() {
 }
 
 (function installNaqaHero() {
+  /* Redefine on window for any stale callers; do NOT call renderHomeCatalogs again (flash). */
   function install() {
-    if (typeof renderHomeCatalogs === "function" && document.getElementById("shelves")) {
-      renderHomeCatalogs();
-    }
+    try {
+      if (typeof bindHeroSwipe === "function") bindHeroSwipe();
+    } catch (e) {}
   }
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", install, { once: true });

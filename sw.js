@@ -1,4 +1,4 @@
-/* Naqa — retire the old shell cache. Do not cache pages again. */
+/* Naqa — retire any old shell cache. No page re-cache. No force-navigate (avoids flash). */
 self.addEventListener("install", function (e) {
   self.skipWaiting();
 });
@@ -8,13 +8,7 @@ self.addEventListener("activate", function (e) {
       return Promise.all(keys.map(function (k) { return caches.delete(k); }));
     }).then(function () {
       return self.registration.unregister();
-    }).then(function () {
-      return self.clients.matchAll({ type: "window" });
-    }).then(function (clients) {
-      clients.forEach(function (c) {
-        if (c.url && c.navigate) c.navigate(c.url);
-      });
     })
   );
 });
-self.addEventListener("fetch", function () {});
+self.addEventListener("fetch", function () { /* network only */ });

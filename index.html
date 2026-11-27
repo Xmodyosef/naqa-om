@@ -50,8 +50,8 @@
 <meta name="application-name" content="نقاء | Naqa" />
 
 <title>نقاء · عناية ومكياج | Naqa Oman</title>
-<link rel="preload" href="css/store.min.css?v=20261127c19" as="style" />
-<link rel="stylesheet" href="css/store.min.css?v=20261127c19" />
+<link rel="preload" href="css/store.min.css?v=20261127c20" as="style" />
+<link rel="stylesheet" href="css/store.min.css?v=20261127c20" />
 <style id="naqa-hero-v2">
 /* Physical LTR grid inside banner: packshots LEFT | Arabic title RIGHT */
 .hero-swipe{position:relative;width:100%;margin:10px auto 18px;overflow:hidden;border:1px solid var(--line,#efe4df);border-radius:24px;background:#f8e9ed;box-shadow:0 14px 34px rgba(50,30,25,.12)}
@@ -475,18 +475,38 @@ html.sku-boot #sheetCard{min-height:100vh;background:#fff}
 <script defer src="js/firebase-config.js?v=20261127b7"></script>
 <script defer src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
 <script defer src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
-<script defer src="js/cloud-overrides.js?v=20261127c10"></script>
+<script defer src="js/cloud-overrides.js?v=20261127c20"></script>
 <script defer src="js/store-cloud-boot.js?v=20261127b7"></script>
 
-<script defer src="js/store.min.js?v=20261127c19"></script>
-<script defer src="js/hero-swipe.js?v=20261127c19"></script>
+<script defer src="js/store.min.js?v=20261127c20"></script>
+<script defer src="js/hero-swipe.js?v=20261127c20"></script>
 
 <script>
-if ('serviceWorker' in navigator) {
+/* Kill leftover SW + Cache Storage once (old shell flash). */
+(function () {
+  if (!("serviceWorker" in navigator)) return;
+  var KEY = "naqa_sw_retire_v3";
+  try {
+    if (sessionStorage.getItem(KEY) === "1") {
+      navigator.serviceWorker.getRegistrations().then(function (list) {
+        list.forEach(function (r) { r.unregister(); });
+      }).catch(function () {});
+      return;
+    }
+    sessionStorage.setItem(KEY, "1");
+  } catch (e) {}
   navigator.serviceWorker.getRegistrations().then(function (list) {
-    list.forEach(function (r) { r.unregister(); });
+    return Promise.all(list.map(function (r) { return r.unregister(); }));
+  }).then(function () {
+    if (!("caches" in window)) return;
+    return caches.keys().then(function (keys) {
+      return Promise.all(keys.map(function (k) { return caches.delete(k); }));
+    });
+  }).then(function () {
+    /* Register retire SW once so activate clears any remaining Cache API entries */
+    return navigator.serviceWorker.register("sw.js?v=20261127c20").catch(function () {});
   }).catch(function () {});
-}
+})();
 </script>
 
 </body>

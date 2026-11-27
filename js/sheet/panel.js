@@ -192,7 +192,8 @@ async function openSheet(id, mode, reset){
       if(cur.indexOf("p/")!==0){
         window.__naqaShopHash = (location.hash && location.hash!=="#") ? location.hash : "#shop";
       }
-      if(cur!=="p/"+id) history.pushState({naqa:"product",id}, "", "#p/"+id);
+      var rkey=(typeof productRouteKey==="function")?productRouteKey(p):String(id);
+      if(cur!=="p/"+rkey && cur!=="p/"+id) history.pushState({naqa:"product",id:p.id,sku:p.sku||""}, "", "#p/"+rkey);
     }
   }catch(e){}
 }

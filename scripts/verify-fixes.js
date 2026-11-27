@@ -36,7 +36,7 @@ assert(fs.existsSync(path.join(root,"data/products.detail.json")), "detail json 
 const dry = read("js/features/wish-concerns.js").split('id:"dry"')[1].slice(0, 180);
 assert(!/moist|ترطيب/.test(dry), "dry quiz without moist/ترطيب");
 assert(read("css/store/base.css").includes("#8d3048"), "AA rose-deep");
-assert(fs.existsSync(path.join(root, "p/1/index.html")), "SEO product page");
+assert(fs.existsSync(path.join(root, "p")) && fs.readdirSync(path.join(root, "p")).length > 50, "SEO product pages dir");
 assert((read("sitemap.xml").match(/<loc>/g) || []).length >= 200, "sitemap >= 200");
 assert(read("js/admin/finance.js").includes("Asia/Muscat"), "finance Asia/Muscat");
 assert(/BANK_IBAN\s*=\s*""/.test(read("js/config.js")), "BANK_IBAN blank");
@@ -46,13 +46,15 @@ assert(!fs.existsSync(path.join(root, "CNAME")), "no CNAME until DNS ready");
 const min = read("js/store.min.js");
 assert(min.includes("order.html#"), "min bundle has bridge");
 assert(min.includes("siteBasePath"), "min has siteBasePath");
+assert(min.includes("productRouteKey") || min.includes("findProductByRoute"), "min routes by SKU/barcode");
+assert(read("js/core.js").includes("productRouteKey"), "core productRouteKey");
 assert(!min.includes('getItem("naqa_overrides")'), "min no ls overrides");
 
 function siteBasePath(pathname) {
   var p = pathname || "/";
   p = p.replace(/\/index\.html$/i, "/");
   p = p.replace(/\/(admin|order)\.html$/i, "/");
-  p = p.replace(/\/p\/[0-9]+\/?$/i, "/");
+  p = p.replace(/\/p\/[^/]+\/?$/i, "/");
   if (/\/[^/]+\.[a-zA-Z0-9]+$/.test(p)) p = p.replace(/\/[^/]+$/, "/");
   if (p.slice(-1) !== "/") p += "/";
   return p;

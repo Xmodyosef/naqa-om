@@ -30,7 +30,8 @@ for (const p of products) {
   const desc = String(p.descAr || p.descEn || name).replace(/\s+/g, " ").trim().slice(0, 280);
   const imgPath = (p.imgs && p.imgs[0]) || null;
   const img = imgPath ? base + "/" + String(imgPath).replace(/^\//, "") : base + "/media/icons/icon-512.png";
-  const url = base + "/p/" + p.id + "/";
+  const slug = String(p.sku || p.id).trim();
+  const url = base + "/p/" + encodeURIComponent(slug) + "/";
   const price = Number(p.price) || 0;
   const brand = p.brand || "Naqa";
   const ld = {
@@ -50,7 +51,7 @@ for (const p of products) {
       itemCondition: "https://schema.org/NewCondition"
     }
   };
-  const dir = path.join(outDir, String(p.id));
+  const dir = path.join(outDir, slug);
   fs.mkdirSync(dir, { recursive: true });
   const html =
     "<!DOCTYPE html>\n<html lang=\"ar\" dir=\"rtl\">\n<head>\n" +
@@ -85,7 +86,7 @@ for (const p of products) {
     "    <p class=\"meta\">" + esc(nameEn) + " · SKU " + esc(p.sku || "—") + "</p>\n" +
     "    <p class=\"price\">" + price.toFixed(3) + " ر.ع <span class=\"meta\">شامل الضريبة ٥٪</span></p>\n" +
     "    <p>" + esc(desc) + "</p>\n" +
-    "    <a class=\"btn\" href=\"" + base + "/#p/" + p.id + "\">افتحي في المتجر</a>\n" +
+    "    <a class=\"btn\" href=\"" + base + "/#p/" + encodeURIComponent(slug) + "\">افتحي في المتجر</a>\n" +
     "  </div>\n" +
     "  <p class=\"muted\">نقاء · عناية ومكياج · توصيل داخل عُمان · طلب واتساب</p>\n" +
     "</div>\n</body>\n</html>\n";

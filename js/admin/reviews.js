@@ -185,8 +185,10 @@
       return String((en ? (p.nameEn || p.nameAr) : (p.nameAr || p.nameEn)) || p.brand || p.sku || "");
     }
     function storeProductHref(p) {
-      if (!p || p.id == null) return "";
-      return "index.html#p/" + encodeURIComponent(String(p.id));
+      if (!p) return "";
+      var key = String(p.sku || "").trim() || String(p.id || "");
+      if (!key) return "";
+      return "index.html#p/" + encodeURIComponent(key);
     }
     function draw() {
       var q = A.reviewQuery || "";

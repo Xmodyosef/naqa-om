@@ -23,11 +23,38 @@ function brandMark(brand, opts){
   return '<button type="button" class="brand-link" data-brand="'+esc(brand)+'">'+mark+'<span>'+esc(brand)+'</span></button>';
 }
 function routeHash(){ return decodeURIComponent((location.hash||"").replace(/^#/,"")); }
+/** URL key for a product: barcode/SKU preferred, else numeric id (legacy). */
+function productRouteKey(p){
+  if(!p) return "";
+  var s=String(p.sku||"").trim();
+  if(s) return encodeURIComponent(s);
+  return String(p.id);
+}
+/** Resolve #p/<key> or /p/<key>/ — key is SKU/barcode, or legacy numeric id. */
+function findProductByRoute(key){
+  key=String(key==null?"":key).trim();
+  if(!key) return null;
+  try{ key=decodeURIComponent(key); }catch(e){}
+  key=String(key||"").trim();
+  if(!key) return null;
+  var list=(typeof products!=="undefined" && products)?products:[];
+  var hit=list.find(function(x){ return String(x.sku||"")===key; });
+  if(hit) return hit;
+  if(/^[0-9]+$/.test(key)){
+    var id=+key;
+    hit=list.find(function(x){ return Number(x.id)===id; });
+    if(hit) return hit;
+  }
+  var kl=key.toLowerCase();
+  return list.find(function(x){ return String(x.sku||"").toLowerCase()===kl; })||null;
+}
 function applyRoute(){
   const h=routeHash();
   if(h.indexOf("p/")===0){
-    const id=+h.slice(2);
-    if(products.some(x=>x.id===id)){
+    const key=h.slice(2);
+    const prod=findProductByRoute(key);
+    if(prod){
+      const id=prod.id;
       if(openProductId!==id || !$("#sheet").classList.contains("show")) openSheet(id,"full",true);
       return;
     }
@@ -131,7 +158,7 @@ function siteBasePath(){
   var path = location.pathname || "/";
   path = path.replace(/\/index\.html$/i, "/");
   path = path.replace(/\/(admin|order)\.html$/i, "/");
-  path = path.replace(/\/p\/[0-9]+\/?$/i, "/");
+  path = path.replace(/\/p\/[^/]+\/?$/i, "/");
   /* only strip a trailing FILE (has extension), not a directory segment */
   if (/\/[^/]+\.[a-zA-Z0-9]+$/.test(path)) {
     path = path.replace(/\/[^/]+$/, "/");
@@ -139,8 +166,24 @@ function siteBasePath(){
   if (path.slice(-1) !== "/") path += "/";
   return path;
 }
-function productLink(id){
-  return location.origin + siteBasePath() + "p/" + id + "/";
+function productLink(idOrProduct){
+  var p=null;
+  if(idOrProduct && typeof idOrProduct==="object") p=idOrProduct;
+  else if(idOrProduct!=null && idOrProduct!==""){
+    var id=idOrProduct;
+    p=(typeof products!=="undefined"?products:[]).find(function(x){ return Number(x.id)===Number(id) || String(x.id)===String(id); })||null;
+  }
+  var key=p ? productRouteKey(p) : encodeURIComponent(String(idOrProduct||""));
+  return location.origin + siteBasePath() + "p/" + key + "/";
+}
+function productHash(idOrProduct){
+  var p=null;
+  if(idOrProduct && typeof idOrProduct==="object") p=idOrProduct;
+  else if(idOrProduct!=null && idOrProduct!==""){
+    p=(typeof products!=="undefined"?products:[]).find(function(x){ return Number(x.id)===Number(idOrProduct) || String(x.id)===String(idOrProduct); })||null;
+  }
+  var key=p ? productRouteKey(p) : encodeURIComponent(String(idOrProduct||""));
+  return "#p/"+key;
 }
 
 function naqaNormImgPath(u){

@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Build static product pages for SEO: p/<id>/index.html + sitemap.xml
+ * Build static product pages for SEO: p/<sku|barcode>/index.html + sitemap.xml
  * Content is real product fields (not thin placeholders).
  */
 "use strict";
@@ -31,7 +31,8 @@ function pageFor(p) {
   const nameEn = p.nameEn || p.nameAr || "Product";
   const desc = (p.descAr || p.descEn || name).replace(/\s+/g, " ").trim().slice(0, 280);
   const img = (p.imgs && p.imgs[0]) ? (base + "/" + p.imgs[0].replace(/^\//, "")) : (base + "/media/icons/icon-512.png");
-  const url = base + "/p/" + p.id + "/";
+  const slug = String(p.sku || p.id).trim();
+  const url = base + "/p/" + encodeURIComponent(slug) + "/";
   const price = Number(p.price);
   const brand = p.brand || "Naqa";
   const fullDesc = String(p.descAr || p.descEn || name).replace(/\s+/g, " ").trim();
@@ -111,7 +112,7 @@ function pageFor(p) {
     <p>${esc(fullDesc)}</p>
     ${skin ? `<p class="meta"><strong>الأنسب لـ:</strong> ${esc(skin)}</p>` : ""}
     ${useTxt ? `<h2 style="font-size:1rem;margin:14px 0 6px">طريقة الاستخدام</h2><p style="white-space:pre-line">${esc(useTxt)}</p>` : ""}
-    <a class="btn" href="${esc(base)}/#p/${p.id}">افتحي في المتجر</a>
+    <a class="btn" href="${esc(base)}/#p/${encodeURIComponent(String(p.sku || p.id).trim())}">افتحي في المتجر</a>
   </div>
   <p class="muted">نقاء · عناية ومكياج أصلية · توصيل داخل عُمان · طلب واتساب · أسعار شاملة الضريبة ٥٪</p>
 </div>
@@ -121,23 +122,36 @@ function pageFor(p) {
 }
 
 if (fs.existsSync(outDir)) {
-  // clean old numbered dirs only
   for (const ent of fs.readdirSync(outDir)) {
     const full = path.join(outDir, ent);
-    if (/^\d+$/.test(ent) && fs.statSync(full).isDirectory()) {
-      fs.rmSync(full, { recursive: true, force: true });
-    }
+    try {
+      if (fs.statSync(full).isDirectory()) fs.rmSync(full, { recursive: true, force: true });
+    } catch (e) {}
   }
 } else {
   fs.mkdirSync(outDir, { recursive: true });
 }
 
+function productSlug(p) {
+  return String((p && p.sku) || (p && p.id) || "").trim();
+}
+
 const urls = [`${base}/`];
 for (const p of products) {
-  const dir = path.join(outDir, String(p.id));
+  const slug = productSlug(p);
+  if (!slug) continue;
+  const dir = path.join(outDir, slug);
   fs.mkdirSync(dir, { recursive: true });
   fs.writeFileSync(path.join(dir, "index.html"), pageFor(p), "utf8");
-  urls.push(`${base}/p/${p.id}/`);
+  urls.push(`${base}/p/${encodeURIComponent(slug)}/`);
+  // legacy redirect page by numeric id → barcode URL
+  if (p.id != null && String(p.id) !== slug) {
+    const leg = path.join(outDir, String(p.id));
+    fs.mkdirSync(leg, { recursive: true });
+    const dest = `${base}/p/${encodeURIComponent(slug)}/`;
+    const redir = `<!DOCTYPE html><html lang="ar" dir="rtl"><head><meta charset="UTF-8"/><meta http-equiv="refresh" content="0;url=${dest}"/><link rel="canonical" href="${dest}"/><title>…</title><script>location.replace(${JSON.stringify(dest)});</script></head><body><p><a href="${dest}">انتقال للمنتج</a></p></body></html>`;
+    fs.writeFileSync(path.join(leg, "index.html"), redir, "utf8");
+  }
 }
 
 const today = new Date().toISOString().slice(0, 10);

@@ -32,8 +32,7 @@ window.NAQA_PRODUCTS.push(
   "em": "✨",
   "imgs": [
     "media/products/p92_0.webp",
-    "media/products/p92_1.webp",
-    "media/products/p92_2.webp"
+    "media/products/p92_1.webp"
   ],
   "nameAr": "باتش أبيب بي دي آر إن والريتينال لإشراقة وتجديد منطقة العين – 60 قطعة",
   "nameEn": "Abib PDRN Collagen Retinal Eye Patch - 60pcs",

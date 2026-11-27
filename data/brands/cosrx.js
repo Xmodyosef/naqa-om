@@ -12,8 +12,7 @@ window.NAQA_PRODUCTS.push(
     "media/products/p67_0.webp",
     "media/products/p67_1.webp",
     "media/products/p67_2.webp",
-    "media/products/p67_3.webp",
-    "media/products/p67_4.webp"
+    "media/products/p67_3.webp"
   ],
   "nameAr": "لوشن كوسركس فائق الترطيب والخالي من الزيوت - 100مل",
   "nameEn": "Cosrx Oil Free Ultra Moisturizing Lotion",
@@ -34,9 +33,7 @@ window.NAQA_PRODUCTS.push(
   "em": "✨",
   "imgs": [
     "media/products/p93_0.webp",
-    "media/products/p93_1.webp",
-    "media/products/p93_2.webp",
-    "media/products/p93_3.webp"
+    "media/products/p93_1.webp"
   ],
   "nameAr": "قناع اسفل العين الهيدروجيل بالببتيد والكولاجين من كوسركس - 60 قطعة",
   "nameEn": "Cosrx The Peptide Collagen Hydrogel Eye Patch",

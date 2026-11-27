@@ -77,9 +77,7 @@ window.NAQA_PRODUCTS.push(
   "hot": true,
   "em": "✨",
   "imgs": [
-    "media/products/p74_0.webp",
-    "media/products/p74_1.webp",
-    "media/products/p74_2.webp"
+    "media/products/p74_0.webp"
   ],
   "nameAr": "فرشاة الخدود والهايلايتر ميشا آرتيستول 206",
   "nameEn": "Missha Artistool Cheek Highlighter Brush 206",

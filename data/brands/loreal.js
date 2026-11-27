@@ -11,8 +11,7 @@ window.NAQA_PRODUCTS.push(
   "imgs": [
     "media/products/p80_0.webp",
     "media/products/p80_1.webp",
-    "media/products/p80_2.webp",
-    "media/products/p80_3.webp"
+    "media/products/p80_2.webp"
   ],
   "nameAr": "رذاذ تثبيت المكياج إنفاليبل من لوريال باريس حتى 36ساعة - 75مل",
   "nameEn": "L'Oréal Paris Infallible Setting Spray 36H - 75ml",

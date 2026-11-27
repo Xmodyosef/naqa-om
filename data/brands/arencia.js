@@ -149,9 +149,7 @@ window.NAQA_PRODUCTS.push(
   "imgs": [
     "media/products/p95_0.webp",
     "media/products/p95_1.webp",
-    "media/products/p95_2.webp",
-    "media/products/p95_3.webp",
-    "media/products/p95_4.webp"
+    "media/products/p95_2.webp"
   ],
   "nameAr": "سيروم أرينسيا بي دي أر إن بوستر شوت - 30مل",
   "nameEn": "Arencia PDRN Booster Shot Serum - 30ml",

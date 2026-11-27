@@ -9,8 +9,7 @@ window.NAQA_PRODUCTS.push(
   "price": 3,
   "em": "✨",
   "imgs": [
-    "media/products/p78_0.webp",
-    "media/products/p78_1.webp"
+    "media/products/p78_0.webp"
   ],
   "nameAr": "برايمر ميلت تاتش فائق الترطيب من شيجلام - 30ج",
   "nameEn": "SHEGLAM Melt Touch Moisturizing Primer - 30g",
@@ -54,8 +53,7 @@ window.NAQA_PRODUCTS.push(
   "imgs": [
     "media/products/p81_0.webp",
     "media/products/p81_1.webp",
-    "media/products/p81_2.webp",
-    "media/products/p81_3.webp"
+    "media/products/p81_2.webp"
   ],
   "nameAr": "برايمر كاميرا أون لتنعيم البشرة وتمويه المسام من شيجلام - 30ج",
   "nameEn": "SHEGLAM Camera On Pore-Smoothing Primer - 30g",
@@ -75,9 +73,7 @@ window.NAQA_PRODUCTS.push(
   "price": 2.5,
   "em": "✨",
   "imgs": [
-    "media/products/p82_0.webp",
-    "media/products/p82_1.webp",
-    "media/products/p82_2.webp"
+    "media/products/p82_0.webp"
   ],
   "nameAr": "بلاشر كولور بلوم السائل من شيجلام - لوف كيك",
   "nameEn": "SHEGLAM Color Bloom Liquid Blush - Love Cake",
@@ -122,9 +118,7 @@ window.NAQA_PRODUCTS.push(
   "em": "✨",
   "imgs": [
     "media/products/p84_0.webp",
-    "media/products/p84_1.webp",
-    "media/products/p84_2.webp",
-    "media/products/p84_3.webp"
+    "media/products/p84_1.webp"
   ],
   "nameAr": "برايمر جود جريب المرطب من شيجلام - 45مل",
   "nameEn": "SHEGLAM Good Grip Hydrating Primer - 45ml",
@@ -168,8 +162,7 @@ window.NAQA_PRODUCTS.push(
   "price": 2.7,
   "em": "✨",
   "imgs": [
-    "media/products/p86_0.webp",
-    "media/products/p86_1.webp"
+    "media/products/p86_0.webp"
   ],
   "nameAr": "ستيك كونتور وبرونزر باتري باف من شيجلام - جولدن صن",
   "nameEn": "SHEGLAM Butter Puff Contour Stick - Golden Sun",
@@ -190,8 +183,7 @@ window.NAQA_PRODUCTS.push(
   "em": "✨",
   "imgs": [
     "media/products/p87_0.webp",
-    "media/products/p87_1.webp",
-    "media/products/p87_2.webp"
+    "media/products/p87_1.webp"
   ],
   "nameAr": "سبراي تثبيت مات فريش من شيجلام",
   "nameEn": "SHEGLAM Matte Fresh Setting Spray",
@@ -211,9 +203,7 @@ window.NAQA_PRODUCTS.push(
   "price": 2.5,
   "em": "✨",
   "imgs": [
-    "media/products/p88_0.webp",
-    "media/products/p88_1.webp",
-    "media/products/p88_2.webp"
+    "media/products/p88_0.webp"
   ],
   "nameAr": "بلاشر كولور بلوم السائل من شيجلام - أون بوينت",
   "nameEn": "SHEGLAM Color Bloom Liquid Blush - On Point",
@@ -233,8 +223,7 @@ window.NAQA_PRODUCTS.push(
   "price": 2.5,
   "em": "✨",
   "imgs": [
-    "media/products/p89_0.webp",
-    "media/products/p89_1.webp"
+    "media/products/p89_0.webp"
   ],
   "nameAr": "كونتور صن سكالب السائل من شيجلام - تاوني أمبر",
   "nameEn": "SHEGLAM Sun Sculpt Liquid Contour - Tawny Amber",
@@ -254,8 +243,7 @@ window.NAQA_PRODUCTS.push(
   "price": 3.2,
   "em": "✨",
   "imgs": [
-    "media/products/p90_0.webp",
-    "media/products/p90_1.webp"
+    "media/products/p90_0.webp"
   ],
   "nameAr": "برايمر تريبل ثريت المصحح من شيجلام",
   "nameEn": "SHEGLAM Triple Threat Correcting Primer",

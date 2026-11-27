@@ -253,9 +253,7 @@ window.NAQA_PRODUCTS.push(
   "imgs": [
     "media/products/p77_0.webp",
     "media/products/p77_1.webp",
-    "media/products/p77_2.webp",
-    "media/products/p77_3.webp",
-    "media/products/p77_4.webp"
+    "media/products/p77_2.webp"
   ],
   "nameAr": "كريم الرقبة بي دي آر إن بالكولاجين مع أداة غوا شا من ميديكيوب - 90ج",
   "nameEn": "Medicube PDRN Collagen Neck Cream with Gua Sha",

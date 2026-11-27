@@ -52,7 +52,7 @@ assert(fs.existsSync(path.join(root,"data/products.detail.json")), "detail json 
 const dry = read("js/features/wish-concerns.js").split('id:"dry"')[1].slice(0, 180);
 assert(!/moist|ترطيب/.test(dry), "dry quiz without moist/ترطيب");
 assert(read("css/store/base.css").includes("#8d3048"), "AA rose-deep");
-assert(fs.existsSync(path.join(root, "8800256108374", "index.html")) || fs.readdirSync(root).filter(function(n){return /^[0-9]{8,}$/.test(n)}).length>50, "SEO barcode product pages");
+assert(fs.existsSync(path.join(root, "barcode", "8800256108374", "index.html")) || (fs.existsSync(path.join(root,"barcode")) && fs.readdirSync(path.join(root,"barcode")).filter(function(n){return /^[0-9]{8,}$/.test(n)}).length>50), "SEO barcode product pages");
 assert((read("sitemap.xml").match(/<loc>/g) || []).length >= 200, "sitemap >= 200");
 assert(read("js/admin/finance.js").includes("Asia/Muscat"), "finance Asia/Muscat");
 assert(/BANK_IBAN\s*=\s*""/.test(read("js/config.js")), "BANK_IBAN blank");
@@ -70,7 +70,7 @@ assert(/aria-roledescription/.test(heroSource) && /ArrowRight/.test(heroSource),
 assert(/NAQA_BANNER_HEROES/.test(heroSource) && /pimgs\(p\)/.test(heroSource), "hero uses real curated product images");
 assert(/hero-slide-copy/.test(heroSource) && /hero-slide-art/.test(heroSource), "hero includes campaign copy and product artwork");
 assert(read("index.html").includes('id="naqa-hero-v2"'), "hero v2 responsive styling is loaded");
-assert(read("index.html").includes("hero-swipe.js?v=20261127c22"), "hero v2 cache key is current");
+assert(read("index.html").includes("hero-swipe.js?v=20261127c23"), "hero v2 cache key is current");
 
 const min = read("js/store.min.js");
 assert(min.includes("order.html#"), "min bundle has bridge");

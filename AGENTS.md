@@ -43,6 +43,6 @@ Cache keys (store assets): read each asset URL in `index.html`; do not assume ev
 27. **Document live truth** in `docs/LIVE.md`; do not revive deleted status/audit/plan docs.
 
 28. **No live `tmp/`** — never commit or deploy `tmp/`, packshot scratch, batch sources, or QA dump folders to the storefront root. Keep intermediates out of `main` / GitHub Pages.
-29. **SEO pages** — do not re-run / land `scripts/build-seo-pages.js` in a way that wipes existing product redirects or SEO routes unless the user explicitly asked for an SEO rebuild. Prefer leaving `p/` redirects and current SEO output intact.
+29. **SEO pages** (`barcode/{SKU}/` full pages; root/`p/` are thin redirects only). **SEO pages** — do not re-run / land `scripts/build-seo-pages.js` in a way that wipes existing product redirects or SEO routes unless the user explicitly asked for an SEO rebuild. Prefer leaving `p/` redirects and current SEO output intact.
 
 Project map: `docs/MAP.md` · Structure: `docs/STRUCTURE.md` · Live workflow: `docs/LIVE.md` · Images: `docs/PRODUCT_IMAGES_RULE.md`

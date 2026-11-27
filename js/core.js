@@ -31,7 +31,7 @@ function productRouteKey(p){
   return String(p.id);
 }
 /** Site folders that are never a product barcode. */
-var NAQA_PATH_RESERVED={
+var NAQA_PATH_RESERVED={barcode:1,
   admin:1, order:1, panel:1, media:1, js:1, css:1, data:1, p:1, docs:1, scripts:1,
   index:1, store:1, clear:1, products:1, tmp:1, ".github":1
 };
@@ -245,6 +245,8 @@ function siteBasePath(){
   path = path.replace(/\/index\.html$/i, "/");
   path = path.replace(/\/(admin|order|panel|store|clear-cache)\.html$/i, "/");
   path = path.replace(/\/p\/[^/]+\/?$/i, "/");
+  /* /barcode/SKU/ → site root (SEO pages folder) */
+  path = path.replace(/\/barcode\/[^/]+\/?$/i, "/");
   /* strip product barcode folder only when under a project base: /naqa-om/SKU/ → /naqa-om/ */
   var parts = path.split("/").filter(Boolean);
   if(parts.length >= 2){

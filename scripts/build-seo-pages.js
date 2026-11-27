@@ -1,5 +1,9 @@
 #!/usr/bin/env node
 "use strict";
+/**
+ * SEO product pages live under /barcode/{SKU}/ only (keeps repo root clean).
+ * Legacy /{SKU}/ and /p/{SKU}/ are thin redirects → /barcode/{SKU}/.
+ */
 const fs = require("fs");
 const path = require("path");
 const vm = require("vm");
@@ -10,6 +14,7 @@ vm.createContext(ctx);
 vm.runInContext(src, ctx);
 const products = (ctx.window.NAQA_PRODUCTS || []).filter((p) => p && !p.hidden);
 const base = "https://xmodyosef.github.io/naqa-om";
+const outBarcode = path.join(root, "barcode");
 const outP = path.join(root, "p");
 
 function esc(s) {
@@ -22,34 +27,58 @@ function esc(s) {
 
 const RESERVED = new Set([
   "admin","order","panel","media","js","css","data","p","docs","scripts",
-  "tmp",".github","index","store","clear-cache","products","logo.svg"
+  "tmp",".github","index","store","clear-cache","products","barcode","logo.svg",
+  "clear","artifacts"
 ]);
 
 function slugOf(p) {
   return String((p && p.sku) || (p && p.id) || "").trim();
 }
 
-/* clean previous barcode folders at root (not reserved) */
+function thinRedirect(url) {
+  return (
+    "<!DOCTYPE html><html lang=\"ar\" dir=\"rtl\"><head><meta charset=\"UTF-8\"/>" +
+    "<meta http-equiv=\"refresh\" content=\"0;url=" + url + "\"/>" +
+    "<link rel=\"canonical\" href=\"" + url + "\"/>" +
+    "<script>location.replace(" + JSON.stringify(url) + ");</script>" +
+    "<title>…</title></head><body><p><a href=\"" + url + "\">انتقال</a></p></body></html>"
+  );
+}
+
+function isProductPageDir(full) {
+  const idx = path.join(full, "index.html");
+  if (!fs.existsSync(idx)) return false;
+  const head = fs.readFileSync(idx, "utf8").slice(0, 1200);
+  return (
+    (head.includes("schema.org") && head.includes("Product")) ||
+    head.includes("location.replace") ||
+    head.includes("http-equiv=\"refresh\"")
+  );
+}
+
+/* Remove old full SEO pages from repo root (numeric / SKU folders only) */
 for (const ent of fs.readdirSync(root)) {
   const full = path.join(root, ent);
   try {
     if (!fs.statSync(full).isDirectory()) continue;
     if (RESERVED.has(ent.toLowerCase())) continue;
     if (ent.startsWith(".")) continue;
-    /* only remove if looks like our product slug pages (has index.html with Product schema) */
-    const idx = path.join(full, "index.html");
-    if (fs.existsSync(idx)) {
-      const head = fs.readFileSync(idx, "utf8").slice(0, 800);
-      if (head.includes("schema.org") && head.includes("Product")) {
-        fs.rmSync(full, { recursive: true, force: true });
-      }
+    if (isProductPageDir(full)) {
+      fs.rmSync(full, { recursive: true, force: true });
     }
   } catch (e) {}
 }
+
+/* Reset barcode/ and p/ */
+if (fs.existsSync(outBarcode)) fs.rmSync(outBarcode, { recursive: true, force: true });
 if (fs.existsSync(outP)) fs.rmSync(outP, { recursive: true, force: true });
+fs.mkdirSync(outBarcode, { recursive: true });
 fs.mkdirSync(outP, { recursive: true });
 
 const urls = [base + "/"];
+let fullCount = 0;
+let redirCount = 0;
+
 for (const p of products) {
   const name = p.nameAr || p.nameEn || "منتج";
   const nameEn = p.nameEn || p.nameAr || "Product";
@@ -58,7 +87,9 @@ for (const p of products) {
   const img = imgPath ? base + "/" + String(imgPath).replace(/^\//, "") : base + "/media/icons/icon-512.png";
   const slug = slugOf(p);
   if (!slug || RESERVED.has(slug.toLowerCase())) continue;
-  const url = base + "/" + encodeURIComponent(slug) + "/";
+
+  const url = base + "/barcode/" + encodeURIComponent(slug) + "/";
+  const storeUrl = base + "/?sku=" + encodeURIComponent(slug);
   const price = Number(p.price) || 0;
   const brand = p.brand || "Naqa";
   const ld = {
@@ -78,7 +109,8 @@ for (const p of products) {
       itemCondition: "https://schema.org/NewCondition"
     }
   };
-  const dir = path.join(root, slug);
+
+  const dir = path.join(outBarcode, slug);
   fs.mkdirSync(dir, { recursive: true });
   const html =
     "<!DOCTYPE html>\n<html lang=\"ar\" dir=\"rtl\">\n<head>\n" +
@@ -113,24 +145,22 @@ for (const p of products) {
     "    <p class=\"meta\">" + esc(nameEn) + " · " + esc(slug) + "</p>\n" +
     "    <p class=\"price\">" + price.toFixed(3) + " ر.ع <span class=\"meta\">شامل الضريبة ٥٪</span></p>\n" +
     "    <p>" + esc(desc) + "</p>\n" +
-    "    <a class=\"btn\" href=\"" + base + "/" + encodeURIComponent(slug) + "/\">افتحي المنتج</a>\n" +
+    "    <a class=\"btn\" href=\"" + esc(storeUrl) + "\">افتحي في المتجر</a>\n" +
     "  </div>\n" +
     "  <p class=\"muted\">نقاء · عناية ومكياج · توصيل داخل عُمان · طلب واتساب</p>\n" +
     "</div>\n</body>\n</html>\n";
   fs.writeFileSync(path.join(dir, "index.html"), html);
+  fullCount++;
   urls.push(url);
-  /* legacy /p/SKU/ and /p/id/ → redirect */
+
+  /* legacy /p/SKU/ and /p/id/ only → barcode (root stays clean — no /{SKU}/ folders) */
+  const redir = thinRedirect(url);
   for (const leg of [slug, String(p.id)]) {
     if (!leg) continue;
     const ld2 = path.join(outP, leg);
     fs.mkdirSync(ld2, { recursive: true });
-    const redir =
-      "<!DOCTYPE html><html lang=\"ar\" dir=\"rtl\"><head><meta charset=\"UTF-8\"/>" +
-      "<meta http-equiv=\"refresh\" content=\"0;url=" + url + "\"/>" +
-      "<link rel=\"canonical\" href=\"" + url + "\"/>" +
-      "<script>location.replace(" + JSON.stringify(url) + ");</script>" +
-      "<title>…</title></head><body><p><a href=\"" + url + "\">انتقال</a></p></body></html>";
     fs.writeFileSync(path.join(ld2, "index.html"), redir);
+    redirCount++;
   }
 }
 
@@ -143,4 +173,18 @@ urls.forEach(function (u, i) {
 });
 sm += "</urlset>\n";
 fs.writeFileSync(path.join(root, "sitemap.xml"), sm);
-console.log("SEO pages", products.length, "sitemap urls", urls.length, "at /BARCODE/");
+
+/* pointer readme */
+fs.writeFileSync(
+  path.join(outBarcode, "README.md"),
+  "# barcode/\n\nصفحات SEO للمنتجات (صفحة لكل SKU/باركود).\n\n- الرابط العام: `/barcode/{SKU}/`\n- التوجيهات القديمة: `/{SKU}/` و `/p/{SKU}/` → هنا\n- لا تحذفي هذا المجلد يدوياً — يُبنى بـ `node scripts/build-seo-pages.js`\n"
+);
+
+console.log(
+  "SEO OK: full pages in barcode/ =",
+  fullCount,
+  "| redirects =",
+  redirCount,
+  "| sitemap urls =",
+  urls.length
+);

@@ -4,8 +4,28 @@
  - COD list: 1.5 OMR; only for cash on delivery; bank-account method waives (struck)
  - Bank account = manual (no gateway): customer pays then sends proof on WhatsApp
 */
+function cartQtyAllowed(product, qty){
+  var n = Number(qty);
+  if(!Number.isInteger(n) || n < 1 || n > 20) return false;
+  if(product && product.stock != null){
+    var stock = Number(product.stock);
+    if(!isFinite(stock) || stock < 0 || n > stock) return false;
+  }
+  return true;
+}
+function cartQtyLimitMessage(){
+  return (typeof lang !== "undefined" && lang === "en")
+    ? "Maximum 20 per product"
+    : "الحد الأقصى ٢٠ للمنتج";
+}
 function cartSubtotal(){
-  return cart.reduce((s,i)=>s+i.price*i.qty,0);
+  return cart.reduce(function(sum, item){
+    var product = (typeof products !== "undefined" && products)
+      ? products.find(function(p){ return Number(p.id) === Number(item.id); })
+      : null;
+    var price = product && Number(product.price) > 0 ? Number(product.price) : Number(item.price) || 0;
+    return sum + price * (Number(item.qty) || 0);
+  }, 0);
 }
 function getPayMethod(){
   const r=document.querySelector('input[name="payMethod"]:checked');
@@ -149,7 +169,19 @@ function addToCart(id, qty, quiet){
 }
 
 function renderCart(){
-  const n=cart.reduce((s,i)=>s+i.qty,0);
+  /* Keep displayed totals aligned with current catalog prices, not stale localStorage prices. */
+  cart.forEach(function(item){
+    var product = (typeof products !== "undefined" && products)
+      ? products.find(function(p){ return Number(p.id) === Number(item.id); })
+      : null;
+    if(product && !product.hidden && Number(product.price) > 0){
+      item.price = Number(product.price);
+      item.brand = product.brand || item.brand || "";
+      item.sku = product.sku || item.sku || "";
+    }
+  });
+  try{ saveCart(); }catch(e){}
+  const n=cart.reduce((s,i)=>s+(Number(i.qty)||0),0);
   const sub=cartSubtotal();
   const b=feeBreakdown(sub, getPayMethod?getPayMethod():"cod");
   const ship=b.shipping;
@@ -204,7 +236,7 @@ function renderCart(){
       <div class="thumb">${visual(p,0)}</div>
       <div class="meta">
         <strong>${esc(pname(p))}</strong>
-        <span>${money(i.price)} · ${esc(p.brand||"")}</span><span class="vat-note">${T("vatInc")||"شامل الضريبة ٥٪"}</span>
+        <span>${money(p.price!=null?p.price:i.price)} · ${esc(p.brand||"")}</span><span class="vat-note">${T("vatInc")||"شامل الضريبة ٥٪"}</span>
         <div class="sku-line">${T("sku")}: ${esc(p.sku||"—")}</div>
         <button class="rm" data-rm="${i.id}" type="button">${T("del")}</button>
       </div>
@@ -266,8 +298,13 @@ function sendCheckout(){
     const i=cart[k];
     const p=products.find(x=>x.id===i.id);
     if(!p || p.hidden){ alert(lang==="en"?"A product is unavailable. Refresh and try again.":"منتج غير متاح. حدّثي الصفحة وحاولي."); return; }
-    if(p.stock!=null && Number(p.stock)<=0){ alert(lang==="en"?"Out of stock: ":"نفد: "+pname(p)); return; }
-    const qty=Math.max(1, Math.min(20, Number(i.qty)||1));
+    const qty=Number(i.qty);
+    if(!cartQtyAllowed(p, qty)){
+      alert(p.stock!=null && Number(p.stock)>=0 && qty>Number(p.stock)
+        ? (lang==="en"?"Only "+Number(p.stock)+" left: "+pname(p):"المتاح فقط "+Number(p.stock)+": "+pname(p))
+        : cartQtyLimitMessage());
+      return;
+    }
     const unit=Number(p.price);
     if(!(unit>0)){ alert(lang==="en"?"Invalid price. Contact the store.":"سعر غير صالح. تواصلي مع المتجر."); return; }
     priced.push({

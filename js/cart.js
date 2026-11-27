@@ -281,6 +281,31 @@ function closeCheckout(){
   if(window.naqaScrollLock) naqaScrollLock.unlock();
 }
 function sendCheckout(){
+  /* A blocked WhatsApp popup leaves one pending order; never create a second one. */
+  if(window.__naqaPendingWhatsApp){
+    const pending=window.__naqaPendingWhatsApp;
+    const done=$("#orderDone");
+    if(done && !done.querySelector("#orderWhatsAppFallback")){
+      done.hidden=false;
+      done.innerHTML=(lang==="en"
+        ? ("Order <b>"+pending.orderNo+"</b> is ready. <a href='"+esc(pending.url)+"' id='orderWhatsAppFallback' target='_blank' rel='noopener'>Tap here to open WhatsApp</a>. Your cart is still saved.")
+        : ("الطلب <b>"+pending.orderNo+"</b> جاهز. <a href='"+esc(pending.url)+"' id='orderWhatsAppFallback' target='_blank' rel='noopener'>اضغطي هنا لفتح واتساب</a>. سلتك محفوظة."));
+      const fallback=done.querySelector("#orderWhatsAppFallback");
+      if(fallback) fallback.addEventListener("click",function(event){
+        event.preventDefault();
+        const retry=window.open(pending.url,"_blank");
+        if(!retry) return;
+        window.__naqaPendingWhatsApp=null;
+        cart=[];
+        try{ saveCart(); }catch(e){}
+        try{ renderCart(); }catch(e){}
+        done.innerHTML=(lang==="en"
+          ? ("Your order number is <b>"+pending.orderNo+"</b>. Total <b>"+money(pending.grand)+"</b>. WhatsApp opened. Cart cleared.")
+          : ("رقم طلبك <b>"+pending.orderNo+"</b>. الإجمالي <b>"+money(pending.grand)+"</b>. تم فتح واتساب. السلة تصفّرت."));
+      });
+    }
+    return;
+  }
   const name=($("#coName")&&$("#coName").value||"").trim();
   const phone=($("#coPhone")&&$("#coPhone").value||"").trim();
   const gov=($("#coGov")&&$("#coGov").value||"").trim();
@@ -413,19 +438,49 @@ function sendCheckout(){
   const msg = lang==="en"
     ? ("Hello, I want to order from Naqa:\nOrder: "+orderNo+"\nName: "+name+"\nPhone: "+phone+"\nArea: "+gov+"\nPayment: "+payLabel+bankBlock+"\nNote: "+note+"\n\n"+lines+"\n\nSubtotal: "+money(sub)+"\n"+delLine+"\n"+codLine+"\nTotal (incl. 5% VAT): "+money(grand)+"\nOf which VAT 5%: "+money(order.vat!=null?order.vat:(typeof vatOf==="function"?vatOf(grand):0))+(pay==="transfer"?("\nI will pay then send proof."):"")+saveLine)
     : ("السلام عليكم، أبغى أطلب من نقاء:\nرقم الطلب: "+orderNo+"\nالاسم: "+name+"\nالجوال: "+phone+"\nالمنطقة: "+gov+"\nالدفع: "+payLabel+bankBlock+"\nملاحظة: "+note+"\n\n"+lines+"\n\nالمجموع الفرعي: "+money(sub)+"\n"+delLine+"\n"+codLine+"\nالإجمالي (شامل الضريبة ٥٪): "+money(grand)+"\nمنها ضريبة ٥٪: "+money(order.vat!=null?order.vat:(typeof vatOf==="function"?vatOf(grand):0))+(pay==="transfer"?("\nراح أحول وأرسل إثبات الدفع."):"")+saveLine);
-  window.open("https://wa.me/"+WA_NUMBER+"?text="+encodeURIComponent(msg), "_blank");
+  const waUrl="https://wa.me/"+WA_NUMBER+"?text="+encodeURIComponent(msg);
+  const waWindow=window.open(waUrl, "_blank");
+  const done=$("#orderDone");
+  if(!waWindow){
+    /* Do not empty the cart if Safari blocks the new tab. Keep one pending order
+       and provide a user-initiated retry link instead of creating duplicates. */
+    window.__naqaPendingWhatsApp={url:waUrl,orderNo:orderNo,grand:grand};
+    if(done){
+      done.hidden=false;
+      done.innerHTML=(lang==="en"
+        ? ("Order <b>"+orderNo+"</b> is ready. WhatsApp was blocked by the browser. <a href='"+esc(waUrl)+"' id='orderWhatsAppFallback' target='_blank' rel='noopener'>Tap here to open WhatsApp</a>. Your cart is still saved.")
+        : ("الطلب <b>"+orderNo+"</b> جاهز، لكن المتصفح منع فتح واتساب. <a href='"+esc(waUrl)+"' id='orderWhatsAppFallback' target='_blank' rel='noopener'>اضغطي هنا لفتح واتساب</a>. سلتك محفوظة."));
+      const fallback=done.querySelector("#orderWhatsAppFallback");
+      if(fallback) fallback.addEventListener("click",function(event){
+        event.preventDefault();
+        const retry=window.open(waUrl,"_blank");
+        if(!retry){
+          if(typeof toast==="function") toast(lang==="en"?"Allow pop-ups, then tap the WhatsApp link again":"اسمحي بالنوافذ المنبثقة ثم اضغطي رابط واتساب مرة أخرى");
+          return;
+        }
+        window.__naqaPendingWhatsApp=null;
+        cart=[];
+        try{ saveCart(); }catch(e){}
+        try{ renderCart(); }catch(e){}
+        done.innerHTML=(lang==="en"
+          ? ("Your order number is <b>"+orderNo+"</b>. Total <b>"+money(grand)+"</b>. WhatsApp opened. Cart cleared.")
+          : ("رقم طلبك <b>"+orderNo+"</b>. الإجمالي <b>"+money(grand)+"</b>. تم فتح واتساب. السلة تصفّرت."));
+      });
+    }
+    return;
+  }
 
-  /* Clear cart so the same order is not sent twice. */
+  window.__naqaPendingWhatsApp=null;
+  /* Clear cart only after WhatsApp actually opened. */
   cart=[];
   try{ saveCart(); }catch(e){}
   try{ renderCart(); }catch(e){}
 
-  const done=$("#orderDone");
   if(done){
     done.hidden=false;
     done.innerHTML=(lang==="en"
-      ? ("Your order number is <b>"+orderNo+"</b>. Total <b>"+money(grand)+"</b>. WhatsApp should open now. Cart cleared.")
-      : ("رقم طلبك <b>"+orderNo+"</b>. الإجمالي <b>"+money(grand)+"</b>. واتساب يفتح الحين. السلة تصفّرت."));
+      ? ("Your order number is <b>"+orderNo+"</b>. Total <b>"+money(grand)+"</b>. WhatsApp opened. Cart cleared.")
+      : ("رقم طلبك <b>"+orderNo+"</b>. الإجمالي <b>"+money(grand)+"</b>. تم فتح واتساب. السلة تصفّرت."));
   }
 }
 

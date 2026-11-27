@@ -2,34 +2,26 @@
 
 متجر عناية ومكياج ثابت على GitHub Pages. الطلب عبر واتساب.
 
-## الملفات (قسمناها عشان الإصلاح يكون سهل)
+**الحي على الإنتاج:** [docs/LIVE.md](docs/LIVE.md)  
+**قواعد الوكلاء:** [AGENTS.md](AGENTS.md) · [docs/ENGINEERING-RULES.md](docs/ENGINEERING-RULES.md) · [docs/DESIGN-LOCK.md](docs/DESIGN-LOCK.md)
 
-| ملف | وش فيه |
-|---|---|
-| `index.html` | هيكل الصفحة فقط (هيدر، شبكة، سلة، فوتر) |
-| `css/store.min.css` | تنسيق المتجر (يُبنى من `css/store/`) |
-| `products.js` | بيانات المنتجات (أسعار، صور، أوصاف) |
-| `js/config.js` | رقم واتساب، العملة، دومينات الماركات |
-| `js/core.js` | الحالة، الترجمة، الماركة، التوجيه |
-| `js/render/` | كروت المنتجات والشبكة |
-| `js/sheet/` | صفحة المنتج ونظرة سريعة |
-| `js/cart.js` | السلة والدرج |
-| `js/app.js` | الأحداث، السحب، التشغيل |
+## روابط
+- المتجر: https://xmodyosef.github.io/naqa-om/
+- المستودع: https://github.com/Xmodyosef/naqa-om
 
-## تشغيل
-
-افتحي: https://xmodyosef.github.io/naqa-om/
-
-أو محلياً أي سيرفر ثابت على المجلد.
+## ملفات أساسية
+| ملف | دور |
+|-----|-----|
+| `index.html` | هيكل المتجر + كاش `?v=` |
+| `js/store.min.js` / `css/store.min.css` | ما يشغّل الزبونة (بعد البناء) |
+| `admin.html` | لوحة الإدارة |
+| `data/products*.js` | الكتالوج |
+| `scripts/build-store.sh` | بناء JS/CSS المتجر |
 
 ## تعديل سريع
+- منتج/سعر → مصادر الكتالوج ثم بناء الحزمة
+- نص متجر → `js/core.js` (`ui` / `T`)
+- واتساب → `js/config.js`
+- شكل → `css/store/*` ثم `bash scripts/build-store.sh` + رفع `?v=`
 
-- سعر أو منتج → `products.js`
-- نص عربي/إنجليزي → `js/core.js` (كائن `ui`)
-- رقم واتساب → `js/config.js`
-- شكل/ألوان → `css/store/` ثم `scripts/build-store.sh`
-- نظرة سريعة / سحب → `js/sheet/` و `js/app.js`
-
-## هيكل الملفات
-
-انظر [docs/STRUCTURE.md](docs/STRUCTURE.md) و [docs/ADMIN.md](docs/ADMIN.md).
+خريطة الملفات: [docs/MAP.md](docs/MAP.md)

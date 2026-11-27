@@ -2,7 +2,7 @@
 
 > **هدف الملف:** منع تكرار أخطاء حقيقية حصلت في المشروع.  
 > **يلزم** أي تعديل (بشري أو AI) يقرأ هذا الملف قبل لمس الكود.  
-> آخر تحديث: 2026-11-25 (قفل الألوان وأماكن الأزرار) · يُحدَّث عند كل درس جديد.
+> آخر تحديث: 2026-11-27 (قفل متجر + LIVE) · يُحدَّث عند كل درس جديد.
 
 ---
 
@@ -261,3 +261,41 @@ node --check js/app.js
 - `docs/STRUCTURE.md` · `docs/MAP.md`
 - `docs/FIREBASE.md` · `docs/FIRESTORE-OVERRIDES.md` · `docs/P2-FIRESTORE-RULES.md`
 - `docs/PRODUCT_IMAGES_RULE.md` · `docs/EMAIL-PRIVACY.md` · `docs/LOCK-PANEL.md`
+
+
+---
+
+## 12) متجر — رئيسية / تصنيفات / بحث / ورقة (2026-11-27)
+
+### 12.1 الرئيسية
+- `isHomeCatalogView()` = لا بحث ولا تصنيف محدد ولا ماركة ولا كتالوج ولا wish.
+- الرئيسية ترسم `renderHomeCatalogs()` → hero-swipe + campaign rails داخل `#shelves`.
+- على الرئيسية: `#grid` و`.section-head` و`#priceBar` مخفية وبدون min-height فارغ.
+
+### 12.2 التصنيفات
+عند الضغط على `[data-cat]` **يجب** تصفير:
+`currentCatalog`, `currentConcern`, `query`, قيمة `#search`, `currentBrand`، ثم ضبط `currentCat`.
+وإلا تبقى المنتجات مقيّدة بكتالوج قديم وتبدو الأزرار «معطّلة».
+
+لا يوجد `data-cat="عطور"` في `index.html`.
+
+### 12.3 البحث
+- `input`: debounce ~120ms، يصفّر كتالوج/ماركة/اهتمام، `catalogBrowse=true`، `render()`.
+- `productMatchesQuery`: كلمة واحدة OR مع مرادفات؛ كلمتان فأكثر AND.
+- Submit: تطابق SKU/اسم وحيد → `openSheet` كامل.
+
+### 12.4 ورقة المنتج
+- HTML: كاروسيل أولاً. **لا** توليد `#carDots` / `#carThumbs`.
+- Pull-down في `js/app.js` → `closeSheet()` فقط.
+- CSS: `overflow-x:hidden` على `.sheet-card`؛ track `overscroll-behavior-x:contain`.
+- `bindCarousel` يسوي snap/settle بعد السحب؛ loop clones تبقى للصور فقط.
+
+### 12.5 chrome-hide
+```css
+body.chrome-hide .search-row,
+body.chrome-hide .nav-cats { max-height:0 !important; … }
+```
+ممنوع ترك الارتفاع ثابتاً مع `opacity:0` فقط (مربع فاضي).
+
+### 12.6 كاش اللوحة للمنتجات
+في `js/admin/load-modules.js` يمكن رفع `products.admin.min.js?v=` وحده دون لمس باقي الموديولات.

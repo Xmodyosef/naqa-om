@@ -1,25 +1,13 @@
-# نقاء — خطوات البناء
+# نقاء — الحالة الحية
 
-## ✅ تم
-- [x] الاسم: نقاء · عناية ومكياج · www.naqa.om
-- [x] واتساب: 96879088349
-- [x] 34 منتج
-- [x] Safari fix (localStorage)
-- [x] مستودع GitHub: https://github.com/Xmodyosef/naqa-om
+كل التفاصيل المثبتة: **`docs/LIVE.md`**  
+القواعد: **`docs/ENGINEERING-RULES.md`** · **`docs/DESIGN-LOCK.md`** · **`AGENTS.md`**
 
-## 🔄 الآن
-- [ ] تفعيل GitHub Pages (Settings → Pages → main / root)
-- [ ] فتح https://xmodyosef.github.io/naqa-om/ في Safari
+## حي الآن
+- المتجر: https://xmodyosef.github.io/naqa-om/ (كاش انظر `index.html`)
+- اللوحة: `admin.html` (Firebase Auth)
+- واتساب: من `js/config.js`
+- بناء المتجر: `bash scripts/build-store.sh` ثم bump `?v=` وادفع `main`
 
-## لاحقاً
-- [ ] ربط www.naqa.om
-- [ ] منتجاتك الحقيقية
-- [ ] إنستغرام
-
-## قواعد اللمس
-انظر docs/LOCK-PANEL.md — المناطق السليمة لا تُعاد إلا بطلب صريح.
-
-
-## 🔒 قاعدة ثابتة — صور المنتجات (لا تُنسى)
-انظر `docs/PRODUCT_IMAGES_RULE.md`.
-الصورة الجديدة تنضاف ولا تمسح الباقي. عربي + إنجليزي. لوحة + متجر.
+## ممنوع بدون طلب
+انظر قفل المتجر في `docs/DESIGN-LOCK.md` §6 و `docs/LIVE.md` §4.

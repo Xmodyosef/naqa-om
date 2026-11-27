@@ -142,7 +142,7 @@ window.NAQA_PRODUCTS.push(
 {
   "em": "💋",
   "imgs": [
-    "media/products/p201_0.webp"
+    "media/products/p202_0.webp"
   ],
   "stock": 3,
   "brand": "essence",
@@ -162,6 +162,7 @@ window.NAQA_PRODUCTS.push(
 {
   "em": "🎁",
   "imgs": [
+    "media/products/p203_0.webp",
     "media/products/p202_0.webp",
     "media/products/p202_1.webp"
   ],

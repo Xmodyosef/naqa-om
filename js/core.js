@@ -42,6 +42,11 @@ function isReservedRoute(h){
   if(h.indexOf("shelf/")===0||h.indexOf("cat/")===0||h.indexOf("q/")===0||h.indexOf("b/")===0||h.indexOf("c/")===0) return true;
   return false;
 }
+/* Old internal codes that were never real barcodes → real EAN/SKU */
+var NAQA_SKU_ALIAS={
+  "B0105":"8809447256221",
+  "b0105":"8809447256221"
+};
 function findProductByRoute(key){
   key=String(key==null?"":key).trim();
   if(!key) return null;
@@ -53,6 +58,7 @@ function findProductByRoute(key){
   if(key.indexOf("product/")===0) key=key.slice(8);
   key=String(key||"").trim();
   if(!key) return null;
+  if(NAQA_SKU_ALIAS[key]) key=NAQA_SKU_ALIAS[key];
   var list=(typeof products!=="undefined" && products)?products:[];
   var hit=list.find(function(x){ return String(x.sku||"")===key; });
   if(hit) return hit;

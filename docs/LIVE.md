@@ -116,3 +116,10 @@ admin.html → Firebase Auth (إيميل/Google)
 1. **`tmp/` وما شابه:** ممنوع رفع أو نشر مجلدات الإصلاح المؤقتة (packshots، batch sources، QA) على جذر المتجر أو `main`. تبقى محلية/خارج النشر.
 2. **صفحات SEO (`scripts/build-seo-pages.js` / مخرجات `p/`):** ممنوع تشغيل أو دمج بناء SEO يمسح التوجيهات أو صفحات المنتجات الحالية **إلا بطلب صريح** لإعادة بناء SEO. الافتراضي = الإبقاء على التوجيهات الحالية.
 
+---
+
+## 8) إصلاحات 2026-11-27 (فحص مصدر)
+
+1. **إخفاء المنتجات:** بعد تحميل overrides من السحابة لا يُصفَّر `hidden` — `js/cloud-overrides.js?v=20261127c8`
+2. **قراءة طلبات اللوحة:** `firestore.rules` — `orders_private` read منفصل عن write (بدون `request.resource` على get)
+3. حُذفت `tmp/*.webp` من `main`

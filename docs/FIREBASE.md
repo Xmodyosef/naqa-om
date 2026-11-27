@@ -17,3 +17,7 @@
 ## الملفات
 - `js/firebase-config.js` — المفاتيح + قائمة الإيميلات
 - `js/admin/firebase-gate.js` — الدخول والخروج والاسترجاع
+
+
+## تحذير Secret scanning
+انظر [FIREBASE-KEY-SCAN.md](./FIREBASE-KEY-SCAN.md).

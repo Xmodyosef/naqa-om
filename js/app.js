@@ -218,7 +218,7 @@ document.addEventListener("click", e=>{
   const prod=$("#products"); if(prod) prod.scrollIntoView({behavior:"smooth"});
 });
 
-$("#langBtn").onclick=()=>{ lang=lang==="ar"?"en":"ar"; try{localStorage.setItem("naqa_lang",lang)}catch(e){} render(); };
+$("#langBtn").onclick=()=>{ lang=lang==="ar"?"en":"ar"; try{localStorage.setItem("naqa_lang",lang)}catch(e){} try{if(typeof naqaSyncDockLang==="function")naqaSyncDockLang()}catch(e){} render(); };
 $("#cats").addEventListener("click", e=>{
   const a=e.target.closest("[data-cat]"); if(!a) return; e.preventDefault();
   document.querySelectorAll("#cats [data-cat]").forEach(x=>x.classList.remove("on")); a.classList.add("on");
@@ -528,7 +528,7 @@ function boot(){
       if (cached && typeof cached === "object") naqaApplyOverrides(cached, { render: false });
     } catch (e) {}
     const wa="https://wa.me/"+WA_NUMBER;
-    $("#waFooter").href=wa; $("#waFloat").href=wa; $("#waHero").href=wa;
+    $("#waFooter").href=wa; $("#waFloat").href=wa; $("#waHero").href=wa; try{var __dw=document.getElementById("dockWa"); if(__dw) __dw.href=wa;}catch(__e){}
     $("#yr").textContent=new Date().getFullYear();
     if(typeof featuresBoot==="function") featuresBoot();
     if(typeof fillAreas==="function") fillAreas();
@@ -590,3 +590,97 @@ document.addEventListener("click", function(e){
   if(typeof render==="function") render();
   var prod=document.getElementById("products"); if(prod) prod.scrollIntoView({behavior:"smooth",block:"start"});
 });
+
+
+/* Bottom dock: home / cats / brands / cart / WhatsApp (Dar-like, Naqa chrome) */
+function naqaSetDockOn(which){
+  try{
+    document.querySelectorAll("#dock .dock-item").forEach(function(el){
+      el.classList.toggle("on", el.getAttribute("data-dock")===which);
+    });
+  }catch(e){}
+}
+function naqaSyncDockLang(){
+  try{
+    var en = (typeof lang!=="undefined" && lang==="en");
+    document.querySelectorAll("#dock .dock-lab").forEach(function(lab){
+      var v = en ? lab.getAttribute("data-en") : lab.getAttribute("data-ar");
+      if(v) lab.textContent = v;
+    });
+    var dock = document.getElementById("dock");
+    if(dock) dock.setAttribute("aria-label", en ? "Quick navigation" : "تنقل سريع");
+  }catch(e){}
+}
+function naqaSyncDockCartBadge(){
+  try{
+    var n = 0;
+    if(typeof cart!=="undefined" && cart && cart.length){
+      n = cart.reduce(function(s,i){ return s+(Number(i.qty)||0); }, 0);
+    }
+    var b = document.getElementById("dockCartBadge");
+    if(!b) return;
+    if(n>0){ b.hidden=false; b.textContent = n>99 ? "99+" : String(n); }
+    else { b.hidden=true; b.textContent="0"; }
+  }catch(e){}
+}
+function naqaBindDock(){
+  var dock = document.getElementById("dock");
+  if(!dock || dock.__naqaBound) return;
+  dock.__naqaBound = true;
+  naqaSyncDockLang();
+  naqaSyncDockCartBadge();
+  try{
+    var wa = document.getElementById("dockWa");
+    var n = (typeof WA_NUMBER!=="undefined" && WA_NUMBER) ? WA_NUMBER : "";
+    if(wa && n) wa.href = "https://wa.me/"+String(n).replace(/\D/g,"");
+  }catch(e){}
+  dock.addEventListener("click", function(e){
+    var item = e.target.closest("[data-dock]");
+    if(!item) return;
+    var k = item.getAttribute("data-dock");
+    if(k==="wa"){ naqaSetDockOn("wa"); return; } /* link handles open */
+    e.preventDefault();
+    if(k==="home"){
+      naqaSetDockOn("home");
+      try{ if(typeof closeSheet==="function") closeSheet(true); }catch(err){}
+      try{ if(typeof closeCart==="function") closeCart(); }catch(err){}
+      try{
+        currentCat="all"; currentBrand=""; currentCatalog=""; currentConcern=""; query="";
+        if(typeof wishView!=="undefined") wishView=false;
+        catalogBrowse=false;
+        var s=document.getElementById("search"); if(s) s.value="";
+        var clr=document.getElementById("searchClear"); if(clr) clr.hidden=true;
+        document.querySelectorAll("#cats [data-cat]").forEach(function(b){ b.classList.toggle("on", b.dataset.cat==="all"); });
+        if(typeof render==="function") render();
+        history.pushState({naqa:"home"},"","#shop");
+      }catch(err){}
+      window.scrollTo({top:0, behavior:"smooth"});
+      return;
+    }
+    if(k==="cats"){
+      naqaSetDockOn("cats");
+      var el=document.getElementById("cats");
+      if(el) el.scrollIntoView({behavior:"smooth", block:"start"});
+      return;
+    }
+    if(k==="brands"){
+      naqaSetDockOn("brands");
+      var b=document.getElementById("brandsGrid")||document.getElementById("brandBar");
+      if(b) b.scrollIntoView({behavior:"smooth", block:"start"});
+      else {
+        var p=document.getElementById("products");
+        if(p) p.scrollIntoView({behavior:"smooth", block:"start"});
+      }
+      return;
+    }
+    if(k==="cart"){
+      naqaSetDockOn("cart");
+      if(typeof openCart==="function") openCart();
+      return;
+    }
+  });
+}
+try{
+  if(document.readyState==="loading") document.addEventListener("DOMContentLoaded", naqaBindDock);
+  else naqaBindDock();
+}catch(e){}

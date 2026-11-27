@@ -156,6 +156,7 @@ function renderCart(){
   const grand=b.grand;
   const badge=$("#cartBadge");
   if(n){ badge.hidden=false; badge.textContent=n; } else badge.hidden=true;
+  try{ if(typeof naqaSyncDockCartBadge==="function") naqaSyncDockCartBadge(); }catch(e){}
   const bar=$("#cartBar");
   if(n){
     bar.hidden=false;

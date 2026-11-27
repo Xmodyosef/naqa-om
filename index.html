@@ -50,8 +50,8 @@
 <meta name="application-name" content="نقاء | Naqa" />
 
 <title>نقاء · عناية ومكياج | Naqa Oman</title>
-<link rel="preload" href="css/store.min.css?v=20261127c11" as="style" />
-<link rel="stylesheet" href="css/store.min.css?v=20261127c11" />
+<link rel="preload" href="css/store.min.css?v=20261127c12" as="style" />
+<link rel="stylesheet" href="css/store.min.css?v=20261127c12" />
 <link rel="preload" href="media/catalogs/hot.webp" as="image" type="image/webp" fetchpriority="high" />
 
 
@@ -324,6 +324,31 @@ html.sku-boot #sheetCard{min-height:100vh;background:#fff}
 <div class="vat-bar" id="vatBar">الأسعار شاملة ضريبة القيمة المضافة ٥٪</div>
 <!-- ship policy moved to hero policy-card -->
 <div class="ship-free" id="shipFree" hidden></div>
+
+<nav class="dock" id="dock" aria-label="تنقل سريع">
+  <button type="button" class="dock-item on" data-dock="home" id="dockHome">
+    <span class="dock-ico" aria-hidden="true">⌂</span>
+    <span class="dock-lab" data-ar="الرئيسية" data-en="Home">الرئيسية</span>
+  </button>
+  <button type="button" class="dock-item" data-dock="cats" id="dockCats">
+    <span class="dock-ico" aria-hidden="true">▤</span>
+    <span class="dock-lab" data-ar="الأقسام" data-en="Categories">الأقسام</span>
+  </button>
+  <button type="button" class="dock-item" data-dock="brands" id="dockBrands">
+    <span class="dock-ico" aria-hidden="true">◎</span>
+    <span class="dock-lab" data-ar="الماركات" data-en="Brands">الماركات</span>
+  </button>
+  <button type="button" class="dock-item" data-dock="cart" id="dockCart">
+    <span class="dock-ico" aria-hidden="true">Bag</span>
+    <span class="dock-lab" data-ar="السلة" data-en="Cart">السلة</span>
+    <span class="dock-badge" id="dockCartBadge" hidden>0</span>
+  </button>
+  <a class="dock-item dock-wa" data-dock="wa" id="dockWa" href="#" target="_blank" rel="noopener">
+    <span class="dock-ico" aria-hidden="true">💬</span>
+    <span class="dock-lab" data-ar="واتساب" data-en="WhatsApp">واتساب</span>
+  </a>
+</nav>
+
 <div class="cart-bar empty-bar" id="cartBar" hidden role="status" aria-live="polite">
   <div class="info">
     <strong id="barTitle">السلة فاضية</strong>
@@ -391,7 +416,7 @@ html.sku-boot #sheetCard{min-height:100vh;background:#fff}
 <script defer src="js/cloud-overrides.js?v=20261127c10"></script>
 <script defer src="js/store-cloud-boot.js?v=20261127b7"></script>
 
-<script defer src="js/store.min.js?v=20261127c11"></script>
+<script defer src="js/store.min.js?v=20261127c12"></script>
 
 <script>
 if ('serviceWorker' in navigator) {

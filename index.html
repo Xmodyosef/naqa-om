@@ -50,10 +50,58 @@
 <meta name="application-name" content="نقاء | Naqa" />
 
 <title>نقاء · عناية ومكياج | Naqa Oman</title>
-<link rel="preload" href="css/store.min.css?v=20261127c17" as="style" />
-<link rel="stylesheet" href="css/store.min.css?v=20261127c17" />
+<link rel="preload" href="css/store.min.css?v=20261127c18" as="style" />
+<link rel="stylesheet" href="css/store.min.css?v=20261127c18" />
 <style id="naqa-hero-v2">
-/* layout rules: css/store (hero packshots LEFT / title RIGHT). Keep thin for cache bump. */
+/* Physical LTR grid inside banner: packshots LEFT | Arabic title RIGHT */
+.hero-swipe{position:relative;width:100%;margin:10px auto 18px;overflow:hidden;border:1px solid var(--line,#efe4df);border-radius:24px;background:#f8e9ed;box-shadow:0 14px 34px rgba(50,30,25,.12)}
+.hero-swipe-track{display:flex;width:100%;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scroll-snap-stop:always;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;scrollbar-width:none;direction:ltr!important;overscroll-behavior-x:contain}
+.hero-swipe-track::-webkit-scrollbar{display:none}
+.hero-slide{
+  position:relative!important;display:grid!important;
+  grid-template-columns:1.15fr .85fr!important;align-items:center!important;
+  direction:ltr!important;flex:0 0 100%;width:100%;min-width:100%;
+  height:clamp(210px,32vw,320px)!important;aspect-ratio:auto!important;
+  margin:0;padding:10px 12px;overflow:hidden;border:0;scroll-snap-align:start;
+  background:linear-gradient(125deg,#f9e8ed,#f4d6df 50%,#ead2d9);cursor:pointer
+}
+.hero-slide[data-tone="care"],.hero-slide[data-tone="price"]{background:linear-gradient(125deg,#e4f2ed,#d4e9e2 50%,#c5e1d8)}
+.hero-slide[data-tone="makeup"],.hero-slide[data-tone="deal"]{background:linear-gradient(125deg,#f8e4e9,#f3d2dc 50%,#eac4d0)}
+.hero-slide[data-tone="hot"]{background:linear-gradient(125deg,#f8e5d8,#f1d2c1 50%,#e7c2b3)}
+.hero-slide>img,.hero-slide img{position:static!important;width:auto!important;height:auto!important;max-width:100%!important;max-height:100%!important;object-fit:contain!important}
+.hero-slide-art{
+  position:relative!important;inset:auto!important;left:auto!important;right:auto!important;
+  width:100%!important;height:100%!important;display:grid!important;
+  grid-template-columns:repeat(3,minmax(0,1fr))!important;align-items:center!important;gap:8px!important;
+  direction:ltr!important;grid-column:1!important;z-index:1;pointer-events:none
+}
+.hero-slide-art img{
+  display:block!important;width:100%!important;height:auto!important;max-height:min(88%,280px)!important;
+  object-fit:contain!important;padding:6px!important;border:1px solid rgba(255,255,255,.85)!important;
+  border-radius:14px!important;background:rgba(255,255,255,.95)!important;
+  box-shadow:0 8px 20px rgba(50,30,25,.1)!important;margin:0 auto!important
+}
+.hero-slide-art img:nth-child(2){transform:translateY(-6px) scale(1.03)}
+.hero-slide-copy{
+  position:relative!important;inset:auto!important;transform:none!important;
+  width:100%!important;display:flex!important;flex-direction:column!important;
+  align-items:flex-end!important;justify-content:center!important;gap:8px!important;
+  direction:rtl!important;text-align:right!important;color:#3c2029!important;
+  grid-column:2!important;z-index:2;padding-inline:6px 4px
+}
+.hero-slide-copy strong{font-size:clamp(1.05rem,2.6vw,1.85rem)!important;font-weight:900!important;line-height:1.35!important}
+.hero-slide-copy small{font-size:clamp(.72rem,1.2vw,.95rem)!important;line-height:1.55!important;color:#65434c!important}
+.hero-slide-copy em{display:inline-flex!important;margin-top:4px;padding:8px 14px;border-radius:999px;background:#8d3048!important;color:#fff!important;font-style:normal!important;font-size:.78rem!important;font-weight:800!important}
+.hero-swipe-dots,.hero-dot{display:none!important}
+@media(max-width:700px){
+  .hero-swipe{width:calc(100% + 36px);margin:0 -18px 14px;border-radius:0;border-inline:0;box-shadow:none}
+  .hero-slide{height:200px!important;padding:8px 10px;grid-template-columns:1.05fr .95fr!important}
+  .hero-slide-art{gap:5px!important}
+  .hero-slide-art img{padding:3px!important;border-radius:10px!important;max-height:160px!important}
+  .hero-slide-copy strong{font-size:.95rem!important}
+  .hero-slide-copy small{font-size:.65rem!important;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  .hero-slide-copy em{font-size:.65rem!important;padding:6px 10px}
+}
 </style>
 
 
@@ -430,8 +478,8 @@ html.sku-boot #sheetCard{min-height:100vh;background:#fff}
 <script defer src="js/cloud-overrides.js?v=20261127c10"></script>
 <script defer src="js/store-cloud-boot.js?v=20261127b7"></script>
 
-<script defer src="js/store.min.js?v=20261127c17"></script>
-<script defer src="js/hero-swipe.js?v=20261127c17"></script>
+<script defer src="js/store.min.js?v=20261127c18"></script>
+<script defer src="js/hero-swipe.js?v=20261127c18"></script>
 
 <script>
 if ('serviceWorker' in navigator) {

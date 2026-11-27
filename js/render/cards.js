@@ -22,7 +22,7 @@ function productCartControls(id, opts){
     return '<div class="inline-qty'+(sheet?' sheet-inline-qty':'')+'" data-inline-qty="'+id+'" role="group" aria-label="'+(typeof T==="function"?T("qty"):"qty")+'">'
       +'<button type="button" data-dec="'+id+'" aria-label="'+(en?"Decrease":"تقليل")+'">−</button>'
       +'<b aria-live="polite">'+q+'</b>'
-      +'<button type="button" data-inc="'+id+'" aria-label="'+(en?"Increase":"زيادة")+'">+</button>'
+      +'<button type="button" data-inc="'+id+'" aria-label="'+(en?"Increase":"زيادة")+'"'+((q>=20 || (p && p.stock!=null && q>=Number(p.stock)))?' disabled':'')+'>+</button>'
       +'</div>';
   }
   var label = en ? "Add to cart" : "أضف للسلة";

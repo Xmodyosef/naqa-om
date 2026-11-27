@@ -4,7 +4,7 @@ Before changing code, read **`docs/ENGINEERING-RULES.md`** and **`docs/DESIGN-LO
 Live site state (what is actually shipped): **`docs/LIVE.md`**. Deep external audit: **`docs/AUDIT-DEEP.md`**.
 
 Live URL: https://xmodyosef.github.io/naqa-om/  
-Cache key (store assets): see `index.html` (`?v=20261127c10` as of 2026-11-27). `cloud-overrides.js` is also c8. Other files may keep independent keys (e.g. products b7) until that bundle changes.
+Cache keys (store assets): read each asset URL in `index.html`; do not assume every asset shares one version. `cloud-overrides.js` is also c8. Other files may keep independent keys (e.g. products b7) until that bundle changes.
 
 ## Hard requirements
 1. **Arabic + English always** — never ship a fix for one language only (store `T()` / `ui` in `js/core.js`; admin `dict-ar.js` + `dict-en.js`).

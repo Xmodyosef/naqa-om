@@ -294,7 +294,11 @@ window.NAQA_PRODUCTS.push(
   "price": 7.3,
   "em": "✨",
   "imgs": [
-    "media/products/p146_0.webp"
+    "media/products/p146_0.webp",
+    "media/products/p146_1.webp",
+    "media/products/p146_2.webp",
+    "media/products/p146_3.webp",
+    "media/products/p146_4.webp"
   ],
   "nameAr": "تونر انوا هارت ليف 77 لتهدئة البشرة - 250مل",
   "nameEn": "Anua Heartleaf 77 Soothing Toner - 250ml",
@@ -314,7 +318,11 @@ window.NAQA_PRODUCTS.push(
   "price": 7.6,
   "em": "✨",
   "imgs": [
-    "media/products/p149_0.webp"
+    "media/products/p149_0.webp",
+    "media/products/p149_1.webp",
+    "media/products/p149_2.webp",
+    "media/products/p149_3.webp",
+    "media/products/p149_4.webp"
   ],
   "nameAr": "كريم انوا بالهيالورونيك للترطيب العميق وتجديد البشرة - 60مل",
   "nameEn": "Anua PDRN Hyaluronic Acid 100 Moisturizing Cream - 60ml",
@@ -334,7 +342,10 @@ window.NAQA_PRODUCTS.push(
   "price": 8.7,
   "em": "✨",
   "imgs": [
-    "media/products/p150_0.webp"
+    "media/products/p150_0.webp",
+    "media/products/p150_1.webp",
+    "media/products/p150_2.webp",
+    "media/products/p150_3.webp"
   ],
   "nameAr": "كريم انوا بالكولاجين والريتينول لشد وتجديد البشرة - 80مل",
   "nameEn": "Anua Collagen Retinol Refining Gua Sha Cream - 80ml",

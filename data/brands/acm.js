@@ -31,7 +31,9 @@ window.NAQA_PRODUCTS.push(
   "price": 6.3,
   "em": "✨",
   "imgs": [
-    "media/products/p107_0.webp"
+    "media/products/p107_0.webp",
+    "media/products/p107_1.webp",
+    "media/products/p107_2.webp"
   ],
   "nameAr": "جل محيط العين ديبيوايت لتفتيح الهالات من إيه سي إم - 15مل",
   "nameEn": "Acm Depiwhite Eye Contour Gel",

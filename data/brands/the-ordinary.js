@@ -81,7 +81,11 @@ window.NAQA_PRODUCTS.push(
   "price": 8.7,
   "em": "✨",
   "imgs": [
-    "media/products/p105_0.webp"
+    "media/products/p105_0.webp",
+    "media/products/p105_1.webp",
+    "media/products/p105_2.webp",
+    "media/products/p105_3.webp",
+    "media/products/p105_4.webp"
   ],
   "nameAr": "ذا اورديناري سيروم متعدد الببتيدات للرموش والحواجب - 5مل",
   "nameEn": "The Ordinary Multi Peptide Lash And Brow Serum",

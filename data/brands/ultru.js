@@ -9,7 +9,9 @@ window.NAQA_PRODUCTS.push(
   "price": 5.8,
   "em": "✨",
   "imgs": [
-    "media/products/p101_0.webp"
+    "media/products/p101_0.webp",
+    "media/products/p101_1.webp",
+    "media/products/p101_2.webp"
   ],
   "nameAr": "قناع اسفل العين هيدروجيل ام سوري فور ماي سكين للتفتيح - 60 قطعة",
   "nameEn": "I'm Sorry For My Skin Hydrogel Under-Eye Mask - 60pcs",

@@ -99,7 +99,9 @@ window.NAQA_PRODUCTS.push(
   "price": 6.7,
   "em": "✨",
   "imgs": [
-    "media/products/p106_0.webp"
+    "media/products/p106_0.webp",
+    "media/products/p106_1.webp",
+    "media/products/p106_2.webp"
   ],
   "nameAr": "كريم العين بروبيوتيك سنتيلا باكوشيول من سكين1004 - 20مل",
   "nameEn": "SKIN1004 Probio-Cica Bakuchiol Eye Cream - 20ml",
@@ -119,7 +121,11 @@ window.NAQA_PRODUCTS.push(
   "price": 6.7,
   "em": "✨",
   "imgs": [
-    "media/products/p147_0.webp"
+    "media/products/p147_0.webp",
+    "media/products/p147_1.webp",
+    "media/products/p147_2.webp",
+    "media/products/p147_3.webp",
+    "media/products/p147_4.webp"
   ],
   "nameAr": "تونر سكين1004 لتفتيح البشرة المعزز - 210مل",
   "nameEn": "Skin1004 Tone Brightening Boosting Toner - 210ml",

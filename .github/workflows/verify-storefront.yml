@@ -1,0 +1,41 @@
+name: Verify and build storefront
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "js/app.js"
+      - "js/core.js"
+      - "js/cart.js"
+      - "js/render/**"
+      - "js/features/**"
+      - "js/admin/**"
+      - "css/store/**"
+      - "scripts/build-store.sh"
+      - "scripts/verify-fixes.js"
+      - ".github/workflows/verify-storefront.yml"
+permissions:
+  contents: write
+  pull-requests: read
+jobs:
+  build-and-verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out pull request branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Build storefront assets without regenerating SEO pages
+        run: NAQA_SKIP_SEO_BUILD=1 bash scripts/build-store.sh
+      - name: Verify generated bundles and admin behavior
+        run: node scripts/verify-fixes.js
+      - name: Check whitespace errors
+        run: git diff --check
+      - name: Commit generated storefront bundles to this PR branch
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "build(store): refresh generated storefront bundles"
+          file_pattern: "js/store.min.js css/store.min.css"

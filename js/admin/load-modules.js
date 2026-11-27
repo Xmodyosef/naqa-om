@@ -9,7 +9,7 @@
 
   var MODULES = [
     "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js",
-    "data/products.admin.min.js?v=" + V,
+    "data/products.admin.min.js?v=20261127c5",
     "js/admin/products.js?v=" + V,
     "js/admin/orders.js?v=" + V,
     "js/admin/cloud-orders.js?v=" + V,

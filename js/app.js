@@ -242,9 +242,8 @@ $("#checkoutSend").onclick=()=>{
 $("#lbClose").onclick=closeLightbox;
 $("#lightbox").addEventListener("click", e=>{ if(e.target.id==="lightbox"||e.target.id==="lbClose") closeLightbox(); });
 
-/* Pull down at the top of a product reloads THIS product.
-   Do not slide the card — that revealed the shop behind it.
-   A short pull is enough. */
+/* Pull down at the top of a product closes the sheet.
+   Do not reload the page — that was heavy and wiped the shop state. */
 (function(){
   let x0=null,y0=null,mode=null;
   const sheet=$("#sheet"), card=$("#sheetCard");
@@ -275,8 +274,11 @@ $("#lightbox").addEventListener("click", e=>{ if(e.target.id==="lightbox"||e.tar
     const dy=tch.clientY-y0;
     reset();
     if(dy>42){
-      try{ document.documentElement.classList.add("sku-boot"); }catch(err){}
-      try{ location.reload(); }catch(err){}
+      /* Close the product sheet. Do not reload the whole shop. */
+      try{
+        if(typeof closeSheet==="function") closeSheet();
+        else if(typeof history!=="undefined" && history.back) history.back();
+      }catch(err){}
     }
   },{passive:true});
   sheet.addEventListener("click", e=>{

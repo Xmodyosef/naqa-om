@@ -514,6 +514,10 @@ function boot(){
     } catch (e) {}
     render();
     applyRoute();
+    try{
+      var sh=document.getElementById("sheet");
+      if(!sh || !sh.classList.contains("show")) document.documentElement.classList.remove("sku-boot");
+    }catch(e){}
     /* Lazy product copy (desc/use/skin) — keeps first paint light */
     fetch("data/products.detail.json?v=20261125store1").then(function(res){ return res.ok ? res.json() : null; }).then(function(d){
       if (d && typeof naqaMergeProductDetails === "function") {

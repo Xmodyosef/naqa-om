@@ -74,6 +74,11 @@ if (!next.hidden) delete A.overrides[id].hidden;
 
 ---
 
+
+### 2.6 ممنوع بعد تحميل السحابة (2026-11-27)
+في `js/cloud-overrides.js` بعد `mergeOverrides(map)` **ممنوع** `products.forEach(... p.hidden = false)`.
+الإخفاء السحابي يجب أن يبقى. `naqaUnhideIfEmptyCatalog` فقط إذا **كل** المنتجات مخفية (كتالوج فارغ بالغلط).
+
 ## 3) تحميل موديولات اللوحة (deferred)
 
 - الموديولات الثقيلة تُحمَّل **بعد** تسجيل الدخول (`js/admin/load-modules.js`).
@@ -98,6 +103,10 @@ A.refreshProductsFromBundle = function () {
 ---
 
 ## 4) overrides والسحابة (Firebase)
+
+### Firestore orders_private (2026-11-27)
+`allow read` **منفصل** عن `create, update`. لا تجمع `read` مع شروط `request.resource` — يفشل `.get()` للمشرف.
+
 
 | مكان | ماذا يُحفظ |
 |------|------------|

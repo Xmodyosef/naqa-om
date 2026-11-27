@@ -14,7 +14,7 @@ rules_version = '2';
  * Store (xmodyosef.github.io/naqa-om) only READs overrides + reviews.
  * Admin panel (admin.html) WRITEs after Firebase Auth as UID in adminUids().
  *
- * Updated: 2026-11-25 (store focus + GitHub source of truth)
+ * Updated: 2026-11-27 (orders read split + hide stick)
  */
 service cloud.firestore {
   match /databases/{database}/documents {
@@ -67,9 +67,12 @@ service cloud.firestore {
       allow delete: if false;
     }
 
-    /* —— Admin only: private orders sync between admin devices —— */
+    /* —— Admin only: private orders sync between admin devices ——
+       read MUST be separate: request.resource is only set on writes, so a combined
+       allow read, create, update + request.resource... blocks .get() for admins. */
     match /naqa/orders_private {
-      allow read, create, update: if isAdmin()
+      allow read: if isAdmin();
+      allow create, update: if isAdmin()
         && onlyKnownKeys(['list', 'updatedAt', 'updatedBy'])
         && request.resource.data.list is list
         && stampOk();

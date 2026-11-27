@@ -269,11 +269,10 @@
       try {
         if (typeof naqaForceCatalogStock === "function") naqaForceCatalogStock();
         if (typeof naqaUnhideIfEmptyCatalog === "function") naqaUnhideIfEmptyCatalog();
-        /* User request: all quantities = 3 until inventory is managed carefully */
+        /* Stock floor only — do NOT clear p.hidden after mergeOverrides (hide must stick). */
         if (typeof products !== "undefined" && products && products.length) {
           products.forEach(function (p) {
-            p.stock = 3;
-            p.hidden = false; /* restore catalog after accidental cloud hide */
+            p.stock = 3; /* quantities = 3 until inventory is managed carefully */
           });
         }
       } catch (e) {}

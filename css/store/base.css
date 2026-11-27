@@ -1897,11 +1897,12 @@ body.home-photo .hero-strong{ display:none; }
   max-height: min(88%, 280px) !important;
   object-fit:contain !important;
   padding:6px !important;
-  border:1px solid rgba(255,255,255,.85) !important;
-  border-radius:14px !important;
-  background:rgba(255,255,255,.95) !important;
-  box-shadow:0 8px 20px rgba(50,30,25,.1) !important;
+  border:0 !important;
+  border-radius:0 !important;
+  background:transparent !important;
+  box-shadow:none !important;
   margin:0 auto !important;
+  filter:drop-shadow(0 8px 16px rgba(50,30,25,.14)) !important;
 }
 .hero-slide-art img:nth-child(2){ transform: translateY(-6px) scale(1.03); }
 .hero-slide-copy{

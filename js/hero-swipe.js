@@ -23,7 +23,10 @@ function heroSwipeHTML() {
       var p = byId[String(productId)];
       if (p && !p.hidden && typeof pimgs === "function") {
         var images = pimgs(p) || [];
-        if (images[0] && candidates.length < 3) candidates.push({ product: p, image: images[0] });
+        if (images[0] && candidates.length < 3) {
+          var cut = "media/hero-cutouts/p" + productId + ".webp";
+          candidates.push({ product: p, image: cut, fallback: images[0] });
+        }
       }
     });
 
@@ -33,7 +36,10 @@ function heroSwipeHTML() {
       fallback.forEach(function (p) {
         if (candidates.length >= 3 || !p || p.hidden || candidates.some(function (x) { return x.product.id === p.id; })) return;
         var images = typeof pimgs === "function" ? pimgs(p) || [] : [];
-        if (images[0]) candidates.push({ product: p, image: images[0] });
+        if (images[0]) {
+          var cut2 = "media/hero-cutouts/p" + p.id + ".webp";
+          candidates.push({ product: p, image: cut2, fallback: images[0] });
+        }
       });
     }
     if (!candidates.length) return;
@@ -44,8 +50,9 @@ function heroSwipeHTML() {
       var name = typeof pname === "function" ? pname(item.product) : (item.product.nameAr || item.product.nameEn || title);
       var loading = slides.length === 0 ? "eager" : "lazy";
       var priority = slides.length === 0 && index === 0 ? ' fetchpriority="high"' : "";
+      var fb = item.fallback ? (' onerror="this.onerror=null;this.src=\'' + esc(item.fallback) + '\'"') : '';
       return '<img src="' + esc(item.image) + '" alt="' + esc(name) + '" loading="' + loading +
-        '" decoding="async" width="520" height="520"' + priority + ' draggable="false">';
+        '" decoding="async" width="520" height="520"' + priority + ' draggable="false"' + fb + '>';
     }).join("");
 
     slides.push(

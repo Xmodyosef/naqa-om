@@ -43,6 +43,15 @@ assert(/BANK_IBAN\s*=\s*""/.test(read("js/config.js")), "BANK_IBAN blank");
 assert(!read("index.html").includes("www.naqa.om"), "no dead domain in title");
 assert(!fs.existsSync(path.join(root, "CNAME")), "no CNAME until DNS ready");
 
+
+const heroSource = read("js/hero-swipe.js");
+const heroIndex = read("index.html");
+assert(heroIndex.indexOf('js/store.min.js') < heroIndex.indexOf('js/hero-swipe.js'), "hero enhancement loads after store bundle");
+assert(/catalogList\(id, 1\)/.test(heroSource), "hero hides campaigns with no available products");
+assert(!/setInterval|setTimeout/.test(heroSource), "hero has no autoplay timer");
+assert(/fetchpriority="high"/.test(heroSource), "first available hero image gets high fetch priority");
+assert(/aria-roledescription/.test(heroSource) && /ArrowRight/.test(heroSource), "hero is accessible by keyboard");
+
 const min = read("js/store.min.js");
 assert(min.includes("order.html#"), "min bundle has bridge");
 assert(min.includes("siteBasePath"), "min has siteBasePath");
@@ -80,7 +89,7 @@ assert(read("js/core.js").includes("productHref"), "productHref path helper");
 assert(read("js/core.js").includes("productKeyFromSearch"), "sku query product key");
 assert(!read("js/core.js").includes('return "#p/"+key'), "no #p/ prefix");
 
-for (const f of ["js/cart.js", "js/core.js", "js/store.min.js", "js/admin/core.js", "js/admin/finance.js"]) {
+for (const f of ["js/cart.js", "js/core.js", "js/store.min.js", "js/hero-swipe.js", "js/admin/core.js", "js/admin/finance.js"]) {
   try {
     new Function(read(f));
     assert(true, "syntax " + f);

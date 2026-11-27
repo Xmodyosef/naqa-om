@@ -69,15 +69,15 @@ function siteBasePath(pathname) {
 }
 const o = "https://xmodyosef.github.io";
 [
-  ["/naqa-om/", o + "/naqa-om/12/"],
-  ["/naqa-om", o + "/naqa-om/12/"],
-  ["/naqa-om/8800256108374/", o + "/naqa-om/12/"],
+  ["/naqa-om/", o + "/naqa-om/?sku=12"],
+  ["/naqa-om", o + "/naqa-om/?sku=12"],
+  ["/naqa-om/8800256108374/", o + "/naqa-om/?sku=12"],
 ].forEach(([pathname, expect]) => {
-  const got = o + siteBasePath(pathname) + "12/";
+  const got = o + siteBasePath(pathname) + "?sku=12";
   assert(got === expect, "productLink path " + pathname);
 });
 assert(read("js/core.js").includes("productHref"), "productHref path helper");
-assert(read("js/core.js").includes("productKeyFromPath"), "path product key");
+assert(read("js/core.js").includes("productKeyFromSearch"), "sku query product key");
 assert(!read("js/core.js").includes('return "#p/"+key'), "no #p/ prefix");
 
 for (const f of ["js/cart.js", "js/core.js", "js/store.min.js", "js/admin/core.js", "js/admin/finance.js"]) {

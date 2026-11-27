@@ -188,8 +188,7 @@
       if (!p) return "";
       var key = String(p.sku || "").trim() || String(p.id || "");
       if (!key) return "";
-      /* path only: barcode/ — works from admin next to store root */
-      return encodeURIComponent(key) + "/";
+      return "index.html?sku=" + encodeURIComponent(key);
     }
     function draw() {
       var q = A.reviewQuery || "";

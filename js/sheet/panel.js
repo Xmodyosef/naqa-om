@@ -189,18 +189,16 @@ async function openSheet(id, mode, reset){
   try{
     if(!qv){
       var rkey=(typeof productRouteKey==="function")?productRouteKey(p):String(p.sku||id);
-      var wantPath=(typeof siteBasePath==="function"?siteBasePath():"/")+rkey+"/";
-      var onProduct=(typeof isProductLocation==="function")?isProductLocation():(typeof isProductPath==="function"&&isProductPath());
+      var wantUrl=(typeof siteBasePath==="function"?siteBasePath():"/")+"?sku="+rkey;
+      var onProduct=(typeof productKeyFromSearch==="function" && productKeyFromSearch()===decodeURIComponent(rkey));
       if(!onProduct){
         window.__naqaShopHash = (location.hash && location.hash!=="#") ? location.hash : "#shop";
-        window.__naqaShopPath = (typeof siteBasePath==="function"?siteBasePath():"/");
       }
-      var curPath=String(location.pathname||"").replace(/\/+$/,"/") ;
-      var normWant=wantPath.replace(/\/+$/,"/");
-      if(curPath!==normWant && curPath!==normWant+"/"){
-        history.pushState({naqa:"product",id:p.id,sku:p.sku||""}, "", wantPath);
+      var cur=(location.pathname||"")+(location.search||"");
+      if(cur.indexOf("?sku="+rkey)<0 && cur.indexOf("?sku="+encodeURIComponent(rkey))<0){
+        history.pushState({naqa:"product",id:p.id,sku:p.sku||""}, "", wantUrl);
       } else if(location.hash){
-        history.replaceState({naqa:"product",id:p.id,sku:p.sku||""}, "", wantPath);
+        history.replaceState({naqa:"product",id:p.id,sku:p.sku||""}, "", wantUrl);
       }
     }
   }catch(e){}

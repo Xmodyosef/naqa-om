@@ -90,45 +90,48 @@ function isProductHash(h){
   if(h.indexOf("p/")===0) return !!findProductByRoute(h.slice(2));
   return !!findProductByRoute(h);
 }
-function isProductLocation(){
-  return isProductPath() || isProductHash(routeHash());
+function productKeyFromSearch(){
+  try{
+    var q=new URLSearchParams(location.search||"");
+    var s=q.get("sku")||"";
+    if(s) return s;
+  }catch(e){}
+  return null;
 }
-/** Absolute product URL: …/naqa-om/BARCODE/  (no #) */
+function isProductLocation(){
+  return !!productKeyFromSearch() || isProductPath() || isProductHash(routeHash());
+}
+/** Store product URL stays on the shop path so CSS/JS/images keep loading.
+ *  Barcode is the query: …/naqa-om/?sku=8800…  (no #, no /p/, no extra folder) */
 function productHref(p){
   var key=productRouteKey(p);
-  return location.origin + siteBasePath() + key + (key?"/":"");
+  return location.origin + siteBasePath() + (key?("?sku="+key):"");
 }
 function applyRoute(){
-  /* 1) Path product: /naqa-om/8800256108374/ */
+  /* Product lives on the store URL: ?sku=BARCODE (also legacy path or #) */
+  var searchKey=productKeyFromSearch();
   var pathKey=productKeyFromPath();
-  if(pathKey){
-    var prodP=findProductByRoute(pathKey);
-    if(prodP){
-      var idP=prodP.id;
-      if(openProductId!==idP || !$("#sheet").classList.contains("show")) openSheet(idP,"full",true);
-      try{
-        var wantP=productRouteKey(prodP);
-        var need=siteBasePath()+wantP+"/";
-        if(location.pathname.replace(/\/+$/,"/")!==need.replace(/\/+$/,"/") || location.hash){
-          history.replaceState({naqa:"product",id:prodP.id,sku:prodP.sku||""}, "", need);
-        }
-      }catch(e){}
-      return;
-    }
-  }
-  /* 2) Legacy hash product → normalize to path (no #) */
   const h=routeHash();
-  var prodKey=null;
-  if(h.indexOf("p/")===0) prodKey=h.slice(2);
-  else if(!isReservedRoute(h)) prodKey=h;
-  if(prodKey!=null && prodKey!==""){
+  var prodKey=searchKey||null;
+  if(!prodKey && pathKey) prodKey=pathKey;
+  if(!prodKey){
+    if(h.indexOf("p/")===0) prodKey=h.slice(2);
+    else if(!isReservedRoute(h)) prodKey=h;
+  }
+  if(prodKey){
     const prod=findProductByRoute(prodKey);
     if(prod){
       const id=prod.id;
       if(openProductId!==id || !$("#sheet").classList.contains("show")) openSheet(id,"full",true);
       try{
         var want=productRouteKey(prod);
-        history.replaceState({naqa:"product",id:prod.id,sku:prod.sku||""}, "", siteBasePath()+want+"/");
+        var need=siteBasePath()+"?sku="+want;
+        var cur=location.pathname+(location.search||"");
+        var basePath=siteBasePath();
+        /* always pin the address bar to the store + ?sku= so assets resolve */
+        if(cur.replace(/\/+$/,"")!==(basePath+"?sku="+want).replace(/\/+$/,"") || location.hash){
+          history.replaceState({naqa:"product",id:prod.id,sku:prod.sku||""}, "", need);
+        }
       }catch(e){}
       return;
     }
@@ -252,7 +255,7 @@ function siteBasePath(){
   if (path.slice(-1) !== "/") path += "/";
   return path;
 }
-/** Share link: …/naqa-om/BARCODE/  — no #, no p/ */
+/** Share link: …/naqa-om/?sku=BARCODE  — store stays put, barcode in the query */
 function productLink(idOrProduct){
   var p=null;
   if(idOrProduct && typeof idOrProduct==="object") p=idOrProduct;
@@ -262,18 +265,16 @@ function productLink(idOrProduct){
   }
   if(p) return productHref(p);
   var key=encodeURIComponent(String(idOrProduct||"").trim());
-  return location.origin + siteBasePath() + key + (key?"/":"");
+  return location.origin + siteBasePath() + (key?("?sku="+key):"");
 }
-/** @deprecated kept for callers — now returns path not hash */
 function productHash(idOrProduct){
   var p=null;
   if(idOrProduct && typeof idOrProduct==="object") p=idOrProduct;
   else if(idOrProduct!=null && idOrProduct!==""){
     p=(typeof products!=="undefined"?products:[]).find(function(x){ return Number(x.id)===Number(idOrProduct) || String(x.id)===String(idOrProduct); })||null;
   }
-  if(p) return productHref(p).replace(location.origin, "") || ("/"+productRouteKey(p)+"/");
-  var key=encodeURIComponent(String(idOrProduct||"").trim());
-  return siteBasePath() + key + (key?"/":"");
+  var key=p ? productRouteKey(p) : encodeURIComponent(String(idOrProduct||"").trim());
+  return siteBasePath() + (key?("?sku="+key):"");
 }
 
 function naqaNormImgPath(u){

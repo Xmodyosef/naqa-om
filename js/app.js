@@ -5,8 +5,8 @@ function adjustCardQty(id, delta){
   if(delta>0){
     if(!it){ addToCart(id, 1); return; }
     var p = products.find(function(x){ return x.id===id; });
-    if(p && p.stock!=null && it.qty>=Number(p.stock)){
-      if(typeof toast==="function") toast(T("stockLimit"));
+    if(typeof cartQtyAllowed==="function" && !cartQtyAllowed(p, it.qty + 1)){
+      if(typeof toast==="function") toast(p && p.stock!=null && it.qty>=Number(p.stock) ? T("stockLimit") : cartQtyLimitMessage());
       return;
     }
     it.qty++;
@@ -76,8 +76,8 @@ $("#cartBody").addEventListener("click", e=>{
     const it=cart.find(i=>i.id===+inc.dataset.inc);
     if(it){
       const p=products.find(x=>x.id===it.id);
-      if(p && p.stock!=null && it.qty>=Number(p.stock)){
-        if(typeof toast==="function") toast(T("stockLimit"));
+      if(typeof cartQtyAllowed==="function" && !cartQtyAllowed(p, it.qty + 1)){
+        if(typeof toast==="function") toast(p && p.stock!=null && it.qty>=Number(p.stock) ? T("stockLimit") : cartQtyLimitMessage());
       } else { it.qty++; saveCart(); renderCart(); try{ if(typeof refreshProductCartUI==="function") refreshProductCartUI(); }catch(e){} }
     }
     return;

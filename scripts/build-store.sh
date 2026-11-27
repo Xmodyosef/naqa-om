@@ -20,5 +20,7 @@ Path('css/store.min.css').write_text(css+'\n')
 print('built store.min.css', len(css), 'store.min.js', Path('js/store.min.js').stat().st_size)
 PY
 echo OK
-node scripts/build-seo-pages.js
+if [[ "${NAQA_SKIP_SEO_BUILD:-0}" != "1" ]]; then
+  node scripts/build-seo-pages.js
+fi
 node scripts/verify-fixes.js

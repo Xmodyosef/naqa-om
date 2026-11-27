@@ -16,6 +16,22 @@ const assert = (c, m) => {
 assert(/cart\s*=\s*\[\s*\]/.test(read("js/cart.js")), "cart clears after checkout");
 assert(read("js/cart.js").includes("order.html#"), "order.html bridge in WhatsApp");
 assert(read("js/cart.js").includes("siteBasePath"), "saveLink uses siteBasePath");
+assert(read("js/admin/orders.js").includes("terms.every"), "admin order search supports multiple terms");
+assert(read("js/admin/app.js").includes("var nNew = counts.new || 0"), "admin parent badge counts new orders only");
+assert(read("js/cart.js").includes("function cartQtyAllowed"), "cart quantity validator exists");
+assert(read("js/cart.js").includes("if(!cartQtyAllowed(p, qty))"), "checkout rejects invalid or over-stock quantities");
+assert(read("js/cart.js").includes("if(!waWindow)"), "checkout detects blocked WhatsApp popups");
+assert(read("js/cart.js").includes("window.__naqaPendingWhatsApp"), "checkout preserves a pending WhatsApp order without duplicate submission");
+
+const cartTestCtx = {};
+vm.createContext(cartTestCtx);
+vm.runInContext(read("js/cart.js"), cartTestCtx);
+assert(cartTestCtx.cartQtyAllowed({stock:3}, 3), "cart quantity accepts available stock");
+assert(!cartTestCtx.cartQtyAllowed({stock:3}, 4), "cart quantity rejects stock overrun");
+assert(cartTestCtx.cartQtyAllowed({stock:25}, 20), "cart quantity accepts the 20-item cap");
+assert(!cartTestCtx.cartQtyAllowed({stock:25}, 21), "cart quantity rejects above 20 items");
+assert(!cartTestCtx.cartQtyAllowed({stock:0}, 1), "cart quantity rejects zero stock");
+
 assert(read("js/core.js").includes("function siteBasePath"), "siteBasePath defined");
 assert(
   !/mergeOverrides\(JSON\.parse\(localStorage\.getItem\("naqa_overrides"/.test(read("js/core.js")),

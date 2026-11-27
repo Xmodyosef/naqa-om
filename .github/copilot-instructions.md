@@ -10,3 +10,4 @@ Critical:
 - Design lock: brand `#8d3048`, bg `#fdf8f6`. No admin sidebar.
 - Store locks (2026-11-27): no عطور chip; no carousel dots/thumbs; sheet pull closes (no reload); horizontal overscroll locked; cats clear catalog filters; chrome-hide collapses height.
 - Product images: imgs[0]=real packshot on white; imgs[1+]=extra real photos; never wipe gallery (`docs/PRODUCT_IMAGES_RULE.md`).
+- Never commit `tmp/`/scratch packshots to live root. Do not run SEO rebuilds that wipe `p/` redirects unless explicitly requested.

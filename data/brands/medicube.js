@@ -121,13 +121,13 @@ window.NAQA_PRODUCTS.push(
     "media/products/p35_2.webp",
     "media/products/p35_3.webp"
   ],
-  "nameAr": "قناع ميديكيوب زيرو بور بالطين لتنقية المسام وإزالة الرؤوس السوداء + فرشاة - 100ج",
-  "nameEn": "Medicube Zero Pore Blackhead Mud Mask + Brush",
-  "descAr": "اختاري قناع ميديكيوب زيرو بور بالطين لتنقية المسام وإزالة … حين تريدين نتيجة بلا تعقيد. من Medicube، راحة تُحسّ بعد الإزالة. الحجم ≈ 100 ج. مُخصص تقريباً لـالمرطّب للجافة. خزّنيها في مكان معتدل وأغلقي الغطاء.",
-  "descEn": "Reach for Medicube Zero Pore Blackhead Mud Mask + Brush when you want results without a maze. From Medicube, a short session, clearer after-feel. Size ≈ 100 g. Aimed at clay for oily. Ongoing sting? Ease off or ask a pro.",
+  "nameAr": "قناع ميديكيوب زيرو بور بالطين لتنقية المسام وإزالة الرؤوس السوداء - 100ج",
+  "nameEn": "Medicube Zero Pore Blackhead Mud Mask - 100g",
+  "descAr": "اختاري قناع ميديكيوب زيرو بور بالطين لتنقية المسام وإزالة … حين تريدين نتيجة بلا تعقيد. من Medicube، راحة تُحسّ بعد الإزالة. الحجم 100 ج. طين للبشرة الدهنية والمسام، مو مع فرشاة. خزّنيها في مكان معتدل وأغلقي الغطاء.",
+  "descEn": "Reach for Medicube Zero Pore Blackhead Mud Mask when you want results without a maze. From Medicube, a short session, clearer after-feel. Size ≈ 100 g. Aimed at clay for oily. Ongoing sting? Ease off or ask a pro.",
   "useAr": "١) ١–٣ مرات أسبوعياً.\n٢) ابتعدي عن الجروح.\n٣) أكملي روتينك بعد الجلسة.",
   "useEn": "1) Clean skin.\n2) 10–20 minutes (or as labeled).\n3) Remove or pat in + cream.\n4) Clay/acids: not daily.",
-  "skinAr": "المرطّب للجافة",
+  "skinAr": "الطين للبشرة الدهنية",
   "skinEn": "clay for oily",
   "stock": 3
 },

@@ -1,7 +1,7 @@
 # نقاء — ما هو فعّال الآن على الموقع (LOCKED)
 
 > آخر تثبيت: **2026-11-27** · كاش المتجر: **`20261127c13`**  
-> الرابط: https://xmodyosef.github.io/naqa-om/?v=20261127c11  
+> الرابط: https://xmodyosef.github.io/naqa-om/?v=20261127c13  
 > ملاحظة: `?v=20261127c13` للواجهة + `css/store.min.css?v=20261127c13` و`js/hero-swipe.js?v=20261127c13`؛ ملفات السحابة لها مفاتيح مستقلة.  
 > المستودع: https://github.com/Xmodyosef/naqa-om  
 

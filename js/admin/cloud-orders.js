@@ -23,14 +23,30 @@
     var database = db();
     if (!database || !uid()) return Promise.resolve(false);
     return database.collection(DOC.col).doc(DOC.id).get().then(function (snap) {
-      if (!snap.exists) return false;
+      if (!snap.exists) {
+        /* First admin device: seed Firestore from local live orders (no demo). */
+        var local = (A.liveOrders ? A.liveOrders() : (A.orders || [])).filter(function (o) { return o && o.id; });
+        if (local.length && A.pushOrdersCloud) {
+          A._ordersCloudStatus = "seeding";
+          return A.pushOrdersCloud().then(function (ok) {
+            A._ordersCloudStatus = ok ? "synced" : "local_only";
+            A._ordersFromCloud = !!ok;
+            return ok;
+          });
+        }
+        A._ordersCloudStatus = "empty";
+        return false;
+      }
       var d = snap.data() || {};
       var list = d.list;
       if (!Array.isArray(list)) return false;
       var by = {};
-      (A.orders || []).forEach(function (o) { if (o && o.id) by[o.id] = o; });
+      (A.orders || []).forEach(function (o) {
+        if (o && o.id && !(o.source === "demo" || o.demo === true)) by[o.id] = o;
+      });
       list.forEach(function (o) {
         if (!o || !o.id) return;
+        if (o.source === "demo" || o.demo === true) return;
         var cur = by[o.id];
         if (!cur) by[o.id] = o;
         else {
@@ -38,6 +54,7 @@
           var b = String(o.updatedAt || o.at || "");
           var merged = b >= a ? Object.assign({}, cur, o) : Object.assign({}, o, cur);
           if (cur.stockDeducted || o.stockDeducted) merged.stockDeducted = true;
+          if (cur.note && !merged.note) merged.note = cur.note;
           by[o.id] = merged;
         }
       });
@@ -45,12 +62,22 @@
       A.orders.sort(function (a, b) { return String(b.at || "").localeCompare(String(a.at || "")); });
       A.orders.forEach(function (o) { o.status = A.normalizeStatus(o.status); });
       A._ordersFromCloud = true;
+      A._ordersCloudStatus = "synced";
       A._ordersTotalCount = A.orders.length;
       if (A.settleOrderStock) A.settleOrderStock();
-      if (A.saveOrders) A.saveOrders();
+      if (A.saveOrders) {
+        /* save local only without re-push loop: call underlying if needed */
+        try {
+          localStorage.setItem(A.ORDERS_KEY || "naqa_orders", JSON.stringify((A.orders || []).slice(0, MAX)));
+        } catch (e) {}
+      }
       if (A.updateOrdersBadge) A.updateOrdersBadge();
       return true;
-    }).catch(function () { return false; });
+    }).catch(function (err) {
+      try { console.warn("[naqa] pullOrdersCloud", err && err.message ? err.message : err); } catch (e) {}
+      A._ordersCloudStatus = "error";
+      return false;
+    });
   };
 
   A.pushOrdersCloud = function () {
@@ -88,7 +115,14 @@
       list: list,
       updatedAt: Date.now(),
       updatedBy: id
-    }, { merge: true }).then(function () { return true; }).catch(function () { return false; });
+    }, { merge: true }).then(function () {
+      A._ordersCloudStatus = "synced";
+      return true;
+    }).catch(function (err) {
+      try { console.warn("[naqa] pushOrdersCloud", err && err.message ? err.message : err); } catch (e) {}
+      A._ordersCloudStatus = "error";
+      return false;
+    });
   };
 
   var _save = A.saveOrders;

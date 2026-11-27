@@ -1,8 +1,8 @@
 # نقاء — ما هو فعّال الآن على الموقع (LOCKED)
 
-> آخر تثبيت: **2026-11-27** · كاش المتجر: **`20261127c9`**  
-> الرابط: https://xmodyosef.github.io/naqa-om/?v=20261127c9  
-> ملاحظة: `?v=` على الصفحة + `cloud-overrides.js?v=20261127c9` في HTML (موحّدان c9).  
+> آخر تثبيت: **2026-11-27** · كاش المتجر: **`20261127c10`**  
+> الرابط: https://xmodyosef.github.io/naqa-om/?v=20261127c10  
+> ملاحظة: `?v=` على الصفحة + `cloud-overrides.js?v=20261127c10` في HTML (موحّدان c9).  
 > المستودع: https://github.com/Xmodyosef/naqa-om  
 
 هذا الملف = **الورك فلو الحي الوحيد**. طلب الفحص الخارجي: **`docs/AUDIT-BRIEF.md`**. فحص عميق: **`docs/AUDIT-DEEP.md`**. أي خطة/ستاتس/أودت قديمة محذوفة.
@@ -121,7 +121,7 @@ admin.html → Firebase Auth (إيميل/Google)
 
 ## 8) إصلاحات 2026-11-27 (فحص مصدر)
 
-1. **إخفاء المنتجات:** بعد تحميل overrides من السحابة لا يُصفَّر `hidden` — `js/cloud-overrides.js?v=20261127c9`
+1. **إخفاء المنتجات:** بعد تحميل overrides من السحابة لا يُصفَّر `hidden` — `js/cloud-overrides.js?v=20261127c10`
 2. **قراءة طلبات اللوحة:** `firestore.rules` — `orders_private` read منفصل عن write (بدون `request.resource` على get)
 3. حُذفت `tmp/*.webp` من `main`
 
@@ -146,7 +146,7 @@ admin.html → Firebase Auth (إيميل/Google)
 | AR/EN تبديل أساسي | ✅ حي |
 | أسعار + توصيل + ضريبة ظاهرة | ✅ حي |
 | تحويل بنكي مخفي (BANK فارغ) | ✅ مقصود |
-| كاش متجر + cloud-overrides **c9** | ✅ منشور |
+| كاش متجر + cloud-overrides **c10** | ✅ منشور |
 | إخفاء منتج من السحابة يبقى بعد التحميل | ✅ أُصلح كوداً 2026-11-27 (كان يكسره `hidden=false`) |
 
 ### أُصلح من فحص المصدر (دليل ملف، يحتاج Publish للقواعد)
@@ -183,3 +183,10 @@ admin.html → Firebase Auth (إيميل/Google)
 - سجلات `source: demo` تُستبعد من الإحصائيات والسحابة إن وُجدت محلياً.
 - ضريبة السلة/الطلب/نافذة الدفع موحّدة عبر `cartVatFromLines` (تحترم إعفاء/مخصص المنتج على بنود المنتجات؛ سياسة رسوم التوصيل منفصلة).
 - حُذف `A.repairStock3` المعطوب خارج IIFE (كان ReferenceError + إظهار جماعي).
+
+### إصلاحات إضافية 2026-11-27 (c10)
+- لا إظهار جماعي تلقائي لكل المخفي (`naqaUnhideIfEmptyCatalog` فقط مع `localStorage.naqa_force_show_all=1`).
+- أول جهاز مشرف: إن لم يوجد `orders_private` يُبذر من الطلبات المحلية (بدون demo).
+- JSON-LD: لا Bank transfer حتى يُفعَّل التحويل.
+- PWA `theme_color` = `#8d3048`.
+- ضريبة رسالة واتساب = `order.vat` الموحّد.

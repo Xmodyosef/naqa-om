@@ -2,7 +2,7 @@
 (function (w) {
   "use strict";
   var A = w.NaqaAdmin = w.NaqaAdmin || {};
-  var V = "20261127c9";
+  var V = "20261127c10";
   var loaded = false;
   var inflight = null;
   var SCRIPT_MS = 12000;

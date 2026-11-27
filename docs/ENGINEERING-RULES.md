@@ -77,7 +77,7 @@ if (!next.hidden) delete A.overrides[id].hidden;
 
 ### 2.6 ممنوع بعد تحميل السحابة (2026-11-27)
 في `js/cloud-overrides.js` بعد `mergeOverrides(map)` **ممنوع** `products.forEach(... p.hidden = false)`.
-الإخفاء السحابي يجب أن يبقى. `naqaUnhideIfEmptyCatalog` فقط إذا **كل** المنتجات مخفية (كتالوج فارغ بالغلط).
+الإخفاء السحابي يجب أن يبقى. `naqaUnhideIfEmptyCatalog` **معطّل** إلا `localStorage.naqa_force_show_all=1` (لا يفتح إخفاء جماعي مقصود).
 
 ## 3) تحميل موديولات اللوحة (deferred)
 

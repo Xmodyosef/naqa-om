@@ -350,7 +350,10 @@ function naqaForceCatalogStock(){
   }catch(e){}
 }
 function naqaUnhideIfEmptyCatalog(){
+  /* Do not mass-unhide intentional cloud hides. Empty grid is valid.
+     Emergency only: localStorage naqa_force_show_all=1 */
   try{
+    if (localStorage.getItem("naqa_force_show_all") !== "1") return;
     var vis = products.filter(function(p){ return !p.hidden; });
     if(!vis.length && products.length){
       products.forEach(function(p){ p.hidden = false; if(!isFinite(Number(p.stock))||Number(p.stock)<1) p.stock=3; });

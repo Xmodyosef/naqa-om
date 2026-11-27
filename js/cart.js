@@ -323,7 +323,7 @@ function sendCheckout(){
   try{
     const compact={
       id:order.id, at:order.at, n:order.name, p:order.phone, a:order.area, t:order.note,
-      tot:order.total, pay:order.payment, del:order.delivery, cod:order.codFee, ship:order.shipping, sub:order.subtotal,
+      tot:order.total, pay:order.payment, del:order.delivery, cod:order.codFee, ship:order.shipping, sub:order.subtotal, vat:order.vat,
       its:priced.map(function(x){ return {i:x.id,q:x.qty,pr:x.price,s:x.sku,na:x.nameAr,ne:x.nameEn}; })
     };
     const raw=btoa(unescape(encodeURIComponent(JSON.stringify(compact))));
@@ -373,8 +373,8 @@ function sendCheckout(){
       : ("\n\nافتحي الرابط من جوال اللوحة. الطلب ينحفظ لوحده:\n"+saveLink))
     : "";
   const msg = lang==="en"
-    ? ("Hello, I want to order from Naqa:\nOrder: "+orderNo+"\nName: "+name+"\nPhone: "+phone+"\nArea: "+gov+"\nPayment: "+payLabel+bankBlock+"\nNote: "+note+"\n\n"+lines+"\n\nSubtotal: "+money(sub)+"\n"+delLine+"\n"+codLine+"\nTotal (incl. 5% VAT): "+money(grand)+"\nOf which VAT 5%: "+money(typeof vatOf==="function"?vatOf(grand):0)+(pay==="transfer"?("\nI will pay then send proof."):"")+saveLine)
-    : ("السلام عليكم، أبغى أطلب من نقاء:\nرقم الطلب: "+orderNo+"\nالاسم: "+name+"\nالجوال: "+phone+"\nالمنطقة: "+gov+"\nالدفع: "+payLabel+bankBlock+"\nملاحظة: "+note+"\n\n"+lines+"\n\nالمجموع الفرعي: "+money(sub)+"\n"+delLine+"\n"+codLine+"\nالإجمالي (شامل الضريبة ٥٪): "+money(grand)+"\nمنها ضريبة ٥٪: "+money(typeof vatOf==="function"?vatOf(grand):0)+(pay==="transfer"?("\nراح أحول وأرسل إثبات الدفع."):"")+saveLine);
+    ? ("Hello, I want to order from Naqa:\nOrder: "+orderNo+"\nName: "+name+"\nPhone: "+phone+"\nArea: "+gov+"\nPayment: "+payLabel+bankBlock+"\nNote: "+note+"\n\n"+lines+"\n\nSubtotal: "+money(sub)+"\n"+delLine+"\n"+codLine+"\nTotal (incl. 5% VAT): "+money(grand)+"\nOf which VAT 5%: "+money(order.vat!=null?order.vat:(typeof vatOf==="function"?vatOf(grand):0))+(pay==="transfer"?("\nI will pay then send proof."):"")+saveLine)
+    : ("السلام عليكم، أبغى أطلب من نقاء:\nرقم الطلب: "+orderNo+"\nالاسم: "+name+"\nالجوال: "+phone+"\nالمنطقة: "+gov+"\nالدفع: "+payLabel+bankBlock+"\nملاحظة: "+note+"\n\n"+lines+"\n\nالمجموع الفرعي: "+money(sub)+"\n"+delLine+"\n"+codLine+"\nالإجمالي (شامل الضريبة ٥٪): "+money(grand)+"\nمنها ضريبة ٥٪: "+money(order.vat!=null?order.vat:(typeof vatOf==="function"?vatOf(grand):0))+(pay==="transfer"?("\nراح أحول وأرسل إثبات الدفع."):"")+saveLine);
   window.open("https://wa.me/"+WA_NUMBER+"?text="+encodeURIComponent(msg), "_blank");
 
   /* Clear cart so the same order is not sent twice. */

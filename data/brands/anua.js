@@ -104,11 +104,7 @@ window.NAQA_PRODUCTS.push(
   "price": 6.7,
   "em": "✨",
   "imgs": [
-    "media/products/p57_0.webp",
-    "media/products/p57_1.webp",
-    "media/products/p57_2.webp",
-    "media/products/p57_3.webp",
-    "media/products/p57_4.webp"
+    "media/products/p57_0.webp"
   ],
   "nameAr": "بخاخ سيروم انوا بي دي آر إن بالكولاجين ميني - 30مل",
   "nameEn": "PDRN Collagen Glow Facial Serum Spray Mini - 30ml",

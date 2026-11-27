@@ -1,8 +1,8 @@
 # نقاء — ما هو فعّال الآن على الموقع (LOCKED)
 
-> آخر تثبيت: **2026-11-27** · كاش المتجر: **`20261127c10`**  
-> الرابط: https://xmodyosef.github.io/naqa-om/?v=20261127c10  
-> ملاحظة: `?v=` على الصفحة + `cloud-overrides.js?v=20261127c10` في HTML (موحّدان c9).  
+> آخر تثبيت: **2026-11-27** · كاش المتجر: **`20261127c11`**  
+> الرابط: https://xmodyosef.github.io/naqa-om/?v=20261127c11  
+> ملاحظة: `?v=` على الصفحة + `cloud-overrides.js?v=20261127c11` في HTML (موحّدان c9).  
 > المستودع: https://github.com/Xmodyosef/naqa-om  
 
 هذا الملف = **الورك فلو الحي الوحيد**. طلب الفحص الخارجي: **`docs/AUDIT-BRIEF.md`**. فحص عميق: **`docs/AUDIT-DEEP.md`**. أي خطة/ستاتس/أودت قديمة محذوفة.
@@ -121,7 +121,7 @@ admin.html → Firebase Auth (إيميل/Google)
 
 ## 8) إصلاحات 2026-11-27 (فحص مصدر)
 
-1. **إخفاء المنتجات:** بعد تحميل overrides من السحابة لا يُصفَّر `hidden` — `js/cloud-overrides.js?v=20261127c10`
+1. **إخفاء المنتجات:** بعد تحميل overrides من السحابة لا يُصفَّر `hidden` — `js/cloud-overrides.js?v=20261127c11`
 2. **قراءة طلبات اللوحة:** `firestore.rules` — `orders_private` read منفصل عن write (بدون `request.resource` على get)
 3. حُذفت `tmp/*.webp` من `main`
 

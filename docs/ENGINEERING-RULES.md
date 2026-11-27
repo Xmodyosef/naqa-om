@@ -259,8 +259,8 @@ node --check js/app.js
 ## مراجع سريعة
 
 - `docs/STRUCTURE.md` · `docs/MAP.md`
-- `docs/FIREBASE.md` · `docs/FIRESTORE-OVERRIDES.md` · `docs/P2-FIRESTORE-RULES.md`
-- `docs/PRODUCT_IMAGES_RULE.md` · `docs/EMAIL-PRIVACY.md` · `docs/LOCK-PANEL.md`
+- `docs/FIREBASE.md` · `docs/FIRESTORE-OVERRIDES.md` · `docs/FIRESTORE-HOW-TO-PUBLISH.md`
+- `docs/PRODUCT_IMAGES_RULE.md` · `docs/EMAIL-PRIVACY.md` · `docs/LIVE.md`
 
 
 ---
@@ -299,3 +299,16 @@ body.chrome-hide .nav-cats { max-height:0 !important; … }
 
 ### 12.6 كاش اللوحة للمنتجات
 في `js/admin/load-modules.js` يمكن رفع `products.admin.min.js?v=` وحده دون لمس باقي الموديولات.
+
+
+---
+
+## 13) صور المنتجات — Packshot أبيض + معرض (صارم)
+
+راجع النص الكامل: **`docs/PRODUCT_IMAGES_RULE.md`**.
+
+1. **`imgs[0]`** = صورة حقيقية للعبوة على **خلفية بيضاء**. هذه صورة الكرت والقضبان وأول سلايد.
+2. **`imgs[1+]`** = صور حقيقية إضافية؛ تُضاف ولا تُستبدل الأولى ولا تُمسح المعرض عند الحفظ.
+3. معالجة الخلفية (أبيض) قبل اعتماد الأولى إن لزم — لا تعتمد لقطة موديل/خلفية داكنة كأولى.
+4. المتجر: سحب فقط، بلا dots/thumbs.
+5. أي سكربت إصلاح صور يلتزم بنفس الترتيب `p{ID}_0` ثم `_1`…

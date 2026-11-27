@@ -1,24 +1,92 @@
-# Product images rule (LOCKED)
+# قاعدة صور المنتجات — LOCKED (صارمة)
 
-## Behavior
-1. **Gallery is truth on Save** — what you see in the edit screen is what is stored.
-2. **✕ deletes only that photo** — other photos stay. No magic re-injection of catalog shots on save.
-3. **Intentional deletes** are stored in `removedImgs` so reload does not bring them back.
-4. **Wipe repair** only when stored imgs are *only* `fs:`/`https` while the product still has `media/*` catalog (old bug). Never on intentional delete.
-5. **Cloud sanitize** allows `media/*`, `fs:`, `https://` and `removedImgs`.
+> **إلزامية** لأي رفع / استيراد / إصلاح صور / سكربت packshot / حفظ من اللوحة.  
+> آخر تشديد: **2026-11-27**.  
+> عربي + إنجليزي = نفس المعرض، نفس المسارات.
 
-## Login performance
-- Overrides load **once** (deduped promise).
-- No auto cloud rewrite after repair.
-- `getIdToken(false)` — no forced refresh every save.
+---
 
-## Code
-- `js/admin/core.js` — keepImgs / isWipeImgs / merged / repairAllProductImgs
-- `js/admin/products.js` — openEdit / delete / saveEdit
-- `js/cloud-overrides.js` — sanitize + load
-- `js/core.js` — storefront merge
+## 0) مبدأ واحد
 
+**الصورة الأولى = حقيقة المنتج على خلفية بيضاء نقية.**  
+**بعدها = صور حقيقية إضافية لنفس المنتج (زوايا / تفاصيل / استخدام) — بدون مسح الأولى.**
 
-## Arabic + English
-Same code path for Arabic and English. No separate AR/EN image save.
-Switch language with the admin language button — edit form reloads labels via `setLang` → `openEdit`.
+ممنوع: كولاج، لوجو لوحده، بنر تسويقي كأول صورة، خلفية رمادية/ملوّنة/مظلّلة كأساس للكرت، سكين/موديل يغطي المنتج في الأولى، صورة ضبابية أو مقصوصة بشكل يضيّع العبوة.
+
+---
+
+## 1) ترتيب المعرض (Gallery order) — صارم
+
+| الترتيب | المطلوب | ملاحظات |
+|--------|---------|---------|
+| **`imgs[0]` — الأولى** | **Packshot حقيقي** للمنتج/العبوة على **خلفية بيضاء** (`#FFFFFF` أو قريب جدًا) | تظهر في كرت الشبكة، القضبان، البنر، أول سلايد في ورقة المنتج |
+| **`imgs[1…]` — الباقي** | صور **حقيقية** إضافية لنفس SKU | زوايا، غطاء، قوام، ملصق، استخدام — **لا تُحذف** عند إضافة صورة جديدة |
+| الحد العملي | حتى **5** صور حقيقية في الورقة | السحب يمين/يسار فقط — **بدون نقاط وبدون thumbnails** |
+
+### خلفية بيضاء — تعريف مقبول
+- خلفية بيضاء/فاتحة جدًا تملأ معظم الإطار حول المنتج.
+- المنتج في الوسط، `object-fit: contain`، بدون قصّ يقطع اسم الماركة على العبوة.
+- إن وُجدت خلفية غير بيضاء في المصدر: **عالجها** (flood fill / إزالة خلفية → أبيض) قبل الاعتماد كـ `imgs[0]`.
+- السكربتات المرجعية: منطق packshot أبيض (مثل تقييم `white`/`score_packshot` في `scripts/kapy_fix125.py`) — لا تعتمد صورة أولى ضعيفة score.
+
+### صور إضافية
+- يجب أن تكون لنفس المنتج (نفس الباركود/SKU قدر الإمكان).
+- مسموح: packshot جانبي، غطاء مفتوح، نسيج/قطرة، إنفوجرافيك **بسيط** للملصق **بعد** الأولى فقط.
+- ممنوع استبدال الأولى بإنفوجرافيك أو لقطة موديل.
+
+---
+
+## 2) الحفظ من اللوحة — لا تمسح المعرض
+
+1. **Gallery is truth on Save** — ما يظهر في شاشة التعديل = ما يُخزَّن.
+2. **✕ تحذف تلك الصورة فقط** — الباقي يبقى. ممنوع إعادة حقن صور كتالوج قديمة بعد حذف مقصود.
+3. الحذف المقصود يُسجَّل في `removedImgs` حتى لا ترجع عند التحميل.
+4. **Wipe repair** فقط إذا المخزّن كله `fs:`/`https` بينما المنتج ما زال له `media/*` (بَغ قديم). **أبداً** بعد حذف مقصود.
+5. Cloud sanitize يسمح: `media/*`, `fs:`, `https://`, و`removedImgs`.
+6. **إضافة صورة = append** للمعرض. **ممنوع** `imgs = [newOnly]`.
+
+### كود
+- `js/admin/core.js` — keepImgs / isWipeImgs / merged / repairAllProductImgs  
+- `js/admin/products.js` — openEdit / delete / saveEdit  
+- `js/cloud-overrides.js` — sanitize + load  
+- `js/core.js` — دمج الواجهة الأمامية  
+
+---
+
+## 3) مسارات الملفات
+
+- صور الكتالوج الحيّة: `media/products/p{ID}_{i}.webp` (أو امتداد المشروع الحالي).
+- **`p*_0` = الأولى (أبيض + packshot).**  
+- **`p*_1`, `p*_2`, … = الإضافية.**
+- لا ترفع صورة أولى فوق `p*_1` وتترك `p*_0` يتيمًا/قديمًا دون تحديث المرجع في الكتالوج.
+- عند الاستيراد: حدّث `imgs[]` في مصدر البراند/الحزمة بنفس الترتيب.
+
+---
+
+## 4) واجهة المتجر (لا تغيّر بدون طلب)
+
+- كرت المنتج يعرض **`imgs[0]`** فقط.
+- ورقة المنتج: كل `imgs` بالسحب — **بدون** `.carousel-dots` و**بدون** `.thumbs`.
+- خلفية عرض الصورة في الكرت/الورقة بيضاء/ compat مع packshot (`#fff` / `#faf7f5`) — لا تلوّن الخلفية فوق المنتج.
+
+---
+
+## 5) قائمة تحقق قبل اعتماد منتج / دفعة صور
+
+- [ ] الأولى packshot حقيقي واضح للعبوة  
+- [ ] خلفية الأولى بيضاء (أو عُولجت إلى أبيض)  
+- [ ] المنتج غير مقصوص من الاسم/الباركود إن كان ظاهرًا  
+- [ ] إن وُجدت صور إضافية: حقيقية ولنفس المنتج، بعد الأولى  
+- [ ] الحفظ لم يمسح صورًا سابقة  
+- [ ] الشبكة + ورقة المنتج تعرضان الأولى نفسها  
+- [ ] عربي/إنجليزي: نفس المعرض  
+
+**رفض النشر** إذا الأولى لقطة جوّ / يد / موديل فقط، أو خلفية داكنة/مزدحمة، أو معرض = صورة واحدة تسويقية غير packshot بدون سبب موثّق من صاحبة المتجر.
+
+---
+
+## 6) أداء الدخول للوحة (مرتبط بالصور)
+
+- Overrides تُحمَّل **مرة** (promise موحّد).
+- لا إعادة كتابة سحابية تلقائية بعد كل repair.
+- `getIdToken(false)` — بدون refresh إجباري عند كل حفظ.

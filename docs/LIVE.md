@@ -90,6 +90,7 @@ admin.html → Firebase Auth (إيميل/Google)
 - تغيير ألوان العلامة أو نقل أزرار الهيدر
 - نشر PAT GitHub من واجهة الإعدادات
 - مسح معرض صور المنتج عند إضافة صورة
+- اعتماد `imgs[0]` ليست packshot بخلفية بيضاء (موديل/جو/خلفية داكنة كأولى)
 
 ---
 
@@ -98,3 +99,12 @@ admin.html → Firebase Auth (إيميل/Google)
 - متجر: `index.html` → `?v=` على `store.min.js` و `store.min.css` و detail إن لزم.
 - لوحة منتجات: `js/admin/load-modules.js` → `products.admin.min.js?v=…`
 - بعد أي نشر: حدّثي الصفحة بقوة أو افتحي `?v=` الجديد.
+
+
+---
+
+## 6) صور المنتجات (LOCKED)
+
+- **الأولى:** packshot حقيقي، خلفية بيضاء.
+- **بعدها:** صور حقيقية إضافية؛ لا مسح عند الإضافة.
+- **الملف:** `docs/PRODUCT_IMAGES_RULE.md`

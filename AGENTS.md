@@ -13,7 +13,11 @@ Cache key (store assets): see `index.html` (`?v=20261127c7` as of 2026-11-27).
 4. **Store rebuild** — after editing any store source listed in `scripts/build-store.sh`, run `bash scripts/build-store.sh` and commit both `js/store.min.js` and `css/store.min.css`. Bump `?v=` in `index.html`.
 5. **Verify live** when user says “not working” — check GitHub Pages / `main`; do not assume local only.
 6. **No GitHub PAT** in settings UI for product publish — Firestore `naqa/overrides` only.
-7. Product images: add only, never wipe gallery — `docs/PRODUCT_IMAGES_RULE.md`.
+7. **Product images (STRICT)** — see `docs/PRODUCT_IMAGES_RULE.md`:
+    - `imgs[0]` = **real packshot on pure white background** (card + first sheet slide).
+    - `imgs[1+]` = additional **real** product photos; **add only, never wipe** gallery.
+    - No dots/thumbs under photos. No collage/logo-only as first image.
+    - Reject publish if first shot is model/lifestyle/dark bg without packshot.
 8. Orders: cancel with confirm, no hard-delete button.
 9. **Admin search** — orders only, height 34px, width ≤ 220px. Never stretch full width.
 10. **i18n admin** — never `document.write` in `js/admin/i18n.js`. Load `dict-ar.js` then `dict-en.js` before `i18n.js`.
@@ -33,4 +37,9 @@ Cache key (store assets): see `index.html` (`?v=20261127c7` as of 2026-11-27).
 22. **Bank transfer** stays hidden until name + IBAN are set (intentional).
 23. Prefer short Arabic summaries before large changes when the user asks «لخّص قبل لا تبدأ».
 
-Project map: `docs/MAP.md` · Structure: `docs/STRUCTURE.md` · Live workflow: `docs/LIVE.md`
+24. **Summarize before coding** when the user says «لخّص قبل لا تبدأ» — short plan, wait for «ابدا».
+25. **Admin scope** — do not overhaul admin modules/cache unless asked; products catalog bust alone is enough for “تحديث المنتجات”.
+26. **No orphan catalog load** — do not re-link deleted/unused heavy bundles (e.g. old 199-SKU bundle) into the live store.
+27. **Document live truth** in `docs/LIVE.md`; do not revive deleted status/audit/plan docs.
+
+Project map: `docs/MAP.md` · Structure: `docs/STRUCTURE.md` · Live workflow: `docs/LIVE.md` · Images: `docs/PRODUCT_IMAGES_RULE.md`

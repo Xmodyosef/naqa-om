@@ -338,6 +338,9 @@ $("#lightbox").addEventListener("click", e=>{ if(e.target.id==="lightbox"||e.tar
     if(!e.touches || e.touches.length!==1){ armed=false; return; }
     var tch=e.touches[0];
     if(!onBackEdge(tch.clientX)){ armed=false; return; }
+    if(e.target && e.target.closest && e.target.closest(".hero-swipe-track, .campaign-products, .carousel-track")){
+      armed=false; return;
+    }
     x0=tch.clientX; y0=tch.clientY; armed=true;
   }, {passive:true, capture:true});
   document.addEventListener("touchmove", function(e){
@@ -370,7 +373,7 @@ $("#lightbox").addEventListener("click", e=>{ if(e.target.id==="lightbox"||e.tar
   sheet.addEventListener("touchmove", function(e){
     if(e.touches && e.touches.length > 1) return;
     if(!sheet.classList.contains("show")) return;
-    const allow=e.target.closest && e.target.closest(".sheet-card, .carousel-track, .lightbox, .thumbs");
+    const allow=e.target.closest && e.target.closest(".sheet-card, .carousel-track, .hero-swipe-track, .campaign-products, .lightbox, .thumbs");
     // if touch is on dimmed backdrop (the sheet element itself) block
     if(e.target===sheet || !allow){
       // still allow if inside card

@@ -311,12 +311,14 @@ function render(){
     var gridEl=$("#grid");
     var empty=$("#empty");
     if(home){
-      /* Campaign homepage: banners + product rails only (preview layout) */
+      document.body.classList.add("home-photo");
+      /* Campaign homepage: one swipe banner + product rails (no auto-crawl) */
       if(secHead) secHead.hidden=true;
       if(priceBar) priceBar.hidden=true;
       if(gridEl){ gridEl.innerHTML=""; gridEl.hidden=true; }
       if(empty) empty.hidden=true;
     } else {
+      document.body.classList.remove("home-photo");
       if(secHead) secHead.hidden=false;
       if(gridEl) gridEl.hidden=false;
       if(priceBar) priceBar.hidden=false;

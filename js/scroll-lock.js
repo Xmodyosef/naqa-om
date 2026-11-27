@@ -19,6 +19,8 @@
           node.classList.contains("drawer-body") ||
           node.classList.contains("sheet-card") ||
           node.classList.contains("carousel-track") ||
+          node.classList.contains("hero-swipe-track") ||
+          node.classList.contains("campaign-products") ||
           node.id === "sheetCard" ||
           node.id === "cartBody" ||
           node.id === "quizBody"

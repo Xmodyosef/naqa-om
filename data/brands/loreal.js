@@ -174,7 +174,8 @@ window.NAQA_PRODUCTS.push(
   "sku": "3600522863000",
   "price": 4.2,
   "em": "✨",
-  "imgs": [ "media/products/p324_0.webp"
+  "imgs": [
+    "media/products/p324_0.webp"
   ],
   "nameAr": "لوريال بخاخ حماية حرارية",
   "nameEn": "L'Oréal Elvive Heat Protect Spray",

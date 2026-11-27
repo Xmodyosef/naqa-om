@@ -111,7 +111,8 @@ window.NAQA_PRODUCTS.push(
   "sku": "7610300225299",
   "price": 2.7,
   "em": "✨",
-  "imgs": [ "media/products/p310_0.webp"
+  "imgs": [
+    "media/products/p310_0.webp"
   ],
   "nameAr": "شوارزكوف بخاخ فرد فلاتجليجت",
   "nameEn": "Schwarzkopf got2b Flachgelegt Straightening Spray",

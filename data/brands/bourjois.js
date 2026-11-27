@@ -45,7 +45,7 @@ window.NAQA_PRODUCTS.push(
 {
   "em": "✨",
   "imgs": [
-    "media/products/p242_0.webp"
+    "media/products/p241_0.webp"
   ],
   "stock": 3,
   "brand": "Bourjois",
@@ -273,7 +273,8 @@ window.NAQA_PRODUCTS.push(
   "sku": "3616303400100",
   "price": 3.9,
   "em": "✨",
-  "imgs": [ "media/products/p286_0.webp"
+  "imgs": [
+    "media/products/p286_0.webp"
   ],
   "nameAr": "برجواز كحل كونتور كلوبنق 001",
   "nameEn": "Bourjois Contour Clubbing Waterproof Liner 001 Ultra Black",
@@ -293,7 +294,8 @@ window.NAQA_PRODUCTS.push(
   "sku": "3616303400117",
   "price": 3.9,
   "em": "✨",
-  "imgs": [ "media/products/p287_0.webp"
+  "imgs": [
+    "media/products/p287_0.webp"
   ],
   "nameAr": "برجواز كحل كونتور كلوبنق 041",
   "nameEn": "Bourjois Contour Clubbing Waterproof Liner 041",

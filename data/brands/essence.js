@@ -12,8 +12,7 @@ window.NAQA_PRODUCTS.push(
   "em": "✨",
   "imgs": [
     "media/products/p100_0.webp",
-    "media/products/p100_1.webp",
-    "media/products/p100_2.webp"
+    "media/products/p100_1.webp"
   ],
   "nameAr": "ماسكارا لاش برنسيس من إيسنس - 12مل",
   "nameEn": "essence Lash Princess False Lash Effect Mascara - 12ml",
@@ -143,7 +142,7 @@ window.NAQA_PRODUCTS.push(
 {
   "em": "💋",
   "imgs": [
-    "media/products/p202_0.webp"
+    "media/products/p201_0.webp"
   ],
   "stock": 3,
   "brand": "essence",
@@ -372,7 +371,7 @@ window.NAQA_PRODUCTS.push(
   "price": 1.8,
   "em": "✨",
   "imgs": [
-    "media/products/p261_0.webp"
+    "media/products/p212_0.webp"
   ],
   "nameAr": "بودرة تثبيت أول أباوت مات",
   "nameEn": "essence All About Matt Fixing Compact Powder",

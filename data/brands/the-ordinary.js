@@ -34,9 +34,7 @@ window.NAQA_PRODUCTS.push(
   "em": "✨",
   "imgs": [
     "media/products/p54_0.webp",
-    "media/products/p54_1.webp",
-    "media/products/p54_2.webp",
-    "media/products/p54_3.webp"
+    "media/products/p54_1.webp"
   ],
   "nameAr": "سيروم ذا اورديناري بحمض الهيالورونيك 2% وفيتامين B5 والسيراميدات",
   "nameEn": "Hyaluronic Acid %2 +B5 with Ceramides - 30ml",

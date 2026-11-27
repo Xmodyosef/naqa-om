@@ -55,10 +55,10 @@ window.NAQA_PRODUCTS.push(
     "media/products/p81_1.webp",
     "media/products/p81_2.webp"
   ],
-  "nameAr": "برايمر كاميرا أون لتنعيم البشرة وتمويه المسام من شيجلام - 30ج",
-  "nameEn": "SHEGLAM Camera On Pore-Smoothing Primer - 30g",
+  "nameAr": "برايمر كاميرا أون سموث آند بلور من شيجلام — 30جم",
+  "nameEn": "SHEGLAM Camera On Smooth & Blur Primer - 30g",
   "descAr": "SHEGLAM × عناية يومية: برايمر كاميرا أون لتنعيم البشرة وتمويه المسام من شي…. يُركّز على راحة الاستخدام. الملمس: لمسة نهائية حسب اختيارك. الحجم ≈ 30 ج. اختبري التطابق على الفك. خزّنيها في مكان معتدل وأغلقي الغطاء.",
-  "descEn": "SHEGLAM for daily care: SHEGLAM Camera On Pore. Comfort-first use. Feel: builds coverage quietly. Size ≈ 30 g. Combo to dry. Ongoing sting? Ease off or ask a pro.",
+  "descEn": "SHEGLAM for daily care: SHEGLAM Camera On Smooth & Blur Primer. Comfort-first use. Feel: builds coverage quietly. Size ≈ 30 g. Combo to dry. Ongoing sting? Ease off or ask a pro.",
   "useAr": "١) بشرة مرطّبة (+ SPF نهاراً).\n٢) كمية قليلة ووزّعي.\n٣) غطّي بطبقات خفيفة.\n٤) ثبّتي عند الحاجة.",
   "useEn": "1) Moisturized skin (+ SPF by day).\n2) Start small and blend.\n3) Build in thin layers.\n4) Set for longer wear.",
   "skinAr": "اختبري التطابق على الفك",

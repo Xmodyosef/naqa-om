@@ -87,9 +87,7 @@ window.NAQA_PRODUCTS.push(
 {
   "em": "🪄",
   "imgs": [
-    "media/products/p243_0.webp",
-    "media/products/p243_1.webp",
-    "media/products/p243_2.webp"
+    "media/products/p244_0.webp"
   ],
   "stock": 3,
   "brand": "Bourjois",

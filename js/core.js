@@ -114,6 +114,8 @@ function productHref(p){
   return location.origin + siteBasePath() + (key?("?sku="+key):"");
 }
 function applyRoute(){
+  try{ var __h=(location.hash||"").replace(/^#/,""); if(__h==="brands"){ if(typeof openBrandsPanel==="function") openBrandsPanel(); return; } if(document.body.classList.contains("brands-open") && __h!=="brands" && __h.indexOf("b/")!==0){ if(typeof closeBrandsPanel==="function") closeBrandsPanel(true); } }catch(__e){}
+
   /* Product lives on the store URL: ?sku=BARCODE (also legacy path or #) */
   var searchKey=productKeyFromSearch();
   var pathKey=productKeyFromPath();

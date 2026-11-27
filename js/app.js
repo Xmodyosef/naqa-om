@@ -623,11 +623,101 @@ function naqaSyncDockCartBadge(){
     else { b.hidden=true; b.textContent="0"; }
   }catch(e){}
 }
+
+function naqaListBrands(){
+  var map = {};
+  (products||[]).forEach(function(p){
+    if(!p || p.hidden) return;
+    var b = String(p.brand||"").trim();
+    if(!b) return;
+    map[b] = (map[b]||0) + 1;
+  });
+  return Object.keys(map).sort(function(a,b){
+    return map[b]-map[a] || a.localeCompare(b);
+  }).map(function(name){ return { name:name, count:map[name] }; });
+}
+function openBrandsPanel(){
+  var panel = document.getElementById("brandsPanel");
+  var grid = document.getElementById("brandsPanelGrid");
+  if(!panel || !grid) return;
+  var en = (typeof lang!=="undefined" && lang==="en");
+  var title = document.getElementById("brandsPanelTitle");
+  if(title) title.textContent = en ? "Brands" : "الماركات";
+  var list = naqaListBrands();
+  grid.innerHTML = list.map(function(row){
+    var mark = (typeof brandMark==="function")
+      ? brandMark(row.name, { iconOnly:true }).replace(/data-brand="[^"]*"/, "")
+      : '<span class="brand-mono">'+String(row.name).slice(0,2)+'</span>';
+    /* strip button from brandMark iconOnly — keep mark only */
+    var tmp = document.createElement("div");
+    tmp.innerHTML = mark;
+    var inner = tmp.querySelector("img, .brand-mono, .brand-logo") || tmp.firstChild;
+    var markHtml = inner ? inner.outerHTML : mark;
+    return '<button type="button" class="brands-tile" data-pick-brand="'+esc(row.name)+'">'
+      + markHtml
+      + '<span class="b-name">'+esc(row.name)+'</span>'
+      + '<span class="b-count">'+(en ? (row.count+" items") : (row.count+" منتج"))+'</span>'
+      + '</button>';
+  }).join("") || ('<p class="note">'+(en?"No brands":"لا ماركات")+'</p>');
+  panel.hidden = false;
+  panel.classList.add("show");
+  document.body.classList.add("brands-open");
+  try{ history.pushState({naqa:"brands"}, "", "#brands"); }catch(e){}
+  naqaSetDockOn("brands");
+}
+function closeBrandsPanel(fromRoute){
+  var panel = document.getElementById("brandsPanel");
+  if(!panel) return;
+  panel.classList.remove("show");
+  panel.hidden = true;
+  document.body.classList.remove("brands-open");
+  if(!fromRoute){
+    try{
+      if((location.hash||"").replace(/^#/,"")==="brands") history.pushState({naqa:"shop"}, "", "#shop");
+    }catch(e){}
+  }
+}
+function pickBrandFromPanel(name){
+  if(!name) return;
+  closeBrandsPanel(true);
+  currentBrand = name;
+  currentCat = "all";
+  currentCatalog = "";
+  currentConcern = "";
+  query = "";
+  if(typeof wishView!=="undefined") wishView = false;
+  catalogBrowse = true;
+  window.__naqaShelfFilter = "";
+  var s = document.getElementById("search"); if(s) s.value = "";
+  document.querySelectorAll("#cats [data-cat]").forEach(function(b){
+    b.classList.toggle("on", b.dataset.cat==="all");
+  });
+  try{ history.pushState({naqa:"brand"}, "", "#b/"+encodeURIComponent(name)); }catch(e){}
+  if(typeof render==="function") render();
+  var p = document.getElementById("products");
+  if(p) p.scrollIntoView({behavior:"smooth", block:"start"});
+  naqaSetDockOn("home");
+}
+
 function naqaBindDock(){
   var dock = document.getElementById("dock");
   if(!dock || dock.__naqaBound) return;
   dock.__naqaBound = true;
   naqaSyncDockLang();
+  try{
+    var bc = document.getElementById("brandsClose");
+    if(bc && !bc.__naqa){ bc.__naqa=1; bc.onclick=function(){ closeBrandsPanel(); naqaSetDockOn("home"); }; }
+    var bg = document.getElementById("brandsPanelGrid");
+    if(bg && !bg.__naqa){
+      bg.__naqa=1;
+      bg.addEventListener("click", function(e){
+        var t = e.target.closest("[data-pick-brand]");
+        if(!t) return;
+        pickBrandFromPanel(t.getAttribute("data-pick-brand"));
+      });
+    }
+  }catch(e){}
+
   naqaSyncDockCartBadge();
   try{
     var wa = document.getElementById("dockWa");
@@ -665,12 +755,7 @@ function naqaBindDock(){
     }
     if(k==="brands"){
       naqaSetDockOn("brands");
-      var b=document.getElementById("brandsGrid")||document.getElementById("brandBar");
-      if(b) b.scrollIntoView({behavior:"smooth", block:"start"});
-      else {
-        var p=document.getElementById("products");
-        if(p) p.scrollIntoView({behavior:"smooth", block:"start"});
-      }
+      if(typeof openBrandsPanel==="function") openBrandsPanel();
       return;
     }
     if(k==="cart"){

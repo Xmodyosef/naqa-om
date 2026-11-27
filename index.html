@@ -50,8 +50,8 @@
 <meta name="application-name" content="نقاء | Naqa" />
 
 <title>نقاء · عناية ومكياج | Naqa Oman</title>
-<link rel="preload" href="css/store.min.css?v=20261127c12" as="style" />
-<link rel="stylesheet" href="css/store.min.css?v=20261127c12" />
+<link rel="preload" href="css/store.min.css?v=20261127c13" as="style" />
+<link rel="stylesheet" href="css/store.min.css?v=20261127c13" />
 <link rel="preload" href="media/catalogs/hot.webp" as="image" type="image/webp" fetchpriority="high" />
 
 
@@ -325,6 +325,17 @@ html.sku-boot #sheetCard{min-height:100vh;background:#fff}
 <!-- ship policy moved to hero policy-card -->
 <div class="ship-free" id="shipFree" hidden></div>
 
+
+<div class="brands-panel" id="brandsPanel" role="dialog" aria-modal="true" aria-labelledby="brandsPanelTitle" hidden>
+  <div class="brands-panel-head">
+    <h2 id="brandsPanelTitle">الماركات</h2>
+    <button type="button" class="brands-close" id="brandsClose" aria-label="إغلاق">✕</button>
+  </div>
+  <div class="brands-panel-body">
+    <div class="brands-panel-grid" id="brandsPanelGrid"></div>
+  </div>
+</div>
+
 <nav class="dock" id="dock" aria-label="تنقل سريع">
   <button type="button" class="dock-item on" data-dock="home" id="dockHome">
     <span class="dock-ico" aria-hidden="true">⌂</span>
@@ -416,7 +427,7 @@ html.sku-boot #sheetCard{min-height:100vh;background:#fff}
 <script defer src="js/cloud-overrides.js?v=20261127c10"></script>
 <script defer src="js/store-cloud-boot.js?v=20261127b7"></script>
 
-<script defer src="js/store.min.js?v=20261127c12"></script>
+<script defer src="js/store.min.js?v=20261127c13"></script>
 
 <script>
 if ('serviceWorker' in navigator) {

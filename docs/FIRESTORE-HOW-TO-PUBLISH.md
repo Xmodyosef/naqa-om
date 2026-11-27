@@ -35,3 +35,16 @@
 
 
 **تلقائي من GitHub:** [FIREBASE-GITHUB-SYNC.md](./FIREBASE-GITHUB-SYNC.md)
+
+## تذكير 2026-11-27
+`naqa/orders_private` يجب أن يكون:
+
+```
+allow read: if isAdmin();
+allow create, update: if isAdmin()
+  && onlyKnownKeys(['list', 'updatedAt', 'updatedBy'])
+  && request.resource.data.list is list
+  && stampOk();
+```
+
+لا تجمع `read` مع شروط `request.resource`. بعد التعديل: Publish في Console (أو FIREBASE_TOKEN في GitHub Secrets).

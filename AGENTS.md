@@ -1,7 +1,7 @@
 # Agent instructions — Naqa (naqa-om)
 
 Before changing code, read **`docs/ENGINEERING-RULES.md`** and **`docs/DESIGN-LOCK.md`**.
-Live site state (what is actually shipped): **`docs/LIVE.md`**.
+Live site state (what is actually shipped): **`docs/LIVE.md`**. Deep external audit: **`docs/AUDIT-DEEP.md`**.
 
 Live URL: https://xmodyosef.github.io/naqa-om/  
 Cache key (store assets): see `index.html` (`?v=20261127c7` as of 2026-11-27).

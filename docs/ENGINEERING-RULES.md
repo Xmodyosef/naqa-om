@@ -105,6 +105,10 @@ A.refreshProductsFromBundle = function () {
 ## 4) overrides والسحابة (Firebase)
 
 ### Firestore orders_private (2026-11-27)
+
+### 4.x مخزون مؤقت بعد السحابة
+في `js/cloud-overrides.js` بعد الدمج قد يُفرض `p.stock = 3` (سياسة مؤقتة). **ممنوع** مسح `p.hidden`. عند إدارة مخزون حقيقية أزل الفرض صراحة بطلب.
+
 `allow read` **منفصل** عن `create, update`. لا تجمع `read` مع شروط `request.resource` — يفشل `.get()` للمشرف.
 
 
@@ -205,6 +209,12 @@ node --check js/app.js
 ### 9.x مؤقتات وSEO
 - **ممنوع** `git add tmp/` أو أي scratch packshot / batch / QA على جذر المستودع الحي.
 - **`scripts/build-seo-pages.js`:** لا تعيدي بناء SEO بشكل يمسح توجيهات/صفحات `p/` الحالية إلا إذا طُلب صراحة «إعادة بناء SEO».
+
+
+### 9.y Service Worker
+- `sw.js` أداة تقاعد (حذف كاش).
+- `index.html` يستدعي `navigator.serviceWorker.getRegistrations()` ثم `unregister()` — **لا** تعتمد SW لتخزين الصفحات.
+- هدف: منع كاش قديم يعطّل `?v=`.
 
 ## 10) ممنوع / مطلوب عند أي «إصلاح»
 

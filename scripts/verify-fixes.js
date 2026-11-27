@@ -20,6 +20,9 @@ assert(read("js/admin/orders.js").includes("terms.every"), "admin order search s
 assert(read("js/admin/app.js").includes("var nNew = counts.new || 0"), "admin parent badge counts new orders only");
 assert(read("js/cart.js").includes("function cartQtyAllowed"), "cart quantity validator exists");
 assert(read("js/cart.js").includes("if(!cartQtyAllowed(p, qty))"), "checkout rejects invalid or over-stock quantities");
+assert(read("js/cart.js").includes("if(!waWindow)"), "checkout detects blocked WhatsApp popups");
+assert(read("js/cart.js").includes("window.__naqaPendingWhatsApp"), "checkout preserves a pending WhatsApp order without duplicate submission");
+
 const cartTestCtx = {};
 vm.createContext(cartTestCtx);
 vm.runInContext(read("js/cart.js"), cartTestCtx);

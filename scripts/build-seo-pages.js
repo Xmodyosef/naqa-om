@@ -10,7 +10,7 @@ vm.createContext(ctx);
 vm.runInContext(src, ctx);
 const products = (ctx.window.NAQA_PRODUCTS || []).filter((p) => p && !p.hidden);
 const base = "https://xmodyosef.github.io/naqa-om";
-const outDir = path.join(root, "p");
+const outP = path.join(root, "p");
 
 function esc(s) {
   return String(s == null ? "" : s)
@@ -20,8 +20,34 @@ function esc(s) {
     .split('"').join("&" + "quot;");
 }
 
-if (fs.existsSync(outDir)) fs.rmSync(outDir, { recursive: true, force: true });
-fs.mkdirSync(outDir, { recursive: true });
+const RESERVED = new Set([
+  "admin","order","panel","media","js","css","data","p","docs","scripts",
+  "tmp",".github","index","store","clear-cache","products","logo.svg"
+]);
+
+function slugOf(p) {
+  return String((p && p.sku) || (p && p.id) || "").trim();
+}
+
+/* clean previous barcode folders at root (not reserved) */
+for (const ent of fs.readdirSync(root)) {
+  const full = path.join(root, ent);
+  try {
+    if (!fs.statSync(full).isDirectory()) continue;
+    if (RESERVED.has(ent.toLowerCase())) continue;
+    if (ent.startsWith(".")) continue;
+    /* only remove if looks like our product slug pages (has index.html with Product schema) */
+    const idx = path.join(full, "index.html");
+    if (fs.existsSync(idx)) {
+      const head = fs.readFileSync(idx, "utf8").slice(0, 800);
+      if (head.includes("schema.org") && head.includes("Product")) {
+        fs.rmSync(full, { recursive: true, force: true });
+      }
+    }
+  } catch (e) {}
+}
+if (fs.existsSync(outP)) fs.rmSync(outP, { recursive: true, force: true });
+fs.mkdirSync(outP, { recursive: true });
 
 const urls = [base + "/"];
 for (const p of products) {
@@ -30,8 +56,9 @@ for (const p of products) {
   const desc = String(p.descAr || p.descEn || name).replace(/\s+/g, " ").trim().slice(0, 280);
   const imgPath = (p.imgs && p.imgs[0]) || null;
   const img = imgPath ? base + "/" + String(imgPath).replace(/^\//, "") : base + "/media/icons/icon-512.png";
-  const slug = String(p.sku || p.id).trim();
-  const url = base + "/p/" + encodeURIComponent(slug) + "/";
+  const slug = slugOf(p);
+  if (!slug || RESERVED.has(slug.toLowerCase())) continue;
+  const url = base + "/" + encodeURIComponent(slug) + "/";
   const price = Number(p.price) || 0;
   const brand = p.brand || "Naqa";
   const ld = {
@@ -51,7 +78,7 @@ for (const p of products) {
       itemCondition: "https://schema.org/NewCondition"
     }
   };
-  const dir = path.join(outDir, slug);
+  const dir = path.join(root, slug);
   fs.mkdirSync(dir, { recursive: true });
   const html =
     "<!DOCTYPE html>\n<html lang=\"ar\" dir=\"rtl\">\n<head>\n" +
@@ -83,15 +110,28 @@ for (const p of products) {
     "  <div class=\"card\">\n" +
     "    <img class=\"hero\" src=\"" + esc(img) + "\" alt=\"" + esc(name) + "\" width=\"720\" height=\"720\" />\n" +
     "    <h1>" + esc(name) + "</h1>\n" +
-    "    <p class=\"meta\">" + esc(nameEn) + " · SKU " + esc(p.sku || "—") + "</p>\n" +
+    "    <p class=\"meta\">" + esc(nameEn) + " · " + esc(slug) + "</p>\n" +
     "    <p class=\"price\">" + price.toFixed(3) + " ر.ع <span class=\"meta\">شامل الضريبة ٥٪</span></p>\n" +
     "    <p>" + esc(desc) + "</p>\n" +
-    "    <a class=\"btn\" href=\"" + base + "/#" + encodeURIComponent(slug) + "\">افتحي في المتجر</a>\n" +
+    "    <a class=\"btn\" href=\"" + base + "/" + encodeURIComponent(slug) + "/\">افتحي المنتج</a>\n" +
     "  </div>\n" +
     "  <p class=\"muted\">نقاء · عناية ومكياج · توصيل داخل عُمان · طلب واتساب</p>\n" +
     "</div>\n</body>\n</html>\n";
   fs.writeFileSync(path.join(dir, "index.html"), html);
   urls.push(url);
+  /* legacy /p/SKU/ and /p/id/ → redirect */
+  for (const leg of [slug, String(p.id)]) {
+    if (!leg) continue;
+    const ld2 = path.join(outP, leg);
+    fs.mkdirSync(ld2, { recursive: true });
+    const redir =
+      "<!DOCTYPE html><html lang=\"ar\" dir=\"rtl\"><head><meta charset=\"UTF-8\"/>" +
+      "<meta http-equiv=\"refresh\" content=\"0;url=" + url + "\"/>" +
+      "<link rel=\"canonical\" href=\"" + url + "\"/>" +
+      "<script>location.replace(" + JSON.stringify(url) + ");</script>" +
+      "<title>…</title></head><body><p><a href=\"" + url + "\">انتقال</a></p></body></html>";
+    fs.writeFileSync(path.join(ld2, "index.html"), redir);
+  }
 }
 
 let sm = '<?xml version="1.0" encoding="UTF-8"?>\n';
@@ -103,4 +143,4 @@ urls.forEach(function (u, i) {
 });
 sm += "</urlset>\n";
 fs.writeFileSync(path.join(root, "sitemap.xml"), sm);
-console.log("SEO pages", products.length, "sitemap urls", urls.length);
+console.log("SEO pages", products.length, "sitemap urls", urls.length, "at /BARCODE/");

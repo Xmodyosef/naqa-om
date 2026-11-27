@@ -188,14 +188,19 @@ async function openSheet(id, mode, reset){
   document.title=pname(p)+" · Naqa";
   try{
     if(!qv){
-      var cur = routeHash();
       var rkey=(typeof productRouteKey==="function")?productRouteKey(p):String(p.sku||id);
-      var onProduct = (typeof isProductHash==="function") ? isProductHash(cur) : (cur===rkey || cur.indexOf("p/")===0);
+      var wantPath=(typeof siteBasePath==="function"?siteBasePath():"/")+rkey+"/";
+      var onProduct=(typeof isProductLocation==="function")?isProductLocation():(typeof isProductPath==="function"&&isProductPath());
       if(!onProduct){
         window.__naqaShopHash = (location.hash && location.hash!=="#") ? location.hash : "#shop";
+        window.__naqaShopPath = (typeof siteBasePath==="function"?siteBasePath():"/");
       }
-      if(cur!==rkey && cur!=="p/"+rkey && cur!=="p/"+id && cur!==String(id)){
-        history.pushState({naqa:"product",id:p.id,sku:p.sku||""}, "", "#"+rkey);
+      var curPath=String(location.pathname||"").replace(/\/+$/,"/") ;
+      var normWant=wantPath.replace(/\/+$/,"/");
+      if(curPath!==normWant && curPath!==normWant+"/"){
+        history.pushState({naqa:"product",id:p.id,sku:p.sku||""}, "", wantPath);
+      } else if(location.hash){
+        history.replaceState({naqa:"product",id:p.id,sku:p.sku||""}, "", wantPath);
       }
     }
   }catch(e){}
@@ -210,12 +215,11 @@ function closeSheet(fromRoute){
   document.title=T("docTitle");
   const card=$("#sheetCard");
   if(card){ card.style.transform=""; card.style.transition=""; }
-  if(!fromRoute && (typeof isProductHash==="function" ? isProductHash(routeHash()) : routeHash().indexOf("p/")===0)){
+  if(!fromRoute && (typeof isProductLocation==="function" ? isProductLocation() : (typeof isProductPath==="function" && isProductPath()))){
     try{ history.back(); }catch(e){}
   }
-  /* رجوع من المنتج: نفس مكان التمرير، مو بداية الصفحة */
   setTimeout(function(){
-    if(typeof isProductHash==="function" ? isProductHash(routeHash()) : routeHash().indexOf("p/")===0) return;
+    if(typeof isProductLocation==="function" ? isProductLocation() : false) return;
     if(typeof naqaRestoreShopScroll==="function") naqaRestoreShopScroll();
   }, 0);
 }

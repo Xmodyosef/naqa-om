@@ -307,14 +307,19 @@ $("#lightbox").addEventListener("click", e=>{ if(e.target.id==="lightbox"||e.tar
   }
   function shopHash(){
     var h = window.__naqaShopHash;
-    if(h){ var raw=String(h).replace(/^#/,""); if(typeof isProductHash==="function" ? isProductHash(raw) : (raw.indexOf("p/")===0)) return "#shop"; return h.indexOf("#")===0 ? h : "#"+h; }
+    if(h){
+      var raw=String(h).replace(/^#/,"");
+      if(typeof isProductHash==="function" ? isProductHash(raw) : false) return "#shop";
+      if(typeof isProductPath==="function" && isProductPath()) return "#shop";
+      return h.indexOf("#")===0 ? h : "#"+h;
+    }
     return "#shop";
   }
   function syncShopUrl(){
     try{
+      var base = (typeof siteBasePath==="function" ? siteBasePath() : "/");
       var target = shopHash();
-      var next = location.pathname + location.search + target;
-      history.replaceState({naqa:"shop"}, "", next);
+      history.replaceState({naqa:"shop"}, "", base + (target.indexOf("#")===0 ? target : "#"+target));
     }catch(err){}
   }
   function stepBack(){
@@ -330,7 +335,7 @@ $("#lightbox").addEventListener("click", e=>{ if(e.target.id==="lightbox"||e.tar
       /* Absorb Safari/Chrome edge-back that would pop a second history entry. */
       window.__naqaAbsorbBackUntil = Date.now() + 800;
       closeSheet(true);
-      if(typeof routeHash==="function" && (typeof isProductHash==="function" ? isProductHash(routeHash()) : routeHash().indexOf("p/")===0)){
+      if((typeof isProductLocation==="function" && isProductLocation()) || (typeof isProductHash==="function" && isProductHash(routeHash()))){
         syncShopUrl();
       }
       if(typeof naqaRestoreShopScroll==="function") naqaRestoreShopScroll();
@@ -403,8 +408,9 @@ $("#lightbox").addEventListener("click", e=>{ if(e.target.id==="lightbox"||e.tar
       try{
         var h = window.__naqaShopHash || "#shop";
         if(String(h).indexOf("#")!==0) h="#"+h;
-        if((function(x){ x=String(x||"").replace(/^#/,""); return (typeof isProductHash==="function")?isProductHash(x):(x.indexOf("p/")===0); })(h)) h="#shop";
-        history.pushState({naqa:"shop"}, "", location.pathname + location.search + h);
+        if((function(x){ x=String(x||"").replace(/^#/,""); return (typeof isProductHash==="function")?isProductHash(x):false; })(h)) h="#shop";
+        var base = (typeof siteBasePath==="function" ? siteBasePath() : "/");
+        history.pushState({naqa:"shop"}, "", base + h);
       }catch(err){}
       if($("#sheet") && $("#sheet").classList.contains("show") && typeof closeSheet==="function") closeSheet(true);
       if(typeof naqaRestoreShopScroll==="function") naqaRestoreShopScroll();

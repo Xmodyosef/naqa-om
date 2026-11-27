@@ -23,14 +23,18 @@ function brandMark(brand, opts){
   return '<button type="button" class="brand-link" data-brand="'+esc(brand)+'">'+mark+'<span>'+esc(brand)+'</span></button>';
 }
 function routeHash(){ return decodeURIComponent((location.hash||"").replace(/^#/,"")); }
-/** URL key = barcode/SKU only (no p/ prefix). Legacy numeric id only if no SKU. */
+/** Barcode/SKU path segment only (no #, no p/). */
 function productRouteKey(p){
   if(!p) return "";
   var s=String(p.sku||"").trim();
   if(s) return encodeURIComponent(s);
   return String(p.id);
 }
-/** Reserved non-product hashes (shop navigation). */
+/** Site folders that are never a product barcode. */
+var NAQA_PATH_RESERVED={
+  admin:1, order:1, panel:1, media:1, js:1, css:1, data:1, p:1, docs:1, scripts:1,
+  index:1, store:1, clear:1, products:1, tmp:1, ".github":1
+};
 function isReservedRoute(h){
   h=String(h||"");
   if(!h) return true;
@@ -38,14 +42,12 @@ function isReservedRoute(h){
   if(h.indexOf("shelf/")===0||h.indexOf("cat/")===0||h.indexOf("q/")===0||h.indexOf("b/")===0||h.indexOf("c/")===0) return true;
   return false;
 }
-/** Resolve barcode/SKU, or legacy #p/<key> / numeric id. */
 function findProductByRoute(key){
   key=String(key==null?"":key).trim();
   if(!key) return null;
   try{ key=decodeURIComponent(key); }catch(e){}
   key=String(key||"").trim();
   if(!key) return null;
-  /* strip accidental legacy prefixes */
   if(key.indexOf("p/")===0) key=key.slice(2);
   if(key.indexOf("sku/")===0) key=key.slice(4);
   if(key.indexOf("product/")===0) key=key.slice(8);
@@ -57,7 +59,6 @@ function findProductByRoute(key){
   var kl=key.toLowerCase();
   hit=list.find(function(x){ return String(x.sku||"").toLowerCase()===kl; });
   if(hit) return hit;
-  /* legacy: numeric catalog id only when it does not look like a long barcode */
   if(/^[0-9]{1,4}$/.test(key)){
     var id=+key;
     hit=list.find(function(x){ return Number(x.id)===id; });
@@ -65,15 +66,58 @@ function findProductByRoute(key){
   }
   return null;
 }
+/** Path segment after base: /naqa-om/8800…/ → "8800…" */
+function productKeyFromPath(){
+  try{
+    var base=siteBasePath();
+    var path=String(location.pathname||"/");
+    if(base && path.indexOf(base)===0) path=path.slice(base.length);
+    path=path.replace(/^\/+|\/+$/g,"");
+    if(!path || path.indexOf("/")>=0) return null;
+    if(/\./.test(path)) return null;
+    if(NAQA_PATH_RESERVED[path.toLowerCase()]) return null;
+    return path;
+  }catch(e){ return null; }
+}
+function isProductPath(){
+  var k=productKeyFromPath();
+  return !!(k && findProductByRoute(k));
+}
+/** Legacy hash product? #barcode or #p/… */
 function isProductHash(h){
   h=String(h||"");
   if(!h || isReservedRoute(h)) return false;
   if(h.indexOf("p/")===0) return !!findProductByRoute(h.slice(2));
   return !!findProductByRoute(h);
 }
+function isProductLocation(){
+  return isProductPath() || isProductHash(routeHash());
+}
+/** Absolute product URL: …/naqa-om/BARCODE/  (no #) */
+function productHref(p){
+  var key=productRouteKey(p);
+  return location.origin + siteBasePath() + key + (key?"/":"");
+}
 function applyRoute(){
+  /* 1) Path product: /naqa-om/8800256108374/ */
+  var pathKey=productKeyFromPath();
+  if(pathKey){
+    var prodP=findProductByRoute(pathKey);
+    if(prodP){
+      var idP=prodP.id;
+      if(openProductId!==idP || !$("#sheet").classList.contains("show")) openSheet(idP,"full",true);
+      try{
+        var wantP=productRouteKey(prodP);
+        var need=siteBasePath()+wantP+"/";
+        if(location.pathname.replace(/\/+$/,"/")!==need.replace(/\/+$/,"/") || location.hash){
+          history.replaceState({naqa:"product",id:prodP.id,sku:prodP.sku||""}, "", need);
+        }
+      }catch(e){}
+      return;
+    }
+  }
+  /* 2) Legacy hash product → normalize to path (no #) */
   const h=routeHash();
-  /* Product = bare barcode hash  #8800…  (also legacy #p/… and short id) */
   var prodKey=null;
   if(h.indexOf("p/")===0) prodKey=h.slice(2);
   else if(!isReservedRoute(h)) prodKey=h;
@@ -82,10 +126,9 @@ function applyRoute(){
     if(prod){
       const id=prod.id;
       if(openProductId!==id || !$("#sheet").classList.contains("show")) openSheet(id,"full",true);
-      /* normalize address bar to bare barcode (no p/) */
       try{
-        var want=(typeof productRouteKey==="function")?productRouteKey(prod):String(prod.sku||prod.id);
-        if(h!==want) history.replaceState({naqa:"product",id:prod.id,sku:prod.sku||""}, "", "#"+want);
+        var want=productRouteKey(prod);
+        history.replaceState({naqa:"product",id:prod.id,sku:prod.sku||""}, "", siteBasePath()+want+"/");
       }catch(e){}
       return;
     }
@@ -188,16 +231,28 @@ window.naqaMergeProductDetails=naqaMergeProductDetails;
 function siteBasePath(){
   var path = location.pathname || "/";
   path = path.replace(/\/index\.html$/i, "/");
-  path = path.replace(/\/(admin|order)\.html$/i, "/");
+  path = path.replace(/\/(admin|order|panel|store|clear-cache)\.html$/i, "/");
   path = path.replace(/\/p\/[^/]+\/?$/i, "/");
-  /* only strip a trailing FILE (has extension), not a directory segment */
+  /* strip product barcode folder only when under a project base: /naqa-om/SKU/ → /naqa-om/ */
+  var parts = path.split("/").filter(Boolean);
+  if(parts.length >= 2){
+    var last = parts[parts.length - 1];
+    var low = String(last).toLowerCase();
+    if(!/\./.test(last) && !NAQA_PATH_RESERVED[low]){
+      /* barcodes: long digits, or alnum codes (ZE316, DB-…, Z0207) */
+      if(/^[0-9]{6,}$/.test(last) || /^[A-Za-z]{1,6}[-_]?[0-9A-Za-z._-]{2,}$/.test(last) || /^[0-9A-Za-z][0-9A-Za-z._-]{7,}$/.test(last)){
+        parts.pop();
+        path = "/" + parts.join("/") + "/";
+      }
+    }
+  }
   if (/\/[^/]+\.[a-zA-Z0-9]+$/.test(path)) {
     path = path.replace(/\/[^/]+$/, "/");
   }
   if (path.slice(-1) !== "/") path += "/";
   return path;
 }
-/** Share/open link: store URL + bare barcode hash only (no /p/, no #p/). */
+/** Share link: …/naqa-om/BARCODE/  — no #, no p/ */
 function productLink(idOrProduct){
   var p=null;
   if(idOrProduct && typeof idOrProduct==="object") p=idOrProduct;
@@ -205,17 +260,20 @@ function productLink(idOrProduct){
     var id=idOrProduct;
     p=(typeof products!=="undefined"?products:[]).find(function(x){ return Number(x.id)===Number(id) || String(x.id)===String(id); })||null;
   }
-  var key=p ? productRouteKey(p) : encodeURIComponent(String(idOrProduct||""));
-  return location.origin + siteBasePath() + "#" + key;
+  if(p) return productHref(p);
+  var key=encodeURIComponent(String(idOrProduct||"").trim());
+  return location.origin + siteBasePath() + key + (key?"/":"");
 }
+/** @deprecated kept for callers — now returns path not hash */
 function productHash(idOrProduct){
   var p=null;
   if(idOrProduct && typeof idOrProduct==="object") p=idOrProduct;
   else if(idOrProduct!=null && idOrProduct!==""){
     p=(typeof products!=="undefined"?products:[]).find(function(x){ return Number(x.id)===Number(idOrProduct) || String(x.id)===String(idOrProduct); })||null;
   }
-  var key=p ? productRouteKey(p) : encodeURIComponent(String(idOrProduct||""));
-  return "#"+key;
+  if(p) return productHref(p).replace(location.origin, "") || ("/"+productRouteKey(p)+"/");
+  var key=encodeURIComponent(String(idOrProduct||"").trim());
+  return siteBasePath() + key + (key?"/":"");
 }
 
 function naqaNormImgPath(u){

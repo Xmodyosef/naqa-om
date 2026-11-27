@@ -36,7 +36,7 @@ assert(fs.existsSync(path.join(root,"data/products.detail.json")), "detail json 
 const dry = read("js/features/wish-concerns.js").split('id:"dry"')[1].slice(0, 180);
 assert(!/moist|ترطيب/.test(dry), "dry quiz without moist/ترطيب");
 assert(read("css/store/base.css").includes("#8d3048"), "AA rose-deep");
-assert(fs.existsSync(path.join(root, "p")) && fs.readdirSync(path.join(root, "p")).length > 50, "SEO product pages dir");
+assert(fs.existsSync(path.join(root, "8800256108374", "index.html")) || fs.readdirSync(root).filter(function(n){return /^[0-9]{8,}$/.test(n)}).length>50, "SEO barcode product pages");
 assert((read("sitemap.xml").match(/<loc>/g) || []).length >= 200, "sitemap >= 200");
 assert(read("js/admin/finance.js").includes("Asia/Muscat"), "finance Asia/Muscat");
 assert(/BANK_IBAN\s*=\s*""/.test(read("js/config.js")), "BANK_IBAN blank");
@@ -53,23 +53,32 @@ assert(!min.includes('getItem("naqa_overrides")'), "min no ls overrides");
 function siteBasePath(pathname) {
   var p = pathname || "/";
   p = p.replace(/\/index\.html$/i, "/");
-  p = p.replace(/\/(admin|order)\.html$/i, "/");
+  p = p.replace(/\/(admin|order|panel|store|clear-cache)\.html$/i, "/");
   p = p.replace(/\/p\/[^/]+\/?$/i, "/");
+  var parts = p.split("/").filter(Boolean);
+  if (parts.length >= 2) {
+    var last = parts[parts.length - 1];
+    if (!/\./.test(last) && /^[0-9]{6,}$/.test(last)) {
+      parts.pop();
+      p = "/" + parts.join("/") + "/";
+    }
+  }
   if (/\/[^/]+\.[a-zA-Z0-9]+$/.test(p)) p = p.replace(/\/[^/]+$/, "/");
   if (p.slice(-1) !== "/") p += "/";
   return p;
 }
 const o = "https://xmodyosef.github.io";
 [
-  ["/naqa-om/", o + "/naqa-om/#12"],
-  ["/naqa-om", o + "/naqa-om/#12"],
-  ["/naqa-om/p/5/", o + "/naqa-om/#12"],
+  ["/naqa-om/", o + "/naqa-om/12/"],
+  ["/naqa-om", o + "/naqa-om/12/"],
+  ["/naqa-om/8800256108374/", o + "/naqa-om/12/"],
 ].forEach(([pathname, expect]) => {
-  const got = o + siteBasePath(pathname) + "#12";
+  const got = o + siteBasePath(pathname) + "12/";
   assert(got === expect, "productLink path " + pathname);
 });
-assert(read("js/core.js").includes('return "#"+key'), "productHash bare barcode");
-assert(!read("js/core.js").includes('return "#p/"+key'), "no #p/ prefix in productHash");
+assert(read("js/core.js").includes("productHref"), "productHref path helper");
+assert(read("js/core.js").includes("productKeyFromPath"), "path product key");
+assert(!read("js/core.js").includes('return "#p/"+key'), "no #p/ prefix");
 
 for (const f of ["js/cart.js", "js/core.js", "js/store.min.js", "js/admin/core.js", "js/admin/finance.js"]) {
   try {

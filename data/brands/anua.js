@@ -243,10 +243,7 @@ window.NAQA_PRODUCTS.push(
   "em": "✨",
   "imgs": [
     "media/products/p96_0.webp",
-    "media/products/p96_1.webp",
-    "media/products/p96_2.webp",
-    "media/products/p96_3.webp",
-    "media/products/p96_4.webp"
+    "media/products/p96_1.webp"
   ],
   "nameAr": "وسادات انوا نيايسناميد 5 وتي إكس إيه لتفتيح البشرة - 60 قطعة",
   "nameEn": "Anua Niacinamide 5 Txa Brightening Pad",
@@ -268,9 +265,7 @@ window.NAQA_PRODUCTS.push(
   "imgs": [
     "media/products/p99_0.webp",
     "media/products/p99_1.webp",
-    "media/products/p99_2.webp",
-    "media/products/p99_3.webp",
-    "media/products/p99_4.webp"
+    "media/products/p99_2.webp"
   ],
   "nameAr": "كريم العين أنوا بالريتينول 0.1 والكافيين لتجديد وإشراقة محيط العين - 30ج",
   "nameEn": "Anua Retinol 0 1 Caffeine Revitalizing Eye Cream",

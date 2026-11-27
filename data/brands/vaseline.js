@@ -13,8 +13,7 @@ window.NAQA_PRODUCTS.push(
   "imgs": [
     "media/products/p124_0.webp",
     "media/products/p124_1.webp",
-    "media/products/p124_2.webp",
-    "media/products/p124_3.webp"
+    "media/products/p124_2.webp"
   ],
   "nameAr": "فازلين مرطب الشفاه الأصلي - 20ج",
   "nameEn": "Vaseline Lip Therapy Original - 20g",

@@ -275,8 +275,7 @@ window.NAQA_PRODUCTS.push(
   "imgs": [
     "media/products/p120_0.webp",
     "media/products/p120_1.webp",
-    "media/products/p120_2.webp",
-    "media/products/p120_3.webp"
+    "media/products/p120_2.webp"
   ],
   "nameAr": "بلسم ميديكيوب الوردي متعدد الاستخدامات للوجه بالكولاجين وبي دي آر إن - 10ج",
   "nameEn": "Medicube Eye — DB-7451402043472",
@@ -298,9 +297,7 @@ window.NAQA_PRODUCTS.push(
   "imgs": [
     "media/products/p121_0.webp",
     "media/products/p121_1.webp",
-    "media/products/p121_2.webp",
-    "media/products/p121_3.webp",
-    "media/products/p121_4.webp"
+    "media/products/p121_2.webp"
   ],
   "nameAr": "بالم ميديكيوب سوبر سيكا للتقشير وتنظيف البشرة - 100مل",
   "nameEn": "Medicube Super Cica Exfoliating Cleansing Balm",
@@ -322,8 +319,7 @@ window.NAQA_PRODUCTS.push(
   "em": "✨",
   "imgs": [
     "media/products/p126_0.webp",
-    "media/products/p126_1.webp",
-    "media/products/p126_2.webp"
+    "media/products/p126_1.webp"
   ],
   "nameAr": "ماسك الشفاه الليلي ميديكيوب بي دي آر إن لترميم وترطيب الشفاه - 10ج",
   "nameEn": "Medicube PDRN Lip Sleeping Mask - 10g",

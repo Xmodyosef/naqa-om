@@ -11,9 +11,7 @@ window.NAQA_PRODUCTS.push(
   "hot": true,
   "em": "✨",
   "imgs": [
-    "media/products/p125_0.webp",
-    "media/products/p125_1.webp",
-    "media/products/p125_2.webp"
+    "media/products/p125_0.webp"
   ],
   "nameAr": "قناع الشفاه المرطب الليلي بيري من لانيج - 20ج",
   "nameEn": "Laneige Lip Sleeping Mask [Berry] - 20g",

@@ -100,8 +100,7 @@ window.NAQA_PRODUCTS.push(
   "em": "✨",
   "imgs": [
     "media/products/p106_0.webp",
-    "media/products/p106_1.webp",
-    "media/products/p106_2.webp"
+    "media/products/p106_1.webp"
   ],
   "nameAr": "كريم العين بروبيوتيك سنتيلا باكوشيول من سكين1004 - 20مل",
   "nameEn": "SKIN1004 Probio-Cica Bakuchiol Eye Cream - 20ml",

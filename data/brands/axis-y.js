@@ -76,8 +76,7 @@ window.NAQA_PRODUCTS.push(
   "em": "✨",
   "imgs": [
     "media/products/p97_0.webp",
-    "media/products/p97_1.webp",
-    "media/products/p97_2.webp"
+    "media/products/p97_1.webp"
   ],
   "nameAr": "مجموعة اكسيس واي الثنائية لبشرة زجاجية",
   "nameEn": "AXIS-Y Glass Skin Duo Set",

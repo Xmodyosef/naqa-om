@@ -32,7 +32,8 @@ window.NAQA_PRODUCTS.push(
   "imgs": [
     "media/products/p123_0.webp",
     "media/products/p123_1.webp",
-    "media/products/p123_2.webp"
+    "media/products/p123_2.webp",
+    "media/products/p123_3.webp"
   ],
   "nameAr": "سيروم الريتينال 2% والجينسنغ الأسود سيول 1988 من ك-سيكريت - 30مل",
   "nameEn": "K-Secret Seoul 1988 Retinal 2% Black Ginseng Serum - 30ml",

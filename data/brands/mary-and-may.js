@@ -11,7 +11,9 @@ window.NAQA_PRODUCTS.push(
   "imgs": [
     "media/products/p102_0.webp",
     "media/products/p102_1.webp",
-    "media/products/p102_2.webp"
+    "media/products/p102_2.webp",
+    "media/products/p102_3.webp",
+    "media/products/p102_4.webp"
   ],
   "nameAr": "كريم العين ماري أند ماي بالترانيكساميك والغلوتاثيون لتفتيح الهالات - 30ج",
   "nameEn": "Mary&May Tranexamic Acid + Glutathione Eye Cream - 30ml",

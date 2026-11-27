@@ -11,9 +11,7 @@ window.NAQA_PRODUCTS.push(
   "hot": true,
   "em": "✨",
   "imgs": [
-    "media/products/p112_0.webp",
-    "media/products/p112_1.webp",
-    "media/products/p112_2.webp"
+    "media/products/p112_0.webp"
   ],
   "nameAr": "قلم حواجب من لوليس - 303 رمادي",
   "nameEn": "LOLLIS Brow Pencil #303 Grey",
@@ -34,9 +32,7 @@ window.NAQA_PRODUCTS.push(
   "was": 4.5,
   "em": "✨",
   "imgs": [
-    "media/products/p113_0.webp",
-    "media/products/p113_1.webp",
-    "media/products/p113_2.webp"
+    "media/products/p113_0.webp"
   ],
   "nameAr": "ظلال العيون لوليس ذا نودز - 01",
   "nameEn": "LOLLIS The Nudes Eyeshadow Palette #01",
@@ -57,10 +53,7 @@ window.NAQA_PRODUCTS.push(
   "em": "✨",
   "imgs": [
     "media/products/p114_0.webp",
-    "media/products/p114_1.webp",
-    "media/products/p114_2.webp",
-    "media/products/p114_3.webp",
-    "media/products/p114_4.webp"
+    "media/products/p114_1.webp"
   ],
   "nameAr": "ظلال العيون برايت نيون من لوليس",
   "nameEn": "LOLLIS Bright Neon Eyeshadow Palette",
@@ -81,9 +74,7 @@ window.NAQA_PRODUCTS.push(
   "was": 1.715,
   "em": "✨",
   "imgs": [
-    "media/products/p115_0.webp",
-    "media/products/p115_1.webp",
-    "media/products/p115_2.webp"
+    "media/products/p115_0.webp"
   ],
   "nameAr": "قلم حواجب من لوليس - 301 بيج",
   "nameEn": "LOLLIS Brow Pencil #301 Beige",
@@ -103,9 +94,7 @@ window.NAQA_PRODUCTS.push(
   "price": 1.9,
   "em": "✨",
   "imgs": [
-    "media/products/p116_0.webp",
-    "media/products/p116_1.webp",
-    "media/products/p116_2.webp"
+    "media/products/p116_0.webp"
   ],
   "nameAr": "ايلاينر أﺳﻮد داﻛﻦ من لوليس - 4مل",
   "nameEn": "LOLLIS Dark Black Eyeliner - 4ml",
@@ -127,8 +116,7 @@ window.NAQA_PRODUCTS.push(
   "em": "✨",
   "imgs": [
     "media/products/p117_0.webp",
-    "media/products/p117_1.webp",
-    "media/products/p117_2.webp"
+    "media/products/p117_1.webp"
   ],
   "nameAr": "واكس تشكيل ورفع الحواجب بزيت الارغان من لوليس",
   "nameEn": "LOLLIS Brow Lift Wax with Argan Oil",
@@ -149,9 +137,7 @@ window.NAQA_PRODUCTS.push(
   "was": 1.715,
   "em": "✨",
   "imgs": [
-    "media/products/p118_0.webp",
-    "media/products/p118_1.webp",
-    "media/products/p118_2.webp"
+    "media/products/p118_0.webp"
   ],
   "nameAr": "قلم حواجب من لوليس - 302 بني",
   "nameEn": "LOLLIS Brow Pencil #302 Brown",
@@ -171,9 +157,7 @@ window.NAQA_PRODUCTS.push(
   "price": 1.9,
   "em": "✨",
   "imgs": [
-    "media/products/p128_0.webp",
-    "media/products/p128_1.webp",
-    "media/products/p128_2.webp"
+    "media/products/p128_0.webp"
   ],
   "nameAr": "أحمر شفاه سائل مطفي من لوليس 10",
   "nameEn": "Lollis Matte Liquid Lipstick 10",

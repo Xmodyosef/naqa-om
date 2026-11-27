@@ -53,9 +53,7 @@ window.NAQA_PRODUCTS.push(
   "em": "✨",
   "imgs": [
     "media/products/p98_0.webp",
-    "media/products/p98_1.webp",
-    "media/products/p98_2.webp",
-    "media/products/p98_3.webp"
+    "media/products/p98_1.webp"
   ],
   "nameAr": "باتش أبيب بالكولاجين وزهرة أريحا جيلي لمنطقة العين - 60 قطعة",
   "nameEn": "Abib Collagen Jericho Rose Jelly Eye Patch - 60pcs",

@@ -265,8 +265,7 @@ window.NAQA_PRODUCTS.push(
   "hot": true,
   "em": "✨",
   "imgs": [
-    "media/products/p122_0.webp",
-    "media/products/p122_1.webp"
+    "media/products/p122_0.webp"
   ],
   "nameAr": "زيت شفاه جيلي واو المرطب من شيجلام - بيري إنفولفد",
   "nameEn": "SHEGLAM Jelly Wow Hydrating Lip Oil - Berry Involved",
@@ -288,8 +287,7 @@ window.NAQA_PRODUCTS.push(
   "em": "✨",
   "imgs": [
     "media/products/p127_0.webp",
-    "media/products/p127_1.webp",
-    "media/products/p127_2.webp"
+    "media/products/p127_1.webp"
   ],
   "nameAr": "مجموعة تريو شفاه من شيجلام - 3قطع",
   "nameEn": "Sheglam Trio Lips Value Pack - 3pcs",

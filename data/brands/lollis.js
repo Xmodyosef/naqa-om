@@ -406,7 +406,8 @@ window.NAQA_PRODUCTS.push(
   "price": 2.2,
   "em": "✨",
   "imgs": [
-    "media/products/p141_0.webp"
+    "media/products/p141_0.webp",
+    "media/products/p141_1.webp"
   ],
   "nameAr": "أحمر شفاه سائل باللون الكامل من لوليس 005",
   "nameEn": "Lollis Full Color Lip Gloss 005 Biscuit",

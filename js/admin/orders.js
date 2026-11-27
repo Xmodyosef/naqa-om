@@ -35,7 +35,7 @@
         var bits = [o.id, o.name, o.phone, o.city, o.area, o.address, o.note, o.payment];
         (o.items || []).forEach(function (it) { bits.push(it.name, it.nameAr, it.nameEn, it.sku); });
         var haystack = bits.join(" ").toLowerCase();
-        var terms = q.split(/\\s+/).filter(Boolean);
+        var terms = q.split(/\s+/).filter(Boolean);
         if (!terms.every(function (term) { return haystack.indexOf(term) >= 0; })) return;
       }
       out.push(o);

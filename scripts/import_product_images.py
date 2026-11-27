@@ -87,7 +87,7 @@ def main():
     manifest = json.loads(MANIFEST.read_text(encoding="utf-8"))
     raw = CATALOG.read_text(encoding="utf-8")
     prefix = "window.NAQA_PRODUCTS="
-    if not raw.startswith("/* AUTO-GENERATED full catalog (admin) */\\n" + prefix):
+    if not raw.startswith("/* AUTO-GENERATED full catalog (admin) */\n" + prefix):
         fail("Unexpected product catalog format; refusing to rewrite it.")
     start = raw.index(prefix) + len(prefix)
     end = raw.rfind(";")
@@ -154,7 +154,7 @@ def main():
         dest = ROOT / rel
         dest.parent.mkdir(parents=True, exist_ok=True)
         dest.write_bytes(data)
-    CATALOG.write_text("/* AUTO-GENERATED full catalog (admin) */\\nwindow.NAQA_PRODUCTS=" + json.dumps(products, ensure_ascii=False, separators=(",", ":")) + ";\\n", encoding="utf-8")
+    CATALOG.write_text("/* AUTO-GENERATED full catalog (admin) */\nwindow.NAQA_PRODUCTS=" + json.dumps(products, ensure_ascii=False, separators=(",", ":")) + ";\n", encoding="utf-8")
     print(f"Imported {len(staged)} verified images for {len(entries)} products.")
     print(f"Total WebP bytes: {sum(map(len, staged.values()))}")
 

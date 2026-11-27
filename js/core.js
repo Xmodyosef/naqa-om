@@ -137,6 +137,7 @@ function applyRoute(){
     }
   }
   if($("#sheet").classList.contains("show")) closeSheet(true);
+  try{ if(typeof naqaReleasePageScroll==="function") naqaReleasePageScroll(); }catch(e){}
   // Search results: #q/keyword
   if(h.indexOf("shelf/")===0){
     var sk=h.slice(6);

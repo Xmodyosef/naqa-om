@@ -2,12 +2,32 @@
 function lockBodyScroll(){
   document.documentElement.classList.add("sheet-open");
   document.body.classList.add("sheet-open");
+  /* One lock for the sheet. Opening another product must not stack locks
+     or the shop stays frozen after you go back. */
+  if(window.__naqaSheetLocked) return;
+  window.__naqaSheetLocked=true;
   if(window.naqaScrollLock) naqaScrollLock.lock();
 }
 function unlockBodyScroll(){
   document.documentElement.classList.remove("sheet-open");
   document.body.classList.remove("sheet-open");
+  if(!window.__naqaSheetLocked) return;
+  window.__naqaSheetLocked=false;
   if(window.naqaScrollLock) naqaScrollLock.unlock();
+}
+function naqaShopIsClear(){
+  function on(id){ var el=document.getElementById(id); return !!(el && el.classList.contains("show")); }
+  return !on("sheet") && !on("lightbox") && !on("drawer") && !on("checkoutModal") && !on("quizModal");
+}
+function naqaReleasePageScroll(){
+  if(!naqaShopIsClear()) return;
+  document.documentElement.classList.remove("sku-boot");
+  document.documentElement.classList.remove("sheet-open");
+  document.body.classList.remove("sheet-open");
+  window.__naqaSheetLocked=false;
+  if(window.naqaScrollLock && naqaScrollLock.forceUnlock){
+    try{ naqaScrollLock.forceUnlock(); }catch(e){}
+  }
 }
 function naqaRememberShopScroll(){
   if(window.__naqaReturnY != null) return;
@@ -211,6 +231,7 @@ function closeSheet(fromRoute){
   $("#sheet").classList.remove("qv");
   unlockBodyScroll();
   openProductId=null;
+  try{ naqaReleasePageScroll(); }catch(e){}
   document.title=T("docTitle");
   const card=$("#sheetCard");
   if(card){ card.style.transform=""; card.style.transition=""; }

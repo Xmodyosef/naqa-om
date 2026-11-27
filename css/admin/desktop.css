@@ -30,7 +30,7 @@
     flex-basis: 360px;
   }
 
-  /* منتجات: بطاقتان في الصف */
+  /* منتجات: صف كامل على اللابتوب — عمودان من 1400+ */
   #list {
     display: flex;
     flex-wrap: wrap;
@@ -48,11 +48,16 @@
     margin: 0;
   }
   #list > .prod-card {
-    flex: 1 1 calc(50% - 12px);
-    width: calc(50% - 12px);
-    max-width: calc(50% - 6px);
+    flex: 1 1 100%;
+    width: 100%;
+    max-width: 100%;
     margin: 0;
     box-sizing: border-box;
+    min-width: 0;
+  }
+  #list .prod-body,
+  #list .prod-title {
+    overflow: visible !important;
   }
 
   /* طلبات: بطاقتان في الصف */
@@ -150,5 +155,25 @@
   #editView .edit-card {
     max-width: 820px;
     margin-inline: auto;
+  }
+}
+
+/* منتجات: عمودان فقط على الشاشات العريضة + أزرار تحت العنوان */
+@media (min-width: 1400px) {
+  body.naqa-open #list > .prod-card {
+    flex: 1 1 calc(50% - 12px);
+    width: calc(50% - 12px);
+    max-width: calc(50% - 6px);
+  }
+  body.naqa-open #list .prod-card.row {
+    grid-template-columns: 28px 56px minmax(0, 1fr) !important;
+    grid-template-areas:
+      "pick thumb body"
+      ". . actions" !important;
+  }
+  body.naqa-open #list .prod-actions {
+    grid-area: actions !important;
+    flex-direction: row !important;
+    justify-content: flex-start !important;
   }
 }

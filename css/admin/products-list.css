@@ -31,8 +31,8 @@
   grid-area: body;
   display: block !important;
   min-width: 0 !important;
-  max-width: 100%;
-  overflow: hidden;
+  max-width: none;
+  overflow: visible;
 }
 #list .prod-title {
   display: block;
@@ -45,6 +45,7 @@
   word-break: normal !important;
   overflow-wrap: break-word;
   word-wrap: break-word;
+  overflow: visible;
   hyphens: none;
 }
 #list .prod-meta {
@@ -337,4 +338,57 @@
   background: #fde8ee !important;
   border-color: #c46b7c !important;
   color: #8d3048 !important;
+}
+
+
+/* ===== 2026-11-27: titles not clipped (RTL + narrow cards) ===== */
+#list .prod-card.row {
+  padding: 14px 14px 14px 12px !important;
+  padding-inline: 14px !important;
+  box-sizing: border-box;
+  overflow: visible !important;
+}
+#list .prod-body {
+  overflow: visible !important;
+  max-width: none !important;
+  padding-inline-end: 4px;
+}
+#list .prod-title {
+  overflow: visible !important;
+  text-overflow: clip !important;
+  overflow-wrap: break-word !important;
+  word-break: normal !important;
+  line-height: 1.45 !important;
+  padding-inline: 1px; /* avoid edge glyph clip */
+}
+#list .prod-meta {
+  overflow: visible !important;
+}
+/* Actions under title when card is tight — more room for Arabic title */
+@media (max-width: 1399px) {
+  #list .prod-card.row {
+    grid-template-columns: 28px 56px minmax(0, 1fr) !important;
+    grid-template-areas:
+      "pick thumb body"
+      "actions actions actions" !important;
+  }
+  #list .prod-actions {
+    grid-area: actions !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    justify-content: flex-start !important;
+    width: 100%;
+  }
+  #list .prod-actions .edit-btn {
+    flex: 0 1 auto;
+    min-width: 7.5rem;
+  }
+}
+@media (max-width: 600px) {
+  #list .prod-card.row {
+    grid-template-columns: 24px 48px minmax(0, 1fr) !important;
+    grid-template-areas:
+      "pick thumb body"
+      "actions actions actions" !important;
+  }
 }

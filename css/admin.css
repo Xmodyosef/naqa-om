@@ -1,13 +1,13 @@
 /* نقاء admin — no add-button flash 20261125rv7 */
-@import url("admin/base.css?v=20261125theme1");
-@import url("admin/products-edit.css?v=20261125theme1");
-@import url("admin/login-gate.css?v=20261125theme1");
-@import url("admin/nav.css?v=20261125theme1");
-@import url("admin/login-card.css?v=20261125theme1");
-@import url("admin/settings.css?v=20261125theme1");
-@import url("admin/theme-mode.css?v=20261125desk1");
-@import url("admin/desktop.css?v=20261125desk1");
-@import url("admin/products-list.css?v=20261125theme1");
+@import url("admin/base.css?v=20261127c11");
+@import url("admin/products-edit.css?v=20261127c11");
+@import url("admin/login-gate.css?v=20261127c11");
+@import url("admin/nav.css?v=20261127c11");
+@import url("admin/login-card.css?v=20261127c11");
+@import url("admin/settings.css?v=20261127c11");
+@import url("admin/theme-mode.css?v=20261127c11");
+@import url("admin/desktop.css?v=20261127c11");
+@import url("admin/products-list.css?v=20261127c11");
 
 /* Customers — same hit rows as reviews, phone emphasis */
 .cust-hit .cust-phone{
@@ -61,3 +61,14 @@
 .fin-area-hit strong:last-child,
 .fin-prod-hit strong:last-child,
 .fin-order-hit strong:last-child{white-space:nowrap;color:var(--rose,#c46b7c)}
+
+
+#editView .edit-card label{
+  font-size: calc(var(--edit-fs, 16px) * 0.88) !important;
+  color: var(--muted);
+}
+.compact-search{
+  width:min(220px, 70vw);
+  max-width:220px;
+  height:34px;
+}

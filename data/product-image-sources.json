@@ -1,0 +1,406 @@
+{
+  "schemaVersion": 1,
+  "policy": "Each product requires exactly 3 direct HTTPS image URLs. Source identity and reuse permission must be checked before adding URLs. URLs must depict the exact brand, product, shade/variant and size. Do not use generated, stock, duplicate, or merely similar images. Existing _0 main images are never modified.",
+  "products": [
+    {
+      "id": 9,
+      "brand": "Celimax",
+      "sku": "8809875907412",
+      "name": "Celimax Pore+Dark Spot Brightening Serum - 30ml",
+      "sourcePage": "",
+      "imageUrls": []
+    },
+    {
+      "id": 18,
+      "brand": "Dr.Althea",
+      "sku": "8809447251363",
+      "name": "Dr.Althea 147 Barrier Cream - 50ml",
+      "sourcePage": "",
+      "imageUrls": []
+    },
+    {
+      "id": 30,
+      "brand": "Medicube",
+      "sku": "8800256114351",
+      "name": "Medicube Triple Collagen Serum - 55ml",
+      "sourcePage": "",
+      "imageUrls": []
+    },
+    {
+      "id": 33,
+      "brand": "Medicube",
+      "sku": "8800256112234",
+      "name": "Medicube PDRN Pink Peptide Toner - 250ml",
+      "sourcePage": "",
+      "imageUrls": []
+    },
+    {
+      "id": 48,
+      "brand": "AXIS-Y",
+      "sku": "8809634610966",
+      "name": "Axis-Y Dark Spot Correcting Glow Cream - 50ml",
+      "sourcePage": "",
+      "imageUrls": []
+    },
+    {
+      "id": 55,
+      "brand": "The Ordinary",
+      "sku": "769915194043",
+      "name": "The Ordinary Retinol 1% in Squalane - 30ml",
+      "sourcePage": "",
+      "imageUrls": []
+    },
+    {
+      "id": 57,
+      "brand": "Anua",
+      "sku": "8800307374390",
+      "name": "PDRN Collagen Glow Facial Serum Spray Mini - 30ml",
+      "sourcePage": "",
+      "imageUrls": []
+    },
+    {
+      "id": 74,
+      "brand": "MISSHA",
+      "sku": "8809530038345",
+      "name": "Missha Artistool Cheek Highlighter Brush 206",
+      "sourcePage": "",
+      "imageUrls": []
+    },
+    {
+      "id": 78,
+      "brand": "SHEGLAM",
+      "sku": "DB-7478711615568",
+      "name": "SHEGLAM Melt Touch Moisturizing Primer - 30g",
+      "sourcePage": "",
+      "imageUrls": []
+    },
+    {
+      "id": 82,
+      "brand": "SHEGLAM",
+      "sku": "ZD119",
+      "name": "SHEGLAM Color Bloom Liquid Blush - Love Cake",
+      "sourcePage": "",
+      "imageUrls": []
+    },
+    {
+      "id": 86,
+      "brand": "SHEGLAM",
+      "sku": "ZE114",
+      "name": "SHEGLAM Butter Puff Contour Stick - Golden Sun",
+      "sourcePage": "",
+      "imageUrls": []
+    },
+    {
+      "id": 88,
+      "brand": "SHEGLAM",
+      "sku": "ZA308",
+      "name": "SHEGLAM Color Bloom Liquid Blush - On Point",
+      "sourcePage": "",
+      "imageUrls": []
+    },
+    {
+      "id": 89,
+      "brand": "SHEGLAM",
+      "sku": "ZA302",
+      "name": "SHEGLAM Sun Sculpt Liquid Contour - Tawny Amber",
+      "sourcePage": "",
+      "imageUrls": []
+    },
+    {
+      "id": 90,
+      "brand": "SHEGLAM",
+      "sku": "Z0102",
+      "name": "SHEGLAM Triple Threat Correcting Primer",
+      "sourcePage": "",
+      "imageUrls": []
+    },
+    {
+      "id": 101,
+      "brand": "Ultru",
+      "sku": "8809750461640",
+      "name": "I'm Sorry For My Skin Hydrogel Under-Eye Mask - 60pcs",
+      "sourcePage": "",
+      "imageUrls": []
+    },
+    {
+      "id": 112,
+      "brand": "LOLLIS",
+      "sku": "8681546110143",
+      "name": "LOLLIS Brow Pencil #303 Grey",
+      "sourcePage": "",
+      "imageUrls": []
+    },
+    {
+      "id": 113,
+      "brand": "LOLLIS",
+      "sku": "8681546107044",
+      "name": "LOLLIS The Nudes Eyeshadow Palette #01",
+      "sourcePage": "",
+      "imageUrls": []
+    },
+    {
+      "id": 115,
+      "brand": "LOLLIS",
+      "sku": "8681546110129",
+      "name": "LOLLIS Brow Pencil #301 Beige",
+      "sourcePage": "",
+      "imageUrls": []
+    },
+    {
+      "id": 116,
+      "brand": "LOLLIS",
+      "sku": "8681546110808",
+      "name": "LOLLIS Dark Black Eyeliner - 4ml",
+      "sourcePage": "",
+      "imageUrls": []
+    },
+    {
+      "id": 118,
+      "brand": "LOLLIS",
+      "sku": "8681546110136",
+      "name": "LOLLIS Brow Pencil #302 Brown",
+      "sourcePage": "",
+      "imageUrls": []
+    },
+    {
+      "id": 122,
+      "brand": "SHEGLAM",
+      "sku": "6957317600970",
+      "name": "SHEGLAM Jelly Wow Hydrating Lip Oil - Berry Involved",
+      "sourcePage": "",
+      "imageUrls": []
+    },
+    {
+      "id": 125,
+      "brand": "LANEIGE",
+      "sku": "8809685747383",
+      "name": "Laneige Lip Sleeping Mask [Berry] - 20g",
+      "sourcePage": "",
+      "imageUrls": []
+    },
+    {
+      "id": 130,
+      "brand": "LOLLIS",
+      "sku": "8681546111164",
+      "name": "Lollis Lip Care Pomegranate - 4g",
+      "sourcePage": "",
+      "imageUrls": []
+    },
+    {
+      "id": 132,
+      "brand": "LOLLIS",
+      "sku": "8681546111157",
+      "name": "Lollis Lip Care Strawberry - 4g",
+      "sourcePage": "",
+      "imageUrls": []
+    },
+    {
+      "id": 133,
+      "brand": "M.Asam",
+      "sku": "4049639421097",
+      "name": "M.Asam Magic Finish Volume Lip Balm - 18g",
+      "sourcePage": "",
+      "imageUrls": []
+    },
+    {
+      "id": 140,
+      "brand": "LOLLIS",
+      "sku": "8681546111621",
+      "name": "Matte Full Color Liquid Lipstick 112",
+      "sourcePage": "",
+      "imageUrls": []
+    },
+    {
+      "id": 143,
+      "brand": "SHEGLAM",
+      "sku": "Z0104",
+      "name": "Sheglam Pout-Perfect Shine Lip Plumper - First Crush",
+      "sourcePage": "",
+      "imageUrls": []
+    },
+    {
+      "id": 144,
+      "brand": "SHEGLAM",
+      "sku": "Z0101",
+      "name": "Sheglam Pout-Perfect Shine Lip Plumper - Berry Season",
+      "sourcePage": "",
+      "imageUrls": []
+    },
+    {
+      "id": 151,
+      "brand": "Anua",
+      "sku": "8809640734519",
+      "name": "Annua BHA 2% Gentle Exfoliating Toner - 150ml",
+      "sourcePage": "",
+      "imageUrls": []
+    },
+    {
+      "id": 152,
+      "brand": "Anua",
+      "sku": "8809640734595",
+      "name": "Anua Nano Retinol 0.3% + Niacin Renewing Serum - 30ml",
+      "sourcePage": "",
+      "imageUrls": []
+    },
+    {
+      "id": 153,
+      "brand": "SHEGLAM",
+      "sku": "6926214811635",
+      "name": "Sheglam So Lippy Lip Liner - 522 Misty Rose",
+      "sourcePage": "",
+      "imageUrls": []
+    },
+    {
+      "id": 154,
+      "brand": "SHEGLAM",
+      "sku": "6971053494372",
+      "name": "Sheglam Matte Allure Mini Liquid Lipstick Set - Private Tour",
+      "sourcePage": "",
+      "imageUrls": []
+    },
+    {
+      "id": 155,
+      "brand": "SHEGLAM",
+      "sku": "6926214813912",
+      "name": "Sheglam So Lippy Lip Liner - 524 But First,Coffee",
+      "sourcePage": "",
+      "imageUrls": []
+    },
+    {
+      "id": 156,
+      "brand": "SHEGLAM",
+      "sku": "6926214812212",
+      "name": "Sheglam So Lippy Lip Liner - 04 Neutral",
+      "sourcePage": "",
+      "imageUrls": []
+    },
+    {
+      "id": 157,
+      "brand": "SHEGLAM",
+      "sku": "6971053493344",
+      "name": "Sheglam Matte Allure Mini Liquid Lipstick Set - Sweet Thing",
+      "sourcePage": "",
+      "imageUrls": []
+    },
+    {
+      "id": 158,
+      "brand": "SHEGLAM",
+      "sku": "6926214813936",
+      "name": "Sheglam So Lippy Lip Liner - 526 Mojave",
+      "sourcePage": "",
+      "imageUrls": []
+    },
+    {
+      "id": 160,
+      "brand": "SHEGLAM",
+      "sku": "6973474681072",
+      "name": "Sheglam Floral Flush Blush Palette",
+      "sourcePage": "",
+      "imageUrls": []
+    },
+    {
+      "id": 161,
+      "brand": "Eucerin",
+      "sku": "072140024611",
+      "name": "Eucerin Roughness Relief Lotion - 500ml",
+      "sourcePage": "",
+      "imageUrls": []
+    },
+    {
+      "id": 162,
+      "brand": "Uriage",
+      "sku": "3661434004575",
+      "name": "Uriage Power 3 Roll-On Deodorant - 50ml",
+      "sourcePage": "",
+      "imageUrls": []
+    },
+    {
+      "id": 165,
+      "brand": "Dr.Althea",
+      "sku": "8809447255385",
+      "name": "Dr. Althea Vitamin C Boosting Serum - 30ml",
+      "sourcePage": "",
+      "imageUrls": []
+    },
+    {
+      "id": 166,
+      "brand": "The Ordinary",
+      "sku": "769915194647",
+      "name": "The Ordinary Multi-Peptide Serum for Hair Density - 60ml",
+      "sourcePage": "",
+      "imageUrls": []
+    },
+    {
+      "id": 167,
+      "brand": "Medicube",
+      "sku": "8800289461965",
+      "name": "Medicube Rosemary PDRN Cooling Thickening Shampoo - 400ml",
+      "sourcePage": "",
+      "imageUrls": []
+    },
+    {
+      "id": 169,
+      "brand": "ViveLab",
+      "sku": "8809689631091",
+      "name": "ViveLab Revive Therapy Hair Scalp & Brow Ampoule - 15ml",
+      "sourcePage": "",
+      "imageUrls": []
+    },
+    {
+      "id": 170,
+      "brand": "K18",
+      "sku": "858511001289",
+      "name": "K18 Leave-in Molecular Repair Hair Mask - 50ml",
+      "sourcePage": "",
+      "imageUrls": []
+    },
+    {
+      "id": 171,
+      "brand": "OLAPLEX",
+      "sku": "850045076085",
+      "name": "Olaplex No.7 Bonding Oil - 30ml",
+      "sourcePage": "",
+      "imageUrls": []
+    },
+    {
+      "id": 172,
+      "brand": "OLAPLEX",
+      "sku": "850018802659",
+      "name": "Olaplex No.5 Bond Maintenance Conditioner - 250ml",
+      "sourcePage": "",
+      "imageUrls": []
+    },
+    {
+      "id": 174,
+      "brand": "ViveLab",
+      "sku": "8809689631497",
+      "name": "ViveLab Revive Therapy Hair Scalp & Brow Ampoule - 3×15ml Pack",
+      "sourcePage": "",
+      "imageUrls": []
+    },
+    {
+      "id": 175,
+      "brand": "Neutrogena",
+      "sku": "3574661450773",
+      "name": "Neutrogena T/Gel 2In1 Scalp 250Ml Shampoo And Conditioner - 250ml",
+      "sourcePage": "",
+      "imageUrls": []
+    },
+    {
+      "id": 176,
+      "brand": "SHEGLAM",
+      "sku": "6917921094183",
+      "name": "Sheglam Hair 24K Glow High Shine Styling Serum - 50ml",
+      "sourcePage": "",
+      "imageUrls": []
+    },
+    {
+      "id": 177,
+      "brand": "K18",
+      "sku": "858511000749",
+      "name": "K18 Damage Shield pH protective shampoo - 250ml",
+      "sourcePage": "",
+      "imageUrls": []
+    }
+  ]
+}

@@ -313,7 +313,8 @@ window.NAQA_PRODUCTS.push(
   "price": 2.8,
   "em": "✨",
   "imgs": [
-    "media/products/p296_0.webp"
+    "media/products/p296_0.webp",
+    "media/products/p296_1.webp"
   ],
   "nameAr": "كانتو بخاخ لمعان جوز الهند",
   "nameEn": "Cantu Coconut Oil Shine & Hold Mist 8oz",

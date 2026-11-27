@@ -157,7 +157,8 @@ window.NAQA_PRODUCTS.push(
   "price": 1.9,
   "em": "✨",
   "imgs": [
-    "media/products/p128_0.webp"
+    "media/products/p128_0.webp",
+    "media/products/p128_1.webp"
   ],
   "nameAr": "أحمر شفاه سائل مطفي من لوليس 10",
   "nameEn": "Lollis Matte Liquid Lipstick 10",
@@ -259,7 +260,8 @@ window.NAQA_PRODUCTS.push(
   "price": 1.9,
   "em": "✨",
   "imgs": [
-    "media/products/p134_0.webp"
+    "media/products/p134_0.webp",
+    "media/products/p134_1.webp"
   ],
   "nameAr": "أحمر شفاه سائل مطفي من لوليس 13",
   "nameEn": "Lollis Matte Liquid Lipstick 13",
@@ -279,7 +281,8 @@ window.NAQA_PRODUCTS.push(
   "price": 1.9,
   "em": "✨",
   "imgs": [
-    "media/products/p135_0.webp"
+    "media/products/p135_0.webp",
+    "media/products/p135_1.webp"
   ],
   "nameAr": "أحمر شفاه سائل مطفي من لوليس 15",
   "nameEn": "Lollis Matte Liquid Lipstick 15",
@@ -299,7 +302,8 @@ window.NAQA_PRODUCTS.push(
   "price": 1.9,
   "em": "✨",
   "imgs": [
-    "media/products/p136_0.webp"
+    "media/products/p136_0.webp",
+    "media/products/p136_1.webp"
   ],
   "nameAr": "أحمر شفاه سائل مطفي من لوليس 16",
   "nameEn": "Lollis Matte Liquid Lipstick 16",

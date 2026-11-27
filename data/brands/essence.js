@@ -142,7 +142,7 @@ window.NAQA_PRODUCTS.push(
 {
   "em": "💋",
   "imgs": [
-    "media/products/p202_0.webp"
+    "media/products/p201_0.webp"
   ],
   "stock": 3,
   "brand": "essence",
@@ -373,7 +373,7 @@ window.NAQA_PRODUCTS.push(
   "price": 1.8,
   "em": "✨",
   "imgs": [
-    "media/products/p261_0.webp"
+    "media/products/p212_0.webp"
   ],
   "nameAr": "بودرة تثبيت أول أباوت مات",
   "nameEn": "essence All About Matt Fixing Compact Powder",

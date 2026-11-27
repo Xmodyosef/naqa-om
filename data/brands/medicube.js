@@ -362,7 +362,8 @@ window.NAQA_PRODUCTS.push(
   "was": 9.858,
   "em": "✨",
   "imgs": [
-    "media/products/p168_0.webp"
+    "media/products/p168_0.webp",
+    "media/products/p168_1.webp"
   ],
   "nameAr": "بلسم ميديكيوب بالروزماري بي دي أر إن للشعر وفروة الرأس - 250مل",
   "nameEn": "Medicube Rosemary PDRN Hair & Scalp Conditioner - 250ml",

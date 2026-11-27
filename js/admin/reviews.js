@@ -188,7 +188,7 @@
       if (!p) return "";
       var key = String(p.sku || "").trim() || String(p.id || "");
       if (!key) return "";
-      return "index.html#p/" + encodeURIComponent(key);
+      return "index.html#" + encodeURIComponent(key);
     }
     function draw() {
       var q = A.reviewQuery || "";

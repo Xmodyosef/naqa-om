@@ -86,7 +86,7 @@ for (const p of products) {
     "    <p class=\"meta\">" + esc(nameEn) + " · SKU " + esc(p.sku || "—") + "</p>\n" +
     "    <p class=\"price\">" + price.toFixed(3) + " ر.ع <span class=\"meta\">شامل الضريبة ٥٪</span></p>\n" +
     "    <p>" + esc(desc) + "</p>\n" +
-    "    <a class=\"btn\" href=\"" + base + "/#p/" + encodeURIComponent(slug) + "\">افتحي في المتجر</a>\n" +
+    "    <a class=\"btn\" href=\"" + base + "/#" + encodeURIComponent(slug) + "\">افتحي في المتجر</a>\n" +
     "  </div>\n" +
     "  <p class=\"muted\">نقاء · عناية ومكياج · توصيل داخل عُمان · طلب واتساب</p>\n" +
     "</div>\n</body>\n</html>\n";

@@ -307,7 +307,7 @@ $("#lightbox").addEventListener("click", e=>{ if(e.target.id==="lightbox"||e.tar
   }
   function shopHash(){
     var h = window.__naqaShopHash;
-    if(h && String(h).indexOf("#p/")!==0) return h.indexOf("#")===0 ? h : "#"+h;
+    if(h){ var raw=String(h).replace(/^#/,""); if(typeof isProductHash==="function" ? isProductHash(raw) : (raw.indexOf("p/")===0)) return "#shop"; return h.indexOf("#")===0 ? h : "#"+h; }
     return "#shop";
   }
   function syncShopUrl(){
@@ -330,7 +330,7 @@ $("#lightbox").addEventListener("click", e=>{ if(e.target.id==="lightbox"||e.tar
       /* Absorb Safari/Chrome edge-back that would pop a second history entry. */
       window.__naqaAbsorbBackUntil = Date.now() + 800;
       closeSheet(true);
-      if(typeof routeHash==="function" && routeHash().indexOf("p/")===0){
+      if(typeof routeHash==="function" && (typeof isProductHash==="function" ? isProductHash(routeHash()) : routeHash().indexOf("p/")===0)){
         syncShopUrl();
       }
       if(typeof naqaRestoreShopScroll==="function") naqaRestoreShopScroll();
@@ -403,7 +403,7 @@ $("#lightbox").addEventListener("click", e=>{ if(e.target.id==="lightbox"||e.tar
       try{
         var h = window.__naqaShopHash || "#shop";
         if(String(h).indexOf("#")!==0) h="#"+h;
-        if(String(h).indexOf("#p/")===0) h="#shop";
+        if((function(x){ x=String(x||"").replace(/^#/,""); return (typeof isProductHash==="function")?isProductHash(x):(x.indexOf("p/")===0); })(h)) h="#shop";
         history.pushState({naqa:"shop"}, "", location.pathname + location.search + h);
       }catch(err){}
       if($("#sheet") && $("#sheet").classList.contains("show") && typeof closeSheet==="function") closeSheet(true);

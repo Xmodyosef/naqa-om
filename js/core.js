@@ -23,39 +23,70 @@ function brandMark(brand, opts){
   return '<button type="button" class="brand-link" data-brand="'+esc(brand)+'">'+mark+'<span>'+esc(brand)+'</span></button>';
 }
 function routeHash(){ return decodeURIComponent((location.hash||"").replace(/^#/,"")); }
-/** URL key for a product: barcode/SKU preferred, else numeric id (legacy). */
+/** URL key = barcode/SKU only (no p/ prefix). Legacy numeric id only if no SKU. */
 function productRouteKey(p){
   if(!p) return "";
   var s=String(p.sku||"").trim();
   if(s) return encodeURIComponent(s);
   return String(p.id);
 }
-/** Resolve #p/<key> or /p/<key>/ — key is SKU/barcode, or legacy numeric id. */
+/** Reserved non-product hashes (shop navigation). */
+function isReservedRoute(h){
+  h=String(h||"");
+  if(!h) return true;
+  if(h==="shop"||h==="top"||h==="products"||h==="all") return true;
+  if(h.indexOf("shelf/")===0||h.indexOf("cat/")===0||h.indexOf("q/")===0||h.indexOf("b/")===0||h.indexOf("c/")===0) return true;
+  return false;
+}
+/** Resolve barcode/SKU, or legacy #p/<key> / numeric id. */
 function findProductByRoute(key){
   key=String(key==null?"":key).trim();
   if(!key) return null;
   try{ key=decodeURIComponent(key); }catch(e){}
   key=String(key||"").trim();
   if(!key) return null;
+  /* strip accidental legacy prefixes */
+  if(key.indexOf("p/")===0) key=key.slice(2);
+  if(key.indexOf("sku/")===0) key=key.slice(4);
+  if(key.indexOf("product/")===0) key=key.slice(8);
+  key=String(key||"").trim();
+  if(!key) return null;
   var list=(typeof products!=="undefined" && products)?products:[];
   var hit=list.find(function(x){ return String(x.sku||"")===key; });
   if(hit) return hit;
-  if(/^[0-9]+$/.test(key)){
+  var kl=key.toLowerCase();
+  hit=list.find(function(x){ return String(x.sku||"").toLowerCase()===kl; });
+  if(hit) return hit;
+  /* legacy: numeric catalog id only when it does not look like a long barcode */
+  if(/^[0-9]{1,4}$/.test(key)){
     var id=+key;
     hit=list.find(function(x){ return Number(x.id)===id; });
     if(hit) return hit;
   }
-  var kl=key.toLowerCase();
-  return list.find(function(x){ return String(x.sku||"").toLowerCase()===kl; })||null;
+  return null;
+}
+function isProductHash(h){
+  h=String(h||"");
+  if(!h || isReservedRoute(h)) return false;
+  if(h.indexOf("p/")===0) return !!findProductByRoute(h.slice(2));
+  return !!findProductByRoute(h);
 }
 function applyRoute(){
   const h=routeHash();
-  if(h.indexOf("p/")===0){
-    const key=h.slice(2);
-    const prod=findProductByRoute(key);
+  /* Product = bare barcode hash  #8800…  (also legacy #p/… and short id) */
+  var prodKey=null;
+  if(h.indexOf("p/")===0) prodKey=h.slice(2);
+  else if(!isReservedRoute(h)) prodKey=h;
+  if(prodKey!=null && prodKey!==""){
+    const prod=findProductByRoute(prodKey);
     if(prod){
       const id=prod.id;
       if(openProductId!==id || !$("#sheet").classList.contains("show")) openSheet(id,"full",true);
+      /* normalize address bar to bare barcode (no p/) */
+      try{
+        var want=(typeof productRouteKey==="function")?productRouteKey(prod):String(prod.sku||prod.id);
+        if(h!==want) history.replaceState({naqa:"product",id:prod.id,sku:prod.sku||""}, "", "#"+want);
+      }catch(e){}
       return;
     }
   }
@@ -166,6 +197,7 @@ function siteBasePath(){
   if (path.slice(-1) !== "/") path += "/";
   return path;
 }
+/** Share/open link: store URL + bare barcode hash only (no /p/, no #p/). */
 function productLink(idOrProduct){
   var p=null;
   if(idOrProduct && typeof idOrProduct==="object") p=idOrProduct;
@@ -174,7 +206,7 @@ function productLink(idOrProduct){
     p=(typeof products!=="undefined"?products:[]).find(function(x){ return Number(x.id)===Number(id) || String(x.id)===String(id); })||null;
   }
   var key=p ? productRouteKey(p) : encodeURIComponent(String(idOrProduct||""));
-  return location.origin + siteBasePath() + "p/" + key + "/";
+  return location.origin + siteBasePath() + "#" + key;
 }
 function productHash(idOrProduct){
   var p=null;
@@ -183,7 +215,7 @@ function productHash(idOrProduct){
     p=(typeof products!=="undefined"?products:[]).find(function(x){ return Number(x.id)===Number(idOrProduct) || String(x.id)===String(idOrProduct); })||null;
   }
   var key=p ? productRouteKey(p) : encodeURIComponent(String(idOrProduct||""));
-  return "#p/"+key;
+  return "#"+key;
 }
 
 function naqaNormImgPath(u){

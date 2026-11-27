@@ -189,11 +189,14 @@ async function openSheet(id, mode, reset){
   try{
     if(!qv){
       var cur = routeHash();
-      if(cur.indexOf("p/")!==0){
+      var rkey=(typeof productRouteKey==="function")?productRouteKey(p):String(p.sku||id);
+      var onProduct = (typeof isProductHash==="function") ? isProductHash(cur) : (cur===rkey || cur.indexOf("p/")===0);
+      if(!onProduct){
         window.__naqaShopHash = (location.hash && location.hash!=="#") ? location.hash : "#shop";
       }
-      var rkey=(typeof productRouteKey==="function")?productRouteKey(p):String(id);
-      if(cur!=="p/"+rkey && cur!=="p/"+id) history.pushState({naqa:"product",id:p.id,sku:p.sku||""}, "", "#p/"+rkey);
+      if(cur!==rkey && cur!=="p/"+rkey && cur!=="p/"+id && cur!==String(id)){
+        history.pushState({naqa:"product",id:p.id,sku:p.sku||""}, "", "#"+rkey);
+      }
     }
   }catch(e){}
 }
@@ -207,12 +210,12 @@ function closeSheet(fromRoute){
   document.title=T("docTitle");
   const card=$("#sheetCard");
   if(card){ card.style.transform=""; card.style.transition=""; }
-  if(!fromRoute && routeHash().indexOf("p/")===0){
+  if(!fromRoute && (typeof isProductHash==="function" ? isProductHash(routeHash()) : routeHash().indexOf("p/")===0)){
     try{ history.back(); }catch(e){}
   }
   /* رجوع من المنتج: نفس مكان التمرير، مو بداية الصفحة */
   setTimeout(function(){
-    if(routeHash().indexOf("p/")===0) return;
+    if(typeof isProductHash==="function" ? isProductHash(routeHash()) : routeHash().indexOf("p/")===0) return;
     if(typeof naqaRestoreShopScroll==="function") naqaRestoreShopScroll();
   }, 0);
 }

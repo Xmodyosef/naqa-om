@@ -112,7 +112,7 @@ function pageFor(p) {
     <p>${esc(fullDesc)}</p>
     ${skin ? `<p class="meta"><strong>الأنسب لـ:</strong> ${esc(skin)}</p>` : ""}
     ${useTxt ? `<h2 style="font-size:1rem;margin:14px 0 6px">طريقة الاستخدام</h2><p style="white-space:pre-line">${esc(useTxt)}</p>` : ""}
-    <a class="btn" href="${esc(base)}/#p/${encodeURIComponent(String(p.sku || p.id).trim())}">افتحي في المتجر</a>
+    <a class="btn" href="${esc(base)}/#${encodeURIComponent(String(p.sku || p.id).trim())}">افتحي في المتجر</a>
   </div>
   <p class="muted">نقاء · عناية ومكياج أصلية · توصيل داخل عُمان · طلب واتساب · أسعار شاملة الضريبة ٥٪</p>
 </div>

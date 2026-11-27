@@ -11,6 +11,11 @@ function heroSwipeHTML() {
     var c = typeof catalogById === "function" ? catalogById(id) : null;
     if (!c || !c.cover || typeof catalogList !== "function") return;
 
+    /* Never advertise an empty or fully hidden campaign. */
+    var available = [];
+    try { available = catalogList(id, 1) || []; } catch (e) { available = []; }
+    if (!available.length) return;
+
     var candidates = [];
     var curated = typeof NAQA_BANNER_HEROES !== "undefined" && NAQA_BANNER_HEROES
       ? NAQA_BANNER_HEROES[id] || [] : [];

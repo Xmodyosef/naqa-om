@@ -177,7 +177,8 @@ window.NAQA_PRODUCTS.push(
   "price": 1.9,
   "em": "✨",
   "imgs": [
-    "media/products/p129_0.webp"
+    "media/products/p129_0.webp",
+    "media/products/p129_1.webp"
   ],
   "nameAr": "أحمر شفاه سائل مطفي من لوليس 14",
   "nameEn": "Lollis Matte Liquid Lipstick 14",

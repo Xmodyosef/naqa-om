@@ -45,7 +45,7 @@ window.NAQA_PRODUCTS.push(
 {
   "em": "🥥",
   "imgs": [
-    "media/products/p250_0.webp"
+    "media/products/p251_0.webp"
   ],
   "stock": 3,
   "brand": "Cantu",

@@ -400,11 +400,13 @@ window.NAQA_PRODUCTS.push(
   "id": 196,
   "brand": "Medicube",
   "cat": "عناية",
-  "sku": "I0218",
+  "sku": "8809981334928",
   "price": 7.9,
   "em": "✨",
   "imgs": [
-    "media/products/p196_0.webp"
+    "media/products/p196_0.webp",
+    "media/products/p196_1.webp",
+    "media/products/p196_2.webp"
   ],
   "nameAr": "سيروم ميديكوب ون داي إكسوسوم شوت 2000 لتجديد ونضارة البشرة - 30مل",
   "nameEn": "Medicube Beauty Tool — I0218",

@@ -1,9 +1,12 @@
 /* product sheet + quick view */
 .sheet{position:fixed;inset:0;z-index:100;background:rgba(20,12,10,.45);display:none}
 .sheet.show{display:block}
-.sheet-card{position:absolute;inset:0;background:var(--card);color:var(--fg);overflow:auto;-webkit-overflow-scrolling:touch;
+.sheet-card{position:absolute;inset:0;background:var(--card);color:var(--fg);
+  overflow-x:hidden;overflow-y:auto;-webkit-overflow-scrolling:touch;
+  overscroll-behavior-x:none;overscroll-behavior-y:contain;
   padding:14px 16px 48px;max-width:680px;margin:0 auto;left:0;right:0}
-.qv .sheet-card{inset:auto 0 0 0;max-height:92vh;border-radius:22px 22px 0 0;padding:8px 16px 36px;overflow:auto}
+.qv .sheet-card{inset:auto 0 0 0;max-height:92vh;border-radius:22px 22px 0 0;padding:8px 16px 36px;
+  overflow-x:hidden;overflow-y:auto;overscroll-behavior-x:none;overscroll-behavior-y:contain}
 .text-back{
   display:inline-flex;align-items:center;gap:6px;
   font-weight:800;font-size:1.2rem;line-height:1.2;
@@ -30,9 +33,11 @@
 /* FULL carousel */
 .carousel{position:relative;background:var(--card);border-radius:18px;overflow:hidden;border:1px solid var(--line)}
 .carousel-track{display:flex;width:100%;height:min(88vw,520px);overflow-x:auto;scroll-snap-type:x mandatory;
-  -webkit-overflow-scrolling:touch;scrollbar-width:none;touch-action:pan-x;background:var(--card)}
+  scroll-snap-stop:always;-webkit-overflow-scrolling:touch;scrollbar-width:none;
+  touch-action:pan-x pinch-zoom;overscroll-behavior-x:contain;overscroll-behavior-y:none;
+  background:var(--card)}
 .carousel-track::-webkit-scrollbar{display:none}
-.carousel-slide{flex:0 0 100%;width:100%;height:min(88vw,520px);scroll-snap-align:center;display:grid;place-items:center;position:relative;background:var(--card)}
+.carousel-slide{flex:0 0 100%;width:100%;height:min(88vw,520px);scroll-snap-align:center;scroll-snap-stop:always;display:grid;place-items:center;position:relative;background:var(--card);overflow:hidden}
 .carousel-slide img{width:100%;height:100%;object-fit:contain;cursor:zoom-in;background:var(--card)}
 .carousel-slide .ar-card-img{width:100%;height:100%;object-fit:contain}
 .carousel-nav{display:none!important} /* removed prev/next on product gallery */
@@ -167,10 +172,27 @@ html[data-theme="night"] .pair-vis{background:#1a1412}
 
 
 
-html.sheet-open, body.sheet-open{overflow:hidden!important;overscroll-behavior:none}
-.sheet.show{touch-action:pan-y pinch-zoom}
-.sheet.show .sheet-card, .sheet.show #sheetCard{touch-action:pan-y pinch-zoom;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
-.sheet.show .carousel-track{touch-action:pan-x pinch-zoom}
+html.sheet-open, body.sheet-open{overflow:hidden!important;overscroll-behavior:none;touch-action:none}
+.sheet.show{touch-action:pan-y pinch-zoom;overflow:hidden;overscroll-behavior:none}
+.sheet.show .sheet-card, .sheet.show #sheetCard{
+  touch-action:pan-y pinch-zoom;
+  overscroll-behavior-x:none;
+  overscroll-behavior-y:contain;
+  -webkit-overflow-scrolling:touch;
+  overflow-x:hidden !important;
+}
+.sheet.show .carousel{overflow:hidden;isolation:isolate}
+.sheet.show .carousel-track{
+  touch-action:pan-x pinch-zoom;
+  overscroll-behavior-x:contain;
+  overscroll-behavior-y:none;
+}
+/* one photo: no horizontal drag into empty */
+.carousel[data-count="1"] .carousel-track,
+.carousel[data-loop="0"] .carousel-track{
+  overflow-x:hidden !important;
+  touch-action:pan-y pinch-zoom;
+}
 .sku-line{display:none!important}
 .card-code{font-size:.72rem;color:var(--muted)}
 
@@ -280,3 +302,17 @@ html[data-theme="night"] .sheet.show .sheet-actions{
 
 /* clean sheet: no dots, no thumbnail strip. Photos stay in the swipe track. */
 .carousel-dots, .thumbs, #carDots, #carThumbs{ display:none !important; }
+
+/* sheet horizontal lock — stop left/right rubber into empty */
+.sheet.show:not(.qv) .carousel{
+  max-width: 100vw;
+}
+.sheet.show .carousel-slide img{
+  pointer-events: auto;
+  -webkit-user-drag: none;
+  user-select: none;
+  touch-action: pan-x pinch-zoom;
+}
+.carousel[data-count="1"] .carousel-slide img{
+  touch-action: pan-y pinch-zoom;
+}

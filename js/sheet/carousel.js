@@ -155,36 +155,60 @@ function bindCarousel(p){
   });
 
   let scrollEndTimer=null;
+  function settleCarousel(){
+    if(jumping) return;
+    const w=track.clientWidth||1;
+    if(w < 2) return;
+    let dom=Math.round(track.scrollLeft/w);
+    if(!loop){
+      dom=Math.max(0, Math.min(n-1, dom));
+      // snap hard — no half-slide / empty gap
+      const target = track.children[dom];
+      if(target){
+        const left = target.offsetLeft;
+        if(Math.abs(track.scrollLeft - left) > 1) track.scrollLeft = left;
+      }
+      syncUI(dom);
+      return;
+    }
+    // hit clone of first (past last real) → jump to real first
+    if(dom >= n+1){
+      jumping=true;
+      goDom(realToDom(0), false);
+      syncUI(0);
+      requestAnimationFrame(function(){ jumping=false; });
+      return;
+    }
+    // hit clone of last (before first real) → jump to real last
+    if(dom <= 0){
+      jumping=true;
+      goDom(realToDom(n-1), false);
+      syncUI(n-1);
+      requestAnimationFrame(function(){ jumping=false; });
+      return;
+    }
+    // snap to real slide center
+    const target = track.children[dom];
+    if(target){
+      const left = target.offsetLeft;
+      if(Math.abs(track.scrollLeft - left) > 1){
+        jumping=true;
+        track.scrollLeft = left;
+        requestAnimationFrame(function(){ jumping=false; });
+      }
+    }
+    syncUI(dom-1);
+  }
   track.addEventListener("scroll", ()=>{
     if(jumping) return;
     clearTimeout(scrollEndTimer);
-    scrollEndTimer=setTimeout(()=>{
-      if(jumping) return;
-      const w=track.clientWidth||1;
-      let dom=Math.round(track.scrollLeft/w);
-      if(!loop){
-        dom=Math.max(0, Math.min(n-1, dom));
-        syncUI(dom);
-        return;
-      }
-      // hit clone of first (past last real) → jump to real first
-      if(dom>=n+1){
-        jumping=true;
-        goDom(realToDom(0), false);
-        syncUI(0);
-        requestAnimationFrame(()=>{ jumping=false; });
-        return;
-      }
-      // hit clone of last (before first real) → jump to real last
-      if(dom<=0){
-        jumping=true;
-        goDom(realToDom(n-1), false);
-        syncUI(n-1);
-        requestAnimationFrame(()=>{ jumping=false; });
-        return;
-      }
-      syncUI(dom-1);
-    }, 50);
+    scrollEndTimer=setTimeout(settleCarousel, 32);
+  }, {passive:true});
+  track.addEventListener("scrollend", settleCarousel, {passive:true});
+  // block rubber-band chain into the sheet while finger is on the gallery
+  track.addEventListener("touchmove", function(e){
+    if(e.touches && e.touches.length > 1) return;
+    e.stopPropagation();
   }, {passive:true});
 
   // sheet clicks bound via naqaBindSheetCardClicks at start

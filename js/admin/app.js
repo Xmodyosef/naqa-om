@@ -78,12 +78,12 @@
     });
     var badge = document.getElementById("ordersBadge");
     if (badge) {
-      /* العدد الكلي للطلبات — مش بس "جديد" */
-      var nAll = counts.all || 0;
-      badge.textContent = String(nAll);
-      badge.hidden = nAll <= 0;
-      badge.title = (A.lang === "en" ? "All orders" : "كل الطلبات") + ": " + nAll
-        + " · " + (A.lang === "en" ? "New" : "جديد") + ": " + (counts.new || 0);
+      /* Design lock: the parent badge counts new orders only. */
+      var nNew = counts.new || 0;
+      badge.textContent = String(nNew);
+      badge.hidden = nNew <= 0;
+      badge.title = (A.lang === "en" ? "New orders" : "الطلبات الجديدة") + ": " + nNew
+        + " · " + (A.lang === "en" ? "All orders" : "كل الطلبات") + ": " + (counts.all || 0);
     }
     var shown = 0, hid = 0, allp = 0, stockAlert = 0;
     (A.products || []).forEach(function (p) {

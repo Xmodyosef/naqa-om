@@ -13,7 +13,8 @@ window.NAQA_PRODUCTS.push(
   "imgs": [
     "media/products/p3_0.webp",
     "media/products/p3_1.webp",
-    "media/products/p3_2.webp"
+    "media/products/p3_2.webp",
+    "media/products/p3_3.webp"
   ],
   "nameAr": "سيروم انوا نياسيناميد 10% لتصحيح البقع الداكنة - 30مل",
   "nameEn": "Anua Niacinamide 10% + TXA 4% Dark Spot Correcting Serum - 30ml",
@@ -173,8 +174,7 @@ window.NAQA_PRODUCTS.push(
     "media/products/p63_0.webp",
     "media/products/p63_1.webp",
     "media/products/p63_2.webp",
-    "media/products/p63_3.webp",
-    "media/products/p63_4.webp"
+    "media/products/p63_3.webp"
   ],
   "nameAr": "لصقات انوا فائقة النحافة لتغطية البقع - 75 رقعة",
   "nameEn": "Anua Ultra-Thin Spot Cover Patch - 75 patches",

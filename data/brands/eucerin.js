@@ -10,8 +10,7 @@ window.NAQA_PRODUCTS.push(
   "em": "✨",
   "imgs": [
     "media/products/p45_0.webp",
-    "media/products/p45_1.webp",
-    "media/products/p45_2.webp"
+    "media/products/p45_1.webp"
   ],
   "nameAr": "جل التنظيف المضاد للتصبغات من يوسيرين - 200مل",
   "nameEn": "Eucerin Anti-Pigment Cleansing Gel - 200ml",

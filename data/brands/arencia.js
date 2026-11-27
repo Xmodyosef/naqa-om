@@ -59,8 +59,7 @@ window.NAQA_PRODUCTS.push(
     "media/products/p16_0.webp",
     "media/products/p16_1.webp",
     "media/products/p16_2.webp",
-    "media/products/p16_3.webp",
-    "media/products/p16_4.webp"
+    "media/products/p16_3.webp"
   ],
   "nameAr": "سيروم أرينسيا إريزر شوت بحمض الجليكوليك - 30مل",
   "nameEn": "Arencia Eraser Shot Glycolic Acid Booster - 30ml",

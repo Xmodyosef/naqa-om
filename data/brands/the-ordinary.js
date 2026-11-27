@@ -36,8 +36,7 @@ window.NAQA_PRODUCTS.push(
     "media/products/p54_0.webp",
     "media/products/p54_1.webp",
     "media/products/p54_2.webp",
-    "media/products/p54_3.webp",
-    "media/products/p54_4.webp"
+    "media/products/p54_3.webp"
   ],
   "nameAr": "سيروم ذا اورديناري بحمض الهيالورونيك 2% وفيتامين B5 والسيراميدات",
   "nameEn": "Hyaluronic Acid %2 +B5 with Ceramides - 30ml",
@@ -60,8 +59,7 @@ window.NAQA_PRODUCTS.push(
     "media/products/p55_0.webp",
     "media/products/p55_1.webp",
     "media/products/p55_2.webp",
-    "media/products/p55_3.webp",
-    "media/products/p55_4.webp"
+    "media/products/p55_3.webp"
   ],
   "nameAr": "ذا اورديناري سيروم الريتينول 1% في سكوالين - 30مل",
   "nameEn": "The Ordinary Retinol 1% in Squalane - 30ml",

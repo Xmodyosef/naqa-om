@@ -12,9 +12,7 @@ window.NAQA_PRODUCTS.push(
   "em": "✨",
   "imgs": [
     "media/products/p2_0.webp",
-    "media/products/p2_1.webp",
-    "media/products/p2_2.webp",
-    "media/products/p2_3.webp"
+    "media/products/p2_1.webp"
   ],
   "nameAr": "سيروم ذا فيتا أ ريتينال شوت لشد البشرة من سيليماكس - 15مل",
   "nameEn": "Celimax The Vita A Retinal Shot Tightening Booster - 15ml",
@@ -34,8 +32,7 @@ window.NAQA_PRODUCTS.push(
   "price": 5.7,
   "em": "✨",
   "imgs": [
-    "media/products/p9_0.webp",
-    "media/products/p9_1.webp"
+    "media/products/p9_0.webp"
   ],
   "nameAr": "سيروم سيليماكس لتفتيح البقع وتنقية المسام - 30مل",
   "nameEn": "Celimax Pore+Dark Spot Brightening Serum - 30ml",

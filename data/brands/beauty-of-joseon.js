@@ -33,9 +33,7 @@ window.NAQA_PRODUCTS.push(
   "price": 5.7,
   "em": "✨",
   "imgs": [
-    "media/products/p34_0.webp",
-    "media/products/p34_1.webp",
-    "media/products/p34_2.webp"
+    "media/products/p34_0.webp"
   ],
   "nameAr": "واقي شمس بيوتي أوف جوسون رايس بروبيوتيك معامل حماية 50+ - 50 مل",
   "nameEn": "Beauty of Joseon Relief Sun Rice + Probiotics SPF50+ PA++++ - 50ml",

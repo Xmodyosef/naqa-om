@@ -9,10 +9,7 @@ window.NAQA_PRODUCTS.push(
   "price": 6.7,
   "em": "✨",
   "imgs": [
-    "media/products/p13_0.webp",
-    "media/products/p13_1.webp",
-    "media/products/p13_2.webp",
-    "media/products/p13_3.webp"
+    "media/products/p13_0.webp"
   ],
   "nameAr": "سيروم دكتور ألثيا 345 لتهدئة البشرة - 30مل",
   "nameEn": "Dr.Althea 345 Relief Serum - 30ml",
@@ -80,9 +77,7 @@ window.NAQA_PRODUCTS.push(
   "em": "✨",
   "imgs": [
     "media/products/p47_0.webp",
-    "media/products/p47_1.webp",
-    "media/products/p47_2.webp",
-    "media/products/p47_3.webp"
+    "media/products/p47_1.webp"
   ],
   "nameAr": "كريم دكتور ألثيا ميلاكلير لتفتيح البشرة - 20ج",
   "nameEn": "Dr.Althea Melaclear Cream - 20g",

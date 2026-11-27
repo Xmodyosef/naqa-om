@@ -10,7 +10,8 @@ window.NAQA_PRODUCTS.push(
   "em": "✨",
   "imgs": [
     "media/products/p22_0.webp",
-    "media/products/p22_1.webp"
+    "media/products/p22_1.webp",
+    "media/products/p22_2.webp"
   ],
   "nameAr": "مجموعة جلو فلتر بفيتامين سي لإشراقة وتفتيح البشرة من إيكوال بيري - 3قطع",
   "nameEn": "Eqqualberry Vitamin Illuminating Glow Filter Set - 3pcs",
@@ -32,7 +33,8 @@ window.NAQA_PRODUCTS.push(
   "imgs": [
     "media/products/p25_0.webp",
     "media/products/p25_1.webp",
-    "media/products/p25_2.webp"
+    "media/products/p25_2.webp",
+    "media/products/p25_3.webp"
   ],
   "nameAr": "سيروم الببتيدات لشد ونضارة البشرة من إيكوال بيري - 50مل",
   "nameEn": "Eqqualberry NAD+ Peptide Boosting Serum - 50ml",

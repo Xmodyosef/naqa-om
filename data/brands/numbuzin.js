@@ -34,9 +34,7 @@ window.NAQA_PRODUCTS.push(
   "em": "✨",
   "imgs": [
     "media/products/p27_0.webp",
-    "media/products/p27_1.webp",
-    "media/products/p27_2.webp",
-    "media/products/p27_3.webp"
+    "media/products/p27_1.webp"
   ],
   "nameAr": "وسادات نومبوزين رقم 5 المركزة بفيتامين نياسيناميد - 70 قطعة",
   "nameEn": "Numbuzin No.5 Vitamin Niacinamide Concentrated Pads- 70pads",

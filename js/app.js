@@ -218,7 +218,7 @@ document.addEventListener("click", e=>{
   const prod=$("#products"); if(prod) prod.scrollIntoView({behavior:"smooth"});
 });
 
-$("#langBtn").onclick=()=>{ lang=lang==="ar"?"en":"ar"; try{localStorage.setItem("naqa_lang",lang)}catch(e){} try{if(typeof naqaSyncDockLang==="function")naqaSyncDockLang()}catch(e){} render(); };
+$("#langBtn").onclick=()=>{ lang=lang==="ar"?"en":"ar"; try{localStorage.setItem("naqa_lang",lang)}catch(e){} try{if(typeof naqaSyncDockLang==="function")naqaSyncDockLang()}catch(e){} try{ var b=document.getElementById("shelves"); if(b) b.__naqaHomeSig=""; }catch(e){} if(typeof renderHomeCatalogs==="function") renderHomeCatalogs(true); render(); };
 $("#cats").addEventListener("click", e=>{
   const a=e.target.closest("[data-cat]"); if(!a) return; e.preventDefault();
   document.querySelectorAll("#cats [data-cat]").forEach(x=>x.classList.remove("on")); a.classList.add("on");

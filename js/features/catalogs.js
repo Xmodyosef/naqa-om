@@ -434,17 +434,57 @@ function bindHeroSwipe() {
   paint();
 }
 
-function renderHomeCatalogs(){
+function naqaHomeSurfaceSig(){
+  /* Stable signature for home rails + hero — skip rebuild when unchanged (kills FOUC) */
+  try {
+    var en = (typeof lang !== "undefined" && lang === "en") ? "1" : "0";
+    var parts = [en];
+    if (typeof getHomeCampaigns === "function") {
+      getHomeCampaigns().forEach(function (c) {
+        var ids = (c.list || []).slice(0, 8).map(function (p) {
+          return p && p.id != null ? String(p.id) : "";
+        }).join(",");
+        parts.push(String(c.id) + ":" + ids);
+      });
+    }
+    if (typeof NAQA_BANNER_HEROES === "object" && NAQA_BANNER_HEROES) {
+      ["hot","eoy","korean","u10","sheglam"].forEach(function (k) {
+        parts.push(k + ":" + ((NAQA_BANNER_HEROES[k] || []).join(",")));
+      });
+    }
+    /* include hide flags of visible shelf products so real hide still updates */
+    if (typeof products !== "undefined" && products) {
+      var hid = 0;
+      for (var i = 0; i < products.length; i++) if (products[i] && products[i].hidden) hid++;
+      parts.push("h" + hid);
+    }
+    return parts.join("|");
+  } catch (e) { return String(Date.now()); }
+}
+
+function renderHomeCatalogs(force){
   var box = document.getElementById("shelves");
   if(!box) return;
-  var prev = document.getElementById("heroSwipe");
-  if(prev) prev.remove();
   if(!isHomeCatalogView()){
+    var prevOff = document.getElementById("heroSwipe");
+    if(prevOff) prevOff.remove();
     box.innerHTML = "";
     box.hidden = true;
+    box.__naqaHomeSig = "";
     return;
   }
+  var sig = naqaHomeSurfaceSig();
+  var hero = document.getElementById("heroSwipe");
+  var home = document.getElementById("homeCatalog");
+  if (!force && home && hero && hero.querySelector(".hero-slide-art") && box.__naqaHomeSig === sig) {
+    /* Already painted — do not remove/rebuild (visible flash of old/blank hero) */
+    try { if (typeof bindHeroSwipe === "function") bindHeroSwipe(); } catch (e) {}
+    return;
+  }
+  /* Only remove previous hero when we are about to replace it */
+  if (hero) hero.remove();
   box.hidden = false;
+  box.__naqaHomeSig = sig;
   var en = (typeof lang !== "undefined" && lang === "en");
   var html = '<div class="home-campaigns home-rails" id="homeCatalog">';
   html += heroSwipeHTML();

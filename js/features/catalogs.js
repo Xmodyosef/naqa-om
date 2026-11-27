@@ -286,7 +286,6 @@ function heroSwipeHTML(){
   var ids = ["hot", "eoy", "korean", "u10", "sheglam"];
   var en = (typeof lang !== "undefined" && lang === "en");
   var slides = "";
-  var dots = "";
   var n = 0;
   ids.forEach(function(id){
     var c = catalogById(id);
@@ -295,13 +294,11 @@ function heroSwipeHTML(){
     slides += '<button type="button" class="hero-slide" data-open-catalog="'+esc(c.id)+'" aria-label="'+esc(label)+'">'
       + '<img src="'+esc(c.cover)+'" alt="" draggable="false">'
       + '</button>';
-    dots += '<button type="button" class="hero-dot'+(n===0?" on":"")+'" data-hero-dot="'+n+'" aria-label="'+(n+1)+'"></button>';
     n++;
   });
   if(n < 2) return "";
   return '<div class="hero-swipe" id="heroSwipe">'
     + '<div class="hero-swipe-track" id="heroSwipeTrack">'+slides+'</div>'
-    + '<div class="hero-swipe-dots" id="heroSwipeDots" role="tablist">'+dots+'</div>'
     + '</div>';
 }
 

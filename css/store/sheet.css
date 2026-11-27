@@ -277,3 +277,6 @@ html[data-theme="night"] .sheet.show:not(.qv) .text-back{
 html[data-theme="night"] .sheet.show .sheet-actions{
   background: var(--card, #1a1412);
 }
+
+/* clean sheet: no dots, no thumbnail strip. Photos stay in the swipe track. */
+.carousel-dots, .thumbs, #carDots, #carThumbs{ display:none !important; }

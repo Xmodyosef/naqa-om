@@ -1733,3 +1733,4 @@ body.home-photo .hero-strong{ display:none; }
 @media (prefers-reduced-motion: reduce){
   .hero-swipe-track{ scroll-behavior:auto; }
 }
+.hero-swipe-dots, .hero-dot{ display:none !important; }

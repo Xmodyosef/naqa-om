@@ -151,7 +151,7 @@ admin.html → Firebase Auth (إيميل/Google)
 ### أُصلح من فحص المصدر (دليل ملف، يحتاج Publish للقواعد)
 | بند | حالة |
 |-----|------|
-| `orders_private` قراءة للمشرف | ✅ في `firestore.rules` على GitHub — **يلزم Publish يدوي** لـ Firebase (FIREBASE_TOKEN غير مضبوط في Actions) |
+| `orders_private` قراءة للمشرف | ✅ `firestore.rules` منشورة في Firebase Console (2026-11-27) |
 | لا `tmp/` packshot على main | ✅ حُذف |
 
 ### باقي تجربة واحدة فقط

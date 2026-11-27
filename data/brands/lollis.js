@@ -177,9 +177,7 @@ window.NAQA_PRODUCTS.push(
   "price": 1.9,
   "em": "✨",
   "imgs": [
-    "media/products/p129_0.webp",
-    "media/products/p129_1.webp",
-    "media/products/p129_2.webp"
+    "media/products/p129_0.webp"
   ],
   "nameAr": "أحمر شفاه سائل مطفي من لوليس 14",
   "nameEn": "Lollis Matte Liquid Lipstick 14",
@@ -199,9 +197,7 @@ window.NAQA_PRODUCTS.push(
   "price": 1.05,
   "em": "✨",
   "imgs": [
-    "media/products/p130_0.webp",
-    "media/products/p130_1.webp",
-    "media/products/p130_2.webp"
+    "media/products/p130_0.webp"
   ],
   "nameAr": "مرطب شفاه بالرمان من لوليس - 4ج",
   "nameEn": "Lollis Lip Care Pomegranate - 4g",
@@ -222,8 +218,7 @@ window.NAQA_PRODUCTS.push(
   "em": "✨",
   "imgs": [
     "media/products/p131_0.webp",
-    "media/products/p131_1.webp",
-    "media/products/p131_2.webp"
+    "media/products/p131_1.webp"
   ],
   "nameAr": "مرطب شفاه كلاسيكي من لوليس - 4ج",
   "nameEn": "Lollis Lip Care Classic - 4g",
@@ -243,9 +238,7 @@ window.NAQA_PRODUCTS.push(
   "price": 1.05,
   "em": "✨",
   "imgs": [
-    "media/products/p132_0.webp",
-    "media/products/p132_1.webp",
-    "media/products/p132_2.webp"
+    "media/products/p132_0.webp"
   ],
   "nameAr": "مرطب شفاه بالفراولة من لوليس - 4ج",
   "nameEn": "Lollis Lip Care Strawberry - 4g",
@@ -265,9 +258,7 @@ window.NAQA_PRODUCTS.push(
   "price": 1.9,
   "em": "✨",
   "imgs": [
-    "media/products/p134_0.webp",
-    "media/products/p134_1.webp",
-    "media/products/p134_2.webp"
+    "media/products/p134_0.webp"
   ],
   "nameAr": "أحمر شفاه سائل مطفي من لوليس 13",
   "nameEn": "Lollis Matte Liquid Lipstick 13",
@@ -287,9 +278,7 @@ window.NAQA_PRODUCTS.push(
   "price": 1.9,
   "em": "✨",
   "imgs": [
-    "media/products/p135_0.webp",
-    "media/products/p135_1.webp",
-    "media/products/p135_2.webp"
+    "media/products/p135_0.webp"
   ],
   "nameAr": "أحمر شفاه سائل مطفي من لوليس 15",
   "nameEn": "Lollis Matte Liquid Lipstick 15",
@@ -309,9 +298,7 @@ window.NAQA_PRODUCTS.push(
   "price": 1.9,
   "em": "✨",
   "imgs": [
-    "media/products/p136_0.webp",
-    "media/products/p136_1.webp",
-    "media/products/p136_2.webp"
+    "media/products/p136_0.webp"
   ],
   "nameAr": "أحمر شفاه سائل مطفي من لوليس 16",
   "nameEn": "Lollis Matte Liquid Lipstick 16",
@@ -332,8 +319,7 @@ window.NAQA_PRODUCTS.push(
   "em": "✨",
   "imgs": [
     "media/products/p137_0.webp",
-    "media/products/p137_1.webp",
-    "media/products/p137_2.webp"
+    "media/products/p137_1.webp"
   ],
   "nameAr": "أحمر شفاه سائل مطفي باللون الكامل من لوليس 101",
   "nameEn": "Matte Full Color Liquid Lipstick 101",
@@ -354,8 +340,7 @@ window.NAQA_PRODUCTS.push(
   "em": "✨",
   "imgs": [
     "media/products/p138_0.webp",
-    "media/products/p138_1.webp",
-    "media/products/p138_2.webp"
+    "media/products/p138_1.webp"
   ],
   "nameAr": "أحمر شفاه سائل مطفي باللون الكامل من لوليس 102",
   "nameEn": "Matte Full Color Liquid Lipstick 102",
@@ -376,8 +361,7 @@ window.NAQA_PRODUCTS.push(
   "em": "✨",
   "imgs": [
     "media/products/p139_0.webp",
-    "media/products/p139_1.webp",
-    "media/products/p139_2.webp"
+    "media/products/p139_1.webp"
   ],
   "nameAr": "أحمر شفاه سائل مطفي باللون الكامل من لوليس 110",
   "nameEn": "Matte Full Color Liquid Lipstick 110",
@@ -397,9 +381,7 @@ window.NAQA_PRODUCTS.push(
   "price": 2.3,
   "em": "✨",
   "imgs": [
-    "media/products/p140_0.webp",
-    "media/products/p140_1.webp",
-    "media/products/p140_2.webp"
+    "media/products/p140_0.webp"
   ],
   "nameAr": "أحمر شفاه سائل مطفي باللون الكامل من لوليس 112",
   "nameEn": "Matte Full Color Liquid Lipstick 112",
@@ -419,9 +401,7 @@ window.NAQA_PRODUCTS.push(
   "price": 2.2,
   "em": "✨",
   "imgs": [
-    "media/products/p141_0.webp",
-    "media/products/p141_1.webp",
-    "media/products/p141_2.webp"
+    "media/products/p141_0.webp"
   ],
   "nameAr": "أحمر شفاه سائل باللون الكامل من لوليس 005",
   "nameEn": "Lollis Full Color Lip Gloss 005 Biscuit",
@@ -442,8 +422,7 @@ window.NAQA_PRODUCTS.push(
   "em": "✨",
   "imgs": [
     "media/products/p142_0.webp",
-    "media/products/p142_1.webp",
-    "media/products/p142_2.webp"
+    "media/products/p142_1.webp"
   ],
   "nameAr": "أحمر شفاه سائل باللون الكامل من لوليس 010",
   "nameEn": "Lollis Full Color Lipgloss 010 Broken",

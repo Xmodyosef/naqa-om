@@ -81,8 +81,7 @@ window.NAQA_PRODUCTS.push(
     "media/products/p148_0.webp",
     "media/products/p148_1.webp",
     "media/products/p148_2.webp",
-    "media/products/p148_3.webp",
-    "media/products/p148_4.webp"
+    "media/products/p148_3.webp"
   ],
   "nameAr": "تونر نومبوزين رقم 1 العشبي لتهدئة البشرة - 300مل",
   "nameEn": "Numbuzin No.1 Pure-Full Calming Herb Toner - 300ml",

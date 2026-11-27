@@ -307,9 +307,7 @@ window.NAQA_PRODUCTS.push(
   "price": 2.5,
   "em": "✨",
   "imgs": [
-    "media/products/p143_0.webp",
-    "media/products/p143_1.webp",
-    "media/products/p143_2.webp"
+    "media/products/p143_0.webp"
   ],
   "nameAr": "بلمبر شفاه باوت بيرفكت شاين من شيجلام - فيرست كراش",
   "nameEn": "Sheglam Pout-Perfect Shine Lip Plumper - First Crush",
@@ -329,9 +327,7 @@ window.NAQA_PRODUCTS.push(
   "price": 2.5,
   "em": "✨",
   "imgs": [
-    "media/products/p144_0.webp",
-    "media/products/p144_1.webp",
-    "media/products/p144_2.webp"
+    "media/products/p144_0.webp"
   ],
   "nameAr": "بلمبر شفاه باوت بيرفكت شاين من شيجلام - بيري سيزون",
   "nameEn": "Sheglam Pout-Perfect Shine Lip Plumper - Berry Season",
@@ -351,8 +347,7 @@ window.NAQA_PRODUCTS.push(
   "price": 2.6,
   "em": "✨",
   "imgs": [
-    "media/products/p145_0.webp",
-    "media/products/p145_1.webp"
+    "media/products/p145_0.webp"
   ],
   "nameAr": "جلوس جلاس لوك أير من شيجلام - هاي كي",
   "nameEn": "SHEGLAM Lip — ZA224",

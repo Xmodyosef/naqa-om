@@ -9,7 +9,8 @@ window.NAQA_PRODUCTS.push(
   "price": 6.7,
   "em": "✨",
   "imgs": [
-    "media/products/p13_0.webp"
+    "media/products/p13_0.webp",
+    "media/products/p13_1.webp"
   ],
   "nameAr": "سيروم دكتور ألثيا 345 لتهدئة البشرة - 30مل",
   "nameEn": "Dr.Althea 345 Relief Serum - 30ml",
@@ -161,14 +162,16 @@ window.NAQA_PRODUCTS.push(
   "id": 198,
   "brand": "Dr.Althea",
   "cat": "عناية",
-  "sku": "B0105",
+  "sku": "8809447256221",
   "price": 7.3,
   "em": "✨",
   "imgs": [
-    "media/products/p198_0.webp"
+    "media/products/p198_0.webp",
+    "media/products/p198_1.webp",
+    "media/products/p198_2.webp"
   ],
   "nameAr": "كريم دكتور ألثيا 345 رليف لترطيب وتهدئة البشرة - 50مل",
-  "nameEn": "Dr.Althea Skincare — B0105",
+  "nameEn": "Dr.Althea 345 Relief Cream - 50ml",
   "descAr": "Dr.Althea × عناية يومية: كريم دكتور ألثيا 345 رليف لترطيب وتهدئة البشرة. يُركّز على راحة الاستخدام. الملمس: مخملي على الخدود الجافة. الحجم ≈ 50 مل. الجافة والمحتاجة. أي لسع مستمر؟ خفّفي أو راجعي مختصاً.",
   "descEn": "Dr.Althea for daily care: Dr.Althea Skincare. Comfort-first use. Feel: velvet on dry cheeks. Size ≈ 50 ml. Sensitive dry skin. Quiet beauty loves a short, steady routine.",
   "useAr": "١) بعد السيروم أو مباشرة بعد الغسول.\n٢) حبة بازيلاء للوجه + قليل للرقبة.\n٣) صباحاً SPF فوقه.\n٤) مساءً زيدي على الخدود الجافة.",

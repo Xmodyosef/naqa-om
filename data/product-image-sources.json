@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "policy": "Each product requires exactly 3 direct HTTPS image URLs. URLs must depict the exact brand, product, shade/variant and size. Do not use generated, stock, duplicate, or merely similar images. Existing _0 main images are never modified.",
+  "policy": "Each product requires exactly 3 direct HTTPS image URLs. Source identity and reuse permission must be checked before adding URLs. URLs must depict the exact brand, product, shade/variant and size. Do not use generated, stock, duplicate, or merely similar images. Existing _0 main images are never modified.",
   "products": [
     {
       "id": 9,

@@ -46,7 +46,8 @@ window.NAQA_PRODUCTS.push(
   "brand": "OLAPLEX",
   "cat": "شعر",
   "sku": "850018802840",
-  "price": 14.9,
+  "price": 13.6,
+  "was": 14.9,
   "em": "✨",
   "imgs": [
     "media/products/p299_0.webp"

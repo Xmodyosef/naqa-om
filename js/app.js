@@ -114,7 +114,9 @@ function runSearch(fromSubmit){
     window.__naqaShelfFilter = "";
     document.querySelectorAll("#cats [data-cat]").forEach(x=>x.classList.toggle("on", x.dataset.cat==="all"));
   } else {
-    /* empty search from home stays on catalogs */
+    /* empty search → clean home catalogs */
+    currentCatalog = "";
+    catalogBrowse = false;
   }
   // Exact single match (SKU / full name) → open full product page
   if(fromSubmit && query && typeof isExactProductMatch==="function"){
@@ -142,9 +144,22 @@ if(searchEl){
   searchEl.addEventListener("input", e=>{
     query=e.target.value.trim();
     const clr=$("#searchClear"); if(clr) clr.hidden = !query;
-    // debounce live filter (smoother on iPhone)
     clearTimeout(__naqaSearchT);
-    __naqaSearchT=setTimeout(function(){ render(); }, 160);
+    __naqaSearchT=setTimeout(function(){
+      if(query){
+        currentCat="all";
+        currentBrand="";
+        currentConcern="";
+        currentCatalog="";
+        wishView=false;
+        catalogBrowse=true;
+        window.__naqaShelfFilter="";
+        document.querySelectorAll("#cats [data-cat]").forEach(function(x){
+          x.classList.toggle("on", x.dataset.cat==="all");
+        });
+      }
+      render();
+    }, 120);
   });
   searchEl.addEventListener("keydown", e=>{
     if(e.key==="Enter"){ e.preventDefault(); clearTimeout(__naqaSearchT); runSearch(true); }
@@ -207,22 +222,43 @@ $("#langBtn").onclick=()=>{ lang=lang==="ar"?"en":"ar"; try{localStorage.setItem
 $("#cats").addEventListener("click", e=>{
   const a=e.target.closest("[data-cat]"); if(!a) return; e.preventDefault();
   document.querySelectorAll("#cats [data-cat]").forEach(x=>x.classList.remove("on")); a.classList.add("on");
-  currentCat=a.dataset.cat; currentBrand=""; wishView=false; closeSheet(true);
+  currentCat=a.dataset.cat;
+  currentBrand="";
+  currentCatalog="";
+  currentConcern="";
+  query="";
+  wishView=false;
+  closeSheet(true);
   window.__naqaShelfFilter="";
   catalogBrowse = (currentCat !== "all");
+  const sEl=$("#search"); if(sEl) sEl.value="";
+  const clr=$("#searchClear"); if(clr) clr.hidden=true;
   try{ history.pushState({naqa:"cat"}, "", currentCat==="all"?"#shop":"#c/"+encodeURIComponent(currentCat)); }catch(e){}
   render();
-  if(currentCat!=="all"){ const p=$("#products"); if(p) p.scrollIntoView({behavior:"smooth"}); }
+  if(currentCat!=="all"){
+    const p=$("#products"); if(p) p.scrollIntoView({behavior:"smooth", block:"start"});
+  } else {
+    const home=$("#heroSwipe") || $("#shelves") || $("#main");
+    if(home) home.scrollIntoView({behavior:"smooth", block:"start"});
+  }
 });
 document.querySelectorAll("[data-cat-jump]").forEach(el=>{
   el.addEventListener("click", e=>{
-    e.preventDefault(); currentCat=el.dataset.catJump; currentBrand=""; wishView=false;
+    e.preventDefault();
+    currentCat=el.dataset.catJump;
+    currentBrand="";
+    currentCatalog="";
+    currentConcern="";
+    query="";
+    wishView=false;
     window.__naqaShelfFilter="";
     catalogBrowse = (currentCat !== "all");
+    const sEl=$("#search"); if(sEl) sEl.value="";
+    const clr=$("#searchClear"); if(clr) clr.hidden=true;
     document.querySelectorAll("#cats [data-cat]").forEach(x=>x.classList.toggle("on", x.dataset.cat===currentCat));
     try{ history.pushState({naqa:"cat"}, "", currentCat==="all"?"#shop":"#c/"+encodeURIComponent(currentCat)); }catch(err){}
     render();
-    if(currentCat!=="all"){ const p=$("#products"); if(p) p.scrollIntoView({behavior:"smooth"}); }
+    if(currentCat!=="all"){ const p=$("#products"); if(p) p.scrollIntoView({behavior:"smooth", block:"start"}); }
   });
 });
 $("#checkoutBtn").onclick=()=>{

@@ -320,19 +320,24 @@ html[data-theme="night"] #footBlurb{color:var(--muted)}
 .quiz-thumb img{width:100%;height:100%;object-fit:contain}
 .quiz-em{display:grid;place-items:center;height:90px;font-size:1.6rem}
 
-/* hide search + cats without continuous reflow thrash (images were blinking) */
+/* hide search + cats while scrolling — collapse height so no empty square */
 body.chrome-hide .search-row,
 body.chrome-hide .nav-cats{
+  max-height:0 !important;
   opacity:0;
+  padding-top:0 !important;
+  padding-bottom:0 !important;
+  margin:0 !important;
   pointer-events:none;
   visibility:hidden;
-  /* height stays — no max-height collapse → no product flash */
+  overflow:hidden;
+  border:0;
 }
 .search-row,.nav-cats{
-  max-height:120px;
+  max-height:140px;
   opacity:1;
   overflow:hidden;
-  transition: opacity .12s ease;
+  transition: max-height .16s ease, opacity .12s ease, padding .12s ease;
 }
 body.chrome-hide header{box-shadow:0 4px 14px rgba(0,0,0,.12)}
 /* stabilize card images while chrome toggles */
@@ -349,7 +354,7 @@ body.chrome-hide header{box-shadow:0 4px 14px rgba(0,0,0,.12)}
 .ship-bar{min-height:36px;contain:layout}
 .hero{min-height:148px;contain:layout}
 #products{min-height:0}
-#grid{min-height:280px;contain:layout}
+#grid{min-height:0;contain:layout}
 #shelves{min-height:0}
 .card{contain:layout style;/* no content-visibility:visible — flash on scroll */}
 .card-visual{aspect-ratio:1 / 1;background:#fff;min-height:120px}
@@ -701,7 +706,7 @@ body.chrome-hide .card-visual img{
   content-visibility:visible !important;
 }
 .grid{contain:none;} /* was layout style — caused repaint cascade */
-#grid{min-height:280px;}
+#grid{min-height:0;}
 
 
 /* ===== Home category catalog (main page) ===== */
@@ -1734,3 +1739,7 @@ body.home-photo .hero-strong{ display:none; }
   .hero-swipe-track{ scroll-behavior:auto; }
 }
 .hero-swipe-dots, .hero-dot{ display:none !important; }
+
+/* no empty grid box under home / empty results */
+#grid:empty, #grid[hidden]{ min-height:0 !important; height:0; margin:0; padding:0; }
+#empty:not([hidden]){ min-height:0; padding:28px 16px; }

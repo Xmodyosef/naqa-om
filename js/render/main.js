@@ -180,6 +180,7 @@ function productMatchesQuery(p, rawQ){
   if(!rawQ) return true;
   var q = String(rawQ).trim();
   if(!q) return true;
+  var nq = naqaNorm(q);
   var sku = String(p.sku||"");
   var digits = q.replace(/\D/g,"");
   // barcode / SKU: exact, prefix, or includes (4+ digits)
@@ -190,12 +191,19 @@ function productMatchesQuery(p, rawQ){
   var terms = naqaExpandQuery(q);
   var brandN = naqaNorm(p.brand);
   // brand-only: whole query matches brand
-  if(brandN && (brandN === naqaNorm(q) || brandN.indexOf(naqaNorm(q)) >= 0 || naqaNorm(q).indexOf(brandN) >= 0)) return true;
+  if(brandN && (brandN === nq || brandN.indexOf(nq) >= 0 || nq.indexOf(brandN) >= 0)) return true;
   var blob = naqaNorm([
     p.nameAr, p.nameEn, p.brand, p.sku, p.cat,
     p.descAr, p.descEn, p.useAr, p.useEn, p.skinAr, p.skinEn, p.em
   ].join(" "));
-  // all significant terms? use ANY term match for UX (OR), but prefer multi-word soft
+  // multi-word: every significant word must hit (AND). single token: OR over expanded synonyms.
+  var words = nq.split(" ").filter(function(w){ return w.length >= 2; });
+  if(words.length >= 2){
+    return words.every(function(w){
+      if(blob.indexOf(w) >= 0) return true;
+      return terms.some(function(t){ return t.length >= 2 && (t === w || t.indexOf(w) >= 0) && blob.indexOf(t) >= 0; });
+    });
+  }
   return terms.some(function(t){ return t.length >= 2 && blob.indexOf(t) >= 0; });
 }
 

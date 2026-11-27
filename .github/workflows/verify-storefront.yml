@@ -35,7 +35,11 @@ jobs:
       - name: Check whitespace errors
         run: git diff --check
       - name: Commit generated storefront bundles to this PR branch
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: "build(store): refresh generated storefront bundles"
-          file_pattern: "js/store.min.js css/store.min.css"
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add js/store.min.js css/store.min.css
+          if ! git diff --cached --quiet; then
+            git commit -m "build(store): refresh generated storefront bundles"
+            git push origin "HEAD:${GITHUB_HEAD_REF}"
+          fi

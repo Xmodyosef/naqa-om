@@ -284,13 +284,15 @@ $("#lightbox").addEventListener("click", e=>{ if(e.target.id==="lightbox"||e.tar
   });
 })();
 
-/* Edge swipe = one in-app step only.
+/* Edge swipe = one history step only.
    Arabic: right→left. English: left→right.
-   Never history.back() here — Safari also backs on edge and that was double-pop to home.
-   Product close uses replaceState + absorb window for the browser's extra back. */
+   On a product: history.back() once so 4 products go D→C→B→A→shop.
+   Old code closed the sheet and replaceState(#shop) — that skipped the stack.
+   Safari may fire a second back; absorb undoes only that extra step. */
 (function(){
   var x0=null, y0=null, armed=false, busy=false;
   window.__naqaAbsorbBackUntil = window.__naqaAbsorbBackUntil || 0;
+  window.__naqaOurBackPending = window.__naqaOurBackPending || 0;
   function rtl(){ return document.documentElement.dir!=="ltr"; }
   function onBackEdge(x){
     var w=window.innerWidth||360;
@@ -309,43 +311,28 @@ $("#lightbox").addEventListener("click", e=>{ if(e.target.id==="lightbox"||e.tar
     if(sh && sh.classList.contains("show")) return "sheet";
     return "";
   }
-  function shopHash(){
-    var h = window.__naqaShopHash;
-    if(h){
-      var raw=String(h).replace(/^#/,"");
-      if(typeof isProductHash==="function" ? isProductHash(raw) : false) return "#shop";
-      if(typeof isProductPath==="function" && isProductPath()) return "#shop";
-      return h.indexOf("#")===0 ? h : "#"+h;
-    }
-    return "#shop";
-  }
-  function syncShopUrl(){
-    try{
-      var base = (typeof siteBasePath==="function" ? siteBasePath() : "/");
-      var target = shopHash();
-      history.replaceState({naqa:"shop"}, "", base + (target.indexOf("#")===0 ? target : "#"+target));
-    }catch(err){}
-  }
   function stepBack(){
     if(busy) return;
     busy=true;
-    setTimeout(function(){ busy=false; }, 500);
+    setTimeout(function(){ busy=false; }, 450);
     var layer=layerOpen();
     if(layer==="light"){ closeLightbox(); return; }
     if(layer==="check"){ closeCheckout(); return; }
     if(layer==="quiz" && typeof closeQuiz==="function"){ closeQuiz(); return; }
     if(layer==="cart"){ closeCart(); return; }
     if(layer==="sheet"){
-      /* Absorb Safari/Chrome edge-back that would pop a second history entry. */
-      window.__naqaAbsorbBackUntil = Date.now() + 800;
-      closeSheet(true);
-      if((typeof isProductLocation==="function" && isProductLocation()) || (typeof isProductHash==="function" && isProductHash(routeHash()))){
-        syncShopUrl();
+      /* One step in the product stack. Do not jump to shop. */
+      window.__naqaOurBackPending = (window.__naqaOurBackPending||0) + 1;
+      window.__naqaAbsorbBackUntil = Date.now() + 700;
+      try{ history.back(); }catch(err){
+        window.__naqaOurBackPending = 0;
+        if(typeof closeSheet==="function") closeSheet(true);
+        if(typeof naqaReleasePageScroll==="function") naqaReleasePageScroll();
+        if(typeof naqaRestoreShopScroll==="function") naqaRestoreShopScroll();
       }
-      if(typeof naqaRestoreShopScroll==="function") naqaRestoreShopScroll();
       return;
     }
-    /* Catalog: do nothing — history.back here jumped to the first page. */
+    /* Catalog: leave alone. */
   }
   document.addEventListener("touchstart", function(e){
     if(!e.touches || e.touches.length!==1){ armed=false; return; }
@@ -395,8 +382,7 @@ $("#lightbox").addEventListener("click", e=>{ if(e.target.id==="lightbox"||e.tar
 })();
 
 
-/* popstate + hashchange both fire on back — debounce once.
-   After edge-swipe product close, absorb one extra browser back so we stay on shop. */
+/* popstate: apply one history step. Absorb only a SECOND back (Safari double). */
 (function(){
   var routeTimer=0;
   function runRoute(){
@@ -407,17 +393,17 @@ $("#lightbox").addEventListener("click", e=>{ if(e.target.id==="lightbox"||e.tar
     }, 0);
   }
   window.addEventListener("popstate", function(){
-    if(Date.now() < (window.__naqaAbsorbBackUntil||0)){
-      window.__naqaAbsorbBackUntil = Date.now() + 400;
-      try{
-        var h = window.__naqaShopHash || "#shop";
-        if(String(h).indexOf("#")!==0) h="#"+h;
-        if((function(x){ x=String(x||"").replace(/^#/,""); return (typeof isProductHash==="function")?isProductHash(x):false; })(h)) h="#shop";
-        var base = (typeof siteBasePath==="function" ? siteBasePath() : "/");
-        history.pushState({naqa:"shop"}, "", base + h);
-      }catch(err){}
-      if($("#sheet") && $("#sheet").classList.contains("show") && typeof closeSheet==="function") closeSheet(true);
-      if(typeof naqaRestoreShopScroll==="function") naqaRestoreShopScroll();
+    var now=Date.now();
+    if(now < (window.__naqaAbsorbBackUntil||0) && (window.__naqaOurBackPending||0)>0){
+      /* First pop after our history.back() — apply it (previous product or shop). */
+      window.__naqaOurBackPending = Math.max(0, (window.__naqaOurBackPending||0) - 1);
+      runRoute();
+      return;
+    }
+    if(now < (window.__naqaAbsorbBackUntil||0)){
+      /* Extra browser back in the same gesture — undo one step only. */
+      window.__naqaAbsorbBackUntil = 0;
+      try{ history.go(1); }catch(err){}
       return;
     }
     runRoute();

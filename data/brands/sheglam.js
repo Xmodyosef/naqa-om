@@ -344,12 +344,14 @@ window.NAQA_PRODUCTS.push(
   "price": 2.6,
   "em": "✨",
   "imgs": [
-    "media/products/p145_0.webp"
+    "media/products/p145_0.webp",
+    "media/products/p145_1.webp",
+    "media/products/p145_2.webp"
   ],
   "nameAr": "جلوس جلاس لوك أير من شيجلام - هاي كي",
-  "nameEn": "SHEGLAM Lip — ZA224",
+  "nameEn": "SHEGLAM Glass Lock Air Gloss — High Key",
   "descAr": "رقيق في الإحساس، صادق في الدور — جلوس جلاس لوك أير من شيجلام. علامة SHEGLAM. مريح للحديث والقهوة. يناسب كل درجات الشفاه. انتظمي أسبوعين قبل الحكم النهائي.",
-  "descEn": "Soft to the touch, honest in role — SHEGLAM Lip. SHEGLAM. Tint or shine by formula. Size ≈ 224 g. Best with dry lips. Give it two steady weeks before you decide.",
+  "descEn": "Soft to the touch, honest in role — SHEGLAM Lip. SHEGLAM. Tint or shine by formula. Best with dry lips. Give it two steady weeks before you decide.",
   "useAr": "١) شفاه نظيفة.\n٢) من الوسط للخارج.\n٣) لمسة خلال اليوم.\n٤) ليلاً أغنى إن كان مرطباً.",
   "useEn": "1) Clean lips.\n2) Center to outer edge.\n3) Touch up through the day.\n4) Richer layer at night if balm/mask.",
   "skinAr": "كل درجات الشفاه",
@@ -484,7 +486,8 @@ window.NAQA_PRODUCTS.push(
   "price": 3.2,
   "em": "✨",
   "imgs": [
-    "media/products/p159_0.webp"
+    "media/products/p159_0.webp",
+    "media/products/p159_1.webp"
   ],
   "nameAr": "بلاشر ثلاثي سويت تشيكس من شيجلام - سانسيت كروز",
   "nameEn": "Sheglam Sweet Cheeks Blush Trio-SunSet Cruise",

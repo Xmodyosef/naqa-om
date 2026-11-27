@@ -30,7 +30,8 @@ window.NAQA_PRODUCTS.push(
   "price": 16,
   "em": "✨",
   "imgs": [
-    "media/products/p173_0.webp"
+    "media/products/p173_0.webp",
+    "media/products/p173_1.webp"
   ],
   "nameAr": "سيروم مكثف لإنبات الشعر وتقوية فروة الرأس من فايف لاب - 15مل",
   "nameEn": "ViveLab Scalp Spioxyl React Shot 600 - 15ml",

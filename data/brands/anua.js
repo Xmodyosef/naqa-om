@@ -11,7 +11,9 @@ window.NAQA_PRODUCTS.push(
   "hot": true,
   "em": "✨",
   "imgs": [
-    "media/products/p3_0.webp"
+    "media/products/p3_0.webp",
+    "media/products/p3_1.webp",
+    "media/products/p3_2.webp"
   ],
   "nameAr": "سيروم انوا نياسيناميد 10% لتصحيح البقع الداكنة - 30مل",
   "nameEn": "Anua Niacinamide 10% + TXA 4% Dark Spot Correcting Serum - 30ml",
@@ -31,7 +33,10 @@ window.NAQA_PRODUCTS.push(
   "price": 5.3,
   "em": "✨",
   "imgs": [
-    "media/products/p37_0.webp"
+    "media/products/p37_0.webp",
+    "media/products/p37_1.webp",
+    "media/products/p37_2.webp",
+    "media/products/p37_3.webp"
   ],
   "nameAr": "غسول انوا الرغوي للتنظيف العميق للمسام بخلاصة الهارتليف - 150مل",
   "nameEn": "Anua Heartleaf Quercetinol Pore Deep Cleansing Foam - 150ml",
@@ -51,7 +56,11 @@ window.NAQA_PRODUCTS.push(
   "price": 7.3,
   "em": "✨",
   "imgs": [
-    "media/products/p44_0.webp"
+    "media/products/p44_0.webp",
+    "media/products/p44_1.webp",
+    "media/products/p44_2.webp",
+    "media/products/p44_3.webp",
+    "media/products/p44_4.webp"
   ],
   "nameAr": "زيت انوا هارت ليف لتنظيف البشرة والتحكم بالمسام - 200مل",
   "nameEn": "Anua Heartleaf Pore Control Cleansing Oil - 200ml",

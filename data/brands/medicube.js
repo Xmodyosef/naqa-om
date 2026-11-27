@@ -9,7 +9,9 @@ window.NAQA_PRODUCTS.push(
   "price": 7.6,
   "em": "✨",
   "imgs": [
-    "media/products/p8_0.webp"
+    "media/products/p8_0.webp",
+    "media/products/p8_1.webp",
+    "media/products/p8_2.webp"
   ],
   "nameAr": "كريم ميديكيوب بالكبسولات الوردي بالكولاجين بي دي آر إن لشد ونضارة البشرة – 50مل",
   "nameEn": "Medicube PDRN Pink Collagen Capsule Cream - 55g",
@@ -29,7 +31,9 @@ window.NAQA_PRODUCTS.push(
   "price": 7.9,
   "em": "✨",
   "imgs": [
-    "media/products/p14_0.webp"
+    "media/products/p14_0.webp",
+    "media/products/p14_1.webp",
+    "media/products/p14_2.webp"
   ],
   "nameAr": "قطع قطنية ميديكيوب بفيتامين سي لتفتيح البشرة - 70قطعة",
   "nameEn": "Medicube Deep Vita C Pad - 150g",
@@ -49,7 +53,11 @@ window.NAQA_PRODUCTS.push(
   "price": 7.3,
   "em": "✨",
   "imgs": [
-    "media/products/p23_0.webp"
+    "media/products/p23_0.webp",
+    "media/products/p23_1.webp",
+    "media/products/p23_2.webp",
+    "media/products/p23_3.webp",
+    "media/products/p23_4.webp"
   ],
   "nameAr": "سيروم ميديكيوب زيرو بور لتقليل المسام سريع المفعول - 30مل",
   "nameEn": "Medicube Zero Pore One-day Serum - 30ml",
@@ -109,7 +117,10 @@ window.NAQA_PRODUCTS.push(
   "price": 5.7,
   "em": "✨",
   "imgs": [
-    "media/products/p35_0.webp"
+    "media/products/p35_0.webp",
+    "media/products/p35_1.webp",
+    "media/products/p35_2.webp",
+    "media/products/p35_3.webp"
   ],
   "nameAr": "قناع ميديكيوب زيرو بور بالطين لتنقية المسام وإزالة الرؤوس السوداء + فرشاة - 100ج",
   "nameEn": "Medicube Zero Pore Blackhead Mud Mask + Brush",
@@ -129,7 +140,8 @@ window.NAQA_PRODUCTS.push(
   "price": 7.3,
   "em": "✨",
   "imgs": [
-    "media/products/p39_0.webp"
+    "media/products/p39_0.webp",
+    "media/products/p39_1.webp"
   ],
   "nameAr": "قناع ميديكيوب الليلي بالكولاجين لشد وترطيب البشرة - 75مل",
   "nameEn": "Medicube Collagen Night Wrapping Mask - 75ml",
@@ -149,7 +161,10 @@ window.NAQA_PRODUCTS.push(
   "price": 7.3,
   "em": "✨",
   "imgs": [
-    "media/products/p46_0.webp"
+    "media/products/p46_0.webp",
+    "media/products/p46_1.webp",
+    "media/products/p46_2.webp",
+    "media/products/p46_3.webp"
   ],
   "nameAr": "قناع ميديكوب الليلي بالكوجيك والكركم لتفتيح البشرة - 75مل",
   "nameEn": "Medicube Kojic Acid Turmeric Night Wrapping Mask - 75ml",

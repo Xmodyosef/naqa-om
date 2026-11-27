@@ -9,7 +9,9 @@ window.NAQA_PRODUCTS.push(
   "price": 6.3,
   "em": "✨",
   "imgs": [
-    "media/products/p49_0.webp"
+    "media/products/p49_0.webp",
+    "media/products/p49_1.webp",
+    "media/products/p49_2.webp"
   ],
   "nameAr": "غسول سيتافيل للبشرة العادية الى الجافة والحساسة - 237مل",
   "nameEn": "Cetaphil Gentle Skin Cleanser - 237ml",

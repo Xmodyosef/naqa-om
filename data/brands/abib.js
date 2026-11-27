@@ -9,7 +9,9 @@ window.NAQA_PRODUCTS.push(
   "price": 3.9,
   "em": "✨",
   "imgs": [
-    "media/products/p15_0.webp"
+    "media/products/p15_0.webp",
+    "media/products/p15_1.webp",
+    "media/products/p15_2.webp"
   ],
   "nameAr": "لصقات أبيب هارتليف لتهدئة البقع الموضعية - 78 قطعة",
   "nameEn": "Abib Heartleaf Calming Spot Patch - 78 patches",

@@ -9,7 +9,10 @@ window.NAQA_PRODUCTS.push(
   "price": 6.7,
   "em": "✨",
   "imgs": [
-    "media/products/p13_0.webp"
+    "media/products/p13_0.webp",
+    "media/products/p13_1.webp",
+    "media/products/p13_2.webp",
+    "media/products/p13_3.webp"
   ],
   "nameAr": "سيروم دكتور ألثيا 345 لتهدئة البشرة - 30مل",
   "nameEn": "Dr.Althea 345 Relief Serum - 30ml",
@@ -29,7 +32,10 @@ window.NAQA_PRODUCTS.push(
   "price": 13.2,
   "em": "✨",
   "imgs": [
-    "media/products/p18_0.webp"
+    "media/products/p18_0.webp",
+    "media/products/p18_1.webp",
+    "media/products/p18_2.webp",
+    "media/products/p18_3.webp"
   ],
   "nameAr": "مجموعة دكتور ألثيا للعناية بعد الحبوب والترطيب المكثف - 2قطع",
   "nameEn": "Dr.Althea 147 Barrier Cream - 50ml",
@@ -49,7 +55,11 @@ window.NAQA_PRODUCTS.push(
   "price": 6.7,
   "em": "✨",
   "imgs": [
-    "media/products/p21_0.webp"
+    "media/products/p21_0.webp",
+    "media/products/p21_1.webp",
+    "media/products/p21_2.webp",
+    "media/products/p21_3.webp",
+    "media/products/p21_4.webp"
   ],
   "nameAr": "سيروم دكتور ألثيا أكوا مارين العميق لترطيب البشرة - 30مل",
   "nameEn": "Dr.Althea Aqua Marine Deep Serum - 30ml",
@@ -69,7 +79,10 @@ window.NAQA_PRODUCTS.push(
   "price": 6.7,
   "em": "✨",
   "imgs": [
-    "media/products/p47_0.webp"
+    "media/products/p47_0.webp",
+    "media/products/p47_1.webp",
+    "media/products/p47_2.webp",
+    "media/products/p47_3.webp"
   ],
   "nameAr": "كريم دكتور ألثيا ميلاكلير لتفتيح البشرة - 20ج",
   "nameEn": "Dr.Althea Melaclear Cream - 20g",

@@ -11,7 +11,10 @@ window.NAQA_PRODUCTS.push(
   "hot": true,
   "em": "✨",
   "imgs": [
-    "media/products/p2_0.webp"
+    "media/products/p2_0.webp",
+    "media/products/p2_1.webp",
+    "media/products/p2_2.webp",
+    "media/products/p2_3.webp"
   ],
   "nameAr": "سيروم ذا فيتا أ ريتينال شوت لشد البشرة من سيليماكس - 15مل",
   "nameEn": "Celimax The Vita A Retinal Shot Tightening Booster - 15ml",
@@ -31,7 +34,8 @@ window.NAQA_PRODUCTS.push(
   "price": 5.7,
   "em": "✨",
   "imgs": [
-    "media/products/p9_0.webp"
+    "media/products/p9_0.webp",
+    "media/products/p9_1.webp"
   ],
   "nameAr": "سيروم سيليماكس لتفتيح البقع وتنقية المسام - 30مل",
   "nameEn": "Celimax Pore+Dark Spot Brightening Serum - 30ml",
@@ -51,7 +55,9 @@ window.NAQA_PRODUCTS.push(
   "price": 6.3,
   "em": "✨",
   "imgs": [
-    "media/products/p10_0.webp"
+    "media/products/p10_0.webp",
+    "media/products/p10_1.webp",
+    "media/products/p10_2.webp"
   ],
   "nameAr": "سيروم ذا فيتا أ ريتينول شوت لشد البشرة من سيليماكس - 30مل",
   "nameEn": "Celimax The Vita-A Retinol Shot Tightening Serum - 30ml",
@@ -71,7 +77,8 @@ window.NAQA_PRODUCTS.push(
   "price": 6.5,
   "em": "✨",
   "imgs": [
-    "media/products/p11_0.webp"
+    "media/products/p11_0.webp",
+    "media/products/p11_1.webp"
   ],
   "nameAr": "وسادات سيليماكس لتفتيح البقع وتنقية المسام - 40 قطعة",
   "nameEn": "Celimax Pore+Dark Spot Brightening Pad - 40 Pads",
@@ -91,7 +98,8 @@ window.NAQA_PRODUCTS.push(
   "price": 6.3,
   "em": "✨",
   "imgs": [
-    "media/products/p36_0.webp"
+    "media/products/p36_0.webp",
+    "media/products/p36_1.webp"
   ],
   "nameAr": "كريم سيليماكس لتفتيح البقع وتنقية المسام - 35مل",
   "nameEn": "Celimax Pore + Dark Spot Brightening Cream - 35ml",

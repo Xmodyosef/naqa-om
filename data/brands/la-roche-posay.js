@@ -10,7 +10,9 @@ window.NAQA_PRODUCTS.push(
   "was": 9.858,
   "em": "✨",
   "imgs": [
-    "media/products/p5_0.webp"
+    "media/products/p5_0.webp",
+    "media/products/p5_1.webp",
+    "media/products/p5_2.webp"
   ],
   "nameAr": "بلسم البشرة الجافة سيكابلاست بوم بي 5 لاروش بوزيه - 40مل",
   "nameEn": "Cicaplast Balm B5 For Dry Skin Irritations - 40ml",

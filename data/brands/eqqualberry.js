@@ -9,7 +9,8 @@ window.NAQA_PRODUCTS.push(
   "price": 23.2,
   "em": "✨",
   "imgs": [
-    "media/products/p22_0.webp"
+    "media/products/p22_0.webp",
+    "media/products/p22_1.webp"
   ],
   "nameAr": "مجموعة جلو فلتر بفيتامين سي لإشراقة وتفتيح البشرة من إيكوال بيري - 3قطع",
   "nameEn": "Eqqualberry Vitamin Illuminating Glow Filter Set - 3pcs",
@@ -29,7 +30,9 @@ window.NAQA_PRODUCTS.push(
   "price": 7.6,
   "em": "✨",
   "imgs": [
-    "media/products/p25_0.webp"
+    "media/products/p25_0.webp",
+    "media/products/p25_1.webp",
+    "media/products/p25_2.webp"
   ],
   "nameAr": "سيروم الببتيدات لشد ونضارة البشرة من إيكوال بيري - 50مل",
   "nameEn": "Eqqualberry NAD+ Peptide Boosting Serum - 50ml",
@@ -49,7 +52,10 @@ window.NAQA_PRODUCTS.push(
   "price": 7.3,
   "em": "✨",
   "imgs": [
-    "media/products/p28_0.webp"
+    "media/products/p28_0.webp",
+    "media/products/p28_1.webp",
+    "media/products/p28_2.webp",
+    "media/products/p28_3.webp"
   ],
   "nameAr": "سيروم الباكوشيول لشد وتكثيف البشرة من إيكوال بيري – 30مل",
   "nameEn": "Eqqualberry Bakuchiol Plumping Serum - 30ml",

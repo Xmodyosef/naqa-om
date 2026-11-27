@@ -11,7 +11,9 @@ window.NAQA_PRODUCTS.push(
   "hot": true,
   "em": "✨",
   "imgs": [
-    "media/products/p1_0.webp"
+    "media/products/p1_0.webp",
+    "media/products/p1_1.webp",
+    "media/products/p1_2.webp"
   ],
   "nameAr": "سيروم أرينسيا بفيتامين سي لتعزيز إشراقة البشرة - 30مل",
   "nameEn": "Arencia Vitamin C Booster Shot - 30ml",
@@ -31,7 +33,10 @@ window.NAQA_PRODUCTS.push(
   "price": 6.7,
   "em": "✨",
   "imgs": [
-    "media/products/p12_0.webp"
+    "media/products/p12_0.webp",
+    "media/products/p12_1.webp",
+    "media/products/p12_2.webp",
+    "media/products/p12_3.webp"
   ],
   "nameAr": "سيروم أرينسيا بالريتينال لتعزيز تجديد البشرة - 30مل",
   "nameEn": "Arencia Retinal Booster Shot - 30ml",
@@ -51,7 +56,11 @@ window.NAQA_PRODUCTS.push(
   "price": 6.7,
   "em": "✨",
   "imgs": [
-    "media/products/p16_0.webp"
+    "media/products/p16_0.webp",
+    "media/products/p16_1.webp",
+    "media/products/p16_2.webp",
+    "media/products/p16_3.webp",
+    "media/products/p16_4.webp"
   ],
   "nameAr": "سيروم أرينسيا إريزر شوت بحمض الجليكوليك - 30مل",
   "nameEn": "Arencia Eraser Shot Glycolic Acid Booster - 30ml",
@@ -71,7 +80,9 @@ window.NAQA_PRODUCTS.push(
   "price": 6.7,
   "em": "✨",
   "imgs": [
-    "media/products/p29_0.webp"
+    "media/products/p29_0.webp",
+    "media/products/p29_1.webp",
+    "media/products/p29_2.webp"
   ],
   "nameAr": "سيروم أرينسيا تي إكس إيه بوستر شوت - 30مل",
   "nameEn": "Arencia TXA Booster Shot - 30ml",
@@ -91,7 +102,11 @@ window.NAQA_PRODUCTS.push(
   "price": 6.7,
   "em": "✨",
   "imgs": [
-    "media/products/p32_0.webp"
+    "media/products/p32_0.webp",
+    "media/products/p32_1.webp",
+    "media/products/p32_2.webp",
+    "media/products/p32_3.webp",
+    "media/products/p32_4.webp"
   ],
   "nameAr": "سيروم أرينسيا إن إيه دي بلس بوستر شوت - 30مل",
   "nameEn": "Arencia NAD+ Booster Shot - 30ml",
@@ -111,7 +126,9 @@ window.NAQA_PRODUCTS.push(
   "price": 7.3,
   "em": "✨",
   "imgs": [
-    "media/products/p43_0.webp"
+    "media/products/p43_0.webp",
+    "media/products/p43_1.webp",
+    "media/products/p43_2.webp"
   ],
   "nameAr": "غسول موشي بالأرز الأخضر الطازج من أرينسيا - 120ج",
   "nameEn": "Arencia Fresh Green Rice Mochi Cleanser - 120g",

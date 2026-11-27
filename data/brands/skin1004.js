@@ -9,7 +9,8 @@ window.NAQA_PRODUCTS.push(
   "price": 6.3,
   "em": "✨",
   "imgs": [
-    "media/products/p17_0.webp"
+    "media/products/p17_0.webp",
+    "media/products/p17_1.webp"
   ],
   "nameAr": "كريم سنتيلا المهدئ للبشرة من سكين1004 - 75مل",
   "nameEn": "Skin1004 Centella Soothing Cream - 75ml",
@@ -29,7 +30,9 @@ window.NAQA_PRODUCTS.push(
   "price": 6.7,
   "em": "✨",
   "imgs": [
-    "media/products/p20_0.webp"
+    "media/products/p20_0.webp",
+    "media/products/p20_1.webp",
+    "media/products/p20_2.webp"
   ],
   "nameAr": "كريم تفتيح البشرة بالكبسولات من سكين1004 - 75مل",
   "nameEn": "Skin1004 Tone Brightening Capsule Cream - 75ml",

@@ -9,7 +9,9 @@ window.NAQA_PRODUCTS.push(
   "price": 8.7,
   "em": "✨",
   "imgs": [
-    "media/products/p41_0.webp"
+    "media/products/p41_0.webp",
+    "media/products/p41_1.webp",
+    "media/products/p41_2.webp"
   ],
   "nameAr": "كريم إيبي دبل أب لترميم حاجز البشرة بالإكتوين والبانثينول - 50مل",
   "nameEn": "Epii Double Up Cream Ectoin & Panthenol - 50ml",

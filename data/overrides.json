@@ -4,9 +4,6 @@
     "hidden": false
   },
   "4": {
-    "imgs": [
-      "media/products/p4_0.webp"
-    ],
     "descEn": "Why AXIS-Y? Because Axis does one clear job: melts in without a sticky film. No long promise list. Size ≈ 50 ml. For oily and combination. Keep it cool-ish and cap it tight.",
     "sku": "8809634610034",
     "useAr": "١) وجه نظيف ورطب قليلاً.\n٢) نقطة على الخد والجبهة والذقن، ثم توزيع.\n٣) دقيقة صبر ثم الكريم.\n٤) محيط العين فقط إن صُمّم لذلك.",
@@ -18,9 +15,6 @@
     "was": 7.572,
     "price": 5.3,
     "skinEn": "oily and combination",
-    "removedImgs": [
-      "media/products/p4_4.webp"
-    ],
     "descAr": "لماذا AXIS-Y هنا؟ لأن سيرم تصحيح البقع الداكنة من اكسيس واي يقدّم خطوة واحدة واضحة: يذوب على البشرة دون لزوجة. بدون ضجيج وعود طويلة. الحجم ≈ 50 مل. لـمع SPF يومي عند التفتيح. الجمال الأهدأ يأتي من روتين قصير ثابت.",
     "stock": 3,
     "cat": "عناية",
@@ -50,21 +44,12 @@
     "nameAr": "سيروم انوا نياسيناميد 10% لتصحيح البقع الداكنة - 30مل",
     "was": 9.572,
     "nameEn": "Anua Niacinamide 10% + TXA 4% Dark Spot Correcting Serum - 30ml",
-    "imgs": [
-      "media/products/p3_0.webp"
-    ],
     "cat": "عناية",
     "descEn": "Anua Niacinamide 10% + TXA 4% Dark Spot Correcting Serum by Anua. Watery with a silk finish, with niacinamide for a more even tone and refined-looking pores. Size ≈ 30 ml. Suits most types — start with drops. Quiet beauty loves a short, steady routine.",
     "stock": 3,
     "sku": "8809640734526",
     "price": 5,
     "brand": "Anua",
-    "removedImgs": [
-      "media/products/p3_1.webp",
-      "media/products/p3_2.webp",
-      "media/products/p3_3.webp",
-      "media/products/p3_4.webp"
-    ],
     "skinEn": "most types — start with drops",
     "descAr": "سيروم انوا نياسيناميد 10% لتصحيح البقع الداكنة من Anua. مائي بلمسة حريرية، مع حضور نياسيناميد لـتوحيد اللون ومظهر أنعم للمسام. الحجم ≈ 30 مل. يناسب الجافة والعطشى. أي لسع مستمر؟ خفّفي أو راجعي مختصاً.",
     "hidden": false
@@ -85,9 +70,6 @@
     "skinEn": "dry lips",
     "descAr": "LOLLIS × عناية يومية: أحمر شفاه سائل باللون الكامل من لوليس 010. يُركّز على راحة الاستخدام. الملمس: مريح للحديث والقهوة. الشفاه الجافة. خزّنيها في مكان معتدل وأغلقي الغطاء.",
     "skinAr": "الشفاه الجافة",
-    "imgs": [
-      "media/products/p142_0.webp"
-    ],
     "nameEn": "Lollis Full Color Lipgloss 010 Broken",
     "sku": "8681546111287",
     "nameAr": "أحمر شفاه سائل باللون الكامل من لوليس 010",
@@ -114,15 +96,7 @@
     "price": 3,
     "cat": "عناية",
     "stock": 3,
-    "imgs": [
-      "media/products/p2_0.webp"
-    ],
     "sku": "8809700320812",
-    "removedImgs": [
-      "media/products/p2_2.webp",
-      "media/products/p2_3.webp",
-      "media/products/p2_4.webp"
-    ],
     "descAr": "رقيق في الإحساس، صادق في الدور — سيروم ذا فيتا أ ريتينال شوت لشد البشرة من سيليماكس. علامة Celimax تعتمد لمسة ريتينويد. مائي بلمسة حريرية. الحجم ≈ 15 مل. يناسب الجافة والعطشى. خزّنيها في مكان معتدل وأغلقي الغطاء.",
     "skinEn": "sensitive after a patch test",
     "useEn": "1) Clean skin; toner first if you use one.\n2) 2–3 drops — press from center out.\n3) Cream on top. AM: SPF.\n4) Retinoids/acids: night, slowly.",
@@ -173,9 +147,6 @@
     "brand": "LOLLIS",
     "stock": 3,
     "descEn": "LOLLIS's touch in Lollis Full Color Lip Gloss 005 Biscuit: soft on contact. A direct formula that earns trust over time. Fits dry lips. Give it two steady weeks before you decide.",
-    "imgs": [
-      "media/products/p141_0.webp"
-    ],
     "cat": "شفاه",
     "nameEn": "Lollis Full Color Lip Gloss 005 Biscuit",
     "nameAr": "أحمر شفاه سائل باللون الكامل من لوليس 005",

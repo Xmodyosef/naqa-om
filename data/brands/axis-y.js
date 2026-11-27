@@ -10,7 +10,9 @@ window.NAQA_PRODUCTS.push(
   "was": 7.572,
   "em": "✨",
   "imgs": [
-    "media/products/p4_0.webp"
+    "media/products/p4_0.webp",
+    "media/products/p4_1.webp",
+    "media/products/p4_2.webp"
   ],
   "nameAr": "سيرم تصحيح البقع الداكنة من اكسيس واي - 50مل",
   "nameEn": "Axis-Y Dark Spot Correcting Glow Serum - 50ml",
@@ -30,7 +32,8 @@ window.NAQA_PRODUCTS.push(
   "price": 5.7,
   "em": "✨",
   "imgs": [
-    "media/products/p48_0.webp"
+    "media/products/p48_0.webp",
+    "media/products/p48_1.webp"
   ],
   "nameAr": "كريم تصحيح البقع الداكنة من اكسيس واي - 50مل",
   "nameEn": "Axis-Y Dark Spot Correcting Glow Cream - 50ml",

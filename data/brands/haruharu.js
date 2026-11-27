@@ -9,7 +9,9 @@ window.NAQA_PRODUCTS.push(
   "price": 6.9,
   "em": "✨",
   "imgs": [
-    "media/products/p31_0.webp"
+    "media/products/p31_0.webp",
+    "media/products/p31_1.webp",
+    "media/products/p31_2.webp"
   ],
   "nameAr": "تونر حمض الهيالورونيك بالأرز الأسود من هارو هارو - 300مل",
   "nameEn": "HaruHaru Black Rice Hyaluronic Toner - 300ml",
@@ -29,7 +31,10 @@ window.NAQA_PRODUCTS.push(
   "price": 5.6,
   "em": "✨",
   "imgs": [
-    "media/products/p50_0.webp"
+    "media/products/p50_0.webp",
+    "media/products/p50_1.webp",
+    "media/products/p50_2.webp",
+    "media/products/p50_3.webp"
   ],
   "nameAr": "جل التنظيف اللطيف 5.5 بالارز الأسود من هارو هارو - 100مل",
   "nameEn": "HaruHaru Black Rice Moisture 5.5 Soft Cleansing Gel - 100ml",

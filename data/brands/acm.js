@@ -9,7 +9,9 @@ window.NAQA_PRODUCTS.push(
   "price": 7.6,
   "em": "✨",
   "imgs": [
-    "media/products/p7_0.webp"
+    "media/products/p7_0.webp",
+    "media/products/p7_1.webp",
+    "media/products/p7_2.webp"
   ],
   "nameAr": "كريم إيه سي إم المكثف لتفتيح البقع الداكنة - 40مل",
   "nameEn": "ACM Advanced Intensive Anti-Dark Spot Cream - 40ml",

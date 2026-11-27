@@ -4,7 +4,7 @@ Before changing code, read **`docs/ENGINEERING-RULES.md`** and **`docs/DESIGN-LO
 Live site state (what is actually shipped): **`docs/LIVE.md`**. Deep external audit: **`docs/AUDIT-DEEP.md`**.
 
 Live URL: https://xmodyosef.github.io/naqa-om/  
-Cache key (store assets): see `index.html` (`?v=20261127c10` as of 2026-11-27). `cloud-overrides.js` is also c8. Other files may keep independent keys (e.g. products b7) until that bundle changes.
+Cache keys (store assets): read each asset URL in `index.html`; do not assume every asset shares one version. `cloud-overrides.js` is also c8. Other files may keep independent keys (e.g. products b7) until that bundle changes.
 
 ## Hard requirements
 1. **Arabic + English always** — never ship a fix for one language only (store `T()` / `ui` in `js/core.js`; admin `dict-ar.js` + `dict-en.js`).
@@ -26,7 +26,7 @@ Cache key (store assets): see `index.html` (`?v=20261127c10` as of 2026-11-27). 
 13. **Design lock** — brand button `#8d3048`. No admin sidebar. Desktop admin only in `css/admin/desktop.css` (≥1100px).
 
 ## Storefront locks (shipped 2026-11-27 — do not undo without explicit request)
-14. **Home** = swipeable hero banner (`hero-swipe`) + campaign product rails. No auto-crawl rails (`naqaStartCampRails` stub only).
+14. **Home** = swipeable hero banner (`hero-swipe`) + campaign product rails. `js/hero-swipe.js` loads after the store bundle, filters empty campaigns, supports keyboard navigation, and never auto-advances. No auto-crawl rails (`naqaStartCampRails` stub only).
 15. **Category chips** (`#cats`): `الكل · عناية · وجه · شفاه · عيون · حواجب · أدوات · شعر`. **No «عطور» button.** Click clears `currentCatalog` / `query` / `currentConcern` / search input, then filters.
 16. **Search**: live filter on input; multi-word AND; SKU/brand/name; clears catalog filters while searching; exact SKU/name on submit opens product sheet.
 17. **Chrome hide on scroll**: collapse height of `.search-row` + `.nav-cats` (no empty reserved block).

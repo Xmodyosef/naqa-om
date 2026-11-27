@@ -45,7 +45,8 @@ window.NAQA_PRODUCTS.push(
 {
   "em": "✨",
   "imgs": [
-    "media/products/p241_0.webp"
+    "media/products/p241_0.webp",
+    "media/products/p241_1.webp"
   ],
   "stock": 3,
   "brand": "Bourjois",
@@ -66,7 +67,8 @@ window.NAQA_PRODUCTS.push(
 {
   "em": "🫐",
   "imgs": [
-    "media/products/p243_0.webp"
+    "media/products/p242_0.webp",
+    "media/products/p242_1.webp"
   ],
   "stock": 3,
   "brand": "Bourjois",
@@ -132,7 +134,8 @@ window.NAQA_PRODUCTS.push(
   "price": 5.5,
   "em": "✨",
   "imgs": [
-    "media/products/p279_0.webp"
+    "media/products/p245_0.webp",
+    "media/products/p245_1.webp"
   ],
   "nameAr": "برجواز فاونديشن هيلثي ميكس 52W",
   "nameEn": "Bourjois Healthy Mix Foundation 52W Vanilla 30ml",

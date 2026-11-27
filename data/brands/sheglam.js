@@ -94,10 +94,7 @@ window.NAQA_PRODUCTS.push(
   "em": "✨",
   "imgs": [
     "media/products/p83_0.webp",
-    "media/products/p83_1.webp",
-    "media/products/p83_2.webp",
-    "media/products/p83_3.webp",
-    "media/products/p83_4.webp"
+    "media/products/p83_1.webp"
   ],
   "nameAr": "سبراي تثبيت لوكد إن من شيجلام",
   "nameEn": "SHEGLAM Locked In Setting Spray",

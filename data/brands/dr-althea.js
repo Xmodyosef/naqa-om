@@ -30,10 +30,7 @@ window.NAQA_PRODUCTS.push(
   "price": 13.2,
   "em": "✨",
   "imgs": [
-    "media/products/p18_0.webp",
-    "media/products/p18_1.webp",
-    "media/products/p18_2.webp",
-    "media/products/p18_3.webp"
+    "media/products/p18_0.webp"
   ],
   "nameAr": "مجموعة دكتور ألثيا للعناية بعد الحبوب والترطيب المكثف - 2قطع",
   "nameEn": "Dr.Althea 147 Barrier Cream - 50ml",

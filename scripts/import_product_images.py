@@ -97,15 +97,13 @@ def main():
     if len(entries) != 50:
         fail(f"Expected exactly 50 target products; found {len(entries)}.")
     pending = [e for e in entries if not e.get("sourcePage") or not e.get("sourceTitleIncludes")]
-    if pending:
-        print(f"Source curation pending: {len(pending)} of 50 products still need a verified source page. No files changed.")
-        for e in pending[:12]:
-            print(f"  - {e.get('id')}: {e.get('name')}")
-        if len(pending) > 12:
-            print(f"  ... and {len(pending) - 12} more")
+    ready = [e for e in entries if e.get("sourcePage") and e.get("sourceTitleIncludes")]
+    if not ready:
+        print("No verified source pages are ready yet. No files changed.")
         return
+    print(f"Verified source pages ready: {len(ready)} of 50; remaining to curate: {len(pending)}.")
     staged, seen_urls, seen_pixels = {}, set(), set()
-    for entry in entries:
+    for entry in ready:
         pid = int(entry["id"])
         p = by_id.get(pid)
         if not p or p.get("brand") != entry["brand"] or p.get("sku") != entry["sku"] or p.get("nameEn") != entry["name"]:
@@ -155,7 +153,8 @@ def main():
         dest.parent.mkdir(parents=True, exist_ok=True)
         dest.write_bytes(data)
     CATALOG.write_text("/* AUTO-GENERATED full catalog (admin) */\nwindow.NAQA_PRODUCTS=" + json.dumps(products, ensure_ascii=False, separators=(",", ":")) + ";\n", encoding="utf-8")
-    print(f"Imported {len(staged)} verified images for {len(entries)} products.")
+    print(f"Imported {len(staged)} verified images for {len(ready)} products.")
+    print(f"Remaining products awaiting source verification: {len(pending)}.")
     print(f"Total WebP bytes: {sum(map(len, staged.values()))}")
 
 if __name__ == "__main__":

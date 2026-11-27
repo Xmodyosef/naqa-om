@@ -20,7 +20,7 @@ function carouselHTML(p, start){
   if(n>1){
     slides+=slideHTML(imgs[0], 0, p, false); // clone of first at end
   }
-  const dots=imgs.map((_,i)=>'<button type="button" class="'+(i===start?'on':'')+'" data-dot="'+i+'"></button>').join("");
+  const dots=imgs.map((_,i)=>'<button type="button" class="'+(i===start?'on':'')+'" data-dot="'+i+'" aria-label="'+(i+1)+' / '+n+'"></button>').join("");
   const thumbs=imgs.map((src,i)=>
     '<button type="button" class="'+(i===start?'on':'')+'" data-dot="'+i+'">'
     +(src?'<img src="'+src+'" alt="" loading="lazy">':(p.em||'✨'))
@@ -28,11 +28,11 @@ function carouselHTML(p, start){
   ).join("");
   return ''
     +'<div class="carousel" id="car" data-count="'+n+'" data-loop="'+(n>1?'1':'0')+'">'
-    +'<div class="carousel-count"><span id="carIdx">'+(start+1)+'</span> / '+n+'</div>'
+    +'<div class="carousel-count"><bdi dir="ltr"><span id="carIdx">'+(start+1)+'</span> / '+n+'</bdi></div>'
     /* prev/next buttons removed — swipe + thumbs + dots only */
     +'<div class="carousel-track" id="carTrack">'+slides+'</div>'
     +'</div>'
-    +'<div class="carousel-dots" id="carDots">'+dots+'</div>'
+    +(n>1 ? '<div class="carousel-dots" id="carDots">'+dots+'</div>' : '')
     +'<div class="thumbs" id="carThumbs">'+thumbs+'</div>';
 }
 

@@ -169,14 +169,14 @@ async function openSheet(id, mode, reset){
       ${cartCtrl}
       ${qv? `<button class="btn-open" data-open="${p.id}" type="button">${T("open")}</button>`:""}
     </div>`;
-  /* ترتيب: رجوع → صورة → اسم+ماركة → سعر → إضافة → تفاصيل → يناسب → نفس الماركة */
+  /* ترتيب: صورة أولاً → اسم+ماركة+تقييم → سعر → زر ثابت → تفاصيل */
   $("#sheetCard").innerHTML=`
     <button class="text-back" id="closeSheet" type="button" aria-label="${T("back")}">‹ ${T("back")}</button>
-    ${typeof reviewHTML==="function"?reviewHTML(p):""}
     ${carouselHTML(p, galleryIndex)}
     <div class="sheet-head">
       <h3 id="sheetTitle">${esc(pname(p))}</h3>
       ${brandBtn}
+      ${typeof reviewHTML==="function"?reviewHTML(p):""}
     </div>
     ${priceHTML(p)}
     ${actions}

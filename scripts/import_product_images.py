@@ -20,7 +20,7 @@ def get_bytes(url):
     parsed = urllib.parse.urlparse(url)
     if parsed.scheme != "https" or not parsed.hostname:
         fail(f"Only direct HTTPS image URLs are accepted: {url!r}")
-    req = urllib.request.Request(url, headers={"User-Agent": UA, "Accept": "image/avif,image/webp,image/png,image/jpeg"})
+    req = urllib.request.Request(url, headers={"User-Agent": UA, "Accept": "image/webp,image/png,image/jpeg"})
     try:
         with urllib.request.urlopen(req, timeout=30) as res:
             ctype = res.headers.get_content_type()
@@ -29,7 +29,7 @@ def get_bytes(url):
         fail(f"Download failed for {url}: {exc}")
     if len(data) > MAX_BYTES:
         fail(f"Image exceeds {MAX_BYTES} bytes: {url}")
-    if ctype not in ("image/jpeg", "image/png", "image/webp", "image/avif"):
+    if ctype not in ("image/jpeg", "image/png", "image/webp"):
         fail(f"URL did not return an image (Content-Type={ctype}): {url}")
     return data
 
@@ -46,6 +46,14 @@ def main():
     entries = manifest.get("products", [])
     if len(entries) != 50:
         fail(f"Expected exactly 50 target products; found {len(entries)}.")
+    pending = [e for e in entries if len(e.get("imageUrls", [])) != 3 or any(not u for u in e.get("imageUrls", []))]
+    if pending:
+        print(f"Source curation pending: {len(pending)} of 50 products still need 3 verified direct image URLs each. No files changed.")
+        for e in pending[:10]:
+            print(f"  - {e.get('id')}: {e.get('name')}")
+        if len(pending) > 10:
+            print(f"  ... and {len(pending) - 10} more")
+        return
     seen_urls, seen_pixels, staged = set(), set(), {}
     for entry in entries:
         pid = int(entry["id"])

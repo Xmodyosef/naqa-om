@@ -52,7 +52,37 @@
 <title>نقاء · عناية ومكياج | Naqa Oman</title>
 <link rel="preload" href="css/store.min.css?v=20261127c14" as="style" />
 <link rel="stylesheet" href="css/store.min.css?v=20261127c14" />
-<link rel="preload" href="media/catalogs/hot.webp" as="image" type="image/webp" fetchpriority="high" />
+<style id="naqa-hero-v2">
+.hero-swipe{position:relative;width:100%;max-width:100%;margin:12px auto 20px;overflow:hidden;isolation:isolate;border:1px solid var(--line);border-radius:24px;background:#f8e9ed;box-shadow:0 14px 34px rgba(50,30,25,.12)}
+.hero-swipe-track{display:flex;width:100%;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scroll-snap-stop:always;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;scrollbar-width:none;direction:ltr;overscroll-behavior-x:contain}
+.hero-swipe-track::-webkit-scrollbar{display:none}
+.hero-slide{position:relative;display:block;flex:0 0 100%;width:100%;min-width:100%;height:clamp(220px,30vw,340px);margin:0;padding:0;overflow:hidden;border:0;border-radius:0;scroll-snap-align:start;background:linear-gradient(125deg,#f9e8ed 0%,#f4d6df 48%,#ead2d9 100%);cursor:pointer;text-align:initial}
+.hero-slide[data-tone="care"],.hero-slide[data-tone="price"]{background:linear-gradient(125deg,#e4f2ed 0%,#d4e9e2 50%,#c5e1d8 100%)}
+.hero-slide[data-tone="makeup"],.hero-slide[data-tone="deal"]{background:linear-gradient(125deg,#f8e4e9 0%,#f3d2dc 52%,#eac4d0 100%)}
+.hero-slide[data-tone="hot"]{background:linear-gradient(125deg,#f8e5d8 0%,#f1d2c1 52%,#e7c2b3 100%)}
+.hero-slide-art{position:absolute;inset-inline-end:4%;top:8%;bottom:8%;width:58%;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));align-items:center;gap:clamp(7px,1.5vw,18px);direction:ltr}
+.hero-slide-art img{display:block;width:100%;height:100%;min-width:0;max-height:100%;object-fit:contain;padding:clamp(5px,1vw,12px);border:1px solid rgba(255,255,255,.82);border-radius:18px;background:rgba(255,255,255,.94);box-shadow:0 10px 26px rgba(50,30,25,.10);user-select:none;-webkit-user-drag:none}
+.hero-slide-art img:nth-child(2){transform:translateY(-7px) scale(1.04)}
+.hero-slide-copy{position:absolute;inset-inline-start:5%;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;align-items:flex-start;gap:9px;max-width:34%;direction:rtl;text-align:right;color:#3c2029}
+.hero-slide-copy strong{font-size:clamp(1.25rem,2.7vw,2.25rem);font-weight:900;line-height:1.35}
+.hero-slide-copy small{font-size:clamp(.78rem,1.2vw,1rem);line-height:1.7;color:#65434c}
+.hero-slide-copy em{display:inline-flex;align-items:center;justify-content:center;margin-top:5px;padding:9px 17px;border-radius:999px;background:#8d3048;color:#fff;font-style:normal;font-size:.82rem;font-weight:800}
+.hero-slide:focus-visible{outline:3px solid #8d3048;outline-offset:-5px}
+.hero-slide[aria-current="true"]{cursor:pointer}
+@media(max-width:700px){
+ .hero-swipe{width:calc(100% + 32px);max-width:none;margin:0 -16px 14px;border-radius:0;border-inline:0;box-shadow:none}
+ .hero-slide{height:220px}
+ .hero-slide-art{inset-inline-end:2%;top:10%;bottom:10%;width:58%;gap:5px}
+ .hero-slide-art img{padding:4px;border-radius:11px;box-shadow:0 5px 13px rgba(50,30,25,.10)}
+ .hero-slide-art img:nth-child(2){transform:translateY(-4px) scale(1.02)}
+ .hero-slide-copy{inset-inline-start:3%;max-width:37%;gap:6px}
+ .hero-slide-copy strong{font-size:1rem;line-height:1.45}
+ .hero-slide-copy small{font-size:.68rem;line-height:1.45;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+ .hero-slide-copy em{font-size:.68rem;padding:7px 10px;margin-top:2px}
+}
+@media(prefers-reduced-motion:reduce){.hero-swipe-track{scroll-behavior:auto}}
+</style>
+
 
 
 <script type="application/ld+json" id="ldStore">
@@ -428,7 +458,7 @@ html.sku-boot #sheetCard{min-height:100vh;background:#fff}
 <script defer src="js/store-cloud-boot.js?v=20261127b7"></script>
 
 <script defer src="js/store.min.js?v=20261127c14"></script>
-<script defer src="js/hero-swipe.js?v=20261127c14"></script>
+<script defer src="js/hero-swipe.js?v=20261127c15"></script>
 
 <script>
 if ('serviceWorker' in navigator) {

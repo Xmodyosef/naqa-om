@@ -10,7 +10,8 @@ window.NAQA_PRODUCTS.push(
   "em": "✨",
   "imgs": [
     "media/products/p8_0.webp",
-    "media/products/p8_1.webp"
+    "media/products/p8_1.webp",
+    "media/products/p8_2.webp"
   ],
   "nameAr": "كريم ميديكيوب بالكبسولات الوردي بالكولاجين بي دي آر إن لشد ونضارة البشرة – 50مل",
   "nameEn": "Medicube PDRN Pink Collagen Capsule Cream - 55g",

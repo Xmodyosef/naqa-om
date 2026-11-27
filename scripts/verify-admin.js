@@ -99,9 +99,9 @@ const P = ctx.window.NAQA_PRODUCTS;
 assert(Array.isArray(P) && P.length >= 100, "admin catalog products count");
 assert(P.every((p) => p.stock != null), "admin products have stock");
 
-// 8) Cancel confirm not delete-as-default
-const orders = read("js/admin/orders.js");
-assert(orders.includes("cancelConfirm") || orders.includes("cancel"), "orders cancel path");
+// 8) Cancel confirmation and stock restoration live in the delegated button module.
+const orderButtons = read("js/admin/buttons.bundle.js");
+assert(orderButtons.includes("data-st-pick") && orderButtons.includes("cancelConfirm") && orderButtons.includes("restoreStockForOrder"), "orders cancel path confirms and restores stock");
 
 // 9) settings no GitHub token field prompt as primary
 const settings = read("js/admin/settings.js");
@@ -123,7 +123,9 @@ assert(escSrc.includes('&" + "gt;') || escSrc.includes("gt;"), "A.esc escapes >"
 assert(read("js/admin/load-modules.js").includes("Promise.all"), "modules phase parallel Promise.all");
 assert(read("js/admin/i18n.js").includes("p_add"), "applyChrome sets p_add");
 assert(read("admin.html").includes('data-i18n="p_add"'), "add product i18n attr");
-assert(read("admin.html").includes('data-i18n="o_waOpen"'), "wa orders i18n attr");
+assert(read("js/admin/i18n.js").includes('A.t("o_waOpen")')
+  && read("js/admin/i18n/dict-ar.js").includes('"o_waOpen"')
+  && read("js/admin/i18n/dict-en.js").includes('"o_waOpen"'), "wa orders i18n wiring");
 
 console.log(fail ? "\nFAILED " + fail : "\nALL ADMIN CHECKS PASSED");
 process.exit(fail ? 1 : 0);

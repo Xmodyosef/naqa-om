@@ -181,6 +181,7 @@ async function openSheet(id, mode, reset){
     `}
 `;
   $("#sheet").classList.add("show");
+  try{ document.documentElement.classList.remove("sku-boot"); }catch(err){}
   const sh=$("#sheet"); if(sh){ sh.setAttribute("aria-modal","true"); sh.setAttribute("aria-labelledby","sheetTitle"); }
   lockBodyScroll();
   $("#sheetCard").scrollTop=0;

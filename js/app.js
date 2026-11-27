@@ -242,9 +242,9 @@ $("#checkoutSend").onclick=()=>{
 $("#lbClose").onclick=closeLightbox;
 $("#lightbox").addEventListener("click", e=>{ if(e.target.id==="lightbox"||e.target.id==="lbClose") closeLightbox(); });
 
-/* Pull down at the top of a product refreshes THIS page.
-   It used to close the sheet with history.back(), which opened the previous
-   product and then the home page. */
+/* Pull down at the top of a product reloads THIS product.
+   Do not slide the card — that revealed the shop behind it.
+   A short pull is enough. */
 (function(){
   let x0=null,y0=null,mode=null;
   const sheet=$("#sheet"), card=$("#sheetCard");
@@ -256,27 +256,26 @@ $("#lightbox").addEventListener("click", e=>{ if(e.target.id==="lightbox"||e.tar
     const tch=e.changedTouches[0];
     const qv=sheet.classList.contains("qv");
     const top=card.getBoundingClientRect().top;
-    if(card.scrollTop<=2 && (qv || tch.clientY < top+96)){
-      x0=tch.clientX; y0=tch.clientY; mode="pull"; card.style.transition="none"; return;
+    if(card.scrollTop<=2 && (qv || tch.clientY < top+140)){
+      x0=tch.clientX; y0=tch.clientY; mode="pull"; return;
     }
     reset();
   },{passive:true});
   sheet.addEventListener("touchmove", e=>{
-    if(e.touches && e.touches.length > 1){ reset(); card.style.transform=""; return; }
+    if(e.touches && e.touches.length > 1){ reset(); return; }
     if(mode!=="pull"||x0==null) return;
     const tch=e.changedTouches[0];
     const dx=tch.clientX-x0, dy=tch.clientY-y0;
-    if(Math.abs(dx)>Math.abs(dy)+12){ mode=null; card.style.transform=""; return; }
-    if(dy>0) card.style.transform="translateY("+Math.min(dy,120)+"px)";
-  },{passive:true});
+    if(Math.abs(dx)>Math.abs(dy)+16){ mode=null; return; }
+    if(dy>8){ try{ e.preventDefault(); }catch(err){} }
+  },{passive:false});
   sheet.addEventListener("touchend", e=>{
     if(mode!=="pull"||x0==null) return;
     const tch=e.changedTouches[0];
     const dy=tch.clientY-y0;
     reset();
-    card.style.transition="transform .22s ease";
-    card.style.transform="";
-    if(dy>110){
+    if(dy>42){
+      try{ document.documentElement.classList.add("sku-boot"); }catch(err){}
       try{ location.reload(); }catch(err){}
     }
   },{passive:true});

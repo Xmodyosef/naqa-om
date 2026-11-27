@@ -50,8 +50,8 @@
 <meta name="application-name" content="نقاء | Naqa" />
 
 <title>نقاء · عناية ومكياج | Naqa Oman</title>
-<link rel="preload" href="css/store.min.css?v=20261127clean30b" as="style" />
-<link rel="stylesheet" href="css/store.min.css?v=20261127clean30b" />
+<link rel="preload" href="css/store.min.css?v=20261127pull2" as="style" />
+<link rel="stylesheet" href="css/store.min.css?v=20261127pull2" />
 <link rel="preload" href="media/catalogs/hot.webp" as="image" type="image/webp" fetchpriority="high" />
 
 
@@ -151,6 +151,13 @@
 
 </head>
 <body>
+<style id="skuBoot">
+html.sku-boot body>*:not(#sheet):not(#lightbox):not(#toast){visibility:hidden!important}
+html.sku-boot #sheet{display:block!important;background:#fff}
+html.sku-boot #sheetCard{min-height:100vh;background:#fff}
+</style>
+<script>try{if(/[?&]sku=/.test(location.search))document.documentElement.classList.add("sku-boot")}catch(e){}</script>
+
 <a class="skip-link" href="#main">تخطي إلى المنتجات / Skip to products</a>
 <div id="a11yLive" class="sr-only" aria-live="polite" aria-atomic="true"></div>
 
@@ -377,15 +384,15 @@
     </div>
   </div>
 </div>
-<script defer src="data/products.min.js?v=20261127clean30b"></script>
+<script defer src="data/products.min.js?v=20261127pull2"></script>
 
-<script defer src="js/firebase-config.js?v=20261127clean30b"></script>
+<script defer src="js/firebase-config.js?v=20261127pull2"></script>
 <script defer src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
 <script defer src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
-<script defer src="js/cloud-overrides.js?v=20261127clean30b"></script>
-<script defer src="js/store-cloud-boot.js?v=20261127clean30b"></script>
+<script defer src="js/cloud-overrides.js?v=20261127pull2"></script>
+<script defer src="js/store-cloud-boot.js?v=20261127pull2"></script>
 
-<script defer src="js/store.min.js?v=20261127clean30b"></script>
+<script defer src="js/store.min.js?v=20261127pull2"></script>
 
 <script>
 if ('serviceWorker' in navigator) {

@@ -54,10 +54,7 @@ window.NAQA_PRODUCTS.push(
   "price": 6.3,
   "em": "✨",
   "imgs": [
-    "media/products/p55_0.webp",
-    "media/products/p55_1.webp",
-    "media/products/p55_2.webp",
-    "media/products/p55_3.webp"
+    "media/products/p55_0.webp"
   ],
   "nameAr": "ذا اورديناري سيروم الريتينول 1% في سكوالين - 30مل",
   "nameEn": "The Ordinary Retinol 1% in Squalane - 30ml",

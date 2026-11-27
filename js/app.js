@@ -242,7 +242,9 @@ $("#checkoutSend").onclick=()=>{
 $("#lbClose").onclick=closeLightbox;
 $("#lightbox").addEventListener("click", e=>{ if(e.target.id==="lightbox"||e.target.id==="lbClose") closeLightbox(); });
 
-/* pull-down to close the product sheet only */
+/* Pull down at the top of a product refreshes THIS page.
+   It used to close the sheet with history.back(), which opened the previous
+   product and then the home page. */
 (function(){
   let x0=null,y0=null,mode=null;
   const sheet=$("#sheet"), card=$("#sheetCard");
@@ -254,7 +256,7 @@ $("#lightbox").addEventListener("click", e=>{ if(e.target.id==="lightbox"||e.tar
     const tch=e.changedTouches[0];
     const qv=sheet.classList.contains("qv");
     const top=card.getBoundingClientRect().top;
-    if(card.scrollTop<=2 && (qv || tch.clientY < top+72)){
+    if(card.scrollTop<=2 && (qv || tch.clientY < top+96)){
       x0=tch.clientX; y0=tch.clientY; mode="pull"; card.style.transition="none"; return;
     }
     reset();
@@ -265,7 +267,7 @@ $("#lightbox").addEventListener("click", e=>{ if(e.target.id==="lightbox"||e.tar
     const tch=e.changedTouches[0];
     const dx=tch.clientX-x0, dy=tch.clientY-y0;
     if(Math.abs(dx)>Math.abs(dy)+12){ mode=null; card.style.transform=""; return; }
-    if(dy>0) card.style.transform="translateY("+Math.min(dy,220)+"px)";
+    if(dy>0) card.style.transform="translateY("+Math.min(dy,120)+"px)";
   },{passive:true});
   sheet.addEventListener("touchend", e=>{
     if(mode!=="pull"||x0==null) return;
@@ -273,7 +275,10 @@ $("#lightbox").addEventListener("click", e=>{ if(e.target.id==="lightbox"||e.tar
     const dy=tch.clientY-y0;
     reset();
     card.style.transition="transform .22s ease";
-    if(dy>90) closeSheet(); else card.style.transform="";
+    card.style.transform="";
+    if(dy>110){
+      try{ location.reload(); }catch(err){}
+    }
   },{passive:true});
   sheet.addEventListener("click", e=>{
     if(e.target===sheet && sheet.classList.contains("qv")) closeSheet();

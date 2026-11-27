@@ -102,7 +102,11 @@ window.NAQA_PRODUCTS.push(
   "price": 7.6,
   "em": "✨",
   "imgs": [
-    "media/products/p58_0.webp"
+    "media/products/p58_0.webp",
+    "media/products/p58_1.webp",
+    "media/products/p58_2.webp",
+    "media/products/p58_3.webp",
+    "media/products/p58_4.webp"
   ],
   "nameAr": "رذاذ كريم دكتور ألثيا 345 لتهدئة وترطيب البشرة - 100مل",
   "nameEn": "Dr.Althea 345 Relief Cream Mist - 100ml",
@@ -122,7 +126,11 @@ window.NAQA_PRODUCTS.push(
   "price": 7.6,
   "em": "✨",
   "imgs": [
-    "media/products/p94_0.webp"
+    "media/products/p94_0.webp",
+    "media/products/p94_1.webp",
+    "media/products/p94_2.webp",
+    "media/products/p94_3.webp",
+    "media/products/p94_4.webp"
   ],
   "nameAr": "رولر العين دكتور ألثيا بالريتينول لتجديد وشد محيط العين - 25مل",
   "nameEn": "Dr.Althea 345 Relief Retinol Eye Roller - 25ml",

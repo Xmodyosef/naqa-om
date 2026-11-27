@@ -10,7 +10,8 @@ window.NAQA_PRODUCTS.push(
   "was": 7.572,
   "em": "✨",
   "imgs": [
-    "media/products/p70_0.webp"
+    "media/products/p70_0.webp",
+    "media/products/p70_1.webp"
   ],
   "nameAr": "بي بي كريم بيرفكت إم من ميشا - رقم21 - 50مل",
   "nameEn": "MISSHA Perfect M BB Cream #21 SPF42 - 50ml",
@@ -31,7 +32,8 @@ window.NAQA_PRODUCTS.push(
   "was": 7.572,
   "em": "✨",
   "imgs": [
-    "media/products/p71_0.webp"
+    "media/products/p71_0.webp",
+    "media/products/p71_1.webp"
   ],
   "nameAr": "بي بي كريم بيرفكت إم من ميشا - رقم27 - 50مل",
   "nameEn": "MISSHA Perfect M BB Cream #27 SPF42 - 50ml",
@@ -52,7 +54,8 @@ window.NAQA_PRODUCTS.push(
   "was": 7.572,
   "em": "✨",
   "imgs": [
-    "media/products/p72_0.webp"
+    "media/products/p72_0.webp",
+    "media/products/p72_1.webp"
   ],
   "nameAr": "بي بي كريم بيرفكت إم من ميشا - رقم25 - 50مل",
   "nameEn": "MISSHA Perfect M BB Cream #25 SPF42 - 50ml",
@@ -74,7 +77,9 @@ window.NAQA_PRODUCTS.push(
   "hot": true,
   "em": "✨",
   "imgs": [
-    "media/products/p74_0.webp"
+    "media/products/p74_0.webp",
+    "media/products/p74_1.webp",
+    "media/products/p74_2.webp"
   ],
   "nameAr": "فرشاة الخدود والهايلايتر ميشا آرتيستول 206",
   "nameEn": "Missha Artistool Cheek Highlighter Brush 206",

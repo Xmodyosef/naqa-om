@@ -11,7 +11,9 @@ window.NAQA_PRODUCTS.push(
   "hot": true,
   "em": "✨",
   "imgs": [
-    "media/products/p64_0.webp"
+    "media/products/p64_0.webp",
+    "media/products/p64_1.webp",
+    "media/products/p64_2.webp"
   ],
   "nameAr": "برايمر فائق التثبيت ذا فيس جلو من نيكس - 35مل",
   "nameEn": "NYX The Face Glue Gripping Primer - 35ml",

@@ -56,7 +56,11 @@ window.NAQA_PRODUCTS.push(
   "price": 6.9,
   "em": "✨",
   "imgs": [
-    "media/products/p91_0.webp"
+    "media/products/p91_0.webp",
+    "media/products/p91_1.webp",
+    "media/products/p91_2.webp",
+    "media/products/p91_3.webp",
+    "media/products/p91_4.webp"
   ],
   "nameAr": "كريم العين نومبوزين رقم 9 بالريتينول لشد منطقة اسفل العين - 10مل",
   "nameEn": "Numbuzin No.9 Retinol Intense Eye Cream - 30ml",

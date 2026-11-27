@@ -184,7 +184,11 @@ window.NAQA_PRODUCTS.push(
   "price": 6.3,
   "em": "✨",
   "imgs": [
-    "media/products/p52_0.webp"
+    "media/products/p52_0.webp",
+    "media/products/p52_1.webp",
+    "media/products/p52_2.webp",
+    "media/products/p52_3.webp",
+    "media/products/p52_4.webp"
   ],
   "nameAr": "كريم الجيلي بحمض الهيالورونيك والسيراميد لترطيب البشرة من ميديكيوب - 50مل",
   "nameEn": "Medicube Hyaluronic Ceramide Moisturizing Jelly Cream - 50ml",
@@ -204,7 +208,9 @@ window.NAQA_PRODUCTS.push(
   "price": 7.3,
   "em": "✨",
   "imgs": [
-    "media/products/p59_0.webp"
+    "media/products/p59_0.webp",
+    "media/products/p59_1.webp",
+    "media/products/p59_2.webp"
   ],
   "nameAr": "قناع ميديكوب الليلي الوردي بالكافيين لترطيب وشد البشرة - 75مل",
   "nameEn": "Medicube PDRN Pink Caffeine Night Wrapping Mask - 75ml",
@@ -224,7 +230,11 @@ window.NAQA_PRODUCTS.push(
   "price": 6.3,
   "em": "✨",
   "imgs": [
-    "media/products/p60_0.webp"
+    "media/products/p60_0.webp",
+    "media/products/p60_1.webp",
+    "media/products/p60_2.webp",
+    "media/products/p60_3.webp",
+    "media/products/p60_4.webp"
   ],
   "nameAr": "زيت تنظيف ميديكيوب زيرو بور لإزالة الرؤوس السوداء وتنقية المسام - 205مل",
   "nameEn": "Medicube Zero Pore Blackhead Deep Cleansing Oil - 205ml",
@@ -244,7 +254,11 @@ window.NAQA_PRODUCTS.push(
   "price": 9.7,
   "em": "✨",
   "imgs": [
-    "media/products/p77_0.webp"
+    "media/products/p77_0.webp",
+    "media/products/p77_1.webp",
+    "media/products/p77_2.webp",
+    "media/products/p77_3.webp",
+    "media/products/p77_4.webp"
   ],
   "nameAr": "كريم الرقبة بي دي آر إن بالكولاجين مع أداة غوا شا من ميديكيوب - 90ج",
   "nameEn": "Medicube PDRN Collagen Neck Cream with Gua Sha",

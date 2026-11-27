@@ -52,7 +52,11 @@ window.NAQA_PRODUCTS.push(
   "price": 6.3,
   "em": "✨",
   "imgs": [
-    "media/products/p65_0.webp"
+    "media/products/p65_0.webp",
+    "media/products/p65_1.webp",
+    "media/products/p65_2.webp",
+    "media/products/p65_3.webp",
+    "media/products/p65_4.webp"
   ],
   "nameAr": "زيت التنظيف الخفيف مدغشقر سنتيلا من سكين1004 - 200مل",
   "nameEn": "Centella Light Cleansing Oil - 200ml",
@@ -72,7 +76,10 @@ window.NAQA_PRODUCTS.push(
   "price": 9.9,
   "em": "✨",
   "imgs": [
-    "media/products/p66_0.webp"
+    "media/products/p66_0.webp",
+    "media/products/p66_1.webp",
+    "media/products/p66_2.webp",
+    "media/products/p66_3.webp"
   ],
   "nameAr": "مجموعة سنتيلا للتنظيف المزدوج من سكين1004 - 2قطع",
   "nameEn": "Skin1004 Double Cleansing Duo",

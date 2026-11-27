@@ -1447,22 +1447,3 @@
 
   try { A.bindProductListClicks(); } catch (e) {}
 })(window);
-
-  /** Set every product stock to 3 and unhide — then cloud sync. */
-  A.repairStock3 = function () {
-    var map = A.loadOverrides();
-    (A.products || []).forEach(function (p) {
-      if (!p) return;
-      var id = String(p.id);
-      map[id] = map[id] || {};
-      map[id].stock = 3;
-      map[id].hidden = false;
-      p.stock = 3;
-      p.hidden = false;
-    });
-    A.saveOverrides(map);
-    if (typeof A.syncOverridesCloud === "function") A.syncOverridesCloud();
-    if (typeof A.paintProducts === "function") A.paintProducts();
-    if (typeof A.toast === "function") A.toast(A.lang === "en" ? "Stock set to 3 for all · unsaved hide cleared" : "تم ضبط الكمية 3 لكل المنتجات وإظهار المخفي");
-  };
-

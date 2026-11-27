@@ -187,7 +187,12 @@ function renderCart(){
     updatePaySum();
     return;
   }
-  const vatCart=typeof vatOf==="function"?vatOf(grand):0;
+  const vatCart=(typeof cartVatFromLines==="function")
+    ? cartVatFromLines(cart.map(function(i){
+        var p=(typeof products!=="undefined"?products.find(function(x){return x.id===i.id}):null)||i;
+        return {price:p.price!=null?p.price:i.price, qty:i.qty, taxMode:p.taxMode, taxCustom:p.taxCustom};
+      }))
+    : (typeof vatOf==="function"?vatOf(grand):0);
   const shipLine = `<div class="cart-ship-note">${T("shipFee")||"التوصيل"}: <b>${b.delivery?money(b.delivery):(lang==="en"?"Free":"مجاني")}</b>`
     + ` · ${T("codFee")||"استلام"}: <b>${b.codFee?money(b.codFee):(lang==="en"?"—":"—")}</b>`
     + ` · ${T("grandTotal")||"الإجمالي"}: <b>${money(grand)}</b>`
@@ -304,7 +309,11 @@ function sendCheckout(){
     name:name, phone:phone, area:gov, note:note,
     payment:pay, paymentLabel:payLabel, paid:false, paymentStatus:pay==="transfer"?"pending":"cod",
     subtotal:sub, delivery:delivery, codFee:codFee, shipping:ship, total:grand,
-    vatRate:typeof vatRate==="function"?vatRate():0.05, vat:typeof vatOf==="function"?vatOf(grand):0, vatInclusive:true, currency:"OMR",
+    vatRate:typeof vatRate==="function"?vatRate():0.05,
+    vat:(typeof cartVatFromLines==="function"
+      ? cartVatFromLines(priced.map(function(x){ return {price:x.price, qty:x.qty, taxMode:x.taxMode, taxCustom:x.taxCustom}; }))
+      : (typeof vatOf==="function"?vatOf(grand):0)),
+    vatInclusive:true, currency:"OMR",
     items:priced, lang:lang,
     bankName:bankName||"", bankIban:bankIban||""
   };

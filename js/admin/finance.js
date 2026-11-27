@@ -24,7 +24,8 @@
     return true;
   }
   function activeOrders() {
-    return (A.orders || []).filter(function (o) {
+    var src = A.liveOrders ? A.liveOrders() : (A.orders || []);
+    return src.filter(function (o) {
       if (!o) return false;
       if (!inFinRange(o.at)) return false;
       var st = A.normalizeStatus ? A.normalizeStatus(o.status) : String(o.status || "");

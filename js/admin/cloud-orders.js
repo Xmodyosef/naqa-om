@@ -58,7 +58,9 @@
     var id = uid();
     if (!database || !id) return Promise.resolve(false);
     if (w.naqaIsAdminUid && !naqaIsAdminUid(id)) return Promise.resolve(false);
-    var list = (A.orders || []).slice(0, MAX).map(function (o) {
+    var list = (A.orders || []).filter(function (o) {
+      return o && o.id && !(o.source === "demo" || o.demo === true);
+    }).slice(0, MAX).map(function (o) {
       return {
         id: String(o.id || ""),
         at: o.at || "",
@@ -66,6 +68,7 @@
         name: o.name || "",
         phone: o.phone || "",
         area: o.area || "",
+        note: o.note || o.t || "",
         total: o.total != null ? Number(o.total) : null,
         payment: o.payment || o.pay || "",
         itemsText: o.itemsText || "",
@@ -75,6 +78,7 @@
         codFee: o.codFee != null ? Number(o.codFee) : null,
         shipping: o.shipping != null ? Number(o.shipping) : null,
         vat: o.vat != null ? Number(o.vat) : null,
+        vatRate: o.vatRate != null ? Number(o.vatRate) : null,
         stockDeducted: !!o.stockDeducted,
         paymentStatus: o.paymentStatus || "",
         updatedAt: o.updatedAt || o.at || new Date().toISOString()

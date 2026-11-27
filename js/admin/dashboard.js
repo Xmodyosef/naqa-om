@@ -4,7 +4,7 @@
     var box = document.getElementById("dashBox");
     if (!box) return;
     var sales = 0, neu = 0, prep = 0, ship = 0, lowStock = 0, pendingReviews = 0;
-    A.orders.forEach(function (o) {
+    (A.liveOrders ? A.liveOrders() : (A.orders || [])).forEach(function (o) {
       var st = A.normalizeStatus(o.status);
       if (st === "cancel") return;
       sales += Number(o.total) || 0;
@@ -29,7 +29,7 @@
     function stat(n, label, tab, sub) {
       return '<button type="button" class="stat stat-link" data-go-tab="' + tab + '" data-go-sub="' + A.esc(sub) + '"><strong>' + n + '</strong><span>' + label + '</span></button>';
     }
-    var recent = (A.orders || []).slice(0, 6).map(function (o) {
+    var recent = (A.liveOrders ? A.liveOrders() : (A.orders || [])).slice(0, 6).map(function (o) {
       var st = A.normalizeStatus(o.status);
       return '<button type="button" class="cust-row cust-link" data-go-tab="orders" data-go-sub="' + A.esc(st) + '"><div><strong>' + A.esc(o.id) + '</strong><small>' + A.esc(o.name || "") + ' · ' + A.esc(A.statusLabel(st) || "") + '</small></div><strong>' + A.esc(o.total != null ? Number(o.total).toFixed(3) : "—") + '</strong></button>';
     }).join("") || '<p class="note">' + A.t("d_noRecent") + '</p>';

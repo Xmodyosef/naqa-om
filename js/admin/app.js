@@ -306,6 +306,15 @@
         try { A.loadRemoteOrders(); } catch (e) {}
       }, 0);
     }
+    /* Drop any demo fixtures that were merged into local storage historically */
+    try {
+      if (A.orders && A.orders.length) {
+        var before = A.orders.length;
+        A.orders = A.orders.filter(function (o) { return !(o && (o.source === "demo" || o.demo === true)); });
+        if (A.orders.length !== before && A.saveOrders) A.saveOrders();
+        if (A.updateOrdersBadge) A.updateOrdersBadge();
+      }
+    } catch (e) {}
   };
 
 

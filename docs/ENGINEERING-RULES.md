@@ -104,6 +104,12 @@ A.refreshProductsFromBundle = function () {
 
 ## 4) overrides والسحابة (Firebase)
 
+
+### طلبات demo (2026-11-27)
+- **ممنوع** `fetch('data/orders.json')` في لوحة الإنتاج.
+- العينات فقط في `fixtures/orders.demo.json` — لا تُدمج في الإحصائيات ولا `orders_private`.
+- `A.loadRemoteOrders` = no-op.
+
 ### Firestore orders_private (2026-11-27)
 
 ### 4.x مخزون مؤقت بعد السحابة
@@ -168,7 +174,7 @@ A.refreshProductsFromBundle = function () {
 - `enterOpen` **دائماً** يستدعي `loadAdminModules` ثم `refreshProductsFromBundle` (مو return مبكر يتخطى الكتالوج).
 
 
-- سايدبار: أب + أبناء **في الجنب** (نمط سلة/زد) — مو نقل الأبناء لوسط الصفحة إلا بطلب صريح جديد.
+- تنقّل اللوحة: **حبوب أفقية فقط — DESIGN-LOCK يمنع السايدبار.** (نص قديم عن سايدبار سلة/زد لا يُطبَّق على نقاء.)
 - `A.go` / hash: `#/products/...`, `#/orders/...`, `#/products/edit/:id`
 - أزرار الرجوع/السحب: ترجع للقسم السابق بشكل صحيح.
 - Pagination منتجات: 50/صفحة + pager مربوط.

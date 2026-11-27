@@ -617,41 +617,17 @@
     var url = "https://wa.me/" + (A.storeWaNumber ? A.storeWaNumber() : "") + "?text=" + encodeURIComponent(text);
     w.open(url, "_blank");
   };
+  /** Production never loads data/orders.json (demo fixtures). Use Firestore + local only. */
+  A.isDemoOrder = function (o) {
+    return !!(o && (o.source === "demo" || o.demo === true));
+  };
+  A.liveOrders = function () {
+    return (A.orders || []).filter(function (o) { return o && !A.isDemoOrder(o); });
+  };
   A.loadRemoteOrders = function () {
-    if (A._ordersRemoteLoading) return A._ordersRemoteLoading;
-    if (A._ordersRemoteLoadedAt && (Date.now() - A._ordersRemoteLoadedAt) < 60000) {
-      return Promise.resolve(A.orders || []);
-    }
-    A._ordersRemoteLoading = fetch("data/orders.json?v=20261125ord2").then(function (r) { return r.ok ? r.json() : []; }).then(function (remote) {
-      A._ordersRemoteLoadedAt = Date.now();
-      A._ordersRemoteLoading = null;
-      if (!Array.isArray(remote)) return;
-      var by = {};
-      A.orders.forEach(function (o) { if (o && o.id) by[o.id] = o; });
-      remote.forEach(function (o) {
-        if (!o || !o.id) return;
-        var prev = by[o.id];
-        var merged = Object.assign({}, prev || {}, o);
-        if (prev && prev.stockDeducted) merged.stockDeducted = true;
-        by[o.id] = merged;
-      });
-      A.orders = Object.keys(by).map(function (k) { return by[k]; });
-      A.orders.sort(function (a, b) { return (b.at || "").localeCompare(a.at || ""); });
-      A.orders.forEach(function (o) { o.status = A.normalizeStatus(o.status); });
-      A._ordersRemoteCount = Array.isArray(remote) ? remote.length : 0;
-      A._ordersTotalCount = A.orders.length;
-      if (A.settleOrderStock) A.settleOrderStock();
-      A.saveOrders();
-      if (A.updateOrdersBadge) A.updateOrdersBadge();
-      if (A.paintOrders) A.paintOrders();
-      if (A.paintDashboard) A.paintDashboard();
-      if (A.paintCustomers) A.paintCustomers();
-      if (A.paintFinance) A.paintFinance();
-      return A.orders;
-    }).catch(function () {
-      A._ordersRemoteLoading = null;
-      return A.orders || [];
-    });
-    return A._ordersRemoteLoading;
+    /* intentionally no-op: demo JSON must not enter admin stats or cloud */
+    A._ordersRemoteCount = 0;
+    A._ordersTotalCount = (A.orders || []).length;
+    return Promise.resolve(A.orders || []);
   };
 })(window);

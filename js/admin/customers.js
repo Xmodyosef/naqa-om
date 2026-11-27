@@ -20,7 +20,7 @@
   /** All non-cancelled orders grouped by customer phone (or name). */
   function buildMap() {
     var map = {};
-    (A.orders || []).forEach(function (o) {
+    (A.liveOrders ? A.liveOrders() : (A.orders || [])).forEach(function (o) {
       if (!o) return;
       var st = A.normalizeStatus ? A.normalizeStatus(o.status) : String(o.status || "");
       if (st === "cancel") return;

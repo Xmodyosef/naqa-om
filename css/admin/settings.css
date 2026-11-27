@@ -348,3 +348,18 @@ body.dark .set-act-detail { color: #a89b94; }
   border-top: 1px solid #f0e6e2;
 }
 body.dark .set-act-panel { border-top-color: #3a2f2a; }
+
+
+/* Settings hub → customers / reviews / finance */
+.set-hub-grid{display:flex;flex-direction:column;gap:8px;margin-top:4px}
+.set-hub-card{
+  display:flex;align-items:center;gap:12px;width:100%;
+  padding:12px 14px;border:1px solid #eadfd9;border-radius:14px;
+  background:#fff;text-align:start;cursor:pointer;font:inherit;color:inherit;
+}
+.set-hub-card:hover{border-color:#c46b7c;background:#fdf6f7}
+.set-hub-ico{width:36px;height:36px;border-radius:12px;display:grid;place-items:center;background:#f8eef1;color:#8d3048;font-weight:800;flex:0 0 auto}
+.set-hub-txt{flex:1 1 auto;min-width:0;display:flex;flex-direction:column;gap:2px}
+.set-hub-txt strong{font-size:.95rem;font-weight:800;color:#2a1f1c}
+.set-hub-txt small{font-size:.78rem;color:#6b5c58}
+.set-hub-chev{color:#c46b7c;font-size:1.1rem;font-weight:800}

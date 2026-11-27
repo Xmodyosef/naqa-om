@@ -124,11 +124,13 @@
   };
 
   A.syncNav = function () {
-    try { document.body.classList.add("naqa-nav-pills"); } catch (e) {}
+    try { document.body.classList.add("naqa-nav-pills"); document.body.classList.add("naqa-nav-dock"); } catch (e) {}
     var tab = A.currentTab || "home";
+    var dockTab = tab;
+    if (tab === "customers" || tab === "reviews" || tab === "finance") dockTab = "settings";
     document.querySelectorAll("#sideNav .side-main").forEach(function (b) {
       var bt = b.getAttribute("data-tab");
-      var on = bt === tab;
+      var on = bt === dockTab;
       b.classList.toggle("on", on);
       if (on) b.setAttribute("aria-current", "page");
       else b.removeAttribute("aria-current");

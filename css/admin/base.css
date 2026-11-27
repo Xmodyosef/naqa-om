@@ -392,3 +392,8 @@ button.rv-hit:active{background:#f6f1ee}
 .rv-meta{margin:4px 0;font-size:.92rem}
 .rv-meta span{color:var(--muted);margin-inline-end:6px}
 a.rv-link,button.rv-link{background:none;border:0;padding:0;color:#8d3048;font-weight:800;text-decoration:underline;cursor:pointer;font:inherit}
+
+.dash-mini-list{margin:0;padding:0 18px;list-style:disc}
+.dash-mini-list li{margin:4px 0;font-size:.88rem;color:#3c302c}
+.dash-mini-list span{color:#8d3048;font-weight:800}
+.analytics-grid{margin-top:6px}

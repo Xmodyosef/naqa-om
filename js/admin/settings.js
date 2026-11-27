@@ -116,8 +116,53 @@
       : (ar ? "غير مسجّل" : "Not signed in");
     var langLabel = A.lang === "en" ? "English" : "العربية";
 
+
+    var pendingR = 0;
+    try {
+      (A.reviews || []).forEach(function (r) { if (r && r.hidden) pendingR++; });
+    } catch (eR) {}
+    var custN = 0;
+    try {
+      if (A.paintCustomers && A._customerCount != null) custN = A._customerCount;
+      else if (A.orders) {
+        var seen = {};
+        (A.liveOrders ? A.liveOrders() : A.orders).forEach(function (o) {
+          var k = String((o && (o.phone || o.mobile || o.name)) || "").trim();
+          if (k) seen[k] = 1;
+        });
+        custN = Object.keys(seen).length;
+      }
+    } catch (eC) {}
+
+    function hubBtn(tab, ico, title, sub) {
+      return '<button type="button" class="set-hub-card" data-go-tab="' + tab + '">'
+        + '<span class="set-hub-ico" aria-hidden="true">' + ico + '</span>'
+        + '<span class="set-hub-txt"><strong>' + title + '</strong><small>' + sub + '</small></span>'
+        + '<span class="set-hub-chev" aria-hidden="true">‹</span>'
+        + '</button>';
+    }
+
+    if (!box._hubBound) {
+      box._hubBound = true;
+      box.addEventListener("click", function (e) {
+        var b = e.target.closest("[data-go-tab]");
+        if (!b || !A.go) return;
+        e.preventDefault();
+        A.go(b.getAttribute("data-go-tab"), "", { push: true });
+      });
+    }
+
     box.innerHTML =
       '<div class="settings-stack">'
+      + '<section class="set-card set-hub" id="setHubCard">'
+      +   '<div class="set-card-head"><span class="set-card-ico" aria-hidden="true">◎</span><h2 class="set-card-title">' + (ar ? "العملاء والتفاعل" : "Customers & engagement") + '</h2></div>'
+      +   '<div class="set-hub-grid">'
+      +     hubBtn("customers", "👤", (ar ? "العملاء" : "Customers"), (ar ? (custN + " عميل") : (custN + " customers")))
+      +     hubBtn("reviews", "★", (ar ? "التقييمات" : "Reviews"), (ar ? (pendingR ? (pendingR + " بانتظار") : "إدارة التقييمات") : (pendingR ? (pendingR + " pending") : "Manage reviews")))
+      +     hubBtn("finance", "﷼", (ar ? "المالية" : "Finance"), (ar ? "مبيعات وتقارير" : "Sales & reports"))
+      +   '</div>'
+      + '</section>'
+
 
       /* ① المتجر — ملخص مغلق، التعديل يفتح ثم يُغلق بعد الحفظ */
       + '<section class="set-card" id="setStoreCard">'

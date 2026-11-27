@@ -1,13 +1,13 @@
 /* نقاء admin — no add-button flash 20261125rv7 */
-@import url("admin/base.css?v=20261127c11");
-@import url("admin/products-edit.css?v=20261127c11");
-@import url("admin/login-gate.css?v=20261127c11");
-@import url("admin/nav.css?v=20261127c11");
-@import url("admin/login-card.css?v=20261127c11");
-@import url("admin/settings.css?v=20261127c11");
-@import url("admin/theme-mode.css?v=20261127c11");
-@import url("admin/desktop.css?v=20261127c11");
-@import url("admin/products-list.css?v=20261127c11");
+@import url("admin/base.css?v=20261127c25");
+@import url("admin/products-edit.css?v=20261127c25");
+@import url("admin/login-gate.css?v=20261127c25");
+@import url("admin/nav.css?v=20261127c25");
+@import url("admin/login-card.css?v=20261127c25");
+@import url("admin/settings.css?v=20261127c25");
+@import url("admin/theme-mode.css?v=20261127c25");
+@import url("admin/desktop.css?v=20261127c25");
+@import url("admin/products-list.css?v=20261127c25");
 
 /* Customers — same hit rows as reviews, phone emphasis */
 .cust-hit .cust-phone{

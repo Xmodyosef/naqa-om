@@ -1,6 +1,4 @@
-/* نقاء admin nav — مود حبوب أعلى (pills-top)
-   آباء = صف حبوب فوق | أبناء = صف حبوب منفصل | بدون سايدبار
-   v=20261125purge2 */
+/* نقاء admin nav — dock-bottom (آباء تحت) + child pills فوق المحتوى | بدون سايدبار */
 
 /* ===== Shell: عمود كامل العرض ===== */
 body.naqa-open .admin-shell,
@@ -552,4 +550,102 @@ body.naqa-open #sideNav.top-parents .side-main:hover .side-ico {
 body.naqa-open .search-btn,
 body.naqa-open #globalSearchBtn {
   color: #fff !important;
+}
+
+
+/* ===== Admin dock bottom (2026-11-28) — like store dock, no sidebar ===== */
+body.naqa-open.naqa-nav-dock {
+  padding-bottom: calc(72px + env(safe-area-inset-bottom, 0px)) !important;
+}
+body.naqa-open.naqa-nav-dock #sideNav.admin-dock,
+body.naqa-open.naqa-nav-dock #sideNav.top-parents {
+  position: fixed !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  top: auto !important;
+  z-index: 90 !important;
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  align-items: stretch !important;
+  justify-content: space-around !important;
+  gap: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  padding: 6px 8px calc(6px + env(safe-area-inset-bottom, 0px)) !important;
+  border: 0 !important;
+  border-top: 1px solid #eadfd9 !important;
+  border-radius: 0 !important;
+  background: #fff !important;
+  box-shadow: 0 -8px 28px rgba(40, 20, 24, 0.1) !important;
+  overflow: visible !important;
+}
+body.naqa-open.naqa-nav-dock #sideNav.admin-dock .side-main.dock-item {
+  flex: 1 1 0 !important;
+  flex-direction: column !important;
+  gap: 2px !important;
+  min-width: 0 !important;
+  min-height: 52px !important;
+  padding: 6px 4px !important;
+  border: 0 !important;
+  border-radius: 14px !important;
+  background: transparent !important;
+  color: #6b5c58 !important;
+  box-shadow: none !important;
+  position: relative !important;
+}
+body.naqa-open.naqa-nav-dock #sideNav.admin-dock .side-main.dock-item .dock-ico {
+  display: block !important;
+  font-size: 1.15rem !important;
+  line-height: 1.2 !important;
+}
+body.naqa-open.naqa-nav-dock #sideNav.admin-dock .side-main.dock-item .side-lbl {
+  display: block !important;
+  font: 800 0.68rem/1.15 inherit !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  max-width: 100% !important;
+}
+body.naqa-open.naqa-nav-dock #sideNav.admin-dock .side-main.dock-item.on {
+  background: #f8eef1 !important;
+  color: #8d3048 !important;
+  box-shadow: none !important;
+}
+body.naqa-open.naqa-nav-dock #sideNav.admin-dock .side-main.dock-item.on .side-lbl {
+  color: #8d3048 !important;
+}
+body.naqa-open.naqa-nav-dock #sideNav.admin-dock .side-badge.dock-badge,
+body.naqa-open.naqa-nav-dock #sideNav.admin-dock .side-badge {
+  position: absolute !important;
+  top: 2px !important;
+  inset-inline-end: 18% !important;
+  min-width: 18px !important;
+  height: 18px !important;
+  padding: 0 5px !important;
+  border-radius: 999px !important;
+  background: #8d3048 !important;
+  color: #fff !important;
+  font: 800 0.65rem/18px inherit !important;
+  box-shadow: 0 2px 6px rgba(141,48,72,.35) !important;
+}
+/* Child filters stay under top tools, not bottom */
+body.naqa-open.naqa-nav-dock #childNav.top-children {
+  position: relative !important;
+  bottom: auto !important;
+  margin: 0 0 8px !important;
+}
+/* Desktop: still dock at bottom for consistency (touch + mouse) */
+@media (min-width: 1100px) {
+  body.naqa-open.naqa-nav-dock #sideNav.admin-dock {
+    max-width: 720px !important;
+    left: 50% !important;
+    right: auto !important;
+    transform: translateX(-50%) !important;
+    border-radius: 18px 18px 0 0 !important;
+    border: 1px solid #eadfd9 !important;
+    border-bottom: 0 !important;
+  }
 }

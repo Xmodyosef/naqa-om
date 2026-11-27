@@ -23,9 +23,9 @@
 <link rel="dns-prefetch" href="https://www.gstatic.com" />
 <link rel="preload" href="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js" as="script" />
 <link rel="preload" href="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js" as="script" />
-<link rel="preload" href="js/firebase-config.js?v=20261127c24" as="script" />
-<link rel="preload" href="js/admin/firebase-gate.js?v=20261127c23" as="script" />
-<link rel="stylesheet" href="css/admin.css?v=20261127c23" />
+<link rel="preload" href="js/firebase-config.js?v=20261127c25" as="script" />
+<link rel="preload" href="js/admin/firebase-gate.js?v=20261127c25" as="script" />
+<link rel="stylesheet" href="css/admin.css?v=20261127c25" />
 
 
 </head>
@@ -113,27 +113,23 @@
     <p class="note" id="pinMsg" role="status" aria-live="polite"></p>
   </div>
   <div id="tools" class="admin-shell admin-shell-top" hidden>
-  <nav id="sideNav" class="top-parents" data-nav-mode="pills-top" aria-label="أقسام اللوحة">
-    <button type="button" class="side-main" data-tab="home" title="الرئيسية" aria-label="الرئيسية">
+  <!-- Mobile-first dock: daily work only. Customers/reviews/finance live under Settings. -->
+  <nav id="sideNav" class="admin-dock top-parents" data-nav-mode="dock-bottom" aria-label="أقسام اللوحة">
+    <button type="button" class="side-main dock-item" data-tab="home" title="الرئيسية" aria-label="الرئيسية">
+      <span class="dock-ico" aria-hidden="true">⌂</span>
       <span class="side-lbl" data-i18n="tab_home">الرئيسية</span>
     </button>
-    <button type="button" class="side-main" data-tab="orders" title="الطلبات" aria-label="الطلبات">
+    <button type="button" class="side-main dock-item" data-tab="orders" title="الطلبات" aria-label="الطلبات">
+      <span class="dock-ico" aria-hidden="true">☰</span>
       <span class="side-lbl" data-i18n="tab_orders">الطلبات</span>
-      <span class="side-badge" id="ordersBadge" hidden>0</span>
+      <span class="side-badge dock-badge" id="ordersBadge" hidden>0</span>
     </button>
-    <button type="button" class="side-main" data-tab="products" title="المنتجات" aria-label="المنتجات">
+    <button type="button" class="side-main dock-item" data-tab="products" title="المنتجات" aria-label="المنتجات">
+      <span class="dock-ico" aria-hidden="true">▣</span>
       <span class="side-lbl" data-i18n="tab_products">المنتجات</span>
     </button>
-    <button type="button" class="side-main" data-tab="reviews" title="التقييمات" aria-label="التقييمات">
-      <span class="side-lbl" data-i18n="tab_reviews">التقييمات</span>
-    </button>
-    <button type="button" class="side-main" data-tab="customers" title="العملاء" aria-label="العملاء">
-      <span class="side-lbl" data-i18n="tab_customers">العملاء</span>
-    </button>
-    <button type="button" class="side-main" data-tab="finance" title="المالية" aria-label="المالية">
-      <span class="side-lbl" data-i18n="tab_finance">المالية</span>
-    </button>
-    <button type="button" class="side-main" data-tab="settings" title="الإعدادات" aria-label="الإعدادات">
+    <button type="button" class="side-main dock-item" data-tab="settings" title="الإعدادات" aria-label="الإعدادات">
+      <span class="dock-ico" aria-hidden="true">⚙</span>
       <span class="side-lbl" data-i18n="tab_settings">الإعدادات</span>
     </button>
   </nav>
@@ -231,17 +227,17 @@
   </main>
 </div>
 </div>
-<script defer src="js/config.js?v=20261127c23"></script>
-<script defer src="js/firebase-config.js?v=20261127c24"></script>
+<script defer src="js/config.js?v=20261127c25"></script>
+<script defer src="js/firebase-config.js?v=20261127c25"></script>
 <script defer src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
 <script defer src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
-<script defer src="js/admin.js?v=20261127c23"></script>
-<script defer src="js/admin/core.js?v=20261127c23"></script>
-<script defer src="js/admin/firebase-gate.js?v=20261127c23"></script>
-<script defer src="js/admin/app.js?v=20261127c23"></script>
-<script defer src="js/admin/i18n/dict-ar.js?v=20261127c23"></script>
-<script defer src="js/admin/i18n/dict-en.js?v=20261127c23"></script>
-<script defer src="js/admin/i18n.js?v=20261127c23"></script>
-<script defer src="js/admin/load-modules.js?v=20261127c23"></script>
+<script defer src="js/admin.js?v=20261127c25"></script>
+<script defer src="js/admin/core.js?v=20261127c25"></script>
+<script defer src="js/admin/firebase-gate.js?v=20261127c25"></script>
+<script defer src="js/admin/app.js?v=20261127c25"></script>
+<script defer src="js/admin/i18n/dict-ar.js?v=20261127c25"></script>
+<script defer src="js/admin/i18n/dict-en.js?v=20261127c25"></script>
+<script defer src="js/admin/i18n.js?v=20261127c25"></script>
+<script defer src="js/admin/load-modules.js?v=20261127c25"></script>
 </body>
 </html>

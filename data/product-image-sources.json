@@ -1,22 +1,24 @@
 {
-  "schemaVersion": 1,
-  "policy": "Each product requires exactly 3 direct HTTPS image URLs. Source identity and reuse permission must be checked before adding URLs. URLs must depict the exact brand, product, shade/variant and size. Do not use generated, stock, duplicate, or merely similar images. Existing _0 main images are never modified.",
+  "schemaVersion": 2,
+  "policy": "Each product must have one manually verified official or trusted product page. The importer resolves its Shopify product JSON gallery, verifies the product title, downloads three distinct gallery images, checks dimensions and duplicates against the batch and existing primary image, converts to WebP, and never overwrites existing files. Shade/size variants must be exact.",
   "products": [
     {
       "id": 9,
       "brand": "Celimax",
       "sku": "8809875907412",
       "name": "Celimax Pore+Dark Spot Brightening Serum - 30ml",
-      "sourcePage": "",
-      "imageUrls": []
+      "sourcePage": "https://celimax.us/products/celimax-pore-dark-spot-brightening-serum",
+      "imageUrls": [],
+      "sourceTitleIncludes": "Pore+Dark Spot Brightening Serum"
     },
     {
       "id": 18,
       "brand": "Dr.Althea",
       "sku": "8809447251363",
       "name": "Dr.Althea 147 Barrier Cream - 50ml",
-      "sourcePage": "",
-      "imageUrls": []
+      "sourcePage": "https://doctoraltheaglobal.com/products/dralthea-147_barrier_cream",
+      "imageUrls": [],
+      "sourceTitleIncludes": "147 Barrier Cream"
     },
     {
       "id": 30,
@@ -39,8 +41,9 @@
       "brand": "AXIS-Y",
       "sku": "8809634610966",
       "name": "Axis-Y Dark Spot Correcting Glow Cream - 50ml",
-      "sourcePage": "",
-      "imageUrls": []
+      "sourcePage": "https://www.axis-y.com/collections/all/products/dark-spot-correcting-glow-cream",
+      "imageUrls": [],
+      "sourceTitleIncludes": "Dark Spot Correcting Glow Cream"
     },
     {
       "id": 55,
@@ -55,8 +58,9 @@
       "brand": "Anua",
       "sku": "8800307374390",
       "name": "PDRN Collagen Glow Facial Serum Spray Mini - 30ml",
-      "sourcePage": "",
-      "imageUrls": []
+      "sourcePage": "https://anua.com/products/pdrn-100-hyaluronic-acid-hydrating-capsule-mist-30ml",
+      "imageUrls": [],
+      "sourceTitleIncludes": "PDRN Collagen Glow Facial Serum Spray"
     },
     {
       "id": 74,

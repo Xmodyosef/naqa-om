@@ -277,7 +277,18 @@
         }
       } catch (e) {}
       var done = function () {
-        try { if (typeof render === "function") render(); } catch (e) {}
+        try {
+          var sig = typeof naqaOverridesSig === "function" ? naqaOverridesSig(map) : "";
+          if (sig && sig === w.__naqaLastOvSig) return;
+          w.__naqaLastOvSig = sig;
+          if (w.__naqaBootQuietUntil && Date.now() < w.__naqaBootQuietUntil) {
+            if (typeof naqaRequestRender === "function") naqaRequestRender({ delay: 120 });
+            else if (typeof render === "function") render();
+            return;
+          }
+          if (typeof naqaRequestRender === "function") naqaRequestRender({ delay: 40 });
+          else if (typeof render === "function") render();
+        } catch (e) {}
       };
       if (typeof w.naqaHydrateFsImages === "function") {
         w.naqaHydrateFsImages().then(done).catch(done);

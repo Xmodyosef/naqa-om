@@ -1,19 +1,41 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl"><head>
-<meta charset="UTF-8" />
-<meta name="robots" content="noindex" />
-<title>نقاء</title>
-<script>
-(function () {
-  var go = function () { location.replace("admin.html?v=20261125stable1"); };
-  try {
-    if ("serviceWorker" in navigator) {
-      navigator.serviceWorker.getRegistrations().then(function (r) {
-        return Promise.all(r.map(function (x) { return x.unregister(); }));
-      }).catch(function () {}).then(go);
-    } else go();
-  } catch (e) { go(); }
-  setTimeout(go, 200);
-})();
-</script>
-</head><body></body></html>
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta http-equiv="Cache-Control" content="no-store" />
+  <title>مسح الكاش · نقاء</title>
+</head>
+<body style="font-family:system-ui;padding:24px;direction:rtl">
+  <p>جاري مسح الكاش والـ Service Worker…</p>
+  <script>
+  (function () {
+    var goStore = function () { location.replace("index.html?v=20261127c21"); };
+    var goAdmin = function () { location.replace("admin.html?v=20261127c21"); };
+    var q = (location.search || "").indexOf("admin") >= 0;
+    Promise.resolve()
+      .then(function () {
+        if (!("serviceWorker" in navigator)) return;
+        return navigator.serviceWorker.getRegistrations().then(function (list) {
+          return Promise.all(list.map(function (r) { return r.unregister(); }));
+        });
+      })
+      .then(function () {
+        if (!("caches" in window)) return;
+        return caches.keys().then(function (keys) {
+          return Promise.all(keys.map(function (k) { return caches.delete(k); }));
+        });
+      })
+      .then(function () {
+        try {
+          sessionStorage.removeItem("naqa_ov_pub_v2");
+          sessionStorage.removeItem("naqa_ov_pub_v1");
+          sessionStorage.removeItem("naqa_sw_retire_v4");
+        } catch (e) {}
+      })
+      .then(function () { q ? goAdmin() : goStore(); })
+      .catch(function () { q ? goAdmin() : goStore(); });
+  })();
+  </script>
+</body>
+</html>

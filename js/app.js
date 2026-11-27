@@ -516,11 +516,19 @@ function boot(){
     function naqaApplyOverrides(remote, opts){
       opts = opts || {};
       var map = (remote && typeof remote === "object") ? remote : {};
+      var sig = typeof naqaOverridesSig === "function" ? naqaOverridesSig(map) : "";
+      if (sig && sig === window.__naqaLastOvSig && opts.render !== true) {
+        /* identical to last applied — skip merge/render FOUC */
+        return;
+      }
       if (typeof mergeOverrides === "function") mergeOverrides(map);
       try {
         if (Object.keys(map).length) sessionStorage.setItem(OV_CACHE, JSON.stringify(map));
       } catch (e) {}
-      if (opts.render !== false && typeof render === "function") render();
+      window.__naqaLastOvSig = sig;
+      if (opts.render === false) return;
+      if (typeof naqaRequestRender === "function") naqaRequestRender({ delay: 32 });
+      else if (typeof render === "function") render();
     }
     /* Instant: last known public overrides (session) — kills flash of hidden items */
     try {
@@ -541,20 +549,32 @@ function boot(){
     } catch (e) {}
     render();
     applyRoute();
+    try { window.__naqaBootQuietUntil = Date.now() + 900; } catch (e) {}
     try{
       var sh=document.getElementById("sheet");
       if(!sh || !sh.classList.contains("show")) document.documentElement.classList.remove("sku-boot");
     }catch(e){}
-    /* Lazy product copy (desc/use/skin) — keeps first paint light */
-    fetch("data/products.detail.json?v=20261127c3").then(function(res){ return res.ok ? res.json() : null; }).then(function(d){
-      if (d && typeof naqaMergeProductDetails === "function") {
-        naqaMergeProductDetails(d);
-        try { if (typeof render === "function") render(); } catch (e) {}
-      }
+    /* Lazy product copy — merge quietly; re-render only if product sheet is open */
+    fetch("data/products.detail.json?v=20261127c21").then(function(res){ return res.ok ? res.json() : null; }).then(function(d){
+      if (!d || typeof naqaMergeProductDetails !== "function") return;
+      naqaMergeProductDetails(d);
+      try {
+        var sh = document.getElementById("sheet");
+        if (sh && sh.classList.contains("show") && typeof openProductId !== "undefined" && openProductId && typeof openSheet === "function") {
+          openSheet(openProductId, (typeof sheetMode !== "undefined" ? sheetMode : "full"), false);
+        }
+        /* no full-page render — first paint already correct */
+      } catch (e) {}
     }).catch(function(){});
-    /* Prefer Firestore via store-cloud-boot; also keep static file as fallback */
+    /* Static overrides fallback — skip render if signature unchanged (FOUC) */
     fetch("data/overrides.json?v="+Date.now()).then(function(res){ return res.ok ? res.json() : {}; }).then(function(j){
-      if (j && typeof j === "object" && Object.keys(j).length) naqaApplyOverrides(j);
+      if (!j || typeof j !== "object" || !Object.keys(j).length) return;
+      var sig = typeof naqaOverridesSig === "function" ? naqaOverridesSig(j) : "";
+      if (sig && sig === window.__naqaLastOvSig) return;
+      naqaApplyOverrides(j, { render: false });
+      window.__naqaLastOvSig = sig;
+      if (typeof naqaRequestRender === "function") naqaRequestRender({ delay: 48 });
+      else if (typeof render === "function") render();
     }).catch(function(){});
   }catch(err){
     const b=document.createElement("div");

@@ -1,5 +1,6 @@
 /* After store scripts: pull live price/stock/hide + reviews from Firestore (public read). */
 (function () {
+  var ran = 0;
   function ensureFb() {
     try {
       if (!window.NAQA_FIREBASE) return false;
@@ -22,11 +23,11 @@
       if (!Array.isArray(list) || !list.length) return;
       try { window.NAQA_REVIEWS = list; } catch (e) {}
       try {
+        /* Only refresh open product sheet — never full home re-render (FOUC) */
         if (typeof openProductId !== "undefined" && openProductId && typeof openSheet === "function") {
           var mode = (typeof sheetMode !== "undefined") ? sheetMode : "full";
-          if (mode !== "qv") openSheet(openProductId, mode, false);
-        } else if (typeof render === "function") {
-          render();
+          var sh = document.getElementById("sheet");
+          if (sh && sh.classList.contains("show") && mode !== "qv") openSheet(openProductId, mode, false);
         }
       } catch (e) {}
     }).catch(function () {});
@@ -39,7 +40,7 @@
     var bi = String(d.bankIban || "").trim();
     if (wa) {
       try { window.NAQA_WA = wa; window.WA_NUMBER = wa; } catch (e) {}
-      ["waFloat", "waHero", "waFooter"].forEach(function (id) {
+      ["waFloat", "waHero", "waFooter", "dockWa"].forEach(function (id) {
         var a = document.getElementById(id);
         if (a) a.href = "https://wa.me/" + wa;
       });
@@ -58,20 +59,19 @@
     }).catch(function () {});
   }
   function tick() {
+    if (ran > 2) return;
+    ran++;
     runOverrides();
     pullReviews();
     pullStoreContact();
   }
-  /* Immediate + short retries (Firebase SDK may still be initializing) */
+  /* One immediate + one retry only (was 3+ ticks → FOUC thrash) */
   tick();
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", function () {
-      tick();
-      setTimeout(tick, 200);
-      setTimeout(tick, 800);
+      setTimeout(tick, 350);
     });
   } else {
-    setTimeout(tick, 200);
-    setTimeout(tick, 800);
+    setTimeout(tick, 350);
   }
 })();

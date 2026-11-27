@@ -252,7 +252,37 @@ function isExactProductMatch(p, rawQ){
   return false;
 }
 
+var __naqaRenderTimer = 0;
+var __naqaLastOvSig = "";
+function naqaOverridesSig(map) {
+  try {
+    if (!map || typeof map !== "object") return "";
+    var keys = Object.keys(map).sort();
+    var parts = [];
+    for (var i = 0; i < keys.length; i++) {
+      var o = map[keys[i]] || {};
+      parts.push(keys[i] + ":" + (o.hidden ? 1 : 0) + ":" + (o.price != null ? o.price : "") + ":" + (o.stock != null ? o.stock : "") + ":" + (o.nameAr || o.nameEn || ""));
+    }
+    return parts.join("|");
+  } catch (e) { return String(Date.now()); }
+}
+/** Coalesce burst re-renders (cloud + detail + overrides) into one frame — kills FOUC thrash */
+function naqaRequestRender(opts) {
+  opts = opts || {};
+  if (opts.force) {
+    if (__naqaRenderTimer) { clearTimeout(__naqaRenderTimer); __naqaRenderTimer = 0; }
+    if (typeof render === "function") render();
+    return;
+  }
+  if (__naqaRenderTimer) return;
+  __naqaRenderTimer = setTimeout(function () {
+    __naqaRenderTimer = 0;
+    if (typeof render === "function") render();
+  }, opts.delay != null ? opts.delay : 32);
+}
 function render(){
+  try { document.documentElement.classList.add("naqa-hydrated"); } catch (e) {}
+
   applyLang();
   const q=query;
   const searching=!!(q && String(q).trim());

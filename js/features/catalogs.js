@@ -290,12 +290,10 @@ function naqaStartCampRails(){
 }
 
 
+/* Never strip product photos — cutouts ruined packaging. Always use originals. */
 var NAQA_HERO_CUTS = {};
 function naqaHeroImage(id, fallback) {
-  if (NAQA_HERO_CUTS[id] || NAQA_HERO_CUTS[Number(id)]) {
-    return { image: "media/hero-cutouts/p" + id + ".webp", fallback: fallback || "" };
-  }
-  return { image: fallback, fallback: "" };
+  return { image: fallback || "", fallback: "" };
 }
 
 function heroSwipeHTML() {

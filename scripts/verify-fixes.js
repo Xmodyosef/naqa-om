@@ -64,7 +64,7 @@ const heroSource = read("js/hero-swipe.js");
 const heroIndex = read("index.html");
 assert(heroIndex.indexOf('js/store.min.js') < heroIndex.indexOf('js/hero-swipe.js'), "hero enhancement loads after store bundle");
 assert(/catalogList\(id, 1\)/.test(heroSource), "hero hides campaigns with no available products");
-assert(/translate3d/.test(heroSource) && /naqaHeroAutoForever/.test(heroSource), "hero autoplay uses transform timer");
+assert(/translate3d/.test(heroSource) && /naqaHeroAutoForever/.test(heroSource) && /i - 1/.test(heroSource), "hero autoplay reverse forever");
 assert(/fetchpriority="high"/.test(heroSource), "first available hero image gets high fetch priority");
 assert(/aria-roledescription/.test(heroSource) && /ArrowRight/.test(heroSource), "hero is accessible by keyboard");
 assert(/NAQA_BANNER_HEROES/.test(heroSource) && /pimgs\(p\)/.test(heroSource), "hero uses real curated product images");

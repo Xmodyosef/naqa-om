@@ -70,8 +70,8 @@
 <meta name="application-name" content="نقاء | Naqa" />
 
 <title>نقاء · عناية ومكياج | Naqa Oman</title>
-<link rel="preload" href="css/store.min.css?v=20261128n" as="style" />
-<link rel="stylesheet" href="css/store.min.css?v=20261128n" />
+<link rel="preload" href="css/store.min.css?v=20261128p" as="style" />
+<link rel="stylesheet" href="css/store.min.css?v=20261128p" />
 <link rel="preload" as="image" href="media/hero-cutouts/p293.webp" fetchpriority="high" />
 <style id="naqa-hero-v2">
 #heroSlot{min-height:clamp(200px,calc(24vw + 16px),280px);padding:0;margin:0}
@@ -110,12 +110,12 @@
 }
 /* Original product photos — no cutout processing */
 .hero-slide-art img{
-  position:absolute!important;bottom:0!important;
-  width:20%!important;height:90%!important;max-width:none!important;max-height:100%!important;
+  position:absolute!important;bottom:0!important;top:auto!important;
+  width:20%!important;height:92%!important;max-width:none!important;max-height:100%!important;
   object-fit:contain!important;object-position:center bottom!important;
-  background:transparent!important;border-radius:10px!important;padding:0!important;margin:0!important;
-  box-shadow:none!important;border:0!important;
-  filter:drop-shadow(0 8px 8px rgba(20,8,12,.3))!important;
+  background:transparent!important;border:0!important;border-radius:0!important;padding:0!important;margin:0!important;
+  box-shadow:none!important;
+  filter:drop-shadow(0 10px 12px rgba(20,8,12,.32))!important;
   transform:none!important
 }
 .hero-slide-art img:nth-child(1){left:0%!important}
@@ -521,8 +521,8 @@ html.sku-boot #sheetCard{min-height:100vh;background:#fff}
 </div>
 <script defer src="data/products.min.js?v=20261127c23"></script>
 
-<script defer src="js/store.min.js?v=20261128n"></script>
-<script defer src="js/hero-swipe.js?v=20261128n"></script>
+<script defer src="js/store.min.js?v=20261128p"></script>
+<script defer src="js/hero-swipe.js?v=20261128p"></script>
 <script>
 /* Firebase after first paint so it does not compete with the hero image. */
 (function () {
@@ -537,11 +537,11 @@ html.sku-boot #sheetCard{min-height:100vh;background:#fff}
     });
   }
   function start() {
-    load("js/firebase-config.js?v=20261128n")
+    load("js/firebase-config.js?v=20261128p")
       .then(function () { return load("https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"); })
       .then(function () { return load("https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"); })
-      .then(function () { return load("js/cloud-overrides.js?v=20261128n"); })
-      .then(function () { return load("js/store-cloud-boot.js?v=20261128n"); })
+      .then(function () { return load("js/cloud-overrides.js?v=20261128p"); })
+      .then(function () { return load("js/store-cloud-boot.js?v=20261128p"); })
       .catch(function () {});
   }
   if (window.requestIdleCallback) requestIdleCallback(start, { timeout: 2500 });

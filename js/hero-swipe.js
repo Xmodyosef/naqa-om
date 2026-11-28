@@ -22,7 +22,10 @@ function heroSwipeHTML() {
       if (p && !p.hidden && typeof pimgs === "function") {
         var images = pimgs(p) || [];
         if (images[0] && candidates.length < 5) {
-          candidates.push({ product: p, image: images[0] });
+          var pic = (typeof naqaHeroImage === "function")
+            ? naqaHeroImage(productId, images[0])
+            : { image: images[0], fallback: "" };
+          candidates.push({ product: p, image: pic.image, fallback: pic.fallback || "" });
         }
       }
     });
@@ -32,7 +35,12 @@ function heroSwipeHTML() {
       more.forEach(function (p) {
         if (candidates.length >= 5 || !p || p.hidden || candidates.some(function (x) { return x.product.id === p.id; })) return;
         var images = typeof pimgs === "function" ? (pimgs(p) || []) : [];
-        if (images[0]) candidates.push({ product: p, image: images[0] });
+        if (images[0]) {
+          var pic2 = (typeof naqaHeroImage === "function")
+            ? naqaHeroImage(p.id, images[0])
+            : { image: images[0], fallback: "" };
+          candidates.push({ product: p, image: pic2.image, fallback: pic2.fallback || "" });
+        }
       });
     }
     if (!candidates.length) return;
@@ -43,9 +51,9 @@ function heroSwipeHTML() {
       var name = typeof pname === "function" ? pname(item.product) : (item.product.nameAr || item.product.nameEn || title);
       var loading = slides.length === 0 ? "eager" : "lazy";
       var priority = slides.length === 0 && index === 0 ? ' fetchpriority="high"' : "";
-      /* Original product photo only — never hero-cutouts */
+      var fb = item.fallback ? (' onerror="this.onerror=null;this.src=\'' + esc(item.fallback) + '\'"') : '';
       return '<img src="' + esc(item.image) + '" alt="' + esc(name) + '" loading="' + loading +
-        '" decoding="async" width="520" height="520"' + priority + ' draggable="false">';
+        '" decoding="async" width="520" height="520"' + priority + ' draggable="false"' + fb + '>';
     }).join("");
 
     slides.push(

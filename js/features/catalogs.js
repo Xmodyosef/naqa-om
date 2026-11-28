@@ -290,9 +290,12 @@ function naqaStartCampRails(){
 }
 
 
-/* Never strip product photos — cutouts ruined packaging. Always use originals. */
-var NAQA_HERO_CUTS = {};
+var NAQA_HERO_CUTS = {1:1, 2:1, 3:1, 4:1, 8:1, 17:1, 24:1, 34:1, 70:1, 84:1, 88:1, 100:1, 111:1, 113:1, 122:1, 154:1, 158:1, 166:1, 264:1, 293:1};
 function naqaHeroImage(id, fallback) {
+  /* Professional rembg cutouts first; original product photo as fallback only. */
+  if (NAQA_HERO_CUTS[id] || NAQA_HERO_CUTS[Number(id)]) {
+    return { image: "media/hero-cutouts/p" + id + ".webp", fallback: fallback || "" };
+  }
   return { image: fallback || "", fallback: "" };
 }
 

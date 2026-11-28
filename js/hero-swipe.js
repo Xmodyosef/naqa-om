@@ -75,10 +75,12 @@ function heroSwipeHTML() {
     esc(hint) + '" aria-live="off">' + slides.join("") + '</div></section>';
 }
 
-function bindHeroSwipe() {
+function bindHeroSwipe(force) {
   var root = document.getElementById("heroSwipe");
   var track = document.getElementById("heroSwipeTrack");
   if (!root || !track) return;
+  /* Keep a live autoplay — re-render often calls bind again. */
+  if (!force && root.__naqaHeroBound && root.__naqaHeroTimer) return;
   if (root.__naqaHeroTimer) {
     try { clearInterval(root.__naqaHeroTimer); } catch (e) {}
     root.__naqaHeroTimer = 0;
@@ -189,26 +191,17 @@ function bindHeroSwipe() {
 }
 
 (function installNaqaHero() {
-  function install() {
+  function install(force) {
     try {
-      var root = document.getElementById("heroSwipe");
-      if (root) {
-        root.__naqaHeroBound = false;
-        if (root.__naqaHeroTimer) {
-          try { clearInterval(root.__naqaHeroTimer); } catch (e) {}
-          root.__naqaHeroTimer = 0;
-        }
-      }
-      if (typeof bindHeroSwipe === "function") bindHeroSwipe();
+      if (typeof bindHeroSwipe === "function") bindHeroSwipe(!!force);
     } catch (e) {}
   }
   if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", install, { once: true });
+    document.addEventListener("DOMContentLoaded", function () { install(true); }, { once: true });
   } else {
-    install();
+    install(true);
   }
-  /* Boot may re-render the home after cloud load — rebind then. */
-  document.addEventListener("naqa:home-rendered", install);
-  setTimeout(install, 0);
-  setTimeout(install, 1200);
+  setTimeout(function () { install(true); }, 0);
+  /* One late pass if boot painted after us; do not keep resetting. */
+  setTimeout(function () { install(false); }, 1500);
 })();

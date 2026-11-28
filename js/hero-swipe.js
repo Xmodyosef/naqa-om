@@ -79,18 +79,11 @@ function bindHeroSwipe(force) {
   var root = document.getElementById("heroSwipe");
   var track = document.getElementById("heroSwipeTrack");
   if (!root || !track) return;
-  /* Keep a live autoplay — re-render often calls bind again. */
-  if (!force && root.__naqaHeroBound && root.__naqaHeroTimer) return;
-  if (root.__naqaHeroTimer) {
-    try { clearInterval(root.__naqaHeroTimer); } catch (e) {}
-    root.__naqaHeroTimer = 0;
-  }
-  root.__naqaHeroBound = true;
 
   var slides = Array.prototype.slice.call(track.querySelectorAll(".hero-slide"));
   if (!slides.length) return;
 
-  /* Transform carousel — works on iOS where scrollLeft autoplay often fails. */
+  /* Layout once — autoplay is a separate forever timer. */
   track.style.display = "flex";
   track.style.width = "100%";
   track.style.overflow = "visible";
@@ -102,41 +95,42 @@ function bindHeroSwipe(force) {
     slide.style.minWidth = "100%";
   });
 
-  var index = 0;
-  var resumeAt = 0;
-  var dragging = false;
+  if (!force && root.__naqaHeroUiBound) return;
+  root.__naqaHeroUiBound = true;
+
   var startX = 0;
   var startY = 0;
   var dx = 0;
-  var suppressClickUntil = 0;
+  var dragging = false;
   var pointerId = null;
+  var suppressClickUntil = 0;
 
-  function motionOff() {
-    try { return window.matchMedia("(prefers-reduced-motion: reduce)").matches; } catch (e) { return false; }
+  function idx() {
+    return Number(root.dataset.naqaIdx || 0) || 0;
   }
-  function paint() {
-    slides.forEach(function (slide, i) {
-      if (i === index) slide.setAttribute("aria-current", "true");
+  function setIdx(i, animate) {
+    var n = slides.length;
+    i = ((i % n) + n) % n;
+    root.dataset.naqaIdx = String(i);
+    track.style.transition = animate
+      ? "transform .5s cubic-bezier(.22,.61,.36,1)"
+      : "none";
+    track.style.transform = "translate3d(" + (-i * 100) + "%,0,0)";
+    slides.forEach(function (slide, j) {
+      if (j === i) slide.setAttribute("aria-current", "true");
       else slide.removeAttribute("aria-current");
     });
   }
-  function show(i, animate) {
-    var count = slides.length;
-    index = ((i % count) + count) % count;
-    if (animate && !motionOff()) {
-      track.style.transition = "transform .55s cubic-bezier(.22,.61,.36,1)";
-    } else {
-      track.style.transition = "none";
-    }
-    track.style.transform = "translate3d(" + (-index * 100) + "%,0,0)";
-    paint();
-  }
-  show(0, false);
+  if (root.dataset.naqaIdx == null) setIdx(0, false);
+  else setIdx(idx(), false);
 
-  root.__naqaHeroTimer = setInterval(function () {
-    if (Date.now() < resumeAt || document.hidden || motionOff() || dragging || slides.length < 2) return;
-    show(index + 1, true);
-  }, 3000);
+  function hold(ms) {
+    root.dataset.naqaHold = "1";
+    clearTimeout(root.__naqaHoldT);
+    root.__naqaHoldT = setTimeout(function () {
+      root.dataset.naqaHold = "0";
+    }, ms || 1800);
+  }
 
   track.addEventListener("pointerdown", function (event) {
     if (event.pointerType === "mouse" && event.button !== 0) return;
@@ -145,39 +139,38 @@ function bindHeroSwipe(force) {
     startX = event.clientX;
     startY = event.clientY;
     dx = 0;
-    resumeAt = Date.now() + 5000;
+    hold(6000);
     track.style.transition = "none";
     try { track.setPointerCapture(event.pointerId); } catch (e) {}
   }, { passive: true });
   track.addEventListener("pointermove", function (event) {
     if (!dragging || pointerId !== event.pointerId) return;
     dx = event.clientX - startX;
-    var dy = event.clientY - startY;
-    if (Math.abs(dx) < 6 && Math.abs(dy) < 6) return;
     var w = root.clientWidth || 1;
-    track.style.transform = "translate3d(" + ((-index * 100) + (dx / w) * 100) + "%,0,0)";
+    var i = idx();
+    track.style.transform = "translate3d(" + ((-i * 100) + (dx / w) * 100) + "%,0,0)";
   }, { passive: true });
   function endDrag(event) {
     if (!dragging) return;
     if (event && pointerId != null && event.pointerId !== pointerId) return;
     dragging = false;
     pointerId = null;
-    if (Math.abs(dx) > 40) {
-      suppressClickUntil = Date.now() + 450;
-      show(index + (dx < 0 ? 1 : -1), true);
+    if (Math.abs(dx) > 36) {
+      suppressClickUntil = Date.now() + 400;
+      setIdx(idx() + (dx < 0 ? 1 : -1), true);
     } else {
-      show(index, true);
+      setIdx(idx(), true);
     }
-    resumeAt = Date.now() + 1600;
+    hold(1600);
     dx = 0;
   }
   track.addEventListener("pointerup", endDrag, { passive: true });
   track.addEventListener("pointercancel", endDrag, { passive: true });
   track.addEventListener("keydown", function (event) {
-    if (event.key === "ArrowRight") { event.preventDefault(); show(index + 1, true); resumeAt = Date.now() + 2000; }
-    else if (event.key === "ArrowLeft") { event.preventDefault(); show(index - 1, true); resumeAt = Date.now() + 2000; }
-    else if (event.key === "Home") { event.preventDefault(); show(0, true); }
-    else if (event.key === "End") { event.preventDefault(); show(slides.length - 1, true); }
+    if (event.key === "ArrowRight") { event.preventDefault(); setIdx(idx() + 1, true); hold(2000); }
+    else if (event.key === "ArrowLeft") { event.preventDefault(); setIdx(idx() - 1, true); hold(2000); }
+    else if (event.key === "Home") { event.preventDefault(); setIdx(0, true); }
+    else if (event.key === "End") { event.preventDefault(); setIdx(slides.length - 1, true); }
   });
   track.addEventListener("click", function (event) {
     if (Date.now() >= suppressClickUntil) return;
@@ -185,10 +178,43 @@ function bindHeroSwipe(force) {
     event.stopPropagation();
     suppressClickUntil = 0;
   }, true);
-  document.addEventListener("visibilitychange", function () {
-    resumeAt = document.hidden ? Date.now() + 600000 : Date.now() + 800;
-  });
 }
+
+/* One global autoplay — survives re-renders and re-binds. */
+(function naqaHeroAutoForever() {
+  if (window.__naqaHeroAutoForever) return;
+  window.__naqaHeroAutoForever = true;
+  setInterval(function () {
+    try {
+      var root = document.getElementById("heroSwipe");
+      var track = document.getElementById("heroSwipeTrack");
+      if (!root || !track || document.hidden) return;
+      if (root.dataset.naqaHold === "1") return;
+      try {
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+      } catch (e) {}
+      var slides = track.querySelectorAll(".hero-slide");
+      var n = slides.length;
+      if (n < 2) return;
+      if (track.style.display !== "flex") {
+        track.style.display = "flex";
+        track.style.width = "100%";
+        Array.prototype.forEach.call(slides, function (s) {
+          s.style.flex = "0 0 100%";
+          s.style.minWidth = "100%";
+        });
+      }
+      var i = (Number(root.dataset.naqaIdx || 0) + 1) % n;
+      root.dataset.naqaIdx = String(i);
+      track.style.transition = "transform .5s cubic-bezier(.22,.61,.36,1)";
+      track.style.transform = "translate3d(" + (-i * 100) + "%,0,0)";
+      Array.prototype.forEach.call(slides, function (s, j) {
+        if (j === i) s.setAttribute("aria-current", "true");
+        else s.removeAttribute("aria-current");
+      });
+    } catch (e) {}
+  }, 2800);
+})();
 
 (function installNaqaHero() {
   function install(force) {
@@ -202,6 +228,6 @@ function bindHeroSwipe(force) {
     install(true);
   }
   setTimeout(function () { install(true); }, 0);
-  /* One late pass if boot painted after us; do not keep resetting. */
-  setTimeout(function () { install(false); }, 1500);
+  setTimeout(function () { install(false); }, 800);
+  setTimeout(function () { install(false); }, 2000);
 })();

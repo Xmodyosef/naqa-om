@@ -59,7 +59,7 @@ function heroSwipeHTML() {
       '<button type="button" class="hero-slide" data-tone="' + esc(c.tone || "all") +
         '" data-open-catalog="' + esc(c.id) + '" aria-label="' + esc(title) + '">' +
         '<span class="hero-slide-art" aria-hidden="true">' + art + '</span>' +
-        '<span class="hero-slide-copy"><strong>' + esc(title) + '</strong>' +
+        '<span class="hero-slide-copy"><span class="hero-kicker">' + (en ? "Naqa" : "نقاء") + '</span><strong>' + esc(title) + '</strong>' +
         (subtitle ? '<small>' + esc(subtitle) + '</small>' : '') +
         '<em>' + (en ? "Explore collection" : "اكتشفي المجموعة") + '</em></span>' +
       '</button>'

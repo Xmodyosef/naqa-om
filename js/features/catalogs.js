@@ -421,36 +421,69 @@ function naqaHomeSurfaceSig(){
 function renderHomeCatalogs(force){
   var box = document.getElementById("shelves");
   if(!box) return;
+  var slot = document.getElementById("heroSlot");
   if(!isHomeCatalogView()){
     /* Park the home surface — never destroy the banner (return was broken). */
     var parked = document.getElementById("heroSwipe");
     if (parked) {
       parked.hidden = true;
       parked.setAttribute("aria-hidden", "true");
+      if (parked.dataset) parked.dataset.naqaHoldUntil = String(Date.now() + 400);
     }
+    if (slot) slot.hidden = true;
     box.hidden = true;
     return;
   }
+  if (slot) slot.hidden = false;
   var sig = naqaHomeSurfaceSig();
   var hero = document.getElementById("heroSwipe");
   var home = document.getElementById("homeCatalog");
-  var slot = document.getElementById("heroSlot");
-  if (!force && home && hero && hero.querySelector(".hero-slide-art") && box.__naqaHomeSig === sig) {
-    /* Already painted — just unhide and re-bind motion */
+  if (!force && hero && hero.querySelector(".hero-slide-art") && box.__naqaHomeSig === sig) {
+    /* Already painted — unhide banner + rails, keep the same carousel node. */
     box.hidden = false;
     hero.hidden = false;
     hero.removeAttribute("aria-hidden");
+    if (hero.dataset) hero.dataset.naqaHoldUntil = String(Date.now() + 200);
     if (slot && hero.parentNode !== slot) slot.appendChild(hero);
-    try { if (typeof bindHeroSwipe === "function") bindHeroSwipe(false); } catch (e) {}
+    if (!home) {
+      var enKeep = (typeof lang !== "undefined" && lang === "en");
+      var rails = '<div class="home-campaigns home-rails" id="homeCatalog">';
+      getHomeCampaigns().forEach(function(c){
+        var list = c.list || [];
+        if(!list.length) return;
+        var title = enKeep ? c.en : c.ar;
+        var sub = enKeep ? c.subEn : c.subAr;
+        var cta = enKeep ? c.ctaEn : c.ctaAr;
+        var openAttr = ' data-open-catalog="'+esc(c.id)+'"';
+        rails += '<section class="campaign" id="camp-'+esc(c.id)+'">'
+          + '<div class="campaign-head">'
+          + '<div><h2>'+esc(title)+'</h2>'
+          + (sub ? '<p>'+esc(sub)+'</p>' : '')
+          + '</div>'
+          + '<button type="button" class="campaign-all"'+openAttr+'>'+esc(cta)+'</button>'
+          + '</div>'
+          + '<div class="campaign-rail" data-camp="'+esc(c.id)+'">'
+          + '<div class="campaign-products" role="list">'
+          + list.slice(0, 8).map(campaignProductHTML).join("")
+          + '</div></div>'
+          + '</section>';
+      });
+      rails += '</div>';
+      box.innerHTML = rails;
+    }
+    try { if (typeof bindHeroSwipe === "function") bindHeroSwipe(true); } catch (e) {}
     return;
   }
-  /* Full rebuild */
-  if (hero) hero.remove();
+  /* Full rebuild — keep a healthy parked hero if present (unless force). */
+  if (hero && (force || !hero.querySelector(".hero-slide-art"))) hero.remove();
   box.hidden = false;
   box.__naqaHomeSig = sig;
   var en = (typeof lang !== "undefined" && lang === "en");
   var html = '<div class="home-campaigns home-rails" id="homeCatalog">';
-  html += heroSwipeHTML();
+  var keepHero = document.getElementById("heroSwipe");
+  if (!(keepHero && keepHero.querySelector(".hero-slide-art"))) {
+    html += heroSwipeHTML();
+  }
 
   getHomeCampaigns().forEach(function(c){
     var list = c.list || [];
@@ -477,14 +510,16 @@ function renderHomeCatalogs(force){
   html += '</div>';
   box.innerHTML = html;
   var swipe = document.getElementById("heroSwipe");
-  var slot = document.getElementById("heroSlot");
   if (swipe && slot) {
+    swipe.hidden = false;
+    swipe.removeAttribute("aria-hidden");
+    if (swipe.dataset) swipe.dataset.naqaHoldUntil = String(Date.now() + 200);
     if (swipe.parentNode !== slot) slot.appendChild(swipe);
   } else {
     var main = document.getElementById("main");
     if (swipe && main && swipe.parentNode !== main) main.insertBefore(swipe, main.firstChild);
   }
-  try{ bindHeroSwipe(); }catch(e){}
+  try{ bindHeroSwipe(true); }catch(e){}
 }
 
 function renderShelves(){

@@ -23,18 +23,18 @@ function heroSwipeHTML() {
       var p = byId[String(productId)];
       if (p && !p.hidden && typeof pimgs === "function") {
         var images = pimgs(p) || [];
-        if (images[0] && candidates.length < 3) {
+        if (images[0] && candidates.length < 5) {
           var pic = naqaHeroImage(productId, images[0]);
           candidates.push({ product: p, image: pic.image, fallback: pic.fallback });
         }
       }
     });
 
-    if (candidates.length < 3) {
+    if (candidates.length < 5) {
       var fallback = [];
-      try { fallback = catalogList(id, 8) || []; } catch (e) { fallback = []; }
+      try { fallback = catalogList(id, 12) || []; } catch (e) { fallback = []; }
       fallback.forEach(function (p) {
-        if (candidates.length >= 3 || !p || p.hidden || candidates.some(function (x) { return x.product.id === p.id; })) return;
+        if (candidates.length >= 5 || !p || p.hidden || candidates.some(function (x) { return x.product.id === p.id; })) return;
         var images = typeof pimgs === "function" ? pimgs(p) || [] : [];
         if (images[0]) {
           var pic2 = naqaHeroImage(p.id, images[0]);
@@ -78,121 +78,127 @@ function heroSwipeHTML() {
 function bindHeroSwipe() {
   var root = document.getElementById("heroSwipe");
   var track = document.getElementById("heroSwipeTrack");
-  if (!root || !track || root.__naqaHeroBound) return;
+  if (!root || !track) return;
+  if (root.__naqaHeroTimer) {
+    try { clearInterval(root.__naqaHeroTimer); } catch (e) {}
+    root.__naqaHeroTimer = 0;
+  }
+  root.__naqaHeroBound = true;
 
   var slides = Array.prototype.slice.call(track.querySelectorAll(".hero-slide"));
   if (!slides.length) return;
-  root.__naqaHeroBound = true;
 
+  /* Transform carousel — works on iOS where scrollLeft autoplay often fails. */
+  track.style.display = "flex";
+  track.style.width = "100%";
+  track.style.overflow = "visible";
+  track.style.scrollSnapType = "none";
+  track.style.willChange = "transform";
+  slides.forEach(function (slide) {
+    slide.style.flex = "0 0 100%";
+    slide.style.width = "100%";
+    slide.style.minWidth = "100%";
+  });
+
+  var index = 0;
+  var resumeAt = 0;
+  var dragging = false;
   var startX = 0;
   var startY = 0;
-  var pointerId = null;
-  var moved = false;
+  var dx = 0;
   var suppressClickUntil = 0;
-  var raf = 0;
+  var pointerId = null;
 
-  function currentIndex() {
-    var width = track.clientWidth || 1;
-    return Math.max(0, Math.min(slides.length - 1, Math.round(track.scrollLeft / width)));
-  }
-  function go(index) {
-    var width = track.clientWidth || 1;
-    var count = slides.length || 1;
-    var next = ((index % count) + count) % count;
-    var dest = next * width;
-    var start = track.scrollLeft;
-    var reduce = false;
-    try { reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches; } catch (e) {}
-    if (reduce || Math.abs(dest - start) < 2) {
-      track.scrollLeft = dest;
-      return;
-    }
-    var t0 = 0;
-    var dur = 620;
-    track.style.scrollSnapType = "none";
-    function frame(now) {
-      if (!t0) t0 = now;
-      var p = Math.min(1, (now - t0) / dur);
-      var e = 1 - Math.pow(1 - p, 3);
-      track.scrollLeft = start + (dest - start) * e;
-      if (p < 1) requestAnimationFrame(frame);
-      else {
-        track.scrollLeft = dest;
-        track.style.scrollSnapType = "x mandatory";
-      }
-    }
-    requestAnimationFrame(frame);
+  function motionOff() {
+    try { return window.matchMedia("(prefers-reduced-motion: reduce)").matches; } catch (e) { return false; }
   }
   function paint() {
-    raf = 0;
-    var active = currentIndex();
-    slides.forEach(function (slide, index) {
-      if (index === active) slide.setAttribute("aria-current", "true");
+    slides.forEach(function (slide, i) {
+      if (i === index) slide.setAttribute("aria-current", "true");
       else slide.removeAttribute("aria-current");
     });
   }
+  function show(i, animate) {
+    var count = slides.length;
+    index = ((i % count) + count) % count;
+    if (animate && !motionOff()) {
+      track.style.transition = "transform .55s cubic-bezier(.22,.61,.36,1)";
+    } else {
+      track.style.transition = "none";
+    }
+    track.style.transform = "translate3d(" + (-index * 100) + "%,0,0)";
+    paint();
+  }
+  show(0, false);
 
-  track.addEventListener("scroll", function () {
-    if (!raf) raf = requestAnimationFrame(paint);
-  }, { passive: true });
-  track.addEventListener("keydown", function (event) {
-    var index = currentIndex();
-    if (event.key === "ArrowRight") { event.preventDefault(); go(index + 1); }
-    else if (event.key === "ArrowLeft") { event.preventDefault(); go(index - 1); }
-    else if (event.key === "Home") { event.preventDefault(); go(0); }
-    else if (event.key === "End") { event.preventDefault(); go(slides.length - 1); }
-  });
+  root.__naqaHeroTimer = setInterval(function () {
+    if (Date.now() < resumeAt || document.hidden || motionOff() || dragging || slides.length < 2) return;
+    show(index + 1, true);
+  }, 3000);
+
   track.addEventListener("pointerdown", function (event) {
+    if (event.pointerType === "mouse" && event.button !== 0) return;
     pointerId = event.pointerId;
+    dragging = true;
     startX = event.clientX;
     startY = event.clientY;
-    moved = false;
+    dx = 0;
+    resumeAt = Date.now() + 5000;
+    track.style.transition = "none";
+    try { track.setPointerCapture(event.pointerId); } catch (e) {}
   }, { passive: true });
   track.addEventListener("pointermove", function (event) {
-    if (pointerId !== event.pointerId) return;
-    var dx = Math.abs(event.clientX - startX);
-    var dy = Math.abs(event.clientY - startY);
-    if (dx > 12 && dx > dy) moved = true;
+    if (!dragging || pointerId !== event.pointerId) return;
+    dx = event.clientX - startX;
+    var dy = event.clientY - startY;
+    if (Math.abs(dx) < 6 && Math.abs(dy) < 6) return;
+    var w = root.clientWidth || 1;
+    track.style.transform = "translate3d(" + ((-index * 100) + (dx / w) * 100) + "%,0,0)";
   }, { passive: true });
-  track.addEventListener("pointerup", function (event) {
-    if (pointerId !== event.pointerId) return;
-    if (moved) suppressClickUntil = Date.now() + 450;
+  function endDrag(event) {
+    if (!dragging) return;
+    if (event && pointerId != null && event.pointerId !== pointerId) return;
+    dragging = false;
     pointerId = null;
-  }, { passive: true });
-  track.addEventListener("pointercancel", function () {
-    pointerId = null;
-    moved = false;
-  }, { passive: true });
+    if (Math.abs(dx) > 40) {
+      suppressClickUntil = Date.now() + 450;
+      show(index + (dx < 0 ? 1 : -1), true);
+    } else {
+      show(index, true);
+    }
+    resumeAt = Date.now() + 1600;
+    dx = 0;
+  }
+  track.addEventListener("pointerup", endDrag, { passive: true });
+  track.addEventListener("pointercancel", endDrag, { passive: true });
+  track.addEventListener("keydown", function (event) {
+    if (event.key === "ArrowRight") { event.preventDefault(); show(index + 1, true); resumeAt = Date.now() + 2000; }
+    else if (event.key === "ArrowLeft") { event.preventDefault(); show(index - 1, true); resumeAt = Date.now() + 2000; }
+    else if (event.key === "Home") { event.preventDefault(); show(0, true); }
+    else if (event.key === "End") { event.preventDefault(); show(slides.length - 1, true); }
+  });
   track.addEventListener("click", function (event) {
     if (Date.now() >= suppressClickUntil) return;
     event.preventDefault();
     event.stopPropagation();
     suppressClickUntil = 0;
   }, true);
-  paint();
-  var resumeAt = 0;
-  function motionOff() {
-    try { return window.matchMedia("(prefers-reduced-motion: reduce)").matches; } catch (e) { return false; }
-  }
-  function stepNext() {
-    if (Date.now() < resumeAt || motionOff() || document.hidden || slides.length < 2) return;
-    go(currentIndex() + 1);
-  }
-  if (!motionOff() && slides.length > 1) setInterval(stepNext, 3200);
-  root.addEventListener("pointerdown", function () { resumeAt = Date.now() + 5000; }, { passive: true });
-  root.addEventListener("pointerup", function () { resumeAt = Date.now() + 1400; }, { passive: true });
-  root.addEventListener("pointercancel", function () { resumeAt = Date.now() + 1400; });
   document.addEventListener("visibilitychange", function () {
-    resumeAt = document.hidden ? Date.now() + 600000 : 0;
+    resumeAt = document.hidden ? Date.now() + 600000 : Date.now() + 800;
   });
 }
 
 (function installNaqaHero() {
-  /* Redefine on window for any stale callers; do NOT call renderHomeCatalogs again (flash). */
   function install() {
     try {
       var root = document.getElementById("heroSwipe");
-      if (root) root.__naqaHeroBound = false;
+      if (root) {
+        root.__naqaHeroBound = false;
+        if (root.__naqaHeroTimer) {
+          try { clearInterval(root.__naqaHeroTimer); } catch (e) {}
+          root.__naqaHeroTimer = 0;
+        }
+      }
       if (typeof bindHeroSwipe === "function") bindHeroSwipe();
     } catch (e) {}
   }
@@ -201,4 +207,8 @@ function bindHeroSwipe() {
   } else {
     install();
   }
+  /* Boot may re-render the home after cloud load — rebind then. */
+  document.addEventListener("naqa:home-rendered", install);
+  setTimeout(install, 0);
+  setTimeout(install, 1200);
 })();

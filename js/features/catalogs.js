@@ -1,4 +1,4 @@
-var NAQA_BANNER_HEROES = {"straight": [329, 310, 332], "tools": [193, 328, 333], "olaplex": [171, 172, 299], "sheglam": [84, 154, 158], "eyes": [116, 111, 93], "lips": [157, 204, 133], "eoy": [1, 71, 122], "face": [72, 197, 80], "hot": [293, 166, 264], "serum": [105, 185, 103], "hair": [189, 188, 176], "new": [255, 275, 291], "korean": [60, 148, 65], "care": [76, 67, 27], "u10": [113, 88, 34], "all": [82, 47, 32]};
+var NAQA_BANNER_HEROES = {"straight": [329, 310, 332], "tools": [193, 328, 333], "olaplex": [171, 172, 299], "sheglam": [84, 154, 158, 88, 122], "eyes": [116, 111, 93], "lips": [157, 204, 133], "eoy": [1, 3, 4, 2, 70], "face": [72, 197, 80], "hot": [293, 166, 264, 1, 3], "serum": [105, 185, 103], "hair": [189, 188, 176], "new": [255, 275, 291], "korean": [3, 24, 17, 8, 34], "care": [76, 67, 27], "u10": [113, 88, 34, 100, 111], "all": [82, 47, 32]};
 var catalogBrowse = false;
 /* Home catalogs — clean tile grid (Nice One / Nazih style). No product dumps on home. */
 var currentCatalog = "";
@@ -283,7 +283,7 @@ function naqaStartCampRails(){
 }
 
 
-var NAQA_HERO_CUTS = {1:1,34:1,60:1,65:1,71:1,84:1,88:1,113:1,122:1,148:1,154:1,158:1,166:1,264:1,293:1};
+var NAQA_HERO_CUTS = {1:1,2:1,3:1,4:1,8:1,17:1,24:1,34:1,70:1,71:1,84:1,88:1,100:1,111:1,113:1,122:1,154:1,158:1,166:1,264:1,293:1,148:1,65:1,60:1};
 function naqaHeroImage(id, fallback) {
   if (NAQA_HERO_CUTS[id] || NAQA_HERO_CUTS[Number(id)]) {
     return { image: "media/hero-cutouts/p" + id + ".webp", fallback: fallback || "" };
@@ -315,18 +315,18 @@ function heroSwipeHTML() {
       var p = byId[String(productId)];
       if (p && !p.hidden && typeof pimgs === "function") {
         var images = pimgs(p) || [];
-        if (images[0] && candidates.length < 3) {
+        if (images[0] && candidates.length < 5) {
           var pic = naqaHeroImage(productId, images[0]);
           candidates.push({ product: p, image: pic.image, fallback: pic.fallback });
         }
       }
     });
 
-    if (candidates.length < 3) {
+    if (candidates.length < 5) {
       var fallback = [];
-      try { fallback = catalogList(id, 8) || []; } catch (e) { fallback = []; }
+      try { fallback = catalogList(id, 12) || []; } catch (e) { fallback = []; }
       fallback.forEach(function (p) {
-        if (candidates.length >= 3 || !p || p.hidden || candidates.some(function (x) { return x.product.id === p.id; })) return;
+        if (candidates.length >= 5 || !p || p.hidden || candidates.some(function (x) { return x.product.id === p.id; })) return;
         var images = typeof pimgs === "function" ? pimgs(p) || [] : [];
         if (images[0]) {
           var pic2 = naqaHeroImage(p.id, images[0]);

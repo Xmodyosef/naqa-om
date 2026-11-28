@@ -36,7 +36,9 @@ header{position:sticky;top:0;z-index:60;background:rgba(253,248,246,.94);
 .search .search-ico{color:var(--muted)}
 .search-clear{width:34px;height:34px;border-radius:50%;flex-shrink:0;font-size:1.2rem;line-height:1;color:var(--muted);display:grid;place-items:center}
 .search-clear:hover{background:var(--line)}
-.search-go{flex-shrink:0;height:36px;padding:0 14px;border-radius:999px;background:var(--rose-deep);color:#fff;font-weight:800;font-size:.88rem;border:none}
+.search-go{flex-shrink:0;min-height:44px;height:44px;min-width:76px;padding:0 16px;border-radius:999px;background:var(--rose-deep);color:#fff;font-weight:800;font-size:1rem;border:none;display:inline-flex;align-items:center;justify-content:center;gap:6px}
+.search-go::before{content:"⌕";font-size:1.05rem;line-height:1}
+.search-go:active{transform:scale(.97)}
 .lang-btn{height:40px;min-width:42px;padding:0 8px;border-radius:12px;background:var(--card);
   border:1px solid var(--line);font-weight:800;flex-shrink:0}
 .icon-btn{width:44px;height:44px;border-radius:12px;background:var(--card);border:1px solid var(--line);
@@ -224,7 +226,7 @@ html[data-theme="night"] .search input::placeholder{
 }
 html[data-theme="night"] .search .search-ico{color:#c9b8ad;opacity:1}
 html[data-theme="night"] .search-clear{color:#c9b8ad}
-html[data-theme="night"] .search-go{background:var(--rose-deep);color:#1a1210}
+html[data-theme="night"] .search-go{background:#c45a74;color:#fff}
 html[data-theme="night"] .hero{
   background:linear-gradient(135deg,#1c1714 0%,#2a1f1c 55%,#241a18 100%);
   border-color:var(--line);
@@ -951,13 +953,20 @@ header {
 html[data-theme="night"] .cat-cover-art img{ background:transparent; }
 
 
+.back-ico{display:inline-grid;place-items:center;font-size:1.25rem;line-height:1;font-weight:800}
+.back-ico::before{content:"‹"}
+html[dir="rtl"] .back-ico::before{content:"›"}
 .cat-back{
-  display:inline-grid; place-items:center;
-  width:36px; height:36px; border-radius:12px;
+  display:inline-flex; align-items:center; gap:4px;
+  min-height:44px; height:44px; padding:0 14px 0 10px;
+  border-radius:999px;
   border:1px solid var(--line); background:var(--card);
-  font-size:1.2rem; font-weight:800; color:var(--rose-deep);
-  vertical-align:middle; margin-inline-end:4px; cursor:pointer;
+  font-size:.95rem; font-weight:800; color:var(--rose-deep);
+  vertical-align:middle; margin-inline-end:8px; cursor:pointer;
+  font-family:inherit;
 }
+.cat-back:active{transform:scale(.97)}
+html[data-theme="night"] .cat-back{background:#241e1a;color:#fff}
 .section-head[hidden], #grid[hidden], #priceBar[hidden], #shelves[hidden]{
   display:none!important;
 }

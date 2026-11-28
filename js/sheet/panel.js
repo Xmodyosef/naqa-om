@@ -171,7 +171,7 @@ async function openSheet(id, mode, reset){
     </div>`;
   /* ترتيب: صورة أولاً → اسم+ماركة+تقييم → سعر → زر ثابت → تفاصيل */
   $("#sheetCard").innerHTML=`
-    <button class="text-back" id="closeSheet" type="button" aria-label="${T("back")}">‹ ${T("back")}</button>
+    <button class="text-back" id="closeSheet" type="button" aria-label="${T("back")}"><span class="back-ico" aria-hidden="true"></span>${T("back")}</button>
     ${carouselHTML(p, galleryIndex)}
     <div class="sheet-head">
       <h3 id="sheetTitle">${esc(pname(p))}</h3>

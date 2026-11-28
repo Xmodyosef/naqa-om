@@ -369,7 +369,8 @@ function render(){
         else if(currentBrand) label=(lang==="en"?"Brand · ":"ماركة · ")+currentBrand;
         else if(currentCat && currentCat!=="all") label=T(catLabel[currentCat]||"all");
         else label=T("products");
-        var backBtn='<button type="button" class="cat-back" id="backCatalogs" aria-label="'+(lang==="en"?"Back to catalogs":"رجوع للكتالوجات")+'">‹</button> ';
+        var backLab=lang==="en"?"Back":"رجوع";
+        var backBtn='<button type="button" class="cat-back" id="backCatalogs" aria-label="'+(lang==="en"?"Back to catalogs":"رجوع للكتالوجات")+'"><span class="back-ico" aria-hidden="true"></span><span>'+backLab+'</span></button> ';
         titleEl.innerHTML=backBtn+esc(label)+' <span class="vat-chip">'+(T("vatInc")||"")+'</span>';
         var bk=document.getElementById("backCatalogs");
         if(bk) bk.onclick=function(){ if(typeof backToCatalogs==="function") backToCatalogs(); };

@@ -191,6 +191,8 @@ function bindHeroSwipe() {
   /* Redefine on window for any stale callers; do NOT call renderHomeCatalogs again (flash). */
   function install() {
     try {
+      var root = document.getElementById("heroSwipe");
+      if (root) root.__naqaHeroBound = false;
       if (typeof bindHeroSwipe === "function") bindHeroSwipe();
     } catch (e) {}
   }

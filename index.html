@@ -70,8 +70,8 @@
 <meta name="application-name" content="نقاء | Naqa" />
 
 <title>نقاء · عناية ومكياج | Naqa Oman</title>
-<link rel="preload" href="css/store.min.css?v=20261128f" as="style" />
-<link rel="stylesheet" href="css/store.min.css?v=20261128f" />
+<link rel="preload" href="css/store.min.css?v=20261128g" as="style" />
+<link rel="stylesheet" href="css/store.min.css?v=20261128g" />
 <link rel="preload" as="image" href="media/hero-cutouts/p293.webp" fetchpriority="high" />
 <style id="naqa-hero-v2">
 #heroSlot{min-height:clamp(300px,calc(36vw + 28px),448px)}
@@ -131,7 +131,7 @@
 .hero-swipe-dots,.hero-dot{display:none!important}
 @media(max-width:700px){
   .hero-swipe{width:calc(100% + 36px);margin:0 -18px 14px;border-radius:0;box-shadow:none}
-  .hero-slide{height:292px!important;padding:12px 12px 8px;grid-template-columns:1.32fr .78fr!important}
+  .hero-slide{height:292px!important;padding:8px 10px 6px 2px;grid-template-columns:1.4fr .7fr!important}
   .hero-slide-art{gap:4px!important}.hero-slide-art img{height:88%!important}
   .hero-slide-copy{gap:5px!important}
   .hero-kicker{font-size:.64rem!important}
@@ -517,8 +517,8 @@ html.sku-boot #sheetCard{min-height:100vh;background:#fff}
 </div>
 <script defer src="data/products.min.js?v=20261127c23"></script>
 
-<script defer src="js/store.min.js?v=20261128f"></script>
-<script defer src="js/hero-swipe.js?v=20261128f"></script>
+<script defer src="js/store.min.js?v=20261128g"></script>
+<script defer src="js/hero-swipe.js?v=20261128g"></script>
 <script>
 /* Firebase after first paint so it does not compete with the hero image. */
 (function () {
@@ -533,11 +533,11 @@ html.sku-boot #sheetCard{min-height:100vh;background:#fff}
     });
   }
   function start() {
-    load("js/firebase-config.js?v=20261128f")
+    load("js/firebase-config.js?v=20261128g")
       .then(function () { return load("https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"); })
       .then(function () { return load("https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"); })
-      .then(function () { return load("js/cloud-overrides.js?v=20261128f"); })
-      .then(function () { return load("js/store-cloud-boot.js?v=20261128f"); })
+      .then(function () { return load("js/cloud-overrides.js?v=20261128g"); })
+      .then(function () { return load("js/store-cloud-boot.js?v=20261128g"); })
       .catch(function () {});
   }
   if (window.requestIdleCallback) requestIdleCallback(start, { timeout: 2500 });

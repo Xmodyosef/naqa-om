@@ -443,7 +443,7 @@ function renderHomeCatalogs(force){
     hero.hidden = false;
     hero.removeAttribute("aria-hidden");
     if (slot && hero.parentNode !== slot) slot.appendChild(hero);
-    try { if (typeof bindHeroSwipe === "function") bindHeroSwipe(true); } catch (e) {}
+    try { if (typeof bindHeroSwipe === "function") bindHeroSwipe(false); } catch (e) {}
     return;
   }
   /* Full rebuild */

@@ -70,8 +70,8 @@
 <meta name="application-name" content="نقاء | Naqa" />
 
 <title>نقاء · عناية ومكياج | Naqa Oman</title>
-<link rel="preload" href="css/store.min.css?v=20261128k" as="style" />
-<link rel="stylesheet" href="css/store.min.css?v=20261128k" />
+<link rel="preload" href="css/store.min.css?v=20261128m" as="style" />
+<link rel="stylesheet" href="css/store.min.css?v=20261128m" />
 <link rel="preload" as="image" href="media/hero-cutouts/p293.webp" fetchpriority="high" />
 <style id="naqa-hero-v2">
 #heroSlot{min-height:clamp(210px,calc(26vw + 12px),300px);padding:0;margin:0}
@@ -522,8 +522,8 @@ html.sku-boot #sheetCard{min-height:100vh;background:#fff}
 </div>
 <script defer src="data/products.min.js?v=20261127c23"></script>
 
-<script defer src="js/store.min.js?v=20261128k"></script>
-<script defer src="js/hero-swipe.js?v=20261128k"></script>
+<script defer src="js/store.min.js?v=20261128m"></script>
+<script defer src="js/hero-swipe.js?v=20261128m"></script>
 <script>
 /* Firebase after first paint so it does not compete with the hero image. */
 (function () {
@@ -538,11 +538,11 @@ html.sku-boot #sheetCard{min-height:100vh;background:#fff}
     });
   }
   function start() {
-    load("js/firebase-config.js?v=20261128k")
+    load("js/firebase-config.js?v=20261128m")
       .then(function () { return load("https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"); })
       .then(function () { return load("https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"); })
-      .then(function () { return load("js/cloud-overrides.js?v=20261128k"); })
-      .then(function () { return load("js/store-cloud-boot.js?v=20261128k"); })
+      .then(function () { return load("js/cloud-overrides.js?v=20261128m"); })
+      .then(function () { return load("js/store-cloud-boot.js?v=20261128m"); })
       .catch(function () {});
   }
   if (window.requestIdleCallback) requestIdleCallback(start, { timeout: 2500 });

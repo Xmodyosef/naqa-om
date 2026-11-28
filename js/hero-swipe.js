@@ -93,6 +93,7 @@ function __naqaBindHeroEnhanced(force) {
     var n = slides.length;
     i = ((i % n) + n) % n;
     root.dataset.naqaIdx = String(i);
+    window.__naqaHeroIdx = i;
     track.style.transition = animate ? "transform .48s cubic-bezier(.22,.61,.36,1)" : "none";
     track.style.transform = "translate3d(" + (-i * 100) + "%,0,0)";
     slides.forEach(function (slide, j) {
@@ -101,8 +102,10 @@ function __naqaBindHeroEnhanced(force) {
     });
   }
 
-  if (root.dataset.naqaIdx == null || force) setIdx(Number(root.dataset.naqaIdx || 0), false);
-  else setIdx(Number(root.dataset.naqaIdx || 0), false);
+  var start = (window.__naqaHeroIdx != null)
+    ? Number(window.__naqaHeroIdx)
+    : Number(root.dataset.naqaIdx || 0);
+  setIdx(start || 0, false);
 
   if (!force && root.__naqaHeroUiBound) return;
   root.__naqaHeroUiBound = true;
@@ -187,7 +190,11 @@ function bindHeroSwipe(force) { __naqaBindHeroEnhanced(force); }
         s.style.minWidth = "100%";
         s.style.width = "100%";
       });
-      var i = (Number(root.dataset.naqaIdx || 0) + 1) % n;
+      var cur = (window.__naqaHeroIdx != null)
+        ? Number(window.__naqaHeroIdx)
+        : Number(root.dataset.naqaIdx || 0);
+      var i = (cur + 1) % n;
+      window.__naqaHeroIdx = i;
       root.dataset.naqaIdx = String(i);
       track.style.transition = "transform .48s cubic-bezier(.22,.61,.36,1)";
       track.style.transform = "translate3d(" + (-i * 100) + "%,0,0)";

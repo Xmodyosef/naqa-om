@@ -169,7 +169,14 @@ function backToCatalogs(){
   var sel = document.getElementById("sortSel"); if(sel) sel.value = "new";
   try{ history.pushState({ naqa: "shop" }, "", "#shop"); }catch(e){}
   if(typeof render === "function") render();
-  var box = document.getElementById("shelves") || document.getElementById("homeCatalog");
+  try {
+    var hero = document.getElementById("heroSwipe");
+    if (hero) { hero.hidden = false; hero.removeAttribute("aria-hidden"); }
+    var shelves = document.getElementById("shelves");
+    if (shelves) shelves.hidden = false;
+    if (typeof bindHeroSwipe === "function") bindHeroSwipe(true);
+  } catch (e) {}
+  var box = document.getElementById("shelves") || document.getElementById("homeCatalog") || document.getElementById("heroSlot");
   if(box) box.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
@@ -283,7 +290,7 @@ function naqaStartCampRails(){
 }
 
 
-var NAQA_HERO_CUTS = {1:1,2:1,3:1,4:1,8:1,17:1,24:1,34:1,70:1,71:1,84:1,88:1,100:1,111:1,113:1,122:1,154:1,158:1,166:1,264:1,293:1,148:1,65:1,60:1};
+var NAQA_HERO_CUTS = {};
 function naqaHeroImage(id, fallback) {
   if (NAQA_HERO_CUTS[id] || NAQA_HERO_CUTS[Number(id)]) {
     return { image: "media/hero-cutouts/p" + id + ".webp", fallback: fallback || "" };
@@ -367,80 +374,22 @@ function heroSwipeHTML() {
     esc(hint) + '" aria-live="off">' + slides.join("") + '</div></section>';
 }
 
-function bindHeroSwipe() {
+function bindHeroSwipe(force) {
+  /* Enhanced binder lives in hero-swipe.js (transform + autoplay). */
   var root = document.getElementById("heroSwipe");
   var track = document.getElementById("heroSwipeTrack");
-  if (!root || !track || root.__naqaHeroBound) return;
-
-  var slides = Array.prototype.slice.call(track.querySelectorAll(".hero-slide"));
-  if (!slides.length) return;
-  root.__naqaHeroBound = true;
-
-  var startX = 0;
-  var startY = 0;
-  var pointerId = null;
-  var moved = false;
-  var suppressClickUntil = 0;
-  var raf = 0;
-
-  function currentIndex() {
-    var width = track.clientWidth || 1;
-    return Math.max(0, Math.min(slides.length - 1, Math.round(track.scrollLeft / width)));
-  }
-  function go(index) {
-    var width = track.clientWidth || 1;
-    var next = Math.max(0, Math.min(slides.length - 1, index));
-    var reduce = false;
-    try { reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches; } catch (e) {}
-    track.scrollTo({ left: next * width, behavior: reduce ? "auto" : "smooth" });
-  }
-  function paint() {
-    raf = 0;
-    var active = currentIndex();
-    slides.forEach(function (slide, index) {
-      if (index === active) slide.setAttribute("aria-current", "true");
-      else slide.removeAttribute("aria-current");
-    });
-  }
-
-  track.addEventListener("scroll", function () {
-    if (!raf) raf = requestAnimationFrame(paint);
-  }, { passive: true });
-  track.addEventListener("keydown", function (event) {
-    var index = currentIndex();
-    if (event.key === "ArrowRight") { event.preventDefault(); go(index + 1); }
-    else if (event.key === "ArrowLeft") { event.preventDefault(); go(index - 1); }
-    else if (event.key === "Home") { event.preventDefault(); go(0); }
-    else if (event.key === "End") { event.preventDefault(); go(slides.length - 1); }
+  if (!root || !track) return;
+  track.style.display = "flex";
+  track.style.width = "100%";
+  var slides = track.querySelectorAll(".hero-slide");
+  Array.prototype.forEach.call(slides, function (s) {
+    s.style.flex = "0 0 100%";
+    s.style.minWidth = "100%";
+    s.style.width = "100%";
   });
-  track.addEventListener("pointerdown", function (event) {
-    pointerId = event.pointerId;
-    startX = event.clientX;
-    startY = event.clientY;
-    moved = false;
-  }, { passive: true });
-  track.addEventListener("pointermove", function (event) {
-    if (pointerId !== event.pointerId) return;
-    var dx = Math.abs(event.clientX - startX);
-    var dy = Math.abs(event.clientY - startY);
-    if (dx > 12 && dx > dy) moved = true;
-  }, { passive: true });
-  track.addEventListener("pointerup", function (event) {
-    if (pointerId !== event.pointerId) return;
-    if (moved) suppressClickUntil = Date.now() + 450;
-    pointerId = null;
-  }, { passive: true });
-  track.addEventListener("pointercancel", function () {
-    pointerId = null;
-    moved = false;
-  }, { passive: true });
-  track.addEventListener("click", function (event) {
-    if (Date.now() >= suppressClickUntil) return;
-    event.preventDefault();
-    event.stopPropagation();
-    suppressClickUntil = 0;
-  }, true);
-  paint();
+  if (typeof window.__naqaBindHeroEnhanced === "function") {
+    window.__naqaBindHeroEnhanced(force);
+  }
 }
 
 function naqaHomeSurfaceSig(){
@@ -475,22 +424,29 @@ function renderHomeCatalogs(force){
   var box = document.getElementById("shelves");
   if(!box) return;
   if(!isHomeCatalogView()){
-    var prevOff = document.getElementById("heroSwipe");
-    if(prevOff) prevOff.remove();
-    box.innerHTML = "";
+    /* Park the home surface — never destroy the banner (return was broken). */
+    var parked = document.getElementById("heroSwipe");
+    if (parked) {
+      parked.hidden = true;
+      parked.setAttribute("aria-hidden", "true");
+    }
     box.hidden = true;
-    box.__naqaHomeSig = "";
     return;
   }
   var sig = naqaHomeSurfaceSig();
   var hero = document.getElementById("heroSwipe");
   var home = document.getElementById("homeCatalog");
+  var slot = document.getElementById("heroSlot");
   if (!force && home && hero && hero.querySelector(".hero-slide-art") && box.__naqaHomeSig === sig) {
-    /* Already painted — do not remove/rebuild (visible flash of old/blank hero) */
-    try { if (typeof bindHeroSwipe === "function") bindHeroSwipe(); } catch (e) {}
+    /* Already painted — just unhide and re-bind motion */
+    box.hidden = false;
+    hero.hidden = false;
+    hero.removeAttribute("aria-hidden");
+    if (slot && hero.parentNode !== slot) slot.appendChild(hero);
+    try { if (typeof bindHeroSwipe === "function") bindHeroSwipe(true); } catch (e) {}
     return;
   }
-  /* Only remove previous hero when we are about to replace it */
+  /* Full rebuild */
   if (hero) hero.remove();
   box.hidden = false;
   box.__naqaHomeSig = sig;

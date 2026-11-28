@@ -64,13 +64,13 @@ const heroSource = read("js/hero-swipe.js");
 const heroIndex = read("index.html");
 assert(heroIndex.indexOf('js/store.min.js') < heroIndex.indexOf('js/hero-swipe.js'), "hero enhancement loads after store bundle");
 assert(/catalogList\(id, 1\)/.test(heroSource), "hero hides campaigns with no available products");
-assert(/translate3d/.test(heroSource) && /naqaHeroAutoForever/.test(heroSource), "hero autoplay uses forever timer");
+assert(/translate3d/.test(heroSource) && /naqaHeroAutoForever/.test(heroSource), "hero autoplay uses transform timer");
 assert(/fetchpriority="high"/.test(heroSource), "first available hero image gets high fetch priority");
 assert(/aria-roledescription/.test(heroSource) && /ArrowRight/.test(heroSource), "hero is accessible by keyboard");
 assert(/NAQA_BANNER_HEROES/.test(heroSource) && /pimgs\(p\)/.test(heroSource), "hero uses real curated product images");
 assert(/hero-slide-copy/.test(heroSource) && /hero-slide-art/.test(heroSource), "hero includes campaign copy and product artwork");
 assert(read("index.html").includes('id="naqa-hero-v2"'), "hero v2 responsive styling is loaded");
-assert(read("index.html").includes("hero-swipe.js?v=20261128j"), "hero v2 cache key is current");
+assert(read("index.html").includes("hero-swipe.js?v=20261128k"), "hero v2 cache key is current");
 
 const min = read("js/store.min.js");
 assert(min.includes("order.html#"), "min bundle has bridge");

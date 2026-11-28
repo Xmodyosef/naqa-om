@@ -97,10 +97,31 @@ function bindHeroSwipe() {
   }
   function go(index) {
     var width = track.clientWidth || 1;
-    var next = Math.max(0, Math.min(slides.length - 1, index));
+    var count = slides.length || 1;
+    var next = ((index % count) + count) % count;
+    var dest = next * width;
+    var start = track.scrollLeft;
     var reduce = false;
     try { reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches; } catch (e) {}
-    track.scrollTo({ left: next * width, behavior: reduce ? "auto" : "smooth" });
+    if (reduce || Math.abs(dest - start) < 2) {
+      track.scrollLeft = dest;
+      return;
+    }
+    var t0 = 0;
+    var dur = 620;
+    track.style.scrollSnapType = "none";
+    function frame(now) {
+      if (!t0) t0 = now;
+      var p = Math.min(1, (now - t0) / dur);
+      var e = 1 - Math.pow(1 - p, 3);
+      track.scrollLeft = start + (dest - start) * e;
+      if (p < 1) requestAnimationFrame(frame);
+      else {
+        track.scrollLeft = dest;
+        track.style.scrollSnapType = "x mandatory";
+      }
+    }
+    requestAnimationFrame(frame);
   }
   function paint() {
     raf = 0;
@@ -153,17 +174,14 @@ function bindHeroSwipe() {
   function motionOff() {
     try { return window.matchMedia("(prefers-reduced-motion: reduce)").matches; } catch (e) { return false; }
   }
-  function stepBack() {
+  function stepNext() {
     if (Date.now() < resumeAt || motionOff() || document.hidden || slides.length < 2) return;
-    var index = currentIndex();
-    go(index <= 0 ? slides.length - 1 : index - 1);
+    go(currentIndex() + 1);
   }
-  if (!motionOff() && slides.length > 1) setInterval(stepBack, 3800);
-  root.addEventListener("pointerdown", function () { resumeAt = Date.now() + 600000; }, { passive: true });
-  root.addEventListener("pointerup", function () { resumeAt = Date.now() + 2600; }, { passive: true });
-  root.addEventListener("pointercancel", function () { resumeAt = Date.now() + 2600; });
-  root.addEventListener("mouseenter", function () { resumeAt = Date.now() + 600000; });
-  root.addEventListener("mouseleave", function () { resumeAt = 0; });
+  if (!motionOff() && slides.length > 1) setInterval(stepNext, 3200);
+  root.addEventListener("pointerdown", function () { resumeAt = Date.now() + 5000; }, { passive: true });
+  root.addEventListener("pointerup", function () { resumeAt = Date.now() + 1400; }, { passive: true });
+  root.addEventListener("pointercancel", function () { resumeAt = Date.now() + 1400; });
   document.addEventListener("visibilitychange", function () {
     resumeAt = document.hidden ? Date.now() + 600000 : 0;
   });

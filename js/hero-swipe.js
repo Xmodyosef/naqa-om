@@ -149,6 +149,24 @@ function bindHeroSwipe() {
     suppressClickUntil = 0;
   }, true);
   paint();
+  var resumeAt = 0;
+  function motionOff() {
+    try { return window.matchMedia("(prefers-reduced-motion: reduce)").matches; } catch (e) { return false; }
+  }
+  function stepBack() {
+    if (Date.now() < resumeAt || motionOff() || document.hidden || slides.length < 2) return;
+    var index = currentIndex();
+    go(index <= 0 ? slides.length - 1 : index - 1);
+  }
+  if (!motionOff() && slides.length > 1) setInterval(stepBack, 3800);
+  root.addEventListener("pointerdown", function () { resumeAt = Date.now() + 600000; }, { passive: true });
+  root.addEventListener("pointerup", function () { resumeAt = Date.now() + 2600; }, { passive: true });
+  root.addEventListener("pointercancel", function () { resumeAt = Date.now() + 2600; });
+  root.addEventListener("mouseenter", function () { resumeAt = Date.now() + 600000; });
+  root.addEventListener("mouseleave", function () { resumeAt = 0; });
+  document.addEventListener("visibilitychange", function () {
+    resumeAt = document.hidden ? Date.now() + 600000 : 0;
+  });
 }
 
 (function installNaqaHero() {

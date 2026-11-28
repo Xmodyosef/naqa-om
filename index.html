@@ -70,10 +70,12 @@
 <meta name="application-name" content="نقاء | Naqa" />
 
 <title>نقاء · عناية ومكياج | Naqa Oman</title>
-<link rel="preload" href="css/store.min.css?v=20261127c23" as="style" />
-<link rel="stylesheet" href="css/store.min.css?v=20261127c23" />
+<link rel="preload" href="css/store.min.css?v=20261128a" as="style" />
+<link rel="stylesheet" href="css/store.min.css?v=20261128a" />
+<link rel="preload" as="image" href="media/hero-cutouts/p293.webp" fetchpriority="high" />
 <style id="naqa-hero-v2">
 /* Physical LTR grid inside banner: packshots LEFT | Arabic title RIGHT */
+#heroSlot{min-height:clamp(238px,calc(32vw + 28px),348px)}
 .hero-swipe{position:relative;width:100%;margin:10px auto 18px;overflow:hidden;border:1px solid var(--line,#efe4df);border-radius:24px;background:#f8e9ed;box-shadow:0 14px 34px rgba(50,30,25,.12)}
 .hero-swipe-track{display:flex;width:100%;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scroll-snap-stop:always;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;scrollbar-width:none;direction:ltr!important;overscroll-behavior-x:contain}
 .hero-swipe-track::-webkit-scrollbar{display:none}
@@ -291,6 +293,7 @@ html.sku-boot #sheetCard{min-height:100vh;background:#fff}
 </header>
 
 <main id="main" tabindex="-1" class="wrap">
+  <div id="heroSlot"></div>
   <section class="hero hero-strong" aria-label="مقدمة نقاء">
     <div class="pills">
       <span class="pill">✓ منتجات أصلية</span>
@@ -498,14 +501,33 @@ html.sku-boot #sheetCard{min-height:100vh;background:#fff}
 </div>
 <script defer src="data/products.min.js?v=20261127c23"></script>
 
-<script defer src="js/firebase-config.js?v=20261127c24"></script>
-<script defer src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
-<script defer src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
-<script defer src="js/cloud-overrides.js?v=20261127c23"></script>
-<script defer src="js/store-cloud-boot.js?v=20261127c23"></script>
-
-<script defer src="js/store.min.js?v=20261127c23"></script>
-<script defer src="js/hero-swipe.js?v=20261127c23"></script>
+<script defer src="js/store.min.js?v=20261128a"></script>
+<script defer src="js/hero-swipe.js?v=20261128a"></script>
+<script>
+/* Firebase after first paint so it does not compete with the hero image. */
+(function () {
+  function load(src) {
+    return new Promise(function (ok, bad) {
+      var s = document.createElement("script");
+      s.src = src;
+      s.async = false;
+      s.onload = function () { ok(); };
+      s.onerror = function () { bad(); };
+      document.body.appendChild(s);
+    });
+  }
+  function start() {
+    load("js/firebase-config.js?v=20261128a")
+      .then(function () { return load("https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"); })
+      .then(function () { return load("https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"); })
+      .then(function () { return load("js/cloud-overrides.js?v=20261128a"); })
+      .then(function () { return load("js/store-cloud-boot.js?v=20261128a"); })
+      .catch(function () {});
+  }
+  if (window.requestIdleCallback) requestIdleCallback(start, { timeout: 2500 });
+  else setTimeout(start, 1600);
+})();
+</script>
 
 <script>
 /* Kill leftover SW + Cache Storage once (old shell flash). */

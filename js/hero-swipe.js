@@ -24,8 +24,8 @@ function heroSwipeHTML() {
       if (p && !p.hidden && typeof pimgs === "function") {
         var images = pimgs(p) || [];
         if (images[0] && candidates.length < 3) {
-          var cut = "media/hero-cutouts/p" + productId + ".webp";
-          candidates.push({ product: p, image: cut, fallback: images[0] });
+          var pic = naqaHeroImage(productId, images[0]);
+          candidates.push({ product: p, image: pic.image, fallback: pic.fallback });
         }
       }
     });
@@ -37,8 +37,8 @@ function heroSwipeHTML() {
         if (candidates.length >= 3 || !p || p.hidden || candidates.some(function (x) { return x.product.id === p.id; })) return;
         var images = typeof pimgs === "function" ? pimgs(p) || [] : [];
         if (images[0]) {
-          var cut2 = "media/hero-cutouts/p" + p.id + ".webp";
-          candidates.push({ product: p, image: cut2, fallback: images[0] });
+          var pic2 = naqaHeroImage(p.id, images[0]);
+          candidates.push({ product: p, image: pic2.image, fallback: pic2.fallback });
         }
       });
     }

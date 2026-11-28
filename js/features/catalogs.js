@@ -282,6 +282,15 @@ function naqaStartCampRails(){
   /* Product rows stay still. The shopper swipes them. No auto-crawl. */
 }
 
+
+var NAQA_HERO_CUTS = {1:1,34:1,60:1,65:1,71:1,84:1,88:1,113:1,122:1,148:1,154:1,158:1,166:1,264:1,293:1};
+function naqaHeroImage(id, fallback) {
+  if (NAQA_HERO_CUTS[id] || NAQA_HERO_CUTS[Number(id)]) {
+    return { image: "media/hero-cutouts/p" + id + ".webp", fallback: fallback || "" };
+  }
+  return { image: fallback, fallback: "" };
+}
+
 function heroSwipeHTML() {
   var en = typeof lang !== "undefined" && lang === "en";
   var catalogs = ["hot", "eoy", "korean", "u10", "sheglam"];
@@ -307,8 +316,8 @@ function heroSwipeHTML() {
       if (p && !p.hidden && typeof pimgs === "function") {
         var images = pimgs(p) || [];
         if (images[0] && candidates.length < 3) {
-          var cut = "media/hero-cutouts/p" + productId + ".webp";
-          candidates.push({ product: p, image: cut, fallback: images[0] });
+          var pic = naqaHeroImage(productId, images[0]);
+          candidates.push({ product: p, image: pic.image, fallback: pic.fallback });
         }
       }
     });
@@ -320,8 +329,8 @@ function heroSwipeHTML() {
         if (candidates.length >= 3 || !p || p.hidden || candidates.some(function (x) { return x.product.id === p.id; })) return;
         var images = typeof pimgs === "function" ? pimgs(p) || [] : [];
         if (images[0]) {
-          var cut2 = "media/hero-cutouts/p" + p.id + ".webp";
-          candidates.push({ product: p, image: cut2, fallback: images[0] });
+          var pic2 = naqaHeroImage(p.id, images[0]);
+          candidates.push({ product: p, image: pic2.image, fallback: pic2.fallback });
         }
       });
     }
@@ -514,8 +523,13 @@ function renderHomeCatalogs(force){
   html += '</div>';
   box.innerHTML = html;
   var swipe = document.getElementById("heroSwipe");
-  var main = document.getElementById("main");
-  if(swipe && main) main.insertBefore(swipe, main.firstChild);
+  var slot = document.getElementById("heroSlot");
+  if (swipe && slot) {
+    if (swipe.parentNode !== slot) slot.appendChild(swipe);
+  } else {
+    var main = document.getElementById("main");
+    if (swipe && main && swipe.parentNode !== main) main.insertBefore(swipe, main.firstChild);
+  }
   try{ bindHeroSwipe(); }catch(e){}
 }
 

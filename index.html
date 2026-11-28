@@ -74,74 +74,75 @@
 <link rel="stylesheet" href="css/store.min.css?v=20261128k" />
 <link rel="preload" as="image" href="media/hero-cutouts/p293.webp" fetchpriority="high" />
 <style id="naqa-hero-v2">
-#heroSlot{min-height:clamp(188px,calc(22vw + 12px),260px);padding:0;margin:0}
-.hero-swipe{position:relative;width:100%;margin:6px auto 12px;overflow:hidden;border:0;border-radius:18px;background:#3d1524;box-shadow:0 10px 24px rgba(61,21,36,.18)}
-.hero-swipe[hidden]{display:none!important}
+#heroSlot{min-height:clamp(210px,calc(26vw + 12px),300px);padding:0;margin:0}
+/* Escape .wrap 18px padding — full device width */
+.hero-swipe{
+  position:relative;width:100vw!important;max-width:100vw!important;
+  margin-left:calc(50% - 50vw)!important;margin-right:calc(50% - 50vw)!important;
+  margin-top:6px;margin-bottom:12px;overflow:hidden;border:0;border-radius:0;
+  background:#3d1524;box-shadow:none
+}
 .hero-swipe-track{display:flex;width:100%;overflow:visible;scroll-snap-type:none;scrollbar-width:none;direction:ltr!important;transform:translate3d(0,0,0);will-change:transform}
 .hero-swipe-track::-webkit-scrollbar{display:none}
 .hero-slide{
   position:relative!important;display:grid!important;
-  grid-template-columns:minmax(0,1.7fr) minmax(0,.62fr)!important;align-items:stretch!important;
+  grid-template-columns:minmax(0,1.9fr) minmax(0,.55fr)!important;align-items:stretch!important;
   direction:ltr!important;flex:0 0 100%;width:100%;min-width:100%;box-sizing:border-box!important;
-  height:clamp(176px,22vw,240px)!important;
-  margin:0!important;padding:0 8px 0 0!important;overflow:hidden;border:0;cursor:pointer;
+  height:clamp(200px,26vw,280px)!important;aspect-ratio:auto!important;
+  margin:0!important;padding:6px 10px 4px 6px!important;overflow:hidden;border:0;cursor:pointer;
   background:
-    radial-gradient(280px 140px at 10% 80%, rgba(255,255,255,.22), transparent 58%),
+    radial-gradient(340px 170px at 10% 80%, rgba(255,255,255,.22), transparent 58%),
     linear-gradient(102deg,#f7d5c8 0%, #e7a48a 24%, #a14a32 56%, #3d1c14 100%)
 }
 .hero-slide[data-tone="care"],.hero-slide[data-tone="price"]{
   background:
-    radial-gradient(280px 140px at 10% 80%, rgba(255,255,255,.22), transparent 58%),
+    radial-gradient(340px 170px at 10% 80%, rgba(255,255,255,.22), transparent 58%),
     linear-gradient(102deg,#e5f4ee 0%, #9dcec2 26%, #2c6b5e 60%, #14332e 100%)
 }
 .hero-slide[data-tone="makeup"],.hero-slide[data-tone="deal"]{
   background:
-    radial-gradient(280px 140px at 10% 80%, rgba(255,255,255,.2), transparent 58%),
+    radial-gradient(340px 170px at 10% 80%, rgba(255,255,255,.2), transparent 58%),
     linear-gradient(102deg,#f8d5e2 0%, #e08aa6 26%, #8d3048 58%, #3d1524 100%)
 }
 .hero-slide[data-tone="hot"]{
   background:
-    radial-gradient(280px 140px at 10% 80%, rgba(255,255,255,.22), transparent 58%),
+    radial-gradient(340px 170px at 10% 80%, rgba(255,255,255,.22), transparent 58%),
     linear-gradient(102deg,#f7d5c8 0%, #e7a48a 24%, #a14a32 56%, #3d1c14 100%)
 }
-/* Products flush to the LEFT edge — no centimetre gap */
 .hero-slide-art{
   position:relative!important;height:100%!important;width:100%!important;
   display:block!important;grid-column:1!important;z-index:1;pointer-events:none;direction:ltr!important;
   margin:0!important;padding:0!important;min-width:0!important
 }
 .hero-slide-art img{
-  position:absolute!important;bottom:0!important;top:4%!important;
-  width:20%!important;height:96%!important;max-width:none!important;max-height:none!important;
+  position:absolute!important;bottom:0!important;
+  width:20%!important;height:96%!important;max-width:none!important;max-height:100%!important;
   object-fit:contain!important;object-position:center bottom!important;
-  background:transparent!important;border:0!important;border-radius:0!important;padding:0!important;margin:0!important;
-  /* White studio plates disappear into the banner; pack colour stays */
-  mix-blend-mode:multiply!important;
-  filter:drop-shadow(0 6px 5px rgba(20,8,12,.22))!important;
-  transform:none!important
+  background:transparent!important;border-radius:0!important;padding:0!important;margin:0!important;
+  box-shadow:none!important;border:0!important;
+  filter:drop-shadow(0 10px 8px rgba(20,8,12,.32))!important;transform:none!important
 }
 .hero-slide-art img:nth-child(1){left:0%!important}
-.hero-slide-art img:nth-child(2){left:19.5%!important}
-.hero-slide-art img:nth-child(3){left:39%!important;width:22%!important;z-index:2}
+.hero-slide-art img:nth-child(2){left:20%!important}
+.hero-slide-art img:nth-child(3){left:40%!important;height:100%!important;z-index:2}
 .hero-slide-art img:nth-child(4){left:60%!important}
-.hero-slide-art img:nth-child(5){left:79.5%!important}
+.hero-slide-art img:nth-child(5){left:80%!important}
 .hero-slide-copy{
   position:relative!important;width:100%!important;display:flex!important;flex-direction:column!important;
-  align-items:flex-end!important;justify-content:center!important;gap:3px!important;
+  align-items:flex-end!important;justify-content:center!important;gap:4px!important;
   direction:rtl!important;text-align:right!important;color:#fff!important;
-  grid-column:2!important;z-index:2;padding:4px 2px 4px 4px
+  grid-column:2!important;z-index:2;padding:2px 8px 2px 4px
 }
-.hero-kicker{font-size:.58rem!important;font-weight:800!important;letter-spacing:.12em;color:rgba(255,255,255,.78)!important}
-.hero-slide-copy strong{font-size:clamp(.95rem,2.2vw,1.55rem)!important;font-weight:800!important;line-height:1.12!important;color:#fff!important}
-.hero-slide-copy small{font-size:clamp(.62rem,1vw,.84rem)!important;line-height:1.3!important;color:rgba(255,255,255,.88)!important;max-width:12em}
+.hero-kicker{font-size:.6rem!important;font-weight:800!important;letter-spacing:.12em;color:rgba(255,255,255,.8)!important}
+.hero-slide-copy strong{font-size:clamp(1rem,2.3vw,1.65rem)!important;font-weight:800!important;line-height:1.15!important;color:#fff!important}
+.hero-slide-copy small{font-size:clamp(.64rem,1vw,.86rem)!important;line-height:1.3!important;color:rgba(255,255,255,.9)!important;max-width:12em}
 .hero-slide-copy em{display:inline-flex!important;margin-top:2px;padding:7px 11px;border-radius:999px;background:#fff!important;color:#3d1524!important;font-style:normal!important;font-size:.68rem!important;font-weight:800!important}
 .hero-swipe-dots,.hero-dot{display:none!important}
 @media(max-width:700px){
-  .hero-swipe{width:calc(100% + 36px);margin:0 -18px 10px;border-radius:0;box-shadow:none}
-  .hero-slide{height:188px!important;padding:0 6px 0 0!important;grid-template-columns:minmax(0,1.65fr) minmax(0,.62fr)!important}
-  .hero-slide-copy strong{font-size:.92rem!important}
-  .hero-slide-copy small{font-size:.58rem!important;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-  .hero-slide-copy em{font-size:.62rem!important;padding:6px 10px}
+  .hero-slide{height:220px!important;padding:4px 8px 2px 4px!important;grid-template-columns:minmax(0,1.85fr) minmax(0,.55fr)!important}
+  .hero-slide-copy strong{font-size:.95rem!important}
+  .hero-slide-copy small{font-size:.6rem!important;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  .hero-slide-copy em{font-size:.64rem!important;padding:6px 10px}
 }
 </style>
 

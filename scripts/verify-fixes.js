@@ -70,7 +70,7 @@ assert(/aria-roledescription/.test(heroSource) && /ArrowRight/.test(heroSource),
 assert(/NAQA_BANNER_HEROES/.test(heroSource) && /pimgs\(p\)/.test(heroSource), "hero uses real curated product images");
 assert(/hero-slide-copy/.test(heroSource) && /hero-slide-art/.test(heroSource), "hero includes campaign copy and product artwork");
 assert(read("index.html").includes('id="naqa-hero-v2"'), "hero v2 responsive styling is loaded");
-assert(read("index.html").includes("hero-swipe.js?v=20261128c"), "hero v2 cache key is current");
+assert(read("index.html").includes("hero-swipe.js?v=20261128d"), "hero v2 cache key is current");
 
 const min = read("js/store.min.js");
 assert(min.includes("order.html#"), "min bundle has bridge");
